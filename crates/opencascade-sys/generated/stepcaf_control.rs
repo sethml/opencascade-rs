@@ -44,7 +44,7 @@ impl ActorWrite {
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:52 - `STEPCAFControl_ActorWrite::RegisterAssembly()`
     /// Registers shape to be written as assembly
     /// The shape should be TopoDS_Compound (else does nothing)
-    pub fn register_assembly(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn register_assembly(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::STEPCAFControl_ActorWrite_register_assembly(self as *mut Self, S) }
     }
 
@@ -173,7 +173,7 @@ impl ActorWrite {
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
         TP: &crate::ffi::HandleTransferProcessForFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_inherited_Transferring(
@@ -347,7 +347,7 @@ impl Controller {
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
-    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
+    pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         unsafe {
             crate::ffi::STEPCAFControl_Controller_inherited_RecognizeWriteShape(
                 self as *const Self,
@@ -441,12 +441,12 @@ impl ExternFile {
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:60 - `STEPCAFControl_ExternFile::SetLabel()`
-    pub fn set_label(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn set_label(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::STEPCAFControl_ExternFile_set_label(self as *mut Self, L) }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:62 - `STEPCAFControl_ExternFile::GetLabel()`
-    pub fn get_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ExternFile_get_label(
                 self as *const Self,
@@ -713,7 +713,7 @@ impl GDTProperty {
         theModifiers: &crate::ffi::XCAFDimTolObjects_DatumModifiersSequence,
         theModifWithVal: crate::xcaf_dim_tol_objects::DatumModifWithValue,
         theValue: f64,
-        theUnit: &crate::ffi::StepBasic_Unit,
+        theUnit: &crate::step_basic::Unit,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -788,7 +788,7 @@ impl Reader {
     pub fn read_file_charptr_parameters(
         &mut self,
         theFileName: &str,
-        theParams: &crate::ffi::DESTEP_Parameters,
+        theParams: &crate::destep::Parameters,
     ) -> crate::if_select::ReturnStatus {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         unsafe {
@@ -826,13 +826,13 @@ impl Reader {
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:162 - `STEPCAFControl_Reader::ChangeReader()`
     /// Returns basic reader
-    pub fn change_reader(&mut self) -> &mut crate::ffi::STEPControl_Reader {
+    pub fn change_reader(&mut self) -> &mut crate::step_control::Reader {
         unsafe { &mut *(crate::ffi::STEPCAFControl_Reader_change_reader(self as *mut Self)) }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:165 - `STEPCAFControl_Reader::Reader()`
     /// Returns basic reader as const
-    pub fn reader(&self) -> &crate::ffi::STEPControl_Reader {
+    pub fn reader(&self) -> &crate::step_control::Reader {
         unsafe { &*(crate::ffi::STEPCAFControl_Reader_reader(self as *const Self)) }
     }
 
@@ -1007,10 +1007,10 @@ impl Writer {
     /// Method to transfer part of the document specified by label
     pub fn transfer_label_stepmodeltype_charptr_progressrange(
         &mut self,
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
         theMode: crate::step_control::StepModelType,
         theIsMulti: &str,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
         unsafe {
@@ -1030,11 +1030,11 @@ impl Writer {
     /// initialization from Interface_Static
     pub fn transfer_label_parameters_stepmodeltype_charptr_progressrange(
         &mut self,
-        theLabel: &crate::ffi::TDF_Label,
-        theParams: &crate::ffi::DESTEP_Parameters,
+        theLabel: &crate::tdf::Label,
+        theParams: &crate::destep::Parameters,
         theMode: crate::step_control::StepModelType,
         theIsMulti: &str,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
         unsafe {
@@ -1050,7 +1050,7 @@ impl Writer {
         theLabelSeq: &crate::ffi::TDF_LabelSequence,
         theMode: crate::step_control::StepModelType,
         theIsMulti: &str,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
         unsafe {
@@ -1066,10 +1066,10 @@ impl Writer {
     pub fn transfer_labelsequence_parameters_stepmodeltype_charptr_progressrange(
         &mut self,
         theLabelSeq: &crate::ffi::TDF_LabelSequence,
-        theParams: &crate::ffi::DESTEP_Parameters,
+        theParams: &crate::destep::Parameters,
         theMode: crate::step_control::StepModelType,
         theIsMulti: &str,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
         unsafe {
@@ -1082,7 +1082,7 @@ impl Writer {
     /// Returns False if no external file with given name is read
     pub fn extern_file_label_handlestepcafcontrolexternfile(
         &self,
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
         theExtFile: &mut crate::ffi::HandleSTEPCAFControlExternFile,
     ) -> bool {
         unsafe {
@@ -1114,13 +1114,13 @@ impl Writer {
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:189 - `STEPCAFControl_Writer::ChangeWriter()`
     /// Returns basic reader for root file
-    pub fn change_writer(&mut self) -> &mut crate::ffi::STEPControl_Writer {
+    pub fn change_writer(&mut self) -> &mut crate::step_control::Writer {
         unsafe { &mut *(crate::ffi::STEPCAFControl_Writer_change_writer(self as *mut Self)) }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:192 - `STEPCAFControl_Writer::Writer()`
     /// Returns basic reader as const
-    pub fn writer(&self) -> &crate::ffi::STEPControl_Writer {
+    pub fn writer(&self) -> &crate::step_control::Writer {
         unsafe { &*(crate::ffi::STEPCAFControl_Writer_writer(self as *const Self)) }
     }
 

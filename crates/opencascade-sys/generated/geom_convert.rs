@@ -2043,11 +2043,11 @@ impl CurveToAnaCurve {
     /// Creates line on two points.
     /// Resulting parameters returned
     pub fn get_line(
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
         cf: &mut f64,
         cl: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    ) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomConvert_CurveToAnaCurve_get_line(
                 P1, P2, cf, cl,
@@ -2058,10 +2058,10 @@ impl CurveToAnaCurve {
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:114 - `GeomConvert_CurveToAnaCurve::GetCircle()`
     /// Creates circle on points. Returns true if OK.
     pub fn get_circle(
-        Circ: &mut crate::ffi::gp_Circ,
-        P0: &crate::ffi::gp_Pnt,
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
+        Circ: &mut crate::gp::Circ,
+        P0: &crate::gp::Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
     ) -> bool {
         unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_get_circle(Circ, P0, P1, P2) }
     }
@@ -2094,7 +2094,7 @@ impl FuncConeLSDist {
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:39 - `GeomConvert_FuncConeLSDist::GeomConvert_FuncConeLSDist()`
     pub fn new_handletcolgpharray1ofxyz_dir(
         thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ,
-        theDir: &crate::ffi::gp_Dir,
+        theDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -2111,7 +2111,7 @@ impl FuncConeLSDist {
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:44 - `GeomConvert_FuncConeLSDist::SetDir()`
-    pub fn set_dir(&mut self, theDir: &crate::ffi::gp_Dir) {
+    pub fn set_dir(&mut self, theDir: &crate::gp::Dir) {
         unsafe { crate::ffi::GeomConvert_FuncConeLSDist_set_dir(self as *mut Self, theDir) }
     }
 
@@ -2201,7 +2201,7 @@ impl FuncCylinderLSDist {
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:65 - `GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist()`
     pub fn new_handletcolgpharray1ofxyz_dir(
         thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ,
-        theDir: &crate::ffi::gp_Dir,
+        theDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -2220,7 +2220,7 @@ impl FuncCylinderLSDist {
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:70 - `GeomConvert_FuncCylinderLSDist::SetDir()`
-    pub fn set_dir(&mut self, theDir: &crate::ffi::gp_Dir) {
+    pub fn set_dir(&mut self, theDir: &crate::gp::Dir) {
         unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_set_dir(self as *mut Self, theDir) }
     }
 

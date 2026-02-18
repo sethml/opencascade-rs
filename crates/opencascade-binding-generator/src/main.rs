@@ -663,12 +663,11 @@ fn generate_output(
     let collected_types = codegen::rust::collect_referenced_types(all_classes);
     let defined_classes: HashSet<String> = all_classes.iter().map(|c| c.name.clone()).collect();
     let all_enum_names = &symbol_table.all_enum_names;
-    let protected_destructor_classes = symbol_table.protected_destructor_class_names();
 
     for type_name in &collected_types.classes {
         if defined_classes.contains(type_name) { continue; }
         if all_enum_names.contains(type_name) { continue; }
-        if protected_destructor_classes.contains(type_name) { continue; }
+        // Protected destructor classes are still needed as type references in module reexports
         if codegen::rust::is_primitive_type(type_name) { continue; }
         if collection_type_names.contains(type_name) { continue; }
         if already_reexported.contains(type_name) { continue; }
@@ -904,7 +903,10 @@ fn generate_output(
 /// Generate lib.rs with module declarations
 fn generate_lib_rs(modules: &[&module_graph::Module], extra_modules: &[(String, String)]) -> String {
     let mut output = String::new();
-    output.push_str("// Generated OCCT bindings\n\n");
+    output.push_str("// Generated OCCT bindings\n");
+    output.push_str("// Nested C++ types use Parent_Child naming, which is intentional\n");
+    output.push_str("#![allow(non_camel_case_types)]\n\n");
+
     output.push_str("// Core FFI module with all types (pub(crate) to prevent direct access, use module re-exports instead)\n");
     output.push_str("pub(crate) mod ffi;\n\n");
     output.push_str("// Per-module re-exports\n");

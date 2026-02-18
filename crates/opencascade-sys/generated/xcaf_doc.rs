@@ -9,119 +9,117 @@
 /// **Source:** `XCAFDoc.hxx`:49 - `XCAFDoc::AssemblyGUID`
 /// class for containing GraphNodes.
 /// Returns GUID for UAttribute identifying assembly
-pub fn assembly_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn assembly_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_assembly_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:52 - `XCAFDoc::ShapeRefGUID`
 /// Returns GUID for TreeNode representing assembly link
-pub fn shape_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn shape_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_shape_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:55 - `XCAFDoc::ColorRefGUID`
 /// Return GUIDs for TreeNode representing specified types of colors
-pub fn color_ref_guid(
-    type_: crate::xcaf_doc::ColorType,
-) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn color_ref_guid(type_: crate::xcaf_doc::ColorType) -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_color_ref_guid(type_.into())) }
 }
 /// **Source:** `XCAFDoc.hxx`:58 - `XCAFDoc::DimTolRefGUID`
 /// Return GUIDs for TreeNode representing specified types of DGT
-pub fn dim_tol_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn dim_tol_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_dim_tol_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:61 - `XCAFDoc::DimensionRefFirstGUID`
 /// Return GUIDs for TreeNode representing specified types of Dimension
-pub fn dimension_ref_first_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn dimension_ref_first_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_dimension_ref_first_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:64 - `XCAFDoc::DimensionRefSecondGUID`
 /// Return GUIDs for TreeNode representing specified types of Dimension
-pub fn dimension_ref_second_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn dimension_ref_second_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_dimension_ref_second_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:67 - `XCAFDoc::GeomToleranceRefGUID`
 /// Return GUIDs for TreeNode representing specified types of GeomTolerance
-pub fn geom_tolerance_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn geom_tolerance_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_geom_tolerance_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:70 - `XCAFDoc::DatumRefGUID`
 /// Return GUIDs for TreeNode representing specified types of datum
-pub fn datum_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn datum_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_datum_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:73 - `XCAFDoc::DatumTolRefGUID`
 /// Return GUIDs for TreeNode representing connections Datum-Toler
-pub fn datum_tol_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn datum_tol_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_datum_tol_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:75 - `XCAFDoc::LayerRefGUID`
-pub fn layer_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn layer_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_layer_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:77 - `XCAFDoc::MaterialRefGUID`
-pub fn material_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn material_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_material_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:80 - `XCAFDoc::VisMaterialRefGUID`
 /// Return GUID for TreeNode representing Visualization Material.
-pub fn vis_material_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn vis_material_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_vis_material_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:83 - `XCAFDoc::NoteRefGUID`
 /// Return GUIDs for representing notes
-pub fn note_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn note_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_note_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:85 - `XCAFDoc::InvisibleGUID`
-pub fn invisible_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn invisible_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_invisible_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:87 - `XCAFDoc::ColorByLayerGUID`
-pub fn color_by_layer_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn color_by_layer_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_color_by_layer_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:90 - `XCAFDoc::ExternRefGUID`
 /// Returns GUID for UAttribute identifying external reference on no-step file
-pub fn extern_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn extern_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_extern_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:93 - `XCAFDoc::SHUORefGUID`
 /// Returns GUID for UAttribute identifying specified higher usage occurrence
-pub fn shuo_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn shuo_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_shuo_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:96 - `XCAFDoc::ViewRefGUID`
 /// Return GUIDs for TreeNode representing specified types of View
-pub fn view_ref_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn view_ref_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_view_ref_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:99 - `XCAFDoc::ViewRefShapeGUID`
 /// Return GUIDs for TreeNode representing specified types of View
-pub fn view_ref_shape_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn view_ref_shape_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_view_ref_shape_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:102 - `XCAFDoc::ViewRefGDTGUID`
 /// Return GUIDs for TreeNode representing specified types of View
-pub fn view_ref_gdtguid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn view_ref_gdtguid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_view_ref_gdtguid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:105 - `XCAFDoc::ViewRefPlaneGUID`
 /// Return GUIDs for TreeNode representing specified types of View
-pub fn view_ref_plane_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn view_ref_plane_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_view_ref_plane_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:108 - `XCAFDoc::ViewRefNoteGUID`
 /// Return GUIDs for GraphNode representing specified types of View
-pub fn view_ref_note_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn view_ref_note_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_view_ref_note_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:109 - `XCAFDoc::ViewRefAnnotationGUID`
-pub fn view_ref_annotation_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn view_ref_annotation_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_view_ref_annotation_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:112 - `XCAFDoc::LockGUID`
 /// Returns GUID for UAttribute identifying lock flag
-pub fn lock_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn lock_guid() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_lock_guid()) }
 }
 /// **Source:** `XCAFDoc.hxx`:117 - `XCAFDoc::AttributeInfo`
@@ -130,7 +128,7 @@ pub fn lock_guid() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
 /// @return the generated info value
 pub fn attribute_info(
     theAtt: &crate::ffi::HandleTDFAttribute,
-) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_attribute_info(theAtt)) }
 }
 
@@ -195,7 +193,7 @@ impl Area {
     }
 
     /// **Source:** `XCAFDoc_Area.hxx`:42 - `XCAFDoc_Area::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Area_id(self as *const Self)) }
     }
 
@@ -223,14 +221,14 @@ impl Area {
     }
 
     /// **Source:** `XCAFDoc_Area.hxx`:40 - `XCAFDoc_Area::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Area_get_id()) }
     }
 
     /// **Source:** `XCAFDoc_Area.hxx`:54 - `XCAFDoc_Area::Get()`
     /// Returns volume of area as argument and success status
     /// returns false if no such attribute at the <label>
-    pub fn get_label_real(label: &crate::ffi::TDF_Label, area: &mut f64) -> bool {
+    pub fn get_label_real(label: &crate::tdf::Label, area: &mut f64) -> bool {
         unsafe { crate::ffi::XCAFDoc_Area_get_label_real(label, area) }
     }
 
@@ -269,7 +267,7 @@ impl Area {
     }
 
     /// Inherited: **Source:** `TDataStd_Real.hxx`:78 - `TDataStd_Real::SetID()`
-    pub fn set_id(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_SetID(self as *mut Self, guid) }
     }
 
@@ -293,7 +291,7 @@ impl Area {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Area_inherited_Label(self as *const Self))
         }
@@ -325,14 +323,14 @@ impl Area {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -346,7 +344,7 @@ impl Area {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -462,14 +460,14 @@ impl AssemblyGraph {
     /// label is used as a starting position.
     /// \param[in]  theDoc   - document to iterate.
     /// \param[in]  theLabel - starting position.
-    pub fn new_label(theLabel: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+    pub fn new_label(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_ctor_label(theLabel)) }
     }
 
     /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:97 - `XCAFDoc_AssemblyGraph::GetRoots()`
     /// \brief Returns IDs of the root nodes.
     /// \return IDs of the root nodes.
-    pub fn get_roots(&self) -> &crate::ffi::TColStd_PackedMapOfInteger {
+    pub fn get_roots(&self) -> &crate::t_col_std::PackedMapOfInteger {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_roots(self as *const Self)) }
     }
 
@@ -500,7 +498,7 @@ impl AssemblyGraph {
     /// \brief Returns IDs of child nodes for the given node.
     /// \param[in]  theNode - one-based node ID.
     /// \return set of child IDs.
-    pub fn get_children(&self, theNode: i32) -> &crate::ffi::TColStd_PackedMapOfInteger {
+    pub fn get_children(&self, theNode: i32) -> &crate::t_col_std::PackedMapOfInteger {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_children(self as *const Self, theNode)) }
     }
 
@@ -525,7 +523,7 @@ impl AssemblyGraph {
     /// \brief returns object ID by node ID.
     /// \param[in]  theNode - one-based node ID.
     /// \return persistent ID.
-    pub fn get_node(&self, theNode: i32) -> &crate::ffi::TDF_Label {
+    pub fn get_node(&self, theNode: i32) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_node(self as *const Self, theNode)) }
     }
 
@@ -581,6 +579,66 @@ impl HandleXCAFDocAssemblyGraph {
     }
 }
 
+/// **Source:** `XCAFDoc_AssemblyGraph.hxx`:54 - `XCAFDoc_AssemblyGraph_Iterator`
+/// \brief Graph iterator.
+pub use crate::ffi::XCAFDoc_AssemblyGraph_Iterator as AssemblyGraph_Iterator;
+
+unsafe impl crate::CppDeletable for AssemblyGraph_Iterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XCAFDoc_AssemblyGraph_Iterator_destructor(ptr);
+    }
+}
+
+impl AssemblyGraph_Iterator {
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:61 - `XCAFDoc_AssemblyGraph_Iterator::XCAFDoc_AssemblyGraph_Iterator()`
+    /// \brief Accepting the assembly graph and starting node to iterate.
+    /// Iteration starts from the specified node.
+    /// \param[in]  theGraph - assembly graph to iterate.
+    /// \param[in]  theNode  - graph node ID.
+    pub fn new_handlexcafdocassemblygraph_int(
+        theGraph: &crate::ffi::HandleXCAFDocAssemblyGraph,
+        theNode: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyGraph_Iterator_ctor_handlexcafdocassemblygraph_int(
+                    theGraph, theNode,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:61 - `XCAFDoc_AssemblyGraph_Iterator::XCAFDoc_AssemblyGraph_Iterator()`
+    /// \brief Accepting the assembly graph and starting node to iterate.
+    /// Iteration starts from the specified node.
+    /// \param[in]  theGraph - assembly graph to iterate.
+    /// \param[in]  theNode  - graph node ID.
+    pub fn new_handlexcafdocassemblygraph(
+        theGraph: &crate::ffi::HandleXCAFDocAssemblyGraph,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlexcafdocassemblygraph_int(theGraph, 1)
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:66 - `XCAFDoc_AssemblyGraph_Iterator::More()`
+    /// Checks if there are more graph nodes to iterate.
+    /// \return true/false.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_Iterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:69 - `XCAFDoc_AssemblyGraph_Iterator::Current()`
+    /// \return 1-based ID of the current node.
+    pub fn current(&self) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_Iterator_current(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:72 - `XCAFDoc_AssemblyGraph_Iterator::Next()`
+    /// Moves iterator to the next position.
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::XCAFDoc_AssemblyGraph_Iterator_next(self as *mut Self) }
+    }
+}
+
 // ========================
 // From XCAFDoc_AssemblyItemId.hxx
 // ========================
@@ -622,9 +680,7 @@ impl AssemblyItemId {
     /// Constructs an item ID from a formatted path, where label entries
     /// are separated by '/' symbol.
     /// \param[in]  theString - formatted full path.
-    pub fn new_asciistring(
-        theString: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_asciistring(theString: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemId_ctor_asciistring(
                 theString,
@@ -646,7 +702,7 @@ impl AssemblyItemId {
     /// Initializes the item ID from a formatted path, where label entries
     /// are separated by '/' symbol.
     /// \param[in]  theString - formatted full path.
-    pub fn init_asciistring(&mut self, theString: &crate::ffi::TCollection_AsciiString) {
+    pub fn init_asciistring(&mut self, theString: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemId_init_asciistring(self as *mut Self, theString) }
     }
 
@@ -666,7 +722,7 @@ impl AssemblyItemId {
     /// Checks if this item is a child of the given item.
     /// \param[in]  theOther - potentially ancestor item.
     /// \return true if the item is a child of theOther item, otherwise - false.
-    pub fn is_child(&self, theOther: &crate::ffi::XCAFDoc_AssemblyItemId) -> bool {
+    pub fn is_child(&self, theOther: &AssemblyItemId) -> bool {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemId_is_child(self as *const Self, theOther) }
     }
 
@@ -674,7 +730,7 @@ impl AssemblyItemId {
     /// Checks if this item is a direct child of the given item.
     /// \param[in]  theOther - potentially parent item.
     /// \return true if the item is a direct child of theOther item, otherwise - false.
-    pub fn is_direct_child(&self, theOther: &crate::ffi::XCAFDoc_AssemblyItemId) -> bool {
+    pub fn is_direct_child(&self, theOther: &AssemblyItemId) -> bool {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemId_is_direct_child(self as *const Self, theOther) }
     }
 
@@ -682,7 +738,7 @@ impl AssemblyItemId {
     /// Checks for item IDs equality.
     /// \param[in]  theOther - the item ID to check equality with.
     /// \return true if this ID is equal to theOther, otherwise - false.
-    pub fn is_equal(&self, theOther: &crate::ffi::XCAFDoc_AssemblyItemId) -> bool {
+    pub fn is_equal(&self, theOther: &AssemblyItemId) -> bool {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemId_is_equal(self as *const Self, theOther) }
     }
 
@@ -694,7 +750,7 @@ impl AssemblyItemId {
 
     /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:77 - `XCAFDoc_AssemblyItemId::ToString()`
     /// Returns the full pass as a formatted string.
-    pub fn to_string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn to_string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemId_to_string(
                 self as *const Self,
@@ -757,7 +813,7 @@ impl AssemblyItemRef {
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:94 - `XCAFDoc_AssemblyItemRef::GetGUID()`
     /// Returns the assembly item's attribute that the reference points to.
     /// If the reference doesn't point to an attribute, returns an empty GUID.
-    pub fn get_guid(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn get_guid(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemRef_get_guid(
                 self as *const Self,
@@ -774,14 +830,14 @@ impl AssemblyItemRef {
 
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:103 - `XCAFDoc_AssemblyItemRef::GetItem()`
     /// Returns the assembly item ID that the reference points to.
-    pub fn get_item(&self) -> &crate::ffi::XCAFDoc_AssemblyItemId {
+    pub fn get_item(&self) -> &AssemblyItemId {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyItemRef_get_item(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:110 - `XCAFDoc_AssemblyItemRef::SetItem()`
     /// Sets the assembly item ID that the reference points to.
     /// Extra reference data (if any) will be cleared.
-    pub fn set_item_assemblyitemid(&mut self, theItemId: &crate::ffi::XCAFDoc_AssemblyItemId) {
+    pub fn set_item_assemblyitemid(&mut self, theItemId: &AssemblyItemId) {
         unsafe {
             crate::ffi::XCAFDoc_AssemblyItemRef_set_item_assemblyitemid(
                 self as *mut Self,
@@ -807,7 +863,7 @@ impl AssemblyItemRef {
     /// Sets the assembly item ID from a formatted path
     /// that the reference points to.
     /// Extra reference data (if any) will be cleared.
-    pub fn set_item_asciistring(&mut self, theString: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_item_asciistring(&mut self, theString: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::XCAFDoc_AssemblyItemRef_set_item_asciistring(self as *mut Self, theString)
         }
@@ -816,7 +872,7 @@ impl AssemblyItemRef {
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:124 - `XCAFDoc_AssemblyItemRef::SetGUID()`
     /// Sets the assembly item's label attribute that the reference points to.
     /// The base assembly item will not change.
-    pub fn set_guid(&mut self, theAttrGUID: &crate::ffi::Standard_GUID) {
+    pub fn set_guid(&mut self, theAttrGUID: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemRef_set_guid(self as *mut Self, theAttrGUID) }
     }
 
@@ -836,7 +892,7 @@ impl AssemblyItemRef {
     }
 
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:141 - `XCAFDoc_AssemblyItemRef::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyItemRef_id(self as *const Self)) }
     }
 
@@ -880,7 +936,7 @@ impl AssemblyItemRef {
     }
 
     /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:36 - `XCAFDoc_AssemblyItemRef::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyItemRef_get_id()) }
     }
 
@@ -897,12 +953,12 @@ impl AssemblyItemRef {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemRef_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemRef_inherited_Label(
                 self as *const Self,
@@ -938,7 +994,7 @@ impl AssemblyItemRef {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_AssemblyItemRef_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -947,7 +1003,7 @@ impl AssemblyItemRef {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -967,7 +1023,7 @@ impl AssemblyItemRef {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_AssemblyItemRef_inherited_ForgetAttribute(
                 self as *const Self,
@@ -1113,7 +1169,7 @@ impl AssemblyIterator {
 
     /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:50 - `XCAFDoc_AssemblyIterator::Current()`
     /// \return current item.
-    pub fn current(&self) -> crate::OwnedPtr<crate::ffi::XCAFDoc_AssemblyItemId> {
+    pub fn current(&self) -> crate::OwnedPtr<AssemblyItemId> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyIterator_current(
                 self as *const Self,
@@ -1145,17 +1201,17 @@ impl Centroid {
     }
 
     /// **Source:** `XCAFDoc_Centroid.hxx`:49 - `XCAFDoc_Centroid::Set()`
-    pub fn set(&mut self, pnt: &crate::ffi::gp_Pnt) {
+    pub fn set(&mut self, pnt: &crate::gp::Pnt) {
         unsafe { crate::ffi::XCAFDoc_Centroid_set(self as *mut Self, pnt) }
     }
 
     /// **Source:** `XCAFDoc_Centroid.hxx`:51 - `XCAFDoc_Centroid::Get()`
-    pub fn get(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn get(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_get(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_Centroid.hxx`:57 - `XCAFDoc_Centroid::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Centroid_id(self as *const Self)) }
     }
 
@@ -1186,14 +1242,14 @@ impl Centroid {
     }
 
     /// **Source:** `XCAFDoc_Centroid.hxx`:41 - `XCAFDoc_Centroid::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Centroid_get_id()) }
     }
 
     /// **Source:** `XCAFDoc_Centroid.hxx`:55 - `XCAFDoc_Centroid::Get()`
     /// Returns point as argument
     /// returns false if no such attribute at the <label>
-    pub fn get_label_pnt(label: &crate::ffi::TDF_Label, pnt: &mut crate::ffi::gp_Pnt) -> bool {
+    pub fn get_label_pnt(label: &crate::tdf::Label, pnt: &mut crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::XCAFDoc_Centroid_get_label_pnt(label, pnt) }
     }
 
@@ -1222,12 +1278,12 @@ impl Centroid {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Centroid_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_inherited_Label(
                 self as *const Self,
@@ -1261,14 +1317,14 @@ impl Centroid {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Centroid_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1286,7 +1342,7 @@ impl Centroid {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_Centroid_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1412,7 +1468,7 @@ impl ClippingPlaneTool {
 
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:42 - `XCAFDoc_ClippingPlaneTool::BaseLabel()`
     /// returns the label under which ClippingPlanes are stored
-    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ClippingPlaneTool_base_label(
                 self as *const Self,
@@ -1423,7 +1479,7 @@ impl ClippingPlaneTool {
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:46 - `XCAFDoc_ClippingPlaneTool::IsClippingPlane()`
     /// Returns True if label belongs to a ClippingPlane table and
     /// is a ClippingPlane definition
-    pub fn is_clipping_plane(&self, theLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_clipping_plane(&self, theLabel: &crate::tdf::Label) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ClippingPlaneTool_is_clipping_plane(self as *const Self, theLabel)
         }
@@ -1435,9 +1491,9 @@ impl ClippingPlaneTool {
     /// or does not define a ClippingPlane
     pub fn get_clipping_plane_label_pln_extendedstring_bool(
         &self,
-        theLabel: &crate::ffi::TDF_Label,
-        thePlane: &mut crate::ffi::gp_Pln,
-        theName: &mut crate::ffi::TCollection_ExtendedString,
+        theLabel: &crate::tdf::Label,
+        thePlane: &mut crate::gp::Pln,
+        theName: &mut crate::t_collection::ExtendedString,
         theCapping: &mut bool,
     ) -> bool {
         unsafe {
@@ -1457,8 +1513,8 @@ impl ClippingPlaneTool {
     /// or does not define a ClippingPlane
     pub fn get_clipping_plane_label_pln_handletcollectionhasciistring_bool(
         &self,
-        theLabel: &crate::ffi::TDF_Label,
-        thePlane: &mut crate::ffi::gp_Pln,
+        theLabel: &crate::tdf::Label,
+        thePlane: &mut crate::gp::Pln,
         theName: &mut crate::ffi::HandleTCollectionHAsciiString,
         theCapping: &mut bool,
     ) -> bool {
@@ -1473,10 +1529,10 @@ impl ClippingPlaneTool {
     /// is already defined)
     pub fn add_clipping_plane_pln_extendedstring_bool(
         &self,
-        thePlane: &crate::ffi::gp_Pln,
-        theName: &crate::ffi::TCollection_ExtendedString,
+        thePlane: &crate::gp::Pln,
+        theName: &crate::t_collection::ExtendedString,
         theCapping: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_ClippingPlaneTool_add_clipping_plane_pln_extendedstring_bool(
@@ -1495,10 +1551,10 @@ impl ClippingPlaneTool {
     /// is already defined)
     pub fn add_clipping_plane_pln_handletcollectionhasciistring_bool(
         &self,
-        thePlane: &crate::ffi::gp_Pln,
+        thePlane: &crate::gp::Pln,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theCapping: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ClippingPlaneTool_add_clipping_plane_pln_handletcollectionhasciistring_bool(self as *const Self, thePlane, theName, theCapping))
         }
@@ -1510,9 +1566,9 @@ impl ClippingPlaneTool {
     /// is already defined)
     pub fn add_clipping_plane_pln_extendedstring(
         &self,
-        thePlane: &crate::ffi::gp_Pln,
-        theName: &crate::ffi::TCollection_ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        thePlane: &crate::gp::Pln,
+        theName: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_ClippingPlaneTool_add_clipping_plane_pln_extendedstring(
@@ -1530,9 +1586,9 @@ impl ClippingPlaneTool {
     /// is already defined)
     pub fn add_clipping_plane_pln_handletcollectionhasciistring(
         &self,
-        thePlane: &crate::ffi::gp_Pln,
+        thePlane: &crate::gp::Pln,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ClippingPlaneTool_add_clipping_plane_pln_handletcollectionhasciistring(self as *const Self, thePlane, theName))
         }
@@ -1541,7 +1597,7 @@ impl ClippingPlaneTool {
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:92 - `XCAFDoc_ClippingPlaneTool::RemoveClippingPlane()`
     /// Removes clipping plane from the ClippingPlane table
     /// Return false and do nothing if clipping plane is referenced in at least one View
-    pub fn remove_clipping_plane(&self, theLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn remove_clipping_plane(&self, theLabel: &crate::tdf::Label) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ClippingPlaneTool_remove_clipping_plane(
                 self as *const Self,
@@ -1564,9 +1620,9 @@ impl ClippingPlaneTool {
     /// or do nothing, if the given label is not a clipping plane label
     pub fn update_clipping_plane(
         &self,
-        theLabelL: &crate::ffi::TDF_Label,
-        thePlane: &crate::ffi::gp_Pln,
-        theName: &crate::ffi::TCollection_ExtendedString,
+        theLabelL: &crate::tdf::Label,
+        thePlane: &crate::gp::Pln,
+        theName: &crate::t_collection::ExtendedString,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_ClippingPlaneTool_update_clipping_plane(
@@ -1580,7 +1636,7 @@ impl ClippingPlaneTool {
 
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:105 - `XCAFDoc_ClippingPlaneTool::SetCapping()`
     /// Set new value of capping for given clipping plane label
-    pub fn set_capping(&mut self, theClippingPlaneL: &crate::ffi::TDF_Label, theCapping: bool) {
+    pub fn set_capping(&mut self, theClippingPlaneL: &crate::tdf::Label, theCapping: bool) {
         unsafe {
             crate::ffi::XCAFDoc_ClippingPlaneTool_set_capping(
                 self as *mut Self,
@@ -1593,7 +1649,7 @@ impl ClippingPlaneTool {
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:110 - `XCAFDoc_ClippingPlaneTool::GetCapping()`
     /// Get capping value for given clipping plane label
     /// Return capping value
-    pub fn get_capping_label(&self, theClippingPlaneL: &crate::ffi::TDF_Label) -> bool {
+    pub fn get_capping_label(&self, theClippingPlaneL: &crate::tdf::Label) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ClippingPlaneTool_get_capping_label(
                 self as *const Self,
@@ -1607,7 +1663,7 @@ impl ClippingPlaneTool {
     /// Return true if Label is valid abd capping is exist.
     pub fn get_capping_label_bool(
         &self,
-        theClippingPlaneL: &crate::ffi::TDF_Label,
+        theClippingPlaneL: &crate::tdf::Label,
         theCapping: &mut bool,
     ) -> bool {
         unsafe {
@@ -1620,7 +1676,7 @@ impl ClippingPlaneTool {
     }
 
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:117 - `XCAFDoc_ClippingPlaneTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ClippingPlaneTool_id(self as *const Self)) }
     }
 
@@ -1639,7 +1695,7 @@ impl ClippingPlaneTool {
     }
 
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:39 - `XCAFDoc_ClippingPlaneTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ClippingPlaneTool_get_id()) }
     }
 
@@ -1702,12 +1758,12 @@ impl ClippingPlaneTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_Label(
                 self as *const Self,
@@ -1743,7 +1799,7 @@ impl ClippingPlaneTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -1752,7 +1808,7 @@ impl ClippingPlaneTool {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1772,7 +1828,7 @@ impl ClippingPlaneTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_ForgetAttribute(
                 self as *const Self,
@@ -1918,12 +1974,12 @@ impl Color {
     }
 
     /// **Source:** `XCAFDoc_Color.hxx`:57 - `XCAFDoc_Color::Set()`
-    pub fn set_color(&mut self, C: &crate::ffi::Quantity_Color) {
+    pub fn set_color(&mut self, C: &crate::quantity::Color) {
         unsafe { crate::ffi::XCAFDoc_Color_set_color(self as *mut Self, C) }
     }
 
     /// **Source:** `XCAFDoc_Color.hxx`:59 - `XCAFDoc_Color::Set()`
-    pub fn set_colorrgba(&mut self, C: &crate::ffi::Quantity_ColorRGBA) {
+    pub fn set_colorrgba(&mut self, C: &crate::quantity::ColorRGBA) {
         unsafe { crate::ffi::XCAFDoc_Color_set_colorrgba(self as *mut Self, C) }
     }
 
@@ -1938,12 +1994,12 @@ impl Color {
     }
 
     /// **Source:** `XCAFDoc_Color.hxx`:68 - `XCAFDoc_Color::GetColor()`
-    pub fn get_color(&self) -> &crate::ffi::Quantity_Color {
+    pub fn get_color(&self) -> &crate::quantity::Color {
         unsafe { &*(crate::ffi::XCAFDoc_Color_get_color(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_Color.hxx`:70 - `XCAFDoc_Color::GetColorRGBA()`
-    pub fn get_color_rgba(&self) -> &crate::ffi::Quantity_ColorRGBA {
+    pub fn get_color_rgba(&self) -> &crate::quantity::ColorRGBA {
         unsafe { &*(crate::ffi::XCAFDoc_Color_get_color_rgba(self as *const Self)) }
     }
 
@@ -1968,7 +2024,7 @@ impl Color {
     }
 
     /// **Source:** `XCAFDoc_Color.hxx`:78 - `XCAFDoc_Color::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Color_id(self as *const Self)) }
     }
 
@@ -1999,7 +2055,7 @@ impl Color {
     }
 
     /// **Source:** `XCAFDoc_Color.hxx`:39 - `XCAFDoc_Color::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Color_get_id()) }
     }
 
@@ -2028,12 +2084,12 @@ impl Color {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Color_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_inherited_Label(
                 self as *const Self,
@@ -2067,14 +2123,14 @@ impl Color {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Color_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2092,7 +2148,7 @@ impl Color {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Color_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -2214,7 +2270,7 @@ impl ColorTool {
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:61 - `XCAFDoc_ColorTool::BaseLabel()`
     /// returns the label under which colors are stored
-    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_base_label(self as *const Self))
         }
@@ -2223,7 +2279,7 @@ impl ColorTool {
     /// **Source:** `XCAFDoc_ColorTool.hxx`:68 - `XCAFDoc_ColorTool::IsColor()`
     /// Returns True if label belongs to a colortable and
     /// is a color definition
-    pub fn is_color(&self, lab: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_color(&self, lab: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_is_color(self as *const Self, lab) }
     }
 
@@ -2233,8 +2289,8 @@ impl ColorTool {
     /// Returns False if color is not found in colortable
     pub fn find_color_color_label(
         &self,
-        col: &crate::ffi::Quantity_Color,
-        lab: &mut crate::ffi::TDF_Label,
+        col: &crate::quantity::Color,
+        lab: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_find_color_color_label(self as *const Self, col, lab)
@@ -2247,8 +2303,8 @@ impl ColorTool {
     /// Returns False if color is not found in colortable
     pub fn find_color_colorrgba_label(
         &self,
-        col: &crate::ffi::Quantity_ColorRGBA,
-        lab: &mut crate::ffi::TDF_Label,
+        col: &crate::quantity::ColorRGBA,
+        lab: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_find_color_colorrgba_label(self as *const Self, col, lab)
@@ -2260,8 +2316,8 @@ impl ColorTool {
     /// its label if found (or Null label else)
     pub fn find_color_color(
         &self,
-        col: &crate::ffi::Quantity_Color,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        col: &crate::quantity::Color,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_find_color_color(
                 self as *const Self,
@@ -2275,8 +2331,8 @@ impl ColorTool {
     /// its label if found (or Null label else)
     pub fn find_color_colorrgba(
         &self,
-        col: &crate::ffi::Quantity_ColorRGBA,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        col: &crate::quantity::ColorRGBA,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_find_color_colorrgba(
                 self as *const Self,
@@ -2291,8 +2347,8 @@ impl ColorTool {
     /// is already defined)
     pub fn add_color_color(
         &self,
-        col: &crate::ffi::Quantity_Color,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        col: &crate::quantity::Color,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_add_color_color(
                 self as *const Self,
@@ -2307,8 +2363,8 @@ impl ColorTool {
     /// is already defined)
     pub fn add_color_colorrgba(
         &self,
-        col: &crate::ffi::Quantity_ColorRGBA,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        col: &crate::quantity::ColorRGBA,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_add_color_colorrgba(
                 self as *const Self,
@@ -2319,7 +2375,7 @@ impl ColorTool {
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:109 - `XCAFDoc_ColorTool::RemoveColor()`
     /// Removes color from the colortable
-    pub fn remove_color(&self, lab: &crate::ffi::TDF_Label) {
+    pub fn remove_color(&self, lab: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_ColorTool_remove_color(self as *const Self, lab) }
     }
 
@@ -2341,8 +2397,8 @@ impl ColorTool {
     /// then such color overrides generic color.
     pub fn set_color_label2_colortype(
         &self,
-        L: &crate::ffi::TDF_Label,
-        colorL: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
+        colorL: &crate::tdf::Label,
         type_: crate::xcaf_doc::ColorType,
     ) {
         unsafe {
@@ -2362,8 +2418,8 @@ impl ColorTool {
     /// Adds a color as necessary
     pub fn set_color_label_color_colortype(
         &self,
-        L: &crate::ffi::TDF_Label,
-        Color: &crate::ffi::Quantity_Color,
+        L: &crate::tdf::Label,
+        Color: &crate::quantity::Color,
         type_: crate::xcaf_doc::ColorType,
     ) {
         unsafe {
@@ -2383,8 +2439,8 @@ impl ColorTool {
     /// Adds a color as necessary
     pub fn set_color_label_colorrgba_colortype(
         &self,
-        L: &crate::ffi::TDF_Label,
-        Color: &crate::ffi::Quantity_ColorRGBA,
+        L: &crate::tdf::Label,
+        Color: &crate::quantity::ColorRGBA,
         type_: crate::xcaf_doc::ColorType,
     ) {
         unsafe {
@@ -2402,7 +2458,7 @@ impl ColorTool {
     /// XCAFDoc::ColorRefGUID()) from label <L> to color
     pub fn un_set_color_label_colortype(
         &self,
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         type_: crate::xcaf_doc::ColorType,
     ) {
         unsafe {
@@ -2419,7 +2475,7 @@ impl ColorTool {
     /// of the type <type>
     pub fn is_set_label_colortype(
         &self,
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         type_: crate::xcaf_doc::ColorType,
     ) -> bool {
         unsafe {
@@ -2438,8 +2494,8 @@ impl ColorTool {
     /// Returns False if cannot find a label for shape S
     pub fn set_color_shape_label_colortype(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
-        colorL: &crate::ffi::TDF_Label,
+        S: &crate::topo_ds::Shape,
+        colorL: &crate::tdf::Label,
         type_: crate::xcaf_doc::ColorType,
     ) -> bool {
         unsafe {
@@ -2460,8 +2516,8 @@ impl ColorTool {
     /// Returns False if cannot find a label for shape S
     pub fn set_color_shape_color_colortype(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
-        Color: &crate::ffi::Quantity_Color,
+        S: &crate::topo_ds::Shape,
+        Color: &crate::quantity::Color,
         type_: crate::xcaf_doc::ColorType,
     ) -> bool {
         unsafe {
@@ -2482,8 +2538,8 @@ impl ColorTool {
     /// Returns False if cannot find a label for shape S
     pub fn set_color_shape_colorrgba_colortype(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
-        Color: &crate::ffi::Quantity_ColorRGBA,
+        S: &crate::topo_ds::Shape,
+        Color: &crate::quantity::ColorRGBA,
         type_: crate::xcaf_doc::ColorType,
     ) -> bool {
         unsafe {
@@ -2502,7 +2558,7 @@ impl ColorTool {
     /// Returns True if such link existed
     pub fn un_set_color_shape_colortype(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
     ) -> bool {
         unsafe {
@@ -2519,7 +2575,7 @@ impl ColorTool {
     /// of the type <type>
     pub fn is_set_shape_colortype(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
     ) -> bool {
         unsafe {
@@ -2532,9 +2588,9 @@ impl ColorTool {
     /// Returns False if no such color is assigned
     pub fn get_color_shape_colortype_label(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
-        colorL: &mut crate::ffi::TDF_Label,
+        colorL: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_get_color_shape_colortype_label(
@@ -2551,9 +2607,9 @@ impl ColorTool {
     /// Returns False if no such color is assigned
     pub fn get_color_shape_colortype_color(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
-        color: &mut crate::ffi::Quantity_Color,
+        color: &mut crate::quantity::Color,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_get_color_shape_colortype_color(
@@ -2570,9 +2626,9 @@ impl ColorTool {
     /// Returns False if no such color is assigned
     pub fn get_color_shape_colortype_colorrgba(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
-        color: &mut crate::ffi::Quantity_ColorRGBA,
+        color: &mut crate::quantity::ColorRGBA,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_get_color_shape_colortype_colorrgba(
@@ -2587,7 +2643,7 @@ impl ColorTool {
     /// **Source:** `XCAFDoc_ColorTool.hxx`:227 - `XCAFDoc_ColorTool::SetVisibility()`
     /// Set the visibility of object on label. Do nothing if there no any object.
     /// Set UAttribute with corresponding GUID.
-    pub fn set_visibility(&mut self, shapeLabel: &crate::ffi::TDF_Label, isvisible: bool) {
+    pub fn set_visibility(&mut self, shapeLabel: &crate::tdf::Label, isvisible: bool) {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_set_visibility(self as *mut Self, shapeLabel, isvisible)
         }
@@ -2595,14 +2651,14 @@ impl ColorTool {
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:231 - `XCAFDoc_ColorTool::IsColorByLayer()`
     /// Return TRUE if object color defined by its Layer, FALSE if not.
-    pub fn is_color_by_layer(&self, L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_color_by_layer(&self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_is_color_by_layer(self as *const Self, L) }
     }
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:235 - `XCAFDoc_ColorTool::SetColorByLayer()`
     /// Set the Color defined by Layer flag on label. Do nothing if there no any object.
     /// Set UAttribute with corresponding GUID.
-    pub fn set_color_by_layer(&mut self, shapeLabel: &crate::ffi::TDF_Label, isColorByLayer: bool) {
+    pub fn set_color_by_layer(&mut self, shapeLabel: &crate::tdf::Label, isColorByLayer: bool) {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_set_color_by_layer(
                 self as *mut Self,
@@ -2618,9 +2674,9 @@ impl ColorTool {
     /// NOTE: create SHUO structeure if it is necessary and if <isCreateSHUO>
     pub fn set_instance_color_shape_colortype_color_bool(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
-        color: &crate::ffi::Quantity_Color,
+        color: &crate::quantity::Color,
         isCreateSHUO: bool,
     ) -> bool {
         unsafe {
@@ -2640,9 +2696,9 @@ impl ColorTool {
     /// NOTE: create SHUO structeure if it is necessary and if <isCreateSHUO>
     pub fn set_instance_color_shape_colortype_colorrgba_bool(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
-        color: &crate::ffi::Quantity_ColorRGBA,
+        color: &crate::quantity::ColorRGBA,
         isCreateSHUO: bool,
     ) -> bool {
         unsafe {
@@ -2661,9 +2717,9 @@ impl ColorTool {
     /// Returns FALSE if no sush component or color type
     pub fn get_instance_color_shape_colortype_color(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
-        color: &mut crate::ffi::Quantity_Color,
+        color: &mut crate::quantity::Color,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_get_instance_color_shape_colortype_color(
@@ -2680,9 +2736,9 @@ impl ColorTool {
     /// Returns FALSE if no sush component or color type
     pub fn get_instance_color_shape_colortype_colorrgba(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         type_: crate::xcaf_doc::ColorType,
-        color: &mut crate::ffi::Quantity_ColorRGBA,
+        color: &mut crate::quantity::ColorRGBA,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_get_instance_color_shape_colortype_colorrgba(
@@ -2697,7 +2753,7 @@ impl ColorTool {
     /// **Source:** `XCAFDoc_ColorTool.hxx`:270 - `XCAFDoc_ColorTool::IsInstanceVisible()`
     /// Gets the visibility status of component that styled with SHUO structure
     /// Returns FALSE if no sush component
-    pub fn is_instance_visible(&mut self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_instance_visible(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_is_instance_visible(self as *mut Self, theShape) }
     }
 
@@ -2710,7 +2766,7 @@ impl ColorTool {
     }
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:277 - `XCAFDoc_ColorTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ColorTool_id(self as *const Self)) }
     }
 
@@ -2741,7 +2797,7 @@ impl ColorTool {
     }
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:58 - `XCAFDoc_ColorTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ColorTool_get_id()) }
     }
 
@@ -2750,8 +2806,8 @@ impl ColorTool {
     /// Returns False if the label is not in colortable
     /// or does not define a color
     pub fn get_color_label_color(
-        lab: &crate::ffi::TDF_Label,
-        col: &mut crate::ffi::Quantity_Color,
+        lab: &crate::tdf::Label,
+        col: &mut crate::quantity::Color,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_get_color_label_color(lab, col) }
     }
@@ -2761,8 +2817,8 @@ impl ColorTool {
     /// Returns False if the label is not in colortable
     /// or does not define a color
     pub fn get_color_label_colorrgba(
-        lab: &crate::ffi::TDF_Label,
-        col: &mut crate::ffi::Quantity_ColorRGBA,
+        lab: &crate::tdf::Label,
+        col: &mut crate::quantity::ColorRGBA,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_get_color_label_colorrgba(lab, col) }
     }
@@ -2771,9 +2827,9 @@ impl ColorTool {
     /// Returns label with color assigned to <L> as <type>
     /// Returns False if no such color is assigned
     pub fn get_color_label_colortype_label(
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         type_: crate::xcaf_doc::ColorType,
-        colorL: &mut crate::ffi::TDF_Label,
+        colorL: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_get_color_label_colortype_label(L, type_.into(), colorL)
@@ -2784,9 +2840,9 @@ impl ColorTool {
     /// Returns color assigned to <L> as <type>
     /// Returns False if no such color is assigned
     pub fn get_color_label_colortype_color(
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         type_: crate::xcaf_doc::ColorType,
-        color: &mut crate::ffi::Quantity_Color,
+        color: &mut crate::quantity::Color,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_get_color_label_colortype_color(L, type_.into(), color)
@@ -2797,9 +2853,9 @@ impl ColorTool {
     /// Returns color assigned to <L> as <type>
     /// Returns False if no such color is assigned
     pub fn get_color_label_colortype_colorrgba(
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         type_: crate::xcaf_doc::ColorType,
-        color: &mut crate::ffi::Quantity_ColorRGBA,
+        color: &mut crate::quantity::ColorRGBA,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_get_color_label_colortype_colorrgba(
@@ -2812,7 +2868,7 @@ impl ColorTool {
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:223 - `XCAFDoc_ColorTool::IsVisible()`
     /// Return TRUE if object on this label is visible, FALSE if invisible.
-    pub fn is_visible(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_visible(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_is_visible(L) }
     }
 
@@ -2867,12 +2923,12 @@ impl ColorTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_inherited_Label(
                 self as *const Self,
@@ -2906,14 +2962,14 @@ impl ColorTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2931,7 +2987,7 @@ impl ColorTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ColorTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -3114,7 +3170,7 @@ impl Datum {
     }
 
     /// **Source:** `XCAFDoc_Datum.hxx`:71 - `XCAFDoc_Datum::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Datum_id(self as *const Self)) }
     }
 
@@ -3145,7 +3201,7 @@ impl Datum {
     }
 
     /// **Source:** `XCAFDoc_Datum.hxx`:44 - `XCAFDoc_Datum::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Datum_get_id()) }
     }
 
@@ -3174,12 +3230,12 @@ impl Datum {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_inherited_Label(
                 self as *const Self,
@@ -3213,14 +3269,14 @@ impl Datum {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3238,7 +3294,7 @@ impl Datum {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -3396,7 +3452,7 @@ impl DimTol {
     }
 
     /// **Source:** `XCAFDoc_DimTol.hxx`:62 - `XCAFDoc_DimTol::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_DimTol_id(self as *const Self)) }
     }
 
@@ -3427,7 +3483,7 @@ impl DimTol {
     }
 
     /// **Source:** `XCAFDoc_DimTol.hxx`:40 - `XCAFDoc_DimTol::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_DimTol_get_id()) }
     }
 
@@ -3456,12 +3512,12 @@ impl DimTol {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_DimTol_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_inherited_Label(
                 self as *const Self,
@@ -3495,14 +3551,14 @@ impl DimTol {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTol_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3520,7 +3576,7 @@ impl DimTol {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTol_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -3639,7 +3695,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:53 - `XCAFDoc_DimTolTool::BaseLabel()`
     /// Returns the label under which GD&T table is stored.
-    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_base_label(
                 self as *const Self,
@@ -3650,7 +3706,7 @@ impl DimTolTool {
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:60 - `XCAFDoc_DimTolTool::IsDimension()`
     /// Returns True if the label belongs to a GD&T table and
     /// is a Dimension definition.
-    pub fn is_dimension(&self, theLab: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_dimension(&self, theLab: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_dimension(self as *const Self, theLab) }
     }
 
@@ -3669,7 +3725,7 @@ impl DimTolTool {
         &self,
         theFirstLS: &crate::ffi::TDF_LabelSequence,
         theSecondLS: &crate::ffi::TDF_LabelSequence,
-        theDimL: &crate::ffi::TDF_Label,
+        theDimL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_set_dimension_labelsequence2_label(
@@ -3685,9 +3741,9 @@ impl DimTolTool {
     /// Sets a dimension to target labels.
     pub fn set_dimension_label3(
         &self,
-        theFirstL: &crate::ffi::TDF_Label,
-        theSecondL: &crate::ffi::TDF_Label,
-        theDimL: &crate::ffi::TDF_Label,
+        theFirstL: &crate::tdf::Label,
+        theSecondL: &crate::tdf::Label,
+        theDimL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_set_dimension_label3(
@@ -3701,11 +3757,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:77 - `XCAFDoc_DimTolTool::SetDimension()`
     /// Sets a dimension to the target label.
-    pub fn set_dimension_label2(
-        &self,
-        theL: &crate::ffi::TDF_Label,
-        theDimL: &crate::ffi::TDF_Label,
-    ) {
+    pub fn set_dimension_label2(&self, theL: &crate::tdf::Label, theDimL: &crate::tdf::Label) {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_set_dimension_label2(self as *const Self, theL, theDimL)
         }
@@ -3715,7 +3767,7 @@ impl DimTolTool {
     /// Returns all Dimension labels defined for theShapeL.
     pub fn get_ref_dimension_labels(
         &self,
-        theShapeL: &crate::ffi::TDF_Label,
+        theShapeL: &crate::tdf::Label,
         theDimensions: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -3729,7 +3781,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:84 - `XCAFDoc_DimTolTool::AddDimension()`
     /// Adds a dimension definition to the GD&T table and returns its label.
-    pub fn add_dimension(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn add_dimension(&mut self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_add_dimension(
                 self as *mut Self,
@@ -3739,7 +3791,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:87 - `XCAFDoc_DimTolTool::IsGeomTolerance()`
     /// Returns True if the label belongs to the GD&T table and is a dimension tolerance.
-    pub fn is_geom_tolerance(&self, theLab: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_geom_tolerance(&self, theLab: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_geom_tolerance(self as *const Self, theLab) }
     }
 
@@ -3756,8 +3808,8 @@ impl DimTolTool {
     /// Checks if theGeomTolL is a geometry tolerance definition first.
     pub fn set_geom_tolerance_label2(
         &self,
-        theL: &crate::ffi::TDF_Label,
-        theGeomTolL: &crate::ffi::TDF_Label,
+        theL: &crate::tdf::Label,
+        theGeomTolL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_set_geom_tolerance_label2(
@@ -3774,7 +3826,7 @@ impl DimTolTool {
     pub fn set_geom_tolerance_labelsequence_label(
         &self,
         theL: &crate::ffi::TDF_LabelSequence,
-        theGeomTolL: &crate::ffi::TDF_Label,
+        theGeomTolL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_set_geom_tolerance_labelsequence_label(
@@ -3789,7 +3841,7 @@ impl DimTolTool {
     /// Returns all GeomTolerance labels defined for theShapeL.
     pub fn get_ref_geom_tolerance_labels(
         &self,
-        theShapeL: &crate::ffi::TDF_Label,
+        theShapeL: &crate::tdf::Label,
         theDimTols: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -3803,7 +3855,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:106 - `XCAFDoc_DimTolTool::AddGeomTolerance()`
     /// Adds a GeomTolerance definition to the GD&T table and returns its label.
-    pub fn add_geom_tolerance(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn add_geom_tolerance(&mut self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_add_geom_tolerance(
                 self as *mut Self,
@@ -3813,7 +3865,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:109 - `XCAFDoc_DimTolTool::IsDimTol()`
     /// Returns True if theLab belongs to the GD&T table and is a dmension tolerance.
-    pub fn is_dim_tol(&self, theLab: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_dim_tol(&self, theLab: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_dim_tol(self as *const Self, theLab) }
     }
 
@@ -3834,7 +3886,7 @@ impl DimTolTool {
         theVal: &crate::ffi::HandleTColStdHArray1OfReal,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-        lab: &mut crate::ffi::TDF_Label,
+        lab: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_find_dim_tol_int_handletcolstdharray1ofreal_handletcollectionhasciistring2_label(self as *const Self, theKind, theVal, theName, theDescription, lab)
@@ -3851,7 +3903,7 @@ impl DimTolTool {
         theVal: &crate::ffi::HandleTColStdHArray1OfReal,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_find_dim_tol_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(self as *const Self, theKind, theVal, theName, theDescription))
         }
@@ -3866,7 +3918,7 @@ impl DimTolTool {
         theVal: &crate::ffi::HandleTColStdHArray1OfReal,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_add_dim_tol(
                 self as *const Self,
@@ -3880,11 +3932,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:142 - `XCAFDoc_DimTolTool::SetDimTol()`
     /// Sets existing dimension tolerance to theL label.
-    pub fn set_dim_tol_label2(
-        &self,
-        theL: &crate::ffi::TDF_Label,
-        theDimTolL: &crate::ffi::TDF_Label,
-    ) {
+    pub fn set_dim_tol_label2(&self, theL: &crate::tdf::Label, theDimTolL: &crate::tdf::Label) {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_set_dim_tol_label2(self as *const Self, theL, theDimTolL)
         }
@@ -3894,12 +3942,12 @@ impl DimTolTool {
     /// Creates a dimension tolerance and sets it to theL label.
     pub fn set_dim_tol_label_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(
         &self,
-        theL: &crate::ffi::TDF_Label,
+        theL: &crate::tdf::Label,
         theKind: i32,
         theVal: &crate::ffi::HandleTColStdHArray1OfReal,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_set_dim_tol_label_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(self as *const Self, theL, theKind, theVal, theName, theDescription))
         }
@@ -3908,7 +3956,7 @@ impl DimTolTool {
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:168 - `XCAFDoc_DimTolTool::IsDatum()`
     /// Returns True if label belongs to the GD&T table and
     /// is a Datum definition.
-    pub fn is_datum(&self, lab: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_datum(&self, lab: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_datum(self as *const Self, lab) }
     }
 
@@ -3927,7 +3975,7 @@ impl DimTolTool {
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
         theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
-        lab: &mut crate::ffi::TDF_Label,
+        lab: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_find_datum(
@@ -3947,7 +3995,7 @@ impl DimTolTool {
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
         theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_DimTolTool_add_datum_handletcollectionhasciistring3(
@@ -3962,7 +4010,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:189 - `XCAFDoc_DimTolTool::AddDatum()`
     /// Adds a datum definition to the GD&T table and returns its label.
-    pub fn add_datum(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn add_datum(&mut self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_add_datum(self as *mut Self))
         }
@@ -3973,7 +4021,7 @@ impl DimTolTool {
     pub fn set_datum_labelsequence_label(
         &self,
         theShapeLabels: &crate::ffi::TDF_LabelSequence,
-        theDatumL: &crate::ffi::TDF_Label,
+        theDatumL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_set_datum_labelsequence_label(
@@ -3990,8 +4038,8 @@ impl DimTolTool {
     /// is created if it isn't found in the GD&T table.
     pub fn set_datum_label2_handletcollectionhasciistring3(
         &self,
-        theL: &crate::ffi::TDF_Label,
-        theTolerL: &crate::ffi::TDF_Label,
+        theL: &crate::tdf::Label,
+        theTolerL: &crate::tdf::Label,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
         theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
@@ -4012,8 +4060,8 @@ impl DimTolTool {
     /// Sets a datum from theDatumL label to theToletL label.
     pub fn set_datum_to_geom_tol(
         &self,
-        theDatumL: &crate::ffi::TDF_Label,
-        theTolerL: &crate::ffi::TDF_Label,
+        theDatumL: &crate::tdf::Label,
+        theTolerL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_set_datum_to_geom_tol(
@@ -4029,7 +4077,7 @@ impl DimTolTool {
     /// Returns False if no such datum is assigned.
     pub fn get_datum(
         &self,
-        theDatumL: &crate::ffi::TDF_Label,
+        theDatumL: &crate::tdf::Label,
         theName: &mut crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &mut crate::ffi::HandleTCollectionHAsciiString,
         theIdentification: &mut crate::ffi::HandleTCollectionHAsciiString,
@@ -4049,7 +4097,7 @@ impl DimTolTool {
     /// Returns all GeomToleranses labels defined for theDatumL label.
     pub fn get_toler_of_datum_labels(
         &self,
-        theDatumL: &crate::ffi::TDF_Label,
+        theDatumL: &crate::tdf::Label,
         theTols: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -4065,7 +4113,7 @@ impl DimTolTool {
     /// Returns Datum label defined for theShapeL label.
     pub fn get_ref_datum_label(
         &self,
-        theShapeL: &crate::ffi::TDF_Label,
+        theShapeL: &crate::tdf::Label,
         theDatum: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -4079,24 +4127,24 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:234 - `XCAFDoc_DimTolTool::IsLocked()`
     /// Returns true if the given GDT is marked as locked.
-    pub fn is_locked(&self, theViewL: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_locked(&self, theViewL: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_locked(self as *const Self, theViewL) }
     }
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:237 - `XCAFDoc_DimTolTool::Lock()`
     /// Mark the given GDT as locked.
-    pub fn lock(&self, theViewL: &crate::ffi::TDF_Label) {
+    pub fn lock(&self, theViewL: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_lock(self as *const Self, theViewL) }
     }
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:250 - `XCAFDoc_DimTolTool::Unlock()`
     /// Unlock the given GDT.
-    pub fn unlock(&self, theViewL: &crate::ffi::TDF_Label) {
+    pub fn unlock(&self, theViewL: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_unlock(self as *const Self, theViewL) }
     }
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:252 - `XCAFDoc_DimTolTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_id(self as *const Self)) }
     }
 
@@ -4114,7 +4162,7 @@ impl DimTolTool {
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:50 - `XCAFDoc_DimTolTool::GetID()`
     /// Returns the standard GD&T tool GUID.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_get_id()) }
     }
 
@@ -4122,7 +4170,7 @@ impl DimTolTool {
     /// Gets all shape labels referred by theL label of the GD&T table.
     /// Returns False if there are no shape labels added to the sequences.
     pub fn get_ref_shape_label(
-        theL: &crate::ffi::TDF_Label,
+        theL: &crate::tdf::Label,
         theShapeLFirst: &mut crate::ffi::TDF_LabelSequence,
         theShapeLSecond: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
@@ -4138,7 +4186,7 @@ impl DimTolTool {
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:217 - `XCAFDoc_DimTolTool::GetDatumOfTolerLabels()`
     /// Returns all Datum labels defined for theDimTolL label.
     pub fn get_datum_of_toler_labels(
-        theDimTolL: &crate::ffi::TDF_Label,
+        theDimTolL: &crate::tdf::Label,
         theDatums: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_get_datum_of_toler_labels(theDimTolL, theDatums) }
@@ -4147,7 +4195,7 @@ impl DimTolTool {
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:221 - `XCAFDoc_DimTolTool::GetDatumWithObjectOfTolerLabels()`
     /// Returns all Datum labels with XCAFDimTolObjects_DatumObject defined for label theDimTolL.
     pub fn get_datum_with_object_of_toler_labels(
-        theDimTolL: &crate::ffi::TDF_Label,
+        theDimTolL: &crate::tdf::Label,
         theDatums: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -4208,12 +4256,12 @@ impl DimTolTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_inherited_Label(
                 self as *const Self,
@@ -4247,14 +4295,14 @@ impl DimTolTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -4272,7 +4320,7 @@ impl DimTolTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_DimTolTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -4407,7 +4455,7 @@ impl Dimension {
     }
 
     /// **Source:** `XCAFDoc_Dimension.hxx`:48 - `XCAFDoc_Dimension::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Dimension_id(self as *const Self)) }
     }
 
@@ -4444,7 +4492,7 @@ impl Dimension {
     }
 
     /// **Source:** `XCAFDoc_Dimension.hxx`:44 - `XCAFDoc_Dimension::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Dimension_get_id()) }
     }
 
@@ -4499,12 +4547,12 @@ impl Dimension {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Dimension_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_inherited_Label(
                 self as *const Self,
@@ -4538,14 +4586,14 @@ impl Dimension {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Dimension_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -4563,7 +4611,7 @@ impl Dimension {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_Dimension_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -4702,7 +4750,7 @@ impl DocumentTool {
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:186 - `XCAFDoc_DocumentTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_DocumentTool_id(self as *const Self)) }
     }
 
@@ -4727,46 +4775,44 @@ impl DocumentTool {
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:49 - `XCAFDoc_DocumentTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_DocumentTool_get_id()) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:66 - `XCAFDoc_DocumentTool::DocLabel()`
     /// Returns label where the DocumentTool attribute is or
     /// 0.1 if DocumentTool is not yet set.
-    pub fn doc_label(acces: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn doc_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_doc_label(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:69 - `XCAFDoc_DocumentTool::ShapesLabel()`
     /// Returns sub-label of DocLabel() with tag 1.
-    pub fn shapes_label(acces: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn shapes_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_shapes_label(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:72 - `XCAFDoc_DocumentTool::ColorsLabel()`
     /// Returns sub-label of DocLabel() with tag 2.
-    pub fn colors_label(acces: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn colors_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_colors_label(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:75 - `XCAFDoc_DocumentTool::LayersLabel()`
     /// Returns sub-label of DocLabel() with tag 3.
-    pub fn layers_label(acces: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn layers_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_layers_label(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:78 - `XCAFDoc_DocumentTool::DGTsLabel()`
     /// Returns sub-label of DocLabel() with tag 4.
-    pub fn dg_ts_label(acces: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn dg_ts_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_dg_ts_label(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:81 - `XCAFDoc_DocumentTool::MaterialsLabel()`
     /// Returns sub-label of DocLabel() with tag 5.
-    pub fn materials_label(
-        acces: &crate::ffi::TDF_Label,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn materials_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_materials_label(acces))
         }
@@ -4774,15 +4820,13 @@ impl DocumentTool {
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:84 - `XCAFDoc_DocumentTool::ViewsLabel()`
     /// Returns sub-label of DocLabel() with tag 7.
-    pub fn views_label(acces: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn views_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_views_label(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:87 - `XCAFDoc_DocumentTool::ClippingPlanesLabel()`
     /// Returns sub-label of DocLabel() with tag 8.
-    pub fn clipping_planes_label(
-        acces: &crate::ffi::TDF_Label,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn clipping_planes_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_clipping_planes_label(acces))
         }
@@ -4790,15 +4834,13 @@ impl DocumentTool {
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:90 - `XCAFDoc_DocumentTool::NotesLabel()`
     /// Returns sub-label of DocLabel() with tag 9.
-    pub fn notes_label(acces: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn notes_label(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_notes_label(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:93 - `XCAFDoc_DocumentTool::VisMaterialLabel()`
     /// Returns sub-label of DocLabel() with tag 10.
-    pub fn vis_material_label(
-        theLabel: &crate::ffi::TDF_Label,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn vis_material_label(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_vis_material_label(theLabel))
         }
@@ -4807,63 +4849,63 @@ impl DocumentTool {
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:100 - `XCAFDoc_DocumentTool::CheckShapeTool()`
     /// Checks for the ShapeTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_shape_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_shape_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_shape_tool(theAcces) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:107 - `XCAFDoc_DocumentTool::CheckColorTool()`
     /// Checks for the ColorTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_color_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_color_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_color_tool(theAcces) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:115 - `XCAFDoc_DocumentTool::CheckVisMaterialTool()`
     /// Checks for the VisMaterialTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_vis_material_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_vis_material_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_vis_material_tool(theAcces) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:122 - `XCAFDoc_DocumentTool::CheckLayerTool()`
     /// Checks for the LayerTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_layer_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_layer_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_layer_tool(theAcces) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:129 - `XCAFDoc_DocumentTool::CheckDimTolTool()`
     /// Checks for the DimTolTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_dim_tol_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_dim_tol_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_dim_tol_tool(theAcces) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:136 - `XCAFDoc_DocumentTool::CheckMaterialTool()`
     /// Checks for the MaterialTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_material_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_material_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_material_tool(theAcces) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:143 - `XCAFDoc_DocumentTool::CheckViewTool()`
     /// Checks for the ViewTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_view_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_view_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_view_tool(theAcces) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:151 - `XCAFDoc_DocumentTool::CheckClippingPlaneTool()`
     /// Checks for the ClippingPlaneTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_clipping_plane_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_clipping_plane_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_clipping_plane_tool(theAcces) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:158 - `XCAFDoc_DocumentTool::CheckNotesTool()`
     /// Checks for the NotesTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
-    pub fn check_notes_tool(theAcces: &crate::ffi::TDF_Label) -> bool {
+    pub fn check_notes_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_notes_tool(theAcces) }
     }
 
@@ -4920,12 +4962,12 @@ impl DocumentTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_inherited_Label(
                 self as *const Self,
@@ -4959,14 +5001,14 @@ impl DocumentTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -4986,7 +5028,7 @@ impl DocumentTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_DocumentTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -5121,8 +5163,8 @@ impl Editor {
     /// @param[in] theRecursively recursively expand a compound subshape
     /// @return True if shape successfully expanded
     pub fn expand_label2_bool(
-        theDoc: &crate::ffi::TDF_Label,
-        theShape: &crate::ffi::TDF_Label,
+        theDoc: &crate::tdf::Label,
+        theShape: &crate::tdf::Label,
         theRecursively: bool,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_Editor_expand_label2_bool(theDoc, theShape, theRecursively) }
@@ -5133,7 +5175,7 @@ impl Editor {
     /// @param[in] theDoc input document
     /// @param[in] theRecursively recursively expand a compound subshape
     /// @return True if shape successfully expanded
-    pub fn expand_label_bool(theDoc: &crate::ffi::TDF_Label, theRecursively: bool) -> bool {
+    pub fn expand_label_bool(theDoc: &crate::tdf::Label, theRecursively: bool) -> bool {
         unsafe { crate::ffi::XCAFDoc_Editor_expand_label_bool(theDoc, theRecursively) }
     }
 
@@ -5146,7 +5188,7 @@ impl Editor {
     /// @return True if shape successfully extracted
     pub fn extract_labelsequence_label_bool(
         theSrcLabels: &crate::ffi::TDF_LabelSequence,
-        theDstLabel: &crate::ffi::TDF_Label,
+        theDstLabel: &crate::tdf::Label,
         theIsNoVisMat: bool,
     ) -> bool {
         unsafe {
@@ -5166,8 +5208,8 @@ impl Editor {
     /// @param[in] theIsNoVisMat get a VisMaterial attributes as is or convert to color
     /// @return True if shape successfully extracted
     pub fn extract_label2_bool(
-        theSrcLabel: &crate::ffi::TDF_Label,
-        theDstLabel: &crate::ffi::TDF_Label,
+        theSrcLabel: &crate::tdf::Label,
+        theDstLabel: &crate::tdf::Label,
         theIsNoVisMat: bool,
     ) -> bool {
         unsafe {
@@ -5190,7 +5232,7 @@ impl Editor {
     /// otherwise - returns false
     /// @return true in case of success, otherwise - false.
     pub fn rescale_geometry(
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
         theScaleFactor: f64,
         theForceIfNotRoot: bool,
     ) -> bool {
@@ -5245,7 +5287,7 @@ impl GeomTolerance {
     }
 
     /// **Source:** `XCAFDoc_GeomTolerance.hxx`:56 - `XCAFDoc_GeomTolerance::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_GeomTolerance_id(self as *const Self)) }
     }
 
@@ -5264,7 +5306,7 @@ impl GeomTolerance {
     }
 
     /// **Source:** `XCAFDoc_GeomTolerance.hxx`:44 - `XCAFDoc_GeomTolerance::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_GeomTolerance_get_id()) }
     }
 
@@ -5325,12 +5367,12 @@ impl GeomTolerance {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_GeomTolerance_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_inherited_Label(
                 self as *const Self,
@@ -5364,7 +5406,7 @@ impl GeomTolerance {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_GeomTolerance_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -5373,7 +5415,7 @@ impl GeomTolerance {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -5393,7 +5435,7 @@ impl GeomTolerance {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_GeomTolerance_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -5531,7 +5573,7 @@ impl GraphNode {
     }
 
     /// **Source:** `XCAFDoc_GraphNode.hxx`:68 - `XCAFDoc_GraphNode::SetGraphID()`
-    pub fn set_graph_id(&mut self, explicitID: &crate::ffi::Standard_GUID) {
+    pub fn set_graph_id(&mut self, explicitID: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_GraphNode_set_graph_id(self as *mut Self, explicitID) }
     }
 
@@ -5566,7 +5608,7 @@ impl GraphNode {
     /// **Source:** `XCAFDoc_GraphNode.hxx`:124 - `XCAFDoc_GraphNode::ID()`
     /// Returns the Graph ID (default or explicit one depending
     /// on the Set method used).
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_GraphNode_id(self as *const Self)) }
     }
 
@@ -5611,7 +5653,7 @@ impl GraphNode {
     /// <Set> method without explicit tree ID.
     /// Instance methods:
     /// ================
-    pub fn get_default_graph_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_default_graph_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_GraphNode_get_default_graph_id()) }
     }
 
@@ -5640,12 +5682,12 @@ impl GraphNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_inherited_Label(
                 self as *const Self,
@@ -5679,14 +5721,14 @@ impl GraphNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -5704,7 +5746,7 @@ impl GraphNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_GraphNode_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -5830,7 +5872,7 @@ impl LayerTool {
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:51 - `XCAFDoc_LayerTool::BaseLabel()`
     /// returns the label under which Layers are stored
-    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_base_label(self as *const Self))
         }
@@ -5839,7 +5881,7 @@ impl LayerTool {
     /// **Source:** `XCAFDoc_LayerTool.hxx`:58 - `XCAFDoc_LayerTool::IsLayer()`
     /// Returns True if label belongs to a Layertable and
     /// is a Layer definition
-    pub fn is_layer(&self, lab: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_layer(&self, lab: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_is_layer(self as *const Self, lab) }
     }
 
@@ -5849,8 +5891,8 @@ impl LayerTool {
     /// or does not define a Layer
     pub fn get_layer(
         &self,
-        lab: &crate::ffi::TDF_Label,
-        aLayer: &mut crate::ffi::TCollection_ExtendedString,
+        lab: &crate::tdf::Label,
+        aLayer: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_get_layer(self as *const Self, lab, aLayer) }
     }
@@ -5861,8 +5903,8 @@ impl LayerTool {
     /// Returns False if Layer is not found in Layertable
     pub fn find_layer_extendedstring_label(
         &self,
-        aLayer: &crate::ffi::TCollection_ExtendedString,
-        lab: &mut crate::ffi::TDF_Label,
+        aLayer: &crate::t_collection::ExtendedString,
+        lab: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_find_layer_extendedstring_label(
@@ -5880,10 +5922,10 @@ impl LayerTool {
     /// contains or not contains visible attr, according to the <theToFindVisible> parameter
     pub fn find_layer_extendedstring_bool2(
         &self,
-        aLayer: &crate::ffi::TCollection_ExtendedString,
+        aLayer: &crate::t_collection::ExtendedString,
         theToFindWithProperty: bool,
         theToFindVisible: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_LayerTool_find_layer_extendedstring_bool2(
@@ -5902,8 +5944,8 @@ impl LayerTool {
     /// is already defined)
     pub fn add_layer_extendedstring(
         &self,
-        theLayer: &crate::ffi::TCollection_ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        theLayer: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_add_layer_extendedstring(
                 self as *const Self,
@@ -5918,9 +5960,9 @@ impl LayerTool {
     /// of visible or invisible layer, according to <theToFindVisible> parameter
     pub fn add_layer_extendedstring_bool(
         &self,
-        theLayer: &crate::ffi::TCollection_ExtendedString,
+        theLayer: &crate::t_collection::ExtendedString,
         theToFindVisible: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_add_layer_extendedstring_bool(
                 self as *const Self,
@@ -5932,7 +5974,7 @@ impl LayerTool {
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:93 - `XCAFDoc_LayerTool::RemoveLayer()`
     /// Removes Layer from the Layertable
-    pub fn remove_layer(&self, lab: &crate::ffi::TDF_Label) {
+    pub fn remove_layer(&self, lab: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_LayerTool_remove_layer(self as *const Self, lab) }
     }
 
@@ -5950,8 +5992,8 @@ impl LayerTool {
     /// in number of layers or only in one.
     pub fn set_layer_label2_bool(
         &self,
-        L: &crate::ffi::TDF_Label,
-        LayerL: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
+        LayerL: &crate::tdf::Label,
         shapeInOneLayer: bool,
     ) {
         unsafe {
@@ -5972,8 +6014,8 @@ impl LayerTool {
     /// in number of layers or only in one.
     pub fn set_layer_label_extendedstring_bool(
         &self,
-        L: &crate::ffi::TDF_Label,
-        aLayer: &crate::ffi::TCollection_ExtendedString,
+        L: &crate::tdf::Label,
+        aLayer: &crate::t_collection::ExtendedString,
         shapeInOneLayer: bool,
     ) {
         unsafe {
@@ -5988,7 +6030,7 @@ impl LayerTool {
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:117 - `XCAFDoc_LayerTool::UnSetLayers()`
     /// Removes a link from label <L> to all layers
-    pub fn un_set_layers_label(&self, L: &crate::ffi::TDF_Label) {
+    pub fn un_set_layers_label(&self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_LayerTool_un_set_layers_label(self as *const Self, L) }
     }
 
@@ -5997,8 +6039,8 @@ impl LayerTool {
     /// returns FALSE if no such layer.
     pub fn un_set_one_layer_label_extendedstring(
         &self,
-        L: &crate::ffi::TDF_Label,
-        aLayer: &crate::ffi::TCollection_ExtendedString,
+        L: &crate::tdf::Label,
+        aLayer: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_un_set_one_layer_label_extendedstring(
@@ -6014,8 +6056,8 @@ impl LayerTool {
     /// returns FALSE if <aLayerL> is not a layer label.
     pub fn un_set_one_layer_label2(
         &self,
-        L: &crate::ffi::TDF_Label,
-        aLayerL: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
+        aLayerL: &crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_un_set_one_layer_label2(self as *const Self, L, aLayerL)
@@ -6027,8 +6069,8 @@ impl LayerTool {
     /// with the <aLayer>.
     pub fn is_set_label_extendedstring(
         &self,
-        L: &crate::ffi::TDF_Label,
-        aLayer: &crate::ffi::TCollection_ExtendedString,
+        L: &crate::tdf::Label,
+        aLayer: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_is_set_label_extendedstring(
@@ -6042,11 +6084,7 @@ impl LayerTool {
     /// **Source:** `XCAFDoc_LayerTool.hxx`:136 - `XCAFDoc_LayerTool::IsSet()`
     /// Returns True if label <L> has a Layer associated
     /// with the <aLayerL> label.
-    pub fn is_set_label2(
-        &self,
-        L: &crate::ffi::TDF_Label,
-        aLayerL: &crate::ffi::TDF_Label,
-    ) -> bool {
+    pub fn is_set_label2(&self, L: &crate::tdf::Label, aLayerL: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_is_set_label2(self as *const Self, L, aLayerL) }
     }
 
@@ -6054,7 +6092,7 @@ impl LayerTool {
     /// Return sequence of strings <aLayerS> that associated with label <L>.
     pub fn get_layers_label_handletcolstdhsequenceofextendedstring(
         &mut self,
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         aLayerS: &mut crate::ffi::HandleTColStdHSequenceOfExtendedString,
     ) -> bool {
         unsafe {
@@ -6070,7 +6108,7 @@ impl LayerTool {
     /// Return sequence of labels <aLayerSL> that associated with label <L>.
     pub fn get_layers_label_labelsequence(
         &mut self,
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         aLayerLS: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -6086,7 +6124,7 @@ impl LayerTool {
     /// Return sequence of strings that associated with label <L>.
     pub fn get_layers_label(
         &mut self,
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_get_layers_label(
@@ -6098,14 +6136,14 @@ impl LayerTool {
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:153 - `XCAFDoc_LayerTool::IsVisible()`
     /// Return TRUE if layer is visible, FALSE if invisible.
-    pub fn is_visible(&self, layerL: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_visible(&self, layerL: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_is_visible(self as *const Self, layerL) }
     }
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:157 - `XCAFDoc_LayerTool::SetVisibility()`
     /// Set the visibility of layer. If layer is invisible when on it's layer
     /// will set UAttribute with corresponding GUID.
-    pub fn set_visibility(&self, layerL: &crate::ffi::TDF_Label, isvisible: bool) {
+    pub fn set_visibility(&self, layerL: &crate::tdf::Label, isvisible: bool) {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_set_visibility(self as *const Self, layerL, isvisible)
         }
@@ -6119,8 +6157,8 @@ impl LayerTool {
     /// return FALSE if no such shape <Sh> or label <LayerL>
     pub fn set_layer_shape_label_bool(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
-        LayerL: &crate::ffi::TDF_Label,
+        Sh: &crate::topo_ds::Shape,
+        LayerL: &crate::tdf::Label,
         shapeInOneLayer: bool,
     ) -> bool {
         unsafe {
@@ -6141,8 +6179,8 @@ impl LayerTool {
     /// return FALSE if no such shape <Sh>.
     pub fn set_layer_shape_extendedstring_bool(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
-        aLayer: &crate::ffi::TCollection_ExtendedString,
+        Sh: &crate::topo_ds::Shape,
+        aLayer: &crate::t_collection::ExtendedString,
         shapeInOneLayer: bool,
     ) -> bool {
         unsafe {
@@ -6158,7 +6196,7 @@ impl LayerTool {
     /// **Source:** `XCAFDoc_LayerTool.hxx`:182 - `XCAFDoc_LayerTool::UnSetLayers()`
     /// Remove link between shape <Sh> and all Layers at LayerTable.
     /// return FALSE if no such shape <Sh> in XCAF Document.
-    pub fn un_set_layers_shape(&mut self, Sh: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn un_set_layers_shape(&mut self, Sh: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_un_set_layers_shape(self as *mut Self, Sh) }
     }
 
@@ -6167,8 +6205,8 @@ impl LayerTool {
     /// returns FALSE if no such layer <aLayer> or shape <Sh>.
     pub fn un_set_one_layer_shape_extendedstring(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
-        aLayer: &crate::ffi::TCollection_ExtendedString,
+        Sh: &crate::topo_ds::Shape,
+        aLayer: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_un_set_one_layer_shape_extendedstring(
@@ -6184,8 +6222,8 @@ impl LayerTool {
     /// returns FALSE if no such layer <aLayerL> or shape <Sh>.
     pub fn un_set_one_layer_shape_label(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
-        aLayerL: &crate::ffi::TDF_Label,
+        Sh: &crate::topo_ds::Shape,
+        aLayerL: &crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_un_set_one_layer_shape_label(
@@ -6201,8 +6239,8 @@ impl LayerTool {
     /// with the <aLayer>.
     pub fn is_set_shape_extendedstring(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
-        aLayer: &crate::ffi::TCollection_ExtendedString,
+        Sh: &crate::topo_ds::Shape,
+        aLayer: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_is_set_shape_extendedstring(self as *mut Self, Sh, aLayer)
@@ -6214,8 +6252,8 @@ impl LayerTool {
     /// with the <aLayerL>.
     pub fn is_set_shape_label(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
-        aLayerL: &crate::ffi::TDF_Label,
+        Sh: &crate::topo_ds::Shape,
+        aLayerL: &crate::tdf::Label,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_is_set_shape_label(self as *mut Self, Sh, aLayerL) }
     }
@@ -6224,7 +6262,7 @@ impl LayerTool {
     /// Return sequence of strings <aLayerS> that associated with shape <Sh>.
     pub fn get_layers_shape_handletcolstdhsequenceofextendedstring(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
+        Sh: &crate::topo_ds::Shape,
         aLayerS: &mut crate::ffi::HandleTColStdHSequenceOfExtendedString,
     ) -> bool {
         unsafe {
@@ -6240,7 +6278,7 @@ impl LayerTool {
     /// Return sequence of labels <aLayerLS> that associated with shape <Sh>.
     pub fn get_layers_shape_labelsequence(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
+        Sh: &crate::topo_ds::Shape,
         aLayerLS: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -6256,7 +6294,7 @@ impl LayerTool {
     /// Return sequence of strings that associated with shape <Sh>.
     pub fn get_layers_shape(
         &mut self,
-        Sh: &crate::ffi::TopoDS_Shape,
+        Sh: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_get_layers_shape(
@@ -6267,7 +6305,7 @@ impl LayerTool {
     }
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:212 - `XCAFDoc_LayerTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_LayerTool_id(self as *const Self)) }
     }
 
@@ -6284,14 +6322,14 @@ impl LayerTool {
     }
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:48 - `XCAFDoc_LayerTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_LayerTool_get_id()) }
     }
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:149 - `XCAFDoc_LayerTool::GetShapesOfLayer()`
     /// Return sequanese of shape labels that assigned with layers to <ShLabels>.
     pub fn get_shapes_of_layer(
-        theLayerL: &crate::ffi::TDF_Label,
+        theLayerL: &crate::tdf::Label,
         theShLabels: &mut crate::ffi::TDF_LabelSequence,
     ) {
         unsafe { crate::ffi::XCAFDoc_LayerTool_get_shapes_of_layer(theLayerL, theShLabels) }
@@ -6348,12 +6386,12 @@ impl LayerTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_inherited_Label(
                 self as *const Self,
@@ -6387,14 +6425,14 @@ impl LayerTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -6412,7 +6450,7 @@ impl LayerTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LayerTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -6546,13 +6584,13 @@ impl LengthUnit {
     /// Creates a LengthUnit attribute
     /// @param theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile
     /// @param theUnitValue - length scale factor to meter
-    pub fn set(&mut self, theUnitName: &crate::ffi::TCollection_AsciiString, theUnitValue: f64) {
+    pub fn set(&mut self, theUnitName: &crate::t_collection::AsciiString, theUnitValue: f64) {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_set(self as *mut Self, theUnitName, theUnitValue) }
     }
 
     /// **Source:** `XCAFDoc_LengthUnit.hxx`:70 - `XCAFDoc_LengthUnit::GetUnitName()`
     /// Length unit description (could be arbitrary text)
-    pub fn get_unit_name(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn get_unit_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::XCAFDoc_LengthUnit_get_unit_name(self as *const Self)) }
     }
 
@@ -6568,7 +6606,7 @@ impl LengthUnit {
     }
 
     /// **Source:** `XCAFDoc_LengthUnit.hxx`:79 - `XCAFDoc_LengthUnit::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_LengthUnit_id(self as *const Self)) }
     }
 
@@ -6600,7 +6638,7 @@ impl LengthUnit {
 
     /// **Source:** `XCAFDoc_LengthUnit.hxx`:38 - `XCAFDoc_LengthUnit::GetID()`
     /// Returns the GUID of the attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_LengthUnit_get_id()) }
     }
 
@@ -6629,12 +6667,12 @@ impl LengthUnit {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_inherited_Label(
                 self as *const Self,
@@ -6668,14 +6706,14 @@ impl LengthUnit {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -6693,7 +6731,7 @@ impl LengthUnit {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_LengthUnit_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -6828,18 +6866,18 @@ impl Location {
     }
 
     /// **Source:** `XCAFDoc_Location.hxx`:48 - `XCAFDoc_Location::Set()`
-    pub fn set(&mut self, Loc: &crate::ffi::TopLoc_Location) {
+    pub fn set(&mut self, Loc: &crate::top_loc::Location) {
         unsafe { crate::ffi::XCAFDoc_Location_set(self as *mut Self, Loc) }
     }
 
     /// **Source:** `XCAFDoc_Location.hxx`:51 - `XCAFDoc_Location::Get()`
     /// Returns True if there is a reference on the same label
-    pub fn get(&self) -> &crate::ffi::TopLoc_Location {
+    pub fn get(&self) -> &crate::top_loc::Location {
         unsafe { &*(crate::ffi::XCAFDoc_Location_get(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_Location.hxx`:53 - `XCAFDoc_Location::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Location_id(self as *const Self)) }
     }
 
@@ -6870,7 +6908,7 @@ impl Location {
     }
 
     /// **Source:** `XCAFDoc_Location.hxx`:39 - `XCAFDoc_Location::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Location_get_id()) }
     }
 
@@ -6899,12 +6937,12 @@ impl Location {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Location_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_inherited_Label(
                 self as *const Self,
@@ -6938,14 +6976,14 @@ impl Location {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Location_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -6963,7 +7001,7 @@ impl Location {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_Location_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -7146,7 +7184,7 @@ impl Material {
     }
 
     /// **Source:** `XCAFDoc_Material.hxx`:65 - `XCAFDoc_Material::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Material_id(self as *const Self)) }
     }
 
@@ -7177,7 +7215,7 @@ impl Material {
     }
 
     /// **Source:** `XCAFDoc_Material.hxx`:39 - `XCAFDoc_Material::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Material_get_id()) }
     }
 
@@ -7206,12 +7244,12 @@ impl Material {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Material_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_inherited_Label(
                 self as *const Self,
@@ -7245,14 +7283,14 @@ impl Material {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Material_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -7270,7 +7308,7 @@ impl Material {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_Material_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -7398,7 +7436,7 @@ impl MaterialTool {
 
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:51 - `XCAFDoc_MaterialTool::BaseLabel()`
     /// returns the label under which colors are stored
-    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_base_label(
                 self as *const Self,
@@ -7409,7 +7447,7 @@ impl MaterialTool {
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:58 - `XCAFDoc_MaterialTool::IsMaterial()`
     /// Returns True if label belongs to a material table and
     /// is a Material definition
-    pub fn is_material(&self, lab: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_material(&self, lab: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_MaterialTool_is_material(self as *const Self, lab) }
     }
 
@@ -7429,7 +7467,7 @@ impl MaterialTool {
         aDensity: f64,
         aDensName: &crate::ffi::HandleTCollectionHAsciiString,
         aDensValType: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_add_material(
                 self as *const Self,
@@ -7444,7 +7482,7 @@ impl MaterialTool {
 
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:72 - `XCAFDoc_MaterialTool::SetMaterial()`
     /// Sets a link with GUID
-    pub fn set_material_label2(&self, L: &crate::ffi::TDF_Label, MatL: &crate::ffi::TDF_Label) {
+    pub fn set_material_label2(&self, L: &crate::tdf::Label, MatL: &crate::tdf::Label) {
         unsafe {
             crate::ffi::XCAFDoc_MaterialTool_set_material_label2(self as *const Self, L, MatL)
         }
@@ -7455,7 +7493,7 @@ impl MaterialTool {
     /// Adds a Material as necessary
     pub fn set_material_label_handletcollectionhasciistring2_real_handletcollectionhasciistring2(
         &self,
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         aName: &crate::ffi::HandleTCollectionHAsciiString,
         aDescription: &crate::ffi::HandleTCollectionHAsciiString,
         aDensity: f64,
@@ -7468,7 +7506,7 @@ impl MaterialTool {
     }
 
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:97 - `XCAFDoc_MaterialTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_MaterialTool_id(self as *const Self)) }
     }
 
@@ -7487,7 +7525,7 @@ impl MaterialTool {
     }
 
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:48 - `XCAFDoc_MaterialTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_MaterialTool_get_id()) }
     }
 
@@ -7495,7 +7533,7 @@ impl MaterialTool {
     /// Returns Material assigned to <MatL>
     /// Returns False if no such Material is assigned
     pub fn get_material(
-        MatL: &crate::ffi::TDF_Label,
+        MatL: &crate::tdf::Label,
         aName: &mut crate::ffi::HandleTCollectionHAsciiString,
         aDescription: &mut crate::ffi::HandleTCollectionHAsciiString,
         aDensity: &mut f64,
@@ -7517,7 +7555,7 @@ impl MaterialTool {
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:95 - `XCAFDoc_MaterialTool::GetDensityForShape()`
     /// Find referred material and return density from it
     /// if no material --> return 0
-    pub fn get_density_for_shape(ShapeL: &crate::ffi::TDF_Label) -> f64 {
+    pub fn get_density_for_shape(ShapeL: &crate::tdf::Label) -> f64 {
         unsafe { crate::ffi::XCAFDoc_MaterialTool_get_density_for_shape(ShapeL) }
     }
 
@@ -7574,12 +7612,12 @@ impl MaterialTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_inherited_Label(
                 self as *const Self,
@@ -7613,14 +7651,14 @@ impl MaterialTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -7640,7 +7678,7 @@ impl MaterialTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_MaterialTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -7783,21 +7821,21 @@ impl Note {
     /// \return A handle to the attribute instance.
     pub fn set(
         &mut self,
-        theUserName: &crate::ffi::TCollection_ExtendedString,
-        theTimeStamp: &crate::ffi::TCollection_ExtendedString,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
     ) {
         unsafe { crate::ffi::XCAFDoc_Note_set(self as *mut Self, theUserName, theTimeStamp) }
     }
 
     /// **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
     /// Returns the user name, who created the note.
-    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn user_name(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_Note_user_name(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
     /// Returns the timestamp of the note.
-    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn time_stamp(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_Note_time_stamp(self as *const Self)) }
     }
 
@@ -7851,7 +7889,7 @@ impl Note {
 
     /// **Source:** `XCAFDoc_Note.hxx`:34 - `XCAFDoc_Note::IsMine()`
     /// Checks if the given label represents a note.
-    pub fn is_mine(theLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_mine(theLabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_Note_is_mine(theLabel) }
     }
 
@@ -7866,17 +7904,17 @@ impl Note {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:134 - `TDF_Attribute::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Note_inherited_ID(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Note_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Note_inherited_Label(self as *const Self))
         }
@@ -7908,14 +7946,14 @@ impl Note {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Note_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -7929,7 +7967,7 @@ impl Note {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Note_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -8071,7 +8109,7 @@ impl NoteBalloon {
     }
 
     /// **Source:** `XCAFDoc_NoteBalloon.hxx`:48 - `XCAFDoc_NoteBalloon::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_id(self as *const Self)) }
     }
 
@@ -8091,7 +8129,7 @@ impl NoteBalloon {
 
     /// **Source:** `XCAFDoc_NoteBalloon.hxx`:27 - `XCAFDoc_NoteBalloon::GetID()`
     /// Returns default attribute GUID
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_get_id()) }
     }
 
@@ -8128,7 +8166,7 @@ impl NoteBalloon {
     }
 
     /// Inherited: **Source:** `XCAFDoc_NoteComment.hxx`:50 - `XCAFDoc_NoteComment::Comment()`
-    pub fn comment(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn comment(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_Comment(self as *const Self)) }
     }
 
@@ -8149,12 +8187,12 @@ impl NoteBalloon {
     }
 
     /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
-    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn user_name(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_UserName(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
-    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn time_stamp(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_inherited_TimeStamp(self as *const Self)) }
     }
 
@@ -8178,12 +8216,12 @@ impl NoteBalloon {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_inherited_Label(
                 self as *const Self,
@@ -8217,14 +8255,14 @@ impl NoteBalloon {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -8244,7 +8282,7 @@ impl NoteBalloon {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_NoteBalloon_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -8388,9 +8426,9 @@ impl NoteBinData {
     /// \param[in]  theFile      - input binary file.
     pub fn set_extendedstring_asciistring_file(
         &mut self,
-        theTitle: &crate::ffi::TCollection_ExtendedString,
-        theMIMEtype: &crate::ffi::TCollection_AsciiString,
-        theFile: &mut crate::ffi::OSD_File,
+        theTitle: &crate::t_collection::ExtendedString,
+        theMIMEtype: &crate::t_collection::AsciiString,
+        theFile: &mut crate::osd::File,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_NoteBinData_set_extendedstring_asciistring_file(
@@ -8409,8 +8447,8 @@ impl NoteBinData {
     /// \param[in]  theData      - byte data array.
     pub fn set_extendedstring_asciistring_handletcolstdharray1ofbyte(
         &mut self,
-        theTitle: &crate::ffi::TCollection_ExtendedString,
-        theMIMEtype: &crate::ffi::TCollection_AsciiString,
+        theTitle: &crate::t_collection::ExtendedString,
+        theMIMEtype: &crate::t_collection::AsciiString,
         theData: &crate::ffi::HandleTColStdHArray1OfByte,
     ) {
         unsafe {
@@ -8420,13 +8458,13 @@ impl NoteBinData {
 
     /// **Source:** `XCAFDoc_NoteBinData.hxx`:97 - `XCAFDoc_NoteBinData::Title()`
     /// Returns the note title.
-    pub fn title(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn title(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_title(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_NoteBinData.hxx`:100 - `XCAFDoc_NoteBinData::MIMEtype()`
     /// Returns data MIME type.
-    pub fn mim_etype(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn mim_etype(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_mim_etype(self as *const Self)) }
     }
 
@@ -8443,7 +8481,7 @@ impl NoteBinData {
     }
 
     /// **Source:** `XCAFDoc_NoteBinData.hxx`:110 - `XCAFDoc_NoteBinData::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_id(self as *const Self)) }
     }
 
@@ -8486,7 +8524,7 @@ impl NoteBinData {
 
     /// **Source:** `XCAFDoc_NoteBinData.hxx`:30 - `XCAFDoc_NoteBinData::GetID()`
     /// Returns default attribute GUID
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_get_id()) }
     }
 
@@ -8511,12 +8549,12 @@ impl NoteBinData {
     }
 
     /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
-    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn user_name(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_inherited_UserName(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
-    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn time_stamp(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_inherited_TimeStamp(self as *const Self)) }
     }
 
@@ -8540,12 +8578,12 @@ impl NoteBinData {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_inherited_Label(
                 self as *const Self,
@@ -8579,14 +8617,14 @@ impl NoteBinData {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -8606,7 +8644,7 @@ impl NoteBinData {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_NoteBinData_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -8747,18 +8785,18 @@ impl NoteComment {
 
     /// **Source:** `XCAFDoc_NoteComment.hxx`:47 - `XCAFDoc_NoteComment::Set()`
     /// Sets the comment text.
-    pub fn set(&mut self, theComment: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set(&mut self, theComment: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::XCAFDoc_NoteComment_set(self as *mut Self, theComment) }
     }
 
     /// **Source:** `XCAFDoc_NoteComment.hxx`:50 - `XCAFDoc_NoteComment::Comment()`
     /// Returns the comment text.
-    pub fn comment(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn comment(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_comment(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_NoteComment.hxx`:54 - `XCAFDoc_NoteComment::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_id(self as *const Self)) }
     }
 
@@ -8801,7 +8839,7 @@ impl NoteComment {
 
     /// **Source:** `XCAFDoc_NoteComment.hxx`:27 - `XCAFDoc_NoteComment::GetID()`
     /// Returns default attribute GUID
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_get_id()) }
     }
 
@@ -8826,12 +8864,12 @@ impl NoteComment {
     }
 
     /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
-    pub fn user_name(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn user_name(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_inherited_UserName(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `XCAFDoc_Note.hxx`:50 - `XCAFDoc_Note::TimeStamp()`
-    pub fn time_stamp(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn time_stamp(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_inherited_TimeStamp(self as *const Self)) }
     }
 
@@ -8855,12 +8893,12 @@ impl NoteComment {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_inherited_Label(
                 self as *const Self,
@@ -8894,14 +8932,14 @@ impl NoteComment {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -8921,7 +8959,7 @@ impl NoteComment {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_NoteComment_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -9111,7 +9149,7 @@ impl NotesTool {
 
     /// **Source:** `XCAFDoc_NotesTool.hxx`:90 - `XCAFDoc_NotesTool::GetNotesLabel()`
     /// Returns the label of the notes hive.
-    pub fn get_notes_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn get_notes_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_get_notes_label(
                 self as *const Self,
@@ -9121,7 +9159,7 @@ impl NotesTool {
 
     /// **Source:** `XCAFDoc_NotesTool.hxx`:93 - `XCAFDoc_NotesTool::GetAnnotatedItemsLabel()`
     /// Returns the label of the annotated items hive.
-    pub fn get_annotated_items_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn get_annotated_items_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_get_annotated_items_label(
                 self as *const Self,
@@ -9166,10 +9204,7 @@ impl NotesTool {
     /// Checks if the given assembly item is annotated.
     /// \param[in]  theItemId - assembly item ID.
     /// \return true if the item is annotated, otherwise - false.
-    pub fn is_annotated_item_assemblyitemid(
-        &self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
-    ) -> bool {
+    pub fn is_annotated_item_assemblyitemid(&self, theItemId: &AssemblyItemId) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_NotesTool_is_annotated_item_assemblyitemid(
                 self as *const Self,
@@ -9182,7 +9217,7 @@ impl NotesTool {
     /// Checks if the given labeled item is annotated.
     /// \param[in]  theItemLabel - item label.
     /// \return true if the item is annotated, otherwise - false.
-    pub fn is_annotated_item_label(&self, theItemLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_annotated_item_label(&self, theItemLabel: &crate::tdf::Label) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_NotesTool_is_annotated_item_label(self as *const Self, theItemLabel)
         }
@@ -9194,8 +9229,8 @@ impl NotesTool {
     /// \return annotated item label if it is found, otherwise - null label.
     pub fn find_annotated_item_assemblyitemid(
         &self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        theItemId: &AssemblyItemId,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_NotesTool_find_annotated_item_assemblyitemid(
@@ -9212,8 +9247,8 @@ impl NotesTool {
     /// \return annotated item label if it is found, otherwise - null label.
     pub fn find_annotated_item_label(
         &self,
-        theItemLabel: &crate::ffi::TDF_Label,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        theItemLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_find_annotated_item_label(
                 self as *const Self,
@@ -9229,9 +9264,9 @@ impl NotesTool {
     /// \return annotated item label if it is found, otherwise - null label.
     pub fn find_annotated_item_attr_assemblyitemid_guid(
         &self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
-        theGUID: &crate::ffi::Standard_GUID,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        theItemId: &AssemblyItemId,
+        theGUID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_NotesTool_find_annotated_item_attr_assemblyitemid_guid(
@@ -9250,9 +9285,9 @@ impl NotesTool {
     /// \return annotated item label if it is found, otherwise - null label.
     pub fn find_annotated_item_attr_label_guid(
         &self,
-        theItemLabel: &crate::ffi::TDF_Label,
-        theGUID: &crate::ffi::Standard_GUID,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        theItemLabel: &crate::tdf::Label,
+        theGUID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_NotesTool_find_annotated_item_attr_label_guid(
@@ -9271,9 +9306,9 @@ impl NotesTool {
     /// \return annotated item label if it is found, otherwise - null label.
     pub fn find_annotated_item_subshape_assemblyitemid_int(
         &self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theItemId: &AssemblyItemId,
         theSubshapeIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_NotesTool_find_annotated_item_subshape_assemblyitemid_int(
@@ -9292,9 +9327,9 @@ impl NotesTool {
     /// \return annotated item label if it is found, otherwise - null label.
     pub fn find_annotated_item_subshape_label_int(
         &self,
-        theItemLabel: &crate::ffi::TDF_Label,
+        theItemLabel: &crate::tdf::Label,
         theSubshapeIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_NotesTool_find_annotated_item_subshape_label_int(
@@ -9315,7 +9350,7 @@ impl NotesTool {
     /// \return number of added labels.
     pub fn get_notes_assemblyitemid_labelsequence(
         &self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theItemId: &AssemblyItemId,
         theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> i32 {
         unsafe {
@@ -9336,7 +9371,7 @@ impl NotesTool {
     /// \return number of added labels.
     pub fn get_notes_label_labelsequence(
         &self,
-        theItemLabel: &crate::ffi::TDF_Label,
+        theItemLabel: &crate::tdf::Label,
         theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> i32 {
         unsafe {
@@ -9358,8 +9393,8 @@ impl NotesTool {
     /// \return number of added labels.
     pub fn get_attr_notes_assemblyitemid_guid_labelsequence(
         &self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
-        theGUID: &crate::ffi::Standard_GUID,
+        theItemId: &AssemblyItemId,
+        theGUID: &crate::standard::GUID,
         theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> i32 {
         unsafe {
@@ -9382,8 +9417,8 @@ impl NotesTool {
     /// \return number of added labels.
     pub fn get_attr_notes_label_guid_labelsequence(
         &self,
-        theItemLabel: &crate::ffi::TDF_Label,
-        theGUID: &crate::ffi::Standard_GUID,
+        theItemLabel: &crate::tdf::Label,
+        theGUID: &crate::standard::GUID,
         theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> i32 {
         unsafe {
@@ -9406,7 +9441,7 @@ impl NotesTool {
     /// \return number of added labels.
     pub fn get_subshape_notes(
         &self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theItemId: &AssemblyItemId,
         theSubshapeIndex: i32,
         theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> i32 {
@@ -9430,8 +9465,8 @@ impl NotesTool {
     /// \return true if the note is removed, otherwise - false.
     pub fn remove_note_label_assemblyitemid_bool(
         &mut self,
-        theNoteLabel: &crate::ffi::TDF_Label,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theNoteLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
         theDelIfOrphan: bool,
     ) -> bool {
         unsafe {
@@ -9454,8 +9489,8 @@ impl NotesTool {
     /// \return true if the note is removed, otherwise - false.
     pub fn remove_note_label2_bool(
         &mut self,
-        theNoteLabel: &crate::ffi::TDF_Label,
-        theItemLabel: &crate::ffi::TDF_Label,
+        theNoteLabel: &crate::tdf::Label,
+        theItemLabel: &crate::tdf::Label,
         theDelIfOrphan: bool,
     ) -> bool {
         unsafe {
@@ -9479,8 +9514,8 @@ impl NotesTool {
     /// \return true if the note is removed, otherwise - false.
     pub fn remove_subshape_note_label_assemblyitemid_int_bool(
         &mut self,
-        theNoteLabel: &crate::ffi::TDF_Label,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theNoteLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
         theSubshapeIndex: i32,
         theDelIfOrphan: bool,
     ) -> bool {
@@ -9506,8 +9541,8 @@ impl NotesTool {
     /// \return true if the note is removed, otherwise - false.
     pub fn remove_subshape_note_label2_int_bool(
         &mut self,
-        theNoteLabel: &crate::ffi::TDF_Label,
-        theItemLabel: &crate::ffi::TDF_Label,
+        theNoteLabel: &crate::tdf::Label,
+        theItemLabel: &crate::tdf::Label,
         theSubshapeIndex: i32,
         theDelIfOrphan: bool,
     ) -> bool {
@@ -9533,9 +9568,9 @@ impl NotesTool {
     /// \return true if the note is removed, otherwise - false.
     pub fn remove_attr_note_label_assemblyitemid_guid_bool(
         &mut self,
-        theNoteLabel: &crate::ffi::TDF_Label,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
-        theGUID: &crate::ffi::Standard_GUID,
+        theNoteLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
+        theGUID: &crate::standard::GUID,
         theDelIfOrphan: bool,
     ) -> bool {
         unsafe {
@@ -9560,9 +9595,9 @@ impl NotesTool {
     /// \return true if the note is removed, otherwise - false.
     pub fn remove_attr_note_label2_guid_bool(
         &mut self,
-        theNoteLabel: &crate::ffi::TDF_Label,
-        theItemLabel: &crate::ffi::TDF_Label,
-        theGUID: &crate::ffi::Standard_GUID,
+        theNoteLabel: &crate::tdf::Label,
+        theItemLabel: &crate::tdf::Label,
+        theGUID: &crate::standard::GUID,
         theDelIfOrphan: bool,
     ) -> bool {
         unsafe {
@@ -9585,7 +9620,7 @@ impl NotesTool {
     /// \return true if the notes are removed, otherwise - false.
     pub fn remove_all_notes_assemblyitemid_bool(
         &mut self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theItemId: &AssemblyItemId,
         theDelIfOrphan: bool,
     ) -> bool {
         unsafe {
@@ -9606,7 +9641,7 @@ impl NotesTool {
     /// \return true if the notes are removed, otherwise - false.
     pub fn remove_all_notes_label_bool(
         &mut self,
-        theItemLabel: &crate::ffi::TDF_Label,
+        theItemLabel: &crate::tdf::Label,
         theDelIfOrphan: bool,
     ) -> bool {
         unsafe {
@@ -9628,7 +9663,7 @@ impl NotesTool {
     /// \return true if the notes are removed, otherwise - false.
     pub fn remove_all_subshape_notes(
         &mut self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theItemId: &AssemblyItemId,
         theSubshapeIndex: i32,
         theDelIfOrphan: bool,
     ) -> bool {
@@ -9652,8 +9687,8 @@ impl NotesTool {
     /// \return true if the notes are removed, otherwise - false.
     pub fn remove_all_attr_notes_assemblyitemid_guid_bool(
         &mut self,
-        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
-        theGUID: &crate::ffi::Standard_GUID,
+        theItemId: &AssemblyItemId,
+        theGUID: &crate::standard::GUID,
         theDelIfOrphan: bool,
     ) -> bool {
         unsafe {
@@ -9676,8 +9711,8 @@ impl NotesTool {
     /// \return true if the notes are removed, otherwise - false.
     pub fn remove_all_attr_notes_label_guid_bool(
         &mut self,
-        theItemLabel: &crate::ffi::TDF_Label,
-        theGUID: &crate::ffi::Standard_GUID,
+        theItemLabel: &crate::tdf::Label,
+        theGUID: &crate::standard::GUID,
         theDelIfOrphan: bool,
     ) -> bool {
         unsafe {
@@ -9695,7 +9730,7 @@ impl NotesTool {
     /// Removes all links with items annotated by the note.
     /// \param[in]  theNoteLabel - note label.
     /// \return true if the note is deleted, otherwise - false.
-    pub fn delete_note(&mut self, theNoteLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn delete_note(&mut self, theNoteLabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_NotesTool_delete_note(self as *mut Self, theNoteLabel) }
     }
 
@@ -9741,7 +9776,7 @@ impl NotesTool {
 
     /// **Source:** `XCAFDoc_NotesTool.hxx`:511 - `XCAFDoc_NotesTool::ID()`
     /// @}
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_NotesTool_id(self as *const Self)) }
     }
 
@@ -9761,7 +9796,7 @@ impl NotesTool {
 
     /// **Source:** `XCAFDoc_NotesTool.hxx`:81 - `XCAFDoc_NotesTool::GetID()`
     /// Returns default attribute GUID
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_NotesTool_get_id()) }
     }
 
@@ -9802,12 +9837,12 @@ impl NotesTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_inherited_Label(
                 self as *const Self,
@@ -9841,14 +9876,14 @@ impl NotesTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -9866,7 +9901,7 @@ impl NotesTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_NotesTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -10000,18 +10035,18 @@ impl ShapeMapTool {
     /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:47 - `XCAFDoc_ShapeMapTool::IsSubShape()`
     /// Checks whether shape <sub> is subshape of shape stored on
     /// label shapeL
-    pub fn is_sub_shape(&self, sub: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_sub_shape(&self, sub: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeMapTool_is_sub_shape(self as *const Self, sub) }
     }
 
     /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:50 - `XCAFDoc_ShapeMapTool::SetShape()`
     /// Sets representation (TopoDS_Shape) for top-level shape
-    pub fn set_shape(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::XCAFDoc_ShapeMapTool_set_shape(self as *mut Self, S) }
     }
 
     /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:52 - `XCAFDoc_ShapeMapTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeMapTool_id(self as *const Self)) }
     }
 
@@ -10049,7 +10084,7 @@ impl ShapeMapTool {
     }
 
     /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:37 - `XCAFDoc_ShapeMapTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeMapTool_get_id()) }
     }
 
@@ -10078,12 +10113,12 @@ impl ShapeMapTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeMapTool_inherited_Label(
                 self as *const Self,
@@ -10117,14 +10152,14 @@ impl ShapeMapTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -10144,7 +10179,7 @@ impl ShapeMapTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ShapeMapTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -10344,26 +10379,22 @@ impl ShapeTool {
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:118 - `XCAFDoc_ShapeTool::IsTopLevel()`
     /// Returns True if the label is a label of top-level shape,
     /// as opposed to component of assembly or subshape
-    pub fn is_top_level(&self, L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_top_level(&self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_top_level(self as *const Self, L) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:156 - `XCAFDoc_ShapeTool::IsSubShape()`
     /// Checks whether shape <sub> is subshape of shape stored on
     /// label shapeL
-    pub fn is_sub_shape(
-        &self,
-        shapeL: &crate::ffi::TDF_Label,
-        sub: &crate::ffi::TopoDS_Shape,
-    ) -> bool {
+    pub fn is_sub_shape(&self, shapeL: &crate::tdf::Label, sub: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_sub_shape(self as *const Self, shapeL, sub) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:159 - `XCAFDoc_ShapeTool::SearchUsingMap()`
     pub fn search_using_map(
         &self,
-        S: &crate::ffi::TopoDS_Shape,
-        L: &mut crate::ffi::TDF_Label,
+        S: &crate::topo_ds::Shape,
+        L: &mut crate::tdf::Label,
         findWithoutLoc: bool,
         findSubshape: bool,
     ) -> bool {
@@ -10392,8 +10423,8 @@ impl ShapeTool {
     /// Returns False if nothing is found
     pub fn search(
         &self,
-        S: &crate::ffi::TopoDS_Shape,
-        L: &mut crate::ffi::TDF_Label,
+        S: &crate::topo_ds::Shape,
+        L: &mut crate::tdf::Label,
         findInstance: bool,
         findComponent: bool,
         findSubshape: bool,
@@ -10421,8 +10452,8 @@ impl ShapeTool {
     /// Return True if <S> is found.
     pub fn find_shape_shape_label_bool(
         &self,
-        S: &crate::ffi::TopoDS_Shape,
-        L: &mut crate::ffi::TDF_Label,
+        S: &crate::topo_ds::Shape,
+        L: &mut crate::tdf::Label,
         findInstance: bool,
     ) -> bool {
         unsafe {
@@ -10440,9 +10471,9 @@ impl ShapeTool {
     /// Returns Null label if not found
     pub fn find_shape_shape_bool(
         &self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         findInstance: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_find_shape_shape_bool(
                 self as *const Self,
@@ -10455,7 +10486,7 @@ impl ShapeTool {
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:217 - `XCAFDoc_ShapeTool::GetOneShape()`
     /// Gets shape from a sequence of all top-level shapes which are free
     /// @return original shape in case of one label and a compound of shapes in case of more
-    pub fn get_one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get_one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_get_one_shape(
                 self as *const Self,
@@ -10466,7 +10497,7 @@ impl ShapeTool {
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:221 - `XCAFDoc_ShapeTool::NewShape()`
     /// Creates new (empty) top-level shape.
     /// Initially it holds empty TopoDS_Compound
-    pub fn new_shape(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn new_shape(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_new_shape(self as *const Self))
         }
@@ -10474,7 +10505,7 @@ impl ShapeTool {
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:224 - `XCAFDoc_ShapeTool::SetShape()`
     /// Sets representation (TopoDS_Shape) for top-level shape.
-    pub fn set_shape(&mut self, L: &crate::ffi::TDF_Label, S: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, L: &crate::tdf::Label, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_set_shape(self as *mut Self, L, S) }
     }
 
@@ -10487,10 +10518,10 @@ impl ShapeTool {
     /// If AutoNaming() is True then automatically attaches names.
     pub fn add_shape(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         makeAssembly: bool,
         makePrepare: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_add_shape(
                 self as *mut Self,
@@ -10507,7 +10538,7 @@ impl ShapeTool {
     /// If removeCompletely is false, removes instance(location) only
     /// Returns False (and does nothing) if shape is not free
     /// or is not top-level shape
-    pub fn remove_shape(&self, L: &crate::ffi::TDF_Label, removeCompletely: bool) -> bool {
+    pub fn remove_shape(&self, L: &crate::tdf::Label, removeCompletely: bool) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ShapeTool_remove_shape(self as *const Self, L, removeCompletely)
         }
@@ -10521,7 +10552,7 @@ impl ShapeTool {
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:265 - `XCAFDoc_ShapeTool::ComputeShapes()`
     /// recursive
-    pub fn compute_shapes(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn compute_shapes(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_compute_shapes(self as *mut Self, L) }
     }
 
@@ -10549,10 +10580,10 @@ impl ShapeTool {
     /// Note: assembly must be IsAssembly() or IsSimpleShape()
     pub fn add_component_label2_location(
         &mut self,
-        assembly: &crate::ffi::TDF_Label,
-        comp: &crate::ffi::TDF_Label,
-        Loc: &crate::ffi::TopLoc_Location,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        assembly: &crate::tdf::Label,
+        comp: &crate::tdf::Label,
+        Loc: &crate::top_loc::Location,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_add_component_label2_location(
                 self as *mut Self,
@@ -10572,10 +10603,10 @@ impl ShapeTool {
     /// Note: assembly must be IsAssembly() or IsSimpleShape()
     pub fn add_component_label_shape_bool(
         &mut self,
-        assembly: &crate::ffi::TDF_Label,
-        comp: &crate::ffi::TopoDS_Shape,
+        assembly: &crate::tdf::Label,
+        comp: &crate::topo_ds::Shape,
         expand: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_add_component_label_shape_bool(
                 self as *mut Self,
@@ -10588,7 +10619,7 @@ impl ShapeTool {
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:320 - `XCAFDoc_ShapeTool::RemoveComponent()`
     /// Removes a component from its assembly
-    pub fn remove_component(&self, comp: &crate::ffi::TDF_Label) {
+    pub fn remove_component(&self, comp: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_remove_component(self as *const Self, comp) }
     }
 
@@ -10604,9 +10635,9 @@ impl ShapeTool {
     /// Returns Null label if it is not found
     pub fn find_sub_shape(
         &self,
-        shapeL: &crate::ffi::TDF_Label,
-        sub: &crate::ffi::TopoDS_Shape,
-        L: &mut crate::ffi::TDF_Label,
+        shapeL: &crate::tdf::Label,
+        sub: &crate::topo_ds::Shape,
+        L: &mut crate::tdf::Label,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_find_sub_shape(self as *const Self, shapeL, sub, L) }
     }
@@ -10617,9 +10648,9 @@ impl ShapeTool {
     /// Returns Null label if it is not subshape
     pub fn add_sub_shape_label_shape(
         &self,
-        shapeL: &crate::ffi::TDF_Label,
-        sub: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        shapeL: &crate::tdf::Label,
+        sub: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_add_sub_shape_label_shape(
                 self as *const Self,
@@ -10636,9 +10667,9 @@ impl ShapeTool {
     /// subshape/wrong subshape
     pub fn add_sub_shape_label_shape_label(
         &self,
-        shapeL: &crate::ffi::TDF_Label,
-        sub: &crate::ffi::TopoDS_Shape,
-        addedSubShapeL: &mut crate::ffi::TDF_Label,
+        shapeL: &crate::tdf::Label,
+        sub: &crate::topo_ds::Shape,
+        addedSubShapeL: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ShapeTool_add_sub_shape_label_shape_label(
@@ -10653,8 +10684,8 @@ impl ShapeTool {
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:345 - `XCAFDoc_ShapeTool::FindMainShapeUsingMap()`
     pub fn find_main_shape_using_map(
         &self,
-        sub: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        sub: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_find_main_shape_using_map(
                 self as *const Self,
@@ -10670,8 +10701,8 @@ impl ShapeTool {
     /// label (which should be the only one for valid model)
     pub fn find_main_shape(
         &self,
-        sub: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        sub: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_find_main_shape(
                 self as *const Self,
@@ -10682,14 +10713,14 @@ impl ShapeTool {
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:359 - `XCAFDoc_ShapeTool::BaseLabel()`
     /// returns the label under which shapes are stored
-    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_base_label(self as *const Self))
         }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:375 - `XCAFDoc_ShapeTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_id(self as *const Self)) }
     }
 
@@ -10698,7 +10729,7 @@ impl ShapeTool {
     pub fn set_extern_refs_sequenceofhasciistring(
         &self,
         SHAS: &crate::ffi::TColStd_SequenceOfHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDoc_ShapeTool_set_extern_refs_sequenceofhasciistring(
@@ -10713,7 +10744,7 @@ impl ShapeTool {
     /// Sets the names of references on the no-step files
     pub fn set_extern_refs_label_sequenceofhasciistring(
         &self,
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         SHAS: &crate::ffi::TColStd_SequenceOfHAsciiString,
     ) {
         unsafe {
@@ -10730,7 +10761,7 @@ impl ShapeTool {
     /// remove all dependencies on other SHUO.
     /// Returns FALSE if cannot remove SHUO dependencies.
     /// NOTE: remove any styles that associated with this SHUO.
-    pub fn remove_shuo(&self, SHUOLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn remove_shuo(&self, SHUOLabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_remove_shuo(self as *const Self, SHUOLabel) }
     }
 
@@ -10742,7 +10773,7 @@ impl ShapeTool {
     /// NOTE: Clear sequence of labels before filling
     pub fn find_component(
         &self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         Labels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -10760,9 +10791,9 @@ impl ShapeTool {
     /// @return TRUE if new location was set
     pub fn set_location(
         &mut self,
-        theShapeLabel: &crate::ffi::TDF_Label,
-        theLoc: &crate::ffi::TopLoc_Location,
-        theRefLabel: &mut crate::ffi::TDF_Label,
+        theShapeLabel: &crate::tdf::Label,
+        theLoc: &crate::top_loc::Location,
+        theRefLabel: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ShapeTool_set_location(
@@ -10776,7 +10807,7 @@ impl ShapeTool {
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:473 - `XCAFDoc_ShapeTool::Expand()`
     /// Convert Shape (compound/compsolid/shell/wire) to assembly
-    pub fn expand(&mut self, Shape: &crate::ffi::TDF_Label) -> bool {
+    pub fn expand(&mut self, Shape: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_expand(self as *mut Self, Shape) }
     }
 
@@ -10793,7 +10824,7 @@ impl ShapeTool {
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:106 - `XCAFDoc_ShapeTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_get_id()) }
     }
 
@@ -10802,27 +10833,27 @@ impl ShapeTool {
     /// contains sublabels which are assembly components
     /// This is relevant only if IsShape() is True
     /// (There  is  no  Father TreeNode on  this  <L>)
-    pub fn is_free(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_free(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_free(L) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:128 - `XCAFDoc_ShapeTool::IsShape()`
     /// Returns True if the label represents a shape (simple shape,
     /// assembly or reference)
-    pub fn is_shape(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_shape(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_shape(L) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:131 - `XCAFDoc_ShapeTool::IsSimpleShape()`
     /// Returns True if the label is a label of simple shape
-    pub fn is_simple_shape(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_simple_shape(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_simple_shape(L) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:135 - `XCAFDoc_ShapeTool::IsReference()`
     /// Return true if <L> is a located instance of other shape
     /// i.e. reference
-    pub fn is_reference(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_reference(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_reference(L) }
     }
 
@@ -10830,14 +10861,14 @@ impl ShapeTool {
     /// Returns True if the label is a label of assembly, i.e.
     /// contains sublabels which are assembly components
     /// This is relevant only if IsShape() is True
-    pub fn is_assembly(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_assembly(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_assembly(L) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:144 - `XCAFDoc_ShapeTool::IsComponent()`
     /// Return true if <L> is reference serving as component
     /// of assembly
-    pub fn is_component(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_component(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_component(L) }
     }
 
@@ -10845,13 +10876,13 @@ impl ShapeTool {
     /// Returns True if the label is a label of compound, i.e.
     /// contains some sublabels
     /// This is relevant only if IsShape() is True
-    pub fn is_compound(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_compound(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_compound(L) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:152 - `XCAFDoc_ShapeTool::IsSubShape()`
     /// Return true if <L> is subshape of the top-level shape
-    pub fn is_sub_shape_label(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_sub_shape_label(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_sub_shape_label(L) }
     }
 
@@ -10859,10 +10890,7 @@ impl ShapeTool {
     /// To get TopoDS_Shape from shape's label
     /// For component, returns new shape with correct location
     /// Returns False if label does not contain shape
-    pub fn get_shape_label_shape(
-        L: &crate::ffi::TDF_Label,
-        S: &mut crate::ffi::TopoDS_Shape,
-    ) -> bool {
+    pub fn get_shape_label_shape(L: &crate::tdf::Label, S: &mut crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_shape_label_shape(L, S) }
     }
 
@@ -10870,7 +10898,7 @@ impl ShapeTool {
     /// To get TopoDS_Shape from shape's label
     /// For component, returns new shape with correct location
     /// Returns Null shape if label does not contain shape
-    pub fn get_shape_label(L: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get_shape_label(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_get_shape_label(L)) }
     }
 
@@ -10880,7 +10908,7 @@ impl ShapeTool {
     /// @return original shape in case of one label and a compound of shapes in case of more
     pub fn get_one_shape_labelsequence(
         theLabels: &crate::ffi::TDF_LabelSequence,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_get_one_shape_labelsequence(
                 theLabels,
@@ -10915,7 +10943,7 @@ impl ShapeTool {
     /// Returns list of labels which refer shape L as component
     /// Returns number of users (0 if shape is free)
     pub fn get_users(
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         Labels: &mut crate::ffi::TDF_LabelSequence,
         getsubchilds: bool,
     ) -> i32 {
@@ -10924,23 +10952,20 @@ impl ShapeTool {
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:285 - `XCAFDoc_ShapeTool::GetLocation()`
     /// Returns location of instance
-    pub fn get_location(L: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+    pub fn get_location(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::top_loc::Location> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_get_location(L)) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:289 - `XCAFDoc_ShapeTool::GetReferredShape()`
     /// Returns label which corresponds to a shape referred by L
     /// Returns False if label is not reference
-    pub fn get_referred_shape(
-        L: &crate::ffi::TDF_Label,
-        Label: &mut crate::ffi::TDF_Label,
-    ) -> bool {
+    pub fn get_referred_shape(L: &crate::tdf::Label, Label: &mut crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_referred_shape(L, Label) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:292 - `XCAFDoc_ShapeTool::NbComponents()`
     /// Returns number of Assembles components
-    pub fn nb_components(L: &crate::ffi::TDF_Label, getsubchilds: bool) -> i32 {
+    pub fn nb_components(L: &crate::tdf::Label, getsubchilds: bool) -> i32 {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_nb_components(L, getsubchilds) }
     }
 
@@ -10948,7 +10973,7 @@ impl ShapeTool {
     /// Returns list of components of assembly
     /// Returns False if label is not assembly
     pub fn get_components(
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         Labels: &mut crate::ffi::TDF_LabelSequence,
         getsubchilds: bool,
     ) -> bool {
@@ -10959,7 +10984,7 @@ impl ShapeTool {
     /// Returns list of labels identifying subshapes of the given shape
     /// Returns False if no subshapes are placed on that label
     pub fn get_sub_shapes(
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         Labels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_sub_shapes(L, Labels) }
@@ -10969,14 +10994,14 @@ impl ShapeTool {
     /// Returns True if the label is a label of external references, i.e.
     /// there are some reference on the no-step files, which are
     /// described in document only their names
-    pub fn is_extern_ref(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_extern_ref(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_extern_ref(L) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:390 - `XCAFDoc_ShapeTool::GetExternRefs()`
     /// Gets the names of references on the no-step files
     pub fn get_extern_refs(
-        L: &crate::ffi::TDF_Label,
+        L: &crate::tdf::Label,
         SHAS: &mut crate::ffi::TColStd_SequenceOfHAsciiString,
     ) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_extern_refs(L, SHAS) }
@@ -10986,7 +11011,7 @@ impl ShapeTool {
     /// Returns founded SHUO GraphNodes of indicated component
     /// Returns false in other case
     pub fn get_all_component_shuo(
-        CompLabel: &crate::ffi::TDF_Label,
+        CompLabel: &crate::tdf::Label,
         SHUOAttrs: &mut crate::ffi::TDF_AttributeSequence,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_all_component_shuo(CompLabel, SHUOAttrs) }
@@ -10999,7 +11024,7 @@ impl ShapeTool {
     /// NOTE: returns upper_usages only on one level (not recurse)
     /// NOTE: do not clear the sequence before filling
     pub fn get_shuo_upper_usage(
-        NextUsageL: &crate::ffi::TDF_Label,
+        NextUsageL: &crate::tdf::Label,
         Labels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_shuo_upper_usage(NextUsageL, Labels) }
@@ -11012,7 +11037,7 @@ impl ShapeTool {
     /// NOTE: returns next_usages only on one level (not recurse)
     /// NOTE: do not clear the sequence before filling
     pub fn get_shuo_next_usage(
-        UpperUsageL: &crate::ffi::TDF_Label,
+        UpperUsageL: &crate::tdf::Label,
         Labels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_shuo_next_usage(UpperUsageL, Labels) }
@@ -11069,12 +11094,12 @@ impl ShapeTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_inherited_Label(
                 self as *const Self,
@@ -11108,14 +11133,14 @@ impl ShapeTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -11133,7 +11158,7 @@ impl ShapeTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ShapeTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -11264,7 +11289,7 @@ impl View {
     }
 
     /// **Source:** `XCAFDoc_View.hxx`:46 - `XCAFDoc_View::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_View_id(self as *const Self)) }
     }
 
@@ -11281,7 +11306,7 @@ impl View {
     }
 
     /// **Source:** `XCAFDoc_View.hxx`:42 - `XCAFDoc_View::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_View_get_id()) }
     }
 
@@ -11334,12 +11359,12 @@ impl View {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_View_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_inherited_Label(self as *const Self))
         }
@@ -11371,14 +11396,14 @@ impl View {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_View_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -11392,7 +11417,7 @@ impl View {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_View_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -11515,7 +11540,7 @@ impl ViewTool {
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:51 - `XCAFDoc_ViewTool::BaseLabel()`
     /// Returns the label under which Views are stored
-    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_base_label(self as *const Self))
         }
@@ -11524,7 +11549,7 @@ impl ViewTool {
     /// **Source:** `XCAFDoc_ViewTool.hxx`:55 - `XCAFDoc_ViewTool::IsView()`
     /// Returns True if label belongs to a View table and
     /// is a View definition
-    pub fn is_view(&self, theLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_view(&self, theLabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ViewTool_is_view(self as *const Self, theLabel) }
     }
 
@@ -11544,7 +11569,7 @@ impl ViewTool {
         theClippingPlanes: &crate::ffi::TDF_LabelSequence,
         theNotes: &crate::ffi::TDF_LabelSequence,
         theAnnotations: &crate::ffi::TDF_LabelSequence,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_ViewTool_set_view_labelsequence5_label(
@@ -11566,7 +11591,7 @@ impl ViewTool {
         theShapes: &crate::ffi::TDF_LabelSequence,
         theGDTs: &crate::ffi::TDF_LabelSequence,
         theClippingPlanes: &crate::ffi::TDF_LabelSequence,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_ViewTool_set_view_labelsequence3_label(
@@ -11585,7 +11610,7 @@ impl ViewTool {
         &self,
         theShapes: &crate::ffi::TDF_LabelSequence,
         theGDTs: &crate::ffi::TDF_LabelSequence,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_ViewTool_set_view_labelsequence2_label(
@@ -11602,7 +11627,7 @@ impl ViewTool {
     pub fn set_clipping_planes(
         &self,
         theClippingPlaneLabels: &crate::ffi::TDF_LabelSequence,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_ViewTool_set_clipping_planes(
@@ -11615,7 +11640,7 @@ impl ViewTool {
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:85 - `XCAFDoc_ViewTool::RemoveView()`
     /// Remove View
-    pub fn remove_view(&mut self, theViewL: &crate::ffi::TDF_Label) {
+    pub fn remove_view(&mut self, theViewL: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_remove_view(self as *mut Self, theViewL) }
     }
 
@@ -11623,7 +11648,7 @@ impl ViewTool {
     /// Returns all View labels defined for label ShapeL
     pub fn get_view_labels_for_shape(
         &self,
-        theShapeL: &crate::ffi::TDF_Label,
+        theShapeL: &crate::tdf::Label,
         theViews: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11639,7 +11664,7 @@ impl ViewTool {
     /// Returns all View labels defined for label GDTL
     pub fn get_view_labels_for_gdt(
         &self,
-        theGDTL: &crate::ffi::TDF_Label,
+        theGDTL: &crate::tdf::Label,
         theViews: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11655,7 +11680,7 @@ impl ViewTool {
     /// Returns all View labels defined for label ClippingPlaneL
     pub fn get_view_labels_for_clipping_plane(
         &self,
-        theClippingPlaneL: &crate::ffi::TDF_Label,
+        theClippingPlaneL: &crate::tdf::Label,
         theViews: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11671,7 +11696,7 @@ impl ViewTool {
     /// Returns all View labels defined for label NoteL
     pub fn get_view_labels_for_note(
         &self,
-        theNoteL: &crate::ffi::TDF_Label,
+        theNoteL: &crate::tdf::Label,
         theViews: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11687,7 +11712,7 @@ impl ViewTool {
     /// Returns all View labels defined for label AnnotationL
     pub fn get_view_labels_for_annotation(
         &self,
-        theAnnotationL: &crate::ffi::TDF_Label,
+        theAnnotationL: &crate::tdf::Label,
         theViews: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11701,7 +11726,7 @@ impl ViewTool {
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:108 - `XCAFDoc_ViewTool::AddView()`
     /// Adds a view definition to a View table and returns its label
-    pub fn add_view(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn add_view(&mut self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_add_view(self as *mut Self))
         }
@@ -11712,7 +11737,7 @@ impl ViewTool {
     /// Returns False if the theViewL is not in View table
     pub fn get_ref_shape_label(
         &self,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
         theShapeLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11729,7 +11754,7 @@ impl ViewTool {
     /// Returns False if the theViewL is not in View table
     pub fn get_ref_gdt_label(
         &self,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
         theGDTLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11746,7 +11771,7 @@ impl ViewTool {
     /// Returns False if the theViewL is not in View table
     pub fn get_ref_clipping_plane_label(
         &self,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
         theClippingPlaneLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11763,7 +11788,7 @@ impl ViewTool {
     /// Returns False if the theViewL is not in View table
     pub fn get_ref_note_label(
         &self,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
         theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11780,7 +11805,7 @@ impl ViewTool {
     /// Returns False if the theViewL is not in View table
     pub fn get_ref_annotation_label(
         &self,
-        theViewL: &crate::ffi::TDF_Label,
+        theViewL: &crate::tdf::Label,
         theAnnotationLabels: &mut crate::ffi::TDF_LabelSequence,
     ) -> bool {
         unsafe {
@@ -11794,24 +11819,24 @@ impl ViewTool {
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:137 - `XCAFDoc_ViewTool::IsLocked()`
     /// Returns true if the given View is marked as locked
-    pub fn is_locked(&self, theViewL: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_locked(&self, theViewL: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ViewTool_is_locked(self as *const Self, theViewL) }
     }
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:140 - `XCAFDoc_ViewTool::Lock()`
     /// Mark the given View as locked
-    pub fn lock(&self, theViewL: &crate::ffi::TDF_Label) {
+    pub fn lock(&self, theViewL: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_lock(self as *const Self, theViewL) }
     }
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:143 - `XCAFDoc_ViewTool::Unlock()`
     /// Unlock the given View
-    pub fn unlock(&self, theViewL: &crate::ffi::TDF_Label) {
+    pub fn unlock(&self, theViewL: &crate::tdf::Label) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_unlock(self as *const Self, theViewL) }
     }
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:145 - `XCAFDoc_ViewTool::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ViewTool_id(self as *const Self)) }
     }
 
@@ -11828,7 +11853,7 @@ impl ViewTool {
     }
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:48 - `XCAFDoc_ViewTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ViewTool_get_id()) }
     }
 
@@ -11883,12 +11908,12 @@ impl ViewTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_inherited_Label(
                 self as *const Self,
@@ -11922,14 +11947,14 @@ impl ViewTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -11947,7 +11972,7 @@ impl ViewTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ViewTool_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -12119,13 +12144,13 @@ impl VisMaterial {
     /// Return metal-roughness PBR material.
     /// Note that default constructor creates an empty material (@sa
     /// XCAFDoc_VisMaterialPBR::IsDefined).
-    pub fn pbr_material(&self) -> &crate::ffi::XCAFDoc_VisMaterialPBR {
+    pub fn pbr_material(&self) -> &VisMaterialPBR {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterial_pbr_material(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:85 - `XCAFDoc_VisMaterial::SetPbrMaterial()`
     /// Setup metal-roughness PBR material.
-    pub fn set_pbr_material(&mut self, theMaterial: &crate::ffi::XCAFDoc_VisMaterialPBR) {
+    pub fn set_pbr_material(&mut self, theMaterial: &VisMaterialPBR) {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_set_pbr_material(self as *mut Self, theMaterial) }
     }
 
@@ -12145,13 +12170,13 @@ impl VisMaterial {
     /// Return common material.
     /// Note that default constructor creates an empty material (@sa
     /// XCAFDoc_VisMaterialCommon::IsDefined).
-    pub fn common_material(&self) -> &crate::ffi::XCAFDoc_VisMaterialCommon {
+    pub fn common_material(&self) -> &VisMaterialCommon {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterial_common_material(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:104 - `XCAFDoc_VisMaterial::SetCommonMaterial()`
     /// Setup common material.
-    pub fn set_common_material(&mut self, theMaterial: &crate::ffi::XCAFDoc_VisMaterialCommon) {
+    pub fn set_common_material(&mut self, theMaterial: &VisMaterialCommon) {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterial_set_common_material(self as *mut Self, theMaterial)
         }
@@ -12165,7 +12190,7 @@ impl VisMaterial {
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:115 - `XCAFDoc_VisMaterial::BaseColor()`
     /// Return base color.
-    pub fn base_color(&self) -> crate::OwnedPtr<crate::ffi::Quantity_ColorRGBA> {
+    pub fn base_color(&self) -> crate::OwnedPtr<crate::quantity::ColorRGBA> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_base_color(
                 self as *const Self,
@@ -12239,9 +12264,7 @@ impl VisMaterial {
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:170 - `XCAFDoc_VisMaterial::ConvertToCommonMaterial()`
     /// Return Common material or convert PBR into Common material.
-    pub fn convert_to_common_material(
-        &mut self,
-    ) -> crate::OwnedPtr<crate::ffi::XCAFDoc_VisMaterialCommon> {
+    pub fn convert_to_common_material(&mut self) -> crate::OwnedPtr<VisMaterialCommon> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_convert_to_common_material(
                 self as *mut Self,
@@ -12251,9 +12274,7 @@ impl VisMaterial {
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:173 - `XCAFDoc_VisMaterial::ConvertToPbrMaterial()`
     /// Return PBR material or convert Common into PBR material.
-    pub fn convert_to_pbr_material(
-        &mut self,
-    ) -> crate::OwnedPtr<crate::ffi::XCAFDoc_VisMaterialPBR> {
+    pub fn convert_to_pbr_material(&mut self) -> crate::OwnedPtr<VisMaterialPBR> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_convert_to_pbr_material(
                 self as *mut Self,
@@ -12264,7 +12285,7 @@ impl VisMaterial {
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:177 - `XCAFDoc_VisMaterial::ID()`
     /// @name interface implementation
     /// Return GUID of this attribute type.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterial_id(self as *const Self)) }
     }
 
@@ -12313,7 +12334,7 @@ impl VisMaterial {
 
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:61 - `XCAFDoc_VisMaterial::GetID()`
     /// Return attribute GUID.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterial_get_id()) }
     }
 
@@ -12328,12 +12349,12 @@ impl VisMaterial {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_inherited_Label(
                 self as *const Self,
@@ -12367,14 +12388,14 @@ impl VisMaterial {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -12394,7 +12415,7 @@ impl VisMaterial {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterial_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -12529,7 +12550,7 @@ impl VisMaterialCommon {
 
     /// **Source:** `XCAFDoc_VisMaterialCommon.hxx`:52 - `XCAFDoc_VisMaterialCommon::IsEqual()`
     /// Compare two materials.
-    pub fn is_equal(&self, theOther: &crate::ffi::XCAFDoc_VisMaterialCommon) -> bool {
+    pub fn is_equal(&self, theOther: &VisMaterialCommon) -> bool {
         unsafe { crate::ffi::XCAFDoc_VisMaterialCommon_is_equal(self as *const Self, theOther) }
     }
 }
@@ -12557,7 +12578,7 @@ impl VisMaterialPBR {
 
     /// **Source:** `XCAFDoc_VisMaterialPBR.hxx`:51 - `XCAFDoc_VisMaterialPBR::IsEqual()`
     /// Compare two materials.
-    pub fn is_equal(&self, theOther: &crate::ffi::XCAFDoc_VisMaterialPBR) -> bool {
+    pub fn is_equal(&self, theOther: &VisMaterialPBR) -> bool {
         unsafe { crate::ffi::XCAFDoc_VisMaterialPBR_is_equal(self as *const Self, theOther) }
     }
 }
@@ -12602,7 +12623,7 @@ impl VisMaterialTool {
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:51 - `XCAFDoc_VisMaterialTool::BaseLabel()`
     /// returns the label under which colors are stored
-    pub fn base_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn base_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_base_label(
                 self as *const Self,
@@ -12612,7 +12633,7 @@ impl VisMaterialTool {
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:57 - `XCAFDoc_VisMaterialTool::IsMaterial()`
     /// Returns TRUE if Label belongs to a Material Table.
-    pub fn is_material(&self, theLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_material(&self, theLabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_VisMaterialTool_is_material(self as *const Self, theLabel) }
     }
 
@@ -12620,8 +12641,8 @@ impl VisMaterialTool {
     /// Adds Material definition to a Material Table and returns its Label.
     pub fn add_material(
         &self,
-        theName: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        theName: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_add_material(
                 self as *const Self,
@@ -12632,7 +12653,7 @@ impl VisMaterialTool {
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:73 - `XCAFDoc_VisMaterialTool::RemoveMaterial()`
     /// Removes Material from the Material Table
-    pub fn remove_material(&self, theLabel: &crate::ffi::TDF_Label) {
+    pub fn remove_material(&self, theLabel: &crate::tdf::Label) {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_remove_material(self as *const Self, theLabel)
         }
@@ -12648,8 +12669,8 @@ impl VisMaterialTool {
     /// Sets new material to the shape.
     pub fn set_shape_material_label2(
         &self,
-        theShapeLabel: &crate::ffi::TDF_Label,
-        theMaterialLabel: &crate::ffi::TDF_Label,
+        theShapeLabel: &crate::tdf::Label,
+        theMaterialLabel: &crate::tdf::Label,
     ) {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_set_shape_material_label2(
@@ -12662,7 +12683,7 @@ impl VisMaterialTool {
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:83 - `XCAFDoc_VisMaterialTool::UnSetShapeMaterial()`
     /// Removes a link with GUID XCAFDoc::VisMaterialRefGUID() from shape label to material.
-    pub fn un_set_shape_material_label(&self, theShapeLabel: &crate::ffi::TDF_Label) {
+    pub fn un_set_shape_material_label(&self, theShapeLabel: &crate::tdf::Label) {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_un_set_shape_material_label(
                 self as *const Self,
@@ -12673,7 +12694,7 @@ impl VisMaterialTool {
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:86 - `XCAFDoc_VisMaterialTool::IsSetShapeMaterial()`
     /// Returns TRUE if label has a material assignment.
-    pub fn is_set_shape_material_label(&self, theLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_set_shape_material_label(&self, theLabel: &crate::tdf::Label) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_is_set_shape_material_label(
                 self as *const Self,
@@ -12689,8 +12710,8 @@ impl VisMaterialTool {
     /// @return FALSE if cannot find a label for shape
     pub fn set_shape_material_shape_label(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theMaterialLabel: &crate::ffi::TDF_Label,
+        theShape: &crate::topo_ds::Shape,
+        theMaterialLabel: &crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_set_shape_material_shape_label(
@@ -12704,7 +12725,7 @@ impl VisMaterialTool {
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:108 - `XCAFDoc_VisMaterialTool::UnSetShapeMaterial()`
     /// Removes a link with GUID XCAFDoc::VisMaterialRefGUID() from shape label to material.
     /// @return TRUE if such link existed
-    pub fn un_set_shape_material_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn un_set_shape_material_shape(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_un_set_shape_material_shape(
                 self as *mut Self,
@@ -12715,7 +12736,7 @@ impl VisMaterialTool {
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:111 - `XCAFDoc_VisMaterialTool::IsSetShapeMaterial()`
     /// Returns TRUE if shape has a material assignment.
-    pub fn is_set_shape_material_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_set_shape_material_shape(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_is_set_shape_material_shape(
                 self as *mut Self,
@@ -12731,8 +12752,8 @@ impl VisMaterialTool {
     /// @return FALSE if no material is assigned
     pub fn get_shape_material(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theMaterialLabel: &mut crate::ffi::TDF_Label,
+        theShape: &crate::topo_ds::Shape,
+        theMaterialLabel: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_get_shape_material(
@@ -12745,7 +12766,7 @@ impl VisMaterialTool {
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:125 - `XCAFDoc_VisMaterialTool::ID()`
     /// Returns GUID of this attribute type.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterialTool_id(self as *const Self)) }
     }
 
@@ -12790,7 +12811,7 @@ impl VisMaterialTool {
     }
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:44 - `XCAFDoc_VisMaterialTool::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterialTool_get_id()) }
     }
 
@@ -12800,8 +12821,8 @@ impl VisMaterialTool {
     /// @param[out] theMaterialLabel  material label
     /// @return FALSE if no material is assigned
     pub fn get_shape_material_label2(
-        theShapeLabel: &crate::ffi::TDF_Label,
-        theMaterialLabel: &mut crate::ffi::TDF_Label,
+        theShapeLabel: &crate::tdf::Label,
+        theMaterialLabel: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_get_shape_material_label2(
@@ -12824,12 +12845,12 @@ impl VisMaterialTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_VisMaterialTool_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_inherited_Label(
                 self as *const Self,
@@ -12865,7 +12886,7 @@ impl VisMaterialTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -12874,7 +12895,7 @@ impl VisMaterialTool {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -12894,7 +12915,7 @@ impl VisMaterialTool {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_inherited_ForgetAttribute(
                 self as *const Self,
@@ -13034,7 +13055,7 @@ impl Volume {
     }
 
     /// **Source:** `XCAFDoc_Volume.hxx`:41 - `XCAFDoc_Volume::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Volume_id(self as *const Self)) }
     }
 
@@ -13062,14 +13083,14 @@ impl Volume {
     }
 
     /// **Source:** `XCAFDoc_Volume.hxx`:39 - `XCAFDoc_Volume::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_Volume_get_id()) }
     }
 
     /// **Source:** `XCAFDoc_Volume.hxx`:54 - `XCAFDoc_Volume::Get()`
     /// Returns volume as argument
     /// returns false if no such attribute at the <label>
-    pub fn get_label_real(label: &crate::ffi::TDF_Label, vol: &mut f64) -> bool {
+    pub fn get_label_real(label: &crate::tdf::Label, vol: &mut f64) -> bool {
         unsafe { crate::ffi::XCAFDoc_Volume_get_label_real(label, vol) }
     }
 
@@ -13108,7 +13129,7 @@ impl Volume {
     }
 
     /// Inherited: **Source:** `TDataStd_Real.hxx`:78 - `TDataStd_Real::SetID()`
-    pub fn set_id(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_SetID(self as *mut Self, guid) }
     }
 
@@ -13132,7 +13153,7 @@ impl Volume {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Volume_inherited_Label(
                 self as *const Self,
@@ -13166,14 +13187,14 @@ impl Volume {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -13191,7 +13212,7 @@ impl Volume {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 

@@ -12,7 +12,7 @@
 /// Creates  a 2d  curve  from  a  HCurve2d.  This
 /// cannot process the OtherCurves.
 pub fn make_curve_curve2d(
-    HC: &crate::ffi::Adaptor2d_Curve2d,
+    HC: &crate::adaptor2d::Curve2d,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_make_curve_curve2d(HC)) }
 }
@@ -191,7 +191,7 @@ impl Curve {
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:127 - `Geom2dAdaptor_Curve::Value()`
     /// Computes the point of parameter U on the curve
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_Curve_value(self as *const Self, U))
         }
@@ -199,7 +199,7 @@ impl Curve {
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:130 - `Geom2dAdaptor_Curve::D0()`
     /// Computes the point of parameter U.
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         unsafe { crate::ffi::Geom2dAdaptor_Curve_d0(self as *const Self, U, P) }
     }
 
@@ -208,7 +208,7 @@ impl Curve {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V: &mut crate::ffi::gp_Vec2d) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         unsafe { crate::ffi::Geom2dAdaptor_Curve_d1(self as *const Self, U, P, V) }
     }
 
@@ -220,9 +220,9 @@ impl Curve {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::Geom2dAdaptor_Curve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -235,10 +235,10 @@ impl Curve {
     pub fn d3(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
-        V3: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::Geom2dAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -249,7 +249,7 @@ impl Curve {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_Curve_dn(self as *const Self, U, N))
         }
@@ -272,28 +272,28 @@ impl Curve {
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:170 - `Geom2dAdaptor_Curve::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_Curve_line(self as *const Self))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:172 - `Geom2dAdaptor_Curve::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_Curve_circle(self as *const Self))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:174 - `Geom2dAdaptor_Curve::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_Curve_ellipse(self as *const Self))
         }
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:176 - `Geom2dAdaptor_Curve::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_Curve_hyperbola(
                 self as *const Self,
@@ -302,7 +302,7 @@ impl Curve {
     }
 
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:178 - `Geom2dAdaptor_Curve::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAdaptor_Curve_parabola(self as *const Self))
         }

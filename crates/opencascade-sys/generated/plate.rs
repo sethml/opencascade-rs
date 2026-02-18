@@ -23,22 +23,22 @@ unsafe impl crate::CppDeletable for D1 {
 
 impl D1 {
     /// **Source:** `Plate_D1.hxx`:33 - `Plate_D1::Plate_D1()`
-    pub fn new_xyz2(du: &crate::ffi::gp_XYZ, dv: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<Self> {
+    pub fn new_xyz2(du: &crate::gp::XYZ, dv: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D1_ctor_xyz2(du, dv)) }
     }
 
     /// **Source:** `Plate_D1.hxx`:35 - `Plate_D1::Plate_D1()`
-    pub fn new_d1(ref_: &crate::ffi::Plate_D1) -> crate::OwnedPtr<Self> {
+    pub fn new_d1(ref_: &D1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D1_ctor_d1(ref_)) }
     }
 
     /// **Source:** `Plate_D1.hxx`:37 - `Plate_D1::DU()`
-    pub fn du(&self) -> &crate::ffi::gp_XYZ {
+    pub fn du(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Plate_D1_du(self as *const Self)) }
     }
 
     /// **Source:** `Plate_D1.hxx`:39 - `Plate_D1::DV()`
-    pub fn dv(&self) -> &crate::ffi::gp_XYZ {
+    pub fn dv(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Plate_D1_dv(self as *const Self)) }
     }
 }
@@ -61,15 +61,15 @@ unsafe impl crate::CppDeletable for D2 {
 impl D2 {
     /// **Source:** `Plate_D2.hxx`:33 - `Plate_D2::Plate_D2()`
     pub fn new_xyz3(
-        duu: &crate::ffi::gp_XYZ,
-        duv: &crate::ffi::gp_XYZ,
-        dvv: &crate::ffi::gp_XYZ,
+        duu: &crate::gp::XYZ,
+        duv: &crate::gp::XYZ,
+        dvv: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D2_ctor_xyz3(duu, duv, dvv)) }
     }
 
     /// **Source:** `Plate_D2.hxx`:35 - `Plate_D2::Plate_D2()`
-    pub fn new_d2(ref_: &crate::ffi::Plate_D2) -> crate::OwnedPtr<Self> {
+    pub fn new_d2(ref_: &D2) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D2_ctor_d2(ref_)) }
     }
 }
@@ -92,16 +92,16 @@ unsafe impl crate::CppDeletable for D3 {
 impl D3 {
     /// **Source:** `Plate_D3.hxx`:33 - `Plate_D3::Plate_D3()`
     pub fn new_xyz4(
-        duuu: &crate::ffi::gp_XYZ,
-        duuv: &crate::ffi::gp_XYZ,
-        duvv: &crate::ffi::gp_XYZ,
-        dvvv: &crate::ffi::gp_XYZ,
+        duuu: &crate::gp::XYZ,
+        duuv: &crate::gp::XYZ,
+        duvv: &crate::gp::XYZ,
+        dvvv: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D3_ctor_xyz4(duuu, duuv, duvv, dvvv)) }
     }
 
     /// **Source:** `Plate_D3.hxx`:38 - `Plate_D3::Plate_D3()`
-    pub fn new_d3(ref_: &crate::ffi::Plate_D3) -> crate::OwnedPtr<Self> {
+    pub fn new_d3(ref_: &D3) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_D3_ctor_d3(ref_)) }
     }
 }
@@ -124,9 +124,9 @@ unsafe impl crate::CppDeletable for FreeGtoCConstraint {
 impl FreeGtoCConstraint {
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:37 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
     pub fn new_xy_d12_real_int(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
         IncrementalLoad: f64,
         orientation: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -143,11 +143,11 @@ impl FreeGtoCConstraint {
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:43 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
     pub fn new_xy_d12_d22_real_int(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
         IncrementalLoad: f64,
         orientation: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -168,13 +168,13 @@ impl FreeGtoCConstraint {
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:51 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
     pub fn new_xy_d12_d22_d32_real_int(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
-        D3S: &crate::ffi::Plate_D3,
-        D3T: &crate::ffi::Plate_D3,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
+        D3S: &D3,
+        D3T: &D3,
         IncrementalLoad: f64,
         orientation: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -197,30 +197,26 @@ impl FreeGtoCConstraint {
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:37 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
     pub fn new_xy_d12_real(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
         IncrementalLoad: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_d12_real_int(point2d, D1S, D1T, IncrementalLoad, 0)
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:37 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
-    pub fn new_xy_d12(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_xy_d12(point2d: &crate::gp::XY, D1S: &D1, D1T: &D1) -> crate::OwnedPtr<Self> {
         Self::new_xy_d12_real_int(point2d, D1S, D1T, 1.0, 0)
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:43 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
     pub fn new_xy_d12_d22_real(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
         IncrementalLoad: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_d12_d22_real_int(point2d, D1S, D1T, D2S, D2T, IncrementalLoad, 0)
@@ -228,24 +224,24 @@ impl FreeGtoCConstraint {
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:43 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
     pub fn new_xy_d12_d22(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_d12_d22_real_int(point2d, D1S, D1T, D2S, D2T, 1.0, 0)
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:51 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
     pub fn new_xy_d12_d22_d32_real(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
-        D3S: &crate::ffi::Plate_D3,
-        D3T: &crate::ffi::Plate_D3,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
+        D3S: &D3,
+        D3T: &D3,
         IncrementalLoad: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_d12_d22_d32_real_int(point2d, D1S, D1T, D2S, D2T, D3S, D3T, IncrementalLoad, 0)
@@ -253,24 +249,24 @@ impl FreeGtoCConstraint {
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:51 - `Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint()`
     pub fn new_xy_d12_d22_d32(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
-        D3S: &crate::ffi::Plate_D3,
-        D3T: &crate::ffi::Plate_D3,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
+        D3S: &D3,
+        D3T: &D3,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_d12_d22_d32_real_int(point2d, D1S, D1T, D2S, D2T, D3S, D3T, 1.0, 0)
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:63 - `Plate_FreeGtoCConstraint::GetPPC()`
-    pub fn get_ppc(&self, Index: i32) -> &crate::ffi::Plate_PinpointConstraint {
+    pub fn get_ppc(&self, Index: i32) -> &PinpointConstraint {
         unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_get_ppc(self as *const Self, Index)) }
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:67 - `Plate_FreeGtoCConstraint::LSC()`
-    pub fn lsc(&self, Index: i32) -> &crate::ffi::Plate_LinearScalarConstraint {
+    pub fn lsc(&self, Index: i32) -> &LinearScalarConstraint {
         unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_lsc(self as *const Self, Index)) }
     }
 }
@@ -300,7 +296,7 @@ impl GlobalTranslationConstraint {
     }
 
     /// **Source:** `Plate_GlobalTranslationConstraint.hxx`:35 - `Plate_GlobalTranslationConstraint::LXYZC()`
-    pub fn lxyzc(&self) -> &crate::ffi::Plate_LinearXYZConstraint {
+    pub fn lxyzc(&self) -> &LinearXYZConstraint {
         unsafe { &*(crate::ffi::Plate_GlobalTranslationConstraint_lxyzc(self as *const Self)) }
     }
 }
@@ -321,18 +317,14 @@ unsafe impl crate::CppDeletable for GtoCConstraint {
 
 impl GtoCConstraint {
     /// **Source:** `Plate_GtoCConstraint.hxx`:37 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
-    pub fn new_gtocconstraint(ref_: &crate::ffi::Plate_GtoCConstraint) -> crate::OwnedPtr<Self> {
+    pub fn new_gtocconstraint(ref_: &GtoCConstraint) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_gtocconstraint(ref_))
         }
     }
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:39 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
-    pub fn new_xy_d12(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_xy_d12(point2d: &crate::gp::XY, D1S: &D1, D1T: &D1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12(
                 point2d, D1S, D1T,
@@ -342,10 +334,10 @@ impl GtoCConstraint {
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:43 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
     pub fn new_xy_d12_xyz(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        nP: &crate::ffi::gp_XYZ,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        nP: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_xyz(
@@ -356,11 +348,11 @@ impl GtoCConstraint {
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:48 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
     pub fn new_xy_d12_d22(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22(
@@ -371,12 +363,12 @@ impl GtoCConstraint {
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:54 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
     pub fn new_xy_d12_d22_xyz(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
-        nP: &crate::ffi::gp_XYZ,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
+        nP: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_xyz(
@@ -387,13 +379,13 @@ impl GtoCConstraint {
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:61 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
     pub fn new_xy_d12_d22_d32(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
-        D3S: &crate::ffi::Plate_D3,
-        D3T: &crate::ffi::Plate_D3,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
+        D3S: &D3,
+        D3T: &D3,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_d32(
@@ -404,14 +396,14 @@ impl GtoCConstraint {
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:69 - `Plate_GtoCConstraint::Plate_GtoCConstraint()`
     pub fn new_xy_d12_d22_d32_xyz(
-        point2d: &crate::ffi::gp_XY,
-        D1S: &crate::ffi::Plate_D1,
-        D1T: &crate::ffi::Plate_D1,
-        D2S: &crate::ffi::Plate_D2,
-        D2T: &crate::ffi::Plate_D2,
-        D3S: &crate::ffi::Plate_D3,
-        D3T: &crate::ffi::Plate_D3,
-        nP: &crate::ffi::gp_XYZ,
+        point2d: &crate::gp::XY,
+        D1S: &D1,
+        D1T: &D1,
+        D2S: &D2,
+        D2T: &D2,
+        D3S: &D3,
+        D3T: &D3,
+        nP: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_d32_xyz(
@@ -421,12 +413,12 @@ impl GtoCConstraint {
     }
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:80 - `Plate_GtoCConstraint::GetPPC()`
-    pub fn get_ppc(&self, Index: i32) -> &crate::ffi::Plate_PinpointConstraint {
+    pub fn get_ppc(&self, Index: i32) -> &PinpointConstraint {
         unsafe { &*(crate::ffi::Plate_GtoCConstraint_get_ppc(self as *const Self, Index)) }
     }
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:82 - `Plate_GtoCConstraint::D1SurfInit()`
-    pub fn d1_surf_init(&self) -> &crate::ffi::Plate_D1 {
+    pub fn d1_surf_init(&self) -> &D1 {
         unsafe { &*(crate::ffi::Plate_GtoCConstraint_d1_surf_init(self as *const Self)) }
     }
 }
@@ -556,8 +548,8 @@ unsafe impl crate::CppDeletable for LineConstraint {
 impl LineConstraint {
     /// **Source:** `Plate_LineConstraint.hxx`:34 - `Plate_LineConstraint::Plate_LineConstraint()`
     pub fn new_xy_lin_int2(
-        point2d: &crate::ffi::gp_XY,
-        lin: &crate::ffi::gp_Lin,
+        point2d: &crate::gp::XY,
+        lin: &crate::gp::Lin,
         iu: i32,
         iv: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -570,23 +562,20 @@ impl LineConstraint {
 
     /// **Source:** `Plate_LineConstraint.hxx`:34 - `Plate_LineConstraint::Plate_LineConstraint()`
     pub fn new_xy_lin_int(
-        point2d: &crate::ffi::gp_XY,
-        lin: &crate::ffi::gp_Lin,
+        point2d: &crate::gp::XY,
+        lin: &crate::gp::Lin,
         iu: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_lin_int2(point2d, lin, iu, 0)
     }
 
     /// **Source:** `Plate_LineConstraint.hxx`:34 - `Plate_LineConstraint::Plate_LineConstraint()`
-    pub fn new_xy_lin(
-        point2d: &crate::ffi::gp_XY,
-        lin: &crate::ffi::gp_Lin,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_xy_lin(point2d: &crate::gp::XY, lin: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         Self::new_xy_lin_int2(point2d, lin, 0, 0)
     }
 
     /// **Source:** `Plate_LineConstraint.hxx`:39 - `Plate_LineConstraint::LSC()`
-    pub fn lsc(&self) -> &crate::ffi::Plate_LinearScalarConstraint {
+    pub fn lsc(&self) -> &LinearScalarConstraint {
         unsafe { &*(crate::ffi::Plate_LineConstraint_lsc(self as *const Self)) }
     }
 }
@@ -614,8 +603,8 @@ impl LinearScalarConstraint {
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:42 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
     pub fn new_pinpointconstraint_xyz(
-        thePPC1: &crate::ffi::Plate_PinpointConstraint,
-        theCoeff: &crate::ffi::gp_XYZ,
+        thePPC1: &PinpointConstraint,
+        theCoeff: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -669,7 +658,7 @@ impl LinearScalarConstraint {
     /// Sets   the PinPointConstraint of   index Index to
     /// Value raise if Index is greater than the length of
     /// PPC or the Row length of coeff or lower  than 1
-    pub fn set_ppc(&mut self, Index: i32, Value: &crate::ffi::Plate_PinpointConstraint) {
+    pub fn set_ppc(&mut self, Index: i32, Value: &PinpointConstraint) {
         unsafe { crate::ffi::Plate_LinearScalarConstraint_set_ppc(self as *mut Self, Index, Value) }
     }
 
@@ -677,7 +666,7 @@ impl LinearScalarConstraint {
     /// Sets the coeff  of index (Row,Col)  to Value
     /// raise if  Row (respectively Col)  is greater than the
     /// Row (respectively Column) length of coeff
-    pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: &crate::ffi::gp_XYZ) {
+    pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: &crate::gp::XYZ) {
         unsafe {
             crate::ffi::Plate_LinearScalarConstraint_set_coeff(self as *mut Self, Row, Col, Value)
         }
@@ -757,7 +746,7 @@ impl LinearXYZConstraint {
     /// Sets   the PinPointConstraint of   index Index to
     /// Value raise if Index is greater than the length of
     /// PPC or the Row length of coeff or lower  than 1
-    pub fn set_ppc(&mut self, Index: i32, Value: &crate::ffi::Plate_PinpointConstraint) {
+    pub fn set_ppc(&mut self, Index: i32, Value: &PinpointConstraint) {
         unsafe { crate::ffi::Plate_LinearXYZConstraint_set_ppc(self as *mut Self, Index, Value) }
     }
 
@@ -794,8 +783,8 @@ impl PinpointConstraint {
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:35 - `Plate_PinpointConstraint::Plate_PinpointConstraint()`
     pub fn new_xy_xyz_int2(
-        point2d: &crate::ffi::gp_XY,
-        ImposedValue: &crate::ffi::gp_XYZ,
+        point2d: &crate::gp::XY,
+        ImposedValue: &crate::gp::XYZ,
         iu: i32,
         iv: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -811,8 +800,8 @@ impl PinpointConstraint {
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:35 - `Plate_PinpointConstraint::Plate_PinpointConstraint()`
     pub fn new_xy_xyz_int(
-        point2d: &crate::ffi::gp_XY,
-        ImposedValue: &crate::ffi::gp_XYZ,
+        point2d: &crate::gp::XY,
+        ImposedValue: &crate::gp::XYZ,
         iu: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_xyz_int2(point2d, ImposedValue, iu, 0)
@@ -820,19 +809,19 @@ impl PinpointConstraint {
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:35 - `Plate_PinpointConstraint::Plate_PinpointConstraint()`
     pub fn new_xy_xyz(
-        point2d: &crate::ffi::gp_XY,
-        ImposedValue: &crate::ffi::gp_XYZ,
+        point2d: &crate::gp::XY,
+        ImposedValue: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_xyz_int2(point2d, ImposedValue, 0, 0)
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:40 - `Plate_PinpointConstraint::Pnt2d()`
-    pub fn pnt2d(&self) -> &crate::ffi::gp_XY {
+    pub fn pnt2d(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::Plate_PinpointConstraint_pnt2d(self as *const Self)) }
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:46 - `Plate_PinpointConstraint::Value()`
-    pub fn value(&self) -> &crate::ffi::gp_XYZ {
+    pub fn value(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Plate_PinpointConstraint_value(self as *const Self)) }
     }
 }
@@ -854,8 +843,8 @@ unsafe impl crate::CppDeletable for PlaneConstraint {
 impl PlaneConstraint {
     /// **Source:** `Plate_PlaneConstraint.hxx`:34 - `Plate_PlaneConstraint::Plate_PlaneConstraint()`
     pub fn new_xy_pln_int2(
-        point2d: &crate::ffi::gp_XY,
-        pln: &crate::ffi::gp_Pln,
+        point2d: &crate::gp::XY,
+        pln: &crate::gp::Pln,
         iu: i32,
         iv: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -868,23 +857,20 @@ impl PlaneConstraint {
 
     /// **Source:** `Plate_PlaneConstraint.hxx`:34 - `Plate_PlaneConstraint::Plate_PlaneConstraint()`
     pub fn new_xy_pln_int(
-        point2d: &crate::ffi::gp_XY,
-        pln: &crate::ffi::gp_Pln,
+        point2d: &crate::gp::XY,
+        pln: &crate::gp::Pln,
         iu: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_xy_pln_int2(point2d, pln, iu, 0)
     }
 
     /// **Source:** `Plate_PlaneConstraint.hxx`:34 - `Plate_PlaneConstraint::Plate_PlaneConstraint()`
-    pub fn new_xy_pln(
-        point2d: &crate::ffi::gp_XY,
-        pln: &crate::ffi::gp_Pln,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_xy_pln(point2d: &crate::gp::XY, pln: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         Self::new_xy_pln_int2(point2d, pln, 0, 0)
     }
 
     /// **Source:** `Plate_PlaneConstraint.hxx`:39 - `Plate_PlaneConstraint::LSC()`
-    pub fn lsc(&self) -> &crate::ffi::Plate_LinearScalarConstraint {
+    pub fn lsc(&self) -> &LinearScalarConstraint {
         unsafe { &*(crate::ffi::Plate_PlaneConstraint_lsc(self as *const Self)) }
     }
 }
@@ -912,65 +898,56 @@ impl Plate {
     }
 
     /// **Source:** `Plate_Plate.hxx`:55 - `Plate_Plate::Plate_Plate()`
-    pub fn new_plate(Ref: &crate::ffi::Plate_Plate) -> crate::OwnedPtr<Self> {
+    pub fn new_plate(Ref: &Plate) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_ctor_plate(Ref)) }
     }
 
     /// **Source:** `Plate_Plate.hxx`:61 - `Plate_Plate::Load()`
-    pub fn load_pinpointconstraint(&mut self, PConst: &crate::ffi::Plate_PinpointConstraint) {
+    pub fn load_pinpointconstraint(&mut self, PConst: &PinpointConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst) }
     }
 
     /// **Source:** `Plate_Plate.hxx`:63 - `Plate_Plate::Load()`
-    pub fn load_linearxyzconstraint(&mut self, LXYZConst: &crate::ffi::Plate_LinearXYZConstraint) {
+    pub fn load_linearxyzconstraint(&mut self, LXYZConst: &LinearXYZConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_linearxyzconstraint(self as *mut Self, LXYZConst) }
     }
 
     /// **Source:** `Plate_Plate.hxx`:65 - `Plate_Plate::Load()`
-    pub fn load_linearscalarconstraint(
-        &mut self,
-        LScalarConst: &crate::ffi::Plate_LinearScalarConstraint,
-    ) {
+    pub fn load_linearscalarconstraint(&mut self, LScalarConst: &LinearScalarConstraint) {
         unsafe {
             crate::ffi::Plate_Plate_load_linearscalarconstraint(self as *mut Self, LScalarConst)
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:67 - `Plate_Plate::Load()`
-    pub fn load_globaltranslationconstraint(
-        &mut self,
-        GTConst: &crate::ffi::Plate_GlobalTranslationConstraint,
-    ) {
+    pub fn load_globaltranslationconstraint(&mut self, GTConst: &GlobalTranslationConstraint) {
         unsafe {
             crate::ffi::Plate_Plate_load_globaltranslationconstraint(self as *mut Self, GTConst)
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:69 - `Plate_Plate::Load()`
-    pub fn load_lineconstraint(&mut self, LConst: &crate::ffi::Plate_LineConstraint) {
+    pub fn load_lineconstraint(&mut self, LConst: &LineConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_lineconstraint(self as *mut Self, LConst) }
     }
 
     /// **Source:** `Plate_Plate.hxx`:71 - `Plate_Plate::Load()`
-    pub fn load_planeconstraint(&mut self, PConst: &crate::ffi::Plate_PlaneConstraint) {
+    pub fn load_planeconstraint(&mut self, PConst: &PlaneConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_planeconstraint(self as *mut Self, PConst) }
     }
 
     /// **Source:** `Plate_Plate.hxx`:73 - `Plate_Plate::Load()`
-    pub fn load_sampledcurveconstraint(
-        &mut self,
-        SCConst: &crate::ffi::Plate_SampledCurveConstraint,
-    ) {
+    pub fn load_sampledcurveconstraint(&mut self, SCConst: &SampledCurveConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_sampledcurveconstraint(self as *mut Self, SCConst) }
     }
 
     /// **Source:** `Plate_Plate.hxx`:75 - `Plate_Plate::Load()`
-    pub fn load_gtocconstraint(&mut self, GtoCConst: &crate::ffi::Plate_GtoCConstraint) {
+    pub fn load_gtocconstraint(&mut self, GtoCConst: &GtoCConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_gtocconstraint(self as *mut Self, GtoCConst) }
     }
 
     /// **Source:** `Plate_Plate.hxx`:77 - `Plate_Plate::Load()`
-    pub fn load_freegtocconstraint(&mut self, FGtoCConst: &crate::ffi::Plate_FreeGtoCConstraint) {
+    pub fn load_freegtocconstraint(&mut self, FGtoCConst: &FreeGtoCConstraint) {
         unsafe { crate::ffi::Plate_Plate_load_freegtocconstraint(self as *mut Self, FGtoCConst) }
     }
 
@@ -979,7 +956,7 @@ impl Plate {
         &mut self,
         ord: i32,
         anisotropie: f64,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::Plate_Plate_solve_ti(self as *mut Self, ord, anisotropie, theProgress)
@@ -1005,7 +982,7 @@ impl Plate {
     }
 
     /// **Source:** `Plate_Plate.hxx`:94 - `Plate_Plate::Evaluate()`
-    pub fn evaluate(&self, point2d: &crate::ffi::gp_XY) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    pub fn evaluate(&self, point2d: &crate::gp::XY) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_evaluate(
                 self as *const Self,
@@ -1017,10 +994,10 @@ impl Plate {
     /// **Source:** `Plate_Plate.hxx`:96 - `Plate_Plate::EvaluateDerivative()`
     pub fn evaluate_derivative(
         &self,
-        point2d: &crate::ffi::gp_XY,
+        point2d: &crate::gp::XY,
         iu: i32,
         iv: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    ) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_Plate_evaluate_derivative(
                 self as *const Self,
@@ -1087,7 +1064,7 @@ impl SampledCurveConstraint {
     }
 
     /// **Source:** `Plate_SampledCurveConstraint.hxx`:36 - `Plate_SampledCurveConstraint::LXYZC()`
-    pub fn lxyzc(&self) -> &crate::ffi::Plate_LinearXYZConstraint {
+    pub fn lxyzc(&self) -> &LinearXYZConstraint {
         unsafe { &*(crate::ffi::Plate_SampledCurveConstraint_lxyzc(self as *const Self)) }
     }
 }

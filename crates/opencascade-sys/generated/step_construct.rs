@@ -89,7 +89,7 @@ impl ContextTool {
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:56 - `STEPConstruct_ContextTool::SetGlobalFactor()`
-    pub fn set_global_factor(&mut self, theGlobalFactor: &crate::ffi::StepData_Factors) {
+    pub fn set_global_factor(&mut self, theGlobalFactor: &crate::step_data::Factors) {
         unsafe {
             crate::ffi::STEPConstruct_ContextTool_set_global_factor(
                 self as *mut Self,
@@ -179,7 +179,7 @@ impl ContextTool {
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:91 - `STEPConstruct_ContextTool::AP203Context()`
     /// Returns tool which maintains context specific for AP203
-    pub fn ap203_context(&mut self) -> &mut crate::ffi::STEPConstruct_AP203Context {
+    pub fn ap203_context(&mut self) -> &mut AP203Context {
         unsafe { &mut *(crate::ffi::STEPConstruct_ContextTool_ap203_context(self as *mut Self)) }
     }
 
@@ -279,7 +279,7 @@ impl Tool {
 
     /// **Source:** `STEPConstruct_Tool.hxx`:59 - `STEPConstruct_Tool::Graph()`
     /// Returns current graph (recomputing if necessary)
-    pub fn graph(&self, recompute: bool) -> &crate::ffi::Interface_Graph {
+    pub fn graph(&self, recompute: bool) -> &crate::interface::Graph {
         unsafe { &*(crate::ffi::STEPConstruct_Tool_graph(self as *const Self, recompute)) }
     }
 }

@@ -46,8 +46,8 @@ impl BREntity {
     /// If  the transfer has  failed, this member return a NullEntity.
     pub fn transfer_shape(
         &mut self,
-        start: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BREntity_transfer_shape(
@@ -60,7 +60,7 @@ impl BREntity {
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:69 - `BRepToIGES_BREntity::AddFail()`
     /// Records a new Fail message
-    pub fn add_fail(&mut self, start: &crate::ffi::TopoDS_Shape, amess: &str) {
+    pub fn add_fail(&mut self, start: &crate::topo_ds::Shape, amess: &str) {
         let c_amess = std::ffi::CString::new(amess).unwrap();
         unsafe {
             crate::ffi::BRepToIGES_BREntity_add_fail(self as *mut Self, start, c_amess.as_ptr())
@@ -69,7 +69,7 @@ impl BREntity {
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:72 - `BRepToIGES_BREntity::AddWarning()`
     /// Records a new Warning message
-    pub fn add_warning(&mut self, start: &crate::ffi::TopoDS_Shape, amess: &str) {
+    pub fn add_warning(&mut self, start: &crate::topo_ds::Shape, amess: &str) {
         let c_amess = std::ffi::CString::new(amess).unwrap();
         unsafe {
             crate::ffi::BRepToIGES_BREntity_add_warning(self as *mut Self, start, c_amess.as_ptr())
@@ -79,7 +79,7 @@ impl BREntity {
     /// **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
     /// Returns True if start was already treated and has a result in "TheMap"
     /// else returns False.
-    pub fn has_shape_result(&self, start: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepToIGES_BREntity_has_shape_result(self as *const Self, start) }
     }
 
@@ -123,7 +123,7 @@ impl BRShell {
     }
 
     /// **Source:** `BRepToIGES_BRShell.hxx`:44 - `BRepToIGES_BRShell::BRepToIGES_BRShell()`
-    pub fn new_brentity(BR: &crate::ffi::BRepToIGES_BREntity) -> crate::OwnedPtr<Self> {
+    pub fn new_brentity(BR: &BREntity) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRShell_ctor_brentity(BR)) }
     }
 
@@ -133,8 +133,8 @@ impl BRShell {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_shell_shape_progressrange(
         &mut self,
-        start: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -152,8 +152,8 @@ impl BRShell {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_shell_shell_progressrange(
         &mut self,
-        start: &crate::ffi::TopoDS_Shell,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Shell,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -171,8 +171,8 @@ impl BRShell {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_face(
         &mut self,
-        start: &crate::ffi::TopoDS_Face,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Face,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRShell_transfer_face(
@@ -208,8 +208,8 @@ impl BRShell {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:64 - `BRepToIGES_BREntity::TransferShape()`
     pub fn transfer_shape(
         &mut self,
-        start: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRShell_inherited_TransferShape(
@@ -221,7 +221,7 @@ impl BRShell {
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepToIGES_BRShell_inherited_HasShapeResult(self as *const Self, start)
         }
@@ -265,7 +265,7 @@ impl BRSolid {
     }
 
     /// **Source:** `BRepToIGES_BRSolid.hxx`:43 - `BRepToIGES_BRSolid::BRepToIGES_BRSolid()`
-    pub fn new_brentity(BR: &crate::ffi::BRepToIGES_BREntity) -> crate::OwnedPtr<Self> {
+    pub fn new_brentity(BR: &BREntity) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRSolid_ctor_brentity(BR)) }
     }
 
@@ -275,8 +275,8 @@ impl BRSolid {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_solid_shape_progressrange(
         &mut self,
-        start: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -294,8 +294,8 @@ impl BRSolid {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_solid_solid_progressrange(
         &mut self,
-        start: &crate::ffi::TopoDS_Solid,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Solid,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -313,8 +313,8 @@ impl BRSolid {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_comp_solid(
         &mut self,
-        start: &crate::ffi::TopoDS_CompSolid,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::CompSolid,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRSolid_transfer_comp_solid(
@@ -330,8 +330,8 @@ impl BRSolid {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_compound(
         &mut self,
-        start: &crate::ffi::TopoDS_Compound,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Compound,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRSolid_transfer_compound(
@@ -367,8 +367,8 @@ impl BRSolid {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:64 - `BRepToIGES_BREntity::TransferShape()`
     pub fn transfer_shape(
         &mut self,
-        start: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRSolid_inherited_TransferShape(
@@ -380,7 +380,7 @@ impl BRSolid {
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepToIGES_BRSolid_inherited_HasShapeResult(self as *const Self, start)
         }
@@ -424,7 +424,7 @@ impl BRWire {
     }
 
     /// **Source:** `BRepToIGES_BRWire.hxx`:49 - `BRepToIGES_BRWire::BRepToIGES_BRWire()`
-    pub fn new_brentity(BR: &crate::ffi::BRepToIGES_BREntity) -> crate::OwnedPtr<Self> {
+    pub fn new_brentity(BR: &BREntity) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRWire_ctor_brentity(BR)) }
     }
 
@@ -435,7 +435,7 @@ impl BRWire {
     /// this member returns a NullEntity.
     pub fn transfer_wire_shape(
         &mut self,
-        start: &crate::ffi::TopoDS_Shape,
+        start: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRWire_transfer_wire_shape(
@@ -451,7 +451,7 @@ impl BRWire {
     /// this member returns a NullEntity.
     pub fn transfer_vertex_vertex(
         &mut self,
-        myvertex: &crate::ffi::TopoDS_Vertex,
+        myvertex: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRWire_transfer_vertex_vertex(
@@ -468,8 +468,8 @@ impl BRWire {
     /// this member returns a NullEntity.
     pub fn transfer_vertex_vertex_edge_real(
         &mut self,
-        myvertex: &crate::ffi::TopoDS_Vertex,
-        myedge: &crate::ffi::TopoDS_Edge,
+        myvertex: &crate::topo_ds::Vertex,
+        myedge: &crate::topo_ds::Edge,
         parameter: &mut f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
@@ -493,9 +493,9 @@ impl BRWire {
     /// this member returns a NullEntity.
     pub fn transfer_vertex_vertex_edge_face_real(
         &mut self,
-        myvertex: &crate::ffi::TopoDS_Vertex,
-        myedge: &crate::ffi::TopoDS_Edge,
-        myface: &crate::ffi::TopoDS_Face,
+        myvertex: &crate::topo_ds::Vertex,
+        myedge: &crate::topo_ds::Edge,
+        myface: &crate::topo_ds::Face,
         parameter: &mut f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
@@ -520,10 +520,10 @@ impl BRWire {
     /// this member returns a NullEntity.
     pub fn transfer_vertex_vertex_edge_handlegeomsurface_location_real(
         &mut self,
-        myvertex: &crate::ffi::TopoDS_Vertex,
-        myedge: &crate::ffi::TopoDS_Edge,
+        myvertex: &crate::topo_ds::Vertex,
+        myedge: &crate::topo_ds::Edge,
         mysurface: &crate::ffi::HandleGeomSurface,
-        myloc: &crate::ffi::TopLoc_Location,
+        myloc: &crate::top_loc::Location,
         parameter: &mut f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
@@ -538,9 +538,9 @@ impl BRWire {
     /// this member returns a NullEntity.
     pub fn transfer_vertex_vertex_face_pnt2d(
         &mut self,
-        myvertex: &crate::ffi::TopoDS_Vertex,
-        myface: &crate::ffi::TopoDS_Face,
-        mypoint: &mut crate::ffi::gp_Pnt2d,
+        myvertex: &crate::topo_ds::Vertex,
+        myface: &crate::topo_ds::Face,
+        mypoint: &mut crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -564,7 +564,7 @@ impl BRWire {
     /// @return Iges entity or null if could not be converted
     pub fn transfer_edge_edge_datamapofshapeshape_bool(
         &mut self,
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
         theOriginMap: &crate::ffi::TopTools_DataMapOfShapeShape,
         theIsBRepMode: bool,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
@@ -591,8 +591,8 @@ impl BRWire {
     /// @return Iges entity or null if could not be converted
     pub fn transfer_edge_edge_face_datamapofshapeshape_real_bool(
         &mut self,
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
+        theEdge: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
         theOriginMap: &crate::ffi::TopTools_DataMapOfShapeShape,
         theLength: f64,
         theIsBRepMode: bool,
@@ -617,7 +617,7 @@ impl BRWire {
     /// this member returns a NullEntity.
     pub fn transfer_wire_wire(
         &mut self,
-        mywire: &crate::ffi::TopoDS_Wire,
+        mywire: &crate::topo_ds::Wire,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRWire_transfer_wire_wire(
@@ -639,8 +639,8 @@ impl BRWire {
     /// or null if could not be converted
     pub fn transfer_wire_wire_face_datamapofshapeshape_handleigesdataigesentity_real(
         &mut self,
-        theWire: &crate::ffi::TopoDS_Wire,
-        theFace: &crate::ffi::TopoDS_Face,
+        theWire: &crate::topo_ds::Wire,
+        theFace: &crate::topo_ds::Face,
         theOriginMap: &crate::ffi::TopTools_DataMapOfShapeShape,
         theCurve2d: &mut crate::ffi::HandleIGESDataIGESEntity,
         theLength: f64,
@@ -675,8 +675,8 @@ impl BRWire {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:64 - `BRepToIGES_BREntity::TransferShape()`
     pub fn transfer_shape(
         &mut self,
-        start: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRWire_inherited_TransferShape(
@@ -688,7 +688,7 @@ impl BRWire {
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepToIGES_BRWire_inherited_HasShapeResult(self as *const Self, start)
         }

@@ -51,8 +51,8 @@ impl AlgoTools {
     /// - 0 - no error, meaning that the vertex intersects the point;
     /// - 1 - the distance between vertex and point is grater than the sum of tolerances.
     pub fn compute_vv_vertex_pnt_real(
-        theV: &crate::ffi::TopoDS_Vertex,
-        theP: &crate::ffi::gp_Pnt,
+        theV: &crate::topo_ds::Vertex,
+        theP: &crate::gp::Pnt,
         theTolP: f64,
     ) -> i32 {
         unsafe { crate::ffi::BOPTools_AlgoTools_compute_vv_vertex_pnt_real(theV, theP, theTolP) }
@@ -64,8 +64,8 @@ impl AlgoTools {
     /// - 0 - no error, meaning that the vertices interferes with given tolerance;
     /// - 1 - the distance between vertices is grater than the sum of their tolerances.
     pub fn compute_vv_vertex2_real(
-        theV1: &crate::ffi::TopoDS_Vertex,
-        theV2: &crate::ffi::TopoDS_Vertex,
+        theV1: &crate::topo_ds::Vertex,
+        theV2: &crate::topo_ds::Vertex,
         theFuzz: f64,
     ) -> i32 {
         unsafe { crate::ffi::BOPTools_AlgoTools_compute_vv_vertex2_real(theV1, theV2, theFuzz) }
@@ -77,7 +77,7 @@ impl AlgoTools {
     /// the tolerance covering all tolerance spheres of vertices.
     pub fn make_vertex(
         theLV: &crate::ffi::TopTools_ListOfShape,
-        theV: &mut crate::ffi::TopoDS_Vertex,
+        theV: &mut crate::topo_ds::Vertex,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools_make_vertex(theLV, theV) }
     }
@@ -85,9 +85,9 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx`:95 - `BOPTools_AlgoTools::MakeNewVertex()`
     /// Make a vertex using 3D-point <aP1> and 3D-tolerance value <aTol>
     pub fn make_new_vertex_pnt_real_vertex(
-        aP1: &crate::ffi::gp_Pnt,
+        aP1: &crate::gp::Pnt,
         aTol: f64,
-        aNewVertex: &mut crate::ffi::TopoDS_Vertex,
+        aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
         unsafe {
             crate::ffi::BOPTools_AlgoTools_make_new_vertex_pnt_real_vertex(aP1, aTol, aNewVertex)
@@ -97,9 +97,9 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx`:100 - `BOPTools_AlgoTools::MakeNewVertex()`
     /// Make a vertex using couple of vertices  <aV1, aV2>
     pub fn make_new_vertex_vertex3(
-        aV1: &crate::ffi::TopoDS_Vertex,
-        aV2: &crate::ffi::TopoDS_Vertex,
-        aNewVertex: &mut crate::ffi::TopoDS_Vertex,
+        aV1: &crate::topo_ds::Vertex,
+        aV2: &crate::topo_ds::Vertex,
+        aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools_make_new_vertex_vertex3(aV1, aV2, aNewVertex) }
     }
@@ -108,11 +108,11 @@ impl AlgoTools {
     /// Make a vertex in place of intersection between two edges
     /// <aE1, aE2> with parameters <aP1, aP2>
     pub fn make_new_vertex_edge_real_edge_real_vertex(
-        aE1: &crate::ffi::TopoDS_Edge,
+        aE1: &crate::topo_ds::Edge,
         aP1: f64,
-        aE2: &crate::ffi::TopoDS_Edge,
+        aE2: &crate::topo_ds::Edge,
         aP2: f64,
-        aNewVertex: &mut crate::ffi::TopoDS_Vertex,
+        aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
         unsafe {
             crate::ffi::BOPTools_AlgoTools_make_new_vertex_edge_real_edge_real_vertex(
@@ -125,10 +125,10 @@ impl AlgoTools {
     /// Make a vertex in place of intersection between the edge <aE1>
     /// with parameter <aP1> and the face <aF2>
     pub fn make_new_vertex_edge_real_face_vertex(
-        aE1: &crate::ffi::TopoDS_Edge,
+        aE1: &crate::topo_ds::Edge,
         aP1: f64,
-        aF2: &crate::ffi::TopoDS_Face,
-        aNewVertex: &mut crate::ffi::TopoDS_Vertex,
+        aF2: &crate::topo_ds::Face,
+        aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
         unsafe {
             crate::ffi::BOPTools_AlgoTools_make_new_vertex_edge_real_face_vertex(
@@ -143,9 +143,9 @@ impl AlgoTools {
     /// taking into account the fact that <aV> lays on
     /// the curve <aIC>
     pub fn update_vertex_curve_real_vertex(
-        aIC: &crate::ffi::IntTools_Curve,
+        aIC: &crate::int_tools::Curve,
         aT: f64,
-        aV: &crate::ffi::TopoDS_Vertex,
+        aV: &crate::topo_ds::Vertex,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_curve_real_vertex(aIC, aT, aV) }
     }
@@ -155,9 +155,9 @@ impl AlgoTools {
     /// taking into account the fact that <aV> lays on
     /// the edge <aE>
     pub fn update_vertex_edge_real_vertex(
-        aE: &crate::ffi::TopoDS_Edge,
+        aE: &crate::topo_ds::Edge,
         aT: f64,
-        aV: &crate::ffi::TopoDS_Vertex,
+        aV: &crate::topo_ds::Vertex,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_edge_real_vertex(aE, aT, aV) }
     }
@@ -166,7 +166,7 @@ impl AlgoTools {
     /// Update the tolerance value for vertex  <aVN>
     /// taking into account the fact that <aVN> should
     /// cover tolerance zone of <aVF>
-    pub fn update_vertex_vertex2(aVF: &crate::ffi::TopoDS_Vertex, aVN: &crate::ffi::TopoDS_Vertex) {
+    pub fn update_vertex_vertex2(aVF: &crate::topo_ds::Vertex, aVN: &crate::topo_ds::Vertex) {
         unsafe { crate::ffi::BOPTools_AlgoTools_update_vertex_vertex2(aVF, aVN) }
     }
 
@@ -174,13 +174,13 @@ impl AlgoTools {
     /// @name Edge construction
     /// Makes the edge based on the given curve with given bounding vertices.
     pub fn make_edge(
-        theCurve: &crate::ffi::IntTools_Curve,
-        theV1: &crate::ffi::TopoDS_Vertex,
+        theCurve: &crate::int_tools::Curve,
+        theV1: &crate::topo_ds::Vertex,
         theT1: f64,
-        theV2: &crate::ffi::TopoDS_Vertex,
+        theV2: &crate::topo_ds::Vertex,
         theT2: f64,
         theTolR3D: f64,
-        theE: &mut crate::ffi::TopoDS_Edge,
+        theE: &mut crate::topo_ds::Edge,
     ) {
         unsafe {
             crate::ffi::BOPTools_AlgoTools_make_edge(
@@ -191,9 +191,7 @@ impl AlgoTools {
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:150 - `BOPTools_AlgoTools::CopyEdge()`
     /// Makes a copy of <theEdge> with vertices.
-    pub fn copy_edge(
-        theEdge: &crate::ffi::TopoDS_Edge,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    pub fn copy_edge(theEdge: &crate::topo_ds::Edge) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_AlgoTools_copy_edge(theEdge)) }
     }
 
@@ -201,12 +199,12 @@ impl AlgoTools {
     /// Make the edge from base edge <aE1> and two vertices <aV1,aV2>
     /// at parameters <aP1,aP2>
     pub fn make_split_edge(
-        aE1: &crate::ffi::TopoDS_Edge,
-        aV1: &crate::ffi::TopoDS_Vertex,
+        aE1: &crate::topo_ds::Edge,
+        aV1: &crate::topo_ds::Vertex,
         aP1: f64,
-        aV2: &crate::ffi::TopoDS_Vertex,
+        aV2: &crate::topo_ds::Vertex,
         aP2: f64,
-        aNewEdge: &mut crate::ffi::TopoDS_Edge,
+        aNewEdge: &mut crate::topo_ds::Edge,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools_make_split_edge(aE1, aV1, aP1, aV2, aP2, aNewEdge) }
     }
@@ -215,12 +213,12 @@ impl AlgoTools {
     /// Make the edge from 3D-Curve <aIC>  and two vertices <aV1,aV2>
     /// at parameters <aP1,aP2>
     pub fn make_sect_edge(
-        aIC: &crate::ffi::IntTools_Curve,
-        aV1: &crate::ffi::TopoDS_Vertex,
+        aIC: &crate::int_tools::Curve,
+        aV1: &crate::topo_ds::Vertex,
         aP1: f64,
-        aV2: &crate::ffi::TopoDS_Vertex,
+        aV2: &crate::topo_ds::Vertex,
         aP2: f64,
-        aNewEdge: &mut crate::ffi::TopoDS_Edge,
+        aNewEdge: &mut crate::topo_ds::Edge,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools_make_sect_edge(aIC, aV1, aP1, aV2, aP2, aNewEdge) }
     }
@@ -233,8 +231,8 @@ impl AlgoTools {
     /// theContext- cached geometrical tools
     /// Returns 3-D state.
     pub fn compute_state_pnt_solid_real_handleinttoolscontext(
-        thePoint: &crate::ffi::gp_Pnt,
-        theSolid: &crate::ffi::TopoDS_Solid,
+        thePoint: &crate::gp::Pnt,
+        theSolid: &crate::topo_ds::Solid,
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
@@ -255,8 +253,8 @@ impl AlgoTools {
     /// theContext- cached geometrical tools
     /// Returns 3-D state.
     pub fn compute_state_vertex_solid_real_handleinttoolscontext(
-        theVertex: &crate::ffi::TopoDS_Vertex,
-        theSolid: &crate::ffi::TopoDS_Solid,
+        theVertex: &crate::topo_ds::Vertex,
+        theSolid: &crate::topo_ds::Solid,
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
@@ -272,8 +270,8 @@ impl AlgoTools {
     /// theContext- cached geometrical tools
     /// Returns 3-D state.
     pub fn compute_state_edge_solid_real_handleinttoolscontext(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theSolid: &crate::ffi::TopoDS_Solid,
+        theEdge: &crate::topo_ds::Edge,
+        theSolid: &crate::topo_ds::Solid,
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
@@ -295,8 +293,8 @@ impl AlgoTools {
     /// theContext- cached geometrical tools
     /// Returns 3-D state.
     pub fn compute_state_face_solid_real_indexedmapofshape_handleinttoolscontext(
-        theFace: &crate::ffi::TopoDS_Face,
-        theSolid: &crate::ffi::TopoDS_Solid,
+        theFace: &crate::topo_ds::Face,
+        theSolid: &crate::topo_ds::Solid,
         theTol: f64,
         theBounds: &crate::ffi::TopTools_IndexedMapOfShape,
         theContext: &crate::ffi::HandleIntToolsContext,
@@ -313,8 +311,8 @@ impl AlgoTools {
     /// theContext- cached geometrical tools
     /// Returns 3-D state.
     pub fn compute_state_by_one_point(
-        theShape: &crate::ffi::TopoDS_Shape,
-        theSolid: &crate::ffi::TopoDS_Solid,
+        theShape: &crate::topo_ds::Shape,
+        theSolid: &crate::topo_ds::Solid,
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> crate::top_abs::State {
@@ -335,10 +333,10 @@ impl AlgoTools {
     /// theLCEF - set of faces to search. All faces
     /// from theLCEF must share edge theEdge
     pub fn get_face_off(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
+        theEdge: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
         theLCEF: &mut crate::ffi::BOPTools_ListOfCoupleOfShape,
-        theFaceOff: &mut crate::ffi::TopoDS_Face,
+        theFaceOff: &mut crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
         unsafe {
@@ -358,10 +356,10 @@ impl AlgoTools {
     /// * 1 state is IN
     /// * 2 state can not be found by the method of angles
     pub fn is_internal_face_face_edge_face2_handleinttoolscontext(
-        theFace: &crate::ffi::TopoDS_Face,
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace1: &crate::ffi::TopoDS_Face,
-        theFace2: &crate::ffi::TopoDS_Face,
+        theFace: &crate::topo_ds::Face,
+        theEdge: &crate::topo_ds::Edge,
+        theFace1: &crate::topo_ds::Face,
+        theFace2: &crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
         unsafe {
@@ -380,8 +378,8 @@ impl AlgoTools {
     /// * 1 state is IN
     /// * 2 state can not be found by the method of angles
     pub fn is_internal_face_face_edge_listofshape_handleinttoolscontext(
-        theFace: &crate::ffi::TopoDS_Face,
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::topo_ds::Face,
+        theEdge: &crate::topo_ds::Edge,
         theLF: &mut crate::ffi::TopTools_ListOfShape,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
@@ -397,8 +395,8 @@ impl AlgoTools {
     /// theTol - value of precision of computation
     /// theContext- cached geometrical tools
     pub fn is_internal_face_face_solid_indexeddatamapofshapelistofshape_real_handleinttoolscontext(
-        theFace: &crate::ffi::TopoDS_Face,
-        theSolid: &crate::ffi::TopoDS_Solid,
+        theFace: &crate::topo_ds::Face,
+        theSolid: &crate::topo_ds::Solid,
         theMEF: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
         theTol: f64,
         theContext: &crate::ffi::HandleIntToolsContext,
@@ -413,10 +411,10 @@ impl AlgoTools {
     /// Makes 2d curve of the edge <theE> on the faces <theF1> and <theF2>.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn make_p_curve(
-        theE: &crate::ffi::TopoDS_Edge,
-        theF1: &crate::ffi::TopoDS_Face,
-        theF2: &crate::ffi::TopoDS_Face,
-        theCurve: &crate::ffi::IntTools_Curve,
+        theE: &crate::topo_ds::Edge,
+        theF1: &crate::topo_ds::Face,
+        theF2: &crate::topo_ds::Face,
+        theCurve: &crate::int_tools::Curve,
         thePC1: bool,
         thePC2: bool,
         theContext: &crate::ffi::HandleIntToolsContext,
@@ -431,7 +429,7 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx`:289 - `BOPTools_AlgoTools::IsHole()`
     /// @name Wire classification relatively face
     /// Checks if the wire is a hole for the face.
-    pub fn is_hole(theW: &crate::ffi::TopoDS_Shape, theF: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_hole(theW: &crate::topo_ds::Shape, theF: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools_is_hole(theW, theF) }
     }
 
@@ -459,8 +457,8 @@ impl AlgoTools {
     /// @param[in] theContext  cached geometrical tools
     /// @param[out] theError  Error Status of the operation
     pub fn is_split_to_reverse_shape2_handleinttoolscontext_intptr(
-        theSplit: &crate::ffi::TopoDS_Shape,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theSplit: &crate::topo_ds::Shape,
+        theShape: &crate::topo_ds::Shape,
         theContext: &crate::ffi::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
@@ -496,8 +494,8 @@ impl AlgoTools {
     /// @param[in] theContext  cached geometrical tools
     /// @param[out] theError  Error Status of the operation
     pub fn is_split_to_reverse_face2_handleinttoolscontext_intptr(
-        theSplit: &crate::ffi::TopoDS_Face,
-        theShape: &crate::ffi::TopoDS_Face,
+        theSplit: &crate::topo_ds::Face,
+        theShape: &crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
@@ -533,8 +531,8 @@ impl AlgoTools {
     /// @param[in] theContext  cached geometrical tools
     /// @param[out] theError  Error Status of the operation
     pub fn is_split_to_reverse_edge2_handleinttoolscontext_intptr(
-        theSplit: &crate::ffi::TopoDS_Edge,
-        theShape: &crate::ffi::TopoDS_Edge,
+        theSplit: &crate::topo_ds::Edge,
+        theShape: &crate::topo_ds::Edge,
         theContext: &crate::ffi::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
@@ -556,8 +554,8 @@ impl AlgoTools {
     /// * 1 - normal directions coincide;
     /// * -1 - normal directions are opposite.
     pub fn sense(
-        theF1: &crate::ffi::TopoDS_Face,
-        theF2: &crate::ffi::TopoDS_Face,
+        theF1: &crate::topo_ds::Face,
+        theF2: &crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
         unsafe { crate::ffi::BOPTools_AlgoTools_sense(theF1, theF2, theContext) }
@@ -591,7 +589,7 @@ impl AlgoTools {
     /// of the type <theConnectionType>.
     /// The blocks are stored into the list <theLCB>.
     pub fn make_connexity_blocks_shape_shapeenum2_listofshape(
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
         theConnectionType: crate::top_abs::ShapeEnum,
         theElementType: crate::top_abs::ShapeEnum,
         theLCB: &mut crate::ffi::TopTools_ListOfShape,
@@ -613,7 +611,7 @@ impl AlgoTools {
     /// The blocks are stored into the list of lists <theLCB>.
     /// Returns also the connection map <theConnectionMap>, filled during operation.
     pub fn make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
         theConnectionType: crate::top_abs::ShapeEnum,
         theElementType: crate::top_abs::ShapeEnum,
         theLCB: &mut crate::ffi::TopTools_ListOfListOfShape,
@@ -642,13 +640,13 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx`:433 - `BOPTools_AlgoTools::OrientEdgesOnWire()`
     /// @name Orienting elements in container
     /// Correctly orients edges on the wire
-    pub fn orient_edges_on_wire(theWire: &mut crate::ffi::TopoDS_Shape) {
+    pub fn orient_edges_on_wire(theWire: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPTools_AlgoTools_orient_edges_on_wire(theWire) }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:436 - `BOPTools_AlgoTools::OrientFacesOnShell()`
     /// Correctly orients faces on the shell
-    pub fn orient_faces_on_shell(theShell: &mut crate::ffi::TopoDS_Shape) {
+    pub fn orient_faces_on_shell(theShell: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPTools_AlgoTools_orient_faces_on_shell(theShell) }
     }
 
@@ -660,7 +658,7 @@ impl AlgoTools {
     /// will be greater than  <aTolMax>, the correction does not
     /// perform.
     pub fn correct_tolerances(
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
         theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
         theTolMax: f64,
         theRunParallel: bool,
@@ -679,7 +677,7 @@ impl AlgoTools {
     /// Provides valid values of tolerances for the shape <theS>
     /// in  terms of BRepCheck_InvalidCurveOnSurface.
     pub fn correct_curve_on_surface(
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
         theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
         theTolMax: f64,
         theRunParallel: bool,
@@ -698,7 +696,7 @@ impl AlgoTools {
     /// Provides valid values of tolerances for the shape <theS>
     /// in  terms of BRepCheck_InvalidPointOnCurve.
     pub fn correct_point_on_curve(
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
         theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
         theTolMax: f64,
         theRunParallel: bool,
@@ -716,7 +714,7 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx`:467 - `BOPTools_AlgoTools::CorrectShapeTolerances()`
     /// Corrects tolerance values of the sub-shapes of the shape <theS> if needed.
     pub fn correct_shape_tolerances(
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
         theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
         theRunParallel: bool,
     ) {
@@ -733,8 +731,8 @@ impl AlgoTools {
     /// Checking if the faces are coinciding
     /// Checks if the given faces are same-domain, i.e. coincide.
     pub fn are_faces_same_domain(
-        theF1: &crate::ffi::TopoDS_Face,
-        theF2: &crate::ffi::TopoDS_Face,
+        theF1: &crate::topo_ds::Face,
+        theF2: &crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
         theFuzz: f64,
     ) -> bool {
@@ -750,9 +748,9 @@ impl AlgoTools {
     /// If the method  returns True theEdgeOff is the
     /// edge founded
     pub fn get_edge_off(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
-        theEdgeOff: &mut crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
+        theEdgeOff: &mut crate::topo_ds::Edge,
     ) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools_get_edge_off(theEdge, theFace, theEdgeOff) }
     }
@@ -763,9 +761,9 @@ impl AlgoTools {
     /// Returns True if such edge exists
     /// Returns False if there is no such edge
     pub fn get_edge_on_face(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
-        theEdgeOnF: &mut crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
+        theEdgeOnF: &mut crate::topo_ds::Edge,
     ) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools_get_edge_on_face(theEdge, theFace, theEdgeOnF) }
     }
@@ -775,10 +773,10 @@ impl AlgoTools {
     /// Correct shrunk range <aSR> taking into account 3D-curve
     /// resolution and corresponding tolerance values of <aE1>, <aE2>
     pub fn correct_range_edge2_range2(
-        aE1: &crate::ffi::TopoDS_Edge,
-        aE2: &crate::ffi::TopoDS_Edge,
-        aSR: &crate::ffi::IntTools_Range,
-        aNewSR: &mut crate::ffi::IntTools_Range,
+        aE1: &crate::topo_ds::Edge,
+        aE2: &crate::topo_ds::Edge,
+        aSR: &crate::int_tools::Range,
+        aNewSR: &mut crate::int_tools::Range,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools_correct_range_edge2_range2(aE1, aE2, aSR, aNewSR) }
     }
@@ -787,10 +785,10 @@ impl AlgoTools {
     /// Correct shrunk range <aSR> taking into account 3D-curve
     /// resolution and corresponding tolerance values of <aE>, <aF>
     pub fn correct_range_edge_face_range2(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
-        aSR: &crate::ffi::IntTools_Range,
-        aNewSR: &mut crate::ffi::IntTools_Range,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
+        aSR: &crate::int_tools::Range,
+        aNewSR: &mut crate::int_tools::Range,
     ) {
         unsafe {
             crate::ffi::BOPTools_AlgoTools_correct_range_edge_face_range2(aE, aF, aSR, aNewSR)
@@ -803,7 +801,7 @@ impl AlgoTools {
     /// Flag <theCheckSplittable> defines whether to take into account
     /// the possibility to split the edge or not.
     pub fn is_micro_edge(
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
         theContext: &crate::ffi::HandleIntToolsContext,
         theCheckSplittable: bool,
     ) -> bool {
@@ -815,7 +813,7 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx`:523 - `BOPTools_AlgoTools::IsInvertedSolid()`
     /// @name Solid classification
     /// Returns true if the solid <theSolid> is inverted
-    pub fn is_inverted_solid(theSolid: &crate::ffi::TopoDS_Solid) -> bool {
+    pub fn is_inverted_solid(theSolid: &crate::topo_ds::Solid) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools_is_inverted_solid(theSolid) }
     }
 
@@ -823,8 +821,8 @@ impl AlgoTools {
     /// @name Edge/Face Deviation computation
     /// Computes the necessary value of the tolerance for the edge
     pub fn compute_tolerance(
-        theFace: &crate::ffi::TopoDS_Face,
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::topo_ds::Face,
+        theEdge: &crate::topo_ds::Edge,
         theMaxDist: &mut f64,
         theMaxPar: &mut f64,
     ) -> bool {
@@ -840,14 +838,14 @@ impl AlgoTools {
     /// Makes empty container of requested type
     pub fn make_container(
         theType: crate::top_abs::ShapeEnum,
-        theShape: &mut crate::ffi::TopoDS_Shape,
+        theShape: &mut crate::topo_ds::Shape,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools_make_container(theType.into(), theShape) }
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:537 - `BOPTools_AlgoTools::PointOnEdge()`
     /// Compute a 3D-point on the edge <aEdge> at parameter <aPrm>
-    pub fn point_on_edge(aEdge: &crate::ffi::TopoDS_Edge, aPrm: f64, aP: &mut crate::ffi::gp_Pnt) {
+    pub fn point_on_edge(aEdge: &crate::topo_ds::Edge, aPrm: f64, aP: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::BOPTools_AlgoTools_point_on_edge(aEdge, aPrm, aP) }
     }
 
@@ -855,9 +853,9 @@ impl AlgoTools {
     /// Returns TRUE if PaveBlock <aPB> lays on the face <aF>, i.e
     /// the <PB> is IN or ON in 2D of <aF>
     pub fn is_block_in_on_face(
-        aShR: &crate::ffi::IntTools_Range,
-        aF: &crate::ffi::TopoDS_Face,
-        aE: &crate::ffi::TopoDS_Edge,
+        aShR: &crate::int_tools::Range,
+        aF: &crate::topo_ds::Face,
+        aE: &crate::topo_ds::Edge,
         aContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools_is_block_in_on_face(aShR, aF, aE, aContext) }
@@ -866,7 +864,7 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx`:555 - `BOPTools_AlgoTools::Dimension()`
     /// Returns dimension of the shape <theS>.
     /// If the shape contains elements of different dimension, -1 is returned.
-    pub fn dimension(theS: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn dimension(theS: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::BOPTools_AlgoTools_dimension(theS) }
     }
 
@@ -875,7 +873,7 @@ impl AlgoTools {
     /// of the given shape theS. The optional map theMap is used to avoid the duplicates in the
     /// output list, so it will also contain all non-compound sub-shapes.
     pub fn treat_compound(
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
         theList: &mut crate::ffi::TopTools_ListOfShape,
         theMap: Option<&mut crate::ffi::TopTools_MapOfShape>,
     ) {
@@ -890,7 +888,7 @@ impl AlgoTools {
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:565 - `BOPTools_AlgoTools::IsOpenShell()`
     /// Returns true if the  shell <theShell> is open
-    pub fn is_open_shell(theShell: &crate::ffi::TopoDS_Shell) -> bool {
+    pub fn is_open_shell(theShell: &crate::topo_ds::Shell) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools_is_open_shell(theShell) }
     }
 }
@@ -923,8 +921,8 @@ impl AlgoTools2D {
     /// Raises exception Standard_ConstructionError if projection algorithm fails.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn build_p_curve_for_edge_on_face(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
         unsafe {
@@ -934,11 +932,7 @@ impl AlgoTools2D {
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:50 - `BOPTools_AlgoTools2D::EdgeTangent()`
     /// Compute tangent for the edge  <aE> [in 3D]  at parameter <aT>
-    pub fn edge_tangent(
-        anE: &crate::ffi::TopoDS_Edge,
-        aT: f64,
-        Tau: &mut crate::ffi::gp_Vec,
-    ) -> bool {
+    pub fn edge_tangent(anE: &crate::topo_ds::Edge, aT: f64, Tau: &mut crate::gp::Vec) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools2D_edge_tangent(anE, aT, Tau) }
     }
 
@@ -950,8 +944,8 @@ impl AlgoTools2D {
     /// raise exception Standard_ConstructionError if projection algorithm fails.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn point_on_surface(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aT: f64,
         U: &mut f64,
         V: &mut f64,
@@ -967,8 +961,8 @@ impl AlgoTools2D {
     /// Raises exception Standard_ConstructionError if algorithm Make2D() fails.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn curve_on_surface_edge_face_handlegeom2dcurve_real_handleinttoolscontext(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aC: &mut crate::ffi::HandleGeom2dCurve,
         aToler: &mut f64,
         theContext: &crate::ffi::HandleIntToolsContext,
@@ -986,8 +980,8 @@ impl AlgoTools2D {
     /// Raises exception Standard_ConstructionError if algorithm Make2D() fails.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn curve_on_surface_edge_face_handlegeom2dcurve_real3_handleinttoolscontext(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aC: &mut crate::ffi::HandleGeom2dCurve,
         aFirst: &mut f64,
         aLast: &mut f64,
@@ -1006,8 +1000,8 @@ impl AlgoTools2D {
     /// [aToler] - reached tolerance
     /// If the P-Curve does not exist, aC.IsNull()=TRUE.
     pub fn has_curve_on_surface_edge_face_handlegeom2dcurve_real3(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aC: &mut crate::ffi::HandleGeom2dCurve,
         aFirst: &mut f64,
         aLast: &mut f64,
@@ -1025,8 +1019,8 @@ impl AlgoTools2D {
     /// on surface <aF> .
     /// If the P-Curve does not exist, aC.IsNull()=TRUE.
     pub fn has_curve_on_surface_edge_face(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
     ) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face(aE, aF) }
     }
@@ -1035,7 +1029,7 @@ impl AlgoTools2D {
     /// Adjust P-Curve <theC2D> (3D-curve <theC3D>) on surface of the face <theF>.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn adjust_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve2_handleinttoolscontext(
-        theF: &crate::ffi::TopoDS_Face,
+        theF: &crate::topo_ds::Face,
         theC3D: &crate::ffi::HandleGeomCurve,
         theC2D: &crate::ffi::HandleGeom2dCurve,
         theC2DA: &mut crate::ffi::HandleGeom2dCurve,
@@ -1051,7 +1045,7 @@ impl AlgoTools2D {
     /// [aT1,  aT2] - range to adjust<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn adjust_p_curve_on_face_face_real2_handlegeom2dcurve2_handleinttoolscontext(
-        theF: &crate::ffi::TopoDS_Face,
+        theF: &crate::topo_ds::Face,
         theFirst: f64,
         theLast: f64,
         theC2D: &crate::ffi::HandleGeom2dCurve,
@@ -1067,7 +1061,7 @@ impl AlgoTools2D {
     /// Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF> .
     /// [aT1,  aT2] - range to adjust
     pub fn adjust_p_curve_on_surf(
-        aF: &crate::ffi::BRepAdaptor_Surface,
+        aF: &crate::b_rep_adaptor::Surface,
         aT1: f64,
         aT2: f64,
         aC2D: &crate::ffi::HandleGeom2dCurve,
@@ -1086,7 +1080,7 @@ impl AlgoTools2D {
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:146 - `BOPTools_AlgoTools2D::IntermediatePoint()`
     /// Compute intermediate value of parameter for the edge <anE>.
-    pub fn intermediate_point_edge(anE: &crate::ffi::TopoDS_Edge) -> f64 {
+    pub fn intermediate_point_edge(anE: &crate::topo_ds::Edge) -> f64 {
         unsafe { crate::ffi::BOPTools_AlgoTools2D_intermediate_point_edge(anE) }
     }
 
@@ -1097,8 +1091,8 @@ impl AlgoTools2D {
     /// Raises exception Standard_ConstructionError if algorithm fails.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn make2_d(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aC: &mut crate::ffi::HandleGeom2dCurve,
         aFirst: &mut f64,
         aLast: &mut f64,
@@ -1116,7 +1110,7 @@ impl AlgoTools2D {
     /// Raises exception Standard_ConstructionError if projection algorithm fails.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn make_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve_real_handleinttoolscontext(
-        aF: &crate::ffi::TopoDS_Face,
+        aF: &crate::topo_ds::Face,
         C3D: &crate::ffi::HandleGeomCurve,
         aC: &mut crate::ffi::HandleGeom2dCurve,
         aToler: &mut f64,
@@ -1134,7 +1128,7 @@ impl AlgoTools2D {
     /// Raises exception Standard_ConstructionError if projection algorithm fails.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn make_p_curve_on_face_face_handlegeomcurve_real2_handlegeom2dcurve_real_handleinttoolscontext(
-        aF: &crate::ffi::TopoDS_Face,
+        aF: &crate::topo_ds::Face,
         C3D: &crate::ffi::HandleGeomCurve,
         aT1: f64,
         aT2: f64,
@@ -1152,9 +1146,9 @@ impl AlgoTools2D {
     /// to the edge <aEnew>
     /// Returns 0 in case of success
     pub fn attach_existing_p_curve(
-        aEold: &crate::ffi::TopoDS_Edge,
-        aEnew: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aEold: &crate::topo_ds::Edge,
+        aEnew: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aCtx: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
         unsafe { crate::ffi::BOPTools_AlgoTools2D_attach_existing_p_curve(aEold, aEnew, aF, aCtx) }
@@ -1173,8 +1167,8 @@ impl AlgoTools2D {
     /// (e.g. BRep_Tool::IsClosed(...) together) in order to avoid
     /// false classification some p-curves as isoline (e.g. circle on a plane).
     pub fn is_edge_isoline(
-        theE: &crate::ffi::TopoDS_Edge,
-        theF: &crate::ffi::TopoDS_Face,
+        theE: &crate::topo_ds::Edge,
+        theF: &crate::topo_ds::Face,
         isTheUIso: &mut bool,
         isTheVIso: &mut bool,
     ) {
@@ -1211,8 +1205,8 @@ impl AlgoTools3D {
     /// Makes the edge <theESplit> seam edge for the face <theFace> basing on the surface properties
     /// (U and V periods)
     pub fn do_split_seam_on_face_edge_face(
-        theESplit: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
+        theESplit: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
     ) -> bool {
         unsafe {
             crate::ffi::BOPTools_AlgoTools3D_do_split_seam_on_face_edge_face(theESplit, theFace)
@@ -1223,9 +1217,9 @@ impl AlgoTools3D {
     /// Makes the split edge <theESplit> seam edge for the face <theFace> basing on the positions
     /// of 2d curves of the original edge <theEOrigin>.
     pub fn do_split_seam_on_face_edge2_face(
-        theEOrigin: &crate::ffi::TopoDS_Edge,
-        theESplit: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
+        theEOrigin: &crate::topo_ds::Edge,
+        theESplit: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
     ) -> bool {
         unsafe {
             crate::ffi::BOPTools_AlgoTools3D_do_split_seam_on_face_edge2_face(
@@ -1239,10 +1233,10 @@ impl AlgoTools3D {
     /// at parameter <aT>.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn get_normal_to_face_on_edge_edge_face_real_dir_handleinttoolscontext(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aT: f64,
-        aD: &mut crate::ffi::gp_Dir,
+        aD: &mut crate::gp::Dir,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
         unsafe {
@@ -1255,9 +1249,9 @@ impl AlgoTools3D {
     /// at arbitrary intermediate parameter.<br>
     /// <theContext> - storage for caching the geometrical tools
     pub fn get_normal_to_face_on_edge_edge_face_dir_handleinttoolscontext(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
-        aD: &mut crate::ffi::gp_Dir,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
+        aD: &mut crate::gp::Dir,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
         unsafe {
@@ -1269,7 +1263,7 @@ impl AlgoTools3D {
     /// Returns 1  if scalar product aNF1* aNF2>0.<br>
     /// Returns 0  if directions aNF1 aNF2 coincide<br>
     /// Returns -1 if scalar product aNF1* aNF2<0.
-    pub fn sense_flag(aNF1: &crate::ffi::gp_Dir, aNF2: &crate::ffi::gp_Dir) -> i32 {
+    pub fn sense_flag(aNF1: &crate::gp::Dir, aNF2: &crate::gp::Dir) -> i32 {
         unsafe { crate::ffi::BOPTools_AlgoTools3D_sense_flag(aNF1, aNF2) }
     }
 
@@ -1280,7 +1274,7 @@ impl AlgoTools3D {
         aS: &crate::ffi::HandleGeomSurface,
         U: f64,
         V: f64,
-        aD: &mut crate::ffi::gp_Dir,
+        aD: &mut crate::gp::Dir,
     ) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools3D_get_normal_to_surface(aS, U, V, aD) }
     }
@@ -1301,11 +1295,11 @@ impl AlgoTools3D {
     /// the point will be computed using Hatcher (PointInFace function).<br>
     /// Returns TRUE in case of success.
     pub fn get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_handleinttoolscontext(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aT: f64,
-        aPx: &mut crate::ffi::gp_Pnt,
-        aD: &mut crate::ffi::gp_Dir,
+        aPx: &mut crate::gp::Pnt,
+        aD: &mut crate::gp::Dir,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
         unsafe {
@@ -1328,11 +1322,11 @@ impl AlgoTools3D {
     /// No checks on this value will be done.<br>
     /// Returns TRUE in case of success.
     pub fn get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_real(
-        theE: &crate::ffi::TopoDS_Edge,
-        theF: &crate::ffi::TopoDS_Face,
+        theE: &crate::topo_ds::Edge,
+        theF: &crate::topo_ds::Face,
         aT: f64,
-        aP: &mut crate::ffi::gp_Pnt,
-        aDNF: &mut crate::ffi::gp_Dir,
+        aP: &mut crate::gp::Pnt,
+        aDNF: &mut crate::gp::Dir,
         aDt2D: f64,
     ) -> bool {
         unsafe {
@@ -1356,12 +1350,12 @@ impl AlgoTools3D {
     /// computed using Hatcher (PointInFace function).<br>
     /// Returns TRUE in case of success.
     pub fn get_approx_normal_to_face_on_edge_edge_face_real2_pnt_dir_handleinttoolscontext(
-        theE: &crate::ffi::TopoDS_Edge,
-        theF: &crate::ffi::TopoDS_Face,
+        theE: &crate::topo_ds::Edge,
+        theF: &crate::topo_ds::Face,
         aT: f64,
         aDt2D: f64,
-        aP: &mut crate::ffi::gp_Pnt,
-        aDNF: &mut crate::ffi::gp_Dir,
+        aP: &mut crate::gp::Pnt,
+        aDNF: &mut crate::gp::Dir,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> bool {
         unsafe {
@@ -1381,12 +1375,12 @@ impl AlgoTools3D {
     /// 1 - <aE> does not have 2d curve on the face <aF>;<br>
     /// 2 - the computed point is out of the face.
     pub fn point_near_edge_edge_face_real2_pnt2d_pnt_handleinttoolscontext(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aT: f64,
         aDt2D: f64,
-        aP2D: &mut crate::ffi::gp_Pnt2d,
-        aPx: &mut crate::ffi::gp_Pnt,
+        aP2D: &mut crate::gp::Pnt2d,
+        aPx: &mut crate::gp::Pnt,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
         unsafe {
@@ -1403,12 +1397,12 @@ impl AlgoTools3D {
     /// 0 - in case of success;<br>
     /// 1 - <aE> does not have 2d curve on the face <aF>.
     pub fn point_near_edge_edge_face_real2_pnt2d_pnt(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aT: f64,
         aDt2D: f64,
-        aP2D: &mut crate::ffi::gp_Pnt2d,
-        aPx: &mut crate::ffi::gp_Pnt,
+        aP2D: &mut crate::gp::Pnt2d,
+        aPx: &mut crate::gp::Pnt,
     ) -> i32 {
         unsafe {
             crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt(
@@ -1429,11 +1423,11 @@ impl AlgoTools3D {
     /// 1 - <aE> does not have 2d curve on the face <aF>;<br>
     /// 2 - the computed point is out of the face.
     pub fn point_near_edge_edge_face_real_pnt2d_pnt_handleinttoolscontext(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
         aT: f64,
-        aP2D: &mut crate::ffi::gp_Pnt2d,
-        aPx: &mut crate::ffi::gp_Pnt,
+        aP2D: &mut crate::gp::Pnt2d,
+        aPx: &mut crate::gp::Pnt,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
         unsafe {
@@ -1453,10 +1447,10 @@ impl AlgoTools3D {
     /// 1 - <aE> does not have 2d curve on the face <aF>;<br>
     /// 2 - the computed point is out of the face.
     pub fn point_near_edge_edge_face_pnt2d_pnt_handleinttoolscontext(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
-        aP2D: &mut crate::ffi::gp_Pnt2d,
-        aPx: &mut crate::ffi::gp_Pnt,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
+        aP2D: &mut crate::gp::Pnt2d,
+        aPx: &mut crate::gp::Pnt,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
         unsafe {
@@ -1474,7 +1468,7 @@ impl AlgoTools3D {
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:219 - `BOPTools_AlgoTools3D::IsEmptyShape()`
     /// Returns TRUE if the shape <aS> does not contain
     /// geometry information  (e.g. empty compound)
-    pub fn is_empty_shape(aS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_empty_shape(aS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools3D_is_empty_shape(aS) }
     }
 
@@ -1482,9 +1476,9 @@ impl AlgoTools3D {
     /// Get the edge <aER> from the face <aF> that is the same as
     /// the edge <aE>
     pub fn orient_edge_on_face(
-        aE: &crate::ffi::TopoDS_Edge,
-        aF: &crate::ffi::TopoDS_Face,
-        aER: &mut crate::ffi::TopoDS_Edge,
+        aE: &crate::topo_ds::Edge,
+        aF: &crate::topo_ds::Face,
+        aER: &mut crate::topo_ds::Edge,
     ) {
         unsafe { crate::ffi::BOPTools_AlgoTools3D_orient_edge_on_face(aE, aF, aER) }
     }
@@ -1495,9 +1489,9 @@ impl AlgoTools3D {
     /// on the surface of <theF><br>
     /// Returns 0 in case of success.
     pub fn point_in_face_face_pnt_pnt2d_handleinttoolscontext(
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &mut crate::ffi::gp_Pnt,
-        theP2D: &mut crate::ffi::gp_Pnt2d,
+        theF: &crate::topo_ds::Face,
+        theP: &mut crate::gp::Pnt,
+        theP2D: &mut crate::gp::Pnt2d,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
         unsafe {
@@ -1518,12 +1512,12 @@ impl AlgoTools3D {
     /// on the surface of <theF><br>
     /// Returns 0 in case of success.
     pub fn point_in_face_face_edge_real2_pnt_pnt2d_handleinttoolscontext(
-        theF: &crate::ffi::TopoDS_Face,
-        theE: &crate::ffi::TopoDS_Edge,
+        theF: &crate::topo_ds::Face,
+        theE: &crate::topo_ds::Edge,
         theT: f64,
         theDt2D: f64,
-        theP: &mut crate::ffi::gp_Pnt,
-        theP2D: &mut crate::ffi::gp_Pnt2d,
+        theP: &mut crate::gp::Pnt,
+        theP2D: &mut crate::gp::Pnt2d,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) -> i32 {
         unsafe {
@@ -1538,10 +1532,10 @@ impl AlgoTools3D {
     /// on the surface of <theF>, lies on that line.<br>
     /// Returns 0 in case of success.
     pub fn point_in_face_face_handlegeom2dcurve_pnt_pnt2d_handleinttoolscontext_real(
-        theF: &crate::ffi::TopoDS_Face,
+        theF: &crate::topo_ds::Face,
         theL: &crate::ffi::HandleGeom2dCurve,
-        theP: &mut crate::ffi::gp_Pnt,
-        theP2D: &mut crate::ffi::gp_Pnt2d,
+        theP: &mut crate::gp::Pnt,
+        theP2D: &mut crate::gp::Pnt2d,
         theContext: &crate::ffi::HandleIntToolsContext,
         theDt2D: f64,
     ) -> i32 {
@@ -1634,22 +1628,22 @@ impl CoupleOfShape {
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:32 - `BOPTools_CoupleOfShape::SetShape1()`
-    pub fn set_shape1(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape1(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPTools_CoupleOfShape_set_shape1(self as *mut Self, theShape) }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:35 - `BOPTools_CoupleOfShape::Shape1()`
-    pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape1(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPTools_CoupleOfShape_shape1(self as *const Self)) }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:38 - `BOPTools_CoupleOfShape::SetShape2()`
-    pub fn set_shape2(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape2(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPTools_CoupleOfShape_set_shape2(self as *mut Self, theShape) }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:41 - `BOPTools_CoupleOfShape::Shape2()`
-    pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape2(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPTools_CoupleOfShape_shape2(self as *const Self)) }
     }
 }
@@ -1686,17 +1680,17 @@ impl Set {
 
     /// **Source:** `BOPTools_Set.hxx`:38 - `BOPTools_Set::BOPTools_Set()`
     /// Copy constructor.
-    pub fn new_set(theOther: &crate::ffi::BOPTools_Set) -> crate::OwnedPtr<Self> {
+    pub fn new_set(theOther: &Set) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPTools_Set_ctor_set(theOther)) }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:44 - `BOPTools_Set::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPTools_Set_shape(self as *const Self)) }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:46 - `BOPTools_Set::Add()`
-    pub fn add(&mut self, theS: &crate::ffi::TopoDS_Shape, theType: crate::top_abs::ShapeEnum) {
+    pub fn add(&mut self, theS: &crate::topo_ds::Shape, theType: crate::top_abs::ShapeEnum) {
         unsafe { crate::ffi::BOPTools_Set_add(self as *mut Self, theS, theType.into()) }
     }
 
@@ -1706,7 +1700,7 @@ impl Set {
     }
 
     /// **Source:** `BOPTools_Set.hxx`:50 - `BOPTools_Set::IsEqual()`
-    pub fn is_equal(&self, aOther: &crate::ffi::BOPTools_Set) -> bool {
+    pub fn is_equal(&self, aOther: &Set) -> bool {
         unsafe { crate::ffi::BOPTools_Set_is_equal(self as *const Self, aOther) }
     }
 

@@ -8,16 +8,16 @@
 
 /// **Source:** `BRepCheck.hxx`:41 - `BRepCheck::SelfIntersection`
 pub fn self_intersection(
-    W: &crate::ffi::TopoDS_Wire,
-    F: &crate::ffi::TopoDS_Face,
-    E1: &mut crate::ffi::TopoDS_Edge,
-    E2: &mut crate::ffi::TopoDS_Edge,
+    W: &crate::topo_ds::Wire,
+    F: &crate::topo_ds::Face,
+    E1: &mut crate::topo_ds::Edge,
+    E2: &mut crate::topo_ds::Edge,
 ) -> bool {
     unsafe { crate::ffi::BRepCheck_self_intersection(W, F, E1, E2) }
 }
 /// **Source:** `BRepCheck.hxx`:47 - `BRepCheck::PrecCurve`
 /// Returns the resolution on the 3d curve
-pub fn prec_curve(aAC3D: &crate::ffi::Adaptor3d_Curve) -> f64 {
+pub fn prec_curve(aAC3D: &crate::adaptor3d::Curve) -> f64 {
     unsafe { crate::ffi::BRepCheck_prec_curve(aAC3D) }
 }
 /// **Source:** `BRepCheck.hxx`:50 - `BRepCheck::PrecSurface`

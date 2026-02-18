@@ -53,7 +53,7 @@ impl ConnectedShapes {
     /// **Source:** `XSControl_ConnectedShapes.hxx`:67 - `XSControl_ConnectedShapes::ExploreLabel()`
     /// Returns a text defining the criterium.
     /// "Connected Entities through produced Shapes"
-    pub fn explore_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_explore_label(
                 self as *const Self,
@@ -134,7 +134,7 @@ impl ConnectedShapes {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_inherited_Label(
                 self as *const Self,
@@ -167,7 +167,7 @@ impl ConnectedShapes {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         unsafe {
             crate::ffi::XSControl_ConnectedShapes_inherited_FillIterator(self as *const Self, iter)
         }
@@ -324,7 +324,7 @@ impl Controller {
     /// **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
     /// Tells if a shape is valid for a transfer to a model
     /// Asks the ActorWrite (through a ShapeMapper)
-    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
+    pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         unsafe {
             crate::ffi::XSControl_Controller_recognize_write_shape(
                 self as *const Self,
@@ -603,7 +603,7 @@ impl Reader {
     pub fn transfer_one_root(
         &mut self,
         num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::XSControl_Reader_transfer_one_root(self as *mut Self, num, theProgress)
@@ -614,11 +614,7 @@ impl Reader {
     /// Translates an IGES or STEP
     /// entity identified by the rank num in the model.
     /// false is returned if no shape is produced.
-    pub fn transfer_one(
-        &mut self,
-        num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
+    pub fn transfer_one(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe { crate::ffi::XSControl_Reader_transfer_one(self as *mut Self, num, theProgress) }
     }
 
@@ -630,7 +626,7 @@ impl Reader {
     pub fn transfer_list(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         unsafe { crate::ffi::XSControl_Reader_transfer_list(self as *mut Self, list, theProgress) }
     }
@@ -639,7 +635,7 @@ impl Reader {
     /// Translates all translatable
     /// roots and returns the number of successful translations.
     /// Warning - This function clears existing output shapes first.
-    pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
+    pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         unsafe { crate::ffi::XSControl_Reader_transfer_roots(self as *mut Self, theProgress) }
     }
 
@@ -661,7 +657,7 @@ impl Reader {
     /// from a translation and identified by the rank num.
     /// num equals 1 by default. In other words, the first shape
     /// resulting from the translation is returned.
-    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_shape(self as *const Self, num))
         }
@@ -673,7 +669,7 @@ impl Reader {
     /// - a null shape if there are no results,
     /// - a shape if there is one result,
     /// - a compound containing the resulting shapes if there are more than one.
-    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_Reader_one_shape(self as *const Self))
         }
@@ -815,7 +811,7 @@ impl SelectForTransfer {
 
     /// **Source:** `XSControl_SelectForTransfer.hxx`:84 - `XSControl_SelectForTransfer::ExtractLabel()`
     /// Returns a text defining the criterium : "Recognized for Transfer [(current actor)]"
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_extract_label(
                 self as *const Self,
@@ -907,7 +903,7 @@ impl SelectForTransfer {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_inherited_Label(
                 self as *const Self,
@@ -944,7 +940,7 @@ impl SelectForTransfer {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         unsafe {
             crate::ffi::XSControl_SelectForTransfer_inherited_FillIterator(
                 self as *const Self,
@@ -1108,7 +1104,7 @@ impl SignTransferStatus {
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_SignTransferStatus_inherited_Label(
                 self as *const Self,
@@ -1259,7 +1255,7 @@ impl TransferReader {
         &mut self,
         theList: &crate::ffi::HandleTColStdHSequenceOfTransient,
         theRec: bool,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         unsafe {
             crate::ffi::XSControl_TransferReader_transfer_list(
@@ -1279,8 +1275,8 @@ impl TransferReader {
     /// or -1 if no actor is defined
     pub fn transfer_roots(
         &mut self,
-        theGraph: &crate::ffi::Interface_Graph,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theGraph: &crate::interface::Graph,
+        theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         unsafe {
             crate::ffi::XSControl_TransferReader_transfer_roots(
@@ -1294,7 +1290,7 @@ impl TransferReader {
     /// **Source:** `XSControl_TransferReader.hxx`:317 - `XSControl_TransferReader::LastCheckList()`
     /// Returns the CheckList resulting from last TransferRead
     /// i.e. from TransientProcess itself, recorded from last Clear
-    pub fn last_check_list(&self) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn last_check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferReader_last_check_list(
                 self as *const Self,
@@ -1461,7 +1457,7 @@ impl TransferWriter {
     /// **Source:** `XSControl_TransferWriter.hxx`:104 - `XSControl_TransferWriter::RecognizeShape()`
     /// Tells if a Shape is valid for a transfer to a model
     /// Asks the Controller (RecognizeWriteShape)
-    pub fn recognize_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn recognize_shape(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::XSControl_TransferWriter_recognize_shape(self as *mut Self, theShape) }
     }
 
@@ -1474,8 +1470,8 @@ impl TransferWriter {
     pub fn transfer_write_shape(
         &mut self,
         theModel: &crate::ffi::HandleInterfaceInterfaceModel,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theShape: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         unsafe {
             crate::if_select::ReturnStatus::try_from(
@@ -1493,7 +1489,7 @@ impl TransferWriter {
     /// **Source:** `XSControl_TransferWriter.hxx`:118 - `XSControl_TransferWriter::CheckList()`
     /// Returns the check-list of last transfer (write), i.e. the
     /// check-list currently recorded in the FinderProcess
-    pub fn check_list(&self) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferWriter_check_list(
                 self as *const Self,
@@ -1508,7 +1504,7 @@ impl TransferWriter {
     pub fn result_check_list(
         &self,
         theModel: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferWriter_result_check_list(
                 self as *const Self,
@@ -1650,7 +1646,7 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:107 - `XSControl_Utils::ToCString()`
-    pub fn to_c_string_asciistring(&self, strval: &crate::ffi::TCollection_AsciiString) -> String {
+    pub fn to_c_string_asciistring(&self, strval: &crate::t_collection::AsciiString) -> String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::ffi::XSControl_Utils_to_c_string_asciistring(
                 self as *const Self,
@@ -1676,10 +1672,7 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:111 - `XSControl_Utils::ToAString()`
-    pub fn to_a_string(
-        &self,
-        strcon: &str,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn to_a_string(&self, strcon: &str) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         let c_strcon = std::ffi::CString::new(strcon).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_to_a_string(
@@ -1728,7 +1721,7 @@ impl Utils {
     pub fn compound_from_seq(
         &self,
         seqval: &crate::ffi::HandleTopToolsHSequenceOfShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_compound_from_seq(
                 self as *const Self,
@@ -1745,7 +1738,7 @@ impl Utils {
     /// For a Null Shape, returns SHAPE
     pub fn shape_type(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         compound: bool,
     ) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -1770,11 +1763,11 @@ impl Utils {
     /// items directly contained in a Compound
     pub fn sorted_compound(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         type_: crate::top_abs::ShapeEnum,
         explore: bool,
         compound: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_sorted_compound(
                 self as *const Self,
@@ -1791,7 +1784,7 @@ impl Utils {
         &self,
         seqv: &crate::ffi::HandleTopToolsHSequenceOfShape,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_Utils_shape_value(
                 self as *const Self,
@@ -1814,7 +1807,7 @@ impl Utils {
     pub fn append_shape(
         &self,
         seqv: &crate::ffi::HandleTopToolsHSequenceOfShape,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
     ) {
         unsafe { crate::ffi::XSControl_Utils_append_shape(self as *const Self, seqv, shape) }
     }
@@ -1942,7 +1935,7 @@ impl WorkSession {
     /// Commands the transfer of all the root entities of the model
     /// i.e. calls TransferRoot from the TransferReader with the Graph
     /// No cumulation with former calls to TransferReadOne
-    pub fn transfer_read_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
+    pub fn transfer_read_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         unsafe {
             crate::ffi::XSControl_WorkSession_transfer_read_roots(self as *mut Self, theProgress)
         }
@@ -1973,9 +1966,9 @@ impl WorkSession {
     /// Error if transfer badly initialised
     pub fn transfer_write_shape(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theCompGraph: bool,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         unsafe {
             crate::if_select::ReturnStatus::try_from(
@@ -1995,9 +1988,7 @@ impl WorkSession {
     /// It is recorded in the FinderProcess, but it must be bound with
     /// resulting entities (in the resulting file model) rather than
     /// with original objects (in fact, their mappers)
-    pub fn transfer_write_check_list(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn transfer_write_check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_transfer_write_check_list(
                 self as *const Self,
@@ -2124,7 +2115,7 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:234 - `IFSelect_WorkSession::Graph()`
-    pub fn graph(&mut self) -> &crate::ffi::Interface_Graph {
+    pub fn graph(&mut self) -> &crate::interface::Graph {
         unsafe { &*(crate::ffi::XSControl_WorkSession_inherited_Graph(self as *mut Self)) }
     }
 
@@ -2144,7 +2135,7 @@ impl WorkSession {
     pub fn model_check_list(
         &mut self,
         complete: bool,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_ModelCheckList(
                 self as *mut Self,
@@ -2154,7 +2145,7 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:281 - `IFSelect_WorkSession::LastRunCheckList()`
-    pub fn last_run_check_list(&self) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn last_run_check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_LastRunCheckList(
                 self as *const Self,
@@ -2250,7 +2241,7 @@ impl WorkSession {
     pub fn text_value(
         &self,
         par: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_TextValue(
                 self as *const Self,
@@ -2273,7 +2264,7 @@ impl WorkSession {
     pub fn sources(
         &self,
         sel: &crate::ffi::HandleIFSelectSelection,
-    ) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
+    ) -> crate::OwnedPtr<crate::if_select::SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_Sources(
                 self as *const Self,
@@ -2537,7 +2528,7 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:762 - `IFSelect_WorkSession::FileName()`
-    pub fn file_name(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn file_name(&self, num: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_FileName(
                 self as *const Self,
@@ -2724,7 +2715,7 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1006 - `IFSelect_WorkSession::QueryCheckList()`
-    pub fn query_check_list(&mut self, chl: &crate::ffi::Interface_CheckIterator) {
+    pub fn query_check_list(&mut self, chl: &crate::interface::CheckIterator) {
         unsafe {
             crate::ffi::XSControl_WorkSession_inherited_QueryCheckList(self as *mut Self, chl)
         }
@@ -2855,9 +2846,9 @@ impl Writer {
     /// Transfers a Shape according to the mode
     pub fn transfer_shape(
         &mut self,
-        sh: &crate::ffi::TopoDS_Shape,
+        sh: &crate::topo_ds::Shape,
         mode: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         unsafe {
             crate::if_select::ReturnStatus::try_from(crate::ffi::XSControl_Writer_transfer_shape(

@@ -818,7 +818,7 @@ impl CheckCounter {
     /// Remark : global messages are recorded with a Null entity
     pub fn analyse(
         &mut self,
-        list: &crate::ffi::Interface_CheckIterator,
+        list: &crate::interface::CheckIterator,
         model: &crate::ffi::HandleInterfaceInterfaceModel,
         original: bool,
         failsonly: bool,
@@ -935,7 +935,7 @@ impl ContextModif {
     /// Such a ContextModif is considered to be applied on all
     /// transferred entities (no filter active)
     pub fn new_graph_charptr(
-        graph: &crate::ffi::Interface_Graph,
+        graph: &crate::interface::Graph,
         filename: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_filename = std::ffi::CString::new(filename).unwrap();
@@ -950,7 +950,7 @@ impl ContextModif {
     /// **Source:** `IFSelect_ContextModif.hxx`:94 - `IFSelect_ContextModif::OriginalGraph()`
     /// Returns the original Graph (compared to OriginalModel, it
     /// gives more query capabilitites)
-    pub fn original_graph(&self) -> &crate::ffi::Interface_Graph {
+    pub fn original_graph(&self) -> &crate::interface::Graph {
         unsafe { &*(crate::ffi::IFSelect_ContextModif_original_graph(self as *const Self)) }
     }
 
@@ -1067,7 +1067,7 @@ impl ContextModif {
 
     /// **Source:** `IFSelect_ContextModif.hxx`:208 - `IFSelect_ContextModif::CheckList()`
     /// Returns the complete CheckList
-    pub fn check_list(&self) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_check_list(
                 self as *const Self,
@@ -1132,7 +1132,7 @@ impl ContextWrite {
     /// **Source:** `IFSelect_ContextWrite.hxx`:83 - `IFSelect_ContextWrite::Graph()`
     /// Returns the Graph, either given when created, else created
     /// the first time it is queried
-    pub fn graph(&mut self) -> &crate::ffi::Interface_Graph {
+    pub fn graph(&mut self) -> &crate::interface::Graph {
         unsafe { &*(crate::ffi::IFSelect_ContextWrite_graph(self as *mut Self)) }
     }
 
@@ -1225,7 +1225,7 @@ impl ContextWrite {
 
     /// **Source:** `IFSelect_ContextWrite.hxx`:153 - `IFSelect_ContextWrite::CheckList()`
     /// Returns the complete CheckList
-    pub fn check_list(&self) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextWrite_check_list(
                 self as *const Self,
@@ -1258,7 +1258,7 @@ impl DispGlobal {
 
     /// **Source:** `IFSelect_DispGlobal.hxx`:42 - `IFSelect_DispGlobal::Label()`
     /// Returns as Label, "One File for all Input"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispGlobal_label(self as *const Self))
         }
@@ -1270,8 +1270,8 @@ impl DispGlobal {
     /// Remark : the inherited exception raising is never activated.
     pub fn packets(
         &self,
-        G: &crate::ffi::Interface_Graph,
-        packs: &mut crate::ffi::IFGraph_SubPartsIterator,
+        G: &crate::interface::Graph,
+        packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         unsafe { crate::ffi::IFSelect_DispGlobal_packets(self as *const Self, G, packs) }
     }
@@ -1339,7 +1339,7 @@ impl DispGlobal {
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
-    pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
+    pub fn selections(&self) -> crate::OwnedPtr<SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispGlobal_inherited_Selections(
                 self as *const Self,
@@ -1400,7 +1400,7 @@ impl DispPerCount {
 
     /// **Source:** `IFSelect_DispPerCount.hxx`:55 - `IFSelect_DispPerCount::Label()`
     /// Returns as Label, "One File per <count> Input Entities"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_label(self as *const Self))
         }
@@ -1412,8 +1412,8 @@ impl DispPerCount {
     /// are given by RootResult from the Final Selection.
     pub fn packets(
         &self,
-        G: &crate::ffi::Interface_Graph,
-        packs: &mut crate::ffi::IFGraph_SubPartsIterator,
+        G: &crate::interface::Graph,
+        packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         unsafe { crate::ffi::IFSelect_DispPerCount_packets(self as *const Self, G, packs) }
     }
@@ -1481,7 +1481,7 @@ impl DispPerCount {
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
-    pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
+    pub fn selections(&self) -> crate::OwnedPtr<SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_inherited_Selections(
                 self as *const Self,
@@ -1545,7 +1545,7 @@ impl DispPerFiles {
 
     /// **Source:** `IFSelect_DispPerFiles.hxx`:58 - `IFSelect_DispPerFiles::Label()`
     /// Returns as Label, "Maximum <count> Files"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_label(self as *const Self))
         }
@@ -1558,8 +1558,8 @@ impl DispPerFiles {
     /// Final Selection.
     pub fn packets(
         &self,
-        G: &crate::ffi::Interface_Graph,
-        packs: &mut crate::ffi::IFGraph_SubPartsIterator,
+        G: &crate::interface::Graph,
+        packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         unsafe { crate::ffi::IFSelect_DispPerFiles_packets(self as *const Self, G, packs) }
     }
@@ -1627,7 +1627,7 @@ impl DispPerFiles {
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
-    pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
+    pub fn selections(&self) -> crate::OwnedPtr<SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_inherited_Selections(
                 self as *const Self,
@@ -1666,7 +1666,7 @@ impl DispPerOne {
 
     /// **Source:** `IFSelect_DispPerOne.hxx`:43 - `IFSelect_DispPerOne::Label()`
     /// Returns as Label, "One File per Input Entity"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_label(self as *const Self))
         }
@@ -1677,8 +1677,8 @@ impl DispPerOne {
     /// per Entity given by RootResult from the Final Selection.
     pub fn packets(
         &self,
-        G: &crate::ffi::Interface_Graph,
-        packs: &mut crate::ffi::IFGraph_SubPartsIterator,
+        G: &crate::interface::Graph,
+        packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         unsafe { crate::ffi::IFSelect_DispPerOne_packets(self as *const Self, G, packs) }
     }
@@ -1746,7 +1746,7 @@ impl DispPerOne {
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
-    pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
+    pub fn selections(&self) -> crate::OwnedPtr<SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_inherited_Selections(
                 self as *const Self,
@@ -1798,7 +1798,7 @@ impl DispPerSignature {
 
     /// **Source:** `IFSelect_DispPerSignature.hxx`:55 - `IFSelect_DispPerSignature::Label()`
     /// Returns as Label, "One File per Signature <name>"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_label(
                 self as *const Self,
@@ -1812,8 +1812,8 @@ impl DispPerSignature {
     /// (specific of the SignCounter).
     pub fn packets(
         &self,
-        G: &crate::ffi::Interface_Graph,
-        packs: &mut crate::ffi::IFGraph_SubPartsIterator,
+        G: &crate::interface::Graph,
+        packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         unsafe { crate::ffi::IFSelect_DispPerSignature_packets(self as *const Self, G, packs) }
     }
@@ -1890,7 +1890,7 @@ impl DispPerSignature {
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
-    pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
+    pub fn selections(&self) -> crate::OwnedPtr<SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_inherited_Selections(
                 self as *const Self,
@@ -1977,7 +1977,7 @@ impl Dispatch {
     /// **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
     /// Returns the complete list of source Selections (starting
     /// from FinalSelection)
-    pub fn selections(&self) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
+    pub fn selections(&self) -> crate::OwnedPtr<SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Dispatch_selections(self as *const Self))
         }
@@ -1997,7 +1997,7 @@ impl Dispatch {
     /// **Source:** `IFSelect_Dispatch.hxx`:98 - `IFSelect_Dispatch::Label()`
     /// Returns a text which defines the way a Dispatch produces
     /// packets (which will become files) from its Input
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Dispatch_label(self as *const Self))
         }
@@ -2013,8 +2013,8 @@ impl Dispatch {
     /// This method can raise an Exception if data are not coherent
     pub fn packets(
         &self,
-        G: &crate::ffi::Interface_Graph,
-        packs: &mut crate::ffi::IFGraph_SubPartsIterator,
+        G: &crate::interface::Graph,
+        packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         unsafe { crate::ffi::IFSelect_Dispatch_packets(self as *const Self, G, packs) }
     }
@@ -2625,7 +2625,7 @@ impl Editor {
 
     /// **Source:** `IFSelect_Editor.hxx`:102 - `IFSelect_Editor::Label()`
     /// Returns the specific label
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Editor_label(self as *const Self)) }
     }
 
@@ -2981,7 +2981,7 @@ impl GeneralModifier {
 
     /// **Source:** `IFSelect_GeneralModifier.hxx`:96 - `IFSelect_GeneralModifier::Label()`
     /// Returns a short text which defines the operation performed
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_GeneralModifier_label(
                 self as *const Self,
@@ -3079,7 +3079,7 @@ impl GraphCounter {
     pub fn add_with_graph(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        graph: &crate::ffi::Interface_Graph,
+        graph: &crate::interface::Graph,
     ) {
         unsafe { crate::ffi::IFSelect_GraphCounter_add_with_graph(self as *mut Self, list, graph) }
     }
@@ -3158,7 +3158,7 @@ impl GraphCounter {
     pub fn add_from_selection(
         &mut self,
         sel: &crate::ffi::HandleIFSelectSelection,
-        G: &crate::ffi::Interface_Graph,
+        G: &crate::interface::Graph,
     ) {
         unsafe {
             crate::ffi::IFSelect_GraphCounter_inherited_AddFromSelection(self as *mut Self, sel, G)
@@ -3192,7 +3192,7 @@ impl GraphCounter {
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:144 - `IFSelect_SignCounter::ComputeSelected()`
-    pub fn compute_selected(&mut self, G: &crate::ffi::Interface_Graph, forced: bool) -> bool {
+    pub fn compute_selected(&mut self, G: &crate::interface::Graph, forced: bool) -> bool {
         unsafe {
             crate::ffi::IFSelect_GraphCounter_inherited_ComputeSelected(
                 self as *mut Self,
@@ -3760,7 +3760,7 @@ impl ModelCopier {
     /// to another File
     pub fn add_file(
         &mut self,
-        filename: &crate::ffi::TCollection_AsciiString,
+        filename: &crate::t_collection::AsciiString,
         content: &crate::ffi::HandleInterfaceInterfaceModel,
     ) -> bool {
         unsafe { crate::ffi::IFSelect_ModelCopier_add_file(self as *mut Self, filename, content) }
@@ -3772,7 +3772,7 @@ impl ModelCopier {
     /// Returns True if Done, False else : if <num> out of range or if
     /// the new <filename> is already attached to another File
     /// Remark : Giving an empty File Name is equivalent to ClearFile
-    pub fn name_file(&mut self, num: i32, filename: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn name_file(&mut self, num: i32, filename: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::IFSelect_ModelCopier_name_file(self as *mut Self, num, filename) }
     }
 
@@ -3814,7 +3814,7 @@ impl ModelCopier {
     /// just after one of these method has been called
     /// Returns True if done, False if remaining info if not in phase
     /// which the Graph (not same counts of items)
-    pub fn set_remaining(&self, CG: &mut crate::ffi::Interface_Graph) -> bool {
+    pub fn set_remaining(&self, CG: &mut crate::interface::Graph) -> bool {
         unsafe { crate::ffi::IFSelect_ModelCopier_set_remaining(self as *const Self, CG) }
     }
 
@@ -3828,7 +3828,7 @@ impl ModelCopier {
     /// **Source:** `IFSelect_ModelCopier.hxx`:193 - `IFSelect_ModelCopier::FileName()`
     /// Returns the File Name for a file given its rank
     /// It is empty after a call to ClearFile on same <num>
-    pub fn file_name(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn file_name(&self, num: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModelCopier_file_name(
                 self as *const Self,
@@ -3989,7 +3989,7 @@ impl ModifEditForm {
 
     /// **Source:** `IFSelect_ModifEditForm.hxx`:52 - `IFSelect_ModifEditForm::Label()`
     /// Returns Label as "Apply EditForm <+ label of EditForm>"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifEditForm_label(self as *const Self))
         }
@@ -4128,7 +4128,7 @@ impl ModifReorder {
 
     /// **Source:** `IFSelect_ModifReorder.hxx`:56 - `IFSelect_ModifReorder::Label()`
     /// Returns Label as "Reorder, Roots (last or first)"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifReorder_label(self as *const Self))
         }
@@ -4332,7 +4332,7 @@ impl Modifier {
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:96 - `IFSelect_GeneralModifier::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Modifier_inherited_Label(
                 self as *const Self,
@@ -4548,7 +4548,7 @@ impl ParamEditor {
     }
 
     /// **Source:** `IFSelect_ParamEditor.hxx`:65 - `IFSelect_ParamEditor::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ParamEditor_label(self as *const Self))
         }
@@ -4835,7 +4835,7 @@ impl SelectAnyList {
     /// then Specific List Label, then, following cases :
     /// " From .. Until .." or "From .." or "Until .." or "Rank no .."
     /// Specific type is given by deferred method ListLabel
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyList_label(self as *const Self))
         }
@@ -4844,7 +4844,7 @@ impl SelectAnyList {
     /// **Source:** `IFSelect_SelectAnyList.hxx`:128 - `IFSelect_SelectAnyList::ListLabel()`
     /// Returns the specific label for the list, which is included as
     /// a part of Label
-    pub fn list_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn list_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyList_list_label(
                 self as *const Self,
@@ -4924,7 +4924,7 @@ impl SelectAnyList {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectAnyList_inherited_FillIterator(self as *const Self, iter)
         }
@@ -5032,7 +5032,7 @@ impl SelectAnyType {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_Label(
                 self as *const Self,
@@ -5041,7 +5041,7 @@ impl SelectAnyType {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:84 - `IFSelect_SelectExtract::ExtractLabel()`
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_ExtractLabel(
                 self as *const Self,
@@ -5074,7 +5074,7 @@ impl SelectAnyType {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectAnyType_inherited_FillIterator(self as *const Self, iter)
         }
@@ -5100,7 +5100,7 @@ impl SelectBase {
     /// **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     /// Puts in an Iterator the Selections from which "me" depends
     /// This list is empty for all SelectBase type Selections
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectBase_fill_iterator(self as *const Self, iter) }
     }
 
@@ -5136,7 +5136,7 @@ impl SelectBase {
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectBase_inherited_Label(
                 self as *const Self,
@@ -5224,7 +5224,7 @@ impl SelectCombine {
     /// **Source:** `IFSelect_SelectCombine.hxx`:68 - `IFSelect_SelectCombine::FillIterator()`
     /// Puts in an Iterator the Selections from which "me" depends
     /// That is to say, the list of Input Selections
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectCombine_fill_iterator(self as *const Self, iter) }
     }
 
@@ -5260,7 +5260,7 @@ impl SelectCombine {
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectCombine_inherited_Label(
                 self as *const Self,
@@ -5339,7 +5339,7 @@ impl SelectControl {
     /// **Source:** `IFSelect_SelectControl.hxx`:65 - `IFSelect_SelectControl::FillIterator()`
     /// Puts in an Iterator the Selections from which "me" depends
     /// That is to say, the list of Input Selections
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectControl_fill_iterator(self as *const Self, iter) }
     }
 
@@ -5375,7 +5375,7 @@ impl SelectControl {
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectControl_inherited_Label(
                 self as *const Self,
@@ -5440,7 +5440,7 @@ impl SelectDeduct {
     /// **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     /// Puts in an Iterator the Selections from which "me" depends
     /// This list contains one Selection : the InputSelection
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectDeduct_fill_iterator(self as *const Self, iter) }
     }
 
@@ -5476,7 +5476,7 @@ impl SelectDeduct {
     }
 
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDeduct_inherited_Label(
                 self as *const Self,
@@ -5509,7 +5509,7 @@ impl SelectDiff {
 
     /// **Source:** `IFSelect_SelectDiff.hxx`:46 - `IFSelect_SelectDiff::Label()`
     /// Returns a text defining the criterium : "Difference"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDiff_label(self as *const Self))
         }
@@ -5594,7 +5594,7 @@ impl SelectDiff {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:65 - `IFSelect_SelectControl::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectDiff_inherited_FillIterator(self as *const Self, iter) }
     }
 }
@@ -5642,7 +5642,7 @@ impl SelectEntityNumber {
 
     /// **Source:** `IFSelect_SelectEntityNumber.hxx`:56 - `IFSelect_SelectEntityNumber::Label()`
     /// Returns a text defining the criterium : "Entity Number ..."
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectEntityNumber_label(
                 self as *const Self,
@@ -5702,7 +5702,7 @@ impl SelectEntityNumber {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectEntityNumber_inherited_FillIterator(
                 self as *const Self,
@@ -5738,7 +5738,7 @@ impl SelectErrorEntities {
 
     /// **Source:** `IFSelect_SelectErrorEntities.hxx`:52 - `IFSelect_SelectErrorEntities::ExtractLabel()`
     /// Returns a text defining the criterium : "Error Entities"
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectErrorEntities_extract_label(
                 self as *const Self,
@@ -5830,7 +5830,7 @@ impl SelectErrorEntities {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectErrorEntities_inherited_Label(
                 self as *const Self,
@@ -5867,7 +5867,7 @@ impl SelectErrorEntities {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectErrorEntities_inherited_FillIterator(
                 self as *const Self,
@@ -5917,7 +5917,7 @@ impl SelectExplore {
     /// **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     /// Returns a text saying "(Recursive)" or "(Level nn)" plus
     /// specific criterium returned by ExploreLabel (see below)
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExplore_label(self as *const Self))
         }
@@ -5925,7 +5925,7 @@ impl SelectExplore {
 
     /// **Source:** `IFSelect_SelectExplore.hxx`:86 - `IFSelect_SelectExplore::ExploreLabel()`
     /// Returns a text defining the way of exploration
-    pub fn explore_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExplore_explore_label(
                 self as *const Self,
@@ -6005,7 +6005,7 @@ impl SelectExplore {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectExplore_inherited_FillIterator(self as *const Self, iter)
         }
@@ -6049,7 +6049,7 @@ impl SelectExtract {
     /// **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     /// Returns a text saying "Picked" or "Removed", plus the
     /// specific criterium returned by ExtractLabel (see below)
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExtract_label(self as *const Self))
         }
@@ -6057,7 +6057,7 @@ impl SelectExtract {
 
     /// **Source:** `IFSelect_SelectExtract.hxx`:84 - `IFSelect_SelectExtract::ExtractLabel()`
     /// Returns a text defining the criterium for extraction
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExtract_extract_label(
                 self as *const Self,
@@ -6137,7 +6137,7 @@ impl SelectExtract {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectExtract_inherited_FillIterator(self as *const Self, iter)
         }
@@ -6187,7 +6187,7 @@ impl SelectFlag {
 
     /// **Source:** `IFSelect_SelectFlag.hxx`:67 - `IFSelect_SelectFlag::ExtractLabel()`
     /// Returns a text defining the criterium, includes the flag name
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_extract_label(
                 self as *const Self,
@@ -6263,7 +6263,7 @@ impl SelectFlag {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_inherited_Label(
                 self as *const Self,
@@ -6296,7 +6296,7 @@ impl SelectFlag {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_FillIterator(self as *const Self, iter) }
     }
 }
@@ -6457,7 +6457,7 @@ impl SelectInList {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:124 - `IFSelect_SelectAnyList::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_Label(
                 self as *const Self,
@@ -6466,7 +6466,7 @@ impl SelectInList {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:128 - `IFSelect_SelectAnyList::ListLabel()`
-    pub fn list_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn list_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_ListLabel(
                 self as *const Self,
@@ -6499,7 +6499,7 @@ impl SelectInList {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectInList_inherited_FillIterator(self as *const Self, iter)
         }
@@ -6626,7 +6626,7 @@ impl SelectIncorrectEntities {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectFlag.hxx`:67 - `IFSelect_SelectFlag::ExtractLabel()`
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IFSelect_SelectIncorrectEntities_inherited_ExtractLabel(
@@ -6654,7 +6654,7 @@ impl SelectIncorrectEntities {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Label(
                 self as *const Self,
@@ -6693,7 +6693,7 @@ impl SelectIncorrectEntities {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_FillIterator(
                 self as *const Self,
@@ -6727,7 +6727,7 @@ impl SelectIntersection {
 
     /// **Source:** `IFSelect_SelectIntersection.hxx`:46 - `IFSelect_SelectIntersection::Label()`
     /// Returns a text defining the criterium : "Intersection (AND)"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIntersection_label(
                 self as *const Self,
@@ -6823,7 +6823,7 @@ impl SelectIntersection {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:68 - `IFSelect_SelectCombine::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectIntersection_inherited_FillIterator(
                 self as *const Self,
@@ -6857,7 +6857,7 @@ impl SelectModelEntities {
 
     /// **Source:** `IFSelect_SelectModelEntities.hxx`:51 - `IFSelect_SelectModelEntities::Label()`
     /// Returns a text defining the criterium : "Model Entities"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelEntities_label(
                 self as *const Self,
@@ -6917,7 +6917,7 @@ impl SelectModelEntities {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectModelEntities_inherited_FillIterator(
                 self as *const Self,
@@ -6953,7 +6953,7 @@ impl SelectModelRoots {
 
     /// **Source:** `IFSelect_SelectModelRoots.hxx`:48 - `IFSelect_SelectModelRoots::Label()`
     /// Returns a text defining the criterium : "Model Roots"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelRoots_label(
                 self as *const Self,
@@ -7013,7 +7013,7 @@ impl SelectModelRoots {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectModelRoots_inherited_FillIterator(self as *const Self, iter)
         }
@@ -7110,7 +7110,7 @@ impl SelectPointed {
     /// **Source:** `IFSelect_SelectPointed.hxx`:120 - `IFSelect_SelectPointed::Label()`
     /// Returns a text which identifies the type of selection made.
     /// It is "Pointed Entities"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectPointed_label(self as *const Self))
         }
@@ -7162,7 +7162,7 @@ impl SelectPointed {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectPointed_inherited_FillIterator(self as *const Self, iter)
         }
@@ -7264,7 +7264,7 @@ impl SelectRange {
     /// **Source:** `IFSelect_SelectRange.hxx`:84 - `IFSelect_SelectRange::ExtractLabel()`
     /// Returns a text defining the criterium : following cases,
     /// " From .. Until .." or "From .." or "Until .." or "Rank no .."
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_extract_label(
                 self as *const Self,
@@ -7344,7 +7344,7 @@ impl SelectRange {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_Label(
                 self as *const Self,
@@ -7377,7 +7377,7 @@ impl SelectRange {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRange_inherited_FillIterator(self as *const Self, iter)
         }
@@ -7415,7 +7415,7 @@ impl SelectRootComps {
 
     /// **Source:** `IFSelect_SelectRootComps.hxx`:64 - `IFSelect_SelectRootComps::ExtractLabel()`
     /// Returns a text defining the criterium : "Local Root Components"
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_extract_label(
                 self as *const Self,
@@ -7503,7 +7503,7 @@ impl SelectRootComps {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_inherited_Label(
                 self as *const Self,
@@ -7536,7 +7536,7 @@ impl SelectRootComps {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRootComps_inherited_FillIterator(self as *const Self, iter)
         }
@@ -7568,7 +7568,7 @@ impl SelectRoots {
 
     /// **Source:** `IFSelect_SelectRoots.hxx`:58 - `IFSelect_SelectRoots::ExtractLabel()`
     /// Returns a text defining the criterium : "Local Root Entities"
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_extract_label(
                 self as *const Self,
@@ -7648,7 +7648,7 @@ impl SelectRoots {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_inherited_Label(
                 self as *const Self,
@@ -7681,7 +7681,7 @@ impl SelectRoots {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRoots_inherited_FillIterator(self as *const Self, iter)
         }
@@ -7776,7 +7776,7 @@ impl SelectSent {
     /// SentCount = 2, AtLeast = False -> "Sent twice entities"
     /// SentCount > 2, AtLeast = True  -> "Sent at least <count> times entities"
     /// SentCount > 2, AtLeast = False -> "Sent <count> times entities"
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_extract_label(
                 self as *const Self,
@@ -7852,7 +7852,7 @@ impl SelectSent {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_inherited_Label(
                 self as *const Self,
@@ -7885,7 +7885,7 @@ impl SelectSent {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_FillIterator(self as *const Self, iter) }
     }
 }
@@ -7914,7 +7914,7 @@ impl SelectShared {
 
     /// **Source:** `IFSelect_SelectShared.hxx`:46 - `IFSelect_SelectShared::Label()`
     /// Returns a text defining the criterium : "Shared (one level)"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectShared_label(self as *const Self))
         }
@@ -7992,7 +7992,7 @@ impl SelectShared {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectShared_inherited_FillIterator(self as *const Self, iter)
         }
@@ -8025,7 +8025,7 @@ impl SelectSharing {
 
     /// **Source:** `IFSelect_SelectSharing.hxx`:48 - `IFSelect_SelectSharing::Label()`
     /// Returns a text defining the criterium : "Sharing (one level)"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSharing_label(self as *const Self))
         }
@@ -8103,7 +8103,7 @@ impl SelectSharing {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSharing_inherited_FillIterator(self as *const Self, iter)
         }
@@ -8140,7 +8140,7 @@ unsafe impl crate::CppDeletable for SelectSignature {
 impl SelectSignature {
     /// **Source:** `IFSelect_SelectSignature.hxx`:98 - `IFSelect_SelectSignature::SignatureText()`
     /// Returns Text used to Sort Entity on its Signature or SignCounter
-    pub fn signature_text(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn signature_text(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::IFSelect_SelectSignature_signature_text(self as *const Self)) }
     }
 
@@ -8154,7 +8154,7 @@ impl SelectSignature {
     /// Returns a text defining the criterium.
     /// (it refers to the text and exact flag to be matched, and is
     /// qualified by the Name provided by the Signature)
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_extract_label(
                 self as *const Self,
@@ -8242,7 +8242,7 @@ impl SelectSignature {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_inherited_Label(
                 self as *const Self,
@@ -8275,7 +8275,7 @@ impl SelectSignature {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignature_inherited_FillIterator(self as *const Self, iter)
         }
@@ -8302,7 +8302,7 @@ unsafe impl crate::CppDeletable for SelectSignedShared {
 impl SelectSignedShared {
     /// **Source:** `IFSelect_SelectSignedShared.hxx`:53 - `IFSelect_SelectSignedShared::SignatureText()`
     /// Returns Text used to Sort Entity on its Signature
-    pub fn signature_text(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn signature_text(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::IFSelect_SelectSignedShared_signature_text(self as *const Self)) }
     }
 
@@ -8316,7 +8316,7 @@ impl SelectSignedShared {
     /// Returns a text defining the criterium.
     /// (it refers to the text and exact flag to be matched, and is
     /// qualified by the Name provided by the Signature)
-    pub fn explore_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_explore_label(
                 self as *const Self,
@@ -8401,7 +8401,7 @@ impl SelectSignedShared {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_inherited_Label(
                 self as *const Self,
@@ -8438,7 +8438,7 @@ impl SelectSignedShared {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignedShared_inherited_FillIterator(
                 self as *const Self,
@@ -8468,7 +8468,7 @@ unsafe impl crate::CppDeletable for SelectSignedSharing {
 impl SelectSignedSharing {
     /// **Source:** `IFSelect_SelectSignedSharing.hxx`:53 - `IFSelect_SelectSignedSharing::SignatureText()`
     /// Returns Text used to Sort Entity on its Signature
-    pub fn signature_text(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn signature_text(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::IFSelect_SelectSignedSharing_signature_text(self as *const Self)) }
     }
 
@@ -8482,7 +8482,7 @@ impl SelectSignedSharing {
     /// Returns a text defining the criterium.
     /// (it refers to the text and exact flag to be matched, and is
     /// qualified by the Name provided by the Signature)
-    pub fn explore_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_explore_label(
                 self as *const Self,
@@ -8567,7 +8567,7 @@ impl SelectSignedSharing {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_inherited_Label(
                 self as *const Self,
@@ -8604,7 +8604,7 @@ impl SelectSignedSharing {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignedSharing_inherited_FillIterator(
                 self as *const Self,
@@ -8673,7 +8673,7 @@ impl SelectSuite {
     /// Returns the Label
     /// Either it has been defined by SetLabel, or it will give
     /// "Suite of nn Selections"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSuite_label(self as *const Self))
         }
@@ -8749,7 +8749,7 @@ impl SelectSuite {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSuite_inherited_FillIterator(self as *const Self, iter)
         }
@@ -8808,7 +8808,7 @@ impl SelectType {
     /// **Source:** `IFSelect_SelectType.hxx`:51 - `IFSelect_SelectType::ExtractLabel()`
     /// Returns a text defining the criterium.
     /// (should by gotten from Type of Entity used for instantiation)
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_extract_label(
                 self as *const Self,
@@ -8898,7 +8898,7 @@ impl SelectType {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_Label(
                 self as *const Self,
@@ -8931,7 +8931,7 @@ impl SelectType {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_FillIterator(self as *const Self, iter) }
     }
 }
@@ -8960,7 +8960,7 @@ impl SelectUnion {
 
     /// **Source:** `IFSelect_SelectUnion.hxx`:46 - `IFSelect_SelectUnion::Label()`
     /// Returns a text defining the criterium : "Union (OR)"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnion_label(self as *const Self))
         }
@@ -9044,7 +9044,7 @@ impl SelectUnion {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:68 - `IFSelect_SelectCombine::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectUnion_inherited_FillIterator(self as *const Self, iter)
         }
@@ -9075,7 +9075,7 @@ impl SelectUnknownEntities {
 
     /// **Source:** `IFSelect_SelectUnknownEntities.hxx`:49 - `IFSelect_SelectUnknownEntities::ExtractLabel()`
     /// Returns a text defining the criterium : "Recognized Entities"
-    pub fn extract_label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnknownEntities_extract_label(
                 self as *const Self,
@@ -9174,7 +9174,7 @@ impl SelectUnknownEntities {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnknownEntities_inherited_Label(
                 self as *const Self,
@@ -9213,7 +9213,7 @@ impl SelectUnknownEntities {
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_FillIterator(
                 self as *const Self,
@@ -9250,7 +9250,7 @@ impl Selection {
     /// Puts in an Iterator the Selections from which "me" depends
     /// (there can be zero, or one, or a list).
     /// Specific to each class of Selection
-    pub fn fill_iterator(&self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_Selection_fill_iterator(self as *const Self, iter) }
     }
 
@@ -9258,7 +9258,7 @@ impl Selection {
     /// Returns a text which defines the criterium applied by a
     /// Selection (can be used to be printed, displayed ...)
     /// Specific to each class
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Selection_label(self as *const Self))
         }
@@ -9341,7 +9341,7 @@ impl SelectionIterator {
     /// **Source:** `IFSelect_SelectionIterator.hxx`:44 - `IFSelect_SelectionIterator::AddFromIter()`
     /// Adds to an iterator the content of another one
     /// (each selection is present only once in the result)
-    pub fn add_from_iter(&mut self, iter: &mut crate::ffi::IFSelect_SelectionIterator) {
+    pub fn add_from_iter(&mut self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectionIterator_add_from_iter(self as *mut Self, iter) }
     }
 
@@ -9567,7 +9567,7 @@ impl SessionFile {
 
     /// **Source:** `IFSelect_SessionFile.hxx`:90 - `IFSelect_SessionFile::Line()`
     /// Returns a line given its rank in the list of recorded lines
-    pub fn line(&self, num: i32) -> &crate::ffi::TCollection_AsciiString {
+    pub fn line(&self, num: i32) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::IFSelect_SessionFile_line(self as *const Self, num)) }
     }
 
@@ -9775,14 +9775,14 @@ impl SessionFile {
     /// **Source:** `IFSelect_SessionFile.hxx`:252 - `IFSelect_SessionFile::ParamValue()`
     /// Returns a Parameter (alphanumeric item of a line) as it
     /// has been read
-    pub fn param_value(&self, num: i32) -> &crate::ffi::TCollection_AsciiString {
+    pub fn param_value(&self, num: i32) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::IFSelect_SessionFile_param_value(self as *const Self, num)) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:256 - `IFSelect_SessionFile::TextValue()`
     /// Returns the content of a Text Parameter (without the quotes).
     /// Returns an empty string if the Parameter is not a Text.
-    pub fn text_value(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn text_value(&self, num: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SessionFile_text_value(
                 self as *const Self,
@@ -9906,13 +9906,13 @@ impl SessionPilot {
     /// **Source:** `IFSelect_SessionPilot.hxx`:98 - `IFSelect_SessionPilot::SetCommandLine()`
     /// Sets the value of the Command Line to be interpreted
     /// Also prepares the interpretation (splitting by blanks)
-    pub fn set_command_line(&mut self, command: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_command_line(&mut self, command: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::IFSelect_SessionPilot_set_command_line(self as *mut Self, command) }
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:101 - `IFSelect_SessionPilot::CommandLine()`
     /// Returns the Command Line to be interpreted
-    pub fn command_line(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn command_line(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::IFSelect_SessionPilot_command_line(self as *const Self)) }
     }
 
@@ -9943,7 +9943,7 @@ impl SessionPilot {
     /// **Source:** `IFSelect_SessionPilot.hxx`:116 - `IFSelect_SessionPilot::Word()`
     /// Returns a word given its rank in the Command Line. Begins at 0
     /// which is the Command Title, 1 is the 1st arg., etc...
-    pub fn word(&self, num: i32) -> &crate::ffi::TCollection_AsciiString {
+    pub fn word(&self, num: i32) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::IFSelect_SessionPilot_word(self as *const Self, num)) }
     }
 
@@ -9976,7 +9976,7 @@ impl SessionPilot {
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:130 - `IFSelect_SessionPilot::Command()`
     /// Returns a recorded Command, given its rank (from 1)
-    pub fn command(&self, num: i32) -> &crate::ffi::TCollection_AsciiString {
+    pub fn command(&self, num: i32) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::IFSelect_SessionPilot_command(self as *const Self, num)) }
     }
 
@@ -10030,7 +10030,7 @@ impl SessionPilot {
     /// Error status is returned if the alias is unknown as command
     pub fn execute_alias(
         &mut self,
-        aliasname: &crate::ffi::TCollection_AsciiString,
+        aliasname: &crate::t_collection::AsciiString,
     ) -> crate::if_select::ReturnStatus {
         unsafe {
             crate::if_select::ReturnStatus::try_from(
@@ -10045,7 +10045,7 @@ impl SessionPilot {
     /// same as for Perform
     pub fn execute(
         &mut self,
-        command: &crate::ffi::TCollection_AsciiString,
+        command: &crate::t_collection::AsciiString,
     ) -> crate::if_select::ReturnStatus {
         unsafe {
             crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_SessionPilot_execute(
@@ -10453,7 +10453,7 @@ impl ShareOut {
         dnum: i32,
         pnum: i32,
         nbpack: i32,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ShareOut_file_name(
                 self as *mut Self,
@@ -10550,7 +10550,7 @@ impl ShareOutResult {
     /// specialize some Entities
     pub fn new_handleifselectshareout_graph(
         sho: &crate::ffi::HandleIFSelectShareOut,
-        G: &crate::ffi::Interface_Graph,
+        G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -10579,7 +10579,7 @@ impl ShareOutResult {
     /// Allows to compute the effect of a single Dispatch
     pub fn new_handleifselectdispatch_graph(
         disp: &crate::ffi::HandleIFSelectDispatch,
-        G: &crate::ffi::Interface_Graph,
+        G: &crate::interface::Graph,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -10601,7 +10601,7 @@ impl ShareOutResult {
 
     /// **Source:** `IFSelect_ShareOutResult.hxx`:73 - `IFSelect_ShareOutResult::Graph()`
     /// Returns the Graph used to create theShareOutResult
-    pub fn graph(&self) -> &crate::ffi::Interface_Graph {
+    pub fn graph(&self) -> &crate::interface::Graph {
         unsafe { &*(crate::ffi::IFSelect_ShareOutResult_graph(self as *const Self)) }
     }
 
@@ -10709,7 +10709,7 @@ impl ShareOutResult {
     /// (computed by ShareOut)
     /// If current Packet has no associated name (see ShareOut),
     /// the returned value is Null
-    pub fn file_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn file_name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ShareOutResult_file_name(
                 self as *const Self,
@@ -10832,7 +10832,7 @@ impl SignAncestor {
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignAncestor_inherited_Label(
                 self as *const Self,
@@ -10941,7 +10941,7 @@ impl SignCategory {
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCategory_inherited_Label(
                 self as *const Self,
@@ -11044,7 +11044,7 @@ impl SignCounter {
     pub fn add_with_graph(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        graph: &crate::ffi::Interface_Graph,
+        graph: &crate::interface::Graph,
     ) {
         unsafe { crate::ffi::IFSelect_SignCounter_add_with_graph(self as *mut Self, list, graph) }
     }
@@ -11061,7 +11061,7 @@ impl SignCounter {
     pub fn add_from_selection(
         &mut self,
         sel: &crate::ffi::HandleIFSelectSelection,
-        G: &crate::ffi::Interface_Graph,
+        G: &crate::interface::Graph,
     ) {
         unsafe { crate::ffi::IFSelect_SignCounter_add_from_selection(self as *mut Self, sel, G) }
     }
@@ -11111,7 +11111,7 @@ impl SignCounter {
     /// computed result started from the same total size of Graph and
     /// same count of selected entities : computation is not redone
     /// unless <forced> is given as True
-    pub fn compute_selected(&mut self, G: &crate::ffi::Interface_Graph, forced: bool) -> bool {
+    pub fn compute_selected(&mut self, G: &crate::interface::Graph, forced: bool) -> bool {
         unsafe { crate::ffi::IFSelect_SignCounter_compute_selected(self as *mut Self, G, forced) }
     }
 
@@ -11287,7 +11287,7 @@ impl SignMultiple {
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_inherited_Label(
                 self as *const Self,
@@ -11406,7 +11406,7 @@ impl SignType {
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignType_inherited_Label(
                 self as *const Self,
@@ -11517,7 +11517,7 @@ impl SignValidity {
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignValidity_inherited_Label(
                 self as *const Self,
@@ -11603,7 +11603,7 @@ impl Signature {
     /// **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
     /// The label of a Signature uses its name as follow :
     /// "Signature : <name>"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Signature_label(self as *const Self))
         }
@@ -11618,7 +11618,7 @@ impl Signature {
     /// Default procedure to tell if a value <val> matches a text
     /// with a criterium <exact>. <exact> = True requires equality,
     /// else only contained (no reg-exp)
-    pub fn match_value(val: &str, text: &crate::ffi::TCollection_AsciiString, exact: bool) -> bool {
+    pub fn match_value(val: &str, text: &crate::t_collection::AsciiString, exact: bool) -> bool {
         let c_val = std::ffi::CString::new(val).unwrap();
         unsafe { crate::ffi::IFSelect_Signature_match_value(c_val.as_ptr(), text, exact) }
     }
@@ -11966,7 +11966,7 @@ impl TransformStandard {
     /// Returns a text which defines the way a Transformer works :
     /// "On the spot edition" or "Standard Copy" followed by
     /// "<nn> Modifiers"
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_TransformStandard_label(
                 self as *const Self,
@@ -12038,7 +12038,7 @@ impl Transformer {
     /// **Source:** `IFSelect_Transformer.hxx`:97 - `IFSelect_Transformer::Label()`
     /// Returns a text which defines the way a Transformer works
     /// (to identify the transformation it performs)
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Transformer_label(self as *const Self))
         }
@@ -12128,7 +12128,7 @@ impl WorkLibrary {
     /// on selected entities (Start/Next/More/Value)
     /// it can call AddFail or AddWarning, as necessary
     /// }
-    pub fn write_file(&self, ctx: &mut crate::ffi::IFSelect_ContextWrite) -> bool {
+    pub fn write_file(&self, ctx: &mut ContextWrite) -> bool {
         unsafe { crate::ffi::IFSelect_WorkLibrary_write_file(self as *const Self, ctx) }
     }
 
@@ -12413,7 +12413,7 @@ impl WorkSession {
 
     /// **Source:** `IFSelect_WorkSession.hxx`:234 - `IFSelect_WorkSession::Graph()`
     /// Returns the Computed Graph, for Read only
-    pub fn graph(&mut self) -> &crate::ffi::Interface_Graph {
+    pub fn graph(&mut self) -> &crate::interface::Graph {
         unsafe { &*(crate::ffi::IFSelect_WorkSession_graph(self as *mut Self)) }
     }
 
@@ -12445,7 +12445,7 @@ impl WorkSession {
     pub fn model_check_list(
         &mut self,
         complete: bool,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_model_check_list(
                 self as *mut Self,
@@ -12461,7 +12461,7 @@ impl WorkSession {
     /// Cleared by SetModel or ClearData(1)
     /// The field is protected, hence a specialized WorkSession may
     /// fill it
-    pub fn last_run_check_list(&self) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn last_run_check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_last_run_check_list(
                 self as *const Self,
@@ -12675,7 +12675,7 @@ impl WorkSession {
     pub fn text_value(
         &self,
         par: &crate::ffi::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_text_value(
                 self as *const Self,
@@ -12736,7 +12736,7 @@ impl WorkSession {
     pub fn sources(
         &self,
         sel: &crate::ffi::HandleIFSelectSelection,
-    ) -> crate::OwnedPtr<crate::ffi::IFSelect_SelectionIterator> {
+    ) -> crate::OwnedPtr<SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_sources(
                 self as *const Self,
@@ -13160,7 +13160,7 @@ impl WorkSession {
     /// **Source:** `IFSelect_WorkSession.hxx`:762 - `IFSelect_WorkSession::FileName()`
     /// Returns the name of a file corresponding to a produced Model,
     /// given its rank in the Evaluation List
-    pub fn file_name(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn file_name(&self, num: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_file_name(
                 self as *const Self,
@@ -13570,7 +13570,7 @@ impl WorkSession {
 
     /// **Source:** `IFSelect_WorkSession.hxx`:1006 - `IFSelect_WorkSession::QueryCheckList()`
     /// Loads data from a check iterator to query status on it
-    pub fn query_check_list(&mut self, chl: &crate::ffi::Interface_CheckIterator) {
+    pub fn query_check_list(&mut self, chl: &crate::interface::CheckIterator) {
         unsafe { crate::ffi::IFSelect_WorkSession_query_check_list(self as *mut Self, chl) }
     }
 

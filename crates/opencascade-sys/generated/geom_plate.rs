@@ -30,11 +30,7 @@ impl Aij {
     }
 
     /// **Source:** `GeomPlate_Aij.hxx`:34 - `GeomPlate_Aij::GeomPlate_Aij()`
-    pub fn new_int2_vec(
-        anInd1: i32,
-        anInd2: i32,
-        aVec: &crate::ffi::gp_Vec,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_int2_vec(anInd1: i32, anInd2: i32, aVec: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Aij_ctor_int2_vec(anInd1, anInd2, aVec))
         }
@@ -858,7 +854,7 @@ impl BuildPlateSurface {
     /// Exceptions
     /// Standard_RangeError if the value of the constraint is
     /// null or if plate is not done.
-    pub fn perform(&mut self, theProgress: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) {
         unsafe { crate::ffi::GeomPlate_BuildPlateSurface_perform(self as *mut Self, theProgress) }
     }
 
@@ -1239,12 +1235,12 @@ impl CurveConstraint {
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:114 - `GeomPlate_CurveConstraint::LPropSurf()`
-    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::ffi::GeomLProp_SLProps {
+    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::geom_l_prop::SLProps {
         unsafe { &mut *(crate::ffi::GeomPlate_CurveConstraint_l_prop_surf(self as *mut Self, U)) }
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:116 - `GeomPlate_CurveConstraint::D0()`
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_d0(self as *const Self, U, P) }
     }
 
@@ -1252,9 +1248,9 @@ impl CurveConstraint {
     pub fn d1(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_d1(self as *const Self, U, P, V1, V2) }
     }
@@ -1263,12 +1259,12 @@ impl CurveConstraint {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
-        V4: &mut crate::ffi::gp_Vec,
-        V5: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
+        V4: &mut crate::gp::Vec,
+        V5: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomPlate_CurveConstraint_d2(self as *const Self, U, P, V1, V2, V3, V4, V5)
@@ -1843,7 +1839,7 @@ impl MakeApprox {
     /// the criterion CritPlate is satisfied if possible
     pub fn new_handlegeomplatesurface_criterion_real_int2_shape_real(
         SurfPlate: &crate::ffi::HandleGeomPlateSurface,
-        PlateCrit: &crate::ffi::AdvApp2Var_Criterion,
+        PlateCrit: &crate::adv_app2_var::Criterion,
         Tol3d: f64,
         Nbmax: i32,
         dgmax: i32,
@@ -1886,7 +1882,7 @@ impl MakeApprox {
     /// the criterion CritPlate is satisfied if possible
     pub fn new_handlegeomplatesurface_criterion_real_int2_shape(
         SurfPlate: &crate::ffi::HandleGeomPlateSurface,
-        PlateCrit: &crate::ffi::AdvApp2Var_Criterion,
+        PlateCrit: &crate::adv_app2_var::Criterion,
         Tol3d: f64,
         Nbmax: i32,
         dgmax: i32,
@@ -2117,7 +2113,7 @@ impl PointConstraint {
     /// allowed between the constraint and the target surface.
     /// Raises   ConstructionError if Order  is  not  0  or  -1
     pub fn new_pnt_int_real(
-        Pt: &crate::ffi::gp_Pnt,
+        Pt: &crate::gp::Pnt,
         Order: i32,
         TolDist: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2178,7 +2174,7 @@ impl PointConstraint {
     /// tolerance represents the greatest difference in curvature
     /// allowed between the constraint and the target surface.
     /// Raises   ConstructionError if Order  is  not  0  or  -1
-    pub fn new_pnt_int(Pt: &crate::ffi::gp_Pnt, Order: i32) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt_int(Pt: &crate::gp::Pnt, Order: i32) -> crate::OwnedPtr<Self> {
         Self::new_pnt_int_real(Pt, Order, 0.0001)
     }
 
@@ -2336,29 +2332,24 @@ impl PointConstraint {
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:122 - `GeomPlate_PointConstraint::D0()`
-    pub fn d0(&self, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomPlate_PointConstraint_d0(self as *const Self, P) }
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:124 - `GeomPlate_PointConstraint::D1()`
-    pub fn d1(
-        &self,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-    ) {
+    pub fn d1(&self, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec, V2: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomPlate_PointConstraint_d1(self as *const Self, P, V1, V2) }
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:126 - `GeomPlate_PointConstraint::D2()`
     pub fn d2(
         &self,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
-        V4: &mut crate::ffi::gp_Vec,
-        V5: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
+        V4: &mut crate::gp::Vec,
+        V5: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomPlate_PointConstraint_d2(self as *const Self, P, V1, V2, V3, V4, V5)
@@ -2371,12 +2362,12 @@ impl PointConstraint {
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:131 - `GeomPlate_PointConstraint::SetPnt2dOnSurf()`
-    pub fn set_pnt2d_on_surf(&mut self, Pnt: &crate::ffi::gp_Pnt2d) {
+    pub fn set_pnt2d_on_surf(&mut self, Pnt: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::GeomPlate_PointConstraint_set_pnt2d_on_surf(self as *mut Self, Pnt) }
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:133 - `GeomPlate_PointConstraint::Pnt2dOnSurf()`
-    pub fn pnt2d_on_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn pnt2d_on_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PointConstraint_pnt2d_on_surf(
                 self as *const Self,
@@ -2385,7 +2376,7 @@ impl PointConstraint {
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:135 - `GeomPlate_PointConstraint::LPropSurf()`
-    pub fn l_prop_surf(&mut self) -> &mut crate::ffi::GeomLProp_SLProps {
+    pub fn l_prop_surf(&mut self) -> &mut crate::geom_l_prop::SLProps {
         unsafe { &mut *(crate::ffi::GeomPlate_PointConstraint_l_prop_surf(self as *mut Self)) }
     }
 
@@ -2465,7 +2456,7 @@ impl Surface {
     /// **Source:** `GeomPlate_Surface.hxx`:50 - `GeomPlate_Surface::GeomPlate_Surface()`
     pub fn new_handlegeomsurface_plate(
         Surfinit: &crate::ffi::HandleGeomSurface,
-        Surfinter: &crate::ffi::Plate_Plate,
+        Surfinter: &crate::plate::Plate,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_ctor_handlegeomsurface_plate(
@@ -2534,7 +2525,7 @@ impl Surface {
     ///
     /// It  can be redefined.  For  example on  the Plane,
     /// Cylinder, Cone, Revolved and Extruded surfaces.
-    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::ffi::gp_Trsf) {
+    pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::gp::Trsf) {
         unsafe { crate::ffi::GeomPlate_Surface_transform_parameters(self as *const Self, U, V, T) }
     }
 
@@ -2559,8 +2550,8 @@ impl Surface {
     /// Cylinder, Cone, Revolved and Extruded surfaces.
     pub fn parametric_transformation(
         &self,
-        T: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::gp_GTrsf2d> {
+        T: &crate::gp::Trsf,
+    ) -> crate::OwnedPtr<crate::gp::GTrsf2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_parametric_transformation(
                 self as *const Self,
@@ -2694,7 +2685,7 @@ impl Surface {
     ///
     /// Raised only for an "OffsetSurface" if it is not possible to
     /// compute the current point.
-    pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomPlate_Surface_d0(self as *const Self, U, V, P) }
     }
 
@@ -2706,9 +2697,9 @@ impl Surface {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomPlate_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -2721,12 +2712,12 @@ impl Surface {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        D2UV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomPlate_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
@@ -2741,16 +2732,16 @@ impl Surface {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        D2UV: &mut crate::ffi::gp_Vec,
-        D3U: &mut crate::ffi::gp_Vec,
-        D3V: &mut crate::ffi::gp_Vec,
-        D3UUV: &mut crate::ffi::gp_Vec,
-        D3UVV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
+        D3U: &mut crate::gp::Vec,
+        D3V: &mut crate::gp::Vec,
+        D3UUV: &mut crate::gp::Vec,
+        D3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomPlate_Surface_d3(
@@ -2779,7 +2770,7 @@ impl Surface {
     /// Raised if the continuity of the surface is not CNu in the U
     /// direction or not CNv in the V direction.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_dn(
                 self as *const Self,
@@ -2804,7 +2795,7 @@ impl Surface {
     /// or a complex transformation obtained by combination of
     /// the previous elementaries transformations.
     /// (see class Transformation of the package Geom).
-    pub fn transform(&mut self, T: &crate::ffi::gp_Trsf) {
+    pub fn transform(&mut self, T: &crate::gp::Trsf) {
         unsafe { crate::ffi::GeomPlate_Surface_transform(self as *mut Self, T) }
     }
 
@@ -2901,7 +2892,7 @@ impl Surface {
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:278 - `Geom_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Value(
                 self as *const Self,
@@ -2912,30 +2903,27 @@ impl Surface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
-    pub fn mirror(&mut self, P: &crate::ffi::gp_Pnt) {
+    pub fn mirror(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::GeomPlate_Surface_inherited_Mirror(self as *mut Self, P) }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
-    pub fn rotate(&mut self, A1: &crate::ffi::gp_Ax1, Ang: f64) {
+    pub fn rotate(&mut self, A1: &crate::gp::Ax1, Ang: f64) {
         unsafe { crate::ffi::GeomPlate_Surface_inherited_Rotate(self as *mut Self, A1, Ang) }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
-    pub fn scale(&mut self, P: &crate::ffi::gp_Pnt, S: f64) {
+    pub fn scale(&mut self, P: &crate::gp::Pnt, S: f64) {
         unsafe { crate::ffi::GeomPlate_Surface_inherited_Scale(self as *mut Self, P, S) }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::ffi::gp_Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec) {
         unsafe { crate::ffi::GeomPlate_Surface_inherited_Translate(self as *mut Self, V) }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
-    pub fn mirrored(
-        &self,
-        P: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn mirrored(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Mirrored(
                 self as *const Self,
@@ -2947,7 +2935,7 @@ impl Surface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:96 - `Geom_Geometry::Rotated()`
     pub fn rotated(
         &self,
-        A1: &crate::ffi::gp_Ax1,
+        A1: &crate::gp::Ax1,
         Ang: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -2962,7 +2950,7 @@ impl Surface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:99 - `Geom_Geometry::Scaled()`
     pub fn scaled(
         &self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         S: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
@@ -2977,7 +2965,7 @@ impl Surface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:102 - `Geom_Geometry::Transformed()`
     pub fn transformed(
         &self,
-        T: &crate::ffi::gp_Trsf,
+        T: &crate::gp::Trsf,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Transformed(
@@ -2990,7 +2978,7 @@ impl Surface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::ffi::gp_Vec,
+        V: &crate::gp::Vec,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Translated(

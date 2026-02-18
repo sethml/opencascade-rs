@@ -18,10 +18,10 @@
 /// to consult the current progress stage and abort algorithm
 /// if needed.
 pub fn same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgregistrator(
-    shape: &crate::ffi::TopoDS_Shape,
+    shape: &crate::topo_ds::Shape,
     enforce: bool,
     preci: f64,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    theProgress: &crate::message::ProgressRange,
     theMsgReg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
 ) -> bool {
     unsafe {
@@ -32,12 +32,12 @@ pub fn same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgreg
 /// Runs EncodeRegularity from BRepLib taking into account
 /// shared components of assemblies, so that each component
 /// is processed only once
-pub fn encode_regularity_shape_real_2(shape: &crate::ffi::TopoDS_Shape, tolang: f64) {
+pub fn encode_regularity_shape_real_2(shape: &crate::topo_ds::Shape, tolang: f64) {
     unsafe { crate::ffi::ShapeFix_encode_regularity_shape_real_2(shape, tolang) }
 }
 /// **Source:** `ShapeFix.hxx`:81 - `ShapeFix::LeastEdgeSize`
 /// Calculate size of least edge;
-pub fn least_edge_size(theshape: &mut crate::ffi::TopoDS_Shape) -> f64 {
+pub fn least_edge_size(theshape: &mut crate::topo_ds::Shape) -> f64 {
     unsafe { crate::ffi::ShapeFix_least_edge_size(theshape) }
 }
 
@@ -106,8 +106,8 @@ impl ComposeShell {
     pub fn init(
         &mut self,
         Grid: &crate::ffi::HandleShapeExtendCompositeSurface,
-        L: &crate::ffi::TopLoc_Location,
-        Face: &crate::ffi::TopoDS_Face,
+        L: &crate::top_loc::Location,
+        Face: &crate::topo_ds::Face,
         Prec: f64,
     ) {
         unsafe { crate::ffi::ShapeFix_ComposeShell_init(self as *mut Self, Grid, L, Face, Prec) }
@@ -145,7 +145,7 @@ impl ComposeShell {
 
     /// **Source:** `ShapeFix_ComposeShell.hxx`:124 - `ShapeFix_ComposeShell::Result()`
     /// Returns resulting shell or face (or Null shape if not done)
-    pub fn result(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn result(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::ShapeFix_ComposeShell_result(self as *const Self)) }
     }
 
@@ -305,8 +305,8 @@ impl ComposeShell {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -320,11 +320,7 @@ impl ComposeShell {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_ComposeShell_inherited_SendWarning(
                 self as *const Self,
@@ -335,7 +331,7 @@ impl ComposeShell {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_ComposeShell_inherited_SendFail(
                 self as *const Self,
@@ -385,8 +381,8 @@ impl Edge {
     /// **Source:** `ShapeFix_Edge.hxx`:60 - `ShapeFix_Edge::FixRemovePCurve()`
     pub fn fix_remove_p_curve_edge_face(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
-        face: &crate::ffi::TopoDS_Face,
+        edge: &crate::topo_ds::Edge,
+        face: &crate::topo_ds::Face,
     ) -> bool {
         unsafe {
             crate::ffi::ShapeFix_Edge_fix_remove_p_curve_edge_face(self as *mut Self, edge, face)
@@ -404,9 +400,9 @@ impl Edge {
     /// nothing done
     pub fn fix_remove_p_curve_edge_handlegeomsurface_location(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         surface: &crate::ffi::HandleGeomSurface,
-        location: &crate::ffi::TopLoc_Location,
+        location: &crate::top_loc::Location,
     ) -> bool {
         unsafe {
             crate::ffi::ShapeFix_Edge_fix_remove_p_curve_edge_handlegeomsurface_location(
@@ -423,7 +419,7 @@ impl Edge {
     /// Returns: True,  if does not match, removed (status DONE)
     /// False, (status OK) if matches or (status FAIL) if no 3d curve,
     /// nothing done
-    pub fn fix_remove_curve3d(&mut self, edge: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn fix_remove_curve3d(&mut self, edge: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::ShapeFix_Edge_fix_remove_curve3d(self as *mut Self, edge) }
     }
 
@@ -431,8 +427,8 @@ impl Edge {
     /// See method below for information
     pub fn fix_add_p_curve_edge_face_bool_real(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
-        face: &crate::ffi::TopoDS_Face,
+        edge: &crate::topo_ds::Edge,
+        face: &crate::topo_ds::Face,
         isSeam: bool,
         prec: f64,
     ) -> bool {
@@ -451,9 +447,9 @@ impl Edge {
     /// See method below for information
     pub fn fix_add_p_curve_edge_handlegeomsurface_location_bool_real(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         surface: &crate::ffi::HandleGeomSurface,
-        location: &crate::ffi::TopLoc_Location,
+        location: &crate::top_loc::Location,
         isSeam: bool,
         prec: f64,
     ) -> bool {
@@ -473,8 +469,8 @@ impl Edge {
     /// See method below for information
     pub fn fix_add_p_curve_edge_face_bool_handleshapeanalysissurface_real(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
-        face: &crate::ffi::TopoDS_Face,
+        edge: &crate::topo_ds::Edge,
+        face: &crate::topo_ds::Face,
         isSeam: bool,
         surfana: &crate::ffi::HandleShapeAnalysisSurface,
         prec: f64,
@@ -511,9 +507,9 @@ impl Edge {
     /// ShapeConstruct_ProjectCurveOnSurface for more info)
     pub fn fix_add_p_curve_edge_handlegeomsurface_location_bool_handleshapeanalysissurface_real(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         surface: &crate::ffi::HandleGeomSurface,
-        location: &crate::ffi::TopLoc_Location,
+        location: &crate::top_loc::Location,
         isSeam: bool,
         surfana: &crate::ffi::HandleShapeAnalysisSurface,
         prec: f64,
@@ -532,15 +528,15 @@ impl Edge {
     /// OK   : 3d curve exists
     /// FAIL1: BRepLib::BuildCurve3d() has failed
     /// DONE1: 3d curve was added
-    pub fn fix_add_curve3d(&mut self, edge: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn fix_add_curve3d(&mut self, edge: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::ShapeFix_Edge_fix_add_curve3d(self as *mut Self, edge) }
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:135 - `ShapeFix_Edge::FixVertexTolerance()`
     pub fn fix_vertex_tolerance_edge_face(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
-        face: &crate::ffi::TopoDS_Face,
+        edge: &crate::topo_ds::Edge,
+        face: &crate::topo_ds::Face,
     ) -> bool {
         unsafe {
             crate::ffi::ShapeFix_Edge_fix_vertex_tolerance_edge_face(self as *mut Self, edge, face)
@@ -556,15 +552,15 @@ impl Edge {
     /// OK   : the original tolerances have not been changed
     /// DONE1: the tolerance of first vertex has been increased
     /// DONE2: the tolerance of last  vertex has been increased
-    pub fn fix_vertex_tolerance_edge(&mut self, edge: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn fix_vertex_tolerance_edge(&mut self, edge: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::ShapeFix_Edge_fix_vertex_tolerance_edge(self as *mut Self, edge) }
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:148 - `ShapeFix_Edge::FixReversed2d()`
     pub fn fix_reversed2d_edge_face(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
-        face: &crate::ffi::TopoDS_Face,
+        edge: &crate::topo_ds::Edge,
+        face: &crate::topo_ds::Face,
     ) -> bool {
         unsafe { crate::ffi::ShapeFix_Edge_fix_reversed2d_edge_face(self as *mut Self, edge, face) }
     }
@@ -583,9 +579,9 @@ impl Edge {
     /// DONE1 - pcurve was reversed
     pub fn fix_reversed2d_edge_handlegeomsurface_location(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         surface: &crate::ffi::HandleGeomSurface,
-        location: &crate::ffi::TopLoc_Location,
+        location: &crate::top_loc::Location,
     ) -> bool {
         unsafe {
             crate::ffi::ShapeFix_Edge_fix_reversed2d_edge_handlegeomsurface_location(
@@ -633,7 +629,7 @@ impl Edge {
     /// (only for edges with not set SameParameter)
     pub fn fix_same_parameter_edge_real(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         tolerance: f64,
     ) -> bool {
         unsafe {
@@ -681,8 +677,8 @@ impl Edge {
     /// (only for edges with not set SameParameter)
     pub fn fix_same_parameter_edge_face_real(
         &mut self,
-        edge: &crate::ffi::TopoDS_Edge,
-        face: &crate::ffi::TopoDS_Face,
+        edge: &crate::topo_ds::Edge,
+        face: &crate::topo_ds::Face,
         tolerance: f64,
     ) -> bool {
         unsafe {
@@ -775,11 +771,7 @@ impl EdgeConnect {
     /// Adds information on connectivity between start vertex
     /// of second edge and end vertex of first edge,
     /// taking edges orientation into account
-    pub fn add_edge2(
-        &mut self,
-        aFirst: &crate::ffi::TopoDS_Edge,
-        aSecond: &crate::ffi::TopoDS_Edge,
-    ) {
+    pub fn add_edge2(&mut self, aFirst: &crate::topo_ds::Edge, aSecond: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ShapeFix_EdgeConnect_add_edge2(self as *mut Self, aFirst, aSecond) }
     }
 
@@ -787,7 +779,7 @@ impl EdgeConnect {
     /// Adds connectivity information for the whole shape.
     /// Note: edges in wires must be well ordered
     /// Note: flag Closed should be set for closed wires
-    pub fn add_shape(&mut self, aShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_shape(&mut self, aShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeFix_EdgeConnect_add_shape(self as *mut Self, aShape) }
     }
 
@@ -827,14 +819,14 @@ impl EdgeProjAux {
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:39 - `ShapeFix_EdgeProjAux::ShapeFix_EdgeProjAux()`
     pub fn new_face_edge(
-        F: &crate::ffi::TopoDS_Face,
-        E: &crate::ffi::TopoDS_Edge,
+        F: &crate::topo_ds::Face,
+        E: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_EdgeProjAux_ctor_face_edge(F, E)) }
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:41 - `ShapeFix_EdgeProjAux::Init()`
-    pub fn init(&mut self, F: &crate::ffi::TopoDS_Face, E: &crate::ffi::TopoDS_Edge) {
+    pub fn init(&mut self, F: &crate::topo_ds::Face, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ShapeFix_EdgeProjAux_init(self as *mut Self, F, E) }
     }
 
@@ -944,7 +936,7 @@ impl Face {
 
     /// **Source:** `ShapeFix_Face.hxx`:60 - `ShapeFix_Face::ShapeFix_Face()`
     /// Creates a tool and loads a face
-    pub fn new_face(face: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
+    pub fn new_face(face: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Face_ctor_face(face)) }
     }
 
@@ -957,7 +949,7 @@ impl Face {
     /// **Source:** `ShapeFix_Face.hxx`:67 - `ShapeFix_Face::Init()`
     /// Loads a whole face already created, with its wires, sense and
     /// location
-    pub fn init_face(&mut self, face: &crate::ffi::TopoDS_Face) {
+    pub fn init_face(&mut self, face: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeFix_Face_init_face(self as *mut Self, face) }
     }
 
@@ -1030,14 +1022,14 @@ impl Face {
     /// Returns a face which corresponds to the current state
     /// Warning: The finally produced face may be another one ... but with the
     /// same support
-    pub fn face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Face_face(self as *const Self)) }
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:147 - `ShapeFix_Face::Result()`
     /// Returns resulting shape (Face or Shell if split)
     /// To be used instead of Face() if FixMissingSeam involved
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Face_result(self as *const Self)) }
     }
 
@@ -1045,7 +1037,7 @@ impl Face {
     /// Add a wire to current face using BRep_Builder.
     /// Wire is added without taking into account orientation of face
     /// (as if face were FORWARD).
-    pub fn add(&mut self, wire: &crate::ffi::TopoDS_Wire) {
+    pub fn add(&mut self, wire: &crate::topo_ds::Wire) {
         unsafe { crate::ffi::ShapeFix_Face_add(self as *mut Self, wire) }
     }
 
@@ -1258,8 +1250,8 @@ impl Face {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -1273,18 +1265,14 @@ impl Face {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Face_inherited_SendWarning(self as *const Self, shape, message)
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe { crate::ffi::ShapeFix_Face_inherited_SendFail(self as *const Self, shape, message) }
     }
 }
@@ -1310,21 +1298,17 @@ impl FaceConnect {
     }
 
     /// **Source:** `ShapeFix_FaceConnect.hxx`:35 - `ShapeFix_FaceConnect::Add()`
-    pub fn add(
-        &mut self,
-        aFirst: &crate::ffi::TopoDS_Face,
-        aSecond: &crate::ffi::TopoDS_Face,
-    ) -> bool {
+    pub fn add(&mut self, aFirst: &crate::topo_ds::Face, aSecond: &crate::topo_ds::Face) -> bool {
         unsafe { crate::ffi::ShapeFix_FaceConnect_add(self as *mut Self, aFirst, aSecond) }
     }
 
     /// **Source:** `ShapeFix_FaceConnect.hxx`:37 - `ShapeFix_FaceConnect::Build()`
     pub fn build(
         &mut self,
-        shell: &crate::ffi::TopoDS_Shell,
+        shell: &crate::topo_ds::Shell,
         sewtoler: f64,
         fixtoler: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shell> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FaceConnect_build(
                 self as *mut Self,
@@ -1363,7 +1347,7 @@ impl FixSmallFace {
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:41 - `ShapeFix_FixSmallFace::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeFix_FixSmallFace_init(self as *mut Self, S) }
     }
 
@@ -1375,7 +1359,7 @@ impl FixSmallFace {
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:47 - `ShapeFix_FixSmallFace::FixSpotFace()`
     /// Fixing case of spot face, if tol = -1 used local tolerance.
-    pub fn fix_spot_face(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn fix_spot_face(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallFace_fix_spot_face(
                 self as *mut Self,
@@ -1385,11 +1369,7 @@ impl FixSmallFace {
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:50 - `ShapeFix_FixSmallFace::ReplaceVerticesInCaseOfSpot()`
     /// Compute average vertex and replacing vertices by new one.
-    pub fn replace_vertices_in_case_of_spot(
-        &self,
-        F: &mut crate::ffi::TopoDS_Face,
-        tol: f64,
-    ) -> bool {
+    pub fn replace_vertices_in_case_of_spot(&self, F: &mut crate::topo_ds::Face, tol: f64) -> bool {
         unsafe {
             crate::ffi::ShapeFix_FixSmallFace_replace_vertices_in_case_of_spot(
                 self as *const Self,
@@ -1401,7 +1381,7 @@ impl FixSmallFace {
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:54 - `ShapeFix_FixSmallFace::RemoveFacesInCaseOfSpot()`
     /// Remove spot face from compound
-    pub fn remove_faces_in_case_of_spot(&self, F: &crate::ffi::TopoDS_Face) -> bool {
+    pub fn remove_faces_in_case_of_spot(&self, F: &crate::topo_ds::Face) -> bool {
         unsafe {
             crate::ffi::ShapeFix_FixSmallFace_remove_faces_in_case_of_spot(self as *const Self, F)
         }
@@ -1409,7 +1389,7 @@ impl FixSmallFace {
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:57 - `ShapeFix_FixSmallFace::FixStripFace()`
     /// Fixing case of strip face, if tol = -1 used local tolerance
-    pub fn fix_strip_face(&mut self, wasdone: bool) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn fix_strip_face(&mut self, wasdone: bool) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallFace_fix_strip_face(
                 self as *mut Self,
@@ -1422,9 +1402,9 @@ impl FixSmallFace {
     /// Replace veretces and edges.
     pub fn replace_in_case_of_strip(
         &self,
-        F: &mut crate::ffi::TopoDS_Face,
-        E1: &mut crate::ffi::TopoDS_Edge,
-        E2: &mut crate::ffi::TopoDS_Edge,
+        F: &mut crate::topo_ds::Face,
+        E1: &mut crate::topo_ds::Edge,
+        E2: &mut crate::topo_ds::Edge,
         tol: f64,
     ) -> bool {
         unsafe {
@@ -1440,7 +1420,7 @@ impl FixSmallFace {
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:66 - `ShapeFix_FixSmallFace::RemoveFacesInCaseOfStrip()`
     /// Remove strip face from compound.
-    pub fn remove_faces_in_case_of_strip(&self, F: &crate::ffi::TopoDS_Face) -> bool {
+    pub fn remove_faces_in_case_of_strip(&self, F: &crate::topo_ds::Face) -> bool {
         unsafe {
             crate::ffi::ShapeFix_FixSmallFace_remove_faces_in_case_of_strip(self as *const Self, F)
         }
@@ -1450,12 +1430,12 @@ impl FixSmallFace {
     /// Compute average edge for strip face
     pub fn compute_shared_edge_for_strip_face(
         &self,
-        F: &crate::ffi::TopoDS_Face,
-        E1: &crate::ffi::TopoDS_Edge,
-        E2: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
+        E1: &crate::topo_ds::Edge,
+        E2: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
         tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::ShapeFix_FixSmallFace_compute_shared_edge_for_strip_face(
@@ -1473,8 +1453,8 @@ impl FixSmallFace {
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:75 - `ShapeFix_FixSmallFace::FixSplitFace()`
     pub fn fix_split_face(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        S: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallFace_fix_split_face(
                 self as *mut Self,
@@ -1487,8 +1467,8 @@ impl FixSmallFace {
     /// Compute data for face splitting.
     pub fn split_one_face(
         &mut self,
-        F: &mut crate::ffi::TopoDS_Face,
-        theSplittedFaces: &mut crate::ffi::TopoDS_Compound,
+        F: &mut crate::topo_ds::Face,
+        theSplittedFaces: &mut crate::topo_ds::Compound,
     ) -> bool {
         unsafe {
             crate::ffi::ShapeFix_FixSmallFace_split_one_face(self as *mut Self, F, theSplittedFaces)
@@ -1496,10 +1476,7 @@ impl FixSmallFace {
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:80 - `ShapeFix_FixSmallFace::FixFace()`
-    pub fn fix_face(
-        &mut self,
-        F: &crate::ffi::TopoDS_Face,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    pub fn fix_face(&mut self, F: &crate::topo_ds::Face) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallFace_fix_face(
                 self as *mut Self,
@@ -1509,7 +1486,7 @@ impl FixSmallFace {
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:82 - `ShapeFix_FixSmallFace::FixShape()`
-    pub fn fix_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn fix_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallFace_fix_shape(
                 self as *mut Self,
@@ -1518,14 +1495,14 @@ impl FixSmallFace {
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:84 - `ShapeFix_FixSmallFace::Shape()`
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallFace_shape(self as *mut Self))
         }
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:86 - `ShapeFix_FixSmallFace::FixPinFace()`
-    pub fn fix_pin_face(&mut self, F: &mut crate::ffi::TopoDS_Face) -> bool {
+    pub fn fix_pin_face(&mut self, F: &mut crate::topo_ds::Face) -> bool {
         unsafe { crate::ffi::ShapeFix_FixSmallFace_fix_pin_face(self as *mut Self, F) }
     }
 
@@ -1630,8 +1607,8 @@ impl FixSmallFace {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -1645,11 +1622,7 @@ impl FixSmallFace {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_FixSmallFace_inherited_SendWarning(
                 self as *const Self,
@@ -1660,7 +1633,7 @@ impl FixSmallFace {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_FixSmallFace_inherited_SendFail(
                 self as *const Self,
@@ -1826,8 +1799,8 @@ impl FixSmallSolid {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -1841,11 +1814,7 @@ impl FixSmallSolid {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_FixSmallSolid_inherited_SendWarning(
                 self as *const Self,
@@ -1856,7 +1825,7 @@ impl FixSmallSolid {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_FixSmallSolid_inherited_SendFail(
                 self as *const Self,
@@ -1918,7 +1887,7 @@ impl FreeBounds {
     /// <sewtoler> used for initializing sewing analyzer, otherwise
     /// connection of open wires is not performed.
     pub fn new_shape_real2_bool2(
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         sewtoler: f64,
         closetoler: f64,
         splitclosed: bool,
@@ -1940,7 +1909,7 @@ impl FreeBounds {
     /// open wires with tolerance <closetoler>.
     /// <shape> should be a compound of shells.
     pub fn new_shape_real_bool2(
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         closetoler: f64,
         splitclosed: bool,
         splitopen: bool,
@@ -1957,19 +1926,19 @@ impl FreeBounds {
 
     /// **Source:** `ShapeFix_FreeBounds.hxx`:78 - `ShapeFix_FreeBounds::GetClosedWires()`
     /// Returns compound of closed wires out of free edges.
-    pub fn get_closed_wires(&self) -> &crate::ffi::TopoDS_Compound {
+    pub fn get_closed_wires(&self) -> &crate::topo_ds::Compound {
         unsafe { &*(crate::ffi::ShapeFix_FreeBounds_get_closed_wires(self as *const Self)) }
     }
 
     /// **Source:** `ShapeFix_FreeBounds.hxx`:81 - `ShapeFix_FreeBounds::GetOpenWires()`
     /// Returns compound of open wires out of free edges.
-    pub fn get_open_wires(&self) -> &crate::ffi::TopoDS_Compound {
+    pub fn get_open_wires(&self) -> &crate::topo_ds::Compound {
         unsafe { &*(crate::ffi::ShapeFix_FreeBounds_get_open_wires(self as *const Self)) }
     }
 
     /// **Source:** `ShapeFix_FreeBounds.hxx`:84 - `ShapeFix_FreeBounds::GetShape()`
     /// Returns modified source shape.
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::ShapeFix_FreeBounds_get_shape(self as *const Self)) }
     }
 }
@@ -1996,12 +1965,12 @@ impl IntersectionTool {
     /// The "face" is necessary for pcurves and using TransferParameterProj
     pub fn split_edge(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         param: f64,
-        vert: &crate::ffi::TopoDS_Vertex,
-        face: &crate::ffi::TopoDS_Face,
-        newE1: &mut crate::ffi::TopoDS_Edge,
-        newE2: &mut crate::ffi::TopoDS_Edge,
+        vert: &crate::topo_ds::Vertex,
+        face: &crate::topo_ds::Face,
+        newE1: &mut crate::topo_ds::Edge,
+        newE2: &mut crate::topo_ds::Edge,
         preci: f64,
     ) -> bool {
         unsafe {
@@ -2022,10 +1991,10 @@ impl IntersectionTool {
     /// Cut edge by parameters pend and cut
     pub fn cut_edge(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         pend: f64,
         cut: f64,
-        face: &crate::ffi::TopoDS_Face,
+        face: &crate::topo_ds::Face,
         iscutline: &mut bool,
     ) -> bool {
         unsafe {
@@ -2041,7 +2010,7 @@ impl IntersectionTool {
     }
 
     /// **Source:** `ShapeFix_IntersectionTool.hxx`:72 - `ShapeFix_IntersectionTool::FixIntersectingWires()`
-    pub fn fix_intersecting_wires(&self, face: &mut crate::ffi::TopoDS_Face) -> bool {
+    pub fn fix_intersecting_wires(&self, face: &mut crate::topo_ds::Face) -> bool {
         unsafe {
             crate::ffi::ShapeFix_IntersectionTool_fix_intersecting_wires(self as *const Self, face)
         }
@@ -2147,8 +2116,8 @@ impl Root {
     /// Calls corresponding message of message registrator.
     pub fn send_msg_shape_msg_gravity(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -2166,7 +2135,7 @@ impl Root {
     /// Calls previous method.
     pub fn send_msg_msg_gravity(
         &self,
-        message: &crate::ffi::Message_Msg,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -2183,8 +2152,8 @@ impl Root {
     /// Calls SendMsg with gravity set to Message_Warning.
     pub fn send_warning_shape_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::ShapeFix_Root_send_warning_shape_msg(self as *const Self, shape, message)
@@ -2193,7 +2162,7 @@ impl Root {
 
     /// **Source:** `ShapeFix_Root.hxx`:101 - `ShapeFix_Root::SendWarning()`
     /// Calls previous method for myShape.
-    pub fn send_warning_msg(&self, message: &crate::ffi::Message_Msg) {
+    pub fn send_warning_msg(&self, message: &crate::message::Msg) {
         unsafe { crate::ffi::ShapeFix_Root_send_warning_msg(self as *const Self, message) }
     }
 
@@ -2202,8 +2171,8 @@ impl Root {
     /// Calls SendMsg with gravity set to Message_Fail.
     pub fn send_fail_shape_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::ShapeFix_Root_send_fail_shape_msg(self as *const Self, shape, message)
@@ -2212,7 +2181,7 @@ impl Root {
 
     /// **Source:** `ShapeFix_Root.hxx`:108 - `ShapeFix_Root::SendFail()`
     /// Calls previous method for myShape.
-    pub fn send_fail_msg(&self, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail_msg(&self, message: &crate::message::Msg) {
         unsafe { crate::ffi::ShapeFix_Root_send_fail_msg(self as *const Self, message) }
     }
 
@@ -2286,25 +2255,25 @@ impl Shape {
 
     /// **Source:** `ShapeFix_Shape.hxx`:54 - `ShapeFix_Shape::ShapeFix_Shape()`
     /// Initislises by shape.
-    pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_ctor_shape(shape)) }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:57 - `ShapeFix_Shape::Init()`
     /// Initislises by shape.
-    pub fn init(&mut self, shape: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, shape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeFix_Shape_init(self as *mut Self, shape) }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:61 - `ShapeFix_Shape::Perform()`
     /// Iterates on sub- shape and performs fixes
-    pub fn perform(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> bool {
+    pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe { crate::ffi::ShapeFix_Shape_perform(self as *mut Self, theProgress) }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:64 - `ShapeFix_Shape::Shape()`
     /// Returns resulting shape
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_shape(self as *const Self)) }
     }
 
@@ -2424,8 +2393,8 @@ impl Shape {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -2439,18 +2408,14 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Shape_inherited_SendWarning(self as *const Self, shape, message)
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Shape_inherited_SendFail(self as *const Self, shape, message)
         }
@@ -2493,7 +2458,7 @@ impl ShapeTolerance {
     /// been modified
     pub fn limit_tolerance(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         tmin: f64,
         tmax: f64,
         styp: crate::top_abs::ShapeEnum,
@@ -2518,7 +2483,7 @@ impl ShapeTolerance {
     /// styp = other value : all (vertices,edges,faces) are set
     pub fn set_tolerance(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         preci: f64,
         styp: crate::top_abs::ShapeEnum,
     ) {
@@ -2556,13 +2521,13 @@ impl Shell {
 
     /// **Source:** `ShapeFix_Shell.hxx`:48 - `ShapeFix_Shell::ShapeFix_Shell()`
     /// Initializes by shell.
-    pub fn new_shell(shape: &crate::ffi::TopoDS_Shell) -> crate::OwnedPtr<Self> {
+    pub fn new_shell(shape: &crate::topo_ds::Shell) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shell_ctor_shell(shape)) }
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:51 - `ShapeFix_Shell::Init()`
     /// Initializes by shell.
-    pub fn init(&mut self, shell: &crate::ffi::TopoDS_Shell) {
+    pub fn init(&mut self, shell: &crate::topo_ds::Shell) {
         unsafe { crate::ffi::ShapeFix_Shell_init(self as *mut Self, shell) }
     }
 
@@ -2572,7 +2537,7 @@ impl Shell {
     /// then calls FixFaceOrientation). The passed progress
     /// indicator allows user to consult the current progress
     /// stage and abort algorithm if needed.
-    pub fn perform(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> bool {
+    pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe { crate::ffi::ShapeFix_Shell_perform(self as *mut Self, theProgress) }
     }
 
@@ -2593,7 +2558,7 @@ impl Shell {
     /// manifold shells will be created. By default - Standard_False.
     pub fn fix_face_orientation(
         &mut self,
-        shell: &crate::ffi::TopoDS_Shell,
+        shell: &crate::topo_ds::Shell,
         isAccountMultiConex: bool,
         NonManifold: bool,
     ) -> bool {
@@ -2609,14 +2574,14 @@ impl Shell {
 
     /// **Source:** `ShapeFix_Shell.hxx`:81 - `ShapeFix_Shell::Shell()`
     /// Returns fixed shell (or subset of oriented faces).
-    pub fn shell(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shell> {
+    pub fn shell(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shell_shell(self as *mut Self)) }
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:85 - `ShapeFix_Shell::Shape()`
     /// In case of multiconnexity returns compound of fixed shells
     /// else returns one shell..
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shell_shape(self as *mut Self)) }
     }
 
@@ -2628,7 +2593,7 @@ impl Shell {
 
     /// **Source:** `ShapeFix_Shell.hxx`:91 - `ShapeFix_Shell::ErrorFaces()`
     /// Returns not oriented subset of faces.
-    pub fn error_faces(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Compound> {
+    pub fn error_faces(&self) -> crate::OwnedPtr<crate::topo_ds::Compound> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shell_error_faces(self as *const Self))
         }
@@ -2743,8 +2708,8 @@ impl Shell {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -2758,18 +2723,14 @@ impl Shell {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Shell_inherited_SendWarning(self as *const Self, shape, message)
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Shell_inherited_SendFail(self as *const Self, shape, message)
         }
@@ -2800,13 +2761,13 @@ impl Solid {
 
     /// **Source:** `ShapeFix_Solid.hxx`:50 - `ShapeFix_Solid::ShapeFix_Solid()`
     /// Initializes by solid.
-    pub fn new_solid(solid: &crate::ffi::TopoDS_Solid) -> crate::OwnedPtr<Self> {
+    pub fn new_solid(solid: &crate::topo_ds::Solid) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Solid_ctor_solid(solid)) }
     }
 
     /// **Source:** `ShapeFix_Solid.hxx`:53 - `ShapeFix_Solid::Init()`
     /// Initializes by solid .
-    pub fn init(&mut self, solid: &crate::ffi::TopoDS_Solid) {
+    pub fn init(&mut self, solid: &crate::topo_ds::Solid) {
         unsafe { crate::ffi::ShapeFix_Solid_init(self as *mut Self, solid) }
     }
 
@@ -2815,7 +2776,7 @@ impl Solid {
     /// (calls ShapeFix_Shell for each subshell). The passed
     /// progress indicator allows user to consult the current
     /// progress stage and abort algorithm if needed.
-    pub fn perform(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> bool {
+    pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe { crate::ffi::ShapeFix_Solid_perform(self as *mut Self, theProgress) }
     }
 
@@ -2823,8 +2784,8 @@ impl Solid {
     /// Calls MakeSolid and orients the solid to be "not infinite"
     pub fn solid_from_shell(
         &mut self,
-        shell: &crate::ffi::TopoDS_Shell,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Solid> {
+        shell: &crate::topo_ds::Shell,
+    ) -> crate::OwnedPtr<crate::topo_ds::Solid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Solid_solid_from_shell(
                 self as *mut Self,
@@ -2841,7 +2802,7 @@ impl Solid {
 
     /// **Source:** `ShapeFix_Solid.hxx`:69 - `ShapeFix_Solid::Solid()`
     /// Returns resulting solid.
-    pub fn solid(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn solid(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Solid_solid(self as *const Self)) }
     }
 
@@ -2885,7 +2846,7 @@ impl Solid {
     /// **Source:** `ShapeFix_Solid.hxx`:104 - `ShapeFix_Solid::Shape()`
     /// In case of multiconnexity returns compound of fixed solids
     /// else returns one solid.
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Solid_shape(self as *mut Self)) }
     }
 
@@ -2957,8 +2918,8 @@ impl Solid {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -2972,18 +2933,14 @@ impl Solid {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Solid_inherited_SendWarning(self as *const Self, shape, message)
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Solid_inherited_SendFail(self as *const Self, shape, message)
         }
@@ -3013,7 +2970,7 @@ impl SplitCommonVertex {
     }
 
     /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:38 - `ShapeFix_SplitCommonVertex::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeFix_SplitCommonVertex_init(self as *mut Self, S) }
     }
 
@@ -3023,7 +2980,7 @@ impl SplitCommonVertex {
     }
 
     /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:42 - `ShapeFix_SplitCommonVertex::Shape()`
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_SplitCommonVertex_shape(
                 self as *mut Self,
@@ -3152,8 +3109,8 @@ impl SplitCommonVertex {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -3167,11 +3124,7 @@ impl SplitCommonVertex {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_SplitCommonVertex_inherited_SendWarning(
                 self as *const Self,
@@ -3182,7 +3135,7 @@ impl SplitCommonVertex {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_SplitCommonVertex_inherited_SendFail(
                 self as *const Self,
@@ -3221,12 +3174,12 @@ impl SplitTool {
     /// The "face" is necessary for pcurves and using TransferParameterProj
     pub fn split_edge_edge_real_vertex_face_edge2_real2(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         param: f64,
-        vert: &crate::ffi::TopoDS_Vertex,
-        face: &crate::ffi::TopoDS_Face,
-        newE1: &mut crate::ffi::TopoDS_Edge,
-        newE2: &mut crate::ffi::TopoDS_Edge,
+        vert: &crate::topo_ds::Vertex,
+        face: &crate::topo_ds::Face,
+        newE1: &mut crate::topo_ds::Edge,
+        newE2: &mut crate::topo_ds::Edge,
         tol3d: f64,
         tol2d: f64,
     ) -> bool {
@@ -3251,13 +3204,13 @@ impl SplitTool {
     /// The "face" is necessary for pcurves and using TransferParameterProj
     pub fn split_edge_edge_real2_vertex_face_edge2_real2(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         param1: f64,
         param2: f64,
-        vert: &crate::ffi::TopoDS_Vertex,
-        face: &crate::ffi::TopoDS_Face,
-        newE1: &mut crate::ffi::TopoDS_Edge,
-        newE2: &mut crate::ffi::TopoDS_Edge,
+        vert: &crate::topo_ds::Vertex,
+        face: &crate::topo_ds::Face,
+        newE1: &mut crate::topo_ds::Edge,
+        newE2: &mut crate::topo_ds::Edge,
         tol3d: f64,
         tol2d: f64,
     ) -> bool {
@@ -3281,10 +3234,10 @@ impl SplitTool {
     /// Cut edge by parameters pend and cut
     pub fn cut_edge(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         pend: f64,
         cut: f64,
-        face: &crate::ffi::TopoDS_Face,
+        face: &crate::topo_ds::Face,
         iscutline: &mut bool,
     ) -> bool {
         unsafe {
@@ -3372,8 +3325,8 @@ impl Wire {
     /// Create new object with default flags and prepare it for use
     /// (Loads analyzer with all the data for the wire and face)
     pub fn new_wire_face_real(
-        wire: &crate::ffi::TopoDS_Wire,
-        face: &crate::ffi::TopoDS_Face,
+        wire: &crate::topo_ds::Wire,
+        face: &crate::topo_ds::Face,
         prec: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3400,8 +3353,8 @@ impl Wire {
     /// and drops all fixing statuses
     pub fn init_wire_face_real(
         &mut self,
-        wire: &crate::ffi::TopoDS_Wire,
-        face: &crate::ffi::TopoDS_Face,
+        wire: &crate::topo_ds::Wire,
+        face: &crate::topo_ds::Face,
         prec: f64,
     ) {
         unsafe {
@@ -3420,7 +3373,7 @@ impl Wire {
 
     /// **Source:** `ShapeFix_Wire.hxx`:119 - `ShapeFix_Wire::Load()`
     /// Load data for the wire, and drops all fixing statuses
-    pub fn load_wire(&mut self, wire: &crate::ffi::TopoDS_Wire) {
+    pub fn load_wire(&mut self, wire: &crate::topo_ds::Wire) {
         unsafe { crate::ffi::ShapeFix_Wire_load_wire(self as *mut Self, wire) }
     }
 
@@ -3432,7 +3385,7 @@ impl Wire {
 
     /// **Source:** `ShapeFix_Wire.hxx`:125 - `ShapeFix_Wire::SetFace()`
     /// Set working face for the wire
-    pub fn set_face(&mut self, face: &crate::ffi::TopoDS_Face) {
+    pub fn set_face(&mut self, face: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeFix_Wire_set_face(self as *mut Self, face) }
     }
 
@@ -3447,7 +3400,7 @@ impl Wire {
     pub fn set_surface_handlegeomsurface_location(
         &mut self,
         surf: &crate::ffi::HandleGeomSurface,
-        loc: &crate::ffi::TopLoc_Location,
+        loc: &crate::top_loc::Location,
     ) {
         unsafe {
             crate::ffi::ShapeFix_Wire_set_surface_handlegeomsurface_location(
@@ -3496,13 +3449,13 @@ impl Wire {
 
     /// **Source:** `ShapeFix_Wire.hxx`:152 - `ShapeFix_Wire::Wire()`
     /// Makes the resulting Wire (by basic Brep_Builder)
-    pub fn wire(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Wire_wire(self as *const Self)) }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:155 - `ShapeFix_Wire::WireAPIMake()`
     /// Makes the resulting Wire (by BRepAPI_MakeWire)
-    pub fn wire_api_make(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    pub fn wire_api_make(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Wire_wire_api_make(self as *const Self))
         }
@@ -3524,7 +3477,7 @@ impl Wire {
 
     /// **Source:** `ShapeFix_Wire.hxx`:164 - `ShapeFix_Wire::Face()`
     /// returns working face (Analyzer.Face())
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::ShapeFix_Wire_face(self as *const Self)) }
     }
 
@@ -3684,7 +3637,7 @@ impl Wire {
     /// **Source:** `ShapeFix_Wire.hxx`:334 - `ShapeFix_Wire::FixReorder()`
     /// Reorder edges in the wire as determined by WireOrder
     /// that should be filled and computed before
-    pub fn fix_reorder_wireorder(&mut self, wi: &crate::ffi::ShapeAnalysis_WireOrder) -> bool {
+    pub fn fix_reorder_wireorder(&mut self, wi: &crate::shape_analysis::WireOrder) -> bool {
         unsafe { crate::ffi::ShapeFix_Wire_fix_reorder_wireorder(self as *mut Self, wi) }
     }
 
@@ -3978,8 +3931,8 @@ impl Wire {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -3993,18 +3946,14 @@ impl Wire {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Wire_inherited_SendWarning(self as *const Self, shape, message)
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe { crate::ffi::ShapeFix_Wire_inherited_SendFail(self as *const Self, shape, message) }
     }
 }
@@ -4071,7 +4020,7 @@ impl WireSegment {
     /// **Source:** `ShapeFix_WireSegment.hxx`:68 - `ShapeFix_WireSegment::ShapeFix_WireSegment()`
     /// Creates segment and initializes it with wire and orientation.
     pub fn new_wire_orientation(
-        wire: &crate::ffi::TopoDS_Wire,
+        wire: &crate::topo_ds::Wire,
         ori: crate::top_abs::Orientation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4122,7 +4071,7 @@ impl WireSegment {
     /// **Source:** `ShapeFix_WireSegment.hxx`:88 - `ShapeFix_WireSegment::FirstVertex()`
     /// Returns first vertex of the first edge in the wire
     /// (no dependence on Orientation()).
-    pub fn first_vertex(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_WireSegment_first_vertex(
                 self as *const Self,
@@ -4133,7 +4082,7 @@ impl WireSegment {
     /// **Source:** `ShapeFix_WireSegment.hxx`:92 - `ShapeFix_WireSegment::LastVertex()`
     /// Returns last vertex of the last edge in the wire
     /// (no dependence on Orientation()).
-    pub fn last_vertex(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_WireSegment_last_vertex(
                 self as *const Self,
@@ -4155,7 +4104,7 @@ impl WireSegment {
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:101 - `ShapeFix_WireSegment::Edge()`
     /// Returns edge by given index in the wire
-    pub fn edge(&self, i: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    pub fn edge(&self, i: i32) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_WireSegment_edge(self as *const Self, i))
         }
@@ -4163,7 +4112,7 @@ impl WireSegment {
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:104 - `ShapeFix_WireSegment::SetEdge()`
     /// Replaces edge at index i by new one.
-    pub fn set_edge(&mut self, i: i32, edge: &crate::ffi::TopoDS_Edge) {
+    pub fn set_edge(&mut self, i: i32, edge: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ShapeFix_WireSegment_set_edge(self as *mut Self, i, edge) }
     }
 
@@ -4171,7 +4120,7 @@ impl WireSegment {
     /// Insert a new edge with index i and implicitly defined
     /// patch indices (indefinite patch).
     /// If i==0, edge is inserted at end of wire.
-    pub fn add_edge_int_edge(&mut self, i: i32, edge: &crate::ffi::TopoDS_Edge) {
+    pub fn add_edge_int_edge(&mut self, i: i32, edge: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ShapeFix_WireSegment_add_edge_int_edge(self as *mut Self, i, edge) }
     }
 
@@ -4181,7 +4130,7 @@ impl WireSegment {
     pub fn add_edge_int_edge_int4(
         &mut self,
         i: i32,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         iumin: i32,
         iumax: i32,
         ivmin: i32,
@@ -4246,12 +4195,12 @@ impl WireSegment {
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:149 - `ShapeFix_WireSegment::SetVertex()`
-    pub fn set_vertex(&mut self, theVertex: &crate::ffi::TopoDS_Vertex) {
+    pub fn set_vertex(&mut self, theVertex: &crate::topo_ds::Vertex) {
         unsafe { crate::ffi::ShapeFix_WireSegment_set_vertex(self as *mut Self, theVertex) }
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:151 - `ShapeFix_WireSegment::GetVertex()`
-    pub fn get_vertex(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn get_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_WireSegment_get_vertex(
                 self as *const Self,
@@ -4292,7 +4241,7 @@ impl WireVertex {
     /// Loads the wire, ininializes internal analyzer
     /// (ShapeAnalysis_WireVertex) with the given precision,
     /// and performs analysis
-    pub fn init_wire_real(&mut self, wire: &crate::ffi::TopoDS_Wire, preci: f64) {
+    pub fn init_wire_real(&mut self, wire: &crate::topo_ds::Wire, preci: f64) {
         unsafe { crate::ffi::ShapeFix_WireVertex_init_wire_real(self as *mut Self, wire, preci) }
     }
 
@@ -4317,13 +4266,13 @@ impl WireVertex {
     /// **Source:** `ShapeFix_WireVertex.hxx`:52 - `ShapeFix_WireVertex::Init()`
     /// Loads all the data on wire, already analysed by
     /// ShapeAnalysis_WireVertex
-    pub fn init_wirevertex(&mut self, sawv: &crate::ffi::ShapeAnalysis_WireVertex) {
+    pub fn init_wirevertex(&mut self, sawv: &crate::shape_analysis::WireVertex) {
         unsafe { crate::ffi::ShapeFix_WireVertex_init_wirevertex(self as *mut Self, sawv) }
     }
 
     /// **Source:** `ShapeFix_WireVertex.hxx`:55 - `ShapeFix_WireVertex::Analyzer()`
     /// returns internal analyzer
-    pub fn analyzer(&self) -> &crate::ffi::ShapeAnalysis_WireVertex {
+    pub fn analyzer(&self) -> &crate::shape_analysis::WireVertex {
         unsafe { &*(crate::ffi::ShapeFix_WireVertex_analyzer(self as *const Self)) }
     }
 
@@ -4335,7 +4284,7 @@ impl WireVertex {
 
     /// **Source:** `ShapeFix_WireVertex.hxx`:61 - `ShapeFix_WireVertex::Wire()`
     /// returns resulting wire (fixed)
-    pub fn wire(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_WireVertex_wire(self as *const Self))
         }
@@ -4379,7 +4328,7 @@ impl Wireframe {
     }
 
     /// **Source:** `ShapeFix_Wireframe.hxx`:40 - `ShapeFix_Wireframe::ShapeFix_Wireframe()`
-    pub fn new_shape(shape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Wireframe_ctor_shape(shape)) }
     }
 
@@ -4391,7 +4340,7 @@ impl Wireframe {
 
     /// **Source:** `ShapeFix_Wireframe.hxx`:46 - `ShapeFix_Wireframe::Load()`
     /// Loads a shape, resets statuses
-    pub fn load(&mut self, shape: &crate::ffi::TopoDS_Shape) {
+    pub fn load(&mut self, shape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeFix_Wireframe_load(self as *mut Self, shape) }
     }
 
@@ -4486,7 +4435,7 @@ impl Wireframe {
     }
 
     /// **Source:** `ShapeFix_Wireframe.hxx`:94 - `ShapeFix_Wireframe::Shape()`
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Wireframe_shape(self as *mut Self))
         }
@@ -4609,8 +4558,8 @@ impl Wireframe {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -4624,11 +4573,7 @@ impl Wireframe {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
-    ) {
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Wireframe_inherited_SendWarning(
                 self as *const Self,
@@ -4639,7 +4584,7 @@ impl Wireframe {
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::ffi::TopoDS_Shape, message: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe {
             crate::ffi::ShapeFix_Wireframe_inherited_SendFail(self as *const Self, shape, message)
         }

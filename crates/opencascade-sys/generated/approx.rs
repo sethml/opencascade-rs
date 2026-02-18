@@ -549,7 +549,7 @@ impl CurvlinFunc {
     /// Computes length of the curve segment.
     pub fn length_curve_real2(
         &self,
-        C: &mut crate::ffi::Adaptor3d_Curve,
+        C: &mut crate::adaptor3d::Curve,
         FirstU: f64,
         LasrU: f64,
     ) -> f64 {
@@ -569,7 +569,7 @@ impl CurvlinFunc {
     /// otherwise it is done on myC2D2 and mySurf2.
     pub fn get_u_parameter(
         &self,
-        C: &mut crate::ffi::Adaptor3d_Curve,
+        C: &mut crate::adaptor3d::Curve,
         S: f64,
         NumberOfCurve: i32,
     ) -> f64 {
@@ -686,7 +686,7 @@ impl FitAndDivide {
     /// The approximation will be done from degreemin to degreemax
     /// with a cutting if the corresponding boolean is True.
     pub fn new_function_int2_real2_bool_constraint2(
-        Line: &crate::ffi::AppCont_Function,
+        Line: &crate::app_cont::Function,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -739,7 +739,7 @@ impl FitAndDivide {
 
     /// **Source:** `Approx_FitAndDivide.hxx`:61 - `Approx_FitAndDivide::Perform()`
     /// runs the algorithm after having initialized the fields.
-    pub fn perform(&mut self, Line: &crate::ffi::AppCont_Function) {
+    pub fn perform(&mut self, Line: &crate::app_cont::Function) {
         unsafe { crate::ffi::Approx_FitAndDivide_perform(self as *mut Self, Line) }
     }
 
@@ -836,7 +836,7 @@ impl FitAndDivide {
 
     /// **Source:** `Approx_FitAndDivide.hxx`:108 - `Approx_FitAndDivide::Value()`
     /// returns the approximation MultiCurve of range <Index>.
-    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::AppParCurves_MultiCurve> {
+    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Approx_FitAndDivide_value(
                 self as *const Self,
@@ -873,7 +873,7 @@ impl FitAndDivide2d {
     /// The approximation will be done from degreemin to degreemax
     /// with a cutting if the corresponding boolean is True.
     pub fn new_function_int2_real2_bool_constraint2(
-        Line: &crate::ffi::AppCont_Function,
+        Line: &crate::app_cont::Function,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -926,7 +926,7 @@ impl FitAndDivide2d {
 
     /// **Source:** `Approx_FitAndDivide2d.hxx`:61 - `Approx_FitAndDivide2d::Perform()`
     /// runs the algorithm after having initialized the fields.
-    pub fn perform(&mut self, Line: &crate::ffi::AppCont_Function) {
+    pub fn perform(&mut self, Line: &crate::app_cont::Function) {
         unsafe { crate::ffi::Approx_FitAndDivide2d_perform(self as *mut Self, Line) }
     }
 
@@ -1023,7 +1023,7 @@ impl FitAndDivide2d {
 
     /// **Source:** `Approx_FitAndDivide2d.hxx`:108 - `Approx_FitAndDivide2d::Value()`
     /// returns the approximation MultiCurve of range <Index>.
-    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::AppParCurves_MultiCurve> {
+    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Approx_FitAndDivide2d_value(
                 self as *const Self,
@@ -1263,7 +1263,7 @@ impl MCurvesToBSpCurve {
     }
 
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:36 - `Approx_MCurvesToBSpCurve::Append()`
-    pub fn append(&mut self, MC: &crate::ffi::AppParCurves_MultiCurve) {
+    pub fn append(&mut self, MC: &crate::app_par_curves::MultiCurve) {
         unsafe { crate::ffi::Approx_MCurvesToBSpCurve_append(self as *mut Self, MC) }
     }
 
@@ -1287,13 +1287,13 @@ impl MCurvesToBSpCurve {
 
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:43 - `Approx_MCurvesToBSpCurve::Value()`
     /// return the composite MultiCurves as a MultiBSpCurve.
-    pub fn value(&self) -> &crate::ffi::AppParCurves_MultiBSpCurve {
+    pub fn value(&self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe { &*(crate::ffi::Approx_MCurvesToBSpCurve_value(self as *const Self)) }
     }
 
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:46 - `Approx_MCurvesToBSpCurve::ChangeValue()`
     /// return the composite MultiCurves as a MultiBSpCurve.
-    pub fn change_value(&mut self) -> &crate::ffi::AppParCurves_MultiBSpCurve {
+    pub fn change_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe { &*(crate::ffi::Approx_MCurvesToBSpCurve_change_value(self as *mut Self)) }
     }
 }
@@ -1854,7 +1854,7 @@ impl SweepFunction {
     /// An very poor estimation is sufficient.
     /// This information is useful to perform well conditioned rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Approx_SweepFunction_barycentre_of_surf(
                 self as *const Self,

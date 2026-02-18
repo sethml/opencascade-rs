@@ -57,13 +57,13 @@ impl AsciiString {
     }
 
     /// **Source:** `TDataStd_AsciiString.hxx`:57 - `TDataStd_AsciiString::Set()`
-    pub fn set(&mut self, S: &crate::ffi::TCollection_AsciiString) {
+    pub fn set(&mut self, S: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::TDataStd_AsciiString_set(self as *mut Self, S) }
     }
 
     /// **Source:** `TDataStd_AsciiString.hxx`:60 - `TDataStd_AsciiString::SetID()`
     /// Sets the explicit user defined GUID  to the attribute.
-    pub fn set_id_guid(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_AsciiString_set_id_guid(self as *mut Self, guid) }
     }
 
@@ -74,7 +74,7 @@ impl AsciiString {
     }
 
     /// **Source:** `TDataStd_AsciiString.hxx`:65 - `TDataStd_AsciiString::Get()`
-    pub fn get(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn get(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::TDataStd_AsciiString_get(self as *const Self)) }
     }
 
@@ -84,7 +84,7 @@ impl AsciiString {
     }
 
     /// **Source:** `TDataStd_AsciiString.hxx`:69 - `TDataStd_AsciiString::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_AsciiString_id(self as *const Self)) }
     }
 
@@ -120,7 +120,7 @@ impl AsciiString {
     /// class methods
     /// =============
     /// Returns the GUID of the attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_AsciiString_get_id()) }
     }
 
@@ -149,7 +149,7 @@ impl AsciiString {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_AsciiString_inherited_Label(
                 self as *const Self,
@@ -183,14 +183,14 @@ impl AsciiString {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_AsciiString_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -210,7 +210,7 @@ impl AsciiString {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_AsciiString_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -360,7 +360,7 @@ impl BooleanArray {
 
     /// **Source:** `TDataStd_BooleanArray.hxx`:62 - `TDataStd_BooleanArray::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_BooleanArray_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -405,7 +405,7 @@ impl BooleanArray {
     }
 
     /// **Source:** `TDataStd_BooleanArray.hxx`:87 - `TDataStd_BooleanArray::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_BooleanArray_id(self as *const Self)) }
     }
 
@@ -441,7 +441,7 @@ impl BooleanArray {
     /// Static methods
     /// ==============
     /// Returns an ID for array.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_BooleanArray_get_id()) }
     }
 
@@ -470,7 +470,7 @@ impl BooleanArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanArray_inherited_Label(
                 self as *const Self,
@@ -504,7 +504,7 @@ impl BooleanArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_BooleanArray_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -513,7 +513,7 @@ impl BooleanArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -533,7 +533,7 @@ impl BooleanArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_BooleanArray_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -735,7 +735,7 @@ impl BooleanList {
 
     /// **Source:** `TDataStd_BooleanList.hxx`:84 - `TDataStd_BooleanList::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_BooleanList_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -746,7 +746,7 @@ impl BooleanList {
     }
 
     /// **Source:** `TDataStd_BooleanList.hxx`:89 - `TDataStd_BooleanList::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_BooleanList_id(self as *const Self)) }
     }
 
@@ -782,7 +782,7 @@ impl BooleanList {
     /// Static methods
     /// ==============
     /// Returns the ID of the list of booleans attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_BooleanList_get_id()) }
     }
 
@@ -811,7 +811,7 @@ impl BooleanList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanList_inherited_Label(
                 self as *const Self,
@@ -845,14 +845,14 @@ impl BooleanList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_BooleanList_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -872,7 +872,7 @@ impl BooleanList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_BooleanList_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1019,7 +1019,7 @@ impl ByteArray {
 
     /// **Source:** `TDataStd_ByteArray.hxx`:74 - `TDataStd_ByteArray::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_ByteArray_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -1081,7 +1081,7 @@ impl ByteArray {
     }
 
     /// **Source:** `TDataStd_ByteArray.hxx`:111 - `TDataStd_ByteArray::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ByteArray_id(self as *const Self)) }
     }
 
@@ -1124,7 +1124,7 @@ impl ByteArray {
     /// Static methods
     /// ==============
     /// Returns an ID for array.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ByteArray_get_id()) }
     }
 
@@ -1139,7 +1139,7 @@ impl ByteArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_inherited_Label(
                 self as *const Self,
@@ -1173,14 +1173,14 @@ impl ByteArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_ByteArray_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1198,7 +1198,7 @@ impl ByteArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ByteArray_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1379,13 +1379,13 @@ impl Comment {
     }
 
     /// **Source:** `TDataStd_Comment.hxx`:49 - `TDataStd_Comment::Set()`
-    pub fn set(&mut self, S: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set(&mut self, S: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_Comment_set(self as *mut Self, S) }
     }
 
     /// **Source:** `TDataStd_Comment.hxx`:52 - `TDataStd_Comment::SetID()`
     /// Sets the explicit user defined GUID  to the attribute.
-    pub fn set_id_guid(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Comment_set_id_guid(self as *mut Self, guid) }
     }
 
@@ -1411,7 +1411,7 @@ impl Comment {
     /// class methods
     /// =============
     /// Returns the GUID for comments.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Comment_get_id()) }
     }
 
@@ -1454,12 +1454,12 @@ impl Comment {
     }
 
     /// Inherited: **Source:** `TDataStd_GenericExtString.hxx`:41 - `TDataStd_GenericExtString::Get()`
-    pub fn get(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn get(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_Comment_inherited_Get(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericExtString.hxx`:44 - `TDataStd_GenericExtString::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Comment_inherited_ID(self as *const Self)) }
     }
 
@@ -1478,7 +1478,7 @@ impl Comment {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_inherited_Label(
                 self as *const Self,
@@ -1512,14 +1512,14 @@ impl Comment {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Comment_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1537,7 +1537,7 @@ impl Comment {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_Comment_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1661,19 +1661,19 @@ impl Current {
     }
 
     /// **Source:** `TDataStd_Current.hxx`:56 - `TDataStd_Current::SetLabel()`
-    pub fn set_label(&mut self, current: &crate::ffi::TDF_Label) {
+    pub fn set_label(&mut self, current: &crate::tdf::Label) {
         unsafe { crate::ffi::TDataStd_Current_set_label(self as *mut Self, current) }
     }
 
     /// **Source:** `TDataStd_Current.hxx`:58 - `TDataStd_Current::GetLabel()`
-    pub fn get_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_get_label(self as *const Self))
         }
     }
 
     /// **Source:** `TDataStd_Current.hxx`:60 - `TDataStd_Current::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Current_id(self as *const Self)) }
     }
 
@@ -1706,19 +1706,19 @@ impl Current {
     /// **Source:** `TDataStd_Current.hxx`:40 - `TDataStd_Current::GetID()`
     /// class methods
     /// =============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Current_get_id()) }
     }
 
     /// **Source:** `TDataStd_Current.hxx`:43 - `TDataStd_Current::Set()`
     /// Set <L> as current of <L> Framework.
-    pub fn set(L: &crate::ffi::TDF_Label) {
+    pub fn set(L: &crate::tdf::Label) {
         unsafe { crate::ffi::TDataStd_Current_set(L) }
     }
 
     /// **Source:** `TDataStd_Current.hxx`:46 - `TDataStd_Current::Get()`
     /// returns current of <acces> Framework. raise if (!Has)
-    pub fn get(acces: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn get(acces: &crate::tdf::Label) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_get(acces)) }
     }
 
@@ -1727,7 +1727,7 @@ impl Current {
     /// Framework.
     /// class methods
     /// =============
-    pub fn has(acces: &crate::ffi::TDF_Label) -> bool {
+    pub fn has(acces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDataStd_Current_has(acces) }
     }
 
@@ -1756,12 +1756,12 @@ impl Current {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Current_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_inherited_Label(
                 self as *const Self,
@@ -1795,14 +1795,14 @@ impl Current {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Current_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1820,7 +1820,7 @@ impl Current {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_Current_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -2004,7 +2004,7 @@ impl DeltaOnModificationOfByteArray {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfByteArray_inherited_Label(
@@ -2026,7 +2026,7 @@ impl DeltaOnModificationOfByteArray {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfByteArray_inherited_ID(
@@ -2119,7 +2119,7 @@ impl DeltaOnModificationOfExtStringArray {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfExtStringArray_inherited_Label(
@@ -2141,7 +2141,7 @@ impl DeltaOnModificationOfExtStringArray {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfExtStringArray_inherited_ID(
@@ -2232,7 +2232,7 @@ impl DeltaOnModificationOfIntArray {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfIntArray_inherited_Label(
@@ -2254,7 +2254,7 @@ impl DeltaOnModificationOfIntArray {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfIntArray_inherited_ID(
@@ -2347,7 +2347,7 @@ impl DeltaOnModificationOfIntPackedMap {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfIntPackedMap_inherited_Label(
@@ -2369,7 +2369,7 @@ impl DeltaOnModificationOfIntPackedMap {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfIntPackedMap_inherited_ID(
@@ -2462,7 +2462,7 @@ impl DeltaOnModificationOfRealArray {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfRealArray_inherited_Label(
@@ -2484,7 +2484,7 @@ impl DeltaOnModificationOfRealArray {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDataStd_DeltaOnModificationOfRealArray_inherited_ID(
@@ -2519,7 +2519,7 @@ impl Directory {
     }
 
     /// **Source:** `TDataStd_Directory.hxx`:68 - `TDataStd_Directory::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Directory_id(self as *const Self)) }
     }
 
@@ -2538,7 +2538,7 @@ impl Directory {
     /// **Source:** `TDataStd_Directory.hxx`:64 - `TDataStd_Directory::GetID()`
     /// Directory methods
     /// ===============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Directory_get_id()) }
     }
 
@@ -2593,12 +2593,12 @@ impl Directory {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Directory_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_inherited_Label(
                 self as *const Self,
@@ -2632,14 +2632,14 @@ impl Directory {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Directory_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2657,7 +2657,7 @@ impl Directory {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_Directory_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -2798,19 +2798,19 @@ impl Expression {
 
     /// **Source:** `TDataStd_Expression.hxx`:57 - `TDataStd_Expression::Name()`
     /// build and return the expression name
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Expression_name(self as *const Self))
         }
     }
 
     /// **Source:** `TDataStd_Expression.hxx`:59 - `TDataStd_Expression::SetExpression()`
-    pub fn set_expression(&mut self, E: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_expression(&mut self, E: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_Expression_set_expression(self as *mut Self, E) }
     }
 
     /// **Source:** `TDataStd_Expression.hxx`:61 - `TDataStd_Expression::GetExpression()`
-    pub fn get_expression(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn get_expression(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_Expression_get_expression(self as *const Self)) }
     }
 
@@ -2820,7 +2820,7 @@ impl Expression {
     }
 
     /// **Source:** `TDataStd_Expression.hxx`:65 - `TDataStd_Expression::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Expression_id(self as *const Self)) }
     }
 
@@ -2855,7 +2855,7 @@ impl Expression {
     /// **Source:** `TDataStd_Expression.hxx`:47 - `TDataStd_Expression::GetID()`
     /// class methods
     /// =============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Expression_get_id()) }
     }
 
@@ -2884,12 +2884,12 @@ impl Expression {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Expression_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Expression_inherited_Label(
                 self as *const Self,
@@ -2923,14 +2923,14 @@ impl Expression {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Expression_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2950,7 +2950,7 @@ impl Expression {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_Expression_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -3098,13 +3098,13 @@ impl ExtStringArray {
     /// Sets  the   <Index>th  element  of   the  array to <Value>
     /// OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the
     /// internal  array.
-    pub fn set_value(&mut self, Index: i32, Value: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_value(&mut self, Index: i32, Value: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_ExtStringArray_set_value(self as *mut Self, Index, Value) }
     }
 
     /// **Source:** `TDataStd_ExtStringArray.hxx`:78 - `TDataStd_ExtStringArray::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_ExtStringArray_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -3116,7 +3116,7 @@ impl ExtStringArray {
 
     /// **Source:** `TDataStd_ExtStringArray.hxx`:84 - `TDataStd_ExtStringArray::Value()`
     /// Returns the value of  the  <Index>th element of the array
-    pub fn value(&self, Index: i32) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn value(&self, Index: i32) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_ExtStringArray_value(self as *const Self, Index)) }
     }
 
@@ -3176,7 +3176,7 @@ impl ExtStringArray {
     }
 
     /// **Source:** `TDataStd_ExtStringArray.hxx`:118 - `TDataStd_ExtStringArray::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ExtStringArray_id(self as *const Self)) }
     }
 
@@ -3221,7 +3221,7 @@ impl ExtStringArray {
     /// class methods
     /// =============
     /// Returns the GUID for the attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ExtStringArray_get_id()) }
     }
 
@@ -3238,7 +3238,7 @@ impl ExtStringArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringArray_inherited_Label(
                 self as *const Self,
@@ -3274,7 +3274,7 @@ impl ExtStringArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringArray_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -3283,7 +3283,7 @@ impl ExtStringArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3303,7 +3303,7 @@ impl ExtStringArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringArray_inherited_ForgetAttribute(
                 self as *const Self,
@@ -3451,18 +3451,18 @@ impl ExtStringList {
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:57 - `TDataStd_ExtStringList::Prepend()`
-    pub fn prepend(&mut self, value: &crate::ffi::TCollection_ExtendedString) {
+    pub fn prepend(&mut self, value: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_ExtStringList_prepend(self as *mut Self, value) }
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:59 - `TDataStd_ExtStringList::Append()`
-    pub fn append(&mut self, value: &crate::ffi::TCollection_ExtendedString) {
+    pub fn append(&mut self, value: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_ExtStringList_append(self as *mut Self, value) }
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:62 - `TDataStd_ExtStringList::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_ExtStringList_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -3476,8 +3476,8 @@ impl ExtStringList {
     /// Inserts the <value> before the first meet of <before_value>.
     pub fn insert_before_extendedstring2(
         &mut self,
-        value: &crate::ffi::TCollection_ExtendedString,
-        before_value: &crate::ffi::TCollection_ExtendedString,
+        value: &crate::t_collection::ExtendedString,
+        before_value: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringList_insert_before_extendedstring2(
@@ -3494,7 +3494,7 @@ impl ExtStringList {
     pub fn insert_before_int_extendedstring(
         &mut self,
         index: i32,
-        before_value: &crate::ffi::TCollection_ExtendedString,
+        before_value: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringList_insert_before_int_extendedstring(
@@ -3509,8 +3509,8 @@ impl ExtStringList {
     /// Inserts the <value> after the first meet of <after_value>.
     pub fn insert_after_extendedstring2(
         &mut self,
-        value: &crate::ffi::TCollection_ExtendedString,
-        after_value: &crate::ffi::TCollection_ExtendedString,
+        value: &crate::t_collection::ExtendedString,
+        after_value: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringList_insert_after_extendedstring2(
@@ -3527,7 +3527,7 @@ impl ExtStringList {
     pub fn insert_after_int_extendedstring(
         &mut self,
         index: i32,
-        after_value: &crate::ffi::TCollection_ExtendedString,
+        after_value: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringList_insert_after_int_extendedstring(
@@ -3540,10 +3540,7 @@ impl ExtStringList {
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:86 - `TDataStd_ExtStringList::Remove()`
     /// Removes the first meet of the <value>.
-    pub fn remove_extendedstring(
-        &mut self,
-        value: &crate::ffi::TCollection_ExtendedString,
-    ) -> bool {
+    pub fn remove_extendedstring(&mut self, value: &crate::t_collection::ExtendedString) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringList_remove_extendedstring(self as *mut Self, value)
         }
@@ -3561,12 +3558,12 @@ impl ExtStringList {
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:93 - `TDataStd_ExtStringList::First()`
-    pub fn first(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn first(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_ExtStringList_first(self as *const Self)) }
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:95 - `TDataStd_ExtStringList::Last()`
-    pub fn last(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn last(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_ExtStringList_last(self as *const Self)) }
     }
 
@@ -3576,7 +3573,7 @@ impl ExtStringList {
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:99 - `TDataStd_ExtStringList::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ExtStringList_id(self as *const Self)) }
     }
 
@@ -3612,7 +3609,7 @@ impl ExtStringList {
     /// Static methods
     /// ==============
     /// Returns the ID of the list of strings attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ExtStringList_get_id()) }
     }
 
@@ -3643,7 +3640,7 @@ impl ExtStringList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringList_inherited_Label(
                 self as *const Self,
@@ -3679,7 +3676,7 @@ impl ExtStringList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringList_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -3688,7 +3685,7 @@ impl ExtStringList {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3708,7 +3705,7 @@ impl ExtStringList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ExtStringList_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -3882,17 +3879,17 @@ impl GenericEmpty {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:134 - `TDF_Attribute::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_GenericEmpty_inherited_ID(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_GenericEmpty_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_GenericEmpty_inherited_Label(
                 self as *const Self,
@@ -3926,7 +3923,7 @@ impl GenericEmpty {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_GenericEmpty_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -3935,7 +3932,7 @@ impl GenericEmpty {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3955,7 +3952,7 @@ impl GenericEmpty {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_GenericEmpty_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -4098,25 +4095,25 @@ unsafe impl crate::CppDeletable for GenericExtString {
 impl GenericExtString {
     /// **Source:** `TDataStd_GenericExtString.hxx`:35 - `TDataStd_GenericExtString::Set()`
     /// Sets <S> as name. Raises if <S> is not a valid name.
-    pub fn set(&mut self, S: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set(&mut self, S: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_GenericExtString_set(self as *mut Self, S) }
     }
 
     /// **Source:** `TDataStd_GenericExtString.hxx`:38 - `TDataStd_GenericExtString::SetID()`
     /// Sets the explicit user defined GUID  to the attribute.
-    pub fn set_id(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_GenericExtString_set_id(self as *mut Self, guid) }
     }
 
     /// **Source:** `TDataStd_GenericExtString.hxx`:41 - `TDataStd_GenericExtString::Get()`
     /// Returns the name contained in this name attribute.
-    pub fn get(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn get(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_GenericExtString_get(self as *const Self)) }
     }
 
     /// **Source:** `TDataStd_GenericExtString.hxx`:44 - `TDataStd_GenericExtString::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_GenericExtString_id(self as *const Self)) }
     }
 
@@ -4166,7 +4163,7 @@ impl GenericExtString {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_GenericExtString_inherited_Label(
                 self as *const Self,
@@ -4202,7 +4199,7 @@ impl GenericExtString {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_GenericExtString_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -4211,7 +4208,7 @@ impl GenericExtString {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -4231,7 +4228,7 @@ impl GenericExtString {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_GenericExtString_inherited_ForgetAttribute(
                 self as *const Self,
@@ -5033,7 +5030,7 @@ impl IntPackedMap {
     /// **Source:** `TDataStd_IntPackedMap.hxx`:61 - `TDataStd_IntPackedMap::ChangeMap()`
     pub fn change_map_packedmapofinteger(
         &mut self,
-        theMap: &crate::ffi::TColStd_PackedMapOfInteger,
+        theMap: &crate::t_col_std::PackedMapOfInteger,
     ) -> bool {
         unsafe {
             crate::ffi::TDataStd_IntPackedMap_change_map_packedmapofinteger(
@@ -5044,7 +5041,7 @@ impl IntPackedMap {
     }
 
     /// **Source:** `TDataStd_IntPackedMap.hxx`:63 - `TDataStd_IntPackedMap::GetMap()`
-    pub fn get_map(&self) -> &crate::ffi::TColStd_PackedMapOfInteger {
+    pub fn get_map(&self) -> &crate::t_col_std::PackedMapOfInteger {
         unsafe { &*(crate::ffi::TDataStd_IntPackedMap_get_map(self as *const Self)) }
     }
 
@@ -5095,7 +5092,7 @@ impl IntPackedMap {
     }
 
     /// **Source:** `TDataStd_IntPackedMap.hxx`:84 - `TDataStd_IntPackedMap::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_IntPackedMap_id(self as *const Self)) }
     }
 
@@ -5140,7 +5137,7 @@ impl IntPackedMap {
     /// class methods
     /// =============
     /// Returns the GUID of the attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_IntPackedMap_get_id()) }
     }
 
@@ -5155,12 +5152,12 @@ impl IntPackedMap {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_IntPackedMap_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntPackedMap_inherited_Label(
                 self as *const Self,
@@ -5194,7 +5191,7 @@ impl IntPackedMap {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_IntPackedMap_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -5203,7 +5200,7 @@ impl IntPackedMap {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -5223,7 +5220,7 @@ impl IntPackedMap {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_IntPackedMap_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -5366,7 +5363,7 @@ impl Integer {
 
     /// **Source:** `TDataStd_Integer.hxx`:59 - `TDataStd_Integer::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Integer_set_id_guid(self as *mut Self, guid) }
     }
 
@@ -5389,7 +5386,7 @@ impl Integer {
     }
 
     /// **Source:** `TDataStd_Integer.hxx`:70 - `TDataStd_Integer::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Integer_id(self as *const Self)) }
     }
 
@@ -5423,7 +5420,7 @@ impl Integer {
     /// class methods
     /// =============
     /// Returns the GUID for integers.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Integer_get_id()) }
     }
 
@@ -5452,7 +5449,7 @@ impl Integer {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_inherited_Label(
                 self as *const Self,
@@ -5486,14 +5483,14 @@ impl Integer {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Integer_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -5511,7 +5508,7 @@ impl Integer {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_Integer_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -5654,7 +5651,7 @@ impl IntegerArray {
 
     /// **Source:** `TDataStd_IntegerArray.hxx`:76 - `TDataStd_IntegerArray::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_IntegerArray_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -5728,7 +5725,7 @@ impl IntegerArray {
     }
 
     /// **Source:** `TDataStd_IntegerArray.hxx`:115 - `TDataStd_IntegerArray::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_IntegerArray_id(self as *const Self)) }
     }
 
@@ -5774,7 +5771,7 @@ impl IntegerArray {
     /// class methods
     /// =============
     /// Returns the GUID for arrays of integers.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_IntegerArray_get_id()) }
     }
 
@@ -5789,7 +5786,7 @@ impl IntegerArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_inherited_Label(
                 self as *const Self,
@@ -5823,7 +5820,7 @@ impl IntegerArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_IntegerArray_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -5832,7 +5829,7 @@ impl IntegerArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -5852,7 +5849,7 @@ impl IntegerArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_IntegerArray_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -6008,7 +6005,7 @@ impl IntegerList {
 
     /// **Source:** `TDataStd_IntegerList.hxx`:61 - `TDataStd_IntegerList::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_IntegerList_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -6093,7 +6090,7 @@ impl IntegerList {
     }
 
     /// **Source:** `TDataStd_IntegerList.hxx`:98 - `TDataStd_IntegerList::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_IntegerList_id(self as *const Self)) }
     }
 
@@ -6129,7 +6126,7 @@ impl IntegerList {
     /// Static methods
     /// ==============
     /// Returns the ID of the list of integer attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_IntegerList_get_id()) }
     }
 
@@ -6158,7 +6155,7 @@ impl IntegerList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_inherited_Label(
                 self as *const Self,
@@ -6192,14 +6189,14 @@ impl IntegerList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_IntegerList_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -6219,7 +6216,7 @@ impl IntegerList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_IntegerList_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -6355,13 +6352,13 @@ impl Name {
 
     /// **Source:** `TDataStd_Name.hxx`:73 - `TDataStd_Name::Set()`
     /// Sets <S> as name. Raises if <S> is not a valid name.
-    pub fn set(&mut self, S: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set(&mut self, S: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_Name_set(self as *mut Self, S) }
     }
 
     /// **Source:** `TDataStd_Name.hxx`:76 - `TDataStd_Name::SetID()`
     /// Sets the explicit user defined GUID  to the attribute.
-    pub fn set_id_guid(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Name_set_id_guid(self as *mut Self, guid) }
     }
 
@@ -6387,7 +6384,7 @@ impl Name {
     /// class methods working on the name itself
     /// ========================================
     /// Returns the GUID for name attributes.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Name_get_id()) }
     }
 
@@ -6428,12 +6425,12 @@ impl Name {
     }
 
     /// Inherited: **Source:** `TDataStd_GenericExtString.hxx`:41 - `TDataStd_GenericExtString::Get()`
-    pub fn get(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn get(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_Name_inherited_Get(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericExtString.hxx`:44 - `TDataStd_GenericExtString::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Name_inherited_ID(self as *const Self)) }
     }
 
@@ -6452,7 +6449,7 @@ impl Name {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_inherited_Label(
                 self as *const Self,
@@ -6486,14 +6483,14 @@ impl Name {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Name_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -6511,7 +6508,7 @@ impl Name {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Name_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -6628,7 +6625,7 @@ impl NoteBook {
     }
 
     /// **Source:** `TDataStd_NoteBook.hxx`:72 - `TDataStd_NoteBook::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_NoteBook_id(self as *const Self)) }
     }
 
@@ -6647,7 +6644,7 @@ impl NoteBook {
     /// **Source:** `TDataStd_NoteBook.hxx`:55 - `TDataStd_NoteBook::GetID()`
     /// NoteBook methods
     /// ===============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_NoteBook_get_id()) }
     }
 
@@ -6702,12 +6699,12 @@ impl NoteBook {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_NoteBook_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_inherited_Label(
                 self as *const Self,
@@ -6741,14 +6738,14 @@ impl NoteBook {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_NoteBook_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -6766,7 +6763,7 @@ impl NoteBook {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_NoteBook_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -6904,7 +6901,7 @@ impl Real {
 
     /// **Source:** `TDataStd_Real.hxx`:78 - `TDataStd_Real::SetID()`
     /// Sets the explicit GUID for the attribute.
-    pub fn set_id_guid(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Real_set_id_guid(self as *mut Self, guid) }
     }
 
@@ -6927,7 +6924,7 @@ impl Real {
     }
 
     /// **Source:** `TDataStd_Real.hxx`:89 - `TDataStd_Real::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Real_id(self as *const Self)) }
     }
 
@@ -6961,7 +6958,7 @@ impl Real {
     /// class methods
     /// =============
     /// Returns the default GUID for real numbers.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Real_get_id()) }
     }
 
@@ -6990,7 +6987,7 @@ impl Real {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_inherited_Label(
                 self as *const Self,
@@ -7024,14 +7021,14 @@ impl Real {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Real_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -7049,7 +7046,7 @@ impl Real {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Real_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -7178,7 +7175,7 @@ impl RealArray {
 
     /// **Source:** `TDataStd_RealArray.hxx`:72 - `TDataStd_RealArray::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_RealArray_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -7256,7 +7253,7 @@ impl RealArray {
     }
 
     /// **Source:** `TDataStd_RealArray.hxx`:116 - `TDataStd_RealArray::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_RealArray_id(self as *const Self)) }
     }
 
@@ -7300,7 +7297,7 @@ impl RealArray {
     /// class methods
     /// =============
     /// Returns the GUID for arrays of reals.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_RealArray_get_id()) }
     }
 
@@ -7315,7 +7312,7 @@ impl RealArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_inherited_Label(
                 self as *const Self,
@@ -7349,14 +7346,14 @@ impl RealArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_RealArray_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -7374,7 +7371,7 @@ impl RealArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_RealArray_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -7528,7 +7525,7 @@ impl RealList {
 
     /// **Source:** `TDataStd_RealList.hxx`:62 - `TDataStd_RealList::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_RealList_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -7611,7 +7608,7 @@ impl RealList {
     }
 
     /// **Source:** `TDataStd_RealList.hxx`:99 - `TDataStd_RealList::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_RealList_id(self as *const Self)) }
     }
 
@@ -7645,7 +7642,7 @@ impl RealList {
     /// Static methods
     /// ==============
     /// Returns the ID of the list of doubles attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_RealList_get_id()) }
     }
 
@@ -7674,7 +7671,7 @@ impl RealList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_inherited_Label(
                 self as *const Self,
@@ -7708,14 +7705,14 @@ impl RealList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_RealList_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -7733,7 +7730,7 @@ impl RealList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_RealList_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -7873,13 +7870,13 @@ impl ReferenceArray {
     /// Sets the <Index>th element of the array to <Value>
     /// OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the
     /// internal  array.
-    pub fn set_value(&mut self, index: i32, value: &crate::ffi::TDF_Label) {
+    pub fn set_value(&mut self, index: i32, value: &crate::tdf::Label) {
         unsafe { crate::ffi::TDataStd_ReferenceArray_set_value(self as *mut Self, index, value) }
     }
 
     /// **Source:** `TDataStd_ReferenceArray.hxx`:65 - `TDataStd_ReferenceArray::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_ReferenceArray_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -7891,7 +7888,7 @@ impl ReferenceArray {
 
     /// **Source:** `TDataStd_ReferenceArray.hxx`:71 - `TDataStd_ReferenceArray::Value()`
     /// Returns the value of the <Index>th element of the array.
-    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceArray_value(
                 self as *const Self,
@@ -7939,7 +7936,7 @@ impl ReferenceArray {
     }
 
     /// **Source:** `TDataStd_ReferenceArray.hxx`:91 - `TDataStd_ReferenceArray::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ReferenceArray_id(self as *const Self)) }
     }
 
@@ -7980,7 +7977,7 @@ impl ReferenceArray {
     /// Static methods
     /// ==============
     /// Returns the ID of the array of references (labels) attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ReferenceArray_get_id()) }
     }
 
@@ -8011,7 +8008,7 @@ impl ReferenceArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceArray_inherited_Label(
                 self as *const Self,
@@ -8047,7 +8044,7 @@ impl ReferenceArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ReferenceArray_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -8056,7 +8053,7 @@ impl ReferenceArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -8076,7 +8073,7 @@ impl ReferenceArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ReferenceArray_inherited_ForgetAttribute(
                 self as *const Self,
@@ -8217,18 +8214,18 @@ impl ReferenceList {
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:58 - `TDataStd_ReferenceList::Prepend()`
-    pub fn prepend(&mut self, value: &crate::ffi::TDF_Label) {
+    pub fn prepend(&mut self, value: &crate::tdf::Label) {
         unsafe { crate::ffi::TDataStd_ReferenceList_prepend(self as *mut Self, value) }
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:60 - `TDataStd_ReferenceList::Append()`
-    pub fn append(&mut self, value: &crate::ffi::TDF_Label) {
+    pub fn append(&mut self, value: &crate::tdf::Label) {
         unsafe { crate::ffi::TDataStd_ReferenceList_append(self as *mut Self, value) }
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:63 - `TDataStd_ReferenceList::SetID()`
     /// Sets the explicit GUID (user defined) for the attribute.
-    pub fn set_id_guid(&mut self, theGuid: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, theGuid: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_ReferenceList_set_id_guid(self as *mut Self, theGuid) }
     }
 
@@ -8242,8 +8239,8 @@ impl ReferenceList {
     /// Inserts the <value> before the first meet of <before_value>.
     pub fn insert_before_label2(
         &mut self,
-        value: &crate::ffi::TDF_Label,
-        before_value: &crate::ffi::TDF_Label,
+        value: &crate::tdf::Label,
+        before_value: &crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::TDataStd_ReferenceList_insert_before_label2(
@@ -8260,7 +8257,7 @@ impl ReferenceList {
     pub fn insert_before_int_label(
         &mut self,
         index: i32,
-        before_value: &crate::ffi::TDF_Label,
+        before_value: &crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::TDataStd_ReferenceList_insert_before_int_label(
@@ -8275,8 +8272,8 @@ impl ReferenceList {
     /// Inserts the <value> after the first meet of <after_value>.
     pub fn insert_after_label2(
         &mut self,
-        value: &crate::ffi::TDF_Label,
-        after_value: &crate::ffi::TDF_Label,
+        value: &crate::tdf::Label,
+        after_value: &crate::tdf::Label,
     ) -> bool {
         unsafe {
             crate::ffi::TDataStd_ReferenceList_insert_after_label2(
@@ -8290,11 +8287,7 @@ impl ReferenceList {
     /// **Source:** `TDataStd_ReferenceList.hxx`:83 - `TDataStd_ReferenceList::InsertAfter()`
     /// Inserts the label after the <index> position.
     /// The indices start with 1 .. Extent().
-    pub fn insert_after_int_label(
-        &mut self,
-        index: i32,
-        after_value: &crate::ffi::TDF_Label,
-    ) -> bool {
+    pub fn insert_after_int_label(&mut self, index: i32, after_value: &crate::tdf::Label) -> bool {
         unsafe {
             crate::ffi::TDataStd_ReferenceList_insert_after_int_label(
                 self as *mut Self,
@@ -8306,7 +8299,7 @@ impl ReferenceList {
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:87 - `TDataStd_ReferenceList::Remove()`
     /// Removes the first meet of the <value>.
-    pub fn remove_label(&mut self, value: &crate::ffi::TDF_Label) -> bool {
+    pub fn remove_label(&mut self, value: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDataStd_ReferenceList_remove_label(self as *mut Self, value) }
     }
 
@@ -8322,12 +8315,12 @@ impl ReferenceList {
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:94 - `TDataStd_ReferenceList::First()`
-    pub fn first(&self) -> &crate::ffi::TDF_Label {
+    pub fn first(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TDataStd_ReferenceList_first(self as *const Self)) }
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:96 - `TDataStd_ReferenceList::Last()`
-    pub fn last(&self) -> &crate::ffi::TDF_Label {
+    pub fn last(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TDataStd_ReferenceList_last(self as *const Self)) }
     }
 
@@ -8337,7 +8330,7 @@ impl ReferenceList {
     }
 
     /// **Source:** `TDataStd_ReferenceList.hxx`:100 - `TDataStd_ReferenceList::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ReferenceList_id(self as *const Self)) }
     }
 
@@ -8378,7 +8371,7 @@ impl ReferenceList {
     /// Static methods
     /// ==============
     /// Returns the ID of the list of references (labels) attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_ReferenceList_get_id()) }
     }
 
@@ -8409,7 +8402,7 @@ impl ReferenceList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceList_inherited_Label(
                 self as *const Self,
@@ -8445,7 +8438,7 @@ impl ReferenceList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ReferenceList_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -8454,7 +8447,7 @@ impl ReferenceList {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -8474,7 +8467,7 @@ impl ReferenceList {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_ReferenceList_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -8609,17 +8602,17 @@ impl Relation {
     }
 
     /// **Source:** `TDataStd_Relation.hxx`:48 - `TDataStd_Relation::SetRelation()`
-    pub fn set_relation(&mut self, E: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_relation(&mut self, E: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_Relation_set_relation(self as *mut Self, E) }
     }
 
     /// **Source:** `TDataStd_Relation.hxx`:50 - `TDataStd_Relation::GetRelation()`
-    pub fn get_relation(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn get_relation(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_Relation_get_relation(self as *const Self)) }
     }
 
     /// **Source:** `TDataStd_Relation.hxx`:52 - `TDataStd_Relation::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Relation_id(self as *const Self)) }
     }
 
@@ -8638,7 +8631,7 @@ impl Relation {
     /// **Source:** `TDataStd_Relation.hxx`:39 - `TDataStd_Relation::GetID()`
     /// class methods
     /// =============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Relation_get_id()) }
     }
 
@@ -8679,7 +8672,7 @@ impl Relation {
     }
 
     /// Inherited: **Source:** `TDataStd_Expression.hxx`:57 - `TDataStd_Expression::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_inherited_Name(
                 self as *const Self,
@@ -8688,12 +8681,12 @@ impl Relation {
     }
 
     /// Inherited: **Source:** `TDataStd_Expression.hxx`:59 - `TDataStd_Expression::SetExpression()`
-    pub fn set_expression(&mut self, E: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_expression(&mut self, E: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_Relation_inherited_SetExpression(self as *mut Self, E) }
     }
 
     /// Inherited: **Source:** `TDataStd_Expression.hxx`:61 - `TDataStd_Expression::GetExpression()`
-    pub fn get_expression(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn get_expression(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_Relation_inherited_GetExpression(self as *const Self)) }
     }
 
@@ -8717,12 +8710,12 @@ impl Relation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Relation_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_inherited_Label(
                 self as *const Self,
@@ -8756,14 +8749,14 @@ impl Relation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Relation_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -8781,7 +8774,7 @@ impl Relation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_Relation_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -8914,7 +8907,7 @@ impl Tick {
     }
 
     /// **Source:** `TDataStd_Tick.hxx`:45 - `TDataStd_Tick::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Tick_id(self as *const Self)) }
     }
 
@@ -8933,7 +8926,7 @@ impl Tick {
     /// **Source:** `TDataStd_Tick.hxx`:36 - `TDataStd_Tick::GetID()`
     /// Static methods
     /// ==============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Tick_get_id()) }
     }
 
@@ -8986,12 +8979,12 @@ impl Tick {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Tick_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Tick_inherited_Label(
                 self as *const Self,
@@ -9025,14 +9018,14 @@ impl Tick {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Tick_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -9050,7 +9043,7 @@ impl Tick {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Tick_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -9232,7 +9225,7 @@ impl TreeNode {
     }
 
     /// **Source:** `TDataStd_TreeNode.hxx`:166 - `TDataStd_TreeNode::SetTreeID()`
-    pub fn set_tree_id(&mut self, explicitID: &crate::ffi::Standard_GUID) {
+    pub fn set_tree_id(&mut self, explicitID: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_TreeNode_set_tree_id(self as *mut Self, explicitID) }
     }
 
@@ -9278,7 +9271,7 @@ impl TreeNode {
 
     /// **Source:** `TDataStd_TreeNode.hxx`:202 - `TDataStd_TreeNode::ID()`
     /// Returns the tree ID (default or explicit one depending on the Set method used).
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_TreeNode_id(self as *const Self)) }
     }
 
@@ -9318,7 +9311,7 @@ impl TreeNode {
     /// <Set> method without explicit tree ID.
     /// Instance methods:
     /// ================
-    pub fn get_default_tree_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_default_tree_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_TreeNode_get_default_tree_id()) }
     }
 
@@ -9347,12 +9340,12 @@ impl TreeNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_TreeNode_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_inherited_Label(
                 self as *const Self,
@@ -9386,14 +9379,14 @@ impl TreeNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_TreeNode_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -9411,7 +9404,7 @@ impl TreeNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_TreeNode_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -9491,12 +9484,12 @@ impl UAttribute {
     }
 
     /// **Source:** `TDataStd_UAttribute.hxx`:47 - `TDataStd_UAttribute::SetID()`
-    pub fn set_id(&mut self, LocalID: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, LocalID: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_UAttribute_set_id(self as *mut Self, LocalID) }
     }
 
     /// **Source:** `TDataStd_UAttribute.hxx`:49 - `TDataStd_UAttribute::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_UAttribute_id(self as *const Self)) }
     }
 
@@ -9558,7 +9551,7 @@ impl UAttribute {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_UAttribute_inherited_Label(
                 self as *const Self,
@@ -9592,14 +9585,14 @@ impl UAttribute {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_UAttribute_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -9619,7 +9612,7 @@ impl UAttribute {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_UAttribute_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -9758,14 +9751,14 @@ impl Variable {
     /// **Source:** `TDataStd_Variable.hxx`:67 - `TDataStd_Variable::Name()`
     /// set or change the name  of the variable, in myUnknown
     /// and my associated Name attribute.
-    pub fn name_extendedstring(&mut self, string: &crate::ffi::TCollection_ExtendedString) {
+    pub fn name_extendedstring(&mut self, string: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDataStd_Variable_name_extendedstring(self as *mut Self, string) }
     }
 
     /// **Source:** `TDataStd_Variable.hxx`:71 - `TDataStd_Variable::Name()`
     /// returns    string   stored  in   the  associated  Name
     /// attribute.
-    pub fn name(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn name(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_Variable_name(self as *const Self)) }
     }
 
@@ -9816,14 +9809,14 @@ impl Variable {
     }
 
     /// **Source:** `TDataStd_Variable.hxx`:115 - `TDataStd_Variable::Unit()`
-    pub fn unit_asciistring(&mut self, unit: &crate::ffi::TCollection_AsciiString) {
+    pub fn unit_asciistring(&mut self, unit: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::TDataStd_Variable_unit_asciistring(self as *mut Self, unit) }
     }
 
     /// **Source:** `TDataStd_Variable.hxx`:119 - `TDataStd_Variable::Unit()`
     /// to read/write fields
     /// ===================
-    pub fn unit(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn unit(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::TDataStd_Variable_unit(self as *const Self)) }
     }
 
@@ -9835,7 +9828,7 @@ impl Variable {
     }
 
     /// **Source:** `TDataStd_Variable.hxx`:125 - `TDataStd_Variable::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Variable_id(self as *const Self)) }
     }
 
@@ -9874,7 +9867,7 @@ impl Variable {
     /// **Source:** `TDataStd_Variable.hxx`:56 - `TDataStd_Variable::GetID()`
     /// class methods
     /// =============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_Variable_get_id()) }
     }
 
@@ -9903,12 +9896,12 @@ impl Variable {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_Variable_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_inherited_Label(
                 self as *const Self,
@@ -9942,14 +9935,14 @@ impl Variable {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataStd_Variable_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -9967,7 +9960,7 @@ impl Variable {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataStd_Variable_inherited_ForgetAttribute(self as *const Self, aguid)
         }

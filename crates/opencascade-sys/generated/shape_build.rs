@@ -44,10 +44,10 @@ impl Edge {
     /// If V1 or V2 is NULL, the original vertex is taken
     pub fn copy_replace_vertices(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
-        V1: &crate::ffi::TopoDS_Vertex,
-        V2: &crate::ffi::TopoDS_Vertex,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        edge: &crate::topo_ds::Edge,
+        V1: &crate::topo_ds::Vertex,
+        V2: &crate::topo_ds::Vertex,
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Edge_copy_replace_vertices(
                 self as *const Self,
@@ -63,8 +63,8 @@ impl Edge {
     /// edge <fromedge> into edge <toedge>.
     pub fn copy_ranges(
         &self,
-        toedge: &crate::ffi::TopoDS_Edge,
-        fromedge: &crate::ffi::TopoDS_Edge,
+        toedge: &crate::topo_ds::Edge,
+        fromedge: &crate::topo_ds::Edge,
         alpha: f64,
         beta: f64,
     ) {
@@ -81,7 +81,7 @@ impl Edge {
 
     /// **Source:** `ShapeBuild_Edge.hxx`:56 - `ShapeBuild_Edge::SetRange3d()`
     /// Sets range on 3d curve only.
-    pub fn set_range3d(&self, edge: &crate::ffi::TopoDS_Edge, first: f64, last: f64) {
+    pub fn set_range3d(&self, edge: &crate::topo_ds::Edge, first: f64, last: f64) {
         unsafe { crate::ffi::ShapeBuild_Edge_set_range3d(self as *const Self, edge, first, last) }
     }
 
@@ -90,11 +90,7 @@ impl Edge {
     /// <toedge>. Pcurves which are already present in <toedge>,
     /// are replaced by copies, other are copied. Ranges are also
     /// copied.
-    pub fn copy_p_curves(
-        &self,
-        toedge: &crate::ffi::TopoDS_Edge,
-        fromedge: &crate::ffi::TopoDS_Edge,
-    ) {
+    pub fn copy_p_curves(&self, toedge: &crate::topo_ds::Edge, fromedge: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ShapeBuild_Edge_copy_p_curves(self as *const Self, toedge, fromedge) }
     }
 
@@ -105,9 +101,9 @@ impl Edge {
     /// their copies with help of method CopyPCurves
     pub fn copy(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         sharepcurves: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Edge_copy(
                 self as *const Self,
@@ -122,8 +118,8 @@ impl Edge {
     /// the given Face
     pub fn remove_p_curve_edge_face(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
-        face: &crate::ffi::TopoDS_Face,
+        edge: &crate::topo_ds::Edge,
+        face: &crate::topo_ds::Face,
     ) {
         unsafe {
             crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_face(self as *const Self, edge, face)
@@ -135,7 +131,7 @@ impl Edge {
     /// the given Surface
     pub fn remove_p_curve_edge_handlegeomsurface(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         surf: &crate::ffi::HandleGeomSurface,
     ) {
         unsafe {
@@ -152,9 +148,9 @@ impl Edge {
     /// the given Surface, with given Location
     pub fn remove_p_curve_edge_handlegeomsurface_location(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         surf: &crate::ffi::HandleGeomSurface,
-        loc: &crate::ffi::TopLoc_Location,
+        loc: &crate::top_loc::Location,
     ) {
         unsafe {
             crate::ffi::ShapeBuild_Edge_remove_p_curve_edge_handlegeomsurface_location(
@@ -173,9 +169,9 @@ impl Edge {
     /// replaced
     pub fn replace_p_curve(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
+        edge: &crate::topo_ds::Edge,
         pcurve: &crate::ffi::HandleGeom2dCurve,
-        face: &crate::ffi::TopoDS_Face,
+        face: &crate::topo_ds::Face,
     ) {
         unsafe {
             crate::ffi::ShapeBuild_Edge_replace_p_curve(self as *const Self, edge, pcurve, face)
@@ -190,9 +186,9 @@ impl Edge {
     /// Returns True if succeeded, False if no pcurve lying on <old> found.
     pub fn reassign_p_curve(
         &self,
-        edge: &crate::ffi::TopoDS_Edge,
-        old: &crate::ffi::TopoDS_Face,
-        sub: &crate::ffi::TopoDS_Face,
+        edge: &crate::topo_ds::Edge,
+        old: &crate::topo_ds::Face,
+        sub: &crate::topo_ds::Face,
     ) -> bool {
         unsafe { crate::ffi::ShapeBuild_Edge_reassign_p_curve(self as *const Self, edge, old, sub) }
     }
@@ -202,7 +198,7 @@ impl Edge {
     pub fn transform_p_curve(
         &self,
         pcurve: &crate::ffi::HandleGeom2dCurve,
-        trans: &crate::ffi::gp_Trsf2d,
+        trans: &crate::gp::Trsf2d,
         uFact: f64,
         aFirst: &mut f64,
         aLast: &mut f64,
@@ -221,13 +217,13 @@ impl Edge {
 
     /// **Source:** `ShapeBuild_Edge.hxx`:113 - `ShapeBuild_Edge::RemoveCurve3d()`
     /// Removes the Curve3D recorded in an Edge
-    pub fn remove_curve3d(&self, edge: &crate::ffi::TopoDS_Edge) {
+    pub fn remove_curve3d(&self, edge: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ShapeBuild_Edge_remove_curve3d(self as *const Self, edge) }
     }
 
     /// **Source:** `ShapeBuild_Edge.hxx`:116 - `ShapeBuild_Edge::BuildCurve3d()`
     /// Calls BRepTools::BuildCurve3D
-    pub fn build_curve3d(&self, edge: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn build_curve3d(&self, edge: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::ShapeBuild_Edge_build_curve3d(self as *const Self, edge) }
     }
 
@@ -235,9 +231,9 @@ impl Edge {
     /// Makes edge with curve and location
     pub fn make_edge_edge_handlegeomcurve_location(
         &self,
-        edge: &mut crate::ffi::TopoDS_Edge,
+        edge: &mut crate::topo_ds::Edge,
         curve: &crate::ffi::HandleGeomCurve,
-        L: &crate::ffi::TopLoc_Location,
+        L: &crate::top_loc::Location,
     ) {
         unsafe {
             crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeomcurve_location(
@@ -253,9 +249,9 @@ impl Edge {
     /// Makes edge with curve, location and range [p1, p2]
     pub fn make_edge_edge_handlegeomcurve_location_real2(
         &self,
-        edge: &mut crate::ffi::TopoDS_Edge,
+        edge: &mut crate::topo_ds::Edge,
         curve: &crate::ffi::HandleGeomCurve,
-        L: &crate::ffi::TopLoc_Location,
+        L: &crate::top_loc::Location,
         p1: f64,
         p2: f64,
     ) {
@@ -275,9 +271,9 @@ impl Edge {
     /// Makes edge with pcurve and face
     pub fn make_edge_edge_handlegeom2dcurve_face(
         &self,
-        edge: &mut crate::ffi::TopoDS_Edge,
+        edge: &mut crate::topo_ds::Edge,
         pcurve: &crate::ffi::HandleGeom2dCurve,
-        face: &crate::ffi::TopoDS_Face,
+        face: &crate::topo_ds::Face,
     ) {
         unsafe {
             crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_face(
@@ -293,9 +289,9 @@ impl Edge {
     /// Makes edge with pcurve, face and range [p1, p2]
     pub fn make_edge_edge_handlegeom2dcurve_face_real2(
         &self,
-        edge: &mut crate::ffi::TopoDS_Edge,
+        edge: &mut crate::topo_ds::Edge,
         pcurve: &crate::ffi::HandleGeom2dCurve,
-        face: &crate::ffi::TopoDS_Face,
+        face: &crate::topo_ds::Face,
         p1: f64,
         p2: f64,
     ) {
@@ -315,10 +311,10 @@ impl Edge {
     /// Makes edge with pcurve, surface and location
     pub fn make_edge_edge_handlegeom2dcurve_handlegeomsurface_location(
         &self,
-        edge: &mut crate::ffi::TopoDS_Edge,
+        edge: &mut crate::topo_ds::Edge,
         pcurve: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
-        L: &crate::ffi::TopLoc_Location,
+        L: &crate::top_loc::Location,
     ) {
         unsafe {
             crate::ffi::ShapeBuild_Edge_make_edge_edge_handlegeom2dcurve_handlegeomsurface_location(
@@ -335,10 +331,10 @@ impl Edge {
     /// Makes edge with pcurve, surface, location and range [p1, p2]
     pub fn make_edge_edge_handlegeom2dcurve_handlegeomsurface_location_real2(
         &self,
-        edge: &mut crate::ffi::TopoDS_Edge,
+        edge: &mut crate::topo_ds::Edge,
         pcurve: &crate::ffi::HandleGeom2dCurve,
         S: &crate::ffi::HandleGeomSurface,
-        L: &crate::ffi::TopLoc_Location,
+        L: &crate::top_loc::Location,
         p1: f64,
         p2: f64,
     ) {
@@ -397,10 +393,10 @@ impl ReShape {
     /// type as the starting shape
     pub fn apply_shape_shapeenum_int(
         &mut self,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         until: crate::top_abs::ShapeEnum,
         buildmode: i32,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum_int(
                 self as *mut Self,
@@ -426,9 +422,9 @@ impl ReShape {
     /// and flag FAIL1 is set in Status.
     pub fn apply_shape_shapeenum(
         &mut self,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         until: crate::top_abs::ShapeEnum,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_apply_shape_shapeenum(
                 self as *mut Self,
@@ -448,8 +444,8 @@ impl ReShape {
     /// recursively searches for the last status and new shape.
     pub fn status_shape2_bool(
         &mut self,
-        shape: &crate::ffi::TopoDS_Shape,
-        newsh: &mut crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
+        newsh: &mut crate::topo_ds::Shape,
         last: bool,
     ) -> i32 {
         unsafe {
@@ -506,31 +502,24 @@ impl ReShape {
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:62 - `BRepTools_ReShape::Remove()`
-    pub fn remove(&mut self, shape: &crate::ffi::TopoDS_Shape) {
+    pub fn remove(&mut self, shape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeBuild_ReShape_inherited_Remove(self as *mut Self, shape) }
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:65 - `BRepTools_ReShape::Replace()`
-    pub fn replace(
-        &mut self,
-        shape: &crate::ffi::TopoDS_Shape,
-        newshape: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn replace(&mut self, shape: &crate::topo_ds::Shape, newshape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::ShapeBuild_ReShape_inherited_Replace(self as *mut Self, shape, newshape)
         }
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:94 - `BRepTools_ReShape::IsRecorded()`
-    pub fn is_recorded(&self, shape: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_recorded(&self, shape: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::ShapeBuild_ReShape_inherited_IsRecorded(self as *const Self, shape) }
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:100 - `BRepTools_ReShape::Value()`
-    pub fn value(
-        &self,
-        shape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn value(&self, shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_inherited_Value(
                 self as *const Self,
@@ -549,9 +538,9 @@ impl ReShape {
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:134 - `BRepTools_ReShape::CopyVertex()`
     pub fn copy_vertex(
         &mut self,
-        theV: &crate::ffi::TopoDS_Vertex,
+        theV: &crate::topo_ds::Vertex,
         theTol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_inherited_CopyVertex(
                 self as *mut Self,
@@ -562,7 +551,7 @@ impl ReShape {
     }
 
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:148 - `BRepTools_ReShape::IsNewShape()`
-    pub fn is_new_shape(&self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_new_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::ShapeBuild_ReShape_inherited_IsNewShape(self as *const Self, theShape)
         }
@@ -610,10 +599,10 @@ impl Vertex {
     /// of discreteness of calculations).
     pub fn combine_vertex_vertex2_real(
         &self,
-        V1: &crate::ffi::TopoDS_Vertex,
-        V2: &crate::ffi::TopoDS_Vertex,
+        V1: &crate::topo_ds::Vertex,
+        V2: &crate::topo_ds::Vertex,
         tolFactor: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Vertex_combine_vertex_vertex2_real(
                 self as *const Self,
@@ -629,12 +618,12 @@ impl Vertex {
     /// and two tolerances instead of vertices
     pub fn combine_vertex_pnt2_real3(
         &self,
-        pnt1: &crate::ffi::gp_Pnt,
-        pnt2: &crate::ffi::gp_Pnt,
+        pnt1: &crate::gp::Pnt,
+        pnt2: &crate::gp::Pnt,
         tol1: f64,
         tol2: f64,
         tolFactor: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_Vertex_combine_vertex_pnt2_real3(
                 self as *const Self,

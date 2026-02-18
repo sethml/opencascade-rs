@@ -52,13 +52,13 @@ impl NoteObject {
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:39 - `XCAFNoteObjects_NoteObject::GetPlane()`
     /// Returns a right-handed coordinate system of the plane
-    pub fn get_plane(&self) -> &crate::ffi::gp_Ax2 {
+    pub fn get_plane(&self) -> &crate::gp::Ax2 {
         unsafe { &*(crate::ffi::XCAFNoteObjects_NoteObject_get_plane(self as *const Self)) }
     }
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:42 - `XCAFNoteObjects_NoteObject::SetPlane()`
     /// Sets a right-handed coordinate system of the plane
-    pub fn set_plane(&mut self, thePlane: &crate::ffi::gp_Ax2) {
+    pub fn set_plane(&mut self, thePlane: &crate::gp::Ax2) {
         unsafe { crate::ffi::XCAFNoteObjects_NoteObject_set_plane(self as *mut Self, thePlane) }
     }
 
@@ -70,13 +70,13 @@ impl NoteObject {
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:48 - `XCAFNoteObjects_NoteObject::GetPoint()`
     /// Returns the attachment point on the annotated object
-    pub fn get_point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn get_point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::XCAFNoteObjects_NoteObject_get_point(self as *const Self)) }
     }
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:51 - `XCAFNoteObjects_NoteObject::SetPoint()`
     /// Sets the anchor point on the annotated object
-    pub fn set_point(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_point(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe { crate::ffi::XCAFNoteObjects_NoteObject_set_point(self as *mut Self, thePnt) }
     }
 
@@ -88,25 +88,25 @@ impl NoteObject {
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:57 - `XCAFNoteObjects_NoteObject::GetPointText()`
     /// Returns the text position
-    pub fn get_point_text(&self) -> &crate::ffi::gp_Pnt {
+    pub fn get_point_text(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::XCAFNoteObjects_NoteObject_get_point_text(self as *const Self)) }
     }
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:60 - `XCAFNoteObjects_NoteObject::SetPointText()`
     /// Sets the text position
-    pub fn set_point_text(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_point_text(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe { crate::ffi::XCAFNoteObjects_NoteObject_set_point_text(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:63 - `XCAFNoteObjects_NoteObject::GetPresentation()`
     /// Returns a tessellated annotation if specified
-    pub fn get_presentation(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_presentation(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::XCAFNoteObjects_NoteObject_get_presentation(self as *const Self)) }
     }
 
     /// **Source:** `XCAFNoteObjects_NoteObject.hxx`:66 - `XCAFNoteObjects_NoteObject::SetPresentation()`
     /// Sets a tessellated annotation
-    pub fn set_presentation(&mut self, thePresentation: &crate::ffi::TopoDS_Shape) {
+    pub fn set_presentation(&mut self, thePresentation: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::XCAFNoteObjects_NoteObject_set_presentation(
                 self as *mut Self,

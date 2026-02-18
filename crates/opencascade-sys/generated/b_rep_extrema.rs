@@ -65,11 +65,11 @@ impl DistShapeShape {
     /// @param F and @param A are not used in computation and are obsolete.
     /// @param theRange - the progress indicator of algorithm
     pub fn new_shape2_extflag_extalgo_progressrange(
-        Shape1: &crate::ffi::TopoDS_Shape,
-        Shape2: &crate::ffi::TopoDS_Shape,
+        Shape1: &crate::topo_ds::Shape,
+        Shape2: &crate::topo_ds::Shape,
         F: i32,
         A: crate::extrema::ExtAlgo,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -94,12 +94,12 @@ impl DistShapeShape {
     /// @param F and @param A are not used in computation and are obsolete.
     /// @param theRange - the progress indicator of algorithm
     pub fn new_shape2_real_extflag_extalgo_progressrange(
-        Shape1: &crate::ffi::TopoDS_Shape,
-        Shape2: &crate::ffi::TopoDS_Shape,
+        Shape1: &crate::topo_ds::Shape,
+        Shape2: &crate::topo_ds::Shape,
         theDeflection: f64,
         F: i32,
         A: crate::extrema::ExtAlgo,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_DistShapeShape_ctor_shape2_real_extflag_extalgo_progressrange(Shape1, Shape2, theDeflection, F, A.into(), theRange))
@@ -116,13 +116,13 @@ impl DistShapeShape {
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:72 - `BRepExtrema_DistShapeShape::LoadS1()`
     /// load first shape into extrema <br>
-    pub fn load_s1(&mut self, Shape1: &crate::ffi::TopoDS_Shape) {
+    pub fn load_s1(&mut self, Shape1: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepExtrema_DistShapeShape_load_s1(self as *mut Self, Shape1) }
     }
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:75 - `BRepExtrema_DistShapeShape::LoadS2()`
     /// load second shape into extrema <br>
-    pub fn load_s2(&mut self, Shape1: &crate::ffi::TopoDS_Shape) {
+    pub fn load_s2(&mut self, Shape1: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepExtrema_DistShapeShape_load_s2(self as *mut Self, Shape1) }
     }
 
@@ -133,7 +133,7 @@ impl DistShapeShape {
     /// from the minimum one. <br>
     /// Returns IsDone status. <br>
     /// theRange - the progress indicator of algorithm
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) -> bool {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) -> bool {
         unsafe { crate::ffi::BRepExtrema_DistShapeShape_perform(self as *mut Self, theRange) }
     }
 
@@ -164,7 +164,7 @@ impl DistShapeShape {
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:100 - `BRepExtrema_DistShapeShape::PointOnShape1()`
     /// Returns the Point corresponding to the <N>th solution on the first Shape <br>
-    pub fn point_on_shape1(&self, N: i32) -> &crate::ffi::gp_Pnt {
+    pub fn point_on_shape1(&self, N: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::BRepExtrema_DistShapeShape_point_on_shape1(self as *const Self, N))
         }
@@ -172,7 +172,7 @@ impl DistShapeShape {
 
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:106 - `BRepExtrema_DistShapeShape::PointOnShape2()`
     /// Returns the Point corresponding to the <N>th solution on the second Shape <br>
-    pub fn point_on_shape2(&self, N: i32) -> &crate::ffi::gp_Pnt {
+    pub fn point_on_shape2(&self, N: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::BRepExtrema_DistShapeShape_point_on_shape2(self as *const Self, N))
         }
@@ -211,7 +211,7 @@ impl DistShapeShape {
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:133 - `BRepExtrema_DistShapeShape::SupportOnShape1()`
     /// gives the support where the Nth solution on the first shape is situated. <br>
     /// This support can be a Vertex, an Edge or a Face. <br>
-    pub fn support_on_shape1(&self, N: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn support_on_shape1(&self, N: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_DistShapeShape_support_on_shape1(
                 self as *const Self,
@@ -223,7 +223,7 @@ impl DistShapeShape {
     /// **Source:** `BRepExtrema_DistShapeShape.hxx`:137 - `BRepExtrema_DistShapeShape::SupportOnShape2()`
     /// gives the support where the Nth solution on the second shape is situated. <br>
     /// This support can be a Vertex, an Edge or a Face. <br>
-    pub fn support_on_shape2(&self, N: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn support_on_shape2(&self, N: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_DistShapeShape_support_on_shape2(
                 self as *const Self,
@@ -328,10 +328,10 @@ impl DistanceSS {
     /// @param theExtAlgo - Specifies which extrema algorithm is to be used
     /// (default is Grad algo, applied only to point-face extrema)
     pub fn new_shape2_box2_real2_extflag_extalgo(
-        theS1: &crate::ffi::TopoDS_Shape,
-        theS2: &crate::ffi::TopoDS_Shape,
-        theBox1: &crate::ffi::Bnd_Box,
-        theBox2: &crate::ffi::Bnd_Box,
+        theS1: &crate::topo_ds::Shape,
+        theS2: &crate::topo_ds::Shape,
+        theBox1: &crate::bnd::Box,
+        theBox2: &crate::bnd::Box,
         theDstRef: f64,
         theDeflection: f64,
         theExtFlag: i32,
@@ -441,20 +441,20 @@ impl ExtCC {
     /// **Source:** `BRepExtrema_ExtCC.hxx`:32 - `BRepExtrema_ExtCC::BRepExtrema_ExtCC()`
     /// It calculates all the distances. <br>
     pub fn new_edge2(
-        E1: &crate::ffi::TopoDS_Edge,
-        E2: &crate::ffi::TopoDS_Edge,
+        E1: &crate::topo_ds::Edge,
+        E2: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCC_ctor_edge2(E1, E2)) }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:34 - `BRepExtrema_ExtCC::Initialize()`
-    pub fn initialize(&mut self, E2: &crate::ffi::TopoDS_Edge) {
+    pub fn initialize(&mut self, E2: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepExtrema_ExtCC_initialize(self as *mut Self, E2) }
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:36 - `BRepExtrema_ExtCC::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
-    pub fn perform(&mut self, E1: &crate::ffi::TopoDS_Edge) {
+    pub fn perform(&mut self, E1: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepExtrema_ExtCC_perform(self as *mut Self, E1) }
     }
 
@@ -490,7 +490,7 @@ impl ExtCC {
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:53 - `BRepExtrema_ExtCC::PointOnE1()`
     /// Returns the Point of the <N>th extremum distance on the edge E1. <br>
-    pub fn point_on_e1(&self, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point_on_e1(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCC_point_on_e1(
                 self as *const Self,
@@ -507,7 +507,7 @@ impl ExtCC {
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:57 - `BRepExtrema_ExtCC::PointOnE2()`
     /// Returns the Point of the <N>th extremum distance on the edge E2. <br>
-    pub fn point_on_e2(&self, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point_on_e2(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCC_point_on_e2(
                 self as *const Self,
@@ -527,10 +527,10 @@ impl ExtCC {
         distP12: &mut f64,
         distP21: &mut f64,
         distP22: &mut f64,
-        P11: &mut crate::ffi::gp_Pnt,
-        P12: &mut crate::ffi::gp_Pnt,
-        P21: &mut crate::ffi::gp_Pnt,
-        P22: &mut crate::ffi::gp_Pnt,
+        P11: &mut crate::gp::Pnt,
+        P12: &mut crate::gp::Pnt,
+        P21: &mut crate::gp::Pnt,
+        P22: &mut crate::gp::Pnt,
     ) {
         unsafe {
             crate::ffi::BRepExtrema_ExtCC_trimmed_square_distances(
@@ -570,21 +570,21 @@ impl ExtCF {
     /// **Source:** `BRepExtrema_ExtCF.hxx`:37 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
     /// It calculates all the distances. <br>
     pub fn new_edge_face(
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCF_ctor_edge_face(E, F)) }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:39 - `BRepExtrema_ExtCF::Initialize()`
-    pub fn initialize(&mut self, E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) {
+    pub fn initialize(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepExtrema_ExtCF_initialize(self as *mut Self, E, F) }
     }
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:42 - `BRepExtrema_ExtCF::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
     /// Be careful: this method uses the Face only for classify not for the fields. <br>
-    pub fn perform(&mut self, E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) {
+    pub fn perform(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepExtrema_ExtCF_perform(self as *mut Self, E, F) }
     }
 
@@ -626,7 +626,7 @@ impl ExtCF {
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:69 - `BRepExtrema_ExtCF::PointOnEdge()`
     /// Returns the Point of the <N>th extremum distance. <br>
-    pub fn point_on_edge(&self, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point_on_edge(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCF_point_on_edge(
                 self as *const Self,
@@ -637,7 +637,7 @@ impl ExtCF {
 
     /// **Source:** `BRepExtrema_ExtCF.hxx`:72 - `BRepExtrema_ExtCF::PointOnFace()`
     /// Returns the Point of the <N>th extremum distance. <br>
-    pub fn point_on_face(&self, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point_on_face(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtCF_point_on_face(
                 self as *const Self,
@@ -669,21 +669,21 @@ impl ExtFF {
     /// **Source:** `BRepExtrema_ExtFF.hxx`:34 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
     /// It calculates all the distances. <br>
     pub fn new_face2(
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtFF_ctor_face2(F1, F2)) }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:36 - `BRepExtrema_ExtFF::Initialize()`
-    pub fn initialize(&mut self, F2: &crate::ffi::TopoDS_Face) {
+    pub fn initialize(&mut self, F2: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepExtrema_ExtFF_initialize(self as *mut Self, F2) }
     }
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:39 - `BRepExtrema_ExtFF::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
     /// Be careful: this method uses the Face F2 only for classify, not for the fields. <br>
-    pub fn perform(&mut self, F1: &crate::ffi::TopoDS_Face, F2: &crate::ffi::TopoDS_Face) {
+    pub fn perform(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepExtrema_ExtFF_perform(self as *mut Self, F1, F2) }
     }
 
@@ -725,7 +725,7 @@ impl ExtFF {
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:66 - `BRepExtrema_ExtFF::PointOnFace1()`
     /// Returns the Point of the <N>th extremum distance. <br>
-    pub fn point_on_face1(&self, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point_on_face1(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtFF_point_on_face1(
                 self as *const Self,
@@ -736,7 +736,7 @@ impl ExtFF {
 
     /// **Source:** `BRepExtrema_ExtFF.hxx`:69 - `BRepExtrema_ExtFF::PointOnFace2()`
     /// Returns the Point of the <N>th extremum distance. <br>
-    pub fn point_on_face2(&self, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point_on_face2(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtFF_point_on_face2(
                 self as *const Self,
@@ -768,20 +768,20 @@ impl ExtPC {
     /// **Source:** `BRepExtrema_ExtPC.hxx`:32 - `BRepExtrema_ExtPC::BRepExtrema_ExtPC()`
     /// It calculates all the distances. <br>
     pub fn new_vertex_edge(
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtPC_ctor_vertex_edge(V, E)) }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:34 - `BRepExtrema_ExtPC::Initialize()`
-    pub fn initialize(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn initialize(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepExtrema_ExtPC_initialize(self as *mut Self, E) }
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:36 - `BRepExtrema_ExtPC::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
-    pub fn perform(&mut self, V: &crate::ffi::TopoDS_Vertex) {
+    pub fn perform(&mut self, V: &crate::topo_ds::Vertex) {
         unsafe { crate::ffi::BRepExtrema_ExtPC_perform(self as *mut Self, V) }
     }
 
@@ -817,7 +817,7 @@ impl ExtPC {
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:54 - `BRepExtrema_ExtPC::Point()`
     /// Returns the Point of the <N>th extremum distance. <br>
-    pub fn point(&self, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtPC_point(self as *const Self, N))
         }
@@ -833,8 +833,8 @@ impl ExtPC {
         &self,
         dist1: &mut f64,
         dist2: &mut f64,
-        pnt1: &mut crate::ffi::gp_Pnt,
-        pnt2: &mut crate::ffi::gp_Pnt,
+        pnt1: &mut crate::gp::Pnt,
+        pnt2: &mut crate::gp::Pnt,
     ) {
         unsafe {
             crate::ffi::BRepExtrema_ExtPC_trimmed_square_distances(
@@ -870,8 +870,8 @@ impl ExtPF {
     /// **Source:** `BRepExtrema_ExtPF.hxx`:35 - `BRepExtrema_ExtPF::BRepExtrema_ExtPF()`
     /// It calculates all the distances. <br>
     pub fn new_vertex_face_extflag_extalgo(
-        TheVertex: &crate::ffi::TopoDS_Vertex,
-        TheFace: &crate::ffi::TopoDS_Face,
+        TheVertex: &crate::topo_ds::Vertex,
+        TheFace: &crate::topo_ds::Face,
         TheFlag: i32,
         TheAlgo: crate::extrema::ExtAlgo,
     ) -> crate::OwnedPtr<Self> {
@@ -890,7 +890,7 @@ impl ExtPF {
     /// **Source:** `BRepExtrema_ExtPF.hxx`:40 - `BRepExtrema_ExtPF::Initialize()`
     pub fn initialize(
         &mut self,
-        TheFace: &crate::ffi::TopoDS_Face,
+        TheFace: &crate::topo_ds::Face,
         TheFlag: i32,
         TheAlgo: crate::extrema::ExtAlgo,
     ) {
@@ -907,11 +907,7 @@ impl ExtPF {
     /// **Source:** `BRepExtrema_ExtPF.hxx`:46 - `BRepExtrema_ExtPF::Perform()`
     /// An exception is raised if the fields have not been initialized. <br>
     /// Be careful: this method uses the Face only for classify not for the fields. <br>
-    pub fn perform(
-        &mut self,
-        TheVertex: &crate::ffi::TopoDS_Vertex,
-        TheFace: &crate::ffi::TopoDS_Face,
-    ) {
+    pub fn perform(&mut self, TheVertex: &crate::topo_ds::Vertex, TheFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepExtrema_ExtPF_perform(self as *mut Self, TheVertex, TheFace) }
     }
 
@@ -941,7 +937,7 @@ impl ExtPF {
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:64 - `BRepExtrema_ExtPF::Point()`
     /// Returns the Point of the <N>th extremum distance. <br>
-    pub fn point(&self, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ExtPF_point(self as *const Self, N))
         }
@@ -981,10 +977,10 @@ impl Poly {
     /// **Source:** `BRepExtrema_Poly.hxx`:26 - `BRepExtrema_Poly::Distance()`
     /// returns Standard_True if OK.
     pub fn distance(
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
-        P1: &mut crate::ffi::gp_Pnt,
-        P2: &mut crate::ffi::gp_Pnt,
+        S1: &crate::topo_ds::Shape,
+        S2: &crate::topo_ds::Shape,
+        P1: &mut crate::gp::Pnt,
+        P2: &mut crate::gp::Pnt,
         dist: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::BRepExtrema_Poly_distance(S1, S2, P1, P2, dist) }
@@ -1061,11 +1057,7 @@ impl ProximityValueTool {
 
     /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:120 - `BRepExtrema_ProximityValueTool::ProximityPoints()`
     /// Returns points on triangles sets, which provide the proximity distance.
-    pub fn proximity_points(
-        &self,
-        thePoint1: &mut crate::ffi::gp_Pnt,
-        thePoint2: &mut crate::ffi::gp_Pnt,
-    ) {
+    pub fn proximity_points(&self, thePoint1: &mut crate::gp::Pnt, thePoint2: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::BRepExtrema_ProximityValueTool_proximity_points(
                 self as *const Self,
@@ -1106,9 +1098,9 @@ impl SolutionElem {
     /// @param theVertex  and the Vertex
     pub fn new_real_pnt_supporttype_vertex(
         theDist: f64,
-        thePoint: &crate::ffi::gp_Pnt,
+        thePoint: &crate::gp::Pnt,
         theSolType: crate::b_rep_extrema::SupportType,
-        theVertex: &crate::ffi::TopoDS_Vertex,
+        theVertex: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1132,9 +1124,9 @@ impl SolutionElem {
     /// @param theParam   the parameter to locate the solution
     pub fn new_real_pnt_supporttype_edge_real(
         theDist: f64,
-        thePoint: &crate::ffi::gp_Pnt,
+        thePoint: &crate::gp::Pnt,
         theSolType: crate::b_rep_extrema::SupportType,
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
         theParam: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1161,9 +1153,9 @@ impl SolutionElem {
     /// @param theV       V parameter to locate the solution
     pub fn new_real_pnt_supporttype_face_real2(
         theDist: f64,
-        thePoint: &crate::ffi::gp_Pnt,
+        thePoint: &crate::gp::Pnt,
         theSolType: crate::b_rep_extrema::SupportType,
-        theFace: &crate::ffi::TopoDS_Face,
+        theFace: &crate::topo_ds::Face,
         theU: f64,
         theV: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1189,7 +1181,7 @@ impl SolutionElem {
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:106 - `BRepExtrema_SolutionElem::Point()`
     /// Returns the solution point.
-    pub fn point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::BRepExtrema_SolutionElem_point(self as *const Self)) }
     }
 
@@ -1209,19 +1201,19 @@ impl SolutionElem {
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:115 - `BRepExtrema_SolutionElem::Vertex()`
     /// Returns the vertex if the solution is a Vertex.
-    pub fn vertex(&self) -> &crate::ffi::TopoDS_Vertex {
+    pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe { &*(crate::ffi::BRepExtrema_SolutionElem_vertex(self as *const Self)) }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:118 - `BRepExtrema_SolutionElem::Edge()`
     /// Returns the vertex if the solution is an Edge.
-    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepExtrema_SolutionElem_edge(self as *const Self)) }
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:121 - `BRepExtrema_SolutionElem::Face()`
     /// Returns the vertex if the solution is an Face.
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepExtrema_SolutionElem_face(self as *const Self)) }
     }
 

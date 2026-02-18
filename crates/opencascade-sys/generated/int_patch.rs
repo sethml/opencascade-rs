@@ -256,7 +256,7 @@ impl Intersection {
     /// **Source:** `IntPatch_Intersection.hxx`:159 - `IntPatch_Intersection::Point()`
     /// Returns the point of range Index.
     /// An exception is raised if Index<=0 or Index>NbPnt.
-    pub fn point(&self, Index: i32) -> &crate::ffi::IntPatch_Point {
+    pub fn point(&self, Index: i32) -> &Point {
         unsafe { &*(crate::ffi::IntPatch_Intersection_point(self as *const Self, Index)) }
     }
 
@@ -541,20 +541,20 @@ impl Point {
     /// when both surfaces are implicit ones.
     /// If Tangent is True, the point is a point of tangency
     /// between the surfaces.
-    pub fn set_value_pnt_real_bool(&mut self, Pt: &crate::ffi::gp_Pnt, Tol: f64, Tangent: bool) {
+    pub fn set_value_pnt_real_bool(&mut self, Pt: &crate::gp::Pnt, Tol: f64, Tangent: bool) {
         unsafe {
             crate::ffi::IntPatch_Point_set_value_pnt_real_bool(self as *mut Self, Pt, Tol, Tangent)
         }
     }
 
     /// **Source:** `IntPatch_Point.hxx`:50 - `IntPatch_Point::SetValue()`
-    pub fn set_value_pnt(&mut self, Pt: &crate::ffi::gp_Pnt) {
+    pub fn set_value_pnt(&mut self, Pt: &crate::gp::Pnt) {
         unsafe { crate::ffi::IntPatch_Point_set_value_pnt(self as *mut Self, Pt) }
     }
 
     /// **Source:** `IntPatch_Point.hxx`:53 - `IntPatch_Point::SetValue()`
     /// Sets the value of <pt> member
-    pub fn set_value_pnton2s(&mut self, thePOn2S: &crate::ffi::IntSurf_PntOn2S) {
+    pub fn set_value_pnton2s(&mut self, thePOn2S: &crate::int_surf::PntOn2S) {
         unsafe { crate::ffi::IntPatch_Point_set_value_pnton2s(self as *mut Self, thePOn2S) }
     }
 
@@ -598,8 +598,8 @@ impl Point {
         OnFirst: bool,
         A: &crate::ffi::HandleAdaptor2dCurve2d,
         Param: f64,
-        TLine: &crate::ffi::IntSurf_Transition,
-        TArc: &crate::ffi::IntSurf_Transition,
+        TLine: &crate::int_surf::Transition,
+        TArc: &crate::int_surf::Transition,
     ) {
         unsafe {
             crate::ffi::IntPatch_Point_set_arc(self as *mut Self, OnFirst, A, Param, TLine, TArc)
@@ -615,7 +615,7 @@ impl Point {
 
     /// **Source:** `IntPatch_Point.hxx`:92 - `IntPatch_Point::Value()`
     /// Returns the intersection point (geometric information).
-    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+    pub fn value(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntPatch_Point_value(self as *const Self)) }
     }
 
@@ -699,7 +699,7 @@ impl Point {
     /// intersection line with the arc on S1.
     /// The exception DomainError is raised if IsOnDomS1
     /// returns False.
-    pub fn transition_line_arc1(&self) -> &crate::ffi::IntSurf_Transition {
+    pub fn transition_line_arc1(&self) -> &crate::int_surf::Transition {
         unsafe { &*(crate::ffi::IntPatch_Point_transition_line_arc1(self as *const Self)) }
     }
 
@@ -709,7 +709,7 @@ impl Point {
     /// by ArcOnS1().
     /// The exception DomainError is raised if
     /// IsOnDomS1 returns False.
-    pub fn transition_on_s1(&self) -> &crate::ffi::IntSurf_Transition {
+    pub fn transition_on_s1(&self) -> &crate::int_surf::Transition {
         unsafe { &*(crate::ffi::IntPatch_Point_transition_on_s1(self as *const Self)) }
     }
 
@@ -759,7 +759,7 @@ impl Point {
     /// intersection line with the arc on S2.
     /// The exception DomainError is raised if IsOnDomS2
     /// returns False.
-    pub fn transition_line_arc2(&self) -> &crate::ffi::IntSurf_Transition {
+    pub fn transition_line_arc2(&self) -> &crate::int_surf::Transition {
         unsafe { &*(crate::ffi::IntPatch_Point_transition_line_arc2(self as *const Self)) }
     }
 
@@ -769,7 +769,7 @@ impl Point {
     /// by ArcOnS2.
     /// The exception DomainError is raised if
     /// IsOnDomS2 returns False.
-    pub fn transition_on_s2(&self) -> &crate::ffi::IntSurf_Transition {
+    pub fn transition_on_s2(&self) -> &crate::int_surf::Transition {
         unsafe { &*(crate::ffi::IntPatch_Point_transition_on_s2(self as *const Self)) }
     }
 
@@ -785,7 +785,7 @@ impl Point {
     /// **Source:** `IntPatch_Point.hxx`:199 - `IntPatch_Point::PntOn2S()`
     /// Returns the PntOn2S
     /// (geometric Point and the parameters)
-    pub fn pnt_on2_s(&self) -> &crate::ffi::IntSurf_PntOn2S {
+    pub fn pnt_on2_s(&self) -> &crate::int_surf::PntOn2S {
         unsafe { &*(crate::ffi::IntPatch_Point_pnt_on2_s(self as *const Self)) }
     }
 
@@ -830,7 +830,7 @@ impl PointLine {
     /// Adds a vertex in the list. If theIsPrepend == TRUE the new
     /// vertex will be added before the first element of vertices sequence.
     /// Otherwise, to the end of the sequence
-    pub fn add_vertex(&mut self, Pnt: &crate::ffi::IntPatch_Point, theIsPrepend: bool) {
+    pub fn add_vertex(&mut self, Pnt: &Point, theIsPrepend: bool) {
         unsafe { crate::ffi::IntPatch_PointLine_add_vertex(self as *mut Self, Pnt, theIsPrepend) }
     }
 
@@ -848,19 +848,19 @@ impl PointLine {
 
     /// **Source:** `IntPatch_PointLine.hxx`:52 - `IntPatch_PointLine::Point()`
     /// Returns the intersection point of range Index.
-    pub fn point(&self, Index: i32) -> &crate::ffi::IntSurf_PntOn2S {
+    pub fn point(&self, Index: i32) -> &crate::int_surf::PntOn2S {
         unsafe { &*(crate::ffi::IntPatch_PointLine_point(self as *const Self, Index)) }
     }
 
     /// **Source:** `IntPatch_PointLine.hxx`:55 - `IntPatch_PointLine::Vertex()`
     /// Returns the vertex of range Index on the line.
-    pub fn vertex(&self, Index: i32) -> &crate::ffi::IntPatch_Point {
+    pub fn vertex(&self, Index: i32) -> &Point {
         unsafe { &*(crate::ffi::IntPatch_PointLine_vertex(self as *const Self, Index)) }
     }
 
     /// **Source:** `IntPatch_PointLine.hxx`:58 - `IntPatch_PointLine::ChangeVertex()`
     /// Returns the vertex of range Index on the line.
-    pub fn change_vertex(&mut self, Index: i32) -> &mut crate::ffi::IntPatch_Point {
+    pub fn change_vertex(&mut self, Index: i32) -> &mut Point {
         unsafe { &mut *(crate::ffi::IntPatch_PointLine_change_vertex(self as *mut Self, Index)) }
     }
 
@@ -887,20 +887,20 @@ impl PointLine {
     /// **Source:** `IntPatch_PointLine.hxx`:71 - `IntPatch_PointLine::IsOutSurf1Box()`
     /// Returns TRUE if P1 is out of the box built from
     /// the points on 1st surface
-    pub fn is_out_surf1_box(&self, P1: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn is_out_surf1_box(&self, P1: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::IntPatch_PointLine_is_out_surf1_box(self as *const Self, P1) }
     }
 
     /// **Source:** `IntPatch_PointLine.hxx`:75 - `IntPatch_PointLine::IsOutSurf2Box()`
     /// Returns TRUE if P2 is out of the box built from
     /// the points on 2nd surface
-    pub fn is_out_surf2_box(&self, P2: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn is_out_surf2_box(&self, P2: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::IntPatch_PointLine_is_out_surf2_box(self as *const Self, P2) }
     }
 
     /// **Source:** `IntPatch_PointLine.hxx`:78 - `IntPatch_PointLine::IsOutBox()`
     /// Returns TRUE if P is out of the box built from 3D-points.
-    pub fn is_out_box(&self, P: &crate::ffi::gp_Pnt) -> bool {
+    pub fn is_out_box(&self, P: &crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::IntPatch_PointLine_is_out_box(self as *const Self, P) }
     }
 
@@ -916,7 +916,7 @@ impl PointLine {
     pub fn curvature_radius_of_inters_line(
         theS1: &crate::ffi::HandleAdaptor3dSurface,
         theS2: &crate::ffi::HandleAdaptor3dSurface,
-        theUVPoint: &crate::ffi::IntSurf_PntOn2S,
+        theUVPoint: &crate::int_surf::PntOn2S,
     ) -> f64 {
         unsafe {
             crate::ffi::IntPatch_PointLine_curvature_radius_of_inters_line(theS1, theS2, theUVPoint)
@@ -1112,13 +1112,13 @@ impl WLine {
     /// Adds a vertex in the list. If theIsPrepend == TRUE the new
     /// vertex will be added before the first element of vertices sequence.
     /// Otherwise, to the end of the sequence
-    pub fn add_vertex(&mut self, Pnt: &crate::ffi::IntPatch_Point, theIsPrepend: bool) {
+    pub fn add_vertex(&mut self, Pnt: &Point, theIsPrepend: bool) {
         unsafe { crate::ffi::IntPatch_WLine_add_vertex(self as *mut Self, Pnt, theIsPrepend) }
     }
 
     /// **Source:** `IntPatch_WLine.hxx`:78 - `IntPatch_WLine::SetPoint()`
     /// Set the Point of index <Index> in the LineOn2S
-    pub fn set_point(&mut self, Index: i32, Pnt: &crate::ffi::IntPatch_Point) {
+    pub fn set_point(&mut self, Index: i32, Pnt: &Point) {
         unsafe { crate::ffi::IntPatch_WLine_set_point(self as *mut Self, Index, Pnt) }
     }
 
@@ -1127,7 +1127,7 @@ impl WLine {
     /// of points.
     /// The exception OutOfRange is raised when
     /// Index <= 0 or Index > NbVertex.
-    pub fn replace(&mut self, Index: i32, Pnt: &crate::ffi::IntPatch_Point) {
+    pub fn replace(&mut self, Index: i32, Pnt: &Point) {
         unsafe { crate::ffi::IntPatch_WLine_replace(self as *mut Self, Index, Pnt) }
     }
 
@@ -1149,7 +1149,7 @@ impl WLine {
 
     /// **Source:** `IntPatch_WLine.hxx`:94 - `IntPatch_WLine::Point()`
     /// Returns the intersection point of range Index.
-    pub fn point(&self, Index: i32) -> &crate::ffi::IntSurf_PntOn2S {
+    pub fn point(&self, Index: i32) -> &crate::int_surf::PntOn2S {
         unsafe { &*(crate::ffi::IntPatch_WLine_point(self as *const Self, Index)) }
     }
 
@@ -1169,13 +1169,13 @@ impl WLine {
 
     /// **Source:** `IntPatch_WLine.hxx`:105 - `IntPatch_WLine::FirstPoint()`
     /// Returns the Point corresponding to the FirstPoint.
-    pub fn first_point(&self) -> &crate::ffi::IntPatch_Point {
+    pub fn first_point(&self) -> &Point {
         unsafe { &*(crate::ffi::IntPatch_WLine_first_point(self as *const Self)) }
     }
 
     /// **Source:** `IntPatch_WLine.hxx`:108 - `IntPatch_WLine::LastPoint()`
     /// Returns the Point corresponding to the LastPoint.
-    pub fn last_point(&self) -> &crate::ffi::IntPatch_Point {
+    pub fn last_point(&self) -> &Point {
         unsafe { &*(crate::ffi::IntPatch_WLine_last_point(self as *const Self)) }
     }
 
@@ -1187,13 +1187,13 @@ impl WLine {
 
     /// **Source:** `IntPatch_WLine.hxx`:124 - `IntPatch_WLine::Vertex()`
     /// Returns the vertex of range Index on the line.
-    pub fn vertex(&self, Index: i32) -> &crate::ffi::IntPatch_Point {
+    pub fn vertex(&self, Index: i32) -> &Point {
         unsafe { &*(crate::ffi::IntPatch_WLine_vertex(self as *const Self, Index)) }
     }
 
     /// **Source:** `IntPatch_WLine.hxx`:127 - `IntPatch_WLine::ChangeVertex()`
     /// Returns the vertex of range Index on the line.
-    pub fn change_vertex(&mut self, Index: i32) -> &mut crate::ffi::IntPatch_Point {
+    pub fn change_vertex(&mut self, Index: i32) -> &mut Point {
         unsafe { &mut *(crate::ffi::IntPatch_WLine_change_vertex(self as *mut Self, Index)) }
     }
 
@@ -1215,20 +1215,20 @@ impl WLine {
     /// **Source:** `IntPatch_WLine.hxx`:140 - `IntPatch_WLine::IsOutSurf1Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 1st surface
-    pub fn is_out_surf1_box(&self, theP: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn is_out_surf1_box(&self, theP: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::IntPatch_WLine_is_out_surf1_box(self as *const Self, theP) }
     }
 
     /// **Source:** `IntPatch_WLine.hxx`:147 - `IntPatch_WLine::IsOutSurf2Box()`
     /// Returns TRUE if theP is out of the box built from
     /// the points on 2nd surface
-    pub fn is_out_surf2_box(&self, theP: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn is_out_surf2_box(&self, theP: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::IntPatch_WLine_is_out_surf2_box(self as *const Self, theP) }
     }
 
     /// **Source:** `IntPatch_WLine.hxx`:153 - `IntPatch_WLine::IsOutBox()`
     /// Returns TRUE if theP is out of the box built from 3D-points.
-    pub fn is_out_box(&self, theP: &crate::ffi::gp_Pnt) -> bool {
+    pub fn is_out_box(&self, theP: &crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::IntPatch_WLine_is_out_box(self as *const Self, theP) }
     }
 
@@ -1300,7 +1300,7 @@ impl WLine {
     }
 
     /// **Source:** `IntPatch_WLine.hxx`:189 - `IntPatch_WLine::InsertVertexBefore()`
-    pub fn insert_vertex_before(&mut self, theIndex: i32, thePnt: &crate::ffi::IntPatch_Point) {
+    pub fn insert_vertex_before(&mut self, theIndex: i32, thePnt: &Point) {
         unsafe {
             crate::ffi::IntPatch_WLine_insert_vertex_before(self as *mut Self, theIndex, thePnt)
         }

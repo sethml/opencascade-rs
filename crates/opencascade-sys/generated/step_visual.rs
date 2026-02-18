@@ -423,10 +423,7 @@ impl PresentationStyleAssignment {
     }
 
     /// **Source:** `StepVisual_PresentationStyleAssignment.hxx`:44 - `StepVisual_PresentationStyleAssignment::StylesValue()`
-    pub fn styles_value(
-        &self,
-        num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::StepVisual_PresentationStyleSelect> {
+    pub fn styles_value(&self, num: i32) -> crate::OwnedPtr<PresentationStyleSelect> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepVisual_PresentationStyleAssignment_styles_value(

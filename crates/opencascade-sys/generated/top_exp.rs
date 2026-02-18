@@ -13,7 +13,7 @@
 ///
 /// Warning: The map is not cleared at first.
 pub fn map_shapes_shape_shapeenum_indexedmapofshape(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     T: crate::top_abs::ShapeEnum,
     M: &mut crate::ffi::TopTools_IndexedMapOfShape,
 ) {
@@ -27,7 +27,7 @@ pub fn map_shapes_shape_shapeenum_indexedmapofshape(
 /// sub-shapes by the location of S, i.e. it applies to
 /// each sub-shape the transformation that is associated with S.
 pub fn map_shapes_shape_indexedmapofshape_bool2(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     M: &mut crate::ffi::TopTools_IndexedMapOfShape,
     cumOri: bool,
     cumLoc: bool,
@@ -42,7 +42,7 @@ pub fn map_shapes_shape_indexedmapofshape_bool2(
 /// sub-shapes by the location of S, i.e. it applies to
 /// each sub-shape the transformation that is associated with S.
 pub fn map_shapes_shape_mapofshape_bool2(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     M: &mut crate::ffi::TopTools_MapOfShape,
     cumOri: bool,
     cumLoc: bool,
@@ -56,7 +56,7 @@ pub fn map_shapes_shape_mapofshape_bool2(
 /// the edges and bind the list of faces.
 /// Warning: The map is not cleared at first.
 pub fn map_shapes_and_ancestors(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
     M: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
@@ -71,7 +71,7 @@ pub fn map_shapes_and_ancestors(
 /// useOrientation = True : taking account the ancestor orientation
 /// Warning: The map is not cleared at first.
 pub fn map_shapes_and_unique_ancestors(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
     M: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
@@ -92,9 +92,9 @@ pub fn map_shapes_and_unique_ancestors(
 /// there is none returns a Null Shape.
 /// CumOri = True : taking account the edge orientation
 pub fn first_vertex(
-    E: &crate::ffi::TopoDS_Edge,
+    E: &crate::topo_ds::Edge,
     CumOri: bool,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopExp_first_vertex(E, CumOri)) }
 }
 /// **Source:** `TopExp.hxx`:112 - `TopExp::LastVertex`
@@ -102,9 +102,9 @@ pub fn first_vertex(
 /// there is none returns a Null Shape.
 /// CumOri = True : taking account the edge orientation
 pub fn last_vertex(
-    E: &crate::ffi::TopoDS_Edge,
+    E: &crate::topo_ds::Edge,
     CumOri: bool,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopExp_last_vertex(E, CumOri)) }
 }
 /// **Source:** `TopExp.hxx`:118 - `TopExp::Vertices`
@@ -112,9 +112,9 @@ pub fn last_vertex(
 /// vertices of the edge <E>. May be null shapes.
 /// CumOri = True : taking account the edge orientation
 pub fn vertices_edge_vertex2_bool(
-    E: &crate::ffi::TopoDS_Edge,
-    Vfirst: &mut crate::ffi::TopoDS_Vertex,
-    Vlast: &mut crate::ffi::TopoDS_Vertex,
+    E: &crate::topo_ds::Edge,
+    Vfirst: &mut crate::topo_ds::Vertex,
+    Vlast: &mut crate::topo_ds::Vertex,
     CumOri: bool,
 ) {
     unsafe { crate::ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri) }
@@ -127,9 +127,9 @@ pub fn vertices_edge_vertex2_bool(
 /// if <W> is no manifold. VFirst and VLast are null
 /// shapes.
 pub fn vertices_wire_vertex2(
-    W: &crate::ffi::TopoDS_Wire,
-    Vfirst: &mut crate::ffi::TopoDS_Vertex,
-    Vlast: &mut crate::ffi::TopoDS_Vertex,
+    W: &crate::topo_ds::Wire,
+    Vfirst: &mut crate::topo_ds::Vertex,
+    Vlast: &mut crate::topo_ds::Vertex,
 ) {
     unsafe { crate::ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast) }
 }
@@ -139,9 +139,9 @@ pub fn vertices_wire_vertex2(
 ///
 /// Warning: <V> has sense only if the value <True> is returned
 pub fn common_vertex_mut(
-    E1: &crate::ffi::TopoDS_Edge,
-    E2: &crate::ffi::TopoDS_Edge,
-    V: &mut crate::ffi::TopoDS_Vertex,
+    E1: &crate::topo_ds::Edge,
+    E2: &crate::topo_ds::Edge,
+    V: &mut crate::topo_ds::Vertex,
 ) -> bool {
     unsafe { crate::ffi::TopExp_common_vertex_mut(E1, E2, V) }
 }
@@ -234,7 +234,7 @@ impl Explorer {
     /// complex than <ToFind> or if  <ToAVoid> is SHAPE it
     /// has no effect on the exploration.
     pub fn new_shape_shapeenum2(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         ToFind: crate::top_abs::ShapeEnum,
         ToAvoid: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<Self> {
@@ -256,7 +256,7 @@ impl Explorer {
     /// ToFind it has no effect on the search.
     pub fn init(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         ToFind: crate::top_abs::ShapeEnum,
         ToAvoid: crate::top_abs::ShapeEnum,
     ) {
@@ -283,7 +283,7 @@ impl Explorer {
     /// Returns the current shape in the exploration.
     /// Exceptions
     /// Standard_NoSuchObject if this explorer has no more shapes to explore.
-    pub fn value(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn value(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TopExp_Explorer_value(self as *const Self)) }
     }
 
@@ -291,7 +291,7 @@ impl Explorer {
     /// Returns the current shape in the exploration.
     /// Exceptions
     /// Standard_NoSuchObject if this explorer has no more shapes to explore.
-    pub fn current(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn current(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TopExp_Explorer_current(self as *const Self)) }
     }
 
@@ -303,7 +303,7 @@ impl Explorer {
 
     /// **Source:** `TopExp_Explorer.hxx`:134 - `TopExp_Explorer::ExploredShape()`
     /// Return explored shape.
-    pub fn explored_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TopExp_Explorer_explored_shape(self as *const Self)) }
     }
 

@@ -24,18 +24,13 @@ unsafe impl crate::CppDeletable for Curve {
 impl Curve {
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:32 - `Geom2dEvaluator_Curve::D0()`
     /// Value of 2D curve
-    pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt2d) {
+    pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt2d) {
         unsafe { crate::ffi::Geom2dEvaluator_Curve_d0(self as *const Self, theU, theValue) }
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:34 - `Geom2dEvaluator_Curve::D1()`
     /// Value and first derivatives of curve
-    pub fn d1(
-        &self,
-        theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt2d,
-        theD1: &mut crate::ffi::gp_Vec2d,
-    ) {
+    pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt2d, theD1: &mut crate::gp::Vec2d) {
         unsafe { crate::ffi::Geom2dEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1) }
     }
 
@@ -44,9 +39,9 @@ impl Curve {
     pub fn d2(
         &self,
         theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt2d,
-        theD1: &mut crate::ffi::gp_Vec2d,
-        theD2: &mut crate::ffi::gp_Vec2d,
+        theValue: &mut crate::gp::Pnt2d,
+        theD1: &mut crate::gp::Vec2d,
+        theD2: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::Geom2dEvaluator_Curve_d2(self as *const Self, theU, theValue, theD1, theD2)
@@ -58,10 +53,10 @@ impl Curve {
     pub fn d3(
         &self,
         theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt2d,
-        theD1: &mut crate::ffi::gp_Vec2d,
-        theD2: &mut crate::ffi::gp_Vec2d,
-        theD3: &mut crate::ffi::gp_Vec2d,
+        theValue: &mut crate::gp::Pnt2d,
+        theD1: &mut crate::gp::Vec2d,
+        theD2: &mut crate::gp::Vec2d,
+        theD3: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::Geom2dEvaluator_Curve_d3(
@@ -77,7 +72,7 @@ impl Curve {
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:47 - `Geom2dEvaluator_Curve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
-    pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+    pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_Curve_dn(
                 self as *const Self,
@@ -176,18 +171,13 @@ impl OffsetCurve {
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:36 - `Geom2dEvaluator_OffsetCurve::D0()`
     /// Value of curve
-    pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt2d) {
+    pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt2d) {
         unsafe { crate::ffi::Geom2dEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue) }
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:38 - `Geom2dEvaluator_OffsetCurve::D1()`
     /// Value and first derivatives of curve
-    pub fn d1(
-        &self,
-        theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt2d,
-        theD1: &mut crate::ffi::gp_Vec2d,
-    ) {
+    pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt2d, theD1: &mut crate::gp::Vec2d) {
         unsafe {
             crate::ffi::Geom2dEvaluator_OffsetCurve_d1(self as *const Self, theU, theValue, theD1)
         }
@@ -198,9 +188,9 @@ impl OffsetCurve {
     pub fn d2(
         &self,
         theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt2d,
-        theD1: &mut crate::ffi::gp_Vec2d,
-        theD2: &mut crate::ffi::gp_Vec2d,
+        theValue: &mut crate::gp::Pnt2d,
+        theD1: &mut crate::gp::Vec2d,
+        theD2: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::Geom2dEvaluator_OffsetCurve_d2(
@@ -218,10 +208,10 @@ impl OffsetCurve {
     pub fn d3(
         &self,
         theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt2d,
-        theD1: &mut crate::ffi::gp_Vec2d,
-        theD2: &mut crate::ffi::gp_Vec2d,
-        theD3: &mut crate::ffi::gp_Vec2d,
+        theValue: &mut crate::gp::Pnt2d,
+        theD1: &mut crate::gp::Vec2d,
+        theD2: &mut crate::gp::Vec2d,
+        theD3: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::Geom2dEvaluator_OffsetCurve_d3(
@@ -237,7 +227,7 @@ impl OffsetCurve {
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:53 - `Geom2dEvaluator_OffsetCurve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
-    pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+    pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_OffsetCurve_dn(
                 self as *const Self,

@@ -176,7 +176,7 @@ pub fn project_handlegeomcurve_handlegeomsurface(
 pub fn project_on_plane(
     Curve: &crate::ffi::HandleGeomCurve,
     Plane: &crate::ffi::HandleGeomPlane,
-    Dir: &crate::ffi::gp_Dir,
+    Dir: &crate::gp::Dir,
     KeepParametrization: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
     unsafe {

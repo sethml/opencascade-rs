@@ -95,7 +95,7 @@ impl HInter {
     pub fn perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface(
         &mut self,
         Curve: &crate::ffi::HandleAdaptor3dCurve,
-        Polygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
+        Polygon: &ThePolygonOfHInter,
         Surface: &crate::ffi::HandleAdaptor3dSurface,
     ) {
         unsafe {
@@ -111,9 +111,9 @@ impl HInter {
     pub fn perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface_thepolyhedronofhinter(
         &mut self,
         Curve: &crate::ffi::HandleAdaptor3dCurve,
-        ThePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
+        ThePolygon: &ThePolygonOfHInter,
         Surface: &crate::ffi::HandleAdaptor3dSurface,
-        Polyhedron: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        Polyhedron: &ThePolyhedronOfHInter,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface_thepolyhedronofhinter(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron)
@@ -128,10 +128,10 @@ impl HInter {
     pub fn perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface_thepolyhedronofhinter_boundsortbox(
         &mut self,
         Curve: &crate::ffi::HandleAdaptor3dCurve,
-        ThePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
+        ThePolygon: &ThePolygonOfHInter,
         Surface: &crate::ffi::HandleAdaptor3dSurface,
-        Polyhedron: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        BndBSB: &mut crate::ffi::Bnd_BoundSortBox,
+        Polyhedron: &ThePolyhedronOfHInter,
+        BndBSB: &mut crate::bnd::BoundSortBox,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_thepolygonofhinter_handleadaptor3dsurface_thepolyhedronofhinter_boundsortbox(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron, BndBSB)
@@ -146,7 +146,7 @@ impl HInter {
         &mut self,
         Curve: &crate::ffi::HandleAdaptor3dCurve,
         Surface: &crate::ffi::HandleAdaptor3dSurface,
-        Polyhedron: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        Polyhedron: &ThePolyhedronOfHInter,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_HInter_perform_handleadaptor3dcurve_handleadaptor3dsurface_thepolyhedronofhinter(self as *mut Self, Curve, Surface, Polyhedron)
@@ -164,7 +164,7 @@ impl HInter {
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:47 - `IntCurveSurface_Intersection::Point()`
-    pub fn point(&self, Index: i32) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
+    pub fn point(&self, Index: i32) -> &IntersectionPoint {
         unsafe {
             &*(crate::ffi::IntCurveSurface_HInter_inherited_Point(self as *const Self, Index))
         }
@@ -176,7 +176,7 @@ impl HInter {
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:59 - `IntCurveSurface_Intersection::Segment()`
-    pub fn segment(&self, Index: i32) -> &crate::ffi::IntCurveSurface_IntersectionSegment {
+    pub fn segment(&self, Index: i32) -> &IntersectionSegment {
         unsafe {
             &*(crate::ffi::IntCurveSurface_HInter_inherited_Segment(self as *const Self, Index))
         }
@@ -218,7 +218,7 @@ impl IntersectionPoint {
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:38 - `IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint()`
     /// Create an IntersectionPoint.
     pub fn new_pnt_real3_transitiononcurve(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         USurf: f64,
         VSurf: f64,
         UCurv: f64,
@@ -241,7 +241,7 @@ impl IntersectionPoint {
     /// Set the fields of the current IntersectionPoint.
     pub fn set_values(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         USurf: f64,
         VSurf: f64,
         UCurv: f64,
@@ -263,7 +263,7 @@ impl IntersectionPoint {
     /// Get the fields of the current IntersectionPoint.
     pub fn values(
         &self,
-        P: &mut crate::ffi::gp_Pnt,
+        P: &mut crate::gp::Pnt,
         USurf: &mut f64,
         VSurf: &mut f64,
         UCurv: &mut f64,
@@ -283,7 +283,7 @@ impl IntersectionPoint {
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:59 - `IntCurveSurface_IntersectionPoint::Pnt()`
     /// returns the geometric point.
-    pub fn pnt(&self) -> &crate::ffi::gp_Pnt {
+    pub fn pnt(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntCurveSurface_IntersectionPoint_pnt(self as *const Self)) }
     }
 
@@ -347,8 +347,8 @@ impl IntersectionSegment {
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:36 - `IntCurveSurface_IntersectionSegment::IntCurveSurface_IntersectionSegment()`
     pub fn new_intersectionpoint2(
-        P1: &crate::ffi::IntCurveSurface_IntersectionPoint,
-        P2: &crate::ffi::IntCurveSurface_IntersectionPoint,
+        P1: &IntersectionPoint,
+        P2: &IntersectionPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -358,32 +358,21 @@ impl IntersectionSegment {
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:39 - `IntCurveSurface_IntersectionSegment::SetValues()`
-    pub fn set_values(
-        &mut self,
-        P1: &crate::ffi::IntCurveSurface_IntersectionPoint,
-        P2: &crate::ffi::IntCurveSurface_IntersectionPoint,
-    ) {
+    pub fn set_values(&mut self, P1: &IntersectionPoint, P2: &IntersectionPoint) {
         unsafe {
             crate::ffi::IntCurveSurface_IntersectionSegment_set_values(self as *mut Self, P1, P2)
         }
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:42 - `IntCurveSurface_IntersectionSegment::Values()`
-    pub fn values(
-        &self,
-        P1: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
-        P2: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
-    ) {
+    pub fn values(&self, P1: &mut IntersectionPoint, P2: &mut IntersectionPoint) {
         unsafe {
             crate::ffi::IntCurveSurface_IntersectionSegment_values(self as *const Self, P1, P2)
         }
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:45 - `IntCurveSurface_IntersectionSegment::FirstPoint()`
-    pub fn first_point_intersectionpoint(
-        &self,
-        P1: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
-    ) {
+    pub fn first_point_intersectionpoint(&self, P1: &mut IntersectionPoint) {
         unsafe {
             crate::ffi::IntCurveSurface_IntersectionSegment_first_point_intersectionpoint(
                 self as *const Self,
@@ -393,10 +382,7 @@ impl IntersectionSegment {
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:47 - `IntCurveSurface_IntersectionSegment::SecondPoint()`
-    pub fn second_point_intersectionpoint(
-        &self,
-        P2: &mut crate::ffi::IntCurveSurface_IntersectionPoint,
-    ) {
+    pub fn second_point_intersectionpoint(&self, P2: &mut IntersectionPoint) {
         unsafe {
             crate::ffi::IntCurveSurface_IntersectionSegment_second_point_intersectionpoint(
                 self as *const Self,
@@ -406,14 +392,14 @@ impl IntersectionSegment {
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:49 - `IntCurveSurface_IntersectionSegment::FirstPoint()`
-    pub fn first_point(&self) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
+    pub fn first_point(&self) -> &IntersectionPoint {
         unsafe {
             &*(crate::ffi::IntCurveSurface_IntersectionSegment_first_point(self as *const Self))
         }
     }
 
     /// **Source:** `IntCurveSurface_IntersectionSegment.hxx`:51 - `IntCurveSurface_IntersectionSegment::SecondPoint()`
-    pub fn second_point(&self) -> &crate::ffi::IntCurveSurface_IntersectionPoint {
+    pub fn second_point(&self) -> &IntersectionPoint {
         unsafe {
             &*(crate::ffi::IntCurveSurface_IntersectionSegment_second_point(self as *const Self))
         }
@@ -464,7 +450,7 @@ impl TheCSFunctionOfHInter {
     }
 
     /// **Source:** `IntCurveSurface_TheCSFunctionOfHInter.hxx`:48 - `IntCurveSurface_TheCSFunctionOfHInter::Point()`
-    pub fn point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntCurveSurface_TheCSFunctionOfHInter_point(self as *const Self)) }
     }
 
@@ -561,7 +547,7 @@ impl TheExactHInter {
         U: f64,
         V: f64,
         W: f64,
-        F: &crate::ffi::IntCurveSurface_TheCSFunctionOfHInter,
+        F: &TheCSFunctionOfHInter,
         TolTangency: f64,
         MarginCoef: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -582,7 +568,7 @@ impl TheExactHInter {
     /// **Source:** `IntCurveSurface_TheExactHInter.hxx`:44 - `IntCurveSurface_TheExactHInter::IntCurveSurface_TheExactHInter()`
     /// initialize the parameters to compute the solution
     pub fn new_thecsfunctionofhinter_real(
-        F: &crate::ffi::IntCurveSurface_TheCSFunctionOfHInter,
+        F: &TheCSFunctionOfHInter,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -603,7 +589,7 @@ impl TheExactHInter {
         U: f64,
         V: f64,
         W: f64,
-        F: &crate::ffi::IntCurveSurface_TheCSFunctionOfHInter,
+        F: &TheCSFunctionOfHInter,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_real3_thecsfunctionofhinter_real2(U, V, W, F, TolTangency, 0.0)
@@ -637,7 +623,7 @@ impl TheExactHInter {
         U: f64,
         V: f64,
         W: f64,
-        Rsnld: &mut crate::ffi::math_FunctionSetRoot,
+        Rsnld: &mut crate::math::FunctionSetRoot,
         u0: f64,
         v0: f64,
         u1: f64,
@@ -677,7 +663,7 @@ impl TheExactHInter {
     /// returns the intersection point
     /// The exception NotDone is raised if IsDone is false.
     /// The exception DomainError is raised if IsEmpty is true.
-    pub fn point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntCurveSurface_TheExactHInter_point(self as *const Self)) }
     }
 
@@ -702,7 +688,7 @@ impl TheExactHInter {
     /// **Source:** `IntCurveSurface_TheExactHInter.hxx`:96 - `IntCurveSurface_TheExactHInter::Function()`
     /// return the math function which
     /// is used to compute the intersection
-    pub fn function(&mut self) -> &mut crate::ffi::IntCurveSurface_TheCSFunctionOfHInter {
+    pub fn function(&mut self) -> &mut TheCSFunctionOfHInter {
         unsafe { &mut *(crate::ffi::IntCurveSurface_TheExactHInter_function(self as *mut Self)) }
     }
 }
@@ -785,16 +771,13 @@ impl TheHCurveTool {
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:84 - `IntCurveSurface_TheHCurveTool::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(
-        C: &crate::ffi::HandleAdaptor3dCurve,
-        U: f64,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(C: &crate::ffi::HandleAdaptor3dCurve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheHCurveTool_value(C, U)) }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:90 - `IntCurveSurface_TheHCurveTool::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(C: &crate::ffi::HandleAdaptor3dCurve, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(C: &crate::ffi::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d0(C, U, P) }
     }
 
@@ -806,8 +789,8 @@ impl TheHCurveTool {
     pub fn d1(
         C: &crate::ffi::HandleAdaptor3dCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d1(C, U, P, V) }
     }
@@ -820,9 +803,9 @@ impl TheHCurveTool {
     pub fn d2(
         C: &crate::ffi::HandleAdaptor3dCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d2(C, U, P, V1, V2) }
     }
@@ -835,10 +818,10 @@ impl TheHCurveTool {
     pub fn d3(
         C: &crate::ffi::HandleAdaptor3dCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d3(C, U, P, V1, V2, V3) }
     }
@@ -853,7 +836,7 @@ impl TheHCurveTool {
         C: &crate::ffi::HandleAdaptor3dCurve,
         U: f64,
         N: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheHCurveTool_dn(C, U, N)) }
     }
 
@@ -878,27 +861,27 @@ impl TheHCurveTool {
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:155 - `IntCurveSurface_TheHCurveTool::Line()`
-    pub fn line(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheHCurveTool_line(C)) }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:157 - `IntCurveSurface_TheHCurveTool::Circle()`
-    pub fn circle(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheHCurveTool_circle(C)) }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:159 - `IntCurveSurface_TheHCurveTool::Ellipse()`
-    pub fn ellipse(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+    pub fn ellipse(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheHCurveTool_ellipse(C)) }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:161 - `IntCurveSurface_TheHCurveTool::Hyperbola()`
-    pub fn hyperbola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+    pub fn hyperbola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheHCurveTool_hyperbola(C)) }
     }
 
     /// **Source:** `IntCurveSurface_TheHCurveTool.hxx`:163 - `IntCurveSurface_TheHCurveTool::Parabola()`
-    pub fn parabola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+    pub fn parabola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheHCurveTool_parabola(C)) }
     }
 
@@ -963,8 +946,8 @@ impl TheInterferenceOfHInter {
     /// Constructs and computes an interference between the Polygon
     /// and the Polyhedron.
     pub fn new_thepolygonofhinter_thepolyhedronofhinter(
-        thePolyg: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        thePolyg: &ThePolygonOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_thepolygonofhinter_thepolyhedronofhinter(thePolyg, thePolyh))
@@ -975,8 +958,8 @@ impl TheInterferenceOfHInter {
     /// Constructs  and computes  an  interference   between    the
     /// Straight Line and the Polyhedron.
     pub fn new_lin_thepolyhedronofhinter(
-        theLin: &crate::ffi::gp_Lin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        theLin: &crate::gp::Lin,
+        thePolyh: &ThePolyhedronOfHInter,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -992,7 +975,7 @@ impl TheInterferenceOfHInter {
     /// Straight Lines and the Polyhedron.
     pub fn new_array1oflin_thepolyhedronofhinter(
         theLins: &crate::ffi::Intf_Array1OfLin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter(theLins, thePolyh))
@@ -1003,9 +986,9 @@ impl TheInterferenceOfHInter {
     /// Constructs and computes an interference between the Polygon
     /// and the Polyhedron.
     pub fn new_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(
-        thePolyg: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+        thePolyg: &ThePolygonOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
+        theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(thePolyg, thePolyh, theBoundSB))
@@ -1016,9 +999,9 @@ impl TheInterferenceOfHInter {
     /// Constructs  and computes  an  interference   between    the
     /// Straight Line and the Polyhedron.
     pub fn new_lin_thepolyhedronofhinter_boundsortbox(
-        theLin: &crate::ffi::gp_Lin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+        theLin: &crate::gp::Lin,
+        thePolyh: &ThePolyhedronOfHInter,
+        theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_lin_thepolyhedronofhinter_boundsortbox(theLin, thePolyh, theBoundSB))
@@ -1030,8 +1013,8 @@ impl TheInterferenceOfHInter {
     /// Straight Lines and the Polyhedron.
     pub fn new_array1oflin_thepolyhedronofhinter_boundsortbox(
         theLins: &crate::ffi::Intf_Array1OfLin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+        thePolyh: &ThePolyhedronOfHInter,
+        theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter_boundsortbox(theLins, thePolyh, theBoundSB))
@@ -1043,8 +1026,8 @@ impl TheInterferenceOfHInter {
     /// Polyhedron.
     pub fn perform_thepolygonofhinter_thepolyhedronofhinter(
         &mut self,
-        thePolyg: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        thePolyg: &ThePolygonOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_thepolygonofhinter_thepolyhedronofhinter(self as *mut Self, thePolyg, thePolyh)
@@ -1056,8 +1039,8 @@ impl TheInterferenceOfHInter {
     /// Polyhedron.
     pub fn perform_lin_thepolyhedronofhinter(
         &mut self,
-        theLin: &crate::ffi::gp_Lin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        theLin: &crate::gp::Lin,
+        thePolyh: &ThePolyhedronOfHInter,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_lin_thepolyhedronofhinter(
@@ -1074,7 +1057,7 @@ impl TheInterferenceOfHInter {
     pub fn perform_array1oflin_thepolyhedronofhinter(
         &mut self,
         theLins: &crate::ffi::Intf_Array1OfLin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_array1oflin_thepolyhedronofhinter(self as *mut Self, theLins, thePolyh)
@@ -1086,9 +1069,9 @@ impl TheInterferenceOfHInter {
     /// Polyhedron.
     pub fn perform_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(
         &mut self,
-        thePolyg: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+        thePolyg: &ThePolygonOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
+        theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
@@ -1100,9 +1083,9 @@ impl TheInterferenceOfHInter {
     /// Polyhedron.
     pub fn perform_lin_thepolyhedronofhinter_boundsortbox(
         &mut self,
-        theLin: &crate::ffi::gp_Lin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+        theLin: &crate::gp::Lin,
+        thePolyh: &ThePolyhedronOfHInter,
+        theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_lin_thepolyhedronofhinter_boundsortbox(self as *mut Self, theLin, thePolyh, theBoundSB)
@@ -1115,8 +1098,8 @@ impl TheInterferenceOfHInter {
     pub fn perform_array1oflin_thepolyhedronofhinter_boundsortbox(
         &mut self,
         theLins: &crate::ffi::Intf_Array1OfLin,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+        thePolyh: &ThePolyhedronOfHInter,
+        theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_perform_array1oflin_thepolyhedronofhinter_boundsortbox(self as *mut Self, theLins, thePolyh, theBoundSB)
@@ -1128,9 +1111,9 @@ impl TheInterferenceOfHInter {
     /// the facets of <thePolyh>.
     pub fn interference_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(
         &mut self,
-        thePolyg: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+        thePolyg: &ThePolygonOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
+        theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_interference_thepolygonofhinter_thepolyhedronofhinter_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
@@ -1142,8 +1125,8 @@ impl TheInterferenceOfHInter {
     /// the facets of <thePolyh>.
     pub fn interference_thepolygonofhinter_thepolyhedronofhinter(
         &mut self,
-        thePolyg: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        thePolyg: &ThePolygonOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
     ) {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_interference_thepolygonofhinter_thepolyhedronofhinter(self as *mut Self, thePolyg, thePolyh)
@@ -1160,7 +1143,7 @@ impl TheInterferenceOfHInter {
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
-    pub fn pnt_value(&self, Index: i32) -> &crate::ffi::Intf_SectionPoint {
+    pub fn pnt_value(&self, Index: i32) -> &crate::intf::SectionPoint {
         unsafe {
             &*(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_PntValue(
                 self as *const Self,
@@ -1179,7 +1162,7 @@ impl TheInterferenceOfHInter {
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
-    pub fn line_value(&self, Index: i32) -> &crate::ffi::Intf_SectionLine {
+    pub fn line_value(&self, Index: i32) -> &crate::intf::SectionLine {
         unsafe {
             &*(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_LineValue(
                 self as *const Self,
@@ -1198,7 +1181,7 @@ impl TheInterferenceOfHInter {
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
-    pub fn zone_value(&self, Index: i32) -> &crate::ffi::Intf_TangentZone {
+    pub fn zone_value(&self, Index: i32) -> &crate::intf::TangentZone {
         unsafe {
             &*(crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_ZoneValue(
                 self as *const Self,
@@ -1217,7 +1200,7 @@ impl TheInterferenceOfHInter {
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
-    pub fn contains(&self, ThePnt: &crate::ffi::Intf_SectionPoint) -> bool {
+    pub fn contains(&self, ThePnt: &crate::intf::SectionPoint) -> bool {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_Contains(
                 self as *const Self,
@@ -1227,7 +1210,7 @@ impl TheInterferenceOfHInter {
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
-    pub fn insert(&mut self, TheZone: &crate::ffi::Intf_TangentZone) -> bool {
+    pub fn insert(&mut self, TheZone: &crate::intf::TangentZone) -> bool {
         unsafe {
             crate::ffi::IntCurveSurface_TheInterferenceOfHInter_inherited_Insert(
                 self as *mut Self,
@@ -1300,7 +1283,7 @@ impl ThePolygonOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:47 - `IntCurveSurface_ThePolygonOfHInter::Bounding()`
     /// Give the bounding box of the polygon.
-    pub fn bounding(&self) -> &crate::ffi::Bnd_Box {
+    pub fn bounding(&self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::IntCurveSurface_ThePolygonOfHInter_bounding(self as *const Self)) }
     }
 
@@ -1343,7 +1326,7 @@ impl ThePolygonOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:68 - `IntCurveSurface_ThePolygonOfHInter::BeginOfSeg()`
     /// Give the point of range Index in the Polygon.
-    pub fn begin_of_seg(&self, theIndex: i32) -> &crate::ffi::gp_Pnt {
+    pub fn begin_of_seg(&self, theIndex: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolygonOfHInter_begin_of_seg(
                 self as *const Self,
@@ -1354,7 +1337,7 @@ impl ThePolygonOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:71 - `IntCurveSurface_ThePolygonOfHInter::EndOfSeg()`
     /// Give the point of range Index in the Polygon.
-    pub fn end_of_seg(&self, theIndex: i32) -> &crate::ffi::gp_Pnt {
+    pub fn end_of_seg(&self, theIndex: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolygonOfHInter_end_of_seg(
                 self as *const Self,
@@ -1420,16 +1403,12 @@ impl ThePolygonToolOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:35 - `IntCurveSurface_ThePolygonToolOfHInter::Bounding()`
     /// Give the bounding box of the polygon.
-    pub fn bounding(
-        thePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-    ) -> &'static crate::ffi::Bnd_Box {
+    pub fn bounding(thePolygon: &ThePolygonOfHInter) -> &'static crate::bnd::Box {
         unsafe { &*(crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_bounding(thePolygon)) }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:37 - `IntCurveSurface_ThePolygonToolOfHInter::DeflectionOverEstimation()`
-    pub fn deflection_over_estimation(
-        thePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-    ) -> f64 {
+    pub fn deflection_over_estimation(thePolygon: &ThePolygonOfHInter) -> f64 {
         unsafe {
             crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_deflection_over_estimation(
                 thePolygon,
@@ -1438,21 +1417,18 @@ impl ThePolygonToolOfHInter {
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:40 - `IntCurveSurface_ThePolygonToolOfHInter::Closed()`
-    pub fn closed(thePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter) -> bool {
+    pub fn closed(thePolygon: &ThePolygonOfHInter) -> bool {
         unsafe { crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_closed(thePolygon) }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:42 - `IntCurveSurface_ThePolygonToolOfHInter::NbSegments()`
-    pub fn nb_segments(thePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter) -> i32 {
+    pub fn nb_segments(thePolygon: &ThePolygonOfHInter) -> i32 {
         unsafe { crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_nb_segments(thePolygon) }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:45 - `IntCurveSurface_ThePolygonToolOfHInter::BeginOfSeg()`
     /// Give the point of range Index in the Polygon.
-    pub fn begin_of_seg(
-        thePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-        Index: i32,
-    ) -> &'static crate::ffi::gp_Pnt {
+    pub fn begin_of_seg(thePolygon: &ThePolygonOfHInter, Index: i32) -> &'static crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_begin_of_seg(thePolygon, Index))
         }
@@ -1460,17 +1436,14 @@ impl ThePolygonToolOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:49 - `IntCurveSurface_ThePolygonToolOfHInter::EndOfSeg()`
     /// Give the point of range Index in the Polygon.
-    pub fn end_of_seg(
-        thePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter,
-        Index: i32,
-    ) -> &'static crate::ffi::gp_Pnt {
+    pub fn end_of_seg(thePolygon: &ThePolygonOfHInter, Index: i32) -> &'static crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_end_of_seg(thePolygon, Index))
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:52 - `IntCurveSurface_ThePolygonToolOfHInter::Dump()`
-    pub fn dump(thePolygon: &crate::ffi::IntCurveSurface_ThePolygonOfHInter) {
+    pub fn dump(thePolygon: &ThePolygonOfHInter) {
         unsafe { crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_dump(thePolygon) }
     }
 }
@@ -1605,7 +1578,7 @@ impl ThePolyhedronOfHInter {
     /// points.
     pub fn point_pnt_int2_real2(
         &mut self,
-        thePnt: &crate::ffi::gp_Pnt,
+        thePnt: &crate::gp::Pnt,
         lig: i32,
         col: i32,
         U: f64,
@@ -1625,7 +1598,7 @@ impl ThePolyhedronOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:99 - `IntCurveSurface_ThePolyhedronOfHInter::Point()`
     /// Give the point of index i in the MaTriangle.
-    pub fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::ffi::gp_Pnt {
+    pub fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int_real2(
                 self as *const Self,
@@ -1638,7 +1611,7 @@ impl ThePolyhedronOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:104 - `IntCurveSurface_ThePolyhedronOfHInter::Point()`
     /// Give the point of index i in the MaTriangle.
-    pub fn point_int(&self, Index: i32) -> &crate::ffi::gp_Pnt {
+    pub fn point_int(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int(
                 self as *const Self,
@@ -1649,7 +1622,7 @@ impl ThePolyhedronOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:107 - `IntCurveSurface_ThePolyhedronOfHInter::Point()`
     /// Give the point of index i in the MaTriangle.
-    pub fn point_int_pnt(&self, Index: i32, P: &mut crate::ffi::gp_Pnt) {
+    pub fn point_int_pnt(&self, Index: i32, P: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_point_int_pnt(
                 self as *const Self,
@@ -1661,7 +1634,7 @@ impl ThePolyhedronOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:110 - `IntCurveSurface_ThePolyhedronOfHInter::Bounding()`
     /// Give the bounding box of the MaTriangle.
-    pub fn bounding(&self) -> &crate::ffi::Bnd_Box {
+    pub fn bounding(&self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_bounding(self as *const Self))
         }
@@ -1737,7 +1710,7 @@ impl ThePolyhedronOfHInter {
     pub fn plane_equation(
         &self,
         Triang: i32,
-        NormalVector: &mut crate::ffi::gp_XYZ,
+        NormalVector: &mut crate::gp::XYZ,
         PolarDistance: &mut f64,
     ) {
         unsafe {
@@ -1752,7 +1725,7 @@ impl ThePolyhedronOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:136 - `IntCurveSurface_ThePolyhedronOfHInter::Contain()`
     /// Give the plane equation of the triangle of address Triang.
-    pub fn contain(&self, Triang: i32, ThePnt: &crate::ffi::gp_Pnt) -> bool {
+    pub fn contain(&self, Triang: i32, ThePnt: &crate::gp::Pnt) -> bool {
         unsafe {
             crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_contain(
                 self as *const Self,
@@ -1829,9 +1802,7 @@ impl ThePolyhedronToolOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:37 - `IntCurveSurface_ThePolyhedronToolOfHInter::Bounding()`
     /// Give the bounding box of the PolyhedronTool.
-    pub fn bounding(
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-    ) -> &'static crate::ffi::Bnd_Box {
+    pub fn bounding(thePolyh: &ThePolyhedronOfHInter) -> &'static crate::bnd::Box {
         unsafe { &*(crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_bounding(thePolyh)) }
     }
 
@@ -1839,7 +1810,7 @@ impl ThePolyhedronToolOfHInter {
     /// Give the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
     pub fn components_bounding(
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
+        thePolyh: &ThePolyhedronOfHInter,
     ) -> &'static crate::ffi::HandleBndHArray1OfBox {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_components_bounding(thePolyh))
@@ -1848,9 +1819,7 @@ impl ThePolyhedronToolOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:45 - `IntCurveSurface_ThePolyhedronToolOfHInter::DeflectionOverEstimation()`
     /// Give the tolerance of the polygon.
-    pub fn deflection_over_estimation(
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-    ) -> f64 {
+    pub fn deflection_over_estimation(thePolyh: &ThePolyhedronOfHInter) -> f64 {
         unsafe {
             crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_deflection_over_estimation(
                 thePolyh,
@@ -1860,16 +1829,13 @@ impl ThePolyhedronToolOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:49 - `IntCurveSurface_ThePolyhedronToolOfHInter::NbTriangles()`
     /// Give the number of triangles in this polyhedral surface.
-    pub fn nb_triangles(thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter) -> i32 {
+    pub fn nb_triangles(thePolyh: &ThePolyhedronOfHInter) -> i32 {
         unsafe { crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_nb_triangles(thePolyh) }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:60 - `IntCurveSurface_ThePolyhedronToolOfHInter::Point()`
     /// Give the point of index i in the polyhedral surface.
-    pub fn point(
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        Index: i32,
-    ) -> &'static crate::ffi::gp_Pnt {
+    pub fn point(thePolyh: &ThePolyhedronOfHInter, Index: i32) -> &'static crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_point(thePolyh, Index)) }
     }
 
@@ -1878,11 +1844,7 @@ impl ThePolyhedronToolOfHInter {
     /// indices Index1 and Index2 represents a boundary edge. It is
     /// necessary to take into account the boundary deflection for
     /// this edge.
-    pub fn is_on_bound(
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-        Index1: i32,
-        Index2: i32,
-    ) -> bool {
+    pub fn is_on_bound(thePolyh: &ThePolyhedronOfHInter, Index1: i32, Index2: i32) -> bool {
         unsafe {
             crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_is_on_bound(
                 thePolyh, Index1, Index2,
@@ -1892,16 +1854,14 @@ impl ThePolyhedronToolOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:85 - `IntCurveSurface_ThePolyhedronToolOfHInter::GetBorderDeflection()`
     /// This method returns a border deflection of the polyhedron.
-    pub fn get_border_deflection(
-        thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter,
-    ) -> f64 {
+    pub fn get_border_deflection(thePolyh: &ThePolyhedronOfHInter) -> f64 {
         unsafe {
             crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_get_border_deflection(thePolyh)
         }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:87 - `IntCurveSurface_ThePolyhedronToolOfHInter::Dump()`
-    pub fn dump(thePolyh: &crate::ffi::IntCurveSurface_ThePolyhedronOfHInter) {
+    pub fn dump(thePolyh: &ThePolyhedronOfHInter) {
         unsafe { crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_dump(thePolyh) }
     }
 }
@@ -1988,7 +1948,7 @@ impl TheQuadCurvFuncOfTheQuadCurvExactHInter {
     /// **Source:** `IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter.hxx`:33 - `IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter::IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter()`
     /// Create the function.
     pub fn new_quadric_handleadaptor3dcurve(
-        Q: &crate::ffi::IntSurf_Quadric,
+        Q: &crate::int_surf::Quadric,
         C: &crate::ffi::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {

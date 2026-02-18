@@ -22,7 +22,7 @@
 /// Exceptions Standard_NoSuchObject if C is not a defined type curve.
 pub fn to2d(
     C: &crate::ffi::HandleGeomCurve,
-    P: &crate::ffi::gp_Pln,
+    P: &crate::gp::Pln,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_to2d(C, P)) }
 }
@@ -33,7 +33,7 @@ pub fn to2d(
 /// The resulting 3D curve is of the same nature as that of the curve C.
 pub fn to3d_handlegeom2dcurve_pln(
     C: &crate::ffi::HandleGeom2dCurve,
-    P: &crate::ffi::gp_Pln,
+    P: &crate::gp::Pln,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_to3d_handlegeom2dcurve_pln(C, P)) }
 }
@@ -180,7 +180,7 @@ impl ExtremaCurveCurve {
     /// Standard_OutOfRange if Index is not in the range [
     /// 1,NbExtrema ], where NbExtrema is the
     /// number of extrema computed by this algorithm.
-    pub fn points(&self, Index: i32, P1: &mut crate::ffi::gp_Pnt, P2: &mut crate::ffi::gp_Pnt) {
+    pub fn points(&self, Index: i32, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomAPI_ExtremaCurveCurve_points(self as *const Self, Index, P1, P2) }
     }
 
@@ -220,7 +220,7 @@ impl ExtremaCurveCurve {
     /// the second curve, which are the ends of the shortest
     /// extremum computed by this algorithm.
     /// Exceptions StdFail_NotDone if this algorithm fails.
-    pub fn nearest_points(&self, P1: &mut crate::ffi::gp_Pnt, P2: &mut crate::ffi::gp_Pnt) {
+    pub fn nearest_points(&self, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomAPI_ExtremaCurveCurve_nearest_points(self as *const Self, P1, P2) }
     }
 
@@ -249,7 +249,7 @@ impl ExtremaCurveCurve {
 
     /// **Source:** `GeomAPI_ExtremaCurveCurve.hxx`:155 - `GeomAPI_ExtremaCurveCurve::Extrema()`
     /// return the algorithmic object from Extrema
-    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtCC {
+    pub fn extrema(&self) -> &crate::extrema::ExtCC {
         unsafe { &*(crate::ffi::GeomAPI_ExtremaCurveCurve_extrema(self as *const Self)) }
     }
 
@@ -259,8 +259,8 @@ impl ExtremaCurveCurve {
     /// extremity  points  of  curves.
     pub fn total_nearest_points(
         &mut self,
-        P1: &mut crate::ffi::gp_Pnt,
-        P2: &mut crate::ffi::gp_Pnt,
+        P1: &mut crate::gp::Pnt,
+        P2: &mut crate::gp::Pnt,
     ) -> bool {
         unsafe {
             crate::ffi::GeomAPI_ExtremaCurveCurve_total_nearest_points(self as *mut Self, P1, P2)
@@ -444,7 +444,7 @@ impl ExtremaCurveSurface {
     /// Standard_OutOfRange if Index is not in the range [
     /// 1,NbExtrema ], where NbExtrema is the
     /// number of extrema computed by this algorithm.
-    pub fn points(&self, Index: i32, P1: &mut crate::ffi::gp_Pnt, P2: &mut crate::ffi::gp_Pnt) {
+    pub fn points(&self, Index: i32, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomAPI_ExtremaCurveSurface_points(self as *const Self, Index, P1, P2)
         }
@@ -485,7 +485,7 @@ impl ExtremaCurveSurface {
     /// Returns the points PC on the curve and PS on the
     /// surface, which are the ends of the shortest extremum computed by this algorithm.
     /// Exceptions - StdFail_NotDone if this algorithm fails.
-    pub fn nearest_points(&self, PC: &mut crate::ffi::gp_Pnt, PS: &mut crate::ffi::gp_Pnt) {
+    pub fn nearest_points(&self, PC: &mut crate::gp::Pnt, PS: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomAPI_ExtremaCurveSurface_nearest_points(self as *const Self, PC, PS)
         }
@@ -517,7 +517,7 @@ impl ExtremaCurveSurface {
 
     /// **Source:** `GeomAPI_ExtremaCurveSurface.hxx`:165 - `GeomAPI_ExtremaCurveSurface::Extrema()`
     /// Returns the algorithmic object from Extrema
-    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtCS {
+    pub fn extrema(&self) -> &crate::extrema::ExtCS {
         unsafe { &*(crate::ffi::GeomAPI_ExtremaCurveSurface_extrema(self as *const Self)) }
     }
 }
@@ -685,7 +685,7 @@ impl ExtremaSurfaceSurface {
     /// Standard_OutOfRange if Index is not in the range [
     /// 1,NbExtrema ], where NbExtrema is the
     /// number of extrema computed by this algorithm.
-    pub fn points(&self, Index: i32, P1: &mut crate::ffi::gp_Pnt, P2: &mut crate::ffi::gp_Pnt) {
+    pub fn points(&self, Index: i32, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomAPI_ExtremaSurfaceSurface_points(self as *const Self, Index, P1, P2)
         }
@@ -735,7 +735,7 @@ impl ExtremaSurfaceSurface {
     /// the second surface, which are the ends of the
     /// shortest extremum computed by this algorithm.
     /// Exceptions StdFail_NotDone if this algorithm fails.
-    pub fn nearest_points(&self, P1: &mut crate::ffi::gp_Pnt, P2: &mut crate::ffi::gp_Pnt) {
+    pub fn nearest_points(&self, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomAPI_ExtremaSurfaceSurface_nearest_points(self as *const Self, P1, P2)
         }
@@ -775,7 +775,7 @@ impl ExtremaSurfaceSurface {
 
     /// **Source:** `GeomAPI_ExtremaSurfaceSurface.hxx`:174 - `GeomAPI_ExtremaSurfaceSurface::Extrema()`
     /// return the algorithmic object from Extrema
-    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtSS {
+    pub fn extrema(&self) -> &crate::extrema::ExtSS {
         unsafe { &*(crate::ffi::GeomAPI_ExtremaSurfaceSurface_extrema(self as *const Self)) }
     }
 }
@@ -848,7 +848,7 @@ impl IntCS {
     /// Raises NotDone if the computation has failed or if
     /// the computation has not been done
     /// raises OutOfRange if Index is not in the range <1..NbPoints>
-    pub fn point(&self, Index: i32) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::GeomAPI_IntCS_point(self as *const Self, Index)) }
     }
 
@@ -1148,8 +1148,8 @@ impl Interpolate {
     /// defined at the time of initialization).
     pub fn load_vec2_bool(
         &mut self,
-        InitialTangent: &crate::ffi::gp_Vec,
-        FinalTangent: &crate::ffi::gp_Vec,
+        InitialTangent: &crate::gp::Vec,
+        FinalTangent: &crate::gp::Vec,
         Scale: bool,
     ) {
         unsafe {
@@ -2075,7 +2075,7 @@ impl ProjectPointOnCurve {
     /// Create the projection  of a  point  <P> on a curve
     /// <Curve>
     pub fn new_pnt_handlegeomcurve(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Curve: &crate::ffi::HandleGeomCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2089,7 +2089,7 @@ impl ProjectPointOnCurve {
     /// Create  the projection  of a point <P>  on a curve
     /// <Curve> limited by the two points of parameter Umin and Usup.
     pub fn new_pnt_handlegeomcurve_real2(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Curve: &crate::ffi::HandleGeomCurve,
         Umin: f64,
         Usup: f64,
@@ -2108,7 +2108,7 @@ impl ProjectPointOnCurve {
     /// <Curve>
     pub fn init_pnt_handlegeomcurve(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Curve: &crate::ffi::HandleGeomCurve,
     ) {
         unsafe {
@@ -2125,7 +2125,7 @@ impl ProjectPointOnCurve {
     /// <Curve> limited by the two points of parameter Umin and Usup.
     pub fn init_pnt_handlegeomcurve_real2(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Curve: &crate::ffi::HandleGeomCurve,
         Umin: f64,
         Usup: f64,
@@ -2162,7 +2162,7 @@ impl ProjectPointOnCurve {
 
     /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:70 - `GeomAPI_ProjectPointOnCurve::Perform()`
     /// Performs the projection of a point on the current curve.
-    pub fn perform(&mut self, P: &crate::ffi::gp_Pnt) {
+    pub fn perform(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::GeomAPI_ProjectPointOnCurve_perform(self as *mut Self, P) }
     }
 
@@ -2180,7 +2180,7 @@ impl ProjectPointOnCurve {
     /// Exceptions
     /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
     /// NbPoints is the number of solution points.
-    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_ProjectPointOnCurve_point(
                 self as *const Self,
@@ -2231,7 +2231,7 @@ impl ProjectPointOnCurve {
     /// Returns the nearest orthogonal
     /// projection of the point on the curve.
     /// Exceptions: StdFail_NotDone if this algorithm fails.
-    pub fn nearest_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn nearest_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_ProjectPointOnCurve_nearest_point(
                 self as *const Self,
@@ -2259,7 +2259,7 @@ impl ProjectPointOnCurve {
 
     /// **Source:** `GeomAPI_ProjectPointOnCurve.hxx`:126 - `GeomAPI_ProjectPointOnCurve::Extrema()`
     /// return the algorithmic object from Extrema
-    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtPC {
+    pub fn extrema(&self) -> &crate::extrema::ExtPC {
         unsafe { &*(crate::ffi::GeomAPI_ProjectPointOnCurve_extrema(self as *const Self)) }
     }
 }
@@ -2291,7 +2291,7 @@ impl ProjectPointOnSurf {
     /// Create the projection  of a point <P> on a surface
     /// <Surface>
     pub fn new_pnt_handlegeomsurface_extalgo(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Algo: crate::extrema::ExtAlgo,
     ) -> crate::OwnedPtr<Self> {
@@ -2313,7 +2313,7 @@ impl ProjectPointOnSurf {
     /// <Surface>. The solution are computed in the domain
     /// [Umin,Usup] [Vmin,Vsup] of the surface.
     pub fn new_pnt_handlegeomsurface_real_extalgo(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Tolerance: f64,
         Algo: crate::extrema::ExtAlgo,
@@ -2332,7 +2332,7 @@ impl ProjectPointOnSurf {
 
     /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:59 - `GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf()`
     pub fn new_pnt_handlegeomsurface_real5_extalgo(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
         Usup: f64,
@@ -2361,7 +2361,7 @@ impl ProjectPointOnSurf {
     /// Init the projection  of a point <P> on a surface
     /// <Surface>
     pub fn new_pnt_handlegeomsurface_real4_extalgo(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
         Usup: f64,
@@ -2387,7 +2387,7 @@ impl ProjectPointOnSurf {
     /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:78 - `GeomAPI_ProjectPointOnSurf::Init()`
     pub fn init_pnt_handlegeomsurface_real_extalgo(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Tolerance: f64,
         Algo: crate::extrema::ExtAlgo,
@@ -2409,7 +2409,7 @@ impl ProjectPointOnSurf {
     /// [Umin,Usup] [Vmin,Vsup] of the surface.
     pub fn init_pnt_handlegeomsurface_extalgo(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Algo: crate::extrema::ExtAlgo,
     ) {
@@ -2426,7 +2426,7 @@ impl ProjectPointOnSurf {
     /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:90 - `GeomAPI_ProjectPointOnSurf::Init()`
     pub fn init_pnt_handlegeomsurface_real5_extalgo(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
         Usup: f64,
@@ -2456,7 +2456,7 @@ impl ProjectPointOnSurf {
     /// [Umin,Usup] [Vmin,Vsup] of the surface.
     pub fn init_pnt_handlegeomsurface_real4_extalgo(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         Surface: &crate::ffi::HandleGeomSurface,
         Umin: f64,
         Usup: f64,
@@ -2549,7 +2549,7 @@ impl ProjectPointOnSurf {
 
     /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:134 - `GeomAPI_ProjectPointOnSurf::Perform()`
     /// Performs the projection of a point on the current surface.
-    pub fn perform(&mut self, P: &crate::ffi::gp_Pnt) {
+    pub fn perform(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::GeomAPI_ProjectPointOnSurf_perform(self as *mut Self, P) }
     }
 
@@ -2571,7 +2571,7 @@ impl ProjectPointOnSurf {
     /// Exceptions
     /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
     /// NbPoints is the number of solution points.
-    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_ProjectPointOnSurf_point(
                 self as *const Self,
@@ -2609,7 +2609,7 @@ impl ProjectPointOnSurf {
     /// on the surface.
     /// Exceptions
     /// StdFail_NotDone if projection fails.
-    pub fn nearest_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn nearest_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAPI_ProjectPointOnSurf_nearest_point(
                 self as *const Self,
@@ -2643,7 +2643,7 @@ impl ProjectPointOnSurf {
 
     /// **Source:** `GeomAPI_ProjectPointOnSurf.hxx`:189 - `GeomAPI_ProjectPointOnSurf::Extrema()`
     /// return the algorithmic object from Extrema
-    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtPS {
+    pub fn extrema(&self) -> &crate::extrema::ExtPS {
         unsafe { &*(crate::ffi::GeomAPI_ProjectPointOnSurf_extrema(self as *const Self)) }
     }
 }

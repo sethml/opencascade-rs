@@ -41,7 +41,7 @@ impl HGPPConstraint {
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
-    pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
+    pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         unsafe { crate::ffi::NLPlate_HGPPConstraint_set_uv(self as *mut Self, UV) }
     }
 
@@ -86,7 +86,7 @@ impl HGPPConstraint {
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
-    pub fn uv(&self) -> &crate::ffi::gp_XY {
+    pub fn uv(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_uv(self as *const Self)) }
     }
 
@@ -101,22 +101,22 @@ impl HGPPConstraint {
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+    pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_g0_target(self as *const Self)) }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+    pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_g1_target(self as *const Self)) }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+    pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_g2_target(self as *const Self)) }
     }
 
     /// **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
-    pub fn g3_target(&self) -> &crate::ffi::Plate_D3 {
+    pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe { &*(crate::ffi::NLPlate_HGPPConstraint_g3_target(self as *const Self)) }
     }
 
@@ -197,7 +197,7 @@ unsafe impl crate::CppDeletable for HPG0Constraint {
 
 impl HPG0Constraint {
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:36 - `NLPlate_HPG0Constraint::NLPlate_HPG0Constraint()`
-    pub fn new_xy_xyz(UV: &crate::ffi::gp_XY, Value: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<Self> {
+    pub fn new_xy_xyz(UV: &crate::gp::XY, Value: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0Constraint_ctor_xy_xyz(UV, Value))
         }
@@ -236,7 +236,7 @@ impl HPG0Constraint {
     }
 
     /// **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+    pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_g0_target(self as *const Self)) }
     }
 
@@ -286,7 +286,7 @@ impl HPG0Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
-    pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
+    pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_SetUV(self as *mut Self, UV) }
     }
 
@@ -326,7 +326,7 @@ impl HPG0Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
-    pub fn uv(&self) -> &crate::ffi::gp_XY {
+    pub fn uv(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_inherited_UV(self as *const Self)) }
     }
 
@@ -336,17 +336,17 @@ impl HPG0Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:76 - `NLPlate_HGPPConstraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+    pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_inherited_G1Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+    pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_inherited_G2Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
-    pub fn g3_target(&self) -> &crate::ffi::Plate_D3 {
+    pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe { &*(crate::ffi::NLPlate_HPG0Constraint_inherited_G3Target(self as *const Self)) }
     }
 
@@ -389,9 +389,9 @@ unsafe impl crate::CppDeletable for HPG0G1Constraint {
 impl HPG0G1Constraint {
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:37 - `NLPlate_HPG0G1Constraint::NLPlate_HPG0G1Constraint()`
     pub fn new_xy_xyz_d1(
-        UV: &crate::ffi::gp_XY,
-        Value: &crate::ffi::gp_XYZ,
-        D1T: &crate::ffi::Plate_D1,
+        UV: &crate::gp::XY,
+        Value: &crate::gp::XYZ,
+        D1T: &crate::plate::D1,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G1Constraint_ctor_xy_xyz_d1(
@@ -416,7 +416,7 @@ impl HPG0G1Constraint {
     }
 
     /// **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+    pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_g1_target(self as *const Self)) }
     }
 
@@ -511,7 +511,7 @@ impl HPG0G1Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+    pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_G0Target(self as *const Self)) }
     }
 
@@ -526,7 +526,7 @@ impl HPG0G1Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
-    pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
+    pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         unsafe { crate::ffi::NLPlate_HPG0G1Constraint_inherited_SetUV(self as *mut Self, UV) }
     }
 
@@ -565,17 +565,17 @@ impl HPG0G1Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
-    pub fn uv(&self) -> &crate::ffi::gp_XY {
+    pub fn uv(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_UV(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+    pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_G2Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
-    pub fn g3_target(&self) -> &crate::ffi::Plate_D3 {
+    pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G1Constraint_inherited_G3Target(self as *const Self)) }
     }
 
@@ -618,10 +618,10 @@ unsafe impl crate::CppDeletable for HPG0G2Constraint {
 impl HPG0G2Constraint {
     /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:38 - `NLPlate_HPG0G2Constraint::NLPlate_HPG0G2Constraint()`
     pub fn new_xy_xyz_d1_d2(
-        UV: &crate::ffi::gp_XY,
-        Value: &crate::ffi::gp_XYZ,
-        D1T: &crate::ffi::Plate_D1,
-        D2T: &crate::ffi::Plate_D2,
+        UV: &crate::gp::XY,
+        Value: &crate::gp::XYZ,
+        D1T: &crate::plate::D1,
+        D2T: &crate::plate::D2,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G2Constraint_ctor_xy_xyz_d1_d2(
@@ -636,7 +636,7 @@ impl HPG0G2Constraint {
     }
 
     /// **Source:** `NLPlate_HPG0G2Constraint.hxx`:45 - `NLPlate_HPG0G2Constraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+    pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_g2_target(self as *const Self)) }
     }
 
@@ -722,7 +722,7 @@ impl HPG0G2Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+    pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G1Target(self as *const Self)) }
     }
 
@@ -766,7 +766,7 @@ impl HPG0G2Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+    pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G0Target(self as *const Self)) }
     }
 
@@ -781,7 +781,7 @@ impl HPG0G2Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
-    pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
+    pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         unsafe { crate::ffi::NLPlate_HPG0G2Constraint_inherited_SetUV(self as *mut Self, UV) }
     }
 
@@ -820,12 +820,12 @@ impl HPG0G2Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
-    pub fn uv(&self) -> &crate::ffi::gp_XY {
+    pub fn uv(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_UV(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
-    pub fn g3_target(&self) -> &crate::ffi::Plate_D3 {
+    pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G2Constraint_inherited_G3Target(self as *const Self)) }
     }
 
@@ -868,11 +868,11 @@ unsafe impl crate::CppDeletable for HPG0G3Constraint {
 impl HPG0G3Constraint {
     /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:39 - `NLPlate_HPG0G3Constraint::NLPlate_HPG0G3Constraint()`
     pub fn new_xy_xyz_d1_d2_d3(
-        UV: &crate::ffi::gp_XY,
-        Value: &crate::ffi::gp_XYZ,
-        D1T: &crate::ffi::Plate_D1,
-        D2T: &crate::ffi::Plate_D2,
-        D3T: &crate::ffi::Plate_D3,
+        UV: &crate::gp::XY,
+        Value: &crate::gp::XYZ,
+        D1T: &crate::plate::D1,
+        D2T: &crate::plate::D2,
+        D3T: &crate::plate::D3,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G3Constraint_ctor_xy_xyz_d1_d2_d3(
@@ -887,7 +887,7 @@ impl HPG0G3Constraint {
     }
 
     /// **Source:** `NLPlate_HPG0G3Constraint.hxx`:47 - `NLPlate_HPG0G3Constraint::G3Target()`
-    pub fn g3_target(&self) -> &crate::ffi::Plate_D3 {
+    pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_g3_target(self as *const Self)) }
     }
 
@@ -979,7 +979,7 @@ impl HPG0G3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G2Constraint.hxx`:45 - `NLPlate_HPG0G2Constraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+    pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G2Target(self as *const Self)) }
     }
 
@@ -996,7 +996,7 @@ impl HPG0G3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0G1Constraint.hxx`:47 - `NLPlate_HPG0G1Constraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+    pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G1Target(self as *const Self)) }
     }
 
@@ -1040,7 +1040,7 @@ impl HPG0G3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG0Constraint.hxx`:51 - `NLPlate_HPG0Constraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+    pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_G0Target(self as *const Self)) }
     }
 
@@ -1055,7 +1055,7 @@ impl HPG0G3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
-    pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
+    pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         unsafe { crate::ffi::NLPlate_HPG0G3Constraint_inherited_SetUV(self as *mut Self, UV) }
     }
 
@@ -1094,7 +1094,7 @@ impl HPG0G3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
-    pub fn uv(&self) -> &crate::ffi::gp_XY {
+    pub fn uv(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::NLPlate_HPG0G3Constraint_inherited_UV(self as *const Self)) }
     }
 
@@ -1136,7 +1136,7 @@ unsafe impl crate::CppDeletable for HPG1Constraint {
 
 impl HPG1Constraint {
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:36 - `NLPlate_HPG1Constraint::NLPlate_HPG1Constraint()`
-    pub fn new_xy_d1(UV: &crate::ffi::gp_XY, D1T: &crate::ffi::Plate_D1) -> crate::OwnedPtr<Self> {
+    pub fn new_xy_d1(UV: &crate::gp::XY, D1T: &crate::plate::D1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG1Constraint_ctor_xy_d1(UV, D1T)) }
     }
 
@@ -1173,7 +1173,7 @@ impl HPG1Constraint {
     }
 
     /// **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+    pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_g1_target(self as *const Self)) }
     }
 
@@ -1230,7 +1230,7 @@ impl HPG1Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
-    pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
+    pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         unsafe { crate::ffi::NLPlate_HPG1Constraint_inherited_SetUV(self as *mut Self, UV) }
     }
 
@@ -1268,22 +1268,22 @@ impl HPG1Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
-    pub fn uv(&self) -> &crate::ffi::gp_XY {
+    pub fn uv(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_inherited_UV(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+    pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_inherited_G0Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:78 - `NLPlate_HGPPConstraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+    pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_inherited_G2Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
-    pub fn g3_target(&self) -> &crate::ffi::Plate_D3 {
+    pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe { &*(crate::ffi::NLPlate_HPG1Constraint_inherited_G3Target(self as *const Self)) }
     }
 
@@ -1326,9 +1326,9 @@ unsafe impl crate::CppDeletable for HPG2Constraint {
 impl HPG2Constraint {
     /// **Source:** `NLPlate_HPG2Constraint.hxx`:37 - `NLPlate_HPG2Constraint::NLPlate_HPG2Constraint()`
     pub fn new_xy_d1_d2(
-        UV: &crate::ffi::gp_XY,
-        D1T: &crate::ffi::Plate_D1,
-        D2T: &crate::ffi::Plate_D2,
+        UV: &crate::gp::XY,
+        D1T: &crate::plate::D1,
+        D2T: &crate::plate::D2,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG2Constraint_ctor_xy_d1_d2(
@@ -1343,7 +1343,7 @@ impl HPG2Constraint {
     }
 
     /// **Source:** `NLPlate_HPG2Constraint.hxx`:41 - `NLPlate_HPG2Constraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+    pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_g2_target(self as *const Self)) }
     }
 
@@ -1433,7 +1433,7 @@ impl HPG2Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+    pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G1Target(self as *const Self)) }
     }
 
@@ -1455,7 +1455,7 @@ impl HPG2Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
-    pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
+    pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         unsafe { crate::ffi::NLPlate_HPG2Constraint_inherited_SetUV(self as *mut Self, UV) }
     }
 
@@ -1493,17 +1493,17 @@ impl HPG2Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
-    pub fn uv(&self) -> &crate::ffi::gp_XY {
+    pub fn uv(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_UV(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+    pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G0Target(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:80 - `NLPlate_HGPPConstraint::G3Target()`
-    pub fn g3_target(&self) -> &crate::ffi::Plate_D3 {
+    pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe { &*(crate::ffi::NLPlate_HPG2Constraint_inherited_G3Target(self as *const Self)) }
     }
 
@@ -1546,10 +1546,10 @@ unsafe impl crate::CppDeletable for HPG3Constraint {
 impl HPG3Constraint {
     /// **Source:** `NLPlate_HPG3Constraint.hxx`:38 - `NLPlate_HPG3Constraint::NLPlate_HPG3Constraint()`
     pub fn new_xy_d1_d2_d3(
-        UV: &crate::ffi::gp_XY,
-        D1T: &crate::ffi::Plate_D1,
-        D2T: &crate::ffi::Plate_D2,
-        D3T: &crate::ffi::Plate_D3,
+        UV: &crate::gp::XY,
+        D1T: &crate::plate::D1,
+        D2T: &crate::plate::D2,
+        D3T: &crate::plate::D3,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG3Constraint_ctor_xy_d1_d2_d3(
@@ -1564,7 +1564,7 @@ impl HPG3Constraint {
     }
 
     /// **Source:** `NLPlate_HPG3Constraint.hxx`:45 - `NLPlate_HPG3Constraint::G3Target()`
-    pub fn g3_target(&self) -> &crate::ffi::Plate_D3 {
+    pub fn g3_target(&self) -> &crate::plate::D3 {
         unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_g3_target(self as *const Self)) }
     }
 
@@ -1636,7 +1636,7 @@ impl HPG3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG2Constraint.hxx`:41 - `NLPlate_HPG2Constraint::G2Target()`
-    pub fn g2_target(&self) -> &crate::ffi::Plate_D2 {
+    pub fn g2_target(&self) -> &crate::plate::D2 {
         unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G2Target(self as *const Self)) }
     }
 
@@ -1675,7 +1675,7 @@ impl HPG3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HPG1Constraint.hxx`:51 - `NLPlate_HPG1Constraint::G1Target()`
-    pub fn g1_target(&self) -> &crate::ffi::Plate_D1 {
+    pub fn g1_target(&self) -> &crate::plate::D1 {
         unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G1Target(self as *const Self)) }
     }
 
@@ -1697,7 +1697,7 @@ impl HPG3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:50 - `NLPlate_HGPPConstraint::SetUV()`
-    pub fn set_uv(&mut self, UV: &crate::ffi::gp_XY) {
+    pub fn set_uv(&mut self, UV: &crate::gp::XY) {
         unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_SetUV(self as *mut Self, UV) }
     }
 
@@ -1735,12 +1735,12 @@ impl HPG3Constraint {
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:68 - `NLPlate_HGPPConstraint::UV()`
-    pub fn uv(&self) -> &crate::ffi::gp_XY {
+    pub fn uv(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_UV(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:74 - `NLPlate_HGPPConstraint::G0Target()`
-    pub fn g0_target(&self) -> &crate::ffi::gp_XYZ {
+    pub fn g0_target(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::NLPlate_HPG3Constraint_inherited_G0Target(self as *const Self)) }
     }
 
@@ -1843,7 +1843,7 @@ impl NLPlate {
     }
 
     /// **Source:** `NLPlate_NLPlate.hxx`:63 - `NLPlate_NLPlate::Evaluate()`
-    pub fn evaluate(&self, point2d: &crate::ffi::gp_XY) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    pub fn evaluate(&self, point2d: &crate::gp::XY) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NLPlate_NLPlate_evaluate(
                 self as *const Self,
@@ -1855,10 +1855,10 @@ impl NLPlate {
     /// **Source:** `NLPlate_NLPlate.hxx`:65 - `NLPlate_NLPlate::EvaluateDerivative()`
     pub fn evaluate_derivative(
         &self,
-        point2d: &crate::ffi::gp_XY,
+        point2d: &crate::gp::XY,
         iu: i32,
         iv: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    ) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::NLPlate_NLPlate_evaluate_derivative(
                 self as *const Self,

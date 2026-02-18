@@ -939,19 +939,19 @@ impl LocationSet {
     /// **Source:** `TopTools_LocationSet.hxx`:52 - `TopTools_LocationSet::Add()`
     /// Incorporate a new Location in the  set and returns
     /// its index.
-    pub fn add(&mut self, L: &crate::ffi::TopLoc_Location) -> i32 {
+    pub fn add(&mut self, L: &crate::top_loc::Location) -> i32 {
         unsafe { crate::ffi::TopTools_LocationSet_add(self as *mut Self, L) }
     }
 
     /// **Source:** `TopTools_LocationSet.hxx`:55 - `TopTools_LocationSet::Location()`
     /// Returns the location of index <I>.
-    pub fn location(&self, I: i32) -> &crate::ffi::TopLoc_Location {
+    pub fn location(&self, I: i32) -> &crate::top_loc::Location {
         unsafe { &*(crate::ffi::TopTools_LocationSet_location(self as *const Self, I)) }
     }
 
     /// **Source:** `TopTools_LocationSet.hxx`:58 - `TopTools_LocationSet::Index()`
     /// Returns the index of <L>.
-    pub fn index(&self, L: &crate::ffi::TopLoc_Location) -> i32 {
+    pub fn index(&self, L: &crate::top_loc::Location) -> i32 {
         unsafe { crate::ffi::TopTools_LocationSet_index(self as *const Self, L) }
     }
 }
@@ -982,7 +982,7 @@ impl MutexForShapeProvider {
     /// Creates and associates mutexes with each sub-shape of type theType in theShape.
     pub fn create_mutexes_for_sub_shapes(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theType: crate::top_abs::ShapeEnum,
     ) {
         unsafe {
@@ -996,7 +996,7 @@ impl MutexForShapeProvider {
 
     /// **Source:** `TopTools_MutexForShapeProvider.hxx`:42 - `TopTools_MutexForShapeProvider::CreateMutexForShape()`
     /// Creates and associates mutex with theShape
-    pub fn create_mutex_for_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn create_mutex_for_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::TopTools_MutexForShapeProvider_create_mutex_for_shape(
                 self as *mut Self,
@@ -1059,42 +1059,42 @@ impl ShapeSet {
     /// **Source:** `TopTools_ShapeSet.hxx`:61 - `TopTools_ShapeSet::Add()`
     /// Stores <S> and its sub-shape. Returns the index of <S>.
     /// The method AddGeometry is called on each sub-shape.
-    pub fn add(&mut self, S: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn add(&mut self, S: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::TopTools_ShapeSet_add(self as *mut Self, S) }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:64 - `TopTools_ShapeSet::Shape()`
     /// Returns the sub-shape of index <I>.
-    pub fn shape(&self, I: i32) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TopTools_ShapeSet_shape(self as *const Self, I)) }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:67 - `TopTools_ShapeSet::Index()`
     /// Returns the index of <S>.
-    pub fn index(&self, S: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn index(&self, S: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::TopTools_ShapeSet_index(self as *const Self, S) }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:69 - `TopTools_ShapeSet::Locations()`
-    pub fn locations(&self) -> &crate::ffi::TopTools_LocationSet {
+    pub fn locations(&self) -> &LocationSet {
         unsafe { &*(crate::ffi::TopTools_ShapeSet_locations(self as *const Self)) }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:71 - `TopTools_ShapeSet::ChangeLocations()`
-    pub fn change_locations(&mut self) -> &mut crate::ffi::TopTools_LocationSet {
+    pub fn change_locations(&mut self) -> &mut LocationSet {
         unsafe { &mut *(crate::ffi::TopTools_ShapeSet_change_locations(self as *mut Self)) }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:79 - `TopTools_ShapeSet::DumpExtent()`
     /// Dumps the number of objects in me in the string S
     /// (Number of shapes of each type)
-    pub fn dump_extent(&self, S: &mut crate::ffi::TCollection_AsciiString) {
+    pub fn dump_extent(&self, S: &mut crate::t_collection::AsciiString) {
         unsafe { crate::ffi::TopTools_ShapeSet_dump_extent(self as *const Self, S) }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:139 - `TopTools_ShapeSet::AddGeometry()`
     /// Stores the geometry of <S>.
-    pub fn add_geometry(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn add_geometry(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TopTools_ShapeSet_add_geometry(self as *mut Self, S) }
     }
 
@@ -1102,7 +1102,7 @@ impl ShapeSet {
     /// Inserts  the shape <S2> in  the  shape <S1>.  This
     /// method must be   redefined  to  use   the  correct
     /// builder.
-    pub fn add_shapes(&mut self, S1: &mut crate::ffi::TopoDS_Shape, S2: &crate::ffi::TopoDS_Shape) {
+    pub fn add_shapes(&mut self, S1: &mut crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TopTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) }
     }
 
@@ -1112,7 +1112,7 @@ impl ShapeSet {
     /// class it does nothing, but it gives the opportunity
     /// in derived  classes to perform  extra  treatment on
     /// shapes.
-    pub fn check(&mut self, T: crate::top_abs::ShapeEnum, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn check(&mut self, T: crate::top_abs::ShapeEnum, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TopTools_ShapeSet_check(self as *mut Self, T.into(), S) }
     }
 

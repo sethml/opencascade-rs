@@ -47,7 +47,7 @@ impl BiInt {
     }
 
     /// **Source:** `MAT2d_BiInt.hxx`:43 - `MAT2d_BiInt::IsEqual()`
-    pub fn is_equal(&self, B: &crate::ffi::MAT2d_BiInt) -> bool {
+    pub fn is_equal(&self, B: &BiInt) -> bool {
         unsafe { crate::ffi::MAT2d_BiInt_is_equal(self as *const Self, B) }
     }
 }
@@ -235,8 +235,8 @@ impl Connexion {
         Distance: f64,
         ParameterOnA: f64,
         ParameterOnB: f64,
-        PointA: &crate::ffi::gp_Pnt2d,
-        PointB: &crate::ffi::gp_Pnt2d,
+        PointA: &crate::gp::Pnt2d,
+        PointB: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::MAT2d_Connexion_ctor_int4_real3_pnt2d2(
@@ -291,7 +291,7 @@ impl Connexion {
 
     /// **Source:** `MAT2d_Connexion.hxx`:69 - `MAT2d_Connexion::PointOnFirst()`
     /// Returns the point on the firstline.
-    pub fn point_on_first(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point_on_first(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::MAT2d_Connexion_point_on_first(
                 self as *const Self,
@@ -301,7 +301,7 @@ impl Connexion {
 
     /// **Source:** `MAT2d_Connexion.hxx`:72 - `MAT2d_Connexion::PointOnSecond()`
     /// Returns the point on the secondline.
-    pub fn point_on_second(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point_on_second(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::MAT2d_Connexion_point_on_second(
                 self as *const Self,
@@ -350,12 +350,12 @@ impl Connexion {
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:89 - `MAT2d_Connexion::PointOnFirst()`
-    pub fn point_on_first_pnt2d(&mut self, aPoint: &crate::ffi::gp_Pnt2d) {
+    pub fn point_on_first_pnt2d(&mut self, aPoint: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::MAT2d_Connexion_point_on_first_pnt2d(self as *mut Self, aPoint) }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:91 - `MAT2d_Connexion::PointOnSecond()`
-    pub fn point_on_second_pnt2d(&mut self, aPoint: &crate::ffi::gp_Pnt2d) {
+    pub fn point_on_second_pnt2d(&mut self, aPoint: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::MAT2d_Connexion_point_on_second_pnt2d(self as *mut Self, aPoint) }
     }
 
@@ -549,14 +549,14 @@ impl Mat2d {
 
     /// **Source:** `MAT2d_Mat2d.hxx`:47 - `MAT2d_Mat2d::CreateMat()`
     /// Algorithm of computation of the bisecting locus.
-    pub fn create_mat(&mut self, aTool: &mut crate::ffi::MAT2d_Tool2d) {
+    pub fn create_mat(&mut self, aTool: &mut Tool2d) {
         unsafe { crate::ffi::MAT2d_Mat2d_create_mat(self as *mut Self, aTool) }
     }
 
     /// **Source:** `MAT2d_Mat2d.hxx`:51 - `MAT2d_Mat2d::CreateMatOpen()`
     /// Algorithm of computation of the bisecting locus for
     /// open wire.
-    pub fn create_mat_open(&mut self, aTool: &mut crate::ffi::MAT2d_Tool2d) {
+    pub fn create_mat_open(&mut self, aTool: &mut Tool2d) {
         unsafe { crate::ffi::MAT2d_Mat2d_create_mat_open(self as *mut Self, aTool) }
     }
 
@@ -853,7 +853,7 @@ impl Tool2d {
     /// **Source:** `MAT2d_Tool2d.hxx`:125 - `MAT2d_Tool2d::GeomBis()`
     /// Returns the <Bisec> of index <Index> in
     /// <theGeomBisectors>.
-    pub fn geom_bis(&self, Index: i32) -> &crate::ffi::Bisector_Bisec {
+    pub fn geom_bis(&self, Index: i32) -> &crate::bisector::Bisec {
         unsafe { &*(crate::ffi::MAT2d_Tool2d_geom_bis(self as *const Self, Index)) }
     }
 
@@ -867,14 +867,14 @@ impl Tool2d {
 
     /// **Source:** `MAT2d_Tool2d.hxx`:131 - `MAT2d_Tool2d::GeomPnt()`
     /// Returns the point of index <Index> in the <theGeomPnts>.
-    pub fn geom_pnt(&self, Index: i32) -> &crate::ffi::gp_Pnt2d {
+    pub fn geom_pnt(&self, Index: i32) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::MAT2d_Tool2d_geom_pnt(self as *const Self, Index)) }
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:135 - `MAT2d_Tool2d::GeomVec()`
     /// Returns the  vector  of index <Index> in the
     /// <theGeomVecs>.
-    pub fn geom_vec(&self, Index: i32) -> &crate::ffi::gp_Vec2d {
+    pub fn geom_vec(&self, Index: i32) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::MAT2d_Tool2d_geom_vec(self as *const Self, Index)) }
     }
 
@@ -891,7 +891,7 @@ impl Tool2d {
     /// **Source:** `MAT2d_Tool2d.hxx`:143 - `MAT2d_Tool2d::ChangeGeomBis()`
     /// Returns the <Bisec> of index <Index> in
     /// <theGeomBisectors>.
-    pub fn change_geom_bis(&mut self, Index: i32) -> &mut crate::ffi::Bisector_Bisec {
+    pub fn change_geom_bis(&mut self, Index: i32) -> &mut crate::bisector::Bisec {
         unsafe { &mut *(crate::ffi::MAT2d_Tool2d_change_geom_bis(self as *mut Self, Index)) }
     }
 }

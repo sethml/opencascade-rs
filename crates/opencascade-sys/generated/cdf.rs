@@ -51,8 +51,8 @@ impl Application {
     /// **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
     pub fn can_retrieve_extendedstring2_bool(
         &mut self,
-        theFolder: &crate::ffi::TCollection_ExtendedString,
-        theName: &crate::ffi::TCollection_ExtendedString,
+        theFolder: &crate::t_collection::ExtendedString,
+        theName: &crate::t_collection::ExtendedString,
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
         unsafe {
@@ -71,9 +71,9 @@ impl Application {
     /// **Source:** `CDF_Application.hxx`:130 - `CDF_Application::CanRetrieve()`
     pub fn can_retrieve_extendedstring3_bool(
         &mut self,
-        theFolder: &crate::ffi::TCollection_ExtendedString,
-        theName: &crate::ffi::TCollection_ExtendedString,
-        theVersion: &crate::ffi::TCollection_ExtendedString,
+        theFolder: &crate::t_collection::ExtendedString,
+        theName: &crate::t_collection::ExtendedString,
+        theVersion: &crate::t_collection::ExtendedString,
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
         unsafe {
@@ -107,8 +107,8 @@ impl Application {
     /// True if found;
     pub fn format(
         &mut self,
-        aFileName: &crate::ffi::TCollection_ExtendedString,
-        theFormat: &mut crate::ffi::TCollection_ExtendedString,
+        aFileName: &crate::t_collection::ExtendedString,
+        theFormat: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe { crate::ffi::CDF_Application_format(self as *mut Self, aFileName, theFormat) }
     }
@@ -171,7 +171,7 @@ impl Application {
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::CDF_Application_inherited_Name(
                 self as *const Self,
@@ -180,7 +180,7 @@ impl Application {
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
-    pub fn version(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::CDF_Application_inherited_Version(
                 self as *const Self,
@@ -217,8 +217,8 @@ impl MetaDataDriver {
     /// by default return Standard_True.
     pub fn has_version(
         &mut self,
-        aFolder: &crate::ffi::TCollection_ExtendedString,
-        aName: &crate::ffi::TCollection_ExtendedString,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe { crate::ffi::CDF_MetaDataDriver_has_version(self as *mut Self, aFolder, aName) }
     }
@@ -229,9 +229,9 @@ impl MetaDataDriver {
     /// aVersion may be NULL;
     pub fn find_extendedstring3(
         &mut self,
-        aFolder: &crate::ffi::TCollection_ExtendedString,
-        aName: &crate::ffi::TCollection_ExtendedString,
-        aVersion: &crate::ffi::TCollection_ExtendedString,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        aVersion: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::CDF_MetaDataDriver_find_extendedstring3(
@@ -246,9 +246,9 @@ impl MetaDataDriver {
     /// **Source:** `CDF_MetaDataDriver.hxx`:74 - `CDF_MetaDataDriver::HasReadPermission()`
     pub fn has_read_permission(
         &mut self,
-        aFolder: &crate::ffi::TCollection_ExtendedString,
-        aName: &crate::ffi::TCollection_ExtendedString,
-        aVersion: &crate::ffi::TCollection_ExtendedString,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        aVersion: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::CDF_MetaDataDriver_has_read_permission(
@@ -261,12 +261,12 @@ impl MetaDataDriver {
     }
 
     /// **Source:** `CDF_MetaDataDriver.hxx`:110 - `CDF_MetaDataDriver::FindFolder()`
-    pub fn find_folder(&mut self, aFolder: &crate::ffi::TCollection_ExtendedString) -> bool {
+    pub fn find_folder(&mut self, aFolder: &crate::t_collection::ExtendedString) -> bool {
         unsafe { crate::ffi::CDF_MetaDataDriver_find_folder(self as *mut Self, aFolder) }
     }
 
     /// **Source:** `CDF_MetaDataDriver.hxx`:113 - `CDF_MetaDataDriver::DefaultFolder()`
-    pub fn default_folder(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn default_folder(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::CDF_MetaDataDriver_default_folder(
                 self as *mut Self,
@@ -278,8 +278,8 @@ impl MetaDataDriver {
     /// calls Find with an empty version
     pub fn find_extendedstring2(
         &mut self,
-        aFolder: &crate::ffi::TCollection_ExtendedString,
-        aName: &crate::ffi::TCollection_ExtendedString,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::CDF_MetaDataDriver_find_extendedstring2(self as *mut Self, aFolder, aName)

@@ -52,7 +52,7 @@ impl ConfigurationNode {
     /// **Source:** `DESTEP_ConfigurationNode.hxx`:52 - `DESTEP_ConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string
-    pub fn save(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn save(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_save(
                 self as *const Self,
@@ -99,7 +99,7 @@ impl ConfigurationNode {
     /// **Source:** `DESTEP_ConfigurationNode.hxx`:73 - `DESTEP_ConfigurationNode::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
-    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_get_format(
                 self as *const Self,
@@ -110,7 +110,7 @@ impl ConfigurationNode {
     /// **Source:** `DESTEP_ConfigurationNode.hxx`:77 - `DESTEP_ConfigurationNode::GetVendor()`
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
-    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DESTEP_ConfigurationNode_get_vendor(
                 self as *const Self,
@@ -190,7 +190,7 @@ impl ConfigurationNode {
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
-    pub fn check_extension(&self, theExtension: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::DESTEP_ConfigurationNode_inherited_CheckExtension(
                 self as *const Self,
@@ -257,12 +257,22 @@ impl Parameters {
     pub fn get_string(
         &mut self,
         theMode: &crate::ffi::DESTEP_Parameters_ReadMode_ProductContext,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Parameters_get_string(
                 self as *mut Self,
                 theMode,
             ))
+        }
+    }
+
+    /// **Source:** `DESTEP_Parameters.hxx`:149 - `DESTEP_Parameters::GetDefaultShapeFixParameters()`
+    /// Returns default shape fix parameters for transferring STEP files.
+    pub fn get_default_shape_fix_parameters() -> crate::OwnedPtr<crate::de::ShapeFixParameters> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::DESTEP_Parameters_get_default_shape_fix_parameters(),
+            )
         }
     }
 }
@@ -323,9 +333,9 @@ impl Provider {
     /// @return true if Read operation has ended correctly
     pub fn read(
         &mut self,
-        thePath: &crate::ffi::TCollection_AsciiString,
-        theShape: &mut crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &mut crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::DESTEP_Provider_read(self as *mut Self, thePath, theShape, theProgress)
@@ -340,9 +350,9 @@ impl Provider {
     /// @return true if Write operation has ended correctly
     pub fn write(
         &mut self,
-        thePath: &crate::ffi::TCollection_AsciiString,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::DESTEP_Provider_write(self as *mut Self, thePath, theShape, theProgress)
@@ -352,7 +362,7 @@ impl Provider {
     /// **Source:** `DESTEP_Provider.hxx`:135 - `DESTEP_Provider::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
-    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Provider_get_format(self as *const Self))
         }
@@ -361,7 +371,7 @@ impl Provider {
     /// **Source:** `DESTEP_Provider.hxx`:139 - `DESTEP_Provider::GetVendor()`
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
-    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Provider_get_vendor(self as *const Self))
         }

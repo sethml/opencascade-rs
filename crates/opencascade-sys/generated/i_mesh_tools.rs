@@ -94,7 +94,7 @@ impl Context {
     /// **Source:** `IMeshTools_Context.hxx`:97 - `IMeshTools_Context::DiscretizeFaces()`
     /// Performs meshing of faces of discrete model using assigned meshing algorithm.
     /// @return True on success, False elsewhere.
-    pub fn discretize_faces(&mut self, theRange: &crate::ffi::Message_ProgressRange) -> bool {
+    pub fn discretize_faces(&mut self, theRange: &crate::message::ProgressRange) -> bool {
         unsafe { crate::ffi::IMeshTools_Context_discretize_faces(self as *mut Self, theRange) }
     }
 
@@ -183,13 +183,13 @@ impl Context {
 
     /// **Source:** `IMeshTools_Context.hxx`:186 - `IMeshTools_Context::GetParameters()`
     /// Gets parameters to be used for meshing.
-    pub fn get_parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
+    pub fn get_parameters(&self) -> &Parameters {
         unsafe { &*(crate::ffi::IMeshTools_Context_get_parameters(self as *const Self)) }
     }
 
     /// **Source:** `IMeshTools_Context.hxx`:189 - `IMeshTools_Context::ChangeParameters()`
     /// Gets reference to parameters to be used for meshing.
-    pub fn change_parameters(&mut self) -> &mut crate::ffi::IMeshTools_Parameters {
+    pub fn change_parameters(&mut self) -> &mut Parameters {
         unsafe { &mut *(crate::ffi::IMeshTools_Context_change_parameters(self as *mut Self)) }
     }
 
@@ -223,12 +223,12 @@ impl Context {
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::IMeshTools_Context_inherited_SetShape(self as *mut Self, theShape) }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshTools_Context_inherited_GetShape(self as *const Self)) }
     }
 }
@@ -263,7 +263,7 @@ impl CurveTessellator {
     pub fn value(
         &self,
         theIndex: i32,
-        thePoint: &mut crate::ffi::gp_Pnt,
+        thePoint: &mut crate::gp::Pnt,
         theParameter: &mut f64,
     ) -> bool {
         unsafe {
@@ -392,7 +392,7 @@ impl MeshAlgoFactory {
     pub fn get_algo(
         &self,
         theSurfaceType: crate::geom_abs::SurfaceType,
-        theParameters: &crate::ffi::IMeshTools_Parameters,
+        theParameters: &Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_MeshAlgoFactory_get_algo(
@@ -560,12 +560,12 @@ impl ModelBuilder {
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
-    pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
+    pub fn get_status(&self) -> &crate::message::ExecStatus {
         unsafe { &*(crate::ffi::IMeshTools_ModelBuilder_inherited_GetStatus(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
-    pub fn change_status(&mut self) -> &mut crate::ffi::Message_ExecStatus {
+    pub fn change_status(&mut self) -> &mut crate::message::ExecStatus {
         unsafe {
             &mut *(crate::ffi::IMeshTools_ModelBuilder_inherited_ChangeStatus(self as *mut Self))
         }
@@ -595,7 +595,7 @@ impl ModelBuilder {
     /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
     pub fn send_status_messages(
         &self,
-        theFilter: &crate::ffi::Message_ExecStatus,
+        theFilter: &crate::message::ExecStatus,
         theTraceLevel: crate::message::Gravity,
         theMaxCount: i32,
     ) {
@@ -704,13 +704,13 @@ unsafe impl crate::CppDeletable for ShapeVisitor {
 impl ShapeVisitor {
     /// **Source:** `IMeshTools_ShapeVisitor.hxx`:33 - `IMeshTools_ShapeVisitor::Visit()`
     /// Handles TopoDS_Face object.
-    pub fn visit_face(&mut self, theFace: &crate::ffi::TopoDS_Face) {
+    pub fn visit_face(&mut self, theFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::IMeshTools_ShapeVisitor_visit_face(self as *mut Self, theFace) }
     }
 
     /// **Source:** `IMeshTools_ShapeVisitor.hxx`:36 - `IMeshTools_ShapeVisitor::Visit()`
     /// Handles TopoDS_Edge object.
-    pub fn visit_edge(&mut self, theEdge: &crate::ffi::TopoDS_Edge) {
+    pub fn visit_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::IMeshTools_ShapeVisitor_visit_edge(self as *mut Self, theEdge) }
     }
 

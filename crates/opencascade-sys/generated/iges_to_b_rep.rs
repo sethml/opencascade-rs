@@ -79,9 +79,9 @@ pub fn iges_curve_to_sequence_of_iges_curve(
 }
 /// **Source:** `IGESToBRep.hxx`:90 - `IGESToBRep::TransferPCurve`
 pub fn transfer_p_curve(
-    fromedge: &crate::ffi::TopoDS_Edge,
-    toedge: &crate::ffi::TopoDS_Edge,
-    face: &crate::ffi::TopoDS_Face,
+    fromedge: &crate::topo_ds::Edge,
+    toedge: &crate::topo_ds::Edge,
+    face: &crate::topo_ds::Face,
 ) -> bool {
     unsafe { crate::ffi::IGESToBRep_transfer_p_curve(fromedge, toedge, face) }
 }
@@ -349,9 +349,7 @@ impl BRepEntity {
     /// **Source:** `IGESToBRep_BRepEntity.hxx`:56 - `IGESToBRep_BRepEntity::IGESToBRep_BRepEntity()`
     /// Creates a tool BRepEntity ready to run and sets its
     /// fields as CS's.
-    pub fn new_curveandsurface(
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_ctor_curveandsurface(CS))
         }
@@ -379,8 +377,8 @@ impl BRepEntity {
     pub fn transfer_b_rep_entity(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_transfer_b_rep_entity(
                 self as *mut Self,
@@ -535,8 +533,8 @@ impl BRepEntity {
     pub fn transfer_curve_and_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_BRepEntity_inherited_TransferCurveAndSurface(
@@ -552,8 +550,8 @@ impl BRepEntity {
     pub fn transfer_geometry(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_inherited_TransferGeometry(
                 self as *mut Self,
@@ -567,7 +565,7 @@ impl BRepEntity {
     pub fn send_fail(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BRepEntity_inherited_SendFail(self as *mut Self, start, amsg)
@@ -578,7 +576,7 @@ impl BRepEntity {
     pub fn send_warning(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BRepEntity_inherited_SendWarning(self as *mut Self, start, amsg)
@@ -589,7 +587,7 @@ impl BRepEntity {
     pub fn send_msg(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BRepEntity_inherited_SendMsg(self as *mut Self, start, amsg)
@@ -607,7 +605,7 @@ impl BRepEntity {
     pub fn get_shape_result(
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BRepEntity_inherited_GetShapeResult(
                 self as *const Self,
@@ -620,7 +618,7 @@ impl BRepEntity {
     pub fn set_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BRepEntity_inherited_SetShapeResult(
@@ -642,7 +640,7 @@ impl BRepEntity {
     pub fn add_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BRepEntity_inherited_AddShapeResult(
@@ -711,9 +709,7 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:62 - `IGESToBRep_BasicCurve::IGESToBRep_BasicCurve()`
     /// Creates a tool BasicCurve ready to run and sets its
     /// fields as CS's.
-    pub fn new_curveandsurface(
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_ctor_curveandsurface(CS))
         }
@@ -915,8 +911,8 @@ impl BasicCurve {
     pub fn transfer_curve_and_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_BasicCurve_inherited_TransferCurveAndSurface(
@@ -932,8 +928,8 @@ impl BasicCurve {
     pub fn transfer_geometry(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_inherited_TransferGeometry(
                 self as *mut Self,
@@ -947,7 +943,7 @@ impl BasicCurve {
     pub fn send_fail(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicCurve_inherited_SendFail(self as *mut Self, start, amsg)
@@ -958,7 +954,7 @@ impl BasicCurve {
     pub fn send_warning(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicCurve_inherited_SendWarning(self as *mut Self, start, amsg)
@@ -969,7 +965,7 @@ impl BasicCurve {
     pub fn send_msg(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicCurve_inherited_SendMsg(self as *mut Self, start, amsg)
@@ -987,7 +983,7 @@ impl BasicCurve {
     pub fn get_shape_result(
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicCurve_inherited_GetShapeResult(
                 self as *const Self,
@@ -1000,7 +996,7 @@ impl BasicCurve {
     pub fn set_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicCurve_inherited_SetShapeResult(
@@ -1022,7 +1018,7 @@ impl BasicCurve {
     pub fn add_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicCurve_inherited_AddShapeResult(
@@ -1085,9 +1081,7 @@ impl BasicSurface {
     /// **Source:** `IGESToBRep_BasicSurface.hxx`:58 - `IGESToBRep_BasicSurface::IGESToBRep_BasicSurface()`
     /// Creates a tool BasicSurface ready to run and sets its
     /// fields as CS's.
-    pub fn new_curveandsurface(
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_ctor_curveandsurface(CS))
         }
@@ -1282,8 +1276,8 @@ impl BasicSurface {
     pub fn transfer_curve_and_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_BasicSurface_inherited_TransferCurveAndSurface(
@@ -1299,8 +1293,8 @@ impl BasicSurface {
     pub fn transfer_geometry(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_BasicSurface_inherited_TransferGeometry(
@@ -1316,7 +1310,7 @@ impl BasicSurface {
     pub fn send_fail(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicSurface_inherited_SendFail(self as *mut Self, start, amsg)
@@ -1327,7 +1321,7 @@ impl BasicSurface {
     pub fn send_warning(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicSurface_inherited_SendWarning(
@@ -1342,7 +1336,7 @@ impl BasicSurface {
     pub fn send_msg(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicSurface_inherited_SendMsg(self as *mut Self, start, amsg)
@@ -1360,7 +1354,7 @@ impl BasicSurface {
     pub fn get_shape_result(
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_BasicSurface_inherited_GetShapeResult(
                 self as *const Self,
@@ -1373,7 +1367,7 @@ impl BasicSurface {
     pub fn set_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicSurface_inherited_SetShapeResult(
@@ -1395,7 +1389,7 @@ impl BasicSurface {
     pub fn add_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_BasicSurface_inherited_AddShapeResult(
@@ -1627,8 +1621,8 @@ impl CurveAndSurface {
     pub fn transfer_curve_and_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_CurveAndSurface_transfer_curve_and_surface(
@@ -1647,8 +1641,8 @@ impl CurveAndSurface {
     pub fn transfer_geometry(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_transfer_geometry(
                 self as *mut Self,
@@ -1663,7 +1657,7 @@ impl CurveAndSurface {
     pub fn send_fail(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_send_fail(self as *mut Self, start, amsg) }
     }
@@ -1673,7 +1667,7 @@ impl CurveAndSurface {
     pub fn send_warning(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_CurveAndSurface_send_warning(self as *mut Self, start, amsg)
@@ -1686,7 +1680,7 @@ impl CurveAndSurface {
     pub fn send_msg(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_send_msg(self as *mut Self, start, amsg) }
     }
@@ -1706,7 +1700,7 @@ impl CurveAndSurface {
     pub fn get_shape_result_handleigesdataigesentity(
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity(
@@ -1722,7 +1716,7 @@ impl CurveAndSurface {
     pub fn set_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_CurveAndSurface_set_shape_result(
@@ -1749,7 +1743,7 @@ impl CurveAndSurface {
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity_int(self as *const Self, start, num))
         }
@@ -1761,7 +1755,7 @@ impl CurveAndSurface {
     pub fn add_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_CurveAndSurface_add_shape_result(
@@ -1819,9 +1813,7 @@ impl IGESBoundary {
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:48 - `IGESToBRep_IGESBoundary::IGESToBRep_IGESBoundary()`
     /// Empty constructor
-    pub fn new_curveandsurface(
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_IGESBoundary_ctor_curveandsurface(CS))
         }
@@ -1838,10 +1830,10 @@ impl IGESBoundary {
     /// in the IGES file
     pub fn init(
         &mut self,
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+        CS: &CurveAndSurface,
         entity: &crate::ffi::HandleIGESDataIGESEntity,
-        face: &crate::ffi::TopoDS_Face,
-        trans: &crate::ffi::gp_Trsf2d,
+        face: &crate::topo_ds::Face,
+        trans: &crate::gp::Trsf2d,
         uFact: f64,
         filepreference: i32,
     ) {
@@ -2074,7 +2066,7 @@ impl Reader {
     pub fn transfer_roots(
         &mut self,
         onlyvisible: bool,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_Reader_transfer_roots(
@@ -2089,7 +2081,7 @@ impl Reader {
     /// Transfers an Entity given its rank in the Model (Root or not)
     /// Returns True if it is recognized as Geom-Topol.
     /// (But it can have failed : see IsDone)
-    pub fn transfer(&mut self, num: i32, theProgress: &crate::ffi::Message_ProgressRange) -> bool {
+    pub fn transfer(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe { crate::ffi::IGESToBRep_Reader_transfer(self as *mut Self, num, theProgress) }
     }
 
@@ -2115,7 +2107,7 @@ impl Reader {
 
     /// **Source:** `IGESToBRep_Reader.hxx`:105 - `IGESToBRep_Reader::Shape()`
     /// Returns the num the resulting shape in a translation operation.
-    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_shape(self as *const Self, num))
         }
@@ -2127,7 +2119,7 @@ impl Reader {
     /// - a null shape if there are no results,
     /// - a shape if there is one result,
     /// - a compound containing the resulting shapes if there are several.
-    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_one_shape(self as *const Self))
         }
@@ -2242,9 +2234,7 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:57 - `IGESToBRep_TopoCurve::IGESToBRep_TopoCurve()`
     /// Creates a tool TopoCurve ready to run and sets its
     /// fields as CS's.
-    pub fn new_curveandsurface(
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_ctor_curveandsurface(CS))
         }
@@ -2253,7 +2243,7 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:61 - `IGESToBRep_TopoCurve::IGESToBRep_TopoCurve()`
     /// Creates a tool TopoCurve ready to run and sets its
     /// fields as CS's.
-    pub fn new_topocurve(CS: &crate::ffi::IGESToBRep_TopoCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_topocurve(CS: &TopoCurve) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_ctor_topocurve(CS)) }
     }
 
@@ -2278,7 +2268,7 @@ impl TopoCurve {
     pub fn transfer_topo_curve(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_topo_curve(
                 self as *mut Self,
@@ -2291,10 +2281,10 @@ impl TopoCurve {
     pub fn transfer2d_topo_curve(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        face: &crate::ffi::TopoDS_Face,
-        trans: &crate::ffi::gp_Trsf2d,
+        face: &crate::topo_ds::Face,
+        trans: &crate::gp::Trsf2d,
         uFact: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer2d_topo_curve(
                 self as *mut Self,
@@ -2310,7 +2300,7 @@ impl TopoCurve {
     pub fn transfer_topo_basic_curve(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer_topo_basic_curve(
                 self as *mut Self,
@@ -2323,10 +2313,10 @@ impl TopoCurve {
     pub fn transfer2d_topo_basic_curve(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        face: &crate::ffi::TopoDS_Face,
-        trans: &crate::ffi::gp_Trsf2d,
+        face: &crate::topo_ds::Face,
+        trans: &crate::gp::Trsf2d,
         uFact: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_transfer2d_topo_basic_curve(
                 self as *mut Self,
@@ -2541,8 +2531,8 @@ impl TopoCurve {
     pub fn transfer_curve_and_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_TopoCurve_inherited_TransferCurveAndSurface(
@@ -2558,8 +2548,8 @@ impl TopoCurve {
     pub fn transfer_geometry(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_inherited_TransferGeometry(
                 self as *mut Self,
@@ -2573,7 +2563,7 @@ impl TopoCurve {
     pub fn send_fail(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoCurve_inherited_SendFail(self as *mut Self, start, amsg)
@@ -2584,7 +2574,7 @@ impl TopoCurve {
     pub fn send_warning(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoCurve_inherited_SendWarning(self as *mut Self, start, amsg)
@@ -2595,7 +2585,7 @@ impl TopoCurve {
     pub fn send_msg(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoCurve_inherited_SendMsg(self as *mut Self, start, amsg)
@@ -2613,7 +2603,7 @@ impl TopoCurve {
     pub fn get_shape_result(
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoCurve_inherited_GetShapeResult(
                 self as *const Self,
@@ -2626,7 +2616,7 @@ impl TopoCurve {
     pub fn set_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoCurve_inherited_SetShapeResult(
@@ -2648,7 +2638,7 @@ impl TopoCurve {
     pub fn add_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoCurve_inherited_AddShapeResult(
@@ -2708,9 +2698,7 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:54 - `IGESToBRep_TopoSurface::IGESToBRep_TopoSurface()`
     /// Creates a tool TopoSurface ready to run and sets its
     /// fields as CS's.
-    pub fn new_curveandsurface(
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_ctor_curveandsurface(CS))
         }
@@ -2737,7 +2725,7 @@ impl TopoSurface {
     pub fn transfer_topo_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_transfer_topo_surface(
                 self as *mut Self,
@@ -2750,7 +2738,7 @@ impl TopoSurface {
     pub fn transfer_topo_basic_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_TopoSurface_transfer_topo_basic_surface(
@@ -2765,9 +2753,9 @@ impl TopoSurface {
     pub fn param_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        trans: &mut crate::ffi::gp_Trsf2d,
+        trans: &mut crate::gp::Trsf2d,
         uFact: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_param_surface(
                 self as *mut Self,
@@ -2928,8 +2916,8 @@ impl TopoSurface {
     pub fn transfer_curve_and_surface(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_TopoSurface_inherited_TransferCurveAndSurface(
@@ -2945,8 +2933,8 @@ impl TopoSurface {
     pub fn transfer_geometry(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESToBRep_TopoSurface_inherited_TransferGeometry(
@@ -2962,7 +2950,7 @@ impl TopoSurface {
     pub fn send_fail(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoSurface_inherited_SendFail(self as *mut Self, start, amsg)
@@ -2973,7 +2961,7 @@ impl TopoSurface {
     pub fn send_warning(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoSurface_inherited_SendWarning(self as *mut Self, start, amsg)
@@ -2984,7 +2972,7 @@ impl TopoSurface {
     pub fn send_msg(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoSurface_inherited_SendMsg(self as *mut Self, start, amsg)
@@ -3002,7 +2990,7 @@ impl TopoSurface {
     pub fn get_shape_result(
         &self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_TopoSurface_inherited_GetShapeResult(
                 self as *const Self,
@@ -3015,7 +3003,7 @@ impl TopoSurface {
     pub fn set_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoSurface_inherited_SetShapeResult(
@@ -3037,7 +3025,7 @@ impl TopoSurface {
     pub fn add_shape_result(
         &mut self,
         start: &crate::ffi::HandleIGESDataIGESEntity,
-        result: &crate::ffi::TopoDS_Shape,
+        result: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::IGESToBRep_TopoSurface_inherited_AddShapeResult(

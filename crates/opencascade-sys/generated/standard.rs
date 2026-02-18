@@ -686,7 +686,7 @@ impl DumpValue {
 
     /// **Source:** `Standard_Dump.hxx`:316 - `Standard_DumpValue::Standard_DumpValue()`
     pub fn new_asciistring_int(
-        theValue: &crate::ffi::TCollection_AsciiString,
+        theValue: &crate::t_collection::AsciiString,
         theStartPos: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -717,7 +717,7 @@ impl Dump {
 
     /// **Source:** `Standard_Dump.hxx`:370 - `Standard_Dump::HasChildKey()`
     /// Returns true if the value has bracket key
-    pub fn has_child_key(theSourceValue: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn has_child_key(theSourceValue: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::Standard_Dump_has_child_key(theSourceValue) }
     }
 
@@ -740,7 +740,7 @@ impl Dump {
     /// **Source:** `Standard_Dump.hxx`:384 - `Standard_Dump::GetPointerPrefix()`
     /// Returns default prefix added for each pointer info string if short presentation of pointer
     /// used
-    pub fn get_pointer_prefix() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_pointer_prefix() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_get_pointer_prefix()) }
     }
 
@@ -749,8 +749,8 @@ impl Dump {
     /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
     /// @param theField a source value
     pub fn dump_field_to_name(
-        theField: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        theField: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_dump_field_to_name(theField)) }
     }
 }
@@ -823,6 +823,52 @@ impl ErrorHandler {
     }
 }
 
+/// **Source:** `Standard_ErrorHandler.hxx`:149 - `Standard_ErrorHandler_Callback`
+/// Defines a base class for callback objects that can be registered
+/// in the OCC error handler (the class simulating C++ exceptions)
+/// so as to be correctly destroyed when error handler is activated.
+///
+/// Note that this is needed only when Open CASCADE is compiled with
+/// OCC_CONVERT_SIGNALS options (i.e. on UNIX/Linux).
+/// In that case, raising OCC exception and/or signal will not cause
+/// C++ stack unwinding and destruction of objects created in the stack.
+///
+/// This class is intended to protect critical objects and operations in
+/// the try {} catch {} block from being bypassed by OCC signal or exception.
+///
+/// Inherit your object from that class, implement DestroyCallback() function,
+/// and call Register/Unregister in critical points.
+///
+/// Note that you must ensure that your object has life span longer than
+/// that of the try {} block in which it calls Register().
+pub use crate::ffi::Standard_ErrorHandler_Callback as ErrorHandler_Callback;
+
+unsafe impl crate::CppDeletable for ErrorHandler_Callback {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_ErrorHandler_Callback_destructor(ptr);
+    }
+}
+
+impl ErrorHandler_Callback {
+    /// **Source:** `Standard_ErrorHandler.hxx`:159 - `Standard_ErrorHandler_Callback::RegisterCallback()`
+    pub fn register_callback(&mut self) {
+        unsafe { crate::ffi::Standard_ErrorHandler_Callback_register_callback(self as *mut Self) }
+    }
+
+    /// **Source:** `Standard_ErrorHandler.hxx`:166 - `Standard_ErrorHandler_Callback::UnregisterCallback()`
+    pub fn unregister_callback(&mut self) {
+        unsafe { crate::ffi::Standard_ErrorHandler_Callback_unregister_callback(self as *mut Self) }
+    }
+
+    /// **Source:** `Standard_ErrorHandler.hxx`:177 - `Standard_ErrorHandler_Callback::DestroyCallback()`
+    /// The callback function to perform necessary callback action.
+    /// Called by the exception handler when it is being destroyed but
+    /// still has this callback registered.
+    pub fn destroy_callback(&mut self) {
+        unsafe { crate::ffi::Standard_ErrorHandler_Callback_destroy_callback(self as *mut Self) }
+    }
+}
+
 // ========================
 // From Standard_Failure.hxx
 // ========================
@@ -846,7 +892,7 @@ impl Failure {
 
     /// **Source:** `Standard_Failure.hxx`:37 - `Standard_Failure::Standard_Failure()`
     /// Copy constructor
-    pub fn new_failure(f: &crate::ffi::Standard_Failure) -> crate::OwnedPtr<Self> {
+    pub fn new_failure(f: &Failure) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Failure_ctor_failure(f)) }
     }
 
@@ -1074,24 +1120,39 @@ impl GUID {
         }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:62 - `Standard_GUID::Standard_GUID()`
+    pub fn new_uuid(aGuid: &UUID) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_uuid(aGuid)) }
+    }
+
     /// **Source:** `Standard_GUID.hxx`:64 - `Standard_GUID::Standard_GUID()`
-    pub fn new_guid(aGuid: &crate::ffi::Standard_GUID) -> crate::OwnedPtr<Self> {
+    pub fn new_guid(aGuid: &GUID) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_ctor_guid(aGuid)) }
     }
 
+    /// **Source:** `Standard_GUID.hxx`:66 - `Standard_GUID::ToUUID()`
+    pub fn to_uuid(&self) -> crate::OwnedPtr<UUID> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_GUID_to_uuid(self as *const Self)) }
+    }
+
     /// **Source:** `Standard_GUID.hxx`:82 - `Standard_GUID::IsSame()`
-    pub fn is_same(&self, uid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_same(&self, uid: &GUID) -> bool {
         unsafe { crate::ffi::Standard_GUID_is_same(self as *const Self, uid) }
     }
 
     /// **Source:** `Standard_GUID.hxx`:86 - `Standard_GUID::IsNotSame()`
-    pub fn is_not_same(&self, uid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_not_same(&self, uid: &GUID) -> bool {
         unsafe { crate::ffi::Standard_GUID_is_not_same(self as *const Self, uid) }
     }
 
     /// **Source:** `Standard_GUID.hxx`:90 - `Standard_GUID::Assign()`
-    pub fn assign(&mut self, uid: &crate::ffi::Standard_GUID) {
-        unsafe { crate::ffi::Standard_GUID_assign(self as *mut Self, uid) }
+    pub fn assign_guid(&mut self, uid: &GUID) {
+        unsafe { crate::ffi::Standard_GUID_assign_guid(self as *mut Self, uid) }
+    }
+
+    /// **Source:** `Standard_GUID.hxx`:94 - `Standard_GUID::Assign()`
+    pub fn assign_uuid(&mut self, uid: &UUID) {
+        unsafe { crate::ffi::Standard_GUID_assign_uuid(self as *mut Self, uid) }
     }
 
     /// **Source:** `Standard_GUID.hxx`:105 - `Standard_GUID::CheckGUIDFormat()`
@@ -1612,6 +1673,32 @@ impl Mutex {
     /// Method to unlock the mutex; releases it to other users
     pub fn unlock(&mut self) {
         unsafe { crate::ffi::Standard_Mutex_unlock(self as *mut Self) }
+    }
+}
+
+/// **Source:** `Standard_Mutex.hxx`:77 - `Standard_Mutex_Sentry`
+///
+/// @brief Simple sentry class providing convenient interface to mutex.
+///
+/// Provides automatic locking and unlocking a mutex in its constructor
+/// and destructor, thus ensuring correct unlock of the mutex even in case of
+/// raising an exception or signal from the protected code.
+///
+/// Create instance of that class when entering critical section.
+pub use crate::ffi::Standard_Mutex_Sentry as Mutex_Sentry;
+
+unsafe impl crate::CppDeletable for Mutex_Sentry {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_Mutex_Sentry_destructor(ptr);
+    }
+}
+
+impl Mutex_Sentry {
+    /// **Source:** `Standard_Mutex.hxx`:82 - `Standard_Mutex_Sentry::Standard_Mutex_Sentry()`
+    /// Constructor - initializes the sentry object by reference to a
+    /// mutex (which must be initialized) and locks the mutex immediately
+    pub fn new_mutex(theMutex: &mut Mutex) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Mutex_Sentry_ctor_mutex(theMutex)) }
     }
 }
 
@@ -2669,7 +2756,7 @@ impl Transient {
 
     /// **Source:** `Standard_Transient.hxx`:49 - `Standard_Transient::Standard_Transient()`
     /// Copy constructor -- does nothing
-    pub fn new_transient(arg0: &crate::ffi::Standard_Transient) -> crate::OwnedPtr<Self> {
+    pub fn new_transient(arg0: &Transient) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Transient_ctor_transient(arg0)) }
     }
 
@@ -2969,6 +3056,27 @@ impl TypeMismatch {
 }
 
 // ========================
+// From Standard_UUID.hxx
+// ========================
+
+/// **Source:** `Standard_UUID.hxx`:20 - `Standard_UUID`
+pub use crate::ffi::Standard_UUID as UUID;
+
+unsafe impl crate::CppDeletable for UUID {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Standard_UUID_destructor(ptr);
+    }
+}
+
+impl UUID {
+    /// **Source:** `Standard_UUID.hxx` - `Standard_UUID::Standard_UUID()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_UUID_ctor()) }
+    }
+}
+
+// ========================
 // From Standard_Underflow.hxx
 // ========================
 
@@ -3043,5 +3151,5 @@ pub use crate::ffi::{
     Standard_Byte as Byte, Standard_Character as Character, Standard_ExtCharacter as ExtCharacter,
     Standard_ExtString as ExtString, Standard_JmpBuf as JmpBuf, Standard_PCharacter as PCharacter,
     Standard_PExtCharacter as PExtCharacter, Standard_SStream as SStream,
-    Standard_ThreadId as ThreadId, Standard_UUID as UUID, Standard_Utf16Char as Utf16Char,
+    Standard_ThreadId as ThreadId, Standard_Utf16Char as Utf16Char,
 };

@@ -1302,26 +1302,26 @@ impl Color {
 
     /// **Source:** `Quantity_Color.hxx`:125 - `Quantity_Color::IsDifferent()`
     /// Returns TRUE if the distance between two colors is greater than Epsilon().
-    pub fn is_different(&self, theOther: &crate::ffi::Quantity_Color) -> bool {
+    pub fn is_different(&self, theOther: &Color) -> bool {
         unsafe { crate::ffi::Quantity_Color_is_different(self as *const Self, theOther) }
     }
 
     /// **Source:** `Quantity_Color.hxx`:137 - `Quantity_Color::IsEqual()`
     /// Returns TRUE if the distance between two colors is no greater than Epsilon().
-    pub fn is_equal(&self, theOther: &crate::ffi::Quantity_Color) -> bool {
+    pub fn is_equal(&self, theOther: &Color) -> bool {
         unsafe { crate::ffi::Quantity_Color_is_equal(self as *const Self, theOther) }
     }
 
     /// **Source:** `Quantity_Color.hxx`:147 - `Quantity_Color::Distance()`
     /// Returns the distance between two colors. It's a value between 0 and the square root of 3 (the
     /// black/white distance).
-    pub fn distance(&self, theColor: &crate::ffi::Quantity_Color) -> f64 {
+    pub fn distance(&self, theColor: &Color) -> f64 {
         unsafe { crate::ffi::Quantity_Color_distance(self as *const Self, theColor) }
     }
 
     /// **Source:** `Quantity_Color.hxx`:155 - `Quantity_Color::SquareDistance()`
     /// Returns the square of distance between two colors.
-    pub fn square_distance(&self, theColor: &crate::ffi::Quantity_Color) -> f64 {
+    pub fn square_distance(&self, theColor: &Color) -> f64 {
         unsafe { crate::ffi::Quantity_Color_square_distance(self as *const Self, theColor) }
     }
 
@@ -1331,7 +1331,7 @@ impl Color {
     /// The calculation is with respect to this color.
     /// If <DC> is positive then <me> is more contrasty.
     /// If <DI> is positive then <me> is more intense.
-    pub fn delta(&self, theColor: &crate::ffi::Quantity_Color, DC: &mut f64, DI: &mut f64) {
+    pub fn delta(&self, theColor: &Color, DC: &mut f64, DI: &mut f64) {
         unsafe { crate::ffi::Quantity_Color_delta(self as *const Self, theColor, DC, DI) }
     }
 
@@ -1341,7 +1341,7 @@ impl Color {
     /// The difference is in range [0, 100.], with 1 approximately corresponding
     /// to the minimal perceivable difference (usually difference 5 or greater is
     /// needed for the difference to be recognizable in practice).
-    pub fn delta_e2000(&self, theOther: &crate::ffi::Quantity_Color) -> f64 {
+    pub fn delta_e2000(&self, theOther: &Color) -> f64 {
         unsafe { crate::ffi::Quantity_Color_delta_e2000(self as *const Self, theOther) }
     }
 
@@ -1385,10 +1385,7 @@ impl Color {
     /// @param theColorNameString the color name
     /// @param theColor a found color
     /// @return false if the color name is unknown, or true if the search by color name was successful
-    pub fn color_from_name_charptr_color(
-        theColorNameString: &str,
-        theColor: &mut crate::ffi::Quantity_Color,
-    ) -> bool {
+    pub fn color_from_name_charptr_color(theColorNameString: &str, theColor: &mut Color) -> bool {
         let c_theColorNameString = std::ffi::CString::new(theColorNameString).unwrap();
         unsafe {
             crate::ffi::Quantity_Color_color_from_name_charptr_color(
@@ -1404,10 +1401,7 @@ impl Color {
     /// @param theHexColorString the string to be parsed
     /// @param theColor a color that is a result of parsing
     /// @return true if parsing was successful, or false otherwise
-    pub fn color_from_hex(
-        theHexColorString: &str,
-        theColor: &mut crate::ffi::Quantity_Color,
-    ) -> bool {
+    pub fn color_from_hex(theHexColorString: &str, theColor: &mut Color) -> bool {
         let c_theHexColorString = std::ffi::CString::new(theHexColorString).unwrap();
         unsafe { crate::ffi::Quantity_Color_color_from_hex(c_theHexColorString.as_ptr(), theColor) }
     }
@@ -1415,9 +1409,9 @@ impl Color {
     /// **Source:** `Quantity_Color.hxx`:225 - `Quantity_Color::ColorToHex()`
     /// Returns hex sRGB string in format "#FFAAFF".
     pub fn color_to_hex(
-        theColor: &crate::ffi::Quantity_Color,
+        theColor: &Color,
         theToPrefixHash: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_color_to_hex(
                 theColor,
@@ -1430,7 +1424,7 @@ impl Color {
     /// Convert integer ARGB value to Color. Alpha bits are ignored.
     /// Note that this packing does NOT involve linear -> non-linear sRGB conversion,
     /// as would be usually expected to preserve higher (for human eye) color precision in 4 bytes.
-    pub fn argb2color(theARGB: i32, theColor: &mut crate::ffi::Quantity_Color) {
+    pub fn argb2color(theARGB: i32, theColor: &mut Color) {
         unsafe { crate::ffi::Quantity_Color_argb2color(theARGB, theColor) }
     }
 
@@ -1536,16 +1530,13 @@ impl ColorRGBA {
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:31 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
     /// Creates the color with specified RGB value.
-    pub fn new_color(theRgb: &crate::ffi::Quantity_Color) -> crate::OwnedPtr<Self> {
+    pub fn new_color(theRgb: &Color) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor_color(theRgb)) }
     }
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:38 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
     /// Creates the color with specified RGBA values.
-    pub fn new_color_float(
-        theRgb: &crate::ffi::Quantity_Color,
-        theAlpha: f32,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_color_float(theRgb: &Color, theAlpha: f32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor_color_float(
                 theRgb, theAlpha,
@@ -1590,19 +1581,19 @@ impl ColorRGBA {
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:66 - `Quantity_ColorRGBA::GetRGB()`
     /// Return RGB color value.
-    pub fn get_rgb(&self) -> &crate::ffi::Quantity_Color {
+    pub fn get_rgb(&self) -> &Color {
         unsafe { &*(crate::ffi::Quantity_ColorRGBA_get_rgb(self as *const Self)) }
     }
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:69 - `Quantity_ColorRGBA::ChangeRGB()`
     /// Modify RGB color components without affecting alpha value.
-    pub fn change_rgb(&mut self) -> &mut crate::ffi::Quantity_Color {
+    pub fn change_rgb(&mut self) -> &mut Color {
         unsafe { &mut *(crate::ffi::Quantity_ColorRGBA_change_rgb(self as *mut Self)) }
     }
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:72 - `Quantity_ColorRGBA::SetRGB()`
     /// Assign RGB color components without affecting alpha value.
-    pub fn set_rgb(&mut self, theRgb: &crate::ffi::Quantity_Color) {
+    pub fn set_rgb(&mut self, theRgb: &Color) {
         unsafe { crate::ffi::Quantity_ColorRGBA_set_rgb(self as *mut Self, theRgb) }
     }
 
@@ -1620,13 +1611,13 @@ impl ColorRGBA {
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:84 - `Quantity_ColorRGBA::IsDifferent()`
     /// Returns true if the distance between colors is greater than Epsilon().
-    pub fn is_different(&self, theOther: &crate::ffi::Quantity_ColorRGBA) -> bool {
+    pub fn is_different(&self, theOther: &ColorRGBA) -> bool {
         unsafe { crate::ffi::Quantity_ColorRGBA_is_different(self as *const Self, theOther) }
     }
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:94 - `Quantity_ColorRGBA::IsEqual()`
     /// Two colors are considered to be equal if their distance is no greater than Epsilon().
-    pub fn is_equal(&self, theOther: &crate::ffi::Quantity_ColorRGBA) -> bool {
+    pub fn is_equal(&self, theOther: &ColorRGBA) -> bool {
         unsafe { crate::ffi::Quantity_ColorRGBA_is_equal(self as *const Self, theOther) }
     }
 
@@ -1637,10 +1628,7 @@ impl ColorRGBA {
     /// @param theColorNameString the color name
     /// @param theColor a found color
     /// @return false if the color name is unknown, or true if the search by color name was successful
-    pub fn color_from_name(
-        theColorNameString: &str,
-        theColor: &mut crate::ffi::Quantity_ColorRGBA,
-    ) -> bool {
+    pub fn color_from_name(theColorNameString: &str, theColor: &mut ColorRGBA) -> bool {
         let c_theColorNameString = std::ffi::CString::new(theColorNameString).unwrap();
         unsafe {
             crate::ffi::Quantity_ColorRGBA_color_from_name(c_theColorNameString.as_ptr(), theColor)
@@ -1658,7 +1646,7 @@ impl ColorRGBA {
     /// @return true if parsing was successful, or false otherwise
     pub fn color_from_hex(
         theHexColorString: &str,
-        theColor: &mut crate::ffi::Quantity_ColorRGBA,
+        theColor: &mut ColorRGBA,
         theAlphaComponentIsOff: bool,
     ) -> bool {
         let c_theHexColorString = std::ffi::CString::new(theHexColorString).unwrap();
@@ -1674,9 +1662,9 @@ impl ColorRGBA {
     /// **Source:** `Quantity_ColorRGBA.hxx`:135 - `Quantity_ColorRGBA::ColorToHex()`
     /// Returns hex sRGBA string in format "#RRGGBBAA".
     pub fn color_to_hex(
-        theColor: &crate::ffi::Quantity_ColorRGBA,
+        theColor: &ColorRGBA,
         theToPrefixHash: bool,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_color_to_hex(
                 theColor,
@@ -1844,10 +1832,7 @@ impl Date {
     /// between and returns the value.
     /// The result is the absolute value between the difference
     /// of two dates.
-    pub fn difference(
-        &mut self,
-        anOther: &crate::ffi::Quantity_Date,
-    ) -> crate::OwnedPtr<crate::ffi::Quantity_Period> {
+    pub fn difference(&mut self, anOther: &Date) -> crate::OwnedPtr<Period> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_Date_difference(
                 self as *mut Self,
@@ -1860,10 +1845,7 @@ impl Date {
     /// Subtracts a period from a Date and returns the new Date.
     /// Raises an exception if the result date is anterior to
     /// Jan 1, 1979.
-    pub fn subtract(
-        &mut self,
-        aPeriod: &crate::ffi::Quantity_Period,
-    ) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+    pub fn subtract(&mut self, aPeriod: &Period) -> crate::OwnedPtr<Date> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_Date_subtract(
                 self as *mut Self,
@@ -1874,10 +1856,7 @@ impl Date {
 
     /// **Source:** `Quantity_Date.hxx`:118 - `Quantity_Date::Add()`
     /// Adds a Period to a Date and returns the new Date.
-    pub fn add(
-        &mut self,
-        aPeriod: &crate::ffi::Quantity_Period,
-    ) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+    pub fn add(&mut self, aPeriod: &Period) -> crate::OwnedPtr<Date> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_Date_add(self as *mut Self, aPeriod))
         }
@@ -1934,19 +1913,19 @@ impl Date {
     /// **Source:** `Quantity_Date.hxx`:148 - `Quantity_Date::IsEqual()`
     /// Returns TRUE if both <me> and <other> are equal.
     /// This method is an alias of operator ==.
-    pub fn is_equal(&self, anOther: &crate::ffi::Quantity_Date) -> bool {
+    pub fn is_equal(&self, anOther: &Date) -> bool {
         unsafe { crate::ffi::Quantity_Date_is_equal(self as *const Self, anOther) }
     }
 
     /// **Source:** `Quantity_Date.hxx`:153 - `Quantity_Date::IsEarlier()`
     /// Returns TRUE if <me> is earlier than <other>.
-    pub fn is_earlier(&self, anOther: &crate::ffi::Quantity_Date) -> bool {
+    pub fn is_earlier(&self, anOther: &Date) -> bool {
         unsafe { crate::ffi::Quantity_Date_is_earlier(self as *const Self, anOther) }
     }
 
     /// **Source:** `Quantity_Date.hxx`:158 - `Quantity_Date::IsLater()`
     /// Returns TRUE if <me> is later then <other>.
-    pub fn is_later(&self, anOther: &crate::ffi::Quantity_Date) -> bool {
+    pub fn is_later(&self, anOther: &Date) -> bool {
         unsafe { crate::ffi::Quantity_Date_is_later(self as *const Self, anOther) }
     }
 
@@ -2289,10 +2268,7 @@ impl Period {
 
     /// **Source:** `Quantity_Period.hxx`:104 - `Quantity_Period::Subtract()`
     /// Subtracts one Period from another and returns the difference.
-    pub fn subtract(
-        &self,
-        anOther: &crate::ffi::Quantity_Period,
-    ) -> crate::OwnedPtr<crate::ffi::Quantity_Period> {
+    pub fn subtract(&self, anOther: &Period) -> crate::OwnedPtr<Period> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_Period_subtract(
                 self as *const Self,
@@ -2303,10 +2279,7 @@ impl Period {
 
     /// **Source:** `Quantity_Period.hxx`:109 - `Quantity_Period::Add()`
     /// Adds one Period to another one.
-    pub fn add(
-        &self,
-        anOther: &crate::ffi::Quantity_Period,
-    ) -> crate::OwnedPtr<crate::ffi::Quantity_Period> {
+    pub fn add(&self, anOther: &Period) -> crate::OwnedPtr<Period> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Quantity_Period_add(self as *const Self, anOther))
         }
@@ -2314,19 +2287,19 @@ impl Period {
 
     /// **Source:** `Quantity_Period.hxx`:114 - `Quantity_Period::IsEqual()`
     /// Returns TRUE if both <me> and <other> are equal.
-    pub fn is_equal(&self, anOther: &crate::ffi::Quantity_Period) -> bool {
+    pub fn is_equal(&self, anOther: &Period) -> bool {
         unsafe { crate::ffi::Quantity_Period_is_equal(self as *const Self, anOther) }
     }
 
     /// **Source:** `Quantity_Period.hxx`:119 - `Quantity_Period::IsShorter()`
     /// Returns TRUE if <me> is shorter than <other>.
-    pub fn is_shorter(&self, anOther: &crate::ffi::Quantity_Period) -> bool {
+    pub fn is_shorter(&self, anOther: &Period) -> bool {
         unsafe { crate::ffi::Quantity_Period_is_shorter(self as *const Self, anOther) }
     }
 
     /// **Source:** `Quantity_Period.hxx`:124 - `Quantity_Period::IsLonger()`
     /// Returns TRUE if <me> is longer then <other>.
-    pub fn is_longer(&self, anOther: &crate::ffi::Quantity_Period) -> bool {
+    pub fn is_longer(&self, anOther: &Period) -> bool {
         unsafe { crate::ffi::Quantity_Period_is_longer(self as *const Self, anOther) }
     }
 

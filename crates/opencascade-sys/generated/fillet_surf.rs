@@ -127,7 +127,7 @@ impl Builder {
     /// Tapp3d is the 3d approximation tolerance
     /// Tapp2d is the 2d approximation tolerance
     pub fn new_shape_listofshape_real4(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         E: &crate::ffi::TopTools_ListOfShape,
         R: f64,
         Ta: f64,
@@ -150,7 +150,7 @@ impl Builder {
     /// Tapp3d is the 3d approximation tolerance
     /// Tapp2d is the 2d approximation tolerance
     pub fn new_shape_listofshape_real3(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         E: &crate::ffi::TopTools_ListOfShape,
         R: f64,
         Ta: f64,
@@ -168,7 +168,7 @@ impl Builder {
     /// Tapp3d is the 3d approximation tolerance
     /// Tapp2d is the 2d approximation tolerance
     pub fn new_shape_listofshape_real2(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         E: &crate::ffi::TopTools_ListOfShape,
         R: f64,
         Ta: f64,
@@ -185,7 +185,7 @@ impl Builder {
     /// Tapp3d is the 3d approximation tolerance
     /// Tapp2d is the 2d approximation tolerance
     pub fn new_shape_listofshape_real(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         E: &crate::ffi::TopTools_ListOfShape,
         R: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -258,13 +258,13 @@ impl Builder {
 
     /// **Source:** `FilletSurf_Builder.hxx`:99 - `FilletSurf_Builder::SupportFace1()`
     /// gives the first support  face relative to SurfaceFillet(Index);
-    pub fn support_face1(&self, Index: i32) -> &crate::ffi::TopoDS_Face {
+    pub fn support_face1(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::FilletSurf_Builder_support_face1(self as *const Self, Index)) }
     }
 
     /// **Source:** `FilletSurf_Builder.hxx`:102 - `FilletSurf_Builder::SupportFace2()`
     /// gives the second support  face relative to SurfaceFillet(Index);
-    pub fn support_face2(&self, Index: i32) -> &crate::ffi::TopoDS_Face {
+    pub fn support_face2(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::FilletSurf_Builder_support_face2(self as *const Self, Index)) }
     }
 
@@ -372,7 +372,7 @@ unsafe impl crate::CppDeletable for InternalBuilder {
 impl InternalBuilder {
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn new_shape_filletshape_real3(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
         Ta: f64,
         Tapp3d: f64,
@@ -393,7 +393,7 @@ impl InternalBuilder {
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn new_shape_filletshape_real2(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
         Ta: f64,
         Tapp3d: f64,
@@ -403,7 +403,7 @@ impl InternalBuilder {
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn new_shape_filletshape_real(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
         Ta: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -412,7 +412,7 @@ impl InternalBuilder {
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn new_shape_filletshape(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_filletshape_real3(S, FShape, 1.0e-2, 1.0e-4, 1.0e-5)
@@ -463,7 +463,7 @@ impl InternalBuilder {
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:75 - `FilletSurf_InternalBuilder::SupportFace1()`
     /// gives the first support  face relative to SurfaceFillet(Index);
-    pub fn support_face1(&self, Index: i32) -> &crate::ffi::TopoDS_Face {
+    pub fn support_face1(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::ffi::FilletSurf_InternalBuilder_support_face1(self as *const Self, Index))
         }
@@ -471,7 +471,7 @@ impl InternalBuilder {
 
     /// **Source:** `FilletSurf_InternalBuilder.hxx`:78 - `FilletSurf_InternalBuilder::SupportFace2()`
     /// gives the second support  face relative to SurfaceFillet(Index);
-    pub fn support_face2(&self, Index: i32) -> &crate::ffi::TopoDS_Face {
+    pub fn support_face2(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::ffi::FilletSurf_InternalBuilder_support_face2(self as *const Self, Index))
         }
@@ -672,7 +672,7 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:89 - `ChFi3d_FilBuilder::UnSet()`
-    pub fn un_set(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) {
+    pub fn un_set(&mut self, IC: i32, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_UnSet(self as *mut Self, IC, E) }
     }
 
@@ -680,7 +680,7 @@ impl InternalBuilder {
     pub fn get_bounds(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         First: &mut f64,
         Last: &mut f64,
     ) -> bool {
@@ -699,7 +699,7 @@ impl InternalBuilder {
     pub fn get_law(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_GetLaw(
@@ -714,7 +714,7 @@ impl InternalBuilder {
     pub fn set_law(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         L: &crate::ffi::HandleLawFunction,
     ) {
         unsafe {
@@ -777,12 +777,12 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
-    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_Remove(self as *mut Self, E) }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
-    pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::FilletSurf_InternalBuilder_inherited_Contains(self as *const Self, E) }
     }
 
@@ -807,7 +807,7 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
-    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_FirstVertex(
                 self as *const Self,
@@ -817,7 +817,7 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
-    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_LastVertex(
                 self as *const Self,
@@ -827,14 +827,14 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe {
             crate::ffi::FilletSurf_InternalBuilder_inherited_Abscissa(self as *const Self, IC, V)
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe {
             crate::ffi::FilletSurf_InternalBuilder_inherited_RelativeAbscissa(
                 self as *const Self,
@@ -870,7 +870,7 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_Shape(
                 self as *const Self,
@@ -879,10 +879,7 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
-    pub fn generated(
-        &mut self,
-        EouV: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, EouV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::FilletSurf_InternalBuilder_inherited_Generated(self as *mut Self, EouV))
         }
@@ -937,7 +934,7 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
-    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::FilletSurf_InternalBuilder_inherited_FaultyVertex(
@@ -954,7 +951,7 @@ impl InternalBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
-    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::FilletSurf_InternalBuilder_inherited_BadShape(
                 self as *const Self,

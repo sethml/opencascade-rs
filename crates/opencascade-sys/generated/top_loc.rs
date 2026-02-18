@@ -34,19 +34,19 @@ impl Datum3D {
     /// **Source:** `TopLoc_Datum3D.hxx`:44 - `TopLoc_Datum3D::TopLoc_Datum3D()`
     /// Constructs a Datum3D form a Trsf from gp. An error is
     /// raised if the Trsf is not a rigid transformation.
-    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
+    pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Datum3D_ctor_trsf(T)) }
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:47 - `TopLoc_Datum3D::Transformation()`
     /// Returns a gp_Trsf which, when applied to this datum, produces the default datum.
-    pub fn transformation(&self) -> &crate::ffi::gp_Trsf {
+    pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::TopLoc_Datum3D_transformation(self as *const Self)) }
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:50 - `TopLoc_Datum3D::Trsf()`
     /// Returns a gp_Trsf which, when applied to this datum, produces the default datum.
-    pub fn trsf(&self) -> &crate::ffi::gp_Trsf {
+    pub fn trsf(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::TopLoc_Datum3D_trsf(self as *const Self)) }
     }
 
@@ -187,7 +187,7 @@ impl Location {
     /// **Source:** `TopLoc_Location.hxx`:46 - `TopLoc_Location::TopLoc_Location()`
     /// Constructs the local coordinate system object defined
     /// by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
-    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
+    pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_ctor_trsf(T)) }
     }
 
@@ -240,14 +240,14 @@ impl Location {
     /// <me> = NextLocation() * FirstDatum() ^ FirstPower()
     /// Exceptions
     /// Standard_NoSuchObject if this location is empty.
-    pub fn next_location(&self) -> &crate::ffi::TopLoc_Location {
+    pub fn next_location(&self) -> &Location {
         unsafe { &*(crate::ffi::TopLoc_Location_next_location(self as *const Self)) }
     }
 
     /// **Source:** `TopLoc_Location.hxx`:83 - `TopLoc_Location::Transformation()`
     /// Returns  the transformation    associated  to  the
     /// coordinate system.
-    pub fn transformation(&self) -> &crate::ffi::gp_Trsf {
+    pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::TopLoc_Location_transformation(self as *const Self)) }
     }
 
@@ -255,7 +255,7 @@ impl Location {
     /// Returns the inverse of <me>.
     ///
     /// <me> * Inverted() is an Identity.
-    pub fn inverted(&self) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+    pub fn inverted(&self) -> crate::OwnedPtr<Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_inverted(self as *const Self))
         }
@@ -264,10 +264,7 @@ impl Location {
     /// **Source:** `TopLoc_Location.hxx`:93 - `TopLoc_Location::Multiplied()`
     /// Returns <me> * <Other>, the  elementary datums are
     /// concatenated.
-    pub fn multiplied(
-        &self,
-        Other: &crate::ffi::TopLoc_Location,
-    ) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+    pub fn multiplied(&self, Other: &Location) -> crate::OwnedPtr<Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_multiplied(
                 self as *const Self,
@@ -278,10 +275,7 @@ impl Location {
 
     /// **Source:** `TopLoc_Location.hxx`:101 - `TopLoc_Location::Divided()`
     /// Returns  <me> / <Other>.
-    pub fn divided(
-        &self,
-        Other: &crate::ffi::TopLoc_Location,
-    ) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+    pub fn divided(&self, Other: &Location) -> crate::OwnedPtr<Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_divided(
                 self as *const Self,
@@ -292,10 +286,7 @@ impl Location {
 
     /// **Source:** `TopLoc_Location.hxx`:109 - `TopLoc_Location::Predivided()`
     /// Returns <Other>.Inverted() * <me>.
-    pub fn predivided(
-        &self,
-        Other: &crate::ffi::TopLoc_Location,
-    ) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+    pub fn predivided(&self, Other: &Location) -> crate::OwnedPtr<Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_predivided(
                 self as *const Self,
@@ -308,7 +299,7 @@ impl Location {
     /// Returns me at the power <pwr>.   If <pwr>  is zero
     /// returns  Identity.  <pwr> can  be lower  than zero
     /// (usual meaning for powers).
-    pub fn powered(&self, pwr: i32) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+    pub fn powered(&self, pwr: i32) -> crate::OwnedPtr<Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopLoc_Location_powered(self as *const Self, pwr))
         }
@@ -327,7 +318,7 @@ impl Location {
     /// have the same elementary data, i.e. contain the same
     /// series of TopLoc_Datum3D and respective powers.
     /// This method is an alias for operator ==.
-    pub fn is_equal(&self, Other: &crate::ffi::TopLoc_Location) -> bool {
+    pub fn is_equal(&self, Other: &Location) -> bool {
         unsafe { crate::ffi::TopLoc_Location_is_equal(self as *const Self, Other) }
     }
 
@@ -336,7 +327,7 @@ impl Location {
     /// not have the same elementary data, i.e. do not
     /// contain the same series of TopLoc_Datum3D and respective powers.
     /// This method is an alias for operator !=.
-    pub fn is_different(&self, Other: &crate::ffi::TopLoc_Location) -> bool {
+    pub fn is_different(&self, Other: &Location) -> bool {
         unsafe { crate::ffi::TopLoc_Location_is_different(self as *const Self, Other) }
     }
 
@@ -375,8 +366,8 @@ unsafe impl crate::CppDeletable for SListNodeOfItemLocation {
 impl SListNodeOfItemLocation {
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:33 - `TopLoc_SListNodeOfItemLocation::TopLoc_SListNodeOfItemLocation()`
     pub fn new_itemlocation_slistofitemlocation(
-        I: &crate::ffi::TopLoc_ItemLocation,
-        aTail: &crate::ffi::TopLoc_SListOfItemLocation,
+        I: &ItemLocation,
+        aTail: &SListOfItemLocation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -388,12 +379,12 @@ impl SListNodeOfItemLocation {
     }
 
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:36 - `TopLoc_SListNodeOfItemLocation::Tail()`
-    pub fn tail(&mut self) -> &mut crate::ffi::TopLoc_SListOfItemLocation {
+    pub fn tail(&mut self) -> &mut SListOfItemLocation {
         unsafe { &mut *(crate::ffi::TopLoc_SListNodeOfItemLocation_tail(self as *mut Self)) }
     }
 
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:38 - `TopLoc_SListNodeOfItemLocation::Value()`
-    pub fn value(&mut self) -> &mut crate::ffi::TopLoc_ItemLocation {
+    pub fn value(&mut self) -> &mut ItemLocation {
         unsafe { &mut *(crate::ffi::TopLoc_SListNodeOfItemLocation_value(self as *mut Self)) }
     }
 
@@ -497,8 +488,8 @@ impl SListOfItemLocation {
     /// **Source:** `TopLoc_SListOfItemLocation.hxx`:52 - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
     /// Creates a List with <anItem> as value  and <aTail> as tail.
     pub fn new_itemlocation_slistofitemlocation(
-        anItem: &crate::ffi::TopLoc_ItemLocation,
-        aTail: &crate::ffi::TopLoc_SListOfItemLocation,
+        anItem: &ItemLocation,
+        aTail: &SListOfItemLocation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -511,9 +502,7 @@ impl SListOfItemLocation {
 
     /// **Source:** `TopLoc_SListOfItemLocation.hxx`:56 - `TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation()`
     /// Creates a list from an other one. The lists  are shared.
-    pub fn new_slistofitemlocation(
-        Other: &crate::ffi::TopLoc_SListOfItemLocation,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_slistofitemlocation(Other: &SListOfItemLocation) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TopLoc_SListOfItemLocation_ctor_slistofitemlocation(Other),
@@ -536,21 +525,21 @@ impl SListOfItemLocation {
     /// **Source:** `TopLoc_SListOfItemLocation.hxx`:95 - `TopLoc_SListOfItemLocation::Value()`
     /// Returns the current value of the list. An error is
     /// raised  if the list is empty.
-    pub fn value(&self) -> &crate::ffi::TopLoc_ItemLocation {
+    pub fn value(&self) -> &ItemLocation {
         unsafe { &*(crate::ffi::TopLoc_SListOfItemLocation_value(self as *const Self)) }
     }
 
     /// **Source:** `TopLoc_SListOfItemLocation.hxx`:99 - `TopLoc_SListOfItemLocation::Tail()`
     /// Returns the current tail of  the list. On an empty
     /// list the tail is the list itself.
-    pub fn tail(&self) -> &crate::ffi::TopLoc_SListOfItemLocation {
+    pub fn tail(&self) -> &SListOfItemLocation {
         unsafe { &*(crate::ffi::TopLoc_SListOfItemLocation_tail(self as *const Self)) }
     }
 
     /// **Source:** `TopLoc_SListOfItemLocation.hxx`:103 - `TopLoc_SListOfItemLocation::Construct()`
     /// Replaces the list by a list with <anItem> as Value
     /// and the  list <me> as  tail.
-    pub fn construct(&mut self, anItem: &crate::ffi::TopLoc_ItemLocation) {
+    pub fn construct(&mut self, anItem: &ItemLocation) {
         unsafe { crate::ffi::TopLoc_SListOfItemLocation_construct(self as *mut Self, anItem) }
     }
 

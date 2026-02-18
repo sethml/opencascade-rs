@@ -242,9 +242,7 @@ pub fn short_name_for_module(cpp_name: &str, module: &str) -> String {
             // Type name equals the module name (rare but possible)
             cpp_name.to_string()
         } else {
-            // Remove any remaining underscore separators to get a PascalCase name
-            // e.g., "Simple_Status" → "SimpleStatus"
-            rest.replace('_', "")
+            rest.to_string()
         }
     } else {
         // Module prefix doesn't match at all — fall back to first-underscore split

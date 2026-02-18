@@ -12,8 +12,8 @@
 /// Returns false if the cannot be opened;
 pub fn write_binary(
     theMesh: &crate::ffi::HandlePolyTriangulation,
-    thePath: &crate::ffi::OSD_Path,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    thePath: &crate::osd::Path,
+    theProgress: &crate::message::ProgressRange,
 ) -> bool {
     unsafe { crate::ffi::RWStl_write_binary(theMesh, thePath, theProgress) }
 }
@@ -23,8 +23,8 @@ pub fn write_binary(
 /// Returns false if the cannot be opened;
 pub fn write_ascii(
     theMesh: &crate::ffi::HandlePolyTriangulation,
-    thePath: &crate::ffi::OSD_Path,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    thePath: &crate::osd::Path,
+    theProgress: &crate::message::ProgressRange,
 ) -> bool {
     unsafe { crate::ffi::RWStl_write_ascii(theMesh, thePath, theProgress) }
 }
@@ -32,8 +32,8 @@ pub fn write_ascii(
 /// Read specified STL file and returns its content as triangulation.
 /// In case of error, returns Null handle.
 pub fn read_file_path_progressrange(
-    theFile: &crate::ffi::OSD_Path,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    theFile: &crate::osd::Path,
+    theProgress: &crate::message::ProgressRange,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::RWStl_read_file_path_progressrange(
@@ -47,7 +47,7 @@ pub fn read_file_path_progressrange(
 /// In case of error, returns Null handle.
 pub fn read_file_charptr_progressrange_2(
     theFile: &str,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    theProgress: &crate::message::ProgressRange,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     unsafe {
@@ -67,7 +67,7 @@ pub fn read_file_charptr_progressrange_2(
 pub fn read_file_charptr_real_progressrange(
     theFile: &str,
     theMergeAngle: f64,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    theProgress: &crate::message::ProgressRange,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     unsafe {
@@ -82,8 +82,8 @@ pub fn read_file_charptr_real_progressrange(
 /// Read triangulation from a binary STL file
 /// In case of error, returns Null handle.
 pub fn read_binary(
-    thePath: &crate::ffi::OSD_Path,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    thePath: &crate::osd::Path,
+    theProgress: &crate::message::ProgressRange,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWStl_read_binary(thePath, theProgress)) }
 }
@@ -91,8 +91,8 @@ pub fn read_binary(
 /// Read triangulation from an Ascii STL file
 /// In case of error, returns Null handle.
 pub fn read_ascii(
-    thePath: &crate::ffi::OSD_Path,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    thePath: &crate::osd::Path,
+    theProgress: &crate::message::ProgressRange,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWStl_read_ascii(thePath, theProgress)) }
 }
@@ -134,7 +134,7 @@ impl Reader {
     /// Unicode paths can be given in UTF-8 encoding.
     /// Format is recognized automatically by analysis of the file header.
     /// Returns true if success, false on error or user break.
-    pub fn read(&mut self, theFile: &str, theProgress: &crate::ffi::Message_ProgressRange) -> bool {
+    pub fn read(&mut self, theFile: &str, theProgress: &crate::message::ProgressRange) -> bool {
         let c_theFile = std::ffi::CString::new(theFile).unwrap();
         unsafe { crate::ffi::RWStl_Reader_read(self as *mut Self, c_theFile.as_ptr(), theProgress) }
     }
@@ -143,7 +143,7 @@ impl Reader {
     /// Callback function to be implemented in descendant.
     /// Should create new node with specified coordinates in the target model, and return its ID as
     /// integer.
-    pub fn add_node(&mut self, thePnt: &crate::ffi::gp_XYZ) -> i32 {
+    pub fn add_node(&mut self, thePnt: &crate::gp::XYZ) -> i32 {
         unsafe { crate::ffi::RWStl_Reader_add_node(self as *mut Self, thePnt) }
     }
 

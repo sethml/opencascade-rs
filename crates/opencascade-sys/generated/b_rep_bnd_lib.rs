@@ -25,8 +25,8 @@
 /// been inserted inside the data structure of the shape S.
 /// -   The resulting bounding box may be somewhat larger than the object.
 pub fn add_shape_box_bool(
-    S: &crate::ffi::TopoDS_Shape,
-    B: &mut crate::ffi::Bnd_Box,
+    S: &crate::topo_ds::Shape,
+    B: &mut crate::bnd::Box,
     useTriangulation: bool,
 ) {
     unsafe { crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation) }
@@ -43,7 +43,7 @@ pub fn add_shape_box_bool(
 /// tolerance value of the sub-shapes as is the case with the
 /// Add function. So the added part of the resulting bounding
 /// box is closer to the shape S.
-pub fn add_close(S: &crate::ffi::TopoDS_Shape, B: &mut crate::ffi::Bnd_Box) {
+pub fn add_close(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box) {
     unsafe { crate::ffi::BRepBndLib_add_close(S, B) }
 }
 /// **Source:** `BRepBndLib.hxx`:78 - `BRepBndLib::AddOptimal`
@@ -57,8 +57,8 @@ pub fn add_close(S: &crate::ffi::TopoDS_Shape, B: &mut crate::ffi::Bnd_Box) {
 /// otherwise bounding box is built according to sizes of uderlined geometrical entities,
 /// numerical calculation use tolerance Precision::Confusion().
 pub fn add_optimal(
-    S: &crate::ffi::TopoDS_Shape,
-    B: &mut crate::ffi::Bnd_Box,
+    S: &crate::topo_ds::Shape,
+    B: &mut crate::bnd::Box,
     useTriangulation: bool,
     useShapeTolerance: bool,
 ) {
@@ -78,8 +78,8 @@ pub fn add_optimal(
 /// theIsOptimal flag defines whether to look for the more tight
 /// OBB for the cost of performance or not.
 pub fn add_obb(
-    theS: &crate::ffi::TopoDS_Shape,
-    theOBB: &mut crate::ffi::Bnd_OBB,
+    theS: &crate::topo_ds::Shape,
+    theOBB: &mut crate::bnd::OBB,
     theIsTriangulationUsed: bool,
     theIsOptimal: bool,
     theIsShapeToleranceUsed: bool,

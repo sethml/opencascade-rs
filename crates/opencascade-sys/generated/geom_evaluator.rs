@@ -24,13 +24,13 @@ unsafe impl crate::CppDeletable for Curve {
 impl Curve {
     /// **Source:** `GeomEvaluator_Curve.hxx`:32 - `GeomEvaluator_Curve::D0()`
     /// Value of 3D curve
-    pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomEvaluator_Curve_d0(self as *const Self, theU, theValue) }
     }
 
     /// **Source:** `GeomEvaluator_Curve.hxx`:34 - `GeomEvaluator_Curve::D1()`
     /// Value and first derivatives of curve
-    pub fn d1(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt, theD1: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt, theD1: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1) }
     }
 
@@ -39,9 +39,9 @@ impl Curve {
     pub fn d2(
         &self,
         theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1: &mut crate::ffi::gp_Vec,
-        theD2: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1: &mut crate::gp::Vec,
+        theD2: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_Curve_d2(self as *const Self, theU, theValue, theD1, theD2)
@@ -53,10 +53,10 @@ impl Curve {
     pub fn d3(
         &self,
         theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1: &mut crate::ffi::gp_Vec,
-        theD2: &mut crate::ffi::gp_Vec,
-        theD3: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1: &mut crate::gp::Vec,
+        theD2: &mut crate::gp::Vec,
+        theD3: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_Curve_d3(
@@ -72,7 +72,7 @@ impl Curve {
 
     /// **Source:** `GeomEvaluator_Curve.hxx`:47 - `GeomEvaluator_Curve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
-    pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_Curve_dn(
                 self as *const Self,
@@ -151,7 +151,7 @@ impl OffsetCurve {
     pub fn new_handlegeomcurve_real_dir(
         theBase: &crate::ffi::HandleGeomCurve,
         theOffset: f64,
-        theDirection: &crate::ffi::gp_Dir,
+        theDirection: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -173,7 +173,7 @@ impl OffsetCurve {
     }
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:38 - `GeomEvaluator_OffsetCurve::SetOffsetDirection()`
-    pub fn set_offset_direction(&mut self, theDirection: &crate::ffi::gp_Dir) {
+    pub fn set_offset_direction(&mut self, theDirection: &crate::gp::Dir) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetCurve_set_offset_direction(
                 self as *mut Self,
@@ -184,13 +184,13 @@ impl OffsetCurve {
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:41 - `GeomEvaluator_OffsetCurve::D0()`
     /// Value of curve
-    pub fn d0(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue) }
     }
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:43 - `GeomEvaluator_OffsetCurve::D1()`
     /// Value and first derivatives of curve
-    pub fn d1(&self, theU: f64, theValue: &mut crate::ffi::gp_Pnt, theD1: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt, theD1: &mut crate::gp::Vec) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetCurve_d1(self as *const Self, theU, theValue, theD1)
         }
@@ -201,9 +201,9 @@ impl OffsetCurve {
     pub fn d2(
         &self,
         theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1: &mut crate::ffi::gp_Vec,
-        theD2: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1: &mut crate::gp::Vec,
+        theD2: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetCurve_d2(
@@ -221,10 +221,10 @@ impl OffsetCurve {
     pub fn d3(
         &self,
         theU: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1: &mut crate::ffi::gp_Vec,
-        theD2: &mut crate::ffi::gp_Vec,
-        theD3: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1: &mut crate::gp::Vec,
+        theD2: &mut crate::gp::Vec,
+        theD3: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetCurve_d3(
@@ -240,7 +240,7 @@ impl OffsetCurve {
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:58 - `GeomEvaluator_OffsetCurve::DN()`
     /// Calculates N-th derivatives of curve, where N = theDeriv. Raises if N < 1
-    pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_OffsetCurve_dn(
                 self as *const Self,
@@ -332,7 +332,7 @@ impl OffsetSurface {
 
     /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:42 - `GeomEvaluator_OffsetSurface::D0()`
     /// Value of surface
-    pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetSurface_d0(self as *const Self, theU, theV, theValue)
         }
@@ -344,9 +344,9 @@ impl OffsetSurface {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetSurface_d1(
@@ -366,12 +366,12 @@ impl OffsetSurface {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
-        theD2U: &mut crate::ffi::gp_Vec,
-        theD2V: &mut crate::ffi::gp_Vec,
-        theD2UV: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetSurface_d2(
@@ -394,16 +394,16 @@ impl OffsetSurface {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
-        theD2U: &mut crate::ffi::gp_Vec,
-        theD2V: &mut crate::ffi::gp_Vec,
-        theD2UV: &mut crate::ffi::gp_Vec,
-        theD3U: &mut crate::ffi::gp_Vec,
-        theD3V: &mut crate::ffi::gp_Vec,
-        theD3UUV: &mut crate::ffi::gp_Vec,
-        theD3UVV: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+        theD3U: &mut crate::gp::Vec,
+        theD3V: &mut crate::gp::Vec,
+        theD3UUV: &mut crate::gp::Vec,
+        theD3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_OffsetSurface_d3(
@@ -434,7 +434,7 @@ impl OffsetSurface {
         theV: f64,
         theDerU: i32,
         theDerV: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_OffsetSurface_dn(
                 self as *const Self,
@@ -511,7 +511,7 @@ unsafe impl crate::CppDeletable for Surface {
 impl Surface {
     /// **Source:** `GeomEvaluator_Surface.hxx`:32 - `GeomEvaluator_Surface::D0()`
     /// Value of surface
-    pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomEvaluator_Surface_d0(self as *const Self, theU, theV, theValue) }
     }
 
@@ -521,9 +521,9 @@ impl Surface {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_Surface_d1(
@@ -543,12 +543,12 @@ impl Surface {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
-        theD2U: &mut crate::ffi::gp_Vec,
-        theD2V: &mut crate::ffi::gp_Vec,
-        theD2UV: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_Surface_d2(
@@ -571,16 +571,16 @@ impl Surface {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
-        theD2U: &mut crate::ffi::gp_Vec,
-        theD2V: &mut crate::ffi::gp_Vec,
-        theD2UV: &mut crate::ffi::gp_Vec,
-        theD3U: &mut crate::ffi::gp_Vec,
-        theD3V: &mut crate::ffi::gp_Vec,
-        theD3UUV: &mut crate::ffi::gp_Vec,
-        theD3UVV: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+        theD3U: &mut crate::gp::Vec,
+        theD3V: &mut crate::gp::Vec,
+        theD3UUV: &mut crate::gp::Vec,
+        theD3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_Surface_d3(
@@ -611,7 +611,7 @@ impl Surface {
         theV: f64,
         theDerU: i32,
         theDerV: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_Surface_dn(
                 self as *const Self,
@@ -691,7 +691,7 @@ impl SurfaceOfExtrusion {
     /// Initialize evaluator by surface
     pub fn new_handlegeomcurve_dir(
         theBase: &crate::ffi::HandleGeomCurve,
-        theExtrusionDir: &crate::ffi::gp_Dir,
+        theExtrusionDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -707,7 +707,7 @@ impl SurfaceOfExtrusion {
     /// Initialize evaluator by surface adaptor
     pub fn new_handleadaptor3dcurve_dir(
         theBase: &crate::ffi::HandleAdaptor3dCurve,
-        theExtrusionDir: &crate::ffi::gp_Dir,
+        theExtrusionDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -721,7 +721,7 @@ impl SurfaceOfExtrusion {
 
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:35 - `GeomEvaluator_SurfaceOfExtrusion::SetDirection()`
     /// ! Changes the direction of extrusion
-    pub fn set_direction(&mut self, theDirection: &crate::ffi::gp_Dir) {
+    pub fn set_direction(&mut self, theDirection: &crate::gp::Dir) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfExtrusion_set_direction(
                 self as *mut Self,
@@ -732,7 +732,7 @@ impl SurfaceOfExtrusion {
 
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:38 - `GeomEvaluator_SurfaceOfExtrusion::D0()`
     /// Value of surface
-    pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfExtrusion_d0(
                 self as *const Self,
@@ -749,9 +749,9 @@ impl SurfaceOfExtrusion {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfExtrusion_d1(
@@ -771,12 +771,12 @@ impl SurfaceOfExtrusion {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
-        theD2U: &mut crate::ffi::gp_Vec,
-        theD2V: &mut crate::ffi::gp_Vec,
-        theD2UV: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfExtrusion_d2(
@@ -799,16 +799,16 @@ impl SurfaceOfExtrusion {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
-        theD2U: &mut crate::ffi::gp_Vec,
-        theD2V: &mut crate::ffi::gp_Vec,
-        theD2UV: &mut crate::ffi::gp_Vec,
-        theD3U: &mut crate::ffi::gp_Vec,
-        theD3V: &mut crate::ffi::gp_Vec,
-        theD3UUV: &mut crate::ffi::gp_Vec,
-        theD3UVV: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+        theD3U: &mut crate::gp::Vec,
+        theD3V: &mut crate::gp::Vec,
+        theD3UUV: &mut crate::gp::Vec,
+        theD3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfExtrusion_d3(
@@ -839,7 +839,7 @@ impl SurfaceOfExtrusion {
         theV: f64,
         theDerU: i32,
         theDerV: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_SurfaceOfExtrusion_dn(
                 self as *const Self,
@@ -919,8 +919,8 @@ impl SurfaceOfRevolution {
     /// Initialize evaluator by revolved curve, the axis of revolution and the location
     pub fn new_handlegeomcurve_dir_pnt(
         theBase: &crate::ffi::HandleGeomCurve,
-        theRevolDir: &crate::ffi::gp_Dir,
-        theRevolLoc: &crate::ffi::gp_Pnt,
+        theRevolDir: &crate::gp::Dir,
+        theRevolLoc: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -937,8 +937,8 @@ impl SurfaceOfRevolution {
     /// Initialize evaluator by adaptor of the revolved curve, the axis of revolution and the location
     pub fn new_handleadaptor3dcurve_dir_pnt(
         theBase: &crate::ffi::HandleAdaptor3dCurve,
-        theRevolDir: &crate::ffi::gp_Dir,
-        theRevolLoc: &crate::ffi::gp_Pnt,
+        theRevolDir: &crate::gp::Dir,
+        theRevolLoc: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -953,7 +953,7 @@ impl SurfaceOfRevolution {
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:39 - `GeomEvaluator_SurfaceOfRevolution::SetDirection()`
     /// Change direction of the axis of revolution
-    pub fn set_direction(&mut self, theDirection: &crate::ffi::gp_Dir) {
+    pub fn set_direction(&mut self, theDirection: &crate::gp::Dir) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfRevolution_set_direction(
                 self as *mut Self,
@@ -964,7 +964,7 @@ impl SurfaceOfRevolution {
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:42 - `GeomEvaluator_SurfaceOfRevolution::SetLocation()`
     /// Change location of the axis of revolution
-    pub fn set_location(&mut self, theLocation: &crate::ffi::gp_Pnt) {
+    pub fn set_location(&mut self, theLocation: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfRevolution_set_location(
                 self as *mut Self,
@@ -975,7 +975,7 @@ impl SurfaceOfRevolution {
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:45 - `GeomEvaluator_SurfaceOfRevolution::SetAxis()`
     /// Change the axis of revolution
-    pub fn set_axis(&mut self, theAxis: &crate::ffi::gp_Ax1) {
+    pub fn set_axis(&mut self, theAxis: &crate::gp::Ax1) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfRevolution_set_axis(self as *mut Self, theAxis)
         }
@@ -983,7 +983,7 @@ impl SurfaceOfRevolution {
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:48 - `GeomEvaluator_SurfaceOfRevolution::D0()`
     /// Value of surface
-    pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfRevolution_d0(
                 self as *const Self,
@@ -1000,9 +1000,9 @@ impl SurfaceOfRevolution {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfRevolution_d1(
@@ -1022,12 +1022,12 @@ impl SurfaceOfRevolution {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
-        theD2U: &mut crate::ffi::gp_Vec,
-        theD2V: &mut crate::ffi::gp_Vec,
-        theD2UV: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfRevolution_d2(
@@ -1050,16 +1050,16 @@ impl SurfaceOfRevolution {
         &self,
         theU: f64,
         theV: f64,
-        theValue: &mut crate::ffi::gp_Pnt,
-        theD1U: &mut crate::ffi::gp_Vec,
-        theD1V: &mut crate::ffi::gp_Vec,
-        theD2U: &mut crate::ffi::gp_Vec,
-        theD2V: &mut crate::ffi::gp_Vec,
-        theD2UV: &mut crate::ffi::gp_Vec,
-        theD3U: &mut crate::ffi::gp_Vec,
-        theD3V: &mut crate::ffi::gp_Vec,
-        theD3UUV: &mut crate::ffi::gp_Vec,
-        theD3UVV: &mut crate::ffi::gp_Vec,
+        theValue: &mut crate::gp::Pnt,
+        theD1U: &mut crate::gp::Vec,
+        theD1V: &mut crate::gp::Vec,
+        theD2U: &mut crate::gp::Vec,
+        theD2V: &mut crate::gp::Vec,
+        theD2UV: &mut crate::gp::Vec,
+        theD3U: &mut crate::gp::Vec,
+        theD3V: &mut crate::gp::Vec,
+        theD3UUV: &mut crate::gp::Vec,
+        theD3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomEvaluator_SurfaceOfRevolution_d3(
@@ -1090,7 +1090,7 @@ impl SurfaceOfRevolution {
         theV: f64,
         theDerU: i32,
         theDerV: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_SurfaceOfRevolution_dn(
                 self as *const Self,

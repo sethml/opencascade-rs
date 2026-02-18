@@ -456,35 +456,35 @@ impl Curve {
     /// **Source:** `BOPDS_Curve.hxx`:49 - `BOPDS_Curve::SetCurve()`
     /// Modifier
     /// Sets the curve <theC>
-    pub fn set_curve(&mut self, theC: &crate::ffi::IntTools_Curve) {
+    pub fn set_curve(&mut self, theC: &crate::int_tools::Curve) {
         unsafe { crate::ffi::BOPDS_Curve_set_curve(self as *mut Self, theC) }
     }
 
     /// **Source:** `BOPDS_Curve.hxx`:53 - `BOPDS_Curve::Curve()`
     /// Selector
     /// Returns the curve
-    pub fn curve(&self) -> &crate::ffi::IntTools_Curve {
+    pub fn curve(&self) -> &crate::int_tools::Curve {
         unsafe { &*(crate::ffi::BOPDS_Curve_curve(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_Curve.hxx`:57 - `BOPDS_Curve::SetBox()`
     /// Modifier
     /// Sets the bounding box <theBox> of the curve
-    pub fn set_box(&mut self, theBox: &crate::ffi::Bnd_Box) {
+    pub fn set_box(&mut self, theBox: &crate::bnd::Box) {
         unsafe { crate::ffi::BOPDS_Curve_set_box(self as *mut Self, theBox) }
     }
 
     /// **Source:** `BOPDS_Curve.hxx`:61 - `BOPDS_Curve::Box()`
     /// Selector
     /// Returns the bounding box of the curve
-    pub fn box_(&self) -> &crate::ffi::Bnd_Box {
+    pub fn box_(&self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::BOPDS_Curve_box_(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_Curve.hxx`:65 - `BOPDS_Curve::ChangeBox()`
     /// Selector/Modifier
     /// Returns the bounding box of the curve
-    pub fn change_box(&mut self) -> &mut crate::ffi::Bnd_Box {
+    pub fn change_box(&mut self) -> &mut crate::bnd::Box {
         unsafe { &mut *(crate::ffi::BOPDS_Curve_change_box(self as *mut Self)) }
     }
 
@@ -674,7 +674,7 @@ impl DS {
     /// **Source:** `BOPDS_DS.hxx`:122 - `BOPDS_DS::Range()`
     /// Selector
     /// Returns the index range "i"
-    pub fn range(&self, theIndex: i32) -> &crate::ffi::BOPDS_IndexRange {
+    pub fn range(&self, theIndex: i32) -> &IndexRange {
         unsafe { &*(crate::ffi::BOPDS_DS_range(self as *const Self, theIndex)) }
     }
 
@@ -697,7 +697,7 @@ impl DS {
     /// Appends the information about the shape [theSI]
     /// to the data structure
     /// Returns the index of theSI in the data structure
-    pub fn append_shapeinfo(&mut self, theSI: &crate::ffi::BOPDS_ShapeInfo) -> i32 {
+    pub fn append_shapeinfo(&mut self, theSI: &ShapeInfo) -> i32 {
         unsafe { crate::ffi::BOPDS_DS_append_shapeinfo(self as *mut Self, theSI) }
     }
 
@@ -706,7 +706,7 @@ impl DS {
     /// Appends the default information about the shape [theS]
     /// to the data structure
     /// Returns the index of theS in the data structure
-    pub fn append_shape(&mut self, theS: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn append_shape(&mut self, theS: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::BOPDS_DS_append_shape(self as *mut Self, theS) }
     }
 
@@ -714,7 +714,7 @@ impl DS {
     /// Selector
     /// Returns the information about the shape
     /// with index theIndex
-    pub fn shape_info(&self, theIndex: i32) -> &crate::ffi::BOPDS_ShapeInfo {
+    pub fn shape_info(&self, theIndex: i32) -> &ShapeInfo {
         unsafe { &*(crate::ffi::BOPDS_DS_shape_info(self as *const Self, theIndex)) }
     }
 
@@ -722,7 +722,7 @@ impl DS {
     /// Selector/Modifier
     /// Returns the information about the shape
     /// with index theIndex
-    pub fn change_shape_info(&mut self, theIndex: i32) -> &mut crate::ffi::BOPDS_ShapeInfo {
+    pub fn change_shape_info(&mut self, theIndex: i32) -> &mut ShapeInfo {
         unsafe { &mut *(crate::ffi::BOPDS_DS_change_shape_info(self as *mut Self, theIndex)) }
     }
 
@@ -730,14 +730,14 @@ impl DS {
     /// Selector
     /// Returns the shape
     /// with index theIndex
-    pub fn shape(&self, theIndex: i32) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self, theIndex: i32) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPDS_DS_shape(self as *const Self, theIndex)) }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:161 - `BOPDS_DS::Index()`
     /// Selector
     /// Returns the index  of the shape theS
-    pub fn index(&self, theS: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn index(&self, theS: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::BOPDS_DS_index(self as *const Self, theS) }
     }
 
@@ -848,14 +848,14 @@ impl DS {
     /// **Source:** `BOPDS_DS.hxx`:226 - `BOPDS_DS::FaceInfo()`
     /// Selector
     /// Returns the state of face with index theIndex
-    pub fn face_info(&self, theIndex: i32) -> &crate::ffi::BOPDS_FaceInfo {
+    pub fn face_info(&self, theIndex: i32) -> &FaceInfo {
         unsafe { &*(crate::ffi::BOPDS_DS_face_info(self as *const Self, theIndex)) }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:230 - `BOPDS_DS::ChangeFaceInfo()`
     /// Selector/Modifier
     /// Returns the state of face with index theIndex
-    pub fn change_face_info(&mut self, theIndex: i32) -> &mut crate::ffi::BOPDS_FaceInfo {
+    pub fn change_face_info(&mut self, theIndex: i32) -> &mut FaceInfo {
         unsafe { &mut *(crate::ffi::BOPDS_DS_change_face_info(self as *mut Self, theIndex)) }
     }
 
@@ -1065,7 +1065,7 @@ impl DS {
     pub fn build_bnd_box_solid(
         &mut self,
         theIndex: i32,
-        theBox: &mut crate::ffi::Bnd_Box,
+        theBox: &mut crate::bnd::Box,
         theCheckInverted: bool,
     ) {
         unsafe {
@@ -1618,7 +1618,7 @@ impl InterfEE {
     /// Sets the info of common part
     /// @param theCP
     /// common part
-    pub fn set_common_part(&mut self, theCP: &crate::ffi::IntTools_CommonPrt) {
+    pub fn set_common_part(&mut self, theCP: &crate::int_tools::CommonPrt) {
         unsafe { crate::ffi::BOPDS_InterfEE_set_common_part(self as *mut Self, theCP) }
     }
 
@@ -1628,7 +1628,7 @@ impl InterfEE {
     /// Returns the info of common part
     /// @return
     /// common part
-    pub fn common_part(&self) -> &crate::ffi::IntTools_CommonPrt {
+    pub fn common_part(&self) -> &crate::int_tools::CommonPrt {
         unsafe { &*(crate::ffi::BOPDS_InterfEE_common_part(self as *const Self)) }
     }
 
@@ -1726,7 +1726,7 @@ impl InterfEF {
     /// Sets the info of common part
     /// @param theCP
     /// common part
-    pub fn set_common_part(&mut self, theCP: &crate::ffi::IntTools_CommonPrt) {
+    pub fn set_common_part(&mut self, theCP: &crate::int_tools::CommonPrt) {
         unsafe { crate::ffi::BOPDS_InterfEF_set_common_part(self as *mut Self, theCP) }
     }
 
@@ -1736,7 +1736,7 @@ impl InterfEF {
     /// Returns the info of common part
     /// @return
     /// common part
-    pub fn common_part(&self) -> &crate::ffi::IntTools_CommonPrt {
+    pub fn common_part(&self) -> &crate::int_tools::CommonPrt {
         unsafe { &*(crate::ffi::BOPDS_InterfEF_common_part(self as *const Self)) }
     }
 
@@ -2258,7 +2258,7 @@ impl Iterator {
     /// **Source:** `BOPDS_Iterator.hxx`:59 - `BOPDS_Iterator::DS()`
     /// Selector
     /// Returns the data structure
-    pub fn ds(&self) -> &crate::ffi::BOPDS_DS {
+    pub fn ds(&self) -> &DS {
         unsafe { &*(crate::ffi::BOPDS_Iterator_ds(self as *const Self)) }
     }
 
@@ -2418,7 +2418,7 @@ impl IteratorSI {
     }
 
     /// Inherited: **Source:** `BOPDS_Iterator.hxx`:59 - `BOPDS_Iterator::DS()`
-    pub fn ds(&self) -> &crate::ffi::BOPDS_DS {
+    pub fn ds(&self) -> &DS {
         unsafe { &*(crate::ffi::BOPDS_IteratorSI_inherited_DS(self as *const Self)) }
     }
 
@@ -2525,7 +2525,7 @@ impl Pair {
 
     /// **Source:** `BOPDS_Pair.hxx`:70 - `BOPDS_Pair::IsEqual()`
     /// Returns true if the Pair is equal to <the theOther>
-    pub fn is_equal(&self, theOther: &crate::ffi::BOPDS_Pair) -> bool {
+    pub fn is_equal(&self, theOther: &Pair) -> bool {
         unsafe { crate::ffi::BOPDS_Pair_is_equal(self as *const Self, theOther) }
     }
 }
@@ -2584,7 +2584,7 @@ impl Pave {
     /// Query
     /// Returns true if thr parameter od this is less
     /// than the parameter of  <theOther>
-    pub fn is_less(&self, theOther: &crate::ffi::BOPDS_Pave) -> bool {
+    pub fn is_less(&self, theOther: &Pave) -> bool {
         unsafe { crate::ffi::BOPDS_Pave_is_less(self as *const Self, theOther) }
     }
 
@@ -2592,7 +2592,7 @@ impl Pave {
     /// Query
     /// Returns true if thr parameter od this is equal
     /// to the parameter of  <theOther>
-    pub fn is_equal(&self, theOther: &crate::ffi::BOPDS_Pave) -> bool {
+    pub fn is_equal(&self, theOther: &Pave) -> bool {
         unsafe { crate::ffi::BOPDS_Pave_is_equal(self as *const Self, theOther) }
     }
 
@@ -2641,28 +2641,28 @@ impl PaveBlock {
     /// **Source:** `BOPDS_PaveBlock.hxx`:48 - `BOPDS_PaveBlock::SetPave1()`
     /// Modifier
     /// Sets the first pave <thePave>
-    pub fn set_pave1(&mut self, thePave: &crate::ffi::BOPDS_Pave) {
+    pub fn set_pave1(&mut self, thePave: &Pave) {
         unsafe { crate::ffi::BOPDS_PaveBlock_set_pave1(self as *mut Self, thePave) }
     }
 
     /// **Source:** `BOPDS_PaveBlock.hxx`:52 - `BOPDS_PaveBlock::Pave1()`
     /// Selector
     /// Returns the first pave
-    pub fn pave1(&self) -> &crate::ffi::BOPDS_Pave {
+    pub fn pave1(&self) -> &Pave {
         unsafe { &*(crate::ffi::BOPDS_PaveBlock_pave1(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_PaveBlock.hxx`:56 - `BOPDS_PaveBlock::SetPave2()`
     /// Modifier
     /// Sets the second pave <thePave>
-    pub fn set_pave2(&mut self, thePave: &crate::ffi::BOPDS_Pave) {
+    pub fn set_pave2(&mut self, thePave: &Pave) {
         unsafe { crate::ffi::BOPDS_PaveBlock_set_pave2(self as *mut Self, thePave) }
     }
 
     /// **Source:** `BOPDS_PaveBlock.hxx`:60 - `BOPDS_PaveBlock::Pave2()`
     /// Selector
     /// Returns the second pave
-    pub fn pave2(&self) -> &crate::ffi::BOPDS_Pave {
+    pub fn pave2(&self) -> &Pave {
         unsafe { &*(crate::ffi::BOPDS_PaveBlock_pave2(self as *const Self)) }
     }
 
@@ -2737,14 +2737,14 @@ impl PaveBlock {
     /// **Source:** `BOPDS_PaveBlock.hxx`:115 - `BOPDS_PaveBlock::AppendExtPave()`
     /// Modifier
     /// Appends extra paves <thePave>
-    pub fn append_ext_pave(&mut self, thePave: &crate::ffi::BOPDS_Pave) {
+    pub fn append_ext_pave(&mut self, thePave: &Pave) {
         unsafe { crate::ffi::BOPDS_PaveBlock_append_ext_pave(self as *mut Self, thePave) }
     }
 
     /// **Source:** `BOPDS_PaveBlock.hxx`:119 - `BOPDS_PaveBlock::AppendExtPave1()`
     /// Modifier
     /// Appends extra pave <thePave>
-    pub fn append_ext_pave1(&mut self, thePave: &crate::ffi::BOPDS_Pave) {
+    pub fn append_ext_pave1(&mut self, thePave: &Pave) {
         unsafe { crate::ffi::BOPDS_PaveBlock_append_ext_pave1(self as *mut Self, thePave) }
     }
 
@@ -2789,7 +2789,7 @@ impl PaveBlock {
         &mut self,
         theTS1: f64,
         theTS2: f64,
-        theBox: &crate::ffi::Bnd_Box,
+        theBox: &crate::bnd::Box,
         theIsSplittable: bool,
     ) {
         unsafe {
@@ -2813,7 +2813,7 @@ impl PaveBlock {
         &self,
         theTS1: &mut f64,
         theTS2: &mut f64,
-        theBox: &mut crate::ffi::Bnd_Box,
+        theBox: &mut crate::bnd::Box,
         theIsSplittable: &mut bool,
     ) {
         unsafe {
@@ -2920,42 +2920,42 @@ impl Point {
     /// **Source:** `BOPDS_Point.hxx`:40 - `BOPDS_Point::SetPnt()`
     /// Modifier
     /// Sets 3D point <thePnt>
-    pub fn set_pnt(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe { crate::ffi::BOPDS_Point_set_pnt(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `BOPDS_Point.hxx`:44 - `BOPDS_Point::Pnt()`
     /// Selector
     /// Returns 3D point
-    pub fn pnt(&self) -> &crate::ffi::gp_Pnt {
+    pub fn pnt(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::BOPDS_Point_pnt(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_Point.hxx`:48 - `BOPDS_Point::SetPnt2D1()`
     /// Modifier
     /// Sets 2D point on the first face <thePnt>
-    pub fn set_pnt2_d1(&mut self, thePnt: &crate::ffi::gp_Pnt2d) {
+    pub fn set_pnt2_d1(&mut self, thePnt: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::BOPDS_Point_set_pnt2_d1(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `BOPDS_Point.hxx`:52 - `BOPDS_Point::Pnt2D1()`
     /// Selector
     /// Returns 2D point on the first face <thePnt>
-    pub fn pnt2_d1(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn pnt2_d1(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::BOPDS_Point_pnt2_d1(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_Point.hxx`:56 - `BOPDS_Point::SetPnt2D2()`
     /// Modifier
     /// Sets 2D point on the second face <thePnt>
-    pub fn set_pnt2_d2(&mut self, thePnt: &crate::ffi::gp_Pnt2d) {
+    pub fn set_pnt2_d2(&mut self, thePnt: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::BOPDS_Point_set_pnt2_d2(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `BOPDS_Point.hxx`:60 - `BOPDS_Point::Pnt2D2()`
     /// Selector
     /// Returns 2D point on the second face <thePnt>
-    pub fn pnt2_d2(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn pnt2_d2(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::BOPDS_Point_pnt2_d2(self as *const Self)) }
     }
 
@@ -3012,14 +3012,14 @@ impl ShapeInfo {
     /// **Source:** `BOPDS_ShapeInfo.hxx`:47 - `BOPDS_ShapeInfo::SetShape()`
     /// Modifier
     /// Sets the shape <theS>
-    pub fn set_shape(&mut self, theS: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theS: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPDS_ShapeInfo_set_shape(self as *mut Self, theS) }
     }
 
     /// **Source:** `BOPDS_ShapeInfo.hxx`:51 - `BOPDS_ShapeInfo::Shape()`
     /// Selector
     /// Returns the shape
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPDS_ShapeInfo_shape(self as *const Self)) }
     }
 
@@ -3045,21 +3045,21 @@ impl ShapeInfo {
     /// **Source:** `BOPDS_ShapeInfo.hxx`:63 - `BOPDS_ShapeInfo::SetBox()`
     /// Modifier
     /// Sets the boundung box of the shape theBox
-    pub fn set_box(&mut self, theBox: &crate::ffi::Bnd_Box) {
+    pub fn set_box(&mut self, theBox: &crate::bnd::Box) {
         unsafe { crate::ffi::BOPDS_ShapeInfo_set_box(self as *mut Self, theBox) }
     }
 
     /// **Source:** `BOPDS_ShapeInfo.hxx`:67 - `BOPDS_ShapeInfo::Box()`
     /// Selector
     /// Returns the boundung box of the shape
-    pub fn box_(&self) -> &crate::ffi::Bnd_Box {
+    pub fn box_(&self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::BOPDS_ShapeInfo_box_(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_ShapeInfo.hxx`:71 - `BOPDS_ShapeInfo::ChangeBox()`
     /// Selector/Modifier
     /// Returns the boundung box of the shape
-    pub fn change_box(&mut self) -> &mut crate::ffi::Bnd_Box {
+    pub fn change_box(&mut self) -> &mut crate::bnd::Box {
         unsafe { &mut *(crate::ffi::BOPDS_ShapeInfo_change_box(self as *mut Self)) }
     }
 
@@ -3185,7 +3185,7 @@ impl SubIterator {
 
     /// **Source:** `BOPDS_SubIterator.hxx`:51 - `BOPDS_SubIterator::DS()`
     /// Returns the data structure
-    pub fn ds(&self) -> &crate::ffi::BOPDS_DS {
+    pub fn ds(&self) -> &DS {
         unsafe { &*(crate::ffi::BOPDS_SubIterator_ds(self as *const Self)) }
     }
 

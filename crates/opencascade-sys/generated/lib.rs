@@ -1,4 +1,6 @@
 // Generated OCCT bindings
+// Nested C++ types use Parent_Child naming, which is intentional
+#![allow(non_camel_case_types)]
 
 // Core FFI module with all types (pub(crate) to prevent direct access, use module re-exports instead)
 pub(crate) mod ffi;

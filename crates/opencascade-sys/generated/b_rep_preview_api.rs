@@ -35,7 +35,7 @@ impl MakeBox {
 
     /// **Source:** `BRepPreviewAPI_MakeBox.hxx`:36 - `BRepPreviewAPI_MakeBox::Build()`
     /// Creates a preview depending on point values.
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepPreviewAPI_MakeBox_build(self as *mut Self, theRange) }
     }
 
@@ -100,67 +100,67 @@ impl MakeBox {
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:99 - `BRepPrimAPI_MakeBox::Wedge()`
-    pub fn wedge(&mut self) -> &mut crate::ffi::BRepPrim_Wedge {
+    pub fn wedge(&mut self) -> &mut crate::b_rep_prim::Wedge {
         unsafe { &mut *(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Wedge(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Shell()`
-    pub fn shell(&mut self) -> &crate::ffi::TopoDS_Shell {
+    pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Shell(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::Solid()`
-    pub fn solid(&mut self) -> &crate::ffi::TopoDS_Solid {
+    pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Solid(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:114 - `BRepPrimAPI_MakeBox::BottomFace()`
-    pub fn bottom_face(&mut self) -> &crate::ffi::TopoDS_Face {
+    pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_BottomFace(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:117 - `BRepPrimAPI_MakeBox::BackFace()`
-    pub fn back_face(&mut self) -> &crate::ffi::TopoDS_Face {
+    pub fn back_face(&mut self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_BackFace(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:120 - `BRepPrimAPI_MakeBox::FrontFace()`
-    pub fn front_face(&mut self) -> &crate::ffi::TopoDS_Face {
+    pub fn front_face(&mut self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_FrontFace(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:123 - `BRepPrimAPI_MakeBox::LeftFace()`
-    pub fn left_face(&mut self) -> &crate::ffi::TopoDS_Face {
+    pub fn left_face(&mut self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_LeftFace(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:126 - `BRepPrimAPI_MakeBox::RightFace()`
-    pub fn right_face(&mut self) -> &crate::ffi::TopoDS_Face {
+    pub fn right_face(&mut self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_RightFace(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:129 - `BRepPrimAPI_MakeBox::TopFace()`
-    pub fn top_face(&mut self) -> &crate::ffi::TopoDS_Face {
+    pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_TopFace(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Modified(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepPreviewAPI_MakeBox_inherited_IsDeleted(self as *mut Self, S) }
     }
 

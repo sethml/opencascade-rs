@@ -8,42 +8,39 @@
 
 /// **Source:** `HLRAlgo.hxx`:65 - `HLRAlgo::EncodeMinMax`
 pub fn encode_min_max(
-    Min: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    Max: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    MinMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    Min: &mut EdgesBlock_MinMaxIndices,
+    Max: &mut EdgesBlock_MinMaxIndices,
+    MinMax: &mut EdgesBlock_MinMaxIndices,
 ) {
     unsafe { crate::ffi::HLRAlgo_encode_min_max(Min, Max, MinMax) }
 }
 /// **Source:** `HLRAlgo.hxx`:69 - `HLRAlgo::SizeBox`
-pub fn size_box(
-    Min: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    Max: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-) -> f64 {
+pub fn size_box(Min: &mut EdgesBlock_MinMaxIndices, Max: &mut EdgesBlock_MinMaxIndices) -> f64 {
     unsafe { crate::ffi::HLRAlgo_size_box(Min, Max) }
 }
 /// **Source:** `HLRAlgo.hxx`:72 - `HLRAlgo::DecodeMinMax`
 pub fn decode_min_max(
-    MinMax: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    Min: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    Max: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    MinMax: &EdgesBlock_MinMaxIndices,
+    Min: &mut EdgesBlock_MinMaxIndices,
+    Max: &mut EdgesBlock_MinMaxIndices,
 ) {
     unsafe { crate::ffi::HLRAlgo_decode_min_max(MinMax, Min, Max) }
 }
 /// **Source:** `HLRAlgo.hxx`:76 - `HLRAlgo::CopyMinMax`
 pub fn copy_min_max(
-    IMin: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    IMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    OMin: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    OMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    IMin: &mut EdgesBlock_MinMaxIndices,
+    IMax: &mut EdgesBlock_MinMaxIndices,
+    OMin: &mut EdgesBlock_MinMaxIndices,
+    OMax: &mut EdgesBlock_MinMaxIndices,
 ) {
     unsafe { crate::ffi::HLRAlgo_copy_min_max(IMin, IMax, OMin, OMax) }
 }
 /// **Source:** `HLRAlgo.hxx`:85 - `HLRAlgo::AddMinMax`
 pub fn add_min_max(
-    IMin: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    IMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    OMin: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
-    OMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    IMin: &mut EdgesBlock_MinMaxIndices,
+    IMax: &mut EdgesBlock_MinMaxIndices,
+    OMin: &mut EdgesBlock_MinMaxIndices,
+    OMax: &mut EdgesBlock_MinMaxIndices,
 ) {
     unsafe { crate::ffi::HLRAlgo_add_min_max(IMin, IMax, OMin, OMax) }
 }
@@ -340,13 +337,57 @@ impl BiPoint {
     }
 
     /// **Source:** `HLRAlgo_BiPoint.hxx`:243 - `HLRAlgo_BiPoint::Indices()`
-    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_BiPoint_IndicesT {
+    pub fn indices(&mut self) -> &mut BiPoint_IndicesT {
         unsafe { &mut *(crate::ffi::HLRAlgo_BiPoint_indices(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_BiPoint.hxx`:245 - `HLRAlgo_BiPoint::Points()`
-    pub fn points(&mut self) -> &mut crate::ffi::HLRAlgo_BiPoint_PointsT {
+    pub fn points(&mut self) -> &mut BiPoint_PointsT {
         unsafe { &mut *(crate::ffi::HLRAlgo_BiPoint_points(self as *mut Self)) }
+    }
+}
+
+/// **Source:** `HLRAlgo_BiPoint.hxx`:32 - `HLRAlgo_BiPoint_IndicesT`
+pub use crate::ffi::HLRAlgo_BiPoint_IndicesT as BiPoint_IndicesT;
+
+unsafe impl crate::CppDeletable for BiPoint_IndicesT {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_BiPoint_IndicesT_destructor(ptr);
+    }
+}
+
+/// **Source:** `HLRAlgo_BiPoint.hxx`:60 - `HLRAlgo_BiPoint_PointsT`
+pub use crate::ffi::HLRAlgo_BiPoint_PointsT as BiPoint_PointsT;
+
+unsafe impl crate::CppDeletable for BiPoint_PointsT {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_BiPoint_PointsT_destructor(ptr);
+    }
+}
+
+impl BiPoint_PointsT {
+    /// **Source:** `HLRAlgo_BiPoint.hxx` - `HLRAlgo_BiPoint_PointsT::HLRAlgo_BiPoint_PointsT()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_BiPoint_PointsT_ctor()) }
+    }
+
+    /// **Source:** `HLRAlgo_BiPoint.hxx`:67 - `HLRAlgo_BiPoint_PointsT::PntP12D()`
+    pub fn pnt_p12d(&self) -> crate::OwnedPtr<crate::gp::XY> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_BiPoint_PointsT_pnt_p12d(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_BiPoint.hxx`:69 - `HLRAlgo_BiPoint_PointsT::PntP22D()`
+    pub fn pnt_p22d(&self) -> crate::OwnedPtr<crate::gp::XY> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_BiPoint_PointsT_pnt_p22d(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -425,7 +466,7 @@ impl EdgeIterator {
     }
 
     /// **Source:** `HLRAlgo_EdgeIterator.hxx`:35 - `HLRAlgo_EdgeIterator::InitHidden()`
-    pub fn init_hidden(&mut self, status: &mut crate::ffi::HLRAlgo_EdgeStatus) {
+    pub fn init_hidden(&mut self, status: &mut EdgeStatus) {
         unsafe { crate::ffi::HLRAlgo_EdgeIterator_init_hidden(self as *mut Self, status) }
     }
 
@@ -455,7 +496,7 @@ impl EdgeIterator {
     }
 
     /// **Source:** `HLRAlgo_EdgeIterator.hxx`:48 - `HLRAlgo_EdgeIterator::InitVisible()`
-    pub fn init_visible(&mut self, status: &mut crate::ffi::HLRAlgo_EdgeStatus) {
+    pub fn init_visible(&mut self, status: &mut EdgeStatus) {
         unsafe { crate::ffi::HLRAlgo_EdgeIterator_init_visible(self as *mut Self, status) }
     }
 
@@ -770,12 +811,12 @@ impl EdgesBlock {
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:157 - `HLRAlgo_EdgesBlock::UpdateMinMax()`
-    pub fn update_min_max(&mut self, TotMinMax: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices) {
+    pub fn update_min_max(&mut self, TotMinMax: &EdgesBlock_MinMaxIndices) {
         unsafe { crate::ffi::HLRAlgo_EdgesBlock_update_min_max(self as *mut Self, TotMinMax) }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:159 - `HLRAlgo_EdgesBlock::MinMax()`
-    pub fn min_max(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices {
+    pub fn min_max(&mut self) -> &mut EdgesBlock_MinMaxIndices {
         unsafe { &mut *(crate::ffi::HLRAlgo_EdgesBlock_min_max(self as *mut Self)) }
     }
 
@@ -825,6 +866,15 @@ impl HandleHLRAlgoEdgesBlock {
     /// Dereference this Handle to mutably access the underlying HLRAlgo_EdgesBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock {
         unsafe { &mut *(crate::ffi::HandleHLRAlgoEdgesBlock_get_mut(self as *mut Self)) }
+    }
+}
+
+/// **Source:** `HLRAlgo_EdgesBlock.hxx`:48 - `HLRAlgo_EdgesBlock_MinMaxIndices`
+pub use crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices as EdgesBlock_MinMaxIndices;
+
+unsafe impl crate::CppDeletable for EdgesBlock_MinMaxIndices {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices_destructor(ptr);
     }
 }
 
@@ -1241,8 +1291,8 @@ impl Interference {
 
     /// **Source:** `HLRAlgo_Interference.hxx`:36 - `HLRAlgo_Interference::HLRAlgo_Interference()`
     pub fn new_intersection_coincidence_orientation3(
-        Inters: &crate::ffi::HLRAlgo_Intersection,
-        Bound: &crate::ffi::HLRAlgo_Coincidence,
+        Inters: &Intersection,
+        Bound: &Coincidence,
         Orient: crate::top_abs::Orientation,
         Trans: crate::top_abs::Orientation,
         BTrans: crate::top_abs::Orientation,
@@ -1261,12 +1311,12 @@ impl Interference {
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:42 - `HLRAlgo_Interference::Intersection()`
-    pub fn intersection_intersection(&mut self, I: &crate::ffi::HLRAlgo_Intersection) {
+    pub fn intersection_intersection(&mut self, I: &Intersection) {
         unsafe { crate::ffi::HLRAlgo_Interference_intersection_intersection(self as *mut Self, I) }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:44 - `HLRAlgo_Interference::Boundary()`
-    pub fn boundary_coincidence(&mut self, B: &crate::ffi::HLRAlgo_Coincidence) {
+    pub fn boundary_coincidence(&mut self, B: &Coincidence) {
         unsafe { crate::ffi::HLRAlgo_Interference_boundary_coincidence(self as *mut Self, B) }
     }
 
@@ -1295,22 +1345,22 @@ impl Interference {
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:52 - `HLRAlgo_Interference::Intersection()`
-    pub fn intersection(&self) -> &crate::ffi::HLRAlgo_Intersection {
+    pub fn intersection(&self) -> &Intersection {
         unsafe { &*(crate::ffi::HLRAlgo_Interference_intersection(self as *const Self)) }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:54 - `HLRAlgo_Interference::ChangeIntersection()`
-    pub fn change_intersection(&mut self) -> &mut crate::ffi::HLRAlgo_Intersection {
+    pub fn change_intersection(&mut self) -> &mut Intersection {
         unsafe { &mut *(crate::ffi::HLRAlgo_Interference_change_intersection(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:56 - `HLRAlgo_Interference::Boundary()`
-    pub fn boundary(&self) -> &crate::ffi::HLRAlgo_Coincidence {
+    pub fn boundary(&self) -> &Coincidence {
         unsafe { &*(crate::ffi::HLRAlgo_Interference_boundary(self as *const Self)) }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:58 - `HLRAlgo_Interference::ChangeBoundary()`
-    pub fn change_boundary(&mut self) -> &mut crate::ffi::HLRAlgo_Coincidence {
+    pub fn change_boundary(&mut self) -> &mut Coincidence {
         unsafe { &mut *(crate::ffi::HLRAlgo_Interference_change_boundary(self as *mut Self)) }
     }
 
@@ -1649,7 +1699,7 @@ impl PolyData {
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:110 - `HLRAlgo_PolyData::UpdateGlobalMinMax()`
-    pub fn update_global_min_max(&mut self, theBox: &mut crate::ffi::HLRAlgo_PolyData_Box) {
+    pub fn update_global_min_max(&mut self, theBox: &mut PolyData_Box) {
         unsafe { crate::ffi::HLRAlgo_PolyData_update_global_min_max(self as *mut Self, theBox) }
     }
 
@@ -1662,11 +1712,11 @@ impl PolyData {
     /// process hiding between <Pt1> and <Pt2>.
     pub fn hide_by_poly_data(
         &mut self,
-        thePoints: &crate::ffi::HLRAlgo_BiPoint_PointsT,
-        theTriangle: &mut crate::ffi::HLRAlgo_PolyData_Triangle,
-        theIndices: &mut crate::ffi::HLRAlgo_BiPoint_IndicesT,
+        thePoints: &BiPoint_PointsT,
+        theTriangle: &mut PolyData_Triangle,
+        theIndices: &mut BiPoint_IndicesT,
         HidingShell: bool,
-        status: &mut crate::ffi::HLRAlgo_EdgeStatus,
+        status: &mut EdgeStatus,
     ) {
         unsafe {
             crate::ffi::HLRAlgo_PolyData_hide_by_poly_data(
@@ -1681,7 +1731,7 @@ impl PolyData {
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:121 - `HLRAlgo_PolyData::Indices()`
-    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_PolyData_FaceIndices {
+    pub fn indices(&mut self) -> &mut PolyData_FaceIndices {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyData_indices(self as *mut Self)) }
     }
 
@@ -1732,6 +1782,41 @@ impl HandleHLRAlgoPolyData {
     }
 }
 
+/// **Source:** `HLRAlgo_PolyData.hxx`:41 - `HLRAlgo_PolyData_FaceIndices`
+pub use crate::ffi::HLRAlgo_PolyData_FaceIndices as PolyData_FaceIndices;
+
+unsafe impl crate::CppDeletable for PolyData_FaceIndices {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyData_FaceIndices_destructor(ptr);
+    }
+}
+
+/// **Source:** `HLRAlgo_PolyData.hxx`:54 - `HLRAlgo_PolyData_Triangle`
+pub use crate::ffi::HLRAlgo_PolyData_Triangle as PolyData_Triangle;
+
+unsafe impl crate::CppDeletable for PolyData_Triangle {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyData_Triangle_destructor(ptr);
+    }
+}
+
+impl PolyData_Triangle {
+    /// **Source:** `HLRAlgo_PolyData.hxx` - `HLRAlgo_PolyData_Triangle::HLRAlgo_PolyData_Triangle()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyData_Triangle_ctor()) }
+    }
+}
+
+/// **Source:** `HLRAlgo_PolyData.hxx`:60 - `HLRAlgo_PolyData_Box`
+pub use crate::ffi::HLRAlgo_PolyData_Box as PolyData_Box;
+
+unsafe impl crate::CppDeletable for PolyData_Box {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyData_Box_destructor(ptr);
+    }
+}
+
 // ========================
 // From HLRAlgo_PolyHidingData.hxx
 // ========================
@@ -1769,13 +1854,38 @@ impl PolyHidingData {
     }
 
     /// **Source:** `HLRAlgo_PolyHidingData.hxx`:64 - `HLRAlgo_PolyHidingData::Indices()`
-    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_PolyHidingData_TriangleIndices {
+    pub fn indices(&mut self) -> &mut PolyHidingData_TriangleIndices {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyHidingData_indices(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_PolyHidingData.hxx`:66 - `HLRAlgo_PolyHidingData::Plane()`
-    pub fn plane(&mut self) -> &mut crate::ffi::HLRAlgo_PolyHidingData_PlaneT {
+    pub fn plane(&mut self) -> &mut PolyHidingData_PlaneT {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyHidingData_plane(self as *mut Self)) }
+    }
+}
+
+/// **Source:** `HLRAlgo_PolyHidingData.hxx`:31 - `HLRAlgo_PolyHidingData_TriangleIndices`
+pub use crate::ffi::HLRAlgo_PolyHidingData_TriangleIndices as PolyHidingData_TriangleIndices;
+
+unsafe impl crate::CppDeletable for PolyHidingData_TriangleIndices {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyHidingData_TriangleIndices_destructor(ptr);
+    }
+}
+
+/// **Source:** `HLRAlgo_PolyHidingData.hxx`:36 - `HLRAlgo_PolyHidingData_PlaneT`
+pub use crate::ffi::HLRAlgo_PolyHidingData_PlaneT as PolyHidingData_PlaneT;
+
+unsafe impl crate::CppDeletable for PolyHidingData_PlaneT {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyHidingData_PlaneT_destructor(ptr);
+    }
+}
+
+impl PolyHidingData_PlaneT {
+    /// **Source:** `HLRAlgo_PolyHidingData.hxx`:38 - `HLRAlgo_PolyHidingData_PlaneT::HLRAlgo_PolyHidingData_PlaneT()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyHidingData_PlaneT_ctor()) }
     }
 }
 
@@ -1960,12 +2070,12 @@ impl PolyInternalNode {
     }
 
     /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:62 - `HLRAlgo_PolyInternalNode::Indices()`
-    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_PolyInternalNode_NodeIndices {
+    pub fn indices(&mut self) -> &mut PolyInternalNode_NodeIndices {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyInternalNode_indices(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::Data()`
-    pub fn data(&mut self) -> &mut crate::ffi::HLRAlgo_PolyInternalNode_NodeData {
+    pub fn data(&mut self) -> &mut PolyInternalNode_NodeData {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyInternalNode_data(self as *mut Self)) }
     }
 
@@ -2020,6 +2130,45 @@ impl HandleHLRAlgoPolyInternalNode {
     }
 }
 
+/// **Source:** `HLRAlgo_PolyInternalNode.hxx`:35 - `HLRAlgo_PolyInternalNode_NodeIndices`
+pub use crate::ffi::HLRAlgo_PolyInternalNode_NodeIndices as PolyInternalNode_NodeIndices;
+
+unsafe impl crate::CppDeletable for PolyInternalNode_NodeIndices {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyInternalNode_NodeIndices_destructor(ptr);
+    }
+}
+
+/// **Source:** `HLRAlgo_PolyInternalNode.hxx`:40 - `HLRAlgo_PolyInternalNode_NodeData`
+pub use crate::ffi::HLRAlgo_PolyInternalNode_NodeData as PolyInternalNode_NodeData;
+
+unsafe impl crate::CppDeletable for PolyInternalNode_NodeData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyInternalNode_NodeData_destructor(ptr);
+    }
+}
+
+impl PolyInternalNode_NodeData {
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:42 - `HLRAlgo_PolyInternalNode_NodeData::HLRAlgo_PolyInternalNode_NodeData()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyInternalNode_NodeData_ctor()) }
+    }
+}
+
+// ========================
+// From HLRAlgo_PolyInternalSegment.hxx
+// ========================
+
+/// **Source:** `HLRAlgo_PolyInternalSegment.hxx`:26 - `HLRAlgo_PolyInternalSegment`
+/// to Update OutLines.
+pub use crate::ffi::HLRAlgo_PolyInternalSegment as PolyInternalSegment;
+
+unsafe impl crate::CppDeletable for PolyInternalSegment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyInternalSegment_destructor(ptr);
+    }
+}
+
 // ========================
 // From HLRAlgo_PolyShellData.hxx
 // ========================
@@ -2041,7 +2190,7 @@ impl PolyShellData {
     }
 
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:40 - `HLRAlgo_PolyShellData::UpdateGlobalMinMax()`
-    pub fn update_global_min_max(&mut self, theBox: &mut crate::ffi::HLRAlgo_PolyData_Box) {
+    pub fn update_global_min_max(&mut self, theBox: &mut PolyData_Box) {
         unsafe {
             crate::ffi::HLRAlgo_PolyShellData_update_global_min_max(self as *mut Self, theBox)
         }
@@ -2063,7 +2212,7 @@ impl PolyShellData {
     }
 
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:52 - `HLRAlgo_PolyShellData::Indices()`
-    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_PolyShellData_ShellIndices {
+    pub fn indices(&mut self) -> &mut PolyShellData_ShellIndices {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyShellData_indices(self as *mut Self)) }
     }
 
@@ -2116,6 +2265,15 @@ impl HandleHLRAlgoPolyShellData {
     }
 }
 
+/// **Source:** `HLRAlgo_PolyShellData.hxx`:33 - `HLRAlgo_PolyShellData_ShellIndices`
+pub use crate::ffi::HLRAlgo_PolyShellData_ShellIndices as PolyShellData_ShellIndices;
+
+unsafe impl crate::CppDeletable for PolyShellData_ShellIndices {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_PolyShellData_ShellIndices_destructor(ptr);
+    }
+}
+
 // ========================
 // From HLRAlgo_Projector.hxx
 // ========================
@@ -2150,21 +2308,21 @@ impl Projector {
     /// **Source:** `HLRAlgo_Projector.hxx`:53 - `HLRAlgo_Projector::HLRAlgo_Projector()`
     /// Creates   an axonometric  projector.   <CS> is the
     /// viewing coordinate system.
-    pub fn new_ax2(CS: &crate::ffi::gp_Ax2) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2(CS: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_Projector_ctor_ax2(CS)) }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:57 - `HLRAlgo_Projector::HLRAlgo_Projector()`
     /// Creates  a  perspective  projector.   <CS>  is the
     /// viewing coordinate system.
-    pub fn new_ax2_real(CS: &crate::ffi::gp_Ax2, Focus: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2_real(CS: &crate::gp::Ax2, Focus: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_Projector_ctor_ax2_real(CS, Focus)) }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:60 - `HLRAlgo_Projector::HLRAlgo_Projector()`
     /// build a Projector with automatic minmax directions.
     pub fn new_trsf_bool_real(
-        T: &crate::ffi::gp_Trsf,
+        T: &crate::gp::Trsf,
         Persp: bool,
         Focus: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2178,12 +2336,12 @@ impl Projector {
     /// **Source:** `HLRAlgo_Projector.hxx`:65 - `HLRAlgo_Projector::HLRAlgo_Projector()`
     /// build a Projector with given minmax directions.
     pub fn new_trsf_bool_real_vec2d3(
-        T: &crate::ffi::gp_Trsf,
+        T: &crate::gp::Trsf,
         Persp: bool,
         Focus: f64,
-        v1: &crate::ffi::gp_Vec2d,
-        v2: &crate::ffi::gp_Vec2d,
-        v3: &crate::ffi::gp_Vec2d,
+        v1: &crate::gp::Vec2d,
+        v2: &crate::gp::Vec2d,
+        v3: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_Projector_ctor_trsf_bool_real_vec2d3(
@@ -2193,16 +2351,16 @@ impl Projector {
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:72 - `HLRAlgo_Projector::Set()`
-    pub fn set(&mut self, T: &crate::ffi::gp_Trsf, Persp: bool, Focus: f64) {
+    pub fn set(&mut self, T: &crate::gp::Trsf, Persp: bool, Focus: f64) {
         unsafe { crate::ffi::HLRAlgo_Projector_set(self as *mut Self, T, Persp, Focus) }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:76 - `HLRAlgo_Projector::Directions()`
     pub fn directions(
         &self,
-        D1: &mut crate::ffi::gp_Vec2d,
-        D2: &mut crate::ffi::gp_Vec2d,
-        D3: &mut crate::ffi::gp_Vec2d,
+        D1: &mut crate::gp::Vec2d,
+        D2: &mut crate::gp::Vec2d,
+        D3: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::HLRAlgo_Projector_directions(self as *const Self, D1, D2, D3) }
     }
@@ -2221,19 +2379,19 @@ impl Projector {
 
     /// **Source:** `HLRAlgo_Projector.hxx`:85 - `HLRAlgo_Projector::Transformation()`
     /// Returns the active transformation.
-    pub fn transformation(&self) -> &crate::ffi::gp_Trsf {
+    pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::HLRAlgo_Projector_transformation(self as *const Self)) }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:88 - `HLRAlgo_Projector::InvertedTransformation()`
     /// Returns the active inverted transformation.
-    pub fn inverted_transformation(&self) -> &crate::ffi::gp_Trsf {
+    pub fn inverted_transformation(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::HLRAlgo_Projector_inverted_transformation(self as *const Self)) }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:91 - `HLRAlgo_Projector::FullTransformation()`
     /// Returns the original transformation.
-    pub fn full_transformation(&self) -> &crate::ffi::gp_Trsf {
+    pub fn full_transformation(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::HLRAlgo_Projector_full_transformation(self as *const Self)) }
     }
 
@@ -2244,24 +2402,24 @@ impl Projector {
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:96 - `HLRAlgo_Projector::Transform()`
-    pub fn transform_vec(&self, D: &mut crate::ffi::gp_Vec) {
+    pub fn transform_vec(&self, D: &mut crate::gp::Vec) {
         unsafe { crate::ffi::HLRAlgo_Projector_transform_vec(self as *const Self, D) }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:98 - `HLRAlgo_Projector::Transform()`
-    pub fn transform_pnt(&self, Pnt: &mut crate::ffi::gp_Pnt) {
+    pub fn transform_pnt(&self, Pnt: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::HLRAlgo_Projector_transform_pnt(self as *const Self, Pnt) }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:101 - `HLRAlgo_Projector::Project()`
     /// Transform and apply perspective if needed.
-    pub fn project_pnt_pnt2d(&self, P: &crate::ffi::gp_Pnt, Pout: &mut crate::ffi::gp_Pnt2d) {
+    pub fn project_pnt_pnt2d(&self, P: &crate::gp::Pnt, Pout: &mut crate::gp::Pnt2d) {
         unsafe { crate::ffi::HLRAlgo_Projector_project_pnt_pnt2d(self as *const Self, P, Pout) }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:104 - `HLRAlgo_Projector::Project()`
     /// Transform and apply perspective if needed.
-    pub fn project_pnt_real3(&self, P: &crate::ffi::gp_Pnt, X: &mut f64, Y: &mut f64, Z: &mut f64) {
+    pub fn project_pnt_real3(&self, P: &crate::gp::Pnt, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         unsafe { crate::ffi::HLRAlgo_Projector_project_pnt_real3(self as *const Self, P, X, Y, Z) }
     }
 
@@ -2269,10 +2427,10 @@ impl Projector {
     /// Transform and apply perspective if needed.
     pub fn project_pnt_vec_pnt2d_vec2d(
         &self,
-        P: &crate::ffi::gp_Pnt,
-        D1: &crate::ffi::gp_Vec,
-        Pout: &mut crate::ffi::gp_Pnt2d,
-        D1out: &mut crate::ffi::gp_Vec2d,
+        P: &crate::gp::Pnt,
+        D1: &crate::gp::Vec,
+        Pout: &mut crate::gp::Pnt2d,
+        D1out: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::HLRAlgo_Projector_project_pnt_vec_pnt2d_vec2d(
@@ -2288,7 +2446,7 @@ impl Projector {
     /// **Source:** `HLRAlgo_Projector.hxx`:117 - `HLRAlgo_Projector::Shoot()`
     /// return a line going through the eye towards the
     /// 2d point <X,Y>.
-    pub fn shoot(&self, X: f64, Y: f64) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn shoot(&self, X: f64, Y: f64) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_Projector_shoot(
                 self as *const Self,
@@ -2296,6 +2454,20 @@ impl Projector {
                 Y,
             ))
         }
+    }
+}
+
+// ========================
+// From HLRAlgo_TriangleData.hxx
+// ========================
+
+/// **Source:** `HLRAlgo_TriangleData.hxx`:26 - `HLRAlgo_TriangleData`
+/// Data structure of a triangle.
+pub use crate::ffi::HLRAlgo_TriangleData as TriangleData;
+
+unsafe impl crate::CppDeletable for TriangleData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HLRAlgo_TriangleData_destructor(ptr);
     }
 }
 
@@ -2341,12 +2513,12 @@ impl WiresBlock {
     }
 
     /// **Source:** `HLRAlgo_WiresBlock.hxx`:56 - `HLRAlgo_WiresBlock::UpdateMinMax()`
-    pub fn update_min_max(&mut self, theMinMaxes: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices) {
+    pub fn update_min_max(&mut self, theMinMaxes: &EdgesBlock_MinMaxIndices) {
         unsafe { crate::ffi::HLRAlgo_WiresBlock_update_min_max(self as *mut Self, theMinMaxes) }
     }
 
     /// **Source:** `HLRAlgo_WiresBlock.hxx`:61 - `HLRAlgo_WiresBlock::MinMax()`
-    pub fn min_max(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices {
+    pub fn min_max(&mut self) -> &mut EdgesBlock_MinMaxIndices {
         unsafe { &mut *(crate::ffi::HLRAlgo_WiresBlock_min_max(self as *mut Self)) }
     }
 

@@ -172,10 +172,7 @@ impl BitMap {
     /// Creates a BitMap from another one
     /// if <copied> is True, copies data
     /// else, data are not copied, only the header object is
-    pub fn new_bitmap_bool(
-        other: &crate::ffi::Interface_BitMap,
-        copied: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_bitmap_bool(other: &BitMap, copied: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_BitMap_ctor_bitmap_bool(other, copied))
         }
@@ -194,7 +191,7 @@ impl BitMap {
     /// Creates a BitMap from another one
     /// if <copied> is True, copies data
     /// else, data are not copied, only the header object is
-    pub fn new_bitmap(other: &crate::ffi::Interface_BitMap) -> crate::OwnedPtr<Self> {
+    pub fn new_bitmap(other: &BitMap) -> crate::OwnedPtr<Self> {
         Self::new_bitmap_bool(other, false)
     }
 
@@ -211,7 +208,7 @@ impl BitMap {
 
     /// **Source:** `Interface_BitMap.hxx`:69 - `Interface_BitMap::Initialize()`
     /// Initialize a BitMap from another one
-    pub fn initialize_bitmap_bool(&mut self, other: &crate::ffi::Interface_BitMap, copied: bool) {
+    pub fn initialize_bitmap_bool(&mut self, other: &BitMap, copied: bool) {
         unsafe {
             crate::ffi::Interface_BitMap_initialize_bitmap_bool(self as *mut Self, other, copied)
         }
@@ -386,7 +383,7 @@ impl Check {
 
     /// **Source:** `Interface_Check.hxx`:60 - `Interface_Check::SendFail()`
     /// New name for AddFail (Msg)
-    pub fn send_fail(&mut self, amsg: &crate::ffi::Message_Msg) {
+    pub fn send_fail(&mut self, amsg: &crate::message::Msg) {
         unsafe { crate::ffi::Interface_Check_send_fail(self as *mut Self, amsg) }
     }
 
@@ -438,7 +435,7 @@ impl Check {
 
     /// **Source:** `Interface_Check.hxx`:75 - `Interface_Check::AddFail()`
     /// Records a new Fail from the definition of a Msg (Original+Value)
-    pub fn add_fail_msg(&mut self, amsg: &crate::ffi::Message_Msg) {
+    pub fn add_fail_msg(&mut self, amsg: &crate::message::Msg) {
         unsafe { crate::ffi::Interface_Check_add_fail_msg(self as *mut Self, amsg) }
     }
 
@@ -494,7 +491,7 @@ impl Check {
 
     /// **Source:** `Interface_Check.hxx`:101 - `Interface_Check::SendWarning()`
     /// New name for AddWarning
-    pub fn send_warning(&mut self, amsg: &crate::ffi::Message_Msg) {
+    pub fn send_warning(&mut self, amsg: &crate::message::Msg) {
         unsafe { crate::ffi::Interface_Check_send_warning(self as *mut Self, amsg) }
     }
 
@@ -546,7 +543,7 @@ impl Check {
 
     /// **Source:** `Interface_Check.hxx`:116 - `Interface_Check::AddWarning()`
     /// Records a new Warning from the definition of a Msg (Original+Value)
-    pub fn add_warning_msg(&mut self, amsg: &crate::ffi::Message_Msg) {
+    pub fn add_warning_msg(&mut self, amsg: &crate::message::Msg) {
         unsafe { crate::ffi::Interface_Check_add_warning_msg(self as *mut Self, amsg) }
     }
 
@@ -603,7 +600,7 @@ impl Check {
     /// **Source:** `Interface_Check.hxx`:143 - `Interface_Check::SendMsg()`
     /// Records an information message
     /// This does not change the status of the Check
-    pub fn send_msg(&mut self, amsg: &crate::ffi::Message_Msg) {
+    pub fn send_msg(&mut self, amsg: &crate::message::Msg) {
         unsafe { crate::ffi::Interface_Check_send_msg(self as *mut Self, amsg) }
     }
 
@@ -909,7 +906,7 @@ impl CheckIterator {
     /// Merges another CheckIterator into <me>, i.e. adds each of its
     /// Checks. Content of <other> remains unchanged.
     /// Takes also the Model but not the Name
-    pub fn merge(&mut self, other: &mut crate::ffi::Interface_CheckIterator) {
+    pub fn merge(&mut self, other: &mut CheckIterator) {
         unsafe { crate::ffi::Interface_CheckIterator_merge(self as *mut Self, other) }
     }
 
@@ -974,7 +971,7 @@ impl CheckIterator {
     pub fn extract_checkstatus(
         &self,
         status: crate::interface::CheckStatus,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    ) -> crate::OwnedPtr<CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_CheckIterator_extract_checkstatus(
                 self as *const Self,
@@ -998,7 +995,7 @@ impl CheckIterator {
         mess: &str,
         incl: i32,
         status: crate::interface::CheckStatus,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    ) -> crate::OwnedPtr<CheckIterator> {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1260,7 +1257,7 @@ impl Graph {
     /// Services Library, given directly as an argument
     pub fn new_handleinterfaceinterfacemodel_generallib_bool(
         amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-        lib: &crate::ffi::Interface_GeneralLib,
+        lib: &GeneralLib,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1294,10 +1291,7 @@ impl Graph {
     /// Creates a Graph from another one, getting all its data
     /// Remark that status are copied from <agraph>, but the other
     /// lists (sharing/shared) are copied only if <copied> = True
-    pub fn new_graph_bool(
-        agraph: &crate::ffi::Interface_Graph,
-        copied: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_graph_bool(agraph: &Graph, copied: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_ctor_graph_bool(agraph, copied))
         }
@@ -1311,7 +1305,7 @@ impl Graph {
     /// Services Library, given directly as an argument
     pub fn new_handleinterfaceinterfacemodel_generallib(
         amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-        lib: &crate::ffi::Interface_GeneralLib,
+        lib: &GeneralLib,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_generallib_bool(amodel, lib, true)
     }
@@ -1328,7 +1322,7 @@ impl Graph {
     /// Creates a Graph from another one, getting all its data
     /// Remark that status are copied from <agraph>, but the other
     /// lists (sharing/shared) are copied only if <copied> = True
-    pub fn new_graph(agraph: &crate::ffi::Interface_Graph) -> crate::OwnedPtr<Self> {
+    pub fn new_graph(agraph: &Graph) -> crate::OwnedPtr<Self> {
         Self::new_graph_bool(agraph, false)
     }
 
@@ -1398,13 +1392,13 @@ impl Graph {
 
     /// **Source:** `Interface_Graph.hxx`:148 - `Interface_Graph::BitMap()`
     /// Returns the Bit Map in order to read or edit flag values
-    pub fn bit_map(&self) -> &crate::ffi::Interface_BitMap {
+    pub fn bit_map(&self) -> &BitMap {
         unsafe { &*(crate::ffi::Interface_Graph_bit_map(self as *const Self)) }
     }
 
     /// **Source:** `Interface_Graph.hxx`:151 - `Interface_Graph::CBitMap()`
     /// Returns the Bit Map in order to edit it (add new flags)
-    pub fn c_bit_map(&mut self) -> &mut crate::ffi::Interface_BitMap {
+    pub fn c_bit_map(&mut self) -> &mut BitMap {
         unsafe { &mut *(crate::ffi::Interface_Graph_c_bit_map(self as *mut Self)) }
     }
 
@@ -1422,13 +1416,13 @@ impl Graph {
 
     /// **Source:** `Interface_Graph.hxx`:203 - `Interface_Graph::GetFromGraph()`
     /// Gets all present items from another graph
-    pub fn get_from_graph_graph(&mut self, agraph: &crate::ffi::Interface_Graph) {
+    pub fn get_from_graph_graph(&mut self, agraph: &Graph) {
         unsafe { crate::ffi::Interface_Graph_get_from_graph_graph(self as *mut Self, agraph) }
     }
 
     /// **Source:** `Interface_Graph.hxx`:206 - `Interface_Graph::GetFromGraph()`
     /// Gets items from another graph which have a specific Status
-    pub fn get_from_graph_graph_int(&mut self, agraph: &crate::ffi::Interface_Graph, stat: i32) {
+    pub fn get_from_graph_graph_int(&mut self, agraph: &Graph, stat: i32) {
         unsafe {
             crate::ffi::Interface_Graph_get_from_graph_graph_int(self as *mut Self, agraph, stat)
         }
@@ -1703,10 +1697,7 @@ impl IntList {
     /// Creates an IntList from another one.
     /// if <copied> is True, copies data
     /// else, data are not copied, only the header object is
-    pub fn new_intlist_bool(
-        other: &crate::ffi::Interface_IntList,
-        copied: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_intlist_bool(other: &IntList, copied: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_IntList_ctor_intlist_bool(
                 other, copied,
@@ -1749,11 +1740,7 @@ impl IntList {
     /// entity Number
     /// By default, not copied (in order to be read)
     /// Specified <copied> to produce another list and edit it
-    pub fn list(
-        &self,
-        number: i32,
-        copied: bool,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_IntList> {
+    pub fn list(&self, number: i32, copied: bool) -> crate::OwnedPtr<IntList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Interface_IntList_list(
                 self as *const Self,
@@ -1990,11 +1977,7 @@ impl InterfaceModel {
     /// in the model for later queries
     /// <clear> True (D) : new list replaces
     /// <clear> False    : new list is cumulated
-    pub fn fill_semantic_checks(
-        &mut self,
-        checks: &crate::ffi::Interface_CheckIterator,
-        clear: bool,
-    ) {
+    pub fn fill_semantic_checks(&mut self, checks: &CheckIterator, clear: bool) {
         unsafe {
             crate::ffi::Interface_InterfaceModel_fill_semantic_checks(
                 self as *mut Self,

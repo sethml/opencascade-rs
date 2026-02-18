@@ -85,7 +85,25 @@ pub struct EnumVariant {
     pub comment: Option<String>,
 }
 
+/// A public data member (field) of a class or struct
+#[derive(Debug, Clone)]
+pub struct ParsedField {
+    /// Field name (e.g., "myPeriodic")
+    pub name: String,
+    /// Field type
+    pub ty: Type,
+    /// Array size if this is a fixed-size array (e.g., 3 for `bool myPeriodic[3]`)
+    pub array_size: Option<usize>,
+    /// Documentation comment
+    pub comment: Option<String>,
+}
+
+
 /// A parsed C++ class or struct
+///
+/// When `is_pod_struct` is true, the class has only public primitive/array fields,
+/// no virtual methods, no non-trivial base classes, and can be represented as a
+/// `#[repr(C)]` Rust struct with real fields instead of an opaque type.
 #[derive(Debug, Clone)]
 pub struct ParsedClass {
     /// Full class name (e.g., "gp_Pnt", "BRepPrimAPI_MakeBox")
@@ -119,6 +137,10 @@ pub struct ParsedClass {
     /// Whether this class has any explicit constructor declarations (public or not).
     /// If true, C++ won't generate an implicit default constructor.
     pub has_explicit_constructors: bool,
+    /// Public data members (fields)
+    pub fields: Vec<ParsedField>,
+    /// Whether this class is a POD struct (all public fields, no virtuals, trivially copyable)
+    pub is_pod_struct: bool,
 }
 
 impl ParsedClass {
@@ -441,6 +463,17 @@ impl Type {
                 | Type::F64
         )
     }
+
+    /// Check if this type is suitable as a field in a POD struct.
+    /// Only primitive numeric types (bool, integers, floats) are POD-safe.
+    pub fn is_pod_field_type(&self) -> bool {
+        matches!(
+            self,
+            Type::Bool | Type::I32 | Type::U32 | Type::I64 | Type::U64
+                | Type::Long | Type::ULong | Type::Usize | Type::F32 | Type::F64
+        )
+    }
+
 
     /// Check if this is an OCCT class type (not primitive, not reference/pointer)
     pub fn is_class(&self) -> bool {

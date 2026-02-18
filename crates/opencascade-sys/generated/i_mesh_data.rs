@@ -79,7 +79,7 @@ impl Curve {
     pub fn insert_point(
         &mut self,
         thePosition: i32,
-        thePoint: &crate::ffi::gp_Pnt,
+        thePoint: &crate::gp::Pnt,
         theParamOnPCurve: f64,
     ) {
         unsafe {
@@ -94,7 +94,7 @@ impl Curve {
 
     /// **Source:** `IMeshData_Curve.hxx`:38 - `IMeshData_Curve::AddPoint()`
     /// Adds new discretization point to curve.
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt, theParamOnCurve: f64) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt, theParamOnCurve: f64) {
         unsafe {
             crate::ffi::IMeshData_Curve_add_point(self as *mut Self, thePoint, theParamOnCurve)
         }
@@ -102,7 +102,7 @@ impl Curve {
 
     /// **Source:** `IMeshData_Curve.hxx`:42 - `IMeshData_Curve::GetPoint()`
     /// Returns discretization point with the given index.
-    pub fn get_point(&mut self, theIndex: i32) -> &mut crate::ffi::gp_Pnt {
+    pub fn get_point(&mut self, theIndex: i32) -> &mut crate::gp::Pnt {
         unsafe { &mut *(crate::ffi::IMeshData_Curve_get_point(self as *mut Self, theIndex)) }
     }
 
@@ -178,7 +178,7 @@ unsafe impl crate::CppDeletable for Edge {
 impl Edge {
     /// **Source:** `IMeshData_Edge.hxx`:33 - `IMeshData_Edge::GetEdge()`
     /// Returns TopoDS_Edge attached to model.
-    pub fn get_edge(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn get_edge(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::IMeshData_Edge_get_edge(self as *const Self)) }
     }
 
@@ -340,12 +340,12 @@ impl Edge {
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::IMeshData_Edge_inherited_SetShape(self as *mut Self, theShape) }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Edge_inherited_GetShape(self as *const Self)) }
     }
 }
@@ -375,7 +375,7 @@ impl Face {
 
     /// **Source:** `IMeshData_Face.hxx`:54 - `IMeshData_Face::GetFace()`
     /// Returns TopoDS_Face attached to model.
-    pub fn get_face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn get_face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::IMeshData_Face_get_face(self as *const Self)) }
     }
 
@@ -474,12 +474,12 @@ impl Face {
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::IMeshData_Face_inherited_SetShape(self as *mut Self, theShape) }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Face_inherited_GetShape(self as *const Self)) }
     }
 }
@@ -549,12 +549,12 @@ impl Model {
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::IMeshData_Model_inherited_SetShape(self as *mut Self, theShape) }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Model_inherited_GetShape(self as *const Self)) }
     }
 }
@@ -580,7 +580,7 @@ impl PCurve {
     pub fn insert_point(
         &mut self,
         thePosition: i32,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         theParamOnPCurve: f64,
     ) {
         unsafe {
@@ -595,7 +595,7 @@ impl PCurve {
 
     /// **Source:** `IMeshData_PCurve.hxx`:39 - `IMeshData_PCurve::AddPoint()`
     /// Adds new discretization point to pcurve.
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d, theParamOnPCurve: f64) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d, theParamOnPCurve: f64) {
         unsafe {
             crate::ffi::IMeshData_PCurve_add_point(self as *mut Self, thePoint, theParamOnPCurve)
         }
@@ -603,7 +603,7 @@ impl PCurve {
 
     /// **Source:** `IMeshData_PCurve.hxx`:43 - `IMeshData_PCurve::GetPoint()`
     /// Returns discretization point with the given index.
-    pub fn get_point(&mut self, theIndex: i32) -> &mut crate::ffi::gp_Pnt2d {
+    pub fn get_point(&mut self, theIndex: i32) -> &mut crate::gp::Pnt2d {
         unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_point(self as *mut Self, theIndex)) }
     }
 
@@ -779,13 +779,13 @@ unsafe impl crate::CppDeletable for Shape {
 impl Shape {
     /// **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     /// Assigns shape to discrete shape.
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::IMeshData_Shape_set_shape(self as *mut Self, theShape) }
     }
 
     /// **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     /// Returns shape assigned to discrete shape.
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Shape_get_shape(self as *const Self)) }
     }
 
@@ -945,14 +945,14 @@ impl TessellatedShape {
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::IMeshData_TessellatedShape_inherited_SetShape(self as *mut Self, theShape)
         }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::IMeshData_TessellatedShape_inherited_GetShape(self as *const Self))
         }
@@ -977,7 +977,7 @@ unsafe impl crate::CppDeletable for Wire {
 impl Wire {
     /// **Source:** `IMeshData_Wire.hxx`:35 - `IMeshData_Wire::GetWire()`
     /// Returns TopoDS_Face attached to model.
-    pub fn get_wire(&self) -> &crate::ffi::TopoDS_Wire {
+    pub fn get_wire(&self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::IMeshData_Wire_get_wire(self as *const Self)) }
     }
 
@@ -1088,12 +1088,12 @@ impl Wire {
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::IMeshData_Wire_inherited_SetShape(self as *mut Self, theShape) }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Wire_inherited_GetShape(self as *const Self)) }
     }
 }

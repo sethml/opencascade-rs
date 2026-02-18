@@ -9,8 +9,8 @@
 /// **Source:** `RWMesh.hxx`:26 - `RWMesh::ReadNameAttribute`
 /// Read name attribute from label.
 pub fn read_name_attribute(
-    theLabel: &crate::ffi::TDF_Label,
-) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    theLabel: &crate::tdf::Label,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_read_name_attribute(theLabel)) }
 }
 /// **Source:** `RWMesh.hxx`:32 - `RWMesh::FormatName`
@@ -20,9 +20,9 @@ pub fn read_name_attribute(
 /// @param[in] theRefLabel product label
 pub fn format_name(
     theFormat: crate::rw_mesh::NameFormat,
-    theLabel: &crate::ffi::TDF_Label,
-    theRefLabel: &crate::ffi::TDF_Label,
-) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    theLabel: &crate::tdf::Label,
+    theRefLabel: &crate::tdf::Label,
+) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::RWMesh_format_name(
             theFormat.into(),
@@ -174,13 +174,13 @@ impl CafReader {
 
     /// **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
     /// Return prefix for generating root labels names.
-    pub fn root_prefix(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWMesh_CafReader_root_prefix(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
     /// Set prefix for generating root labels names
-    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::RWMesh_CafReader_set_root_prefix(self as *mut Self, theRootPrefix) }
     }
 
@@ -227,16 +227,13 @@ impl CafReader {
 
     /// **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
     /// Return coordinate system converter.
-    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn coordinate_system_converter(&self) -> &CoordinateSystemConverter {
         unsafe { &*(crate::ffi::RWMesh_CafReader_coordinate_system_converter(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     /// Set coordinate system converter.
-    pub fn set_coordinate_system_converter(
-        &mut self,
-        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
-    ) {
+    pub fn set_coordinate_system_converter(&mut self, theConverter: &CoordinateSystemConverter) {
         unsafe {
             crate::ffi::RWMesh_CafReader_set_coordinate_system_converter(
                 self as *mut Self,
@@ -268,13 +265,13 @@ impl CafReader {
     /// **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
     /// Return system coordinate system; UNDEFINED by default, which means that no conversion will be
     /// done.
-    pub fn system_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe { &*(crate::ffi::RWMesh_CafReader_system_coordinate_system(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     /// Set system origin coordinate system to perform conversion into during read.
-    pub fn set_system_coordinate_system_ax3(&mut self, theCS: &crate::ffi::gp_Ax3) {
+    pub fn set_system_coordinate_system_ax3(&mut self, theCS: &crate::gp::Ax3) {
         unsafe {
             crate::ffi::RWMesh_CafReader_set_system_coordinate_system_ax3(self as *mut Self, theCS)
         }
@@ -317,13 +314,13 @@ impl CafReader {
     /// **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
     /// Return file origin coordinate system; can be UNDEFINED, which means no conversion will be
     /// done.
-    pub fn file_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe { &*(crate::ffi::RWMesh_CafReader_file_coordinate_system(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     /// Set (override) file origin coordinate system to perform conversion during read.
-    pub fn set_file_coordinate_system_ax3(&mut self, theCS: &crate::ffi::gp_Ax3) {
+    pub fn set_file_coordinate_system_ax3(&mut self, theCS: &crate::gp::Ax3) {
         unsafe {
             crate::ffi::RWMesh_CafReader_set_file_coordinate_system_ax3(self as *mut Self, theCS)
         }
@@ -348,8 +345,8 @@ impl CafReader {
     /// The Document instance should be set beforehand.
     pub fn perform(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::RWMesh_CafReader_perform(self as *mut Self, theFile, theProgress) }
     }
@@ -363,7 +360,7 @@ impl CafReader {
 
     /// **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
     /// Return result as a single shape.
-    pub fn single_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_CafReader_single_shape(
                 self as *const Self,
@@ -381,8 +378,8 @@ impl CafReader {
     /// Open stream and pass it to ProbeHeader method.
     pub fn probe_header(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::RWMesh_CafReader_probe_header(self as *mut Self, theFile, theProgress)
@@ -421,6 +418,24 @@ impl HandleRWMeshCafReader {
     /// Dereference this Handle to mutably access the underlying RWMesh_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_CafReader {
         unsafe { &mut *(crate::ffi::HandleRWMeshCafReader_get_mut(self as *mut Self)) }
+    }
+}
+
+/// **Source:** `RWMesh_CafReader.hxx`:55 - `RWMesh_CafReader_CafDocumentTools`
+/// Structure holding tools for filling the document.
+pub use crate::ffi::RWMesh_CafReader_CafDocumentTools as CafReader_CafDocumentTools;
+
+unsafe impl crate::CppDeletable for CafReader_CafDocumentTools {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWMesh_CafReader_CafDocumentTools_destructor(ptr);
+    }
+}
+
+impl CafReader_CafDocumentTools {
+    /// **Source:** `RWMesh_CafReader.hxx` - `RWMesh_CafReader_CafDocumentTools::RWMesh_CafReader_CafDocumentTools()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_CafReader_CafDocumentTools_ctor()) }
     }
 }
 
@@ -528,7 +543,7 @@ impl CoordinateSystemConverter {
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:100 - `RWMesh_CoordinateSystemConverter::InputCoordinateSystem()`
     /// Source coordinate system; UNDEFINED by default.
-    pub fn input_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn input_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::ffi::RWMesh_CoordinateSystemConverter_input_coordinate_system(
                 self as *const Self,
@@ -538,7 +553,7 @@ impl CoordinateSystemConverter {
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:103 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
     /// Set source coordinate system.
-    pub fn set_input_coordinate_system_ax3(&mut self, theSysFrom: &crate::ffi::gp_Ax3) {
+    pub fn set_input_coordinate_system_ax3(&mut self, theSysFrom: &crate::gp::Ax3) {
         unsafe {
             crate::ffi::RWMesh_CoordinateSystemConverter_set_input_coordinate_system_ax3(
                 self as *mut Self,
@@ -570,7 +585,7 @@ impl CoordinateSystemConverter {
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:120 - `RWMesh_CoordinateSystemConverter::OutputCoordinateSystem()`
     /// Destination coordinate system; UNDEFINED by default.
-    pub fn output_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn output_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::ffi::RWMesh_CoordinateSystemConverter_output_coordinate_system(
                 self as *const Self,
@@ -580,7 +595,7 @@ impl CoordinateSystemConverter {
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:123 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
     /// Set destination coordinate system.
-    pub fn set_output_coordinate_system_ax3(&mut self, theSysTo: &crate::ffi::gp_Ax3) {
+    pub fn set_output_coordinate_system_ax3(&mut self, theSysTo: &crate::gp::Ax3) {
         unsafe {
             crate::ffi::RWMesh_CoordinateSystemConverter_set_output_coordinate_system_ax3(
                 self as *mut Self,
@@ -604,9 +619,9 @@ impl CoordinateSystemConverter {
     /// Initialize transformation.
     pub fn init(
         &mut self,
-        theInputSystem: &crate::ffi::gp_Ax3,
+        theInputSystem: &crate::gp::Ax3,
         theInputLengthUnit: f64,
-        theOutputSystem: &crate::ffi::gp_Ax3,
+        theOutputSystem: &crate::gp::Ax3,
         theOutputLengthUnit: f64,
     ) {
         unsafe {
@@ -622,7 +637,7 @@ impl CoordinateSystemConverter {
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:144 - `RWMesh_CoordinateSystemConverter::TransformTransformation()`
     /// Transform transformation.
-    pub fn transform_transformation(&self, theTrsf: &mut crate::ffi::gp_Trsf) {
+    pub fn transform_transformation(&self, theTrsf: &mut crate::gp::Trsf) {
         unsafe {
             crate::ffi::RWMesh_CoordinateSystemConverter_transform_transformation(
                 self as *const Self,
@@ -633,7 +648,7 @@ impl CoordinateSystemConverter {
 
     /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:159 - `RWMesh_CoordinateSystemConverter::TransformPosition()`
     /// Transform position.
-    pub fn transform_position(&self, thePos: &mut crate::ffi::gp_XYZ) {
+    pub fn transform_position(&self, thePos: &mut crate::gp::XYZ) {
         unsafe {
             crate::ffi::RWMesh_CoordinateSystemConverter_transform_position(
                 self as *const Self,
@@ -657,7 +672,7 @@ impl CoordinateSystemConverter {
     /// Return a standard coordinate system definition.
     pub fn standard_coordinate_system(
         theSys: crate::rw_mesh::CoordinateSystem,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Ax3> {
+    ) -> crate::OwnedPtr<crate::gp::Ax3> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::RWMesh_CoordinateSystemConverter_standard_coordinate_system(
@@ -693,10 +708,10 @@ impl EdgeIterator {
     /// @param[in] theToMapColors Flag to indicate if colors should be mapped.
     /// @param[in] theStyle The style of the shape.
     pub fn new_label_location_bool_style(
-        theLabel: &crate::ffi::TDF_Label,
-        theLocation: &crate::ffi::TopLoc_Location,
+        theLabel: &crate::tdf::Label,
+        theLocation: &crate::top_loc::Location,
         theToMapColors: bool,
-        theStyle: &crate::ffi::XCAFPrs_Style,
+        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -715,8 +730,8 @@ impl EdgeIterator {
     /// @param[in] theShape The shape to iterate.
     /// @param[in] theStyle The style of the shape.
     pub fn new_shape_style(
-        theShape: &crate::ffi::TopoDS_Shape,
-        theStyle: &crate::ffi::XCAFPrs_Style,
+        theShape: &crate::topo_ds::Shape,
+        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_ctor_shape_style(
@@ -739,13 +754,13 @@ impl EdgeIterator {
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:60 - `RWMesh_EdgeIterator::Edge()`
     /// Return current edge.
-    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::RWMesh_EdgeIterator_edge(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:63 - `RWMesh_EdgeIterator::Shape()`
     /// Return current edge.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::RWMesh_EdgeIterator_shape(self as *const Self)) }
     }
 
@@ -793,7 +808,7 @@ impl EdgeIterator {
 
     /// **Source:** `RWMesh_EdgeIterator.hxx`:96 - `RWMesh_EdgeIterator::node()`
     /// Return the node with specified index with applied transformation.
-    pub fn node(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_node(
                 self as *const Self,
@@ -815,12 +830,12 @@ impl EdgeIterator {
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
-    pub fn explored_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::RWMesh_EdgeIterator_inherited_ExploredShape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
-    pub fn style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWMesh_EdgeIterator_inherited_Style(self as *const Self)) }
     }
 
@@ -830,12 +845,12 @@ impl EdgeIterator {
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
-    pub fn color(&self) -> &crate::ffi::Quantity_ColorRGBA {
+    pub fn color(&self) -> &crate::quantity::ColorRGBA {
         unsafe { &*(crate::ffi::RWMesh_EdgeIterator_inherited_Color(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
-    pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_EdgeIterator_inherited_NodeTransformed(
                 self as *const Self,
@@ -871,10 +886,10 @@ impl FaceIterator {
     /// @param[in] theToMapColors Flag to indicate if colors should be mapped
     /// @param[in] theStyle Style information for the face
     pub fn new_label_location_bool_style(
-        theLabel: &crate::ffi::TDF_Label,
-        theLocation: &crate::ffi::TopLoc_Location,
+        theLabel: &crate::tdf::Label,
+        theLocation: &crate::top_loc::Location,
         theToMapColors: bool,
-        theStyle: &crate::ffi::XCAFPrs_Style,
+        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -893,8 +908,8 @@ impl FaceIterator {
     /// @param[in] theShape Shape containing the face data
     /// @param[in] theStyle Style information for the face
     pub fn new_shape_style(
-        theShape: &crate::ffi::TopoDS_Shape,
-        theStyle: &crate::ffi::XCAFPrs_Style,
+        theShape: &crate::topo_ds::Shape,
+        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_ctor_shape_style(
@@ -917,13 +932,13 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:58 - `RWMesh_FaceIterator::Face()`
     /// Return current face.
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::RWMesh_FaceIterator_face(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:61 - `RWMesh_FaceIterator::Shape()`
     /// Return current face.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::RWMesh_FaceIterator_shape(self as *const Self)) }
     }
 
@@ -947,7 +962,7 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:78 - `RWMesh_FaceIterator::FaceStyle()`
     /// Return face material.
-    pub fn face_style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn face_style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWMesh_FaceIterator_face_style(self as *const Self)) }
     }
 
@@ -959,7 +974,7 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:84 - `RWMesh_FaceIterator::FaceColor()`
     /// Return face color.
-    pub fn face_color(&self) -> &crate::ffi::Quantity_ColorRGBA {
+    pub fn face_color(&self) -> &crate::quantity::ColorRGBA {
         unsafe { &*(crate::ffi::RWMesh_FaceIterator_face_color(self as *const Self)) }
     }
 
@@ -983,10 +998,7 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:97 - `RWMesh_FaceIterator::TriangleOriented()`
     /// Return triangle with specified index with applied Face orientation.
-    pub fn triangle_oriented(
-        &self,
-        theElemIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::Poly_Triangle> {
+    pub fn triangle_oriented(&self, theElemIndex: i32) -> crate::OwnedPtr<crate::poly::Triangle> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_triangle_oriented(
                 self as *const Self,
@@ -1010,7 +1022,7 @@ impl FaceIterator {
     /// **Source:** `RWMesh_FaceIterator.hxx`:116 - `RWMesh_FaceIterator::NormalTransformed()`
     /// Return normal at specified node index with face transformation applied and face orientation
     /// applied.
-    pub fn normal_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn normal_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_normal_transformed(
                 self as *const Self,
@@ -1039,7 +1051,7 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:143 - `RWMesh_FaceIterator::NodeTexCoord()`
     /// Return texture coordinates for the node.
-    pub fn node_tex_coord(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn node_tex_coord(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_node_tex_coord(
                 self as *const Self,
@@ -1050,7 +1062,7 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:150 - `RWMesh_FaceIterator::node()`
     /// Return the node with specified index with applied transformation.
-    pub fn node(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_node(
                 self as *const Self,
@@ -1061,7 +1073,7 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:156 - `RWMesh_FaceIterator::normal()`
     /// Return normal at specified node index without face transformation applied.
-    pub fn normal(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn normal(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_normal(
                 self as *const Self,
@@ -1072,7 +1084,7 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:159 - `RWMesh_FaceIterator::triangle()`
     /// Return triangle with specified index.
-    pub fn triangle(&self, theElemIndex: i32) -> crate::OwnedPtr<crate::ffi::Poly_Triangle> {
+    pub fn triangle(&self, theElemIndex: i32) -> crate::OwnedPtr<crate::poly::Triangle> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_triangle(
                 self as *const Self,
@@ -1094,12 +1106,12 @@ impl FaceIterator {
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
-    pub fn explored_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::RWMesh_FaceIterator_inherited_ExploredShape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
-    pub fn style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWMesh_FaceIterator_inherited_Style(self as *const Self)) }
     }
 
@@ -1109,12 +1121,12 @@ impl FaceIterator {
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
-    pub fn color(&self) -> &crate::ffi::Quantity_ColorRGBA {
+    pub fn color(&self) -> &crate::quantity::ColorRGBA {
         unsafe { &*(crate::ffi::RWMesh_FaceIterator_inherited_Color(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
-    pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_FaceIterator_inherited_NodeTransformed(
                 self as *const Self,
@@ -1148,13 +1160,13 @@ impl MaterialMap {
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
     /// Return default material definition to be used for nodes with only color defined.
-    pub fn default_style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWMesh_MaterialMap_default_style(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
     /// Set default material definition to be used for nodes with only color defined.
-    pub fn set_default_style(&mut self, theStyle: &crate::ffi::XCAFPrs_Style) {
+    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         unsafe { crate::ffi::RWMesh_MaterialMap_set_default_style(self as *mut Self, theStyle) }
     }
 
@@ -1162,8 +1174,8 @@ impl MaterialMap {
     /// Find already registered material
     pub fn find_material(
         &self,
-        theStyle: &crate::ffi::XCAFPrs_Style,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        theStyle: &crate::xcaf_prs::Style,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_MaterialMap_find_material(
                 self as *const Self,
@@ -1176,8 +1188,8 @@ impl MaterialMap {
     /// Register material and return its name identifier.
     pub fn add_material(
         &mut self,
-        theStyle: &crate::ffi::XCAFPrs_Style,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        theStyle: &crate::xcaf_prs::Style,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_MaterialMap_add_material(
                 self as *mut Self,
@@ -1202,9 +1214,9 @@ impl MaterialMap {
     /// @param[in] theKey  material key
     pub fn copy_texture(
         &mut self,
-        theResTexture: &mut crate::ffi::TCollection_AsciiString,
+        theResTexture: &mut crate::t_collection::AsciiString,
         theTexture: &crate::ffi::HandleImageTexture,
-        theKey: &crate::ffi::TCollection_AsciiString,
+        theKey: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::RWMesh_MaterialMap_copy_texture(
@@ -1220,9 +1232,9 @@ impl MaterialMap {
     /// Virtual method actually defining the material (e.g. export to the file).
     pub fn define_material(
         &mut self,
-        theStyle: &crate::ffi::XCAFPrs_Style,
-        theKey: &crate::ffi::TCollection_AsciiString,
-        theName: &crate::ffi::TCollection_AsciiString,
+        theStyle: &crate::xcaf_prs::Style,
+        theKey: &crate::t_collection::AsciiString,
+        theName: &crate::t_collection::AsciiString,
     ) {
         unsafe {
             crate::ffi::RWMesh_MaterialMap_define_material(
@@ -1276,6 +1288,28 @@ impl HandleRWMeshMaterialMap {
 }
 
 // ========================
+// From RWMesh_NodeAttributes.hxx
+// ========================
+
+/// **Source:** `RWMesh_NodeAttributes.hxx`:26 - `RWMesh_NodeAttributes`
+/// Attributes of the node.
+pub use crate::ffi::RWMesh_NodeAttributes as NodeAttributes;
+
+unsafe impl crate::CppDeletable for NodeAttributes {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWMesh_NodeAttributes_destructor(ptr);
+    }
+}
+
+impl NodeAttributes {
+    /// **Source:** `RWMesh_NodeAttributes.hxx` - `RWMesh_NodeAttributes::RWMesh_NodeAttributes()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWMesh_NodeAttributes_ctor()) }
+    }
+}
+
+// ========================
 // From RWMesh_ShapeIterator.hxx
 // ========================
 
@@ -1295,13 +1329,13 @@ unsafe impl crate::CppDeletable for ShapeIterator {
 impl ShapeIterator {
     /// **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
     /// Return explored shape.
-    pub fn explored_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::RWMesh_ShapeIterator_explored_shape(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::Shape()`
     /// Return shape.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::RWMesh_ShapeIterator_shape(self as *const Self)) }
     }
 
@@ -1325,7 +1359,7 @@ impl ShapeIterator {
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
     /// Return shape material.
-    pub fn style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWMesh_ShapeIterator_style(self as *const Self)) }
     }
 
@@ -1337,7 +1371,7 @@ impl ShapeIterator {
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
     /// Return shape color.
-    pub fn color(&self) -> &crate::ffi::Quantity_ColorRGBA {
+    pub fn color(&self) -> &crate::quantity::ColorRGBA {
         unsafe { &*(crate::ffi::RWMesh_ShapeIterator_color(self as *const Self)) }
     }
 
@@ -1373,7 +1407,7 @@ impl ShapeIterator {
 
     /// **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
     /// Return the node with specified index with applied transformation.
-    pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_ShapeIterator_node_transformed(
                 self as *const Self,
@@ -1405,13 +1439,13 @@ impl TriangulationReader {
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:65 - `RWMesh_TriangulationReader::FileName()`
     /// Returns file name for reporting issues.
-    pub fn file_name(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn file_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWMesh_TriangulationReader_file_name(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:68 - `RWMesh_TriangulationReader::SetFileName()`
     /// Sets file name for reporting issues.
-    pub fn set_file_name(&mut self, theFileName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_file_name(&mut self, theFileName: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::RWMesh_TriangulationReader_set_file_name(self as *mut Self, theFileName)
         }
@@ -1419,7 +1453,7 @@ impl TriangulationReader {
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:71 - `RWMesh_TriangulationReader::CoordinateSystemConverter()`
     /// Returns coordinate system converter using for correct data loading.
-    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn coordinate_system_converter(&self) -> &CoordinateSystemConverter {
         unsafe {
             &*(crate::ffi::RWMesh_TriangulationReader_coordinate_system_converter(
                 self as *const Self,
@@ -1429,10 +1463,7 @@ impl TriangulationReader {
 
     /// **Source:** `RWMesh_TriangulationReader.hxx`:77 - `RWMesh_TriangulationReader::SetCoordinateSystemConverter()`
     /// Sets coordinate system converter.
-    pub fn set_coordinate_system_converter(
-        &mut self,
-        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
-    ) {
+    pub fn set_coordinate_system_converter(&mut self, theConverter: &CoordinateSystemConverter) {
         unsafe {
             crate::ffi::RWMesh_TriangulationReader_set_coordinate_system_converter(
                 self as *mut Self,
@@ -1549,6 +1580,15 @@ impl HandleRWMeshTriangulationReader {
     /// Dereference this Handle to mutably access the underlying RWMesh_TriangulationReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_TriangulationReader {
         unsafe { &mut *(crate::ffi::HandleRWMeshTriangulationReader_get_mut(self as *mut Self)) }
+    }
+}
+
+/// **Source:** `RWMesh_TriangulationReader.hxx`:29 - `RWMesh_TriangulationReader_LoadingStatistic`
+pub use crate::ffi::RWMesh_TriangulationReader_LoadingStatistic as TriangulationReader_LoadingStatistic;
+
+unsafe impl crate::CppDeletable for TriangulationReader_LoadingStatistic {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWMesh_TriangulationReader_LoadingStatistic_destructor(ptr);
     }
 }
 
@@ -1768,7 +1808,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:142 - `Poly_Triangulation::Node()`
-    pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_inherited_Node(
                 self as *const Self,
@@ -1778,7 +1818,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:147 - `Poly_Triangulation::SetNode()`
-    pub fn set_node(&mut self, theIndex: i32, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::RWMesh_TriangulationSource_inherited_SetNode(
                 self as *mut Self,
@@ -1789,7 +1829,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:155 - `Poly_Triangulation::UVNode()`
-    pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_inherited_UVNode(
                 self as *const Self,
@@ -1799,7 +1839,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:160 - `Poly_Triangulation::SetUVNode()`
-    pub fn set_uv_node(&mut self, theIndex: i32, thePnt: &crate::ffi::gp_Pnt2d) {
+    pub fn set_uv_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::RWMesh_TriangulationSource_inherited_SetUVNode(
                 self as *mut Self,
@@ -1810,7 +1850,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
-    pub fn triangle(&self, theIndex: i32) -> &crate::ffi::Poly_Triangle {
+    pub fn triangle(&self, theIndex: i32) -> &crate::poly::Triangle {
         unsafe {
             &*(crate::ffi::RWMesh_TriangulationSource_inherited_Triangle(
                 self as *const Self,
@@ -1820,7 +1860,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:177 - `Poly_Triangulation::SetTriangle()`
-    pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::ffi::Poly_Triangle) {
+    pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::poly::Triangle) {
         unsafe {
             crate::ffi::RWMesh_TriangulationSource_inherited_SetTriangle(
                 self as *mut Self,
@@ -1831,7 +1871,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:185 - `Poly_Triangulation::Normal()`
-    pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_inherited_Normal(
                 self as *const Self,
@@ -1856,14 +1896,14 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
-    pub fn cached_min_max(&self) -> &crate::ffi::Bnd_Box {
+    pub fn cached_min_max(&self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::ffi::RWMesh_TriangulationSource_inherited_CachedMinMax(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
-    pub fn set_cached_min_max(&mut self, theBox: &crate::ffi::Bnd_Box) {
+    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
         unsafe {
             crate::ffi::RWMesh_TriangulationSource_inherited_SetCachedMinMax(
                 self as *mut Self,
@@ -1889,8 +1929,8 @@ impl TriangulationSource {
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
     pub fn min_max(
         &self,
-        theBox: &mut crate::ffi::Bnd_Box,
-        theTrsf: &crate::ffi::gp_Trsf,
+        theBox: &mut crate::bnd::Box,
+        theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {
         unsafe {
@@ -2021,7 +2061,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`
-    pub fn internal_nodes(&mut self) -> &mut crate::ffi::Poly_ArrayOfNodes {
+    pub fn internal_nodes(&mut self) -> &mut crate::poly::ArrayOfNodes {
         unsafe {
             &mut *(crate::ffi::RWMesh_TriangulationSource_inherited_InternalNodes(
                 self as *mut Self,
@@ -2030,7 +2070,7 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:328 - `Poly_Triangulation::InternalUVNodes()`
-    pub fn internal_uv_nodes(&mut self) -> &mut crate::ffi::Poly_ArrayOfUVNodes {
+    pub fn internal_uv_nodes(&mut self) -> &mut crate::poly::ArrayOfUVNodes {
         unsafe {
             &mut *(crate::ffi::RWMesh_TriangulationSource_inherited_InternalUVNodes(
                 self as *mut Self,
@@ -2103,10 +2143,10 @@ impl VertexIterator {
     /// @param[in] theToMapColors Flag to indicate if colors should be mapped.
     /// @param[in] theStyle The style of the shape.
     pub fn new_label_location_bool_style(
-        theLabel: &crate::ffi::TDF_Label,
-        theLocation: &crate::ffi::TopLoc_Location,
+        theLabel: &crate::tdf::Label,
+        theLocation: &crate::top_loc::Location,
         theToMapColors: bool,
-        theStyle: &crate::ffi::XCAFPrs_Style,
+        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -2125,8 +2165,8 @@ impl VertexIterator {
     /// @param[in] theShape The shape to iterate.
     /// @param[in] theStyle The style of the shape.
     pub fn new_shape_style(
-        theShape: &crate::ffi::TopoDS_Shape,
-        theStyle: &crate::ffi::XCAFPrs_Style,
+        theShape: &crate::topo_ds::Shape,
+        theStyle: &crate::xcaf_prs::Style,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_ctor_shape_style(
@@ -2149,19 +2189,19 @@ impl VertexIterator {
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:60 - `RWMesh_VertexIterator::Vertex()`
     /// Return current edge.
-    pub fn vertex(&self) -> &crate::ffi::TopoDS_Vertex {
+    pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe { &*(crate::ffi::RWMesh_VertexIterator_vertex(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:63 - `RWMesh_VertexIterator::Shape()`
     /// Return current vertex.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::RWMesh_VertexIterator_shape(self as *const Self)) }
     }
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:66 - `RWMesh_VertexIterator::Point()`
     /// Return current vertex data.
-    pub fn point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::RWMesh_VertexIterator_point(self as *const Self)) }
     }
 
@@ -2203,7 +2243,7 @@ impl VertexIterator {
 
     /// **Source:** `RWMesh_VertexIterator.hxx`:90 - `RWMesh_VertexIterator::node()`
     /// Return the node with specified index with applied transformation.
-    pub fn node(&self, arg0: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node(&self, arg0: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_node(
                 self as *const Self,
@@ -2227,14 +2267,14 @@ impl VertexIterator {
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
-    pub fn explored_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::RWMesh_VertexIterator_inherited_ExploredShape(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
-    pub fn style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWMesh_VertexIterator_inherited_Style(self as *const Self)) }
     }
 
@@ -2244,12 +2284,12 @@ impl VertexIterator {
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
-    pub fn color(&self) -> &crate::ffi::Quantity_ColorRGBA {
+    pub fn color(&self) -> &crate::quantity::ColorRGBA {
         unsafe { &*(crate::ffi::RWMesh_VertexIterator_inherited_Color(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
-    pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWMesh_VertexIterator_inherited_NodeTransformed(
                 self as *const Self,

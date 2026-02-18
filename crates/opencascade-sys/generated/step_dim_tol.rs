@@ -797,7 +797,7 @@ impl GeometricTolerance {
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
         theMagnitude: &crate::ffi::HandleStepBasicMeasureWithUnit,
-        theTolerancedShapeAspect: &crate::ffi::StepDimTol_GeometricToleranceTarget,
+        theTolerancedShapeAspect: &GeometricToleranceTarget,
     ) {
         unsafe {
             crate::ffi::StepDimTol_GeometricTolerance_init_handletcollectionhasciistring2_handlestepbasicmeasurewithunit_geometrictolerancetarget(self as *mut Self, theName, theDescription, theMagnitude, theTolerancedShapeAspect)
@@ -862,9 +862,7 @@ impl GeometricTolerance {
     /// **Source:** `StepDimTol_GeometricTolerance.hxx`:71 - `StepDimTol_GeometricTolerance::TolerancedShapeAspect()`
     /// Returns field TolerancedShapeAspect
     /// Note: in AP214(203) type of this attribute can be only StepRepr_ShapeAspect
-    pub fn toleranced_shape_aspect(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::StepDimTol_GeometricToleranceTarget> {
+    pub fn toleranced_shape_aspect(&self) -> crate::OwnedPtr<GeometricToleranceTarget> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepDimTol_GeometricTolerance_toleranced_shape_aspect(
@@ -889,7 +887,7 @@ impl GeometricTolerance {
     /// Set field TolerancedShapeAspect AP242
     pub fn set_toleranced_shape_aspect_geometrictolerancetarget(
         &mut self,
-        theTolerancedShapeAspect: &crate::ffi::StepDimTol_GeometricToleranceTarget,
+        theTolerancedShapeAspect: &GeometricToleranceTarget,
     ) {
         unsafe {
             crate::ffi::StepDimTol_GeometricTolerance_set_toleranced_shape_aspect_geometrictolerancetarget(self as *mut Self, theTolerancedShapeAspect)

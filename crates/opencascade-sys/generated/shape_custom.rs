@@ -8,15 +8,15 @@
 
 /// **Source:** `ShapeCustom.hxx`:64 - `ShapeCustom::DirectFaces`
 /// Returns a new shape without indirect surfaces.
-pub fn direct_faces(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+pub fn direct_faces(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_direct_faces(S)) }
 }
 /// **Source:** `ShapeCustom.hxx`:67 - `ShapeCustom::ScaleShape`
 /// Returns a new shape which is scaled original
 pub fn scale_shape(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     scale: f64,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_scale_shape(S, scale)) }
 }
 /// **Source:** `ShapeCustom.hxx`:85 - `ShapeCustom::BSplineRestriction`
@@ -37,7 +37,7 @@ pub fn scale_shape(
 /// that Offset surfaces , Offset curves 3d and Offset curves 2d are converted to BSPline
 /// correspondingly.
 pub fn b_spline_restriction(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     Tol3d: f64,
     Tol2d: f64,
     MaxDegree: i32,
@@ -47,7 +47,7 @@ pub fn b_spline_restriction(
     Degree: bool,
     Rational: bool,
     aParameters: &crate::ffi::HandleShapeCustomRestrictionParameters,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_b_spline_restriction(
             S,
@@ -66,17 +66,13 @@ pub fn b_spline_restriction(
 /// **Source:** `ShapeCustom.hxx`:99 - `ShapeCustom::ConvertToRevolution`
 /// Returns a new shape with all elementary periodic surfaces converted
 /// to Geom_SurfaceOfRevolution
-pub fn convert_to_revolution(
-    S: &crate::ffi::TopoDS_Shape,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+pub fn convert_to_revolution(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_convert_to_revolution(S)) }
 }
 /// **Source:** `ShapeCustom.hxx`:103 - `ShapeCustom::SweptToElementary`
 /// Returns a new shape with all surfaces of revolution and linear extrusion
 /// convert to elementary periodic surfaces
-pub fn swept_to_elementary(
-    S: &crate::ffi::TopoDS_Shape,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+pub fn swept_to_elementary(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_swept_to_elementary(S)) }
 }
 /// **Source:** `ShapeCustom.hxx`:108 - `ShapeCustom::ConvertToBSpline`
@@ -84,12 +80,12 @@ pub fn swept_to_elementary(
 /// offset, and planar surfaces converted according to flags to
 /// Geom_BSplineSurface (with same parameterisation).
 pub fn convert_to_b_spline(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     extrMode: bool,
     revolMode: bool,
     offsetMode: bool,
     planeMode: bool,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_convert_to_b_spline(
             S, extrMode, revolMode, offsetMode, planeMode,
@@ -190,9 +186,9 @@ impl BSplineRestriction {
     /// <Tol> , <RevWires> ,<RevFace> are not  significant.
     pub fn new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         S: &mut crate::ffi::HandleGeomSurface,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
@@ -222,9 +218,9 @@ impl BSplineRestriction {
     /// significant.
     pub fn new_curve(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         C: &mut crate::ffi::HandleGeomCurve,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -246,10 +242,10 @@ impl BSplineRestriction {
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF: &crate::topo_ds::Face,
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
@@ -514,8 +510,8 @@ impl BSplineRestriction {
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:222 - `ShapeCustom_BSplineRestriction::NewPoint()`
     pub fn new_point(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        P: &mut crate::ffi::gp_Pnt,
+        V: &crate::topo_ds::Vertex,
+        P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -526,8 +522,8 @@ impl BSplineRestriction {
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:226 - `ShapeCustom_BSplineRestriction::NewParameter()`
     pub fn new_parameter(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
@@ -545,12 +541,12 @@ impl BSplineRestriction {
     /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:231 - `ShapeCustom_BSplineRestriction::Continuity()`
     pub fn continuity(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF1: &crate::ffi::TopoDS_Face,
-        NewF2: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF1: &crate::topo_ds::Face,
+        NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::ShapeCustom_BSplineRestriction_continuity(
@@ -668,8 +664,8 @@ impl BSplineRestriction {
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -685,7 +681,7 @@ impl BSplineRestriction {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
         unsafe {
@@ -700,7 +696,7 @@ impl BSplineRestriction {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
         unsafe {
@@ -711,8 +707,8 @@ impl BSplineRestriction {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         unsafe {
@@ -795,9 +791,9 @@ impl ConvertToBSpline {
     /// significant.
     pub fn new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         S: &mut crate::ffi::HandleGeomSurface,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
@@ -824,9 +820,9 @@ impl ConvertToBSpline {
     /// significant.
     pub fn new_curve(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         C: &mut crate::ffi::HandleGeomCurve,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -842,8 +838,8 @@ impl ConvertToBSpline {
     /// are not significant.
     pub fn new_point(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        P: &mut crate::ffi::gp_Pnt,
+        V: &crate::topo_ds::Vertex,
+        P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::ShapeCustom_ConvertToBSpline_new_point(self as *mut Self, V, P, Tol) }
@@ -862,10 +858,10 @@ impl ConvertToBSpline {
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF: &crate::topo_ds::Face,
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
@@ -890,8 +886,8 @@ impl ConvertToBSpline {
     /// are not significant.
     pub fn new_parameter(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
@@ -909,12 +905,12 @@ impl ConvertToBSpline {
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF1: &crate::ffi::TopoDS_Face,
-        NewF2: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF1: &crate::topo_ds::Face,
+        NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::ShapeCustom_ConvertToBSpline_continuity(
@@ -1014,8 +1010,8 @@ impl ConvertToBSpline {
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -1031,7 +1027,7 @@ impl ConvertToBSpline {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
         unsafe {
@@ -1046,7 +1042,7 @@ impl ConvertToBSpline {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
         unsafe {
@@ -1057,8 +1053,8 @@ impl ConvertToBSpline {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         unsafe {
@@ -1103,9 +1099,9 @@ impl ConvertToRevolution {
     /// significant.
     pub fn new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         S: &mut crate::ffi::HandleGeomSurface,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
@@ -1132,9 +1128,9 @@ impl ConvertToRevolution {
     /// significant.
     pub fn new_curve(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         C: &mut crate::ffi::HandleGeomCurve,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -1150,8 +1146,8 @@ impl ConvertToRevolution {
     /// are not significant.
     pub fn new_point(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        P: &mut crate::ffi::gp_Pnt,
+        V: &crate::topo_ds::Vertex,
+        P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -1172,10 +1168,10 @@ impl ConvertToRevolution {
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF: &crate::topo_ds::Face,
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
@@ -1200,8 +1196,8 @@ impl ConvertToRevolution {
     /// are not significant.
     pub fn new_parameter(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
@@ -1225,12 +1221,12 @@ impl ConvertToRevolution {
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF1: &crate::ffi::TopoDS_Face,
-        NewF2: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF1: &crate::topo_ds::Face,
+        NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(
@@ -1332,8 +1328,8 @@ impl ConvertToRevolution {
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -1349,7 +1345,7 @@ impl ConvertToRevolution {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
         unsafe {
@@ -1364,7 +1360,7 @@ impl ConvertToRevolution {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
         unsafe {
@@ -1379,8 +1375,8 @@ impl ConvertToRevolution {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         unsafe {
@@ -1547,9 +1543,9 @@ impl DirectModification {
     /// significant.
     pub fn new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         S: &mut crate::ffi::HandleGeomSurface,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
@@ -1576,9 +1572,9 @@ impl DirectModification {
     /// significant.
     pub fn new_curve(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         C: &mut crate::ffi::HandleGeomCurve,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -1594,8 +1590,8 @@ impl DirectModification {
     /// are not significant.
     pub fn new_point(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        P: &mut crate::ffi::gp_Pnt,
+        V: &crate::topo_ds::Vertex,
+        P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -1616,10 +1612,10 @@ impl DirectModification {
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF: &crate::topo_ds::Face,
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
@@ -1644,8 +1640,8 @@ impl DirectModification {
     /// are not significant.
     pub fn new_parameter(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
@@ -1669,12 +1665,12 @@ impl DirectModification {
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF1: &crate::ffi::TopoDS_Face,
-        NewF2: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF1: &crate::topo_ds::Face,
+        NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::ShapeCustom_DirectModification_continuity(
@@ -1774,8 +1770,8 @@ impl DirectModification {
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -1791,7 +1787,7 @@ impl DirectModification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
         unsafe {
@@ -1806,7 +1802,7 @@ impl DirectModification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
         unsafe {
@@ -1817,8 +1813,8 @@ impl DirectModification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         unsafe {
@@ -1876,8 +1872,8 @@ impl Modification {
     /// Calls corresponding message of message registrator.
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -1928,9 +1924,9 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:61 - `BRepTools_Modification::NewSurface()`
     pub fn new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         S: &mut crate::ffi::HandleGeomSurface,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
@@ -1951,7 +1947,7 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
         unsafe {
@@ -1962,9 +1958,9 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:81 - `BRepTools_Modification::NewCurve()`
     pub fn new_curve(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         C: &mut crate::ffi::HandleGeomCurve,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -1975,7 +1971,7 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
         unsafe {
@@ -1986,8 +1982,8 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         unsafe {
@@ -2003,8 +1999,8 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:106 - `BRepTools_Modification::NewPoint()`
     pub fn new_point(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        P: &mut crate::ffi::gp_Pnt,
+        V: &crate::topo_ds::Vertex,
+        P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -2015,10 +2011,10 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:120 - `BRepTools_Modification::NewCurve2d()`
     pub fn new_curve2d(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF: &crate::topo_ds::Face,
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
@@ -2038,8 +2034,8 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:133 - `BRepTools_Modification::NewParameter()`
     pub fn new_parameter(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
@@ -2057,12 +2053,12 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:143 - `BRepTools_Modification::Continuity()`
     pub fn continuity(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF1: &crate::ffi::TopoDS_Face,
-        NewF2: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF1: &crate::topo_ds::Face,
+        NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(
@@ -2424,9 +2420,9 @@ impl SweptToElementary {
     /// significant.
     pub fn new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         S: &mut crate::ffi::HandleGeomSurface,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
@@ -2453,9 +2449,9 @@ impl SweptToElementary {
     /// significant.
     pub fn new_curve(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         C: &mut crate::ffi::HandleGeomCurve,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -2471,8 +2467,8 @@ impl SweptToElementary {
     /// are not significant.
     pub fn new_point(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        P: &mut crate::ffi::gp_Pnt,
+        V: &crate::topo_ds::Vertex,
+        P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::ShapeCustom_SweptToElementary_new_point(self as *mut Self, V, P, Tol) }
@@ -2491,10 +2487,10 @@ impl SweptToElementary {
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF: &crate::topo_ds::Face,
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
@@ -2519,8 +2515,8 @@ impl SweptToElementary {
     /// are not significant.
     pub fn new_parameter(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
@@ -2538,12 +2534,12 @@ impl SweptToElementary {
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF1: &crate::ffi::TopoDS_Face,
-        NewF2: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF1: &crate::topo_ds::Face,
+        NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::ShapeCustom_SweptToElementary_continuity(
@@ -2643,8 +2639,8 @@ impl SweptToElementary {
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -2660,7 +2656,7 @@ impl SweptToElementary {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
         unsafe {
@@ -2675,7 +2671,7 @@ impl SweptToElementary {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
         unsafe {
@@ -2686,8 +2682,8 @@ impl SweptToElementary {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         unsafe {
@@ -2722,7 +2718,7 @@ unsafe impl crate::CppDeletable for TrsfModification {
 impl TrsfModification {
     /// **Source:** `ShapeCustom_TrsfModification.hxx`:47 - `ShapeCustom_TrsfModification::ShapeCustom_TrsfModification()`
     /// Empty constructor
-    pub fn new_trsf(T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<Self> {
+    pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_TrsfModification_ctor_trsf(T)) }
     }
 
@@ -2732,9 +2728,9 @@ impl TrsfModification {
     /// factor.
     pub fn new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         S: &mut crate::ffi::HandleGeomSurface,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
@@ -2758,9 +2754,9 @@ impl TrsfModification {
     /// factor.
     pub fn new_curve(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         C: &mut crate::ffi::HandleGeomCurve,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         unsafe {
@@ -2774,8 +2770,8 @@ impl TrsfModification {
     /// factor.
     pub fn new_point(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        P: &mut crate::ffi::gp_Pnt,
+        V: &crate::topo_ds::Vertex,
+        P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::ShapeCustom_TrsfModification_new_point(self as *mut Self, V, P, Tol) }
@@ -2787,10 +2783,10 @@ impl TrsfModification {
     /// factor.
     pub fn new_curve2d(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF: &crate::topo_ds::Face,
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
@@ -2813,8 +2809,8 @@ impl TrsfModification {
     /// factor.
     pub fn new_parameter(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
@@ -2881,7 +2877,7 @@ impl TrsfModification {
     }
 
     /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:49 - `BRepTools_TrsfModification::Trsf()`
-    pub fn trsf(&mut self) -> &mut crate::ffi::gp_Trsf {
+    pub fn trsf(&mut self) -> &mut crate::gp::Trsf {
         unsafe {
             &mut *(crate::ffi::ShapeCustom_TrsfModification_inherited_Trsf(self as *mut Self))
         }
@@ -2897,7 +2893,7 @@ impl TrsfModification {
     /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:76 - `BRepTools_TrsfModification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
         unsafe {
@@ -2912,7 +2908,7 @@ impl TrsfModification {
     /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:81 - `BRepTools_TrsfModification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
         unsafe {
@@ -2923,8 +2919,8 @@ impl TrsfModification {
     /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:87 - `BRepTools_TrsfModification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         unsafe {
@@ -2940,12 +2936,12 @@ impl TrsfModification {
     /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:142 - `BRepTools_TrsfModification::Continuity()`
     pub fn continuity(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF1: &crate::ffi::TopoDS_Face,
-        NewF2: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF1: &crate::topo_ds::Face,
+        NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(

@@ -100,7 +100,7 @@ impl Absolute {
 
     /// **Source:** `Expr_Absolute.hxx`:66 - `Expr_Absolute::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Absolute_string(self as *const Self)) }
     }
 
@@ -266,7 +266,7 @@ impl ArcCosine {
 
     /// **Source:** `Expr_ArcCosine.hxx`:66 - `Expr_ArcCosine::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcCosine_string(self as *const Self)) }
     }
 
@@ -432,7 +432,7 @@ impl ArcSine {
 
     /// **Source:** `Expr_ArcSine.hxx`:66 - `Expr_ArcSine::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcSine_string(self as *const Self)) }
     }
 
@@ -596,7 +596,7 @@ impl ArcTangent {
 
     /// **Source:** `Expr_ArcTangent.hxx`:66 - `Expr_ArcTangent::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcTangent_string(self as *const Self))
         }
@@ -766,7 +766,7 @@ impl ArgCosh {
 
     /// **Source:** `Expr_ArgCosh.hxx`:66 - `Expr_ArgCosh::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgCosh_string(self as *const Self)) }
     }
 
@@ -930,7 +930,7 @@ impl ArgSinh {
 
     /// **Source:** `Expr_ArgSinh.hxx`:66 - `Expr_ArgSinh::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgSinh_string(self as *const Self)) }
     }
 
@@ -1094,7 +1094,7 @@ impl ArgTanh {
 
     /// **Source:** `Expr_ArgTanh.hxx`:66 - `Expr_ArgTanh::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgTanh_string(self as *const Self)) }
     }
 
@@ -1352,7 +1352,7 @@ impl BinaryExpression {
     }
 
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_BinaryExpression_inherited_String(
                 self as *const Self,
@@ -1445,7 +1445,7 @@ impl BinaryFunction {
 
     /// **Source:** `Expr_BinaryFunction.hxx`:76 - `Expr_BinaryFunction::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_BinaryFunction_string(self as *const Self))
         }
@@ -1627,7 +1627,7 @@ impl Cosh {
 
     /// **Source:** `Expr_Cosh.hxx`:67 - `Expr_Cosh::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosh_string(self as *const Self)) }
     }
 
@@ -1789,7 +1789,7 @@ impl Cosine {
 
     /// **Source:** `Expr_Cosine.hxx`:67 - `Expr_Cosine::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosine_string(self as *const Self)) }
     }
 
@@ -1954,7 +1954,7 @@ impl Difference {
 
     /// **Source:** `Expr_Difference.hxx`:74 - `Expr_Difference::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_Difference_string(self as *const Self))
         }
@@ -2121,7 +2121,7 @@ impl Different {
 
     /// **Source:** `Expr_Different.hxx`:54 - `Expr_Different::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Different_string(self as *const Self)) }
     }
 
@@ -2298,7 +2298,7 @@ impl Division {
 
     /// **Source:** `Expr_Division.hxx`:68 - `Expr_Division::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Division_string(self as *const Self)) }
     }
 
@@ -2458,7 +2458,7 @@ impl Equal {
 
     /// **Source:** `Expr_Equal.hxx`:53 - `Expr_Equal::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Equal_string(self as *const Self)) }
     }
 
@@ -2634,7 +2634,7 @@ impl Exponential {
 
     /// **Source:** `Expr_Exponential.hxx`:66 - `Expr_Exponential::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponential_string(self as *const Self))
         }
@@ -2807,7 +2807,7 @@ impl Exponentiate {
 
     /// **Source:** `Expr_Exponentiate.hxx`:68 - `Expr_Exponentiate::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponentiate_string(self as *const Self))
         }
@@ -3055,7 +3055,7 @@ impl FunctionDerivative {
     }
 
     /// **Source:** `Expr_FunctionDerivative.hxx`:93 - `Expr_FunctionDerivative::GetStringName()`
-    pub fn get_string_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_string_name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_FunctionDerivative_get_string_name(
                 self as *const Self,
@@ -3235,7 +3235,7 @@ impl GeneralExpression {
 
     /// **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_GeneralExpression_string(
                 self as *const Self,
@@ -3340,7 +3340,7 @@ impl GeneralFunction {
     }
 
     /// **Source:** `Expr_GeneralFunction.hxx`:75 - `Expr_GeneralFunction::GetStringName()`
-    pub fn get_string_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_string_name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_GeneralFunction_get_string_name(
                 self as *const Self,
@@ -3480,7 +3480,7 @@ impl GeneralRelation {
 
     /// **Source:** `Expr_GeneralRelation.hxx`:78 - `Expr_GeneralRelation::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_GeneralRelation_string(self as *const Self))
         }
@@ -3583,7 +3583,7 @@ impl GreaterThan {
 
     /// **Source:** `Expr_GreaterThan.hxx`:54 - `Expr_GreaterThan::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_GreaterThan_string(self as *const Self))
         }
@@ -3755,7 +3755,7 @@ impl GreaterThanOrEqual {
 
     /// **Source:** `Expr_GreaterThanOrEqual.hxx`:54 - `Expr_GreaterThanOrEqual::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_GreaterThanOrEqual_string(
                 self as *const Self,
@@ -4178,7 +4178,7 @@ impl LessThan {
 
     /// **Source:** `Expr_LessThan.hxx`:54 - `Expr_LessThan::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_LessThan_string(self as *const Self)) }
     }
 
@@ -4344,7 +4344,7 @@ impl LessThanOrEqual {
 
     /// **Source:** `Expr_LessThanOrEqual.hxx`:54 - `Expr_LessThanOrEqual::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_LessThanOrEqual_string(self as *const Self))
         }
@@ -4530,7 +4530,7 @@ impl LogOf10 {
 
     /// **Source:** `Expr_LogOf10.hxx`:67 - `Expr_LogOf10::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOf10_string(self as *const Self)) }
     }
 
@@ -4692,7 +4692,7 @@ impl LogOfe {
 
     /// **Source:** `Expr_LogOfe.hxx`:67 - `Expr_LogOfe::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOfe_string(self as *const Self)) }
     }
 
@@ -4804,7 +4804,7 @@ impl NamedConstant {
     /// **Source:** `Expr_NamedConstant.hxx`:41 - `Expr_NamedConstant::Expr_NamedConstant()`
     /// Creates a constant value of name <name> and value <value>.
     pub fn new_asciistring_real(
-        name: &crate::ffi::TCollection_AsciiString,
+        name: &crate::t_collection::AsciiString,
         value: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4937,12 +4937,12 @@ impl NamedConstant {
     }
 
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:36 - `Expr_NamedExpression::GetName()`
-    pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Expr_NamedConstant_inherited_GetName(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:38 - `Expr_NamedExpression::SetName()`
-    pub fn set_name(&mut self, name: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_name(&mut self, name: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::Expr_NamedConstant_inherited_SetName(self as *mut Self, name) }
     }
 
@@ -4957,7 +4957,7 @@ impl NamedConstant {
     }
 
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:52 - `Expr_NamedExpression::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedConstant_inherited_String(
                 self as *const Self,
@@ -4990,12 +4990,12 @@ unsafe impl crate::CppDeletable for NamedExpression {
 
 impl NamedExpression {
     /// **Source:** `Expr_NamedExpression.hxx`:36 - `Expr_NamedExpression::GetName()`
-    pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Expr_NamedExpression_get_name(self as *const Self)) }
     }
 
     /// **Source:** `Expr_NamedExpression.hxx`:38 - `Expr_NamedExpression::SetName()`
-    pub fn set_name(&mut self, name: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_name(&mut self, name: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::Expr_NamedExpression_set_name(self as *mut Self, name) }
     }
 
@@ -5017,7 +5017,7 @@ impl NamedExpression {
 
     /// **Source:** `Expr_NamedExpression.hxx`:52 - `Expr_NamedExpression::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedExpression_string(self as *const Self))
         }
@@ -5147,7 +5147,7 @@ impl NamedFunction {
     /// Creates a function of given variables <vars> with name
     /// <name> defined by the expression <exp>.
     pub fn new_asciistring_handleexprgeneralexpression_array1ofnamedunknown(
-        name: &crate::ffi::TCollection_AsciiString,
+        name: &crate::t_collection::AsciiString,
         exp: &crate::ffi::HandleExprGeneralExpression,
         vars: &crate::ffi::Expr_Array1OfNamedUnknown,
     ) -> crate::OwnedPtr<Self> {
@@ -5158,13 +5158,13 @@ impl NamedFunction {
 
     /// **Source:** `Expr_NamedFunction.hxx`:45 - `Expr_NamedFunction::SetName()`
     /// Sets the name <newname> to <me>.
-    pub fn set_name(&mut self, newname: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_name(&mut self, newname: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::Expr_NamedFunction_set_name(self as *mut Self, newname) }
     }
 
     /// **Source:** `Expr_NamedFunction.hxx`:48 - `Expr_NamedFunction::GetName()`
     /// Returns the name assigned to <me>
-    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedFunction_get_name(self as *const Self))
         }
@@ -5210,7 +5210,7 @@ impl NamedFunction {
     }
 
     /// **Source:** `Expr_NamedFunction.hxx`:88 - `Expr_NamedFunction::GetStringName()`
-    pub fn get_string_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_string_name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedFunction_get_string_name(
                 self as *const Self,
@@ -5284,7 +5284,7 @@ unsafe impl crate::CppDeletable for NamedUnknown {
 
 impl NamedUnknown {
     /// **Source:** `Expr_NamedUnknown.hxx`:39 - `Expr_NamedUnknown::Expr_NamedUnknown()`
-    pub fn new_asciistring(name: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+    pub fn new_asciistring(name: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedUnknown_ctor_asciistring(name)) }
     }
 
@@ -5431,12 +5431,12 @@ impl NamedUnknown {
     }
 
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:36 - `Expr_NamedExpression::GetName()`
-    pub fn get_name(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Expr_NamedUnknown_inherited_GetName(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:38 - `Expr_NamedExpression::SetName()`
-    pub fn set_name(&mut self, name: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_name(&mut self, name: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::Expr_NamedUnknown_inherited_SetName(self as *mut Self, name) }
     }
 
@@ -5451,7 +5451,7 @@ impl NamedUnknown {
     }
 
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:52 - `Expr_NamedExpression::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedUnknown_inherited_String(
                 self as *const Self,
@@ -5731,7 +5731,7 @@ impl NumericValue {
 
     /// **Source:** `Expr_NumericValue.hxx`:101 - `Expr_NumericValue::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_NumericValue_string(self as *const Self))
         }
@@ -5935,7 +5935,7 @@ impl PolyExpression {
     }
 
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyExpression_inherited_String(
                 self as *const Self,
@@ -6026,7 +6026,7 @@ impl PolyFunction {
 
     /// **Source:** `Expr_PolyFunction.hxx`:75 - `Expr_PolyFunction::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyFunction_string(self as *const Self))
         }
@@ -6214,7 +6214,7 @@ impl Product {
 
     /// **Source:** `Expr_Product.hxx`:72 - `Expr_Product::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Product_string(self as *const Self)) }
     }
 
@@ -6458,7 +6458,7 @@ impl Sign {
 
     /// **Source:** `Expr_Sign.hxx`:67 - `Expr_Sign::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Sign_string(self as *const Self)) }
     }
 
@@ -6618,7 +6618,7 @@ impl Sine {
 
     /// **Source:** `Expr_Sine.hxx`:67 - `Expr_Sine::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Sine_string(self as *const Self)) }
     }
 
@@ -6857,7 +6857,7 @@ impl SingleRelation {
     }
 
     /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:78 - `Expr_GeneralRelation::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_SingleRelation_inherited_String(
                 self as *const Self,
@@ -6933,7 +6933,7 @@ impl Sinh {
 
     /// **Source:** `Expr_Sinh.hxx`:67 - `Expr_Sinh::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Sinh_string(self as *const Self)) }
     }
 
@@ -7095,7 +7095,7 @@ impl Square {
 
     /// **Source:** `Expr_Square.hxx`:67 - `Expr_Square::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Square_string(self as *const Self)) }
     }
 
@@ -7259,7 +7259,7 @@ impl SquareRoot {
 
     /// **Source:** `Expr_SquareRoot.hxx`:67 - `Expr_SquareRoot::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_SquareRoot_string(self as *const Self))
         }
@@ -7438,7 +7438,7 @@ impl Sum {
 
     /// **Source:** `Expr_Sum.hxx`:79 - `Expr_Sum::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Sum_string(self as *const Self)) }
     }
 
@@ -7647,7 +7647,7 @@ impl SystemRelation {
 
     /// **Source:** `Expr_SystemRelation.hxx`:83 - `Expr_SystemRelation::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_SystemRelation_string(self as *const Self))
         }
@@ -7756,7 +7756,7 @@ impl Tangent {
 
     /// **Source:** `Expr_Tangent.hxx`:67 - `Expr_Tangent::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Tangent_string(self as *const Self)) }
     }
 
@@ -7916,7 +7916,7 @@ impl Tanh {
 
     /// **Source:** `Expr_Tanh.hxx`:67 - `Expr_Tanh::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Tanh_string(self as *const Self)) }
     }
 
@@ -8161,7 +8161,7 @@ impl UnaryExpression {
     }
 
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryExpression_inherited_String(
                 self as *const Self,
@@ -8253,7 +8253,7 @@ impl UnaryFunction {
 
     /// **Source:** `Expr_UnaryFunction.hxx`:75 - `Expr_UnaryFunction::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryFunction_string(self as *const Self))
         }
@@ -8425,7 +8425,7 @@ impl UnaryMinus {
 
     /// **Source:** `Expr_UnaryMinus.hxx`:74 - `Expr_UnaryMinus::String()`
     /// returns a string representing <me> in a readable way.
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryMinus_string(self as *const Self))
         }

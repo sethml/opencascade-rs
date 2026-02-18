@@ -533,12 +533,12 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
-    pub fn root_prefix(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_RootPrefix(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
-    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::RWGltf_CafReader_inherited_SetRootPrefix(self as *mut Self, theRootPrefix)
         }
@@ -574,7 +574,7 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
-    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &*(crate::ffi::RWGltf_CafReader_inherited_CoordinateSystemConverter(
                 self as *const Self,
@@ -585,7 +585,7 @@ impl CafReader {
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     pub fn set_coordinate_system_converter(
         &mut self,
-        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+        theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         unsafe {
             crate::ffi::RWGltf_CafReader_inherited_SetCoordinateSystemConverter(
@@ -615,14 +615,14 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
-    pub fn system_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::ffi::RWGltf_CafReader_inherited_SystemCoordinateSystem(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
-    pub fn set_system_coordinate_system(&mut self, theCS: &crate::ffi::gp_Ax3) {
+    pub fn set_system_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         unsafe {
             crate::ffi::RWGltf_CafReader_inherited_SetSystemCoordinateSystem(
                 self as *mut Self,
@@ -651,14 +651,14 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
-    pub fn file_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::ffi::RWGltf_CafReader_inherited_FileCoordinateSystem(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
-    pub fn set_file_coordinate_system(&mut self, theCS: &crate::ffi::gp_Ax3) {
+    pub fn set_file_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         unsafe {
             crate::ffi::RWGltf_CafReader_inherited_SetFileCoordinateSystem(self as *mut Self, theCS)
         }
@@ -667,8 +667,8 @@ impl CafReader {
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
     pub fn perform(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::RWGltf_CafReader_inherited_Perform(self as *mut Self, theFile, theProgress)
@@ -681,7 +681,7 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
-    pub fn single_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWGltf_CafReader_inherited_SingleShape(
                 self as *const Self,
@@ -697,8 +697,8 @@ impl CafReader {
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
     pub fn probe_header(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::RWGltf_CafReader_inherited_ProbeHeader(
@@ -721,13 +721,6 @@ pub use crate::ffi::RWGltf_DracoParameters as DracoParameters;
 unsafe impl crate::CppDeletable for DracoParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::RWGltf_DracoParameters_destructor(ptr);
-    }
-}
-
-impl DracoParameters {
-    /// **Source:** `RWGltf_DracoParameters.hxx`:20 - `RWGltf_DracoParameters::RWGltf_DracoParameters()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWGltf_DracoParameters_ctor()) }
     }
 }
 
@@ -818,8 +811,8 @@ impl GltfLatePrimitiveArray {
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:35 - `RWGltf_GltfLatePrimitiveArray::RWGltf_GltfLatePrimitiveArray()`
     /// Constructor.
     pub fn new_asciistring2(
-        theId: &crate::ffi::TCollection_AsciiString,
-        theName: &crate::ffi::TCollection_AsciiString,
+        theId: &crate::t_collection::AsciiString,
+        theName: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfLatePrimitiveArray_ctor_asciistring2(
@@ -835,19 +828,19 @@ impl GltfLatePrimitiveArray {
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:42 - `RWGltf_GltfLatePrimitiveArray::Id()`
     /// Entity id.
-    pub fn id(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn id(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_id(self as *const Self)) }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:45 - `RWGltf_GltfLatePrimitiveArray::Name()`
     /// Entity name.
-    pub fn name(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_name(self as *const Self)) }
     }
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:48 - `RWGltf_GltfLatePrimitiveArray::SetName()`
     /// Assign entity name.
-    pub fn set_name(&mut self, theName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::RWGltf_GltfLatePrimitiveArray_set_name(self as *mut Self, theName) }
     }
 
@@ -881,7 +874,7 @@ impl GltfLatePrimitiveArray {
 
     /// **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:60 - `RWGltf_GltfLatePrimitiveArray::BaseColor()`
     /// Return base color.
-    pub fn base_color(&self) -> crate::OwnedPtr<crate::ffi::Quantity_ColorRGBA> {
+    pub fn base_color(&self) -> crate::OwnedPtr<crate::quantity::ColorRGBA> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfLatePrimitiveArray_base_color(
                 self as *const Self,
@@ -924,7 +917,7 @@ impl GltfLatePrimitiveArray {
     pub fn add_prim_array_data(
         &mut self,
         theType: crate::rw_gltf::GltfArrayType,
-    ) -> &mut crate::ffi::RWGltf_GltfPrimArrayData {
+    ) -> &mut GltfPrimArrayData {
         unsafe {
             &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_add_prim_array_data(
                 self as *mut Self,
@@ -1167,7 +1160,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:142 - `Poly_Triangulation::Node()`
-    pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Node(
                 self as *const Self,
@@ -1177,7 +1170,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:147 - `Poly_Triangulation::SetNode()`
-    pub fn set_node(&mut self, theIndex: i32, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetNode(
                 self as *mut Self,
@@ -1188,7 +1181,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:155 - `Poly_Triangulation::UVNode()`
-    pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_UVNode(
                 self as *const Self,
@@ -1198,7 +1191,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:160 - `Poly_Triangulation::SetUVNode()`
-    pub fn set_uv_node(&mut self, theIndex: i32, thePnt: &crate::ffi::gp_Pnt2d) {
+    pub fn set_uv_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetUVNode(
                 self as *mut Self,
@@ -1209,7 +1202,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
-    pub fn triangle(&self, theIndex: i32) -> &crate::ffi::Poly_Triangle {
+    pub fn triangle(&self, theIndex: i32) -> &crate::poly::Triangle {
         unsafe {
             &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Triangle(
                 self as *const Self,
@@ -1219,7 +1212,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:177 - `Poly_Triangulation::SetTriangle()`
-    pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::ffi::Poly_Triangle) {
+    pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::poly::Triangle) {
         unsafe {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetTriangle(
                 self as *mut Self,
@@ -1230,7 +1223,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:185 - `Poly_Triangulation::Normal()`
-    pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_Normal(
                 self as *const Self,
@@ -1257,7 +1250,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
-    pub fn cached_min_max(&self) -> &crate::ffi::Bnd_Box {
+    pub fn cached_min_max(&self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_CachedMinMax(
                 self as *const Self,
@@ -1266,7 +1259,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
-    pub fn set_cached_min_max(&mut self, theBox: &crate::ffi::Bnd_Box) {
+    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
         unsafe {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetCachedMinMax(
                 self as *mut Self,
@@ -1294,8 +1287,8 @@ impl GltfLatePrimitiveArray {
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
     pub fn min_max(
         &self,
-        theBox: &mut crate::ffi::Bnd_Box,
-        theTrsf: &crate::ffi::gp_Trsf,
+        theBox: &mut crate::bnd::Box,
+        theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {
         unsafe {
@@ -1434,7 +1427,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`
-    pub fn internal_nodes(&mut self) -> &mut crate::ffi::Poly_ArrayOfNodes {
+    pub fn internal_nodes(&mut self) -> &mut crate::poly::ArrayOfNodes {
         unsafe {
             &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalNodes(
                 self as *mut Self,
@@ -1443,7 +1436,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:328 - `Poly_Triangulation::InternalUVNodes()`
-    pub fn internal_uv_nodes(&mut self) -> &mut crate::ffi::Poly_ArrayOfUVNodes {
+    pub fn internal_uv_nodes(&mut self) -> &mut crate::poly::ArrayOfUVNodes {
         unsafe {
             &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalUVNodes(
                 self as *mut Self,
@@ -1504,7 +1497,7 @@ impl GltfMaterialMap {
     /// **Source:** `RWGltf_GltfMaterialMap.hxx`:28 - `RWGltf_GltfMaterialMap::RWGltf_GltfMaterialMap()`
     /// Main constructor.
     pub fn new_asciistring_int(
-        theFile: &crate::ffi::TCollection_AsciiString,
+        theFile: &crate::t_collection::AsciiString,
         theDefSamplerId: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1559,14 +1552,14 @@ impl GltfMaterialMap {
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
-    pub fn default_style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe {
             &*(crate::ffi::RWGltf_GltfMaterialMap_inherited_DefaultStyle(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
-    pub fn set_default_style(&mut self, theStyle: &crate::ffi::XCAFPrs_Style) {
+    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         unsafe {
             crate::ffi::RWGltf_GltfMaterialMap_inherited_SetDefaultStyle(
                 self as *mut Self,
@@ -1578,8 +1571,8 @@ impl GltfMaterialMap {
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
     pub fn find_material(
         &self,
-        theStyle: &crate::ffi::XCAFPrs_Style,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        theStyle: &crate::xcaf_prs::Style,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfMaterialMap_inherited_FindMaterial(
                 self as *const Self,
@@ -1598,9 +1591,9 @@ impl GltfMaterialMap {
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
     pub fn copy_texture(
         &mut self,
-        theResTexture: &mut crate::ffi::TCollection_AsciiString,
+        theResTexture: &mut crate::t_collection::AsciiString,
         theTexture: &crate::ffi::HandleImageTexture,
-        theKey: &crate::ffi::TCollection_AsciiString,
+        theKey: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::RWGltf_GltfMaterialMap_inherited_CopyTexture(
@@ -1671,7 +1664,7 @@ impl GltfSceneNodeMap {
 
     /// **Source:** `RWGltf_GltfSceneNodeMap.hxx`:28 - `RWGltf_GltfSceneNodeMap::FindIndex()`
     /// Find index from document node string identifier.
-    pub fn find_index(&self, theNodeId: &crate::ffi::TCollection_AsciiString) -> i32 {
+    pub fn find_index(&self, theNodeId: &crate::t_collection::AsciiString) -> i32 {
         unsafe { crate::ffi::RWGltf_GltfSceneNodeMap_find_index(self as *const Self, theNodeId) }
     }
 }
@@ -1841,14 +1834,14 @@ impl TriangulationReader {
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:65 - `RWMesh_TriangulationReader::FileName()`
-    pub fn file_name(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn file_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::ffi::RWGltf_TriangulationReader_inherited_FileName(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:68 - `RWMesh_TriangulationReader::SetFileName()`
-    pub fn set_file_name(&mut self, theFileName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_file_name(&mut self, theFileName: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::RWGltf_TriangulationReader_inherited_SetFileName(
                 self as *mut Self,
@@ -1858,7 +1851,7 @@ impl TriangulationReader {
     }
 
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:71 - `RWMesh_TriangulationReader::CoordinateSystemConverter()`
-    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &*(crate::ffi::RWGltf_TriangulationReader_inherited_CoordinateSystemConverter(
                 self as *const Self,
@@ -1869,7 +1862,7 @@ impl TriangulationReader {
     /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:77 - `RWMesh_TriangulationReader::SetCoordinateSystemConverter()`
     pub fn set_coordinate_system_converter(
         &mut self,
-        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+        theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         unsafe {
             crate::ffi::RWGltf_TriangulationReader_inherited_SetCoordinateSystemConverter(

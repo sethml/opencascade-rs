@@ -213,7 +213,7 @@ impl ApproxArcsSegments {
     /// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:39 - `Geom2dConvert_ApproxArcsSegments::Geom2dConvert_ApproxArcsSegments()`
     /// Constructor.
     pub fn new_curve2d_real2(
-        theCurve: &crate::ffi::Adaptor2d_Curve2d,
+        theCurve: &crate::adaptor2d::Curve2d,
         theTolerance: f64,
         theAngleTol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -700,8 +700,8 @@ impl PPoint {
     /// Constructor.
     pub fn new_real_xy2(
         theParameter: f64,
-        thePoint: &crate::ffi::gp_XY,
-        theD1: &crate::ffi::gp_XY,
+        thePoint: &crate::gp::XY,
+        theD1: &crate::gp::XY,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dConvert_PPoint_ctor_real_xy2(
@@ -716,7 +716,7 @@ impl PPoint {
     /// Constructor.
     pub fn new_real_curve2d(
         theParameter: f64,
-        theAdaptor: &crate::ffi::Adaptor2d_Curve2d,
+        theAdaptor: &crate::adaptor2d::Curve2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dConvert_PPoint_ctor_real_curve2d(
@@ -728,7 +728,7 @@ impl PPoint {
 
     /// **Source:** `Geom2dConvert_PPoint.hxx`:52 - `Geom2dConvert_PPoint::Dist()`
     /// Compute the distance between two 2d points.
-    pub fn dist(&self, theOth: &crate::ffi::Geom2dConvert_PPoint) -> f64 {
+    pub fn dist(&self, theOth: &PPoint) -> f64 {
         unsafe { crate::ffi::Geom2dConvert_PPoint_dist(self as *const Self, theOth) }
     }
 
@@ -740,19 +740,19 @@ impl PPoint {
 
     /// **Source:** `Geom2dConvert_PPoint.hxx`:61 - `Geom2dConvert_PPoint::Point()`
     /// Query the point location.
-    pub fn point(&self) -> &crate::ffi::gp_XY {
+    pub fn point(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::Geom2dConvert_PPoint_point(self as *const Self)) }
     }
 
     /// **Source:** `Geom2dConvert_PPoint.hxx`:64 - `Geom2dConvert_PPoint::D1()`
     /// Query the first derivatives.
-    pub fn d1(&self) -> &crate::ffi::gp_XY {
+    pub fn d1(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::Geom2dConvert_PPoint_d1(self as *const Self)) }
     }
 
     /// **Source:** `Geom2dConvert_PPoint.hxx`:67 - `Geom2dConvert_PPoint::SetD1()`
     /// Change the value of the derivative at the point.
-    pub fn set_d1(&mut self, theD1: &crate::ffi::gp_XY) {
+    pub fn set_d1(&mut self, theD1: &crate::gp::XY) {
         unsafe { crate::ffi::Geom2dConvert_PPoint_set_d1(self as *mut Self, theD1) }
     }
 }

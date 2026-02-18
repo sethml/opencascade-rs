@@ -9,21 +9,21 @@
 /// **Source:** `LocOpe.hxx`:40 - `LocOpe::Closed`
 /// Returns Standard_True  when the wire <W> is closed
 /// on the face <OnF>.
-pub fn closed_wire_face(W: &crate::ffi::TopoDS_Wire, OnF: &crate::ffi::TopoDS_Face) -> bool {
+pub fn closed_wire_face(W: &crate::topo_ds::Wire, OnF: &crate::topo_ds::Face) -> bool {
     unsafe { crate::ffi::LocOpe_closed_wire_face(W, OnF) }
 }
 /// **Source:** `LocOpe.hxx`:44 - `LocOpe::Closed`
 /// Returns Standard_True  when the edge <E> is closed
 /// on the face <OnF>.
-pub fn closed_edge_face(E: &crate::ffi::TopoDS_Edge, OnF: &crate::ffi::TopoDS_Face) -> bool {
+pub fn closed_edge_face(E: &crate::topo_ds::Edge, OnF: &crate::topo_ds::Face) -> bool {
     unsafe { crate::ffi::LocOpe_closed_edge_face(E, OnF) }
 }
 /// **Source:** `LocOpe.hxx`:47 - `LocOpe::TgtFaces`
 /// Returns Standard_True  when the faces are tangent
 pub fn tgt_faces(
-    E: &crate::ffi::TopoDS_Edge,
-    F1: &crate::ffi::TopoDS_Face,
-    F2: &crate::ffi::TopoDS_Face,
+    E: &crate::topo_ds::Edge,
+    F1: &crate::topo_ds::Face,
+    F2: &crate::topo_ds::Face,
 ) -> bool {
     unsafe { crate::ffi::LocOpe_tgt_faces(E, F1, F2) }
 }
@@ -90,7 +90,7 @@ impl BuildShape {
     }
 
     /// **Source:** `LocOpe_BuildShape.hxx`:41 - `LocOpe_BuildShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_BuildShape_shape(self as *const Self)) }
     }
 }
@@ -173,13 +173,13 @@ impl CSIntersector {
     /// **Source:** `LocOpe_CSIntersector.hxx`:45 - `LocOpe_CSIntersector::LocOpe_CSIntersector()`
     /// Creates  and performs the intersection     between
     /// <Ax1> and <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_CSIntersector_ctor_shape(S)) }
     }
 
     /// **Source:** `LocOpe_CSIntersector.hxx`:48 - `LocOpe_CSIntersector::Init()`
     /// Performs the intersection between <Ax1 and <S>.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_CSIntersector_init(self as *mut Self, S) }
     }
 
@@ -216,7 +216,7 @@ impl CSIntersector {
     /// Returns the intersection point of range <Index> on
     /// element of range   <I>. The points   are sorted in
     /// increasing order of parameter along the axis.
-    pub fn point(&self, I: i32, Index: i32) -> &crate::ffi::LocOpe_PntFace {
+    pub fn point(&self, I: i32, Index: i32) -> &PntFace {
         unsafe { &*(crate::ffi::LocOpe_CSIntersector_point(self as *const Self, I, Index)) }
     }
 
@@ -254,8 +254,8 @@ impl CurveShapeIntersector {
     /// Creates  and performs the intersection     between
     /// <Ax1> and <S>.
     pub fn new_ax1_shape(
-        Axis: &crate::ffi::gp_Ax1,
-        S: &crate::ffi::TopoDS_Shape,
+        Axis: &crate::gp::Ax1,
+        S: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_CurveShapeIntersector_ctor_ax1_shape(
@@ -267,10 +267,7 @@ impl CurveShapeIntersector {
     /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:49 - `LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector()`
     /// Creates  and performs yte intersection     between
     /// <C> and <S>.
-    pub fn new_circ_shape(
-        C: &crate::ffi::gp_Circ,
-        S: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_circ_shape(C: &crate::gp::Circ, S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_CurveShapeIntersector_ctor_circ_shape(
                 C, S,
@@ -280,7 +277,7 @@ impl CurveShapeIntersector {
 
     /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:52 - `LocOpe_CurveShapeIntersector::Init()`
     /// Performs the intersection between <Ax1 and <S>.
-    pub fn init_ax1_shape(&mut self, Axis: &crate::ffi::gp_Ax1, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init_ax1_shape(&mut self, Axis: &crate::gp::Ax1, S: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::LocOpe_CurveShapeIntersector_init_ax1_shape(self as *mut Self, Axis, S)
         }
@@ -288,7 +285,7 @@ impl CurveShapeIntersector {
 
     /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:55 - `LocOpe_CurveShapeIntersector::Init()`
     /// Performs the intersection between <Ax1 and <S>.
-    pub fn init_circ_shape(&mut self, C: &crate::ffi::gp_Circ, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init_circ_shape(&mut self, C: &crate::gp::Circ, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_CurveShapeIntersector_init_circ_shape(self as *mut Self, C, S) }
     }
 
@@ -309,7 +306,7 @@ impl CurveShapeIntersector {
     /// Returns the intersection  point  of range <Index>.
     /// The points  are   sorted in increasing  order   of
     /// parameter along the axis.
-    pub fn point(&self, Index: i32) -> &crate::ffi::LocOpe_PntFace {
+    pub fn point(&self, Index: i32) -> &PntFace {
         unsafe { &*(crate::ffi::LocOpe_CurveShapeIntersector_point(self as *const Self, Index)) }
     }
 }
@@ -332,7 +329,7 @@ unsafe impl crate::CppDeletable for DPrism {
 impl DPrism {
     /// **Source:** `LocOpe_DPrism.hxx`:41 - `LocOpe_DPrism::LocOpe_DPrism()`
     pub fn new_face_real3(
-        Spine: &crate::ffi::TopoDS_Face,
+        Spine: &crate::topo_ds::Face,
         Height1: f64,
         Height2: f64,
         Angle: f64,
@@ -346,7 +343,7 @@ impl DPrism {
 
     /// **Source:** `LocOpe_DPrism.hxx`:46 - `LocOpe_DPrism::LocOpe_DPrism()`
     pub fn new_face_real2(
-        Spine: &crate::ffi::TopoDS_Face,
+        Spine: &crate::topo_ds::Face,
         Height: f64,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -363,32 +360,32 @@ impl DPrism {
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:52 - `LocOpe_DPrism::Spine()`
-    pub fn spine(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn spine(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_DPrism_spine(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:54 - `LocOpe_DPrism::Profile()`
-    pub fn profile(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn profile(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_DPrism_profile(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:56 - `LocOpe_DPrism::FirstShape()`
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_DPrism_first_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:58 - `LocOpe_DPrism::LastShape()`
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_DPrism_last_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:60 - `LocOpe_DPrism::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_DPrism_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:62 - `LocOpe_DPrism::Shapes()`
-    pub fn shapes(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_DPrism_shapes(self as *const Self, S)) }
     }
 
@@ -426,14 +423,14 @@ impl FindEdges {
 
     /// **Source:** `LocOpe_FindEdges.hxx`:33 - `LocOpe_FindEdges::LocOpe_FindEdges()`
     pub fn new_shape2(
-        FFrom: &crate::ffi::TopoDS_Shape,
-        FTo: &crate::ffi::TopoDS_Shape,
+        FFrom: &crate::topo_ds::Shape,
+        FTo: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_FindEdges_ctor_shape2(FFrom, FTo)) }
     }
 
     /// **Source:** `LocOpe_FindEdges.hxx`:35 - `LocOpe_FindEdges::Set()`
-    pub fn set(&mut self, FFrom: &crate::ffi::TopoDS_Shape, FTo: &crate::ffi::TopoDS_Shape) {
+    pub fn set(&mut self, FFrom: &crate::topo_ds::Shape, FTo: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_FindEdges_set(self as *mut Self, FFrom, FTo) }
     }
 
@@ -448,12 +445,12 @@ impl FindEdges {
     }
 
     /// **Source:** `LocOpe_FindEdges.hxx`:41 - `LocOpe_FindEdges::EdgeFrom()`
-    pub fn edge_from(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge_from(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::LocOpe_FindEdges_edge_from(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_FindEdges.hxx`:43 - `LocOpe_FindEdges::EdgeTo()`
-    pub fn edge_to(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge_to(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::LocOpe_FindEdges_edge_to(self as *const Self)) }
     }
 
@@ -484,8 +481,8 @@ impl FindEdgesInFace {
 
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:36 - `LocOpe_FindEdgesInFace::LocOpe_FindEdgesInFace()`
     pub fn new_shape_face(
-        S: &crate::ffi::TopoDS_Shape,
-        F: &crate::ffi::TopoDS_Face,
+        S: &crate::topo_ds::Shape,
+        F: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_FindEdgesInFace_ctor_shape_face(S, F))
@@ -493,7 +490,7 @@ impl FindEdgesInFace {
     }
 
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:38 - `LocOpe_FindEdgesInFace::Set()`
-    pub fn set(&mut self, S: &crate::ffi::TopoDS_Shape, F: &crate::ffi::TopoDS_Face) {
+    pub fn set(&mut self, S: &crate::topo_ds::Shape, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::LocOpe_FindEdgesInFace_set(self as *mut Self, S, F) }
     }
 
@@ -508,7 +505,7 @@ impl FindEdgesInFace {
     }
 
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:44 - `LocOpe_FindEdgesInFace::Edge()`
-    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::LocOpe_FindEdgesInFace_edge(self as *const Self)) }
     }
 
@@ -542,8 +539,8 @@ impl GeneratedShape {
     /// none, must return a null shape.
     pub fn generated_vertex(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        V: &crate::topo_ds::Vertex,
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_GeneratedShape_generated_vertex(
                 self as *mut Self,
@@ -557,8 +554,8 @@ impl GeneratedShape {
     /// must return a null shape.
     pub fn generated_edge(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+        E: &crate::topo_ds::Edge,
+    ) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_GeneratedShape_generated_edge(
                 self as *mut Self,
@@ -636,13 +633,13 @@ impl Generator {
 
     /// **Source:** `LocOpe_Generator.hxx`:39 - `LocOpe_Generator::LocOpe_Generator()`
     /// Creates the algorithm on the shape <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Generator_ctor_shape(S)) }
     }
 
     /// **Source:** `LocOpe_Generator.hxx`:42 - `LocOpe_Generator::Init()`
     /// Initializes the algorithm on the shape <S>.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_Generator_init(self as *mut Self, S) }
     }
 
@@ -658,13 +655,13 @@ impl Generator {
 
     /// **Source:** `LocOpe_Generator.hxx`:49 - `LocOpe_Generator::ResultingShape()`
     /// Returns the new shape
-    pub fn resulting_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn resulting_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Generator_resulting_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Generator.hxx`:52 - `LocOpe_Generator::Shape()`
     /// Returns the initial shape
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Generator_shape(self as *const Self)) }
     }
 
@@ -675,7 +672,7 @@ impl Generator {
     /// (when <F> disappears).
     pub fn descendant_face(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Generator_descendant_face(self as *mut Self, F)) }
     }
@@ -701,17 +698,17 @@ impl GluedShape {
     }
 
     /// **Source:** `LocOpe_GluedShape.hxx`:39 - `LocOpe_GluedShape::LocOpe_GluedShape()`
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_GluedShape_ctor_shape(S)) }
     }
 
     /// **Source:** `LocOpe_GluedShape.hxx`:41 - `LocOpe_GluedShape::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_GluedShape_init(self as *mut Self, S) }
     }
 
     /// **Source:** `LocOpe_GluedShape.hxx`:43 - `LocOpe_GluedShape::GlueOnFace()`
-    pub fn glue_on_face(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn glue_on_face(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::LocOpe_GluedShape_glue_on_face(self as *mut Self, F) }
     }
 
@@ -725,8 +722,8 @@ impl GluedShape {
     /// none, must return a null shape.
     pub fn generated_vertex(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        V: &crate::topo_ds::Vertex,
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_GluedShape_generated_vertex(
                 self as *mut Self,
@@ -740,8 +737,8 @@ impl GluedShape {
     /// must return a null shape.
     pub fn generated_edge(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+        E: &crate::topo_ds::Edge,
+    ) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_GluedShape_generated_edge(
                 self as *mut Self,
@@ -810,24 +807,24 @@ impl Gluer {
 
     /// **Source:** `LocOpe_Gluer.hxx`:40 - `LocOpe_Gluer::LocOpe_Gluer()`
     pub fn new_shape2(
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Snew: &crate::ffi::TopoDS_Shape,
+        Sbase: &crate::topo_ds::Shape,
+        Snew: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Gluer_ctor_shape2(Sbase, Snew)) }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:42 - `LocOpe_Gluer::Init()`
-    pub fn init(&mut self, Sbase: &crate::ffi::TopoDS_Shape, Snew: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, Sbase: &crate::topo_ds::Shape, Snew: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_Gluer_init(self as *mut Self, Sbase, Snew) }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:44 - `LocOpe_Gluer::Bind()`
-    pub fn bind_face2(&mut self, Fnew: &crate::ffi::TopoDS_Face, Fbase: &crate::ffi::TopoDS_Face) {
+    pub fn bind_face2(&mut self, Fnew: &crate::topo_ds::Face, Fbase: &crate::topo_ds::Face) {
         unsafe { crate::ffi::LocOpe_Gluer_bind_face2(self as *mut Self, Fnew, Fbase) }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:46 - `LocOpe_Gluer::Bind()`
-    pub fn bind_edge2(&mut self, Enew: &crate::ffi::TopoDS_Edge, Ebase: &crate::ffi::TopoDS_Edge) {
+    pub fn bind_edge2(&mut self, Enew: &crate::topo_ds::Edge, Ebase: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::LocOpe_Gluer_bind_edge2(self as *mut Self, Enew, Ebase) }
     }
 
@@ -852,25 +849,22 @@ impl Gluer {
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:54 - `LocOpe_Gluer::ResultingShape()`
-    pub fn resulting_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn resulting_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Gluer_resulting_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:56 - `LocOpe_Gluer::DescendantFaces()`
-    pub fn descendant_faces(
-        &self,
-        F: &crate::ffi::TopoDS_Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn descendant_faces(&self, F: &crate::topo_ds::Face) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Gluer_descendant_faces(self as *const Self, F)) }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:58 - `LocOpe_Gluer::BasisShape()`
-    pub fn basis_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn basis_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Gluer_basis_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:60 - `LocOpe_Gluer::GluedShape()`
-    pub fn glued_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn glued_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Gluer_glued_shape(self as *const Self)) }
     }
 
@@ -908,10 +902,10 @@ impl LinearForm {
 
     /// **Source:** `LocOpe_LinearForm.hxx`:38 - `LocOpe_LinearForm::LocOpe_LinearForm()`
     pub fn new_shape_vec_pnt2(
-        Base: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
-        Pnt1: &crate::ffi::gp_Pnt,
-        Pnt2: &crate::ffi::gp_Pnt,
+        Base: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
+        Pnt1: &crate::gp::Pnt,
+        Pnt2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_LinearForm_ctor_shape_vec_pnt2(
@@ -922,11 +916,11 @@ impl LinearForm {
 
     /// **Source:** `LocOpe_LinearForm.hxx`:43 - `LocOpe_LinearForm::LocOpe_LinearForm()`
     pub fn new_shape_vec2_pnt2(
-        Base: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
-        Vectra: &crate::ffi::gp_Vec,
-        Pnt1: &crate::ffi::gp_Pnt,
-        Pnt2: &crate::ffi::gp_Pnt,
+        Base: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
+        Vectra: &crate::gp::Vec,
+        Pnt1: &crate::gp::Pnt,
+        Pnt2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_LinearForm_ctor_shape_vec2_pnt2(
@@ -938,10 +932,10 @@ impl LinearForm {
     /// **Source:** `LocOpe_LinearForm.hxx`:49 - `LocOpe_LinearForm::Perform()`
     pub fn perform_shape_vec_pnt2(
         &mut self,
-        Base: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
-        Pnt1: &crate::ffi::gp_Pnt,
-        Pnt2: &crate::ffi::gp_Pnt,
+        Base: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
+        Pnt1: &crate::gp::Pnt,
+        Pnt2: &crate::gp::Pnt,
     ) {
         unsafe {
             crate::ffi::LocOpe_LinearForm_perform_shape_vec_pnt2(
@@ -957,11 +951,11 @@ impl LinearForm {
     /// **Source:** `LocOpe_LinearForm.hxx`:54 - `LocOpe_LinearForm::Perform()`
     pub fn perform_shape_vec2_pnt2(
         &mut self,
-        Base: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
-        Vectra: &crate::ffi::gp_Vec,
-        Pnt1: &crate::ffi::gp_Pnt,
-        Pnt2: &crate::ffi::gp_Pnt,
+        Base: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
+        Vectra: &crate::gp::Vec,
+        Pnt1: &crate::gp::Pnt,
+        Pnt2: &crate::gp::Pnt,
     ) {
         unsafe {
             crate::ffi::LocOpe_LinearForm_perform_shape_vec2_pnt2(
@@ -976,22 +970,22 @@ impl LinearForm {
     }
 
     /// **Source:** `LocOpe_LinearForm.hxx`:60 - `LocOpe_LinearForm::FirstShape()`
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_LinearForm_first_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_LinearForm.hxx`:62 - `LocOpe_LinearForm::LastShape()`
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_LinearForm_last_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_LinearForm.hxx`:64 - `LocOpe_LinearForm::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_LinearForm_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_LinearForm.hxx`:66 - `LocOpe_LinearForm::Shapes()`
-    pub fn shapes(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_LinearForm_shapes(self as *const Self, S)) }
     }
 }
@@ -1014,8 +1008,8 @@ unsafe impl crate::CppDeletable for Pipe {
 impl Pipe {
     /// **Source:** `LocOpe_Pipe.hxx`:40 - `LocOpe_Pipe::LocOpe_Pipe()`
     pub fn new_wire_shape(
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Shape,
+        Spine: &crate::topo_ds::Wire,
+        Profile: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Pipe_ctor_wire_shape(Spine, Profile))
@@ -1023,32 +1017,32 @@ impl Pipe {
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:42 - `LocOpe_Pipe::Spine()`
-    pub fn spine(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn spine(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Pipe_spine(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:44 - `LocOpe_Pipe::Profile()`
-    pub fn profile(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn profile(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Pipe_profile(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:46 - `LocOpe_Pipe::FirstShape()`
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Pipe_first_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:48 - `LocOpe_Pipe::LastShape()`
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Pipe_last_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:50 - `LocOpe_Pipe::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Pipe_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:52 - `LocOpe_Pipe::Shapes()`
-    pub fn shapes(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn shapes(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Pipe_shapes(self as *mut Self, S)) }
     }
 
@@ -1088,8 +1082,8 @@ impl PntFace {
 
     /// **Source:** `LocOpe_PntFace.hxx`:42 - `LocOpe_PntFace::LocOpe_PntFace()`
     pub fn new_pnt_face_orientation_real3(
-        P: &crate::ffi::gp_Pnt,
-        F: &crate::ffi::TopoDS_Face,
+        P: &crate::gp::Pnt,
+        F: &crate::topo_ds::Face,
         Or: crate::top_abs::Orientation,
         Param: f64,
         UPar: f64,
@@ -1108,12 +1102,12 @@ impl PntFace {
     }
 
     /// **Source:** `LocOpe_PntFace.hxx`:57 - `LocOpe_PntFace::Pnt()`
-    pub fn pnt(&self) -> &crate::ffi::gp_Pnt {
+    pub fn pnt(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::LocOpe_PntFace_pnt(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_PntFace.hxx`:59 - `LocOpe_PntFace::Face()`
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::LocOpe_PntFace_face(self as *const Self)) }
     }
 
@@ -1166,17 +1160,17 @@ impl Prism {
 
     /// **Source:** `LocOpe_Prism.hxx`:40 - `LocOpe_Prism::LocOpe_Prism()`
     pub fn new_shape_vec(
-        Base: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
+        Base: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Prism_ctor_shape_vec(Base, V)) }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:42 - `LocOpe_Prism::LocOpe_Prism()`
     pub fn new_shape_vec2(
-        Base: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
-        Vectra: &crate::ffi::gp_Vec,
+        Base: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
+        Vectra: &crate::gp::Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Prism_ctor_shape_vec2(Base, V, Vectra))
@@ -1184,37 +1178,37 @@ impl Prism {
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:44 - `LocOpe_Prism::Perform()`
-    pub fn perform_shape_vec(&mut self, Base: &crate::ffi::TopoDS_Shape, V: &crate::ffi::gp_Vec) {
+    pub fn perform_shape_vec(&mut self, Base: &crate::topo_ds::Shape, V: &crate::gp::Vec) {
         unsafe { crate::ffi::LocOpe_Prism_perform_shape_vec(self as *mut Self, Base, V) }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:46 - `LocOpe_Prism::Perform()`
     pub fn perform_shape_vec2(
         &mut self,
-        Base: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
-        Vtra: &crate::ffi::gp_Vec,
+        Base: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
+        Vtra: &crate::gp::Vec,
     ) {
         unsafe { crate::ffi::LocOpe_Prism_perform_shape_vec2(self as *mut Self, Base, V, Vtra) }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:48 - `LocOpe_Prism::FirstShape()`
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Prism_first_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:50 - `LocOpe_Prism::LastShape()`
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Prism_last_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:52 - `LocOpe_Prism::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Prism_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:54 - `LocOpe_Prism::Shapes()`
-    pub fn shapes(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Prism_shapes(self as *const Self, S)) }
     }
 
@@ -1254,8 +1248,8 @@ impl Revol {
 
     /// **Source:** `LocOpe_Revol.hxx`:40 - `LocOpe_Revol::LocOpe_Revol()`
     pub fn new_shape_ax1_real2(
-        Base: &crate::ffi::TopoDS_Shape,
-        Axis: &crate::ffi::gp_Ax1,
+        Base: &crate::topo_ds::Shape,
+        Axis: &crate::gp::Ax1,
         Angle: f64,
         angledec: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1268,8 +1262,8 @@ impl Revol {
 
     /// **Source:** `LocOpe_Revol.hxx`:45 - `LocOpe_Revol::LocOpe_Revol()`
     pub fn new_shape_ax1_real(
-        Base: &crate::ffi::TopoDS_Shape,
-        Axis: &crate::ffi::gp_Ax1,
+        Base: &crate::topo_ds::Shape,
+        Axis: &crate::gp::Ax1,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1282,8 +1276,8 @@ impl Revol {
     /// **Source:** `LocOpe_Revol.hxx`:49 - `LocOpe_Revol::Perform()`
     pub fn perform_shape_ax1_real2(
         &mut self,
-        Base: &crate::ffi::TopoDS_Shape,
-        Axis: &crate::ffi::gp_Ax1,
+        Base: &crate::topo_ds::Shape,
+        Axis: &crate::gp::Ax1,
         Angle: f64,
         angledec: f64,
     ) {
@@ -1301,8 +1295,8 @@ impl Revol {
     /// **Source:** `LocOpe_Revol.hxx`:54 - `LocOpe_Revol::Perform()`
     pub fn perform_shape_ax1_real(
         &mut self,
-        Base: &crate::ffi::TopoDS_Shape,
-        Axis: &crate::ffi::gp_Ax1,
+        Base: &crate::topo_ds::Shape,
+        Axis: &crate::gp::Ax1,
         Angle: f64,
     ) {
         unsafe {
@@ -1311,22 +1305,22 @@ impl Revol {
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:58 - `LocOpe_Revol::FirstShape()`
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Revol_first_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:60 - `LocOpe_Revol::LastShape()`
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Revol_last_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:62 - `LocOpe_Revol::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Revol_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:64 - `LocOpe_Revol::Shapes()`
-    pub fn shapes(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Revol_shapes(self as *const Self, S)) }
     }
 
@@ -1366,8 +1360,8 @@ impl RevolutionForm {
 
     /// **Source:** `LocOpe_RevolutionForm.hxx`:39 - `LocOpe_RevolutionForm::LocOpe_RevolutionForm()`
     pub fn new_shape_ax1_real(
-        Base: &crate::ffi::TopoDS_Shape,
-        Axe: &crate::ffi::gp_Ax1,
+        Base: &crate::topo_ds::Shape,
+        Axe: &crate::gp::Ax1,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1378,32 +1372,27 @@ impl RevolutionForm {
     }
 
     /// **Source:** `LocOpe_RevolutionForm.hxx`:43 - `LocOpe_RevolutionForm::Perform()`
-    pub fn perform(
-        &mut self,
-        Base: &crate::ffi::TopoDS_Shape,
-        Axe: &crate::ffi::gp_Ax1,
-        Angle: f64,
-    ) {
+    pub fn perform(&mut self, Base: &crate::topo_ds::Shape, Axe: &crate::gp::Ax1, Angle: f64) {
         unsafe { crate::ffi::LocOpe_RevolutionForm_perform(self as *mut Self, Base, Axe, Angle) }
     }
 
     /// **Source:** `LocOpe_RevolutionForm.hxx`:47 - `LocOpe_RevolutionForm::FirstShape()`
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_RevolutionForm_first_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_RevolutionForm.hxx`:49 - `LocOpe_RevolutionForm::LastShape()`
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_RevolutionForm_last_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_RevolutionForm.hxx`:51 - `LocOpe_RevolutionForm::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_RevolutionForm_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_RevolutionForm.hxx`:53 - `LocOpe_RevolutionForm::Shapes()`
-    pub fn shapes(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_RevolutionForm_shapes(self as *const Self, S)) }
     }
 }
@@ -1435,13 +1424,13 @@ impl SplitDrafts {
 
     /// **Source:** `LocOpe_SplitDrafts.hxx`:46 - `LocOpe_SplitDrafts::LocOpe_SplitDrafts()`
     /// Creates the algorithm on the shape <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_SplitDrafts_ctor_shape(S)) }
     }
 
     /// **Source:** `LocOpe_SplitDrafts.hxx`:52 - `LocOpe_SplitDrafts::Init()`
     /// Initializes the algorithm with the shape <S>.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_SplitDrafts_init(self as *mut Self, S) }
     }
 
@@ -1463,13 +1452,13 @@ impl SplitDrafts {
     /// the right part of the wire.
     pub fn perform_face_wire_dir_pln_real_dir_pln_real_bool2(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
-        W: &crate::ffi::TopoDS_Wire,
-        Extractg: &crate::ffi::gp_Dir,
-        NPlg: &crate::ffi::gp_Pln,
+        F: &crate::topo_ds::Face,
+        W: &crate::topo_ds::Wire,
+        Extractg: &crate::gp::Dir,
+        NPlg: &crate::gp::Pln,
         Angleg: f64,
-        Extractd: &crate::ffi::gp_Dir,
-        NPld: &crate::ffi::gp_Pln,
+        Extractd: &crate::gp::Dir,
+        NPld: &crate::gp::Pln,
         Angled: f64,
         ModifyLeft: bool,
         ModifyRight: bool,
@@ -1502,10 +1491,10 @@ impl SplitDrafts {
     /// angle.
     pub fn perform_face_wire_dir_pln_real(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
-        W: &crate::ffi::TopoDS_Wire,
-        Extract: &crate::ffi::gp_Dir,
-        NPl: &crate::ffi::gp_Pln,
+        F: &crate::topo_ds::Face,
+        W: &crate::topo_ds::Wire,
+        Extract: &crate::gp::Dir,
+        NPl: &crate::gp::Pln,
         Angle: f64,
     ) {
         unsafe {
@@ -1527,13 +1516,13 @@ impl SplitDrafts {
     }
 
     /// **Source:** `LocOpe_SplitDrafts.hxx`:97 - `LocOpe_SplitDrafts::OriginalShape()`
-    pub fn original_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn original_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_SplitDrafts_original_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_SplitDrafts.hxx`:100 - `LocOpe_SplitDrafts::Shape()`
     /// Returns the modified shape.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_SplitDrafts_shape(self as *const Self)) }
     }
 
@@ -1541,7 +1530,7 @@ impl SplitDrafts {
     /// Manages the descendant shapes.
     pub fn shapes_from_shape(
         &self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_SplitDrafts_shapes_from_shape(self as *const Self, S)) }
     }
@@ -1574,19 +1563,19 @@ impl SplitShape {
 
     /// **Source:** `LocOpe_SplitShape.hxx`:46 - `LocOpe_SplitShape::LocOpe_SplitShape()`
     /// Creates the process  with the shape <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_SplitShape_ctor_shape(S)) }
     }
 
     /// **Source:** `LocOpe_SplitShape.hxx`:49 - `LocOpe_SplitShape::Init()`
     /// Initializes the process on the shape <S>.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_SplitShape_init(self as *mut Self, S) }
     }
 
     /// **Source:** `LocOpe_SplitShape.hxx`:52 - `LocOpe_SplitShape::CanSplit()`
     /// Tests if it is possible to split the edge <E>.
-    pub fn can_split(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn can_split(&self, E: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::LocOpe_SplitShape_can_split(self as *const Self, E) }
     }
 
@@ -1594,20 +1583,16 @@ impl SplitShape {
     /// Adds the vertex <V> on the edge <E>, at parameter <P>.
     pub fn add_vertex_real_edge(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
+        V: &crate::topo_ds::Vertex,
         P: f64,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
     ) {
         unsafe { crate::ffi::LocOpe_SplitShape_add_vertex_real_edge(self as *mut Self, V, P, E) }
     }
 
     /// **Source:** `LocOpe_SplitShape.hxx`:58 - `LocOpe_SplitShape::Add()`
     /// Adds the wire <W> on the face <F>.
-    pub fn add_wire_face(
-        &mut self,
-        W: &crate::ffi::TopoDS_Wire,
-        F: &crate::ffi::TopoDS_Face,
-    ) -> bool {
+    pub fn add_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) -> bool {
         unsafe { crate::ffi::LocOpe_SplitShape_add_wire_face(self as *mut Self, W, F) }
     }
 
@@ -1616,14 +1601,14 @@ impl SplitShape {
     pub fn add_listofshape_face(
         &mut self,
         Lwires: &crate::ffi::TopTools_ListOfShape,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
     ) -> bool {
         unsafe { crate::ffi::LocOpe_SplitShape_add_listofshape_face(self as *mut Self, Lwires, F) }
     }
 
     /// **Source:** `LocOpe_SplitShape.hxx`:64 - `LocOpe_SplitShape::Shape()`
     /// Returns the "original" shape.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_SplitShape_shape(self as *const Self)) }
     }
 
@@ -1631,7 +1616,7 @@ impl SplitShape {
     /// Returns the list of descendant shapes of <S>.
     pub fn descendant_shapes(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_SplitShape_descendant_shapes(self as *mut Self, S)) }
     }
@@ -1644,8 +1629,8 @@ impl SplitShape {
     /// shape.  <W> is considered with its orientation.
     pub fn left_of(
         &mut self,
-        W: &crate::ffi::TopoDS_Wire,
-        F: &crate::ffi::TopoDS_Face,
+        W: &crate::topo_ds::Wire,
+        F: &crate::topo_ds::Face,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_SplitShape_left_of(self as *mut Self, W, F)) }
     }
@@ -1673,13 +1658,13 @@ impl Spliter {
 
     /// **Source:** `LocOpe_Spliter.hxx`:38 - `LocOpe_Spliter::LocOpe_Spliter()`
     /// Creates the algorithm on the shape <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Spliter_ctor_shape(S)) }
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:41 - `LocOpe_Spliter::Init()`
     /// Initializes the algorithm on the shape <S>.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_Spliter_init(self as *mut Self, S) }
     }
 
@@ -1695,13 +1680,13 @@ impl Spliter {
 
     /// **Source:** `LocOpe_Spliter.hxx`:48 - `LocOpe_Spliter::ResultingShape()`
     /// Returns the new shape
-    pub fn resulting_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn resulting_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Spliter_resulting_shape(self as *const Self)) }
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:51 - `LocOpe_Spliter::Shape()`
     /// Returns the initial shape
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::LocOpe_Spliter_shape(self as *const Self)) }
     }
 
@@ -1724,7 +1709,7 @@ impl Spliter {
     /// Returns the list of descendant shapes of <S>.
     pub fn descendant_shapes(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Spliter_descendant_shapes(self as *mut Self, S)) }
     }
@@ -1745,12 +1730,12 @@ unsafe impl crate::CppDeletable for WiresOnShape {
 
 impl WiresOnShape {
     /// **Source:** `LocOpe_WiresOnShape.hxx`:44 - `LocOpe_WiresOnShape::LocOpe_WiresOnShape()`
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_WiresOnShape_ctor_shape(S)) }
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:46 - `LocOpe_WiresOnShape::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::LocOpe_WiresOnShape_init(self as *mut Self, S) }
     }
 
@@ -1772,30 +1757,26 @@ impl WiresOnShape {
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:57 - `LocOpe_WiresOnShape::Bind()`
-    pub fn bind_wire_face(&mut self, W: &crate::ffi::TopoDS_Wire, F: &crate::ffi::TopoDS_Face) {
+    pub fn bind_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::LocOpe_WiresOnShape_bind_wire_face(self as *mut Self, W, F) }
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:59 - `LocOpe_WiresOnShape::Bind()`
     pub fn bind_compound_face(
         &mut self,
-        Comp: &crate::ffi::TopoDS_Compound,
-        F: &crate::ffi::TopoDS_Face,
+        Comp: &crate::topo_ds::Compound,
+        F: &crate::topo_ds::Face,
     ) {
         unsafe { crate::ffi::LocOpe_WiresOnShape_bind_compound_face(self as *mut Self, Comp, F) }
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:61 - `LocOpe_WiresOnShape::Bind()`
-    pub fn bind_edge_face(&mut self, E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) {
+    pub fn bind_edge_face(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::LocOpe_WiresOnShape_bind_edge_face(self as *mut Self, E, F) }
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:63 - `LocOpe_WiresOnShape::Bind()`
-    pub fn bind_edge2(
-        &mut self,
-        EfromW: &crate::ffi::TopoDS_Edge,
-        EonFace: &crate::ffi::TopoDS_Edge,
-    ) {
+    pub fn bind_edge2(&mut self, EfromW: &crate::topo_ds::Edge, EonFace: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::LocOpe_WiresOnShape_bind_edge2(self as *mut Self, EfromW, EonFace) }
     }
 
@@ -1820,7 +1801,7 @@ impl WiresOnShape {
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:73 - `LocOpe_WiresOnShape::Edge()`
-    pub fn edge(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    pub fn edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_WiresOnShape_edge(self as *mut Self))
         }
@@ -1829,7 +1810,7 @@ impl WiresOnShape {
     /// **Source:** `LocOpe_WiresOnShape.hxx`:77 - `LocOpe_WiresOnShape::OnFace()`
     /// Returns the face of the shape on which the current
     /// edge is projected.
-    pub fn on_face(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    pub fn on_face(&mut self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_WiresOnShape_on_face(self as *mut Self))
         }
@@ -1839,7 +1820,7 @@ impl WiresOnShape {
     /// If the   current  edge is  projected  on  an edge,
     /// returns <Standard_True> and sets the value of <E>.
     /// Otherwise, returns <Standard_False>.
-    pub fn on_edge_edge(&mut self, E: &mut crate::ffi::TopoDS_Edge) -> bool {
+    pub fn on_edge_edge(&mut self, E: &mut crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::LocOpe_WiresOnShape_on_edge_edge(self as *mut Self, E) }
     }
 
@@ -1851,8 +1832,8 @@ impl WiresOnShape {
     /// **Source:** `LocOpe_WiresOnShape.hxx`:86 - `LocOpe_WiresOnShape::OnVertex()`
     pub fn on_vertex(
         &mut self,
-        Vwire: &crate::ffi::TopoDS_Vertex,
-        Vshape: &mut crate::ffi::TopoDS_Vertex,
+        Vwire: &crate::topo_ds::Vertex,
+        Vshape: &mut crate::topo_ds::Vertex,
     ) -> bool {
         unsafe { crate::ffi::LocOpe_WiresOnShape_on_vertex(self as *mut Self, Vwire, Vshape) }
     }
@@ -1865,8 +1846,8 @@ impl WiresOnShape {
     /// Else returns <Standard_False>.
     pub fn on_edge_vertex_edge_real(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &mut crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &mut crate::topo_ds::Edge,
         P: &mut f64,
     ) -> bool {
         unsafe {
@@ -1882,9 +1863,9 @@ impl WiresOnShape {
     /// Else returns <Standard_False>.
     pub fn on_edge_vertex_edge2_real(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        EdgeFrom: &crate::ffi::TopoDS_Edge,
-        E: &mut crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        EdgeFrom: &crate::topo_ds::Edge,
+        E: &mut crate::topo_ds::Edge,
         P: &mut f64,
     ) -> bool {
         unsafe {
@@ -1900,7 +1881,7 @@ impl WiresOnShape {
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:106 - `LocOpe_WiresOnShape::IsFaceWithSection()`
     /// tells is the face to be split by section or not
-    pub fn is_face_with_section(&self, aFace: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_face_with_section(&self, aFace: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::LocOpe_WiresOnShape_is_face_with_section(self as *const Self, aFace) }
     }
 

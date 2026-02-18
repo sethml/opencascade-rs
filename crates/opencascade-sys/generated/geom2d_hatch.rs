@@ -30,8 +30,8 @@ impl Classifier {
     /// Creates an algorithm to classify the Point  P with
     /// Tolerance <T> on the face described by <F>.
     pub fn new_elements_pnt2d_real(
-        F: &mut crate::ffi::Geom2dHatch_Elements,
-        P: &crate::ffi::gp_Pnt2d,
+        F: &mut Elements,
+        P: &crate::gp::Pnt2d,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -44,12 +44,7 @@ impl Classifier {
     /// **Source:** `Geom2dHatch_Classifier.hxx`:50 - `Geom2dHatch_Classifier::Perform()`
     /// Classify  the Point  P  with  Tolerance <T> on the
     /// face described by <F>.
-    pub fn perform(
-        &mut self,
-        F: &mut crate::ffi::Geom2dHatch_Elements,
-        P: &crate::ffi::gp_Pnt2d,
-        Tol: f64,
-    ) {
+    pub fn perform(&mut self, F: &mut Elements, P: &crate::gp::Pnt2d, Tol: f64) {
         unsafe { crate::ffi::Geom2dHatch_Classifier_perform(self as *mut Self, F, P, Tol) }
     }
 
@@ -82,7 +77,7 @@ impl Classifier {
     /// Returns   the    Edge  used   to    determine  the
     /// classification. When the State is ON  this  is the
     /// Edge containing the point.
-    pub fn edge(&self) -> &crate::ffi::Geom2dAdaptor_Curve {
+    pub fn edge(&self) -> &crate::geom2d_adaptor::Curve {
         unsafe { &*(crate::ffi::Geom2dHatch_Classifier_edge(self as *const Self)) }
     }
 
@@ -128,7 +123,7 @@ impl Element {
     /// **Source:** `Geom2dHatch_Element.hxx`:35 - `Geom2dHatch_Element::Geom2dHatch_Element()`
     /// Creates an element.
     pub fn new_curve_orientation(
-        Curve: &crate::ffi::Geom2dAdaptor_Curve,
+        Curve: &crate::geom2d_adaptor::Curve,
         Orientation: crate::top_abs::Orientation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -141,13 +136,13 @@ impl Element {
 
     /// **Source:** `Geom2dHatch_Element.hxx`:39 - `Geom2dHatch_Element::Curve()`
     /// Returns the curve associated to the element.
-    pub fn curve(&self) -> &crate::ffi::Geom2dAdaptor_Curve {
+    pub fn curve(&self) -> &crate::geom2d_adaptor::Curve {
         unsafe { &*(crate::ffi::Geom2dHatch_Element_curve(self as *const Self)) }
     }
 
     /// **Source:** `Geom2dHatch_Element.hxx`:42 - `Geom2dHatch_Element::ChangeCurve()`
     /// Returns the curve associated to the element.
-    pub fn change_curve(&mut self) -> &mut crate::ffi::Geom2dAdaptor_Curve {
+    pub fn change_curve(&mut self) -> &mut crate::geom2d_adaptor::Curve {
         unsafe { &mut *(crate::ffi::Geom2dHatch_Element_change_curve(self as *mut Self)) }
     }
 
@@ -194,7 +189,7 @@ impl Elements {
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:40 - `Geom2dHatch_Elements::Geom2dHatch_Elements()`
-    pub fn new_elements(Other: &crate::ffi::Geom2dHatch_Elements) -> crate::OwnedPtr<Self> {
+    pub fn new_elements(Other: &Elements) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dHatch_Elements_ctor_elements(Other)) }
     }
 
@@ -204,7 +199,7 @@ impl Elements {
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:46 - `Geom2dHatch_Elements::Bind()`
-    pub fn bind(&mut self, K: i32, I: &crate::ffi::Geom2dHatch_Element) -> bool {
+    pub fn bind(&mut self, K: i32, I: &Element) -> bool {
         unsafe { crate::ffi::Geom2dHatch_Elements_bind(self as *mut Self, K, I) }
     }
 
@@ -219,30 +214,30 @@ impl Elements {
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:52 - `Geom2dHatch_Elements::Find()`
-    pub fn find(&self, K: i32) -> &crate::ffi::Geom2dHatch_Element {
+    pub fn find(&self, K: i32) -> &Element {
         unsafe { &*(crate::ffi::Geom2dHatch_Elements_find(self as *const Self, K)) }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:56 - `Geom2dHatch_Elements::ChangeFind()`
-    pub fn change_find(&mut self, K: i32) -> &mut crate::ffi::Geom2dHatch_Element {
+    pub fn change_find(&mut self, K: i32) -> &mut Element {
         unsafe { &mut *(crate::ffi::Geom2dHatch_Elements_change_find(self as *mut Self, K)) }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:60 - `Geom2dHatch_Elements::CheckPoint()`
-    pub fn check_point(&mut self, P: &mut crate::ffi::gp_Pnt2d) -> bool {
+    pub fn check_point(&mut self, P: &mut crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::Geom2dHatch_Elements_check_point(self as *mut Self, P) }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:62 - `Geom2dHatch_Elements::Reject()`
-    pub fn reject(&self, P: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn reject(&self, P: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::Geom2dHatch_Elements_reject(self as *const Self, P) }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:64 - `Geom2dHatch_Elements::Segment()`
     pub fn segment(
         &mut self,
-        P: &crate::ffi::gp_Pnt2d,
-        L: &mut crate::ffi::gp_Lin2d,
+        P: &crate::gp::Pnt2d,
+        L: &mut crate::gp::Lin2d,
         Par: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::Geom2dHatch_Elements_segment(self as *mut Self, P, L, Par) }
@@ -251,8 +246,8 @@ impl Elements {
     /// **Source:** `Geom2dHatch_Elements.hxx`:66 - `Geom2dHatch_Elements::OtherSegment()`
     pub fn other_segment(
         &mut self,
-        P: &crate::ffi::gp_Pnt2d,
-        L: &mut crate::ffi::gp_Lin2d,
+        P: &crate::gp::Pnt2d,
+        L: &mut crate::gp::Lin2d,
         Par: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::Geom2dHatch_Elements_other_segment(self as *mut Self, P, L, Par) }
@@ -274,7 +269,7 @@ impl Elements {
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:74 - `Geom2dHatch_Elements::RejectWire()`
-    pub fn reject_wire(&self, L: &crate::ffi::gp_Lin2d, Par: f64) -> bool {
+    pub fn reject_wire(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
         unsafe { crate::ffi::Geom2dHatch_Elements_reject_wire(self as *const Self, L, Par) }
     }
 
@@ -294,12 +289,12 @@ impl Elements {
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:82 - `Geom2dHatch_Elements::RejectEdge()`
-    pub fn reject_edge(&self, L: &crate::ffi::gp_Lin2d, Par: f64) -> bool {
+    pub fn reject_edge(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
         unsafe { crate::ffi::Geom2dHatch_Elements_reject_edge(self as *const Self, L, Par) }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:84 - `Geom2dHatch_Elements::CurrentEdge()`
-    pub fn current_edge(&self, E: &mut crate::ffi::Geom2dAdaptor_Curve, Or: &mut i32) {
+    pub fn current_edge(&self, E: &mut crate::geom2d_adaptor::Curve, Or: &mut i32) {
         unsafe { crate::ffi::Geom2dHatch_Elements_current_edge(self as *const Self, E, Or) }
     }
 }
@@ -330,18 +325,14 @@ impl FClass2dOfClassifier {
     /// the original length of the segment on <L>  used to
     /// compute  intersections.   <Tol> is the   tolerance
     /// attached to the line segment in intersections.
-    pub fn reset(&mut self, L: &crate::ffi::gp_Lin2d, P: f64, Tol: f64) {
+    pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         unsafe { crate::ffi::Geom2dHatch_FClass2dOfClassifier_reset(self as *mut Self, L, P, Tol) }
     }
 
     /// **Source:** `Geom2dHatch_FClass2dOfClassifier.hxx`:51 - `Geom2dHatch_FClass2dOfClassifier::Compare()`
     /// Updates  the classification process with  the edge
     /// <E> from the boundary.
-    pub fn compare(
-        &mut self,
-        E: &crate::ffi::Geom2dAdaptor_Curve,
-        Or: crate::top_abs::Orientation,
-    ) {
+    pub fn compare(&mut self, E: &crate::geom2d_adaptor::Curve, Or: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::Geom2dHatch_FClass2dOfClassifier_compare(self as *mut Self, E, Or.into())
         }
@@ -355,7 +346,7 @@ impl FClass2dOfClassifier {
 
     /// **Source:** `Geom2dHatch_FClass2dOfClassifier.hxx`:57 - `Geom2dHatch_FClass2dOfClassifier::Intersector()`
     /// Returns the intersecting algorithm.
-    pub fn intersector(&mut self) -> &mut crate::ffi::Geom2dHatch_Intersector {
+    pub fn intersector(&mut self) -> &mut Intersector {
         unsafe {
             &mut *(crate::ffi::Geom2dHatch_FClass2dOfClassifier_intersector(self as *mut Self))
         }
@@ -409,7 +400,7 @@ impl Hatcher {
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:43 - `Geom2dHatch_Hatcher::Geom2dHatch_Hatcher()`
     /// Returns an empty hatcher.
     pub fn new_intersector_real2_bool2(
-        Intersector: &crate::ffi::Geom2dHatch_Intersector,
+        Intersector: &Intersector,
         Confusion2d: f64,
         Confusion3d: f64,
         KeepPnt: bool,
@@ -429,7 +420,7 @@ impl Hatcher {
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:43 - `Geom2dHatch_Hatcher::Geom2dHatch_Hatcher()`
     /// Returns an empty hatcher.
     pub fn new_intersector_real2_bool(
-        Intersector: &crate::ffi::Geom2dHatch_Intersector,
+        Intersector: &Intersector,
         Confusion2d: f64,
         Confusion3d: f64,
         KeepPnt: bool,
@@ -440,7 +431,7 @@ impl Hatcher {
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:43 - `Geom2dHatch_Hatcher::Geom2dHatch_Hatcher()`
     /// Returns an empty hatcher.
     pub fn new_intersector_real2(
-        Intersector: &crate::ffi::Geom2dHatch_Intersector,
+        Intersector: &Intersector,
         Confusion2d: f64,
         Confusion3d: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -449,7 +440,7 @@ impl Hatcher {
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:50 - `Geom2dHatch_Hatcher::Intersector()`
     /// Sets the associated intersector.
-    pub fn intersector_intersector(&mut self, Intersector: &crate::ffi::Geom2dHatch_Intersector) {
+    pub fn intersector_intersector(&mut self, Intersector: &Intersector) {
         unsafe {
             crate::ffi::Geom2dHatch_Hatcher_intersector_intersector(self as *mut Self, Intersector)
         }
@@ -457,13 +448,13 @@ impl Hatcher {
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:53 - `Geom2dHatch_Hatcher::Intersector()`
     /// Returns the associated intersector.
-    pub fn intersector(&mut self) -> &crate::ffi::Geom2dHatch_Intersector {
+    pub fn intersector(&mut self) -> &Intersector {
         unsafe { &*(crate::ffi::Geom2dHatch_Hatcher_intersector(self as *mut Self)) }
     }
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:56 - `Geom2dHatch_Hatcher::ChangeIntersector()`
     /// Returns the associated intersector.
-    pub fn change_intersector(&mut self) -> &mut crate::ffi::Geom2dHatch_Intersector {
+    pub fn change_intersector(&mut self) -> &mut Intersector {
         unsafe { &mut *(crate::ffi::Geom2dHatch_Hatcher_change_intersector(self as *mut Self)) }
     }
 
@@ -527,7 +518,7 @@ impl Hatcher {
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:90 - `Geom2dHatch_Hatcher::ElementCurve()`
     /// Returns the curve associated to the IndE-th element.
-    pub fn element_curve(&self, IndE: i32) -> &crate::ffi::Geom2dAdaptor_Curve {
+    pub fn element_curve(&self, IndE: i32) -> &crate::geom2d_adaptor::Curve {
         unsafe { &*(crate::ffi::Geom2dHatch_Hatcher_element_curve(self as *const Self, IndE)) }
     }
 
@@ -535,7 +526,7 @@ impl Hatcher {
     /// Adds an element to the hatcher and returns its index.
     pub fn add_element_curve_orientation(
         &mut self,
-        Curve: &crate::ffi::Geom2dAdaptor_Curve,
+        Curve: &crate::geom2d_adaptor::Curve,
         Orientation: crate::top_abs::Orientation,
     ) -> i32 {
         unsafe {
@@ -577,13 +568,13 @@ impl Hatcher {
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:112 - `Geom2dHatch_Hatcher::HatchingCurve()`
     /// Returns the curve associated to the IndH-th hatching.
-    pub fn hatching_curve(&self, IndH: i32) -> &crate::ffi::Geom2dAdaptor_Curve {
+    pub fn hatching_curve(&self, IndH: i32) -> &crate::geom2d_adaptor::Curve {
         unsafe { &*(crate::ffi::Geom2dHatch_Hatcher_hatching_curve(self as *const Self, IndH)) }
     }
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:115 - `Geom2dHatch_Hatcher::AddHatching()`
     /// Adds a hatching to the hatcher and returns its index.
-    pub fn add_hatching(&mut self, Curve: &crate::ffi::Geom2dAdaptor_Curve) -> i32 {
+    pub fn add_hatching(&mut self, Curve: &crate::geom2d_adaptor::Curve) -> i32 {
         unsafe { crate::ffi::Geom2dHatch_Hatcher_add_hatching(self as *mut Self, Curve) }
     }
 
@@ -609,7 +600,7 @@ impl Hatcher {
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:129 - `Geom2dHatch_Hatcher::Point()`
     /// Returns the IndP-th intersection point of the
     /// IndH-th hatching.
-    pub fn point(&self, IndH: i32, IndP: i32) -> &crate::ffi::HatchGen_PointOnHatching {
+    pub fn point(&self, IndH: i32, IndP: i32) -> &crate::hatch_gen::PointOnHatching {
         unsafe { &*(crate::ffi::Geom2dHatch_Hatcher_point(self as *const Self, IndH, IndP)) }
     }
 
@@ -623,7 +614,7 @@ impl Hatcher {
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:138 - `Geom2dHatch_Hatcher::Trim()`
     /// Adds a hatching to the hatcher and trims it by
     /// the elements already given and returns its index.
-    pub fn trim_curve(&mut self, Curve: &crate::ffi::Geom2dAdaptor_Curve) -> i32 {
+    pub fn trim_curve(&mut self, Curve: &crate::geom2d_adaptor::Curve) -> i32 {
         unsafe { crate::ffi::Geom2dHatch_Hatcher_trim_curve(self as *mut Self, Curve) }
     }
 
@@ -696,7 +687,7 @@ impl Hatcher {
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:175 - `Geom2dHatch_Hatcher::Domain()`
     /// Returns the IDom-th domain of the IndH-th hatching.
-    pub fn domain(&self, IndH: i32, IDom: i32) -> &crate::ffi::HatchGen_Domain {
+    pub fn domain(&self, IndH: i32, IDom: i32) -> &crate::hatch_gen::Domain {
         unsafe { &*(crate::ffi::Geom2dHatch_Hatcher_domain(self as *const Self, IndH, IDom)) }
     }
 
@@ -728,19 +719,19 @@ impl Hatching {
 
     /// **Source:** `Geom2dHatch_Hatching.hxx`:45 - `Geom2dHatch_Hatching::Geom2dHatch_Hatching()`
     /// Creates a hatching.
-    pub fn new_curve(Curve: &crate::ffi::Geom2dAdaptor_Curve) -> crate::OwnedPtr<Self> {
+    pub fn new_curve(Curve: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dHatch_Hatching_ctor_curve(Curve)) }
     }
 
     /// **Source:** `Geom2dHatch_Hatching.hxx`:48 - `Geom2dHatch_Hatching::Curve()`
     /// Returns the curve associated to the hatching.
-    pub fn curve(&self) -> &crate::ffi::Geom2dAdaptor_Curve {
+    pub fn curve(&self) -> &crate::geom2d_adaptor::Curve {
         unsafe { &*(crate::ffi::Geom2dHatch_Hatching_curve(self as *const Self)) }
     }
 
     /// **Source:** `Geom2dHatch_Hatching.hxx`:51 - `Geom2dHatch_Hatching::ChangeCurve()`
     /// Returns the curve associated to the hatching.
-    pub fn change_curve(&mut self) -> &mut crate::ffi::Geom2dAdaptor_Curve {
+    pub fn change_curve(&mut self) -> &mut crate::geom2d_adaptor::Curve {
         unsafe { &mut *(crate::ffi::Geom2dHatch_Hatching_change_curve(self as *mut Self)) }
     }
 
@@ -804,7 +795,7 @@ impl Hatching {
 
     /// **Source:** `Geom2dHatch_Hatching.hxx`:81 - `Geom2dHatch_Hatching::AddPoint()`
     /// Adds an intersection point to the hatching.
-    pub fn add_point(&mut self, Point: &crate::ffi::HatchGen_PointOnHatching, Confusion: f64) {
+    pub fn add_point(&mut self, Point: &crate::hatch_gen::PointOnHatching, Confusion: f64) {
         unsafe { crate::ffi::Geom2dHatch_Hatching_add_point(self as *mut Self, Point, Confusion) }
     }
 
@@ -820,7 +811,7 @@ impl Hatching {
     /// hatching.
     /// The exception OutOfRange is raised if
     /// Index < 1 or Index > NbPoints.
-    pub fn point(&self, Index: i32) -> &crate::ffi::HatchGen_PointOnHatching {
+    pub fn point(&self, Index: i32) -> &crate::hatch_gen::PointOnHatching {
         unsafe { &*(crate::ffi::Geom2dHatch_Hatching_point(self as *const Self, Index)) }
     }
 
@@ -829,7 +820,7 @@ impl Hatching {
     /// hatching.
     /// The exception OutOfRange is raised if
     /// Index < 1 or Index > NbPoints.
-    pub fn change_point(&mut self, Index: i32) -> &mut crate::ffi::HatchGen_PointOnHatching {
+    pub fn change_point(&mut self, Index: i32) -> &mut crate::hatch_gen::PointOnHatching {
         unsafe { &mut *(crate::ffi::Geom2dHatch_Hatching_change_point(self as *mut Self, Index)) }
     }
 
@@ -850,7 +841,7 @@ impl Hatching {
 
     /// **Source:** `Geom2dHatch_Hatching.hxx`:110 - `Geom2dHatch_Hatching::AddDomain()`
     /// Adds a domain to the hatching.
-    pub fn add_domain(&mut self, Domain: &crate::ffi::HatchGen_Domain) {
+    pub fn add_domain(&mut self, Domain: &crate::hatch_gen::Domain) {
         unsafe { crate::ffi::Geom2dHatch_Hatching_add_domain(self as *mut Self, Domain) }
     }
 
@@ -864,7 +855,7 @@ impl Hatching {
     /// Returns the Index-th domain of the hatching.
     /// The exception OutOfRange is raised if
     /// Index < 1 or Index > NbDomains.
-    pub fn domain(&self, Index: i32) -> &crate::ffi::HatchGen_Domain {
+    pub fn domain(&self, Index: i32) -> &crate::hatch_gen::Domain {
         unsafe { &*(crate::ffi::Geom2dHatch_Hatching_domain(self as *const Self, Index)) }
     }
 
@@ -885,7 +876,7 @@ impl Hatching {
     /// **Source:** `Geom2dHatch_Hatching.hxx`:130 - `Geom2dHatch_Hatching::ClassificationPoint()`
     /// Returns a point on the curve.
     /// This point will be used for the classification.
-    pub fn classification_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn classification_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dHatch_Hatching_classification_point(
                 self as *const Self,
@@ -963,8 +954,8 @@ impl Intersector {
     /// Creates an intersector.
     pub fn intersect(
         &mut self,
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
+        C1: &crate::geom2d_adaptor::Curve,
+        C2: &crate::geom2d_adaptor::Curve,
     ) {
         unsafe { crate::ffi::Geom2dHatch_Intersector_intersect(self as *mut Self, C1, C2) }
     }
@@ -979,10 +970,10 @@ impl Intersector {
     /// segment, the second the Edge.
     pub fn perform(
         &mut self,
-        L: &crate::ffi::gp_Lin2d,
+        L: &crate::gp::Lin2d,
         P: f64,
         Tol: f64,
-        E: &crate::ffi::Geom2dAdaptor_Curve,
+        E: &crate::geom2d_adaptor::Curve,
     ) {
         unsafe { crate::ffi::Geom2dHatch_Intersector_perform(self as *mut Self, L, P, Tol, E) }
     }
@@ -993,10 +984,10 @@ impl Intersector {
     /// <U>.
     pub fn local_geometry(
         &self,
-        E: &crate::ffi::Geom2dAdaptor_Curve,
+        E: &crate::geom2d_adaptor::Curve,
         U: f64,
-        T: &mut crate::ffi::gp_Dir2d,
-        N: &mut crate::ffi::gp_Dir2d,
+        T: &mut crate::gp::Dir2d,
+        N: &mut crate::gp::Dir2d,
         C: &mut f64,
     ) {
         unsafe {
@@ -1019,9 +1010,9 @@ impl Intersector {
     /// Inherited: **Source:** `Geom2dInt_GInter.hxx`:131 - `Geom2dInt_GInter::ComputeDomain()`
     pub fn compute_domain(
         &self,
-        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C1: &crate::adaptor2d::Curve2d,
         TolDomain: f64,
-    ) -> crate::OwnedPtr<crate::ffi::IntRes2d_Domain> {
+    ) -> crate::OwnedPtr<crate::int_res2d::Domain> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dHatch_Intersector_inherited_ComputeDomain(
                 self as *const Self,
@@ -1064,7 +1055,7 @@ impl Intersector {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
-    pub fn point(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe { &*(crate::ffi::Geom2dHatch_Intersector_inherited_Point(self as *const Self, N)) }
     }
 
@@ -1074,7 +1065,7 @@ impl Intersector {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
-    pub fn segment(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionSegment {
+    pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe { &*(crate::ffi::Geom2dHatch_Intersector_inherited_Segment(self as *const Self, N)) }
     }
 

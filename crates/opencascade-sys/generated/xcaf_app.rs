@@ -119,15 +119,15 @@ impl Application {
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
-    pub fn is_in_session(&self, path: &crate::ffi::TCollection_ExtendedString) -> i32 {
+    pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::XCAFApp_Application_inherited_IsInSession(self as *const Self, path) }
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
     pub fn can_retrieve(
         &mut self,
-        theFolder: &crate::ffi::TCollection_ExtendedString,
-        theName: &crate::ffi::TCollection_ExtendedString,
+        theFolder: &crate::t_collection::ExtendedString,
+        theName: &crate::t_collection::ExtendedString,
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
         unsafe {
@@ -156,8 +156,8 @@ impl Application {
     /// Inherited: **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
     pub fn format(
         &mut self,
-        aFileName: &crate::ffi::TCollection_ExtendedString,
-        theFormat: &mut crate::ffi::TCollection_ExtendedString,
+        aFileName: &crate::t_collection::ExtendedString,
+        theFormat: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::XCAFApp_Application_inherited_Format(
@@ -187,7 +187,7 @@ impl Application {
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFApp_Application_inherited_Name(
                 self as *const Self,
@@ -196,7 +196,7 @@ impl Application {
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
-    pub fn version(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFApp_Application_inherited_Version(
                 self as *const Self,

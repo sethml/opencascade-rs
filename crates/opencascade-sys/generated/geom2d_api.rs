@@ -84,7 +84,7 @@ impl ExtremaCurveCurve {
     /// Standard_OutOfRange if Index is not in the range [
     /// 1,NbExtrema ], where NbExtrema is the
     /// number of extrema computed by this algorithm.
-    pub fn points(&self, Index: i32, P1: &mut crate::ffi::gp_Pnt2d, P2: &mut crate::ffi::gp_Pnt2d) {
+    pub fn points(&self, Index: i32, P1: &mut crate::gp::Pnt2d, P2: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dAPI_ExtremaCurveCurve_points(self as *const Self, Index, P1, P2)
         }
@@ -121,7 +121,7 @@ impl ExtremaCurveCurve {
     /// the second curve, which are the ends of the shortest
     /// extremum computed by this algorithm.
     /// Exceptions StdFail_NotDone if this algorithm fails.
-    pub fn nearest_points(&self, P1: &mut crate::ffi::gp_Pnt2d, P2: &mut crate::ffi::gp_Pnt2d) {
+    pub fn nearest_points(&self, P1: &mut crate::gp::Pnt2d, P2: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dAPI_ExtremaCurveCurve_nearest_points(self as *const Self, P1, P2)
         }
@@ -152,7 +152,7 @@ impl ExtremaCurveCurve {
     }
 
     /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:126 - `Geom2dAPI_ExtremaCurveCurve::Extrema()`
-    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtCC2d {
+    pub fn extrema(&self) -> &crate::extrema::ExtCC2d {
         unsafe { &*(crate::ffi::Geom2dAPI_ExtremaCurveCurve_extrema(self as *const Self)) }
     }
 }
@@ -306,7 +306,7 @@ impl InterCurveCurve {
     /// Exceptions
     /// Standard_OutOfRange if index is not in the range [ 1,NbPoints ], where
     /// NbPoints is the number of computed intersection points
-    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAPI_InterCurveCurve_point(
                 self as *const Self,
@@ -355,7 +355,7 @@ impl InterCurveCurve {
 
     /// **Source:** `Geom2dAPI_InterCurveCurve.hxx`:121 - `Geom2dAPI_InterCurveCurve::Intersector()`
     /// return the algorithmic object from Intersection.
-    pub fn intersector(&self) -> &crate::ffi::Geom2dInt_GInter {
+    pub fn intersector(&self) -> &crate::geom2d_int::GInter {
         unsafe { &*(crate::ffi::Geom2dAPI_InterCurveCurve_intersector(self as *const Self)) }
     }
 }
@@ -434,8 +434,8 @@ impl Interpolate {
     /// be scaled according to derivatives of lagrange interpolation.
     pub fn load_vec2d2_bool(
         &mut self,
-        InitialTangent: &crate::ffi::gp_Vec2d,
-        FinalTangent: &crate::ffi::gp_Vec2d,
+        InitialTangent: &crate::gp::Vec2d,
+        FinalTangent: &crate::gp::Vec2d,
         Scale: bool,
     ) {
         unsafe {
@@ -983,7 +983,7 @@ impl ProjectPointOnCurve {
     /// Create the projection  of a  point  <P> on a curve
     /// <Curve>
     pub fn new_pnt2d_handlegeom2dcurve(
-        P: &crate::ffi::gp_Pnt2d,
+        P: &crate::gp::Pnt2d,
         Curve: &crate::ffi::HandleGeom2dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1000,7 +1000,7 @@ impl ProjectPointOnCurve {
     /// Use the function NbPoints to obtain the number of solutions. If
     /// projection fails, NbPoints returns 0.
     pub fn new_pnt2d_handlegeom2dcurve_real2(
-        P: &crate::ffi::gp_Pnt2d,
+        P: &crate::gp::Pnt2d,
         Curve: &crate::ffi::HandleGeom2dCurve,
         Umin: f64,
         Usup: f64,
@@ -1019,7 +1019,7 @@ impl ProjectPointOnCurve {
     /// computes the orthogonal  projections  of a  point  <P> on a curve <Curve>
     pub fn init_pnt2d_handlegeom2dcurve(
         &mut self,
-        P: &crate::ffi::gp_Pnt2d,
+        P: &crate::gp::Pnt2d,
         Curve: &crate::ffi::HandleGeom2dCurve,
     ) {
         unsafe {
@@ -1037,7 +1037,7 @@ impl ProjectPointOnCurve {
     /// of the curve Curve limited by the two points of parameter Umin and Usup.
     pub fn init_pnt2d_handlegeom2dcurve_real2(
         &mut self,
-        P: &crate::ffi::gp_Pnt2d,
+        P: &crate::gp::Pnt2d,
         Curve: &crate::ffi::HandleGeom2dCurve,
         Umin: f64,
         Usup: f64,
@@ -1066,7 +1066,7 @@ impl ProjectPointOnCurve {
     /// Exceptions
     /// Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
     /// NbPoints is the number of solution points.
-    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAPI_ProjectPointOnCurve_point(
                 self as *const Self,
@@ -1120,7 +1120,7 @@ impl ProjectPointOnCurve {
     /// Returns the nearest orthogonal projection of the point on the curve.
     /// Exceptions
     /// StdFail_NotDone if this algorithm fails.
-    pub fn nearest_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn nearest_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAPI_ProjectPointOnCurve_nearest_point(
                 self as *const Self,
@@ -1150,7 +1150,7 @@ impl ProjectPointOnCurve {
 
     /// **Source:** `Geom2dAPI_ProjectPointOnCurve.hxx`:124 - `Geom2dAPI_ProjectPointOnCurve::Extrema()`
     /// return the algorithmic object from Extrema
-    pub fn extrema(&self) -> &crate::ffi::Extrema_ExtPC2d {
+    pub fn extrema(&self) -> &crate::extrema::ExtPC2d {
         unsafe { &*(crate::ffi::Geom2dAPI_ProjectPointOnCurve_extrema(self as *const Self)) }
     }
 }

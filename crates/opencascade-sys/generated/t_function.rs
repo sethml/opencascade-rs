@@ -65,13 +65,13 @@ unsafe impl crate::CppDeletable for Driver {
 impl Driver {
     /// **Source:** `TFunction_Driver.hxx`:47 - `TFunction_Driver::Init()`
     /// Initializes the label L for this function prior to its  execution.
-    pub fn init(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn init(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::TFunction_Driver_init(self as *mut Self, L) }
     }
 
     /// **Source:** `TFunction_Driver.hxx`:50 - `TFunction_Driver::Label()`
     /// Returns the label of the driver for this function.
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_Driver_label(self as *const Self))
         }
@@ -158,7 +158,7 @@ impl DriverTable {
     /// Returns true if the driver has been added successfully to the driver table.
     pub fn add_driver(
         &mut self,
-        guid: &crate::ffi::Standard_GUID,
+        guid: &crate::standard::GUID,
         driver: &crate::ffi::HandleTFunctionDriver,
         thread: i32,
     ) -> bool {
@@ -169,7 +169,7 @@ impl DriverTable {
 
     /// **Source:** `TFunction_DriverTable.hxx`:53 - `TFunction_DriverTable::HasDriver()`
     /// Returns true if the driver exists in the driver table.
-    pub fn has_driver(&self, guid: &crate::ffi::Standard_GUID, thread: i32) -> bool {
+    pub fn has_driver(&self, guid: &crate::standard::GUID, thread: i32) -> bool {
         unsafe { crate::ffi::TFunction_DriverTable_has_driver(self as *const Self, guid, thread) }
     }
 
@@ -177,7 +177,7 @@ impl DriverTable {
     /// Returns true if the driver was found.
     pub fn find_driver(
         &self,
-        guid: &crate::ffi::Standard_GUID,
+        guid: &crate::standard::GUID,
         driver: &mut crate::ffi::HandleTFunctionDriver,
         thread: i32,
     ) -> bool {
@@ -189,7 +189,7 @@ impl DriverTable {
     /// **Source:** `TFunction_DriverTable.hxx`:67 - `TFunction_DriverTable::RemoveDriver()`
     /// Removes a driver with the given GUID.
     /// Returns true if the driver has been removed successfully.
-    pub fn remove_driver(&mut self, guid: &crate::ffi::Standard_GUID, thread: i32) -> bool {
+    pub fn remove_driver(&mut self, guid: &crate::standard::GUID, thread: i32) -> bool {
         unsafe { crate::ffi::TFunction_DriverTable_remove_driver(self as *mut Self, guid, thread) }
     }
 
@@ -279,14 +279,14 @@ impl Function {
 
     /// **Source:** `TFunction_Function.hxx`:63 - `TFunction_Function::GetDriverGUID()`
     /// Returns the GUID for this function's driver.
-    pub fn get_driver_guid(&self) -> &crate::ffi::Standard_GUID {
+    pub fn get_driver_guid(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_Function_get_driver_guid(self as *const Self)) }
     }
 
     /// **Source:** `TFunction_Function.hxx`:67 - `TFunction_Function::SetDriverGUID()`
     /// Sets the driver for this function as that
     /// identified by the GUID guid.
-    pub fn set_driver_guid(&mut self, guid: &crate::ffi::Standard_GUID) {
+    pub fn set_driver_guid(&mut self, guid: &crate::standard::GUID) {
         unsafe { crate::ffi::TFunction_Function_set_driver_guid(self as *mut Self, guid) }
     }
 
@@ -312,7 +312,7 @@ impl Function {
     }
 
     /// **Source:** `TFunction_Function.hxx`:81 - `TFunction_Function::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_Function_id(self as *const Self)) }
     }
 
@@ -352,7 +352,7 @@ impl Function {
     /// Returns a function found on the label.
     /// Instance methods:
     /// ================
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_Function_get_id()) }
     }
 
@@ -381,12 +381,12 @@ impl Function {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TFunction_Function_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_inherited_Label(
                 self as *const Self,
@@ -420,14 +420,14 @@ impl Function {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TFunction_Function_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -445,7 +445,7 @@ impl Function {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TFunction_Function_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -578,7 +578,7 @@ impl GraphNode {
 
     /// **Source:** `TFunction_GraphNode.hxx`:58 - `TFunction_GraphNode::AddPrevious()`
     /// Defines a reference to the function as a previous one.
-    pub fn add_previous_label(&mut self, func: &crate::ffi::TDF_Label) -> bool {
+    pub fn add_previous_label(&mut self, func: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_GraphNode_add_previous_label(self as *mut Self, func) }
     }
 
@@ -590,7 +590,7 @@ impl GraphNode {
 
     /// **Source:** `TFunction_GraphNode.hxx`:64 - `TFunction_GraphNode::RemovePrevious()`
     /// Removes a reference to the function as a previous one.
-    pub fn remove_previous_label(&mut self, func: &crate::ffi::TDF_Label) -> bool {
+    pub fn remove_previous_label(&mut self, func: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_GraphNode_remove_previous_label(self as *mut Self, func) }
     }
 
@@ -614,7 +614,7 @@ impl GraphNode {
 
     /// **Source:** `TFunction_GraphNode.hxx`:76 - `TFunction_GraphNode::AddNext()`
     /// Defines a reference to the function as a next one.
-    pub fn add_next_label(&mut self, func: &crate::ffi::TDF_Label) -> bool {
+    pub fn add_next_label(&mut self, func: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_GraphNode_add_next_label(self as *mut Self, func) }
     }
 
@@ -626,7 +626,7 @@ impl GraphNode {
 
     /// **Source:** `TFunction_GraphNode.hxx`:82 - `TFunction_GraphNode::RemoveNext()`
     /// Removes a reference to the function as a next one.
-    pub fn remove_next_label(&mut self, func: &crate::ffi::TDF_Label) -> bool {
+    pub fn remove_next_label(&mut self, func: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_GraphNode_remove_next_label(self as *mut Self, func) }
     }
 
@@ -662,7 +662,7 @@ impl GraphNode {
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:98 - `TFunction_GraphNode::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_GraphNode_id(self as *const Self)) }
     }
 
@@ -704,7 +704,7 @@ impl GraphNode {
     /// Instant methods
     /// ===============
     /// Constructor (empty).
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_GraphNode_get_id()) }
     }
 
@@ -733,12 +733,12 @@ impl GraphNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TFunction_GraphNode_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_GraphNode_inherited_Label(
                 self as *const Self,
@@ -772,14 +772,14 @@ impl GraphNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TFunction_GraphNode_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -799,7 +799,7 @@ impl GraphNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TFunction_GraphNode_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1078,19 +1078,19 @@ impl IFunction {
     /// **Source:** `TFunction_IFunction.hxx`:60 - `TFunction_IFunction::TFunction_IFunction()`
     /// A constructor.
     /// Initializes the interface by the label of function.
-    pub fn new_label(L: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+    pub fn new_label(L: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TFunction_IFunction_ctor_label(L)) }
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:63 - `TFunction_IFunction::Init()`
     /// Initializes the interface by the label of function.
-    pub fn init(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn init(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::TFunction_IFunction_init(self as *mut Self, L) }
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:66 - `TFunction_IFunction::Label()`
     /// Returns a label of the function.
-    pub fn label(&self) -> &crate::ffi::TDF_Label {
+    pub fn label(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TFunction_IFunction_label(self as *const Self)) }
     }
 
@@ -1160,7 +1160,7 @@ impl IFunction {
     /// a new TFunction_GraphNode with an empty list of dependencies and
     /// the status equal to TFunction_ES_WrongDefinition.
     /// It registers the function in the scope of functions for this document.
-    pub fn new_function(L: &crate::ffi::TDF_Label, ID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn new_function(L: &crate::tdf::Label, ID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TFunction_IFunction_new_function(L, ID) }
     }
 
@@ -1168,7 +1168,7 @@ impl IFunction {
     /// Deletes a function attached to a label <L>.
     /// It deletes a TFunction_Function attribute and a TFunction_GraphNode.
     /// It deletes the functions from the scope of function of this document.
-    pub fn delete_function(L: &crate::ffi::TDF_Label) -> bool {
+    pub fn delete_function(L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_IFunction_delete_function(L) }
     }
 
@@ -1176,7 +1176,7 @@ impl IFunction {
     /// Updates dependencies for all functions of the scope.
     /// It returns false in case of an error.
     /// An empty constructor.
-    pub fn update_dependencies_label(Access: &crate::ffi::TDF_Label) -> bool {
+    pub fn update_dependencies_label(Access: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_IFunction_update_dependencies_label(Access) }
     }
 }
@@ -1205,13 +1205,13 @@ impl Iterator {
     /// **Source:** `TFunction_Iterator.hxx`:42 - `TFunction_Iterator::TFunction_Iterator()`
     /// A constructor.
     /// Initializes the iterator.
-    pub fn new_label(Access: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+    pub fn new_label(Access: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TFunction_Iterator_ctor_label(Access)) }
     }
 
     /// **Source:** `TFunction_Iterator.hxx`:45 - `TFunction_Iterator::Init()`
     /// Initializes the Iterator.
-    pub fn init(&mut self, Access: &crate::ffi::TDF_Label) {
+    pub fn init(&mut self, Access: &crate::tdf::Label) {
         unsafe { crate::ffi::TFunction_Iterator_init(self as *mut Self, Access) }
     }
 
@@ -1266,7 +1266,7 @@ impl Iterator {
     /// **Source:** `TFunction_Iterator.hxx`:77 - `TFunction_Iterator::GetStatus()`
     /// A help-function aimed to help the user to check the status of retrurned function.
     /// It calls TFunction_GraphNode::GetStatus() inside.
-    pub fn get_status(&self, func: &crate::ffi::TDF_Label) -> crate::t_function::ExecutionStatus {
+    pub fn get_status(&self, func: &crate::tdf::Label) -> crate::t_function::ExecutionStatus {
         unsafe {
             crate::t_function::ExecutionStatus::try_from(crate::ffi::TFunction_Iterator_get_status(
                 self as *const Self,
@@ -1279,11 +1279,7 @@ impl Iterator {
     /// **Source:** `TFunction_Iterator.hxx`:81 - `TFunction_Iterator::SetStatus()`
     /// A help-function aimed to help the user to change the execution status of a function.
     /// It calls TFunction_GraphNode::SetStatus() inside.
-    pub fn set_status(
-        &self,
-        func: &crate::ffi::TDF_Label,
-        status: crate::t_function::ExecutionStatus,
-    ) {
+    pub fn set_status(&self, func: &crate::tdf::Label, status: crate::t_function::ExecutionStatus) {
         unsafe {
             crate::ffi::TFunction_Iterator_set_status(self as *const Self, func, status.into())
         }
@@ -1331,20 +1327,20 @@ impl Logbook {
     /// **Source:** `TFunction_Logbook.hxx`:64 - `TFunction_Logbook::SetTouched()`
     /// Sets the label L as a touched label in this logbook.
     /// In other words, L is understood to have been modified by the end user.
-    pub fn set_touched(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn set_touched(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::TFunction_Logbook_set_touched(self as *mut Self, L) }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:68 - `TFunction_Logbook::SetImpacted()`
     /// Sets the label L as an impacted label in this logbook.
     /// This method is called by execution of the function driver.
-    pub fn set_impacted(&mut self, L: &crate::ffi::TDF_Label, WithChildren: bool) {
+    pub fn set_impacted(&mut self, L: &crate::tdf::Label, WithChildren: bool) {
         unsafe { crate::ffi::TFunction_Logbook_set_impacted(self as *mut Self, L, WithChildren) }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:72 - `TFunction_Logbook::SetValid()`
     /// Sets the label L as a valid label in this logbook.
-    pub fn set_valid(&mut self, L: &crate::ffi::TDF_Label, WithChildren: bool) {
+    pub fn set_valid(&mut self, L: &crate::tdf::Label, WithChildren: bool) {
         unsafe { crate::ffi::TFunction_Logbook_set_valid(self as *mut Self, L, WithChildren) }
     }
 
@@ -1353,7 +1349,7 @@ impl Logbook {
     /// is called by <TFunction_FunctionDriver::MustExecute>.
     /// If <WithChildren> is set to true, the method checks
     /// all the sublabels of <L> too.
-    pub fn is_modified(&self, L: &crate::ffi::TDF_Label, WithChildren: bool) -> bool {
+    pub fn is_modified(&self, L: &crate::tdf::Label, WithChildren: bool) -> bool {
         unsafe { crate::ffi::TFunction_Logbook_is_modified(self as *const Self, L, WithChildren) }
     }
 
@@ -1371,7 +1367,7 @@ impl Logbook {
 
     /// **Source:** `TFunction_Logbook.hxx`:104 - `TFunction_Logbook::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_Logbook_id(self as *const Self)) }
     }
 
@@ -1401,7 +1397,7 @@ impl Logbook {
 
     /// **Source:** `TFunction_Logbook.hxx`:49 - `TFunction_Logbook::GetID()`
     /// Returns the GUID for logbook attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_Logbook_get_id()) }
     }
 
@@ -1416,12 +1412,12 @@ impl Logbook {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TFunction_Logbook_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_inherited_Label(
                 self as *const Self,
@@ -1455,14 +1451,14 @@ impl Logbook {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TFunction_Logbook_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1480,7 +1476,7 @@ impl Logbook {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TFunction_Logbook_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1617,13 +1613,13 @@ impl Scope {
 
     /// **Source:** `TFunction_Scope.hxx`:55 - `TFunction_Scope::AddFunction()`
     /// Adds a function to the scope of functions.
-    pub fn add_function(&mut self, L: &crate::ffi::TDF_Label) -> bool {
+    pub fn add_function(&mut self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_Scope_add_function(self as *mut Self, L) }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:58 - `TFunction_Scope::RemoveFunction()`
     /// Removes a function from the scope of functions.
-    pub fn remove_function_label(&mut self, L: &crate::ffi::TDF_Label) -> bool {
+    pub fn remove_function_label(&mut self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_Scope_remove_function_label(self as *mut Self, L) }
     }
 
@@ -1647,24 +1643,24 @@ impl Scope {
 
     /// **Source:** `TFunction_Scope.hxx`:70 - `TFunction_Scope::HasFunction()`
     /// Returns true if the label contains a function of this scope.
-    pub fn has_function_label(&self, L: &crate::ffi::TDF_Label) -> bool {
+    pub fn has_function_label(&self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TFunction_Scope_has_function_label(self as *const Self, L) }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:73 - `TFunction_Scope::GetFunction()`
     /// Returns an ID of the function.
-    pub fn get_function_label(&self, L: &crate::ffi::TDF_Label) -> i32 {
+    pub fn get_function_label(&self, L: &crate::tdf::Label) -> i32 {
         unsafe { crate::ffi::TFunction_Scope_get_function_label(self as *const Self, L) }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:76 - `TFunction_Scope::GetFunction()`
     /// Returns the label of the function with this ID.
-    pub fn get_function_int(&self, ID: i32) -> &crate::ffi::TDF_Label {
+    pub fn get_function_int(&self, ID: i32) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TFunction_Scope_get_function_int(self as *const Self, ID)) }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:83 - `TFunction_Scope::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_Scope_id(self as *const Self)) }
     }
 
@@ -1709,7 +1705,7 @@ impl Scope {
     /// Instant methods
     /// ===============
     /// Constructor (empty).
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_Scope_get_id()) }
     }
 
@@ -1738,12 +1734,12 @@ impl Scope {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TFunction_Scope_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_inherited_Label(
                 self as *const Self,
@@ -1777,14 +1773,14 @@ impl Scope {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TFunction_Scope_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1802,7 +1798,7 @@ impl Scope {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TFunction_Scope_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 

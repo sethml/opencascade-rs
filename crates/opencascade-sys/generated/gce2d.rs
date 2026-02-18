@@ -33,7 +33,7 @@ impl MakeArcOfCircle {
     /// The two parameters are angles. The parameters are
     /// in radians.
     pub fn new_circ2d_real2_bool(
-        Circ: &crate::ffi::gp_Circ2d,
+        Circ: &crate::gp::Circ2d,
         Alpha1: f64,
         Alpha2: f64,
         Sense: bool,
@@ -50,8 +50,8 @@ impl MakeArcOfCircle {
     /// a circle between point <P> and the parameter
     /// Alpha. Alpha is given in radians.
     pub fn new_circ2d_pnt2d_real_bool(
-        Circ: &crate::ffi::gp_Circ2d,
-        P: &crate::ffi::gp_Pnt2d,
+        Circ: &crate::gp::Circ2d,
+        P: &crate::gp::Pnt2d,
         Alpha: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -68,9 +68,9 @@ impl MakeArcOfCircle {
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// a circle between two points P1 and P2.
     pub fn new_circ2d_pnt2d2_bool(
-        Circ: &crate::ffi::gp_Circ2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Circ: &crate::gp::Circ2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -85,9 +85,9 @@ impl MakeArcOfCircle {
     /// three points P1,P2,P3 between two points P1 and P3,
     /// and passing through the point P2.
     pub fn new_pnt2d3(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
-        P3: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
+        P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeArcOfCircle_ctor_pnt2d3(P1, P2, P3))
@@ -99,9 +99,9 @@ impl MakeArcOfCircle {
     /// two points P1,P2 and the tangente to the solution at
     /// the point P1.
     pub fn new_pnt2d_vec2d_pnt2d(
-        P1: &crate::ffi::gp_Pnt2d,
-        V: &crate::ffi::gp_Vec2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        V: &crate::gp::Vec2d,
+        P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeArcOfCircle_ctor_pnt2d_vec2d_pnt2d(
@@ -116,7 +116,7 @@ impl MakeArcOfCircle {
     /// The two parameters are angles. The parameters are
     /// in radians.
     pub fn new_circ2d_real2(
-        Circ: &crate::ffi::gp_Circ2d,
+        Circ: &crate::gp::Circ2d,
         Alpha1: f64,
         Alpha2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -128,8 +128,8 @@ impl MakeArcOfCircle {
     /// a circle between point <P> and the parameter
     /// Alpha. Alpha is given in radians.
     pub fn new_circ2d_pnt2d_real(
-        Circ: &crate::ffi::gp_Circ2d,
-        P: &crate::ffi::gp_Pnt2d,
+        Circ: &crate::gp::Circ2d,
+        P: &crate::gp::Pnt2d,
         Alpha: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_circ2d_pnt2d_real_bool(Circ, P, Alpha, true)
@@ -139,9 +139,9 @@ impl MakeArcOfCircle {
     /// Makes an arc of circle (TrimmedCurve from Geom2d) from
     /// a circle between two points P1 and P2.
     pub fn new_circ2d_pnt2d2(
-        Circ: &crate::ffi::gp_Circ2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Circ: &crate::gp::Circ2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         Self::new_circ2d_pnt2d2_bool(Circ, P1, P2, true)
     }
@@ -204,7 +204,7 @@ impl MakeArcOfEllipse {
     /// Make an arc of Ellipse (TrimmedCurve from Geom2d) from
     /// a Ellipse between two parameters Alpha1 and Alpha2.
     pub fn new_elips2d_real2_bool(
-        Elips: &crate::ffi::gp_Elips2d,
+        Elips: &crate::gp::Elips2d,
         Alpha1: f64,
         Alpha2: f64,
         Sense: bool,
@@ -221,8 +221,8 @@ impl MakeArcOfEllipse {
     /// a Ellipse between point <P> and the parameter
     /// Alpha.
     pub fn new_elips2d_pnt2d_real_bool(
-        Elips: &crate::ffi::gp_Elips2d,
-        P: &crate::ffi::gp_Pnt2d,
+        Elips: &crate::gp::Elips2d,
+        P: &crate::gp::Pnt2d,
         Alpha: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -245,9 +245,9 @@ impl MakeArcOfEllipse {
     /// -   Alpha1, Alpha2 and Alpha are angle values, given in radians.
     /// -   IsDone always returns true.
     pub fn new_elips2d_pnt2d2_bool(
-        Elips: &crate::ffi::gp_Elips2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Elips: &crate::gp::Elips2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -261,7 +261,7 @@ impl MakeArcOfEllipse {
     /// Make an arc of Ellipse (TrimmedCurve from Geom2d) from
     /// a Ellipse between two parameters Alpha1 and Alpha2.
     pub fn new_elips2d_real2(
-        Elips: &crate::ffi::gp_Elips2d,
+        Elips: &crate::gp::Elips2d,
         Alpha1: f64,
         Alpha2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -273,8 +273,8 @@ impl MakeArcOfEllipse {
     /// a Ellipse between point <P> and the parameter
     /// Alpha.
     pub fn new_elips2d_pnt2d_real(
-        Elips: &crate::ffi::gp_Elips2d,
-        P: &crate::ffi::gp_Pnt2d,
+        Elips: &crate::gp::Elips2d,
+        P: &crate::gp::Pnt2d,
         Alpha: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_elips2d_pnt2d_real_bool(Elips, P, Alpha, true)
@@ -290,9 +290,9 @@ impl MakeArcOfEllipse {
     /// -   Alpha1, Alpha2 and Alpha are angle values, given in radians.
     /// -   IsDone always returns true.
     pub fn new_elips2d_pnt2d2(
-        Elips: &crate::ffi::gp_Elips2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Elips: &crate::gp::Elips2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         Self::new_elips2d_pnt2d2_bool(Elips, P1, P2, true)
     }
@@ -354,7 +354,7 @@ impl MakeArcOfHyperbola {
     /// Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from
     /// a Hyperbola between two parameters Alpha1 and Alpha2.
     pub fn new_hypr2d_real2_bool(
-        Hypr: &crate::ffi::gp_Hypr2d,
+        Hypr: &crate::gp::Hypr2d,
         Alpha1: f64,
         Alpha2: f64,
         Sense: bool,
@@ -371,8 +371,8 @@ impl MakeArcOfHyperbola {
     /// a Hyperbola between point <P> and the parameter
     /// Alpha.
     pub fn new_hypr2d_pnt2d_real_bool(
-        Hypr: &crate::ffi::gp_Hypr2d,
-        P: &crate::ffi::gp_Pnt2d,
+        Hypr: &crate::gp::Hypr2d,
+        P: &crate::gp::Pnt2d,
         Alpha: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -394,9 +394,9 @@ impl MakeArcOfHyperbola {
     /// -   the opposite sense if Sense is false.
     /// - IsDone always returns true.
     pub fn new_hypr2d_pnt2d2_bool(
-        Hypr: &crate::ffi::gp_Hypr2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Hypr: &crate::gp::Hypr2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -410,7 +410,7 @@ impl MakeArcOfHyperbola {
     /// Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from
     /// a Hyperbola between two parameters Alpha1 and Alpha2.
     pub fn new_hypr2d_real2(
-        Hypr: &crate::ffi::gp_Hypr2d,
+        Hypr: &crate::gp::Hypr2d,
         Alpha1: f64,
         Alpha2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -422,8 +422,8 @@ impl MakeArcOfHyperbola {
     /// a Hyperbola between point <P> and the parameter
     /// Alpha.
     pub fn new_hypr2d_pnt2d_real(
-        Hypr: &crate::ffi::gp_Hypr2d,
-        P: &crate::ffi::gp_Pnt2d,
+        Hypr: &crate::gp::Hypr2d,
+        P: &crate::gp::Pnt2d,
         Alpha: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_hypr2d_pnt2d_real_bool(Hypr, P, Alpha, true)
@@ -438,9 +438,9 @@ impl MakeArcOfHyperbola {
     /// -   the opposite sense if Sense is false.
     /// - IsDone always returns true.
     pub fn new_hypr2d_pnt2d2(
-        Hypr: &crate::ffi::gp_Hypr2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Hypr: &crate::gp::Hypr2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         Self::new_hypr2d_pnt2d2_bool(Hypr, P1, P2, true)
     }
@@ -502,7 +502,7 @@ impl MakeArcOfParabola {
     /// Make an arc of Parabola (TrimmedCurve from Geom2d) from
     /// a Parabola between two parameters Alpha1 and Alpha2.
     pub fn new_parab2d_real2_bool(
-        Parab: &crate::ffi::gp_Parab2d,
+        Parab: &crate::gp::Parab2d,
         Alpha1: f64,
         Alpha2: f64,
         Sense: bool,
@@ -519,8 +519,8 @@ impl MakeArcOfParabola {
     /// a Parabola between point <P> and the parameter
     /// Alpha.
     pub fn new_parab2d_pnt2d_real_bool(
-        Parab: &crate::ffi::gp_Parab2d,
-        P: &crate::ffi::gp_Pnt2d,
+        Parab: &crate::gp::Parab2d,
+        P: &crate::gp::Pnt2d,
         Alpha: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -542,9 +542,9 @@ impl MakeArcOfParabola {
     /// -   the opposite sense if Sense is false.
     /// - IsDone always returns true.
     pub fn new_parab2d_pnt2d2_bool(
-        Parab: &crate::ffi::gp_Parab2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Parab: &crate::gp::Parab2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -558,7 +558,7 @@ impl MakeArcOfParabola {
     /// Make an arc of Parabola (TrimmedCurve from Geom2d) from
     /// a Parabola between two parameters Alpha1 and Alpha2.
     pub fn new_parab2d_real2(
-        Parab: &crate::ffi::gp_Parab2d,
+        Parab: &crate::gp::Parab2d,
         Alpha1: f64,
         Alpha2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -570,8 +570,8 @@ impl MakeArcOfParabola {
     /// a Parabola between point <P> and the parameter
     /// Alpha.
     pub fn new_parab2d_pnt2d_real(
-        Parab: &crate::ffi::gp_Parab2d,
-        P: &crate::ffi::gp_Pnt2d,
+        Parab: &crate::gp::Parab2d,
+        P: &crate::gp::Pnt2d,
         Alpha: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_parab2d_pnt2d_real_bool(Parab, P, Alpha, true)
@@ -586,9 +586,9 @@ impl MakeArcOfParabola {
     /// -   the opposite sense if Sense is false.
     /// - IsDone always returns true.
     pub fn new_parab2d_pnt2d2(
-        Parab: &crate::ffi::gp_Parab2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Parab: &crate::gp::Parab2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         Self::new_parab2d_pnt2d2_bool(Parab, P1, P2, true)
     }
@@ -652,7 +652,7 @@ unsafe impl crate::CppDeletable for MakeCircle {
 impl MakeCircle {
     /// **Source:** `GCE2d_MakeCircle.hxx`:49 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// creates a circle from a non persistent one.
-    pub fn new_circ2d(C: &crate::ffi::gp_Circ2d) -> crate::OwnedPtr<Self> {
+    pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeCircle_ctor_circ2d(C)) }
     }
 
@@ -662,7 +662,7 @@ impl MakeCircle {
     /// It is not forbidden to create a circle with Radius = 0.0
     /// The status is "NegativeRadius" if Radius < 0.
     pub fn new_ax2d_real_bool(
-        A: &crate::ffi::gp_Ax2d,
+        A: &crate::gp::Ax2d,
         Radius: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -678,7 +678,7 @@ impl MakeCircle {
     /// the origin of parametrization.
     /// It is not forbidden to create a circle with Radius = 0.0
     /// The status is "NegativeRadius" if Radius < 0.
-    pub fn new_ax22d_real(A: &crate::ffi::gp_Ax22d, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax22d_real(A: &crate::gp::Ax22d, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeCircle_ctor_ax22d_real(A, Radius))
         }
@@ -690,7 +690,7 @@ impl MakeCircle {
     /// If Dist is greater than zero the result is enclosing
     /// the circle <Circ>, else the result is enclosed by the
     /// circle <Circ>.
-    pub fn new_circ2d_real(Circ: &crate::ffi::gp_Circ2d, Dist: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_circ2d_real(Circ: &crate::gp::Circ2d, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeCircle_ctor_circ2d_real(Circ, Dist))
         }
@@ -700,8 +700,8 @@ impl MakeCircle {
     /// Make a Circle from Geom2d <TheCirc> parallel to another
     /// Circ <Circ> and passing through a Pnt <Point>.
     pub fn new_circ2d_pnt2d(
-        Circ: &crate::ffi::gp_Circ2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Circ: &crate::gp::Circ2d,
+        Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeCircle_ctor_circ2d_pnt2d(Circ, Point))
@@ -712,9 +712,9 @@ impl MakeCircle {
     /// Make a Circ from gp <TheCirc> passing through 3
     /// Pnt2d <P1>,<P2>,<P3>.
     pub fn new_pnt2d3(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
-        P3: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
+        P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeCircle_ctor_pnt2d3(P1, P2, P3)) }
     }
@@ -722,7 +722,7 @@ impl MakeCircle {
     /// **Source:** `GCE2d_MakeCircle.hxx`:81 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Make a Circ from geom2d <TheCirc> by its center an radius.
     pub fn new_pnt2d_real_bool(
-        P: &crate::ffi::gp_Pnt2d,
+        P: &crate::gp::Pnt2d,
         Radius: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -747,8 +747,8 @@ impl MakeCircle {
     /// -   gce_IntersectionError if points P1, P2 and P3
     /// are collinear and the three are not coincident.
     pub fn new_pnt2d2_bool(
-        Center: &crate::ffi::gp_Pnt2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Center: &crate::gp::Pnt2d,
+        Point: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -763,13 +763,13 @@ impl MakeCircle {
     /// of parametrization.
     /// It is not forbidden to create a circle with Radius = 0.0
     /// The status is "NegativeRadius" if Radius < 0.
-    pub fn new_ax2d_real(A: &crate::ffi::gp_Ax2d, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d_real(A: &crate::gp::Ax2d, Radius: f64) -> crate::OwnedPtr<Self> {
         Self::new_ax2d_real_bool(A, Radius, true)
     }
 
     /// **Source:** `GCE2d_MakeCircle.hxx`:81 - `GCE2d_MakeCircle::GCE2d_MakeCircle()`
     /// Make a Circ from geom2d <TheCirc> by its center an radius.
-    pub fn new_pnt2d_real(P: &crate::ffi::gp_Pnt2d, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d_real(P: &crate::gp::Pnt2d, Radius: f64) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d_real_bool(P, Radius, true)
     }
 
@@ -787,8 +787,8 @@ impl MakeCircle {
     /// -   gce_IntersectionError if points P1, P2 and P3
     /// are collinear and the three are not coincident.
     pub fn new_pnt2d2(
-        Center: &crate::ffi::gp_Pnt2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Center: &crate::gp::Pnt2d,
+        Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d2_bool(Center, Point, true)
     }
@@ -853,7 +853,7 @@ unsafe impl crate::CppDeletable for MakeEllipse {
 impl MakeEllipse {
     /// **Source:** `GCE2d_MakeEllipse.hxx`:49 - `GCE2d_MakeEllipse::GCE2d_MakeEllipse()`
     /// Creates an ellipse from a non persistent one from package gp
-    pub fn new_elips2d(E: &crate::ffi::gp_Elips2d) -> crate::OwnedPtr<Self> {
+    pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeEllipse_ctor_elips2d(E)) }
     }
 
@@ -867,7 +867,7 @@ impl MakeEllipse {
     /// The status is "InvertRadius" if MajorRadius < MinorRadius or
     /// "NegativeRadius" if MinorRadius < 0.
     pub fn new_ax2d_real2_bool(
-        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
         MinorRadius: f64,
         Sense: bool,
@@ -889,7 +889,7 @@ impl MakeEllipse {
     /// The status is "InvertRadius" if MajorRadius < MinorRadius or
     /// "NegativeRadius" if MinorRadius < 0.
     pub fn new_ax22d_real2(
-        Axis: &crate::ffi::gp_Ax22d,
+        Axis: &crate::gp::Ax22d,
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -913,9 +913,9 @@ impl MakeEllipse {
     /// -   the trigonometric sense if Sense is not given or is true, or
     /// -   the opposite sense if Sense is false.
     pub fn new_pnt2d3(
-        S1: &crate::ffi::gp_Pnt2d,
-        S2: &crate::ffi::gp_Pnt2d,
-        Center: &crate::ffi::gp_Pnt2d,
+        S1: &crate::gp::Pnt2d,
+        S2: &crate::gp::Pnt2d,
+        Center: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeEllipse_ctor_pnt2d3(S1, S2, Center))
@@ -932,7 +932,7 @@ impl MakeEllipse {
     /// The status is "InvertRadius" if MajorRadius < MinorRadius or
     /// "NegativeRadius" if MinorRadius < 0.
     pub fn new_ax2d_real2(
-        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1014,7 +1014,7 @@ unsafe impl crate::CppDeletable for MakeHyperbola {
 impl MakeHyperbola {
     /// **Source:** `GCE2d_MakeHyperbola.hxx`:64 - `GCE2d_MakeHyperbola::GCE2d_MakeHyperbola()`
     /// Creates  an Hyperbola from a non persistent one from package gp
-    pub fn new_hypr2d(H: &crate::ffi::gp_Hypr2d) -> crate::OwnedPtr<Self> {
+    pub fn new_hypr2d(H: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeHyperbola_ctor_hypr2d(H)) }
     }
 
@@ -1025,7 +1025,7 @@ impl MakeHyperbola {
     /// The status is "NegativeRadius" if MajorRadius < 0.0 or if
     /// MinorRadius < 0.0
     pub fn new_ax2d_real2_bool(
-        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
         MinorRadius: f64,
         Sense: bool,
@@ -1047,7 +1047,7 @@ impl MakeHyperbola {
     /// The status is "NegativeRadius" if MajorRadius < 0.0 or if
     /// MinorRadius < 0.0
     pub fn new_ax22d_real2(
-        Axis: &crate::ffi::gp_Ax22d,
+        Axis: &crate::gp::Ax22d,
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1079,9 +1079,9 @@ impl MakeHyperbola {
     /// Center and S1 is less than the minor radius
     /// defined by Center, S1 and S2.Make an Hyperbola with its center and two apexes.
     pub fn new_pnt2d3(
-        S1: &crate::ffi::gp_Pnt2d,
-        S2: &crate::ffi::gp_Pnt2d,
-        Center: &crate::ffi::gp_Pnt2d,
+        S1: &crate::gp::Pnt2d,
+        S2: &crate::gp::Pnt2d,
+        Center: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeHyperbola_ctor_pnt2d3(S1, S2, Center))
@@ -1143,22 +1143,19 @@ impl MakeLine {
     /// **Source:** `GCE2d_MakeLine.hxx`:44 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// Creates a line located in 2D space with the axis placement A.
     /// The Location of A is the origin of the line.
-    pub fn new_ax2d(A: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d(A: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_ax2d(A)) }
     }
 
     /// **Source:** `GCE2d_MakeLine.hxx`:47 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// Creates a line from a non persistent line from package gp.
-    pub fn new_lin2d(L: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_lin2d(L)) }
     }
 
     /// **Source:** `GCE2d_MakeLine.hxx`:50 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// P is the origin and V is the direction of the line.
-    pub fn new_pnt2d_dir2d(
-        P: &crate::ffi::gp_Pnt2d,
-        V: &crate::ffi::gp_Dir2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d_dir2d(P: &crate::gp::Pnt2d, V: &crate::gp::Dir2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_pnt2d_dir2d(P, V)) }
     }
 
@@ -1166,8 +1163,8 @@ impl MakeLine {
     /// Make a Line from Geom2d <TheLin> parallel to another
     /// Lin <Lin> and passing through a Pnt <Point>.
     pub fn new_lin2d_pnt2d(
-        Lin: &crate::ffi::gp_Lin2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Lin: &crate::gp::Lin2d,
+        Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_lin2d_pnt2d(Lin, Point))
@@ -1177,7 +1174,7 @@ impl MakeLine {
     /// **Source:** `GCE2d_MakeLine.hxx`:58 - `GCE2d_MakeLine::GCE2d_MakeLine()`
     /// Make a Line from Geom2d <TheLin> parallel to another
     /// Lin <Lin> at a distance <Dist>.
-    pub fn new_lin2d_real(Lin: &crate::ffi::gp_Lin2d, Dist: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d_real(Lin: &crate::gp::Lin2d, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_lin2d_real(Lin, Dist)) }
     }
 
@@ -1188,10 +1185,7 @@ impl MakeLine {
     /// Warning
     /// If points P1 and P2 coincident (that is, when IsDone
     /// returns false), the Status function returns gce_ConfusedPoints.
-    pub fn new_pnt2d2(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeLine_ctor_pnt2d2(P1, P2)) }
     }
 
@@ -1250,17 +1244,17 @@ unsafe impl crate::CppDeletable for MakeMirror {
 
 impl MakeMirror {
     /// **Source:** `GCE2d_MakeMirror.hxx`:42 - `GCE2d_MakeMirror::GCE2d_MakeMirror()`
-    pub fn new_pnt2d(Point: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d(Point: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeMirror_ctor_pnt2d(Point)) }
     }
 
     /// **Source:** `GCE2d_MakeMirror.hxx`:44 - `GCE2d_MakeMirror::GCE2d_MakeMirror()`
-    pub fn new_ax2d(Axis: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d(Axis: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeMirror_ctor_ax2d(Axis)) }
     }
 
     /// **Source:** `GCE2d_MakeMirror.hxx`:46 - `GCE2d_MakeMirror::GCE2d_MakeMirror()`
-    pub fn new_lin2d(Line: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d(Line: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeMirror_ctor_lin2d(Line)) }
     }
 
@@ -1268,8 +1262,8 @@ impl MakeMirror {
     /// Make a symmetry transformation af axis defined by
     /// <Point> and <Direc>.
     pub fn new_pnt2d_dir2d(
-        Point: &crate::ffi::gp_Pnt2d,
-        Direc: &crate::ffi::gp_Dir2d,
+        Point: &crate::gp::Pnt2d,
+        Direc: &crate::gp::Dir2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeMirror_ctor_pnt2d_dir2d(Point, Direc))
@@ -1315,7 +1309,7 @@ unsafe impl crate::CppDeletable for MakeParabola {
 impl MakeParabola {
     /// **Source:** `GCE2d_MakeParabola.hxx`:54 - `GCE2d_MakeParabola::GCE2d_MakeParabola()`
     /// Creates a parabola from a non persistent one.
-    pub fn new_parab2d(Prb: &crate::ffi::gp_Parab2d) -> crate::OwnedPtr<Self> {
+    pub fn new_parab2d(Prb: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeParabola_ctor_parab2d(Prb)) }
     }
 
@@ -1324,7 +1318,7 @@ impl MakeParabola {
     /// length "Focal".
     /// The "Location" point of "Axis" is the vertex of the parabola
     /// Status is "NegativeFocusLength" if Focal < 0.0
-    pub fn new_ax22d_real(Axis: &crate::ffi::gp_Ax22d, Focal: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax22d_real(Axis: &crate::gp::Ax22d, Focal: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeParabola_ctor_ax22d_real(Axis, Focal))
         }
@@ -1337,7 +1331,7 @@ impl MakeParabola {
     /// parabola. The "Location" point of "MirrorAxis" is the vertex of the parabola
     /// Status is "NegativeFocusLength" if Focal < 0.0
     pub fn new_ax2d_real_bool(
-        MirrorAxis: &crate::ffi::gp_Ax2d,
+        MirrorAxis: &crate::gp::Ax2d,
         Focal: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -1356,8 +1350,8 @@ impl MakeParabola {
     /// The "YAxis" of the parabola is parallel to D and its "Location"
     /// point is the vertex of the parabola.
     pub fn new_ax2d_pnt2d_bool(
-        D: &crate::ffi::gp_Ax2d,
-        F: &crate::ffi::gp_Pnt2d,
+        D: &crate::gp::Ax2d,
+        F: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1384,10 +1378,7 @@ impl MakeParabola {
     /// false), the Status function returns:
     /// -   gce_NullFocusLength if Focal is less than 0.0, or
     /// -   gce_NullAxis if points S1 and O are coincident.
-    pub fn new_pnt2d2(
-        S1: &crate::ffi::gp_Pnt2d,
-        O: &crate::ffi::gp_Pnt2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d2(S1: &crate::gp::Pnt2d, O: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeParabola_ctor_pnt2d2(S1, O)) }
     }
 
@@ -1398,10 +1389,7 @@ impl MakeParabola {
     /// "Location" point is the vertex of the parabola.
     /// The "YAxis" of the parabola is parallel to D and its "Location"
     /// point is the vertex of the parabola.
-    pub fn new_ax2d_pnt2d(
-        D: &crate::ffi::gp_Ax2d,
-        F: &crate::ffi::gp_Pnt2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d_pnt2d(D: &crate::gp::Ax2d, F: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         Self::new_ax2d_pnt2d_bool(D, F, true)
     }
 
@@ -1460,7 +1448,7 @@ unsafe impl crate::CppDeletable for MakeRotation {
 impl MakeRotation {
     /// **Source:** `GCE2d_MakeRotation.hxx`:40 - `GCE2d_MakeRotation::GCE2d_MakeRotation()`
     /// Constructs a rotation through angle Angle about the center Point.
-    pub fn new_pnt2d_real(Point: &crate::ffi::gp_Pnt2d, Angle: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d_real(Point: &crate::gp::Pnt2d, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeRotation_ctor_pnt2d_real(Point, Angle))
         }
@@ -1498,7 +1486,7 @@ impl MakeScale {
     /// Constructs a scaling transformation with
     /// -   Point as the center of the transformation, and
     /// -   Scale as the scale factor.
-    pub fn new_pnt2d_real(Point: &crate::ffi::gp_Pnt2d, Scale: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d_real(Point: &crate::gp::Pnt2d, Scale: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeScale_ctor_pnt2d_real(Point, Scale))
         }
@@ -1536,10 +1524,7 @@ impl MakeSegment {
     /// **Source:** `GCE2d_MakeSegment.hxx`:46 - `GCE2d_MakeSegment::GCE2d_MakeSegment()`
     /// Make a segment of Line from the 2 points <P1> and <P2>.
     /// Status is "ConfusedPoints" if <P1> and <P2> are confused.
-    pub fn new_pnt2d2(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeSegment_ctor_pnt2d2(P1, P2)) }
     }
 
@@ -1549,9 +1534,9 @@ impl MakeSegment {
     /// <P2> on the line <P1,V>.
     /// Status is "ConfusedPoints" if <P1> and <P2> are confused.
     pub fn new_pnt2d_dir2d_pnt2d(
-        P1: &crate::ffi::gp_Pnt2d,
-        V: &crate::ffi::gp_Dir2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        V: &crate::gp::Dir2d,
+        P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeSegment_ctor_pnt2d_dir2d_pnt2d(
@@ -1564,7 +1549,7 @@ impl MakeSegment {
     /// Make a segment of Line from the line <Line>
     /// between the two parameters U1 and U2.
     /// Status is "SameParameters" if <U1> is equal <U2>.
-    pub fn new_lin2d_real2(Line: &crate::ffi::gp_Lin2d, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d_real2(Line: &crate::gp::Lin2d, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeSegment_ctor_lin2d_real2(Line, U1, U2))
         }
@@ -1575,8 +1560,8 @@ impl MakeSegment {
     /// between the point <Point> and the parameter Ulast.
     /// It returns NullObject if <U1> is equal <U2>.
     pub fn new_lin2d_pnt2d_real(
-        Line: &crate::ffi::gp_Lin2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Line: &crate::gp::Lin2d,
+        Point: &crate::gp::Pnt2d,
         Ulast: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1598,9 +1583,9 @@ impl MakeSegment {
     /// returns gce_ConfusedPoints. This warning only
     /// concerns the first two constructors.
     pub fn new_lin2d_pnt2d2(
-        Line: &crate::ffi::gp_Lin2d,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        Line: &crate::gp::Lin2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeSegment_ctor_lin2d_pnt2d2(Line, P1, P2))
@@ -1663,7 +1648,7 @@ unsafe impl crate::CppDeletable for MakeTranslation {
 impl MakeTranslation {
     /// **Source:** `GCE2d_MakeTranslation.hxx`:41 - `GCE2d_MakeTranslation::GCE2d_MakeTranslation()`
     /// Constructs a translation along the vector Vect.
-    pub fn new_vec2d(Vect: &crate::ffi::gp_Vec2d) -> crate::OwnedPtr<Self> {
+    pub fn new_vec2d(Vect: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeTranslation_ctor_vec2d(Vect)) }
     }
 
@@ -1671,8 +1656,8 @@ impl MakeTranslation {
     /// Constructs a translation along the vector
     /// (Point1,Point2) defined from the point Point1 to the point Point2.
     pub fn new_pnt2d2(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GCE2d_MakeTranslation_ctor_pnt2d2(Point1, Point2))

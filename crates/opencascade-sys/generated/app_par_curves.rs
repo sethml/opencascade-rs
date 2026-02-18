@@ -215,7 +215,7 @@ impl MultiBSpCurve {
     /// creates a MultiBSpCurve, describing BSpline
     /// curves, taking control points from <SC>.
     pub fn new_multicurve_array1ofreal_array1ofinteger(
-        SC: &crate::ffi::AppParCurves_MultiCurve,
+        SC: &MultiCurve,
         Knots: &crate::ffi::TColStd_Array1OfReal,
         Mults: &crate::ffi::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
@@ -268,7 +268,7 @@ impl MultiBSpCurve {
     /// on the BSpline curve number CuIndex.
     /// An exception is raised if CuIndex <0 or > NbCurves.
     /// An exception is raised if the curve dimension is 2d.
-    pub fn value_int_real_pnt(&self, CuIndex: i32, U: f64, Pt: &mut crate::ffi::gp_Pnt) {
+    pub fn value_int_real_pnt(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_value_int_real_pnt(
                 self as *const Self,
@@ -284,7 +284,7 @@ impl MultiBSpCurve {
     /// on the BSpline curve number CuIndex.
     /// An exception is raised if CuIndex <0 or > NbCurves.
     /// An exception is raised if the curve dimension is 3d.
-    pub fn value_int_real_pnt2d(&self, CuIndex: i32, U: f64, Pt: &mut crate::ffi::gp_Pnt2d) {
+    pub fn value_int_real_pnt2d(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_value_int_real_pnt2d(
                 self as *const Self,
@@ -304,8 +304,8 @@ impl MultiBSpCurve {
         &self,
         CuIndex: i32,
         U: f64,
-        Pt: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
+        Pt: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt_vec(
@@ -327,8 +327,8 @@ impl MultiBSpCurve {
         &self,
         CuIndex: i32,
         U: f64,
-        Pt: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
+        Pt: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt2d_vec2d(
@@ -350,9 +350,9 @@ impl MultiBSpCurve {
         &self,
         CuIndex: i32,
         U: f64,
-        Pt: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        Pt: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt_vec2(
@@ -375,9 +375,9 @@ impl MultiBSpCurve {
         &self,
         CuIndex: i32,
         U: f64,
-        Pt: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
+        Pt: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt2d_vec2d2(
@@ -417,7 +417,7 @@ impl MultiBSpCurve {
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:84 - `AppParCurves_MultiCurve::SetValue()`
-    pub fn set_value(&mut self, Index: i32, MPoint: &crate::ffi::AppParCurves_MultiPoint) {
+    pub fn set_value(&mut self, Index: i32, MPoint: &MultiPoint) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_inherited_SetValue(
                 self as *mut Self,
@@ -456,7 +456,7 @@ impl MultiBSpCurve {
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:117 - `AppParCurves_MultiCurve::Pole()`
-    pub fn pole(&self, CuIndex: i32, Nieme: i32) -> &crate::ffi::gp_Pnt {
+    pub fn pole(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::AppParCurves_MultiBSpCurve_inherited_Pole(
                 self as *const Self,
@@ -467,7 +467,7 @@ impl MultiBSpCurve {
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:122 - `AppParCurves_MultiCurve::Pole2d()`
-    pub fn pole2d(&self, CuIndex: i32, Nieme: i32) -> &crate::ffi::gp_Pnt2d {
+    pub fn pole2d(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt2d {
         unsafe {
             &*(crate::ffi::AppParCurves_MultiBSpCurve_inherited_Pole2d(
                 self as *const Self,
@@ -582,7 +582,7 @@ impl MultiCurve {
     /// sets the MultiPoint of range Index to the value
     /// <MPoint>.
     /// An exception is raised if Index <0 or Index >NbMPoint.
-    pub fn set_value(&mut self, Index: i32, MPoint: &crate::ffi::AppParCurves_MultiPoint) {
+    pub fn set_value(&mut self, Index: i32, MPoint: &MultiPoint) {
         unsafe { crate::ffi::AppParCurves_MultiCurve_set_value(self as *mut Self, Index, MPoint) }
     }
 
@@ -647,21 +647,21 @@ impl MultiCurve {
     /// **Source:** `AppParCurves_MultiCurve.hxx`:113 - `AppParCurves_MultiCurve::Value()`
     /// returns the Index MultiPoint.
     /// An exception is raised if Index <0 or Index >Degree+1.
-    pub fn value_int(&self, Index: i32) -> &crate::ffi::AppParCurves_MultiPoint {
+    pub fn value_int(&self, Index: i32) -> &MultiPoint {
         unsafe { &*(crate::ffi::AppParCurves_MultiCurve_value_int(self as *const Self, Index)) }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:117 - `AppParCurves_MultiCurve::Pole()`
     /// returns the Nieme pole of the CuIndex curve.
     /// the curve must be a 3D curve.
-    pub fn pole(&self, CuIndex: i32, Nieme: i32) -> &crate::ffi::gp_Pnt {
+    pub fn pole(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::AppParCurves_MultiCurve_pole(self as *const Self, CuIndex, Nieme)) }
     }
 
     /// **Source:** `AppParCurves_MultiCurve.hxx`:122 - `AppParCurves_MultiCurve::Pole2d()`
     /// returns the Nieme pole of the CuIndex curve.
     /// the curve must be a 2D curve.
-    pub fn pole2d(&self, CuIndex: i32, Nieme: i32) -> &crate::ffi::gp_Pnt2d {
+    pub fn pole2d(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt2d {
         unsafe {
             &*(crate::ffi::AppParCurves_MultiCurve_pole2d(self as *const Self, CuIndex, Nieme))
         }
@@ -711,7 +711,7 @@ impl MultiCurve {
     /// on the Bezier curve number CuIndex.
     /// An exception is raised if CuIndex <0 or > NbCurves.
     /// An exception is raised if the curve dimension is 2d.
-    pub fn value_int_real_pnt(&self, CuIndex: i32, U: f64, Pt: &mut crate::ffi::gp_Pnt) {
+    pub fn value_int_real_pnt(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::AppParCurves_MultiCurve_value_int_real_pnt(
                 self as *const Self,
@@ -727,7 +727,7 @@ impl MultiCurve {
     /// on the Bezier curve number CuIndex.
     /// An exception is raised if CuIndex <0 or > NbCurves.
     /// An exception is raised if the curve dimension is 3d.
-    pub fn value_int_real_pnt2d(&self, CuIndex: i32, U: f64, Pt: &mut crate::ffi::gp_Pnt2d) {
+    pub fn value_int_real_pnt2d(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::AppParCurves_MultiCurve_value_int_real_pnt2d(
                 self as *const Self,
@@ -747,8 +747,8 @@ impl MultiCurve {
         &self,
         CuIndex: i32,
         U: f64,
-        Pt: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
+        Pt: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt_vec(
@@ -770,8 +770,8 @@ impl MultiCurve {
         &self,
         CuIndex: i32,
         U: f64,
-        Pt: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
+        Pt: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt2d_vec2d(
@@ -793,9 +793,9 @@ impl MultiCurve {
         &self,
         CuIndex: i32,
         U: f64,
-        Pt: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        Pt: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt_vec2(
@@ -818,9 +818,9 @@ impl MultiCurve {
         &self,
         CuIndex: i32,
         U: f64,
-        Pt: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
+        Pt: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt2d_vec2d2(
@@ -916,7 +916,7 @@ impl MultiPoint {
     /// set to <Point>.
     /// An exception is raised if Index < 0 or
     /// Index > number of 3d Points.
-    pub fn set_point(&mut self, Index: i32, Point: &crate::ffi::gp_Pnt) {
+    pub fn set_point(&mut self, Index: i32, Point: &crate::gp::Pnt) {
         unsafe { crate::ffi::AppParCurves_MultiPoint_set_point(self as *mut Self, Index, Point) }
     }
 
@@ -924,7 +924,7 @@ impl MultiPoint {
     /// returns the 3d Point of range Index.
     /// An exception is raised if Index < 0 or
     /// Index < number of 3d Points.
-    pub fn point(&self, Index: i32) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::AppParCurves_MultiPoint_point(self as *const Self, Index)) }
     }
 
@@ -932,7 +932,7 @@ impl MultiPoint {
     /// The 2d Point of range Index is set to <Point>.
     /// An exception is raised if Index > 3d Points or
     /// Index > total number of Points.
-    pub fn set_point2d(&mut self, Index: i32, Point: &crate::ffi::gp_Pnt2d) {
+    pub fn set_point2d(&mut self, Index: i32, Point: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::AppParCurves_MultiPoint_set_point2d(self as *mut Self, Index, Point) }
     }
 
@@ -940,7 +940,7 @@ impl MultiPoint {
     /// returns the 2d Point of range Index.
     /// An exception is raised if index <= number of
     /// 3d Points or Index > total number of Points.
-    pub fn point2d(&self, Index: i32) -> &crate::ffi::gp_Pnt2d {
+    pub fn point2d(&self, Index: i32) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::AppParCurves_MultiPoint_point2d(self as *const Self, Index)) }
     }
 

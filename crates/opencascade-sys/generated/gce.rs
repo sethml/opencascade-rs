@@ -109,7 +109,7 @@ impl MakeCirc {
     /// Warnings :
     /// It is not forbidden to create a circle with Radius = 0.0
     /// The status is "NegativeRadius" if Radius < 0.0
-    pub fn new_ax2_real(A2: &crate::ffi::gp_Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_ax2_real(A2, Radius)) }
     }
 
@@ -119,17 +119,14 @@ impl MakeCirc {
     /// If Dist is greater than zero the result is encloses
     /// the circle <Circ>, else the result is enclosed by the
     /// circle <Circ>.
-    pub fn new_circ_real(Circ: &crate::ffi::gp_Circ, Dist: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_circ_real(Circ: &crate::gp::Circ, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_circ_real(Circ, Dist)) }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:67 - `gce_MakeCirc::gce_MakeCirc()`
     /// Makes a Circ from gp <TheCirc> coaxial to another
     /// Circ <Circ> and passing through a Pnt2d <Point>.
-    pub fn new_circ_pnt(
-        Circ: &crate::ffi::gp_Circ,
-        Point: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_circ_pnt(Circ: &crate::gp::Circ, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_circ_pnt(Circ, Point)) }
     }
 
@@ -137,9 +134,9 @@ impl MakeCirc {
     /// Makes a Circ from gp <TheCirc> passing through 3
     /// Pnt2d <P1>,<P2>,<P3>.
     pub fn new_pnt3(
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
-        P3: &crate::ffi::gp_Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
+        P3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_pnt3(P1, P2, P3)) }
     }
@@ -149,8 +146,8 @@ impl MakeCirc {
     /// <Center> and the normal of its plane <Norm> and
     /// its radius <Radius>.
     pub fn new_pnt_dir_real(
-        Center: &crate::ffi::gp_Pnt,
-        Norm: &crate::ffi::gp_Dir,
+        Center: &crate::gp::Pnt,
+        Norm: &crate::gp::Dir,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -165,8 +162,8 @@ impl MakeCirc {
     /// <Center> and the normal of its plane <Plane> and
     /// its radius <Radius>.
     pub fn new_pnt_pln_real(
-        Center: &crate::ffi::gp_Pnt,
-        Plane: &crate::ffi::gp_Pln,
+        Center: &crate::gp::Pnt,
+        Plane: &crate::gp::Pln,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -181,8 +178,8 @@ impl MakeCirc {
     /// <Center> and a point <Ptaxis> giving the normal
     /// of its plane <Plane> and its radius <Radius>.
     pub fn new_pnt2_real(
-        Center: &crate::ffi::gp_Pnt,
-        Ptaxis: &crate::ffi::gp_Pnt,
+        Center: &crate::gp::Pnt,
+        Ptaxis: &crate::gp::Pnt,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -209,19 +206,19 @@ impl MakeCirc {
     /// -   gce_ConfusedPoints if two of the three points
     /// P1, P2 and P3 are coincident; or
     /// -   gce_NullAxis if Center and Ptaxis are coincident.
-    pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc_ctor_ax1_real(Axis, Radius)) }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:114 - `gce_MakeCirc::Value()`
     /// Returns the constructed circle.
     /// Exceptions StdFail_NotDone if no circle is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Circ {
+    pub fn value(&self) -> &crate::gp::Circ {
         unsafe { &*(crate::ffi::gce_MakeCirc_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeCirc.hxx`:116 - `gce_MakeCirc::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Circ {
+    pub fn operator(&self) -> &crate::gp::Circ {
         unsafe { &*(crate::ffi::gce_MakeCirc_operator(self as *const Self)) }
     }
 
@@ -285,7 +282,7 @@ impl MakeCirc2d {
     /// is direct and non direct in the other case.
     /// The status is "NegativeRadius" if Radius < 0.0.
     pub fn new_ax2d_real_bool(
-        XAxis: &crate::ffi::gp_Ax2d,
+        XAxis: &crate::gp::Ax2d,
         Radius: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -300,7 +297,7 @@ impl MakeCirc2d {
     /// The location point of Axis is the center of the circle.
     /// Warnings :
     /// It is not forbidden to create a circle with Radius = 0.0
-    pub fn new_ax22d_real(Axis: &crate::ffi::gp_Ax22d, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax22d_real(Axis: &crate::gp::Ax22d, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_ax22d_real(Axis, Radius))
         }
@@ -314,7 +311,7 @@ impl MakeCirc2d {
     /// circle <Circ>.
     /// The local coordinate system of the solution is the
     /// same as Circ.
-    pub fn new_circ2d_real(Circ: &crate::ffi::gp_Circ2d, Dist: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_circ2d_real(Circ: &crate::gp::Circ2d, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_circ2d_real(Circ, Dist))
         }
@@ -326,8 +323,8 @@ impl MakeCirc2d {
     /// The local coordinate system of the solution is the
     /// same as Circ.
     pub fn new_circ2d_pnt2d(
-        Circ: &crate::ffi::gp_Circ2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Circ: &crate::gp::Circ2d,
+        Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_circ2d_pnt2d(Circ, Point))
@@ -340,9 +337,9 @@ impl MakeCirc2d {
     /// The local coordinate system of the solution is given
     /// by the three points P1, P2, P3.
     pub fn new_pnt2d3(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
-        P3: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
+        P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCirc2d_ctor_pnt2d3(P1, P2, P3)) }
     }
@@ -353,7 +350,7 @@ impl MakeCirc2d {
     /// If Sense is true the local coordinate system of
     /// the solution is direct and non direct in the other case.
     pub fn new_pnt2d_real_bool(
-        Center: &crate::ffi::gp_Pnt2d,
+        Center: &crate::gp::Pnt2d,
         Radius: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -370,8 +367,8 @@ impl MakeCirc2d {
     /// If Sense is true the local coordinate system of
     /// the solution is direct and non direct in the other case.
     pub fn new_pnt2d2_bool(
-        Center: &crate::ffi::gp_Pnt2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Center: &crate::gp::Pnt2d,
+        Point: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -388,7 +385,7 @@ impl MakeCirc2d {
     /// If Sense is true the local coordinate system of the solution
     /// is direct and non direct in the other case.
     /// The status is "NegativeRadius" if Radius < 0.0.
-    pub fn new_ax2d_real(XAxis: &crate::ffi::gp_Ax2d, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d_real(XAxis: &crate::gp::Ax2d, Radius: f64) -> crate::OwnedPtr<Self> {
         Self::new_ax2d_real_bool(XAxis, Radius, true)
     }
 
@@ -397,7 +394,7 @@ impl MakeCirc2d {
     /// <Center> and its radius <Radius>.
     /// If Sense is true the local coordinate system of
     /// the solution is direct and non direct in the other case.
-    pub fn new_pnt2d_real(Center: &crate::ffi::gp_Pnt2d, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d_real(Center: &crate::gp::Pnt2d, Radius: f64) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d_real_bool(Center, Radius, true)
     }
 
@@ -407,8 +404,8 @@ impl MakeCirc2d {
     /// If Sense is true the local coordinate system of
     /// the solution is direct and non direct in the other case.
     pub fn new_pnt2d2(
-        Center: &crate::ffi::gp_Pnt2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Center: &crate::gp::Pnt2d,
+        Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d2_bool(Center, Point, true)
     }
@@ -416,12 +413,12 @@ impl MakeCirc2d {
     /// **Source:** `gce_MakeCirc2d.hxx`:100 - `gce_MakeCirc2d::Value()`
     /// Returns the constructed circle.
     /// Exceptions StdFail_NotDone if no circle is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Circ2d {
+    pub fn value(&self) -> &crate::gp::Circ2d {
         unsafe { &*(crate::ffi::gce_MakeCirc2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeCirc2d.hxx`:102 - `gce_MakeCirc2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Circ2d {
+    pub fn operator(&self) -> &crate::gp::Circ2d {
         unsafe { &*(crate::ffi::gce_MakeCirc2d_operator(self as *const Self)) }
     }
 
@@ -484,7 +481,7 @@ impl MakeCone {
     /// the cone.
     /// If Radius is lower than 0.0 the status is "
     /// If Ang < Resolution from gp  or Ang >= (PI/2) - Resolution.
-    pub fn new_ax2_real2(A2: &crate::ffi::gp_Ax2, Ang: f64, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2_real2(A2: &crate::gp::Ax2, Ang: f64, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_ax2_real2(A2, Ang, Radius))
         }
@@ -493,10 +490,7 @@ impl MakeCone {
     /// **Source:** `gce_MakeCone.hxx`:60 - `gce_MakeCone::gce_MakeCone()`
     /// Makes a Cone from gp <TheCone> coaxial to another
     /// Cone <Cone> and passing through a Pnt <Point>.
-    pub fn new_cone_pnt(
-        Cone: &crate::ffi::gp_Cone,
-        Point: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_cone_pnt(Cone: &crate::gp::Cone, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_cone_pnt(Cone, Point)) }
     }
 
@@ -504,7 +498,7 @@ impl MakeCone {
     /// Makes a Cone from gp <TheCone> coaxial to another
     /// Cone <Cone> at the distance <Dist> which can
     /// be greater or lower than zero.
-    pub fn new_cone_real(Cone: &crate::ffi::gp_Cone, Dist: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_cone_real(Cone: &crate::gp::Cone, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_cone_real(Cone, Dist)) }
     }
 
@@ -524,10 +518,10 @@ impl MakeCone {
     /// <P3P4> is colinear to <P1P2> we have the status
     /// "NullAngle".
     pub fn new_pnt4(
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
-        P3: &crate::ffi::gp_Pnt,
-        P4: &crate::ffi::gp_Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
+        P3: &crate::gp::Pnt,
+        P4: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_pnt4(P1, P2, P3, P4)) }
     }
@@ -545,9 +539,9 @@ impl MakeCone {
     /// If <P1> and <P2> are confused we have the status
     /// "ConfusedPoints"
     pub fn new_ax1_pnt2(
-        Axis: &crate::ffi::gp_Ax1,
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
+        Axis: &crate::gp::Ax1,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_ax1_pnt2(Axis, P1, P2)) }
     }
@@ -565,9 +559,9 @@ impl MakeCone {
     /// If <P1> and <P2> are confused we have the status
     /// "ConfusedPoints"
     pub fn new_lin_pnt2(
-        Axis: &crate::ffi::gp_Lin,
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
+        Axis: &crate::gp::Lin,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCone_ctor_lin_pnt2(Axis, P1, P2)) }
     }
@@ -597,8 +591,8 @@ impl MakeCone {
     /// -   the vector joining P1 to P2 is perpendicular to Axis, or
     /// -   P1, P2, P3, and P4 are collinear.
     pub fn new_pnt2_real2(
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
         R1: f64,
         R2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -610,12 +604,12 @@ impl MakeCone {
     /// **Source:** `gce_MakeCone.hxx`:142 - `gce_MakeCone::Value()`
     /// Returns the constructed cone.
     /// Exceptions StdFail_NotDone if no cone is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Cone {
+    pub fn value(&self) -> &crate::gp::Cone {
         unsafe { &*(crate::ffi::gce_MakeCone_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeCone.hxx`:144 - `gce_MakeCone::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Cone {
+    pub fn operator(&self) -> &crate::gp::Cone {
         unsafe { &*(crate::ffi::gce_MakeCone_operator(self as *const Self)) }
     }
 
@@ -671,7 +665,7 @@ impl MakeCylinder {
     /// **Source:** `gce_MakeCylinder.hxx`:47 - `gce_MakeCylinder::gce_MakeCylinder()`
     /// <A2> is the local cartesian coordinate system of <me>.
     /// The status is "NegativeRadius" if R < 0.0
-    pub fn new_ax2_real(A2: &crate::ffi::gp_Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_ax2_real(A2, Radius)) }
     }
 
@@ -679,8 +673,8 @@ impl MakeCylinder {
     /// Makes a Cylinder from gp <TheCylinder> coaxial to another
     /// Cylinder <Cylinder> and passing through a Pnt <Point>.
     pub fn new_cylinder_pnt(
-        Cyl: &crate::ffi::gp_Cylinder,
-        Point: &crate::ffi::gp_Pnt,
+        Cyl: &crate::gp::Cylinder,
+        Point: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_cylinder_pnt(Cyl, Point))
@@ -693,7 +687,7 @@ impl MakeCylinder {
     /// be greater or lower than zero.
     /// The radius of the result is the absolute value of the
     /// radius of <Cyl> plus <Dist>
-    pub fn new_cylinder_real(Cyl: &crate::ffi::gp_Cylinder, Dist: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_cylinder_real(Cyl: &crate::gp::Cylinder, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_cylinder_real(Cyl, Dist))
         }
@@ -705,16 +699,16 @@ impl MakeCylinder {
     /// Its axis is <P1P2> and its radius is the distance
     /// between <P3> and <P1P2>
     pub fn new_pnt3(
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
-        P3: &crate::ffi::gp_Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
+        P3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_pnt3(P1, P2, P3)) }
     }
 
     /// **Source:** `gce_MakeCylinder.hxx`:67 - `gce_MakeCylinder::gce_MakeCylinder()`
     /// Makes a Cylinder by its axis <Axis> and radius <Radius>.
-    pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_ax1_real(Axis, Radius))
         }
@@ -730,19 +724,19 @@ impl MakeCylinder {
     /// -   Dist is negative and has an absolute value
     /// which is greater than the radius of Cyl; or
     /// -   gce_ConfusedPoints if points P1 and P2 are coincident.
-    pub fn new_circ(Circ: &crate::ffi::gp_Circ) -> crate::OwnedPtr<Self> {
+    pub fn new_circ(Circ: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeCylinder_ctor_circ(Circ)) }
     }
 
     /// **Source:** `gce_MakeCylinder.hxx`:82 - `gce_MakeCylinder::Value()`
     /// Returns the constructed cylinder.
     /// Exceptions StdFail_NotDone if no cylinder is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Cylinder {
+    pub fn value(&self) -> &crate::gp::Cylinder {
         unsafe { &*(crate::ffi::gce_MakeCylinder_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeCylinder.hxx`:84 - `gce_MakeCylinder::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Cylinder {
+    pub fn operator(&self) -> &crate::gp::Cylinder {
         unsafe { &*(crate::ffi::gce_MakeCylinder_operator(self as *const Self)) }
     }
 
@@ -796,7 +790,7 @@ impl MakeDir {
     /// **Source:** `gce_MakeDir.hxx`:44 - `gce_MakeDir::gce_MakeDir()`
     /// Normalizes the vector V and creates a direction.
     /// Status is "NullVector" if V.Magnitude() <= Resolution.
-    pub fn new_vec(V: &crate::ffi::gp_Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_vec(V: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir_ctor_vec(V)) }
     }
 
@@ -804,7 +798,7 @@ impl MakeDir {
     /// Creates a direction from a triplet of coordinates.
     /// Status is "NullVector" if Coord.Modulus() <=
     /// Resolution from gp.
-    pub fn new_xyz(Coord: &crate::ffi::gp_XYZ) -> crate::OwnedPtr<Self> {
+    pub fn new_xyz(Coord: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir_ctor_xyz(Coord)) }
     }
 
@@ -829,19 +823,19 @@ impl MakeDir {
     /// -   the magnitude of vector V,
     /// -   the modulus of Coord,
     /// -   Sqrt(Xv*Xv + Yv*Yv + Zv*Zv).
-    pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir_ctor_pnt2(P1, P2)) }
     }
 
     /// **Source:** `gce_MakeDir.hxx`:74 - `gce_MakeDir::Value()`
     /// Returns the constructed unit vector.
     /// Exceptions StdFail_NotDone if no unit vector is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Dir {
+    pub fn value(&self) -> &crate::gp::Dir {
         unsafe { &*(crate::ffi::gce_MakeDir_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeDir.hxx`:76 - `gce_MakeDir::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Dir {
+    pub fn operator(&self) -> &crate::gp::Dir {
         unsafe { &*(crate::ffi::gce_MakeDir_operator(self as *const Self)) }
     }
 
@@ -894,7 +888,7 @@ impl MakeDir2d {
     /// **Source:** `gce_MakeDir2d.hxx`:43 - `gce_MakeDir2d::gce_MakeDir2d()`
     /// Normalizes the vector V and creates a direction.
     /// Status is "NullVector" if V.Magnitude() <= Resolution.
-    pub fn new_vec2d(V: &crate::ffi::gp_Vec2d) -> crate::OwnedPtr<Self> {
+    pub fn new_vec2d(V: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir2d_ctor_vec2d(V)) }
     }
 
@@ -902,7 +896,7 @@ impl MakeDir2d {
     /// Creates a direction from a triplet of coordinates.
     /// Status is "NullVector" if Coord.Modulus() <=
     /// Resolution from gp.
-    pub fn new_xy(Coord: &crate::ffi::gp_XY) -> crate::OwnedPtr<Self> {
+    pub fn new_xy(Coord: &crate::gp::XY) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir2d_ctor_xy(Coord)) }
     }
 
@@ -927,22 +921,19 @@ impl MakeDir2d {
     /// -   the magnitude of vector V,
     /// -   the modulus of Coord,
     /// -   Sqrt(Xv*Xv + Yv*Yv).
-    pub fn new_pnt2d2(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir2d_ctor_pnt2d2(P1, P2)) }
     }
 
     /// **Source:** `gce_MakeDir2d.hxx`:71 - `gce_MakeDir2d::Value()`
     /// Returns the constructed unit vector.
     /// Exceptions StdFail_NotDone if no unit vector is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Dir2d {
+    pub fn value(&self) -> &crate::gp::Dir2d {
         unsafe { &*(crate::ffi::gce_MakeDir2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeDir2d.hxx`:73 - `gce_MakeDir2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Dir2d {
+    pub fn operator(&self) -> &crate::gp::Dir2d {
         unsafe { &*(crate::ffi::gce_MakeDir2d_operator(self as *const Self)) }
     }
 
@@ -1001,7 +992,7 @@ impl MakeElips {
     /// It is not forbidden to create an ellipse with
     /// MajorRadius = MinorRadius.
     pub fn new_ax2_real2(
-        A2: &crate::ffi::gp_Ax2,
+        A2: &crate::gp::Ax2,
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1030,9 +1021,9 @@ impl MakeElips {
     /// is less than the minor radius computed with Center, S1 and S2, or
     /// -   Center, S1 and S2 are collinear.
     pub fn new_pnt3(
-        S1: &crate::ffi::gp_Pnt,
-        S2: &crate::ffi::gp_Pnt,
-        Center: &crate::ffi::gp_Pnt,
+        S1: &crate::gp::Pnt,
+        S2: &crate::gp::Pnt,
+        Center: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeElips_ctor_pnt3(S1, S2, Center)) }
     }
@@ -1040,12 +1031,12 @@ impl MakeElips {
     /// **Source:** `gce_MakeElips.hxx`:69 - `gce_MakeElips::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Elips {
+    pub fn value(&self) -> &crate::gp::Elips {
         unsafe { &*(crate::ffi::gce_MakeElips_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeElips.hxx`:71 - `gce_MakeElips::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Elips {
+    pub fn operator(&self) -> &crate::gp::Elips {
         unsafe { &*(crate::ffi::gce_MakeElips_operator(self as *const Self)) }
     }
 
@@ -1106,7 +1097,7 @@ impl MakeElips2d {
     /// the status is "InvertRadius" if MajorRadius < MinorRadius or
     /// "NegativeRadius" if MinorRadius < 0.0
     pub fn new_ax2d_real2_bool(
-        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
         MinorRadius: f64,
         Sense: bool,
@@ -1131,7 +1122,7 @@ impl MakeElips2d {
     /// the status is "InvertRadius" if MajorRadius < MinorRadius or
     /// "NegativeRadius" if MinorRadius < 0.0
     pub fn new_ax22d_real2(
-        A: &crate::ffi::gp_Ax22d,
+        A: &crate::gp::Ax22d,
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1166,9 +1157,9 @@ impl MakeElips2d {
     /// Center and S1 is less than the minor radius
     /// computed with Center, S1 and S2.
     pub fn new_pnt2d3(
-        S1: &crate::ffi::gp_Pnt2d,
-        S2: &crate::ffi::gp_Pnt2d,
-        Center: &crate::ffi::gp_Pnt2d,
+        S1: &crate::gp::Pnt2d,
+        S2: &crate::gp::Pnt2d,
+        Center: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeElips2d_ctor_pnt2d3(S1, S2, Center))
@@ -1184,7 +1175,7 @@ impl MakeElips2d {
     /// the status is "InvertRadius" if MajorRadius < MinorRadius or
     /// "NegativeRadius" if MinorRadius < 0.0
     pub fn new_ax2d_real2(
-        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1194,12 +1185,12 @@ impl MakeElips2d {
     /// **Source:** `gce_MakeElips2d.hxx`:92 - `gce_MakeElips2d::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Elips2d {
+    pub fn value(&self) -> &crate::gp::Elips2d {
         unsafe { &*(crate::ffi::gce_MakeElips2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeElips2d.hxx`:94 - `gce_MakeElips2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Elips2d {
+    pub fn operator(&self) -> &crate::gp::Elips2d {
         unsafe { &*(crate::ffi::gce_MakeElips2d_operator(self as *const Self)) }
     }
 
@@ -1292,7 +1283,7 @@ impl MakeHypr {
     /// The status is "NegativeRadius" if MajorRadius < 0.0 and
     /// "InvertRadius" if MinorRadius > MajorRadius.
     pub fn new_ax2_real2(
-        A2: &crate::ffi::gp_Ax2,
+        A2: &crate::gp::Ax2,
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1322,9 +1313,9 @@ impl MakeHypr {
     /// -   MajorRadius is less than MinorRadius; or
     /// -   gce_ColinearPoints if S1, S2 and Center are collinear.
     pub fn new_pnt3(
-        S1: &crate::ffi::gp_Pnt,
-        S2: &crate::ffi::gp_Pnt,
-        Center: &crate::ffi::gp_Pnt,
+        S1: &crate::gp::Pnt,
+        S2: &crate::gp::Pnt,
+        Center: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeHypr_ctor_pnt3(S1, S2, Center)) }
     }
@@ -1332,12 +1323,12 @@ impl MakeHypr {
     /// **Source:** `gce_MakeHypr.hxx`:104 - `gce_MakeHypr::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Hypr {
+    pub fn value(&self) -> &crate::gp::Hypr {
         unsafe { &*(crate::ffi::gce_MakeHypr_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeHypr.hxx`:106 - `gce_MakeHypr::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Hypr {
+    pub fn operator(&self) -> &crate::gp::Hypr {
         unsafe { &*(crate::ffi::gce_MakeHypr_operator(self as *const Self)) }
     }
 
@@ -1420,9 +1411,9 @@ impl MakeHypr2d {
     /// -   the major radius is the distance between Center and S1, and
     /// -   the minor radius is the distance between point S2 and the major axis.
     pub fn new_pnt2d3(
-        S1: &crate::ffi::gp_Pnt2d,
-        S2: &crate::ffi::gp_Pnt2d,
-        Center: &crate::ffi::gp_Pnt2d,
+        S1: &crate::gp::Pnt2d,
+        S2: &crate::gp::Pnt2d,
+        Center: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeHypr2d_ctor_pnt2d3(S1, S2, Center)) }
     }
@@ -1438,7 +1429,7 @@ impl MakeHypr2d {
     /// MinorRadius, where its major axis is the "X Axis"
     /// of A (A is the local coordinate system of the hyperbola).
     pub fn new_ax2d_real2_bool(
-        MajorAxis: &crate::ffi::gp_Ax2d,
+        MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
         MinorRadius: f64,
         Sense: bool,
@@ -1459,7 +1450,7 @@ impl MakeHypr2d {
     /// MinorRadius, where its major axis is the "X Axis"
     /// of A (A is the local coordinate system of the hyperbola).
     pub fn new_ax22d_real2(
-        A: &crate::ffi::gp_Ax22d,
+        A: &crate::gp::Ax22d,
         MajorRadius: f64,
         MinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1475,12 +1466,12 @@ impl MakeHypr2d {
     /// **Source:** `gce_MakeHypr2d.hxx`:99 - `gce_MakeHypr2d::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Hypr2d {
+    pub fn value(&self) -> &crate::gp::Hypr2d {
         unsafe { &*(crate::ffi::gce_MakeHypr2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeHypr2d.hxx`:101 - `gce_MakeHypr2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Hypr2d {
+    pub fn operator(&self) -> &crate::gp::Hypr2d {
         unsafe { &*(crate::ffi::gce_MakeHypr2d_operator(self as *const Self)) }
     }
 
@@ -1533,24 +1524,21 @@ unsafe impl crate::CppDeletable for MakeLin {
 impl MakeLin {
     /// **Source:** `gce_MakeLin.hxx`:43 - `gce_MakeLin::gce_MakeLin()`
     /// Creates a line located along the axis A1.
-    pub fn new_ax1(A1: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
+    pub fn new_ax1(A1: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin_ctor_ax1(A1)) }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:47 - `gce_MakeLin::gce_MakeLin()`
     /// <P> is the location point (origin) of the line and
     /// <V> is the direction of the line.
-    pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin_ctor_pnt_dir(P, V)) }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:51 - `gce_MakeLin::gce_MakeLin()`
     /// Make a Lin from gp <TheLin> parallel to another
     /// Lin <Lin> and passing through a Pnt <Point>.
-    pub fn new_lin_pnt(
-        Lin: &crate::ffi::gp_Lin,
-        Point: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_lin_pnt(Lin: &crate::gp::Lin, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin_ctor_lin_pnt(Lin, Point)) }
     }
 
@@ -1558,19 +1546,19 @@ impl MakeLin {
     /// Make a Lin from gp <TheLin> passing through 2
     /// Pnt <P1>,<P2>.
     /// It returns false if <p1> and <P2> are confused.
-    pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin_ctor_pnt2(P1, P2)) }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:60 - `gce_MakeLin::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone is raised if no line is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Lin {
+    pub fn value(&self) -> &crate::gp::Lin {
         unsafe { &*(crate::ffi::gce_MakeLin_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeLin.hxx`:62 - `gce_MakeLin::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Lin {
+    pub fn operator(&self) -> &crate::gp::Lin {
         unsafe { &*(crate::ffi::gce_MakeLin_operator(self as *const Self)) }
     }
 
@@ -1627,17 +1615,14 @@ unsafe impl crate::CppDeletable for MakeLin2d {
 impl MakeLin2d {
     /// **Source:** `gce_MakeLin2d.hxx`:47 - `gce_MakeLin2d::gce_MakeLin2d()`
     /// Creates a line located with A.
-    pub fn new_ax2d(A: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d(A: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_ax2d(A)) }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:51 - `gce_MakeLin2d::gce_MakeLin2d()`
     /// <P> is the location point (origin) of the line and
     /// <V> is the direction of the line.
-    pub fn new_pnt2d_dir2d(
-        P: &crate::ffi::gp_Pnt2d,
-        V: &crate::ffi::gp_Dir2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d_dir2d(P: &crate::gp::Pnt2d, V: &crate::gp::Dir2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_pnt2d_dir2d(P, V)) }
     }
 
@@ -1654,7 +1639,7 @@ impl MakeLin2d {
     /// If Dist is greater than zero the result is on the
     /// right of the Line <Lin>, else the result is on the
     /// left of the Line <Lin>.
-    pub fn new_lin2d_real(Lin: &crate::ffi::gp_Lin2d, Dist: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d_real(Lin: &crate::gp::Lin2d, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_lin2d_real(Lin, Dist)) }
     }
 
@@ -1662,8 +1647,8 @@ impl MakeLin2d {
     /// Make a Lin2d from gp <TheLin> parallel to another
     /// Lin2d <Lin> and passing through a Pnt2d <Point>.
     pub fn new_lin2d_pnt2d(
-        Lin: &crate::ffi::gp_Lin2d,
-        Point: &crate::ffi::gp_Pnt2d,
+        Lin: &crate::gp::Lin2d,
+        Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_lin2d_pnt2d(Lin, Point)) }
     }
@@ -1678,22 +1663,19 @@ impl MakeLin2d {
     /// -   gce_NullAxis if Sqrt(A*A + B*B) is less
     /// than or equal to gp::Resolution(), or
     /// -   gce_ConfusedPoints if points P1 and P2 are coincident.
-    pub fn new_pnt2d2(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_ctor_pnt2d2(P1, P2)) }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:83 - `gce_MakeLin2d::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone if no line is constructed.
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeLin2d.hxx`:85 - `gce_MakeLin2d::Operator()`
-    pub fn operator(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeLin2d_operator(self as *const Self))
         }
@@ -1747,50 +1729,47 @@ unsafe impl crate::CppDeletable for MakeMirror {
 
 impl MakeMirror {
     /// **Source:** `gce_MakeMirror.hxx`:44 - `gce_MakeMirror::gce_MakeMirror()`
-    pub fn new_pnt(Point: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt(Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_pnt(Point)) }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:46 - `gce_MakeMirror::gce_MakeMirror()`
-    pub fn new_ax1(Axis: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
+    pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_ax1(Axis)) }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:48 - `gce_MakeMirror::gce_MakeMirror()`
-    pub fn new_lin(Line: &crate::ffi::gp_Lin) -> crate::OwnedPtr<Self> {
+    pub fn new_lin(Line: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_lin(Line)) }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:52 - `gce_MakeMirror::gce_MakeMirror()`
     /// Makes a symmetry transformation af axis defined by
     /// <Point> and <Direc>.
-    pub fn new_pnt_dir(
-        Point: &crate::ffi::gp_Pnt,
-        Direc: &crate::ffi::gp_Dir,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt_dir(Point: &crate::gp::Pnt, Direc: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_pnt_dir(Point, Direc)) }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:55 - `gce_MakeMirror::gce_MakeMirror()`
     /// Makes a symmetry transformation of plane <Plane>.
-    pub fn new_pln(Plane: &crate::ffi::gp_Pln) -> crate::OwnedPtr<Self> {
+    pub fn new_pln(Plane: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_pln(Plane)) }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:58 - `gce_MakeMirror::gce_MakeMirror()`
     /// Makes a symmetry transformation of plane <Plane>.
-    pub fn new_ax2(Plane: &crate::ffi::gp_Ax2) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2(Plane: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror_ctor_ax2(Plane)) }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:61 - `gce_MakeMirror::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::gp_Trsf {
+    pub fn value(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::gce_MakeMirror_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeMirror.hxx`:63 - `gce_MakeMirror::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Trsf {
+    pub fn operator(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::gce_MakeMirror_operator(self as *const Self)) }
     }
 }
@@ -1816,17 +1795,17 @@ unsafe impl crate::CppDeletable for MakeMirror2d {
 
 impl MakeMirror2d {
     /// **Source:** `gce_MakeMirror2d.hxx`:41 - `gce_MakeMirror2d::gce_MakeMirror2d()`
-    pub fn new_pnt2d(Point: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d(Point: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror2d_ctor_pnt2d(Point)) }
     }
 
     /// **Source:** `gce_MakeMirror2d.hxx`:43 - `gce_MakeMirror2d::gce_MakeMirror2d()`
-    pub fn new_ax2d(Axis: &crate::ffi::gp_Ax2d) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d(Axis: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror2d_ctor_ax2d(Axis)) }
     }
 
     /// **Source:** `gce_MakeMirror2d.hxx`:45 - `gce_MakeMirror2d::gce_MakeMirror2d()`
-    pub fn new_lin2d(Line: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d(Line: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror2d_ctor_lin2d(Line)) }
     }
 
@@ -1834,8 +1813,8 @@ impl MakeMirror2d {
     /// Makes a symmetry transformation af axis defined by
     /// <Point> and <Direc>.
     pub fn new_pnt2d_dir2d(
-        Point: &crate::ffi::gp_Pnt2d,
-        Direc: &crate::ffi::gp_Dir2d,
+        Point: &crate::gp::Pnt2d,
+        Direc: &crate::gp::Dir2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeMirror2d_ctor_pnt2d_dir2d(Point, Direc))
@@ -1844,12 +1823,12 @@ impl MakeMirror2d {
 
     /// **Source:** `gce_MakeMirror2d.hxx`:52 - `gce_MakeMirror2d::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::gp_Trsf2d {
+    pub fn value(&self) -> &crate::gp::Trsf2d {
         unsafe { &*(crate::ffi::gce_MakeMirror2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeMirror2d.hxx`:54 - `gce_MakeMirror2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Trsf2d {
+    pub fn operator(&self) -> &crate::gp::Trsf2d {
         unsafe { &*(crate::ffi::gce_MakeMirror2d_operator(self as *const Self)) }
     }
 }
@@ -1904,7 +1883,7 @@ impl MakeParab {
     /// of the parabola. The Location point of A2 is the vertex of
     /// the parabola
     /// The status is "NullFocusLength" if Focal < 0.0
-    pub fn new_ax2_real(A2: &crate::ffi::gp_Ax2, Focal: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2_real(A2: &crate::gp::Ax2, Focal: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab_ctor_ax2_real(A2, Focal)) }
     }
 
@@ -1917,19 +1896,19 @@ impl MakeParab {
     /// point is the vertex of the parabola. The normal to the plane
     /// of the parabola is the cross product between the XAxis and the
     /// YAxis.
-    pub fn new_ax1_pnt(D: &crate::ffi::gp_Ax1, F: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
+    pub fn new_ax1_pnt(D: &crate::gp::Ax1, F: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab_ctor_ax1_pnt(D, F)) }
     }
 
     /// **Source:** `gce_MakeParab.hxx`:84 - `gce_MakeParab::Value()`
     /// Returns the constructed parabola.
     /// Exceptions StdFail_NotDone if no parabola is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Parab {
+    pub fn value(&self) -> &crate::gp::Parab {
         unsafe { &*(crate::ffi::gce_MakeParab_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeParab.hxx`:86 - `gce_MakeParab::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Parab {
+    pub fn operator(&self) -> &crate::gp::Parab {
         unsafe { &*(crate::ffi::gce_MakeParab_operator(self as *const Self)) }
     }
 
@@ -2002,7 +1981,7 @@ impl MakeParab2d {
     /// Warnings : It is possible to have Focal = 0.
     /// The status is "NullFocalLength" Raised if Focal < 0.0
     pub fn new_ax2d_real_bool(
-        MirrorAxis: &crate::ffi::gp_Ax2d,
+        MirrorAxis: &crate::gp::Ax2d,
         Focal: f64,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2018,7 +1997,7 @@ impl MakeParab2d {
     /// and its focal length.
     /// Warnings : It is possible to have Focal = 0.
     /// The status is "NullFocalLength" Raised if Focal < 0.0
-    pub fn new_ax22d_real(A: &crate::ffi::gp_Ax22d, Focal: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax22d_real(A: &crate::gp::Ax22d, Focal: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeParab2d_ctor_ax22d_real(A, Focal)) }
     }
 
@@ -2026,8 +2005,8 @@ impl MakeParab2d {
     /// Creates a parabola with the directrix and the focus point.
     /// The sense of parametrization is given by Sense.
     pub fn new_ax2d_pnt2d_bool(
-        D: &crate::ffi::gp_Ax2d,
-        F: &crate::ffi::gp_Pnt2d,
+        D: &crate::gp::Ax2d,
+        F: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2046,8 +2025,8 @@ impl MakeParab2d {
     /// -   gce_NullFocusLength if Focal is less than 0.0, or
     /// -   gce_NullAxis if S1 and Center are coincident.
     pub fn new_pnt2d2_bool(
-        S1: &crate::ffi::gp_Pnt2d,
-        Center: &crate::ffi::gp_Pnt2d,
+        S1: &crate::gp::Pnt2d,
+        Center: &crate::gp::Pnt2d,
         Sense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2062,17 +2041,14 @@ impl MakeParab2d {
     /// and its focal length.
     /// Warnings : It is possible to have Focal = 0.
     /// The status is "NullFocalLength" Raised if Focal < 0.0
-    pub fn new_ax2d_real(MirrorAxis: &crate::ffi::gp_Ax2d, Focal: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d_real(MirrorAxis: &crate::gp::Ax2d, Focal: f64) -> crate::OwnedPtr<Self> {
         Self::new_ax2d_real_bool(MirrorAxis, Focal, true)
     }
 
     /// **Source:** `gce_MakeParab2d.hxx`:75 - `gce_MakeParab2d::gce_MakeParab2d()`
     /// Creates a parabola with the directrix and the focus point.
     /// The sense of parametrization is given by Sense.
-    pub fn new_ax2d_pnt2d(
-        D: &crate::ffi::gp_Ax2d,
-        F: &crate::ffi::gp_Pnt2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2d_pnt2d(D: &crate::gp::Ax2d, F: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         Self::new_ax2d_pnt2d_bool(D, F, true)
     }
 
@@ -2086,22 +2062,19 @@ impl MakeParab2d {
     /// false), the Status function returns:
     /// -   gce_NullFocusLength if Focal is less than 0.0, or
     /// -   gce_NullAxis if S1 and Center are coincident.
-    pub fn new_pnt2d2(
-        S1: &crate::ffi::gp_Pnt2d,
-        Center: &crate::ffi::gp_Pnt2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d2(S1: &crate::gp::Pnt2d, Center: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d2_bool(S1, Center, true)
     }
 
     /// **Source:** `gce_MakeParab2d.hxx`:94 - `gce_MakeParab2d::Value()`
     /// Returns the constructed parabola.
     /// Exceptions StdFail_NotDone if no parabola is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Parab2d {
+    pub fn value(&self) -> &crate::gp::Parab2d {
         unsafe { &*(crate::ffi::gce_MakeParab2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeParab2d.hxx`:96 - `gce_MakeParab2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Parab2d {
+    pub fn operator(&self) -> &crate::gp::Parab2d {
         unsafe { &*(crate::ffi::gce_MakeParab2d_operator(self as *const Self)) }
     }
 
@@ -2169,14 +2142,14 @@ impl MakePln {
     /// The "Location" of A2 defines the location (origin) of the plane.
     /// The "XDirection" and "YDirection" of A2 define the "XAxis" and
     /// the "YAxis" of the plane used to parametrize the plane.
-    pub fn new_ax2(A2: &crate::ffi::gp_Ax2) -> crate::OwnedPtr<Self> {
+    pub fn new_ax2(A2: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_ax2(A2)) }
     }
 
     /// **Source:** `gce_MakePln.hxx`:63 - `gce_MakePln::gce_MakePln()`
     /// Creates a plane with the  "Location" point <P>
     /// and the normal direction <V>.
-    pub fn new_pnt_dir(P: &crate::ffi::gp_Pnt, V: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pnt_dir(P, V)) }
     }
 
@@ -2193,10 +2166,7 @@ impl MakePln {
     /// **Source:** `gce_MakePln.hxx`:77 - `gce_MakePln::gce_MakePln()`
     /// Make a Pln from gp <ThePln> parallel to another
     /// Pln <Pln> and passing through a Pnt <Point>.
-    pub fn new_pln_pnt(
-        Pln: &crate::ffi::gp_Pln,
-        Point: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pln_pnt(Pln: &crate::gp::Pln, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pln_pnt(Pln, Point)) }
     }
 
@@ -2208,7 +2178,7 @@ impl MakePln {
     /// <Dist> to the plane <Pln> in the direction of the
     /// normal to <Pln>.
     /// Otherwise it is in the opposite direction.
-    pub fn new_pln_real(Pln: &crate::ffi::gp_Pln, Dist: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pln_real(Pln: &crate::gp::Pln, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pln_real(Pln, Dist)) }
     }
 
@@ -2217,9 +2187,9 @@ impl MakePln {
     /// Pnt <P1>,<P2>,<P3>.
     /// It returns false if <P1> <P2> <P3> are confused.
     pub fn new_pnt3(
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
-        P3: &crate::ffi::gp_Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
+        P3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pnt3(P1, P2, P3)) }
     }
@@ -2228,7 +2198,7 @@ impl MakePln {
     /// Make a Pln from gp <ThePln> perpendicular to the line
     /// passing through <P1>,<P2>.
     /// The status is "ConfusedPoints" if <P1> <P2> are confused.
-    pub fn new_pnt2(P1: &crate::ffi::gp_Pnt, P2: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_pnt2(P1, P2)) }
     }
 
@@ -2241,19 +2211,19 @@ impl MakePln {
     /// C*C) is less than or equal to gp::Resolution(),
     /// -   gce_ConfusedPoints if P1 and P2 are coincident, or
     /// -   gce_ColinearPoints if P1, P2 and P3 are collinear.
-    pub fn new_ax1(Axis: &crate::ffi::gp_Ax1) -> crate::OwnedPtr<Self> {
+    pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakePln_ctor_ax1(Axis)) }
     }
 
     /// **Source:** `gce_MakePln.hxx`:110 - `gce_MakePln::Value()`
     /// Returns the constructed plane.
     /// Exceptions StdFail_NotDone if no plane is constructed.
-    pub fn value(&self) -> &crate::ffi::gp_Pln {
+    pub fn value(&self) -> &crate::gp::Pln {
         unsafe { &*(crate::ffi::gce_MakePln_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakePln.hxx`:112 - `gce_MakePln::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Pln {
+    pub fn operator(&self) -> &crate::gp::Pln {
         unsafe { &*(crate::ffi::gce_MakePln_operator(self as *const Self)) }
     }
 
@@ -2305,7 +2275,7 @@ unsafe impl crate::CppDeletable for MakeRotation {
 impl MakeRotation {
     /// **Source:** `gce_MakeRotation.hxx`:42 - `gce_MakeRotation::gce_MakeRotation()`
     /// Constructs a rotation through angle Angle about the axis defined by the line Line.
-    pub fn new_lin_real(Line: &crate::ffi::gp_Lin, Angle: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_lin_real(Line: &crate::gp::Lin, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeRotation_ctor_lin_real(Line, Angle))
         }
@@ -2313,7 +2283,7 @@ impl MakeRotation {
 
     /// **Source:** `gce_MakeRotation.hxx`:45 - `gce_MakeRotation::gce_MakeRotation()`
     /// Constructs a rotation through angle Angle about the axis defined by the axis Axis.
-    pub fn new_ax1_real(Axis: &crate::ffi::gp_Ax1, Angle: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_ax1_real(Axis: &crate::gp::Ax1, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeRotation_ctor_ax1_real(Axis, Angle))
         }
@@ -2323,8 +2293,8 @@ impl MakeRotation {
     /// Constructs a rotation through angle Angle about the axis defined by:
     /// the point Point and the unit vector Direc.
     pub fn new_pnt_dir_real(
-        Point: &crate::ffi::gp_Pnt,
-        Direc: &crate::ffi::gp_Dir,
+        Point: &crate::gp::Pnt,
+        Direc: &crate::gp::Dir,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2336,12 +2306,12 @@ impl MakeRotation {
 
     /// **Source:** `gce_MakeRotation.hxx`:54 - `gce_MakeRotation::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::gp_Trsf {
+    pub fn value(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::gce_MakeRotation_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeRotation.hxx`:56 - `gce_MakeRotation::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Trsf {
+    pub fn operator(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::gce_MakeRotation_operator(self as *const Self)) }
     }
 }
@@ -2368,7 +2338,7 @@ unsafe impl crate::CppDeletable for MakeRotation2d {
 impl MakeRotation2d {
     /// **Source:** `gce_MakeRotation2d.hxx`:39 - `gce_MakeRotation2d::gce_MakeRotation2d()`
     /// Constructs a rotation through angle Angle about the center Point.
-    pub fn new_pnt2d_real(Point: &crate::ffi::gp_Pnt2d, Angle: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d_real(Point: &crate::gp::Pnt2d, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeRotation2d_ctor_pnt2d_real(Point, Angle))
         }
@@ -2376,12 +2346,12 @@ impl MakeRotation2d {
 
     /// **Source:** `gce_MakeRotation2d.hxx`:42 - `gce_MakeRotation2d::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::gp_Trsf2d {
+    pub fn value(&self) -> &crate::gp::Trsf2d {
         unsafe { &*(crate::ffi::gce_MakeRotation2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeRotation2d.hxx`:44 - `gce_MakeRotation2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Trsf2d {
+    pub fn operator(&self) -> &crate::gp::Trsf2d {
         unsafe { &*(crate::ffi::gce_MakeRotation2d_operator(self as *const Self)) }
     }
 }
@@ -2410,18 +2380,18 @@ impl MakeScale {
     /// Constructs a scaling transformation with
     /// -   Point as the center of the transformation, and
     /// -   Scale as the scale factor.
-    pub fn new_pnt_real(Point: &crate::ffi::gp_Pnt, Scale: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt_real(Point: &crate::gp::Pnt, Scale: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeScale_ctor_pnt_real(Point, Scale)) }
     }
 
     /// **Source:** `gce_MakeScale.hxx`:44 - `gce_MakeScale::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::gp_Trsf {
+    pub fn value(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::gce_MakeScale_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeScale.hxx`:46 - `gce_MakeScale::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Trsf {
+    pub fn operator(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::gce_MakeScale_operator(self as *const Self)) }
     }
 }
@@ -2450,7 +2420,7 @@ impl MakeScale2d {
     /// Constructs a scaling transformation with:
     /// -   Point as the center of the transformation, and
     /// -   Scale as the scale factor.
-    pub fn new_pnt2d_real(Point: &crate::ffi::gp_Pnt2d, Scale: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d_real(Point: &crate::gp::Pnt2d, Scale: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeScale2d_ctor_pnt2d_real(Point, Scale))
         }
@@ -2458,12 +2428,12 @@ impl MakeScale2d {
 
     /// **Source:** `gce_MakeScale2d.hxx`:44 - `gce_MakeScale2d::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::gp_Trsf2d {
+    pub fn value(&self) -> &crate::gp::Trsf2d {
         unsafe { &*(crate::ffi::gce_MakeScale2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeScale2d.hxx`:46 - `gce_MakeScale2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Trsf2d {
+    pub fn operator(&self) -> &crate::gp::Trsf2d {
         unsafe { &*(crate::ffi::gce_MakeScale2d_operator(self as *const Self)) }
     }
 }
@@ -2490,17 +2460,14 @@ unsafe impl crate::CppDeletable for MakeTranslation {
 impl MakeTranslation {
     /// **Source:** `gce_MakeTranslation.hxx`:40 - `gce_MakeTranslation::gce_MakeTranslation()`
     /// Constructs a translation along the vector " Vect"
-    pub fn new_vec(Vect: &crate::ffi::gp_Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_vec(Vect: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation_ctor_vec(Vect)) }
     }
 
     /// **Source:** `gce_MakeTranslation.hxx`:44 - `gce_MakeTranslation::gce_MakeTranslation()`
     /// Constructs a translation along the vector
     /// (Point1,Point2) defined from the point Point1 to the point Point2.
-    pub fn new_pnt2(
-        Point1: &crate::ffi::gp_Pnt,
-        Point2: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2(Point1: &crate::gp::Pnt, Point2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation_ctor_pnt2(Point1, Point2))
         }
@@ -2508,12 +2475,12 @@ impl MakeTranslation {
 
     /// **Source:** `gce_MakeTranslation.hxx`:47 - `gce_MakeTranslation::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::gp_Trsf {
+    pub fn value(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::gce_MakeTranslation_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeTranslation.hxx`:49 - `gce_MakeTranslation::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Trsf {
+    pub fn operator(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::gce_MakeTranslation_operator(self as *const Self)) }
     }
 }
@@ -2540,7 +2507,7 @@ unsafe impl crate::CppDeletable for MakeTranslation2d {
 impl MakeTranslation2d {
     /// **Source:** `gce_MakeTranslation2d.hxx`:40 - `gce_MakeTranslation2d::gce_MakeTranslation2d()`
     /// Constructs a translation along the vector Vect.
-    pub fn new_vec2d(Vect: &crate::ffi::gp_Vec2d) -> crate::OwnedPtr<Self> {
+    pub fn new_vec2d(Vect: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation2d_ctor_vec2d(Vect)) }
     }
 
@@ -2548,8 +2515,8 @@ impl MakeTranslation2d {
     /// Constructs a translation along the vector
     /// (Point1,Point2) defined from the point Point1 to the point Point2.
     pub fn new_pnt2d2(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation2d_ctor_pnt2d2(Point1, Point2))
@@ -2558,12 +2525,12 @@ impl MakeTranslation2d {
 
     /// **Source:** `gce_MakeTranslation2d.hxx`:47 - `gce_MakeTranslation2d::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::gp_Trsf2d {
+    pub fn value(&self) -> &crate::gp::Trsf2d {
         unsafe { &*(crate::ffi::gce_MakeTranslation2d_value(self as *const Self)) }
     }
 
     /// **Source:** `gce_MakeTranslation2d.hxx`:49 - `gce_MakeTranslation2d::Operator()`
-    pub fn operator(&self) -> &crate::ffi::gp_Trsf2d {
+    pub fn operator(&self) -> &crate::gp::Trsf2d {
         unsafe { &*(crate::ffi::gce_MakeTranslation2d_operator(self as *const Self)) }
     }
 }

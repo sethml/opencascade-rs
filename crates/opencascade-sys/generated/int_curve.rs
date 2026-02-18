@@ -28,44 +28,44 @@ impl IConicTool {
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:43 - `IntCurve_IConicTool::IntCurve_IConicTool()`
-    pub fn new_iconictool(IT: &crate::ffi::IntCurve_IConicTool) -> crate::OwnedPtr<Self> {
+    pub fn new_iconictool(IT: &IConicTool) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor_iconictool(IT)) }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:45 - `IntCurve_IConicTool::IntCurve_IConicTool()`
-    pub fn new_elips2d(E: &crate::ffi::gp_Elips2d) -> crate::OwnedPtr<Self> {
+    pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor_elips2d(E)) }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:47 - `IntCurve_IConicTool::IntCurve_IConicTool()`
-    pub fn new_lin2d(L: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor_lin2d(L)) }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:49 - `IntCurve_IConicTool::IntCurve_IConicTool()`
-    pub fn new_circ2d(C: &crate::ffi::gp_Circ2d) -> crate::OwnedPtr<Self> {
+    pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor_circ2d(C)) }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:51 - `IntCurve_IConicTool::IntCurve_IConicTool()`
-    pub fn new_parab2d(P: &crate::ffi::gp_Parab2d) -> crate::OwnedPtr<Self> {
+    pub fn new_parab2d(P: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor_parab2d(P)) }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:53 - `IntCurve_IConicTool::IntCurve_IConicTool()`
-    pub fn new_hypr2d(H: &crate::ffi::gp_Hypr2d) -> crate::OwnedPtr<Self> {
+    pub fn new_hypr2d(H: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_ctor_hypr2d(H)) }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:55 - `IntCurve_IConicTool::Value()`
-    pub fn value(&self, X: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn value(&self, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_value(self as *const Self, X))
         }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:57 - `IntCurve_IConicTool::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, T: &mut crate::ffi::gp_Vec2d) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
         unsafe { crate::ffi::IntCurve_IConicTool_d1(self as *const Self, U, P, T) }
     }
 
@@ -73,9 +73,9 @@ impl IConicTool {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        T: &mut crate::ffi::gp_Vec2d,
-        N: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        T: &mut crate::gp::Vec2d,
+        N: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::IntCurve_IConicTool_d2(self as *const Self, U, P, T, N) }
     }
@@ -83,7 +83,7 @@ impl IConicTool {
     /// **Source:** `IntCurve_IConicTool.hxx`:63 - `IntCurve_IConicTool::Distance()`
     /// Computes the value of the signed  distance between
     /// the point P and the implicit curve.
-    pub fn distance(&self, P: &crate::ffi::gp_Pnt2d) -> f64 {
+    pub fn distance(&self, P: &crate::gp::Pnt2d) -> f64 {
         unsafe { crate::ffi::IntCurve_IConicTool_distance(self as *const Self, P) }
     }
 
@@ -91,7 +91,7 @@ impl IConicTool {
     /// Computes  the   Gradient  of  the  Signed Distance
     /// between  a  point and  the  implicit curve, at the
     /// point P.
-    pub fn grad_distance(&self, P: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+    pub fn grad_distance(&self, P: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurve_IConicTool_grad_distance(
                 self as *const Self,
@@ -104,7 +104,7 @@ impl IConicTool {
     /// Returns the parameter U of the point on the implicit curve corresponding to the point P.
     /// The correspondence between P and the point P(U) on the
     /// implicit curve must be coherent with the way of determination of the signed distance.
-    pub fn find_parameter(&self, P: &crate::ffi::gp_Pnt2d) -> f64 {
+    pub fn find_parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
         unsafe { crate::ffi::IntCurve_IConicTool_find_parameter(self as *const Self, P) }
     }
 }
@@ -139,10 +139,10 @@ impl IntConicConic {
     /// **Source:** `IntCurve_IntConicConic.hxx`:48 - `IntCurve_IntConicConic::IntCurve_IntConicConic()`
     /// Intersection between 2 lines from gp.
     pub fn new_lin2d_domain_lin2d_domain_real2(
-        L1: &crate::ffi::gp_Lin2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        L2: &crate::ffi::gp_Lin2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        L1: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        L2: &crate::gp::Lin2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -160,10 +160,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of the domain of the circle returns False.
     pub fn new_lin2d_domain_circ2d_domain_real2(
-        L: &crate::ffi::gp_Lin2d,
-        DL: &crate::ffi::IntRes2d_Domain,
-        C: &crate::ffi::gp_Circ2d,
-        DC: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        DL: &crate::int_res2d::Domain,
+        C: &crate::gp::Circ2d,
+        DC: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -181,10 +181,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of the domain of the ellipse returns False.
     pub fn new_lin2d_domain_elips2d_domain_real2(
-        L: &crate::ffi::gp_Lin2d,
-        DL: &crate::ffi::IntRes2d_Domain,
-        E: &crate::ffi::gp_Elips2d,
-        DE: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        DL: &crate::int_res2d::Domain,
+        E: &crate::gp::Elips2d,
+        DE: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -200,10 +200,10 @@ impl IntConicConic {
     /// **Source:** `IntCurve_IntConicConic.hxx`:104 - `IntCurve_IntConicConic::IntCurve_IntConicConic()`
     /// Intersection between a line and a parabola from gp.
     pub fn new_lin2d_domain_parab2d_domain_real2(
-        L: &crate::ffi::gp_Lin2d,
-        DL: &crate::ffi::IntRes2d_Domain,
-        P: &crate::ffi::gp_Parab2d,
-        DP: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        DL: &crate::int_res2d::Domain,
+        P: &crate::gp::Parab2d,
+        DP: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -219,10 +219,10 @@ impl IntConicConic {
     /// **Source:** `IntCurve_IntConicConic.hxx`:120 - `IntCurve_IntConicConic::IntCurve_IntConicConic()`
     /// Intersection between a line and an hyperbola.
     pub fn new_lin2d_domain_hypr2d_domain_real2(
-        L: &crate::ffi::gp_Lin2d,
-        DL: &crate::ffi::IntRes2d_Domain,
-        H: &crate::ffi::gp_Hypr2d,
-        DH: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        DL: &crate::int_res2d::Domain,
+        H: &crate::gp::Hypr2d,
+        DH: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -240,10 +240,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of one of the domain returns False.
     pub fn new_circ2d_domain_circ2d_domain_real2(
-        C1: &crate::ffi::gp_Circ2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        C2: &crate::ffi::gp_Circ2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C1: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        C2: &crate::gp::Circ2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -261,10 +261,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of one the domain returns False.
     pub fn new_circ2d_domain_elips2d_domain_real2(
-        C: &crate::ffi::gp_Circ2d,
-        DC: &crate::ffi::IntRes2d_Domain,
-        E: &crate::ffi::gp_Elips2d,
-        DE: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        DC: &crate::int_res2d::Domain,
+        E: &crate::gp::Elips2d,
+        DE: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -282,10 +282,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of the domain of the circle returns False.
     pub fn new_circ2d_domain_parab2d_domain_real2(
-        C: &crate::ffi::gp_Circ2d,
-        DC: &crate::ffi::IntRes2d_Domain,
-        P: &crate::ffi::gp_Parab2d,
-        DP: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        DC: &crate::int_res2d::Domain,
+        P: &crate::gp::Parab2d,
+        DP: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -303,10 +303,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of the domain of the circle returns False.
     pub fn new_circ2d_domain_hypr2d_domain_real2(
-        C: &crate::ffi::gp_Circ2d,
-        DC: &crate::ffi::IntRes2d_Domain,
-        H: &crate::ffi::gp_Hypr2d,
-        DH: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        DC: &crate::int_res2d::Domain,
+        H: &crate::gp::Hypr2d,
+        DH: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -324,10 +324,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of one of the domain returns False.
     pub fn new_elips2d_domain_elips2d_domain_real2(
-        E1: &crate::ffi::gp_Elips2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        E2: &crate::ffi::gp_Elips2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        E1: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        E2: &crate::gp::Elips2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -345,10 +345,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of the domain of the ellipse returns False.
     pub fn new_elips2d_domain_parab2d_domain_real2(
-        E: &crate::ffi::gp_Elips2d,
-        DE: &crate::ffi::IntRes2d_Domain,
-        P: &crate::ffi::gp_Parab2d,
-        DP: &crate::ffi::IntRes2d_Domain,
+        E: &crate::gp::Elips2d,
+        DE: &crate::int_res2d::Domain,
+        P: &crate::gp::Parab2d,
+        DP: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -366,10 +366,10 @@ impl IntConicConic {
     /// The exception ConstructionError is raised if the method
     /// IsClosed of the domain of the ellipse returns False.
     pub fn new_elips2d_domain_hypr2d_domain_real2(
-        E: &crate::ffi::gp_Elips2d,
-        DE: &crate::ffi::IntRes2d_Domain,
-        H: &crate::ffi::gp_Hypr2d,
-        DH: &crate::ffi::IntRes2d_Domain,
+        E: &crate::gp::Elips2d,
+        DE: &crate::int_res2d::Domain,
+        H: &crate::gp::Hypr2d,
+        DH: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -385,10 +385,10 @@ impl IntConicConic {
     /// **Source:** `IntCurve_IntConicConic.hxx`:276 - `IntCurve_IntConicConic::IntCurve_IntConicConic()`
     /// Intersection between 2 parabolas.
     pub fn new_parab2d_domain_parab2d_domain_real2(
-        P1: &crate::ffi::gp_Parab2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        P2: &crate::ffi::gp_Parab2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        P1: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        P2: &crate::gp::Parab2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -404,10 +404,10 @@ impl IntConicConic {
     /// **Source:** `IntCurve_IntConicConic.hxx`:292 - `IntCurve_IntConicConic::IntCurve_IntConicConic()`
     /// Intersection between a parabola and an hyperbola.
     pub fn new_parab2d_domain_hypr2d_domain_real2(
-        P: &crate::ffi::gp_Parab2d,
-        DP: &crate::ffi::IntRes2d_Domain,
-        H: &crate::ffi::gp_Hypr2d,
-        DH: &crate::ffi::IntRes2d_Domain,
+        P: &crate::gp::Parab2d,
+        DP: &crate::int_res2d::Domain,
+        H: &crate::gp::Hypr2d,
+        DH: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -423,10 +423,10 @@ impl IntConicConic {
     /// **Source:** `IntCurve_IntConicConic.hxx`:308 - `IntCurve_IntConicConic::IntCurve_IntConicConic()`
     /// Intersection between 2 hyperbolas.
     pub fn new_hypr2d_domain_hypr2d_domain_real2(
-        H1: &crate::ffi::gp_Hypr2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        H2: &crate::ffi::gp_Hypr2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        H1: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        H2: &crate::gp::Hypr2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -443,10 +443,10 @@ impl IntConicConic {
     /// Intersection between 2 lines from gp.
     pub fn perform_lin2d_domain_lin2d_domain_real2(
         &mut self,
-        L1: &crate::ffi::gp_Lin2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        L2: &crate::ffi::gp_Lin2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        L1: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        L2: &crate::gp::Lin2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -469,10 +469,10 @@ impl IntConicConic {
     /// IsClosed of the domain of the circle returns False.
     pub fn perform_lin2d_domain_circ2d_domain_real2(
         &mut self,
-        L: &crate::ffi::gp_Lin2d,
-        DL: &crate::ffi::IntRes2d_Domain,
-        C: &crate::ffi::gp_Circ2d,
-        DC: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        DL: &crate::int_res2d::Domain,
+        C: &crate::gp::Circ2d,
+        DC: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -495,10 +495,10 @@ impl IntConicConic {
     /// IsClosed of the domain of the ellipse returns False.
     pub fn perform_lin2d_domain_elips2d_domain_real2(
         &mut self,
-        L: &crate::ffi::gp_Lin2d,
-        DL: &crate::ffi::IntRes2d_Domain,
-        E: &crate::ffi::gp_Elips2d,
-        DE: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        DL: &crate::int_res2d::Domain,
+        E: &crate::gp::Elips2d,
+        DE: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -519,10 +519,10 @@ impl IntConicConic {
     /// Intersection between a line and a parabola from gp.
     pub fn perform_lin2d_domain_parab2d_domain_real2(
         &mut self,
-        L: &crate::ffi::gp_Lin2d,
-        DL: &crate::ffi::IntRes2d_Domain,
-        P: &crate::ffi::gp_Parab2d,
-        DP: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        DL: &crate::int_res2d::Domain,
+        P: &crate::gp::Parab2d,
+        DP: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -543,10 +543,10 @@ impl IntConicConic {
     /// Intersection between a line and an hyperbola.
     pub fn perform_lin2d_domain_hypr2d_domain_real2(
         &mut self,
-        L: &crate::ffi::gp_Lin2d,
-        DL: &crate::ffi::IntRes2d_Domain,
-        H: &crate::ffi::gp_Hypr2d,
-        DH: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        DL: &crate::int_res2d::Domain,
+        H: &crate::gp::Hypr2d,
+        DH: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -569,10 +569,10 @@ impl IntConicConic {
     /// IsClosed of the domain of one of the circle returns False.
     pub fn perform_circ2d_domain_circ2d_domain_real2(
         &mut self,
-        C1: &crate::ffi::gp_Circ2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        C2: &crate::ffi::gp_Circ2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C1: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        C2: &crate::gp::Circ2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -595,10 +595,10 @@ impl IntConicConic {
     /// IsClosed of one the domain returns False.
     pub fn perform_circ2d_domain_elips2d_domain_real2(
         &mut self,
-        C: &crate::ffi::gp_Circ2d,
-        DC: &crate::ffi::IntRes2d_Domain,
-        E: &crate::ffi::gp_Elips2d,
-        DE: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        DC: &crate::int_res2d::Domain,
+        E: &crate::gp::Elips2d,
+        DE: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -621,10 +621,10 @@ impl IntConicConic {
     /// IsClosed of the domain of the circle returns False.
     pub fn perform_circ2d_domain_parab2d_domain_real2(
         &mut self,
-        C: &crate::ffi::gp_Circ2d,
-        DC: &crate::ffi::IntRes2d_Domain,
-        P: &crate::ffi::gp_Parab2d,
-        DP: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        DC: &crate::int_res2d::Domain,
+        P: &crate::gp::Parab2d,
+        DP: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -647,10 +647,10 @@ impl IntConicConic {
     /// IsClosed of the domain of the circle returns False.
     pub fn perform_circ2d_domain_hypr2d_domain_real2(
         &mut self,
-        C: &crate::ffi::gp_Circ2d,
-        DC: &crate::ffi::IntRes2d_Domain,
-        H: &crate::ffi::gp_Hypr2d,
-        DH: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        DC: &crate::int_res2d::Domain,
+        H: &crate::gp::Hypr2d,
+        DH: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -673,10 +673,10 @@ impl IntConicConic {
     /// IsClosed of one of the domain returns False.
     pub fn perform_elips2d_domain_elips2d_domain_real2(
         &mut self,
-        E1: &crate::ffi::gp_Elips2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        E2: &crate::ffi::gp_Elips2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        E1: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        E2: &crate::gp::Elips2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -699,10 +699,10 @@ impl IntConicConic {
     /// IsClosed of the domain of the ellipse returns False.
     pub fn perform_elips2d_domain_parab2d_domain_real2(
         &mut self,
-        E: &crate::ffi::gp_Elips2d,
-        DE: &crate::ffi::IntRes2d_Domain,
-        P: &crate::ffi::gp_Parab2d,
-        DP: &crate::ffi::IntRes2d_Domain,
+        E: &crate::gp::Elips2d,
+        DE: &crate::int_res2d::Domain,
+        P: &crate::gp::Parab2d,
+        DP: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -725,10 +725,10 @@ impl IntConicConic {
     /// IsClosed of the domain of the ellipse returns False.
     pub fn perform_elips2d_domain_hypr2d_domain_real2(
         &mut self,
-        E: &crate::ffi::gp_Elips2d,
-        DE: &crate::ffi::IntRes2d_Domain,
-        H: &crate::ffi::gp_Hypr2d,
-        DH: &crate::ffi::IntRes2d_Domain,
+        E: &crate::gp::Elips2d,
+        DE: &crate::int_res2d::Domain,
+        H: &crate::gp::Hypr2d,
+        DH: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -749,10 +749,10 @@ impl IntConicConic {
     /// Intersection between 2 parabolas.
     pub fn perform_parab2d_domain_parab2d_domain_real2(
         &mut self,
-        P1: &crate::ffi::gp_Parab2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        P2: &crate::ffi::gp_Parab2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        P1: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        P2: &crate::gp::Parab2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -773,10 +773,10 @@ impl IntConicConic {
     /// Intersection between a parabola and an hyperbola.
     pub fn perform_parab2d_domain_hypr2d_domain_real2(
         &mut self,
-        P: &crate::ffi::gp_Parab2d,
-        DP: &crate::ffi::IntRes2d_Domain,
-        H: &crate::ffi::gp_Hypr2d,
-        DH: &crate::ffi::IntRes2d_Domain,
+        P: &crate::gp::Parab2d,
+        DP: &crate::int_res2d::Domain,
+        H: &crate::gp::Hypr2d,
+        DH: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -797,10 +797,10 @@ impl IntConicConic {
     /// Intersection between 2 hyperbolas.
     pub fn perform_hypr2d_domain_hypr2d_domain_real2(
         &mut self,
-        H1: &crate::ffi::gp_Hypr2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        H2: &crate::ffi::gp_Hypr2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        H1: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        H2: &crate::gp::Hypr2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -833,7 +833,7 @@ impl IntConicConic {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
-    pub fn point(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe { &*(crate::ffi::IntCurve_IntConicConic_inherited_Point(self as *const Self, N)) }
     }
 
@@ -843,7 +843,7 @@ impl IntConicConic {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
-    pub fn segment(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionSegment {
+    pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe { &*(crate::ffi::IntCurve_IntConicConic_inherited_Segment(self as *const Self, N)) }
     }
 
@@ -894,7 +894,7 @@ impl IntImpConicParConic {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
-    pub fn point(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
             &*(crate::ffi::IntCurve_IntImpConicParConic_inherited_Point(self as *const Self, N))
         }
@@ -908,7 +908,7 @@ impl IntImpConicParConic {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
-    pub fn segment(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionSegment {
+    pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
             &*(crate::ffi::IntCurve_IntImpConicParConic_inherited_Segment(self as *const Self, N))
         }

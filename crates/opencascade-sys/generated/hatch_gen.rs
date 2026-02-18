@@ -94,8 +94,8 @@ impl Domain {
     /// **Source:** `HatchGen_Domain.hxx`:36 - `HatchGen_Domain::HatchGen_Domain()`
     /// Creates a domain for the curve associated to a hatching.
     pub fn new_pointonhatching2(
-        P1: &crate::ffi::HatchGen_PointOnHatching,
-        P2: &crate::ffi::HatchGen_PointOnHatching,
+        P1: &PointOnHatching,
+        P2: &PointOnHatching,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HatchGen_Domain_ctor_pointonhatching2(P1, P2))
@@ -106,10 +106,7 @@ impl Domain {
     /// Creates a semi-infinite domain for the curve associated
     /// to a hatching. The `First' flag means that the given
     /// point is the first one.
-    pub fn new_pointonhatching_bool(
-        P: &crate::ffi::HatchGen_PointOnHatching,
-        First: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pointonhatching_bool(P: &PointOnHatching, First: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HatchGen_Domain_ctor_pointonhatching_bool(
                 P, First,
@@ -119,11 +116,7 @@ impl Domain {
 
     /// **Source:** `HatchGen_Domain.hxx`:45 - `HatchGen_Domain::SetPoints()`
     /// Sets the first and the second points of the domain.
-    pub fn set_points_pointonhatching2(
-        &mut self,
-        P1: &crate::ffi::HatchGen_PointOnHatching,
-        P2: &crate::ffi::HatchGen_PointOnHatching,
-    ) {
+    pub fn set_points_pointonhatching2(&mut self, P1: &PointOnHatching, P2: &PointOnHatching) {
         unsafe {
             crate::ffi::HatchGen_Domain_set_points_pointonhatching2(self as *mut Self, P1, P2)
         }
@@ -138,7 +131,7 @@ impl Domain {
 
     /// **Source:** `HatchGen_Domain.hxx`:52 - `HatchGen_Domain::SetFirstPoint()`
     /// Sets the first point of the domain.
-    pub fn set_first_point_pointonhatching(&mut self, P: &crate::ffi::HatchGen_PointOnHatching) {
+    pub fn set_first_point_pointonhatching(&mut self, P: &PointOnHatching) {
         unsafe { crate::ffi::HatchGen_Domain_set_first_point_pointonhatching(self as *mut Self, P) }
     }
 
@@ -151,7 +144,7 @@ impl Domain {
 
     /// **Source:** `HatchGen_Domain.hxx`:59 - `HatchGen_Domain::SetSecondPoint()`
     /// Sets the second point of the domain.
-    pub fn set_second_point_pointonhatching(&mut self, P: &crate::ffi::HatchGen_PointOnHatching) {
+    pub fn set_second_point_pointonhatching(&mut self, P: &PointOnHatching) {
         unsafe {
             crate::ffi::HatchGen_Domain_set_second_point_pointonhatching(self as *mut Self, P)
         }
@@ -174,7 +167,7 @@ impl Domain {
     /// Returns the first point of the domain.
     /// The exception DomainError is raised if
     /// HasFirstPoint returns False.
-    pub fn first_point(&self) -> &crate::ffi::HatchGen_PointOnHatching {
+    pub fn first_point(&self) -> &PointOnHatching {
         unsafe { &*(crate::ffi::HatchGen_Domain_first_point(self as *const Self)) }
     }
 
@@ -188,7 +181,7 @@ impl Domain {
     /// Returns the second point of the domain.
     /// The exception DomainError is raised if
     /// HasSecondPoint returns False.
-    pub fn second_point(&self) -> &crate::ffi::HatchGen_PointOnHatching {
+    pub fn second_point(&self) -> &PointOnHatching {
         unsafe { &*(crate::ffi::HatchGen_Domain_second_point(self as *const Self)) }
     }
 
@@ -222,7 +215,7 @@ impl PointOnElement {
     /// **Source:** `HatchGen_PointOnElement.hxx`:39 - `HatchGen_PointOnElement::HatchGen_PointOnElement()`
     /// Creates a point from an intersection point.
     pub fn new_intersectionpoint(
-        Point: &crate::ffi::IntRes2d_IntersectionPoint,
+        Point: &crate::int_res2d::IntersectionPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HatchGen_PointOnElement_ctor_intersectionpoint(
@@ -264,11 +257,7 @@ impl PointOnElement {
     /// P1.mySegBeg = P2.mySegBeg
     /// P1.mySegEnd = P2.mySegEnd
     /// P1.myType   = P2.myType
-    pub fn is_identical(
-        &self,
-        Point: &crate::ffi::HatchGen_PointOnElement,
-        Confusion: f64,
-    ) -> bool {
+    pub fn is_identical(&self, Point: &PointOnElement, Confusion: f64) -> bool {
         unsafe {
             crate::ffi::HatchGen_PointOnElement_is_identical(self as *const Self, Point, Confusion)
         }
@@ -276,11 +265,7 @@ impl PointOnElement {
 
     /// **Source:** `HatchGen_PointOnElement.hxx`:61 - `HatchGen_PointOnElement::IsDifferent()`
     /// Tests if the point is different from an other.
-    pub fn is_different(
-        &self,
-        Point: &crate::ffi::HatchGen_PointOnElement,
-        Confusion: f64,
-    ) -> bool {
+    pub fn is_different(&self, Point: &PointOnElement, Confusion: f64) -> bool {
         unsafe {
             crate::ffi::HatchGen_PointOnElement_is_different(self as *const Self, Point, Confusion)
         }
@@ -427,7 +412,7 @@ impl PointOnHatching {
     /// **Source:** `HatchGen_PointOnHatching.hxx`:39 - `HatchGen_PointOnHatching::HatchGen_PointOnHatching()`
     /// Creates a point from an intersection point.
     pub fn new_intersectionpoint(
-        Point: &crate::ffi::IntRes2d_IntersectionPoint,
+        Point: &crate::int_res2d::IntersectionPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HatchGen_PointOnHatching_ctor_intersectionpoint(
@@ -438,7 +423,7 @@ impl PointOnHatching {
 
     /// **Source:** `HatchGen_PointOnHatching.hxx`:42 - `HatchGen_PointOnHatching::AddPoint()`
     /// Adds a point on element to the point.
-    pub fn add_point(&mut self, Point: &crate::ffi::HatchGen_PointOnElement, Confusion: f64) {
+    pub fn add_point(&mut self, Point: &PointOnElement, Confusion: f64) {
         unsafe {
             crate::ffi::HatchGen_PointOnHatching_add_point(self as *mut Self, Point, Confusion)
         }
@@ -455,7 +440,7 @@ impl PointOnHatching {
     /// Returns the Index-th point on element of the point.
     /// The exception OutOfRange is raised if
     /// Index > NbPoints.
-    pub fn point(&self, Index: i32) -> &crate::ffi::HatchGen_PointOnElement {
+    pub fn point(&self, Index: i32) -> &PointOnElement {
         unsafe { &*(crate::ffi::HatchGen_PointOnHatching_point(self as *const Self, Index)) }
     }
 
@@ -478,7 +463,7 @@ impl PointOnHatching {
     /// A point on hatching P1 is said to be lower than an
     /// other P2 if :
     /// P2.myParam - P1.myParam > Confusion
-    pub fn is_lower(&self, Point: &crate::ffi::HatchGen_PointOnHatching, Confusion: f64) -> bool {
+    pub fn is_lower(&self, Point: &PointOnHatching, Confusion: f64) -> bool {
         unsafe {
             crate::ffi::HatchGen_PointOnHatching_is_lower(self as *const Self, Point, Confusion)
         }
@@ -489,7 +474,7 @@ impl PointOnHatching {
     /// A  point on hatching P1 is said to be equal to an
     /// other P2 if :
     /// | P2.myParam - P1.myParam | <= Confusion
-    pub fn is_equal(&self, Point: &crate::ffi::HatchGen_PointOnHatching, Confusion: f64) -> bool {
+    pub fn is_equal(&self, Point: &PointOnHatching, Confusion: f64) -> bool {
         unsafe {
             crate::ffi::HatchGen_PointOnHatching_is_equal(self as *const Self, Point, Confusion)
         }
@@ -500,7 +485,7 @@ impl PointOnHatching {
     /// A point on hatching P1 is said to be greater than an
     /// other P2 if :
     /// P1.myParam - P2.myParam > Confusion
-    pub fn is_greater(&self, Point: &crate::ffi::HatchGen_PointOnHatching, Confusion: f64) -> bool {
+    pub fn is_greater(&self, Point: &PointOnHatching, Confusion: f64) -> bool {
         unsafe {
             crate::ffi::HatchGen_PointOnHatching_is_greater(self as *const Self, Point, Confusion)
         }

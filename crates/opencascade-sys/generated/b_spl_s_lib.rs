@@ -223,7 +223,7 @@ impl Cache {
     /// \param[in]  theU      first parameter for calculation of the value
     /// \param[in]  theV      second parameter for calculation of the value
     /// \param[out] thePoint  the result of calculation (the point on the surface)
-    pub fn d0(&self, theU: &f64, theV: &f64, thePoint: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, theU: &f64, theV: &f64, thePoint: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::BSplSLib_Cache_d0(self as *const Self, theU, theV, thePoint) }
     }
 
@@ -238,9 +238,9 @@ impl Cache {
         &self,
         theU: &f64,
         theV: &f64,
-        thePoint: &mut crate::ffi::gp_Pnt,
-        theTangentU: &mut crate::ffi::gp_Vec,
-        theTangentV: &mut crate::ffi::gp_Vec,
+        thePoint: &mut crate::gp::Pnt,
+        theTangentU: &mut crate::gp::Vec,
+        theTangentV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplSLib_Cache_d1(
@@ -268,12 +268,12 @@ impl Cache {
         &self,
         theU: &f64,
         theV: &f64,
-        thePoint: &mut crate::ffi::gp_Pnt,
-        theTangentU: &mut crate::ffi::gp_Vec,
-        theTangentV: &mut crate::ffi::gp_Vec,
-        theCurvatureU: &mut crate::ffi::gp_Vec,
-        theCurvatureV: &mut crate::ffi::gp_Vec,
-        theCurvatureUV: &mut crate::ffi::gp_Vec,
+        thePoint: &mut crate::gp::Pnt,
+        theTangentU: &mut crate::gp::Vec,
+        theTangentV: &mut crate::gp::Vec,
+        theCurvatureU: &mut crate::gp::Vec,
+        theCurvatureV: &mut crate::gp::Vec,
+        theCurvatureUV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplSLib_Cache_d2(

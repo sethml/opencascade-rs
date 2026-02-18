@@ -51,8 +51,8 @@ impl Inter {
     /// tolerance used for the classification.
     pub fn init_shape_curve_real(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theCurve: &crate::ffi::GeomAdaptor_Curve,
+        theShape: &crate::topo_ds::Shape,
+        theCurve: &crate::geom_adaptor::Curve,
         theTol: f64,
     ) {
         unsafe {
@@ -70,8 +70,8 @@ impl Inter {
     /// tolerance used for the classification.
     pub fn init_shape_lin_real(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theLine: &crate::ffi::gp_Lin,
+        theShape: &crate::topo_ds::Shape,
+        theLine: &crate::gp::Lin,
         theTol: f64,
     ) {
         unsafe {
@@ -87,13 +87,13 @@ impl Inter {
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:76 - `BRepIntCurveSurface_Inter::Load()`
     /// Load the Shape, and initialize the
     /// tolerance used for the classification.
-    pub fn load(&mut self, theShape: &crate::ffi::TopoDS_Shape, theTol: f64) {
+    pub fn load(&mut self, theShape: &crate::topo_ds::Shape, theTol: f64) {
         unsafe { crate::ffi::BRepIntCurveSurface_Inter_load(self as *mut Self, theShape, theTol) }
     }
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:79 - `BRepIntCurveSurface_Inter::Init()`
     /// Method to find intersections of specified curve with loaded shape.
-    pub fn init_curve(&mut self, theCurve: &crate::ffi::GeomAdaptor_Curve) {
+    pub fn init_curve(&mut self, theCurve: &crate::geom_adaptor::Curve) {
         unsafe { crate::ffi::BRepIntCurveSurface_Inter_init_curve(self as *mut Self, theCurve) }
     }
 
@@ -111,7 +111,7 @@ impl Inter {
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:88 - `BRepIntCurveSurface_Inter::Point()`
     /// returns the current Intersection point.
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::IntCurveSurface_IntersectionPoint> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::int_curve_surface::IntersectionPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepIntCurveSurface_Inter_point(
                 self as *const Self,
@@ -121,7 +121,7 @@ impl Inter {
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:91 - `BRepIntCurveSurface_Inter::Pnt()`
     /// returns the current geometric Point
-    pub fn pnt(&self) -> &crate::ffi::gp_Pnt {
+    pub fn pnt(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::BRepIntCurveSurface_Inter_pnt(self as *const Self)) }
     }
 
@@ -170,7 +170,7 @@ impl Inter {
 
     /// **Source:** `BRepIntCurveSurface_Inter.hxx`:112 - `BRepIntCurveSurface_Inter::Face()`
     /// returns the current face.
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepIntCurveSurface_Inter_face(self as *const Self)) }
     }
 }

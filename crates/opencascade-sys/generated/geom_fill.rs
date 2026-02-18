@@ -290,7 +290,7 @@ impl AppSurf {
     pub fn perform_handlegeomfillline_sectiongenerator_bool(
         &mut self,
         Lin: &crate::ffi::HandleGeomFillLine,
-        SecGen: &mut crate::ffi::GeomFill_SectionGenerator,
+        SecGen: &mut SectionGenerator,
         SpApprox: bool,
     ) {
         unsafe {
@@ -307,7 +307,7 @@ impl AppSurf {
     pub fn perform_smoothing(
         &mut self,
         Lin: &crate::ffi::HandleGeomFillLine,
-        SecGen: &mut crate::ffi::GeomFill_SectionGenerator,
+        SecGen: &mut SectionGenerator,
     ) {
         unsafe { crate::ffi::GeomFill_AppSurf_perform_smoothing(self as *mut Self, Lin, SecGen) }
     }
@@ -316,7 +316,7 @@ impl AppSurf {
     pub fn perform_handlegeomfillline_sectiongenerator_int(
         &mut self,
         Lin: &crate::ffi::HandleGeomFillLine,
-        SecGen: &mut crate::ffi::GeomFill_SectionGenerator,
+        SecGen: &mut SectionGenerator,
         NbMaxP: i32,
     ) {
         unsafe {
@@ -586,7 +586,7 @@ impl AppSweep {
     pub fn perform_handlegeomfillline_sweepsectiongenerator_bool(
         &mut self,
         Lin: &crate::ffi::HandleGeomFillLine,
-        SecGen: &mut crate::ffi::GeomFill_SweepSectionGenerator,
+        SecGen: &mut SweepSectionGenerator,
         SpApprox: bool,
     ) {
         unsafe {
@@ -603,7 +603,7 @@ impl AppSweep {
     pub fn perform_smoothing(
         &mut self,
         Lin: &crate::ffi::HandleGeomFillLine,
-        SecGen: &mut crate::ffi::GeomFill_SweepSectionGenerator,
+        SecGen: &mut SweepSectionGenerator,
     ) {
         unsafe { crate::ffi::GeomFill_AppSweep_perform_smoothing(self as *mut Self, Lin, SecGen) }
     }
@@ -612,7 +612,7 @@ impl AppSweep {
     pub fn perform_handlegeomfillline_sweepsectiongenerator_int(
         &mut self,
         Lin: &crate::ffi::HandleGeomFillLine,
-        SecGen: &mut crate::ffi::GeomFill_SweepSectionGenerator,
+        SecGen: &mut SweepSectionGenerator,
         NbMaxP: i32,
     ) {
         unsafe {
@@ -1166,7 +1166,7 @@ impl BoundWithSurf {
     /// myBoundary =  GeomFill_BoundWithSurf (
     /// CurveOnSurf, Tol, TolAng );
     pub fn new_curveonsurface_real2(
-        CurveOnSurf: &crate::ffi::Adaptor3d_CurveOnSurface,
+        CurveOnSurf: &crate::adaptor3d::CurveOnSurface,
         Tol3d: f64,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1180,7 +1180,7 @@ impl BoundWithSurf {
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:79 - `GeomFill_BoundWithSurf::Value()`
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_BoundWithSurf_value(
                 self as *const Self,
@@ -1190,7 +1190,7 @@ impl BoundWithSurf {
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:81 - `GeomFill_BoundWithSurf::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_BoundWithSurf_d1(self as *const Self, U, P, V) }
     }
 
@@ -1200,7 +1200,7 @@ impl BoundWithSurf {
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:85 - `GeomFill_BoundWithSurf::Norm()`
-    pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_BoundWithSurf_norm(
                 self as *const Self,
@@ -1210,7 +1210,7 @@ impl BoundWithSurf {
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:87 - `GeomFill_BoundWithSurf::D1Norm()`
-    pub fn d1_norm(&self, U: f64, N: &mut crate::ffi::gp_Vec, DN: &mut crate::ffi::gp_Vec) {
+    pub fn d1_norm(&self, U: f64, N: &mut crate::gp::Vec, DN: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_BoundWithSurf_d1_norm(self as *const Self, U, N, DN) }
     }
 
@@ -1281,7 +1281,7 @@ impl BoundWithSurf {
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
-    pub fn points(&self, PFirst: &mut crate::ffi::gp_Pnt, PLast: &mut crate::ffi::gp_Pnt) {
+    pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomFill_BoundWithSurf_inherited_Points(self as *const Self, PFirst, PLast)
         }
@@ -1321,14 +1321,14 @@ unsafe impl crate::CppDeletable for Boundary {
 
 impl Boundary {
     /// **Source:** `GeomFill_Boundary.hxx`:43 - `GeomFill_Boundary::Value()`
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Boundary_value(self as *const Self, U))
         }
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:45 - `GeomFill_Boundary::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_Boundary_d1(self as *const Self, U, P, V) }
     }
 
@@ -1338,14 +1338,14 @@ impl Boundary {
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:49 - `GeomFill_Boundary::Norm()`
-    pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Boundary_norm(self as *const Self, U))
         }
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:51 - `GeomFill_Boundary::D1Norm()`
-    pub fn d1_norm(&self, U: f64, N: &mut crate::ffi::gp_Vec, DN: &mut crate::ffi::gp_Vec) {
+    pub fn d1_norm(&self, U: f64, N: &mut crate::gp::Vec, DN: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_Boundary_d1_norm(self as *const Self, U, N, DN) }
     }
 
@@ -1375,7 +1375,7 @@ impl Boundary {
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
-    pub fn points(&self, PFirst: &mut crate::ffi::gp_Pnt, PLast: &mut crate::ffi::gp_Pnt) {
+    pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomFill_Boundary_points(self as *const Self, PFirst, PLast) }
     }
 
@@ -1695,7 +1695,7 @@ impl CircularBlendFunc {
     /// Get    the   barycentre of   Surface.   An   very  poor
     /// estimation is sufficient. This information is useful
     /// to perform well conditioned rational approximation.
-    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_CircularBlendFunc_barycentre_of_surf(
                 self as *const Self,
@@ -1786,7 +1786,7 @@ unsafe impl crate::CppDeletable for ConstantBiNormal {
 
 impl ConstantBiNormal {
     /// **Source:** `GeomFill_ConstantBiNormal.hxx`:39 - `GeomFill_ConstantBiNormal::GeomFill_ConstantBiNormal()`
-    pub fn new_dir(BiNormal: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
+    pub fn new_dir(BiNormal: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_ConstantBiNormal_ctor_dir(BiNormal))
         }
@@ -1813,9 +1813,9 @@ impl ConstantBiNormal {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_ConstantBiNormal_d0(
@@ -1835,12 +1835,12 @@ impl ConstantBiNormal {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_ConstantBiNormal_d1(
@@ -1863,15 +1863,15 @@ impl ConstantBiNormal {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_ConstantBiNormal_d2(
@@ -1913,9 +1913,9 @@ impl ConstantBiNormal {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_ConstantBiNormal_get_average_law(
@@ -2355,7 +2355,7 @@ impl CoonsAlgPatch {
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:57 - `GeomFill_CoonsAlgPatch::Value()`
     /// Computes  the  value   on the  algorithmic    patch at
     /// parameters U and V.
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_CoonsAlgPatch_value(
                 self as *const Self,
@@ -2368,7 +2368,7 @@ impl CoonsAlgPatch {
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:61 - `GeomFill_CoonsAlgPatch::D1U()`
     /// Computes   the  d/dU   partial   derivative  on    the
     /// algorithmic patch at parameters U and V.
-    pub fn d1u(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn d1u(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_CoonsAlgPatch_d1u(
                 self as *const Self,
@@ -2381,7 +2381,7 @@ impl CoonsAlgPatch {
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:65 - `GeomFill_CoonsAlgPatch::D1V()`
     /// Computes    the  d/dV    partial    derivative on  the
     /// algorithmic patch at parameters U and V.
-    pub fn d1v(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn d1v(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_CoonsAlgPatch_d1v(
                 self as *const Self,
@@ -2395,7 +2395,7 @@ impl CoonsAlgPatch {
     /// Computes the   d2/dUdV  partial  derivative   on   the
     /// algorithmic  patch made with linear blending functions
     /// at parameter U and V.
-    pub fn duv(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn duv(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_CoonsAlgPatch_duv(
                 self as *const Self,
@@ -2406,7 +2406,7 @@ impl CoonsAlgPatch {
     }
 
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:72 - `GeomFill_CoonsAlgPatch::Corner()`
-    pub fn corner(&self, I: i32) -> &crate::ffi::gp_Pnt {
+    pub fn corner(&self, I: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::GeomFill_CoonsAlgPatch_corner(self as *const Self, I)) }
     }
 
@@ -2597,9 +2597,9 @@ impl CorrectedFrenet {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_CorrectedFrenet_d0(
@@ -2619,12 +2619,12 @@ impl CorrectedFrenet {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_CorrectedFrenet_d1(
@@ -2647,15 +2647,15 @@ impl CorrectedFrenet {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_CorrectedFrenet_d2(
@@ -2715,9 +2715,9 @@ impl CorrectedFrenet {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_CorrectedFrenet_get_average_law(
@@ -2845,7 +2845,7 @@ impl CurveAndTrihedron {
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:57 - `GeomFill_CurveAndTrihedron::SetTrsf()`
     /// Set a transformation Matrix like   the law M(t) become
     /// Mat * M(t)
-    pub fn set_trsf(&mut self, Transfo: &crate::ffi::gp_Mat) {
+    pub fn set_trsf(&mut self, Transfo: &crate::gp::Mat) {
         unsafe { crate::ffi::GeomFill_CurveAndTrihedron_set_trsf(self as *mut Self, Transfo) }
     }
 
@@ -2863,8 +2863,8 @@ impl CurveAndTrihedron {
     pub fn d0_real_mat_vec(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_CurveAndTrihedron_d0_real_mat_vec(self as *mut Self, Param, M, V)
@@ -2876,8 +2876,8 @@ impl CurveAndTrihedron {
     pub fn d0_real_mat_vec_array1ofpnt2d(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) -> bool {
         unsafe {
@@ -2898,10 +2898,10 @@ impl CurveAndTrihedron {
     pub fn d1(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
-        DM: &mut crate::ffi::gp_Mat,
-        DV: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
+        DM: &mut crate::gp::Mat,
+        DV: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
     ) -> bool {
@@ -2926,12 +2926,12 @@ impl CurveAndTrihedron {
     pub fn d2(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
-        DM: &mut crate::ffi::gp_Mat,
-        DV: &mut crate::ffi::gp_Vec,
-        D2M: &mut crate::ffi::gp_Mat,
-        D2V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
+        DM: &mut crate::gp::Mat,
+        DV: &mut crate::gp::Vec,
+        D2M: &mut crate::gp::Mat,
+        D2V: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
         D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
@@ -3015,7 +3015,7 @@ impl CurveAndTrihedron {
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:135 - `GeomFill_CurveAndTrihedron::GetAverageLaw()`
     /// Get average value of M(t) and V(t) it is usfull to
     /// make fast approximation of rational  surfaces.
-    pub fn get_average_law(&mut self, AM: &mut crate::ffi::gp_Mat, AV: &mut crate::ffi::gp_Vec) {
+    pub fn get_average_law(&mut self, AM: &mut crate::gp::Mat, AV: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_CurveAndTrihedron_get_average_law(self as *mut Self, AM, AV) }
     }
 
@@ -3034,7 +3034,7 @@ impl CurveAndTrihedron {
     }
 
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:146 - `GeomFill_CurveAndTrihedron::Rotation()`
-    pub fn rotation(&self, Center: &mut crate::ffi::gp_Pnt) {
+    pub fn rotation(&self, Center: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomFill_CurveAndTrihedron_rotation(self as *const Self, Center) }
     }
 
@@ -3337,9 +3337,9 @@ impl Darboux {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Darboux_d0(self as *mut Self, Param, Tangent, Normal, BiNormal)
@@ -3353,12 +3353,12 @@ impl Darboux {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Darboux_d1(
@@ -3381,15 +3381,15 @@ impl Darboux {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Darboux_d2(
@@ -3431,9 +3431,9 @@ impl Darboux {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_Darboux_get_average_law(
@@ -3539,7 +3539,7 @@ unsafe impl crate::CppDeletable for DegeneratedBound {
 impl DegeneratedBound {
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:39 - `GeomFill_DegeneratedBound::GeomFill_DegeneratedBound()`
     pub fn new_pnt_real4(
-        Point: &crate::ffi::gp_Pnt,
+        Point: &crate::gp::Pnt,
         First: f64,
         Last: f64,
         Tol3d: f64,
@@ -3553,7 +3553,7 @@ impl DegeneratedBound {
     }
 
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:45 - `GeomFill_DegeneratedBound::Value()`
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_DegeneratedBound_value(
                 self as *const Self,
@@ -3563,7 +3563,7 @@ impl DegeneratedBound {
     }
 
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:47 - `GeomFill_DegeneratedBound::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_DegeneratedBound_d1(self as *const Self, U, P, V) }
     }
 
@@ -3643,7 +3643,7 @@ impl DegeneratedBound {
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:49 - `GeomFill_Boundary::Norm()`
-    pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_DegeneratedBound_inherited_Norm(
                 self as *const Self,
@@ -3653,14 +3653,14 @@ impl DegeneratedBound {
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:51 - `GeomFill_Boundary::D1Norm()`
-    pub fn d1_norm(&self, U: f64, N: &mut crate::ffi::gp_Vec, DN: &mut crate::ffi::gp_Vec) {
+    pub fn d1_norm(&self, U: f64, N: &mut crate::gp::Vec, DN: &mut crate::gp::Vec) {
         unsafe {
             crate::ffi::GeomFill_DegeneratedBound_inherited_D1Norm(self as *const Self, U, N, DN)
         }
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
-    pub fn points(&self, PFirst: &mut crate::ffi::gp_Pnt, PLast: &mut crate::ffi::gp_Pnt) {
+    pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomFill_DegeneratedBound_inherited_Points(
                 self as *const Self,
@@ -3730,9 +3730,9 @@ impl DiscreteTrihedron {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_DiscreteTrihedron_d0(
@@ -3754,12 +3754,12 @@ impl DiscreteTrihedron {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_DiscreteTrihedron_d1(
@@ -3784,15 +3784,15 @@ impl DiscreteTrihedron {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_DiscreteTrihedron_d2(
@@ -3838,9 +3838,9 @@ impl DiscreteTrihedron {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_DiscreteTrihedron_get_average_law(
@@ -3947,7 +3947,7 @@ unsafe impl crate::CppDeletable for DraftTrihedron {
 
 impl DraftTrihedron {
     /// **Source:** `GeomFill_DraftTrihedron.hxx`:35 - `GeomFill_DraftTrihedron::GeomFill_DraftTrihedron()`
-    pub fn new_vec_real(BiNormal: &crate::ffi::gp_Vec, Angle: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_vec_real(BiNormal: &crate::gp::Vec, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_DraftTrihedron_ctor_vec_real(
                 BiNormal, Angle,
@@ -3974,9 +3974,9 @@ impl DraftTrihedron {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_DraftTrihedron_d0(
@@ -3996,12 +3996,12 @@ impl DraftTrihedron {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_DraftTrihedron_d1(
@@ -4021,15 +4021,15 @@ impl DraftTrihedron {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_DraftTrihedron_d2(
@@ -4071,9 +4071,9 @@ impl DraftTrihedron {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_DraftTrihedron_get_average_law(
@@ -4377,7 +4377,7 @@ impl EvolvedSection {
     /// This information is useful to perform well
     /// conditioned rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_EvolvedSection_barycentre_of_surf(
                 self as *const Self,
@@ -4547,10 +4547,7 @@ unsafe impl crate::CppDeletable for Fixed {
 
 impl Fixed {
     /// **Source:** `GeomFill_Fixed.hxx`:36 - `GeomFill_Fixed::GeomFill_Fixed()`
-    pub fn new_vec2(
-        Tangent: &crate::ffi::gp_Vec,
-        Normal: &crate::ffi::gp_Vec,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_vec2(Tangent: &crate::gp::Vec, Normal: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Fixed_ctor_vec2(Tangent, Normal)) }
     }
 
@@ -4564,9 +4561,9 @@ impl Fixed {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Fixed_d0(self as *mut Self, Param, Tangent, Normal, BiNormal)
@@ -4580,12 +4577,12 @@ impl Fixed {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Fixed_d1(
@@ -4608,15 +4605,15 @@ impl Fixed {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Fixed_d2(
@@ -4658,9 +4655,9 @@ impl Fixed {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_Fixed_get_average_law(
@@ -4782,9 +4779,9 @@ impl Frenet {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Frenet_d0(self as *mut Self, Param, Tangent, Normal, BiNormal)
@@ -4798,12 +4795,12 @@ impl Frenet {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Frenet_d1(
@@ -4826,15 +4823,15 @@ impl Frenet {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_Frenet_d2(
@@ -4876,9 +4873,9 @@ impl Frenet {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_Frenet_get_average_law(
@@ -5071,9 +5068,9 @@ impl FunctionGuide {
     pub fn set_param(
         &mut self,
         Param: f64,
-        Centre: &crate::ffi::gp_Pnt,
-        Dir: &crate::ffi::gp_XYZ,
-        XDir: &crate::ffi::gp_XYZ,
+        Centre: &crate::gp::Pnt,
+        Dir: &crate::gp::XYZ,
+        XDir: &crate::gp::XYZ,
     ) {
         unsafe {
             crate::ffi::GeomFill_FunctionGuide_set_param(
@@ -5302,9 +5299,9 @@ impl GuideTrihedronAC {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_GuideTrihedronAC_d0(
@@ -5321,12 +5318,12 @@ impl GuideTrihedronAC {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_GuideTrihedronAC_d1(
@@ -5346,15 +5343,15 @@ impl GuideTrihedronAC {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_GuideTrihedronAC_d2(
@@ -5407,9 +5404,9 @@ impl GuideTrihedronAC {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_GuideTrihedronAC_get_average_law(
@@ -5494,7 +5491,7 @@ impl GuideTrihedronAC {
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
-    pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomFill_GuideTrihedronAC_inherited_CurrentPointOnGuide(
@@ -5594,9 +5591,9 @@ impl GuideTrihedronPlan {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_GuideTrihedronPlan_d0(
@@ -5613,12 +5610,12 @@ impl GuideTrihedronPlan {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_GuideTrihedronPlan_d1(
@@ -5638,15 +5635,15 @@ impl GuideTrihedronPlan {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_GuideTrihedronPlan_d2(
@@ -5703,9 +5700,9 @@ impl GuideTrihedronPlan {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_GuideTrihedronPlan_get_average_law(
@@ -5794,7 +5791,7 @@ impl GuideTrihedronPlan {
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
-    pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomFill_GuideTrihedronPlan_inherited_CurrentPointOnGuide(
@@ -6255,7 +6252,7 @@ unsafe impl crate::CppDeletable for LocationDraft {
 
 impl LocationDraft {
     /// **Source:** `GeomFill_LocationDraft.hxx`:41 - `GeomFill_LocationDraft::GeomFill_LocationDraft()`
-    pub fn new_dir_real(Direction: &crate::ffi::gp_Dir, Angle: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_dir_real(Direction: &crate::gp::Dir, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_LocationDraft_ctor_dir_real(
                 Direction, Angle,
@@ -6287,7 +6284,7 @@ impl LocationDraft {
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:55 - `GeomFill_LocationDraft::SetTrsf()`
-    pub fn set_trsf(&mut self, Transfo: &crate::ffi::gp_Mat) {
+    pub fn set_trsf(&mut self, Transfo: &crate::gp::Mat) {
         unsafe { crate::ffi::GeomFill_LocationDraft_set_trsf(self as *mut Self, Transfo) }
     }
 
@@ -6303,8 +6300,8 @@ impl LocationDraft {
     pub fn d0_real_mat_vec(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_LocationDraft_d0_real_mat_vec(self as *mut Self, Param, M, V)
@@ -6316,8 +6313,8 @@ impl LocationDraft {
     pub fn d0_real_mat_vec_array1ofpnt2d(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) -> bool {
         unsafe {
@@ -6338,10 +6335,10 @@ impl LocationDraft {
     pub fn d1(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
-        DM: &mut crate::ffi::gp_Mat,
-        DV: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
+        DM: &mut crate::gp::Mat,
+        DV: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
     ) -> bool {
@@ -6366,12 +6363,12 @@ impl LocationDraft {
     pub fn d2(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
-        DM: &mut crate::ffi::gp_Mat,
-        DV: &mut crate::ffi::gp_Vec,
-        D2M: &mut crate::ffi::gp_Mat,
-        D2V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
+        DM: &mut crate::gp::Mat,
+        DV: &mut crate::gp::Vec,
+        D2M: &mut crate::gp::Mat,
+        D2V: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
         D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
@@ -6487,7 +6484,7 @@ impl LocationDraft {
     /// **Source:** `GeomFill_LocationDraft.hxx`:158 - `GeomFill_LocationDraft::GetAverageLaw()`
     /// Get average value of M(t) and V(t) it is usfull to
     /// make fast approximation of rational  surfaces.
-    pub fn get_average_law(&mut self, AM: &mut crate::ffi::gp_Mat, AV: &mut crate::ffi::gp_Vec) {
+    pub fn get_average_law(&mut self, AM: &mut crate::gp::Mat, AV: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_LocationDraft_get_average_law(self as *mut Self, AM, AV) }
     }
 
@@ -6506,7 +6503,7 @@ impl LocationDraft {
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:169 - `GeomFill_LocationDraft::Rotation()`
-    pub fn rotation(&self, Center: &mut crate::ffi::gp_Pnt) {
+    pub fn rotation(&self, Center: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomFill_LocationDraft_rotation(self as *const Self, Center) }
     }
 
@@ -6517,7 +6514,7 @@ impl LocationDraft {
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:174 - `GeomFill_LocationDraft::Direction()`
-    pub fn direction(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_LocationDraft_direction(
                 self as *const Self,
@@ -6642,7 +6639,7 @@ impl LocationGuide {
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:64 - `GeomFill_LocationGuide::SetTrsf()`
-    pub fn set_trsf(&mut self, Transfo: &crate::ffi::gp_Mat) {
+    pub fn set_trsf(&mut self, Transfo: &crate::gp::Mat) {
         unsafe { crate::ffi::GeomFill_LocationGuide_set_trsf(self as *mut Self, Transfo) }
     }
 
@@ -6658,8 +6655,8 @@ impl LocationGuide {
     pub fn d0_real_mat_vec(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_LocationGuide_d0_real_mat_vec(self as *mut Self, Param, M, V)
@@ -6671,8 +6668,8 @@ impl LocationGuide {
     pub fn d0_real_mat_vec_array1ofpnt2d(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) -> bool {
         unsafe {
@@ -6693,10 +6690,10 @@ impl LocationGuide {
     pub fn d1(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
-        DM: &mut crate::ffi::gp_Mat,
-        DV: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
+        DM: &mut crate::gp::Mat,
+        DV: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
     ) -> bool {
@@ -6721,12 +6718,12 @@ impl LocationGuide {
     pub fn d2(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
-        DM: &mut crate::ffi::gp_Mat,
-        DV: &mut crate::ffi::gp_Vec,
-        D2M: &mut crate::ffi::gp_Mat,
-        D2V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
+        DM: &mut crate::gp::Mat,
+        DV: &mut crate::gp::Vec,
+        D2M: &mut crate::gp::Mat,
+        D2V: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
         D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
@@ -6862,7 +6859,7 @@ impl LocationGuide {
     /// **Source:** `GeomFill_LocationGuide.hxx`:177 - `GeomFill_LocationGuide::GetAverageLaw()`
     /// Get average value of M(t) and V(t) it is usfull to
     /// make fast approximation of rational  surfaces.
-    pub fn get_average_law(&mut self, AM: &mut crate::ffi::gp_Mat, AV: &mut crate::ffi::gp_Vec) {
+    pub fn get_average_law(&mut self, AM: &mut crate::gp::Mat, AV: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_LocationGuide_get_average_law(self as *mut Self, AM, AV) }
     }
 
@@ -6881,7 +6878,7 @@ impl LocationGuide {
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:188 - `GeomFill_LocationGuide::Rotation()`
-    pub fn rotation(&self, Center: &mut crate::ffi::gp_Pnt) {
+    pub fn rotation(&self, Center: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomFill_LocationGuide_rotation(self as *const Self, Center) }
     }
 
@@ -6994,7 +6991,7 @@ impl LocationLaw {
     /// **Source:** `GeomFill_LocationLaw.hxx`:48 - `GeomFill_LocationLaw::SetTrsf()`
     /// Set a transformation Matrix like   the law M(t) become
     /// Mat * M(t)
-    pub fn set_trsf(&mut self, Transfo: &crate::ffi::gp_Mat) {
+    pub fn set_trsf(&mut self, Transfo: &crate::gp::Mat) {
         unsafe { crate::ffi::GeomFill_LocationLaw_set_trsf(self as *mut Self, Transfo) }
     }
 
@@ -7010,8 +7007,8 @@ impl LocationLaw {
     pub fn d0_real_mat_vec(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
     ) -> bool {
         unsafe { crate::ffi::GeomFill_LocationLaw_d0_real_mat_vec(self as *mut Self, Param, M, V) }
     }
@@ -7021,8 +7018,8 @@ impl LocationLaw {
     pub fn d0_real_mat_vec_array1ofpnt2d(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) -> bool {
         unsafe {
@@ -7043,10 +7040,10 @@ impl LocationLaw {
     pub fn d1(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
-        DM: &mut crate::ffi::gp_Mat,
-        DV: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
+        DM: &mut crate::gp::Mat,
+        DV: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
     ) -> bool {
@@ -7071,12 +7068,12 @@ impl LocationLaw {
     pub fn d2(
         &mut self,
         Param: f64,
-        M: &mut crate::ffi::gp_Mat,
-        V: &mut crate::ffi::gp_Vec,
-        DM: &mut crate::ffi::gp_Mat,
-        DV: &mut crate::ffi::gp_Vec,
-        D2M: &mut crate::ffi::gp_Mat,
-        D2V: &mut crate::ffi::gp_Vec,
+        M: &mut crate::gp::Mat,
+        V: &mut crate::gp::Vec,
+        DM: &mut crate::gp::Mat,
+        DV: &mut crate::gp::Vec,
+        D2M: &mut crate::gp::Mat,
+        D2V: &mut crate::gp::Vec,
         Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
         DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
         D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
@@ -7212,7 +7209,7 @@ impl LocationLaw {
     /// **Source:** `GeomFill_LocationLaw.hxx`:156 - `GeomFill_LocationLaw::GetAverageLaw()`
     /// Get average value of M(t) and V(t) it is usfull to
     /// make fast approximation of rational surfaces.
-    pub fn get_average_law(&mut self, AM: &mut crate::ffi::gp_Mat, AV: &mut crate::ffi::gp_Vec) {
+    pub fn get_average_law(&mut self, AM: &mut crate::gp::Mat, AV: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_LocationLaw_get_average_law(self as *mut Self, AM, AV) }
     }
 
@@ -7231,7 +7228,7 @@ impl LocationLaw {
     }
 
     /// **Source:** `GeomFill_LocationLaw.hxx`:166 - `GeomFill_LocationLaw::Rotation()`
-    pub fn rotation(&self, Center: &mut crate::ffi::gp_Pnt) {
+    pub fn rotation(&self, Center: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomFill_LocationLaw_rotation(self as *const Self, Center) }
     }
 
@@ -7560,7 +7557,7 @@ impl NSections {
     /// This information is useful to perform well
     /// conditioned rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_NSections_barycentre_of_surf(
                 self as *const Self,
@@ -7791,7 +7788,7 @@ impl Pipe {
     pub fn new_handlegeomcurve2_dir(
         Path: &crate::ffi::HandleGeomCurve,
         FirstSect: &crate::ffi::HandleGeomCurve,
-        Dir: &crate::ffi::gp_Dir,
+        Dir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve2_dir(
@@ -7958,7 +7955,7 @@ impl Pipe {
         &mut self,
         Path: &crate::ffi::HandleGeomCurve,
         FirstSect: &crate::ffi::HandleGeomCurve,
-        Dir: &crate::ffi::gp_Dir,
+        Dir: &crate::gp::Dir,
     ) {
         unsafe {
             crate::ffi::GeomFill_Pipe_init_handlegeomcurve2_dir(
@@ -8169,8 +8166,8 @@ unsafe impl crate::CppDeletable for PlanFunc {
 impl PlanFunc {
     /// **Source:** `GeomFill_PlanFunc.hxx`:35 - `GeomFill_PlanFunc::GeomFill_PlanFunc()`
     pub fn new_pnt_vec_handleadaptor3dcurve(
-        P: &crate::ffi::gp_Pnt,
-        V: &crate::ffi::gp_Vec,
+        P: &crate::gp::Pnt,
+        V: &crate::gp::Vec,
         C: &crate::ffi::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8212,7 +8209,7 @@ impl PlanFunc {
     }
 
     /// **Source:** `GeomFill_PlanFunc.hxx`:65 - `GeomFill_PlanFunc::DEDT()`
-    pub fn dedt(&mut self, X: f64, DP: &crate::ffi::gp_Vec, DV: &crate::ffi::gp_Vec, DF: &mut f64) {
+    pub fn dedt(&mut self, X: f64, DP: &crate::gp::Vec, DV: &crate::gp::Vec, DF: &mut f64) {
         unsafe { crate::ffi::GeomFill_PlanFunc_dedt(self as *mut Self, X, DP, DV, DF) }
     }
 
@@ -8220,10 +8217,10 @@ impl PlanFunc {
     pub fn d2e(
         &mut self,
         X: f64,
-        DP: &crate::ffi::gp_Vec,
-        D2P: &crate::ffi::gp_Vec,
-        DV: &crate::ffi::gp_Vec,
-        D2V: &crate::ffi::gp_Vec,
+        DP: &crate::gp::Vec,
+        D2P: &crate::gp::Vec,
+        DV: &crate::gp::Vec,
+        D2V: &crate::gp::Vec,
         DFDT: &mut f64,
         D2FDT2: &mut f64,
         D2FDTDX: &mut f64,
@@ -8311,9 +8308,9 @@ impl PolynomialConvertor {
     /// **Source:** `GeomFill_PolynomialConvertor.hxx`:42 - `GeomFill_PolynomialConvertor::Section()`
     pub fn section_pnt2_vec_real_array1ofpnt(
         &self,
-        FirstPnt: &crate::ffi::gp_Pnt,
-        Center: &crate::ffi::gp_Pnt,
-        Dir: &crate::ffi::gp_Vec,
+        FirstPnt: &crate::gp::Pnt,
+        Center: &crate::gp::Pnt,
+        Dir: &crate::gp::Vec,
         Angle: f64,
         Poles: &mut crate::ffi::TColgp_Array1OfPnt,
     ) {
@@ -8332,12 +8329,12 @@ impl PolynomialConvertor {
     /// **Source:** `GeomFill_PolynomialConvertor.hxx`:48 - `GeomFill_PolynomialConvertor::Section()`
     pub fn section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec(
         &self,
-        FirstPnt: &crate::ffi::gp_Pnt,
-        DFirstPnt: &crate::ffi::gp_Vec,
-        Center: &crate::ffi::gp_Pnt,
-        DCenter: &crate::ffi::gp_Vec,
-        Dir: &crate::ffi::gp_Vec,
-        DDir: &crate::ffi::gp_Vec,
+        FirstPnt: &crate::gp::Pnt,
+        DFirstPnt: &crate::gp::Vec,
+        Center: &crate::gp::Pnt,
+        DCenter: &crate::gp::Vec,
+        Dir: &crate::gp::Vec,
+        DDir: &crate::gp::Vec,
         Angle: f64,
         DAngle: f64,
         Poles: &mut crate::ffi::TColgp_Array1OfPnt,
@@ -8351,15 +8348,15 @@ impl PolynomialConvertor {
     /// **Source:** `GeomFill_PolynomialConvertor.hxx`:59 - `GeomFill_PolynomialConvertor::Section()`
     pub fn section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2(
         &self,
-        FirstPnt: &crate::ffi::gp_Pnt,
-        DFirstPnt: &crate::ffi::gp_Vec,
-        D2FirstPnt: &crate::ffi::gp_Vec,
-        Center: &crate::ffi::gp_Pnt,
-        DCenter: &crate::ffi::gp_Vec,
-        D2Center: &crate::ffi::gp_Vec,
-        Dir: &crate::ffi::gp_Vec,
-        DDir: &crate::ffi::gp_Vec,
-        D2Dir: &crate::ffi::gp_Vec,
+        FirstPnt: &crate::gp::Pnt,
+        DFirstPnt: &crate::gp::Vec,
+        D2FirstPnt: &crate::gp::Vec,
+        Center: &crate::gp::Pnt,
+        DCenter: &crate::gp::Vec,
+        D2Center: &crate::gp::Vec,
+        Dir: &crate::gp::Vec,
+        DDir: &crate::gp::Vec,
+        D2Dir: &crate::gp::Vec,
         Angle: f64,
         DAngle: f64,
         D2Angle: f64,
@@ -8507,9 +8504,9 @@ impl QuasiAngularConvertor {
     /// **Source:** `GeomFill_QuasiAngularConvertor.hxx`:45 - `GeomFill_QuasiAngularConvertor::Section()`
     pub fn section_pnt2_vec_real_array1ofpnt_array1ofreal(
         &mut self,
-        FirstPnt: &crate::ffi::gp_Pnt,
-        Center: &crate::ffi::gp_Pnt,
-        Dir: &crate::ffi::gp_Vec,
+        FirstPnt: &crate::gp::Pnt,
+        Center: &crate::gp::Pnt,
+        Dir: &crate::gp::Vec,
         Angle: f64,
         Poles: &mut crate::ffi::TColgp_Array1OfPnt,
         Weights: &mut crate::ffi::TColStd_Array1OfReal,
@@ -8522,12 +8519,12 @@ impl QuasiAngularConvertor {
     /// **Source:** `GeomFill_QuasiAngularConvertor.hxx`:52 - `GeomFill_QuasiAngularConvertor::Section()`
     pub fn section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec_array1ofreal2(
         &mut self,
-        FirstPnt: &crate::ffi::gp_Pnt,
-        DFirstPnt: &crate::ffi::gp_Vec,
-        Center: &crate::ffi::gp_Pnt,
-        DCenter: &crate::ffi::gp_Vec,
-        Dir: &crate::ffi::gp_Vec,
-        DDir: &crate::ffi::gp_Vec,
+        FirstPnt: &crate::gp::Pnt,
+        DFirstPnt: &crate::gp::Vec,
+        Center: &crate::gp::Pnt,
+        DCenter: &crate::gp::Vec,
+        Dir: &crate::gp::Vec,
+        DDir: &crate::gp::Vec,
         Angle: f64,
         DAngle: f64,
         Poles: &mut crate::ffi::TColgp_Array1OfPnt,
@@ -8543,15 +8540,15 @@ impl QuasiAngularConvertor {
     /// **Source:** `GeomFill_QuasiAngularConvertor.hxx`:65 - `GeomFill_QuasiAngularConvertor::Section()`
     pub fn section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2_array1ofreal3(
         &mut self,
-        FirstPnt: &crate::ffi::gp_Pnt,
-        DFirstPnt: &crate::ffi::gp_Vec,
-        D2FirstPnt: &crate::ffi::gp_Vec,
-        Center: &crate::ffi::gp_Pnt,
-        DCenter: &crate::ffi::gp_Vec,
-        D2Center: &crate::ffi::gp_Vec,
-        Dir: &crate::ffi::gp_Vec,
-        DDir: &crate::ffi::gp_Vec,
-        D2Dir: &crate::ffi::gp_Vec,
+        FirstPnt: &crate::gp::Pnt,
+        DFirstPnt: &crate::gp::Vec,
+        D2FirstPnt: &crate::gp::Vec,
+        Center: &crate::gp::Pnt,
+        DCenter: &crate::gp::Vec,
+        D2Center: &crate::gp::Vec,
+        Dir: &crate::gp::Vec,
+        DDir: &crate::gp::Vec,
+        D2Dir: &crate::gp::Vec,
         Angle: f64,
         DAngle: f64,
         D2Angle: f64,
@@ -8939,7 +8936,7 @@ impl SectionLaw {
     /// This information is useful to perform well
     /// conditioned rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SectionLaw_barycentre_of_surf(
                 self as *const Self,
@@ -9130,7 +9127,7 @@ impl SectionPlacement {
         &self,
         WithTranslation: bool,
         WithCorrection: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Trsf> {
+    ) -> crate::OwnedPtr<crate::gp::Trsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SectionPlacement_transformation(
                 self as *const Self,
@@ -9239,7 +9236,7 @@ impl SimpleBound {
     }
 
     /// **Source:** `GeomFill_SimpleBound.hxx`:76 - `GeomFill_SimpleBound::Value()`
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SimpleBound_value(
                 self as *const Self,
@@ -9249,7 +9246,7 @@ impl SimpleBound {
     }
 
     /// **Source:** `GeomFill_SimpleBound.hxx`:78 - `GeomFill_SimpleBound::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_SimpleBound_d1(self as *const Self, U, P, V) }
     }
 
@@ -9325,7 +9322,7 @@ impl SimpleBound {
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:49 - `GeomFill_Boundary::Norm()`
-    pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SimpleBound_inherited_Norm(
                 self as *const Self,
@@ -9335,12 +9332,12 @@ impl SimpleBound {
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:51 - `GeomFill_Boundary::D1Norm()`
-    pub fn d1_norm(&self, U: f64, N: &mut crate::ffi::gp_Vec, DN: &mut crate::ffi::gp_Vec) {
+    pub fn d1_norm(&self, U: f64, N: &mut crate::gp::Vec, DN: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_SimpleBound_inherited_D1Norm(self as *const Self, U, N, DN) }
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
-    pub fn points(&self, PFirst: &mut crate::ffi::gp_Pnt, PLast: &mut crate::ffi::gp_Pnt) {
+    pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomFill_SimpleBound_inherited_Points(self as *const Self, PFirst, PLast)
         }
@@ -9425,7 +9422,7 @@ impl SnglrFunc {
 
     /// **Source:** `GeomFill_SnglrFunc.hxx`:63 - `GeomFill_SnglrFunc::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_value(self as *const Self, U))
         }
@@ -9443,7 +9440,7 @@ impl SnglrFunc {
 
     /// **Source:** `GeomFill_SnglrFunc.hxx`:70 - `GeomFill_SnglrFunc::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomFill_SnglrFunc_d0(self as *const Self, U, P) }
     }
 
@@ -9452,7 +9449,7 @@ impl SnglrFunc {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_SnglrFunc_d1(self as *const Self, U, P, V) }
     }
 
@@ -9464,9 +9461,9 @@ impl SnglrFunc {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomFill_SnglrFunc_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -9479,10 +9476,10 @@ impl SnglrFunc {
     pub fn d3(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomFill_SnglrFunc_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -9491,7 +9488,7 @@ impl SnglrFunc {
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_dn(self as *const Self, U, N))
         }
@@ -9565,7 +9562,7 @@ impl SnglrFunc {
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:134 - `Adaptor3d_Curve::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_inherited_Line(
                 self as *const Self,
@@ -9574,7 +9571,7 @@ impl SnglrFunc {
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:136 - `Adaptor3d_Curve::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_inherited_Circle(
                 self as *const Self,
@@ -9583,7 +9580,7 @@ impl SnglrFunc {
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:138 - `Adaptor3d_Curve::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_inherited_Ellipse(
                 self as *const Self,
@@ -9592,7 +9589,7 @@ impl SnglrFunc {
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:140 - `Adaptor3d_Curve::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_inherited_Hyperbola(
                 self as *const Self,
@@ -9601,7 +9598,7 @@ impl SnglrFunc {
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:142 - `Adaptor3d_Curve::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_inherited_Parabola(
                 self as *const Self,
@@ -10225,7 +10222,7 @@ impl SweepFunction {
     /// estimation is sufficient. This information is useful
     /// to perform well conditioned rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SweepFunction_barycentre_of_surf(
                 self as *const Self,
@@ -10523,7 +10520,7 @@ impl SweepSectionGenerator {
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:119 - `GeomFill_SweepSectionGenerator::Transformation()`
     /// raised if <Index> not in the range [1,NbSections()]
-    pub fn transformation(&self, Index: i32) -> &crate::ffi::gp_Trsf {
+    pub fn transformation(&self, Index: i32) -> &crate::gp::Trsf {
         unsafe {
             &*(crate::ffi::GeomFill_SweepSectionGenerator_transformation(
                 self as *const Self,
@@ -10618,7 +10615,7 @@ impl TgtField {
     /// **Source:** `GeomFill_TgtField.hxx`:43 - `GeomFill_TgtField::Value()`
     /// Computes  the value  of the    field of tangency    at
     /// parameter W.
-    pub fn value(&self, W: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn value(&self, W: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_TgtField_value(self as *const Self, W))
         }
@@ -10627,7 +10624,7 @@ impl TgtField {
     /// **Source:** `GeomFill_TgtField.hxx`:47 - `GeomFill_TgtField::D1()`
     /// Computes the  derivative of  the field of  tangency at
     /// parameter W.
-    pub fn d1_real(&self, W: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn d1_real(&self, W: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_TgtField_d1_real(self as *const Self, W))
         }
@@ -10636,7 +10633,7 @@ impl TgtField {
     /// **Source:** `GeomFill_TgtField.hxx`:51 - `GeomFill_TgtField::D1()`
     /// Computes the value and the  derivative of the field of
     /// tangency at parameter W.
-    pub fn d1_real_vec2(&self, W: f64, V: &mut crate::ffi::gp_Vec, DV: &mut crate::ffi::gp_Vec) {
+    pub fn d1_real_vec2(&self, W: f64, V: &mut crate::gp::Vec, DV: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_TgtField_d1_real_vec2(self as *const Self, W, V, DV) }
     }
 
@@ -10711,7 +10708,7 @@ impl TgtOnCoons {
     /// **Source:** `GeomFill_TgtOnCoons.hxx`:42 - `GeomFill_TgtOnCoons::Value()`
     /// Computes  the value  of the    field of tangency    at
     /// parameter W.
-    pub fn value(&self, W: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn value(&self, W: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_TgtOnCoons_value(self as *const Self, W))
         }
@@ -10720,7 +10717,7 @@ impl TgtOnCoons {
     /// **Source:** `GeomFill_TgtOnCoons.hxx`:46 - `GeomFill_TgtOnCoons::D1()`
     /// Computes the  derivative of  the field of  tangency at
     /// parameter W.
-    pub fn d1_real(&self, W: f64) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn d1_real(&self, W: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_TgtOnCoons_d1_real(
                 self as *const Self,
@@ -10732,7 +10729,7 @@ impl TgtOnCoons {
     /// **Source:** `GeomFill_TgtOnCoons.hxx`:50 - `GeomFill_TgtOnCoons::D1()`
     /// Computes the value and the  derivative of the field of
     /// tangency at parameter W.
-    pub fn d1_real_vec2(&self, W: f64, T: &mut crate::ffi::gp_Vec, DT: &mut crate::ffi::gp_Vec) {
+    pub fn d1_real_vec2(&self, W: f64, T: &mut crate::gp::Vec, DT: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomFill_TgtOnCoons_d1_real_vec2(self as *const Self, W, T, DT) }
     }
 
@@ -10824,9 +10821,9 @@ impl TrihedronLaw {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_TrihedronLaw_d0(
@@ -10846,12 +10843,12 @@ impl TrihedronLaw {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_TrihedronLaw_d1(
@@ -10874,15 +10871,15 @@ impl TrihedronLaw {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_TrihedronLaw_d2(
@@ -10940,9 +10937,9 @@ impl TrihedronLaw {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_TrihedronLaw_get_average_law(
@@ -11042,7 +11039,7 @@ impl TrihedronWithGuide {
     /// **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
     /// Returns the current point on guide
     /// found by D0, D1 or D2.
-    pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomFill_TrihedronWithGuide_current_point_on_guide(self as *const Self),
@@ -11115,9 +11112,9 @@ impl TrihedronWithGuide {
     pub fn d0(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_TrihedronWithGuide_inherited_D0(
@@ -11134,12 +11131,12 @@ impl TrihedronWithGuide {
     pub fn d1(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_TrihedronWithGuide_inherited_D1(
@@ -11159,15 +11156,15 @@ impl TrihedronWithGuide {
     pub fn d2(
         &mut self,
         Param: f64,
-        Tangent: &mut crate::ffi::gp_Vec,
-        DTangent: &mut crate::ffi::gp_Vec,
-        D2Tangent: &mut crate::ffi::gp_Vec,
-        Normal: &mut crate::ffi::gp_Vec,
-        DNormal: &mut crate::ffi::gp_Vec,
-        D2Normal: &mut crate::ffi::gp_Vec,
-        BiNormal: &mut crate::ffi::gp_Vec,
-        DBiNormal: &mut crate::ffi::gp_Vec,
-        D2BiNormal: &mut crate::ffi::gp_Vec,
+        Tangent: &mut crate::gp::Vec,
+        DTangent: &mut crate::gp::Vec,
+        D2Tangent: &mut crate::gp::Vec,
+        Normal: &mut crate::gp::Vec,
+        DNormal: &mut crate::gp::Vec,
+        D2Normal: &mut crate::gp::Vec,
+        BiNormal: &mut crate::gp::Vec,
+        DBiNormal: &mut crate::gp::Vec,
+        D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::GeomFill_TrihedronWithGuide_inherited_D2(
@@ -11232,9 +11229,9 @@ impl TrihedronWithGuide {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:100 - `GeomFill_TrihedronLaw::GetAverageLaw()`
     pub fn get_average_law(
         &mut self,
-        ATangent: &mut crate::ffi::gp_Vec,
-        ANormal: &mut crate::ffi::gp_Vec,
-        ABiNormal: &mut crate::ffi::gp_Vec,
+        ATangent: &mut crate::gp::Vec,
+        ANormal: &mut crate::gp::Vec,
+        ABiNormal: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomFill_TrihedronWithGuide_inherited_GetAverageLaw(
@@ -11489,7 +11486,7 @@ impl UniformSection {
     /// This information is useful to perform well
     /// conditioned rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_UniformSection_barycentre_of_surf(
                 self as *const Self,

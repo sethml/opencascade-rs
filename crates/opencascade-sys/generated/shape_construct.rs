@@ -87,8 +87,8 @@ pub fn convert_surface_to_b_spline(
 /// Returns false if cannot join pcurves
 pub fn join_p_curves(
     theEdges: &crate::ffi::HandleTopToolsHSequenceOfShape,
-    theFace: &crate::ffi::TopoDS_Face,
-    theEdge: &mut crate::ffi::TopoDS_Edge,
+    theFace: &crate::topo_ds::Face,
+    theEdge: &mut crate::topo_ds::Edge,
 ) -> bool {
     unsafe { crate::ffi::ShapeConstruct_join_p_curves(theEdges, theFace, theEdge) }
 }
@@ -182,8 +182,8 @@ impl Curve {
     pub fn adjust_curve(
         &self,
         C3D: &crate::ffi::HandleGeomCurve,
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
         take1: bool,
         take2: bool,
     ) -> bool {
@@ -209,8 +209,8 @@ impl Curve {
     pub fn adjust_curve_segment(
         &self,
         C3D: &crate::ffi::HandleGeomCurve,
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
         U1: f64,
         U2: f64,
     ) -> bool {
@@ -239,8 +239,8 @@ impl Curve {
     pub fn adjust_curve2d(
         &self,
         C2D: &crate::ffi::HandleGeom2dCurve,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         take1: bool,
         take2: bool,
     ) -> bool {
@@ -353,7 +353,7 @@ impl MakeTriangulation {
     }
 
     /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:35 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
-    pub fn new_wire_real(wire: &crate::ffi::TopoDS_Wire, prec: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_wire_real(wire: &crate::topo_ds::Wire, prec: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeConstruct_MakeTriangulation_ctor_wire_real(
                 wire, prec,
@@ -367,12 +367,12 @@ impl MakeTriangulation {
     }
 
     /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:35 - `ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation()`
-    pub fn new_wire(wire: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+    pub fn new_wire(wire: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         Self::new_wire_real(wire, 0.0)
     }
 
     /// **Source:** `ShapeConstruct_MakeTriangulation.hxx`:38 - `ShapeConstruct_MakeTriangulation::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::ShapeConstruct_MakeTriangulation_build(self as *mut Self, theRange) }
     }
 
@@ -420,14 +420,14 @@ impl MakeTriangulation {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Shape(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Generated(
                 self as *mut Self,
@@ -437,7 +437,7 @@ impl MakeTriangulation {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::ShapeConstruct_MakeTriangulation_inherited_Modified(
                 self as *mut Self,
@@ -447,7 +447,7 @@ impl MakeTriangulation {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::ShapeConstruct_MakeTriangulation_inherited_IsDeleted(self as *mut Self, S)
         }

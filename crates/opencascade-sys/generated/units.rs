@@ -559,7 +559,7 @@ impl Explorer {
 
     /// **Source:** `Units_Explorer.hxx`:90 - `Units_Explorer::Quantity()`
     /// Returns the name of the current Quantity.
-    pub fn quantity(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn quantity(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Explorer_quantity(self as *const Self))
         }
@@ -580,7 +580,7 @@ impl Explorer {
 
     /// **Source:** `Units_Explorer.hxx`:100 - `Units_Explorer::Unit()`
     /// Returns the name of the current unit.
-    pub fn unit(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn unit(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Explorer_unit(self as *const Self)) }
     }
 
@@ -844,7 +844,7 @@ impl Measurement {
     /// **Source:** `Units_Measurement.hxx`:54 - `Units_Measurement::Integer()`
     /// Returns a Measurement object with the integer value of
     /// the measurement contained in <me>.
-    pub fn integer(&self) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn integer(&self) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_integer(self as *const Self))
         }
@@ -853,7 +853,7 @@ impl Measurement {
     /// **Source:** `Units_Measurement.hxx`:58 - `Units_Measurement::Fractional()`
     /// Returns a Measurement object with the fractional value
     /// of the measurement contained in <me>.
-    pub fn fractional(&self) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn fractional(&self) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_fractional(self as *const Self))
         }
@@ -877,10 +877,7 @@ impl Measurement {
     /// Returns (if it is possible) a measurement which is the
     /// addition  of  <me>  and  <ameasurement>.  The   chosen
     /// returned unit is the unit of <me>.
-    pub fn add(
-        &self,
-        ameasurement: &crate::ffi::Units_Measurement,
-    ) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn add(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_add(
                 self as *const Self,
@@ -893,10 +890,7 @@ impl Measurement {
     /// Returns (if it is possible) a measurement which is the
     /// subtraction of  <me>  and <ameasurement>.   The chosen
     /// returned unit is the unit of <me>.
-    pub fn subtract(
-        &self,
-        ameasurement: &crate::ffi::Units_Measurement,
-    ) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn subtract(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_subtract(
                 self as *const Self,
@@ -908,10 +902,7 @@ impl Measurement {
     /// **Source:** `Units_Measurement.hxx`:88 - `Units_Measurement::Multiply()`
     /// Returns  a measurement which  is the multiplication of
     /// <me> and <ameasurement>.
-    pub fn multiply_measurement(
-        &self,
-        ameasurement: &crate::ffi::Units_Measurement,
-    ) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn multiply_measurement(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_multiply_measurement(
                 self as *const Self,
@@ -923,7 +914,7 @@ impl Measurement {
     /// **Source:** `Units_Measurement.hxx`:97 - `Units_Measurement::Multiply()`
     /// Returns  a measurement which  is the multiplication of
     /// <me> with the value  <avalue>.
-    pub fn multiply_real(&self, avalue: f64) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn multiply_real(&self, avalue: f64) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_multiply_real(
                 self as *const Self,
@@ -935,10 +926,7 @@ impl Measurement {
     /// **Source:** `Units_Measurement.hxx`:103 - `Units_Measurement::Divide()`
     /// Returns a measurement which  is the division of  <me> by
     /// <ameasurement>.
-    pub fn divide_measurement(
-        &self,
-        ameasurement: &crate::ffi::Units_Measurement,
-    ) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn divide_measurement(&self, ameasurement: &Measurement) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_divide_measurement(
                 self as *const Self,
@@ -950,7 +938,7 @@ impl Measurement {
     /// **Source:** `Units_Measurement.hxx`:112 - `Units_Measurement::Divide()`
     /// Returns  a measurement which  is the division of <me> by
     /// the constant <avalue>.
-    pub fn divide_real(&self, avalue: f64) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn divide_real(&self, avalue: f64) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_divide_real(
                 self as *const Self,
@@ -962,7 +950,7 @@ impl Measurement {
     /// **Source:** `Units_Measurement.hxx`:118 - `Units_Measurement::Power()`
     /// Returns   a    measurement  which   is <me>    powered
     /// <anexponent>.
-    pub fn power(&self, anexponent: f64) -> crate::OwnedPtr<crate::ffi::Units_Measurement> {
+    pub fn power(&self, anexponent: f64) -> crate::OwnedPtr<Measurement> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_Measurement_power(
                 self as *const Self,
@@ -1247,7 +1235,7 @@ impl Quantity {
 
     /// **Source:** `Units_Quantity.hxx`:50 - `Units_Quantity::Name()`
     /// Returns in a AsciiString from TCollection the name of the quantity.
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Quantity_name(self as *const Self)) }
     }
 
@@ -1537,7 +1525,7 @@ impl ShiftedToken {
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:78 - `Units_Token::Word()`
-    pub fn word(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn word(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Word(
                 self as *const Self,
@@ -1546,7 +1534,7 @@ impl ShiftedToken {
     }
 
     /// Inherited: **Source:** `Units_Token.hxx`:85 - `Units_Token::Mean()`
-    pub fn mean(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn mean(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_inherited_Mean(
                 self as *const Self,
@@ -1769,7 +1757,7 @@ impl ShiftedUnit {
     }
 
     /// Inherited: **Source:** `Units_Unit.hxx`:59 - `Units_Unit::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_inherited_Name(
                 self as *const Self,
@@ -1912,7 +1900,7 @@ impl Token {
 
     /// **Source:** `Units_Token.hxx`:78 - `Units_Token::Word()`
     /// Returns the string <theword>
-    pub fn word(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn word(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_word(self as *const Self)) }
     }
 
@@ -1926,7 +1914,7 @@ impl Token {
     /// **Source:** `Units_Token.hxx`:85 - `Units_Token::Mean()`
     /// Returns the significance of the word  <theword>, which
     /// is in the field <themean>.
-    pub fn mean(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn mean(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Token_mean(self as *const Self)) }
     }
 
@@ -2364,7 +2352,7 @@ impl Unit {
 
     /// **Source:** `Units_Unit.hxx`:59 - `Units_Unit::Name()`
     /// Returns the name of the unit <thename>
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_Unit_name(self as *const Self)) }
     }
 
@@ -2633,7 +2621,7 @@ impl UnitsDictionary {
     pub fn active_unit(
         &self,
         aquantity: &str,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsDictionary_active_unit(
@@ -3017,7 +3005,7 @@ impl UnitsSystem {
     pub fn active_unit(
         &self,
         aquantity: &str,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         let c_aquantity = std::ffi::CString::new(aquantity).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSystem_active_unit(

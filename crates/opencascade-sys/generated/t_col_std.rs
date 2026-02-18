@@ -38,7 +38,7 @@ impl HArray1OfAsciiString {
     pub fn new_int2_asciistring(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TCollection_AsciiString,
+        theValue: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -51,7 +51,7 @@ impl HArray1OfAsciiString {
 
     /// **Source:** `TColStd_HArray1OfAsciiString.hxx`:22 - `TColStd_HArray1OfAsciiString::TColStd_HArray1OfAsciiString()`
     pub fn new_asciistring_int2_bool(
-        theBegin: &crate::ffi::TCollection_AsciiString,
+        theBegin: &crate::t_collection::AsciiString,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
@@ -463,7 +463,7 @@ impl HArray1OfExtendedString {
     pub fn new_int2_extendedstring(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TCollection_ExtendedString,
+        theValue: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -476,7 +476,7 @@ impl HArray1OfExtendedString {
 
     /// **Source:** `TColStd_HArray1OfExtendedString.hxx`:22 - `TColStd_HArray1OfExtendedString::TColStd_HArray1OfExtendedString()`
     pub fn new_extendedstring_int2_bool(
-        theBegin: &crate::ffi::TCollection_ExtendedString,
+        theBegin: &crate::t_collection::ExtendedString,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
@@ -1580,9 +1580,7 @@ impl HPackedMapOfInteger {
     }
 
     /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:35 - `TColStd_HPackedMapOfInteger::TColStd_HPackedMapOfInteger()`
-    pub fn new_packedmapofinteger(
-        theOther: &crate::ffi::TColStd_PackedMapOfInteger,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_packedmapofinteger(theOther: &PackedMapOfInteger) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TColStd_HPackedMapOfInteger_ctor_packedmapofinteger(theOther),
@@ -1597,13 +1595,13 @@ impl HPackedMapOfInteger {
 
     /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:37 - `TColStd_HPackedMapOfInteger::Map()`
     /// Access to the map
-    pub fn map(&self) -> &crate::ffi::TColStd_PackedMapOfInteger {
+    pub fn map(&self) -> &PackedMapOfInteger {
         unsafe { &*(crate::ffi::TColStd_HPackedMapOfInteger_map(self as *const Self)) }
     }
 
     /// **Source:** `TColStd_HPackedMapOfInteger.hxx`:39 - `TColStd_HPackedMapOfInteger::ChangeMap()`
     /// Access to the map for modification
-    pub fn change_map(&mut self) -> &mut crate::ffi::TColStd_PackedMapOfInteger {
+    pub fn change_map(&mut self) -> &mut PackedMapOfInteger {
         unsafe { &mut *(crate::ffi::TColStd_HPackedMapOfInteger_change_map(self as *mut Self)) }
     }
 
@@ -1694,7 +1692,7 @@ impl HSequenceOfAsciiString {
     }
 
     /// **Source:** `TColStd_HSequenceOfAsciiString.hxx`:22 - `TColStd_HSequenceOfAsciiString::Append()`
-    pub fn append_asciistring(&mut self, theItem: &crate::ffi::TCollection_AsciiString) {
+    pub fn append_asciistring(&mut self, theItem: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::TColStd_HSequenceOfAsciiString_append_asciistring(
                 self as *mut Self,
@@ -1814,7 +1812,7 @@ impl HSequenceOfExtendedString {
     }
 
     /// **Source:** `TColStd_HSequenceOfExtendedString.hxx`:22 - `TColStd_HSequenceOfExtendedString::Append()`
-    pub fn append_extendedstring(&mut self, theItem: &crate::ffi::TCollection_ExtendedString) {
+    pub fn append_extendedstring(&mut self, theItem: &crate::t_collection::ExtendedString) {
         unsafe {
             crate::ffi::TColStd_HSequenceOfExtendedString_append_extendedstring(
                 self as *mut Self,
@@ -2477,9 +2475,7 @@ impl PackedMapOfInteger {
 
     /// **Source:** `TColStd_PackedMapOfInteger.hxx`:275 - `TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger()`
     /// Copy constructor
-    pub fn new_packedmapofinteger(
-        theOther: &crate::ffi::TColStd_PackedMapOfInteger,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_packedmapofinteger(theOther: &PackedMapOfInteger) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TColStd_PackedMapOfInteger_ctor_packedmapofinteger(theOther),
@@ -2557,11 +2553,7 @@ impl PackedMapOfInteger {
     /// between two given Maps. The new Map contains the values that are contained either in the first
     /// map or in the second map or in both. All previous contents of this Map is cleared. This map
     /// (result of the boolean operation) can also be passed as one of operands.
-    pub fn union(
-        &mut self,
-        arg0: &crate::ffi::TColStd_PackedMapOfInteger,
-        arg1: &crate::ffi::TColStd_PackedMapOfInteger,
-    ) {
+    pub fn union(&mut self, arg0: &PackedMapOfInteger, arg1: &PackedMapOfInteger) {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_union(self as *mut Self, arg0, arg1) }
     }
 
@@ -2571,7 +2563,7 @@ impl PackedMapOfInteger {
     /// another (given) Map. The result contains the values that were previously contained in this map
     /// or contained in the given (operand) map. This algorithm is similar to method Union().
     /// @return True if content of this map is changed
-    pub fn unite(&mut self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+    pub fn unite(&mut self, arg0: &PackedMapOfInteger) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_unite(self as *mut Self, arg0) }
     }
 
@@ -2583,11 +2575,7 @@ impl PackedMapOfInteger {
     /// boolean operation) can also be used as one of operands. The order of operands makes no
     /// difference; the method minimizes internally the number of iterations using the smallest map for
     /// the loop.
-    pub fn intersection(
-        &mut self,
-        arg0: &crate::ffi::TColStd_PackedMapOfInteger,
-        arg1: &crate::ffi::TColStd_PackedMapOfInteger,
-    ) {
+    pub fn intersection(&mut self, arg0: &PackedMapOfInteger, arg1: &PackedMapOfInteger) {
         unsafe {
             crate::ffi::TColStd_PackedMapOfInteger_intersection(self as *mut Self, arg0, arg1)
         }
@@ -2599,7 +2587,7 @@ impl PackedMapOfInteger {
     /// another (given) Map. The result contains only the values that are contained in both this and
     /// the given maps. This algorithm is similar to method Intersection().
     /// @return True if content of this map is changed
-    pub fn intersect(&mut self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+    pub fn intersect(&mut self, arg0: &PackedMapOfInteger) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_intersect(self as *mut Self, arg0) }
     }
 
@@ -2610,11 +2598,7 @@ impl PackedMapOfInteger {
     /// between two given Maps. The new Map contains only the values that are contained in the first
     /// map operands and not contained in the second one. All previous contents of this Map is cleared.
     /// This map (result of the boolean operation) can also be used as the first operand.
-    pub fn subtraction(
-        &mut self,
-        arg0: &crate::ffi::TColStd_PackedMapOfInteger,
-        arg1: &crate::ffi::TColStd_PackedMapOfInteger,
-    ) {
+    pub fn subtraction(&mut self, arg0: &PackedMapOfInteger, arg1: &PackedMapOfInteger) {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_subtraction(self as *mut Self, arg0, arg1) }
     }
 
@@ -2625,7 +2609,7 @@ impl PackedMapOfInteger {
     /// were previously contained in this map and not contained in this map. This algorithm is similar
     /// to method Subtract() with two operands.
     /// @return True if contents of this map is changed
-    pub fn subtract(&mut self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+    pub fn subtract(&mut self, arg0: &PackedMapOfInteger) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_subtract(self as *mut Self, arg0) }
     }
 
@@ -2635,11 +2619,7 @@ impl PackedMapOfInteger {
     /// operation between two given Maps. The new Map contains the values that are contained only in
     /// the first or the second operand maps but not in both. All previous contents of this Map is
     /// cleared. This map (result of the boolean operation) can also be used as one of operands.
-    pub fn difference(
-        &mut self,
-        arg0: &crate::ffi::TColStd_PackedMapOfInteger,
-        arg1: &crate::ffi::TColStd_PackedMapOfInteger,
-    ) {
+    pub fn difference(&mut self, arg0: &PackedMapOfInteger, arg1: &PackedMapOfInteger) {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_difference(self as *mut Self, arg0, arg1) }
     }
 
@@ -2649,7 +2629,7 @@ impl PackedMapOfInteger {
     /// with another (given) Map. The result contains the values that are contained only in this or the
     /// operand map, but not in both. This algorithm is similar to method Difference().
     /// @return True if contents of this map is changed
-    pub fn differ(&mut self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+    pub fn differ(&mut self, arg0: &PackedMapOfInteger) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_differ(self as *mut Self, arg0) }
     }
 
@@ -2657,7 +2637,7 @@ impl PackedMapOfInteger {
     ///
     /// Returns True if this map is equal to the given one, i.e. they contain the
     /// same sets of elements
-    pub fn is_equal(&self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+    pub fn is_equal(&self, arg0: &PackedMapOfInteger) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_is_equal(self as *const Self, arg0) }
     }
 
@@ -2666,17 +2646,77 @@ impl PackedMapOfInteger {
     /// Returns True if this map is subset of the given one, i.e. all elements
     /// contained in this map is contained also in the operand map.
     /// if this map is empty that this method returns true for any operand map.
-    pub fn is_subset(&self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+    pub fn is_subset(&self, arg0: &PackedMapOfInteger) -> bool {
         unsafe { crate::ffi::TColStd_PackedMapOfInteger_is_subset(self as *const Self, arg0) }
     }
 
     /// **Source:** `TColStd_PackedMapOfInteger.hxx`:460 - `TColStd_PackedMapOfInteger::HasIntersection()`
     ///
     /// Returns True if this map has common items with the given one.
-    pub fn has_intersection(&self, arg0: &crate::ffi::TColStd_PackedMapOfInteger) -> bool {
+    pub fn has_intersection(&self, arg0: &PackedMapOfInteger) -> bool {
         unsafe {
             crate::ffi::TColStd_PackedMapOfInteger_has_intersection(self as *const Self, arg0)
         }
+    }
+}
+
+/// **Source:** `TColStd_PackedMapOfInteger.hxx`:155 - `TColStd_PackedMapOfInteger_Iterator`
+/// Iterator of class TColStd_PackedMapOfInteger.
+pub use crate::ffi::TColStd_PackedMapOfInteger_Iterator as PackedMapOfInteger_Iterator;
+
+unsafe impl crate::CppDeletable for PackedMapOfInteger_Iterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TColStd_PackedMapOfInteger_Iterator_destructor(ptr);
+    }
+}
+
+impl PackedMapOfInteger_Iterator {
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:159 - `TColStd_PackedMapOfInteger_Iterator::TColStd_PackedMapOfInteger_Iterator()`
+    /// Empty Constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColStd_PackedMapOfInteger_Iterator_ctor()) }
+    }
+
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:170 - `TColStd_PackedMapOfInteger_Iterator::TColStd_PackedMapOfInteger_Iterator()`
+    /// Constructor.
+    pub fn new_packedmapofinteger(theMap: &PackedMapOfInteger) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_PackedMapOfInteger_Iterator_ctor_packedmapofinteger(theMap),
+            )
+        }
+    }
+
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:182 - `TColStd_PackedMapOfInteger_Iterator::Initialize()`
+    /// Re-initialize with the same or another Map instance.
+    pub fn initialize(&mut self, theMap: &PackedMapOfInteger) {
+        unsafe {
+            crate::ffi::TColStd_PackedMapOfInteger_Iterator_initialize(self as *mut Self, theMap)
+        }
+    }
+
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:195 - `TColStd_PackedMapOfInteger_Iterator::Reset()`
+    /// Restart the iteration
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_Iterator_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:206 - `TColStd_PackedMapOfInteger_Iterator::Key()`
+    /// Query the iterated key.
+    pub fn key(&self) -> i32 {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_Iterator_key(self as *const Self) }
+    }
+
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:214 - `TColStd_PackedMapOfInteger_Iterator::More()`
+    /// Return TRUE if iterator points to the node.
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_Iterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `TColStd_PackedMapOfInteger.hxx`:217 - `TColStd_PackedMapOfInteger_Iterator::Next()`
+    /// Increment the iterator
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::TColStd_PackedMapOfInteger_Iterator_next(self as *mut Self) }
     }
 }
 

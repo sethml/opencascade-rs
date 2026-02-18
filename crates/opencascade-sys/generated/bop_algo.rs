@@ -868,7 +868,7 @@ unsafe impl crate::CppDeletable for AlertBadPositioning {
 impl AlertBadPositioning {
     /// **Source:** `BOPAlgo_Alerts.hxx`:55 - `BOPAlgo_AlertBadPositioning::BOPAlgo_AlertBadPositioning()`
     /// The positioning of the shapes leads to creation of the small edges without valid range
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertBadPositioning_ctor_shape(theShape))
         }
@@ -924,14 +924,14 @@ impl AlertBadPositioning {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertBadPositioning_inherited_GetShape(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertBadPositioning_inherited_SetShape(self as *mut Self, theShape)
         }
@@ -965,7 +965,7 @@ unsafe impl crate::CppDeletable for AlertEmptyShape {
 impl AlertEmptyShape {
     /// **Source:** `BOPAlgo_Alerts.hxx`:58 - `BOPAlgo_AlertEmptyShape::BOPAlgo_AlertEmptyShape()`
     /// Some of the arguments are empty shapes
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertEmptyShape_ctor_shape(theShape))
         }
@@ -1019,12 +1019,12 @@ impl AlertEmptyShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertEmptyShape_inherited_GetShape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertEmptyShape_inherited_SetShape(self as *mut Self, theShape)
         }
@@ -1054,7 +1054,7 @@ unsafe impl crate::CppDeletable for AlertNotSplittableEdge {
 impl AlertNotSplittableEdge {
     /// **Source:** `BOPAlgo_Alerts.hxx`:61 - `BOPAlgo_AlertNotSplittableEdge::BOPAlgo_AlertNotSplittableEdge()`
     /// Some edges are very small and have such a small valid range, that they cannot be split
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertNotSplittableEdge_ctor_shape(
                 theShape,
@@ -1116,14 +1116,14 @@ impl AlertNotSplittableEdge {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_GetShape(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_SetShape(
                 self as *mut Self,
@@ -1160,7 +1160,7 @@ unsafe impl crate::CppDeletable for AlertRemovalOfIBForEdgesFailed {
 impl AlertRemovalOfIBForEdgesFailed {
     /// **Source:** `BOPAlgo_Alerts.hxx`:64 - `BOPAlgo_AlertRemovalOfIBForEdgesFailed::BOPAlgo_AlertRemovalOfIBForEdgesFailed()`
     /// Removal of internal boundaries among Edges has failed
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_ctor_shape(theShape),
@@ -1228,7 +1228,7 @@ impl AlertRemovalOfIBForEdgesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_GetShape(
                 self as *const Self,
@@ -1237,7 +1237,7 @@ impl AlertRemovalOfIBForEdgesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_SetShape(
                 self as *mut Self,
@@ -1279,7 +1279,7 @@ unsafe impl crate::CppDeletable for AlertRemovalOfIBForFacesFailed {
 impl AlertRemovalOfIBForFacesFailed {
     /// **Source:** `BOPAlgo_Alerts.hxx`:67 - `BOPAlgo_AlertRemovalOfIBForFacesFailed::BOPAlgo_AlertRemovalOfIBForFacesFailed()`
     /// Removal of internal boundaries among Faces has failed
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_ctor_shape(theShape),
@@ -1347,7 +1347,7 @@ impl AlertRemovalOfIBForFacesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_GetShape(
                 self as *const Self,
@@ -1356,7 +1356,7 @@ impl AlertRemovalOfIBForFacesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_SetShape(
                 self as *mut Self,
@@ -1398,7 +1398,7 @@ unsafe impl crate::CppDeletable for AlertRemovalOfIBForMDimShapes {
 impl AlertRemovalOfIBForMDimShapes {
     /// **Source:** `BOPAlgo_Alerts.hxx`:70 - `BOPAlgo_AlertRemovalOfIBForMDimShapes::BOPAlgo_AlertRemovalOfIBForMDimShapes()`
     /// Removal of internal boundaries among the multi-dimensional shapes is not supported yet
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_ctor_shape(
                 theShape,
@@ -1466,7 +1466,7 @@ impl AlertRemovalOfIBForMDimShapes {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_GetShape(
                 self as *const Self,
@@ -1475,7 +1475,7 @@ impl AlertRemovalOfIBForMDimShapes {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_SetShape(
                 self as *mut Self,
@@ -1517,7 +1517,7 @@ unsafe impl crate::CppDeletable for AlertRemovalOfIBForSolidsFailed {
 impl AlertRemovalOfIBForSolidsFailed {
     /// **Source:** `BOPAlgo_Alerts.hxx`:73 - `BOPAlgo_AlertRemovalOfIBForSolidsFailed::BOPAlgo_AlertRemovalOfIBForSolidsFailed()`
     /// Removal of internal boundaries among Solids has failed
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_ctor_shape(theShape),
@@ -1587,7 +1587,7 @@ impl AlertRemovalOfIBForSolidsFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_GetShape(
                 self as *const Self,
@@ -1596,7 +1596,7 @@ impl AlertRemovalOfIBForSolidsFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_SetShape(
                 self as *mut Self,
@@ -1638,7 +1638,7 @@ unsafe impl crate::CppDeletable for AlertSelfInterferingShape {
 impl AlertSelfInterferingShape {
     /// **Source:** `BOPAlgo_Alerts.hxx`:76 - `BOPAlgo_AlertSelfInterferingShape::BOPAlgo_AlertSelfInterferingShape()`
     /// Some of the arguments are self-interfering shapes
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertSelfInterferingShape_ctor_shape(
                 theShape,
@@ -1702,7 +1702,7 @@ impl AlertSelfInterferingShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_GetShape(
                 self as *const Self,
@@ -1711,7 +1711,7 @@ impl AlertSelfInterferingShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_SetShape(
                 self as *mut Self,
@@ -1753,7 +1753,7 @@ unsafe impl crate::CppDeletable for AlertShellSplitterFailed {
 impl AlertShellSplitterFailed {
     /// **Source:** `BOPAlgo_Alerts.hxx`:79 - `BOPAlgo_AlertShellSplitterFailed::BOPAlgo_AlertShellSplitterFailed()`
     /// The positioning of the shapes leads to creation of the small edges without valid range
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertShellSplitterFailed_ctor_shape(
                 theShape,
@@ -1817,14 +1817,14 @@ impl AlertShellSplitterFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_GetShape(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_SetShape(
                 self as *mut Self,
@@ -1866,7 +1866,7 @@ unsafe impl crate::CppDeletable for AlertTooSmallEdge {
 impl AlertTooSmallEdge {
     /// **Source:** `BOPAlgo_Alerts.hxx`:82 - `BOPAlgo_AlertTooSmallEdge::BOPAlgo_AlertTooSmallEdge()`
     /// Some edges are too small and have no valid range
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertTooSmallEdge_ctor_shape(theShape))
         }
@@ -1920,12 +1920,12 @@ impl AlertTooSmallEdge {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_GetShape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_SetShape(self as *mut Self, theShape)
         }
@@ -1959,7 +1959,7 @@ unsafe impl crate::CppDeletable for AlertIntersectionOfPairOfShapesFailed {
 impl AlertIntersectionOfPairOfShapesFailed {
     /// **Source:** `BOPAlgo_Alerts.hxx`:85 - `BOPAlgo_AlertIntersectionOfPairOfShapesFailed::BOPAlgo_AlertIntersectionOfPairOfShapesFailed()`
     /// Intersection of pair of shapes has failed
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_ctor_shape(theShape),
@@ -2029,7 +2029,7 @@ impl AlertIntersectionOfPairOfShapesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_GetShape(
                 self as *const Self,
@@ -2038,7 +2038,7 @@ impl AlertIntersectionOfPairOfShapesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_SetShape(
                 self as *mut Self,
@@ -2080,7 +2080,7 @@ unsafe impl crate::CppDeletable for AlertBuildingPCurveFailed {
 impl AlertBuildingPCurveFailed {
     /// **Source:** `BOPAlgo_Alerts.hxx`:88 - `BOPAlgo_AlertBuildingPCurveFailed::BOPAlgo_AlertBuildingPCurveFailed()`
     /// Building 2D curve of edge on face has failed
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_ctor_shape(
                 theShape,
@@ -2144,7 +2144,7 @@ impl AlertBuildingPCurveFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_GetShape(
                 self as *const Self,
@@ -2153,7 +2153,7 @@ impl AlertBuildingPCurveFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_SetShape(
                 self as *mut Self,
@@ -2197,7 +2197,7 @@ impl AlertAcquiredSelfIntersection {
     /// **Source:** `BOPAlgo_Alerts.hxx`:92 - `BOPAlgo_AlertAcquiredSelfIntersection::BOPAlgo_AlertAcquiredSelfIntersection()`
     /// Some sub-shapes of some of the argument become connected through
     /// other shapes and the argument became self-interfered
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_ctor_shape(
                 theShape,
@@ -2265,7 +2265,7 @@ impl AlertAcquiredSelfIntersection {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_GetShape(
                 self as *const Self,
@@ -2274,7 +2274,7 @@ impl AlertAcquiredSelfIntersection {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_SetShape(
                 self as *mut Self,
@@ -2316,7 +2316,7 @@ unsafe impl crate::CppDeletable for AlertUnsupportedType {
 impl AlertUnsupportedType {
     /// **Source:** `BOPAlgo_Alerts.hxx`:95 - `BOPAlgo_AlertUnsupportedType::BOPAlgo_AlertUnsupportedType()`
     /// Unsupported type of input shape
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnsupportedType_ctor_shape(theShape))
         }
@@ -2374,14 +2374,14 @@ impl AlertUnsupportedType {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_GetShape(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_SetShape(self as *mut Self, theShape)
         }
@@ -2480,7 +2480,7 @@ unsafe impl crate::CppDeletable for AlertUnableToRemoveTheFeature {
 impl AlertUnableToRemoveTheFeature {
     /// **Source:** `BOPAlgo_Alerts.hxx`:101 - `BOPAlgo_AlertUnableToRemoveTheFeature::BOPAlgo_AlertUnableToRemoveTheFeature()`
     /// Unable to remove the feature
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_ctor_shape(
                 theShape,
@@ -2548,7 +2548,7 @@ impl AlertUnableToRemoveTheFeature {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_GetShape(
                 self as *const Self,
@@ -2557,7 +2557,7 @@ impl AlertUnableToRemoveTheFeature {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_SetShape(
                 self as *mut Self,
@@ -2675,7 +2675,7 @@ impl AlertSolidBuilderUnusedFaces {
     /// **Source:** `BOPAlgo_Alerts.hxx`:108 - `BOPAlgo_AlertSolidBuilderUnusedFaces::BOPAlgo_AlertSolidBuilderUnusedFaces()`
     /// Some of the faces passed to the Solid Builder algorithm have not been classified
     /// and not used for solids creation
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_ctor_shape(
                 theShape,
@@ -2743,7 +2743,7 @@ impl AlertSolidBuilderUnusedFaces {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_GetShape(
                 self as *const Self,
@@ -2752,7 +2752,7 @@ impl AlertSolidBuilderUnusedFaces {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_SetShape(
                 self as *mut Self,
@@ -2796,7 +2796,7 @@ impl AlertFaceBuilderUnusedEdges {
     /// **Source:** `BOPAlgo_Alerts.hxx`:112 - `BOPAlgo_AlertFaceBuilderUnusedEdges::BOPAlgo_AlertFaceBuilderUnusedEdges()`
     /// Some of the edges passed to the Face Builder algorithm have not been classified
     /// and not used for faces creation
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_ctor_shape(
                 theShape,
@@ -2860,7 +2860,7 @@ impl AlertFaceBuilderUnusedEdges {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_GetShape(
                 self as *const Self,
@@ -2869,7 +2869,7 @@ impl AlertFaceBuilderUnusedEdges {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_SetShape(
                 self as *mut Self,
@@ -2911,7 +2911,7 @@ unsafe impl crate::CppDeletable for AlertUnableToOrientTheShape {
 impl AlertUnableToOrientTheShape {
     /// **Source:** `BOPAlgo_Alerts.hxx`:115 - `BOPAlgo_AlertUnableToOrientTheShape::BOPAlgo_AlertUnableToOrientTheShape()`
     /// Unable to orient the shape correctly
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_ctor_shape(
                 theShape,
@@ -2975,7 +2975,7 @@ impl AlertUnableToOrientTheShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_GetShape(
                 self as *const Self,
@@ -2984,7 +2984,7 @@ impl AlertUnableToOrientTheShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_SetShape(
                 self as *mut Self,
@@ -3026,7 +3026,7 @@ unsafe impl crate::CppDeletable for AlertUnknownShape {
 impl AlertUnknownShape {
     /// **Source:** `BOPAlgo_Alerts.hxx`:118 - `BOPAlgo_AlertUnknownShape::BOPAlgo_AlertUnknownShape()`
     /// Shape is unknown for operation
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnknownShape_ctor_shape(theShape))
         }
@@ -3080,12 +3080,12 @@ impl AlertUnknownShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertUnknownShape_inherited_GetShape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnknownShape_inherited_SetShape(self as *mut Self, theShape)
         }
@@ -3193,7 +3193,7 @@ unsafe impl crate::CppDeletable for AlertUnableToTrim {
 impl AlertUnableToTrim {
     /// **Source:** `BOPAlgo_Alerts.hxx`:124 - `BOPAlgo_AlertUnableToTrim::BOPAlgo_AlertUnableToTrim()`
     /// Unable to trim the shape for making it periodic (BOP Common fails)
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToTrim_ctor_shape(theShape))
         }
@@ -3247,12 +3247,12 @@ impl AlertUnableToTrim {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_GetShape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_SetShape(self as *mut Self, theShape)
         }
@@ -3286,7 +3286,7 @@ unsafe impl crate::CppDeletable for AlertUnableToMakeIdentical {
 impl AlertUnableToMakeIdentical {
     /// **Source:** `BOPAlgo_Alerts.hxx`:127 - `BOPAlgo_AlertUnableToMakeIdentical::BOPAlgo_AlertUnableToMakeIdentical()`
     /// Unable to make the shape to look identical on opposite sides (Splitter fails)
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_ctor_shape(
                 theShape,
@@ -3350,7 +3350,7 @@ impl AlertUnableToMakeIdentical {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_GetShape(
                 self as *const Self,
@@ -3359,7 +3359,7 @@ impl AlertUnableToMakeIdentical {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_SetShape(
                 self as *mut Self,
@@ -3401,7 +3401,7 @@ unsafe impl crate::CppDeletable for AlertUnableToRepeat {
 impl AlertUnableToRepeat {
     /// **Source:** `BOPAlgo_Alerts.hxx`:130 - `BOPAlgo_AlertUnableToRepeat::BOPAlgo_AlertUnableToRepeat()`
     /// Unable to repeat the shape (Gluer fails)
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToRepeat_ctor_shape(theShape))
         }
@@ -3457,14 +3457,14 @@ impl AlertUnableToRepeat {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_GetShape(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_SetShape(self as *mut Self, theShape)
         }
@@ -3578,7 +3578,7 @@ unsafe impl crate::CppDeletable for AlertUnableToMakePeriodic {
 impl AlertUnableToMakePeriodic {
     /// **Source:** `BOPAlgo_Alerts.hxx`:136 - `BOPAlgo_AlertUnableToMakePeriodic::BOPAlgo_AlertUnableToMakePeriodic()`
     /// Unable to make the shape periodic
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_ctor_shape(
                 theShape,
@@ -3642,7 +3642,7 @@ impl AlertUnableToMakePeriodic {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_GetShape(
                 self as *const Self,
@@ -3651,7 +3651,7 @@ impl AlertUnableToMakePeriodic {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_SetShape(
                 self as *mut Self,
@@ -3693,7 +3693,7 @@ unsafe impl crate::CppDeletable for AlertUnableToGlue {
 impl AlertUnableToGlue {
     /// **Source:** `BOPAlgo_Alerts.hxx`:139 - `BOPAlgo_AlertUnableToGlue::BOPAlgo_AlertUnableToGlue()`
     /// Unable to glue the shapes
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToGlue_ctor_shape(theShape))
         }
@@ -3747,12 +3747,12 @@ impl AlertUnableToGlue {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_GetShape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_SetShape(self as *mut Self, theShape)
         }
@@ -3786,7 +3786,7 @@ unsafe impl crate::CppDeletable for AlertShapeIsNotPeriodic {
 impl AlertShapeIsNotPeriodic {
     /// **Source:** `BOPAlgo_Alerts.hxx`:142 - `BOPAlgo_AlertShapeIsNotPeriodic::BOPAlgo_AlertShapeIsNotPeriodic()`
     /// The shape is not periodic
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_ctor_shape(
                 theShape,
@@ -3848,14 +3848,14 @@ impl AlertShapeIsNotPeriodic {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_GetShape(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_SetShape(
                 self as *mut Self,
@@ -3895,7 +3895,7 @@ unsafe impl crate::CppDeletable for AlertUnableToMakeClosedEdgeOnFace {
 impl AlertUnableToMakeClosedEdgeOnFace {
     /// **Source:** `BOPAlgo_Alerts.hxx`:145 - `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace()`
     /// Unable to make closed edge on face (to make a seam)
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_ctor_shape(theShape),
@@ -3963,7 +3963,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_GetShape(
                 self as *const Self,
@@ -3972,7 +3972,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:33 - `TopoDS_AlertWithShape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_SetShape(
                 self as *mut Self,
@@ -4020,7 +4020,7 @@ unsafe impl crate::CppDeletable for ParallelAlgo {
 impl ParallelAlgo {
     /// **Source:** `BOPAlgo_Algo.hxx`:98 - `BOPAlgo_ParallelAlgo::SetProgressRange()`
     /// Sets the range for a single run
-    pub fn set_progress_range(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn set_progress_range(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_ParallelAlgo_set_progress_range(self as *mut Self, theRange) }
     }
 
@@ -4188,25 +4188,25 @@ impl ArgumentAnalyzer {
 
     /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:40 - `BOPAlgo_ArgumentAnalyzer::SetShape1()`
     /// sets object shape
-    pub fn set_shape1(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape1(&mut self, TheShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_ArgumentAnalyzer_set_shape1(self as *mut Self, TheShape) }
     }
 
     /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:43 - `BOPAlgo_ArgumentAnalyzer::SetShape2()`
     /// sets tool shape
-    pub fn set_shape2(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape2(&mut self, TheShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_ArgumentAnalyzer_set_shape2(self as *mut Self, TheShape) }
     }
 
     /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:46 - `BOPAlgo_ArgumentAnalyzer::GetShape1()`
     /// returns object shape;
-    pub fn get_shape1(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape1(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_get_shape1(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:49 - `BOPAlgo_ArgumentAnalyzer::GetShape2()`
     /// returns tool shape
-    pub fn get_shape2(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape2(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_get_shape2(self as *const Self)) }
     }
 
@@ -4287,7 +4287,7 @@ impl ArgumentAnalyzer {
 
     /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:94 - `BOPAlgo_ArgumentAnalyzer::Perform()`
     /// performs analysis
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_ArgumentAnalyzer_perform(self as *mut Self, theRange) }
     }
 
@@ -4494,7 +4494,7 @@ impl BOP {
     }
 
     /// **Source:** `BOPAlgo_BOP.hxx`:81 - `BOPAlgo_BOP::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_BOP_perform(self as *mut Self, theRange) }
     }
 
@@ -4539,7 +4539,7 @@ impl BOP {
     }
 
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
-    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_tool(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_BOP_inherited_AddTool(self as *mut Self, theShape) }
     }
 
@@ -4563,7 +4563,7 @@ impl BOP {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_BOP_inherited_AddArgument(self as *mut Self, theShape) }
     }
 
@@ -4615,8 +4615,8 @@ impl BOP {
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BOPAlgo_BOP_inherited_PerformWithFiller(
@@ -4643,28 +4643,22 @@ impl BOP {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_BOP_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -4853,7 +4847,7 @@ impl Builder {
     /// **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
     /// @name Arguments
     /// Adds the argument to the operation.
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_Builder_add_argument(self as *mut Self, theShape) }
     }
 
@@ -4923,7 +4917,7 @@ impl Builder {
     /// @name Performing the operation
     /// Performs the operation.
     /// The intersection will be performed also.
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_Builder_perform(self as *mut Self, theRange) }
     }
 
@@ -4932,8 +4926,8 @@ impl Builder {
     /// The intersection will not be performed in this case.
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BOPAlgo_Builder_perform_with_filler(self as *mut Self, theFiller, theRange)
@@ -4983,28 +4977,22 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_Builder_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -5152,19 +5140,19 @@ impl BuilderFace {
 
     /// **Source:** `BOPAlgo_BuilderFace.hxx`:47 - `BOPAlgo_BuilderFace::SetFace()`
     /// Sets the face generatix
-    pub fn set_face(&mut self, theFace: &crate::ffi::TopoDS_Face) {
+    pub fn set_face(&mut self, theFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BOPAlgo_BuilderFace_set_face(self as *mut Self, theFace) }
     }
 
     /// **Source:** `BOPAlgo_BuilderFace.hxx`:50 - `BOPAlgo_BuilderFace::Face()`
     /// Returns the face generatix
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderFace_face(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_BuilderFace.hxx`:53 - `BOPAlgo_BuilderFace::Perform()`
     /// Performs the algorithm
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_BuilderFace_perform(self as *mut Self, theRange) }
     }
 
@@ -5337,26 +5325,20 @@ impl BuilderShape {
     /// **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
     /// @name Getting the result
     /// Returns the result of algorithm
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_shape(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
     /// @name History methods
     /// Returns the list of shapes Modified from the shape theS.
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_modified(self as *mut Self, theS)) }
     }
 
     /// **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
     /// Returns the list of shapes Generated from the shape theS.
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_generated(self as *mut Self, theS)) }
     }
 
@@ -5364,7 +5346,7 @@ impl BuilderShape {
     /// Returns true if the shape theS has been deleted.
     /// In this case the shape will have no Modified elements,
     /// but can have Generated elements.
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_BuilderShape_is_deleted(self as *mut Self, theS) }
     }
 
@@ -5422,7 +5404,7 @@ impl BuilderShape {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Algo.hxx`:39 - `BOPAlgo_Algo::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_BuilderShape_inherited_Perform(self as *mut Self, theRange) }
     }
 
@@ -5593,7 +5575,7 @@ impl BuilderSolid {
     /// **Source:** `BOPAlgo_BuilderSolid.hxx`:95 - `BOPAlgo_BuilderSolid::Perform()`
     /// @name Performing the operation
     /// Performs the construction of the solids from the given faces
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_BuilderSolid_perform(self as *mut Self, theRange) }
     }
 
@@ -6004,7 +5986,7 @@ impl CellsBuilder {
 
     /// **Source:** `BOPAlgo_CellsBuilder.hxx`:224 - `BOPAlgo_CellsBuilder::GetAllParts()`
     /// Get all split parts.
-    pub fn get_all_parts(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_all_parts(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_get_all_parts(self as *const Self)) }
     }
 
@@ -6060,7 +6042,7 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_CellsBuilder_inherited_AddArgument(self as *mut Self, theShape)
         }
@@ -6118,15 +6100,15 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_CellsBuilder_inherited_Perform(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BOPAlgo_CellsBuilder_inherited_PerformWithFiller(
@@ -6153,28 +6135,22 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_CellsBuilder_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -6322,37 +6298,37 @@ impl CheckResult {
 
     /// **Source:** `BOPAlgo_CheckResult.hxx`:38 - `BOPAlgo_CheckResult::SetShape1()`
     /// sets ancestor shape (object) for faulty sub-shapes
-    pub fn set_shape1(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape1(&mut self, TheShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_set_shape1(self as *mut Self, TheShape) }
     }
 
     /// **Source:** `BOPAlgo_CheckResult.hxx`:41 - `BOPAlgo_CheckResult::AddFaultyShape1()`
     /// adds faulty sub-shapes from object to a list
-    pub fn add_faulty_shape1(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_faulty_shape1(&mut self, TheShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_add_faulty_shape1(self as *mut Self, TheShape) }
     }
 
     /// **Source:** `BOPAlgo_CheckResult.hxx`:44 - `BOPAlgo_CheckResult::SetShape2()`
     /// sets ancestor shape (tool) for faulty sub-shapes
-    pub fn set_shape2(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape2(&mut self, TheShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_set_shape2(self as *mut Self, TheShape) }
     }
 
     /// **Source:** `BOPAlgo_CheckResult.hxx`:47 - `BOPAlgo_CheckResult::AddFaultyShape2()`
     /// adds faulty sub-shapes from tool to a list
-    pub fn add_faulty_shape2(&mut self, TheShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_faulty_shape2(&mut self, TheShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_CheckResult_add_faulty_shape2(self as *mut Self, TheShape) }
     }
 
     /// **Source:** `BOPAlgo_CheckResult.hxx`:50 - `BOPAlgo_CheckResult::GetShape1()`
     /// returns ancestor shape (object) for faulties
-    pub fn get_shape1(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape1(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_shape1(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_CheckResult.hxx`:53 - `BOPAlgo_CheckResult::GetShape2()`
     /// returns ancestor shape (tool) for faulties
-    pub fn get_shape2(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape2(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_CheckResult_get_shape2(self as *const Self)) }
     }
 
@@ -6568,7 +6544,7 @@ impl MakeConnected {
     /// **Source:** `BOPAlgo_MakeConnected.hxx`:150 - `BOPAlgo_MakeConnected::AddArgument()`
     /// Adds the shape to the arguments.
     /// @param[in] theS  One of the argument shapes.
-    pub fn add_argument(&mut self, theS: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theS: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_MakeConnected_add_argument(self as *mut Self, theS) }
     }
 
@@ -6591,10 +6567,7 @@ impl MakeConnected {
     /// Repeated calls of this method overwrite the previous calls
     /// working with the basis connected shape.
     /// @param[in] theParams  Periodic options.
-    pub fn make_periodic(
-        &mut self,
-        theParams: &crate::ffi::BOPAlgo_MakePeriodic_PeriodicityParams,
-    ) {
+    pub fn make_periodic(&mut self, theParams: &MakePeriodic_PeriodicityParams) {
         unsafe { crate::ffi::BOPAlgo_MakeConnected_make_periodic(self as *mut Self, theParams) }
     }
 
@@ -6623,7 +6596,7 @@ impl MakeConnected {
 
     /// **Source:** `BOPAlgo_MakeConnected.hxx`:179 - `BOPAlgo_MakeConnected::PeriodicityTool()`
     /// Returns the periodicity tool.
-    pub fn periodicity_tool(&self) -> &crate::ffi::BOPAlgo_MakePeriodic {
+    pub fn periodicity_tool(&self) -> &MakePeriodic {
         unsafe { &*(crate::ffi::BOPAlgo_MakeConnected_periodicity_tool(self as *const Self)) }
     }
 
@@ -6634,7 +6607,7 @@ impl MakeConnected {
     /// @param[in] theS  The shape for which the materials are necessary.
     pub fn materials_on_positive_side(
         &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BOPAlgo_MakeConnected_materials_on_positive_side(
@@ -6650,7 +6623,7 @@ impl MakeConnected {
     /// @param[in] theS  The shape for which the materials are necessary.
     pub fn materials_on_negative_side(
         &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BOPAlgo_MakeConnected_materials_on_negative_side(
@@ -6672,7 +6645,7 @@ impl MakeConnected {
     /// @param[in] theS  The shape for which the modified shapes are necessary.
     pub fn get_modified(
         &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_MakeConnected_get_modified(self as *mut Self, theS)) }
     }
@@ -6682,7 +6655,7 @@ impl MakeConnected {
     /// @param[in] theS  The shape for which the origins are necessary.
     pub fn get_origins(
         &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_MakeConnected_get_origins(self as *mut Self, theS)) }
     }
@@ -6690,13 +6663,13 @@ impl MakeConnected {
     /// **Source:** `BOPAlgo_MakeConnected.hxx`:221 - `BOPAlgo_MakeConnected::Shape()`
     /// @name Getting the result shapes
     /// Returns the resulting connected shape
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakeConnected_shape(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_MakeConnected.hxx`:224 - `BOPAlgo_MakeConnected::PeriodicShape()`
     /// Returns the resulting periodic & repeated shape
-    pub fn periodic_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn periodic_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakeConnected_periodic_shape(self as *const Self)) }
     }
 
@@ -6921,7 +6894,7 @@ impl MakePeriodic {
     /// @name Setting the shape to make it periodic
     /// Sets the shape to make it periodic.
     /// @param[in] theShape  The shape to make periodic.
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_MakePeriodic_set_shape(self as *mut Self, theShape) }
     }
 
@@ -6929,10 +6902,7 @@ impl MakePeriodic {
     /// @name Setters/Getters for periodicity parameters structure
     /// Sets the periodicity parameters.
     /// @param[in] theParams  Periodicity parameters
-    pub fn set_periodicity_parameters(
-        &mut self,
-        theParams: &crate::ffi::BOPAlgo_MakePeriodic_PeriodicityParams,
-    ) {
+    pub fn set_periodicity_parameters(&mut self, theParams: &MakePeriodic_PeriodicityParams) {
         unsafe {
             crate::ffi::BOPAlgo_MakePeriodic_set_periodicity_parameters(
                 self as *mut Self,
@@ -6942,7 +6912,7 @@ impl MakePeriodic {
     }
 
     /// **Source:** `BOPAlgo_MakePeriodic.hxx`:177 - `BOPAlgo_MakePeriodic::PeriodicityParameters()`
-    pub fn periodicity_parameters(&self) -> &crate::ffi::BOPAlgo_MakePeriodic_PeriodicityParams {
+    pub fn periodicity_parameters(&self) -> &MakePeriodic_PeriodicityParams {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_periodicity_parameters(self as *const Self)) }
     }
 
@@ -7224,11 +7194,7 @@ impl MakePeriodic {
     ///
     /// @param[in] theDirectionID  The direction's ID;
     /// @param[in] theTimes  Requested number of repetitions.
-    pub fn repeat_shape(
-        &mut self,
-        theDirectionID: i32,
-        theTimes: i32,
-    ) -> &crate::ffi::TopoDS_Shape {
+    pub fn repeat_shape(&mut self, theDirectionID: i32, theTimes: i32) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::BOPAlgo_MakePeriodic_repeat_shape(
                 self as *mut Self,
@@ -7245,7 +7211,7 @@ impl MakePeriodic {
     /// Makes the repeated shape a base for following repetitions.
     ///
     /// @param[in] theTimes  Requested number of repetitions.
-    pub fn x_repeat(&mut self, theTimes: i32) -> &crate::ffi::TopoDS_Shape {
+    pub fn x_repeat(&mut self, theTimes: i32) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_x_repeat(self as *mut Self, theTimes)) }
     }
 
@@ -7256,7 +7222,7 @@ impl MakePeriodic {
     /// Makes the repeated shape a base for following repetitions.
     ///
     /// @param[in] theTimes  Requested number of repetitions.
-    pub fn y_repeat(&mut self, theTimes: i32) -> &crate::ffi::TopoDS_Shape {
+    pub fn y_repeat(&mut self, theTimes: i32) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_y_repeat(self as *mut Self, theTimes)) }
     }
 
@@ -7267,14 +7233,14 @@ impl MakePeriodic {
     /// Makes the repeated shape a base for following repetitions.
     ///
     /// @param[in] theTimes  Requested number of repetitions.
-    pub fn z_repeat(&mut self, theTimes: i32) -> &crate::ffi::TopoDS_Shape {
+    pub fn z_repeat(&mut self, theTimes: i32) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_z_repeat(self as *mut Self, theTimes)) }
     }
 
     /// **Source:** `BOPAlgo_MakePeriodic.hxx`:405 - `BOPAlgo_MakePeriodic::RepeatedShape()`
     /// @name Starting the repetitions over
     /// Returns the repeated shape
-    pub fn repeated_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn repeated_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_repeated_shape(self as *const Self)) }
     }
 
@@ -7288,7 +7254,7 @@ impl MakePeriodic {
     /// **Source:** `BOPAlgo_MakePeriodic.hxx`:424 - `BOPAlgo_MakePeriodic::Shape()`
     /// @name Obtaining the result shape
     /// Returns the resulting periodic shape
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_shape(self as *const Self)) }
     }
 
@@ -7299,7 +7265,7 @@ impl MakePeriodic {
     /// Returns empty list in case the shape has no twin.
     ///
     /// @param[in] theS  Shape to get the twins for.
-    pub fn get_twins(&self, theS: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn get_twins(&self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_get_twins(self as *const Self, theS)) }
     }
 
@@ -7414,6 +7380,17 @@ impl MakePeriodic {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:135 - `BOPAlgo_Options::UseOBB()`
     pub fn use_obb(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_MakePeriodic_inherited_UseOBB(self as *const Self) }
+    }
+}
+
+/// **Source:** `BOPAlgo_MakePeriodic.hxx`:144 - `BOPAlgo_MakePeriodic_PeriodicityParams`
+/// @name Definition of the structure to keep all periodicity parameters
+/// Structure to keep all periodicity parameters:
+pub use crate::ffi::BOPAlgo_MakePeriodic_PeriodicityParams as MakePeriodic_PeriodicityParams;
+
+unsafe impl crate::CppDeletable for MakePeriodic_PeriodicityParams {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_MakePeriodic_PeriodicityParams_destructor(ptr);
     }
 }
 
@@ -7547,7 +7524,7 @@ impl MakerVolume {
 
     /// **Source:** `BOPAlgo_MakerVolume.hxx`:130 - `BOPAlgo_MakerVolume::Box()`
     /// Returns the solid box <mySBox>.
-    pub fn box_(&self) -> &crate::ffi::TopoDS_Solid {
+    pub fn box_(&self) -> &crate::topo_ds::Solid {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_box_(self as *const Self)) }
     }
 
@@ -7577,7 +7554,7 @@ impl MakerVolume {
 
     /// **Source:** `BOPAlgo_MakerVolume.hxx`:146 - `BOPAlgo_MakerVolume::Perform()`
     /// Performs the operation.
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_MakerVolume_perform(self as *mut Self, theRange) }
     }
 
@@ -7623,7 +7600,7 @@ impl MakerVolume {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_MakerVolume_inherited_AddArgument(self as *mut Self, theShape)
         }
@@ -7683,8 +7660,8 @@ impl MakerVolume {
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BOPAlgo_MakerVolume_inherited_PerformWithFiller(
@@ -7711,28 +7688,22 @@ impl MakerVolume {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_MakerVolume_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -8076,7 +8047,7 @@ impl PaveFiller {
     }
 
     /// **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::DS()`
-    pub fn ds(&mut self) -> &crate::ffi::BOPDS_DS {
+    pub fn ds(&mut self) -> &crate::bopds::DS {
         unsafe { &*(crate::ffi::BOPAlgo_PaveFiller_ds(self as *mut Self)) }
     }
 
@@ -8088,7 +8059,7 @@ impl PaveFiller {
 
     /// **Source:** `BOPAlgo_PaveFiller.hxx`:129 - `BOPAlgo_PaveFiller::AddArgument()`
     /// Adds the argument for operation
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_PaveFiller_add_argument(self as *mut Self, theShape) }
     }
 
@@ -8104,7 +8075,7 @@ impl PaveFiller {
     }
 
     /// **Source:** `BOPAlgo_PaveFiller.hxx`:136 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
-    pub fn set_section_attribute(&mut self, theSecAttr: &crate::ffi::BOPAlgo_SectionAttribute) {
+    pub fn set_section_attribute(&mut self, theSecAttr: &SectionAttribute) {
         unsafe {
             crate::ffi::BOPAlgo_PaveFiller_set_section_attribute(self as *mut Self, theSecAttr)
         }
@@ -8127,7 +8098,7 @@ impl PaveFiller {
     }
 
     /// **Source:** `BOPAlgo_PaveFiller.hxx`:148 - `BOPAlgo_PaveFiller::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_PaveFiller_perform(self as *mut Self, theRange) }
     }
 
@@ -8389,20 +8360,20 @@ impl RemoveFeatures {
     /// Sets the shape for processing.
     /// @param[in] theShape  The shape to remove the faces from.
     /// It should either be the SOLID, COMPSOLID or COMPOUND of Solids.
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_set_shape(self as *mut Self, theShape) }
     }
 
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:166 - `BOPAlgo_RemoveFeatures::InputShape()`
     /// Returns the input shape
-    pub fn input_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn input_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_input_shape(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:170 - `BOPAlgo_RemoveFeatures::AddFaceToRemove()`
     /// Adds the face to remove from the input shape.
     /// @param[in] theFace  The shape to extract the faces for removal.
-    pub fn add_face_to_remove(&mut self, theFace: &crate::ffi::TopoDS_Shape) {
+    pub fn add_face_to_remove(&mut self, theFace: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_add_face_to_remove(self as *mut Self, theFace) }
     }
 
@@ -8425,7 +8396,7 @@ impl RemoveFeatures {
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:187 - `BOPAlgo_RemoveFeatures::Perform()`
     /// @name Performing the operation
     /// Performs the operation
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_perform(self as *mut Self, theRange) }
     }
 
@@ -8466,32 +8437,26 @@ impl RemoveFeatures {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Modified(self as *mut Self, theS))
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_Generated(self as *mut Self, theS))
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -8705,7 +8670,7 @@ impl Section {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_Section_inherited_AddArgument(self as *mut Self, theShape) }
     }
 
@@ -8759,15 +8724,15 @@ impl Section {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_Section_inherited_Perform(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BOPAlgo_Section_inherited_PerformWithFiller(
@@ -8794,28 +8759,22 @@ impl Section {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_Section_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -9049,7 +9008,7 @@ impl ShellSplitter {
 
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:44 - `BOPAlgo_ShellSplitter::AddStartElement()`
     /// adds a face <theS> to process
-    pub fn add_start_element(&mut self, theS: &crate::ffi::TopoDS_Shape) {
+    pub fn add_start_element(&mut self, theS: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_ShellSplitter_add_start_element(self as *mut Self, theS) }
     }
 
@@ -9061,7 +9020,7 @@ impl ShellSplitter {
 
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:50 - `BOPAlgo_ShellSplitter::Perform()`
     /// performs the algorithm
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_ShellSplitter_perform(self as *mut Self, theRange) }
     }
 
@@ -9072,7 +9031,7 @@ impl ShellSplitter {
     }
 
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:56 - `BOPAlgo_ShellSplitter::SplitBlock()`
-    pub fn split_block(theCB: &mut crate::ffi::BOPTools_ConnexityBlock) {
+    pub fn split_block(theCB: &mut crate::bop_tools::ConnexityBlock) {
         unsafe { crate::ffi::BOPAlgo_ShellSplitter_split_block(theCB) }
     }
 
@@ -9235,7 +9194,7 @@ impl Splitter {
 
     /// **Source:** `BOPAlgo_Splitter.hxx`:62 - `BOPAlgo_Splitter::Perform()`
     /// Performs the operation
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_Splitter_perform(self as *mut Self, theRange) }
     }
 
@@ -9289,7 +9248,7 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
-    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_tool(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_Splitter_inherited_AddTool(self as *mut Self, theShape) }
     }
 
@@ -9313,7 +9272,7 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_Splitter_inherited_AddArgument(self as *mut Self, theShape) }
     }
 
@@ -9369,8 +9328,8 @@ impl Splitter {
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BOPAlgo_Splitter_inherited_PerformWithFiller(
@@ -9397,28 +9356,22 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_Splitter_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -9571,8 +9524,8 @@ impl Tools {
     /// 1 - in case there are no edges in the given shape;<br>
     /// 2 - sharing of the edges has failed.<br>
     pub fn edges_to_wires(
-        theEdges: &crate::ffi::TopoDS_Shape,
-        theWires: &mut crate::ffi::TopoDS_Shape,
+        theEdges: &crate::topo_ds::Shape,
+        theWires: &mut crate::topo_ds::Shape,
         theShared: bool,
         theAngTol: f64,
     ) -> i32 {
@@ -9597,8 +9550,8 @@ impl Tools {
     /// for intersection of planes in IntTools_FaceFace.<br>
     /// Method returns TRUE in case of success, i.e. at least one face has been built.<br>
     pub fn wires_to_faces(
-        theWires: &crate::ffi::TopoDS_Shape,
-        theFaces: &mut crate::ffi::TopoDS_Shape,
+        theWires: &crate::topo_ds::Shape,
+        theFaces: &mut crate::topo_ds::Shape,
         theAngTol: f64,
     ) -> bool {
         unsafe { crate::ffi::BOPAlgo_Tools_wires_to_faces(theWires, theFaces, theAngTol) }
@@ -9638,7 +9591,7 @@ impl Tools {
         theInParts: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
         theShapeBoxMap: &crate::ffi::TopTools_DataMapOfShapeBox,
         theSolidsIF: &crate::ffi::TopTools_DataMapOfShapeListOfShape,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BOPAlgo_Tools_classify_faces(
@@ -9684,10 +9637,10 @@ impl Tools {
     /// @param thePoint the Point to compute transformation to
     /// @param theCriteria the Criteria to check whether thranformation is required
     pub fn trsf_to_point(
-        theBox1: &crate::ffi::Bnd_Box,
-        theBox2: &crate::ffi::Bnd_Box,
-        theTrsf: &mut crate::ffi::gp_Trsf,
-        thePoint: &crate::ffi::gp_Pnt,
+        theBox1: &crate::bnd::Box,
+        theBox2: &crate::bnd::Box,
+        theTrsf: &mut crate::gp::Trsf,
+        thePoint: &crate::gp::Pnt,
         theCriteria: f64,
     ) -> bool {
         unsafe {
@@ -9742,7 +9695,7 @@ impl ToolsProvider {
 
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
     /// Adds Tool argument of the operation
-    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_tool(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_ToolsProvider_add_tool(self as *mut Self, theShape) }
     }
 
@@ -9806,7 +9759,7 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BOPAlgo_ToolsProvider_inherited_AddArgument(self as *mut Self, theShape)
         }
@@ -9872,15 +9825,15 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_Perform(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BOPAlgo_ToolsProvider_inherited_PerformWithFiller(
@@ -9907,30 +9860,24 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Generated(self as *mut Self, theS))
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BOPAlgo_ToolsProvider_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -10092,17 +10039,17 @@ impl WireEdgeSet {
     }
 
     /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:43 - `BOPAlgo_WireEdgeSet::SetFace()`
-    pub fn set_face(&mut self, aF: &crate::ffi::TopoDS_Face) {
+    pub fn set_face(&mut self, aF: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BOPAlgo_WireEdgeSet_set_face(self as *mut Self, aF) }
     }
 
     /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:45 - `BOPAlgo_WireEdgeSet::Face()`
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BOPAlgo_WireEdgeSet_face(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:47 - `BOPAlgo_WireEdgeSet::AddStartElement()`
-    pub fn add_start_element(&mut self, sS: &crate::ffi::TopoDS_Shape) {
+    pub fn add_start_element(&mut self, sS: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_WireEdgeSet_add_start_element(self as *mut Self, sS) }
     }
 
@@ -10112,7 +10059,7 @@ impl WireEdgeSet {
     }
 
     /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:51 - `BOPAlgo_WireEdgeSet::AddShape()`
-    pub fn add_shape(&mut self, sS: &crate::ffi::TopoDS_Shape) {
+    pub fn add_shape(&mut self, sS: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BOPAlgo_WireEdgeSet_add_shape(self as *mut Self, sS) }
     }
 
@@ -10157,12 +10104,12 @@ impl WireSplitter {
     }
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:47 - `BOPAlgo_WireSplitter::SetWES()`
-    pub fn set_wes(&mut self, theWES: &crate::ffi::BOPAlgo_WireEdgeSet) {
+    pub fn set_wes(&mut self, theWES: &WireEdgeSet) {
         unsafe { crate::ffi::BOPAlgo_WireSplitter_set_wes(self as *mut Self, theWES) }
     }
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:49 - `BOPAlgo_WireSplitter::WES()`
-    pub fn wes(&mut self) -> &mut crate::ffi::BOPAlgo_WireEdgeSet {
+    pub fn wes(&mut self) -> &mut WireEdgeSet {
         unsafe { &mut *(crate::ffi::BOPAlgo_WireSplitter_wes(self as *mut Self)) }
     }
 
@@ -10179,22 +10126,22 @@ impl WireSplitter {
     }
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:57 - `BOPAlgo_WireSplitter::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BOPAlgo_WireSplitter_perform(self as *mut Self, theRange) }
     }
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:60 - `BOPAlgo_WireSplitter::MakeWire()`
     pub fn make_wire(
         theLE: &mut crate::ffi::TopTools_ListOfShape,
-        theW: &mut crate::ffi::TopoDS_Wire,
+        theW: &mut crate::topo_ds::Wire,
     ) {
         unsafe { crate::ffi::BOPAlgo_WireSplitter_make_wire(theLE, theW) }
     }
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:62 - `BOPAlgo_WireSplitter::SplitBlock()`
     pub fn split_block(
-        theF: &crate::ffi::TopoDS_Face,
-        theCB: &mut crate::ffi::BOPTools_ConnexityBlock,
+        theF: &crate::topo_ds::Face,
+        theCB: &mut crate::bop_tools::ConnexityBlock,
         theContext: &crate::ffi::HandleIntToolsContext,
     ) {
         unsafe { crate::ffi::BOPAlgo_WireSplitter_split_block(theF, theCB, theContext) }

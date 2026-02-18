@@ -135,28 +135,28 @@ impl CLProps {
 
     /// **Source:** `GeomLProp_CLProps.hxx`:84 - `GeomLProp_CLProps::Value()`
     /// Returns the Point.
-    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+    pub fn value(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::GeomLProp_CLProps_value(self as *const Self)) }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:88 - `GeomLProp_CLProps::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d1(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_CLProps_d1(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:92 - `GeomLProp_CLProps::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d2(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d2(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_CLProps_d2(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:96 - `GeomLProp_CLProps::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d3(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d3(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_CLProps_d3(self as *mut Self)) }
     }
 
@@ -170,7 +170,7 @@ impl CLProps {
 
     /// **Source:** `GeomLProp_CLProps.hxx`:104 - `GeomLProp_CLProps::Tangent()`
     /// output  the tangent direction <D>
-    pub fn tangent(&mut self, D: &mut crate::ffi::gp_Dir) {
+    pub fn tangent(&mut self, D: &mut crate::gp::Dir) {
         unsafe { crate::ffi::GeomLProp_CLProps_tangent(self as *mut Self, D) }
     }
 
@@ -182,13 +182,13 @@ impl CLProps {
 
     /// **Source:** `GeomLProp_CLProps.hxx`:110 - `GeomLProp_CLProps::Normal()`
     /// Returns the normal direction <N>.
-    pub fn normal(&mut self, N: &mut crate::ffi::gp_Dir) {
+    pub fn normal(&mut self, N: &mut crate::gp::Dir) {
         unsafe { crate::ffi::GeomLProp_CLProps_normal(self as *mut Self, N) }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:113 - `GeomLProp_CLProps::CentreOfCurvature()`
     /// Returns the centre of curvature <P>.
-    pub fn centre_of_curvature(&mut self, P: &mut crate::ffi::gp_Pnt) {
+    pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomLProp_CLProps_centre_of_curvature(self as *mut Self, P) }
     }
 }
@@ -215,7 +215,7 @@ impl CurveTool {
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:35 - `GeomLProp_CurveTool::Value()`
     /// Computes the point <P> of parameter <U> on the curve <C>.
-    pub fn value(C: &crate::ffi::HandleGeomCurve, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn value(C: &crate::ffi::HandleGeomCurve, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomLProp_CurveTool_value(C, U, P) }
     }
 
@@ -225,8 +225,8 @@ impl CurveTool {
     pub fn d1(
         C: &crate::ffi::HandleGeomCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_CurveTool_d1(C, U, P, V1) }
     }
@@ -237,9 +237,9 @@ impl CurveTool {
     pub fn d2(
         C: &crate::ffi::HandleGeomCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_CurveTool_d2(C, U, P, V1, V2) }
     }
@@ -251,10 +251,10 @@ impl CurveTool {
     pub fn d3(
         C: &crate::ffi::HandleGeomCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_CurveTool_d3(C, U, P, V1, V2, V3) }
     }
@@ -364,42 +364,42 @@ impl SLProps {
 
     /// **Source:** `GeomLProp_SLProps.hxx`:80 - `GeomLProp_SLProps::Value()`
     /// Returns the point.
-    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+    pub fn value(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_value(self as *const Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:84 - `GeomLProp_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1u(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d1u(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_d1u(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:88 - `GeomLProp_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1v(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d1v(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_d1v(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:92 - `GeomLProp_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
-    pub fn d2u(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d2u(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_d2u(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:96 - `GeomLProp_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d2v(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d2v(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_d2v(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:100 - `GeomLProp_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn duv(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn duv(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_duv(self as *mut Self)) }
     }
 
@@ -413,7 +413,7 @@ impl SLProps {
 
     /// **Source:** `GeomLProp_SLProps.hxx`:108 - `GeomLProp_SLProps::TangentU()`
     /// Returns the tangent direction <D> on the iso-V.
-    pub fn tangent_u(&mut self, D: &mut crate::ffi::gp_Dir) {
+    pub fn tangent_u(&mut self, D: &mut crate::gp::Dir) {
         unsafe { crate::ffi::GeomLProp_SLProps_tangent_u(self as *mut Self, D) }
     }
 
@@ -427,7 +427,7 @@ impl SLProps {
 
     /// **Source:** `GeomLProp_SLProps.hxx`:116 - `GeomLProp_SLProps::TangentV()`
     /// Returns the tangent direction <D> on the iso-V.
-    pub fn tangent_v(&mut self, D: &mut crate::ffi::gp_Dir) {
+    pub fn tangent_v(&mut self, D: &mut crate::gp::Dir) {
         unsafe { crate::ffi::GeomLProp_SLProps_tangent_v(self as *mut Self, D) }
     }
 
@@ -439,7 +439,7 @@ impl SLProps {
 
     /// **Source:** `GeomLProp_SLProps.hxx`:122 - `GeomLProp_SLProps::Normal()`
     /// Returns the normal direction.
-    pub fn normal(&mut self) -> &crate::ffi::gp_Dir {
+    pub fn normal(&mut self) -> &crate::gp::Dir {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_normal(self as *mut Self)) }
     }
 
@@ -471,11 +471,7 @@ impl SLProps {
     /// **Source:** `GeomLProp_SLProps.hxx`:139 - `GeomLProp_SLProps::CurvatureDirections()`
     /// Returns the direction of the maximum and minimum curvature
     /// <MaxD> and <MinD>
-    pub fn curvature_directions(
-        &mut self,
-        MaxD: &mut crate::ffi::gp_Dir,
-        MinD: &mut crate::ffi::gp_Dir,
-    ) {
+    pub fn curvature_directions(&mut self, MaxD: &mut crate::gp::Dir, MinD: &mut crate::gp::Dir) {
         unsafe { crate::ffi::GeomLProp_SLProps_curvature_directions(self as *mut Self, MaxD, MinD) }
     }
 
@@ -515,7 +511,7 @@ impl SurfaceTool {
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:36 - `GeomLProp_SurfaceTool::Value()`
     /// Computes the point <P> of parameter <U> and <V> on the
     /// Surface <S>.
-    pub fn value(S: &crate::ffi::HandleGeomSurface, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn value(S: &crate::ffi::HandleGeomSurface, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomLProp_SurfaceTool_value(S, U, V, P) }
     }
 
@@ -526,9 +522,9 @@ impl SurfaceTool {
         S: &crate::ffi::HandleGeomSurface,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_SurfaceTool_d1(S, U, V, P, D1U, D1V) }
     }
@@ -540,12 +536,12 @@ impl SurfaceTool {
         S: &crate::ffi::HandleGeomSurface,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        DUV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        DUV: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV) }
     }
@@ -557,7 +553,7 @@ impl SurfaceTool {
         V: f64,
         IU: i32,
         IV: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLProp_SurfaceTool_dn(S, U, V, IU, IV)) }
     }
 

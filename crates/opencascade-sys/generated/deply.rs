@@ -52,7 +52,7 @@ impl ConfigurationNode {
     /// **Source:** `DEPLY_ConfigurationNode.hxx`:52 - `DEPLY_ConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string
-    pub fn save(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn save(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DEPLY_ConfigurationNode_save(self as *const Self))
         }
@@ -95,7 +95,7 @@ impl ConfigurationNode {
     /// **Source:** `DEPLY_ConfigurationNode.hxx`:73 - `DEPLY_ConfigurationNode::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
-    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DEPLY_ConfigurationNode_get_format(
                 self as *const Self,
@@ -106,7 +106,7 @@ impl ConfigurationNode {
     /// **Source:** `DEPLY_ConfigurationNode.hxx`:77 - `DEPLY_ConfigurationNode::GetVendor()`
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
-    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DEPLY_ConfigurationNode_get_vendor(
                 self as *const Self,
@@ -164,7 +164,7 @@ impl ConfigurationNode {
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
-    pub fn check_extension(&self, theExtension: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::DEPLY_ConfigurationNode_inherited_CheckExtension(
                 self as *const Self,
@@ -189,6 +189,27 @@ impl ConfigurationNode {
     pub fn custom_activation(&mut self, arg0: &crate::ffi::TColStd_ListOfAsciiString) {
         unsafe {
             crate::ffi::DEPLY_ConfigurationNode_inherited_CustomActivation(self as *mut Self, arg0)
+        }
+    }
+}
+
+/// **Source:** `DEPLY_ConfigurationNode.hxx`:90 - `DEPLY_ConfigurationNode_RWPly_InternalSection`
+pub use crate::ffi::DEPLY_ConfigurationNode_RWPly_InternalSection as ConfigurationNode_RWPly_InternalSection;
+
+unsafe impl crate::CppDeletable for ConfigurationNode_RWPly_InternalSection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DEPLY_ConfigurationNode_RWPly_InternalSection_destructor(ptr);
+    }
+}
+
+impl ConfigurationNode_RWPly_InternalSection {
+    /// **Source:** `DEPLY_ConfigurationNode.hxx` - `DEPLY_ConfigurationNode_RWPly_InternalSection::DEPLY_ConfigurationNode_RWPly_InternalSection()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::DEPLY_ConfigurationNode_RWPly_InternalSection_ctor(),
+            )
         }
     }
 }
@@ -249,9 +270,9 @@ impl Provider {
     /// @return true if Write operation has ended correctly
     pub fn write(
         &mut self,
-        thePath: &crate::ffi::TCollection_AsciiString,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::DEPLY_Provider_write(self as *mut Self, thePath, theShape, theProgress)
@@ -261,7 +282,7 @@ impl Provider {
     /// **Source:** `DEPLY_Provider.hxx`:90 - `DEPLY_Provider::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
-    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DEPLY_Provider_get_format(self as *const Self))
         }
@@ -270,7 +291,7 @@ impl Provider {
     /// **Source:** `DEPLY_Provider.hxx`:94 - `DEPLY_Provider::GetVendor()`
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
-    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DEPLY_Provider_get_vendor(self as *const Self))
         }

@@ -41,14 +41,14 @@ impl Entity {
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:64 - `BRepToIGESBRep_Entity::IndexVertex()`
     /// Returns the index of <myvertex> in "myVertices"
-    pub fn index_vertex(&self, myvertex: &crate::ffi::TopoDS_Vertex) -> i32 {
+    pub fn index_vertex(&self, myvertex: &crate::topo_ds::Vertex) -> i32 {
         unsafe { crate::ffi::BRepToIGESBRep_Entity_index_vertex(self as *const Self, myvertex) }
     }
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:68 - `BRepToIGESBRep_Entity::AddVertex()`
     /// Stores <myvertex> in "myVertices"
     /// Returns the index of <myvertex>.
-    pub fn add_vertex(&mut self, myvertex: &crate::ffi::TopoDS_Vertex) -> i32 {
+    pub fn add_vertex(&mut self, myvertex: &crate::topo_ds::Vertex) -> i32 {
         unsafe { crate::ffi::BRepToIGESBRep_Entity_add_vertex(self as *mut Self, myvertex) }
     }
 
@@ -60,7 +60,7 @@ impl Entity {
 
     /// **Source:** `BRepToIGESBRep_Entity.hxx`:74 - `BRepToIGESBRep_Entity::IndexEdge()`
     /// Returns the index of <myedge> in "myEdges"
-    pub fn index_edge(&self, myedge: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn index_edge(&self, myedge: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::BRepToIGESBRep_Entity_index_edge(self as *const Self, myedge) }
     }
 
@@ -69,7 +69,7 @@ impl Entity {
     /// Returns the index of <myedge>.
     pub fn add_edge(
         &mut self,
-        myedge: &crate::ffi::TopoDS_Edge,
+        myedge: &crate::topo_ds::Edge,
         mycurve3d: &crate::ffi::HandleIGESDataIGESEntity,
     ) -> i32 {
         unsafe { crate::ffi::BRepToIGESBRep_Entity_add_edge(self as *mut Self, myedge, mycurve3d) }
@@ -80,8 +80,8 @@ impl Entity {
     /// If  the transfer has  failed, this member return a NullEntity.
     pub fn transfer_shape(
         &mut self,
-        start: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_shape(
@@ -97,7 +97,7 @@ impl Entity {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_edge_edge(
         &mut self,
-        myedge: &crate::ffi::TopoDS_Edge,
+        myedge: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_edge_edge(
@@ -112,8 +112,8 @@ impl Entity {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_edge_edge_face_real(
         &mut self,
-        myedge: &crate::ffi::TopoDS_Edge,
-        myface: &crate::ffi::TopoDS_Face,
+        myedge: &crate::topo_ds::Edge,
+        myface: &crate::topo_ds::Face,
         length: f64,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
@@ -133,8 +133,8 @@ impl Entity {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_comp_solid(
         &mut self,
-        start: &crate::ffi::TopoDS_CompSolid,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::CompSolid,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_comp_solid(
@@ -150,8 +150,8 @@ impl Entity {
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_compound(
         &mut self,
-        start: &crate::ffi::TopoDS_Compound,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        start: &crate::topo_ds::Compound,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_transfer_compound(
@@ -185,7 +185,7 @@ impl Entity {
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepToIGESBRep_Entity_inherited_HasShapeResult(self as *const Self, start)
         }

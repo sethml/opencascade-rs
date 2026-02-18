@@ -352,14 +352,14 @@ impl Cache {
     /// Calculates the point on the curve in the specified parameter
     /// \param[in]  theParameter parameter of calculation of the value
     /// \param[out] thePoint     the result of calculation (the point on the curve)
-    pub fn d0_real_pnt2d(&self, theParameter: &f64, thePoint: &mut crate::ffi::gp_Pnt2d) {
+    pub fn d0_real_pnt2d(&self, theParameter: &f64, thePoint: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d0_real_pnt2d(self as *const Self, theParameter, thePoint)
         }
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:79 - `BSplCLib_Cache::D0()`
-    pub fn d0_real_pnt(&self, theParameter: &f64, thePoint: &mut crate::ffi::gp_Pnt) {
+    pub fn d0_real_pnt(&self, theParameter: &f64, thePoint: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d0_real_pnt(self as *const Self, theParameter, thePoint)
         }
@@ -374,8 +374,8 @@ impl Cache {
     pub fn d1_real_pnt2d_vec2d(
         &self,
         theParameter: &f64,
-        thePoint: &mut crate::ffi::gp_Pnt2d,
-        theTangent: &mut crate::ffi::gp_Vec2d,
+        thePoint: &mut crate::gp::Pnt2d,
+        theTangent: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d1_real_pnt2d_vec2d(
@@ -391,8 +391,8 @@ impl Cache {
     pub fn d1_real_pnt_vec(
         &self,
         theParameter: &f64,
-        thePoint: &mut crate::ffi::gp_Pnt,
-        theTangent: &mut crate::ffi::gp_Vec,
+        thePoint: &mut crate::gp::Pnt,
+        theTangent: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d1_real_pnt_vec(
@@ -414,9 +414,9 @@ impl Cache {
     pub fn d2_real_pnt2d_vec2d2(
         &self,
         theParameter: &f64,
-        thePoint: &mut crate::ffi::gp_Pnt2d,
-        theTangent: &mut crate::ffi::gp_Vec2d,
-        theCurvature: &mut crate::ffi::gp_Vec2d,
+        thePoint: &mut crate::gp::Pnt2d,
+        theTangent: &mut crate::gp::Vec2d,
+        theCurvature: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d2_real_pnt2d_vec2d2(
@@ -433,9 +433,9 @@ impl Cache {
     pub fn d2_real_pnt_vec2(
         &self,
         theParameter: &f64,
-        thePoint: &mut crate::ffi::gp_Pnt,
-        theTangent: &mut crate::ffi::gp_Vec,
-        theCurvature: &mut crate::ffi::gp_Vec,
+        thePoint: &mut crate::gp::Pnt,
+        theTangent: &mut crate::gp::Vec,
+        theCurvature: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d2_real_pnt_vec2(
@@ -459,10 +459,10 @@ impl Cache {
     pub fn d3_real_pnt2d_vec2d3(
         &self,
         theParameter: &f64,
-        thePoint: &mut crate::ffi::gp_Pnt2d,
-        theTangent: &mut crate::ffi::gp_Vec2d,
-        theCurvature: &mut crate::ffi::gp_Vec2d,
-        theTorsion: &mut crate::ffi::gp_Vec2d,
+        thePoint: &mut crate::gp::Pnt2d,
+        theTangent: &mut crate::gp::Vec2d,
+        theCurvature: &mut crate::gp::Vec2d,
+        theTorsion: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d3_real_pnt2d_vec2d3(
@@ -480,10 +480,10 @@ impl Cache {
     pub fn d3_real_pnt_vec3(
         &self,
         theParameter: &f64,
-        thePoint: &mut crate::ffi::gp_Pnt,
-        theTangent: &mut crate::ffi::gp_Vec,
-        theCurvature: &mut crate::ffi::gp_Vec,
-        theTorsion: &mut crate::ffi::gp_Vec,
+        thePoint: &mut crate::gp::Pnt,
+        theTangent: &mut crate::gp::Vec,
+        theCurvature: &mut crate::gp::Vec,
+        theTorsion: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d3_real_pnt_vec3(
@@ -557,66 +557,6 @@ pub use crate::ffi::BSplCLib_CacheParams as CacheParams;
 unsafe impl crate::CppDeletable for CacheParams {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::BSplCLib_CacheParams_destructor(ptr);
-    }
-}
-
-impl CacheParams {
-    /// **Source:** `BSplCLib_CacheParams.hxx`:40 - `BSplCLib_CacheParams::BSplCLib_CacheParams()`
-    /// Constructor, prepares data structures for caching.
-    /// \param theDegree     degree of the B-spline (or Bezier)
-    /// \param thePeriodic   identify whether the B-spline is periodic
-    /// \param theFlatKnots  knots of Bezier / B-spline parameterization
-    pub fn new_int_bool_array1ofreal(
-        theDegree: i32,
-        thePeriodic: bool,
-        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::BSplCLib_CacheParams_ctor_int_bool_array1ofreal(
-                theDegree,
-                thePeriodic,
-                theFlatKnots,
-            ))
-        }
-    }
-
-    /// **Source:** `BSplCLib_CacheParams.hxx`:57 - `BSplCLib_CacheParams::PeriodicNormalization()`
-    /// Normalizes the parameter for periodic B-splines
-    /// \param theParameter the value to be normalized into the knots array
-    pub fn periodic_normalization(&self, theParameter: f64) -> f64 {
-        unsafe {
-            crate::ffi::BSplCLib_CacheParams_periodic_normalization(
-                self as *const Self,
-                theParameter,
-            )
-        }
-    }
-
-    /// **Source:** `BSplCLib_CacheParams.hxx`:79 - `BSplCLib_CacheParams::IsCacheValid()`
-    /// Verifies validity of the cache using flat parameter of the point
-    /// \param theParameter parameter of the point placed in the span
-    pub fn is_cache_valid(&self, theParameter: f64) -> bool {
-        unsafe {
-            crate::ffi::BSplCLib_CacheParams_is_cache_valid(self as *const Self, theParameter)
-        }
-    }
-
-    /// **Source:** `BSplCLib_CacheParams.hxx`:90 - `BSplCLib_CacheParams::LocateParameter()`
-    /// Computes span for the specified parameter
-    /// \param theParameter parameter of the point placed in the span
-    /// \param theFlatKnots  knots of Bezier / B-spline parameterization
-    pub fn locate_parameter(
-        &mut self,
-        theParameter: &mut f64,
-        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
-    ) {
-        unsafe {
-            crate::ffi::BSplCLib_CacheParams_locate_parameter(
-                self as *mut Self,
-                theParameter,
-                theFlatKnots,
-            )
-        }
     }
 }
 

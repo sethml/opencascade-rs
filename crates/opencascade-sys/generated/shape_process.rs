@@ -25,7 +25,7 @@ pub fn find_operator(name: &str, op: &mut crate::ffi::HandleShapeProcessOperator
 pub fn perform(
     context: &crate::ffi::HandleShapeProcessContext,
     seq: &str,
-    theProgress: &crate::ffi::Message_ProgressRange,
+    theProgress: &crate::message::ProgressRange,
 ) -> bool {
     let c_seq = std::ffi::CString::new(seq).unwrap();
     unsafe { crate::ffi::ShapeProcess_perform(context, c_seq.as_ptr(), theProgress) }
@@ -152,7 +152,7 @@ impl Context {
     /// **Source:** `ShapeProcess_Context.hxx`:84 - `ShapeProcess_Context::GetString()`
     /// Get value of parameter as being of specific type
     /// Returns False if parameter is not defined or has a wrong type
-    pub fn get_string(&self, param: &str, val: &mut crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn get_string(&self, param: &str, val: &mut crate::t_collection::AsciiString) -> bool {
         let c_param = std::ffi::CString::new(param).unwrap();
         unsafe {
             crate::ffi::ShapeProcess_Context_get_string(self as *const Self, c_param.as_ptr(), val)
@@ -350,7 +350,7 @@ impl Operator {
     pub fn perform(
         &mut self,
         context: &crate::ffi::HandleShapeProcessContext,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::ShapeProcess_Operator_perform(self as *mut Self, context, theProgress)
@@ -426,7 +426,7 @@ impl UOperator {
     pub fn perform(
         &mut self,
         context: &crate::ffi::HandleShapeProcessContext,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::ShapeProcess_UOperator_perform(self as *mut Self, context, theProgress)

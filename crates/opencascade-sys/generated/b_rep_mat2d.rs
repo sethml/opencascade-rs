@@ -142,7 +142,7 @@ impl BisectingLocus {
     pub fn geom_elt_handlematnode(
         &self,
         aNode: &crate::ffi::HandleMATNode,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_BisectingLocus_geom_elt_handlematnode(
                 self as *const Self,
@@ -160,7 +160,7 @@ impl BisectingLocus {
         &self,
         anArc: &crate::ffi::HandleMATArc,
         Reverse: &mut bool,
-    ) -> crate::OwnedPtr<crate::ffi::Bisector_Bisec> {
+    ) -> crate::OwnedPtr<crate::bisector::Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_BisectingLocus_geom_bis(
                 self as *const Self,
@@ -197,7 +197,7 @@ impl LinkTopoBilo {
     /// <S> is an edge or a vertex of the initial
     /// wire or face.
     /// raises if <S> is not an edge or a vertex.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_init(self as *mut Self, S) }
     }
 
@@ -226,7 +226,7 @@ impl LinkTopoBilo {
     pub fn generating_shape(
         &self,
         aBE: &crate::ffi::HandleMATBasicElt,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMAT2d_LinkTopoBilo_generating_shape(
                 self as *const Self,

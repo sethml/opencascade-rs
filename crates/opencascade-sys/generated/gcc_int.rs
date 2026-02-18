@@ -58,13 +58,13 @@ unsafe impl crate::CppDeletable for BCirc {
 impl BCirc {
     /// **Source:** `GccInt_BCirc.hxx`:36 - `GccInt_BCirc::GccInt_BCirc()`
     /// Constructs a bisecting curve whose geometry is the 2D circle Circ.
-    pub fn new_circ2d(Circ: &crate::ffi::gp_Circ2d) -> crate::OwnedPtr<Self> {
+    pub fn new_circ2d(Circ: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_ctor_circ2d(Circ)) }
     }
 
     /// **Source:** `GccInt_BCirc.hxx`:39 - `GccInt_BCirc::Circle()`
     /// Returns a 2D circle which is the geometry of this bisecting curve.
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_circle(self as *const Self)) }
     }
 
@@ -107,21 +107,21 @@ impl BCirc {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Point(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Line(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Hyperbola(
                 self as *const Self,
@@ -130,7 +130,7 @@ impl BCirc {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Parabola(
                 self as *const Self,
@@ -139,7 +139,7 @@ impl BCirc {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Ellipse(
                 self as *const Self,
@@ -166,13 +166,13 @@ unsafe impl crate::CppDeletable for BElips {
 impl BElips {
     /// **Source:** `GccInt_BElips.hxx`:36 - `GccInt_BElips::GccInt_BElips()`
     /// Constructs a bisecting curve whose geometry is the 2D ellipse Ellipse.
-    pub fn new_elips2d(Ellipse: &crate::ffi::gp_Elips2d) -> crate::OwnedPtr<Self> {
+    pub fn new_elips2d(Ellipse: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_ctor_elips2d(Ellipse)) }
     }
 
     /// **Source:** `GccInt_BElips.hxx`:39 - `GccInt_BElips::Ellipse()`
     /// Returns a 2D ellipse which is the geometry of this bisecting curve.
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_ellipse(self as *const Self)) }
     }
 
@@ -215,7 +215,7 @@ impl BElips {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Point(
                 self as *const Self,
@@ -224,14 +224,14 @@ impl BElips {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Line(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Circle(
                 self as *const Self,
@@ -240,7 +240,7 @@ impl BElips {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Hyperbola(
                 self as *const Self,
@@ -249,7 +249,7 @@ impl BElips {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Parabola(
                 self as *const Self,
@@ -276,13 +276,13 @@ unsafe impl crate::CppDeletable for BHyper {
 impl BHyper {
     /// **Source:** `GccInt_BHyper.hxx`:36 - `GccInt_BHyper::GccInt_BHyper()`
     /// Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.
-    pub fn new_hypr2d(Hyper: &crate::ffi::gp_Hypr2d) -> crate::OwnedPtr<Self> {
+    pub fn new_hypr2d(Hyper: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_ctor_hypr2d(Hyper)) }
     }
 
     /// **Source:** `GccInt_BHyper.hxx`:39 - `GccInt_BHyper::Hyperbola()`
     /// Returns a 2D hyperbola which is the geometry of this bisecting curve.
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_hyperbola(self as *const Self))
         }
@@ -327,7 +327,7 @@ impl BHyper {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Point(
                 self as *const Self,
@@ -336,14 +336,14 @@ impl BHyper {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Line(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Circle(
                 self as *const Self,
@@ -352,7 +352,7 @@ impl BHyper {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Parabola(
                 self as *const Self,
@@ -361,7 +361,7 @@ impl BHyper {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Ellipse(
                 self as *const Self,
@@ -388,13 +388,13 @@ unsafe impl crate::CppDeletable for BLine {
 impl BLine {
     /// **Source:** `GccInt_BLine.hxx`:36 - `GccInt_BLine::GccInt_BLine()`
     /// Constructs a bisecting line whose geometry is the 2D line Line.
-    pub fn new_lin2d(Line: &crate::ffi::gp_Lin2d) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d(Line: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_ctor_lin2d(Line)) }
     }
 
     /// **Source:** `GccInt_BLine.hxx`:39 - `GccInt_BLine::Line()`
     /// Returns a 2D line which is the geometry of this bisecting line.
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_line(self as *const Self)) }
     }
 
@@ -437,14 +437,14 @@ impl BLine {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Point(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Circle(
                 self as *const Self,
@@ -453,7 +453,7 @@ impl BLine {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Hyperbola(
                 self as *const Self,
@@ -462,7 +462,7 @@ impl BLine {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Parabola(
                 self as *const Self,
@@ -471,7 +471,7 @@ impl BLine {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Ellipse(
                 self as *const Self,
@@ -498,13 +498,13 @@ unsafe impl crate::CppDeletable for BParab {
 impl BParab {
     /// **Source:** `GccInt_BParab.hxx`:36 - `GccInt_BParab::GccInt_BParab()`
     /// Constructs a bisecting curve whose geometry is the 2D parabola Parab.
-    pub fn new_parab2d(Parab: &crate::ffi::gp_Parab2d) -> crate::OwnedPtr<Self> {
+    pub fn new_parab2d(Parab: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_ctor_parab2d(Parab)) }
     }
 
     /// **Source:** `GccInt_BParab.hxx`:39 - `GccInt_BParab::Parabola()`
     /// Returns a 2D parabola which is the geometry of this bisecting curve.
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_parabola(self as *const Self))
         }
@@ -549,7 +549,7 @@ impl BParab {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Point(
                 self as *const Self,
@@ -558,14 +558,14 @@ impl BParab {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Line(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Circle(
                 self as *const Self,
@@ -574,7 +574,7 @@ impl BParab {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Hyperbola(
                 self as *const Self,
@@ -583,7 +583,7 @@ impl BParab {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Ellipse(
                 self as *const Self,
@@ -609,13 +609,13 @@ unsafe impl crate::CppDeletable for BPoint {
 impl BPoint {
     /// **Source:** `GccInt_BPoint.hxx`:35 - `GccInt_BPoint::GccInt_BPoint()`
     /// Constructs a bisecting object whose geometry is the 2D point Point.
-    pub fn new_pnt2d(Point: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2d(Point: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_ctor_pnt2d(Point)) }
     }
 
     /// **Source:** `GccInt_BPoint.hxx`:38 - `GccInt_BPoint::Point()`
     /// Returns a 2D point which is the geometry of this bisecting object.
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_point(self as *const Self)) }
     }
 
@@ -658,14 +658,14 @@ impl BPoint {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Line(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Circle(
                 self as *const Self,
@@ -674,7 +674,7 @@ impl BPoint {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Hyperbola(
                 self as *const Self,
@@ -683,7 +683,7 @@ impl BPoint {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Parabola(
                 self as *const Self,
@@ -692,7 +692,7 @@ impl BPoint {
     }
 
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Ellipse(
                 self as *const Self,
@@ -747,28 +747,28 @@ impl Bisec {
     /// **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     /// Returns the bisecting line when ArcType returns Pnt.
     /// An exception DomainError is raised if ArcType is not a Pnt.
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_point(self as *const Self)) }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
     /// Returns the bisecting line when ArcType returns Lin.
     /// An exception DomainError is raised if ArcType is not a Lin.
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_line(self as *const Self)) }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
     /// Returns the bisecting line when ArcType returns Cir.
     /// An exception DomainError is raised if ArcType is not a Cir.
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_circle(self as *const Self)) }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
     /// Returns the bisecting line when ArcType returns Hpr.
     /// An exception DomainError is raised if ArcType is not a Hpr.
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_hyperbola(self as *const Self))
         }
@@ -777,14 +777,14 @@ impl Bisec {
     /// **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
     /// Returns the bisecting line when ArcType returns Par.
     /// An exception DomainError is raised if ArcType is not a Par.
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_parabola(self as *const Self)) }
     }
 
     /// **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
     /// Returns the bisecting line when ArcType returns Ell.
     /// An exception DomainError is raised if ArcType is not an Ell.
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_Bisec_ellipse(self as *const Self)) }
     }
 

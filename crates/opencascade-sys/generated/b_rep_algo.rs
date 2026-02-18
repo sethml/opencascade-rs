@@ -28,17 +28,13 @@ impl Image {
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:40 - `BRepAlgo_Image::SetRoot()`
-    pub fn set_root(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn set_root(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepAlgo_Image_set_root(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:43 - `BRepAlgo_Image::Bind()`
     /// Links <NewS> as image of <OldS>.
-    pub fn bind_shape2(
-        &mut self,
-        OldS: &crate::ffi::TopoDS_Shape,
-        NewS: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn bind_shape2(&mut self, OldS: &crate::topo_ds::Shape, NewS: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepAlgo_Image_bind_shape2(self as *mut Self, OldS, NewS) }
     }
 
@@ -46,7 +42,7 @@ impl Image {
     /// Links <NewS> as image of <OldS>.
     pub fn bind_shape_listofshape(
         &mut self,
-        OldS: &crate::ffi::TopoDS_Shape,
+        OldS: &crate::topo_ds::Shape,
         NewS: &crate::ffi::TopTools_ListOfShape,
     ) {
         unsafe { crate::ffi::BRepAlgo_Image_bind_shape_listofshape(self as *mut Self, OldS, NewS) }
@@ -54,7 +50,7 @@ impl Image {
 
     /// **Source:** `BRepAlgo_Image.hxx`:49 - `BRepAlgo_Image::Add()`
     /// Add <NewS> to the image of <OldS>.
-    pub fn add_shape2(&mut self, OldS: &crate::ffi::TopoDS_Shape, NewS: &crate::ffi::TopoDS_Shape) {
+    pub fn add_shape2(&mut self, OldS: &crate::topo_ds::Shape, NewS: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepAlgo_Image_add_shape2(self as *mut Self, OldS, NewS) }
     }
 
@@ -62,7 +58,7 @@ impl Image {
     /// Add <NewS> to the image of <OldS>.
     pub fn add_shape_listofshape(
         &mut self,
-        OldS: &crate::ffi::TopoDS_Shape,
+        OldS: &crate::topo_ds::Shape,
         NewS: &crate::ffi::TopTools_ListOfShape,
     ) {
         unsafe { crate::ffi::BRepAlgo_Image_add_shape_listofshape(self as *mut Self, OldS, NewS) }
@@ -75,13 +71,13 @@ impl Image {
 
     /// **Source:** `BRepAlgo_Image.hxx`:57 - `BRepAlgo_Image::Remove()`
     /// Remove <S> to set of images.
-    pub fn remove(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn remove(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepAlgo_Image_remove(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:60 - `BRepAlgo_Image::RemoveRoot()`
     /// Removes the root <theRoot> from the list of roots and up and down maps.
-    pub fn remove_root(&mut self, Root: &crate::ffi::TopoDS_Shape) {
+    pub fn remove_root(&mut self, Root: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepAlgo_Image_remove_root(self as *mut Self, Root) }
     }
 
@@ -91,8 +87,8 @@ impl Image {
     /// The <OldRoot> is removed.
     pub fn replace_root(
         &mut self,
-        OldRoot: &crate::ffi::TopoDS_Shape,
-        NewRoot: &crate::ffi::TopoDS_Shape,
+        OldRoot: &crate::topo_ds::Shape,
+        NewRoot: &crate::topo_ds::Shape,
     ) {
         unsafe { crate::ffi::BRepAlgo_Image_replace_root(self as *mut Self, OldRoot, NewRoot) }
     }
@@ -103,42 +99,38 @@ impl Image {
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:69 - `BRepAlgo_Image::IsImage()`
-    pub fn is_image(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_image(&self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepAlgo_Image_is_image(self as *const Self, S) }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:72 - `BRepAlgo_Image::ImageFrom()`
     /// Returns the generator of <S>
-    pub fn image_from(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
+    pub fn image_from(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_Image_image_from(self as *const Self, S)) }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:75 - `BRepAlgo_Image::Root()`
     /// Returns the upper generator of <S>
-    pub fn root(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Shape {
+    pub fn root(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_Image_root(self as *const Self, S)) }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:77 - `BRepAlgo_Image::HasImage()`
-    pub fn has_image(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_image(&self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepAlgo_Image_has_image(self as *const Self, S) }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:81 - `BRepAlgo_Image::Image()`
     /// Returns the Image of <S>.
     /// Returns <S> in the list if HasImage(S) is false.
-    pub fn image(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn image(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgo_Image_image(self as *const Self, S)) }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:85 - `BRepAlgo_Image::LastImage()`
     /// Stores in <L> the images of images of...images of <S>.
     /// <L> contains only <S> if  HasImage(S) is false.
-    pub fn last_image(
-        &self,
-        S: &crate::ffi::TopoDS_Shape,
-        L: &mut crate::ffi::TopTools_ListOfShape,
-    ) {
+    pub fn last_image(&self, S: &crate::topo_ds::Shape, L: &mut crate::ffi::TopTools_ListOfShape) {
         unsafe { crate::ffi::BRepAlgo_Image_last_image(self as *const Self, S, L) }
     }
 
@@ -152,7 +144,7 @@ impl Image {
     /// Deletes in the images the shape of type <ShapeType>
     /// which are not in <S>.
     /// Warning:  Compact() must be call before.
-    pub fn filter(&mut self, S: &crate::ffi::TopoDS_Shape, ShapeType: crate::top_abs::ShapeEnum) {
+    pub fn filter(&mut self, S: &crate::topo_ds::Shape, ShapeType: crate::top_abs::ShapeEnum) {
         unsafe { crate::ffi::BRepAlgo_Image_filter(self as *mut Self, S, ShapeType.into()) }
     }
 }
@@ -179,18 +171,18 @@ impl NormalProjection {
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:41 - `BRepAlgo_NormalProjection::BRepAlgo_NormalProjection()`
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepAlgo_NormalProjection_ctor_shape(S)) }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:43 - `BRepAlgo_NormalProjection::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepAlgo_NormalProjection_init(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:46 - `BRepAlgo_NormalProjection::Add()`
     /// Add an edge or a wire to the list of shape to project
-    pub fn add(&mut self, ToProj: &crate::ffi::TopoDS_Shape) {
+    pub fn add(&mut self, ToProj: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepAlgo_NormalProjection_add(self as *mut Self, ToProj) }
     }
 
@@ -268,31 +260,31 @@ impl NormalProjection {
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:84 - `BRepAlgo_NormalProjection::Projection()`
     /// returns the result
-    pub fn projection(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn projection(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_projection(self as *const Self)) }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:87 - `BRepAlgo_NormalProjection::Ancestor()`
     /// For a resulting edge, returns the corresponding initial edge.
-    pub fn ancestor(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Shape {
+    pub fn ancestor(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_ancestor(self as *const Self, E)) }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:90 - `BRepAlgo_NormalProjection::Couple()`
     /// For a projected edge, returns the corresponding initial face.
-    pub fn couple(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Shape {
+    pub fn couple(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_couple(self as *const Self, E)) }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:94 - `BRepAlgo_NormalProjection::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepAlgo_NormalProjection_generated(self as *mut Self, S)) }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:96 - `BRepAlgo_NormalProjection::IsElementary()`
-    pub fn is_elementary(&self, C: &crate::ffi::Adaptor3d_Curve) -> bool {
+    pub fn is_elementary(&self, C: &crate::adaptor3d::Curve) -> bool {
         unsafe { crate::ffi::BRepAlgo_NormalProjection_is_elementary(self as *const Self, C) }
     }
 

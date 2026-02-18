@@ -5,7 +5,7 @@
 //! ffi.rs, wrappers.hxx, and per-module re-exports consume this struct
 //! without re-deriving any decisions.
 
-use crate::model::{Constructor, Method, Param, ParsedClass, StaticMethod, Type};
+use crate::model::{Constructor, Method, Param, ParsedClass, ParsedField, StaticMethod, Type};
 use crate::module_graph;
 use crate::parser;
 use crate::resolver::{self, SymbolTable};
@@ -29,7 +29,10 @@ const RUST_KEYWORDS: &[&str] = &[
 /// All filtering, naming, and conflict resolution happens here ONCE.
 #[derive(Debug, Clone)]
 pub struct ClassBindings {
+    /// Rust-safe name ("::" flattened to "_" for nested types)
     pub cpp_name: String,
+    /// Original C++ qualified name (uses "::" for nested types)
+    pub cpp_qualified_name: String,
     pub short_name: String,
     pub module: String,
     pub is_abstract: bool,
@@ -51,6 +54,27 @@ pub struct ClassBindings {
     pub handle_upcasts: Vec<HandleUpcastBinding>,
     pub handle_downcasts: Vec<HandleDowncastBinding>,
     pub inherited_methods: Vec<InheritedMethodBinding>,
+    /// Whether this class is a POD struct that can be represented with real fields
+    pub is_pod_struct: bool,
+    /// Fields for POD structs (only populated when is_pod_struct is true)
+    pub pod_fields: Vec<PodFieldBinding>,
+}
+
+/// A single field in a POD struct.
+#[derive(Debug, Clone)]
+pub struct PodFieldBinding {
+    /// Field name in Rust (snake_case)
+    pub rust_name: String,
+    /// Field name in C++ (original)
+    pub cpp_name: String,
+    /// Rust type string, e.g. "bool" or "f64"
+    pub rust_type: String,
+    /// Array size if this is a fixed-size array field
+    pub array_size: Option<usize>,
+    /// Byte offset for offsetof check
+    pub offset_index: usize,
+    /// Doc comment
+    pub doc_comment: Option<String>,
 }
 
 /// A constructor that will have a C++ wrapper (std::make_unique),
@@ -173,8 +197,10 @@ pub struct StaticMethodBinding {
 /// An upcast binding (Derived → Base).
 #[derive(Debug, Clone)]
 pub struct UpcastBinding {
-    /// Base class C++ name, e.g. "Geom_Curve"
+    /// Base class FFI-safe name ("::" replaced with "_"), e.g. "Geom_Curve"
     pub base_class: String,
+    /// Base class C++ qualified name (uses "::"), e.g. "Geom_Curve" or "Outer::Inner"
+    pub base_class_cpp: String,
     /// Base class short name, e.g. "Curve"
     pub base_short_name: String,
     /// Base class module, e.g. "Geom"
@@ -851,8 +877,47 @@ fn param_to_cpp_extern_c_arg(param_name: &str, ty: &Type) -> String {
     }
 }
 
+/// Context for resolving C++ class names to their public re-exported Rust type
+/// paths instead of raw `crate::ffi::` paths.
+pub struct ReexportTypeContext<'a> {
+    /// Maps C++ class name (original, may contain ::) → (rust_module_name, short_name)
+    pub class_public_info: &'a HashMap<String, (String, String)>,
+    /// The Rust module name of the class/function currently being generated
+    pub current_module_rust: String,
+}
+
+impl<'a> ReexportTypeContext<'a> {
+    fn resolve_class(&self, cpp_name: &str) -> String {
+        if let Some((module_rust, short)) = self.class_public_info.get(cpp_name) {
+            if *module_rust == self.current_module_rust {
+                short.clone()
+            } else {
+                format!("crate::{}::{}", module_rust, short)
+            }
+        } else {
+            format!("crate::ffi::{}", Type::ffi_safe_class_name(cpp_name))
+        }
+    }
+}
+
+/// Build the class_public_info map from a list of parsed classes.
+/// Maps C++ class name → (rust_module_name, short_name).
+/// Only includes classes that get `pub use` re-exports (excludes protected-destructor classes).
+pub(crate) fn build_class_public_info(all_classes: &[&ParsedClass]) -> HashMap<String, (String, String)> {
+    all_classes
+        .iter()
+        .filter(|c| !c.has_protected_destructor)
+        .map(|c| {
+            let ffi_name = c.name.replace("::", "_");
+            let module_rust = crate::module_graph::module_to_rust_name(&c.module);
+            let short = crate::type_mapping::short_name_for_module(&ffi_name, &c.module);
+            (c.name.clone(), (module_rust, short))
+        })
+        .collect()
+}
+
 /// Convert a Type to Rust type string for re-export files
-fn type_to_rust_string(ty: &Type) -> String {
+fn type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) -> String {
     match ty {
         Type::Void => "()".to_string(),
         Type::Bool => "bool".to_string(),
@@ -868,32 +933,39 @@ fn type_to_rust_string(ty: &Type) -> String {
         Type::Class(name) => {
             if name == "char" {
                 "std::ffi::c_char".to_string()
+            } else if let Some(ctx) = reexport_ctx {
+                ctx.resolve_class(name)
             } else {
                 format!("crate::ffi::{}", Type::ffi_safe_class_name(name))
             }
         }
         Type::Handle(name) => format!("crate::ffi::Handle{}", name.replace("_", "")),
-        Type::ConstRef(inner) => format!("&{}", type_to_rust_string(inner)),
+        Type::ConstRef(inner) => format!("&{}", type_to_rust_string(inner, reexport_ctx)),
         Type::MutRef(inner) => {
-            format!("&mut {}", type_to_rust_string(inner))
+            format!("&mut {}", type_to_rust_string(inner, reexport_ctx))
         }
         Type::RValueRef(_) => "()".to_string(),
         Type::ConstPtr(inner) => {
             if matches!(inner.as_ref(), Type::Class(name) if name == "char") {
                 "&str".to_string()
             } else {
-                format!("*const {}", type_to_rust_string(inner))
+                format!("*const {}", type_to_rust_string(inner, reexport_ctx))
             }
         }
-        Type::MutPtr(inner) => format!("*mut {}", type_to_rust_string(inner)),
+        Type::MutPtr(inner) => format!("*mut {}", type_to_rust_string(inner, reexport_ctx)),
     }
 }
 
 /// Convert a return Type to Rust type string for re-export files
-fn return_type_to_rust_string(ty: &Type) -> String {
+fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeContext>) -> String {
     match ty {
         Type::Class(name) if name != "char" => {
-            format!("crate::OwnedPtr<crate::ffi::{}>", Type::ffi_safe_class_name(name))
+            let inner = if let Some(ctx) = reexport_ctx {
+                ctx.resolve_class(name)
+            } else {
+                format!("crate::ffi::{}", Type::ffi_safe_class_name(name))
+            };
+            format!("crate::OwnedPtr<{}>", inner)
         }
         Type::Handle(name) => {
             format!(
@@ -904,7 +976,7 @@ fn return_type_to_rust_string(ty: &Type) -> String {
         Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
             "String".to_string()
         }
-        _ => type_to_rust_string(ty),
+        _ => type_to_rust_string(ty, reexport_ctx),
     }
 }
 
@@ -1102,7 +1174,7 @@ fn extract_enum_name(ty: &Type, all_enums: &HashSet<String>) -> Option<String> {
     }
 }
 
-fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeContext) -> ParamBinding {
+fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeContext, reexport_ctx: Option<&ReexportTypeContext>) -> ParamBinding {
     let cpp_name = name.to_string();
     let rust_name = safe_param_name(name);
 
@@ -1154,7 +1226,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
     if is_nullable {
         let (rust_ffi_type, rust_reexport_type, cpp_type, cpp_arg_expr) = match ty {
             Type::ConstPtr(inner) => {
-                let inner_rust = type_to_rust_string(inner);
+                let inner_rust = type_to_rust_string(inner, reexport_ctx);
                 let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
                 let cpp_inner = type_to_cpp(inner);
                 (
@@ -1165,7 +1237,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
                 )
             }
             Type::MutPtr(inner) => {
-                let inner_rust = type_to_rust_string(inner);
+                let inner_rust = type_to_rust_string(inner, reexport_ctx);
                 let inner_ffi = map_type_in_context(inner, ffi_ctx).rust_type;
                 let cpp_inner = type_to_cpp(inner);
                 (
@@ -1206,7 +1278,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
 
     let mapped = map_type_in_context(&effective_ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
-    let rust_reexport_type = type_to_rust_string(&effective_ty);
+    let rust_reexport_type = type_to_rust_string(&effective_ty, reexport_ctx);
     let cpp_type = type_to_cpp_extern_c_param(&effective_ty);
     let cpp_arg_expr = param_to_cpp_extern_c_arg(name, &effective_ty);
 
@@ -1223,7 +1295,7 @@ fn build_param_binding(name: &str, ty: &Type, is_nullable: bool, ffi_ctx: &TypeC
     }
 }
 
-fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext) -> ReturnTypeBinding {
+fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Option<&ReexportTypeContext>) -> ReturnTypeBinding {
     // Check if this return type is an enum
     if let Some(enum_cpp_name) = extract_enum_name(ty, ffi_ctx.all_enums) {
         let enum_rust_type = ffi_ctx.enum_rust_types
@@ -1242,7 +1314,7 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext) -> ReturnTypeBind
 
     let mapped = map_return_type_in_context(ty, ffi_ctx);
     let rust_ffi_type = mapped.rust_type;
-    let rust_reexport_type = return_type_to_rust_string(ty);
+    let rust_reexport_type = return_type_to_rust_string(ty, reexport_ctx);
     let cpp_type = type_to_cpp(ty);
     let needs_unique_ptr = ty.is_class() || ty.is_handle();
 
@@ -1460,15 +1532,19 @@ pub fn compute_class_bindings(
     all_classes_by_name: &HashMap<String, &ParsedClass>,
     ncollection_element_types: &HashMap<String, String>,
     ncollection_primitive_classes: &HashSet<String>,
+    reexport_ctx: Option<&ReexportTypeContext>,
 ) -> ClassBindings {
-    let cpp_name = &class.name;
+    // Flatten C++ nested class names (e.g., "Parent::Child" -> "Parent_Child")
+    // for use as valid Rust identifiers in ffi.rs
+    let cpp_name = class.name.replace("::", "_");
+    let cpp_name = &cpp_name;
     let all_enum_names = ffi_ctx.all_enums;
 
     let effectively_abstract = is_effectively_abstract(class, all_classes_by_name, symbol_table);
 
     // ── Constructors ────────────────────────────────────────────────────
     let constructors = if !effectively_abstract && !class.has_protected_destructor {
-        let mut ctors = compute_constructor_bindings(class, ffi_ctx, handle_able_classes, ncollection_element_types);
+        let mut ctors = compute_constructor_bindings(class, ffi_ctx, handle_able_classes, ncollection_element_types, reexport_ctx);
         // If no bindable constructors AND no explicit constructors at all,
         // generate a synthetic default constructor (uses C++ implicit default).
         // We must NOT generate synthetic constructors when:
@@ -1506,12 +1582,12 @@ pub fn compute_class_bindings(
             let params: Vec<ParamBinding> = method
                 .params
                 .iter()
-                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx))
+                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx, reexport_ctx))
                 .collect();
             let return_type = method
                 .return_type
                 .as_ref()
-                .map(|ty| build_return_type_binding(ty, ffi_ctx));
+                .map(|ty| build_return_type_binding(ty, ffi_ctx, reexport_ctx));
 
             DirectMethodBinding {
                 rust_name: rust_name.clone(),
@@ -1574,12 +1650,12 @@ pub fn compute_class_bindings(
             let params: Vec<ParamBinding> = method
                 .params
                 .iter()
-                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx))
+                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx, reexport_ctx))
                 .collect();
             let return_type = method
                 .return_type
                 .as_ref()
-                .map(|ty| build_return_type_binding(ty, ffi_ctx));
+                .map(|ty| build_return_type_binding(ty, ffi_ctx, reexport_ctx));
             let wrapper_kind = classify_wrapper_kind(method, all_enum_names);
 
             // For ConstMutReturnFix, the wrapper takes non-const self even though
@@ -1628,12 +1704,12 @@ pub fn compute_class_bindings(
             let params: Vec<ParamBinding> = method
                 .params
                 .iter()
-                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx))
+                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx, reexport_ctx))
                 .collect();
             let return_type = method
                 .return_type
                 .as_ref()
-                .map(|ty| build_return_type_binding(ty, ffi_ctx));
+                .map(|ty| build_return_type_binding(ty, ffi_ctx, reexport_ctx));
 
             let needs_static_lifetime = method
                 .return_type
@@ -1685,7 +1761,7 @@ pub fn compute_class_bindings(
 
     // ── Inherited methods ───────────────────────────────────────────────
     let inherited_methods_raw =
-        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums, ncollection_primitive_classes, ffi_ctx.deletable_class_names);
+        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums, ncollection_primitive_classes, ffi_ctx.deletable_class_names, reexport_ctx);
     // Filter out inherited methods whose Rust name conflicts with a constructor or direct method
     let ctor_and_method_names: std::collections::HashSet<&str> = constructors
         .iter()
@@ -1698,10 +1774,17 @@ pub fn compute_class_bindings(
         .into_iter()
         .filter(|im| !ctor_and_method_names.contains(im.impl_method_name.as_str()))
         .collect();
+    // ── POD struct fields ────────────────────────────────────────────────
+    let pod_fields = if class.is_pod_struct {
+        compute_pod_field_bindings(&class.fields)
+    } else {
+        Vec::new()
+    };
 
     ClassBindings {
         cpp_name: cpp_name.clone(),
-        short_name: crate::type_mapping::short_name_for_module(&class.name, &class.module),
+        cpp_qualified_name: class.name.clone(),
+        short_name: crate::type_mapping::short_name_for_module(cpp_name, &class.module),
         module: class.module.clone(),
         is_abstract: effectively_abstract,
         is_handle_type: class.is_handle_type,
@@ -1720,10 +1803,50 @@ pub fn compute_class_bindings(
         handle_upcasts,
         handle_downcasts,
         inherited_methods,
+        is_pod_struct: class.is_pod_struct,
+        pod_fields,
     }
 }
 
-// ── Constructor bindings ────────────────────────────────────────────────────
+// ── POD struct field bindings ───────────────────────────────────────────────
+
+/// Map a ParsedField's Type to the Rust type string for a POD struct field.
+fn pod_field_rust_type(ty: &Type) -> Option<&'static str> {
+    match ty {
+        Type::Bool => Some("bool"),
+        Type::I32 => Some("i32"),
+        Type::U32 => Some("u32"),
+        Type::I64 => Some("i64"),
+        Type::U64 => Some("u64"),
+        Type::Long => Some("std::os::raw::c_long"),
+        Type::ULong => Some("std::os::raw::c_ulong"),
+        Type::Usize => Some("usize"),
+        Type::F32 => Some("f32"),
+        Type::F64 => Some("f64"),
+        _ => None,
+    }
+}
+
+fn compute_pod_field_bindings(fields: &[ParsedField]) -> Vec<PodFieldBinding> {
+    fields
+        .iter()
+        .enumerate()
+        .filter_map(|(idx, field)| {
+            let rust_type = pod_field_rust_type(&field.ty)?;
+            Some(PodFieldBinding {
+                rust_name: field.name.to_snake_case(),
+                cpp_name: field.name.clone(),
+                rust_type: rust_type.to_string(),
+                array_size: field.array_size,
+                offset_index: idx,
+                doc_comment: field.comment.clone(),
+            })
+        })
+        .collect()
+}
+
+// ── Constructor bindings ─────────────────────────────────────────────────
+
 
 /// Adapt a C++ default value expression to be valid for the corresponding Rust type.
 ///
@@ -1878,8 +2001,10 @@ fn compute_constructor_bindings(
     ffi_ctx: &TypeContext,
     handle_able_classes: &HashSet<String>,
     ncollection_element_types: &HashMap<String, String>,
+    reexport_ctx: Option<&ReexportTypeContext>,
 ) -> Vec<ConstructorBinding> {
-    let cpp_name = &class.name;
+    let cpp_name = class.name.replace("::", "_");
+    let cpp_name = &cpp_name;
     let all_enum_names = ffi_ctx.all_enums;
 
     // Collect directly bindable constructors
@@ -2039,7 +2164,7 @@ fn compute_constructor_bindings(
 
             let params: Vec<ParamBinding> = params_slice
                 .iter()
-                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx))
+                .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx, reexport_ctx))
                 .collect();
 
             let convenience_of = trimmed.convenience_parent.map(|(parent_idx, parent_param_count)| {
@@ -2099,7 +2224,8 @@ fn compute_upcast_bindings(
 ) -> Vec<UpcastBinding> {
     let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     let all_ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
-    let cpp_name = &class.name;
+    let cpp_name = class.name.replace("::", "_");
+    let cpp_name = &cpp_name;
 
     all_ancestors
         .iter()
@@ -2108,29 +2234,27 @@ fn compute_upcast_bindings(
                 && symbol_table.all_class_names.contains(*base)
         })
         .map(|base_class| {
-            let ffi_fn_name = format!("{}_as_{}", cpp_name, base_class);
+            let base_ffi_name = base_class.replace("::", "_");
+            let ffi_fn_name = format!("{}_as_{}", cpp_name, base_ffi_name);
             let ffi_fn_name_mut = format!("{}_mut", ffi_fn_name);
 
-            let base_short_name = if let Some(underscore_pos) = base_class.find('_') {
-                type_mapping::safe_short_name(&base_class[underscore_pos + 1..])
+            let base_module = if let Some(underscore_pos) = base_ffi_name.find('_') {
+                base_ffi_name[..underscore_pos].to_string()
             } else {
-                type_mapping::safe_short_name(base_class)
+                base_ffi_name.clone()
             };
 
-            let base_module = if let Some(underscore_pos) = base_class.find('_') {
-                base_class[..underscore_pos].to_string()
-            } else {
-                base_class.clone()
-            };
+            let base_short_name = type_mapping::short_name_for_module(&base_ffi_name, &base_module);
 
             let impl_method_name = if base_module == class.module {
                 format!("as_{}", heck::AsSnakeCase(&base_short_name))
             } else {
-                format!("as_{}", heck::AsSnakeCase(base_class.as_str()))
+                format!("as_{}", heck::AsSnakeCase(base_ffi_name.as_str()))
             };
 
             UpcastBinding {
-                base_class: base_class.clone(),
+                base_class: base_ffi_name,
+                base_class_cpp: base_class.clone(),
                 base_short_name,
                 base_module,
                 ffi_fn_name,
@@ -2150,7 +2274,8 @@ fn compute_handle_upcast_bindings(
 ) -> Vec<HandleUpcastBinding> {
     let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     let all_ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
-    let cpp_name = &class.name;
+    let cpp_name = class.name.replace("::", "_");
+    let cpp_name = &cpp_name;
 
     let handle_type_name = format!("Handle{}", cpp_name.replace("_", ""));
 
@@ -2193,7 +2318,8 @@ fn compute_handle_downcast_bindings(
 ) -> Vec<HandleDowncastBinding> {
     let protected_destructor_classes = symbol_table.protected_destructor_class_names();
     let all_descendants = symbol_table.get_all_descendants_by_name(&class.name);
-    let cpp_name = &class.name;
+    let cpp_name = class.name.replace("::", "_");
+    let cpp_name = &cpp_name;
 
     let handle_type_name = format!("Handle{}", cpp_name.replace("_", ""));
 
@@ -2238,6 +2364,7 @@ fn compute_inherited_method_bindings(
     _all_enum_names: &HashSet<String>,
     ncollection_primitive_classes: &HashSet<String>,
     deletable_class_names: Option<&HashSet<String>>,
+    reexport_ctx: Option<&ReexportTypeContext>,
 ) -> Vec<InheritedMethodBinding> {
     if class.has_protected_destructor {
         return Vec::new();
@@ -2358,7 +2485,7 @@ fn compute_inherited_method_bindings(
 
                 let ffi_fn_name = format!(
                     "{}_inherited_{}",
-                    class.name, resolved_method.cpp_name
+                    class.name.replace("::", "_"), resolved_method.cpp_name
                 );
                 let impl_method_name =
                     safe_method_name(&resolved_method.cpp_name);
@@ -2374,7 +2501,7 @@ fn compute_inherited_method_bindings(
                             let (rust_ffi_type, rust_reexport_type, cpp_type) = match &p.ty.original {
                                 Type::ConstPtr(inner) => {
                                     let inner_ffi = type_to_ffi_full_name(inner);
-                                    let inner_rust = type_to_rust_string(inner);
+                                    let inner_rust = type_to_rust_string(inner, reexport_ctx);
                                     let inner_cpp = type_to_cpp(inner);
                                     (
                                         format!("*const {}", inner_ffi),
@@ -2384,7 +2511,7 @@ fn compute_inherited_method_bindings(
                                 }
                                 Type::MutPtr(inner) => {
                                     let inner_ffi = type_to_ffi_full_name(inner);
-                                    let inner_rust = type_to_rust_string(inner);
+                                    let inner_rust = type_to_rust_string(inner, reexport_ctx);
                                     let inner_cpp = type_to_cpp(inner);
                                     (
                                         format!("*mut {}", inner_ffi),
@@ -2435,7 +2562,7 @@ fn compute_inherited_method_bindings(
                             rust_reexport_type: if let Some(ref enum_name) = p.ty.enum_cpp_name {
                                 symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
                             } else {
-                                type_to_rust_string(&effective_ty)
+                                type_to_rust_string(&effective_ty, reexport_ctx)
                             },
                             cpp_type: cpp_param_type,
                             cpp_arg_expr,
@@ -2455,7 +2582,7 @@ fn compute_inherited_method_bindings(
                             rust_reexport_type: if let Some(ref enum_name) = rt.enum_cpp_name {
                                 symbol_table.enum_rust_types.get(enum_name).cloned().unwrap_or_else(|| "i32".to_string())
                             } else {
-                                return_type_to_rust_string(&rt.original)
+                                return_type_to_rust_string(&rt.original, reexport_ctx)
                             },
                             cpp_type: rt.cpp_type.clone(),
                             needs_unique_ptr: rt.needs_unique_ptr,
@@ -2559,10 +2686,16 @@ pub fn compute_all_class_bindings(
     // Build NCollection class element type maps for misresolution detection
     let (ncollection_element_types, ncollection_primitive_classes) = build_ncollection_element_types(all_classes);
 
+    let class_public_info = build_class_public_info(all_classes);
+
     all_classes
         .iter()
         .map(|class| {
-            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, &ncollection_element_types, &ncollection_primitive_classes)
+            let reexport_ctx = ReexportTypeContext {
+                class_public_info: &class_public_info,
+                current_module_rust: crate::module_graph::module_to_rust_name(&class.module),
+            };
+            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, &ncollection_element_types, &ncollection_primitive_classes, Some(&reexport_ctx))
         })
         .collect()
 }
@@ -2727,6 +2860,8 @@ pub fn compute_all_function_bindings(
         }
     }
 
+    let class_public_info = build_class_public_info(all_classes);
+
     let mut used_names: HashSet<String> = HashSet::new();
     let mut result = Vec::new();
 
@@ -2818,14 +2953,19 @@ pub fn compute_all_function_bindings(
         used_names.insert(rust_ffi_name.clone());
         let cpp_wrapper_name = format!("{}_{}", func.namespace, rust_ffi_name);
 
+        let reexport_ctx = ReexportTypeContext {
+            class_public_info: &class_public_info,
+            current_module_rust: crate::module_graph::module_to_rust_name(&func.namespace),
+        };
+
         // Build ParamBindings using the shared build_param_binding()
         let params: Vec<ParamBinding> = func.params.iter()
-            .map(|p| build_param_binding(&p.name, &p.ty.original, p.is_nullable_ptr(), &ffi_ctx))
+            .map(|p| build_param_binding(&p.name, &p.ty.original, p.is_nullable_ptr(), &ffi_ctx, Some(&reexport_ctx)))
             .collect();
 
         // Build ReturnTypeBinding
         let return_type = func.return_type.as_ref()
-            .map(|rt| build_return_type_binding(&rt.original, &ffi_ctx));
+            .map(|rt| build_return_type_binding(&rt.original, &ffi_ctx, Some(&reexport_ctx)));
 
         // Collect C++ headers needed for this function's types
         let mut headers: HashSet<String> = HashSet::new();
@@ -2868,7 +3008,19 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
     use std::fmt::Write;
 
     let mut output = String::new();
-    let cn = &bindings.cpp_name;
+    let ffi_cn = &bindings.cpp_name;  // Rust-safe flattened name (for FFI function names)
+    let cn = &bindings.cpp_qualified_name;  // C++ qualified name (for C++ type expressions)
+
+    // POD structs don't need C++ wrappers, but we generate a sizeof helper
+    // so Rust tests can verify layout compatibility at runtime,
+    // and a destructor so CppDeletable can be implemented (needed when returned by pointer).
+    if bindings.is_pod_struct {
+        writeln!(output, "// sizeof helper for POD struct {}", cn).unwrap();
+        writeln!(output, "extern \"C\" size_t {}_sizeof() {{ return sizeof({}); }}", ffi_cn, cn).unwrap();
+        writeln!(output, "extern \"C\" void {}_destructor({}* self_) {{ delete self_; }}", ffi_cn, cn).unwrap();
+        writeln!(output).unwrap();
+        return output;
+    }
 
     writeln!(output, "// ========================").unwrap();
     writeln!(output, "// {} wrappers", cn).unwrap();
@@ -3669,7 +3821,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(
             output,
             "extern \"C\" const {base}* {fn_name}(const {cn}* self_) {{ return static_cast<const {base}*>(self_); }}",
-            base = up.base_class,
+            base = up.base_class_cpp,
             fn_name = up.ffi_fn_name
         )
         .unwrap();
@@ -3677,7 +3829,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(
             output,
             "extern \"C\" {base}* {fn_name_mut}({cn}* self_) {{ return static_cast<{base}*>(self_); }}",
-            base = up.base_class,
+            base = up.base_class_cpp,
             fn_name_mut = up.ffi_fn_name_mut
         )
         .unwrap();
@@ -3685,7 +3837,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
     // 7. to_owned wrapper
     if bindings.has_to_owned {
-        let fn_name = format!("{cn}_to_owned");
+        let fn_name = format!("{ffi_cn}_to_owned");
         writeln!(
             output,
             "extern \"C\" {cn}* {fn_name}(const {cn}* self_) {{ return new {cn}(*self_); }}"
@@ -3695,8 +3847,8 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
     // 8. to_handle wrapper
     if bindings.has_to_handle {
-        let handle_type = format!("Handle{}", cn.replace("_", ""));
-        let fn_name = format!("{cn}_to_handle");
+        let handle_type = format!("Handle{}", ffi_cn.replace("_", ""));
+        let fn_name = format!("{ffi_cn}_to_handle");
         writeln!(
             output,
             "extern \"C\" {handle_type}* {fn_name}({cn}* obj) {{"
@@ -3712,7 +3864,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
 
     // 8b. Handle get (dereference) wrapper
     if bindings.has_handle_get {
-        let handle_type = format!("Handle{}", cn.replace("_", ""));
+        let handle_type = format!("Handle{}", ffi_cn.replace("_", ""));
         writeln!(
             output,
             "extern \"C\" const {cn}* {handle_type}_get(const {handle_type}* handle) {{ return (*handle).get(); }}"
@@ -3856,7 +4008,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
     if !bindings.has_protected_destructor {
         writeln!(
             output,
-            "extern \"C\" void {cn}_destructor({cn}* self_) {{ delete self_; }}"
+            "extern \"C\" void {ffi_cn}_destructor({cn}* self_) {{ delete self_; }}"
         )
         .unwrap();
     }
@@ -3971,6 +4123,16 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
         "pub use crate::ffi::{} as {};\n\n",
         cn, short_name
     ));
+
+    // POD structs are Copy types with real fields.
+    // They still need CppDeletable because other classes may return them by pointer.
+    if bindings.is_pod_struct {
+        output.push_str(&format!(
+            "unsafe impl crate::CppDeletable for {} {{\n    unsafe fn cpp_delete(ptr: *mut Self) {{\n        crate::ffi::{}_destructor(ptr);\n    }}\n}}\n\n",
+            short_name, cn
+        ));
+        return output;
+    }
 
     // CppDeletable impl (unless protected destructor)
     if !bindings.has_protected_destructor {
@@ -4394,6 +4556,17 @@ fn format_source_attribution(header: &str, line: Option<u32>, cpp_name: &str) ->
 /// Returns a string fragment to be inserted inside `extern "C" { ... }`.
 /// All declarations are indented with 4 spaces.
 pub fn emit_ffi_class(bindings: &ClassBindings) -> String {
+    // POD structs are defined as #[repr(C)] with real fields — they only
+    // need a sizeof helper for layout verification.
+    if bindings.is_pod_struct {
+        let cn = &bindings.cpp_name;
+        let mut out = String::new();
+        writeln!(out, "    // ======================== {} (POD) ========================", cn).unwrap();
+        writeln!(out, "    pub fn {}_destructor(self_: *mut {});", cn, cn).unwrap();
+        writeln!(out, "    pub fn {}_sizeof() -> usize;", cn).unwrap();
+        return out;
+    }
+
     let cn = &bindings.cpp_name;
     let mut out = String::new();
 
@@ -4608,6 +4781,8 @@ mod tests {
             is_abstract: false,
             pure_virtual_methods: HashSet::new(),
             has_explicit_constructors: false,
+            fields: Vec::new(),
+            is_pod_struct: false,
         };
 
         let all_class_names: HashSet<String> = ["gp_Pnt".to_string()].into();
@@ -4655,6 +4830,7 @@ mod tests {
             &all_classes_by_name,
             &HashMap::new(),
             &HashSet::new(),
+            None,
         );
 
         assert_eq!(bindings.cpp_name, "gp_Pnt");
@@ -4694,6 +4870,8 @@ mod tests {
             is_abstract: true,
             pure_virtual_methods: HashSet::new(),
             has_explicit_constructors: true,
+            fields: Vec::new(),
+            is_pod_struct: false,
         };
 
         let all_class_names: HashSet<String> =
@@ -4742,6 +4920,7 @@ mod tests {
             &all_classes_by_name,
             &HashMap::new(),
             &HashSet::new(),
+            None,
         );
 
         assert!(bindings.constructors.is_empty());

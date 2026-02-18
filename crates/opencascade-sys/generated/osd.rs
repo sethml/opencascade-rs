@@ -607,7 +607,7 @@ impl CachedFileSystem {
 
     /// **Source:** `OSD_CachedFileSystem.hxx`:43 - `OSD_CachedFileSystem::IsSupportedPath()`
     /// Returns TRUE if URL defines a supported protocol.
-    pub fn is_supported_path(&self, theUrl: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn is_supported_path(&self, theUrl: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::OSD_CachedFileSystem_is_supported_path(self as *const Self, theUrl) }
     }
 
@@ -808,7 +808,7 @@ impl Directory {
 
     /// **Source:** `OSD_Directory.hxx`:36 - `OSD_Directory::OSD_Directory()`
     /// Creates Directory object initialized with theName.
-    pub fn new_path(theName: &crate::ffi::OSD_Path) -> crate::OwnedPtr<Self> {
+    pub fn new_path(theName: &Path) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_ctor_path(theName)) }
     }
 
@@ -819,24 +819,24 @@ impl Directory {
     ///
     /// If Build is used and <me> is instantiated without a name,
     /// OSDError is raised.
-    pub fn build(&mut self, Protect: &crate::ffi::OSD_Protection) {
+    pub fn build(&mut self, Protect: &Protection) {
         unsafe { crate::ffi::OSD_Directory_build(self as *mut Self, Protect) }
     }
 
     /// **Source:** `OSD_Directory.hxx`:28 - `OSD_Directory::BuildTemporary()`
     /// Creates a temporary Directory in current directory.
     /// This directory is automatically removed when object dies.
-    pub fn build_temporary() -> crate::OwnedPtr<crate::ffi::OSD_Directory> {
+    pub fn build_temporary() -> crate::OwnedPtr<Directory> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_build_temporary()) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
-    pub fn path(&self, Name: &mut crate::ffi::OSD_Path) {
+    pub fn path(&self, Name: &mut Path) {
         unsafe { crate::ffi::OSD_Directory_inherited_Path(self as *const Self, Name) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:42 - `OSD_FileNode::SetPath()`
-    pub fn set_path(&mut self, Name: &crate::ffi::OSD_Path) {
+    pub fn set_path(&mut self, Name: &Path) {
         unsafe { crate::ffi::OSD_Directory_inherited_SetPath(self as *mut Self, Name) }
     }
 
@@ -851,17 +851,17 @@ impl Directory {
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:51 - `OSD_FileNode::Move()`
-    pub fn move_(&mut self, NewPath: &crate::ffi::OSD_Path) {
+    pub fn move_(&mut self, NewPath: &Path) {
         unsafe { crate::ffi::OSD_Directory_inherited_Move(self as *mut Self, NewPath) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:54 - `OSD_FileNode::Copy()`
-    pub fn copy(&mut self, ToPath: &crate::ffi::OSD_Path) {
+    pub fn copy(&mut self, ToPath: &Path) {
         unsafe { crate::ffi::OSD_Directory_inherited_Copy(self as *mut Self, ToPath) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:58 - `OSD_FileNode::Protection()`
-    pub fn protection(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_Protection> {
+    pub fn protection(&mut self) -> crate::OwnedPtr<Protection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_inherited_Protection(
                 self as *mut Self,
@@ -870,12 +870,12 @@ impl Directory {
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:61 - `OSD_FileNode::SetProtection()`
-    pub fn set_protection(&mut self, Prot: &crate::ffi::OSD_Protection) {
+    pub fn set_protection(&mut self, Prot: &Protection) {
         unsafe { crate::ffi::OSD_Directory_inherited_SetProtection(self as *mut Self, Prot) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:66 - `OSD_FileNode::AccessMoment()`
-    pub fn access_moment(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+    pub fn access_moment(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_inherited_AccessMoment(
                 self as *mut Self,
@@ -884,7 +884,7 @@ impl Directory {
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:71 - `OSD_FileNode::CreationMoment()`
-    pub fn creation_moment(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+    pub fn creation_moment(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Directory_inherited_CreationMoment(
                 self as *mut Self,
@@ -941,8 +941,8 @@ impl DirectoryIterator {
     /// Wild-card "*" can be used in Mask the same way it
     /// is used by unix shell for file names
     pub fn new_path_asciistring(
-        where_: &crate::ffi::OSD_Path,
-        Mask: &crate::ffi::TCollection_AsciiString,
+        where_: &Path,
+        Mask: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_DirectoryIterator_ctor_path_asciistring(
@@ -958,11 +958,7 @@ impl DirectoryIterator {
 
     /// **Source:** `OSD_DirectoryIterator.hxx`:51 - `OSD_DirectoryIterator::Initialize()`
     /// Initializes the current File Directory
-    pub fn initialize(
-        &mut self,
-        where_: &crate::ffi::OSD_Path,
-        Mask: &crate::ffi::TCollection_AsciiString,
-    ) {
+    pub fn initialize(&mut self, where_: &Path, Mask: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_DirectoryIterator_initialize(self as *mut Self, where_, Mask) }
     }
 
@@ -983,7 +979,7 @@ impl DirectoryIterator {
 
     /// **Source:** `OSD_DirectoryIterator.hxx`:63 - `OSD_DirectoryIterator::Values()`
     /// Returns the next item found .
-    pub fn values(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_Directory> {
+    pub fn values(&mut self) -> crate::OwnedPtr<Directory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_DirectoryIterator_values(self as *mut Self))
         }
@@ -1040,7 +1036,7 @@ impl Disk {
     /// **Source:** `OSD_Disk.hxx`:37 - `OSD_Disk::OSD_Disk()`
     /// Initializes the object Disk with the disk name
     /// associated to the OSD_Path.
-    pub fn new_path(Name: &crate::ffi::OSD_Path) -> crate::OwnedPtr<Self> {
+    pub fn new_path(Name: &Path) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Disk_ctor_path(Name)) }
     }
 
@@ -1058,13 +1054,13 @@ impl Disk {
 
     /// **Source:** `OSD_Disk.hxx`:48 - `OSD_Disk::Name()`
     /// Returns disk name of <me>.
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::OSD_Path> {
+    pub fn name(&self) -> crate::OwnedPtr<Path> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Disk_name(self as *const Self)) }
     }
 
     /// **Source:** `OSD_Disk.hxx`:51 - `OSD_Disk::SetName()`
     /// Instantiates <me> with <Name>.
-    pub fn set_name(&mut self, Name: &crate::ffi::OSD_Path) {
+    pub fn set_name(&mut self, Name: &Path) {
         unsafe { crate::ffi::OSD_Disk_set_name(self as *mut Self, Name) }
     }
 
@@ -1134,15 +1130,15 @@ impl Environment {
     /// **Source:** `OSD_Environment.hxx`:43 - `OSD_Environment::OSD_Environment()`
     /// Creates an Environment variable initialized with value
     /// set to an empty AsciiString.
-    pub fn new_asciistring(Name: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+    pub fn new_asciistring(Name: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_ctor_asciistring(Name)) }
     }
 
     /// **Source:** `OSD_Environment.hxx`:46 - `OSD_Environment::OSD_Environment()`
     /// Creates an Environment variable initialized with Value.
     pub fn new_asciistring2(
-        Name: &crate::ffi::TCollection_AsciiString,
-        Value: &crate::ffi::TCollection_AsciiString,
+        Name: &crate::t_collection::AsciiString,
+        Value: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_ctor_asciistring2(Name, Value))
@@ -1154,13 +1150,13 @@ impl Environment {
     /// Raises ConstructionError either if the string contains
     /// characters not in range of ' '...'~' or if the string
     /// contains the character '$' which is forbidden.
-    pub fn set_value(&mut self, Value: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_value(&mut self, Value: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Environment_set_value(self as *mut Self, Value) }
     }
 
     /// **Source:** `OSD_Environment.hxx`:56 - `OSD_Environment::Value()`
     /// Gets the value of an environment variable
-    pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn value(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_value(self as *mut Self)) }
     }
 
@@ -1169,13 +1165,13 @@ impl Environment {
     /// Raises ConstructionError either if the string contains
     /// characters not in range of ' '...'~' or if the string
     /// contains the character '$' which is forbidden.
-    pub fn set_name(&mut self, name: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_name(&mut self, name: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Environment_set_name(self as *mut Self, name) }
     }
 
     /// **Source:** `OSD_Environment.hxx`:65 - `OSD_Environment::Name()`
     /// Gets the name of <me>.
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Environment_name(self as *const Self)) }
     }
 
@@ -1253,7 +1249,7 @@ impl Error {
         &mut self,
         Errcode: i32,
         From: i32,
-        Message: &crate::ffi::TCollection_AsciiString,
+        Message: &crate::t_collection::AsciiString,
     ) {
         unsafe { crate::ffi::OSD_Error_set_value(self as *mut Self, Errcode, From, Message) }
     }
@@ -1350,15 +1346,15 @@ impl Exception {
 // ========================
 
 /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION`
-pub use crate::ffi::OSD_Exception_ACCESS_VIOLATION as ExceptionACCESSVIOLATION;
+pub use crate::ffi::OSD_Exception_ACCESS_VIOLATION as Exception_ACCESS_VIOLATION;
 
-unsafe impl crate::CppDeletable for ExceptionACCESSVIOLATION {
+unsafe impl crate::CppDeletable for Exception_ACCESS_VIOLATION {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_ACCESS_VIOLATION_destructor(ptr);
     }
 }
 
-impl ExceptionACCESSVIOLATION {
+impl Exception_ACCESS_VIOLATION {
     /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ACCESS_VIOLATION_ctor()) }
@@ -1433,15 +1429,15 @@ impl ExceptionACCESSVIOLATION {
 // ========================
 
 /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED`
-pub use crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED as ExceptionARRAYBOUNDSEXCEEDED;
+pub use crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED as Exception_ARRAY_BOUNDS_EXCEEDED;
 
-unsafe impl crate::CppDeletable for ExceptionARRAYBOUNDSEXCEEDED {
+unsafe impl crate::CppDeletable for Exception_ARRAY_BOUNDS_EXCEEDED {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_destructor(ptr);
     }
 }
 
-impl ExceptionARRAYBOUNDSEXCEEDED {
+impl Exception_ARRAY_BOUNDS_EXCEEDED {
     /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_ctor()) }
@@ -1520,15 +1516,15 @@ impl ExceptionARRAYBOUNDSEXCEEDED {
 // ========================
 
 /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK`
-pub use crate::ffi::OSD_Exception_CTRL_BREAK as ExceptionCTRLBREAK;
+pub use crate::ffi::OSD_Exception_CTRL_BREAK as Exception_CTRL_BREAK;
 
-unsafe impl crate::CppDeletable for ExceptionCTRLBREAK {
+unsafe impl crate::CppDeletable for Exception_CTRL_BREAK {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_CTRL_BREAK_destructor(ptr);
     }
 }
 
-impl ExceptionCTRLBREAK {
+impl Exception_CTRL_BREAK {
     /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_CTRL_BREAK_ctor()) }
@@ -1599,15 +1595,15 @@ impl ExceptionCTRLBREAK {
 // ========================
 
 /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION`
-pub use crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION as ExceptionILLEGALINSTRUCTION;
+pub use crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION as Exception_ILLEGAL_INSTRUCTION;
 
-unsafe impl crate::CppDeletable for ExceptionILLEGALINSTRUCTION {
+unsafe impl crate::CppDeletable for Exception_ILLEGAL_INSTRUCTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_destructor(ptr);
     }
 }
 
-impl ExceptionILLEGALINSTRUCTION {
+impl Exception_ILLEGAL_INSTRUCTION {
     /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_ctor()) }
@@ -1684,15 +1680,15 @@ impl ExceptionILLEGALINSTRUCTION {
 // ========================
 
 /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW`
-pub use crate::ffi::OSD_Exception_INT_OVERFLOW as ExceptionINTOVERFLOW;
+pub use crate::ffi::OSD_Exception_INT_OVERFLOW as Exception_INT_OVERFLOW;
 
-unsafe impl crate::CppDeletable for ExceptionINTOVERFLOW {
+unsafe impl crate::CppDeletable for Exception_INT_OVERFLOW {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_INT_OVERFLOW_destructor(ptr);
     }
 }
 
-impl ExceptionINTOVERFLOW {
+impl Exception_INT_OVERFLOW {
     /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INT_OVERFLOW_ctor()) }
@@ -1763,15 +1759,15 @@ impl ExceptionINTOVERFLOW {
 // ========================
 
 /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION`
-pub use crate::ffi::OSD_Exception_INVALID_DISPOSITION as ExceptionINVALIDDISPOSITION;
+pub use crate::ffi::OSD_Exception_INVALID_DISPOSITION as Exception_INVALID_DISPOSITION;
 
-unsafe impl crate::CppDeletable for ExceptionINVALIDDISPOSITION {
+unsafe impl crate::CppDeletable for Exception_INVALID_DISPOSITION {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_INVALID_DISPOSITION_destructor(ptr);
     }
 }
 
-impl ExceptionINVALIDDISPOSITION {
+impl Exception_INVALID_DISPOSITION {
     /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_INVALID_DISPOSITION_ctor()) }
@@ -1848,15 +1844,15 @@ impl ExceptionINVALIDDISPOSITION {
 // ========================
 
 /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR`
-pub use crate::ffi::OSD_Exception_IN_PAGE_ERROR as ExceptionINPAGEERROR;
+pub use crate::ffi::OSD_Exception_IN_PAGE_ERROR as Exception_IN_PAGE_ERROR;
 
-unsafe impl crate::CppDeletable for ExceptionINPAGEERROR {
+unsafe impl crate::CppDeletable for Exception_IN_PAGE_ERROR {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_IN_PAGE_ERROR_destructor(ptr);
     }
 }
 
-impl ExceptionINPAGEERROR {
+impl Exception_IN_PAGE_ERROR {
     /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_IN_PAGE_ERROR_ctor()) }
@@ -1927,15 +1923,15 @@ impl ExceptionINPAGEERROR {
 // ========================
 
 /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION`
-pub use crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION as ExceptionNONCONTINUABLEEXCEPTION;
+pub use crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION as Exception_NONCONTINUABLE_EXCEPTION;
 
-unsafe impl crate::CppDeletable for ExceptionNONCONTINUABLEEXCEPTION {
+unsafe impl crate::CppDeletable for Exception_NONCONTINUABLE_EXCEPTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_destructor(ptr);
     }
 }
 
-impl ExceptionNONCONTINUABLEEXCEPTION {
+impl Exception_NONCONTINUABLE_EXCEPTION {
     /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2022,15 +2018,15 @@ impl ExceptionNONCONTINUABLEEXCEPTION {
 // ========================
 
 /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION`
-pub use crate::ffi::OSD_Exception_PRIV_INSTRUCTION as ExceptionPRIVINSTRUCTION;
+pub use crate::ffi::OSD_Exception_PRIV_INSTRUCTION as Exception_PRIV_INSTRUCTION;
 
-unsafe impl crate::CppDeletable for ExceptionPRIVINSTRUCTION {
+unsafe impl crate::CppDeletable for Exception_PRIV_INSTRUCTION {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_PRIV_INSTRUCTION_destructor(ptr);
     }
 }
 
-impl ExceptionPRIVINSTRUCTION {
+impl Exception_PRIV_INSTRUCTION {
     /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_PRIV_INSTRUCTION_ctor()) }
@@ -2105,15 +2101,15 @@ impl ExceptionPRIVINSTRUCTION {
 // ========================
 
 /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW`
-pub use crate::ffi::OSD_Exception_STACK_OVERFLOW as ExceptionSTACKOVERFLOW;
+pub use crate::ffi::OSD_Exception_STACK_OVERFLOW as Exception_STACK_OVERFLOW;
 
-unsafe impl crate::CppDeletable for ExceptionSTACKOVERFLOW {
+unsafe impl crate::CppDeletable for Exception_STACK_OVERFLOW {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_STACK_OVERFLOW_destructor(ptr);
     }
 }
 
-impl ExceptionSTACKOVERFLOW {
+impl Exception_STACK_OVERFLOW {
     /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STACK_OVERFLOW_ctor()) }
@@ -2186,15 +2182,15 @@ impl ExceptionSTACKOVERFLOW {
 // ========================
 
 /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY`
-pub use crate::ffi::OSD_Exception_STATUS_NO_MEMORY as ExceptionSTATUSNOMEMORY;
+pub use crate::ffi::OSD_Exception_STATUS_NO_MEMORY as Exception_STATUS_NO_MEMORY;
 
-unsafe impl crate::CppDeletable for ExceptionSTATUSNOMEMORY {
+unsafe impl crate::CppDeletable for Exception_STATUS_NO_MEMORY {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::OSD_Exception_STATUS_NO_MEMORY_destructor(ptr);
     }
 }
 
-impl ExceptionSTATUSNOMEMORY {
+impl Exception_STATUS_NO_MEMORY {
     /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Exception_STATUS_NO_MEMORY_ctor()) }
@@ -2289,7 +2285,7 @@ impl File {
 
     /// **Source:** `OSD_File.hxx`:39 - `OSD_File::OSD_File()`
     /// Instantiates the object file, storing its name
-    pub fn new_path(Name: &crate::ffi::OSD_Path) -> crate::OwnedPtr<Self> {
+    pub fn new_path(Name: &Path) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_File_ctor_path(Name)) }
     }
 
@@ -2298,7 +2294,7 @@ impl File {
     /// an existing file.
     /// After 'Build', the file is open.
     /// If no name was given, ProgramError is raised.
-    pub fn build(&mut self, Mode: crate::osd::OpenMode, Protect: &crate::ffi::OSD_Protection) {
+    pub fn build(&mut self, Mode: crate::osd::OpenMode, Protect: &Protection) {
         unsafe { crate::ffi::OSD_File_build(self as *mut Self, Mode.into(), Protect) }
     }
 
@@ -2306,7 +2302,7 @@ impl File {
     /// Opens a File with specific attributes
     /// This works only on already existing file.
     /// If no name was given, ProgramError is raised.
-    pub fn open(&mut self, Mode: crate::osd::OpenMode, Protect: &crate::ffi::OSD_Protection) {
+    pub fn open(&mut self, Mode: crate::osd::OpenMode, Protect: &Protection) {
         unsafe { crate::ffi::OSD_File_open(self as *mut Self, Mode.into(), Protect) }
     }
 
@@ -2315,7 +2311,7 @@ impl File {
     /// If file doesn't exist, creates it first.
     /// After 'Append', the file is open.
     /// If no name was given, ProgramError is raised.
-    pub fn append(&mut self, Mode: crate::osd::OpenMode, Protect: &crate::ffi::OSD_Protection) {
+    pub fn append(&mut self, Mode: crate::osd::OpenMode, Protect: &Protection) {
         unsafe { crate::ffi::OSD_File_append(self as *mut Self, Mode.into(), Protect) }
     }
 
@@ -2327,7 +2323,7 @@ impl File {
     /// may be less than Nbyte if the number of bytes left in the file
     /// is less than Nbyte bytes. In this case only number of read
     /// bytes will be placed in the buffer.
-    pub fn read(&mut self, Buffer: &mut crate::ffi::TCollection_AsciiString, Nbyte: i32) {
+    pub fn read(&mut self, Buffer: &mut crate::t_collection::AsciiString, Nbyte: i32) {
         unsafe { crate::ffi::OSD_File_read(self as *mut Self, Buffer, Nbyte) }
     }
 
@@ -2340,17 +2336,13 @@ impl File {
     /// encountered.
     /// Upon successful completion, Read returns the number of
     /// bytes actually read and placed into the Buffer <Buffer>.
-    pub fn read_line(
-        &mut self,
-        Buffer: &mut crate::ffi::TCollection_AsciiString,
-        NByte: i32,
-    ) -> i32 {
+    pub fn read_line(&mut self, Buffer: &mut crate::t_collection::AsciiString, NByte: i32) -> i32 {
         unsafe { crate::ffi::OSD_File_read_line(self as *mut Self, Buffer, NByte) }
     }
 
     /// **Source:** `OSD_File.hxx`:110 - `OSD_File::Write()`
     /// Attempts to write theNbBytes bytes from the AsciiString to the file.
-    pub fn write(&mut self, theBuffer: &crate::ffi::TCollection_AsciiString, theNbBytes: i32) {
+    pub fn write(&mut self, theBuffer: &crate::t_collection::AsciiString, theNbBytes: i32) {
         unsafe { crate::ffi::OSD_File_write(self as *mut Self, theBuffer, theNbBytes) }
     }
 
@@ -2456,7 +2448,7 @@ impl File {
     /// returns FALSE.
     pub fn read_last_line(
         &mut self,
-        aLine: &mut crate::ffi::TCollection_AsciiString,
+        aLine: &mut crate::t_collection::AsciiString,
         aDelay: i32,
         aNbTries: i32,
     ) -> bool {
@@ -2476,12 +2468,12 @@ impl File {
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
-    pub fn path(&self, Name: &mut crate::ffi::OSD_Path) {
+    pub fn path(&self, Name: &mut Path) {
         unsafe { crate::ffi::OSD_File_inherited_Path(self as *const Self, Name) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:42 - `OSD_FileNode::SetPath()`
-    pub fn set_path(&mut self, Name: &crate::ffi::OSD_Path) {
+    pub fn set_path(&mut self, Name: &Path) {
         unsafe { crate::ffi::OSD_File_inherited_SetPath(self as *mut Self, Name) }
     }
 
@@ -2496,29 +2488,29 @@ impl File {
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:51 - `OSD_FileNode::Move()`
-    pub fn move_(&mut self, NewPath: &crate::ffi::OSD_Path) {
+    pub fn move_(&mut self, NewPath: &Path) {
         unsafe { crate::ffi::OSD_File_inherited_Move(self as *mut Self, NewPath) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:54 - `OSD_FileNode::Copy()`
-    pub fn copy(&mut self, ToPath: &crate::ffi::OSD_Path) {
+    pub fn copy(&mut self, ToPath: &Path) {
         unsafe { crate::ffi::OSD_File_inherited_Copy(self as *mut Self, ToPath) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:58 - `OSD_FileNode::Protection()`
-    pub fn protection(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_Protection> {
+    pub fn protection(&mut self) -> crate::OwnedPtr<Protection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_File_inherited_Protection(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:61 - `OSD_FileNode::SetProtection()`
-    pub fn set_protection(&mut self, Prot: &crate::ffi::OSD_Protection) {
+    pub fn set_protection(&mut self, Prot: &Protection) {
         unsafe { crate::ffi::OSD_File_inherited_SetProtection(self as *mut Self, Prot) }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:66 - `OSD_FileNode::AccessMoment()`
-    pub fn access_moment(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+    pub fn access_moment(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_File_inherited_AccessMoment(
                 self as *mut Self,
@@ -2527,7 +2519,7 @@ impl File {
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:71 - `OSD_FileNode::CreationMoment()`
-    pub fn creation_moment(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+    pub fn creation_moment(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_File_inherited_CreationMoment(
                 self as *mut Self,
@@ -2583,8 +2575,8 @@ impl FileIterator {
     /// Wild-card "*" can be used in Mask the same way it
     /// is used by unix shell for file names
     pub fn new_path_asciistring(
-        where_: &crate::ffi::OSD_Path,
-        Mask: &crate::ffi::TCollection_AsciiString,
+        where_: &Path,
+        Mask: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_FileIterator_ctor_path_asciistring(
@@ -2600,11 +2592,7 @@ impl FileIterator {
 
     /// **Source:** `OSD_FileIterator.hxx`:46 - `OSD_FileIterator::Initialize()`
     /// Initializes the current File Iterator
-    pub fn initialize(
-        &mut self,
-        where_: &crate::ffi::OSD_Path,
-        Mask: &crate::ffi::TCollection_AsciiString,
-    ) {
+    pub fn initialize(&mut self, where_: &Path, Mask: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_FileIterator_initialize(self as *mut Self, where_, Mask) }
     }
 
@@ -2625,7 +2613,7 @@ impl FileIterator {
 
     /// **Source:** `OSD_FileIterator.hxx`:58 - `OSD_FileIterator::Values()`
     /// Returns the next file found .
-    pub fn values(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_File> {
+    pub fn values(&mut self) -> crate::OwnedPtr<File> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_FileIterator_values(self as *mut Self)) }
     }
 
@@ -2677,7 +2665,7 @@ impl FileSystem {
 
     /// **Source:** `OSD_FileSystem.hxx`:46 - `OSD_FileSystem::IsSupportedPath()`
     /// Returns TRUE if URL defines a supported protocol.
-    pub fn is_supported_path(&self, theUrl: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn is_supported_path(&self, theUrl: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::OSD_FileSystem_is_supported_path(self as *const Self, theUrl) }
     }
 
@@ -2799,7 +2787,7 @@ impl FileSystemSelector {
 
     /// **Source:** `OSD_FileSystemSelector.hxx`:41 - `OSD_FileSystemSelector::IsSupportedPath()`
     /// Returns TRUE if URL defines a supported protocol.
-    pub fn is_supported_path(&self, theUrl: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn is_supported_path(&self, theUrl: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::OSD_FileSystemSelector_is_supported_path(self as *const Self, theUrl) }
     }
 
@@ -2854,7 +2842,7 @@ impl Host {
 
     /// **Source:** `OSD_Host.hxx`:40 - `OSD_Host::SystemVersion()`
     /// Returns system name and version
-    pub fn system_version(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn system_version(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Host_system_version(self as *mut Self)) }
     }
 
@@ -2869,7 +2857,7 @@ impl Host {
 
     /// **Source:** `OSD_Host.hxx`:46 - `OSD_Host::HostName()`
     /// Returns host name.
-    pub fn host_name(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn host_name(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Host_host_name(self as *mut Self)) }
     }
 
@@ -2881,7 +2869,7 @@ impl Host {
 
     /// **Source:** `OSD_Host.hxx`:52 - `OSD_Host::InternetAddress()`
     /// Returns Internet address of current host.
-    pub fn internet_address(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn internet_address(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Host_internet_address(self as *mut Self))
         }
@@ -2949,7 +2937,7 @@ impl LocalFileSystem {
 
     /// **Source:** `OSD_LocalFileSystem.hxx`:28 - `OSD_LocalFileSystem::IsSupportedPath()`
     /// Returns TRUE if URL defines a supported protocol.
-    pub fn is_supported_path(&self, theUrl: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn is_supported_path(&self, theUrl: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::OSD_LocalFileSystem_is_supported_path(self as *const Self, theUrl) }
     }
 
@@ -3001,6 +2989,157 @@ impl MAllocHook {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MAllocHook_ctor()) }
+    }
+}
+
+/// **Source:** `OSD_MAllocHook.hxx`:34 - `OSD_MAllocHook_Callback`
+///
+/// Interface of a class that should handle allocation/deallocation events
+pub use crate::ffi::OSD_MAllocHook_Callback as MAllocHook_Callback;
+
+unsafe impl crate::CppDeletable for MAllocHook_Callback {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_MAllocHook_Callback_destructor(ptr);
+    }
+}
+
+impl MAllocHook_Callback {
+    /// **Source:** `OSD_MAllocHook.hxx`:45 - `OSD_MAllocHook_Callback::AllocEvent()`
+    /// Allocation event handler
+    ///
+    /// It is called when allocation is done
+    /// @param theSize
+    /// the size of the memory block in bytes
+    /// @param theRequestNum
+    /// the allocation order number of the memory block
+    pub fn alloc_event(&mut self, theSize: usize, theRequestNum: std::ffi::c_long) {
+        unsafe {
+            crate::ffi::OSD_MAllocHook_Callback_alloc_event(
+                self as *mut Self,
+                theSize,
+                theRequestNum,
+            )
+        }
+    }
+}
+
+/// **Source:** `OSD_MAllocHook.hxx`:65 - `OSD_MAllocHook_LogFileHandler`
+///
+/// Implementation of the handler that collects all events
+/// to the log file. It contains the method to generate the report
+/// from the log file.
+pub use crate::ffi::OSD_MAllocHook_LogFileHandler as MAllocHook_LogFileHandler;
+
+unsafe impl crate::CppDeletable for MAllocHook_LogFileHandler {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_MAllocHook_LogFileHandler_destructor(ptr);
+    }
+}
+
+impl MAllocHook_LogFileHandler {
+    /// **Source:** `OSD_MAllocHook.hxx`:69 - `OSD_MAllocHook_LogFileHandler::OSD_MAllocHook_LogFileHandler()`
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MAllocHook_LogFileHandler_ctor()) }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:76 - `OSD_MAllocHook_LogFileHandler::Open()`
+    /// Create the file and start collecting events.
+    /// Return false if the file with the given name cannot be created.
+    pub fn open(&mut self, theFileName: &str) -> bool {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::OSD_MAllocHook_LogFileHandler_open(
+                self as *mut Self,
+                c_theFileName.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:79 - `OSD_MAllocHook_LogFileHandler::Close()`
+    /// Close the file and stop collecting events
+    pub fn close(&mut self) {
+        unsafe { crate::ffi::OSD_MAllocHook_LogFileHandler_close(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:93 - `OSD_MAllocHook_LogFileHandler::AllocEvent()`
+    pub fn alloc_event(&mut self, arg0: usize, arg1: std::ffi::c_long) {
+        unsafe {
+            crate::ffi::OSD_MAllocHook_LogFileHandler_alloc_event(self as *mut Self, arg0, arg1)
+        }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:88 - `OSD_MAllocHook_LogFileHandler::MakeReport()`
+    /// Make synthesized report on the given log file.
+    ///
+    /// Generate an easy to use report in the
+    /// new file with the given name, taking the given log file as input.
+    /// If theIncludeAlive is true then
+    /// include into the report the alive allocation numbers.
+    pub fn make_report(theLogFile: &str, theOutFile: &str, theIncludeAlive: bool) -> bool {
+        let c_theLogFile = std::ffi::CString::new(theLogFile).unwrap();
+        let c_theOutFile = std::ffi::CString::new(theOutFile).unwrap();
+        unsafe {
+            crate::ffi::OSD_MAllocHook_LogFileHandler_make_report(
+                c_theLogFile.as_ptr(),
+                c_theOutFile.as_ptr(),
+                theIncludeAlive,
+            )
+        }
+    }
+}
+
+/// **Source:** `OSD_MAllocHook.hxx`:106 - `OSD_MAllocHook_CollectBySize`
+///
+/// Implementation of the handler that collects numbers of
+/// allocations/deallocations for each block size directly in the memory.
+pub use crate::ffi::OSD_MAllocHook_CollectBySize as MAllocHook_CollectBySize;
+
+unsafe impl crate::CppDeletable for MAllocHook_CollectBySize {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_MAllocHook_CollectBySize_destructor(ptr);
+    }
+}
+
+impl MAllocHook_CollectBySize {
+    /// **Source:** `OSD_MAllocHook.hxx`:110 - `OSD_MAllocHook_CollectBySize::OSD_MAllocHook_CollectBySize()`
+    /// Constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MAllocHook_CollectBySize_ctor()) }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:116 - `OSD_MAllocHook_CollectBySize::Reset()`
+    /// Reset the buffer and start collecting events.
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::OSD_MAllocHook_CollectBySize_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:119 - `OSD_MAllocHook_CollectBySize::MakeReport()`
+    /// Write report in the given file.
+    pub fn make_report(&mut self, theOutFile: &str) -> bool {
+        let c_theOutFile = std::ffi::CString::new(theOutFile).unwrap();
+        unsafe {
+            crate::ffi::OSD_MAllocHook_CollectBySize_make_report(
+                self as *mut Self,
+                c_theOutFile.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `OSD_MAllocHook.hxx`:121 - `OSD_MAllocHook_CollectBySize::AllocEvent()`
+    pub fn alloc_event(&mut self, arg0: usize, arg1: std::ffi::c_long) {
+        unsafe {
+            crate::ffi::OSD_MAllocHook_CollectBySize_alloc_event(self as *mut Self, arg0, arg1)
+        }
+    }
+}
+
+/// **Source:** `OSD_MAllocHook.hxx`:125 - `OSD_MAllocHook_CollectBySize_Numbers`
+pub use crate::ffi::OSD_MAllocHook_CollectBySize_Numbers as MAllocHook_CollectBySize_Numbers;
+
+unsafe impl crate::CppDeletable for MAllocHook_CollectBySize_Numbers {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_MAllocHook_CollectBySize_Numbers_destructor(ptr);
     }
 }
 
@@ -3103,7 +3242,7 @@ impl MemInfo {
 
     /// **Source:** `OSD_MemInfo.hxx`:94 - `OSD_MemInfo::ToString()`
     /// Return the string representation for all available counter.
-    pub fn to_string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn to_string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_to_string(self as *const Self)) }
     }
 
@@ -3133,7 +3272,7 @@ impl MemInfo {
 
     /// **Source:** `OSD_MemInfo.hxx`:113 - `OSD_MemInfo::PrintInfo()`
     /// Return the string representation for all available counter.
-    pub fn print_info() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn print_info() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_print_info()) }
     }
 }
@@ -3315,7 +3454,7 @@ impl Path {
     /// Raises ConstructionError when the path is either null
     /// or contains characters not in range of ' '...'~'.
     pub fn new_asciistring_systype(
-        aDependentName: &crate::ffi::TCollection_AsciiString,
+        aDependentName: &crate::t_collection::AsciiString,
         aSysType: crate::osd::SysType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3348,13 +3487,13 @@ impl Path {
     /// "subdir|" - On UNIX -> "subdir/"
     /// - On VMS  -> "[.subdir.]"
     pub fn new_asciistring7(
-        aNode: &crate::ffi::TCollection_AsciiString,
-        aUsername: &crate::ffi::TCollection_AsciiString,
-        aPassword: &crate::ffi::TCollection_AsciiString,
-        aDisk: &crate::ffi::TCollection_AsciiString,
-        aTrek: &crate::ffi::TCollection_AsciiString,
-        aName: &crate::ffi::TCollection_AsciiString,
-        anExtension: &crate::ffi::TCollection_AsciiString,
+        aNode: &crate::t_collection::AsciiString,
+        aUsername: &crate::t_collection::AsciiString,
+        aPassword: &crate::t_collection::AsciiString,
+        aDisk: &crate::t_collection::AsciiString,
+        aTrek: &crate::t_collection::AsciiString,
+        aName: &crate::t_collection::AsciiString,
+        anExtension: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_ctor_asciistring7(
@@ -3373,13 +3512,13 @@ impl Path {
     /// Gets each component of a path.
     pub fn values(
         &self,
-        aNode: &mut crate::ffi::TCollection_AsciiString,
-        aUsername: &mut crate::ffi::TCollection_AsciiString,
-        aPassword: &mut crate::ffi::TCollection_AsciiString,
-        aDisk: &mut crate::ffi::TCollection_AsciiString,
-        aTrek: &mut crate::ffi::TCollection_AsciiString,
-        aName: &mut crate::ffi::TCollection_AsciiString,
-        anExtension: &mut crate::ffi::TCollection_AsciiString,
+        aNode: &mut crate::t_collection::AsciiString,
+        aUsername: &mut crate::t_collection::AsciiString,
+        aPassword: &mut crate::t_collection::AsciiString,
+        aDisk: &mut crate::t_collection::AsciiString,
+        aTrek: &mut crate::t_collection::AsciiString,
+        aName: &mut crate::t_collection::AsciiString,
+        anExtension: &mut crate::t_collection::AsciiString,
     ) {
         unsafe {
             crate::ffi::OSD_Path_values(
@@ -3399,13 +3538,13 @@ impl Path {
     /// Sets each component of a path.
     pub fn set_values(
         &mut self,
-        aNode: &crate::ffi::TCollection_AsciiString,
-        aUsername: &crate::ffi::TCollection_AsciiString,
-        aPassword: &crate::ffi::TCollection_AsciiString,
-        aDisk: &crate::ffi::TCollection_AsciiString,
-        aTrek: &crate::ffi::TCollection_AsciiString,
-        aName: &crate::ffi::TCollection_AsciiString,
-        anExtension: &crate::ffi::TCollection_AsciiString,
+        aNode: &crate::t_collection::AsciiString,
+        aUsername: &crate::t_collection::AsciiString,
+        aPassword: &crate::t_collection::AsciiString,
+        aDisk: &crate::t_collection::AsciiString,
+        aTrek: &crate::t_collection::AsciiString,
+        aName: &crate::t_collection::AsciiString,
+        anExtension: &crate::t_collection::AsciiString,
     ) {
         unsafe {
             crate::ffi::OSD_Path_set_values(
@@ -3439,7 +3578,7 @@ impl Path {
     /// Sets each component of a Path giving its system dependent name.
     pub fn system_name(
         &self,
-        FullName: &mut crate::ffi::TCollection_AsciiString,
+        FullName: &mut crate::t_collection::AsciiString,
         aType: crate::osd::SysType,
     ) {
         unsafe { crate::ffi::OSD_Path_system_name(self as *const Self, FullName, aType.into()) }
@@ -3447,7 +3586,7 @@ impl Path {
 
     /// **Source:** `OSD_Path.hxx`:113 - `OSD_Path::ExpandedName()`
     /// Returns system dependent path resolving logical symbols.
-    pub fn expanded_name(&mut self, aName: &mut crate::ffi::TCollection_AsciiString) {
+    pub fn expanded_name(&mut self, aName: &mut crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_expanded_name(self as *mut Self, aName) }
     }
 
@@ -3466,7 +3605,7 @@ impl Path {
     /// This appends a directory name into the Trek.
     /// ex: me = "|usr|todo.sh"
     /// me.DownTrek("bin") gives me = "|usr|bin|todo.sh".
-    pub fn down_trek(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn down_trek(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_down_trek(self as *mut Self, aName) }
     }
 
@@ -3494,7 +3633,7 @@ impl Path {
     /// No error is raised if <aName> is not in <me>.
     /// ex:  me = "|usr|sys|etc|doc"
     /// me.RemoveATrek("sys") gives me = "|usr|etc|doc".
-    pub fn remove_a_trek_asciistring(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn remove_a_trek_asciistring(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_remove_a_trek_asciistring(self as *mut Self, aName) }
     }
 
@@ -3502,7 +3641,7 @@ impl Path {
     /// Returns component of Trek in <me> at position <where>.
     /// ex:  me = "|usr|bin|sys|"
     /// me.TrekValue(2) returns "bin"
-    pub fn trek_value(&self, where_: i32) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn trek_value(&self, where_: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_trek_value(self as *const Self, where_))
         }
@@ -3512,94 +3651,94 @@ impl Path {
     /// This inserts <aName> at position <where> into Trek of <me>.
     /// ex:  me = "|usr|etc|"
     /// me.InsertATrek("sys",2) gives me = "|usr|sys|etc"
-    pub fn insert_a_trek(&mut self, aName: &crate::ffi::TCollection_AsciiString, where_: i32) {
+    pub fn insert_a_trek(&mut self, aName: &crate::t_collection::AsciiString, where_: i32) {
         unsafe { crate::ffi::OSD_Path_insert_a_trek(self as *mut Self, aName, where_) }
     }
 
     /// **Source:** `OSD_Path.hxx`:163 - `OSD_Path::Node()`
     /// Returns Node of <me>.
-    pub fn node(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn node(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_node(self as *const Self)) }
     }
 
     /// **Source:** `OSD_Path.hxx`:166 - `OSD_Path::UserName()`
     /// Returns UserName of <me>.
-    pub fn user_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn user_name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_user_name(self as *const Self)) }
     }
 
     /// **Source:** `OSD_Path.hxx`:169 - `OSD_Path::Password()`
     /// Returns Password of <me>.
-    pub fn password(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn password(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_password(self as *const Self)) }
     }
 
     /// **Source:** `OSD_Path.hxx`:172 - `OSD_Path::Disk()`
     /// Returns Disk of <me>.
-    pub fn disk(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn disk(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_disk(self as *const Self)) }
     }
 
     /// **Source:** `OSD_Path.hxx`:175 - `OSD_Path::Trek()`
     /// Returns Trek of <me>.
-    pub fn trek(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn trek(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_trek(self as *const Self)) }
     }
 
     /// **Source:** `OSD_Path.hxx`:179 - `OSD_Path::Name()`
     /// Returns file name of <me>.
     /// If <me> hasn't been initialized, it returns an empty AsciiString.
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_name(self as *const Self)) }
     }
 
     /// **Source:** `OSD_Path.hxx`:183 - `OSD_Path::Extension()`
     /// Returns my extension name.
     /// This returns an empty string if path contains no file name.
-    pub fn extension(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn extension(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_extension(self as *const Self)) }
     }
 
     /// **Source:** `OSD_Path.hxx`:186 - `OSD_Path::SetNode()`
     /// Sets Node of <me>.
-    pub fn set_node(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_node(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_set_node(self as *mut Self, aName) }
     }
 
     /// **Source:** `OSD_Path.hxx`:189 - `OSD_Path::SetUserName()`
     /// Sets UserName of <me>.
-    pub fn set_user_name(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_user_name(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_set_user_name(self as *mut Self, aName) }
     }
 
     /// **Source:** `OSD_Path.hxx`:192 - `OSD_Path::SetPassword()`
     /// Sets Password of <me>.
-    pub fn set_password(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_password(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_set_password(self as *mut Self, aName) }
     }
 
     /// **Source:** `OSD_Path.hxx`:195 - `OSD_Path::SetDisk()`
     /// Sets Disk of <me>.
-    pub fn set_disk(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_disk(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_set_disk(self as *mut Self, aName) }
     }
 
     /// **Source:** `OSD_Path.hxx`:198 - `OSD_Path::SetTrek()`
     /// Sets Trek of <me>.
-    pub fn set_trek(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_trek(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_set_trek(self as *mut Self, aName) }
     }
 
     /// **Source:** `OSD_Path.hxx`:202 - `OSD_Path::SetName()`
     /// Sets file name of <me>.
     /// If <me> hasn't been initialized, it returns an empty AsciiString.
-    pub fn set_name(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_name(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_set_name(self as *mut Self, aName) }
     }
 
     /// **Source:** `OSD_Path.hxx`:205 - `OSD_Path::SetExtension()`
     /// Sets my extension name.
-    pub fn set_extension(&mut self, aName: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_extension(&mut self, aName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Path_set_extension(self as *mut Self, aName) }
     }
 
@@ -3607,14 +3746,14 @@ impl Path {
     /// Finds the full path of an executable file, like the
     /// "which" Unix utility. Uses the path environment variable.
     /// Returns False if executable file not found.
-    pub fn locate_exec_file(&mut self, aPath: &mut crate::ffi::OSD_Path) -> bool {
+    pub fn locate_exec_file(&mut self, aPath: &mut Path) -> bool {
         unsafe { crate::ffi::OSD_Path_locate_exec_file(self as *mut Self, aPath) }
     }
 
     /// **Source:** `OSD_Path.hxx`:116 - `OSD_Path::IsValid()`
     /// Returns TRUE if <theDependentName> is valid for this SysType.
     pub fn is_valid(
-        theDependentName: &crate::ffi::TCollection_AsciiString,
+        theDependentName: &crate::t_collection::AsciiString,
         theSysType: crate::osd::SysType,
     ) -> bool {
         unsafe { crate::ffi::OSD_Path_is_valid(theDependentName, theSysType.into()) }
@@ -3628,9 +3767,9 @@ impl Path {
     /// WNT. In particular on WNT directory names are not key sensitive.
     /// If handling fails, an empty string is returned.
     pub fn relative_path(
-        DirPath: &crate::ffi::TCollection_AsciiString,
-        AbsFilePath: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        DirPath: &crate::t_collection::AsciiString,
+        AbsFilePath: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_relative_path(DirPath, AbsFilePath))
         }
@@ -3643,9 +3782,9 @@ impl Path {
     /// directory path is ignored.
     /// If handling fails, an empty string is returned.
     pub fn absolute_path(
-        DirPath: &crate::ffi::TCollection_AsciiString,
-        RelFilePath: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        DirPath: &crate::t_collection::AsciiString,
+        RelFilePath: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Path_absolute_path(DirPath, RelFilePath))
         }
@@ -3660,9 +3799,9 @@ impl Path {
     /// @param[out] theFolder    folder path (with trailing separator)
     /// @param[out] theFileName  file name
     pub fn folder_and_file_from_path(
-        theFilePath: &crate::ffi::TCollection_AsciiString,
-        theFolder: &mut crate::ffi::TCollection_AsciiString,
-        theFileName: &mut crate::ffi::TCollection_AsciiString,
+        theFilePath: &crate::t_collection::AsciiString,
+        theFolder: &mut crate::t_collection::AsciiString,
+        theFileName: &mut crate::t_collection::AsciiString,
     ) {
         unsafe {
             crate::ffi::OSD_Path_folder_and_file_from_path(theFilePath, theFolder, theFileName)
@@ -3679,9 +3818,9 @@ impl Path {
     /// @param[out] theName       file name without extension
     /// @param[out] theExtension  file extension in lower case and without dot
     pub fn file_name_and_extension(
-        theFilePath: &crate::ffi::TCollection_AsciiString,
-        theName: &mut crate::ffi::TCollection_AsciiString,
-        theExtension: &mut crate::ffi::TCollection_AsciiString,
+        theFilePath: &crate::t_collection::AsciiString,
+        theName: &mut crate::t_collection::AsciiString,
+        theExtension: &mut crate::t_collection::AsciiString,
     ) {
         unsafe { crate::ffi::OSD_Path_file_name_and_extension(theFilePath, theName, theExtension) }
     }
@@ -3877,19 +4016,19 @@ impl Process {
 
     /// **Source:** `OSD_Process.hxx`:52 - `OSD_Process::TerminalType()`
     /// Returns the terminal used (vt100, vt200 ,sun-cmd ...)
-    pub fn terminal_type(&mut self, Name: &mut crate::ffi::TCollection_AsciiString) {
+    pub fn terminal_type(&mut self, Name: &mut crate::t_collection::AsciiString) {
         unsafe { crate::ffi::OSD_Process_terminal_type(self as *mut Self, Name) }
     }
 
     /// **Source:** `OSD_Process.hxx`:55 - `OSD_Process::SystemDate()`
     /// Gets system date.
-    pub fn system_date(&mut self) -> crate::OwnedPtr<crate::ffi::Quantity_Date> {
+    pub fn system_date(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_system_date(self as *mut Self)) }
     }
 
     /// **Source:** `OSD_Process.hxx`:58 - `OSD_Process::UserName()`
     /// Returns the user name.
-    pub fn user_name(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn user_name(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_user_name(self as *mut Self)) }
     }
 
@@ -3907,7 +4046,7 @@ impl Process {
 
     /// **Source:** `OSD_Process.hxx`:67 - `OSD_Process::CurrentDirectory()`
     /// Returns the current path where the process is.
-    pub fn current_directory(&mut self) -> crate::OwnedPtr<crate::ffi::OSD_Path> {
+    pub fn current_directory(&mut self) -> crate::OwnedPtr<Path> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_current_directory(self as *mut Self))
         }
@@ -3915,7 +4054,7 @@ impl Process {
 
     /// **Source:** `OSD_Process.hxx`:70 - `OSD_Process::SetCurrentDirectory()`
     /// Changes the current process directory.
-    pub fn set_current_directory(&mut self, where_: &crate::ffi::OSD_Path) {
+    pub fn set_current_directory(&mut self, where_: &Path) {
         unsafe { crate::ffi::OSD_Process_set_current_directory(self as *mut Self, where_) }
     }
 
@@ -3945,13 +4084,13 @@ impl Process {
 
     /// **Source:** `OSD_Process.hxx`:40 - `OSD_Process::ExecutablePath()`
     /// Return full path to the current process executable.
-    pub fn executable_path() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn executable_path() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_executable_path()) }
     }
 
     /// **Source:** `OSD_Process.hxx`:43 - `OSD_Process::ExecutableFolder()`
     /// Return full path to the folder containing current process executable with trailing separator.
-    pub fn executable_folder() -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn executable_folder() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Process_executable_folder()) }
     }
 }
@@ -4925,13 +5064,13 @@ impl Thread {
 
     /// **Source:** `OSD_Thread.hxx`:45 - `OSD_Thread::OSD_Thread()`
     /// Copy constructor
-    pub fn new_thread(other: &crate::ffi::OSD_Thread) -> crate::OwnedPtr<Self> {
+    pub fn new_thread(other: &Thread) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_Thread_ctor_thread(other)) }
     }
 
     /// **Source:** `OSD_Thread.hxx`:48 - `OSD_Thread::Assign()`
     /// Copy thread handle from other OSD_Thread object.
-    pub fn assign(&mut self, other: &crate::ffi::OSD_Thread) {
+    pub fn assign(&mut self, other: &Thread) {
         unsafe { crate::ffi::OSD_Thread_assign(self as *mut Self, other) }
     }
 
@@ -5133,6 +5272,84 @@ impl HandleOSDThreadPool {
     /// Dereference this Handle to mutably access the underlying OSD_ThreadPool
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_ThreadPool {
         unsafe { &mut *(crate::ffi::HandleOSDThreadPool_get_mut(self as *mut Self)) }
+    }
+}
+
+/// **Source:** `OSD_ThreadPool.hxx`:201 - `OSD_ThreadPool_Launcher`
+/// Launcher object locking a subset of threads (or all threads)
+/// in a thread pool to perform parallel execution of the job.
+pub use crate::ffi::OSD_ThreadPool_Launcher as ThreadPool_Launcher;
+
+unsafe impl crate::CppDeletable for ThreadPool_Launcher {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::OSD_ThreadPool_Launcher_destructor(ptr);
+    }
+}
+
+impl ThreadPool_Launcher {
+    /// **Source:** `OSD_ThreadPool.hxx`:212 - `OSD_ThreadPool_Launcher::OSD_ThreadPool_Launcher()`
+    /// Lock specified number of threads from the thread pool.
+    /// If thread pool is already locked by another user,
+    /// Launcher will lock as many threads as possible
+    /// (if none will be locked, then single threaded execution will be done).
+    /// @param thePool       thread pool to lock the threads
+    /// @param theMaxThreads number of threads to lock;
+    /// -1 specifies that default number of threads
+    /// to be used OSD_ThreadPool::NbDefaultThreadsToLaunch()
+    pub fn new_threadpool_int(
+        thePool: &mut ThreadPool,
+        theMaxThreads: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_ThreadPool_Launcher_ctor_threadpool_int(
+                thePool,
+                theMaxThreads,
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:212 - `OSD_ThreadPool_Launcher::OSD_ThreadPool_Launcher()`
+    /// Lock specified number of threads from the thread pool.
+    /// If thread pool is already locked by another user,
+    /// Launcher will lock as many threads as possible
+    /// (if none will be locked, then single threaded execution will be done).
+    /// @param thePool       thread pool to lock the threads
+    /// @param theMaxThreads number of threads to lock;
+    /// -1 specifies that default number of threads
+    /// to be used OSD_ThreadPool::NbDefaultThreadsToLaunch()
+    pub fn new_threadpool(thePool: &mut ThreadPool) -> crate::OwnedPtr<Self> {
+        Self::new_threadpool_int(thePool, -1)
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:219 - `OSD_ThreadPool_Launcher::HasThreads()`
+    /// Return TRUE if at least 2 threads have been locked for parallel execution (including
+    /// self-thread); otherwise, the functor will be executed within the caller thread.
+    pub fn has_threads(&self) -> bool {
+        unsafe { crate::ffi::OSD_ThreadPool_Launcher_has_threads(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:222 - `OSD_ThreadPool_Launcher::NbThreads()`
+    /// Return amount of locked threads; >= 1.
+    pub fn nb_threads(&self) -> i32 {
+        unsafe { crate::ffi::OSD_ThreadPool_Launcher_nb_threads(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:225 - `OSD_ThreadPool_Launcher::LowerThreadIndex()`
+    /// Return the lower thread index.
+    pub fn lower_thread_index(&self) -> i32 {
+        unsafe { crate::ffi::OSD_ThreadPool_Launcher_lower_thread_index(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:228 - `OSD_ThreadPool_Launcher::UpperThreadIndex()`
+    /// Return the upper thread index (last index is reserved for the self-thread).
+    pub fn upper_thread_index(&self) -> i32 {
+        unsafe { crate::ffi::OSD_ThreadPool_Launcher_upper_thread_index(self as *const Self) }
+    }
+
+    /// **Source:** `OSD_ThreadPool.hxx`:248 - `OSD_ThreadPool_Launcher::Release()`
+    /// Release threads before Launcher destruction.
+    pub fn release(&mut self) {
+        unsafe { crate::ffi::OSD_ThreadPool_Launcher_release(self as *mut Self) }
     }
 }
 

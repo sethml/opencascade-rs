@@ -141,10 +141,7 @@ impl BFGS {
     /// solution is found.
     /// It can be redefined in a sub-class to implement a specific test to
     /// stop the iterations.
-    pub fn is_solution_reached(
-        &self,
-        F: &mut crate::ffi::math_MultipleVarFunctionWithGradient,
-    ) -> bool {
+    pub fn is_solution_reached(&self, F: &mut MultipleVarFunctionWithGradient) -> bool {
         unsafe { crate::ffi::math_BFGS_is_solution_reached(self as *const Self, F) }
     }
 
@@ -204,7 +201,7 @@ impl BissecNewton {
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn perform(
         &mut self,
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Bound1: f64,
         Bound2: f64,
         NbIterations: i32,
@@ -225,10 +222,7 @@ impl BissecNewton {
     /// solution has been found.
     /// It can be redefined in a sub-class to implement a specific test to
     /// stop the iterations.
-    pub fn is_solution_reached(
-        &mut self,
-        theFunction: &mut crate::ffi::math_FunctionWithDerivative,
-    ) -> bool {
+    pub fn is_solution_reached(&mut self, theFunction: &mut FunctionWithDerivative) -> bool {
         unsafe { crate::ffi::math_BissecNewton_is_solution_reached(self as *mut Self, theFunction) }
     }
 
@@ -295,11 +289,7 @@ impl BracketMinimum {
     /// (such that Bx is between Ax and Cx, F(Bx) is
     /// less than both F(Bx) and F(Cx)) the Brent minimization is done
     /// on the function F.
-    pub fn new_function_real2(
-        F: &mut crate::ffi::math_Function,
-        A: f64,
-        B: f64,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_function_real2(F: &mut Function, A: f64, B: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_BracketMinimum_ctor_function_real2(F, A, B))
         }
@@ -312,12 +302,7 @@ impl BracketMinimum {
     /// less than both F(Bx) and F(Cx)) the Brent minimization is done
     /// on the function F.
     /// This constructor has to be used if F(A) is known.
-    pub fn new_function_real3(
-        F: &mut crate::ffi::math_Function,
-        A: f64,
-        B: f64,
-        FA: f64,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_function_real3(F: &mut Function, A: f64, B: f64, FA: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::math_BracketMinimum_ctor_function_real3(
                 F, A, B, FA,
@@ -333,7 +318,7 @@ impl BracketMinimum {
     /// on the function F.
     /// This constructor has to be used if F(A) and F(B) are known.
     pub fn new_function_real4(
-        F: &mut crate::ffi::math_Function,
+        F: &mut Function,
         A: f64,
         B: f64,
         FA: f64,
@@ -368,7 +353,7 @@ impl BracketMinimum {
 
     /// **Source:** `math_BracketMinimum.hxx`:89 - `math_BracketMinimum::Perform()`
     /// The method performing the job. It is called automatically by constructors with the function.
-    pub fn perform(&mut self, F: &mut crate::ffi::math_Function) {
+    pub fn perform(&mut self, F: &mut Function) {
         unsafe { crate::ffi::math_BracketMinimum_perform(self as *mut Self, F) }
     }
 
@@ -420,7 +405,7 @@ impl BracketedRoot {
     /// abs(Xi - Xi-1) <= Tolerance;
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_function_real3_int_real(
-        F: &mut crate::ffi::math_Function,
+        F: &mut Function,
         Bound1: f64,
         Bound2: f64,
         Tolerance: f64,
@@ -448,7 +433,7 @@ impl BracketedRoot {
     /// abs(Xi - Xi-1) <= Tolerance;
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_function_real3_int(
-        F: &mut crate::ffi::math_Function,
+        F: &mut Function,
         Bound1: f64,
         Bound2: f64,
         Tolerance: f64,
@@ -466,7 +451,7 @@ impl BracketedRoot {
     /// abs(Xi - Xi-1) <= Tolerance;
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_function_real3(
-        F: &mut crate::ffi::math_Function,
+        F: &mut Function,
         Bound1: f64,
         Bound2: f64,
         Tolerance: f64,
@@ -588,7 +573,7 @@ impl BrentMinimum {
     /// bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is
     /// between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx))
     /// The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
-    pub fn perform(&mut self, F: &mut crate::ffi::math_Function, Ax: f64, Bx: f64, Cx: f64) {
+    pub fn perform(&mut self, F: &mut Function, Ax: f64, Bx: f64, Cx: f64) {
         unsafe { crate::ffi::math_BrentMinimum_perform(self as *mut Self, F, Ax, Bx, Cx) }
     }
 
@@ -597,7 +582,7 @@ impl BrentMinimum {
     /// solution is found.
     /// It can be redefined in a sub-class to implement a specific test to
     /// stop the iterations.
-    pub fn is_solution_reached(&mut self, theFunction: &mut crate::ffi::math_Function) -> bool {
+    pub fn is_solution_reached(&mut self, theFunction: &mut Function) -> bool {
         unsafe { crate::ffi::math_BrentMinimum_is_solution_reached(self as *mut Self, theFunction) }
     }
 
@@ -881,7 +866,7 @@ impl DoubleTab {
     }
 
     /// **Source:** `math_DoubleTab.hxx`:45 - `math_DoubleTab::math_DoubleTab()`
-    pub fn new_doubletab(Other: &crate::ffi::math_DoubleTab) -> crate::OwnedPtr<Self> {
+    pub fn new_doubletab(Other: &DoubleTab) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::math_DoubleTab_ctor_doubletab(Other)) }
     }
 
@@ -891,7 +876,7 @@ impl DoubleTab {
     }
 
     /// **Source:** `math_DoubleTab.hxx`:47 - `math_DoubleTab::Copy()`
-    pub fn copy(&self, Other: &mut crate::ffi::math_DoubleTab) {
+    pub fn copy(&self, Other: &mut DoubleTab) {
         unsafe { crate::ffi::math_DoubleTab_copy(self as *const Self, Other) }
     }
 
@@ -987,7 +972,7 @@ impl FRPR {
     /// Initializes the computation of the minimum of F.
     /// Warning: constructor does not perform computations.
     pub fn new_multiplevarfunctionwithgradient_real_int_real(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithGradient,
+        theFunction: &MultipleVarFunctionWithGradient,
         theTolerance: f64,
         theNbIterations: i32,
         theZEPS: f64,
@@ -1008,7 +993,7 @@ impl FRPR {
     /// Initializes the computation of the minimum of F.
     /// Warning: constructor does not perform computations.
     pub fn new_multiplevarfunctionwithgradient_real_int(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithGradient,
+        theFunction: &MultipleVarFunctionWithGradient,
         theTolerance: f64,
         theNbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -1024,7 +1009,7 @@ impl FRPR {
     /// Initializes the computation of the minimum of F.
     /// Warning: constructor does not perform computations.
     pub fn new_multiplevarfunctionwithgradient_real(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithGradient,
+        theFunction: &MultipleVarFunctionWithGradient,
         theTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunctionwithgradient_real_int_real(
@@ -1041,7 +1026,7 @@ impl FRPR {
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn is_solution_reached(
         &mut self,
-        theFunction: &mut crate::ffi::math_MultipleVarFunctionWithGradient,
+        theFunction: &mut MultipleVarFunctionWithGradient,
     ) -> bool {
         unsafe { crate::ffi::math_FRPR_is_solution_reached(self as *mut Self, theFunction) }
     }
@@ -1142,8 +1127,8 @@ impl FunctionAllRoots {
     /// Between two intervals, the roots of the function F are
     /// calculated using the FunctionRoots algorithm.
     pub fn new_functionwithderivative_functionsample_real3(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
-        S: &crate::ffi::math_FunctionSample,
+        F: &mut FunctionWithDerivative,
+        S: &FunctionSample,
         EpsX: f64,
         EpsF: f64,
         EpsNul: f64,
@@ -1229,7 +1214,7 @@ impl FunctionRoot {
     /// The solution is found when abs(Xi - Xi-1) <= Tolerance;
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_functionwithderivative_real2_int(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Guess: f64,
         Tolerance: f64,
         NbIterations: i32,
@@ -1255,7 +1240,7 @@ impl FunctionRoot {
     /// The solution is found when abs(Xi - Xi-1) <= Tolerance;
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_functionwithderivative_real4_int(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Guess: f64,
         Tolerance: f64,
         A: f64,
@@ -1284,7 +1269,7 @@ impl FunctionRoot {
     /// The solution is found when abs(Xi - Xi-1) <= Tolerance;
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_functionwithderivative_real2(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Guess: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1300,7 +1285,7 @@ impl FunctionRoot {
     /// The solution is found when abs(Xi - Xi-1) <= Tolerance;
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_functionwithderivative_real4(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Guess: f64,
         Tolerance: f64,
         A: f64,
@@ -1370,7 +1355,7 @@ impl FunctionRoots {
     /// The function is considered as null between A and B if
     /// abs(F-K) <= EpsNull within this range.
     pub fn new_functionwithderivative_real2_int_real4(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         A: f64,
         B: f64,
         NbSample: i32,
@@ -1396,7 +1381,7 @@ impl FunctionRoots {
     /// The function is considered as null between A and B if
     /// abs(F-K) <= EpsNull within this range.
     pub fn new_functionwithderivative_real2_int_real3(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         A: f64,
         B: f64,
         NbSample: i32,
@@ -1417,7 +1402,7 @@ impl FunctionRoots {
     /// The function is considered as null between A and B if
     /// abs(F-K) <= EpsNull within this range.
     pub fn new_functionwithderivative_real2_int_real2(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         A: f64,
         B: f64,
         NbSample: i32,
@@ -1435,7 +1420,7 @@ impl FunctionRoots {
     /// The function is considered as null between A and B if
     /// abs(F-K) <= EpsNull within this range.
     pub fn new_functionwithderivative_real2_int_real(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         A: f64,
         B: f64,
         NbSample: i32,
@@ -1452,7 +1437,7 @@ impl FunctionRoots {
     /// The function is considered as null between A and B if
     /// abs(F-K) <= EpsNull within this range.
     pub fn new_functionwithderivative_real2_int(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         A: f64,
         B: f64,
         NbSample: i32,
@@ -1621,7 +1606,7 @@ impl FunctionSetRoot {
     /// The method SetTolerance must be called after this
     /// constructor.
     pub fn new_functionsetwithderivatives_int(
-        F: &mut crate::ffi::math_FunctionSetWithDerivatives,
+        F: &mut FunctionSetWithDerivatives,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1642,7 +1627,7 @@ impl FunctionSetRoot {
     /// The method SetTolerance must be called after this
     /// constructor.
     pub fn new_functionsetwithderivatives(
-        F: &mut crate::ffi::math_FunctionSetWithDerivatives,
+        F: &mut FunctionSetWithDerivatives,
     ) -> crate::OwnedPtr<Self> {
         Self::new_functionsetwithderivatives_int(F, 100)
     }
@@ -1653,10 +1638,7 @@ impl FunctionSetRoot {
     /// in a sub-class to implement a specific test to stop the iterations.
     /// In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance
     /// for all unknowns.
-    pub fn is_solution_reached(
-        &mut self,
-        arg0: &mut crate::ffi::math_FunctionSetWithDerivatives,
-    ) -> bool {
+    pub fn is_solution_reached(&mut self, arg0: &mut FunctionSetWithDerivatives) -> bool {
         unsafe { crate::ffi::math_FunctionSetRoot_is_solution_reached(self as *mut Self, arg0) }
     }
 
@@ -1945,7 +1927,7 @@ impl GaussSingleIntegration {
     /// The Gauss-Legendre integration with N = Order points of integration,
     /// is done on the function F between the bounds Lower and Upper.
     pub fn new_function_real2_int(
-        F: &mut crate::ffi::math_Function,
+        F: &mut Function,
         Lower: f64,
         Upper: f64,
         Order: i32,
@@ -1964,7 +1946,7 @@ impl GaussSingleIntegration {
     /// given tolerance = Tol is done on the function F between the bounds
     /// Lower and Upper.
     pub fn new_function_real2_int_real(
-        F: &mut crate::ffi::math_Function,
+        F: &mut Function,
         Lower: f64,
         Upper: f64,
         Order: i32,
@@ -2204,7 +2186,7 @@ impl KronrodSingleIntegration {
     /// Constructor. Takes the function, the lower and upper bound
     /// values, the initial number of Kronrod points
     pub fn new_function_real2_int(
-        theFunction: &mut crate::ffi::math_Function,
+        theFunction: &mut Function,
         theLower: f64,
         theUpper: f64,
         theNbPnts: i32,
@@ -2227,7 +2209,7 @@ impl KronrodSingleIntegration {
     /// tolerance value and the maximal number of iterations as
     /// parameters.
     pub fn new_function_real2_int_real_int(
-        theFunction: &mut crate::ffi::math_Function,
+        theFunction: &mut Function,
         theLower: f64,
         theUpper: f64,
         theNbPnts: i32,
@@ -2256,7 +2238,7 @@ impl KronrodSingleIntegration {
     /// theNbPnts should be odd and greater then or equal to 3.
     pub fn perform_function_real2_int(
         &mut self,
-        theFunction: &mut crate::ffi::math_Function,
+        theFunction: &mut Function,
         theLower: f64,
         theUpper: f64,
         theNbPnts: i32,
@@ -2284,7 +2266,7 @@ impl KronrodSingleIntegration {
     /// theTolerance should be positive.
     pub fn perform_function_real2_int_real_int(
         &mut self,
-        theFunction: &mut crate::ffi::math_Function,
+        theFunction: &mut Function,
         theLower: f64,
         theUpper: f64,
         theNbPnts: i32,
@@ -2526,7 +2508,7 @@ impl NewtonFunctionRoot {
     /// abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_functionwithderivative_real3_int(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Guess: f64,
         EpsX: f64,
         EpsF: f64,
@@ -2554,7 +2536,7 @@ impl NewtonFunctionRoot {
     /// abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_functionwithderivative_real5_int(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Guess: f64,
         EpsX: f64,
         EpsF: f64,
@@ -2606,7 +2588,7 @@ impl NewtonFunctionRoot {
     /// abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_functionwithderivative_real3(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Guess: f64,
         EpsX: f64,
         EpsF: f64,
@@ -2623,7 +2605,7 @@ impl NewtonFunctionRoot {
     /// abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn new_functionwithderivative_real5(
-        F: &mut crate::ffi::math_FunctionWithDerivative,
+        F: &mut FunctionWithDerivative,
         Guess: f64,
         EpsX: f64,
         EpsF: f64,
@@ -2642,7 +2624,7 @@ impl NewtonFunctionRoot {
 
     /// **Source:** `math_NewtonFunctionRoot.hxx`:70 - `math_NewtonFunctionRoot::Perform()`
     /// is used internally by the constructors.
-    pub fn perform(&mut self, F: &mut crate::ffi::math_FunctionWithDerivative, Guess: f64) {
+    pub fn perform(&mut self, F: &mut FunctionWithDerivative, Guess: f64) {
         unsafe { crate::ffi::math_NewtonFunctionRoot_perform(self as *mut Self, F, Guess) }
     }
 
@@ -2707,7 +2689,7 @@ impl NewtonFunctionSetRoot {
     /// all vectors and matrix declarations.
     /// The method SetTolerance must be called before performing the algorithm.
     pub fn new_functionsetwithderivatives_real_int(
-        theFunction: &mut crate::ffi::math_FunctionSetWithDerivatives,
+        theFunction: &mut FunctionSetWithDerivatives,
         theFTolerance: f64,
         theNbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -2729,7 +2711,7 @@ impl NewtonFunctionSetRoot {
     /// all vectors and matrix declarations.
     /// The method SetTolerance must be called before performing the algorithm.
     pub fn new_functionsetwithderivatives_real(
-        theFunction: &mut crate::ffi::math_FunctionSetWithDerivatives,
+        theFunction: &mut FunctionSetWithDerivatives,
         theFTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_functionsetwithderivatives_real_int(theFunction, theFTolerance, 100)
@@ -2741,10 +2723,7 @@ impl NewtonFunctionSetRoot {
     /// Vectors DeltaX, Fvalues and Jacobian Matrix are consistent with the
     /// possible solution Vector Sol and can be inspected to decide whether
     /// the solution is reached or not.
-    pub fn is_solution_reached(
-        &mut self,
-        F: &mut crate::ffi::math_FunctionSetWithDerivatives,
-    ) -> bool {
+    pub fn is_solution_reached(&mut self, F: &mut FunctionSetWithDerivatives) -> bool {
         unsafe { crate::ffi::math_NewtonFunctionSetRoot_is_solution_reached(self as *mut Self, F) }
     }
 
@@ -2791,7 +2770,7 @@ impl NewtonMinimum {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor does not perform computation.
     pub fn new_multiplevarfunctionwithhessian_real_int_real_bool(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &MultipleVarFunctionWithHessian,
         theTolerance: f64,
         theNbIterations: i32,
         theConvexity: f64,
@@ -2809,7 +2788,7 @@ impl NewtonMinimum {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor does not perform computation.
     pub fn new_multiplevarfunctionwithhessian_real_int_real(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &MultipleVarFunctionWithHessian,
         theTolerance: f64,
         theNbIterations: i32,
         theConvexity: f64,
@@ -2830,7 +2809,7 @@ impl NewtonMinimum {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor does not perform computation.
     pub fn new_multiplevarfunctionwithhessian_real_int(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &MultipleVarFunctionWithHessian,
         theTolerance: f64,
         theNbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -2850,7 +2829,7 @@ impl NewtonMinimum {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor does not perform computation.
     pub fn new_multiplevarfunctionwithhessian_real(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &MultipleVarFunctionWithHessian,
         theTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunctionwithhessian_real_int_real_bool(
@@ -3083,7 +3062,7 @@ impl Powell {
     /// **Source:** `math_Powell.hxx`:38 - `math_Powell::math_Powell()`
     /// Constructor. Initialize new entity.
     pub fn new_multiplevarfunction_real_int_real(
-        theFunction: &crate::ffi::math_MultipleVarFunction,
+        theFunction: &MultipleVarFunction,
         theTolerance: f64,
         theNbIterations: i32,
         theZEPS: f64,
@@ -3103,7 +3082,7 @@ impl Powell {
     /// **Source:** `math_Powell.hxx`:38 - `math_Powell::math_Powell()`
     /// Constructor. Initialize new entity.
     pub fn new_multiplevarfunction_real_int(
-        theFunction: &crate::ffi::math_MultipleVarFunction,
+        theFunction: &MultipleVarFunction,
         theTolerance: f64,
         theNbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -3118,7 +3097,7 @@ impl Powell {
     /// **Source:** `math_Powell.hxx`:38 - `math_Powell::math_Powell()`
     /// Constructor. Initialize new entity.
     pub fn new_multiplevarfunction_real(
-        theFunction: &crate::ffi::math_MultipleVarFunction,
+        theFunction: &MultipleVarFunction,
         theTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunction_real_int_real(theFunction, theTolerance, 200, 1.0e-12)
@@ -3128,10 +3107,7 @@ impl Powell {
     /// Solution F = Fi is found when:
     /// 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS.
     /// The maximum number of iterations allowed is given by NbIterations.
-    pub fn is_solution_reached(
-        &mut self,
-        theFunction: &mut crate::ffi::math_MultipleVarFunction,
-    ) -> bool {
+    pub fn is_solution_reached(&mut self, theFunction: &mut MultipleVarFunction) -> bool {
         unsafe { crate::ffi::math_Powell_is_solution_reached(self as *mut Self, theFunction) }
     }
 

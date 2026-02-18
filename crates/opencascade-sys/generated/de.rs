@@ -42,7 +42,7 @@ impl ConfigurationContext {
     /// Save all parameters with their values.
     /// @param[in] theConfiguration path to configuration file or string value
     /// @return true in case of success, false otherwise
-    pub fn load(&mut self, theConfiguration: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn load(&mut self, theConfiguration: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::DE_ConfigurationContext_load(self as *mut Self, theConfiguration) }
     }
 
@@ -51,7 +51,7 @@ impl ConfigurationContext {
     /// Save all parameters with their values.
     /// @param[in] theFile path to the resource file
     /// @return true in case of success, false otherwise
-    pub fn load_file(&mut self, theFile: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn load_file(&mut self, theFile: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::DE_ConfigurationContext_load_file(self as *mut Self, theFile) }
     }
 
@@ -60,7 +60,7 @@ impl ConfigurationContext {
     /// Save all parameters with their values.
     /// @param[in] theResource string with resource content
     /// @return true in case of success, false otherwise
-    pub fn load_str(&mut self, theResource: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn load_str(&mut self, theResource: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::DE_ConfigurationContext_load_str(self as *mut Self, theResource) }
     }
 
@@ -71,8 +71,8 @@ impl ConfigurationContext {
     /// @return Standard_True if parameter is defined in the resource file
     pub fn is_param_set(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
-        theScope: &crate::ffi::TCollection_AsciiString,
+        theParam: &crate::t_collection::AsciiString,
+        theScope: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationContext_is_param_set(
@@ -91,9 +91,9 @@ impl ConfigurationContext {
     /// @return Standard_False if parameter is not defined or has a wrong type
     pub fn get_real(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
+        theParam: &crate::t_collection::AsciiString,
         theValue: &mut f64,
-        theScope: &crate::ffi::TCollection_AsciiString,
+        theScope: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationContext_get_real(
@@ -113,9 +113,9 @@ impl ConfigurationContext {
     /// @return Standard_False if parameter is not defined or has a wrong type
     pub fn get_boolean(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
+        theParam: &crate::t_collection::AsciiString,
         theValue: &mut bool,
-        theScope: &crate::ffi::TCollection_AsciiString,
+        theScope: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationContext_get_boolean(
@@ -135,9 +135,9 @@ impl ConfigurationContext {
     /// @return Standard_False if parameter is not defined or has a wrong type
     pub fn get_string(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
-        theValue: &mut crate::ffi::TCollection_AsciiString,
-        theScope: &crate::ffi::TCollection_AsciiString,
+        theParam: &crate::t_collection::AsciiString,
+        theValue: &mut crate::t_collection::AsciiString,
+        theScope: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationContext_get_string(
@@ -157,9 +157,9 @@ impl ConfigurationContext {
     /// @return Standard_False if parameter is not defined or has a wrong type
     pub fn get_string_seq(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
+        theParam: &crate::t_collection::AsciiString,
         theValue: &mut crate::ffi::TColStd_ListOfAsciiString,
-        theScope: &crate::ffi::TCollection_AsciiString,
+        theScope: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationContext_get_string_seq(
@@ -179,9 +179,9 @@ impl ConfigurationContext {
     /// @return specific type value
     pub fn real_val(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
+        theParam: &crate::t_collection::AsciiString,
         theDefValue: f64,
-        theScope: &crate::ffi::TCollection_AsciiString,
+        theScope: &crate::t_collection::AsciiString,
     ) -> f64 {
         unsafe {
             crate::ffi::DE_ConfigurationContext_real_val(
@@ -201,9 +201,9 @@ impl ConfigurationContext {
     /// @return specific type value
     pub fn integer_val(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
+        theParam: &crate::t_collection::AsciiString,
         theDefValue: i32,
-        theScope: &crate::ffi::TCollection_AsciiString,
+        theScope: &crate::t_collection::AsciiString,
     ) -> i32 {
         unsafe {
             crate::ffi::DE_ConfigurationContext_integer_val(
@@ -223,9 +223,9 @@ impl ConfigurationContext {
     /// @return specific type value
     pub fn boolean_val(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
+        theParam: &crate::t_collection::AsciiString,
         theDefValue: bool,
-        theScope: &crate::ffi::TCollection_AsciiString,
+        theScope: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationContext_boolean_val(
@@ -245,10 +245,10 @@ impl ConfigurationContext {
     /// @return specific type value
     pub fn string_val(
         &self,
-        theParam: &crate::ffi::TCollection_AsciiString,
-        theDefValue: &crate::ffi::TCollection_AsciiString,
-        theScope: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        theParam: &crate::t_collection::AsciiString,
+        theDefValue: &crate::t_collection::AsciiString,
+        theScope: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationContext_string_val(
                 self as *const Self,
@@ -352,10 +352,7 @@ impl ConfigurationNode {
     /// Updates values according the resource file
     /// @param[in] theResourcePath file path to resource
     /// @return True if Load was successful
-    pub fn load_asciistring(
-        &mut self,
-        theResourcePath: &crate::ffi::TCollection_AsciiString,
-    ) -> bool {
+    pub fn load_asciistring(&mut self, theResourcePath: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationNode_load_asciistring(self as *mut Self, theResourcePath)
         }
@@ -381,7 +378,7 @@ impl ConfigurationNode {
     /// Writes configuration to the resource file
     /// @param[in] theResourcePath file path to resource
     /// @return True if Save was successful
-    pub fn save_asciistring(&self, theResourcePath: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn save_asciistring(&self, theResourcePath: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationNode_save_asciistring(self as *const Self, theResourcePath)
         }
@@ -390,7 +387,7 @@ impl ConfigurationNode {
     /// **Source:** `DE_ConfigurationNode.hxx`:77 - `DE_ConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string
-    pub fn save(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn save(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_save(self as *const Self))
         }
@@ -444,7 +441,7 @@ impl ConfigurationNode {
     /// **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
-    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_get_format(
                 self as *const Self,
@@ -455,7 +452,7 @@ impl ConfigurationNode {
     /// **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
-    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_ConfigurationNode_get_vendor(
                 self as *const Self,
@@ -467,7 +464,7 @@ impl ConfigurationNode {
     /// Checks the file extension to verify a format
     /// @param[in] theExtension input file extension
     /// @return Standard_True if file is supported by a current provider
-    pub fn check_extension(&self, theExtension: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::DE_ConfigurationNode_check_extension(self as *const Self, theExtension)
         }
@@ -542,6 +539,15 @@ impl HandleDEConfigurationNode {
     }
 }
 
+/// **Source:** `DE_ConfigurationNode.hxx`:145 - `DE_ConfigurationNode_DE_SectionGlobal`
+pub use crate::ffi::DE_ConfigurationNode_DE_SectionGlobal as ConfigurationNode_DE_SectionGlobal;
+
+unsafe impl crate::CppDeletable for ConfigurationNode_DE_SectionGlobal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DE_ConfigurationNode_DE_SectionGlobal_destructor(ptr);
+    }
+}
+
 // ========================
 // From DE_Provider.hxx
 // ========================
@@ -586,9 +592,9 @@ impl Provider {
     /// @return True if Read was successful
     pub fn read(
         &mut self,
-        thePath: &crate::ffi::TCollection_AsciiString,
-        theShape: &mut crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &mut crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::DE_Provider_read(self as *mut Self, thePath, theShape, theProgress) }
     }
@@ -601,9 +607,9 @@ impl Provider {
     /// @return True if Write was successful
     pub fn write(
         &mut self,
-        thePath: &crate::ffi::TCollection_AsciiString,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::DE_Provider_write(self as *mut Self, thePath, theShape, theProgress) }
     }
@@ -611,7 +617,7 @@ impl Provider {
     /// **Source:** `DE_Provider.hxx`:147 - `DE_Provider::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
-    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_Provider_get_format(self as *const Self))
         }
@@ -620,7 +626,7 @@ impl Provider {
     /// **Source:** `DE_Provider.hxx`:151 - `DE_Provider::GetVendor()`
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
-    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_Provider_get_vendor(self as *const Self))
         }
@@ -706,7 +712,7 @@ impl ShapeFixConfigurationNode {
     /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:44 - `DE_ShapeFixConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string
-    pub fn save(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn save(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixConfigurationNode_save(
                 self as *const Self,
@@ -794,7 +800,7 @@ impl ShapeFixConfigurationNode {
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
-    pub fn get_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetFormat(
                 self as *const Self,
@@ -803,7 +809,7 @@ impl ShapeFixConfigurationNode {
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
-    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixConfigurationNode_inherited_GetVendor(
                 self as *const Self,
@@ -812,7 +818,7 @@ impl ShapeFixConfigurationNode {
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
-    pub fn check_extension(&self, theExtension: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::DE_ShapeFixConfigurationNode_inherited_CheckExtension(
                 self as *const Self,
@@ -854,6 +860,28 @@ impl ShapeFixConfigurationNode {
                 arg0,
             )
         }
+    }
+}
+
+// ========================
+// From DE_ShapeFixParameters.hxx
+// ========================
+
+/// **Source:** `DE_ShapeFixParameters.hxx`:21 - `DE_ShapeFixParameters`
+/// Struct for shape healing parameters storage
+pub use crate::ffi::DE_ShapeFixParameters as ShapeFixParameters;
+
+unsafe impl crate::CppDeletable for ShapeFixParameters {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::DE_ShapeFixParameters_destructor(ptr);
+    }
+}
+
+impl ShapeFixParameters {
+    /// **Source:** `DE_ShapeFixParameters.hxx` - `DE_ShapeFixParameters::DE_ShapeFixParameters()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DE_ShapeFixParameters_ctor()) }
     }
 }
 
@@ -920,9 +948,9 @@ impl Wrapper {
     /// @return true if Read operation has ended correctly
     pub fn read(
         &mut self,
-        thePath: &crate::ffi::TCollection_AsciiString,
-        theShape: &mut crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &mut crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::DE_Wrapper_read(self as *mut Self, thePath, theShape, theProgress) }
     }
@@ -935,9 +963,9 @@ impl Wrapper {
     /// @return true if Write operation has ended correctly
     pub fn write(
         &mut self,
-        thePath: &crate::ffi::TCollection_AsciiString,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::DE_Wrapper_write(self as *mut Self, thePath, theShape, theProgress) }
     }
@@ -949,7 +977,7 @@ impl Wrapper {
     /// @return true if theResource has loaded correctly
     pub fn load_asciistring_bool(
         &mut self,
-        theResource: &crate::ffi::TCollection_AsciiString,
+        theResource: &crate::t_collection::AsciiString,
         theIsRecursive: bool,
     ) -> bool {
         unsafe {
@@ -989,7 +1017,7 @@ impl Wrapper {
     /// @return true if the Configuration has saved correctly
     pub fn save_asciistring_bool_listofasciistring2(
         &mut self,
-        theResourcePath: &crate::ffi::TCollection_AsciiString,
+        theResourcePath: &crate::t_collection::AsciiString,
         theIsRecursive: bool,
         theFormats: &crate::ffi::TColStd_ListOfAsciiString,
         theVendors: &crate::ffi::TColStd_ListOfAsciiString,
@@ -1016,7 +1044,7 @@ impl Wrapper {
         theIsRecursive: bool,
         theFormats: &crate::ffi::TColStd_ListOfAsciiString,
         theVendors: &crate::ffi::TColStd_ListOfAsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::DE_Wrapper_save_bool_listofasciistring2(
                 self as *mut Self,
@@ -1051,8 +1079,8 @@ impl Wrapper {
     /// @return Standard_True if the node is found
     pub fn find(
         &self,
-        theFormat: &crate::ffi::TCollection_AsciiString,
-        theVendor: &crate::ffi::TCollection_AsciiString,
+        theFormat: &crate::t_collection::AsciiString,
+        theVendor: &crate::t_collection::AsciiString,
         theNode: &mut crate::ffi::HandleDEConfigurationNode,
     ) -> bool {
         unsafe { crate::ffi::DE_Wrapper_find(self as *const Self, theFormat, theVendor, theNode) }
@@ -1065,7 +1093,7 @@ impl Wrapper {
     /// @param[in] theToDisable flag for disabling nodes that are not included in the priority
     pub fn change_priority_asciistring_listofasciistring_bool(
         &mut self,
-        theFormat: &crate::ffi::TCollection_AsciiString,
+        theFormat: &crate::t_collection::AsciiString,
         theVendorPriority: &crate::ffi::TColStd_ListOfAsciiString,
         theToDisable: bool,
     ) {
@@ -1106,7 +1134,7 @@ impl Wrapper {
     /// @return Standard_True if provider found and created
     pub fn find_provider(
         &self,
-        thePath: &crate::ffi::TCollection_AsciiString,
+        thePath: &crate::t_collection::AsciiString,
         theToImport: bool,
         theProvider: &mut crate::ffi::HandleDEProvider,
     ) -> bool {
@@ -1177,7 +1205,7 @@ impl Wrapper {
     }
 
     /// **Source:** `DE_Wrapper.hxx`:75 - `DE_Wrapper::GlobalLoadMutex()`
-    pub fn global_load_mutex() -> &'static mut crate::ffi::Standard_Mutex {
+    pub fn global_load_mutex() -> &'static mut crate::standard::Mutex {
         unsafe { &mut *(crate::ffi::DE_Wrapper_global_load_mutex()) }
     }
 
@@ -1213,5 +1241,4 @@ impl HandleDEWrapper {
 
 pub use crate::ffi::{
     DE_ConfigurationFormatMap as ConfigurationFormatMap, DE_ResourceMap as ResourceMap,
-    DE_ShapeFixParameters as ShapeFixParameters,
 };

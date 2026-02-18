@@ -11,7 +11,7 @@
 /// File is written in binary if aAsciiMode is False otherwise it is written in Ascii (by
 /// default).
 pub fn write_shape_charptr_bool(
-    theShape: &crate::ffi::TopoDS_Shape,
+    theShape: &crate::topo_ds::Shape,
     theFile: &str,
     theAsciiMode: bool,
 ) -> bool {
@@ -48,7 +48,7 @@ impl Reader {
     /// **Source:** `StlAPI_Reader.hxx`:32 - `StlAPI_Reader::Read()`
     /// Reads STL file to the TopoDS_Shape (each triangle is converted to the face).
     /// @return True if reading is successful
-    pub fn read(&mut self, theShape: &mut crate::ffi::TopoDS_Shape, theFileName: &str) -> bool {
+    pub fn read(&mut self, theShape: &mut crate::topo_ds::Shape, theFileName: &str) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         unsafe {
             crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, c_theFileName.as_ptr())
@@ -93,9 +93,9 @@ impl Writer {
     /// \return the error state.
     pub fn write(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theFileName: &str,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         unsafe {

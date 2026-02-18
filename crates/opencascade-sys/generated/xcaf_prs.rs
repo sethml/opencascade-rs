@@ -35,19 +35,19 @@ impl DocumentExplorer {
 
     /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:128 - `XCAFPrs_DocumentExplorer::Current()`
     /// Return current position.
-    pub fn current(&self) -> &crate::ffi::XCAFPrs_DocumentNode {
+    pub fn current(&self) -> &DocumentNode {
         unsafe { &*(crate::ffi::XCAFPrs_DocumentExplorer_current(self as *const Self)) }
     }
 
     /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:131 - `XCAFPrs_DocumentExplorer::ChangeCurrent()`
     /// Return current position.
-    pub fn change_current(&mut self) -> &mut crate::ffi::XCAFPrs_DocumentNode {
+    pub fn change_current(&mut self) -> &mut DocumentNode {
         unsafe { &mut *(crate::ffi::XCAFPrs_DocumentExplorer_change_current(self as *mut Self)) }
     }
 
     /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:134 - `XCAFPrs_DocumentExplorer::Current()`
     /// Return current position within specified assembly depth.
-    pub fn current_int(&self, theDepth: i32) -> &crate::ffi::XCAFPrs_DocumentNode {
+    pub fn current_int(&self, theDepth: i32) -> &DocumentNode {
         unsafe {
             &*(crate::ffi::XCAFPrs_DocumentExplorer_current_int(self as *const Self, theDepth))
         }
@@ -79,9 +79,9 @@ impl DocumentExplorer {
     /// @param theLabel child label to define id
     /// @param theParentId parent string identifier defined by this method
     pub fn define_child_id(
-        theLabel: &crate::ffi::TDF_Label,
-        theParentId: &crate::ffi::TCollection_AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        theLabel: &crate::tdf::Label,
+        theParentId: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_define_child_id(
                 theLabel,
@@ -147,25 +147,25 @@ impl Style {
 
     /// **Source:** `XCAFPrs_Style.hxx`:50 - `XCAFPrs_Style::GetColorSurf()`
     /// Return surface color.
-    pub fn get_color_surf(&self) -> &crate::ffi::Quantity_Color {
+    pub fn get_color_surf(&self) -> &crate::quantity::Color {
         unsafe { &*(crate::ffi::XCAFPrs_Style_get_color_surf(self as *const Self)) }
     }
 
     /// **Source:** `XCAFPrs_Style.hxx`:53 - `XCAFPrs_Style::SetColorSurf()`
     /// Set surface color.
-    pub fn set_color_surf_color(&mut self, theColor: &crate::ffi::Quantity_Color) {
+    pub fn set_color_surf_color(&mut self, theColor: &crate::quantity::Color) {
         unsafe { crate::ffi::XCAFPrs_Style_set_color_surf_color(self as *mut Self, theColor) }
     }
 
     /// **Source:** `XCAFPrs_Style.hxx`:56 - `XCAFPrs_Style::GetColorSurfRGBA()`
     /// Return surface color.
-    pub fn get_color_surf_rgba(&self) -> &crate::ffi::Quantity_ColorRGBA {
+    pub fn get_color_surf_rgba(&self) -> &crate::quantity::ColorRGBA {
         unsafe { &*(crate::ffi::XCAFPrs_Style_get_color_surf_rgba(self as *const Self)) }
     }
 
     /// **Source:** `XCAFPrs_Style.hxx`:59 - `XCAFPrs_Style::SetColorSurf()`
     /// Set surface color.
-    pub fn set_color_surf_colorrgba(&mut self, theColor: &crate::ffi::Quantity_ColorRGBA) {
+    pub fn set_color_surf_colorrgba(&mut self, theColor: &crate::quantity::ColorRGBA) {
         unsafe { crate::ffi::XCAFPrs_Style_set_color_surf_colorrgba(self as *mut Self, theColor) }
     }
 
@@ -183,13 +183,13 @@ impl Style {
 
     /// **Source:** `XCAFPrs_Style.hxx`:68 - `XCAFPrs_Style::GetColorCurv()`
     /// Return curve color.
-    pub fn get_color_curv(&self) -> &crate::ffi::Quantity_Color {
+    pub fn get_color_curv(&self) -> &crate::quantity::Color {
         unsafe { &*(crate::ffi::XCAFPrs_Style_get_color_curv(self as *const Self)) }
     }
 
     /// **Source:** `XCAFPrs_Style.hxx`:71 - `XCAFPrs_Style::SetColorCurv()`
     /// Set curve color.
-    pub fn set_color_curv(&mut self, col: &crate::ffi::Quantity_Color) {
+    pub fn set_color_curv(&mut self, col: &crate::quantity::Color) {
         unsafe { crate::ffi::XCAFPrs_Style_set_color_curv(self as *mut Self, col) }
     }
 
@@ -220,7 +220,7 @@ impl Style {
     /// **Source:** `XCAFPrs_Style.hxx`:104 - `XCAFPrs_Style::IsEqual()`
     /// Returns True if styles are the same
     /// Methods for using Style as key in maps
-    pub fn is_equal(&self, theOther: &crate::ffi::XCAFPrs_Style) -> bool {
+    pub fn is_equal(&self, theOther: &Style) -> bool {
         unsafe { crate::ffi::XCAFPrs_Style_is_equal(self as *const Self, theOther) }
     }
 }

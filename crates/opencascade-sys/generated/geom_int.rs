@@ -192,14 +192,14 @@ impl IntSS {
     }
 
     /// **Source:** `GeomInt_IntSS.hxx`:116 - `GeomInt_IntSS::Point()`
-    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_point(self as *const Self, Index))
         }
     }
 
     /// **Source:** `GeomInt_IntSS.hxx`:118 - `GeomInt_IntSS::Pnt2d()`
-    pub fn pnt2d(&self, Index: i32, OnFirst: bool) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn pnt2d(&self, Index: i32, OnFirst: bool) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_pnt2d(
                 self as *const Self,

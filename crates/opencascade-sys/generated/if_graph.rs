@@ -36,10 +36,7 @@ impl SubPartsIterator {
     /// whole True  : works on the entire Model
     /// whole False : empty, ready to be filled
     /// SubPartIterator is set to load entities
-    pub fn new_graph_bool(
-        agraph: &crate::ffi::Interface_Graph,
-        whole: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_graph_bool(agraph: &crate::interface::Graph, whole: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_ctor_graph_bool(
                 agraph, whole,
@@ -51,9 +48,7 @@ impl SubPartsIterator {
     /// Creates a SubPartIterator from another one and gets its Data
     /// Note that only non-empty sub-parts are taken into account
     /// PartNum is set to the last one
-    pub fn new_subpartsiterator(
-        other: &mut crate::ffi::IFGraph_SubPartsIterator,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_subpartsiterator(other: &mut SubPartsIterator) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_ctor_subpartsiterator(
                 other,
@@ -65,7 +60,7 @@ impl SubPartsIterator {
     /// Gets Parts from another SubPartsIterator (in addition to the
     /// ones already recorded)
     /// Error if both SubPartsIterators are not based on the same Model
-    pub fn get_parts(&mut self, other: &mut crate::ffi::IFGraph_SubPartsIterator) {
+    pub fn get_parts(&mut self, other: &mut SubPartsIterator) {
         unsafe { crate::ffi::IFGraph_SubPartsIterator_get_parts(self as *mut Self, other) }
     }
 
@@ -129,7 +124,7 @@ impl SubPartsIterator {
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:110 - `IFGraph_SubPartsIterator::LoadedGraph()`
     /// Same as above, but under the form of a Graph
-    pub fn loaded_graph(&self) -> crate::OwnedPtr<crate::ffi::Interface_Graph> {
+    pub fn loaded_graph(&self) -> crate::OwnedPtr<crate::interface::Graph> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_loaded_graph(
                 self as *const Self,

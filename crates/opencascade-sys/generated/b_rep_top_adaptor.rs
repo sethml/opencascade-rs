@@ -26,7 +26,7 @@ impl Tool {
     }
 
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:32 - `BRepTopAdaptor_Tool::BRepTopAdaptor_Tool()`
-    pub fn new_face_real(F: &crate::ffi::TopoDS_Face, Tol2d: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_face_real(F: &crate::topo_ds::Face, Tol2d: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepTopAdaptor_Tool_ctor_face_real(F, Tol2d))
         }
@@ -45,7 +45,7 @@ impl Tool {
     }
 
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:37 - `BRepTopAdaptor_Tool::Init()`
-    pub fn init_face_real(&mut self, F: &crate::ffi::TopoDS_Face, Tol2d: f64) {
+    pub fn init_face_real(&mut self, F: &crate::topo_ds::Face, Tol2d: f64) {
         unsafe { crate::ffi::BRepTopAdaptor_Tool_init_face_real(self as *mut Self, F, Tol2d) }
     }
 

@@ -42,7 +42,7 @@ impl Geom2dCurve {
     /// **Source:** `Geom2dToIGES_Geom2dCurve.hxx`:51 - `Geom2dToIGES_Geom2dCurve::Geom2dToIGES_Geom2dCurve()`
     /// Creates a tool Geom2dCurve ready to run and sets its
     /// fields as G2dE's.
-    pub fn new_geom2dentity(G2dE: &crate::ffi::Geom2dToIGES_Geom2dEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dToIGES_Geom2dCurve_ctor_geom2dentity(G2dE))
         }
@@ -120,7 +120,7 @@ impl Geom2dEntity {
     /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:37 - `Geom2dToIGES_Geom2dEntity::Geom2dToIGES_Geom2dEntity()`
     /// Creates a tool ready to run and sets its
     /// fields as GE's.
-    pub fn new_geom2dentity(GE: &crate::ffi::Geom2dToIGES_Geom2dEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geom2dentity(GE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dToIGES_Geom2dEntity_ctor_geom2dentity(GE))
         }
@@ -166,7 +166,7 @@ impl Geom2dPoint {
     /// **Source:** `Geom2dToIGES_Geom2dPoint.hxx`:42 - `Geom2dToIGES_Geom2dPoint::Geom2dToIGES_Geom2dPoint()`
     /// Creates a tool Geom2dPoint ready to run and sets its
     /// fields as G2dE's.
-    pub fn new_geom2dentity(G2dE: &crate::ffi::Geom2dToIGES_Geom2dEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dToIGES_Geom2dPoint_ctor_geom2dentity(G2dE))
         }
@@ -228,7 +228,7 @@ impl Geom2dVector {
     /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:44 - `Geom2dToIGES_Geom2dVector::Geom2dToIGES_Geom2dVector()`
     /// Creates a tool Geom2dVector ready to run and sets its
     /// fields as G2dE's.
-    pub fn new_geom2dentity(G2dE: &crate::ffi::Geom2dToIGES_Geom2dEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dToIGES_Geom2dVector_ctor_geom2dentity(G2dE))
         }

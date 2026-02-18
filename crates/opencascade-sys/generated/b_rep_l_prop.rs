@@ -32,7 +32,7 @@ impl SLProps {
     /// <Resolution> is the linear tolerance (it is used to test
     /// if a vector is null).
     pub fn new_surface_real2_int_real(
-        S: &crate::ffi::BRepAdaptor_Surface,
+        S: &crate::b_rep_adaptor::Surface,
         U: f64,
         V: f64,
         N: i32,
@@ -49,7 +49,7 @@ impl SLProps {
     /// idem as previous constructor but without setting the value
     /// of parameters <U> and <V>.
     pub fn new_surface_int_real(
-        S: &crate::ffi::BRepAdaptor_Surface,
+        S: &crate::b_rep_adaptor::Surface,
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -73,7 +73,7 @@ impl SLProps {
     /// **Source:** `BRepLProp_SLProps.hxx`:73 - `BRepLProp_SLProps::SetSurface()`
     /// Initializes the local properties of the surface S
     /// for the new surface.
-    pub fn set_surface(&mut self, S: &crate::ffi::BRepAdaptor_Surface) {
+    pub fn set_surface(&mut self, S: &crate::b_rep_adaptor::Surface) {
         unsafe { crate::ffi::BRepLProp_SLProps_set_surface(self as *mut Self, S) }
     }
 
@@ -86,42 +86,42 @@ impl SLProps {
 
     /// **Source:** `BRepLProp_SLProps.hxx`:80 - `BRepLProp_SLProps::Value()`
     /// Returns the point.
-    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+    pub fn value(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_value(self as *const Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:84 - `BRepLProp_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1u(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d1u(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_d1u(self as *mut Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:88 - `BRepLProp_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1v(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d1v(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_d1v(self as *mut Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:92 - `BRepLProp_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
-    pub fn d2u(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d2u(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_d2u(self as *mut Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:96 - `BRepLProp_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d2v(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn d2v(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_d2v(self as *mut Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:100 - `BRepLProp_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn duv(&mut self) -> &crate::ffi::gp_Vec {
+    pub fn duv(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_duv(self as *mut Self)) }
     }
 
@@ -135,7 +135,7 @@ impl SLProps {
 
     /// **Source:** `BRepLProp_SLProps.hxx`:108 - `BRepLProp_SLProps::TangentU()`
     /// Returns the tangent direction <D> on the iso-V.
-    pub fn tangent_u(&mut self, D: &mut crate::ffi::gp_Dir) {
+    pub fn tangent_u(&mut self, D: &mut crate::gp::Dir) {
         unsafe { crate::ffi::BRepLProp_SLProps_tangent_u(self as *mut Self, D) }
     }
 
@@ -149,7 +149,7 @@ impl SLProps {
 
     /// **Source:** `BRepLProp_SLProps.hxx`:116 - `BRepLProp_SLProps::TangentV()`
     /// Returns the tangent direction <D> on the iso-V.
-    pub fn tangent_v(&mut self, D: &mut crate::ffi::gp_Dir) {
+    pub fn tangent_v(&mut self, D: &mut crate::gp::Dir) {
         unsafe { crate::ffi::BRepLProp_SLProps_tangent_v(self as *mut Self, D) }
     }
 
@@ -161,7 +161,7 @@ impl SLProps {
 
     /// **Source:** `BRepLProp_SLProps.hxx`:122 - `BRepLProp_SLProps::Normal()`
     /// Returns the normal direction.
-    pub fn normal(&mut self) -> &crate::ffi::gp_Dir {
+    pub fn normal(&mut self) -> &crate::gp::Dir {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_normal(self as *mut Self)) }
     }
 
@@ -193,11 +193,7 @@ impl SLProps {
     /// **Source:** `BRepLProp_SLProps.hxx`:139 - `BRepLProp_SLProps::CurvatureDirections()`
     /// Returns the direction of the maximum and minimum curvature
     /// <MaxD> and <MinD>
-    pub fn curvature_directions(
-        &mut self,
-        MaxD: &mut crate::ffi::gp_Dir,
-        MinD: &mut crate::ffi::gp_Dir,
-    ) {
+    pub fn curvature_directions(&mut self, MaxD: &mut crate::gp::Dir, MinD: &mut crate::gp::Dir) {
         unsafe { crate::ffi::BRepLProp_SLProps_curvature_directions(self as *mut Self, MaxD, MinD) }
     }
 

@@ -129,10 +129,10 @@ impl Domain {
     /// **Source:** `IntRes2d_Domain.hxx`:50 - `IntRes2d_Domain::IntRes2d_Domain()`
     /// Creates a bounded Domain.
     pub fn new_pnt2d_real2_pnt2d_real2(
-        Pnt1: &crate::ffi::gp_Pnt2d,
+        Pnt1: &crate::gp::Pnt2d,
         Par1: f64,
         Tol1: f64,
-        Pnt2: &crate::ffi::gp_Pnt2d,
+        Pnt2: &crate::gp::Pnt2d,
         Par2: f64,
         Tol2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -148,7 +148,7 @@ impl Domain {
     /// True, the given point is the first point of the domain,
     /// otherwise it is the last point.
     pub fn new_pnt2d_real2_bool(
-        Pnt: &crate::ffi::gp_Pnt2d,
+        Pnt: &crate::gp::Pnt2d,
         Par: f64,
         Tol: f64,
         First: bool,
@@ -164,10 +164,10 @@ impl Domain {
     /// Sets the values for a bounded domain.
     pub fn set_values_pnt2d_real2_pnt2d_real2(
         &mut self,
-        Pnt1: &crate::ffi::gp_Pnt2d,
+        Pnt1: &crate::gp::Pnt2d,
         Par1: f64,
         Tol1: f64,
-        Pnt2: &crate::ffi::gp_Pnt2d,
+        Pnt2: &crate::gp::Pnt2d,
         Par2: f64,
         Tol2: f64,
     ) {
@@ -194,7 +194,7 @@ impl Domain {
     /// Sets the values for a semi-infinite domain.
     pub fn set_values_pnt2d_real2_bool(
         &mut self,
-        Pnt: &crate::ffi::gp_Pnt2d,
+        Pnt: &crate::gp::Pnt2d,
         Par: f64,
         Tol: f64,
         First: bool,
@@ -238,7 +238,7 @@ impl Domain {
     /// Returns the first point of the domain.
     /// The exception DomainError is raised if HasFirstPoint
     /// returns False.
-    pub fn first_point(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn first_point(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::IntRes2d_Domain_first_point(self as *const Self)) }
     }
 
@@ -270,7 +270,7 @@ impl Domain {
     /// Returns the last point of the domain.
     /// The exception DomainError is raised if HasLastPoint
     /// returns False.
-    pub fn last_point(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn last_point(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::IntRes2d_Domain_last_point(self as *const Self)) }
     }
 
@@ -332,11 +332,11 @@ impl IntersectionPoint {
     /// and Trans1 (resp. Uc2 and Trans2) refer to the
     /// second curve (resp. the first curve).
     pub fn new_pnt2d_real2_transition2_bool(
-        P: &crate::ffi::gp_Pnt2d,
+        P: &crate::gp::Pnt2d,
         Uc1: f64,
         Uc2: f64,
-        Trans1: &crate::ffi::IntRes2d_Transition,
-        Trans2: &crate::ffi::IntRes2d_Transition,
+        Trans1: &Transition,
+        Trans2: &Transition,
         ReversedFlag: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -359,11 +359,11 @@ impl IntersectionPoint {
     /// as for the Create.
     pub fn set_values(
         &mut self,
-        P: &crate::ffi::gp_Pnt2d,
+        P: &crate::gp::Pnt2d,
         Uc1: f64,
         Uc2: f64,
-        Trans1: &crate::ffi::IntRes2d_Transition,
-        Trans2: &crate::ffi::IntRes2d_Transition,
+        Trans1: &Transition,
+        Trans2: &Transition,
         ReversedFlag: bool,
     ) {
         unsafe {
@@ -382,7 +382,7 @@ impl IntersectionPoint {
     /// **Source:** `IntRes2d_IntersectionPoint.hxx`:63 - `IntRes2d_IntersectionPoint::Value()`
     /// Returns the value of the coordinates of the
     /// intersection point in the 2D space.
-    pub fn value(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn value(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::IntRes2d_IntersectionPoint_value(self as *const Self)) }
     }
 
@@ -401,7 +401,7 @@ impl IntersectionPoint {
     /// **Source:** `IntRes2d_IntersectionPoint.hxx`:73 - `IntRes2d_IntersectionPoint::TransitionOfFirst()`
     /// Returns the transition of the 1st curve compared to
     /// the 2nd one.
-    pub fn transition_of_first(&self) -> &crate::ffi::IntRes2d_Transition {
+    pub fn transition_of_first(&self) -> &Transition {
         unsafe {
             &*(crate::ffi::IntRes2d_IntersectionPoint_transition_of_first(self as *const Self))
         }
@@ -410,7 +410,7 @@ impl IntersectionPoint {
     /// **Source:** `IntRes2d_IntersectionPoint.hxx`:77 - `IntRes2d_IntersectionPoint::TransitionOfSecond()`
     /// returns the transition of the 2nd curve compared to
     /// the 1st one.
-    pub fn transition_of_second(&self) -> &crate::ffi::IntRes2d_Transition {
+    pub fn transition_of_second(&self) -> &Transition {
         unsafe {
             &*(crate::ffi::IntRes2d_IntersectionPoint_transition_of_second(self as *const Self))
         }
@@ -441,8 +441,8 @@ impl IntersectionSegment {
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:37 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
     pub fn new_intersectionpoint2_bool2(
-        P1: &crate::ffi::IntRes2d_IntersectionPoint,
-        P2: &crate::ffi::IntRes2d_IntersectionPoint,
+        P1: &IntersectionPoint,
+        P2: &IntersectionPoint,
         Oppos: bool,
         ReverseFlag: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -460,7 +460,7 @@ impl IntersectionSegment {
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:42 - `IntRes2d_IntersectionSegment::IntRes2d_IntersectionSegment()`
     pub fn new_intersectionpoint_bool3(
-        P: &crate::ffi::IntRes2d_IntersectionPoint,
+        P: &IntersectionPoint,
         First: bool,
         Oppos: bool,
         ReverseFlag: bool,
@@ -508,7 +508,7 @@ impl IntersectionSegment {
     /// IntersectionPoint (with    a    transition).   The
     /// exception  DomainError  is raised if HasFirstPoint
     /// returns False.
-    pub fn first_point(&self) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn first_point(&self) -> &IntersectionPoint {
         unsafe { &*(crate::ffi::IntRes2d_IntersectionSegment_first_point(self as *const Self)) }
     }
 
@@ -528,7 +528,7 @@ impl IntersectionSegment {
     /// IntersectionPoint   (with  a    transition).   The
     /// exception        DomainError     is   raised    if
     /// HasLastExtremity returns False.
-    pub fn last_point(&self) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn last_point(&self) -> &IntersectionPoint {
         unsafe { &*(crate::ffi::IntRes2d_IntersectionSegment_last_point(self as *const Self)) }
     }
 }

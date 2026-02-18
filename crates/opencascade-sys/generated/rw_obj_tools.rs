@@ -8,7 +8,7 @@
 
 /// **Source:** `RWObj_Tools.hxx`:50 - `RWObj_Tools::ReadName`
 /// Read string.
-pub fn read_name(thePos: &str, theName: &mut crate::ffi::TCollection_AsciiString) -> bool {
+pub fn read_name(thePos: &str, theName: &mut crate::t_collection::AsciiString) -> bool {
     let c_thePos = std::ffi::CString::new(thePos).unwrap();
     unsafe { crate::ffi::RWObj_Tools_read_name(c_thePos.as_ptr(), theName) }
 }

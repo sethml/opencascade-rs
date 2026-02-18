@@ -98,7 +98,7 @@ impl ActorWrite {
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
         TP: &crate::ffi::HandleTransferProcessForFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_inherited_Transferring(
@@ -340,7 +340,7 @@ impl Controller {
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
-    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
+    pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         unsafe {
             crate::ffi::IGESControl_Controller_inherited_RecognizeWriteShape(
                 self as *const Self,
@@ -378,7 +378,7 @@ impl IGESBoundary {
     /// **Source:** `IGESControl_IGESBoundary.hxx`:44 - `IGESControl_IGESBoundary::IGESControl_IGESBoundary()`
     /// Creates an object and calls inherited constructor.
     pub fn new_curveandsurface(
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+        CS: &crate::iges_to_b_rep::CurveAndSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESControl_IGESBoundary_ctor_curveandsurface(CS))
@@ -445,10 +445,10 @@ impl IGESBoundary {
     /// Inherited: **Source:** `IGESToBRep_IGESBoundary.hxx`:58 - `IGESToBRep_IGESBoundary::Init()`
     pub fn init(
         &mut self,
-        CS: &crate::ffi::IGESToBRep_CurveAndSurface,
+        CS: &crate::iges_to_b_rep::CurveAndSurface,
         entity: &crate::ffi::HandleIGESDataIGESEntity,
-        face: &crate::ffi::TopoDS_Face,
-        trans: &crate::ffi::gp_Trsf2d,
+        face: &crate::topo_ds::Face,
+        trans: &crate::gp::Trsf2d,
         uFact: f64,
         filepreference: i32,
     ) {
@@ -607,7 +607,7 @@ impl Reader {
     pub fn transfer_one_root(
         &mut self,
         num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::IGESControl_Reader_inherited_TransferOneRoot(
@@ -619,11 +619,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
-    pub fn transfer_one(
-        &mut self,
-        num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
+    pub fn transfer_one(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe {
             crate::ffi::IGESControl_Reader_inherited_TransferOne(
                 self as *mut Self,
@@ -637,7 +633,7 @@ impl Reader {
     pub fn transfer_list(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         unsafe {
             crate::ffi::IGESControl_Reader_inherited_TransferList(
@@ -649,7 +645,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
-    pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
+    pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         unsafe {
             crate::ffi::IGESControl_Reader_inherited_TransferRoots(self as *mut Self, theProgress)
         }
@@ -666,7 +662,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:210 - `XSControl_Reader::Shape()`
-    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_inherited_Shape(
                 self as *const Self,
@@ -676,7 +672,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:217 - `XSControl_Reader::OneShape()`
-    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_inherited_OneShape(
                 self as *const Self,
@@ -856,8 +852,8 @@ impl Writer {
     /// Returns True if done, False if Shape not suitable for IGES or null
     pub fn add_shape(
         &mut self,
-        sh: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        sh: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::IGESControl_Writer_add_shape(self as *mut Self, sh, theProgress) }
     }

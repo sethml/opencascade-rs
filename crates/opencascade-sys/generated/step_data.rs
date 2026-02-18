@@ -930,11 +930,7 @@ impl StepModel {
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:222 - `Interface_InterfaceModel::FillSemanticChecks()`
-    pub fn fill_semantic_checks(
-        &mut self,
-        checks: &crate::ffi::Interface_CheckIterator,
-        clear: bool,
-    ) {
+    pub fn fill_semantic_checks(&mut self, checks: &crate::interface::CheckIterator, clear: bool) {
         unsafe {
             crate::ffi::StepData_StepModel_inherited_FillSemanticChecks(
                 self as *mut Self,

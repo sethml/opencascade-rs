@@ -202,7 +202,7 @@ impl Interval {
     /// ***-----------------*   OverlappingAtEnd
     /// ***--------*   JustAfter
     /// ***---*   After
-    pub fn position(&self, Other: &crate::ffi::Intrv_Interval) -> crate::intrv::Position {
+    pub fn position(&self, Other: &Interval) -> crate::intrv::Position {
         unsafe {
             crate::intrv::Position::try_from(crate::ffi::Intrv_Interval_position(
                 self as *const Self,
@@ -216,7 +216,7 @@ impl Interval {
     /// True if me is Before Other
     /// ***----------------**                              me
     /// **-----------****          Other
-    pub fn is_before(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_before(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_before(self as *const Self, Other) }
     }
 
@@ -224,7 +224,7 @@ impl Interval {
     /// True if me is After Other
     /// **-----------****          me
     /// ***----------------**                              Other
-    pub fn is_after(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_after(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_after(self as *const Self, Other) }
     }
 
@@ -232,7 +232,7 @@ impl Interval {
     /// True if me is Inside Other
     /// **-----------****                          me
     /// ***--------------------------**                    Other
-    pub fn is_inside(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_inside(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_inside(self as *const Self, Other) }
     }
 
@@ -240,7 +240,7 @@ impl Interval {
     /// True if me is Enclosing Other
     /// ***----------------------------****                  me
     /// ***------------------**                        Other
-    pub fn is_enclosing(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_enclosing(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_enclosing(self as *const Self, Other) }
     }
 
@@ -248,7 +248,7 @@ impl Interval {
     /// True if me is just Enclosing Other at start
     /// ***---------------------------****            me
     /// ***------------------**                        Other
-    pub fn is_just_enclosing_at_start(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_just_enclosing_at_start(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_just_enclosing_at_start(self as *const Self, Other) }
     }
 
@@ -256,7 +256,7 @@ impl Interval {
     /// True if me is just Enclosing Other at End
     /// ***----------------------------****                  me
     /// ***-----------------****                   Other
-    pub fn is_just_enclosing_at_end(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_just_enclosing_at_end(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_just_enclosing_at_end(self as *const Self, Other) }
     }
 
@@ -264,7 +264,7 @@ impl Interval {
     /// True if me is just before Other
     /// ***--------****                                      me
     /// ***-----------**                        Other
-    pub fn is_just_before(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_just_before(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_just_before(self as *const Self, Other) }
     }
 
@@ -272,7 +272,7 @@ impl Interval {
     /// True if me is just after Other
     /// ****-------****                         me
     /// ***-----------**                                     Other
-    pub fn is_just_after(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_just_after(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_just_after(self as *const Self, Other) }
     }
 
@@ -280,7 +280,7 @@ impl Interval {
     /// True if me is overlapping Other at start
     /// ***---------------***                                me
     /// ***-----------**                        Other
-    pub fn is_overlapping_at_start(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_overlapping_at_start(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_overlapping_at_start(self as *const Self, Other) }
     }
 
@@ -288,7 +288,7 @@ impl Interval {
     /// True if me is overlapping Other at end
     /// ***-----------**                        me
     /// ***---------------***                                Other
-    pub fn is_overlapping_at_end(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_overlapping_at_end(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_overlapping_at_end(self as *const Self, Other) }
     }
 
@@ -296,7 +296,7 @@ impl Interval {
     /// True if me is just overlapping Other at start
     /// ***-----------***                                    me
     /// ***------------------------**                        Other
-    pub fn is_just_overlapping_at_start(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_just_overlapping_at_start(&self, Other: &Interval) -> bool {
         unsafe {
             crate::ffi::Intrv_Interval_is_just_overlapping_at_start(self as *const Self, Other)
         }
@@ -306,7 +306,7 @@ impl Interval {
     /// True if me is just overlapping Other at end
     /// ***-----------*                         me
     /// ***------------------------**                        Other
-    pub fn is_just_overlapping_at_end(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_just_overlapping_at_end(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_just_overlapping_at_end(self as *const Self, Other) }
     }
 
@@ -314,7 +314,7 @@ impl Interval {
     /// True if me and Other have the same bounds
     /// *----------------***                                me
     /// ***-----------------**                               Other
-    pub fn is_similar(&self, Other: &crate::ffi::Intrv_Interval) -> bool {
+    pub fn is_similar(&self, Other: &Interval) -> bool {
         unsafe { crate::ffi::Intrv_Interval_is_similar(self as *const Self, Other) }
     }
 }
@@ -343,50 +343,50 @@ impl Intervals {
 
     /// **Source:** `Intrv_Intervals.hxx`:38 - `Intrv_Intervals::Intrv_Intervals()`
     /// Creates a sequence of one interval.
-    pub fn new_interval(Int: &crate::ffi::Intrv_Interval) -> crate::OwnedPtr<Self> {
+    pub fn new_interval(Int: &Interval) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Intrv_Intervals_ctor_interval(Int)) }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:41 - `Intrv_Intervals::Intersect()`
     /// Intersects the intervals with the interval <Tool>.
-    pub fn intersect_interval(&mut self, Tool: &crate::ffi::Intrv_Interval) {
+    pub fn intersect_interval(&mut self, Tool: &Interval) {
         unsafe { crate::ffi::Intrv_Intervals_intersect_interval(self as *mut Self, Tool) }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:45 - `Intrv_Intervals::Intersect()`
     /// Intersects the intervals with the intervals in the
     /// sequence  <Tool>.
-    pub fn intersect_intervals(&mut self, Tool: &crate::ffi::Intrv_Intervals) {
+    pub fn intersect_intervals(&mut self, Tool: &Intervals) {
         unsafe { crate::ffi::Intrv_Intervals_intersect_intervals(self as *mut Self, Tool) }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:47 - `Intrv_Intervals::Subtract()`
-    pub fn subtract_interval(&mut self, Tool: &crate::ffi::Intrv_Interval) {
+    pub fn subtract_interval(&mut self, Tool: &Interval) {
         unsafe { crate::ffi::Intrv_Intervals_subtract_interval(self as *mut Self, Tool) }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:49 - `Intrv_Intervals::Subtract()`
-    pub fn subtract_intervals(&mut self, Tool: &crate::ffi::Intrv_Intervals) {
+    pub fn subtract_intervals(&mut self, Tool: &Intervals) {
         unsafe { crate::ffi::Intrv_Intervals_subtract_intervals(self as *mut Self, Tool) }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:51 - `Intrv_Intervals::Unite()`
-    pub fn unite_interval(&mut self, Tool: &crate::ffi::Intrv_Interval) {
+    pub fn unite_interval(&mut self, Tool: &Interval) {
         unsafe { crate::ffi::Intrv_Intervals_unite_interval(self as *mut Self, Tool) }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:53 - `Intrv_Intervals::Unite()`
-    pub fn unite_intervals(&mut self, Tool: &crate::ffi::Intrv_Intervals) {
+    pub fn unite_intervals(&mut self, Tool: &Intervals) {
         unsafe { crate::ffi::Intrv_Intervals_unite_intervals(self as *mut Self, Tool) }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:55 - `Intrv_Intervals::XUnite()`
-    pub fn x_unite_interval(&mut self, Tool: &crate::ffi::Intrv_Interval) {
+    pub fn x_unite_interval(&mut self, Tool: &Interval) {
         unsafe { crate::ffi::Intrv_Intervals_x_unite_interval(self as *mut Self, Tool) }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:57 - `Intrv_Intervals::XUnite()`
-    pub fn x_unite_intervals(&mut self, Tool: &crate::ffi::Intrv_Intervals) {
+    pub fn x_unite_intervals(&mut self, Tool: &Intervals) {
         unsafe { crate::ffi::Intrv_Intervals_x_unite_intervals(self as *mut Self, Tool) }
     }
 
@@ -396,7 +396,7 @@ impl Intervals {
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:61 - `Intrv_Intervals::Value()`
-    pub fn value(&self, Index: i32) -> &crate::ffi::Intrv_Interval {
+    pub fn value(&self, Index: i32) -> &Interval {
         unsafe { &*(crate::ffi::Intrv_Intervals_value(self as *const Self, Index)) }
     }
 }

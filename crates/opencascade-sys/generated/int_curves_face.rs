@@ -35,7 +35,7 @@ impl Intersector {
     /// otherwise it's using maximum between input tolerance(aTol) and tolerances of face bounds
     /// (edges).
     pub fn new_face_real_bool2(
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         aTol: f64,
         aRestr: bool,
         UseBToler: bool,
@@ -62,7 +62,7 @@ impl Intersector {
     /// otherwise it's using maximum between input tolerance(aTol) and tolerances of face bounds
     /// (edges).
     pub fn new_face_real_bool(
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         aTol: f64,
         aRestr: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -83,7 +83,7 @@ impl Intersector {
     /// (relative to face);
     /// otherwise it's using maximum between input tolerance(aTol) and tolerances of face bounds
     /// (edges).
-    pub fn new_face_real(F: &crate::ffi::TopoDS_Face, aTol: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_face_real(F: &crate::topo_ds::Face, aTol: f64) -> crate::OwnedPtr<Self> {
         Self::new_face_real_bool2(F, aTol, true, true)
     }
 
@@ -101,7 +101,7 @@ impl Intersector {
     ///
     /// For an infinite line PInf and PSup can be
     /// +/- RealLast.
-    pub fn perform_lin_real2(&mut self, L: &crate::ffi::gp_Lin, PInf: f64, PSup: f64) {
+    pub fn perform_lin_real2(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         unsafe {
             crate::ffi::IntCurvesFace_Intersector_perform_lin_real2(
                 self as *mut Self,
@@ -177,7 +177,7 @@ impl Intersector {
     /// **Source:** `IntCurvesFace_Intersector.hxx`:105 - `IntCurvesFace_Intersector::Pnt()`
     /// Returns the geometric point of the ith intersection
     /// between the line and the surface.
-    pub fn pnt(&self, I: i32) -> &crate::ffi::gp_Pnt {
+    pub fn pnt(&self, I: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntCurvesFace_Intersector_pnt(self as *const Self, I)) }
     }
 
@@ -219,12 +219,12 @@ impl Intersector {
     /// **Source:** `IntCurvesFace_Intersector.hxx`:124 - `IntCurvesFace_Intersector::Face()`
     /// Returns the significant face used to determine
     /// the intersection.
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::IntCurvesFace_Intersector_face(self as *const Self)) }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:126 - `IntCurvesFace_Intersector::ClassifyUVPoint()`
-    pub fn classify_uv_point(&self, Puv: &crate::ffi::gp_Pnt2d) -> crate::top_abs::State {
+    pub fn classify_uv_point(&self, Puv: &crate::gp::Pnt2d) -> crate::top_abs::State {
         unsafe {
             crate::top_abs::State::try_from(
                 crate::ffi::IntCurvesFace_Intersector_classify_uv_point(self as *const Self, Puv),
@@ -234,7 +234,7 @@ impl Intersector {
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:128 - `IntCurvesFace_Intersector::Bounding()`
-    pub fn bounding(&self) -> crate::OwnedPtr<crate::ffi::Bnd_Box> {
+    pub fn bounding(&self) -> crate::OwnedPtr<crate::bnd::Box> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurvesFace_Intersector_bounding(
                 self as *const Self,
@@ -322,7 +322,7 @@ impl ShapeIntersector {
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:47 - `IntCurvesFace_ShapeIntersector::Load()`
-    pub fn load(&mut self, Sh: &crate::ffi::TopoDS_Shape, Tol: f64) {
+    pub fn load(&mut self, Sh: &crate::topo_ds::Shape, Tol: f64) {
         unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_load(self as *mut Self, Sh, Tol) }
     }
 
@@ -335,7 +335,7 @@ impl ShapeIntersector {
     ///
     /// For an infinite line PInf and PSup can be
     /// +/- RealLast.
-    pub fn perform_lin_real2(&mut self, L: &crate::ffi::gp_Lin, PInf: f64, PSup: f64) {
+    pub fn perform_lin_real2(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         unsafe {
             crate::ffi::IntCurvesFace_ShapeIntersector_perform_lin_real2(
                 self as *mut Self,
@@ -355,7 +355,7 @@ impl ShapeIntersector {
     ///
     /// For an infinite line PInf and PSup can be
     /// +/- RealLast.
-    pub fn perform_nearest(&mut self, L: &crate::ffi::gp_Lin, PInf: f64, PSup: f64) {
+    pub fn perform_nearest(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         unsafe {
             crate::ffi::IntCurvesFace_ShapeIntersector_perform_nearest(
                 self as *mut Self,
@@ -421,7 +421,7 @@ impl ShapeIntersector {
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:109 - `IntCurvesFace_ShapeIntersector::Pnt()`
     /// Returns the geometric point of the ith intersection
     /// between the line and the surface.
-    pub fn pnt(&self, I: i32) -> &crate::ffi::gp_Pnt {
+    pub fn pnt(&self, I: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntCurvesFace_ShapeIntersector_pnt(self as *const Self, I)) }
     }
 
@@ -455,7 +455,7 @@ impl ShapeIntersector {
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:135 - `IntCurvesFace_ShapeIntersector::Face()`
     /// Returns the significant face used to determine
     /// the intersection.
-    pub fn face(&self, I: i32) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self, I: i32) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::IntCurvesFace_ShapeIntersector_face(self as *const Self, I)) }
     }
 

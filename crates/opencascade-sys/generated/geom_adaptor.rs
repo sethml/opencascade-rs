@@ -12,7 +12,7 @@
 /// Build a Geom_Curve using the information from the
 /// Curve from Adaptor3d
 pub fn make_curve_curve(
-    C: &crate::ffi::Adaptor3d_Curve,
+    C: &crate::adaptor3d::Curve,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_make_curve_curve(C)) }
 }
@@ -21,7 +21,7 @@ pub fn make_curve_curve(
 /// @param theS - Surface adaptor to convert.
 /// @param theTrimFlag - True if perform trim surface values by adaptor and false otherwise.
 pub fn make_surface(
-    theS: &crate::ffi::Adaptor3d_Surface,
+    theS: &crate::adaptor3d::Surface,
     theTrimFlag: bool,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_make_surface(theS, theTrimFlag)) }
@@ -200,7 +200,7 @@ impl Curve {
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:127 - `GeomAdaptor_Curve::Value()`
     /// Computes the point of parameter U on the curve
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_value(self as *const Self, U))
         }
@@ -208,7 +208,7 @@ impl Curve {
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:130 - `GeomAdaptor_Curve::D0()`
     /// Computes the point of parameter U.
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomAdaptor_Curve_d0(self as *const Self, U, P) }
     }
 
@@ -220,7 +220,7 @@ impl Curve {
     /// if the curve is cut in interval of continuity at least C1, the
     /// derivatives are computed on the current interval.
     /// else the derivatives are computed on the basis curve.
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomAdaptor_Curve_d1(self as *const Self, U, P, V) }
     }
 
@@ -235,9 +235,9 @@ impl Curve {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomAdaptor_Curve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -253,10 +253,10 @@ impl Curve {
     pub fn d3(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -269,7 +269,7 @@ impl Curve {
     /// derivatives are computed on the current interval.
     /// else the derivatives are computed on the basis curve.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_dn(self as *const Self, U, N))
         }
@@ -292,35 +292,35 @@ impl Curve {
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:181 - `GeomAdaptor_Curve::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_line(self as *const Self))
         }
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:183 - `GeomAdaptor_Curve::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_circle(self as *const Self))
         }
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:185 - `GeomAdaptor_Curve::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_ellipse(self as *const Self))
         }
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:187 - `GeomAdaptor_Curve::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_hyperbola(self as *const Self))
         }
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:189 - `GeomAdaptor_Curve::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_parabola(self as *const Self))
         }
@@ -695,7 +695,7 @@ impl Surface {
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:170 - `GeomAdaptor_Surface::Value()`
     /// Computes the point of parameters U,V on the surface.
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_value(
                 self as *const Self,
@@ -707,7 +707,7 @@ impl Surface {
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
     /// Computes the point of parameters U,V on the surface.
-    pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::GeomAdaptor_Surface_d0(self as *const Self, U, V, P) }
     }
 
@@ -723,9 +723,9 @@ impl Surface {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomAdaptor_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -742,12 +742,12 @@ impl Surface {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        D2UV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomAdaptor_Surface_d2(
@@ -776,16 +776,16 @@ impl Surface {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        D2UV: &mut crate::ffi::gp_Vec,
-        D3U: &mut crate::ffi::gp_Vec,
-        D3V: &mut crate::ffi::gp_Vec,
-        D3UUV: &mut crate::ffi::gp_Vec,
-        D3UVV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
+        D3U: &mut crate::gp::Vec,
+        D3V: &mut crate::gp::Vec,
+        D3UUV: &mut crate::gp::Vec,
+        D3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomAdaptor_Surface_d3(
@@ -815,7 +815,7 @@ impl Surface {
     /// the derivatives are computed on the current interval.
     /// else the derivatives are computed on the basis surface.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_dn(
                 self as *const Self,
@@ -856,35 +856,35 @@ impl Surface {
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:254 - `GeomAdaptor_Surface::Plane()`
-    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::gp_Pln> {
+    pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_plane(self as *const Self))
         }
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:256 - `GeomAdaptor_Surface::Cylinder()`
-    pub fn cylinder(&self) -> crate::OwnedPtr<crate::ffi::gp_Cylinder> {
+    pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_cylinder(self as *const Self))
         }
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:258 - `GeomAdaptor_Surface::Cone()`
-    pub fn cone(&self) -> crate::OwnedPtr<crate::ffi::gp_Cone> {
+    pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_cone(self as *const Self))
         }
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:260 - `GeomAdaptor_Surface::Sphere()`
-    pub fn sphere(&self) -> crate::OwnedPtr<crate::ffi::gp_Sphere> {
+    pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_sphere(self as *const Self))
         }
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:262 - `GeomAdaptor_Surface::Torus()`
-    pub fn torus(&self) -> crate::OwnedPtr<crate::ffi::gp_Torus> {
+    pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_torus(self as *const Self))
         }
@@ -955,7 +955,7 @@ impl Surface {
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:294 - `GeomAdaptor_Surface::AxeOfRevolution()`
-    pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+    pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_axe_of_revolution(
                 self as *const Self,
@@ -964,7 +964,7 @@ impl Surface {
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:296 - `GeomAdaptor_Surface::Direction()`
-    pub fn direction(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_direction(
                 self as *const Self,
@@ -1064,7 +1064,7 @@ impl SurfaceOfLinearExtrusion {
     /// Thew Curve and the Direction are loaded.
     pub fn new_handleadaptor3dcurve_dir(
         C: &crate::ffi::HandleAdaptor3dCurve,
-        V: &crate::ffi::gp_Dir,
+        V: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1105,7 +1105,7 @@ impl SurfaceOfLinearExtrusion {
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:60 - `GeomAdaptor_SurfaceOfLinearExtrusion::Load()`
     /// Changes the Direction
-    pub fn load_dir(&mut self, V: &crate::ffi::gp_Dir) {
+    pub fn load_dir(&mut self, V: &crate::gp::Dir) {
         unsafe { crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_load_dir(self as *mut Self, V) }
     }
 
@@ -1318,7 +1318,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:136 - `GeomAdaptor_SurfaceOfLinearExtrusion::Plane()`
-    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::gp_Pln> {
+    pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_plane(
                 self as *const Self,
@@ -1327,7 +1327,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:138 - `GeomAdaptor_SurfaceOfLinearExtrusion::Cylinder()`
-    pub fn cylinder(&self) -> crate::OwnedPtr<crate::ffi::gp_Cylinder> {
+    pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_cylinder(
                 self as *const Self,
@@ -1336,7 +1336,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:140 - `GeomAdaptor_SurfaceOfLinearExtrusion::Cone()`
-    pub fn cone(&self) -> crate::OwnedPtr<crate::ffi::gp_Cone> {
+    pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_cone(
                 self as *const Self,
@@ -1345,7 +1345,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:142 - `GeomAdaptor_SurfaceOfLinearExtrusion::Sphere()`
-    pub fn sphere(&self) -> crate::OwnedPtr<crate::ffi::gp_Sphere> {
+    pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_sphere(
                 self as *const Self,
@@ -1354,7 +1354,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:144 - `GeomAdaptor_SurfaceOfLinearExtrusion::Torus()`
-    pub fn torus(&self) -> crate::OwnedPtr<crate::ffi::gp_Torus> {
+    pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_torus(
                 self as *const Self,
@@ -1405,7 +1405,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:158 - `GeomAdaptor_SurfaceOfLinearExtrusion::AxeOfRevolution()`
-    pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+    pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_axe_of_revolution(
@@ -1416,7 +1416,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfLinearExtrusion.hxx`:160 - `GeomAdaptor_SurfaceOfLinearExtrusion::Direction()`
-    pub fn direction(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_direction(
                 self as *const Self,
@@ -1495,7 +1495,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:170 - `GeomAdaptor_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Value(
@@ -1508,7 +1508,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
-    pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D0(
                 self as *const Self,
@@ -1524,9 +1524,9 @@ impl SurfaceOfLinearExtrusion {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D1(
@@ -1545,12 +1545,12 @@ impl SurfaceOfLinearExtrusion {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        D2UV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D2(
@@ -1572,16 +1572,16 @@ impl SurfaceOfLinearExtrusion {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        D2UV: &mut crate::ffi::gp_Vec,
-        D3U: &mut crate::ffi::gp_Vec,
-        D3V: &mut crate::ffi::gp_Vec,
-        D3UUV: &mut crate::ffi::gp_Vec,
-        D3UVV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
+        D3U: &mut crate::gp::Vec,
+        D3V: &mut crate::gp::Vec,
+        D3UUV: &mut crate::gp::Vec,
+        D3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D3(
@@ -1603,7 +1603,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:235 - `GeomAdaptor_Surface::DN()`
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_DN(
@@ -1715,7 +1715,7 @@ impl SurfaceOfRevolution {
     /// The Curve and the Direction are loaded.
     pub fn new_handleadaptor3dcurve_ax1(
         C: &crate::ffi::HandleAdaptor3dCurve,
-        V: &crate::ffi::gp_Ax1,
+        V: &crate::gp::Ax1,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -1752,12 +1752,12 @@ impl SurfaceOfRevolution {
 
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:68 - `GeomAdaptor_SurfaceOfRevolution::Load()`
     /// Changes the Direction
-    pub fn load_ax1(&mut self, V: &crate::ffi::gp_Ax1) {
+    pub fn load_ax1(&mut self, V: &crate::gp::Ax1) {
         unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_load_ax1(self as *mut Self, V) }
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:70 - `GeomAdaptor_SurfaceOfRevolution::AxeOfRevolution()`
-    pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+    pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_axe_of_revolution(self as *const Self),
@@ -1966,7 +1966,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:146 - `GeomAdaptor_SurfaceOfRevolution::Plane()`
-    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::gp_Pln> {
+    pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_plane(
                 self as *const Self,
@@ -1975,7 +1975,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:148 - `GeomAdaptor_SurfaceOfRevolution::Cylinder()`
-    pub fn cylinder(&self) -> crate::OwnedPtr<crate::ffi::gp_Cylinder> {
+    pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_cylinder(
                 self as *const Self,
@@ -1986,7 +1986,7 @@ impl SurfaceOfRevolution {
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:152 - `GeomAdaptor_SurfaceOfRevolution::Cone()`
     /// Apex of the Cone = Cone.Position().Location()
     /// ==> ReferenceRadius = 0.
-    pub fn cone(&self) -> crate::OwnedPtr<crate::ffi::gp_Cone> {
+    pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_cone(
                 self as *const Self,
@@ -1995,7 +1995,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:154 - `GeomAdaptor_SurfaceOfRevolution::Sphere()`
-    pub fn sphere(&self) -> crate::OwnedPtr<crate::ffi::gp_Sphere> {
+    pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_sphere(
                 self as *const Self,
@@ -2004,7 +2004,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:156 - `GeomAdaptor_SurfaceOfRevolution::Torus()`
-    pub fn torus(&self) -> crate::OwnedPtr<crate::ffi::gp_Torus> {
+    pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_torus(
                 self as *const Self,
@@ -2056,7 +2056,7 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomAdaptor_SurfaceOfRevolution.hxx`:172 - `GeomAdaptor_SurfaceOfRevolution::Axis()`
-    pub fn axis(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn axis(&self) -> &crate::gp::Ax3 {
         unsafe { &*(crate::ffi::GeomAdaptor_SurfaceOfRevolution_axis(self as *const Self)) }
     }
 
@@ -2127,7 +2127,7 @@ impl SurfaceOfRevolution {
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:170 - `GeomAdaptor_Surface::Value()`
-    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Value(
                 self as *const Self,
@@ -2138,7 +2138,7 @@ impl SurfaceOfRevolution {
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
-    pub fn d0(&self, U: f64, V: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D0(self as *const Self, U, V, P)
         }
@@ -2149,9 +2149,9 @@ impl SurfaceOfRevolution {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D1(
@@ -2170,12 +2170,12 @@ impl SurfaceOfRevolution {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        D2UV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D2(
@@ -2197,16 +2197,16 @@ impl SurfaceOfRevolution {
         &self,
         U: f64,
         V: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        D1U: &mut crate::ffi::gp_Vec,
-        D1V: &mut crate::ffi::gp_Vec,
-        D2U: &mut crate::ffi::gp_Vec,
-        D2V: &mut crate::ffi::gp_Vec,
-        D2UV: &mut crate::ffi::gp_Vec,
-        D3U: &mut crate::ffi::gp_Vec,
-        D3V: &mut crate::ffi::gp_Vec,
-        D3UUV: &mut crate::ffi::gp_Vec,
-        D3UVV: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
+        D3U: &mut crate::gp::Vec,
+        D3V: &mut crate::gp::Vec,
+        D3UUV: &mut crate::gp::Vec,
+        D3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D3(
@@ -2228,7 +2228,7 @@ impl SurfaceOfRevolution {
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:235 - `GeomAdaptor_Surface::DN()`
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_DN(
                 self as *const Self,
@@ -2262,7 +2262,7 @@ impl SurfaceOfRevolution {
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:296 - `GeomAdaptor_Surface::Direction()`
-    pub fn direction(&self) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Direction(

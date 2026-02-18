@@ -41,7 +41,7 @@ impl Analysis {
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:53 - `ExprIntrp_Analysis::PushName()`
-    pub fn push_name(&mut self, name: &crate::ffi::TCollection_AsciiString) {
+    pub fn push_name(&mut self, name: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::ExprIntrp_Analysis_push_name(self as *mut Self, name) }
     }
 
@@ -70,7 +70,7 @@ impl Analysis {
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:63 - `ExprIntrp_Analysis::PopName()`
-    pub fn pop_name(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn pop_name(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_Analysis_pop_name(self as *mut Self))
         }
@@ -126,7 +126,7 @@ unsafe impl crate::CppDeletable for GenExp {
 impl GenExp {
     /// **Source:** `ExprIntrp_GenExp.hxx`:41 - `ExprIntrp_GenExp::Process()`
     /// Processes given string.
-    pub fn process(&mut self, str: &crate::ffi::TCollection_AsciiString) {
+    pub fn process(&mut self, str: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::ExprIntrp_GenExp_process(self as *mut Self, str) }
     }
 
@@ -206,7 +206,7 @@ unsafe impl crate::CppDeletable for GenFct {
 
 impl GenFct {
     /// **Source:** `ExprIntrp_GenFct.hxx`:37 - `ExprIntrp_GenFct::Process()`
-    pub fn process(&mut self, str: &crate::ffi::TCollection_AsciiString) {
+    pub fn process(&mut self, str: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::ExprIntrp_GenFct_process(self as *mut Self, str) }
     }
 
@@ -275,7 +275,7 @@ unsafe impl crate::CppDeletable for GenRel {
 impl GenRel {
     /// **Source:** `ExprIntrp_GenRel.hxx`:39 - `ExprIntrp_GenRel::Process()`
     /// Processes given string.
-    pub fn process(&mut self, str: &crate::ffi::TCollection_AsciiString) {
+    pub fn process(&mut self, str: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::ExprIntrp_GenRel_process(self as *mut Self, str) }
     }
 

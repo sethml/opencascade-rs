@@ -65,7 +65,7 @@ impl Application {
     /// Default imiplementation is empty
     pub fn error_message_extendedstring_gravity(
         &mut self,
-        theMsg: &crate::ffi::TCollection_ExtendedString,
+        theMsg: &crate::t_collection::ExtendedString,
         theLevel: crate::message::Gravity,
     ) {
         unsafe {
@@ -80,10 +80,7 @@ impl Application {
     /// **Source:** `TObj_Application.hxx`:74 - `TObj_Application::ErrorMessage()`
     /// Signal error during Load or Save
     /// Default imiplementation invoke previous declaration with 0
-    pub fn error_message_extendedstring(
-        &mut self,
-        theMsg: &crate::ffi::TCollection_ExtendedString,
-    ) {
+    pub fn error_message_extendedstring(&mut self, theMsg: &crate::t_collection::ExtendedString) {
         unsafe {
             crate::ffi::TObj_Application_error_message_extendedstring(self as *mut Self, theMsg)
         }
@@ -200,15 +197,15 @@ impl Application {
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
-    pub fn is_in_session(&self, path: &crate::ffi::TCollection_ExtendedString) -> i32 {
+    pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::TObj_Application_inherited_IsInSession(self as *const Self, path) }
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
     pub fn can_retrieve(
         &mut self,
-        theFolder: &crate::ffi::TCollection_ExtendedString,
-        theName: &crate::ffi::TCollection_ExtendedString,
+        theFolder: &crate::t_collection::ExtendedString,
+        theName: &crate::t_collection::ExtendedString,
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
         unsafe {
@@ -235,8 +232,8 @@ impl Application {
     /// Inherited: **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
     pub fn format(
         &mut self,
-        aFileName: &crate::ffi::TCollection_ExtendedString,
-        theFormat: &mut crate::ffi::TCollection_ExtendedString,
+        aFileName: &crate::t_collection::ExtendedString,
+        theFormat: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::TObj_Application_inherited_Format(self as *mut Self, aFileName, theFormat)
@@ -262,7 +259,7 @@ impl Application {
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_Name(
                 self as *const Self,
@@ -271,7 +268,7 @@ impl Application {
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
-    pub fn version(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_Application_inherited_Version(
                 self as *const Self,
@@ -436,12 +433,12 @@ impl CheckModel {
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
-    pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
+    pub fn get_status(&self) -> &crate::message::ExecStatus {
         unsafe { &*(crate::ffi::TObj_CheckModel_inherited_GetStatus(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
-    pub fn change_status(&mut self) -> &mut crate::ffi::Message_ExecStatus {
+    pub fn change_status(&mut self) -> &mut crate::message::ExecStatus {
         unsafe { &mut *(crate::ffi::TObj_CheckModel_inherited_ChangeStatus(self as *mut Self)) }
     }
 
@@ -467,7 +464,7 @@ impl CheckModel {
     /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
     pub fn send_status_messages(
         &self,
-        theFilter: &crate::ffi::Message_ExecStatus,
+        theFilter: &crate::message::ExecStatus,
         theTraceLevel: crate::message::Gravity,
         theMaxCount: i32,
     ) {
@@ -554,7 +551,7 @@ impl LabelIterator {
 
     /// **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
     /// Returns the label of the current item
-    pub fn label_value(&self) -> &crate::ffi::TDF_Label {
+    pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TObj_LabelIterator_label_value(self as *const Self)) }
     }
 
@@ -772,7 +769,7 @@ impl OcafObjectIterator {
     /// @param theAllSubChildren do not stop at the first level of children, but search for
     /// sub-children too
     pub fn new_label_handlestandardtype_bool2(
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
         theType: &crate::ffi::HandleStandardType,
         theRecursive: bool,
         theAllSubChildren: bool,
@@ -797,7 +794,7 @@ impl OcafObjectIterator {
     /// @param theAllSubChildren do not stop at the first level of children, but search for
     /// sub-children too
     pub fn new_label_handlestandardtype_bool(
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
         theType: &crate::ffi::HandleStandardType,
         theRecursive: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -812,7 +809,7 @@ impl OcafObjectIterator {
     /// @param theAllSubChildren do not stop at the first level of children, but search for
     /// sub-children too
     pub fn new_label_handlestandardtype(
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
         theType: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<Self> {
         Self::new_label_handlestandardtype_bool2(theLabel, theType, false, false)
@@ -881,7 +878,7 @@ impl OcafObjectIterator {
     }
 
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
-    pub fn label_value(&self) -> &crate::ffi::TDF_Label {
+    pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TObj_OcafObjectIterator_inherited_LabelValue(self as *const Self)) }
     }
 }
@@ -918,7 +915,7 @@ impl Partition {
 
     /// **Source:** `TObj_Partition.hxx`:83 - `TObj_Partition::NewLabel()`
     /// Creates and Returns label for new object in partition.
-    pub fn new_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn new_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_new_label(self as *const Self))
         }
@@ -1028,7 +1025,7 @@ impl ReferenceIterator {
     /// Creates the iterator on references in partition
     /// theType narrows a variety of iterated objects
     pub fn new_label_handlestandardtype_bool(
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
         theType: &crate::ffi::HandleStandardType,
         theRecursive: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -1047,7 +1044,7 @@ impl ReferenceIterator {
     /// Creates the iterator on references in partition
     /// theType narrows a variety of iterated objects
     pub fn new_label_handlestandardtype(
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
         theType: &crate::ffi::HandleStandardType,
     ) -> crate::OwnedPtr<Self> {
         Self::new_label_handlestandardtype_bool(theLabel, theType, true)
@@ -1112,7 +1109,7 @@ impl ReferenceIterator {
     }
 
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
-    pub fn label_value(&self) -> &crate::ffi::TDF_Label {
+    pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TObj_ReferenceIterator_inherited_LabelValue(self as *const Self)) }
     }
 }
@@ -1311,7 +1308,7 @@ impl TModel {
 
     /// **Source:** `TObj_TModel.hxx`:45 - `TObj_TModel::ID()`
     /// Returns the ID of TObj_TModel attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TModel_id(self as *const Self)) }
     }
 
@@ -1348,7 +1345,7 @@ impl TModel {
 
     /// **Source:** `TObj_TModel.hxx`:42 - `TObj_TModel::GetID()`
     /// This method is used in implementation of ID()
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TModel_get_id()) }
     }
 
@@ -1379,12 +1376,12 @@ impl TModel {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TObj_TModel_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_TModel_inherited_Label(self as *const Self))
         }
@@ -1416,14 +1413,14 @@ impl TModel {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TModel_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1437,7 +1434,7 @@ impl TModel {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TModel_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -1558,7 +1555,7 @@ impl TNameContainer {
 
     /// **Source:** `TObj_TNameContainer.hxx`:41 - `TObj_TNameContainer::ID()`
     /// Returns the ID of TObj_TNameContainer attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TNameContainer_id(self as *const Self)) }
     }
 
@@ -1567,7 +1564,7 @@ impl TNameContainer {
     pub fn record_name(
         &mut self,
         theName: &crate::ffi::HandleTCollectionHExtendedString,
-        theLabel: &crate::ffi::TDF_Label,
+        theLabel: &crate::tdf::Label,
     ) {
         unsafe { crate::ffi::TObj_TNameContainer_record_name(self as *mut Self, theName, theLabel) }
     }
@@ -1627,7 +1624,7 @@ impl TNameContainer {
 
     /// **Source:** `TObj_TNameContainer.hxx`:38 - `TObj_TNameContainer::GetID()`
     /// This method is used in implementation of ID()
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TNameContainer_get_id()) }
     }
 
@@ -1658,12 +1655,12 @@ impl TNameContainer {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TObj_TNameContainer_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_TNameContainer_inherited_Label(
                 self as *const Self,
@@ -1697,14 +1694,14 @@ impl TNameContainer {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TNameContainer_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1724,7 +1721,7 @@ impl TNameContainer {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TObj_TNameContainer_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1863,7 +1860,7 @@ impl TObject {
 
     /// **Source:** `TObj_TObject.hxx`:47 - `TObj_TObject::ID()`
     /// Returns the ID of TObj_TObject attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TObject_id(self as *const Self)) }
     }
 
@@ -1920,7 +1917,7 @@ impl TObject {
 
     /// **Source:** `TObj_TObject.hxx`:44 - `TObj_TObject::GetID()`
     /// This method is used in implementation of ID()
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TObject_get_id()) }
     }
 
@@ -1951,12 +1948,12 @@ impl TObject {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TObj_TObject_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_TObject_inherited_Label(self as *const Self))
         }
@@ -1988,14 +1985,14 @@ impl TObject {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TObject_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2009,7 +2006,7 @@ impl TObject {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TObject_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -2118,24 +2115,20 @@ impl TReference {
 
     /// **Source:** `TObj_TReference.hxx`:48 - `TObj_TReference::ID()`
     /// Returns the ID of TObj_TReference attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TReference_id(self as *const Self)) }
     }
 
     /// **Source:** `TObj_TReference.hxx`:67 - `TObj_TReference::Set()`
     /// Sets the reference to the theObject at indicated Label.
     /// It is method for persistent only. Don`t use anywhere else.
-    pub fn set(
-        &mut self,
-        theLabel: &crate::ffi::TDF_Label,
-        theMasterLabel: &crate::ffi::TDF_Label,
-    ) {
+    pub fn set(&mut self, theLabel: &crate::tdf::Label, theMasterLabel: &crate::tdf::Label) {
         unsafe { crate::ffi::TObj_TReference_set(self as *mut Self, theLabel, theMasterLabel) }
     }
 
     /// **Source:** `TObj_TReference.hxx`:73 - `TObj_TReference::GetMasterLabel()`
     /// Returns the Label of master object.
-    pub fn get_master_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn get_master_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_TReference_get_master_label(
                 self as *const Self,
@@ -2145,7 +2138,7 @@ impl TReference {
 
     /// **Source:** `TObj_TReference.hxx`:76 - `TObj_TReference::GetLabel()`
     /// Returns the referred label.
-    pub fn get_label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_TReference_get_label(self as *const Self))
         }
@@ -2224,7 +2217,7 @@ impl TReference {
 
     /// **Source:** `TObj_TReference.hxx`:45 - `TObj_TReference::GetID()`
     /// This method is used in implementation of ID()
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TReference_get_id()) }
     }
 
@@ -2255,12 +2248,12 @@ impl TReference {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TObj_TReference_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_TReference_inherited_Label(
                 self as *const Self,
@@ -2294,14 +2287,14 @@ impl TReference {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TReference_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2319,7 +2312,7 @@ impl TReference {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TReference_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -2401,19 +2394,19 @@ impl TXYZ {
 
     /// **Source:** `TObj_TXYZ.hxx`:43 - `TObj_TXYZ::ID()`
     /// Returns the ID of TObj_TXYZ attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TXYZ_id(self as *const Self)) }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:55 - `TObj_TXYZ::Set()`
     /// Sets the XYZ
-    pub fn set(&mut self, theXYZ: &crate::ffi::gp_XYZ) {
+    pub fn set(&mut self, theXYZ: &crate::gp::XYZ) {
         unsafe { crate::ffi::TObj_TXYZ_set(self as *mut Self, theXYZ) }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:58 - `TObj_TXYZ::Get()`
     /// Returns the XYZ
-    pub fn get(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    pub fn get(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_TXYZ_get(self as *const Self)) }
     }
 
@@ -2450,7 +2443,7 @@ impl TXYZ {
 
     /// **Source:** `TObj_TXYZ.hxx`:40 - `TObj_TXYZ::GetID()`
     /// This method is used in implementation of ID()
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TObj_TXYZ_get_id()) }
     }
 
@@ -2481,12 +2474,12 @@ impl TXYZ {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TObj_TXYZ_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TObj_TXYZ_inherited_Label(self as *const Self))
         }
@@ -2518,14 +2511,14 @@ impl TXYZ {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TXYZ_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2539,7 +2532,7 @@ impl TXYZ {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TObj_TXYZ_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 

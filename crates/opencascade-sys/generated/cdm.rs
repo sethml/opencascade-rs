@@ -71,13 +71,13 @@ impl Application {
 
     /// **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
     /// Returns the application name.
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::CDM_Application_name(self as *const Self)) }
     }
 
     /// **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
     /// Returns the application version.
-    pub fn version(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::CDM_Application_version(self as *const Self))
         }

@@ -4,8 +4,8 @@
 //! from OCCT C++ headers.
 
 use crate::model::{
-    Constructor, EnumVariant, Method, Param, ParsedClass, ParsedEnum, ParsedFunction, ParsedHeader, StaticMethod,
-    Type,
+    Constructor, EnumVariant, Method, Param, ParsedClass, ParsedEnum, ParsedField, ParsedFunction,
+    ParsedHeader, StaticMethod, Type,
 };
 use anyhow::{Context, Result};
 use clang::{Accessibility, Availability, Clang, Entity, EntityKind, EntityVisitResult, Index, TypeKind};
@@ -276,9 +276,8 @@ fn visit_top_level_batch(
 
     match entity.get_kind() {
         EntityKind::ClassDecl | EntityKind::StructDecl => {
-            if let Some(parsed) = parse_class(entity, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose) {
-                results[index].classes.push(parsed);
-            }
+            let parsed_classes = parse_class(entity, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose);
+            results[index].classes.extend(parsed_classes);
         }
         EntityKind::EnumDecl => {
             if let Some(parsed) = parse_enum(entity, &entity_file.file_name().unwrap_or_default().to_string_lossy(), verbose) {
@@ -339,23 +338,28 @@ fn visit_namespace_member_batch(
     EntityVisitResult::Continue
 }
 
-/// Parse a class or struct declaration
-fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<ParsedClass> {
-    let name = entity.get_name()?;
+/// Parse a class or struct declaration.
+/// Returns a vector because nested classes/structs defined inside the class
+/// are also returned (qualified as `Parent::Nested`).
+fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<ParsedClass> {
+    let name = match entity.get_name() {
+        Some(n) => n,
+        None => return Vec::new(),
+    };
 
     // Skip forward declarations (no definition)
     if !entity.is_definition() {
-        return None;
+        return Vec::new();
     }
 
     // Skip anonymous classes/structs
     if name.is_empty() {
-        return None;
+        return Vec::new();
     }
 
     // Skip internal/private classes (those starting with underscore)
     if name.starts_with('_') {
-        return None;
+        return Vec::new();
     }
 
     // Skip template classes and template specializations
@@ -365,14 +369,14 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
         if verbose {
             println!("    Skipping {} (template class)", name);
         }
-        return None;
+        return Vec::new();
     }
     let display_name = entity.get_display_name().unwrap_or_default();
     if display_name.contains('<') {
         if verbose {
             println!("    Skipping {} (template specialization)", display_name);
         }
-        return None;
+        return Vec::new();
     }
 
     // Skip policy/trait classes used as template parameters
@@ -381,7 +385,7 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
         if verbose {
             println!("    Skipping {} (policy/trait class)", name);
         }
-        return None;
+        return Vec::new();
     }
 
     // Skip internal node types that use custom allocators (can't be used with std::unique_ptr)
@@ -389,7 +393,7 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
         if verbose {
             println!("    Skipping {} (internal node type)", name);
         }
-        return None;
+        return Vec::new();
     }
 
     let comment = extract_doxygen_comment(entity);
@@ -414,10 +418,23 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
     let mut constructors = Vec::new();
     let mut methods = Vec::new();
     let mut static_methods = Vec::new();
+    let mut fields: Vec<ParsedField> = Vec::new();
+    let mut has_non_public_fields = false;
+    let mut has_virtual_methods = false;
     let mut all_method_names = std::collections::HashSet::new();
     let mut is_abstract = false;
     let mut pure_virtual_methods = std::collections::HashSet::new();
     let mut has_explicit_constructors = false;
+    let mut nested_classes: Vec<ParsedClass> = Vec::new();
+
+    // Track current access level for nested type visibility.
+    // Default: `class` => private, `struct` => public.
+    let default_access = if entity.get_kind() == EntityKind::StructDecl {
+        Accessibility::Public
+    } else {
+        Accessibility::Private
+    };
+    let current_access = std::cell::Cell::new(default_access);
 
     // Check if there's a DEFINE_STANDARD_HANDLE for this class
     // This is typically done outside the class, so we check the name pattern
@@ -425,6 +442,14 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
     let is_handle_type = check_is_handle_type(entity);
 
     entity.visit_children(|child, _| {
+        // Track access specifiers (public:/protected:/private: sections)
+        if child.get_kind() == EntityKind::AccessSpecifier {
+            if let Some(acc) = child.get_accessibility() {
+                current_access.set(acc);
+            }
+            return EntityVisitResult::Continue;
+        }
+
         match child.get_kind() {
             EntityKind::Constructor => {
                 // Any explicit constructor means C++ won't generate an implicit default
@@ -445,6 +470,10 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
                 }
             }
             EntityKind::Method => {
+                // Check for virtual methods (affects POD detection)
+                if child.is_virtual_method() {
+                    has_virtual_methods = true;
+                }
                 // Check if this is a pure virtual method (makes the class abstract)
                 if child.is_pure_virtual_method() {
                     is_abstract = true;
@@ -487,38 +516,90 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Option<Pa
                     }
                 }
             }
+            EntityKind::FieldDecl => {
+                if is_public(&child) {
+                    if let Some(field) = parse_field(&child, verbose) {
+                        fields.push(field);
+                    }
+                } else {
+                    has_non_public_fields = true;
+                }
+            }
+            EntityKind::ClassDecl | EntityKind::StructDecl => {
+                // Use tracked access level (not get_accessibility, which is unreliable for structs)
+                let is_nested_public = current_access.get() == Accessibility::Public;
+                // Parse nested classes/structs defined inside this class
+                if is_nested_public && child.is_definition() {
+                    let mut parsed = parse_class(&child, source_header, verbose);
+                    for nested in &mut parsed {
+                        // Qualify the nested class name with parent: Parent::Nested
+                        // Always prepend since multi-level nesting (A::B::C) needs all levels.
+                        nested.name = format!("{}::{}", name, nested.name);
+                        // nested.module is inherited from source_header
+                    }
+                    nested_classes.extend(parsed);
+                }
+            }
             _ => {}
         }
         EntityVisitResult::Continue
     });
 
     // Only return classes that have something to bind
-    if constructors.is_empty() && methods.is_empty() && static_methods.is_empty() {
+    if constructors.is_empty() && methods.is_empty() && static_methods.is_empty() && fields.is_empty() && nested_classes.is_empty() {
         if verbose {
             println!("    Skipping {} (no bindable members)", name);
         }
-        return None;
+        return Vec::new();
     }
 
-    Some(ParsedClass {
-        name,
-        module,
-        comment,
-        source_header: source_header.to_string(),
-        source_line: get_entity_line(entity),
-        constructors,
-        methods,
-        static_methods,
-        all_method_names,
-        is_handle_type,
-        base_classes,
-        has_protected_destructor,
-        is_abstract,
-        pure_virtual_methods,
-        has_explicit_constructors,
-    })
-}
+    // Determine if this is a POD struct:
+    // - Has public fields
+    // - No non-public fields
+    // - No virtual methods (no vtable)
+    // - No base classes
+    // - All field types are POD-compatible primitives (possibly in fixed-size arrays)
+    // - Not abstract
+    let is_pod_struct = !fields.is_empty()
+        && !has_non_public_fields
+        && !has_virtual_methods
+        && base_classes.is_empty()
+        && !is_abstract
+        && fields.iter().all(|f| f.ty.is_pod_field_type());
 
+    if verbose && is_pod_struct {
+        println!("    POD struct detected: {} ({} fields)", name, fields.len());
+    }
+
+    let mut result = vec![
+        ParsedClass {
+            name: name.clone(),
+            module: module.clone(),
+            comment,
+            source_header: source_header.to_string(),
+            source_line: get_entity_line(entity),
+            constructors,
+            methods,
+            static_methods,
+            all_method_names,
+            is_handle_type,
+            base_classes,
+            has_protected_destructor,
+            is_abstract,
+            pure_virtual_methods,
+            has_explicit_constructors,
+            fields,
+            is_pod_struct,
+        },
+    ];
+
+    // Append nested classes to the result
+    for nested in nested_classes {
+        result.push(nested);
+    }
+
+    result
+}
 /// Check if a class has a protected or private destructor
 /// Classes with non-public destructors cannot be directly instantiated via the FFI
 fn check_protected_destructor(entity: &Entity) -> bool {
@@ -839,6 +920,40 @@ fn parse_method(entity: &Entity, verbose: bool) -> Option<Method> {
         source_line,
     })
 }
+
+/// Parse a public data member (field) declaration
+fn parse_field(entity: &Entity, verbose: bool) -> Option<ParsedField> {
+    let name = entity.get_name()?;
+    let field_type = entity.get_type()?;
+    let comment = extract_doxygen_comment(entity);
+
+    // Check if this is a fixed-size array (e.g., `Standard_Boolean myPeriodic[3]`)
+    let (base_type, array_size) = if field_type.get_kind() == TypeKind::ConstantArray {
+        let element_type = field_type.get_element_type()
+            .expect("ConstantArray should have element type");
+        let size = field_type.get_size()
+            .expect("ConstantArray should have size");
+        (parse_type(&element_type), Some(size))
+    } else {
+        (parse_type(&field_type), None)
+    };
+
+    if verbose {
+        if let Some(sz) = array_size {
+            println!("    Field: {} : {:?}[{}]", name, base_type, sz);
+        } else {
+            println!("    Field: {} : {:?}", name, base_type);
+        }
+    }
+
+    Some(ParsedField {
+        name,
+        ty: base_type,
+        array_size,
+        comment,
+    })
+}
+
 
 /// Parse a static method
 fn parse_static_method(entity: &Entity, verbose: bool) -> Option<StaticMethod> {

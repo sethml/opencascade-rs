@@ -67,7 +67,7 @@ impl Blend {
     /// <NUBS>: if true,  generate only NUBS surfaces,
     /// if false, generate analytical surfaces if possible
     pub fn new_shape_real2_bool(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         Radius: f64,
         Tol: f64,
         NUBS: bool,
@@ -80,7 +80,7 @@ impl Blend {
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:62 - `BiTgte_Blend::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape, Radius: f64, Tol: f64, NUBS: bool) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape, Radius: f64, Tol: f64, NUBS: bool) {
         unsafe { crate::ffi::BiTgte_Blend_init(self as *mut Self, S, Radius, Tol, NUBS) }
     }
 
@@ -93,19 +93,19 @@ impl Blend {
     /// **Source:** `BiTgte_Blend.hxx`:72 - `BiTgte_Blend::SetFaces()`
     /// Set two faces   of <myShape> on which the  Sphere
     /// must roll.
-    pub fn set_faces(&mut self, F1: &crate::ffi::TopoDS_Face, F2: &crate::ffi::TopoDS_Face) {
+    pub fn set_faces(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BiTgte_Blend_set_faces(self as *mut Self, F1, F2) }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:75 - `BiTgte_Blend::SetEdge()`
     /// Set an edge of <myShape> to be rounded.
-    pub fn set_edge(&mut self, Edge: &crate::ffi::TopoDS_Edge) {
+    pub fn set_edge(&mut self, Edge: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BiTgte_Blend_set_edge(self as *mut Self, Edge) }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:78 - `BiTgte_Blend::SetStoppingFace()`
     /// Set a face on which the fillet must stop.
-    pub fn set_stopping_face(&mut self, Face: &crate::ffi::TopoDS_Face) {
+    pub fn set_stopping_face(&mut self, Face: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BiTgte_Blend_set_stopping_face(self as *mut Self, Face) }
     }
 
@@ -124,7 +124,7 @@ impl Blend {
 
     /// **Source:** `BiTgte_Blend.hxx`:88 - `BiTgte_Blend::Shape()`
     /// returns the result
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BiTgte_Blend_shape(self as *const Self)) }
     }
 
@@ -147,7 +147,7 @@ impl Blend {
 
     /// **Source:** `BiTgte_Blend.hxx`:97 - `BiTgte_Blend::Face()`
     /// returns the surface of range Index
-    pub fn face_int(&self, Index: i32) -> &crate::ffi::TopoDS_Face {
+    pub fn face_int(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BiTgte_Blend_face_int(self as *const Self, Index)) }
     }
 
@@ -166,7 +166,7 @@ impl Blend {
     /// no surface.
     pub fn surface_shape(
         &self,
-        CenterLine: &crate::ffi::TopoDS_Shape,
+        CenterLine: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_Blend_surface_shape(
@@ -183,7 +183,7 @@ impl Blend {
     /// - a vertex : generate a sphere.
     /// Warning: returns a Null Shape if <CenterLine> generates
     /// no surface.
-    pub fn face_shape(&self, CenterLine: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopoDS_Face {
+    pub fn face_shape(&self, CenterLine: &crate::topo_ds::Shape) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BiTgte_Blend_face_shape(self as *const Self, CenterLine)) }
     }
 
@@ -202,14 +202,14 @@ impl Blend {
     /// **Source:** `BiTgte_Blend.hxx`:123 - `BiTgte_Blend::SupportShape1()`
     /// gives the first support shape relative to
     /// SurfaceFillet(Index);
-    pub fn support_shape1(&self, Index: i32) -> &crate::ffi::TopoDS_Shape {
+    pub fn support_shape1(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BiTgte_Blend_support_shape1(self as *const Self, Index)) }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:127 - `BiTgte_Blend::SupportShape2()`
     /// gives the second support shape relative to
     /// SurfaceFillet(Index);
-    pub fn support_shape2(&self, Index: i32) -> &crate::ffi::TopoDS_Shape {
+    pub fn support_shape2(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BiTgte_Blend_support_shape2(self as *const Self, Index)) }
     }
 
@@ -322,8 +322,8 @@ impl CurveOnEdge {
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:51 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
     pub fn new_edge2(
-        EonF: &crate::ffi::TopoDS_Edge,
-        Edge: &crate::ffi::TopoDS_Edge,
+        EonF: &crate::topo_ds::Edge,
+        Edge: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_ctor_edge2(EonF, Edge)) }
     }
@@ -344,7 +344,7 @@ impl CurveOnEdge {
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:56 - `BiTgte_CurveOnEdge::Init()`
-    pub fn init(&mut self, EonF: &crate::ffi::TopoDS_Edge, Edge: &crate::ffi::TopoDS_Edge) {
+    pub fn init(&mut self, EonF: &crate::topo_ds::Edge, Edge: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_init(self as *mut Self, EonF, Edge) }
     }
 
@@ -423,7 +423,7 @@ impl CurveOnEdge {
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:91 - `BiTgte_CurveOnEdge::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_value(self as *const Self, U))
         }
@@ -431,7 +431,7 @@ impl CurveOnEdge {
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:94 - `BiTgte_CurveOnEdge::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_d0(self as *const Self, U, P) }
     }
 
@@ -440,7 +440,7 @@ impl CurveOnEdge {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_d1(self as *const Self, U, P, V) }
     }
 
@@ -452,9 +452,9 @@ impl CurveOnEdge {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -467,10 +467,10 @@ impl CurveOnEdge {
     pub fn d3(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -481,7 +481,7 @@ impl CurveOnEdge {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_dn(self as *const Self, U, N))
         }
@@ -508,35 +508,35 @@ impl CurveOnEdge {
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:138 - `BiTgte_CurveOnEdge::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_line(self as *const Self))
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:140 - `BiTgte_CurveOnEdge::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_circle(self as *const Self))
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:142 - `BiTgte_CurveOnEdge::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_ellipse(self as *const Self))
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:144 - `BiTgte_CurveOnEdge::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_hyperbola(self as *const Self))
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:146 - `BiTgte_CurveOnEdge::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_parabola(self as *const Self))
         }
@@ -633,8 +633,8 @@ impl CurveOnVertex {
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:51 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
     pub fn new_edge_vertex(
-        EonF: &crate::ffi::TopoDS_Edge,
-        V: &crate::ffi::TopoDS_Vertex,
+        EonF: &crate::topo_ds::Edge,
+        V: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_ctor_edge_vertex(EonF, V))
@@ -647,7 +647,7 @@ impl CurveOnVertex {
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:53 - `BiTgte_CurveOnVertex::Init()`
-    pub fn init(&mut self, EonF: &crate::ffi::TopoDS_Edge, V: &crate::ffi::TopoDS_Vertex) {
+    pub fn init(&mut self, EonF: &crate::topo_ds::Edge, V: &crate::topo_ds::Vertex) {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_init(self as *mut Self, EonF, V) }
     }
 
@@ -726,7 +726,7 @@ impl CurveOnVertex {
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:88 - `BiTgte_CurveOnVertex::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_value(
                 self as *const Self,
@@ -737,7 +737,7 @@ impl CurveOnVertex {
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:91 - `BiTgte_CurveOnVertex::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_d0(self as *const Self, U, P) }
     }
 
@@ -746,7 +746,7 @@ impl CurveOnVertex {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_d1(self as *const Self, U, P, V) }
     }
 
@@ -758,9 +758,9 @@ impl CurveOnVertex {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -773,10 +773,10 @@ impl CurveOnVertex {
     pub fn d3(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -787,7 +787,7 @@ impl CurveOnVertex {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_dn(
                 self as *const Self,
@@ -818,28 +818,28 @@ impl CurveOnVertex {
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:135 - `BiTgte_CurveOnVertex::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_line(self as *const Self))
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:137 - `BiTgte_CurveOnVertex::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_circle(self as *const Self))
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:139 - `BiTgte_CurveOnVertex::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_ellipse(self as *const Self))
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:141 - `BiTgte_CurveOnVertex::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_hyperbola(
                 self as *const Self,
@@ -848,7 +848,7 @@ impl CurveOnVertex {
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:143 - `BiTgte_CurveOnVertex::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_parabola(
                 self as *const Self,

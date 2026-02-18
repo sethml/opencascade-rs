@@ -237,11 +237,46 @@ pub fn generate_ffi(
         writeln!(out, "// Class types (opaque)").unwrap();
         writeln!(out, "// ========================").unwrap();
         writeln!(out).unwrap();
-        for b in all_bindings.iter().filter(|b| !b.has_protected_destructor).filter(|b| !collection_type_names.contains(&b.cpp_name)) {
+        for b in all_bindings.iter().filter(|b| !b.is_pod_struct).filter(|b| !collection_type_names.contains(&b.cpp_name)) {
             writeln!(out, "#[repr(C)]").unwrap();
             writeln!(out, "pub struct {} {{ _opaque: [u8; 0] }}", b.cpp_name).unwrap();
         }
         writeln!(out).unwrap();
+    }
+
+    // POD struct types (transparent repr(C) with real fields)
+    {
+        let pod_structs: Vec<_> = all_bindings.iter().filter(|b| b.is_pod_struct).collect();
+        if !pod_structs.is_empty() {
+            writeln!(out, "// ========================").unwrap();
+            writeln!(out, "// POD struct types").unwrap();
+            writeln!(out, "// ========================").unwrap();
+            writeln!(out).unwrap();
+            for b in &pod_structs {
+                writeln!(out, "#[repr(C)]").unwrap();
+                writeln!(out, "#[derive(Debug, Clone, Copy)]").unwrap();
+                writeln!(out, "pub struct {} {{", b.cpp_name).unwrap();
+                for field in &b.pod_fields {
+                    if let Some(ref comment) = field.doc_comment {
+                        for line in comment.lines() {
+                            let trimmed = line.trim();
+                            if trimmed.is_empty() {
+                                writeln!(out, "    ///").unwrap();
+                            } else {
+                                writeln!(out, "    /// {}", trimmed).unwrap();
+                            }
+                        }
+                    }
+                    if let Some(size) = field.array_size {
+                        writeln!(out, "    pub {}: [{}; {}],", field.rust_name, field.rust_type, size).unwrap();
+                    } else {
+                        writeln!(out, "    pub {}: {},", field.rust_name, field.rust_type).unwrap();
+                    }
+                }
+                writeln!(out, "}}").unwrap();
+                writeln!(out).unwrap();
+            }
+        }
     }
 
     // Referenced types (opaque structs outside extern "C")
@@ -440,9 +475,9 @@ fn generate_opaque_declarations(
         if all_enum_names.contains(type_name) {
             continue;
         }
-        if protected_destructor_classes.contains(type_name) {
-            continue;
-        }
+        // Protected destructor classes still need opaque declarations when referenced
+        // in method signatures; they just won't get CppDeletable.
+        let has_protected_dtor = protected_destructor_classes.contains(type_name);
         if is_primitive_type(type_name) {
             continue;
         }
@@ -473,8 +508,8 @@ fn generate_opaque_declarations(
         writeln!(out, "#[repr(C)]").unwrap();
         writeln!(out, "pub struct {} {{ _opaque: [u8; 0] }}", safe_name).unwrap();
 
-        // Track nested types for destructor generation
-        if is_nested {
+        // Track nested types for destructor generation (skip protected destructor types)
+        if is_nested && !has_protected_dtor {
             nested_types.push(NestedTypeInfo {
                 cpp_name: type_name.clone(),
                 ffi_name: safe_name,

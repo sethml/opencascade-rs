@@ -56,7 +56,7 @@ impl NMTool {
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:54 - `StepToTopoDS_NMTool::IsBound()`
-    pub fn is_bound_asciistring(&mut self, RIName: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn is_bound_asciistring(&mut self, RIName: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::StepToTopoDS_NMTool_is_bound_asciistring(self as *mut Self, RIName) }
     }
 
@@ -64,7 +64,7 @@ impl NMTool {
     pub fn bind_handlestepreprrepresentationitem_shape(
         &mut self,
         RI: &crate::ffi::HandleStepReprRepresentationItem,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::StepToTopoDS_NMTool_bind_handlestepreprrepresentationitem_shape(
@@ -78,8 +78,8 @@ impl NMTool {
     /// **Source:** `StepToTopoDS_NMTool.hxx`:58 - `StepToTopoDS_NMTool::Bind()`
     pub fn bind_asciistring_shape(
         &mut self,
-        RIName: &crate::ffi::TCollection_AsciiString,
-        S: &crate::ffi::TopoDS_Shape,
+        RIName: &crate::t_collection::AsciiString,
+        S: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::StepToTopoDS_NMTool_bind_asciistring_shape(self as *mut Self, RIName, S)
@@ -90,7 +90,7 @@ impl NMTool {
     pub fn find_handlestepreprrepresentationitem(
         &mut self,
         RI: &crate::ffi::HandleStepReprRepresentationItem,
-    ) -> &crate::ffi::TopoDS_Shape {
+    ) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::StepToTopoDS_NMTool_find_handlestepreprrepresentationitem(
                 self as *mut Self,
@@ -102,21 +102,21 @@ impl NMTool {
     /// **Source:** `StepToTopoDS_NMTool.hxx`:62 - `StepToTopoDS_NMTool::Find()`
     pub fn find_asciistring(
         &mut self,
-        RIName: &crate::ffi::TCollection_AsciiString,
-    ) -> &crate::ffi::TopoDS_Shape {
+        RIName: &crate::t_collection::AsciiString,
+    ) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::StepToTopoDS_NMTool_find_asciistring(self as *mut Self, RIName)) }
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:64 - `StepToTopoDS_NMTool::RegisterNMEdge()`
-    pub fn register_nm_edge(&mut self, Edge: &crate::ffi::TopoDS_Shape) {
+    pub fn register_nm_edge(&mut self, Edge: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::StepToTopoDS_NMTool_register_nm_edge(self as *mut Self, Edge) }
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:66 - `StepToTopoDS_NMTool::IsSuspectedAsClosing()`
     pub fn is_suspected_as_closing(
         &mut self,
-        BaseShell: &crate::ffi::TopoDS_Shape,
-        SuspectedShell: &crate::ffi::TopoDS_Shape,
+        BaseShell: &crate::topo_ds::Shape,
+        SuspectedShell: &crate::topo_ds::Shape,
     ) -> bool {
         unsafe {
             crate::ffi::StepToTopoDS_NMTool_is_suspected_as_closing(
@@ -128,7 +128,7 @@ impl NMTool {
     }
 
     /// **Source:** `StepToTopoDS_NMTool.hxx`:69 - `StepToTopoDS_NMTool::IsPureNMShell()`
-    pub fn is_pure_nm_shell(&mut self, Shell: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_pure_nm_shell(&mut self, Shell: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::StepToTopoDS_NMTool_is_pure_nm_shell(self as *mut Self, Shell) }
     }
 

@@ -42,7 +42,7 @@ impl GeomCurve {
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:62 - `GeomToIGES_GeomCurve::GeomToIGES_GeomCurve()`
     /// Creates a tool GeomCurve ready to run and sets its
     /// fields as GE's.
-    pub fn new_geomentity(GE: &crate::ffi::GeomToIGES_GeomEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomToIGES_GeomCurve_ctor_geomentity(GE)) }
     }
 
@@ -326,7 +326,7 @@ impl GeomEntity {
     /// **Source:** `GeomToIGES_GeomEntity.hxx`:38 - `GeomToIGES_GeomEntity::GeomToIGES_GeomEntity()`
     /// Creates a tool ready to run and sets its
     /// fields as GE's.
-    pub fn new_geomentity(GE: &crate::ffi::GeomToIGES_GeomEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomToIGES_GeomEntity_ctor_geomentity(GE)) }
     }
 
@@ -370,7 +370,7 @@ impl GeomPoint {
     /// **Source:** `GeomToIGES_GeomPoint.hxx`:42 - `GeomToIGES_GeomPoint::GeomToIGES_GeomPoint()`
     /// Creates a tool GeomPoint ready to run and sets its
     /// fields as GE's.
-    pub fn new_geomentity(GE: &crate::ffi::GeomToIGES_GeomEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomToIGES_GeomPoint_ctor_geomentity(GE)) }
     }
 
@@ -437,7 +437,7 @@ impl GeomSurface {
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:67 - `GeomToIGES_GeomSurface::GeomToIGES_GeomSurface()`
     /// Creates a tool GeomSurface ready to run and sets its
     /// fields as GE's.
-    pub fn new_geomentity(GE: &crate::ffi::GeomToIGES_GeomEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomToIGES_GeomSurface_ctor_geomentity(GE)) }
     }
 
@@ -928,7 +928,7 @@ impl GeomVector {
     /// **Source:** `GeomToIGES_GeomVector.hxx`:44 - `GeomToIGES_GeomVector::GeomToIGES_GeomVector()`
     /// Creates a tool GeomVector ready to run and sets its
     /// fields as GE's.
-    pub fn new_geomentity(GE: &crate::ffi::GeomToIGES_GeomEntity) -> crate::OwnedPtr<Self> {
+    pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomToIGES_GeomVector_ctor_geomentity(GE)) }
     }
 

@@ -852,7 +852,7 @@ impl DatumObject {
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:75 - `XCAFDimTolObjects_DatumObject::GetDatumTarget()`
     /// Returns datum target shape.
-    pub fn get_datum_target(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get_datum_target(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDimTolObjects_DatumObject_get_datum_target(
                 self as *const Self,
@@ -862,7 +862,7 @@ impl DatumObject {
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:78 - `XCAFDimTolObjects_DatumObject::SetDatumTarget()`
     /// Sets datum target shape.
-    pub fn set_datum_target(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_datum_target(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DatumObject_set_datum_target(self as *mut Self, theShape)
         }
@@ -927,7 +927,7 @@ impl DatumObject {
     /// Returns datum target axis.
     /// The Z axis of the datum placement denotes the normal of the surface
     /// pointing away from the material.
-    pub fn get_datum_target_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
+    pub fn get_datum_target_axis(&self) -> crate::OwnedPtr<crate::gp::Ax2> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDimTolObjects_DatumObject_get_datum_target_axis(
@@ -939,7 +939,7 @@ impl DatumObject {
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:104 - `XCAFDimTolObjects_DatumObject::SetDatumTargetAxis()`
     /// Sets datum target axis.
-    pub fn set_datum_target_axis(&mut self, theAxis: &crate::ffi::gp_Ax2) {
+    pub fn set_datum_target_axis(&mut self, theAxis: &crate::gp::Ax2) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DatumObject_set_datum_target_axis(
                 self as *mut Self,
@@ -1010,31 +1010,31 @@ impl DatumObject {
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:128 - `XCAFDimTolObjects_DatumObject::SetPlane()`
     /// Sets annotation plane.
-    pub fn set_plane(&mut self, thePlane: &crate::ffi::gp_Ax2) {
+    pub fn set_plane(&mut self, thePlane: &crate::gp::Ax2) {
         unsafe { crate::ffi::XCAFDimTolObjects_DatumObject_set_plane(self as *mut Self, thePlane) }
     }
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:135 - `XCAFDimTolObjects_DatumObject::GetPlane()`
     /// Returns annotation plane.
-    pub fn get_plane(&self) -> &crate::ffi::gp_Ax2 {
+    pub fn get_plane(&self) -> &crate::gp::Ax2 {
         unsafe { &*(crate::ffi::XCAFDimTolObjects_DatumObject_get_plane(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:138 - `XCAFDimTolObjects_DatumObject::SetPoint()`
     /// Sets a point on the datum target shape.
-    pub fn set_point(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_point(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe { crate::ffi::XCAFDimTolObjects_DatumObject_set_point(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:145 - `XCAFDimTolObjects_DatumObject::GetPoint()`
     /// Gets point on the datum shape.
-    pub fn get_point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn get_point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::XCAFDimTolObjects_DatumObject_get_point(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:148 - `XCAFDimTolObjects_DatumObject::SetPointTextAttach()`
     /// Sets a position of the datum text.
-    pub fn set_point_text_attach(&mut self, thePntText: &crate::ffi::gp_Pnt) {
+    pub fn set_point_text_attach(&mut self, thePntText: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DatumObject_set_point_text_attach(
                 self as *mut Self,
@@ -1045,7 +1045,7 @@ impl DatumObject {
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:155 - `XCAFDimTolObjects_DatumObject::GetPointTextAttach()`
     /// Gets datum text position.
-    pub fn get_point_text_attach(&self) -> &crate::ffi::gp_Pnt {
+    pub fn get_point_text_attach(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::XCAFDimTolObjects_DatumObject_get_point_text_attach(self as *const Self))
         }
@@ -1073,7 +1073,7 @@ impl DatumObject {
     /// Set graphical presentation for object.
     pub fn set_presentation(
         &mut self,
-        thePresentation: &crate::ffi::TopoDS_Shape,
+        thePresentation: &crate::topo_ds::Shape,
         thePresentationName: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         unsafe {
@@ -1087,7 +1087,7 @@ impl DatumObject {
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:175 - `XCAFDimTolObjects_DatumObject::GetPresentation()`
     /// Returns graphical presentation of the object.
-    pub fn get_presentation(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get_presentation(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDimTolObjects_DatumObject_get_presentation(
                 self as *const Self,
@@ -1535,7 +1535,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:179 - `XCAFDimTolObjects_DimensionObject::GetPath()`
     /// Returns a 'curve' along which the dimension is measured.
-    pub fn get_path(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    pub fn get_path(&self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDimTolObjects_DimensionObject_get_path(
                 self as *const Self,
@@ -1545,7 +1545,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:182 - `XCAFDimTolObjects_DimensionObject::SetPath()`
     /// Sets a 'curve' along which the dimension is measured.
-    pub fn set_path(&mut self, thePath: &crate::ffi::TopoDS_Edge) {
+    pub fn set_path(&mut self, thePath: &crate::topo_ds::Edge) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DimensionObject_set_path(self as *mut Self, thePath)
         }
@@ -1553,7 +1553,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:185 - `XCAFDimTolObjects_DimensionObject::GetDirection()`
     /// Returns the orientation of the dimension in annotation plane.
-    pub fn get_direction(&self, theDir: &mut crate::ffi::gp_Dir) -> bool {
+    pub fn get_direction(&self, theDir: &mut crate::gp::Dir) -> bool {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DimensionObject_get_direction(self as *const Self, theDir)
         }
@@ -1561,7 +1561,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:188 - `XCAFDimTolObjects_DimensionObject::SetDirection()`
     /// Sets an orientation of the dimension in annotation plane.
-    pub fn set_direction(&mut self, theDir: &crate::ffi::gp_Dir) -> bool {
+    pub fn set_direction(&mut self, theDir: &crate::gp::Dir) -> bool {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DimensionObject_set_direction(self as *mut Self, theDir)
         }
@@ -1569,7 +1569,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:191 - `XCAFDimTolObjects_DimensionObject::SetPointTextAttach()`
     /// Sets position of the dimension text.
-    pub fn set_point_text_attach(&mut self, thePntText: &crate::ffi::gp_Pnt) {
+    pub fn set_point_text_attach(&mut self, thePntText: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DimensionObject_set_point_text_attach(
                 self as *mut Self,
@@ -1580,7 +1580,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:198 - `XCAFDimTolObjects_DimensionObject::GetPointTextAttach()`
     /// Returns position of the dimension text.
-    pub fn get_point_text_attach(&self) -> &crate::ffi::gp_Pnt {
+    pub fn get_point_text_attach(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::XCAFDimTolObjects_DimensionObject_get_point_text_attach(
                 self as *const Self,
@@ -1596,7 +1596,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:204 - `XCAFDimTolObjects_DimensionObject::SetPlane()`
     /// Sets annotation plane.
-    pub fn set_plane(&mut self, thePlane: &crate::ffi::gp_Ax2) {
+    pub fn set_plane(&mut self, thePlane: &crate::gp::Ax2) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DimensionObject_set_plane(self as *mut Self, thePlane)
         }
@@ -1604,7 +1604,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:211 - `XCAFDimTolObjects_DimensionObject::GetPlane()`
     /// Returns annotation plane.
-    pub fn get_plane(&self) -> &crate::ffi::gp_Ax2 {
+    pub fn get_plane(&self) -> &crate::gp::Ax2 {
         unsafe { &*(crate::ffi::XCAFDimTolObjects_DimensionObject_get_plane(self as *const Self)) }
     }
 
@@ -1629,14 +1629,14 @@ impl DimensionObject {
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:225 - `XCAFDimTolObjects_DimensionObject::SetPoint()`
     /// Set connection point (for dimensional_size),
     /// Set connection point for the first shape (for dimensional_location).
-    pub fn set_point(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_point(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DimensionObject_set_point(self as *mut Self, thePnt)
         }
     }
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:232 - `XCAFDimTolObjects_DimensionObject::SetPoint2()`
-    pub fn set_point2(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_point2(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_DimensionObject_set_point2(self as *mut Self, thePnt)
         }
@@ -1645,7 +1645,7 @@ impl DimensionObject {
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:240 - `XCAFDimTolObjects_DimensionObject::GetPoint()`
     /// Get connection point (for dimensional_size),
     /// Get connection point for the first shape (for dimensional_location).
-    pub fn get_point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn get_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDimTolObjects_DimensionObject_get_point(
                 self as *const Self,
@@ -1654,7 +1654,7 @@ impl DimensionObject {
     }
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:243 - `XCAFDimTolObjects_DimensionObject::GetPoint2()`
-    pub fn get_point2(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn get_point2(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDimTolObjects_DimensionObject_get_point2(
                 self as *const Self,
@@ -1666,7 +1666,7 @@ impl DimensionObject {
     /// Set graphical presentation for the object.
     pub fn set_presentation(
         &mut self,
-        thePresentation: &crate::ffi::TopoDS_Shape,
+        thePresentation: &crate::topo_ds::Shape,
         thePresentationName: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         unsafe {
@@ -1680,7 +1680,7 @@ impl DimensionObject {
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:254 - `XCAFDimTolObjects_DimensionObject::GetPresentation()`
     /// Returns graphical presentation of the object.
-    pub fn get_presentation(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get_presentation(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDimTolObjects_DimensionObject_get_presentation(self as *const Self),
@@ -2073,14 +2073,14 @@ impl GeomToleranceObject {
     }
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:107 - `XCAFDimTolObjects_GeomToleranceObject::SetAxis()`
-    pub fn set_axis(&mut self, theAxis: &crate::ffi::gp_Ax2) {
+    pub fn set_axis(&mut self, theAxis: &crate::gp::Ax2) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_GeomToleranceObject_set_axis(self as *mut Self, theAxis)
         }
     }
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:109 - `XCAFDimTolObjects_GeomToleranceObject::GetAxis()`
-    pub fn get_axis(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax2> {
+    pub fn get_axis(&self) -> crate::OwnedPtr<crate::gp::Ax2> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDimTolObjects_GeomToleranceObject_get_axis(
                 self as *const Self,
@@ -2095,7 +2095,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:114 - `XCAFDimTolObjects_GeomToleranceObject::SetPlane()`
     /// Sets annotation plane.
-    pub fn set_plane(&mut self, thePlane: &crate::ffi::gp_Ax2) {
+    pub fn set_plane(&mut self, thePlane: &crate::gp::Ax2) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_GeomToleranceObject_set_plane(self as *mut Self, thePlane)
         }
@@ -2103,7 +2103,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:121 - `XCAFDimTolObjects_GeomToleranceObject::GetPlane()`
     /// Returns annotation plane.
-    pub fn get_plane(&self) -> &crate::ffi::gp_Ax2 {
+    pub fn get_plane(&self) -> &crate::gp::Ax2 {
         unsafe {
             &*(crate::ffi::XCAFDimTolObjects_GeomToleranceObject_get_plane(self as *const Self))
         }
@@ -2111,7 +2111,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:124 - `XCAFDimTolObjects_GeomToleranceObject::SetPoint()`
     /// Sets reference point.
-    pub fn set_point(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn set_point(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_GeomToleranceObject_set_point(self as *mut Self, thePnt)
         }
@@ -2119,7 +2119,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:131 - `XCAFDimTolObjects_GeomToleranceObject::GetPoint()`
     /// Returns reference point.
-    pub fn get_point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn get_point(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::XCAFDimTolObjects_GeomToleranceObject_get_point(self as *const Self))
         }
@@ -2127,7 +2127,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:134 - `XCAFDimTolObjects_GeomToleranceObject::SetPointTextAttach()`
     /// Sets text position.
-    pub fn set_point_text_attach(&mut self, thePntText: &crate::ffi::gp_Pnt) {
+    pub fn set_point_text_attach(&mut self, thePntText: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_GeomToleranceObject_set_point_text_attach(
                 self as *mut Self,
@@ -2138,7 +2138,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:141 - `XCAFDimTolObjects_GeomToleranceObject::GetPointTextAttach()`
     /// Returns the text position.
-    pub fn get_point_text_attach(&self) -> &crate::ffi::gp_Pnt {
+    pub fn get_point_text_attach(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::ffi::XCAFDimTolObjects_GeomToleranceObject_get_point_text_attach(
                 self as *const Self,
@@ -2170,7 +2170,7 @@ impl GeomToleranceObject {
     /// Set graphical presentation for object.
     pub fn set_presentation(
         &mut self,
-        thePresentation: &crate::ffi::TopoDS_Shape,
+        thePresentation: &crate::topo_ds::Shape,
         thePresentationName: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         unsafe {
@@ -2184,7 +2184,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:161 - `XCAFDimTolObjects_GeomToleranceObject::GetPresentation()`
     /// Returns graphical presentation of the object.
-    pub fn get_presentation(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get_presentation(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::XCAFDimTolObjects_GeomToleranceObject_get_presentation(
@@ -2246,7 +2246,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:185 - `XCAFDimTolObjects_GeomToleranceObject::SetAffectedPlane()`
     /// Sets affected plane.
-    pub fn set_affected_plane_pln(&mut self, thePlane: &crate::ffi::gp_Pln) {
+    pub fn set_affected_plane_pln(&mut self, thePlane: &crate::gp::Pln) {
         unsafe {
             crate::ffi::XCAFDimTolObjects_GeomToleranceObject_set_affected_plane_pln(
                 self as *mut Self,
@@ -2259,7 +2259,7 @@ impl GeomToleranceObject {
     /// Sets affected plane.
     pub fn set_affected_plane_pln_tolerancezoneaffectedplane(
         &mut self,
-        thePlane: &crate::ffi::gp_Pln,
+        thePlane: &crate::gp::Pln,
         theType: crate::xcaf_dim_tol_objects::ToleranceZoneAffectedPlane,
     ) {
         unsafe {
@@ -2269,7 +2269,7 @@ impl GeomToleranceObject {
 
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:196 - `XCAFDimTolObjects_GeomToleranceObject::GetAffectedPlane()`
     /// Returns affected plane.
-    pub fn get_affected_plane(&self) -> &crate::ffi::gp_Pln {
+    pub fn get_affected_plane(&self) -> &crate::gp::Pln {
         unsafe {
             &*(crate::ffi::XCAFDimTolObjects_GeomToleranceObject_get_affected_plane(
                 self as *const Self,
@@ -2371,7 +2371,7 @@ impl Tool {
     /// Returns all Dimensions defined for Shape
     pub fn get_ref_dimensions(
         &self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theDimensions: &mut crate::ffi::XCAFDimTolObjects_DimensionObjectSequence,
     ) -> bool {
         unsafe {
@@ -2387,7 +2387,7 @@ impl Tool {
     /// Returns DatumObject defined for Shape
     pub fn get_ref_datum(
         &self,
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theDatum: &mut crate::ffi::HandleXCAFDimTolObjectsDatumObject,
     ) -> bool {
         unsafe {

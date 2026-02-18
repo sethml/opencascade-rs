@@ -82,8 +82,8 @@ impl BuildThread {
     /// **Source:** `BVH_BuildThread.hxx`:37 - `BVH_BuildThread::BVH_BuildThread()`
     /// Creates new BVH build thread.
     pub fn new_buildtool_buildqueue(
-        theBuildTool: &mut crate::ffi::BVH_BuildTool,
-        theBuildQueue: &mut crate::ffi::BVH_BuildQueue,
+        theBuildTool: &mut BuildTool,
+        theBuildQueue: &mut BuildQueue,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BVH_BuildThread_ctor_buildtool_buildqueue(

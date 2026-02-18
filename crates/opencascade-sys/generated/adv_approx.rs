@@ -53,7 +53,7 @@ impl ApproxAFunction {
         Continuity: crate::geom_abs::Shape,
         MaxDeg: i32,
         MaxSeg: i32,
-        Func: &crate::ffi::AdvApprox_EvaluatorFunction,
+        Func: &EvaluatorFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func))

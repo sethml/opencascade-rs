@@ -72,7 +72,7 @@ impl GeometricItemSpecificUsage {
         &mut self,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-        theDefinition: &crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition,
+        theDefinition: &ItemIdentifiedRepresentationUsageDefinition,
         theUsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
         theIdentifiedItem: &crate::ffi::HandleStepReprHArray1OfRepresentationItem,
     ) {
@@ -131,10 +131,7 @@ impl GeometricItemSpecificUsage {
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:64 - `StepAP242_ItemIdentifiedRepresentationUsage::SetDefinition()`
-    pub fn set_definition(
-        &mut self,
-        theDefinition: &crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition,
-    ) {
+    pub fn set_definition(&mut self, theDefinition: &ItemIdentifiedRepresentationUsageDefinition) {
         unsafe {
             crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_SetDefinition(
                 self as *mut Self,
@@ -144,9 +141,7 @@ impl GeometricItemSpecificUsage {
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:71 - `StepAP242_ItemIdentifiedRepresentationUsage::Definition()`
-    pub fn definition(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition> {
+    pub fn definition(&self) -> crate::OwnedPtr<ItemIdentifiedRepresentationUsageDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_Definition(
@@ -274,7 +269,7 @@ impl ItemIdentifiedRepresentationUsage {
         &mut self,
         theName: &crate::ffi::HandleTCollectionHAsciiString,
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-        theDefinition: &crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition,
+        theDefinition: &ItemIdentifiedRepresentationUsageDefinition,
         theUsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
         theIdentifiedItem: &crate::ffi::HandleStepReprHArray1OfRepresentationItem,
     ) {
@@ -336,10 +331,7 @@ impl ItemIdentifiedRepresentationUsage {
 
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:64 - `StepAP242_ItemIdentifiedRepresentationUsage::SetDefinition()`
     /// Set field Definition
-    pub fn set_definition(
-        &mut self,
-        theDefinition: &crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition,
-    ) {
+    pub fn set_definition(&mut self, theDefinition: &ItemIdentifiedRepresentationUsageDefinition) {
         unsafe {
             crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_set_definition(
                 self as *mut Self,
@@ -350,9 +342,7 @@ impl ItemIdentifiedRepresentationUsage {
 
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:71 - `StepAP242_ItemIdentifiedRepresentationUsage::Definition()`
     /// Returns field Definition
-    pub fn definition(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition> {
+    pub fn definition(&self) -> crate::OwnedPtr<ItemIdentifiedRepresentationUsageDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_definition(

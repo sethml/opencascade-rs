@@ -12,7 +12,7 @@
 /// the plan defined with the local coordinate system
 /// Position.
 pub fn to3d_ax2_handlegeom2dcurve(
-    Position: &crate::ffi::gp_Ax2,
+    Position: &crate::gp::Ax2,
     Curve2d: &crate::ffi::HandleGeom2dCurve,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
     unsafe {
@@ -30,7 +30,7 @@ pub fn to3d_ax2_handlegeom2dcurve(
 /// 2) the curve is an offsetcurve
 pub fn g_transform(
     Curve: &crate::ffi::HandleGeom2dCurve,
-    GTrsf: &crate::ffi::gp_GTrsf2d,
+    GTrsf: &crate::gp::GTrsf2d,
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLib_g_transform(Curve, GTrsf)) }
 }
@@ -65,7 +65,7 @@ pub fn same_range_real_handlegeom2dcurve_real4_handlegeom2dcurve(
 /// **Source:** `GeomLib.hxx`:84 - `GeomLib::BuildCurve3d`
 pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
     Tolerance: f64,
-    CurvePtr: &mut crate::ffi::Adaptor3d_CurveOnSurface,
+    CurvePtr: &mut crate::adaptor3d::CurveOnSurface,
     FirstParameter: f64,
     LastParameter: f64,
     NewCurvePtr: &mut crate::ffi::HandleGeomCurve,
@@ -93,10 +93,10 @@ pub fn build_curve3d_real_curveonsurface_real2_handlegeomcurve_real2_shape_int2(
 /// **Source:** `GeomLib.hxx`:95 - `GeomLib::AdjustExtremity`
 pub fn adjust_extremity(
     Curve: &mut crate::ffi::HandleGeomBoundedCurve,
-    P1: &crate::ffi::gp_Pnt,
-    P2: &crate::ffi::gp_Pnt,
-    T1: &crate::ffi::gp_Vec,
-    T2: &crate::ffi::gp_Vec,
+    P1: &crate::gp::Pnt,
+    P2: &crate::gp::Pnt,
+    T1: &crate::gp::Vec,
+    T2: &crate::gp::Vec,
 ) {
     unsafe { crate::ffi::GeomLib_adjust_extremity(Curve, P1, P2, T1, T2) }
 }
@@ -117,7 +117,7 @@ pub fn adjust_extremity(
 /// one of the extremities of Curve.
 pub fn extend_curve_to_point(
     Curve: &mut crate::ffi::HandleGeomBoundedCurve,
-    Point: &crate::ffi::gp_Pnt,
+    Point: &crate::gp::Pnt,
     Cont: i32,
     After: bool,
 ) {
@@ -161,7 +161,7 @@ pub fn extend_surf_by_length(
 /// Tol is used to determine singular cases.
 pub fn axe_of_inertia(
     Points: &crate::ffi::TColgp_Array1OfPnt,
-    Axe: &mut crate::ffi::gp_Ax2,
+    Axe: &mut crate::gp::Ax2,
     IsSingular: &mut bool,
     Tol: f64,
 ) {
@@ -172,9 +172,9 @@ pub fn axe_of_inertia(
 /// value  of some  points.
 pub fn inertia(
     Points: &crate::ffi::TColgp_Array1OfPnt,
-    Bary: &mut crate::ffi::gp_Pnt,
-    XDir: &mut crate::ffi::gp_Dir,
-    YDir: &mut crate::ffi::gp_Dir,
+    Bary: &mut crate::gp::Pnt,
+    XDir: &mut crate::gp::Dir,
+    YDir: &mut crate::gp::Dir,
     Xgap: &mut f64,
     YGap: &mut f64,
     ZGap: &mut f64,
@@ -202,9 +202,9 @@ pub fn cancel_denominator_derivative(
 /// >=2 in case of failure (undefined or infinite solutions)
 pub fn norm_estim(
     theSurf: &crate::ffi::HandleGeomSurface,
-    theUV: &crate::ffi::gp_Pnt2d,
+    theUV: &crate::gp::Pnt2d,
     theTol: f64,
-    theNorm: &mut crate::ffi::gp_Dir,
+    theNorm: &mut crate::gp::Dir,
 ) -> i32 {
     unsafe { crate::ffi::GeomLib_norm_estim(theSurf, theUV, theTol, theNorm) }
 }
@@ -764,7 +764,7 @@ impl IsPlanarSurface {
 
     /// **Source:** `GeomLib_IsPlanarSurface.hxx`:40 - `GeomLib_IsPlanarSurface::Plan()`
     /// Return the plan definition
-    pub fn plan(&self) -> &crate::ffi::gp_Pln {
+    pub fn plan(&self) -> &crate::gp::Pln {
         unsafe { &*(crate::ffi::GeomLib_IsPlanarSurface_plan(self as *const Self)) }
     }
 }
@@ -837,7 +837,7 @@ unsafe impl crate::CppDeletable for MakeCurvefromApprox {
 impl MakeCurvefromApprox {
     /// **Source:** `GeomLib_MakeCurvefromApprox.hxx`:36 - `GeomLib_MakeCurvefromApprox::GeomLib_MakeCurvefromApprox()`
     pub fn new_approxafunction(
-        Approx: &crate::ffi::AdvApprox_ApproxAFunction,
+        Approx: &crate::adv_approx::ApproxAFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomLib_MakeCurvefromApprox_ctor_approxafunction(
@@ -1073,7 +1073,7 @@ impl Tool {
     /// or at a distance less than the MaxDist value.
     pub fn parameter_handlegeomcurve_pnt_real2(
         Curve: &crate::ffi::HandleGeomCurve,
-        Point: &crate::ffi::gp_Pnt,
+        Point: &crate::gp::Pnt,
         MaxDist: f64,
         U: &mut f64,
     ) -> bool {
@@ -1087,7 +1087,7 @@ impl Tool {
     /// or at a distance less than the MaxDist value.
     pub fn parameters(
         Surface: &crate::ffi::HandleGeomSurface,
-        Point: &crate::ffi::gp_Pnt,
+        Point: &crate::gp::Pnt,
         MaxDist: f64,
         U: &mut f64,
         V: &mut f64,
@@ -1100,7 +1100,7 @@ impl Tool {
     /// or at a distance less than the MaxDist value.
     pub fn parameter_handlegeom2dcurve_pnt2d_real2(
         Curve: &crate::ffi::HandleGeom2dCurve,
-        Point: &crate::ffi::gp_Pnt2d,
+        Point: &crate::gp::Pnt2d,
         MaxDist: f64,
         U: &mut f64,
     ) -> bool {
@@ -1130,15 +1130,15 @@ impl Tool {
     /// @param theLine - the linear segment joining the point of theCurve having parameters
     /// theFPar and theLPar.
     pub fn compute_deviation_curve_real3_int_realptr_pnt2dptr_vec2dptr_lin2dptr(
-        theCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        theCurve: &crate::geom2d_adaptor::Curve,
         theFPar: f64,
         theLPar: f64,
         theStartParameter: f64,
         theNbIters: i32,
         thePrmOnCurve: Option<&mut f64>,
-        thePtOnCurve: Option<&mut crate::ffi::gp_Pnt2d>,
-        theVecCurvLine: Option<&mut crate::ffi::gp_Vec2d>,
-        theLine: Option<&mut crate::ffi::gp_Lin2d>,
+        thePtOnCurve: Option<&mut crate::gp::Pnt2d>,
+        theVecCurvLine: Option<&mut crate::gp::Vec2d>,
+        theLine: Option<&mut crate::gp::Lin2d>,
     ) -> f64 {
         unsafe {
             crate::ffi::GeomLib_Tool_compute_deviation_curve_real3_int_realptr_pnt2dptr_vec2dptr_lin2dptr(theCurve, theFPar, theLPar, theStartParameter, theNbIters, thePrmOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _), thePtOnCurve.map_or(std::ptr::null_mut(), |r| r as *mut _), theVecCurvLine.map_or(std::ptr::null_mut(), |r| r as *mut _), theLine.map_or(std::ptr::null_mut(), |r| r as *mut _))
@@ -1165,7 +1165,7 @@ impl Tool {
     /// setting big value of theNbIters). But it can give some start point for
     /// the overloaded method.
     pub fn compute_deviation_curve_real2_int2_realptr(
-        theCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        theCurve: &crate::geom2d_adaptor::Curve,
         theFPar: f64,
         theLPar: f64,
         theNbSubIntervals: i32,

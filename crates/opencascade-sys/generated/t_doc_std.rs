@@ -267,7 +267,7 @@ impl Application {
     /// std::cout << "document " << insession << " is already in session" << std::endl;
     /// return 0;
     /// }
-    pub fn is_in_session(&self, path: &crate::ffi::TCollection_ExtendedString) -> i32 {
+    pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::TDocStd_Application_is_in_session(self as *const Self, path) }
     }
 
@@ -313,8 +313,8 @@ impl Application {
     /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
     pub fn can_retrieve(
         &mut self,
-        theFolder: &crate::ffi::TCollection_ExtendedString,
-        theName: &crate::ffi::TCollection_ExtendedString,
+        theFolder: &crate::t_collection::ExtendedString,
+        theName: &crate::t_collection::ExtendedString,
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
         unsafe {
@@ -343,8 +343,8 @@ impl Application {
     /// Inherited: **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
     pub fn format(
         &mut self,
-        aFileName: &crate::ffi::TCollection_ExtendedString,
-        theFormat: &mut crate::ffi::TCollection_ExtendedString,
+        aFileName: &crate::t_collection::ExtendedString,
+        theFormat: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::TDocStd_Application_inherited_Format(
@@ -374,7 +374,7 @@ impl Application {
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_Name(
                 self as *const Self,
@@ -383,7 +383,7 @@ impl Application {
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
-    pub fn version(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_inherited_Version(
                 self as *const Self,
@@ -417,12 +417,12 @@ impl ApplicationDelta {
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:37 - `TDocStd_ApplicationDelta::GetName()`
-    pub fn get_name(&self) -> &crate::ffi::TCollection_ExtendedString {
+    pub fn get_name(&self) -> &crate::t_collection::ExtendedString {
         unsafe { &*(crate::ffi::TDocStd_ApplicationDelta_get_name(self as *const Self)) }
     }
 
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:39 - `TDocStd_ApplicationDelta::SetName()`
-    pub fn set_name(&mut self, theName: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDocStd_ApplicationDelta_set_name(self as *mut Self, theName) }
     }
 
@@ -572,7 +572,7 @@ impl CompoundDelta {
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:66 - `TDF_Delta::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_CompoundDelta_inherited_Name(
                 self as *const Self,
@@ -581,7 +581,7 @@ impl CompoundDelta {
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:69 - `TDF_Delta::SetName()`
-    pub fn set_name(&mut self, theName: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_SetName(self as *mut Self, theName) }
     }
 }
@@ -648,7 +648,7 @@ impl Document {
     /// TDocStd_Owner::GetDocument creates a Handle(TDocStd_Document), so, releasing it will produce a
     /// crash.
     pub fn new_extendedstring(
-        astorageformat: &crate::ffi::TCollection_ExtendedString,
+        astorageformat: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_ctor_extendedstring(
@@ -691,7 +691,7 @@ impl Document {
 
     /// **Source:** `TDocStd_Document.hxx`:82 - `TDocStd_Document::GetName()`
     /// raise if <me> is not saved.
-    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_get_name(self as *const Self))
         }
@@ -700,7 +700,7 @@ impl Document {
     /// **Source:** `TDocStd_Document.hxx`:86 - `TDocStd_Document::GetPath()`
     /// returns the OS  path of the  file, in which one <me> is
     /// saved. Raise an exception if <me> is not saved.
-    pub fn get_path(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn get_path(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_get_path(self as *const Self))
         }
@@ -721,7 +721,7 @@ impl Document {
     /// **Source:** `TDocStd_Document.hxx`:94 - `TDocStd_Document::Main()`
     /// Returns the main label in this data framework.
     /// By definition, this is the label with the entry 0:1.
-    pub fn main(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn main(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_main(self as *const Self)) }
     }
 
@@ -741,7 +741,7 @@ impl Document {
     /// **Source:** `TDocStd_Document.hxx`:105 - `TDocStd_Document::SetModified()`
     /// Notify the label as modified, the Document becomes UnValid.
     /// returns True if <L> has been notified as modified.
-    pub fn set_modified(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn set_modified(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::TDocStd_Document_set_modified(self as *mut Self, L) }
     }
 
@@ -888,7 +888,7 @@ impl Document {
     /// Set   modifications on  labels  impacted  by  external
     /// references to the entry.  The document becomes invalid
     /// and must be recomputed.
-    pub fn update_references(&mut self, aDocEntry: &crate::ffi::TCollection_AsciiString) {
+    pub fn update_references(&mut self, aDocEntry: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::TDocStd_Document_update_references(self as *mut Self, aDocEntry) }
     }
 
@@ -900,7 +900,7 @@ impl Document {
     }
 
     /// **Source:** `TDocStd_Document.hxx`:220 - `TDocStd_Document::StorageFormat()`
-    pub fn storage_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn storage_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_storage_format(
                 self as *const Self,
@@ -926,7 +926,7 @@ impl Document {
     /// methods for the nested transaction mode
     pub fn change_storage_format(
         &mut self,
-        newStorageFormat: &crate::ffi::TCollection_ExtendedString,
+        newStorageFormat: &crate::t_collection::ExtendedString,
     ) {
         unsafe {
             crate::ffi::TDocStd_Document_change_storage_format(self as *mut Self, newStorageFormat)
@@ -1068,7 +1068,7 @@ impl Document {
     pub fn name(
         &self,
         aReferenceIdentifier: i32,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Name(
                 self as *const Self,
@@ -1138,12 +1138,12 @@ impl Document {
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:203 - `CDM_Document::SetComment()`
-    pub fn set_comment(&mut self, aComment: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDocStd_Document_inherited_SetComment(self as *mut Self, aComment) }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:206 - `CDM_Document::AddComment()`
-    pub fn add_comment(&mut self, aComment: &crate::ffi::TCollection_ExtendedString) {
+    pub fn add_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDocStd_Document_inherited_AddComment(self as *mut Self, aComment) }
     }
 
@@ -1168,7 +1168,7 @@ impl Document {
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:234 - `CDM_Document::Folder()`
-    pub fn folder(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Folder(
                 self as *const Self,
@@ -1177,14 +1177,14 @@ impl Document {
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:237 - `CDM_Document::SetRequestedFolder()`
-    pub fn set_requested_folder(&mut self, aFolder: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_requested_folder(&mut self, aFolder: &crate::t_collection::ExtendedString) {
         unsafe {
             crate::ffi::TDocStd_Document_inherited_SetRequestedFolder(self as *mut Self, aFolder)
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:239 - `CDM_Document::RequestedFolder()`
-    pub fn requested_folder(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn requested_folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedFolder(
                 self as *const Self,
@@ -1198,12 +1198,12 @@ impl Document {
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:244 - `CDM_Document::SetRequestedName()`
-    pub fn set_requested_name(&mut self, aName: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_requested_name(&mut self, aName: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDocStd_Document_inherited_SetRequestedName(self as *mut Self, aName) }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:249 - `CDM_Document::RequestedName()`
-    pub fn requested_name(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn requested_name(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedName(
                 self as *mut Self,
@@ -1214,7 +1214,7 @@ impl Document {
     /// Inherited: **Source:** `CDM_Document.hxx`:251 - `CDM_Document::SetRequestedPreviousVersion()`
     pub fn set_requested_previous_version(
         &mut self,
-        aPreviousVersion: &crate::ffi::TCollection_ExtendedString,
+        aPreviousVersion: &crate::t_collection::ExtendedString,
     ) {
         unsafe {
             crate::ffi::TDocStd_Document_inherited_SetRequestedPreviousVersion(
@@ -1241,7 +1241,7 @@ impl Document {
     /// Inherited: **Source:** `CDM_Document.hxx`:258 - `CDM_Document::RequestedPreviousVersion()`
     pub fn requested_previous_version(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TDocStd_Document_inherited_RequestedPreviousVersion(
@@ -1252,14 +1252,14 @@ impl Document {
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:261 - `CDM_Document::SetRequestedComment()`
-    pub fn set_requested_comment(&mut self, aComment: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_requested_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
         unsafe {
             crate::ffi::TDocStd_Document_inherited_SetRequestedComment(self as *mut Self, aComment)
         }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:263 - `CDM_Document::RequestedComment()`
-    pub fn requested_comment(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn requested_comment(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_RequestedComment(
                 self as *const Self,
@@ -1278,7 +1278,7 @@ impl Document {
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:271 - `CDM_Document::FileExtension()`
-    pub fn file_extension(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn file_extension(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_FileExtension(
                 self as *mut Self,
@@ -1292,7 +1292,7 @@ impl Document {
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:276 - `CDM_Document::Description()`
-    pub fn description(&mut self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn description(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_inherited_Description(
                 self as *mut Self,
@@ -1407,18 +1407,18 @@ impl Modified {
 
     /// **Source:** `TDocStd_Modified.hxx`:66 - `TDocStd_Modified::AddLabel()`
     /// add <L> as modified
-    pub fn add_label(&mut self, L: &crate::ffi::TDF_Label) -> bool {
+    pub fn add_label(&mut self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_add_label(self as *mut Self, L) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:69 - `TDocStd_Modified::RemoveLabel()`
     /// remove  <L> as modified
-    pub fn remove_label(&mut self, L: &crate::ffi::TDF_Label) -> bool {
+    pub fn remove_label(&mut self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_remove_label(self as *mut Self, L) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:74 - `TDocStd_Modified::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_Modified_id(self as *const Self)) }
     }
 
@@ -1451,35 +1451,35 @@ impl Modified {
     /// **Source:** `TDocStd_Modified.hxx`:41 - `TDocStd_Modified::IsEmpty()`
     /// API class methods
     /// =================
-    pub fn is_empty_label(access: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_empty_label(access: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_is_empty_label(access) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:43 - `TDocStd_Modified::Add()`
-    pub fn add(alabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn add(alabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_add(alabel) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:45 - `TDocStd_Modified::Remove()`
-    pub fn remove(alabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn remove(alabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_remove(alabel) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:47 - `TDocStd_Modified::Contains()`
-    pub fn contains(alabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn contains(alabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_contains(alabel) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:53 - `TDocStd_Modified::Clear()`
     /// remove all modified labels. becomes empty
-    pub fn clear_label(access: &crate::ffi::TDF_Label) {
+    pub fn clear_label(access: &crate::tdf::Label) {
         unsafe { crate::ffi::TDocStd_Modified_clear_label(access) }
     }
 
     /// **Source:** `TDocStd_Modified.hxx`:57 - `TDocStd_Modified::GetID()`
     /// Modified methods
     /// ================
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_Modified_get_id()) }
     }
 
@@ -1508,12 +1508,12 @@ impl Modified {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDocStd_Modified_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_inherited_Label(
                 self as *const Self,
@@ -1547,14 +1547,14 @@ impl Modified {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDocStd_Modified_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1572,7 +1572,7 @@ impl Modified {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDocStd_Modified_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1787,7 +1787,7 @@ impl MultiTransactionManager {
     /// Returns True if new data has been added to myUndos.
     pub fn commit_command_extendedstring(
         &mut self,
-        theName: &crate::ffi::TCollection_ExtendedString,
+        theName: &crate::t_collection::ExtendedString,
     ) -> bool {
         unsafe {
             crate::ffi::TDocStd_MultiTransactionManager_commit_command_extendedstring(
@@ -1949,7 +1949,7 @@ impl Owner {
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:62 - `TDocStd_Owner::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_Owner_id(self as *const Self)) }
     }
 
@@ -1982,7 +1982,7 @@ impl Owner {
     /// **Source:** `TDocStd_Owner.hxx`:43 - `TDocStd_Owner::GetID()`
     /// class methods
     /// =============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_Owner_get_id()) }
     }
 
@@ -2011,12 +2011,12 @@ impl Owner {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDocStd_Owner_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_inherited_Label(
                 self as *const Self,
@@ -2050,14 +2050,14 @@ impl Owner {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDocStd_Owner_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2075,7 +2075,7 @@ impl Owner {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDocStd_Owner_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -2187,9 +2187,7 @@ unsafe impl crate::CppDeletable for PathParser {
 
 impl PathParser {
     /// **Source:** `TDocStd_PathParser.hxx`:32 - `TDocStd_PathParser::TDocStd_PathParser()`
-    pub fn new_extendedstring(
-        path: &crate::ffi::TCollection_ExtendedString,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_extendedstring(path: &crate::t_collection::ExtendedString) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_PathParser_ctor_extendedstring(path))
         }
@@ -2201,28 +2199,28 @@ impl PathParser {
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:36 - `TDocStd_PathParser::Trek()`
-    pub fn trek(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn trek(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_PathParser_trek(self as *const Self))
         }
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:38 - `TDocStd_PathParser::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_PathParser_name(self as *const Self))
         }
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:40 - `TDocStd_PathParser::Extension()`
-    pub fn extension(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn extension(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_PathParser_extension(self as *const Self))
         }
     }
 
     /// **Source:** `TDocStd_PathParser.hxx`:42 - `TDocStd_PathParser::Path()`
-    pub fn path(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn path(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_PathParser_path(self as *const Self))
         }
@@ -2260,14 +2258,14 @@ impl XLink {
 
     /// **Source:** `TDocStd_XLink.hxx`:52 - `TDocStd_XLink::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_XLink_id(self as *const Self)) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:59 - `TDocStd_XLink::DocumentEntry()`
     /// Sets the name aDocEntry for the external
     /// document in this external link attribute.
-    pub fn document_entry_asciistring(&mut self, aDocEntry: &crate::ffi::TCollection_AsciiString) {
+    pub fn document_entry_asciistring(&mut self, aDocEntry: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::TDocStd_XLink_document_entry_asciistring(self as *mut Self, aDocEntry)
         }
@@ -2276,27 +2274,27 @@ impl XLink {
     /// **Source:** `TDocStd_XLink.hxx`:63 - `TDocStd_XLink::DocumentEntry()`
     /// Returns the contents of the document identified by aDocEntry.
     /// aDocEntry provides external data to this external link attribute.
-    pub fn document_entry(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn document_entry(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::TDocStd_XLink_document_entry(self as *const Self)) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:67 - `TDocStd_XLink::LabelEntry()`
     /// Sets the label entry for this external link attribute with the label aLabel.
     /// aLabel pilots the importation of data from the document entry.
-    pub fn label_entry_label(&mut self, aLabel: &crate::ffi::TDF_Label) {
+    pub fn label_entry_label(&mut self, aLabel: &crate::tdf::Label) {
         unsafe { crate::ffi::TDocStd_XLink_label_entry_label(self as *mut Self, aLabel) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:71 - `TDocStd_XLink::LabelEntry()`
     /// Sets the label entry for this external link attribute
     /// as a document identified by aLabEntry.
-    pub fn label_entry_asciistring(&mut self, aLabEntry: &crate::ffi::TCollection_AsciiString) {
+    pub fn label_entry_asciistring(&mut self, aLabEntry: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::TDocStd_XLink_label_entry_asciistring(self as *mut Self, aLabEntry) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:74 - `TDocStd_XLink::LabelEntry()`
     /// Returns the contents of the field <myLabelEntry>.
-    pub fn label_entry(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn label_entry(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::TDocStd_XLink_label_entry(self as *const Self)) }
     }
 
@@ -2376,7 +2374,7 @@ impl XLink {
 
     /// **Source:** `TDocStd_XLink.hxx`:55 - `TDocStd_XLink::GetID()`
     /// Returns the GUID for external links.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_XLink_get_id()) }
     }
 
@@ -2405,12 +2403,12 @@ impl XLink {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDocStd_XLink_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_inherited_Label(
                 self as *const Self,
@@ -2444,14 +2442,14 @@ impl XLink {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDocStd_XLink_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2469,7 +2467,7 @@ impl XLink {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDocStd_XLink_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -2582,7 +2580,7 @@ unsafe impl crate::CppDeletable for XLinkRoot {
 impl XLinkRoot {
     /// **Source:** `TDocStd_XLinkRoot.hxx`:55 - `TDocStd_XLinkRoot::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_XLinkRoot_id(self as *const Self)) }
     }
 
@@ -2633,7 +2631,7 @@ impl XLinkRoot {
 
     /// **Source:** `TDocStd_XLinkRoot.hxx`:42 - `TDocStd_XLinkRoot::GetID()`
     /// Returns the ID: 2a96b61d-ec8b-11d0-bee7-080009dc3333
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDocStd_XLinkRoot_get_id()) }
     }
 
@@ -2662,12 +2660,12 @@ impl XLinkRoot {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_inherited_Label(
                 self as *const Self,
@@ -2701,14 +2699,14 @@ impl XLinkRoot {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2726,7 +2724,7 @@ impl XLinkRoot {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDocStd_XLinkRoot_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -2868,11 +2866,7 @@ impl XLinkTool {
     /// label.  if  the    content  of <fromsource>   is  not
     /// self-contained,  and/or <intarget> has already an XLink
     /// attribute, an exception is raised.
-    pub fn copy_with_link(
-        &mut self,
-        intarget: &crate::ffi::TDF_Label,
-        fromsource: &crate::ffi::TDF_Label,
-    ) {
+    pub fn copy_with_link(&mut self, intarget: &crate::tdf::Label, fromsource: &crate::tdf::Label) {
         unsafe {
             crate::ffi::TDocStd_XLinkTool_copy_with_link(self as *mut Self, intarget, fromsource)
         }
@@ -2891,7 +2885,7 @@ impl XLinkTool {
     /// xlinktool.UpdateLink(aRef->Label());
     /// Exceptions
     /// Standard_DomainError if <L> has no XLink attribute.
-    pub fn update_link(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn update_link(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::TDocStd_XLinkTool_update_link(self as *mut Self, L) }
     }
 
@@ -2913,7 +2907,7 @@ impl XLinkTool {
     /// xlinktool.Copy(L,XL);
     /// TopTools_DataMapOfShapeShape M;
     /// TNaming::ChangeShapes(target,M);
-    pub fn copy(&mut self, intarget: &crate::ffi::TDF_Label, fromsource: &crate::ffi::TDF_Label) {
+    pub fn copy(&mut self, intarget: &crate::tdf::Label, fromsource: &crate::tdf::Label) {
         unsafe { crate::ffi::TDocStd_XLinkTool_copy(self as *mut Self, intarget, fromsource) }
     }
 

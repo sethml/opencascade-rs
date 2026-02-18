@@ -10,8 +10,8 @@
 /// Subtituter les  shapes  sur les structures de   source
 /// vers cible
 pub fn substitute(
-    labelsource: &crate::ffi::TDF_Label,
-    labelcible: &crate::ffi::TDF_Label,
+    labelsource: &crate::tdf::Label,
+    labelcible: &crate::tdf::Label,
     mapOldNew: &mut crate::ffi::TopTools_DataMapOfShapeShape,
 ) {
     unsafe { crate::ffi::TNaming_substitute(labelsource, labelcible, mapOldNew) }
@@ -25,7 +25,7 @@ pub fn substitute(
 /// les    attributs  qui  le contiennent meme si ceux
 /// ci ne sont pas associees a des sous-labels de <Label>.
 pub fn update_label_datamapofshapeshape(
-    label: &crate::ffi::TDF_Label,
+    label: &crate::tdf::Label,
     mapOldNew: &mut crate::ffi::TopTools_DataMapOfShapeShape,
 ) {
     unsafe { crate::ffi::TNaming_update_label_datamapofshapeshape(label, mapOldNew) }
@@ -33,20 +33,13 @@ pub fn update_label_datamapofshapeshape(
 /// **Source:** `TNaming.hxx`:120 - `TNaming::Displace`
 /// Application de la Location sur les shapes du label
 /// et  de   ses   sous   labels.
-pub fn displace(
-    label: &crate::ffi::TDF_Label,
-    aLocation: &crate::ffi::TopLoc_Location,
-    WithOld: bool,
-) {
+pub fn displace(label: &crate::tdf::Label, aLocation: &crate::top_loc::Location, WithOld: bool) {
     unsafe { crate::ffi::TNaming_displace(label, aLocation, WithOld) }
 }
 /// **Source:** `TNaming.hxx`:126 - `TNaming::ChangeShapes`
 /// Remplace  les  shapes du label et  des sous-labels
 /// par des copies.
-pub fn change_shapes(
-    label: &crate::ffi::TDF_Label,
-    M: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-) {
+pub fn change_shapes(label: &crate::tdf::Label, M: &mut crate::ffi::TopTools_DataMapOfShapeShape) {
     unsafe { crate::ffi::TNaming_change_shapes(label, M) }
 }
 /// **Source:** `TNaming.hxx`:133 - `TNaming::Transform`
@@ -55,7 +48,7 @@ pub fn change_shapes(
 /// Warning: le  remplacement du shape est  fait    dans tous
 /// les    attributs  qui  le contiennent meme si ceux
 /// ci ne sont pas associees a des sous-labels de <Label>.
-pub fn transform(label: &crate::ffi::TDF_Label, aTransformation: &crate::ffi::gp_Trsf) {
+pub fn transform(label: &crate::tdf::Label, aTransformation: &crate::gp::Trsf) {
     unsafe { crate::ffi::TNaming_transform(label, aTransformation) }
 }
 /// **Source:** `TNaming.hxx`:145 - `TNaming::Replicate`
@@ -63,25 +56,23 @@ pub fn transform(label: &crate::ffi::TDF_Label, aTransformation: &crate::ffi::gp
 /// on the label <L> (and sub-labels if necessary)
 /// (TNaming_GENERATED is set)
 pub fn replicate_shape_trsf_label(
-    SH: &crate::ffi::TopoDS_Shape,
-    T: &crate::ffi::gp_Trsf,
-    L: &crate::ffi::TDF_Label,
+    SH: &crate::topo_ds::Shape,
+    T: &crate::gp::Trsf,
+    L: &crate::tdf::Label,
 ) {
     unsafe { crate::ffi::TNaming_replicate_shape_trsf_label(SH, T, L) }
 }
 /// **Source:** `TNaming.hxx`:150 - `TNaming::MakeShape`
 /// Builds shape from map content
-pub fn make_shape(
-    MS: &crate::ffi::TopTools_MapOfShape,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+pub fn make_shape(MS: &crate::ffi::TopTools_MapOfShape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_make_shape(MS)) }
 }
 /// **Source:** `TNaming.hxx`:153 - `TNaming::FindUniqueContext`
 /// Find unique context of shape <S>
 pub fn find_unique_context(
-    S: &crate::ffi::TopoDS_Shape,
-    Context: &crate::ffi::TopoDS_Shape,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    S: &crate::topo_ds::Shape,
+    Context: &crate::topo_ds::Shape,
+) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_find_unique_context(S, Context)) }
 }
 /// **Source:** `TNaming.hxx`:159 - `TNaming::FindUniqueContextSet`
@@ -89,10 +80,10 @@ pub fn find_unique_context(
 /// of atomic shapes (Compound). The result is concatenation of
 /// single contexts
 pub fn find_unique_context_set(
-    S: &crate::ffi::TopoDS_Shape,
-    Context: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
+    Context: &crate::topo_ds::Shape,
     Arr: &mut crate::ffi::HandleTopToolsHArray1OfShape,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::TNaming_find_unique_context_set(S, Context, Arr))
     }
@@ -100,17 +91,17 @@ pub fn find_unique_context_set(
 /// **Source:** `TNaming.hxx`:164 - `TNaming::SubstituteSShape`
 /// Substitutes shape in source structure
 pub fn substitute_s_shape(
-    accesslabel: &crate::ffi::TDF_Label,
-    From: &crate::ffi::TopoDS_Shape,
-    To: &mut crate::ffi::TopoDS_Shape,
+    accesslabel: &crate::tdf::Label,
+    From: &crate::topo_ds::Shape,
+    To: &mut crate::topo_ds::Shape,
 ) -> bool {
     unsafe { crate::ffi::TNaming_substitute_s_shape(accesslabel, From, To) }
 }
 /// **Source:** `TNaming.hxx`:169 - `TNaming::OuterWire`
 /// Returns True if outer wire is found and the found wire in <theWire>.
 pub fn outer_wire_face_wire(
-    theFace: &crate::ffi::TopoDS_Face,
-    theWire: &mut crate::ffi::TopoDS_Wire,
+    theFace: &crate::topo_ds::Face,
+    theWire: &mut crate::topo_ds::Wire,
 ) -> bool {
     unsafe { crate::ffi::TNaming_outer_wire_face_wire(theFace, theWire) }
 }
@@ -119,8 +110,8 @@ pub fn outer_wire_face_wire(
 /// Print of TNaming enumeration
 /// =============================
 pub fn outer_shell_solid_shell(
-    theSolid: &crate::ffi::TopoDS_Solid,
-    theShell: &mut crate::ffi::TopoDS_Shell,
+    theSolid: &crate::topo_ds::Solid,
+    theShell: &mut crate::topo_ds::Shell,
 ) -> bool {
     unsafe { crate::ffi::TNaming_outer_shell_solid_shell(theSolid, theShell) }
 }
@@ -262,7 +253,7 @@ impl Builder {
     /// **Source:** `TNaming_Builder.hxx`:44 - `TNaming_Builder::TNaming_Builder()`
     /// Create an   Builder.
     /// Warning:  Before Addition copies the current Value, and clear
-    pub fn new_label(aLabel: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+    pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Builder_ctor_label(aLabel)) }
     }
 
@@ -271,7 +262,7 @@ impl Builder {
     /// generated during a topological construction.
     /// As an example, consider the case of a face
     /// generated in construction of a box.
-    pub fn generated_shape(&mut self, newShape: &crate::ffi::TopoDS_Shape) {
+    pub fn generated_shape(&mut self, newShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_Builder_generated_shape(self as *mut Self, newShape) }
     }
 
@@ -282,8 +273,8 @@ impl Builder {
     /// generated from an edge in construction of a prism.
     pub fn generated_shape2(
         &mut self,
-        oldShape: &crate::ffi::TopoDS_Shape,
-        newShape: &crate::ffi::TopoDS_Shape,
+        oldShape: &crate::topo_ds::Shape,
+        newShape: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::TNaming_Builder_generated_shape2(self as *mut Self, oldShape, newShape)
@@ -293,7 +284,7 @@ impl Builder {
     /// **Source:** `TNaming_Builder.hxx`:60 - `TNaming_Builder::Delete()`
     /// Records the shape oldShape which was deleted from the current label.
     /// As an example, consider the case of a face removed by a Boolean operation.
-    pub fn delete(&mut self, oldShape: &crate::ffi::TopoDS_Shape) {
+    pub fn delete(&mut self, oldShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_Builder_delete(self as *mut Self, oldShape) }
     }
 
@@ -302,11 +293,7 @@ impl Builder {
     /// modification of the shape oldShape.
     /// As an example, consider the case of a face split
     /// or merged in a Boolean operation.
-    pub fn modify(
-        &mut self,
-        oldShape: &crate::ffi::TopoDS_Shape,
-        newShape: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn modify(&mut self, oldShape: &crate::topo_ds::Shape, newShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_Builder_modify(self as *mut Self, oldShape, newShape) }
     }
 
@@ -314,11 +301,7 @@ impl Builder {
     /// Add a  Shape to the current label ,  This Shape is
     /// unmodified.  Used for example  to define a set
     /// of shapes under a label.
-    pub fn select(
-        &mut self,
-        aShape: &crate::ffi::TopoDS_Shape,
-        inShape: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn select(&mut self, aShape: &crate::topo_ds::Shape, inShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_Builder_select(self as *mut Self, aShape, inShape) }
     }
 }
@@ -346,9 +329,9 @@ impl CopyShape {
     /// **Source:** `TNaming_CopyShape.hxx`:34 - `TNaming_CopyShape::CopyTool()`
     /// Makes  copy  a  set  of  shape(s),  using the  aMap
     pub fn copy_tool(
-        aShape: &crate::ffi::TopoDS_Shape,
+        aShape: &crate::topo_ds::Shape,
         aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
-        aResult: &mut crate::ffi::TopoDS_Shape,
+        aResult: &mut crate::topo_ds::Shape,
     ) {
         unsafe { crate::ffi::TNaming_CopyShape_copy_tool(aShape, aMap, aResult) }
     }
@@ -356,9 +339,9 @@ impl CopyShape {
     /// **Source:** `TNaming_CopyShape.hxx`:39 - `TNaming_CopyShape::Translate()`
     /// Translates  a  Transient  shape(s)  to  Transient
     pub fn translate_shape_indexeddatamapoftransienttransient_shape_handletnamingtranslatetool(
-        aShape: &crate::ffi::TopoDS_Shape,
+        aShape: &crate::topo_ds::Shape,
         aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
-        aResult: &mut crate::ffi::TopoDS_Shape,
+        aResult: &mut crate::topo_ds::Shape,
         TrTool: &crate::ffi::HandleTNamingTranslateTool,
     ) {
         unsafe {
@@ -370,9 +353,9 @@ impl CopyShape {
     /// Translates a Topological  Location  to an  other  Top.
     /// Location
     pub fn translate_location_indexeddatamapoftransienttransient(
-        L: &crate::ffi::TopLoc_Location,
+        L: &crate::top_loc::Location,
         aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
-    ) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+    ) -> crate::OwnedPtr<crate::top_loc::Location> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::TNaming_CopyShape_translate_location_indexeddatamapoftransienttransient(
@@ -462,7 +445,7 @@ impl DeltaOnModification {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_DeltaOnModification_inherited_Label(
                 self as *const Self,
@@ -480,7 +463,7 @@ impl DeltaOnModification {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_DeltaOnModification_inherited_ID(
                 self as *const Self,
@@ -553,7 +536,7 @@ impl DeltaOnRemoval {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_DeltaOnRemoval_inherited_Label(
                 self as *const Self,
@@ -571,7 +554,7 @@ impl DeltaOnRemoval {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_DeltaOnRemoval_inherited_ID(
                 self as *const Self,
@@ -596,9 +579,9 @@ unsafe impl crate::CppDeletable for Identifier {
 impl Identifier {
     /// **Source:** `TNaming_Identifier.hxx`:36 - `TNaming_Identifier::TNaming_Identifier()`
     pub fn new_label_shape2_bool(
-        Lab: &crate::ffi::TDF_Label,
-        S: &crate::ffi::TopoDS_Shape,
-        Context: &crate::ffi::TopoDS_Shape,
+        Lab: &crate::tdf::Label,
+        S: &crate::topo_ds::Shape,
+        Context: &crate::topo_ds::Shape,
         Geom: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -649,14 +632,14 @@ impl Identifier {
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:64 - `TNaming_Identifier::ShapeArg()`
-    pub fn shape_arg(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape_arg(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_Identifier_shape_arg(self as *mut Self))
         }
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:66 - `TNaming_Identifier::ShapeContext()`
-    pub fn shape_context(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape_context(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_Identifier_shape_context(
                 self as *const Self,
@@ -667,8 +650,8 @@ impl Identifier {
     /// **Source:** `TNaming_Identifier.hxx`:70 - `TNaming_Identifier::AncestorIdentification()`
     pub fn ancestor_identification(
         &mut self,
-        Localizer: &mut crate::ffi::TNaming_Localizer,
-        Context: &crate::ffi::TopoDS_Shape,
+        Localizer: &mut Localizer,
+        Context: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::TNaming_Identifier_ancestor_identification(
@@ -706,14 +689,14 @@ impl Iterator {
     /// **Source:** `TNaming_Iterator.hxx`:55 - `TNaming_Iterator::TNaming_Iterator()`
     /// Iterates on all  the history records in
     /// the current transaction
-    pub fn new_label(aLabel: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+    pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Iterator_ctor_label(aLabel)) }
     }
 
     /// **Source:** `TNaming_Iterator.hxx`:59 - `TNaming_Iterator::TNaming_Iterator()`
     /// Iterates on all  the history records in
     /// the transaction <aTrans>
-    pub fn new_label_int(aLabel: &crate::ffi::TDF_Label, aTrans: i32) -> crate::OwnedPtr<Self> {
+    pub fn new_label_int(aLabel: &crate::tdf::Label, aTrans: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_Iterator_ctor_label_int(aLabel, aTrans))
         }
@@ -735,13 +718,13 @@ impl Iterator {
     /// **Source:** `TNaming_Iterator.hxx`:70 - `TNaming_Iterator::OldShape()`
     /// Returns the old shape in this iterator object.
     /// This shape can be a null one.
-    pub fn old_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn old_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TNaming_Iterator_old_shape(self as *const Self)) }
     }
 
     /// **Source:** `TNaming_Iterator.hxx`:73 - `TNaming_Iterator::NewShape()`
     /// Returns the new shape in this iterator object.
-    pub fn new_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn new_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TNaming_Iterator_new_shape(self as *const Self)) }
     }
 
@@ -783,7 +766,7 @@ impl IteratorOnShapesSet {
     }
 
     /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:38 - `TNaming_IteratorOnShapesSet::TNaming_IteratorOnShapesSet()`
-    pub fn new_shapesset(S: &crate::ffi::TNaming_ShapesSet) -> crate::OwnedPtr<Self> {
+    pub fn new_shapesset(S: &ShapesSet) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_IteratorOnShapesSet_ctor_shapesset(S))
         }
@@ -791,7 +774,7 @@ impl IteratorOnShapesSet {
 
     /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:41 - `TNaming_IteratorOnShapesSet::Init()`
     /// Initialize the iteration
-    pub fn init(&mut self, S: &crate::ffi::TNaming_ShapesSet) {
+    pub fn init(&mut self, S: &ShapesSet) {
         unsafe { crate::ffi::TNaming_IteratorOnShapesSet_init(self as *mut Self, S) }
     }
 
@@ -809,7 +792,7 @@ impl IteratorOnShapesSet {
     }
 
     /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:50 - `TNaming_IteratorOnShapesSet::Value()`
-    pub fn value(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn value(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TNaming_IteratorOnShapesSet_value(self as *const Self)) }
     }
 }
@@ -836,7 +819,7 @@ impl Localizer {
     /// **Source:** `TNaming_Localizer.hxx`:48 - `TNaming_Localizer::SubShapes()`
     pub fn sub_shapes(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         Type: crate::top_abs::ShapeEnum,
     ) -> &crate::ffi::TopTools_MapOfShape {
         unsafe { &*(crate::ffi::TNaming_Localizer_sub_shapes(self as *mut Self, S, Type.into())) }
@@ -845,7 +828,7 @@ impl Localizer {
     /// **Source:** `TNaming_Localizer.hxx`:51 - `TNaming_Localizer::Ancestors()`
     pub fn ancestors(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         Type: crate::top_abs::ShapeEnum,
     ) -> &crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape {
         unsafe { &*(crate::ffi::TNaming_Localizer_ancestors(self as *mut Self, S, Type.into())) }
@@ -854,8 +837,8 @@ impl Localizer {
     /// **Source:** `TNaming_Localizer.hxx`:55 - `TNaming_Localizer::FindFeaturesInAncestors()`
     pub fn find_features_in_ancestors(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
-        In: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
+        In: &crate::topo_ds::Shape,
         AncInFeatures: &mut crate::ffi::TopTools_MapOfShape,
     ) {
         unsafe {
@@ -871,8 +854,8 @@ impl Localizer {
     /// **Source:** `TNaming_Localizer.hxx`:59 - `TNaming_Localizer::GoBack()`
     pub fn go_back(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
-        Lab: &crate::ffi::TDF_Label,
+        S: &crate::topo_ds::Shape,
+        Lab: &crate::tdf::Label,
         Evol: crate::t_naming::Evolution,
         OldS: &mut crate::ffi::TopTools_ListOfShape,
         OldLab: &mut crate::ffi::TNaming_ListOfNamedShape,
@@ -892,8 +875,8 @@ impl Localizer {
     /// **Source:** `TNaming_Localizer.hxx`:70 - `TNaming_Localizer::FindNeighbourg()`
     pub fn find_neighbourg(
         &mut self,
-        Cont: &crate::ffi::TopoDS_Shape,
-        S: &crate::ffi::TopoDS_Shape,
+        Cont: &crate::topo_ds::Shape,
+        S: &crate::topo_ds::Shape,
         Neighbourg: &mut crate::ffi::TopTools_MapOfShape,
     ) {
         unsafe {
@@ -933,7 +916,7 @@ impl Name {
     }
 
     /// **Source:** `TNaming_Name.hxx`:47 - `TNaming_Name::Shape()`
-    pub fn shape_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn shape_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_Name_shape_shape(self as *mut Self, theShape) }
     }
 
@@ -943,7 +926,7 @@ impl Name {
     }
 
     /// **Source:** `TNaming_Name.hxx`:55 - `TNaming_Name::ContextLabel()`
-    pub fn context_label_label(&mut self, theLab: &crate::ffi::TDF_Label) {
+    pub fn context_label_label(&mut self, theLab: &crate::tdf::Label) {
         unsafe { crate::ffi::TNaming_Name_context_label_label(self as *mut Self, theLab) }
     }
 
@@ -976,7 +959,7 @@ impl Name {
     }
 
     /// **Source:** `TNaming_Name.hxx`:63 - `TNaming_Name::Shape()`
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Name_shape(self as *const Self)) }
     }
 
@@ -991,7 +974,7 @@ impl Name {
     }
 
     /// **Source:** `TNaming_Name.hxx`:71 - `TNaming_Name::ContextLabel()`
-    pub fn context_label(&self) -> &crate::ffi::TDF_Label {
+    pub fn context_label(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TNaming_Name_context_label(self as *const Self)) }
     }
 
@@ -1006,11 +989,7 @@ impl Name {
     }
 
     /// **Source:** `TNaming_Name.hxx`:77 - `TNaming_Name::Paste()`
-    pub fn paste(
-        &self,
-        into: &mut crate::ffi::TNaming_Name,
-        RT: &crate::ffi::HandleTDFRelocationTable,
-    ) {
+    pub fn paste(&self, into: &mut Name, RT: &crate::ffi::HandleTDFRelocationTable) {
         unsafe { crate::ffi::TNaming_Name_paste(self as *const Self, into, RT) }
     }
 }
@@ -1050,7 +1029,7 @@ impl NamedShape {
     /// **Source:** `TNaming_NamedShape.hxx`:62 - `TNaming_NamedShape::Get()`
     /// Returns the shapes contained in <NS>. Returns a null
     /// shape if IsEmpty.
-    pub fn get(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamedShape_get(self as *const Self))
         }
@@ -1086,7 +1065,7 @@ impl NamedShape {
 
     /// **Source:** `TNaming_NamedShape.hxx`:78 - `TNaming_NamedShape::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TNaming_NamedShape_id(self as *const Self)) }
     }
 
@@ -1183,7 +1162,7 @@ impl NamedShape {
     /// class method
     /// ============
     /// Returns the GUID for named shapes.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TNaming_NamedShape_get_id()) }
     }
 
@@ -1212,12 +1191,12 @@ impl NamedShape {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TNaming_NamedShape_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamedShape_inherited_Label(
                 self as *const Self,
@@ -1251,14 +1230,14 @@ impl NamedShape {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TNaming_NamedShape_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1276,7 +1255,7 @@ impl NamedShape {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TNaming_NamedShape_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1367,19 +1346,19 @@ impl Naming {
     }
 
     /// **Source:** `TNaming_Naming.hxx`:77 - `TNaming_Naming::GetName()`
-    pub fn get_name(&self) -> &crate::ffi::TNaming_Name {
+    pub fn get_name(&self) -> &Name {
         unsafe { &*(crate::ffi::TNaming_Naming_get_name(self as *const Self)) }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:79 - `TNaming_Naming::ChangeName()`
-    pub fn change_name(&mut self) -> &mut crate::ffi::TNaming_Name {
+    pub fn change_name(&mut self) -> &mut Name {
         unsafe { &mut *(crate::ffi::TNaming_Naming_change_name(self as *mut Self)) }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:91 - `TNaming_Naming::ID()`
     /// Deferred methods from TDF_Attribute
     /// ===================================
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TNaming_Naming_id(self as *const Self)) }
     }
 
@@ -1417,7 +1396,7 @@ impl Naming {
     /// **Source:** `TNaming_Naming.hxx`:50 - `TNaming_Naming::GetID()`
     /// following code from TDesignStd
     /// ==============================
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TNaming_Naming_get_id()) }
     }
 
@@ -1446,12 +1425,12 @@ impl Naming {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TNaming_Naming_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_inherited_Label(
                 self as *const Self,
@@ -1485,14 +1464,14 @@ impl Naming {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TNaming_Naming_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1510,7 +1489,7 @@ impl Naming {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TNaming_Naming_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -1639,9 +1618,9 @@ unsafe impl crate::CppDeletable for NewShapeIterator {
 impl NewShapeIterator {
     /// **Source:** `TNaming_NewShapeIterator.hxx`:43 - `TNaming_NewShapeIterator::TNaming_NewShapeIterator()`
     pub fn new_shape_int_label(
-        aShape: &crate::ffi::TopoDS_Shape,
+        aShape: &crate::topo_ds::Shape,
         Transaction: i32,
-        access: &crate::ffi::TDF_Label,
+        access: &crate::tdf::Label,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_NewShapeIterator_ctor_shape_int_label(
@@ -1654,8 +1633,8 @@ impl NewShapeIterator {
 
     /// **Source:** `TNaming_NewShapeIterator.hxx`:47 - `TNaming_NewShapeIterator::TNaming_NewShapeIterator()`
     pub fn new_shape_label(
-        aShape: &crate::ffi::TopoDS_Shape,
-        access: &crate::ffi::TDF_Label,
+        aShape: &crate::topo_ds::Shape,
+        access: &crate::tdf::Label,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_NewShapeIterator_ctor_shape_label(
@@ -1666,9 +1645,7 @@ impl NewShapeIterator {
 
     /// **Source:** `TNaming_NewShapeIterator.hxx`:50 - `TNaming_NewShapeIterator::TNaming_NewShapeIterator()`
     /// Iterates from the current Shape in <anIterator>
-    pub fn new_newshapeiterator(
-        anIterator: &crate::ffi::TNaming_NewShapeIterator,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_newshapeiterator(anIterator: &NewShapeIterator) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_NewShapeIterator_ctor_newshapeiterator(
                 anIterator,
@@ -1678,7 +1655,7 @@ impl NewShapeIterator {
 
     /// **Source:** `TNaming_NewShapeIterator.hxx`:53 - `TNaming_NewShapeIterator::TNaming_NewShapeIterator()`
     /// Iterates from the current Shape in <anIterator>
-    pub fn new_iterator(anIterator: &crate::ffi::TNaming_Iterator) -> crate::OwnedPtr<Self> {
+    pub fn new_iterator(anIterator: &Iterator) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_NewShapeIterator_ctor_iterator(
                 anIterator,
@@ -1697,7 +1674,7 @@ impl NewShapeIterator {
     }
 
     /// **Source:** `TNaming_NewShapeIterator.hxx`:59 - `TNaming_NewShapeIterator::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_NewShapeIterator_label(
                 self as *const Self,
@@ -1707,7 +1684,7 @@ impl NewShapeIterator {
 
     /// **Source:** `TNaming_NewShapeIterator.hxx`:64 - `TNaming_NewShapeIterator::Shape()`
     /// Warning! Can be a Null Shape if a descendant is deleted.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TNaming_NewShapeIterator_shape(self as *const Self)) }
     }
 
@@ -1736,9 +1713,9 @@ unsafe impl crate::CppDeletable for OldShapeIterator {
 impl OldShapeIterator {
     /// **Source:** `TNaming_OldShapeIterator.hxx`:43 - `TNaming_OldShapeIterator::TNaming_OldShapeIterator()`
     pub fn new_shape_int_label(
-        aShape: &crate::ffi::TopoDS_Shape,
+        aShape: &crate::topo_ds::Shape,
         Transaction: i32,
-        access: &crate::ffi::TDF_Label,
+        access: &crate::tdf::Label,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_ctor_shape_int_label(
@@ -1751,8 +1728,8 @@ impl OldShapeIterator {
 
     /// **Source:** `TNaming_OldShapeIterator.hxx`:47 - `TNaming_OldShapeIterator::TNaming_OldShapeIterator()`
     pub fn new_shape_label(
-        aShape: &crate::ffi::TopoDS_Shape,
-        access: &crate::ffi::TDF_Label,
+        aShape: &crate::topo_ds::Shape,
+        access: &crate::tdf::Label,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_ctor_shape_label(
@@ -1763,9 +1740,7 @@ impl OldShapeIterator {
 
     /// **Source:** `TNaming_OldShapeIterator.hxx`:50 - `TNaming_OldShapeIterator::TNaming_OldShapeIterator()`
     /// Iterates from the current Shape in <anIterator>
-    pub fn new_oldshapeiterator(
-        anIterator: &crate::ffi::TNaming_OldShapeIterator,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_oldshapeiterator(anIterator: &OldShapeIterator) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_ctor_oldshapeiterator(
                 anIterator,
@@ -1775,7 +1750,7 @@ impl OldShapeIterator {
 
     /// **Source:** `TNaming_OldShapeIterator.hxx`:53 - `TNaming_OldShapeIterator::TNaming_OldShapeIterator()`
     /// Iterates from the current Shape in <anIterator>
-    pub fn new_iterator(anIterator: &crate::ffi::TNaming_Iterator) -> crate::OwnedPtr<Self> {
+    pub fn new_iterator(anIterator: &Iterator) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_ctor_iterator(
                 anIterator,
@@ -1794,7 +1769,7 @@ impl OldShapeIterator {
     }
 
     /// **Source:** `TNaming_OldShapeIterator.hxx`:59 - `TNaming_OldShapeIterator::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_label(
                 self as *const Self,
@@ -1803,7 +1778,7 @@ impl OldShapeIterator {
     }
 
     /// **Source:** `TNaming_OldShapeIterator.hxx`:63 - `TNaming_OldShapeIterator::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TNaming_OldShapeIterator_shape(self as *const Self)) }
     }
 
@@ -1835,22 +1810,22 @@ impl RefShape {
     }
 
     /// **Source:** `TNaming_RefShape.hxx`:37 - `TNaming_RefShape::TNaming_RefShape()`
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_RefShape_ctor_shape(S)) }
     }
 
     /// **Source:** `TNaming_RefShape.hxx`:39 - `TNaming_RefShape::Shape()`
-    pub fn shape_shape(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn shape_shape(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_RefShape_shape_shape(self as *mut Self, S) }
     }
 
     /// **Source:** `TNaming_RefShape.hxx`:45 - `TNaming_RefShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TNaming_RefShape_shape(self as *const Self)) }
     }
 
     /// **Source:** `TNaming_RefShape.hxx`:47 - `TNaming_RefShape::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_RefShape_label(self as *const Self))
         }
@@ -1875,8 +1850,8 @@ unsafe impl crate::CppDeletable for SameShapeIterator {
 impl SameShapeIterator {
     /// **Source:** `TNaming_SameShapeIterator.hxx`:39 - `TNaming_SameShapeIterator::TNaming_SameShapeIterator()`
     pub fn new_shape_label(
-        aShape: &crate::ffi::TopoDS_Shape,
-        access: &crate::ffi::TDF_Label,
+        aShape: &crate::topo_ds::Shape,
+        access: &crate::tdf::Label,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_SameShapeIterator_ctor_shape_label(
@@ -1896,7 +1871,7 @@ impl SameShapeIterator {
     }
 
     /// **Source:** `TNaming_SameShapeIterator.hxx`:45 - `TNaming_SameShapeIterator::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_SameShapeIterator_label(
                 self as *const Self,
@@ -1950,27 +1925,27 @@ impl Scope {
     }
 
     /// **Source:** `TNaming_Scope.hxx`:52 - `TNaming_Scope::Valid()`
-    pub fn valid(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn valid(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::TNaming_Scope_valid(self as *mut Self, L) }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:54 - `TNaming_Scope::ValidChildren()`
-    pub fn valid_children(&mut self, L: &crate::ffi::TDF_Label, withroot: bool) {
+    pub fn valid_children(&mut self, L: &crate::tdf::Label, withroot: bool) {
         unsafe { crate::ffi::TNaming_Scope_valid_children(self as *mut Self, L, withroot) }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:57 - `TNaming_Scope::Unvalid()`
-    pub fn unvalid(&mut self, L: &crate::ffi::TDF_Label) {
+    pub fn unvalid(&mut self, L: &crate::tdf::Label) {
         unsafe { crate::ffi::TNaming_Scope_unvalid(self as *mut Self, L) }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:59 - `TNaming_Scope::UnvalidChildren()`
-    pub fn unvalid_children(&mut self, L: &crate::ffi::TDF_Label, withroot: bool) {
+    pub fn unvalid_children(&mut self, L: &crate::tdf::Label, withroot: bool) {
         unsafe { crate::ffi::TNaming_Scope_unvalid_children(self as *mut Self, L, withroot) }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:62 - `TNaming_Scope::IsValid()`
-    pub fn is_valid(&self, L: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_valid(&self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TNaming_Scope_is_valid(self as *const Self, L) }
     }
 }
@@ -2026,7 +2001,7 @@ impl Selector {
     /// Create a selector on this label
     /// to select a shape.
     /// ==================
-    pub fn new_label(aLabel: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+    pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Selector_ctor_label(aLabel)) }
     }
 
@@ -2042,8 +2017,8 @@ impl Selector {
     /// syntax for this method.
     pub fn select_shape2_bool2(
         &self,
-        Selection: &crate::ffi::TopoDS_Shape,
-        Context: &crate::ffi::TopoDS_Shape,
+        Selection: &crate::topo_ds::Shape,
+        Context: &crate::topo_ds::Shape,
         Geometry: bool,
         KeepOrientatation: bool,
     ) -> bool {
@@ -2067,7 +2042,7 @@ impl Selector {
     /// first appearance of Selection.
     pub fn select_shape_bool2(
         &self,
-        Selection: &crate::ffi::TopoDS_Shape,
+        Selection: &crate::topo_ds::Shape,
         Geometry: bool,
         KeepOrientatation: bool,
     ) -> bool {
@@ -2103,7 +2078,7 @@ impl ShapesSet {
 
     /// **Source:** `TNaming_ShapesSet.hxx`:35 - `TNaming_ShapesSet::TNaming_ShapesSet()`
     pub fn new_shape_shapeenum(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         Type: crate::top_abs::ShapeEnum,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2122,38 +2097,38 @@ impl ShapesSet {
 
     /// **Source:** `TNaming_ShapesSet.hxx`:42 - `TNaming_ShapesSet::Add()`
     /// Adds the Shape <S>
-    pub fn add_shape(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn add_shape(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::TNaming_ShapesSet_add_shape(self as *mut Self, S) }
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:45 - `TNaming_ShapesSet::Contains()`
     /// Returns True  if <S> is in <me>
-    pub fn contains(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn contains(&self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::TNaming_ShapesSet_contains(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:48 - `TNaming_ShapesSet::Remove()`
     /// Removes <S> in <me>.
-    pub fn remove_shape(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn remove_shape(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::TNaming_ShapesSet_remove_shape(self as *mut Self, S) }
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:51 - `TNaming_ShapesSet::Add()`
     /// Adds the shapes contained in <Shapes>.
-    pub fn add_shapesset(&mut self, Shapes: &crate::ffi::TNaming_ShapesSet) {
+    pub fn add_shapesset(&mut self, Shapes: &ShapesSet) {
         unsafe { crate::ffi::TNaming_ShapesSet_add_shapesset(self as *mut Self, Shapes) }
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:55 - `TNaming_ShapesSet::Filter()`
     /// Erases in <me> the shapes not
     /// contained in <Shapes>
-    pub fn filter(&mut self, Shapes: &crate::ffi::TNaming_ShapesSet) {
+    pub fn filter(&mut self, Shapes: &ShapesSet) {
         unsafe { crate::ffi::TNaming_ShapesSet_filter(self as *mut Self, Shapes) }
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:58 - `TNaming_ShapesSet::Remove()`
     /// Removes in <me> the shapes contained in <Shapes>
-    pub fn remove_shapesset(&mut self, Shapes: &crate::ffi::TNaming_ShapesSet) {
+    pub fn remove_shapesset(&mut self, Shapes: &ShapesSet) {
         unsafe { crate::ffi::TNaming_ShapesSet_remove_shapesset(self as *mut Self, Shapes) }
     }
 
@@ -2205,7 +2180,7 @@ impl Tool {
 
     /// **Source:** `TNaming_Tool.hxx`:136 - `TNaming_Tool::HasLabel()`
     /// Returns True if <aShape> appears under a label.(DP)
-    pub fn has_label(access: &crate::ffi::TDF_Label, aShape: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_label(access: &crate::tdf::Label, aShape: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::TNaming_Tool_has_label(access, aShape) }
     }
 
@@ -2213,10 +2188,10 @@ impl Tool {
     /// Returns the shape created from the shape
     /// aShape contained in the attribute anAcces.
     pub fn initial_shape(
-        aShape: &crate::ffi::TopoDS_Shape,
-        anAcces: &crate::ffi::TDF_Label,
+        aShape: &crate::topo_ds::Shape,
+        anAcces: &crate::tdf::Label,
         Labels: &mut crate::ffi::TDF_LabelList,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_initial_shape(
                 aShape, anAcces, Labels,
@@ -2227,7 +2202,7 @@ impl Tool {
     /// **Source:** `TNaming_Tool.hxx`:154 - `TNaming_Tool::ValidUntil()`
     /// Returns the last transaction where the creation of S
     /// is valid.
-    pub fn valid_until(access: &crate::ffi::TDF_Label, S: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn valid_until(access: &crate::tdf::Label, S: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::TNaming_Tool_valid_until(access, S) }
     }
 }
@@ -2257,55 +2232,55 @@ impl TranslateTool {
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:38 - `TNaming_TranslateTool::Add()`
-    pub fn add(&self, S1: &mut crate::ffi::TopoDS_Shape, S2: &crate::ffi::TopoDS_Shape) {
+    pub fn add(&self, S1: &mut crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_add(self as *const Self, S1, S2) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:40 - `TNaming_TranslateTool::MakeVertex()`
-    pub fn make_vertex(&self, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_vertex(&self, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_vertex(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:42 - `TNaming_TranslateTool::MakeEdge()`
-    pub fn make_edge(&self, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_edge(&self, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_edge(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:44 - `TNaming_TranslateTool::MakeWire()`
-    pub fn make_wire(&self, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_wire(&self, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_wire(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:46 - `TNaming_TranslateTool::MakeFace()`
-    pub fn make_face(&self, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_face(&self, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_face(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:48 - `TNaming_TranslateTool::MakeShell()`
-    pub fn make_shell(&self, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_shell(&self, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_shell(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:50 - `TNaming_TranslateTool::MakeSolid()`
-    pub fn make_solid(&self, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_solid(&self, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_solid(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:52 - `TNaming_TranslateTool::MakeCompSolid()`
-    pub fn make_comp_solid(&self, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_comp_solid(&self, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_comp_solid(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:54 - `TNaming_TranslateTool::MakeCompound()`
-    pub fn make_compound(&self, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_compound(&self, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_compound(self as *const Self, S) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:56 - `TNaming_TranslateTool::UpdateVertex()`
     pub fn update_vertex(
         &self,
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &mut crate::ffi::TopoDS_Shape,
+        S1: &crate::topo_ds::Shape,
+        S2: &mut crate::topo_ds::Shape,
         M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         unsafe { crate::ffi::TNaming_TranslateTool_update_vertex(self as *const Self, S1, S2, M) }
@@ -2314,8 +2289,8 @@ impl TranslateTool {
     /// **Source:** `TNaming_TranslateTool.hxx`:60 - `TNaming_TranslateTool::UpdateEdge()`
     pub fn update_edge(
         &self,
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &mut crate::ffi::TopoDS_Shape,
+        S1: &crate::topo_ds::Shape,
+        S2: &mut crate::topo_ds::Shape,
         M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         unsafe { crate::ffi::TNaming_TranslateTool_update_edge(self as *const Self, S1, S2, M) }
@@ -2324,15 +2299,15 @@ impl TranslateTool {
     /// **Source:** `TNaming_TranslateTool.hxx`:64 - `TNaming_TranslateTool::UpdateFace()`
     pub fn update_face(
         &self,
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &mut crate::ffi::TopoDS_Shape,
+        S1: &crate::topo_ds::Shape,
+        S2: &mut crate::topo_ds::Shape,
         M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         unsafe { crate::ffi::TNaming_TranslateTool_update_face(self as *const Self, S1, S2, M) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:68 - `TNaming_TranslateTool::UpdateShape()`
-    pub fn update_shape(&self, S1: &crate::ffi::TopoDS_Shape, S2: &mut crate::ffi::TopoDS_Shape) {
+    pub fn update_shape(&self, S1: &crate::topo_ds::Shape, S2: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_update_shape(self as *const Self, S1, S2) }
     }
 
@@ -2406,7 +2381,7 @@ impl Translator {
     }
 
     /// **Source:** `TNaming_Translator.hxx`:35 - `TNaming_Translator::Add()`
-    pub fn add(&mut self, aShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add(&mut self, aShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_Translator_add(self as *mut Self, aShape) }
     }
 
@@ -2424,8 +2399,8 @@ impl Translator {
     /// returns copied  shape
     pub fn copied_shape(
         &self,
-        aShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_Translator_copied_shape(
                 self as *const Self,
@@ -2477,7 +2452,7 @@ impl UsedShapes {
 
     /// **Source:** `TNaming_UsedShapes.hxx`:52 - `TNaming_UsedShapes::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TNaming_UsedShapes_id(self as *const Self)) }
     }
 
@@ -2565,7 +2540,7 @@ impl UsedShapes {
 
     /// **Source:** `TNaming_UsedShapes.hxx`:55 - `TNaming_UsedShapes::GetID()`
     /// Returns the ID: 2a96b614-ec8b-11d0-bee7-080009dc3333.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TNaming_UsedShapes_get_id()) }
     }
 
@@ -2594,12 +2569,12 @@ impl UsedShapes {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TNaming_UsedShapes_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_UsedShapes_inherited_Label(
                 self as *const Self,
@@ -2633,14 +2608,14 @@ impl UsedShapes {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TNaming_UsedShapes_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2658,7 +2633,7 @@ impl UsedShapes {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TNaming_UsedShapes_inherited_ForgetAttribute(self as *const Self, aguid)
         }

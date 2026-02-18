@@ -112,7 +112,7 @@ impl Hatcher {
     /// Add a line <L>  to  be trimmed.   <T> the  type is
     /// only kept from information. It is not used  in the
     /// computation.
-    pub fn add_line_lin2d_lineform(&mut self, L: &crate::ffi::gp_Lin2d, T: crate::hatch::LineForm) {
+    pub fn add_line_lin2d_lineform(&mut self, L: &crate::gp::Lin2d, T: crate::hatch::LineForm) {
         unsafe { crate::ffi::Hatch_Hatcher_add_line_lin2d_lineform(self as *mut Self, L, T.into()) }
     }
 
@@ -128,7 +128,7 @@ impl Hatcher {
     /// OP dot V = Dist
     /// The parameter of P on the line is
     /// OP dot D
-    pub fn add_line_dir2d_real(&mut self, D: &crate::ffi::gp_Dir2d, Dist: f64) {
+    pub fn add_line_dir2d_real(&mut self, D: &crate::gp::Dir2d, Dist: f64) {
         unsafe { crate::ffi::Hatch_Hatcher_add_line_dir2d_real(self as *mut Self, D, Dist) }
     }
 
@@ -148,20 +148,14 @@ impl Hatcher {
 
     /// **Source:** `Hatch_Hatcher.hxx`:104 - `Hatch_Hatcher::Trim()`
     /// Trims the lines at intersections with  <L>.
-    pub fn trim_lin2d_int(&mut self, L: &crate::ffi::gp_Lin2d, Index: i32) {
+    pub fn trim_lin2d_int(&mut self, L: &crate::gp::Lin2d, Index: i32) {
         unsafe { crate::ffi::Hatch_Hatcher_trim_lin2d_int(self as *mut Self, L, Index) }
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:108 - `Hatch_Hatcher::Trim()`
     /// Trims the lines at intersections  with <L>  in the
     /// parameter range <Start>, <End>
-    pub fn trim_lin2d_real2_int(
-        &mut self,
-        L: &crate::ffi::gp_Lin2d,
-        Start: f64,
-        End: f64,
-        Index: i32,
-    ) {
+    pub fn trim_lin2d_real2_int(&mut self, L: &crate::gp::Lin2d, Start: f64, End: f64, Index: i32) {
         unsafe {
             crate::ffi::Hatch_Hatcher_trim_lin2d_real2_int(self as *mut Self, L, Start, End, Index)
         }
@@ -170,12 +164,7 @@ impl Hatcher {
     /// **Source:** `Hatch_Hatcher.hxx`:115 - `Hatch_Hatcher::Trim()`
     /// Trims the line at  intersection with  the oriented
     /// segment P1,P2.
-    pub fn trim_pnt2d2_int(
-        &mut self,
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
-        Index: i32,
-    ) {
+    pub fn trim_pnt2d2_int(&mut self, P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d, Index: i32) {
         unsafe { crate::ffi::Hatch_Hatcher_trim_pnt2d2_int(self as *mut Self, P1, P2, Index) }
     }
 
@@ -194,7 +183,7 @@ impl Hatcher {
 
     /// **Source:** `Hatch_Hatcher.hxx`:127 - `Hatch_Hatcher::Line()`
     /// Returns the line of index <I>.
-    pub fn line(&self, I: i32) -> &crate::ffi::gp_Lin2d {
+    pub fn line(&self, I: i32) -> &crate::gp::Lin2d {
         unsafe { &*(crate::ffi::Hatch_Hatcher_line(self as *const Self, I)) }
     }
 
@@ -281,7 +270,7 @@ impl Line {
 
     /// **Source:** `Hatch_Line.hxx`:43 - `Hatch_Line::Hatch_Line()`
     pub fn new_lin2d_lineform(
-        L: &crate::ffi::gp_Lin2d,
+        L: &crate::gp::Lin2d,
         T: crate::hatch::LineForm,
     ) -> crate::OwnedPtr<Self> {
         unsafe {

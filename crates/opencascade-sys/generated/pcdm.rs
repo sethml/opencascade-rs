@@ -218,7 +218,7 @@ impl ReaderFilter {
     /// Creates a filter to read only sub-labels of a label-path.
     /// Like, for "0:2" it will read all attributes for labels "0:2", "0:2:1", etc.
     pub fn new_asciistring(
-        theEntryToRead: &crate::ffi::TCollection_AsciiString,
+        theEntryToRead: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::PCDM_ReaderFilter_ctor_asciistring(
@@ -250,7 +250,7 @@ impl ReaderFilter {
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:69 - `PCDM_ReaderFilter::AddSkipped()`
     /// Adds skipped attribute by type name.
-    pub fn add_skipped_asciistring(&mut self, theSkipped: &crate::ffi::TCollection_AsciiString) {
+    pub fn add_skipped_asciistring(&mut self, theSkipped: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::PCDM_ReaderFilter_add_skipped_asciistring(self as *mut Self, theSkipped)
         }
@@ -266,13 +266,13 @@ impl ReaderFilter {
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:81 - `PCDM_ReaderFilter::AddRead()`
     /// Adds attribute to read by type name. Disables the skipped attributes added.
-    pub fn add_read_asciistring(&mut self, theRead: &crate::ffi::TCollection_AsciiString) {
+    pub fn add_read_asciistring(&mut self, theRead: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::PCDM_ReaderFilter_add_read_asciistring(self as *mut Self, theRead) }
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:84 - `PCDM_ReaderFilter::AddPath()`
     /// Adds sub-tree path (like "0:2").
-    pub fn add_path(&mut self, theEntryToRead: &crate::ffi::TCollection_AsciiString) {
+    pub fn add_path(&mut self, theEntryToRead: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::PCDM_ReaderFilter_add_path(self as *mut Self, theEntryToRead) }
     }
 
@@ -298,7 +298,7 @@ impl ReaderFilter {
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:96 - `PCDM_ReaderFilter::IsPassedAttr()`
     /// Returns true if attribute must be read.
-    pub fn is_passed_attr(&self, theAttributeType: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn is_passed_attr(&self, theAttributeType: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::PCDM_ReaderFilter_is_passed_attr(self as *const Self, theAttributeType)
         }
@@ -306,7 +306,7 @@ impl ReaderFilter {
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:99 - `PCDM_ReaderFilter::IsPassed()`
     /// Returns true if content of the label must be read.
-    pub fn is_passed_asciistring(&self, theEntry: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn is_passed_asciistring(&self, theEntry: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::PCDM_ReaderFilter_is_passed_asciistring(self as *const Self, theEntry)
         }
@@ -314,10 +314,7 @@ impl ReaderFilter {
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:101 - `PCDM_ReaderFilter::IsSubPassed()`
     /// Returns true if some sub-label of the given label is passed.
-    pub fn is_sub_passed_asciistring(
-        &self,
-        theEntry: &crate::ffi::TCollection_AsciiString,
-    ) -> bool {
+    pub fn is_sub_passed_asciistring(&self, theEntry: &crate::t_collection::AsciiString) -> bool {
         unsafe {
             crate::ffi::PCDM_ReaderFilter_is_sub_passed_asciistring(self as *const Self, theEntry)
         }

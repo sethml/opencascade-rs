@@ -14,7 +14,7 @@
 /// of the axis of the surface is colinear with the
 /// direction.
 /// Otherwise, the exception DomainError is raised.
-pub fn angle(F: &crate::ffi::TopoDS_Face, Direction: &crate::ffi::gp_Dir) -> f64 {
+pub fn angle(F: &crate::topo_ds::Face, Direction: &crate::gp::Dir) -> f64 {
     unsafe { crate::ffi::Draft_angle(F, Direction) }
 }
 
@@ -73,22 +73,22 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:38 - `Draft_EdgeInfo::Add()`
-    pub fn add(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn add(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::Draft_EdgeInfo_add(self as *mut Self, F) }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:40 - `Draft_EdgeInfo::RootFace()`
-    pub fn root_face_face(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn root_face_face(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::Draft_EdgeInfo_root_face_face(self as *mut Self, F) }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:42 - `Draft_EdgeInfo::Tangent()`
-    pub fn tangent(&mut self, P: &crate::ffi::gp_Pnt) {
+    pub fn tangent(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::Draft_EdgeInfo_tangent(self as *mut Self, P) }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:44 - `Draft_EdgeInfo::IsTangent()`
-    pub fn is_tangent(&self, P: &mut crate::ffi::gp_Pnt) -> bool {
+    pub fn is_tangent(&self, P: &mut crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::Draft_EdgeInfo_is_tangent(self as *const Self, P) }
     }
 
@@ -108,12 +108,12 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:52 - `Draft_EdgeInfo::FirstFace()`
-    pub fn first_face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn first_face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::Draft_EdgeInfo_first_face(self as *const Self)) }
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:54 - `Draft_EdgeInfo::SecondFace()`
-    pub fn second_face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn second_face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::Draft_EdgeInfo_second_face(self as *const Self)) }
     }
 
@@ -143,7 +143,7 @@ impl EdgeInfo {
     }
 
     /// **Source:** `Draft_EdgeInfo.hxx`:66 - `Draft_EdgeInfo::RootFace()`
-    pub fn root_face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn root_face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::Draft_EdgeInfo_root_face(self as *const Self)) }
     }
 
@@ -191,7 +191,7 @@ impl FaceInfo {
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:39 - `Draft_FaceInfo::RootFace()`
-    pub fn root_face_face(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn root_face_face(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::Draft_FaceInfo_root_face_face(self as *mut Self, F) }
     }
 
@@ -201,17 +201,17 @@ impl FaceInfo {
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:43 - `Draft_FaceInfo::Add()`
-    pub fn add(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn add(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::Draft_FaceInfo_add(self as *mut Self, F) }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:45 - `Draft_FaceInfo::FirstFace()`
-    pub fn first_face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn first_face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::Draft_FaceInfo_first_face(self as *const Self)) }
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:47 - `Draft_FaceInfo::SecondFace()`
-    pub fn second_face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn second_face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::Draft_FaceInfo_second_face(self as *const Self)) }
     }
 
@@ -226,7 +226,7 @@ impl FaceInfo {
     }
 
     /// **Source:** `Draft_FaceInfo.hxx`:53 - `Draft_FaceInfo::RootFace()`
-    pub fn root_face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn root_face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::Draft_FaceInfo_root_face(self as *const Self)) }
     }
 
@@ -256,7 +256,7 @@ unsafe impl crate::CppDeletable for Modification {
 
 impl Modification {
     /// **Source:** `Draft_Modification.hxx`:51 - `Draft_Modification::Draft_Modification()`
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Draft_Modification_ctor_shape(S)) }
     }
 
@@ -268,7 +268,7 @@ impl Modification {
 
     /// **Source:** `Draft_Modification.hxx`:57 - `Draft_Modification::Init()`
     /// Changes the basis shape and resets.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::Draft_Modification_init(self as *mut Self, S) }
     }
 
@@ -279,10 +279,10 @@ impl Modification {
     /// ProblematicShape  will  return the "bad" face.
     pub fn add(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
-        Direction: &crate::ffi::gp_Dir,
+        F: &crate::topo_ds::Face,
+        Direction: &crate::gp::Dir,
         Angle: f64,
-        NeutralPlane: &crate::ffi::gp_Pln,
+        NeutralPlane: &crate::gp::Pln,
         Flag: bool,
     ) -> bool {
         unsafe {
@@ -302,7 +302,7 @@ impl Modification {
     /// are tangent.   It will be  necessary to  call this
     /// method if  the  method Add returns Standard_False,
     /// to unset ProblematicFace.
-    pub fn remove(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn remove(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::Draft_Modification_remove(self as *mut Self, F) }
     }
 
@@ -338,7 +338,7 @@ impl Modification {
     /// **Source:** `Draft_Modification.hxx`:92 - `Draft_Modification::ProblematicShape()`
     /// Returns the shape (Face,  Edge or Vertex) on which
     /// an error occurred.
-    pub fn problematic_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn problematic_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::Draft_Modification_problematic_shape(self as *const Self)) }
     }
 
@@ -347,7 +347,7 @@ impl Modification {
     /// together with the face <F>.
     pub fn connected_faces(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::Draft_Modification_connected_faces(self as *mut Self, F)) }
     }
@@ -375,9 +375,9 @@ impl Modification {
     /// <Tol> , <RevWires> ,<RevFace> are not  significant.
     pub fn new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         S: &mut crate::ffi::HandleGeomSurface,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
@@ -404,9 +404,9 @@ impl Modification {
     /// significant.
     pub fn new_curve(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         C: &mut crate::ffi::HandleGeomCurve,
-        L: &mut crate::ffi::TopLoc_Location,
+        L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::Draft_Modification_new_curve(self as *mut Self, E, C, L, Tol) }
@@ -420,8 +420,8 @@ impl Modification {
     /// are not significant.
     pub fn new_point(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        P: &mut crate::ffi::gp_Pnt,
+        V: &crate::topo_ds::Vertex,
+        P: &mut crate::gp::Pnt,
         Tol: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::Draft_Modification_new_point(self as *mut Self, V, P, Tol) }
@@ -440,10 +440,10 @@ impl Modification {
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF: &crate::topo_ds::Face,
         C: &mut crate::ffi::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
@@ -460,8 +460,8 @@ impl Modification {
     /// are not significant.
     pub fn new_parameter(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
-        E: &crate::ffi::TopoDS_Edge,
+        V: &crate::topo_ds::Vertex,
+        E: &crate::topo_ds::Edge,
         P: &mut f64,
         Tol: &mut f64,
     ) -> bool {
@@ -477,12 +477,12 @@ impl Modification {
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F1: &crate::ffi::TopoDS_Face,
-        F2: &crate::ffi::TopoDS_Face,
-        NewE: &crate::ffi::TopoDS_Edge,
-        NewF1: &crate::ffi::TopoDS_Face,
-        NewF2: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F1: &crate::topo_ds::Face,
+        F2: &crate::topo_ds::Face,
+        NewE: &crate::topo_ds::Edge,
+        NewF1: &crate::topo_ds::Face,
+        NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         unsafe {
             crate::geom_abs::Shape::try_from(crate::ffi::Draft_Modification_continuity(
@@ -532,7 +532,7 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         T: &mut crate::ffi::HandlePolyTriangulation,
     ) -> bool {
         unsafe {
@@ -543,7 +543,7 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         P: &mut crate::ffi::HandlePolyPolygon3D,
     ) -> bool {
         unsafe { crate::ffi::Draft_Modification_inherited_NewPolygon(self as *mut Self, E, P) }
@@ -552,8 +552,8 @@ impl Modification {
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
         P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         unsafe {
@@ -587,17 +587,17 @@ impl VertexInfo {
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:37 - `Draft_VertexInfo::Add()`
-    pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::Draft_VertexInfo_add(self as *mut Self, E) }
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:39 - `Draft_VertexInfo::Geometry()`
-    pub fn geometry(&self) -> &crate::ffi::gp_Pnt {
+    pub fn geometry(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::Draft_VertexInfo_geometry(self as *const Self)) }
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:41 - `Draft_VertexInfo::Parameter()`
-    pub fn parameter(&mut self, E: &crate::ffi::TopoDS_Edge) -> f64 {
+    pub fn parameter(&mut self, E: &crate::topo_ds::Edge) -> f64 {
         unsafe { crate::ffi::Draft_VertexInfo_parameter(self as *mut Self, E) }
     }
 
@@ -607,7 +607,7 @@ impl VertexInfo {
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:45 - `Draft_VertexInfo::Edge()`
-    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::Draft_VertexInfo_edge(self as *const Self)) }
     }
 
@@ -622,7 +622,7 @@ impl VertexInfo {
     }
 
     /// **Source:** `Draft_VertexInfo.hxx`:51 - `Draft_VertexInfo::ChangeGeometry()`
-    pub fn change_geometry(&mut self) -> &mut crate::ffi::gp_Pnt {
+    pub fn change_geometry(&mut self) -> &mut crate::gp::Pnt {
         unsafe { &mut *(crate::ffi::Draft_VertexInfo_change_geometry(self as *mut Self)) }
     }
 }

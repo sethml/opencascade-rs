@@ -42,11 +42,11 @@ impl ApplySequence {
     /// If <until> is TopAbs_SHAPE,  all the subshapes are considered.
     pub fn prepare_shape(
         &mut self,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         fillmap: bool,
         until: crate::top_abs::ShapeEnum,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeProcessAPI_ApplySequence_prepare_shape(
                 self as *mut Self,

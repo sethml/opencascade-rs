@@ -8,122 +8,119 @@
 
 /// **Source:** `ProjLib.hxx`:68 - `ProjLib::Project`
 pub fn project_pln_pnt(
-    Pl: &crate::ffi::gp_Pln,
-    P: &crate::ffi::gp_Pnt,
-) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    Pl: &crate::gp::Pln,
+    P: &crate::gp::Pnt,
+) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_pln_pnt(Pl, P)) }
 }
 /// **Source:** `ProjLib.hxx`:70 - `ProjLib::Project`
 pub fn project_pln_lin(
-    Pl: &crate::ffi::gp_Pln,
-    L: &crate::ffi::gp_Lin,
-) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    Pl: &crate::gp::Pln,
+    L: &crate::gp::Lin,
+) -> crate::OwnedPtr<crate::gp::Lin2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_pln_lin(Pl, L)) }
 }
 /// **Source:** `ProjLib.hxx`:72 - `ProjLib::Project`
 pub fn project_pln_circ(
-    Pl: &crate::ffi::gp_Pln,
-    C: &crate::ffi::gp_Circ,
-) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    Pl: &crate::gp::Pln,
+    C: &crate::gp::Circ,
+) -> crate::OwnedPtr<crate::gp::Circ2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_pln_circ(Pl, C)) }
 }
 /// **Source:** `ProjLib.hxx`:74 - `ProjLib::Project`
 pub fn project_pln_elips(
-    Pl: &crate::ffi::gp_Pln,
-    E: &crate::ffi::gp_Elips,
-) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    Pl: &crate::gp::Pln,
+    E: &crate::gp::Elips,
+) -> crate::OwnedPtr<crate::gp::Elips2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_pln_elips(Pl, E)) }
 }
 /// **Source:** `ProjLib.hxx`:76 - `ProjLib::Project`
 pub fn project_pln_parab(
-    Pl: &crate::ffi::gp_Pln,
-    P: &crate::ffi::gp_Parab,
-) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    Pl: &crate::gp::Pln,
+    P: &crate::gp::Parab,
+) -> crate::OwnedPtr<crate::gp::Parab2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_pln_parab(Pl, P)) }
 }
 /// **Source:** `ProjLib.hxx`:78 - `ProjLib::Project`
 pub fn project_pln_hypr(
-    Pl: &crate::ffi::gp_Pln,
-    H: &crate::ffi::gp_Hypr,
-) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    Pl: &crate::gp::Pln,
+    H: &crate::gp::Hypr,
+) -> crate::OwnedPtr<crate::gp::Hypr2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_pln_hypr(Pl, H)) }
 }
 /// **Source:** `ProjLib.hxx`:80 - `ProjLib::Project`
 pub fn project_cylinder_pnt(
-    Cy: &crate::ffi::gp_Cylinder,
-    P: &crate::ffi::gp_Pnt,
-) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    Cy: &crate::gp::Cylinder,
+    P: &crate::gp::Pnt,
+) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_cylinder_pnt(Cy, P)) }
 }
 /// **Source:** `ProjLib.hxx`:82 - `ProjLib::Project`
 pub fn project_cylinder_lin(
-    Cy: &crate::ffi::gp_Cylinder,
-    L: &crate::ffi::gp_Lin,
-) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    Cy: &crate::gp::Cylinder,
+    L: &crate::gp::Lin,
+) -> crate::OwnedPtr<crate::gp::Lin2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_cylinder_lin(Cy, L)) }
 }
 /// **Source:** `ProjLib.hxx`:84 - `ProjLib::Project`
 pub fn project_cylinder_circ(
-    Cy: &crate::ffi::gp_Cylinder,
-    Ci: &crate::ffi::gp_Circ,
-) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    Cy: &crate::gp::Cylinder,
+    Ci: &crate::gp::Circ,
+) -> crate::OwnedPtr<crate::gp::Lin2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_cylinder_circ(Cy, Ci)) }
 }
 /// **Source:** `ProjLib.hxx`:86 - `ProjLib::Project`
 pub fn project_cone_pnt(
-    Co: &crate::ffi::gp_Cone,
-    P: &crate::ffi::gp_Pnt,
-) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    Co: &crate::gp::Cone,
+    P: &crate::gp::Pnt,
+) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_cone_pnt(Co, P)) }
 }
 /// **Source:** `ProjLib.hxx`:88 - `ProjLib::Project`
 pub fn project_cone_lin(
-    Co: &crate::ffi::gp_Cone,
-    L: &crate::ffi::gp_Lin,
-) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    Co: &crate::gp::Cone,
+    L: &crate::gp::Lin,
+) -> crate::OwnedPtr<crate::gp::Lin2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_cone_lin(Co, L)) }
 }
 /// **Source:** `ProjLib.hxx`:90 - `ProjLib::Project`
 pub fn project_cone_circ(
-    Co: &crate::ffi::gp_Cone,
-    Ci: &crate::ffi::gp_Circ,
-) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    Co: &crate::gp::Cone,
+    Ci: &crate::gp::Circ,
+) -> crate::OwnedPtr<crate::gp::Lin2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_cone_circ(Co, Ci)) }
 }
 /// **Source:** `ProjLib.hxx`:92 - `ProjLib::Project`
 pub fn project_sphere_pnt(
-    Sp: &crate::ffi::gp_Sphere,
-    P: &crate::ffi::gp_Pnt,
-) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    Sp: &crate::gp::Sphere,
+    P: &crate::gp::Pnt,
+) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_sphere_pnt(Sp, P)) }
 }
 /// **Source:** `ProjLib.hxx`:94 - `ProjLib::Project`
 pub fn project_sphere_circ(
-    Sp: &crate::ffi::gp_Sphere,
-    Ci: &crate::ffi::gp_Circ,
-) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    Sp: &crate::gp::Sphere,
+    Ci: &crate::gp::Circ,
+) -> crate::OwnedPtr<crate::gp::Lin2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_sphere_circ(Sp, Ci)) }
 }
 /// **Source:** `ProjLib.hxx`:96 - `ProjLib::Project`
 pub fn project_torus_pnt(
-    To: &crate::ffi::gp_Torus,
-    P: &crate::ffi::gp_Pnt,
-) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    To: &crate::gp::Torus,
+    P: &crate::gp::Pnt,
+) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_torus_pnt(To, P)) }
 }
 /// **Source:** `ProjLib.hxx`:98 - `ProjLib::Project`
 pub fn project_torus_circ(
-    To: &crate::ffi::gp_Torus,
-    Ci: &crate::ffi::gp_Circ,
-) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    To: &crate::gp::Torus,
+    Ci: &crate::gp::Circ,
+) -> crate::OwnedPtr<crate::gp::Lin2d> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_project_torus_circ(To, Ci)) }
 }
 /// **Source:** `ProjLib.hxx`:101 - `ProjLib::MakePCurveOfType`
 /// Make empty  P-Curve <aC> of relevant to <PC> type
-pub fn make_p_curve_of_type(
-    PC: &crate::ffi::ProjLib_ProjectedCurve,
-    aC: &mut crate::ffi::HandleGeom2dCurve,
-) {
+pub fn make_p_curve_of_type(PC: &ProjectedCurve, aC: &mut crate::ffi::HandleGeom2dCurve) {
     unsafe { crate::ffi::ProjLib_make_p_curve_of_type(PC, aC) }
 }
 /// **Source:** `ProjLib.hxx`:107 - `ProjLib::IsAnaSurf`
@@ -345,7 +342,7 @@ impl CompProjectedCurve {
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:131 - `ProjLib_CompProjectedCurve::IsSinglePnt()`
     /// returns  True  if  part  of  projection with  number  Index is  a  single  point  and  writes
     /// its  coordinates in  P
-    pub fn is_single_pnt(&self, Index: i32, P: &mut crate::ffi::gp_Pnt2d) -> bool {
+    pub fn is_single_pnt(&self, Index: i32, P: &mut crate::gp::Pnt2d) -> bool {
         unsafe {
             crate::ffi::ProjLib_CompProjectedCurve_is_single_pnt(self as *const Self, Index, P)
         }
@@ -367,7 +364,7 @@ impl CompProjectedCurve {
 
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:142 - `ProjLib_CompProjectedCurve::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_value(
                 self as *const Self,
@@ -378,7 +375,7 @@ impl CompProjectedCurve {
 
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:145 - `ProjLib_CompProjectedCurve::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         unsafe { crate::ffi::ProjLib_CompProjectedCurve_d0(self as *const Self, U, P) }
     }
 
@@ -387,7 +384,7 @@ impl CompProjectedCurve {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V: &mut crate::ffi::gp_Vec2d) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         unsafe { crate::ffi::ProjLib_CompProjectedCurve_d1(self as *const Self, U, P, V) }
     }
 
@@ -399,9 +396,9 @@ impl CompProjectedCurve {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::ProjLib_CompProjectedCurve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -411,7 +408,7 @@ impl CompProjectedCurve {
     /// order of derivation N.
     /// Raised if N < 1.
     /// Raised if N > 2.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_dn(
                 self as *const Self,
@@ -585,7 +582,7 @@ impl CompProjectedCurve {
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:237 - `ProjLib_CompProjectedCurve::GetResult2dP()`
     /// Returns the resulting 2d-point of projecting
     /// of the curve interval with number Index.
-    pub fn get_result2d_p(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn get_result2d_p(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_get_result2d_p(
                 self as *const Self,
@@ -597,7 +594,7 @@ impl CompProjectedCurve {
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:241 - `ProjLib_CompProjectedCurve::GetResult3dP()`
     /// Returns the resulting 3d-point of projecting
     /// of the curve interval with number Index.
-    pub fn get_result3d_p(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn get_result3d_p(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_get_result3d_p(
                 self as *const Self,
@@ -667,10 +664,10 @@ impl CompProjectedCurve {
     pub fn d3(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
-        V3: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
     ) {
         unsafe {
             crate::ffi::ProjLib_CompProjectedCurve_inherited_D3(
@@ -692,7 +689,7 @@ impl CompProjectedCurve {
     }
 
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:136 - `Adaptor2d_Curve2d::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_inherited_Line(
                 self as *const Self,
@@ -701,7 +698,7 @@ impl CompProjectedCurve {
     }
 
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:138 - `Adaptor2d_Curve2d::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_inherited_Circle(
                 self as *const Self,
@@ -710,7 +707,7 @@ impl CompProjectedCurve {
     }
 
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:140 - `Adaptor2d_Curve2d::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_inherited_Ellipse(
                 self as *const Self,
@@ -719,7 +716,7 @@ impl CompProjectedCurve {
     }
 
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:142 - `Adaptor2d_Curve2d::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_inherited_Hyperbola(
                 self as *const Self,
@@ -728,7 +725,7 @@ impl CompProjectedCurve {
     }
 
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:144 - `Adaptor2d_Curve2d::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_inherited_Parabola(
                 self as *const Self,
@@ -1168,52 +1165,49 @@ impl Cone {
 
     /// **Source:** `ProjLib_Cone.hxx`:41 - `ProjLib_Cone::ProjLib_Cone()`
     /// Projection on the cone <Co>.
-    pub fn new_cone(Co: &crate::ffi::gp_Cone) -> crate::OwnedPtr<Self> {
+    pub fn new_cone(Co: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Cone_ctor_cone(Co)) }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:44 - `ProjLib_Cone::ProjLib_Cone()`
     /// Projection of the line <L> on the cone <Co>.
-    pub fn new_cone_lin(Co: &crate::ffi::gp_Cone, L: &crate::ffi::gp_Lin) -> crate::OwnedPtr<Self> {
+    pub fn new_cone_lin(Co: &crate::gp::Cone, L: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Cone_ctor_cone_lin(Co, L)) }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:47 - `ProjLib_Cone::ProjLib_Cone()`
     /// Projection of the circle <C> on the cone <Co>.
-    pub fn new_cone_circ(
-        Co: &crate::ffi::gp_Cone,
-        C: &crate::ffi::gp_Circ,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_cone_circ(Co: &crate::gp::Cone, C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Cone_ctor_cone_circ(Co, C)) }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:49 - `ProjLib_Cone::Init()`
-    pub fn init(&mut self, Co: &crate::ffi::gp_Cone) {
+    pub fn init(&mut self, Co: &crate::gp::Cone) {
         unsafe { crate::ffi::ProjLib_Cone_init(self as *mut Self, Co) }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:51 - `ProjLib_Cone::Project()`
-    pub fn project_lin(&mut self, L: &crate::ffi::gp_Lin) {
+    pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         unsafe { crate::ffi::ProjLib_Cone_project_lin(self as *mut Self, L) }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:53 - `ProjLib_Cone::Project()`
-    pub fn project_circ(&mut self, C: &crate::ffi::gp_Circ) {
+    pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         unsafe { crate::ffi::ProjLib_Cone_project_circ(self as *mut Self, C) }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:55 - `ProjLib_Cone::Project()`
-    pub fn project_elips(&mut self, E: &crate::ffi::gp_Elips) {
+    pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         unsafe { crate::ffi::ProjLib_Cone_project_elips(self as *mut Self, E) }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:57 - `ProjLib_Cone::Project()`
-    pub fn project_parab(&mut self, P: &crate::ffi::gp_Parab) {
+    pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         unsafe { crate::ffi::ProjLib_Cone_project_parab(self as *mut Self, P) }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:59 - `ProjLib_Cone::Project()`
-    pub fn project_hypr(&mut self, H: &crate::ffi::gp_Hypr) {
+    pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         unsafe { crate::ffi::ProjLib_Cone_project_hypr(self as *mut Self, H) }
     }
 
@@ -1273,27 +1267,27 @@ impl Cone {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:65 - `ProjLib_Projector::Line()`
-    pub fn line(&self) -> &crate::ffi::gp_Lin2d {
+    pub fn line(&self) -> &crate::gp::Lin2d {
         unsafe { &*(crate::ffi::ProjLib_Cone_inherited_Line(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:67 - `ProjLib_Projector::Circle()`
-    pub fn circle(&self) -> &crate::ffi::gp_Circ2d {
+    pub fn circle(&self) -> &crate::gp::Circ2d {
         unsafe { &*(crate::ffi::ProjLib_Cone_inherited_Circle(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:69 - `ProjLib_Projector::Ellipse()`
-    pub fn ellipse(&self) -> &crate::ffi::gp_Elips2d {
+    pub fn ellipse(&self) -> &crate::gp::Elips2d {
         unsafe { &*(crate::ffi::ProjLib_Cone_inherited_Ellipse(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:71 - `ProjLib_Projector::Hyperbola()`
-    pub fn hyperbola(&self) -> &crate::ffi::gp_Hypr2d {
+    pub fn hyperbola(&self) -> &crate::gp::Hypr2d {
         unsafe { &*(crate::ffi::ProjLib_Cone_inherited_Hyperbola(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:73 - `ProjLib_Projector::Parabola()`
-    pub fn parabola(&self) -> &crate::ffi::gp_Parab2d {
+    pub fn parabola(&self) -> &crate::gp::Parab2d {
         unsafe { &*(crate::ffi::ProjLib_Cone_inherited_Parabola(self as *const Self)) }
     }
 
@@ -1365,15 +1359,15 @@ impl Cylinder {
 
     /// **Source:** `ProjLib_Cylinder.hxx`:41 - `ProjLib_Cylinder::ProjLib_Cylinder()`
     /// Projection on the cylinder <Cyl>.
-    pub fn new_cylinder(Cyl: &crate::ffi::gp_Cylinder) -> crate::OwnedPtr<Self> {
+    pub fn new_cylinder(Cyl: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Cylinder_ctor_cylinder(Cyl)) }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:44 - `ProjLib_Cylinder::ProjLib_Cylinder()`
     /// Projection of the line <L> on the cylinder <Cyl>.
     pub fn new_cylinder_lin(
-        Cyl: &crate::ffi::gp_Cylinder,
-        L: &crate::ffi::gp_Lin,
+        Cyl: &crate::gp::Cylinder,
+        L: &crate::gp::Lin,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Cylinder_ctor_cylinder_lin(Cyl, L)) }
     }
@@ -1381,8 +1375,8 @@ impl Cylinder {
     /// **Source:** `ProjLib_Cylinder.hxx`:47 - `ProjLib_Cylinder::ProjLib_Cylinder()`
     /// Projection of the circle <C> on the cylinder <Cyl>.
     pub fn new_cylinder_circ(
-        Cyl: &crate::ffi::gp_Cylinder,
-        C: &crate::ffi::gp_Circ,
+        Cyl: &crate::gp::Cylinder,
+        C: &crate::gp::Circ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Cylinder_ctor_cylinder_circ(Cyl, C))
@@ -1392,8 +1386,8 @@ impl Cylinder {
     /// **Source:** `ProjLib_Cylinder.hxx`:50 - `ProjLib_Cylinder::ProjLib_Cylinder()`
     /// Projection of the ellipse <E> on the cylinder <Cyl>.
     pub fn new_cylinder_elips(
-        Cyl: &crate::ffi::gp_Cylinder,
-        E: &crate::ffi::gp_Elips,
+        Cyl: &crate::gp::Cylinder,
+        E: &crate::gp::Elips,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Cylinder_ctor_cylinder_elips(Cyl, E))
@@ -1401,32 +1395,32 @@ impl Cylinder {
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:52 - `ProjLib_Cylinder::Init()`
-    pub fn init(&mut self, Cyl: &crate::ffi::gp_Cylinder) {
+    pub fn init(&mut self, Cyl: &crate::gp::Cylinder) {
         unsafe { crate::ffi::ProjLib_Cylinder_init(self as *mut Self, Cyl) }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:54 - `ProjLib_Cylinder::Project()`
-    pub fn project_lin(&mut self, L: &crate::ffi::gp_Lin) {
+    pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         unsafe { crate::ffi::ProjLib_Cylinder_project_lin(self as *mut Self, L) }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:56 - `ProjLib_Cylinder::Project()`
-    pub fn project_circ(&mut self, C: &crate::ffi::gp_Circ) {
+    pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         unsafe { crate::ffi::ProjLib_Cylinder_project_circ(self as *mut Self, C) }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:58 - `ProjLib_Cylinder::Project()`
-    pub fn project_elips(&mut self, E: &crate::ffi::gp_Elips) {
+    pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         unsafe { crate::ffi::ProjLib_Cylinder_project_elips(self as *mut Self, E) }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:60 - `ProjLib_Cylinder::Project()`
-    pub fn project_parab(&mut self, P: &crate::ffi::gp_Parab) {
+    pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         unsafe { crate::ffi::ProjLib_Cylinder_project_parab(self as *mut Self, P) }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:62 - `ProjLib_Cylinder::Project()`
-    pub fn project_hypr(&mut self, H: &crate::ffi::gp_Hypr) {
+    pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         unsafe { crate::ffi::ProjLib_Cylinder_project_hypr(self as *mut Self, H) }
     }
 
@@ -1486,27 +1480,27 @@ impl Cylinder {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:65 - `ProjLib_Projector::Line()`
-    pub fn line(&self) -> &crate::ffi::gp_Lin2d {
+    pub fn line(&self) -> &crate::gp::Lin2d {
         unsafe { &*(crate::ffi::ProjLib_Cylinder_inherited_Line(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:67 - `ProjLib_Projector::Circle()`
-    pub fn circle(&self) -> &crate::ffi::gp_Circ2d {
+    pub fn circle(&self) -> &crate::gp::Circ2d {
         unsafe { &*(crate::ffi::ProjLib_Cylinder_inherited_Circle(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:69 - `ProjLib_Projector::Ellipse()`
-    pub fn ellipse(&self) -> &crate::ffi::gp_Elips2d {
+    pub fn ellipse(&self) -> &crate::gp::Elips2d {
         unsafe { &*(crate::ffi::ProjLib_Cylinder_inherited_Ellipse(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:71 - `ProjLib_Projector::Hyperbola()`
-    pub fn hyperbola(&self) -> &crate::ffi::gp_Hypr2d {
+    pub fn hyperbola(&self) -> &crate::gp::Hypr2d {
         unsafe { &*(crate::ffi::ProjLib_Cylinder_inherited_Hyperbola(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:73 - `ProjLib_Projector::Parabola()`
-    pub fn parabola(&self) -> &crate::ffi::gp_Parab2d {
+    pub fn parabola(&self) -> &crate::gp::Parab2d {
         unsafe { &*(crate::ffi::ProjLib_Cylinder_inherited_Parabola(self as *const Self)) }
     }
 
@@ -1684,73 +1678,67 @@ impl Plane {
 
     /// **Source:** `ProjLib_Plane.hxx`:41 - `ProjLib_Plane::ProjLib_Plane()`
     /// Projection on the plane <Pl>.
-    pub fn new_pln(Pl: &crate::ffi::gp_Pln) -> crate::OwnedPtr<Self> {
+    pub fn new_pln(Pl: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Plane_ctor_pln(Pl)) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:44 - `ProjLib_Plane::ProjLib_Plane()`
     /// Projection of the line <L> on the plane <Pl>.
-    pub fn new_pln_lin(Pl: &crate::ffi::gp_Pln, L: &crate::ffi::gp_Lin) -> crate::OwnedPtr<Self> {
+    pub fn new_pln_lin(Pl: &crate::gp::Pln, L: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Plane_ctor_pln_lin(Pl, L)) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:47 - `ProjLib_Plane::ProjLib_Plane()`
     /// Projection of the circle <C> on the plane <Pl>.
-    pub fn new_pln_circ(Pl: &crate::ffi::gp_Pln, C: &crate::ffi::gp_Circ) -> crate::OwnedPtr<Self> {
+    pub fn new_pln_circ(Pl: &crate::gp::Pln, C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Plane_ctor_pln_circ(Pl, C)) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:50 - `ProjLib_Plane::ProjLib_Plane()`
     /// Projection of the ellipse <E> on the plane <Pl>.
-    pub fn new_pln_elips(
-        Pl: &crate::ffi::gp_Pln,
-        E: &crate::ffi::gp_Elips,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pln_elips(Pl: &crate::gp::Pln, E: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Plane_ctor_pln_elips(Pl, E)) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:53 - `ProjLib_Plane::ProjLib_Plane()`
     /// Projection of the parabola <P> on the plane <Pl>.
-    pub fn new_pln_parab(
-        Pl: &crate::ffi::gp_Pln,
-        P: &crate::ffi::gp_Parab,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pln_parab(Pl: &crate::gp::Pln, P: &crate::gp::Parab) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Plane_ctor_pln_parab(Pl, P)) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:56 - `ProjLib_Plane::ProjLib_Plane()`
     /// Projection of the hyperbola <H> on the plane <Pl>.
-    pub fn new_pln_hypr(Pl: &crate::ffi::gp_Pln, H: &crate::ffi::gp_Hypr) -> crate::OwnedPtr<Self> {
+    pub fn new_pln_hypr(Pl: &crate::gp::Pln, H: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Plane_ctor_pln_hypr(Pl, H)) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:58 - `ProjLib_Plane::Init()`
-    pub fn init(&mut self, Pl: &crate::ffi::gp_Pln) {
+    pub fn init(&mut self, Pl: &crate::gp::Pln) {
         unsafe { crate::ffi::ProjLib_Plane_init(self as *mut Self, Pl) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:60 - `ProjLib_Plane::Project()`
-    pub fn project_lin(&mut self, L: &crate::ffi::gp_Lin) {
+    pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         unsafe { crate::ffi::ProjLib_Plane_project_lin(self as *mut Self, L) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:62 - `ProjLib_Plane::Project()`
-    pub fn project_circ(&mut self, C: &crate::ffi::gp_Circ) {
+    pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         unsafe { crate::ffi::ProjLib_Plane_project_circ(self as *mut Self, C) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:64 - `ProjLib_Plane::Project()`
-    pub fn project_elips(&mut self, E: &crate::ffi::gp_Elips) {
+    pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         unsafe { crate::ffi::ProjLib_Plane_project_elips(self as *mut Self, E) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:66 - `ProjLib_Plane::Project()`
-    pub fn project_parab(&mut self, P: &crate::ffi::gp_Parab) {
+    pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         unsafe { crate::ffi::ProjLib_Plane_project_parab(self as *mut Self, P) }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:68 - `ProjLib_Plane::Project()`
-    pub fn project_hypr(&mut self, H: &crate::ffi::gp_Hypr) {
+    pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         unsafe { crate::ffi::ProjLib_Plane_project_hypr(self as *mut Self, H) }
     }
 
@@ -1810,27 +1798,27 @@ impl Plane {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:65 - `ProjLib_Projector::Line()`
-    pub fn line(&self) -> &crate::ffi::gp_Lin2d {
+    pub fn line(&self) -> &crate::gp::Lin2d {
         unsafe { &*(crate::ffi::ProjLib_Plane_inherited_Line(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:67 - `ProjLib_Projector::Circle()`
-    pub fn circle(&self) -> &crate::ffi::gp_Circ2d {
+    pub fn circle(&self) -> &crate::gp::Circ2d {
         unsafe { &*(crate::ffi::ProjLib_Plane_inherited_Circle(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:69 - `ProjLib_Projector::Ellipse()`
-    pub fn ellipse(&self) -> &crate::ffi::gp_Elips2d {
+    pub fn ellipse(&self) -> &crate::gp::Elips2d {
         unsafe { &*(crate::ffi::ProjLib_Plane_inherited_Ellipse(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:71 - `ProjLib_Projector::Hyperbola()`
-    pub fn hyperbola(&self) -> &crate::ffi::gp_Hypr2d {
+    pub fn hyperbola(&self) -> &crate::gp::Hypr2d {
         unsafe { &*(crate::ffi::ProjLib_Plane_inherited_Hyperbola(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:73 - `ProjLib_Projector::Parabola()`
-    pub fn parabola(&self) -> &crate::ffi::gp_Parab2d {
+    pub fn parabola(&self) -> &crate::gp::Parab2d {
         unsafe { &*(crate::ffi::ProjLib_Plane_inherited_Parabola(self as *const Self)) }
     }
 
@@ -1907,7 +1895,7 @@ impl PrjFunc {
 
     /// **Source:** `ProjLib_PrjFunc.hxx`:64 - `ProjLib_PrjFunc::Solution()`
     /// returns  point  on  surface
-    pub fn solution(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn solution(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_PrjFunc_solution(self as *const Self))
         }
@@ -1965,8 +1953,8 @@ unsafe impl crate::CppDeletable for PrjResolve {
 impl PrjResolve {
     /// **Source:** `ProjLib_PrjResolve.hxx`:33 - `ProjLib_PrjResolve::ProjLib_PrjResolve()`
     pub fn new_curve_surface_int(
-        C: &crate::ffi::Adaptor3d_Curve,
-        S: &crate::ffi::Adaptor3d_Surface,
+        C: &crate::adaptor3d::Curve,
+        S: &crate::adaptor3d::Surface,
         Fix: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1986,9 +1974,9 @@ impl PrjResolve {
         t: f64,
         U: f64,
         V: f64,
-        Tol: &crate::ffi::gp_Pnt2d,
-        Inf: &crate::ffi::gp_Pnt2d,
-        Sup: &crate::ffi::gp_Pnt2d,
+        Tol: &crate::gp::Pnt2d,
+        Inf: &crate::gp::Pnt2d,
+        Sup: &crate::gp::Pnt2d,
         FTol: f64,
         StrictInside: bool,
     ) {
@@ -2015,7 +2003,7 @@ impl PrjResolve {
 
     /// **Source:** `ProjLib_PrjResolve.hxx`:54 - `ProjLib_PrjResolve::Solution()`
     /// Returns the point of the extremum distance.
-    pub fn solution(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn solution(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_PrjResolve_solution(self as *const Self))
         }
@@ -2053,7 +2041,7 @@ impl ProjectOnPlane {
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:57 - `ProjLib_ProjectOnPlane::ProjLib_ProjectOnPlane()`
     /// The projection will be normal to the Plane defined
     /// by the Ax3 <Pl>.
-    pub fn new_ax3(Pl: &crate::ffi::gp_Ax3) -> crate::OwnedPtr<Self> {
+    pub fn new_ax3(Pl: &crate::gp::Ax3) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_ctor_ax3(Pl)) }
     }
 
@@ -2062,7 +2050,7 @@ impl ProjectOnPlane {
     /// the plane defined by the Ax3 <Pl>.
     /// raises  if the direction  <D>  is parallel  to the
     /// plane <Pl>.
-    pub fn new_ax3_dir(Pl: &crate::ffi::gp_Ax3, D: &crate::ffi::gp_Dir) -> crate::OwnedPtr<Self> {
+    pub fn new_ax3_dir(Pl: &crate::gp::Ax3, D: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_ctor_ax3_dir(Pl, D)) }
     }
 
@@ -2100,12 +2088,12 @@ impl ProjectOnPlane {
     }
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:78 - `ProjLib_ProjectOnPlane::GetPlane()`
-    pub fn get_plane(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn get_plane(&self) -> &crate::gp::Ax3 {
         unsafe { &*(crate::ffi::ProjLib_ProjectOnPlane_get_plane(self as *const Self)) }
     }
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:80 - `ProjLib_ProjectOnPlane::GetDirection()`
-    pub fn get_direction(&self) -> &crate::ffi::gp_Dir {
+    pub fn get_direction(&self) -> &crate::gp::Dir {
         unsafe { &*(crate::ffi::ProjLib_ProjectOnPlane_get_direction(self as *const Self)) }
     }
 
@@ -2189,7 +2177,7 @@ impl ProjectOnPlane {
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:119 - `ProjLib_ProjectOnPlane::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_value(
                 self as *const Self,
@@ -2200,7 +2188,7 @@ impl ProjectOnPlane {
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:122 - `ProjLib_ProjectOnPlane::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_d0(self as *const Self, U, P) }
     }
 
@@ -2209,7 +2197,7 @@ impl ProjectOnPlane {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt, V: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_d1(self as *const Self, U, P, V) }
     }
 
@@ -2221,9 +2209,9 @@ impl ProjectOnPlane {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -2236,10 +2224,10 @@ impl ProjectOnPlane {
     pub fn d3(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -2250,7 +2238,7 @@ impl ProjectOnPlane {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_dn(
                 self as *const Self,
@@ -2281,14 +2269,14 @@ impl ProjectOnPlane {
     }
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:166 - `ProjLib_ProjectOnPlane::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_line(self as *const Self))
         }
     }
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:168 - `ProjLib_ProjectOnPlane::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_circle(
                 self as *const Self,
@@ -2297,7 +2285,7 @@ impl ProjectOnPlane {
     }
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:170 - `ProjLib_ProjectOnPlane::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_ellipse(
                 self as *const Self,
@@ -2306,7 +2294,7 @@ impl ProjectOnPlane {
     }
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:172 - `ProjLib_ProjectOnPlane::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_hyperbola(
                 self as *const Self,
@@ -2315,7 +2303,7 @@ impl ProjectOnPlane {
     }
 
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:174 - `ProjLib_ProjectOnPlane::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_parabola(
                 self as *const Self,
@@ -2714,7 +2702,7 @@ impl ProjectedCurve {
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:151 - `ProjLib_ProjectedCurve::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectedCurve_value(
                 self as *const Self,
@@ -2725,7 +2713,7 @@ impl ProjectedCurve {
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:154 - `ProjLib_ProjectedCurve::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         unsafe { crate::ffi::ProjLib_ProjectedCurve_d0(self as *const Self, U, P) }
     }
 
@@ -2734,7 +2722,7 @@ impl ProjectedCurve {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::ffi::gp_Pnt2d, V: &mut crate::ffi::gp_Vec2d) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         unsafe { crate::ffi::ProjLib_ProjectedCurve_d1(self as *const Self, U, P, V) }
     }
 
@@ -2746,9 +2734,9 @@ impl ProjectedCurve {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::ProjLib_ProjectedCurve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -2761,10 +2749,10 @@ impl ProjectedCurve {
     pub fn d3(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
-        V3: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::ProjLib_ProjectedCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -2775,7 +2763,7 @@ impl ProjectedCurve {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec2d> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectedCurve_dn(
                 self as *const Self,
@@ -2806,14 +2794,14 @@ impl ProjectedCurve {
     }
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:198 - `ProjLib_ProjectedCurve::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectedCurve_line(self as *const Self))
         }
     }
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:200 - `ProjLib_ProjectedCurve::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectedCurve_circle(
                 self as *const Self,
@@ -2822,7 +2810,7 @@ impl ProjectedCurve {
     }
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:202 - `ProjLib_ProjectedCurve::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips2d> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectedCurve_ellipse(
                 self as *const Self,
@@ -2831,7 +2819,7 @@ impl ProjectedCurve {
     }
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:204 - `ProjLib_ProjectedCurve::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr2d> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectedCurve_hyperbola(
                 self as *const Self,
@@ -2840,7 +2828,7 @@ impl ProjectedCurve {
     }
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:206 - `ProjLib_ProjectedCurve::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab2d> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectedCurve_parabola(
                 self as *const Self,
@@ -2994,27 +2982,27 @@ impl Projector {
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:65 - `ProjLib_Projector::Line()`
-    pub fn line(&self) -> &crate::ffi::gp_Lin2d {
+    pub fn line(&self) -> &crate::gp::Lin2d {
         unsafe { &*(crate::ffi::ProjLib_Projector_line(self as *const Self)) }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:67 - `ProjLib_Projector::Circle()`
-    pub fn circle(&self) -> &crate::ffi::gp_Circ2d {
+    pub fn circle(&self) -> &crate::gp::Circ2d {
         unsafe { &*(crate::ffi::ProjLib_Projector_circle(self as *const Self)) }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:69 - `ProjLib_Projector::Ellipse()`
-    pub fn ellipse(&self) -> &crate::ffi::gp_Elips2d {
+    pub fn ellipse(&self) -> &crate::gp::Elips2d {
         unsafe { &*(crate::ffi::ProjLib_Projector_ellipse(self as *const Self)) }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:71 - `ProjLib_Projector::Hyperbola()`
-    pub fn hyperbola(&self) -> &crate::ffi::gp_Hypr2d {
+    pub fn hyperbola(&self) -> &crate::gp::Hypr2d {
         unsafe { &*(crate::ffi::ProjLib_Projector_hyperbola(self as *const Self)) }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:73 - `ProjLib_Projector::Parabola()`
-    pub fn parabola(&self) -> &crate::ffi::gp_Parab2d {
+    pub fn parabola(&self) -> &crate::gp::Parab2d {
         unsafe { &*(crate::ffi::ProjLib_Projector_parabola(self as *const Self)) }
     }
 
@@ -3033,27 +3021,27 @@ impl Projector {
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:79 - `ProjLib_Projector::Project()`
-    pub fn project_lin(&mut self, L: &crate::ffi::gp_Lin) {
+    pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         unsafe { crate::ffi::ProjLib_Projector_project_lin(self as *mut Self, L) }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:81 - `ProjLib_Projector::Project()`
-    pub fn project_circ(&mut self, C: &crate::ffi::gp_Circ) {
+    pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         unsafe { crate::ffi::ProjLib_Projector_project_circ(self as *mut Self, C) }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:83 - `ProjLib_Projector::Project()`
-    pub fn project_elips(&mut self, E: &crate::ffi::gp_Elips) {
+    pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         unsafe { crate::ffi::ProjLib_Projector_project_elips(self as *mut Self, E) }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:85 - `ProjLib_Projector::Project()`
-    pub fn project_parab(&mut self, P: &crate::ffi::gp_Parab) {
+    pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         unsafe { crate::ffi::ProjLib_Projector_project_parab(self as *mut Self, P) }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:87 - `ProjLib_Projector::Project()`
-    pub fn project_hypr(&mut self, H: &crate::ffi::gp_Hypr) {
+    pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         unsafe { crate::ffi::ProjLib_Projector_project_hypr(self as *mut Self, H) }
     }
 
@@ -3101,46 +3089,43 @@ impl Sphere {
 
     /// **Source:** `ProjLib_Sphere.hxx`:41 - `ProjLib_Sphere::ProjLib_Sphere()`
     /// Projection on the sphere <Sp>.
-    pub fn new_sphere(Sp: &crate::ffi::gp_Sphere) -> crate::OwnedPtr<Self> {
+    pub fn new_sphere(Sp: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Sphere_ctor_sphere(Sp)) }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:44 - `ProjLib_Sphere::ProjLib_Sphere()`
     /// Projection of the circle <C> on the sphere <Sp>.
-    pub fn new_sphere_circ(
-        Sp: &crate::ffi::gp_Sphere,
-        C: &crate::ffi::gp_Circ,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_sphere_circ(Sp: &crate::gp::Sphere, C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Sphere_ctor_sphere_circ(Sp, C)) }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:46 - `ProjLib_Sphere::Init()`
-    pub fn init(&mut self, Sp: &crate::ffi::gp_Sphere) {
+    pub fn init(&mut self, Sp: &crate::gp::Sphere) {
         unsafe { crate::ffi::ProjLib_Sphere_init(self as *mut Self, Sp) }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:48 - `ProjLib_Sphere::Project()`
-    pub fn project_lin(&mut self, L: &crate::ffi::gp_Lin) {
+    pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         unsafe { crate::ffi::ProjLib_Sphere_project_lin(self as *mut Self, L) }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:50 - `ProjLib_Sphere::Project()`
-    pub fn project_circ(&mut self, C: &crate::ffi::gp_Circ) {
+    pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         unsafe { crate::ffi::ProjLib_Sphere_project_circ(self as *mut Self, C) }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:52 - `ProjLib_Sphere::Project()`
-    pub fn project_elips(&mut self, E: &crate::ffi::gp_Elips) {
+    pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         unsafe { crate::ffi::ProjLib_Sphere_project_elips(self as *mut Self, E) }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:54 - `ProjLib_Sphere::Project()`
-    pub fn project_parab(&mut self, P: &crate::ffi::gp_Parab) {
+    pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         unsafe { crate::ffi::ProjLib_Sphere_project_parab(self as *mut Self, P) }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:56 - `ProjLib_Sphere::Project()`
-    pub fn project_hypr(&mut self, H: &crate::ffi::gp_Hypr) {
+    pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         unsafe { crate::ffi::ProjLib_Sphere_project_hypr(self as *mut Self, H) }
     }
 
@@ -3207,27 +3192,27 @@ impl Sphere {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:65 - `ProjLib_Projector::Line()`
-    pub fn line(&self) -> &crate::ffi::gp_Lin2d {
+    pub fn line(&self) -> &crate::gp::Lin2d {
         unsafe { &*(crate::ffi::ProjLib_Sphere_inherited_Line(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:67 - `ProjLib_Projector::Circle()`
-    pub fn circle(&self) -> &crate::ffi::gp_Circ2d {
+    pub fn circle(&self) -> &crate::gp::Circ2d {
         unsafe { &*(crate::ffi::ProjLib_Sphere_inherited_Circle(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:69 - `ProjLib_Projector::Ellipse()`
-    pub fn ellipse(&self) -> &crate::ffi::gp_Elips2d {
+    pub fn ellipse(&self) -> &crate::gp::Elips2d {
         unsafe { &*(crate::ffi::ProjLib_Sphere_inherited_Ellipse(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:71 - `ProjLib_Projector::Hyperbola()`
-    pub fn hyperbola(&self) -> &crate::ffi::gp_Hypr2d {
+    pub fn hyperbola(&self) -> &crate::gp::Hypr2d {
         unsafe { &*(crate::ffi::ProjLib_Sphere_inherited_Hyperbola(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:73 - `ProjLib_Projector::Parabola()`
-    pub fn parabola(&self) -> &crate::ffi::gp_Parab2d {
+    pub fn parabola(&self) -> &crate::gp::Parab2d {
         unsafe { &*(crate::ffi::ProjLib_Sphere_inherited_Parabola(self as *const Self)) }
     }
 
@@ -3299,46 +3284,43 @@ impl Torus {
 
     /// **Source:** `ProjLib_Torus.hxx`:41 - `ProjLib_Torus::ProjLib_Torus()`
     /// Projection on the torus <To>.
-    pub fn new_torus(To: &crate::ffi::gp_Torus) -> crate::OwnedPtr<Self> {
+    pub fn new_torus(To: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Torus_ctor_torus(To)) }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:44 - `ProjLib_Torus::ProjLib_Torus()`
     /// Projection of the circle <C> on the torus <To>.
-    pub fn new_torus_circ(
-        To: &crate::ffi::gp_Torus,
-        C: &crate::ffi::gp_Circ,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_torus_circ(To: &crate::gp::Torus, C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_Torus_ctor_torus_circ(To, C)) }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:46 - `ProjLib_Torus::Init()`
-    pub fn init(&mut self, To: &crate::ffi::gp_Torus) {
+    pub fn init(&mut self, To: &crate::gp::Torus) {
         unsafe { crate::ffi::ProjLib_Torus_init(self as *mut Self, To) }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:48 - `ProjLib_Torus::Project()`
-    pub fn project_lin(&mut self, L: &crate::ffi::gp_Lin) {
+    pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         unsafe { crate::ffi::ProjLib_Torus_project_lin(self as *mut Self, L) }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:50 - `ProjLib_Torus::Project()`
-    pub fn project_circ(&mut self, C: &crate::ffi::gp_Circ) {
+    pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         unsafe { crate::ffi::ProjLib_Torus_project_circ(self as *mut Self, C) }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:52 - `ProjLib_Torus::Project()`
-    pub fn project_elips(&mut self, E: &crate::ffi::gp_Elips) {
+    pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         unsafe { crate::ffi::ProjLib_Torus_project_elips(self as *mut Self, E) }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:54 - `ProjLib_Torus::Project()`
-    pub fn project_parab(&mut self, P: &crate::ffi::gp_Parab) {
+    pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         unsafe { crate::ffi::ProjLib_Torus_project_parab(self as *mut Self, P) }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:56 - `ProjLib_Torus::Project()`
-    pub fn project_hypr(&mut self, H: &crate::ffi::gp_Hypr) {
+    pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         unsafe { crate::ffi::ProjLib_Torus_project_hypr(self as *mut Self, H) }
     }
 
@@ -3398,27 +3380,27 @@ impl Torus {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:65 - `ProjLib_Projector::Line()`
-    pub fn line(&self) -> &crate::ffi::gp_Lin2d {
+    pub fn line(&self) -> &crate::gp::Lin2d {
         unsafe { &*(crate::ffi::ProjLib_Torus_inherited_Line(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:67 - `ProjLib_Projector::Circle()`
-    pub fn circle(&self) -> &crate::ffi::gp_Circ2d {
+    pub fn circle(&self) -> &crate::gp::Circ2d {
         unsafe { &*(crate::ffi::ProjLib_Torus_inherited_Circle(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:69 - `ProjLib_Projector::Ellipse()`
-    pub fn ellipse(&self) -> &crate::ffi::gp_Elips2d {
+    pub fn ellipse(&self) -> &crate::gp::Elips2d {
         unsafe { &*(crate::ffi::ProjLib_Torus_inherited_Ellipse(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:71 - `ProjLib_Projector::Hyperbola()`
-    pub fn hyperbola(&self) -> &crate::ffi::gp_Hypr2d {
+    pub fn hyperbola(&self) -> &crate::gp::Hypr2d {
         unsafe { &*(crate::ffi::ProjLib_Torus_inherited_Hyperbola(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:73 - `ProjLib_Projector::Parabola()`
-    pub fn parabola(&self) -> &crate::ffi::gp_Parab2d {
+    pub fn parabola(&self) -> &crate::gp::Parab2d {
         unsafe { &*(crate::ffi::ProjLib_Torus_inherited_Parabola(self as *const Self)) }
     }
 

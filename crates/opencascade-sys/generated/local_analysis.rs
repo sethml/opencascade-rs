@@ -2156,8 +2156,8 @@ impl SurfaceContinuity {
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:159 - `LocalAnalysis_SurfaceContinuity::ComputeAnalysis()`
     pub fn compute_analysis(
         &mut self,
-        Surf1: &mut crate::ffi::GeomLProp_SLProps,
-        Surf2: &mut crate::ffi::GeomLProp_SLProps,
+        Surf1: &mut crate::geom_l_prop::SLProps,
+        Surf2: &mut crate::geom_l_prop::SLProps,
         Order: crate::geom_abs::Shape,
     ) {
         unsafe {

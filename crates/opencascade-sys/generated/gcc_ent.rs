@@ -35,9 +35,7 @@ pub fn position_from_string(thePositionString: &str) -> crate::gcc_ent::Position
 /// so that the relative position to the circle or line of the
 /// solution computed by a construction algorithm using the
 /// qualified circle or line is not qualified, i.e. all solutions apply.
-pub fn unqualified_lin2d(
-    Obj: &crate::ffi::gp_Lin2d,
-) -> crate::OwnedPtr<crate::ffi::GccEnt_QualifiedLin> {
+pub fn unqualified_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccEnt_unqualified_lin2d(Obj)) }
 }
 /// **Source:** `GccEnt.hxx`:92 - `GccEnt::Unqualified`
@@ -45,18 +43,14 @@ pub fn unqualified_lin2d(
 /// so that the relative position to the circle or line of the
 /// solution computed by a construction algorithm using the
 /// qualified circle or line is not qualified, i.e. all solutions apply.
-pub fn unqualified_circ2d(
-    Obj: &crate::ffi::gp_Circ2d,
-) -> crate::OwnedPtr<crate::ffi::GccEnt_QualifiedCirc> {
+pub fn unqualified_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccEnt_unqualified_circ2d(Obj)) }
 }
 /// **Source:** `GccEnt.hxx`:97 - `GccEnt::Enclosing`
 /// Constructs such a qualified circle that the solution
 /// computed by a construction algorithm using the qualified
 /// circle encloses the circle.
-pub fn enclosing_circ2d(
-    Obj: &crate::ffi::gp_Circ2d,
-) -> crate::OwnedPtr<crate::ffi::GccEnt_QualifiedCirc> {
+pub fn enclosing_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccEnt_enclosing_circ2d(Obj)) }
 }
 /// **Source:** `GccEnt.hxx`:103 - `GccEnt::Enclosed`
@@ -64,9 +58,7 @@ pub fn enclosing_circ2d(
 /// so that the solution computed by a construction
 /// algorithm using the qualified circle or line is enclosed by
 /// the circle or line.
-pub fn enclosed_lin2d(
-    Obj: &crate::ffi::gp_Lin2d,
-) -> crate::OwnedPtr<crate::ffi::GccEnt_QualifiedLin> {
+pub fn enclosed_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccEnt_enclosed_lin2d(Obj)) }
 }
 /// **Source:** `GccEnt.hxx`:109 - `GccEnt::Enclosed`
@@ -74,9 +66,7 @@ pub fn enclosed_lin2d(
 /// so that the solution computed by a construction
 /// algorithm using the qualified circle or line is enclosed by
 /// the circle or line.
-pub fn enclosed_circ2d(
-    Obj: &crate::ffi::gp_Circ2d,
-) -> crate::OwnedPtr<crate::ffi::GccEnt_QualifiedCirc> {
+pub fn enclosed_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccEnt_enclosed_circ2d(Obj)) }
 }
 /// **Source:** `GccEnt.hxx`:115 - `GccEnt::Outside`
@@ -84,9 +74,7 @@ pub fn enclosed_circ2d(
 /// so that the solution computed by a construction
 /// algorithm using the qualified circle or line and the circle
 /// or line are external to one another.
-pub fn outside_lin2d(
-    Obj: &crate::ffi::gp_Lin2d,
-) -> crate::OwnedPtr<crate::ffi::GccEnt_QualifiedLin> {
+pub fn outside_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccEnt_outside_lin2d(Obj)) }
 }
 /// **Source:** `GccEnt.hxx`:121 - `GccEnt::Outside`
@@ -94,9 +82,7 @@ pub fn outside_lin2d(
 /// so that the solution computed by a construction
 /// algorithm using the qualified circle or line and the circle
 /// or line are external to one another.
-pub fn outside_circ2d(
-    Obj: &crate::ffi::gp_Circ2d,
-) -> crate::OwnedPtr<crate::ffi::GccEnt_QualifiedCirc> {
+pub fn outside_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccEnt_outside_circ2d(Obj)) }
 }
 
@@ -246,7 +232,7 @@ impl QualifiedCirc {
     /// are external to one another, or
     /// -   GccEnt_unqualified if all solutions apply.
     pub fn new_circ2d_position(
-        Qualified: &crate::ffi::gp_Circ2d,
+        Qualified: &crate::gp::Circ2d,
         Qualifier: crate::gcc_ent::Position,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -259,7 +245,7 @@ impl QualifiedCirc {
 
     /// **Source:** `GccEnt_QualifiedCirc.hxx`:53 - `GccEnt_QualifiedCirc::Qualified()`
     /// Returns a 2D circle to which the qualifier is assigned.
-    pub fn qualified(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn qualified(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccEnt_QualifiedCirc_qualified(
                 self as *const Self,
@@ -345,7 +331,7 @@ impl QualifiedLin {
     /// Note : the interior of a line is defined as the left-hand
     /// side of the line in relation to its orientation.
     pub fn new_lin2d_position(
-        Qualified: &crate::ffi::gp_Lin2d,
+        Qualified: &crate::gp::Lin2d,
         Qualifier: crate::gcc_ent::Position,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -358,7 +344,7 @@ impl QualifiedLin {
 
     /// **Source:** `GccEnt_QualifiedLin.hxx`:54 - `GccEnt_QualifiedLin::Qualified()`
     /// Returns a 2D line to which the qualifier is assigned.
-    pub fn qualified(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn qualified(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccEnt_QualifiedLin_qualified(
                 self as *const Self,

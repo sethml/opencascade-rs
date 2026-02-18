@@ -9,35 +9,35 @@
 /// **Source:** `TDF.hxx`:44 - `TDF::LowestID`
 /// Returns ID "00000000-0000-0000-0000-000000000000",
 /// sometimes used as null ID.
-pub fn lowest_id() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn lowest_id() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_lowest_id()) }
 }
 /// **Source:** `TDF.hxx`:47 - `TDF::UppestID`
 /// Returns ID "ffffffff-ffff-ffff-ffff-ffffffffffff".
-pub fn uppest_id() -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+pub fn uppest_id() -> crate::OwnedPtr<crate::standard::GUID> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_uppest_id()) }
 }
 /// **Source:** `TDF.hxx`:50 - `TDF::AddLinkGUIDToProgID`
 /// Sets link between GUID and ProgID in hidden DataMap
 pub fn add_link_guid_to_prog_id(
-    ID: &crate::ffi::Standard_GUID,
-    ProgID: &crate::ffi::TCollection_ExtendedString,
+    ID: &crate::standard::GUID,
+    ProgID: &crate::t_collection::ExtendedString,
 ) {
     unsafe { crate::ffi::TDF_add_link_guid_to_prog_id(ID, ProgID) }
 }
 /// **Source:** `TDF.hxx`:54 - `TDF::GUIDFromProgID`
 /// Returns True if there is GUID for given <ProgID> then GUID is returned in <ID>
 pub fn guid_from_prog_id(
-    ProgID: &crate::ffi::TCollection_ExtendedString,
-    ID: &mut crate::ffi::Standard_GUID,
+    ProgID: &crate::t_collection::ExtendedString,
+    ID: &mut crate::standard::GUID,
 ) -> bool {
     unsafe { crate::ffi::TDF_guid_from_prog_id(ProgID, ID) }
 }
 /// **Source:** `TDF.hxx`:58 - `TDF::ProgIDFromGUID`
 /// Returns True if there is ProgID for given <ID> then ProgID is returned in <ProgID>
 pub fn prog_id_from_guid(
-    ID: &crate::ffi::Standard_GUID,
-    ProgID: &mut crate::ffi::TCollection_ExtendedString,
+    ID: &crate::standard::GUID,
+    ProgID: &mut crate::t_collection::ExtendedString,
 ) -> bool {
     unsafe { crate::ffi::TDF_prog_id_from_guid(ID, ProgID) }
 }
@@ -145,14 +145,14 @@ unsafe impl crate::CppDeletable for Attribute {
 impl Attribute {
     /// **Source:** `TDF_Attribute.hxx`:134 - `TDF_Attribute::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDF_Attribute_id(self as *const Self)) }
     }
 
     /// **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     /// Sets specific ID of the attribute (supports several attributes
     /// of one type at the same label feature).
-    pub fn set_id_guid(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id_guid(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDF_Attribute_set_id_guid(self as *mut Self, arg0) }
     }
 
@@ -170,7 +170,7 @@ impl Attribute {
     /// If the label is not included in a data
     /// framework, it is null.
     /// This function should not be redefined inline.
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Attribute_label(self as *const Self)) }
     }
 
@@ -216,7 +216,7 @@ impl Attribute {
     /// **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     /// Returns true if it  exists an associated attribute
     /// of <me> with <anID> as ID.
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_Attribute_is_attribute(self as *const Self, anID) }
     }
 
@@ -228,7 +228,7 @@ impl Attribute {
     /// this  method.
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe { crate::ffi::TDF_Attribute_find_attribute(self as *const Self, anID, anAttribute) }
@@ -248,7 +248,7 @@ impl Attribute {
     /// the attribute of <guid>, <me> will have a null label
     /// after this call.  If  the attribute doesn't  exist
     /// returns False. Otherwise returns True.
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_Attribute_forget_attribute(self as *const Self, aguid) }
     }
 
@@ -518,7 +518,7 @@ impl AttributeDelta {
 
     /// **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     /// Returns the label concerned by <me>.
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_AttributeDelta_label(self as *const Self))
         }
@@ -534,7 +534,7 @@ impl AttributeDelta {
 
     /// **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
     /// Returns the ID of the attribute concerned by <me>.
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_AttributeDelta_id(self as *const Self)) }
     }
 
@@ -598,10 +598,7 @@ impl AttributeIterator {
     }
 
     /// **Source:** `TDF_AttributeIterator.hxx`:50 - `TDF_AttributeIterator::TDF_AttributeIterator()`
-    pub fn new_label_bool(
-        aLabel: &crate::ffi::TDF_Label,
-        withoutForgotten: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_label_bool(aLabel: &Label, withoutForgotten: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_AttributeIterator_ctor_label_bool(
                 aLabel,
@@ -611,12 +608,12 @@ impl AttributeIterator {
     }
 
     /// **Source:** `TDF_AttributeIterator.hxx`:50 - `TDF_AttributeIterator::TDF_AttributeIterator()`
-    pub fn new_label(aLabel: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+    pub fn new_label(aLabel: &Label) -> crate::OwnedPtr<Self> {
         Self::new_label_bool(aLabel, true)
     }
 
     /// **Source:** `TDF_AttributeIterator.hxx`:54 - `TDF_AttributeIterator::Initialize()`
-    pub fn initialize(&mut self, aLabel: &crate::ffi::TDF_Label, withoutForgotten: bool) {
+    pub fn initialize(&mut self, aLabel: &Label, withoutForgotten: bool) {
         unsafe {
             crate::ffi::TDF_AttributeIterator_initialize(
                 self as *mut Self,
@@ -673,8 +670,8 @@ impl ChildIDIterator {
     /// <allLevels> option is set to true, it explores not
     /// only the first, but all the sub label levels.
     pub fn new_label_guid_bool(
-        aLabel: &crate::ffi::TDF_Label,
-        anID: &crate::ffi::Standard_GUID,
+        aLabel: &Label,
+        anID: &crate::standard::GUID,
         allLevels: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -688,10 +685,7 @@ impl ChildIDIterator {
     /// Iterates on the children of the given label. If
     /// <allLevels> option is set to true, it explores not
     /// only the first, but all the sub label levels.
-    pub fn new_label_guid(
-        aLabel: &crate::ffi::TDF_Label,
-        anID: &crate::ffi::Standard_GUID,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_label_guid(aLabel: &Label, anID: &crate::standard::GUID) -> crate::OwnedPtr<Self> {
         Self::new_label_guid_bool(aLabel, anID, false)
     }
 
@@ -700,12 +694,7 @@ impl ChildIDIterator {
     /// given label. If <allLevels> option is set to true,
     /// it explores not only the first, but all the sub
     /// label levels.
-    pub fn initialize(
-        &mut self,
-        aLabel: &crate::ffi::TDF_Label,
-        anID: &crate::ffi::Standard_GUID,
-        allLevels: bool,
-    ) {
+    pub fn initialize(&mut self, aLabel: &Label, anID: &crate::standard::GUID, allLevels: bool) {
         unsafe {
             crate::ffi::TDF_ChildIDIterator_initialize(self as *mut Self, aLabel, anID, allLevels)
         }
@@ -772,10 +761,7 @@ impl ChildIterator {
     /// the label aLabel.  Iterates on the children of the given label. If
     /// <allLevels> option is set to true, it explores not
     /// only the first, but all the sub label levels.
-    pub fn new_label_bool(
-        aLabel: &crate::ffi::TDF_Label,
-        allLevels: bool,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_label_bool(aLabel: &Label, allLevels: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_ChildIterator_ctor_label_bool(
                 aLabel, allLevels,
@@ -788,7 +774,7 @@ impl ChildIterator {
     /// the label aLabel.  Iterates on the children of the given label. If
     /// <allLevels> option is set to true, it explores not
     /// only the first, but all the sub label levels.
-    pub fn new_label(aLabel: &crate::ffi::TDF_Label) -> crate::OwnedPtr<Self> {
+    pub fn new_label(aLabel: &Label) -> crate::OwnedPtr<Self> {
         Self::new_label_bool(aLabel, false)
     }
 
@@ -816,7 +802,7 @@ impl ChildIterator {
     /// std::cout << as.ToCString() << std::endl;
     /// }
     /// }
-    pub fn initialize(&mut self, aLabel: &crate::ffi::TDF_Label, allLevels: bool) {
+    pub fn initialize(&mut self, aLabel: &Label, allLevels: bool) {
         unsafe { crate::ffi::TDF_ChildIterator_initialize(self as *mut Self, aLabel, allLevels) }
     }
 
@@ -851,7 +837,7 @@ impl ChildIterator {
     /// **Source:** `TDF_ChildIterator.hxx`:94 - `TDF_ChildIterator::Value()`
     /// Returns the current label; or, if there is
     /// none, a null label.
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn value(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_ChildIterator_value(self as *const Self))
         }
@@ -963,8 +949,8 @@ impl ClosureTool {
     /// closing.
     pub fn closure_handletdfdataset_idfilter_closuremode(
         aDataSet: &crate::ffi::HandleTDFDataSet,
-        aFilter: &crate::ffi::TDF_IDFilter,
-        aMode: &crate::ffi::TDF_ClosureMode,
+        aFilter: &IDFilter,
+        aMode: &ClosureMode,
     ) {
         unsafe {
             crate::ffi::TDF_ClosureTool_closure_handletdfdataset_idfilter_closuremode(
@@ -1018,7 +1004,7 @@ impl ComparisonTool {
     pub fn compare(
         aSourceDataSet: &crate::ffi::HandleTDFDataSet,
         aTargetDataSet: &crate::ffi::HandleTDFDataSet,
-        aFilter: &crate::ffi::TDF_IDFilter,
+        aFilter: &IDFilter,
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         unsafe {
@@ -1045,7 +1031,7 @@ impl ComparisonTool {
     pub fn source_unbound(
         aRefDataSet: &crate::ffi::HandleTDFDataSet,
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-        aFilter: &crate::ffi::TDF_IDFilter,
+        aFilter: &IDFilter,
         aDiffDataSet: &crate::ffi::HandleTDFDataSet,
         anOption: i32,
     ) -> bool {
@@ -1074,7 +1060,7 @@ impl ComparisonTool {
     pub fn target_unbound(
         aRefDataSet: &crate::ffi::HandleTDFDataSet,
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-        aFilter: &crate::ffi::TDF_IDFilter,
+        aFilter: &IDFilter,
         aDiffDataSet: &crate::ffi::HandleTDFDataSet,
         anOption: i32,
     ) -> bool {
@@ -1098,10 +1084,7 @@ impl ComparisonTool {
     /// **Source:** `TDF_ComparisonTool.hxx`:98 - `TDF_ComparisonTool::IsSelfContained()`
     /// Returns true if all the labels of <aDataSet> are
     /// descendant of <aLabel>.
-    pub fn is_self_contained(
-        aLabel: &crate::ffi::TDF_Label,
-        aDataSet: &crate::ffi::HandleTDFDataSet,
-    ) -> bool {
+    pub fn is_self_contained(aLabel: &Label, aDataSet: &crate::ffi::HandleTDFDataSet) -> bool {
         unsafe { crate::ffi::TDF_ComparisonTool_is_self_contained(aLabel, aDataSet) }
     }
 }
@@ -1129,10 +1112,7 @@ impl CopyLabel {
 
     /// **Source:** `TDF_CopyLabel.hxx`:40 - `TDF_CopyLabel::TDF_CopyLabel()`
     /// CopyTool
-    pub fn new_label2(
-        aSource: &crate::ffi::TDF_Label,
-        aTarget: &crate::ffi::TDF_Label,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_label2(aSource: &Label, aTarget: &Label) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_CopyLabel_ctor_label2(aSource, aTarget))
         }
@@ -1140,13 +1120,13 @@ impl CopyLabel {
 
     /// **Source:** `TDF_CopyLabel.hxx`:43 - `TDF_CopyLabel::Load()`
     /// Loads  src  and  tgt  labels
-    pub fn load(&mut self, aSource: &crate::ffi::TDF_Label, aTarget: &crate::ffi::TDF_Label) {
+    pub fn load(&mut self, aSource: &Label, aTarget: &Label) {
         unsafe { crate::ffi::TDF_CopyLabel_load(self as *mut Self, aSource, aTarget) }
     }
 
     /// **Source:** `TDF_CopyLabel.hxx`:46 - `TDF_CopyLabel::UseFilter()`
     /// Sets  filter
-    pub fn use_filter(&mut self, aFilter: &crate::ffi::TDF_IDFilter) {
+    pub fn use_filter(&mut self, aFilter: &IDFilter) {
         unsafe { crate::ffi::TDF_CopyLabel_use_filter(self as *mut Self, aFilter) }
     }
 
@@ -1247,7 +1227,7 @@ impl CopyTool {
     pub fn copy_handletdfdataset_handletdfrelocationtable_idfilter(
         aSourceDataSet: &crate::ffi::HandleTDFDataSet,
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-        aPrivilegeFilter: &crate::ffi::TDF_IDFilter,
+        aPrivilegeFilter: &IDFilter,
     ) {
         unsafe {
             crate::ffi::TDF_CopyTool_copy_handletdfdataset_handletdfrelocationtable_idfilter(
@@ -1273,8 +1253,8 @@ impl CopyTool {
     pub fn copy_handletdfdataset_handletdfrelocationtable_idfilter2_bool(
         aSourceDataSet: &crate::ffi::HandleTDFDataSet,
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
-        aPrivilegeFilter: &crate::ffi::TDF_IDFilter,
-        aRefFilter: &crate::ffi::TDF_IDFilter,
+        aPrivilegeFilter: &IDFilter,
+        aRefFilter: &IDFilter,
         setSelfContained: bool,
     ) {
         unsafe {
@@ -1322,7 +1302,7 @@ impl Data {
 
     /// **Source:** `TDF_Data.hxx`:55 - `TDF_Data::Root()`
     /// Returns the root label of the Data structure.
-    pub fn root(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn root(&self) -> crate::OwnedPtr<Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Data_root(self as *const Self)) }
     }
 
@@ -1410,8 +1390,8 @@ impl Data {
     /// or mechanism for fast access to the label by entry is not initialized.
     pub fn get_label(
         &mut self,
-        anEntry: &crate::ffi::TCollection_AsciiString,
-        aLabel: &mut crate::ffi::TDF_Label,
+        anEntry: &crate::t_collection::AsciiString,
+        aLabel: &mut Label,
     ) -> bool {
         unsafe { crate::ffi::TDF_Data_get_label(self as *mut Self, anEntry, aLabel) }
     }
@@ -1419,7 +1399,7 @@ impl Data {
     /// **Source:** `TDF_Data.hxx`:113 - `TDF_Data::RegisterLabel()`
     /// An internal method. It is used internally on creation of new labels.
     /// It adds a new label into internal table for fast access to the labels by entry.
-    pub fn register_label(&mut self, aLabel: &crate::ffi::TDF_Label) {
+    pub fn register_label(&mut self, aLabel: &Label) {
         unsafe { crate::ffi::TDF_Data_register_label(self as *mut Self, aLabel) }
     }
 
@@ -1541,13 +1521,13 @@ impl DataSet {
 
     /// **Source:** `TDF_DataSet.hxx`:49 - `TDF_DataSet::AddLabel()`
     /// Adds <aLabel> in  the  current  data  set.
-    pub fn add_label(&mut self, aLabel: &crate::ffi::TDF_Label) {
+    pub fn add_label(&mut self, aLabel: &Label) {
         unsafe { crate::ffi::TDF_DataSet_add_label(self as *mut Self, aLabel) }
     }
 
     /// **Source:** `TDF_DataSet.hxx`:52 - `TDF_DataSet::ContainsLabel()`
     /// Returns true if the label  <alabel>   is in the data set.
-    pub fn contains_label(&self, aLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn contains_label(&self, aLabel: &Label) -> bool {
         unsafe { crate::ffi::TDF_DataSet_contains_label(self as *const Self, aLabel) }
     }
 
@@ -1565,7 +1545,7 @@ impl DataSet {
 
     /// **Source:** `TDF_DataSet.hxx`:69 - `TDF_DataSet::AddRoot()`
     /// Adds a root label to <myRootLabels>.
-    pub fn add_root(&mut self, aLabel: &crate::ffi::TDF_Label) {
+    pub fn add_root(&mut self, aLabel: &Label) {
         unsafe { crate::ffi::TDF_DataSet_add_root(self as *mut Self, aLabel) }
     }
 
@@ -1711,7 +1691,7 @@ impl DefaultDeltaOnModification {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DefaultDeltaOnModification_inherited_Label(
                 self as *const Self,
@@ -1729,7 +1709,7 @@ impl DefaultDeltaOnModification {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DefaultDeltaOnModification_inherited_ID(
                 self as *const Self,
@@ -1824,7 +1804,7 @@ impl DefaultDeltaOnRemoval {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_Label(
                 self as *const Self,
@@ -1842,7 +1822,7 @@ impl DefaultDeltaOnRemoval {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_ID(
                 self as *const Self,
@@ -1916,13 +1896,13 @@ impl Delta {
 
     /// **Source:** `TDF_Delta.hxx`:66 - `TDF_Delta::Name()`
     /// Returns a name associated with this delta.
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Delta_name(self as *const Self)) }
     }
 
     /// **Source:** `TDF_Delta.hxx`:69 - `TDF_Delta::SetName()`
     /// Associates a name <theName> with this delta
-    pub fn set_name(&mut self, theName: &crate::ffi::TCollection_ExtendedString) {
+    pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDF_Delta_set_name(self as *mut Self, theName) }
     }
 
@@ -2038,7 +2018,7 @@ impl DeltaOnAddition {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnAddition_inherited_Label(
                 self as *const Self,
@@ -2056,7 +2036,7 @@ impl DeltaOnAddition {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnAddition_inherited_ID(
                 self as *const Self,
@@ -2130,7 +2110,7 @@ impl DeltaOnForget {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnForget_inherited_Label(
                 self as *const Self,
@@ -2148,7 +2128,7 @@ impl DeltaOnForget {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnForget_inherited_ID(
                 self as *const Self,
@@ -2216,7 +2196,7 @@ impl DeltaOnModification {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnModification_inherited_Label(
                 self as *const Self,
@@ -2234,7 +2214,7 @@ impl DeltaOnModification {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnModification_inherited_ID(
                 self as *const Self,
@@ -2299,7 +2279,7 @@ impl DeltaOnRemoval {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnRemoval_inherited_Label(
                 self as *const Self,
@@ -2317,7 +2297,7 @@ impl DeltaOnRemoval {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnRemoval_inherited_ID(
                 self as *const Self,
@@ -2391,7 +2371,7 @@ impl DeltaOnResume {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnResume_inherited_Label(
                 self as *const Self,
@@ -2409,7 +2389,7 @@ impl DeltaOnResume {
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
-    pub fn id(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnResume_inherited_ID(
                 self as *const Self,
@@ -2472,7 +2452,7 @@ impl DerivedAttribute {
 
     /// **Source:** `TDF_DerivedAttribute.hxx`:78 - `TDF_DerivedAttribute::TypeName()`
     /// Returns the type name of the registered attribute by its type.
-    pub fn type_name(theType: &str) -> &'static crate::ffi::TCollection_AsciiString {
+    pub fn type_name(theType: &str) -> &'static crate::t_collection::AsciiString {
         let c_theType = std::ffi::CString::new(theType).unwrap();
         unsafe { &*(crate::ffi::TDF_DerivedAttribute_type_name(c_theType.as_ptr())) }
     }
@@ -2654,7 +2634,7 @@ impl IDFilter {
     /// An attribute with <anID> as ID is to be kept and
     /// the filter will answer true to the question
     /// IsKept(<anID>).
-    pub fn keep_guid(&mut self, anID: &crate::ffi::Standard_GUID) {
+    pub fn keep_guid(&mut self, anID: &crate::standard::GUID) {
         unsafe { crate::ffi::TDF_IDFilter_keep_guid(self as *mut Self, anID) }
     }
 
@@ -2670,7 +2650,7 @@ impl IDFilter {
     /// An attribute with <anID> as ID is to be ignored and
     /// the filter will answer false to the question
     /// IsKept(<anID>).
-    pub fn ignore_guid(&mut self, anID: &crate::ffi::Standard_GUID) {
+    pub fn ignore_guid(&mut self, anID: &crate::standard::GUID) {
         unsafe { crate::ffi::TDF_IDFilter_ignore_guid(self as *mut Self, anID) }
     }
 
@@ -2684,7 +2664,7 @@ impl IDFilter {
 
     /// **Source:** `TDF_IDFilter.hxx`:81 - `TDF_IDFilter::IsKept()`
     /// Returns true if the ID is to be kept.
-    pub fn is_kept_guid(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_kept_guid(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_IDFilter_is_kept_guid(self as *const Self, anID) }
     }
 
@@ -2696,7 +2676,7 @@ impl IDFilter {
 
     /// **Source:** `TDF_IDFilter.hxx`:87 - `TDF_IDFilter::IsIgnored()`
     /// Returns true if the ID is to be ignored.
-    pub fn is_ignored_guid(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_ignored_guid(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_IDFilter_is_ignored_guid(self as *const Self, anID) }
     }
 
@@ -2718,13 +2698,13 @@ impl IDFilter {
     /// **Source:** `TDF_IDFilter.hxx`:98 - `TDF_IDFilter::Copy()`
     /// Copies into <me> the contents of
     /// <fromFilter>. <me> is cleared before copy.
-    pub fn copy(&mut self, fromFilter: &crate::ffi::TDF_IDFilter) {
+    pub fn copy(&mut self, fromFilter: &IDFilter) {
         unsafe { crate::ffi::TDF_IDFilter_copy(self as *mut Self, fromFilter) }
     }
 
     /// **Source:** `TDF_IDFilter.hxx`:104 - `TDF_IDFilter::Assign()`
     /// Assignment
-    pub fn assign(&mut self, theFilter: &crate::ffi::TDF_IDFilter) {
+    pub fn assign(&mut self, theFilter: &IDFilter) {
         unsafe { crate::ffi::TDF_IDFilter_assign(self as *mut Self, theFilter) }
     }
 }
@@ -2794,7 +2774,7 @@ impl Label {
     /// **Source:** `TDF_Label.hxx`:76 - `TDF_Label::Father()`
     /// Returns the label father. This label may be null
     /// if the label is root.
-    pub fn father(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn father(&self) -> crate::OwnedPtr<Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Label_father(self as *const Self)) }
     }
 
@@ -2821,12 +2801,12 @@ impl Label {
     /// **Source:** `TDF_Label.hxx`:91 - `TDF_Label::IsEqual()`
     /// Returns True if the <aLabel> is equal to me (same
     /// LabelNode*).
-    pub fn is_equal(&self, aLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_equal(&self, aLabel: &Label) -> bool {
         unsafe { crate::ffi::TDF_Label_is_equal(self as *const Self, aLabel) }
     }
 
     /// **Source:** `TDF_Label.hxx`:95 - `TDF_Label::IsDifferent()`
-    pub fn is_different(&self, aLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_different(&self, aLabel: &Label) -> bool {
         unsafe { crate::ffi::TDF_Label_is_different(self as *const Self, aLabel) }
     }
 
@@ -2837,7 +2817,7 @@ impl Label {
 
     /// **Source:** `TDF_Label.hxx`:102 - `TDF_Label::IsAttribute()`
     /// Returns true if <me> owns an attribute with <anID> as ID.
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_Label_is_attribute(self as *const Self, anID) }
     }
 
@@ -2869,7 +2849,7 @@ impl Label {
     /// Forgets the  Attribute of  GUID <aguid> from   the
     /// current label   . If the   attribute doesn't exist
     /// returns False. Otherwise returns True.
-    pub fn forget_attribute_guid(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute_guid(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_Label_forget_attribute_guid(self as *const Self, aguid) }
     }
 
@@ -2900,7 +2880,7 @@ impl Label {
     /// A removed attribute cannot be found.
     pub fn find_attribute_guid_handletdfattribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2925,7 +2905,7 @@ impl Label {
     /// attribute of a removed one.
     pub fn find_attribute_guid_int_handletdfattribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         aTransaction: i32,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
@@ -2984,7 +2964,7 @@ impl Label {
     /// Returns True if <me> is a descendant of
     /// <aLabel>. Attention: every label is its own
     /// descendant.
-    pub fn is_descendant(&self, aLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_descendant(&self, aLabel: &Label) -> bool {
         unsafe { crate::ffi::TDF_Label_is_descendant(self as *const Self, aLabel) }
     }
 
@@ -2994,7 +2974,7 @@ impl Label {
     /// Exceptions:
     /// Standard_NullObject if this label is null. This is
     /// because a null object can have no depth.
-    pub fn root(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn root(&self) -> crate::OwnedPtr<Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Label_root(self as *const Self)) }
     }
 
@@ -3020,7 +3000,7 @@ impl Label {
     /// //creating labels 7 and 2 on label 10
     /// TDF_Label lab2 = lab1.FindChild(7);
     /// TDF_Label lab3 = lab1.FindChild(2);
-    pub fn find_child(&self, aTag: i32, create: bool) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn find_child(&self, aTag: i32, create: bool) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_Label_find_child(
                 self as *const Self,
@@ -3033,7 +3013,7 @@ impl Label {
     /// **Source:** `TDF_Label.hxx`:222 - `TDF_Label::NewChild()`
     /// Create  a new child   label of me  using autoamtic
     /// delivery tags provided by TagSource.
-    pub fn new_child(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn new_child(&self) -> crate::OwnedPtr<Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Label_new_child(self as *const Self)) }
     }
 
@@ -3049,7 +3029,7 @@ impl Label {
     /// on entry criterion).
     ///
     /// -C++: inline
-    pub fn has_lower_node(&self, otherLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn has_lower_node(&self, otherLabel: &Label) -> bool {
         unsafe { crate::ffi::TDF_Label_has_lower_node(self as *const Self, otherLabel) }
     }
 
@@ -3059,7 +3039,7 @@ impl Label {
     /// (not on entry criterion).
     ///
     /// -C++: inline
-    pub fn has_greater_node(&self, otherLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn has_greater_node(&self, otherLabel: &Label) -> bool {
         unsafe { crate::ffi::TDF_Label_has_greater_node(self as *const Self, otherLabel) }
     }
 }
@@ -3086,17 +3066,17 @@ impl Reference {
     }
 
     /// **Source:** `TDF_Reference.hxx`:41 - `TDF_Reference::Set()`
-    pub fn set(&mut self, Origin: &crate::ffi::TDF_Label) {
+    pub fn set(&mut self, Origin: &Label) {
         unsafe { crate::ffi::TDF_Reference_set(self as *mut Self, Origin) }
     }
 
     /// **Source:** `TDF_Reference.hxx`:43 - `TDF_Reference::Get()`
-    pub fn get(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn get(&self) -> crate::OwnedPtr<Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_get(self as *const Self)) }
     }
 
     /// **Source:** `TDF_Reference.hxx`:45 - `TDF_Reference::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDF_Reference_id(self as *const Self)) }
     }
 
@@ -3132,7 +3112,7 @@ impl Reference {
     }
 
     /// **Source:** `TDF_Reference.hxx`:37 - `TDF_Reference::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDF_Reference_get_id()) }
     }
 
@@ -3161,12 +3141,12 @@ impl Reference {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDF_Reference_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_inherited_Label(
                 self as *const Self,
@@ -3200,14 +3180,14 @@ impl Reference {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_Reference_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3225,7 +3205,7 @@ impl Reference {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_Reference_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -3405,11 +3385,7 @@ impl RelocationTable {
     /// **Source:** `TDF_RelocationTable.hxx`:83 - `TDF_RelocationTable::SetRelocation()`
     /// Sets the relocation value of <aSourceLabel> to
     /// <aTargetLabel>.
-    pub fn set_relocation_label2(
-        &mut self,
-        aSourceLabel: &crate::ffi::TDF_Label,
-        aTargetLabel: &crate::ffi::TDF_Label,
-    ) {
+    pub fn set_relocation_label2(&mut self, aSourceLabel: &Label, aTargetLabel: &Label) {
         unsafe {
             crate::ffi::TDF_RelocationTable_set_relocation_label2(
                 self as *mut Self,
@@ -3425,11 +3401,7 @@ impl RelocationTable {
     ///
     /// (See above SelfRelocate method for more
     /// explanation about the method behavior)
-    pub fn has_relocation_label2(
-        &self,
-        aSourceLabel: &crate::ffi::TDF_Label,
-        aTargetLabel: &mut crate::ffi::TDF_Label,
-    ) -> bool {
+    pub fn has_relocation_label2(&self, aSourceLabel: &Label, aTargetLabel: &mut Label) -> bool {
         unsafe {
             crate::ffi::TDF_RelocationTable_has_relocation_label2(
                 self as *const Self,
@@ -3567,7 +3539,7 @@ impl TagSource {
     }
 
     /// **Source:** `TDF_TagSource.hxx`:56 - `TDF_TagSource::NewChild()`
-    pub fn new_child(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn new_child(&mut self) -> crate::OwnedPtr<Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_new_child(self as *mut Self)) }
     }
 
@@ -3584,7 +3556,7 @@ impl TagSource {
     }
 
     /// **Source:** `TDF_TagSource.hxx`:64 - `TDF_TagSource::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDF_TagSource_id(self as *const Self)) }
     }
 
@@ -3617,7 +3589,7 @@ impl TagSource {
     /// **Source:** `TDF_TagSource.hxx`:40 - `TDF_TagSource::GetID()`
     /// class methods
     /// =============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDF_TagSource_get_id()) }
     }
 
@@ -3626,7 +3598,7 @@ impl TagSource {
     /// and make a new child label.
     /// TagSource methods
     /// =================
-    pub fn new_child_label(L: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn new_child_label(L: &Label) -> crate::OwnedPtr<Label> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_new_child_label(L)) }
     }
 
@@ -3655,12 +3627,12 @@ impl TagSource {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDF_TagSource_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_inherited_Label(
                 self as *const Self,
@@ -3694,14 +3666,14 @@ impl TagSource {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_TagSource_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3719,7 +3691,7 @@ impl TagSource {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDF_TagSource_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -3840,7 +3812,7 @@ impl Tool {
     /// Returns the number of labels of the tree,
     /// including <aLabel>. aLabel is also included in this figure.
     /// This information is useful in setting the size of an array.
-    pub fn nb_labels(aLabel: &crate::ffi::TDF_Label) -> i32 {
+    pub fn nb_labels(aLabel: &Label) -> i32 {
         unsafe { crate::ffi::TDF_Tool_nb_labels(aLabel) }
     }
 
@@ -3849,7 +3821,7 @@ impl Tool {
     /// to the labels dependent on the label aLabel.
     /// The attributes of aLabel are also included in this figure.
     /// This information is useful in setting the size of an array.
-    pub fn nb_attributes_label(aLabel: &crate::ffi::TDF_Label) -> i32 {
+    pub fn nb_attributes_label(aLabel: &Label) -> i32 {
         unsafe { crate::ffi::TDF_Tool_nb_attributes_label(aLabel) }
     }
 
@@ -3857,10 +3829,7 @@ impl Tool {
     /// Returns the number of attributes of the tree,
     /// selected by a<Filter>, including those of
     /// <aLabel>.
-    pub fn nb_attributes_label_idfilter(
-        aLabel: &crate::ffi::TDF_Label,
-        aFilter: &crate::ffi::TDF_IDFilter,
-    ) -> i32 {
+    pub fn nb_attributes_label_idfilter(aLabel: &Label, aFilter: &IDFilter) -> i32 {
         unsafe { crate::ffi::TDF_Tool_nb_attributes_label_idfilter(aLabel, aFilter) }
     }
 
@@ -3868,7 +3837,7 @@ impl Tool {
     /// Returns true if <aLabel> and its descendants
     /// reference only attributes or labels attached to
     /// themselves.
-    pub fn is_self_contained_label(aLabel: &crate::ffi::TDF_Label) -> bool {
+    pub fn is_self_contained_label(aLabel: &Label) -> bool {
         unsafe { crate::ffi::TDF_Tool_is_self_contained_label(aLabel) }
     }
 
@@ -3876,10 +3845,7 @@ impl Tool {
     /// Returns true if <aLabel> and its descendants
     /// reference only attributes or labels attached to
     /// themselves and kept by <aFilter>.
-    pub fn is_self_contained_label_idfilter(
-        aLabel: &crate::ffi::TDF_Label,
-        aFilter: &crate::ffi::TDF_IDFilter,
-    ) -> bool {
+    pub fn is_self_contained_label_idfilter(aLabel: &Label, aFilter: &IDFilter) -> bool {
         unsafe { crate::ffi::TDF_Tool_is_self_contained_label_idfilter(aLabel, aFilter) }
     }
 
@@ -3895,10 +3861,10 @@ impl Tool {
     /// toRoot = 0:5
     /// returned label = 0:5:7:2:7
     pub fn relocate_label(
-        aSourceLabel: &crate::ffi::TDF_Label,
-        fromRoot: &crate::ffi::TDF_Label,
-        toRoot: &crate::ffi::TDF_Label,
-        aTargetLabel: &mut crate::ffi::TDF_Label,
+        aSourceLabel: &Label,
+        fromRoot: &Label,
+        toRoot: &Label,
+        aTargetLabel: &mut Label,
         create: bool,
     ) {
         unsafe {
@@ -3916,10 +3882,7 @@ impl Tool {
     /// Returns the entry for the label aLabel in the form
     /// of the ASCII character string anEntry containing
     /// the tag list for aLabel.
-    pub fn entry(
-        aLabel: &crate::ffi::TDF_Label,
-        anEntry: &mut crate::ffi::TCollection_AsciiString,
-    ) {
+    pub fn entry(aLabel: &Label, anEntry: &mut crate::t_collection::AsciiString) {
         unsafe { crate::ffi::TDF_Tool_entry(aLabel, anEntry) }
     }
 
@@ -3927,7 +3890,7 @@ impl Tool {
     /// Returns the entry of <aLabel> as list of integers
     /// in <aTagList>.
     pub fn tag_list_label_listofinteger(
-        aLabel: &crate::ffi::TDF_Label,
+        aLabel: &Label,
         aTagList: &mut crate::ffi::TColStd_ListOfInteger,
     ) {
         unsafe { crate::ffi::TDF_Tool_tag_list_label_listofinteger(aLabel, aTagList) }
@@ -3937,7 +3900,7 @@ impl Tool {
     /// Returns the entry expressed by <anEntry> as list
     /// of integers in <aTagList>.
     pub fn tag_list_asciistring_listofinteger(
-        anEntry: &crate::ffi::TCollection_AsciiString,
+        anEntry: &crate::t_collection::AsciiString,
         aTagList: &mut crate::ffi::TColStd_ListOfInteger,
     ) {
         unsafe { crate::ffi::TDF_Tool_tag_list_asciistring_listofinteger(anEntry, aTagList) }
@@ -3949,8 +3912,8 @@ impl Tool {
     /// true.
     pub fn label_handletdfdata_asciistring_label_bool(
         aDF: &crate::ffi::HandleTDFData,
-        anEntry: &crate::ffi::TCollection_AsciiString,
-        aLabel: &mut crate::ffi::TDF_Label,
+        anEntry: &crate::t_collection::AsciiString,
+        aLabel: &mut Label,
         create: bool,
     ) {
         unsafe {
@@ -3967,7 +3930,7 @@ impl Tool {
     pub fn label_handletdfdata_charptr_label_bool(
         aDF: &crate::ffi::HandleTDFData,
         anEntry: &str,
-        aLabel: &mut crate::ffi::TDF_Label,
+        aLabel: &mut Label,
         create: bool,
     ) {
         let c_anEntry = std::ffi::CString::new(anEntry).unwrap();
@@ -3988,7 +3951,7 @@ impl Tool {
     pub fn label_handletdfdata_listofinteger_label_bool(
         aDF: &crate::ffi::HandleTDFData,
         aTagList: &crate::ffi::TColStd_ListOfInteger,
-        aLabel: &mut crate::ffi::TDF_Label,
+        aLabel: &mut Label,
         create: bool,
     ) {
         unsafe {
@@ -4026,7 +3989,7 @@ impl Transaction {
     /// **Source:** `TDF_Transaction.hxx`:45 - `TDF_Transaction::TDF_Transaction()`
     /// Creates an empty transaction context, unable to be
     /// opened.
-    pub fn new_asciistring(aName: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+    pub fn new_asciistring(aName: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Transaction_ctor_asciistring(aName)) }
     }
 
@@ -4035,7 +3998,7 @@ impl Transaction {
     /// be opened.
     pub fn new_handletdfdata_asciistring(
         aDF: &crate::ffi::HandleTDFData,
-        aName: &crate::ffi::TCollection_AsciiString,
+        aName: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_Transaction_ctor_handletdfdata_asciistring(
@@ -4097,7 +4060,7 @@ impl Transaction {
 
     /// **Source:** `TDF_Transaction.hxx`:83 - `TDF_Transaction::Name()`
     /// Returns the transaction name.
-    pub fn name(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::TDF_Transaction_name(self as *const Self)) }
     }
 

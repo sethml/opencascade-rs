@@ -9,13 +9,13 @@
 /// **Source:** `IGESCAFControl.hxx`:34 - `IGESCAFControl::DecodeColor`
 /// Provides a tool for writing IGES file
 /// Converts IGES color index to CASCADE color
-pub fn decode_color(col: i32) -> crate::OwnedPtr<crate::ffi::Quantity_Color> {
+pub fn decode_color(col: i32) -> crate::OwnedPtr<crate::quantity::Color> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_decode_color(col)) }
 }
 /// **Source:** `IGESCAFControl.hxx`:38 - `IGESCAFControl::EncodeColor`
 /// Tries to Convert CASCADE color to IGES color index
 /// If no corresponding color defined in IGES, returns 0
-pub fn encode_color(col: &crate::ffi::Quantity_Color) -> i32 {
+pub fn encode_color(col: &crate::quantity::Color) -> i32 {
     unsafe { crate::ffi::IGESCAFControl_encode_color(col) }
 }
 
@@ -160,7 +160,7 @@ impl Reader {
     pub fn transfer_one_root(
         &mut self,
         num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::IGESCAFControl_Reader_inherited_TransferOneRoot(
@@ -172,11 +172,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
-    pub fn transfer_one(
-        &mut self,
-        num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
+    pub fn transfer_one(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe {
             crate::ffi::IGESCAFControl_Reader_inherited_TransferOne(
                 self as *mut Self,
@@ -190,7 +186,7 @@ impl Reader {
     pub fn transfer_list(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         unsafe {
             crate::ffi::IGESCAFControl_Reader_inherited_TransferList(
@@ -202,7 +198,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
-    pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
+    pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         unsafe {
             crate::ffi::IGESCAFControl_Reader_inherited_TransferRoots(
                 self as *mut Self,
@@ -222,7 +218,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:210 - `XSControl_Reader::Shape()`
-    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_Reader_inherited_Shape(
                 self as *const Self,
@@ -232,7 +228,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:217 - `XSControl_Reader::OneShape()`
-    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_Reader_inherited_OneShape(
                 self as *const Self,
@@ -320,7 +316,7 @@ impl Writer {
     pub fn transfer_labelsequence_progressrange(
         &mut self,
         labels: &crate::ffi::TDF_LabelSequence,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::IGESCAFControl_Writer_transfer_labelsequence_progressrange(
@@ -336,8 +332,8 @@ impl Writer {
     /// Returns True if translation is OK
     pub fn transfer_label_progressrange(
         &mut self,
-        label: &crate::ffi::TDF_Label,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        label: &crate::tdf::Label,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::IGESCAFControl_Writer_transfer_label_progressrange(
@@ -396,8 +392,8 @@ impl Writer {
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:90 - `IGESControl_Writer::AddShape()`
     pub fn add_shape(
         &mut self,
-        sh: &crate::ffi::TopoDS_Shape,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        sh: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::IGESCAFControl_Writer_inherited_AddShape(self as *mut Self, sh, theProgress)

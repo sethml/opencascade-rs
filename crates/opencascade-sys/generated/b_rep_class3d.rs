@@ -10,9 +10,7 @@
 /// Returns the outer most shell of <S>. Returns a Null
 /// shell if <S> has no outer shell.
 /// If <S> has only one shell, then it will return, without checking orientation.
-pub fn outer_shell_solid(
-    S: &crate::ffi::TopoDS_Solid,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shell> {
+pub fn outer_shell_solid(S: &crate::topo_ds::Solid) -> crate::OwnedPtr<crate::topo_ds::Shell> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_outer_shell_solid(S)) }
 }
 
@@ -44,14 +42,14 @@ impl BndBoxTreeSelectorPoint {
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:42 - `BRepClass3d_BndBoxTreeSelectorPoint::Reject()`
-    pub fn reject(&self, theBox: &crate::ffi::Bnd_Box) -> bool {
+    pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
         unsafe {
             crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_reject(self as *const Self, theBox)
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:47 - `BRepClass3d_BndBoxTreeSelectorPoint::SetCurrentPoint()`
-    pub fn set_current_point(&mut self, theP: &crate::ffi::gp_Pnt) {
+    pub fn set_current_point(&mut self, theP: &crate::gp::Pnt) {
         unsafe {
             crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_set_current_point(
                 self as *mut Self,
@@ -85,14 +83,14 @@ impl BndBoxTreeSelectorLine {
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:83 - `BRepClass3d_BndBoxTreeSelectorLine::Reject()`
-    pub fn reject(&self, theBox: &crate::ffi::Bnd_Box) -> bool {
+    pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
         unsafe {
             crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_reject(self as *const Self, theBox)
         }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:88 - `BRepClass3d_BndBoxTreeSelectorLine::SetCurrentLine()`
-    pub fn set_current_line(&mut self, theL: &crate::ffi::gp_Lin, theMaxParam: f64) {
+    pub fn set_current_line(&mut self, theL: &crate::gp::Lin, theMaxParam: f64) {
         unsafe {
             crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_set_current_line(
                 self as *mut Self,
@@ -106,7 +104,7 @@ impl BndBoxTreeSelectorLine {
     pub fn get_edge_param(
         &self,
         i: i32,
-        theOutE: &mut crate::ffi::TopoDS_Edge,
+        theOutE: &mut crate::topo_ds::Edge,
         theOutParam: &mut f64,
         outLParam: &mut f64,
     ) {
@@ -125,7 +123,7 @@ impl BndBoxTreeSelectorLine {
     pub fn get_vert_param(
         &self,
         i: i32,
-        theOutV: &mut crate::ffi::TopoDS_Vertex,
+        theOutV: &mut crate::topo_ds::Vertex,
         outLParam: &mut f64,
     ) {
         unsafe {
@@ -164,6 +162,48 @@ impl BndBoxTreeSelectorLine {
     }
 }
 
+/// **Source:** `BRepClass3d_BndBoxTree.hxx`:62 - `BRepClass3d_BndBoxTreeSelectorLine_EdgeParam`
+pub use crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam as BndBoxTreeSelectorLine_EdgeParam;
+
+unsafe impl crate::CppDeletable for BndBoxTreeSelectorLine_EdgeParam {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam_destructor(ptr);
+    }
+}
+
+impl BndBoxTreeSelectorLine_EdgeParam {
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx` - `BRepClass3d_BndBoxTreeSelectorLine_EdgeParam::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam_ctor(),
+            )
+        }
+    }
+}
+
+/// **Source:** `BRepClass3d_BndBoxTree.hxx`:69 - `BRepClass3d_BndBoxTreeSelectorLine_VertParam`
+pub use crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_VertParam as BndBoxTreeSelectorLine_VertParam;
+
+unsafe impl crate::CppDeletable for BndBoxTreeSelectorLine_VertParam {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_VertParam_destructor(ptr);
+    }
+}
+
+impl BndBoxTreeSelectorLine_VertParam {
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx` - `BRepClass3d_BndBoxTreeSelectorLine_VertParam::BRepClass3d_BndBoxTreeSelectorLine_VertParam()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_VertParam_ctor(),
+            )
+        }
+    }
+}
+
 // ========================
 // From BRepClass3d_Intersector3d.hxx
 // ========================
@@ -195,13 +235,7 @@ impl Intersector3d {
     /// first point of the segment is near the face. In
     /// that case, the parameter of the intersection point
     /// on the line can be a negative value (greater than -Tol).
-    pub fn perform(
-        &mut self,
-        L: &crate::ffi::gp_Lin,
-        Prm: f64,
-        Tol: f64,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
+    pub fn perform(&mut self, L: &crate::gp::Lin, Prm: f64, Tol: f64, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepClass3d_Intersector3d_perform(self as *mut Self, L, Prm, Tol, F) }
     }
 
@@ -241,7 +275,7 @@ impl Intersector3d {
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:72 - `BRepClass3d_Intersector3d::Pnt()`
     /// Returns the geometric point of the intersection
     /// between the line and the surface.
-    pub fn pnt(&self) -> &crate::ffi::gp_Pnt {
+    pub fn pnt(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::BRepClass3d_Intersector3d_pnt(self as *const Self)) }
     }
 
@@ -274,7 +308,7 @@ impl Intersector3d {
     /// **Source:** `BRepClass3d_Intersector3d.hxx`:86 - `BRepClass3d_Intersector3d::Face()`
     /// Returns the significant face used to determine
     /// the intersection.
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepClass3d_Intersector3d_face(self as *const Self)) }
     }
 }
@@ -304,8 +338,8 @@ impl SClassifier {
     /// Constructor to classify the point P with the
     /// tolerance Tol on the solid S.
     pub fn new_solidexplorer_pnt_real(
-        S: &mut crate::ffi::BRepClass3d_SolidExplorer,
-        P: &crate::ffi::gp_Pnt,
+        S: &mut SolidExplorer,
+        P: &crate::gp::Pnt,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -318,23 +352,14 @@ impl SClassifier {
     /// **Source:** `BRepClass3d_SClassifier.hxx`:46 - `BRepClass3d_SClassifier::Perform()`
     /// Classify the point P with the
     /// tolerance Tol on the solid S.
-    pub fn perform(
-        &mut self,
-        S: &mut crate::ffi::BRepClass3d_SolidExplorer,
-        P: &crate::ffi::gp_Pnt,
-        Tol: f64,
-    ) {
+    pub fn perform(&mut self, S: &mut SolidExplorer, P: &crate::gp::Pnt, Tol: f64) {
         unsafe { crate::ffi::BRepClass3d_SClassifier_perform(self as *mut Self, S, P, Tol) }
     }
 
     /// **Source:** `BRepClass3d_SClassifier.hxx`:52 - `BRepClass3d_SClassifier::PerformInfinitePoint()`
     /// Classify an infinite point with the
     /// tolerance Tol on the solid S.
-    pub fn perform_infinite_point(
-        &mut self,
-        S: &mut crate::ffi::BRepClass3d_SolidExplorer,
-        Tol: f64,
-    ) {
+    pub fn perform_infinite_point(&mut self, S: &mut SolidExplorer, Tol: f64) {
         unsafe {
             crate::ffi::BRepClass3d_SClassifier_perform_infinite_point(self as *mut Self, S, Tol)
         }
@@ -371,7 +396,7 @@ impl SClassifier {
     /// face containing the point.
     ///
     /// When Rejected() returns True, Face() has no signification.
-    pub fn face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SClassifier_face(self as *const Self))
         }
@@ -401,7 +426,7 @@ impl SolidClassifier {
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:41 - `BRepClass3d_SolidClassifier::BRepClass3d_SolidClassifier()`
     /// Constructor from a Shape.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidClassifier_ctor_shape(S)) }
     }
 
@@ -409,8 +434,8 @@ impl SolidClassifier {
     /// Constructor to classify the point P with the
     /// tolerance Tol on the solid S.
     pub fn new_shape_pnt_real(
-        S: &crate::ffi::TopoDS_Shape,
-        P: &crate::ffi::gp_Pnt,
+        S: &crate::topo_ds::Shape,
+        P: &crate::gp::Pnt,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -421,14 +446,14 @@ impl SolidClassifier {
     }
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:38 - `BRepClass3d_SolidClassifier::Load()`
-    pub fn load(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn load(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepClass3d_SolidClassifier_load(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepClass3d_SolidClassifier.hxx`:51 - `BRepClass3d_SolidClassifier::Perform()`
     /// Classify the point P with the
     /// tolerance Tol on the solid S.
-    pub fn perform(&mut self, P: &crate::ffi::gp_Pnt, Tol: f64) {
+    pub fn perform(&mut self, P: &crate::gp::Pnt, Tol: f64) {
         unsafe { crate::ffi::BRepClass3d_SolidClassifier_perform(self as *mut Self, P, Tol) }
     }
 
@@ -486,7 +511,7 @@ impl SolidClassifier {
     }
 
     /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:70 - `BRepClass3d_SClassifier::Face()`
-    pub fn face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidClassifier_inherited_Face(
                 self as *const Self,
@@ -517,18 +542,18 @@ impl SolidExplorer {
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:45 - `BRepClass3d_SolidExplorer::BRepClass3d_SolidExplorer()`
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidExplorer_ctor_shape(S)) }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:49 - `BRepClass3d_SolidExplorer::InitShape()`
-    pub fn init_shape(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init_shape(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_init_shape(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:52 - `BRepClass3d_SolidExplorer::Reject()`
     /// Should return True if P outside of bounding vol. of the shape
-    pub fn reject(&self, P: &crate::ffi::gp_Pnt) -> bool {
+    pub fn reject(&self, P: &crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject(self as *const Self, P) }
     }
 
@@ -552,7 +577,7 @@ impl SolidExplorer {
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:131 - `BRepClass3d_SolidExplorer::CurrentShell()`
     /// Returns the current shell.
-    pub fn current_shell(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shell> {
+    pub fn current_shell(&self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidExplorer_current_shell(
                 self as *const Self,
@@ -562,7 +587,7 @@ impl SolidExplorer {
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:134 - `BRepClass3d_SolidExplorer::RejectShell()`
     /// Returns True if the Shell is rejected.
-    pub fn reject_shell(&self, L: &crate::ffi::gp_Lin) -> bool {
+    pub fn reject_shell(&self, L: &crate::gp::Lin) -> bool {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject_shell(self as *const Self, L) }
     }
 
@@ -586,7 +611,7 @@ impl SolidExplorer {
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:146 - `BRepClass3d_SolidExplorer::CurrentFace()`
     /// Returns the current face.
-    pub fn current_face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    pub fn current_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepClass3d_SolidExplorer_current_face(
                 self as *const Self,
@@ -596,7 +621,7 @@ impl SolidExplorer {
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:149 - `BRepClass3d_SolidExplorer::RejectFace()`
     /// returns True if the face is rejected.
-    pub fn reject_face(&self, L: &crate::ffi::gp_Lin) -> bool {
+    pub fn reject_face(&self, L: &crate::gp::Lin) -> bool {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject_face(self as *const Self, L) }
     }
 
@@ -604,12 +629,7 @@ impl SolidExplorer {
     /// Returns  in <L>, <Par>  a segment having at least
     /// one  intersection  with  the  shape  boundary  to
     /// compute  intersections.
-    pub fn segment(
-        &mut self,
-        P: &crate::ffi::gp_Pnt,
-        L: &mut crate::ffi::gp_Lin,
-        Par: &mut f64,
-    ) -> i32 {
+    pub fn segment(&mut self, P: &crate::gp::Pnt, L: &mut crate::gp::Lin, Par: &mut f64) -> i32 {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_segment(self as *mut Self, P, L, Par) }
     }
 
@@ -624,8 +644,8 @@ impl SolidExplorer {
     /// and so on.
     pub fn other_segment(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
-        L: &mut crate::ffi::gp_Lin,
+        P: &crate::gp::Pnt,
+        L: &mut crate::gp::Lin,
         Par: &mut f64,
     ) -> i32 {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_other_segment(self as *mut Self, P, L, Par) }
@@ -641,8 +661,8 @@ impl SolidExplorer {
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:170 - `BRepClass3d_SolidExplorer::DumpSegment()`
     pub fn dump_segment(
         &self,
-        P: &crate::ffi::gp_Pnt,
-        L: &crate::ffi::gp_Lin,
+        P: &crate::gp::Pnt,
+        L: &crate::gp::Lin,
         Par: f64,
         S: crate::top_abs::State,
     ) {
@@ -658,12 +678,12 @@ impl SolidExplorer {
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:175 - `BRepClass3d_SolidExplorer::Box()`
-    pub fn box_(&self) -> &crate::ffi::Bnd_Box {
+    pub fn box_(&self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_box_(self as *const Self)) }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:177 - `BRepClass3d_SolidExplorer::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_get_shape(self as *const Self)) }
     }
 
@@ -683,8 +703,8 @@ impl SolidExplorer {
     /// ]0,1[ and   is  used to  initialise  the algorithm. For
     /// different values , different points are returned.
     pub fn find_a_point_in_the_face_face_pnt_real(
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::gp_Pnt,
+        F: &crate::topo_ds::Face,
+        P: &mut crate::gp::Pnt,
         Param: &mut f64,
     ) -> bool {
         unsafe {
@@ -696,8 +716,8 @@ impl SolidExplorer {
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:61 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn find_a_point_in_the_face_face_pnt_real3(
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::gp_Pnt,
+        F: &crate::topo_ds::Face,
+        P: &mut crate::gp::Pnt,
         u: &mut f64,
         v: &mut f64,
         Param: &mut f64,
@@ -711,13 +731,13 @@ impl SolidExplorer {
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:67 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn find_a_point_in_the_face_face_pnt_real3_vec2(
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::gp_Pnt,
+        F: &crate::topo_ds::Face,
+        P: &mut crate::gp::Pnt,
         u: &mut f64,
         v: &mut f64,
         Param: &mut f64,
-        theVecD1U: &mut crate::ffi::gp_Vec,
-        theVecD1V: &mut crate::ffi::gp_Vec,
+        theVecD1U: &mut crate::gp::Vec,
+        theVecD1V: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real3_vec2(
@@ -728,8 +748,8 @@ impl SolidExplorer {
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:75 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn find_a_point_in_the_face_face_pnt_real2(
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::gp_Pnt,
+        F: &crate::topo_ds::Face,
+        P: &mut crate::gp::Pnt,
         u: &mut f64,
         v: &mut f64,
     ) -> bool {
@@ -742,15 +762,15 @@ impl SolidExplorer {
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:80 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn find_a_point_in_the_face_face_pnt(
-        F: &crate::ffi::TopoDS_Face,
-        P: &mut crate::ffi::gp_Pnt,
+        F: &crate::topo_ds::Face,
+        P: &mut crate::gp::Pnt,
     ) -> bool {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt(F, P) }
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:82 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn find_a_point_in_the_face_face_real2(
-        F: &crate::ffi::TopoDS_Face,
+        F: &crate::topo_ds::Face,
         u: &mut f64,
         v: &mut f64,
     ) -> bool {
@@ -786,7 +806,7 @@ impl SolidPassiveClassifier {
     /// the original length of the segment on <L>  used to
     /// compute  intersections.   <Tol> is the   tolerance
     /// attached to the intersections.
-    pub fn reset(&mut self, L: &crate::ffi::gp_Lin, P: f64, Tol: f64) {
+    pub fn reset(&mut self, L: &crate::gp::Lin, P: f64, Tol: f64) {
         unsafe {
             crate::ffi::BRepClass3d_SolidPassiveClassifier_reset(self as *mut Self, L, P, Tol)
         }
@@ -795,7 +815,7 @@ impl SolidPassiveClassifier {
     /// **Source:** `BRepClass3d_SolidPassiveClassifier.hxx`:50 - `BRepClass3d_SolidPassiveClassifier::Compare()`
     /// Updates  the classification process with  the face
     /// <F> from the boundary.
-    pub fn compare(&mut self, F: &crate::ffi::TopoDS_Face, Or: crate::top_abs::Orientation) {
+    pub fn compare(&mut self, F: &crate::topo_ds::Face, Or: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::BRepClass3d_SolidPassiveClassifier_compare(self as *mut Self, F, Or.into())
         }
@@ -817,7 +837,7 @@ impl SolidPassiveClassifier {
 
     /// **Source:** `BRepClass3d_SolidPassiveClassifier.hxx`:59 - `BRepClass3d_SolidPassiveClassifier::Intersector()`
     /// Returns the intersecting algorithm.
-    pub fn intersector(&mut self) -> &mut crate::ffi::BRepClass3d_Intersector3d {
+    pub fn intersector(&mut self) -> &mut Intersector3d {
         unsafe {
             &mut *(crate::ffi::BRepClass3d_SolidPassiveClassifier_intersector(self as *mut Self))
         }

@@ -26,7 +26,7 @@ impl Texture {
     /// **Source:** `Image_Texture.hxx`:33 - `Image_Texture::Image_Texture()`
     /// Constructor pointing to file location.
     pub fn new_asciistring(
-        theFileName: &crate::ffi::TCollection_AsciiString,
+        theFileName: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Image_Texture_ctor_asciistring(theFileName))
@@ -36,7 +36,7 @@ impl Texture {
     /// **Source:** `Image_Texture.hxx`:36 - `Image_Texture::Image_Texture()`
     /// Constructor pointing to file part.
     pub fn new_asciistring_longlong2(
-        theFileName: &crate::ffi::TCollection_AsciiString,
+        theFileName: &crate::t_collection::AsciiString,
         theOffset: i64,
         theLength: i64,
     ) -> crate::OwnedPtr<Self> {
@@ -53,7 +53,7 @@ impl Texture {
     /// Constructor pointing to buffer.
     pub fn new_handlencollectionbuffer_asciistring(
         theBuffer: &crate::ffi::HandleNCollectionBuffer,
-        theId: &crate::ffi::TCollection_AsciiString,
+        theId: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -71,13 +71,13 @@ impl Texture {
 
     /// **Source:** `Image_Texture.hxx`:45 - `Image_Texture::TextureId()`
     /// Return generated texture id.
-    pub fn texture_id(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn texture_id(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Image_Texture_texture_id(self as *const Self)) }
     }
 
     /// **Source:** `Image_Texture.hxx`:48 - `Image_Texture::FilePath()`
     /// Return image file path.
-    pub fn file_path(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn file_path(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Image_Texture_file_path(self as *const Self)) }
     }
 
@@ -101,7 +101,7 @@ impl Texture {
 
     /// **Source:** `Image_Texture.hxx`:60 - `Image_Texture::MimeType()`
     /// Return mime-type of image file based on ProbeImageFileFormat().
-    pub fn mime_type(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn mime_type(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Image_Texture_mime_type(self as *const Self))
         }
@@ -109,7 +109,7 @@ impl Texture {
 
     /// **Source:** `Image_Texture.hxx`:63 - `Image_Texture::ProbeImageFileFormat()`
     /// Return image file format.
-    pub fn probe_image_file_format(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+    pub fn probe_image_file_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Image_Texture_probe_image_file_format(
                 self as *const Self,
@@ -119,7 +119,7 @@ impl Texture {
 
     /// **Source:** `Image_Texture.hxx`:74 - `Image_Texture::WriteImage()`
     /// Write image to specified file without decoding data.
-    pub fn write_image(&mut self, theFile: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn write_image(&mut self, theFile: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::Image_Texture_write_image(self as *mut Self, theFile) }
     }
 

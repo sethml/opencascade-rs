@@ -146,7 +146,7 @@ impl Axis {
     }
 
     /// **Source:** `TDataXtd_Axis.hxx`:55 - `TDataXtd_Axis::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Axis_id(self as *const Self)) }
     }
 
@@ -166,7 +166,7 @@ impl Axis {
     /// class methods
     /// =============
     /// Returns the GUID for an axis.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Axis_get_id()) }
     }
 
@@ -219,12 +219,12 @@ impl Axis {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Axis_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_inherited_Label(
                 self as *const Self,
@@ -258,14 +258,14 @@ impl Axis {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Axis_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -283,7 +283,7 @@ impl Axis {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Axis_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -498,7 +498,7 @@ impl Constraint {
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:180 - `TDataXtd_Constraint::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Constraint_id(self as *const Self)) }
     }
 
@@ -537,14 +537,14 @@ impl Constraint {
 
     /// **Source:** `TDataXtd_Constraint.hxx`:53 - `TDataXtd_Constraint::GetID()`
     /// Returns the GUID for constraints.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Constraint_get_id()) }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:177 - `TDataXtd_Constraint::CollectChildConstraints()`
     /// collects constraints on Childs for label <aLabel>
     pub fn collect_child_constraints(
-        aLabel: &crate::ffi::TDF_Label,
+        aLabel: &crate::tdf::Label,
         TheList: &mut crate::ffi::TDF_LabelList,
     ) {
         unsafe { crate::ffi::TDataXtd_Constraint_collect_child_constraints(aLabel, TheList) }
@@ -575,12 +575,12 @@ impl Constraint {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Constraint_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_inherited_Label(
                 self as *const Self,
@@ -614,14 +614,14 @@ impl Constraint {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Constraint_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -641,7 +641,7 @@ impl Constraint {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Constraint_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -794,7 +794,7 @@ impl Geometry {
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:129 - `TDataXtd_Geometry::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Geometry_id(self as *const Self)) }
     }
 
@@ -827,7 +827,7 @@ impl Geometry {
     /// **Source:** `TDataXtd_Geometry.hxx`:62 - `TDataXtd_Geometry::Type()`
     /// Returns the label L used to define the type of
     /// geometric construction for the geometry attribute.
-    pub fn type_(L: &crate::ffi::TDF_Label) -> crate::t_data_xtd::GeometryEnum {
+    pub fn type_(L: &crate::tdf::Label) -> crate::t_data_xtd::GeometryEnum {
         unsafe {
             crate::t_data_xtd::GeometryEnum::try_from(crate::ffi::TDataXtd_Geometry_type_(L))
                 .unwrap()
@@ -836,49 +836,49 @@ impl Geometry {
 
     /// **Source:** `TDataXtd_Geometry.hxx`:69 - `TDataXtd_Geometry::Point()`
     /// Returns the point attribute defined by the label L and the point G.
-    pub fn point(L: &crate::ffi::TDF_Label, G: &mut crate::ffi::gp_Pnt) -> bool {
+    pub fn point(L: &crate::tdf::Label, G: &mut crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::TDataXtd_Geometry_point(L, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:75 - `TDataXtd_Geometry::Axis()`
     /// Returns the axis attribute defined by the label L and the axis G.
-    pub fn axis(L: &crate::ffi::TDF_Label, G: &mut crate::ffi::gp_Ax1) -> bool {
+    pub fn axis(L: &crate::tdf::Label, G: &mut crate::gp::Ax1) -> bool {
         unsafe { crate::ffi::TDataXtd_Geometry_axis(L, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:81 - `TDataXtd_Geometry::Line()`
     /// Returns the line attribute defined by the label L and the line G.
-    pub fn line(L: &crate::ffi::TDF_Label, G: &mut crate::ffi::gp_Lin) -> bool {
+    pub fn line(L: &crate::tdf::Label, G: &mut crate::gp::Lin) -> bool {
         unsafe { crate::ffi::TDataXtd_Geometry_line(L, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:87 - `TDataXtd_Geometry::Circle()`
     /// Returns the circle attribute defined by the label L and the circle G.
-    pub fn circle(L: &crate::ffi::TDF_Label, G: &mut crate::ffi::gp_Circ) -> bool {
+    pub fn circle(L: &crate::tdf::Label, G: &mut crate::gp::Circ) -> bool {
         unsafe { crate::ffi::TDataXtd_Geometry_circle(L, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:93 - `TDataXtd_Geometry::Ellipse()`
     /// Returns the ellipse attribute defined by the label L and the ellipse G.
-    pub fn ellipse(L: &crate::ffi::TDF_Label, G: &mut crate::ffi::gp_Elips) -> bool {
+    pub fn ellipse(L: &crate::tdf::Label, G: &mut crate::gp::Elips) -> bool {
         unsafe { crate::ffi::TDataXtd_Geometry_ellipse(L, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:100 - `TDataXtd_Geometry::Plane()`
     /// Returns the plane attribute defined by the label L and the plane G.
-    pub fn plane(L: &crate::ffi::TDF_Label, G: &mut crate::ffi::gp_Pln) -> bool {
+    pub fn plane(L: &crate::tdf::Label, G: &mut crate::gp::Pln) -> bool {
         unsafe { crate::ffi::TDataXtd_Geometry_plane(L, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:107 - `TDataXtd_Geometry::Cylinder()`
     /// Returns the cylinder attribute defined by the label L and the cylinder G.
-    pub fn cylinder(L: &crate::ffi::TDF_Label, G: &mut crate::ffi::gp_Cylinder) -> bool {
+    pub fn cylinder(L: &crate::tdf::Label, G: &mut crate::gp::Cylinder) -> bool {
         unsafe { crate::ffi::TDataXtd_Geometry_cylinder(L, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:115 - `TDataXtd_Geometry::GetID()`
     /// Returns the GUID for geometry attributes.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Geometry_get_id()) }
     }
 
@@ -907,12 +907,12 @@ impl Geometry {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Geometry_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Geometry_inherited_Label(
                 self as *const Self,
@@ -946,14 +946,14 @@ impl Geometry {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Geometry_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -971,7 +971,7 @@ impl Geometry {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Geometry_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1194,13 +1194,13 @@ unsafe impl crate::CppDeletable for Pattern {
 impl Pattern {
     /// **Source:** `TDataXtd_Pattern.hxx`:38 - `TDataXtd_Pattern::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Pattern_id(self as *const Self)) }
     }
 
     /// **Source:** `TDataXtd_Pattern.hxx`:41 - `TDataXtd_Pattern::PatternID()`
     /// Returns the ID of the attribute.
-    pub fn pattern_id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn pattern_id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Pattern_pattern_id(self as *const Self)) }
     }
 
@@ -1222,7 +1222,7 @@ impl Pattern {
     }
 
     /// **Source:** `TDataXtd_Pattern.hxx`:35 - `TDataXtd_Pattern::GetID()`
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Pattern_get_id()) }
     }
 
@@ -1251,12 +1251,12 @@ impl Pattern {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Pattern_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Pattern_inherited_Label(
                 self as *const Self,
@@ -1290,14 +1290,14 @@ impl Pattern {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Pattern_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1315,7 +1315,7 @@ impl Pattern {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Pattern_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1513,7 +1513,7 @@ impl PatternStd {
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:96 - `TDataXtd_PatternStd::PatternID()`
-    pub fn pattern_id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn pattern_id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_PatternStd_pattern_id(self as *const Self)) }
     }
 
@@ -1551,7 +1551,7 @@ impl PatternStd {
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:45 - `TDataXtd_PatternStd::GetPatternID()`
-    pub fn get_pattern_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_pattern_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_PatternStd_get_pattern_id()) }
     }
 
@@ -1592,17 +1592,17 @@ impl PatternStd {
     }
 
     /// Inherited: **Source:** `TDataXtd_Pattern.hxx`:38 - `TDataXtd_Pattern::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_PatternStd_inherited_ID(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_PatternStd_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_inherited_Label(
                 self as *const Self,
@@ -1636,14 +1636,14 @@ impl PatternStd {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_PatternStd_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1663,7 +1663,7 @@ impl PatternStd {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_PatternStd_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -1788,7 +1788,7 @@ impl Placement {
     }
 
     /// **Source:** `TDataXtd_Placement.hxx`:41 - `TDataXtd_Placement::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Placement_id(self as *const Self)) }
     }
 
@@ -1807,7 +1807,7 @@ impl Placement {
     /// **Source:** `TDataXtd_Placement.hxx`:31 - `TDataXtd_Placement::GetID()`
     /// class methods
     /// =============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Placement_get_id()) }
     }
 
@@ -1862,12 +1862,12 @@ impl Placement {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Placement_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Placement_inherited_Label(
                 self as *const Self,
@@ -1901,14 +1901,14 @@ impl Placement {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Placement_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -1926,7 +1926,7 @@ impl Placement {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Placement_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -2061,7 +2061,7 @@ impl Plane {
     }
 
     /// **Source:** `TDataXtd_Plane.hxx`:54 - `TDataXtd_Plane::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Plane_id(self as *const Self)) }
     }
 
@@ -2082,7 +2082,7 @@ impl Plane {
     /// =============
     ///
     /// Returns the GUID for plane attributes.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Plane_get_id()) }
     }
 
@@ -2137,12 +2137,12 @@ impl Plane {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Plane_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_inherited_Label(
                 self as *const Self,
@@ -2176,14 +2176,14 @@ impl Plane {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Plane_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2201,7 +2201,7 @@ impl Plane {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Plane_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -2323,7 +2323,7 @@ impl Point {
     }
 
     /// **Source:** `TDataXtd_Point.hxx`:54 - `TDataXtd_Point::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Point_id(self as *const Self)) }
     }
 
@@ -2344,7 +2344,7 @@ impl Point {
     /// =============
     ///
     /// Returns the GUID for point attributes.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Point_get_id()) }
     }
 
@@ -2399,12 +2399,12 @@ impl Point {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Point_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_inherited_Label(
                 self as *const Self,
@@ -2438,14 +2438,14 @@ impl Point {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Point_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2463,7 +2463,7 @@ impl Point {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Point_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -2581,7 +2581,7 @@ impl Position {
 
     /// **Source:** `TDataXtd_Position.hxx`:50 - `TDataXtd_Position::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Position_id(self as *const Self)) }
     }
 
@@ -2624,12 +2624,12 @@ impl Position {
     }
 
     /// **Source:** `TDataXtd_Position.hxx`:74 - `TDataXtd_Position::GetPosition()`
-    pub fn get_position(&self) -> &crate::ffi::gp_Pnt {
+    pub fn get_position(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::TDataXtd_Position_get_position(self as *const Self)) }
     }
 
     /// **Source:** `TDataXtd_Position.hxx`:76 - `TDataXtd_Position::SetPosition()`
-    pub fn set_position(&mut self, aPos: &crate::ffi::gp_Pnt) {
+    pub fn set_position(&mut self, aPos: &crate::gp::Pnt) {
         unsafe { crate::ffi::TDataXtd_Position_set_position(self as *mut Self, aPos) }
     }
 
@@ -2640,20 +2640,20 @@ impl Position {
 
     /// **Source:** `TDataXtd_Position.hxx`:37 - `TDataXtd_Position::Set()`
     /// Create if not found the TDataXtd_Position attribute set its position to <aPos>
-    pub fn set(aLabel: &crate::ffi::TDF_Label, aPos: &crate::ffi::gp_Pnt) {
+    pub fn set(aLabel: &crate::tdf::Label, aPos: &crate::gp::Pnt) {
         unsafe { crate::ffi::TDataXtd_Position_set(aLabel, aPos) }
     }
 
     /// **Source:** `TDataXtd_Position.hxx`:45 - `TDataXtd_Position::Get()`
     /// Search label <aLabel) for the TDataXtd_Position attribute and get its position
     /// if found returns True
-    pub fn get(aLabel: &crate::ffi::TDF_Label, aPos: &mut crate::ffi::gp_Pnt) -> bool {
+    pub fn get(aLabel: &crate::tdf::Label, aPos: &mut crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::TDataXtd_Position_get(aLabel, aPos) }
     }
 
     /// **Source:** `TDataXtd_Position.hxx`:53 - `TDataXtd_Position::GetID()`
     /// Returns the ID of the attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Position_get_id()) }
     }
 
@@ -2682,12 +2682,12 @@ impl Position {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Position_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_inherited_Label(
                 self as *const Self,
@@ -2721,14 +2721,14 @@ impl Position {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Position_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -2746,7 +2746,7 @@ impl Position {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Position_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -2881,7 +2881,7 @@ impl Presentation {
 
     /// **Source:** `TDataXtd_Presentation.hxx`:52 - `TDataXtd_Presentation::ID()`
     /// Returns the ID of the attribute.
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Presentation_id(self as *const Self)) }
     }
 
@@ -2941,7 +2941,7 @@ impl Presentation {
 
     /// **Source:** `TDataXtd_Presentation.hxx`:84 - `TDataXtd_Presentation::GetDriverGUID()`
     /// Returns the GUID of the driver managing display of associated AIS object
-    pub fn get_driver_guid(&self) -> crate::OwnedPtr<crate::ffi::Standard_GUID> {
+    pub fn get_driver_guid(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_get_driver_guid(
                 self as *const Self,
@@ -2951,7 +2951,7 @@ impl Presentation {
 
     /// **Source:** `TDataXtd_Presentation.hxx`:87 - `TDataXtd_Presentation::SetDriverGUID()`
     /// Sets the GUID of the driver managing display of associated AIS object
-    pub fn set_driver_guid(&mut self, theGUID: &crate::ffi::Standard_GUID) {
+    pub fn set_driver_guid(&mut self, theGUID: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Presentation_set_driver_guid(self as *mut Self, theGUID) }
     }
 
@@ -3128,13 +3128,13 @@ impl Presentation {
 
     /// **Source:** `TDataXtd_Presentation.hxx`:49 - `TDataXtd_Presentation::Unset()`
     /// Remove attribute of this type from the label
-    pub fn unset(theLabel: &crate::ffi::TDF_Label) {
+    pub fn unset(theLabel: &crate::tdf::Label) {
         unsafe { crate::ffi::TDataXtd_Presentation_unset(theLabel) }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:55 - `TDataXtd_Presentation::GetID()`
     /// Returns the ID of the attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Presentation_get_id()) }
     }
 
@@ -3182,12 +3182,12 @@ impl Presentation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Presentation_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_inherited_Label(
                 self as *const Self,
@@ -3221,7 +3221,7 @@ impl Presentation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Presentation_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -3230,7 +3230,7 @@ impl Presentation {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3250,7 +3250,7 @@ impl Presentation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Presentation_inherited_ForgetAttribute(self as *const Self, aguid)
         }
@@ -3377,7 +3377,7 @@ impl Shape {
     }
 
     /// **Source:** `TDataXtd_Shape.hxx`:58 - `TDataXtd_Shape::ID()`
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Shape_id(self as *const Self)) }
     }
 
@@ -3401,14 +3401,14 @@ impl Shape {
     /// **Source:** `TDataXtd_Shape.hxx`:50 - `TDataXtd_Shape::Get()`
     /// the Shape from  associated NamedShape attribute
     /// is returned.
-    pub fn get(label: &crate::ffi::TDF_Label) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_get(label)) }
     }
 
     /// **Source:** `TDataXtd_Shape.hxx`:54 - `TDataXtd_Shape::GetID()`
     /// Shape methods
     /// ============
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Shape_get_id()) }
     }
 
@@ -3463,12 +3463,12 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Shape_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_inherited_Label(
                 self as *const Self,
@@ -3502,14 +3502,14 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Shape_inherited_IsAttribute(self as *const Self, anID) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3527,7 +3527,7 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe { crate::ffi::TDataXtd_Shape_inherited_ForgetAttribute(self as *const Self, aguid) }
     }
 
@@ -3700,7 +3700,7 @@ impl Triangulation {
     /// **Source:** `TDataXtd_Triangulation.hxx`:98 - `TDataXtd_Triangulation::Node()`
     /// @return node at the given index.
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
-    pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_node(
                 self as *const Self,
@@ -3713,14 +3713,14 @@ impl Triangulation {
     /// The method differs from Poly_Triangulation!
     /// Sets a node at the given index.
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
-    pub fn set_node(&mut self, theIndex: i32, theNode: &crate::ffi::gp_Pnt) {
+    pub fn set_node(&mut self, theIndex: i32, theNode: &crate::gp::Pnt) {
         unsafe { crate::ffi::TDataXtd_Triangulation_set_node(self as *mut Self, theIndex, theNode) }
     }
 
     /// **Source:** `TDataXtd_Triangulation.hxx`:107 - `TDataXtd_Triangulation::UVNode()`
     /// @return UVNode at the given index.
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
-    pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn uv_node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_uv_node(
                 self as *const Self,
@@ -3733,7 +3733,7 @@ impl Triangulation {
     /// The method differs from Poly_Triangulation!
     /// Sets a UVNode at the given index.
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
-    pub fn set_uv_node(&mut self, theIndex: i32, theUVNode: &crate::ffi::gp_Pnt2d) {
+    pub fn set_uv_node(&mut self, theIndex: i32, theUVNode: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::TDataXtd_Triangulation_set_uv_node(self as *mut Self, theIndex, theUVNode)
         }
@@ -3742,7 +3742,7 @@ impl Triangulation {
     /// **Source:** `TDataXtd_Triangulation.hxx`:116 - `TDataXtd_Triangulation::Triangle()`
     /// @return triangle at the given index.
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbTriangles.
-    pub fn triangle(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::Poly_Triangle> {
+    pub fn triangle(&self, theIndex: i32) -> crate::OwnedPtr<crate::poly::Triangle> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_triangle(
                 self as *const Self,
@@ -3755,7 +3755,7 @@ impl Triangulation {
     /// The method differs from Poly_Triangulation!
     /// Sets a triangle at the given index.
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbTriangles.
-    pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::ffi::Poly_Triangle) {
+    pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::poly::Triangle) {
         unsafe {
             crate::ffi::TDataXtd_Triangulation_set_triangle(
                 self as *mut Self,
@@ -3768,7 +3768,7 @@ impl Triangulation {
     /// **Source:** `TDataXtd_Triangulation.hxx`:126 - `TDataXtd_Triangulation::SetNormal()`
     /// Changes normal at the given index.
     /// Raises Standard_OutOfRange exception.
-    pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::ffi::gp_Dir) {
+    pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::gp::Dir) {
         unsafe {
             crate::ffi::TDataXtd_Triangulation_set_normal(self as *mut Self, theIndex, theNormal)
         }
@@ -3783,7 +3783,7 @@ impl Triangulation {
     /// **Source:** `TDataXtd_Triangulation.hxx`:133 - `TDataXtd_Triangulation::Normal()`
     /// @return normal at the given index.
     /// Raises Standard_OutOfRange exception.
-    pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Dir> {
+    pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_normal(
                 self as *const Self,
@@ -3794,7 +3794,7 @@ impl Triangulation {
 
     /// **Source:** `TDataXtd_Triangulation.hxx`:138 - `TDataXtd_Triangulation::ID()`
     /// Inherited attribute methods
-    pub fn id(&self) -> &crate::ffi::Standard_GUID {
+    pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Triangulation_id(self as *const Self)) }
     }
 
@@ -3828,7 +3828,7 @@ impl Triangulation {
 
     /// **Source:** `TDataXtd_Triangulation.hxx`:44 - `TDataXtd_Triangulation::GetID()`
     /// Returns the ID of the triangulation attribute.
-    pub fn get_id() -> &'static crate::ffi::Standard_GUID {
+    pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataXtd_Triangulation_get_id()) }
     }
 
@@ -3859,12 +3859,12 @@ impl Triangulation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
-    pub fn set_id(&mut self, arg0: &crate::ffi::Standard_GUID) {
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataXtd_Triangulation_inherited_SetID(self as *mut Self, arg0) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_inherited_Label(
                 self as *const Self,
@@ -3900,7 +3900,7 @@ impl Triangulation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
-    pub fn is_attribute(&self, anID: &crate::ffi::Standard_GUID) -> bool {
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Triangulation_inherited_IsAttribute(self as *const Self, anID)
         }
@@ -3909,7 +3909,7 @@ impl Triangulation {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
     pub fn find_attribute(
         &self,
-        anID: &crate::ffi::Standard_GUID,
+        anID: &crate::standard::GUID,
         anAttribute: &mut crate::ffi::HandleTDFAttribute,
     ) -> bool {
         unsafe {
@@ -3929,7 +3929,7 @@ impl Triangulation {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
-    pub fn forget_attribute(&self, aguid: &crate::ffi::Standard_GUID) -> bool {
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         unsafe {
             crate::ffi::TDataXtd_Triangulation_inherited_ForgetAttribute(self as *const Self, aguid)
         }

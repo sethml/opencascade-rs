@@ -83,7 +83,7 @@ impl LengthMeasureWithUnit {
     }
 
     /// Inherited: **Source:** `StepBasic_MeasureWithUnit.hxx`:48 - `StepBasic_MeasureWithUnit::SetUnitComponent()`
-    pub fn set_unit_component(&mut self, aUnitComponent: &crate::ffi::StepBasic_Unit) {
+    pub fn set_unit_component(&mut self, aUnitComponent: &Unit) {
         unsafe {
             crate::ffi::StepBasic_LengthMeasureWithUnit_inherited_SetUnitComponent(
                 self as *mut Self,
@@ -93,7 +93,7 @@ impl LengthMeasureWithUnit {
     }
 
     /// Inherited: **Source:** `StepBasic_MeasureWithUnit.hxx`:50 - `StepBasic_MeasureWithUnit::UnitComponent()`
-    pub fn unit_component(&self) -> crate::OwnedPtr<crate::ffi::StepBasic_Unit> {
+    pub fn unit_component(&self) -> crate::OwnedPtr<Unit> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepBasic_LengthMeasureWithUnit_inherited_UnitComponent(
@@ -140,7 +140,7 @@ impl MeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_MeasureWithUnit.hxx`:48 - `StepBasic_MeasureWithUnit::SetUnitComponent()`
-    pub fn set_unit_component(&mut self, aUnitComponent: &crate::ffi::StepBasic_Unit) {
+    pub fn set_unit_component(&mut self, aUnitComponent: &Unit) {
         unsafe {
             crate::ffi::StepBasic_MeasureWithUnit_set_unit_component(
                 self as *mut Self,
@@ -150,7 +150,7 @@ impl MeasureWithUnit {
     }
 
     /// **Source:** `StepBasic_MeasureWithUnit.hxx`:50 - `StepBasic_MeasureWithUnit::UnitComponent()`
-    pub fn unit_component(&self) -> crate::OwnedPtr<crate::ffi::StepBasic_Unit> {
+    pub fn unit_component(&self) -> crate::OwnedPtr<Unit> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::StepBasic_MeasureWithUnit_unit_component(
                 self as *const Self,

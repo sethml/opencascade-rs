@@ -207,22 +207,22 @@ impl CircSection {
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:35 - `ChFiDS_CircSection::Set()`
-    pub fn set_circ_real2(&mut self, C: &crate::ffi::gp_Circ, F: f64, L: f64) {
+    pub fn set_circ_real2(&mut self, C: &crate::gp::Circ, F: f64, L: f64) {
         unsafe { crate::ffi::ChFiDS_CircSection_set_circ_real2(self as *mut Self, C, F, L) }
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:37 - `ChFiDS_CircSection::Set()`
-    pub fn set_lin_real2(&mut self, C: &crate::ffi::gp_Lin, F: f64, L: f64) {
+    pub fn set_lin_real2(&mut self, C: &crate::gp::Lin, F: f64, L: f64) {
         unsafe { crate::ffi::ChFiDS_CircSection_set_lin_real2(self as *mut Self, C, F, L) }
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:39 - `ChFiDS_CircSection::Get()`
-    pub fn get_circ_real2(&self, C: &mut crate::ffi::gp_Circ, F: &mut f64, L: &mut f64) {
+    pub fn get_circ_real2(&self, C: &mut crate::gp::Circ, F: &mut f64, L: &mut f64) {
         unsafe { crate::ffi::ChFiDS_CircSection_get_circ_real2(self as *const Self, C, F, L) }
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:41 - `ChFiDS_CircSection::Get()`
-    pub fn get_lin_real2(&self, C: &mut crate::ffi::gp_Lin, F: &mut f64, L: &mut f64) {
+    pub fn get_lin_real2(&self, C: &mut crate::gp::Lin, F: &mut f64, L: &mut f64) {
         unsafe { crate::ffi::ChFiDS_CircSection_get_lin_real2(self as *const Self, C, F, L) }
     }
 }
@@ -260,7 +260,7 @@ impl CommonPoint {
     /// Sets the values of a point which is a vertex on
     /// the initial facet of restriction of one
     /// of the surface.
-    pub fn set_vertex(&mut self, theVertex: &crate::ffi::TopoDS_Vertex) {
+    pub fn set_vertex(&mut self, theVertex: &crate::topo_ds::Vertex) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_vertex(self as *mut Self, theVertex) }
     }
 
@@ -270,7 +270,7 @@ impl CommonPoint {
     pub fn set_arc(
         &mut self,
         Tol: f64,
-        A: &crate::ffi::TopoDS_Edge,
+        A: &crate::topo_ds::Edge,
         Param: f64,
         TArc: crate::top_abs::Orientation,
     ) {
@@ -288,13 +288,13 @@ impl CommonPoint {
     /// **Source:** `ChFiDS_CommonPoint.hxx`:66 - `ChFiDS_CommonPoint::SetPoint()`
     /// Set the 3d point for a commonpoint that is not
     /// a vertex or on an arc.
-    pub fn set_point(&mut self, thePoint: &crate::ffi::gp_Pnt) {
+    pub fn set_point(&mut self, thePoint: &crate::gp::Pnt) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_point(self as *mut Self, thePoint) }
     }
 
     /// **Source:** `ChFiDS_CommonPoint.hxx`:69 - `ChFiDS_CommonPoint::SetVector()`
     /// Set the output 3d  vector
-    pub fn set_vector(&mut self, theVector: &crate::ffi::gp_Vec) {
+    pub fn set_vector(&mut self, theVector: &crate::gp::Vec) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_vector(self as *mut Self, theVector) }
     }
 
@@ -322,7 +322,7 @@ impl CommonPoint {
     /// on the domain of the first patch, i-e when the function
     /// IsVertex returns True.
     /// Otherwise, an exception is raised.
-    pub fn vertex(&self) -> &crate::ffi::TopoDS_Vertex {
+    pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_vertex(self as *const Self)) }
     }
 
@@ -336,7 +336,7 @@ impl CommonPoint {
     /// **Source:** `ChFiDS_CommonPoint.hxx`:110 - `ChFiDS_CommonPoint::Arc()`
     /// Returns the arc of restriction containing the
     /// vertex.
-    pub fn arc(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn arc(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_arc(self as *const Self)) }
     }
 
@@ -367,7 +367,7 @@ impl CommonPoint {
 
     /// **Source:** `ChFiDS_CommonPoint.hxx`:124 - `ChFiDS_CommonPoint::Point()`
     /// Returns the 3d point
-    pub fn point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_point(self as *const Self)) }
     }
 
@@ -379,7 +379,7 @@ impl CommonPoint {
 
     /// **Source:** `ChFiDS_CommonPoint.hxx`:130 - `ChFiDS_CommonPoint::Vector()`
     /// Returns the output  3d vector
-    pub fn vector(&self) -> &crate::ffi::gp_Vec {
+    pub fn vector(&self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_vector(self as *const Self)) }
     }
 }
@@ -508,19 +508,19 @@ impl ElSpine {
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:89 - `ChFiDS_ElSpine::Value()`
-    pub fn value(&self, AbsC: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&self, AbsC: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_value(self as *const Self, AbsC))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::D0()`
-    pub fn d0(&self, AbsC: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, AbsC: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d0(self as *const Self, AbsC, P) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
-    pub fn d1(&self, AbsC: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d1(self as *const Self, AbsC, P, V1) }
     }
 
@@ -528,9 +528,9 @@ impl ElSpine {
     pub fn d2(
         &self,
         AbsC: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d2(self as *const Self, AbsC, P, V1, V2) }
     }
@@ -539,10 +539,10 @@ impl ElSpine {
     pub fn d3(
         &self,
         AbsC: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d3(self as *const Self, AbsC, P, V1, V2, V3) }
     }
@@ -573,12 +573,12 @@ impl ElSpine {
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
-    pub fn first_point_and_tgt(&self, P: &mut crate::ffi::gp_Pnt, T: &mut crate::ffi::gp_Vec) {
+    pub fn first_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_first_point_and_tgt(self as *const Self, P, T) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
-    pub fn last_point_and_tgt(&self, P: &mut crate::ffi::gp_Pnt, T: &mut crate::ffi::gp_Vec) {
+    pub fn last_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_last_point_and_tgt(self as *const Self, P, T) }
     }
 
@@ -588,22 +588,22 @@ impl ElSpine {
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:124 - `ChFiDS_ElSpine::VertexWithTangent()`
-    pub fn vertex_with_tangent(&self, Index: i32) -> &crate::ffi::gp_Ax1 {
+    pub fn vertex_with_tangent(&self, Index: i32) -> &crate::gp::Ax1 {
         unsafe { &*(crate::ffi::ChFiDS_ElSpine_vertex_with_tangent(self as *const Self, Index)) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
-    pub fn set_first_point_and_tgt(&mut self, P: &crate::ffi::gp_Pnt, T: &crate::ffi::gp_Vec) {
+    pub fn set_first_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_first_point_and_tgt(self as *mut Self, P, T) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
-    pub fn set_last_point_and_tgt(&mut self, P: &crate::ffi::gp_Pnt, T: &crate::ffi::gp_Vec) {
+    pub fn set_last_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_last_point_and_tgt(self as *mut Self, P, T) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:130 - `ChFiDS_ElSpine::AddVertexWithTangent()`
-    pub fn add_vertex_with_tangent(&mut self, anAx1: &crate::ffi::gp_Ax1) {
+    pub fn add_vertex_with_tangent(&mut self, anAx1: &crate::gp::Ax1) {
         unsafe { crate::ffi::ChFiDS_ElSpine_add_vertex_with_tangent(self as *mut Self, anAx1) }
     }
 
@@ -633,31 +633,31 @@ impl ElSpine {
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:142 - `ChFiDS_ElSpine::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_line(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:144 - `ChFiDS_ElSpine::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_circle(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:146 - `ChFiDS_ElSpine::Ellipse()`
-    pub fn ellipse(&self) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+    pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_ellipse(self as *const Self))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:148 - `ChFiDS_ElSpine::Hyperbola()`
-    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+    pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_hyperbola(self as *const Self))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:150 - `ChFiDS_ElSpine::Parabola()`
-    pub fn parabola(&self) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+    pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_parabola(self as *const Self))
         }
@@ -705,7 +705,7 @@ impl ElSpine {
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:123 - `Adaptor3d_Curve::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_inherited_DN(
                 self as *const Self,
@@ -980,7 +980,7 @@ impl Map {
     /// and the list of ancestors  of type T2 as items.
     pub fn fill(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         T1: crate::top_abs::ShapeEnum,
         T2: crate::top_abs::ShapeEnum,
     ) {
@@ -988,12 +988,12 @@ impl Map {
     }
 
     /// **Source:** `ChFiDS_Map.hxx`:45 - `ChFiDS_Map::Contains()`
-    pub fn contains(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn contains(&self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::ChFiDS_Map_contains(self as *const Self, S) }
     }
 
     /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
-    pub fn find_from_key(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn find_from_key(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::ChFiDS_Map_find_from_key(self as *const Self, S)) }
     }
 
@@ -1203,25 +1203,25 @@ impl Spine {
 
     /// **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
     /// store edges composing the guideline
-    pub fn set_edges(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn set_edges(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFiDS_Spine_set_edges(self as *mut Self, E) }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
     /// store offset edges composing the offset guideline
-    pub fn set_offset_edges(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn set_offset_edges(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFiDS_Spine_set_offset_edges(self as *mut Self, E) }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
     /// store the edge at the first position before all others
-    pub fn put_in_first(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn put_in_first(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFiDS_Spine_put_in_first(self as *mut Self, E) }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
     /// store the offset edge at the first position before all others
-    pub fn put_in_first_offset(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn put_in_first_offset(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFiDS_Spine_put_in_first_offset(self as *mut Self, E) }
     }
 
@@ -1231,12 +1231,12 @@ impl Spine {
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:91 - `ChFiDS_Spine::Edges()`
-    pub fn edges(&self, I: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edges(&self, I: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::ChFiDS_Spine_edges(self as *const Self, I)) }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:93 - `ChFiDS_Spine::OffsetEdges()`
-    pub fn offset_edges(&self, I: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn offset_edges(&self, I: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::ChFiDS_Spine_offset_edges(self as *const Self, I)) }
     }
 
@@ -1381,19 +1381,19 @@ impl Spine {
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:171 - `ChFiDS_Spine::Value()`
-    pub fn value(&mut self, AbsC: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&mut self, AbsC: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_value(self as *mut Self, AbsC))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
-    pub fn d0(&mut self, AbsC: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&mut self, AbsC: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::ChFiDS_Spine_d0(self as *mut Self, AbsC, P) }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
-    pub fn d1(&mut self, AbsC: f64, P: &mut crate::ffi::gp_Pnt, V1: &mut crate::ffi::gp_Vec) {
+    pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         unsafe { crate::ffi::ChFiDS_Spine_d1(self as *mut Self, AbsC, P, V1) }
     }
 
@@ -1401,9 +1401,9 @@ impl Spine {
     pub fn d2(
         &mut self,
         AbsC: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::ChFiDS_Spine_d2(self as *mut Self, AbsC, P, V1, V2) }
     }
@@ -1415,7 +1415,7 @@ impl Spine {
 
     /// **Source:** `ChFiDS_Spine.hxx`:182 - `ChFiDS_Spine::CurrentElementarySpine()`
     /// sets the current curve and returns it
-    pub fn current_elementary_spine(&mut self, Index: i32) -> &crate::ffi::BRepAdaptor_Curve {
+    pub fn current_elementary_spine(&mut self, Index: i32) -> &crate::b_rep_adaptor::Curve {
         unsafe { &*(crate::ffi::ChFiDS_Spine_current_elementary_spine(self as *mut Self, Index)) }
     }
 
@@ -1435,12 +1435,12 @@ impl Spine {
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:188 - `ChFiDS_Spine::Line()`
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_line(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:190 - `ChFiDS_Spine::Circle()`
-    pub fn circle(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_circle(self as *const Self)) }
     }
 
@@ -1516,19 +1516,19 @@ impl Spine {
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:216 - `ChFiDS_Spine::Absc()`
-    pub fn absc_vertex(&self, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn absc_vertex(&self, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe { crate::ffi::ChFiDS_Spine_absc_vertex(self as *const Self, V) }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:218 - `ChFiDS_Spine::FirstVertex()`
-    pub fn first_vertex(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_first_vertex(self as *const Self))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:220 - `ChFiDS_Spine::LastVertex()`
-    pub fn last_vertex(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_last_vertex(self as *const Self))
         }
@@ -1573,7 +1573,7 @@ impl Spine {
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:240 - `ChFiDS_Spine::Index()`
-    pub fn index_edge(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn index_edge(&self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::ChFiDS_Spine_index_edge(self as *const Self, E) }
     }
 
@@ -2075,7 +2075,7 @@ impl StripeMap {
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:38 - `ChFiDS_StripeMap::Add()`
-    pub fn add(&mut self, V: &crate::ffi::TopoDS_Vertex, F: &crate::ffi::HandleChFiDSStripe) {
+    pub fn add(&mut self, V: &crate::topo_ds::Vertex, F: &crate::ffi::HandleChFiDSStripe) {
         unsafe { crate::ffi::ChFiDS_StripeMap_add(self as *mut Self, V, F) }
     }
 
@@ -2085,7 +2085,7 @@ impl StripeMap {
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:42 - `ChFiDS_StripeMap::FindFromKey()`
-    pub fn find_from_key(&self, V: &crate::ffi::TopoDS_Vertex) -> &crate::ffi::ChFiDS_ListOfStripe {
+    pub fn find_from_key(&self, V: &crate::topo_ds::Vertex) -> &crate::ffi::ChFiDS_ListOfStripe {
         unsafe { &*(crate::ffi::ChFiDS_StripeMap_find_from_key(self as *const Self, V)) }
     }
 
@@ -2095,7 +2095,7 @@ impl StripeMap {
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:50 - `ChFiDS_StripeMap::FindKey()`
-    pub fn find_key(&self, I: i32) -> &crate::ffi::TopoDS_Vertex {
+    pub fn find_key(&self, I: i32) -> &crate::topo_ds::Vertex {
         unsafe { &*(crate::ffi::ChFiDS_StripeMap_find_key(self as *const Self, I)) }
     }
 
@@ -2177,32 +2177,32 @@ impl SurfData {
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:59 - `ChFiDS_SurfData::InterferenceOnS1()`
-    pub fn interference_on_s1(&self) -> &crate::ffi::ChFiDS_FaceInterference {
+    pub fn interference_on_s1(&self) -> &FaceInterference {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_interference_on_s1(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:61 - `ChFiDS_SurfData::InterferenceOnS2()`
-    pub fn interference_on_s2(&self) -> &crate::ffi::ChFiDS_FaceInterference {
+    pub fn interference_on_s2(&self) -> &FaceInterference {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_interference_on_s2(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:63 - `ChFiDS_SurfData::VertexFirstOnS1()`
-    pub fn vertex_first_on_s1(&self) -> &crate::ffi::ChFiDS_CommonPoint {
+    pub fn vertex_first_on_s1(&self) -> &CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex_first_on_s1(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:65 - `ChFiDS_SurfData::VertexFirstOnS2()`
-    pub fn vertex_first_on_s2(&self) -> &crate::ffi::ChFiDS_CommonPoint {
+    pub fn vertex_first_on_s2(&self) -> &CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex_first_on_s2(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:67 - `ChFiDS_SurfData::VertexLastOnS1()`
-    pub fn vertex_last_on_s1(&self) -> &crate::ffi::ChFiDS_CommonPoint {
+    pub fn vertex_last_on_s1(&self) -> &CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex_last_on_s1(self as *const Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:69 - `ChFiDS_SurfData::VertexLastOnS2()`
-    pub fn vertex_last_on_s2(&self) -> &crate::ffi::ChFiDS_CommonPoint {
+    pub fn vertex_last_on_s2(&self) -> &CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex_last_on_s2(self as *const Self)) }
     }
 
@@ -2232,42 +2232,42 @@ impl SurfData {
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:83 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
-    pub fn change_interference_on_s1(&mut self) -> &mut crate::ffi::ChFiDS_FaceInterference {
+    pub fn change_interference_on_s1(&mut self) -> &mut FaceInterference {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_interference_on_s1(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:85 - `ChFiDS_SurfData::ChangeInterferenceOnS2()`
-    pub fn change_interference_on_s2(&mut self) -> &mut crate::ffi::ChFiDS_FaceInterference {
+    pub fn change_interference_on_s2(&mut self) -> &mut FaceInterference {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_interference_on_s2(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:87 - `ChFiDS_SurfData::ChangeVertexFirstOnS1()`
-    pub fn change_vertex_first_on_s1(&mut self) -> &mut crate::ffi::ChFiDS_CommonPoint {
+    pub fn change_vertex_first_on_s1(&mut self) -> &mut CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex_first_on_s1(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:89 - `ChFiDS_SurfData::ChangeVertexFirstOnS2()`
-    pub fn change_vertex_first_on_s2(&mut self) -> &mut crate::ffi::ChFiDS_CommonPoint {
+    pub fn change_vertex_first_on_s2(&mut self) -> &mut CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex_first_on_s2(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:91 - `ChFiDS_SurfData::ChangeVertexLastOnS1()`
-    pub fn change_vertex_last_on_s1(&mut self) -> &mut crate::ffi::ChFiDS_CommonPoint {
+    pub fn change_vertex_last_on_s1(&mut self) -> &mut CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex_last_on_s1(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:93 - `ChFiDS_SurfData::ChangeVertexLastOnS2()`
-    pub fn change_vertex_last_on_s2(&mut self) -> &mut crate::ffi::ChFiDS_CommonPoint {
+    pub fn change_vertex_last_on_s2(&mut self) -> &mut CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex_last_on_s2(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:95 - `ChFiDS_SurfData::Interference()`
-    pub fn interference(&self, OnS: i32) -> &crate::ffi::ChFiDS_FaceInterference {
+    pub fn interference(&self, OnS: i32) -> &FaceInterference {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_interference(self as *const Self, OnS)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:97 - `ChFiDS_SurfData::ChangeInterference()`
-    pub fn change_interference(&mut self, OnS: i32) -> &mut crate::ffi::ChFiDS_FaceInterference {
+    pub fn change_interference(&mut self, OnS: i32) -> &mut FaceInterference {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_interference(self as *mut Self, OnS)) }
     }
 
@@ -2279,14 +2279,14 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:103 - `ChFiDS_SurfData::Vertex()`
     /// returns one of the four vertices  whether First is true
     /// or wrong and OnS equals 1 or 2.
-    pub fn vertex(&self, First: bool, OnS: i32) -> &crate::ffi::ChFiDS_CommonPoint {
+    pub fn vertex(&self, First: bool, OnS: i32) -> &CommonPoint {
         unsafe { &*(crate::ffi::ChFiDS_SurfData_vertex(self as *const Self, First, OnS)) }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:108 - `ChFiDS_SurfData::ChangeVertex()`
     /// returns one of the four vertices  whether First is true
     /// or wrong and OnS equals 1 or 2.
-    pub fn change_vertex(&mut self, First: bool, OnS: i32) -> &mut crate::ffi::ChFiDS_CommonPoint {
+    pub fn change_vertex(&mut self, First: bool, OnS: i32) -> &mut CommonPoint {
         unsafe { &mut *(crate::ffi::ChFiDS_SurfData_change_vertex(self as *mut Self, First, OnS)) }
     }
 
@@ -2350,7 +2350,7 @@ impl SurfData {
         &self,
         First: bool,
         OnS: i32,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SurfData_get2d_points_bool_int(
                 self as *const Self,
@@ -2363,10 +2363,10 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:140 - `ChFiDS_SurfData::Get2dPoints()`
     pub fn get2d_points_pnt2d4(
         &self,
-        P2df1: &mut crate::ffi::gp_Pnt2d,
-        P2dl1: &mut crate::ffi::gp_Pnt2d,
-        P2df2: &mut crate::ffi::gp_Pnt2d,
-        P2dl2: &mut crate::ffi::gp_Pnt2d,
+        P2df1: &mut crate::gp::Pnt2d,
+        P2dl1: &mut crate::gp::Pnt2d,
+        P2df2: &mut crate::gp::Pnt2d,
+        P2dl2: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::ChFiDS_SurfData_get2d_points_pnt2d4(
@@ -2382,10 +2382,10 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:145 - `ChFiDS_SurfData::Set2dPoints()`
     pub fn set2d_points(
         &mut self,
-        P2df1: &crate::ffi::gp_Pnt2d,
-        P2dl1: &crate::ffi::gp_Pnt2d,
-        P2df2: &crate::ffi::gp_Pnt2d,
-        P2dl2: &crate::ffi::gp_Pnt2d,
+        P2df1: &crate::gp::Pnt2d,
+        P2dl1: &crate::gp::Pnt2d,
+        P2df2: &crate::gp::Pnt2d,
+        P2dl2: &crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::ChFiDS_SurfData_set2d_points(self as *mut Self, P2df1, P2dl1, P2df2, P2dl2)

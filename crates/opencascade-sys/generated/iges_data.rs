@@ -720,7 +720,7 @@ impl IGESEntity {
     /// is not taken in account here : see CompoundLocation for that.
     /// If no Transf is defined, returns Identity
     /// If Transf is itself compound, gives the final result
-    pub fn location(&self) -> crate::OwnedPtr<crate::ffi::gp_GTrsf> {
+    pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_location(self as *const Self))
         }
@@ -729,7 +729,7 @@ impl IGESEntity {
     /// **Source:** `IGESData_IGESEntity.hxx`:254 - `IGESData_IGESEntity::VectorLocation()`
     /// Returns Location considered for Vectors, i.e. without its
     /// Translation Part. As Location, it gives local definition.
-    pub fn vector_location(&self) -> crate::OwnedPtr<crate::ffi::gp_GTrsf> {
+    pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_vector_location(
                 self as *const Self,
@@ -742,7 +742,7 @@ impl IGESEntity {
     /// own Location : that one will be combined to that of <me>
     /// The Parent is considered only if HasOneParent is True,
     /// else it is ignored and CompoundLocation = Location
-    pub fn compound_location(&self) -> crate::OwnedPtr<crate::ffi::gp_GTrsf> {
+    pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_compound_location(
                 self as *const Self,

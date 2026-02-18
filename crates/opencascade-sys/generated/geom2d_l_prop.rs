@@ -92,28 +92,28 @@ impl CLProps2d {
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:84 - `Geom2dLProp_CLProps2d::Value()`
     /// Returns the Point.
-    pub fn value(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn value(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::Geom2dLProp_CLProps2d_value(self as *const Self)) }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:88 - `Geom2dLProp_CLProps2d::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1(&mut self) -> &crate::ffi::gp_Vec2d {
+    pub fn d1(&mut self) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::Geom2dLProp_CLProps2d_d1(self as *mut Self)) }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:92 - `Geom2dLProp_CLProps2d::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d2(&mut self) -> &crate::ffi::gp_Vec2d {
+    pub fn d2(&mut self) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::Geom2dLProp_CLProps2d_d2(self as *mut Self)) }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:96 - `Geom2dLProp_CLProps2d::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d3(&mut self) -> &crate::ffi::gp_Vec2d {
+    pub fn d3(&mut self) -> &crate::gp::Vec2d {
         unsafe { &*(crate::ffi::Geom2dLProp_CLProps2d_d3(self as *mut Self)) }
     }
 
@@ -127,7 +127,7 @@ impl CLProps2d {
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:104 - `Geom2dLProp_CLProps2d::Tangent()`
     /// output  the tangent direction <D>
-    pub fn tangent(&mut self, D: &mut crate::ffi::gp_Dir2d) {
+    pub fn tangent(&mut self, D: &mut crate::gp::Dir2d) {
         unsafe { crate::ffi::Geom2dLProp_CLProps2d_tangent(self as *mut Self, D) }
     }
 
@@ -139,13 +139,13 @@ impl CLProps2d {
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:110 - `Geom2dLProp_CLProps2d::Normal()`
     /// Returns the normal direction <N>.
-    pub fn normal(&mut self, N: &mut crate::ffi::gp_Dir2d) {
+    pub fn normal(&mut self, N: &mut crate::gp::Dir2d) {
         unsafe { crate::ffi::Geom2dLProp_CLProps2d_normal(self as *mut Self, N) }
     }
 
     /// **Source:** `Geom2dLProp_CLProps2d.hxx`:113 - `Geom2dLProp_CLProps2d::CentreOfCurvature()`
     /// Returns the centre of curvature <P>.
-    pub fn centre_of_curvature(&mut self, P: &mut crate::ffi::gp_Pnt2d) {
+    pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt2d) {
         unsafe { crate::ffi::Geom2dLProp_CLProps2d_centre_of_curvature(self as *mut Self, P) }
     }
 }
@@ -297,7 +297,7 @@ impl Curve2dTool {
 
     /// **Source:** `Geom2dLProp_Curve2dTool.hxx`:35 - `Geom2dLProp_Curve2dTool::Value()`
     /// Computes the point <P> of parameter <U> on the curve <C>.
-    pub fn value(C: &crate::ffi::HandleGeom2dCurve, U: f64, P: &mut crate::ffi::gp_Pnt2d) {
+    pub fn value(C: &crate::ffi::HandleGeom2dCurve, U: f64, P: &mut crate::gp::Pnt2d) {
         unsafe { crate::ffi::Geom2dLProp_Curve2dTool_value(C, U, P) }
     }
 
@@ -307,8 +307,8 @@ impl Curve2dTool {
     pub fn d1(
         C: &crate::ffi::HandleGeom2dCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d1(C, U, P, V1) }
     }
@@ -319,9 +319,9 @@ impl Curve2dTool {
     pub fn d2(
         C: &crate::ffi::HandleGeom2dCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d2(C, U, P, V1, V2) }
     }
@@ -333,10 +333,10 @@ impl Curve2dTool {
     pub fn d3(
         C: &crate::ffi::HandleGeom2dCurve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        V1: &mut crate::ffi::gp_Vec2d,
-        V2: &mut crate::ffi::gp_Vec2d,
-        V3: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::Geom2dLProp_Curve2dTool_d3(C, U, P, V1, V2, V3) }
     }
@@ -560,7 +560,7 @@ impl NumericCurInf2d {
     pub fn perform_cur_ext_handlegeom2dcurve_curandinf(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
-        Result: &mut crate::ffi::LProp_CurAndInf,
+        Result: &mut crate::l_prop::CurAndInf,
     ) {
         unsafe {
             crate::ffi::Geom2dLProp_NumericCurInf2d_perform_cur_ext_handlegeom2dcurve_curandinf(
@@ -576,7 +576,7 @@ impl NumericCurInf2d {
     pub fn perform_inf_handlegeom2dcurve_curandinf(
         &mut self,
         C: &crate::ffi::HandleGeom2dCurve,
-        Result: &mut crate::ffi::LProp_CurAndInf,
+        Result: &mut crate::l_prop::CurAndInf,
     ) {
         unsafe {
             crate::ffi::Geom2dLProp_NumericCurInf2d_perform_inf_handlegeom2dcurve_curandinf(
@@ -595,7 +595,7 @@ impl NumericCurInf2d {
         C: &crate::ffi::HandleGeom2dCurve,
         UMin: f64,
         UMax: f64,
-        Result: &mut crate::ffi::LProp_CurAndInf,
+        Result: &mut crate::l_prop::CurAndInf,
     ) {
         unsafe {
             crate::ffi::Geom2dLProp_NumericCurInf2d_perform_cur_ext_handlegeom2dcurve_real2_curandinf(self as *mut Self, C, UMin, UMax, Result)
@@ -610,7 +610,7 @@ impl NumericCurInf2d {
         C: &crate::ffi::HandleGeom2dCurve,
         UMin: f64,
         UMax: f64,
-        Result: &mut crate::ffi::LProp_CurAndInf,
+        Result: &mut crate::l_prop::CurAndInf,
     ) {
         unsafe {
             crate::ffi::Geom2dLProp_NumericCurInf2d_perform_inf_handlegeom2dcurve_real2_curandinf(

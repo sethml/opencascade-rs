@@ -24,7 +24,7 @@ impl LocalOperation {
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:38 - `BRepFilletAPI_LocalOperation::Add()`
     /// Adds a  contour in  the  builder  (builds a
     /// contour  of tangent edges).
-    pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_add(self as *mut Self, E) }
     }
 
@@ -44,7 +44,7 @@ impl LocalOperation {
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:49 - `BRepFilletAPI_LocalOperation::Contour()`
     /// Returns the index of  the  contour containing the edge
     /// E, returns 0 if E doesn't belong to any contour.
-    pub fn contour(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn contour(&self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_contour(self as *const Self, E) }
     }
 
@@ -56,13 +56,13 @@ impl LocalOperation {
 
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:55 - `BRepFilletAPI_LocalOperation::Edge()`
     /// Returns the Edge J in the contour I.
-    pub fn edge(&self, I: i32, J: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, I: i32, J: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFilletAPI_LocalOperation_edge(self as *const Self, I, J)) }
     }
 
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:59 - `BRepFilletAPI_LocalOperation::Remove()`
     /// remove the contour containing the Edge E.
-    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_remove(self as *mut Self, E) }
     }
 
@@ -74,7 +74,7 @@ impl LocalOperation {
 
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:65 - `BRepFilletAPI_LocalOperation::FirstVertex()`
     /// Returns the first Vertex of the contour of index IC.
-    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_LocalOperation_first_vertex(
                 self as *const Self,
@@ -85,7 +85,7 @@ impl LocalOperation {
 
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:68 - `BRepFilletAPI_LocalOperation::LastVertex()`
     /// Returns the last Vertex of the contour of index IC.
-    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_LocalOperation_last_vertex(
                 self as *const Self,
@@ -97,14 +97,14 @@ impl LocalOperation {
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:72 - `BRepFilletAPI_LocalOperation::Abscissa()`
     /// returns the abscissa of the vertex V on
     /// the contour of index IC.
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe { crate::ffi::BRepFilletAPI_LocalOperation_abscissa(self as *const Self, IC, V) }
     }
 
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:77 - `BRepFilletAPI_LocalOperation::RelativeAbscissa()`
     /// returns the relative abscissa([0.,1.]) of the
     /// vertex V on the contour of index IC.
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe {
             crate::ffi::BRepFilletAPI_LocalOperation_relative_abscissa(self as *const Self, IC, V)
         }
@@ -194,33 +194,33 @@ impl LocalOperation {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe {
             crate::ffi::BRepFilletAPI_LocalOperation_inherited_Build(self as *mut Self, theRange)
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFilletAPI_LocalOperation_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFilletAPI_LocalOperation_inherited_Generated(self as *mut Self, S))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFilletAPI_LocalOperation_inherited_Modified(self as *mut Self, S))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDeleted(self as *mut Self, S)
         }
@@ -261,7 +261,7 @@ impl MakeChamfer {
     /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:51 - `BRepFilletAPI_MakeChamfer::BRepFilletAPI_MakeChamfer()`
     /// Initializes an algorithm for computing chamfers on the shape S.
     /// The edges on which chamfers are built are defined using the Add function.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeChamfer_ctor_shape(S)) }
     }
 
@@ -269,7 +269,7 @@ impl MakeChamfer {
     /// Adds edge E to the table of edges used by this
     /// algorithm to build chamfers, where the parameters
     /// of the chamfer must be set after the
-    pub fn add_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_add_edge(self as *mut Self, E) }
     }
 
@@ -286,7 +286,7 @@ impl MakeChamfer {
     /// series of faces being located on either side of the contour.
     /// Warning
     /// Nothing is done if edge E or the face F does not belong to the initial shape.
-    pub fn add_real_edge(&mut self, Dis: f64, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_real_edge(&mut self, Dis: f64, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_add_real_edge(self as *mut Self, Dis, E) }
     }
 
@@ -299,7 +299,7 @@ impl MakeChamfer {
     /// Warning
     /// Nothing is done if either the edge E or the face F
     /// does not belong to the initial shape.
-    pub fn set_dist(&mut self, Dis: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_dist(&mut self, Dis: f64, IC: i32, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_set_dist(self as *mut Self, Dis, IC, F) }
     }
 
@@ -326,8 +326,8 @@ impl MakeChamfer {
         &mut self,
         Dis1: f64,
         Dis2: f64,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
     ) {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeChamfer_add_real2_edge_face(
@@ -349,7 +349,7 @@ impl MakeChamfer {
     /// Warning
     /// Nothing is done if either the edge E or the face F
     /// does not belong to the initial shape.
-    pub fn set_dists(&mut self, Dis1: f64, Dis2: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_dists(&mut self, Dis1: f64, Dis2: f64, IC: i32, F: &crate::topo_ds::Face) {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeChamfer_set_dists(self as *mut Self, Dis1, Dis2, IC, F)
         }
@@ -373,8 +373,8 @@ impl MakeChamfer {
         &mut self,
         Dis: f64,
         Angle: f64,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
     ) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_add_da(self as *mut Self, Dis, Angle, E, F) }
     }
@@ -384,7 +384,7 @@ impl MakeChamfer {
     /// contour of index <IC> in the DS with <Dis> on <F>.
     /// if the face <F> is not one of common faces
     /// of an edge of the contour <IC>
-    pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64, IC: i32, F: &crate::topo_ds::Face) {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeChamfer_set_dist_angle(
                 self as *mut Self,
@@ -458,7 +458,7 @@ impl MakeChamfer {
     /// Warning
     /// This index can change if a contour is removed from the
     /// internal data structure of this algorithm using the function Remove.
-    pub fn contour(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn contour(&self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_contour(self as *const Self, E) }
     }
 
@@ -478,7 +478,7 @@ impl MakeChamfer {
     /// Returns a null shape if:
     /// -   I is outside the bounds of the table of contours, or
     /// -   J is outside the bounds of the table of edges of the contour of index I.
-    pub fn edge(&self, I: i32, J: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, I: i32, J: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_edge(self as *const Self, I, J)) }
     }
 
@@ -488,7 +488,7 @@ impl MakeChamfer {
     /// Warning
     /// Nothing is done if the edge E does not belong to the
     /// contour in the internal data structure of this algorithm.
-    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_remove(self as *mut Self, E) }
     }
 
@@ -506,7 +506,7 @@ impl MakeChamfer {
     /// in the internal data structure of this algorithm.
     /// Warning
     /// Returns a null shape if IC is outside the bounds of the table of contours.
-    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeChamfer_first_vertex(
                 self as *const Self,
@@ -520,7 +520,7 @@ impl MakeChamfer {
     /// in the internal data structure of this algorithm.
     /// Warning
     /// Returns a null shape if IC is outside the bounds of the table of contours.
-    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeChamfer_last_vertex(
                 self as *const Self,
@@ -536,7 +536,7 @@ impl MakeChamfer {
     /// Returns -1. if:
     /// -   IC is outside the bounds of the table of contours, or
     /// -   V is not on the contour of index IC.
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_abscissa(self as *const Self, IC, V) }
     }
 
@@ -548,7 +548,7 @@ impl MakeChamfer {
     /// Returns -1. if:
     /// -   IC is outside the bounds of the table of contours, or
     /// -   V is not on the contour of index IC.
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeChamfer_relative_abscissa(self as *const Self, IC, V)
         }
@@ -591,7 +591,7 @@ impl MakeChamfer {
     /// intersection of 4 or more edges of the shape, or
     /// -   the intersection of the chamfer with a face which
     /// limits the contour is not fully contained in this face.
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_build(self as *mut Self, theRange) }
     }
 
@@ -606,22 +606,19 @@ impl MakeChamfer {
     /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:283 - `BRepFilletAPI_MakeChamfer::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <EorV>.
-    pub fn generated(
-        &mut self,
-        EorV: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, EorV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_generated(self as *mut Self, EorV)) }
     }
 
     /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:288 - `BRepFilletAPI_MakeChamfer::Modified()`
     /// Returns the list  of shapes modified from the shape
     /// <F>.
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_modified(self as *mut Self, F)) }
     }
 
     /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:291 - `BRepFilletAPI_MakeChamfer::IsDeleted()`
-    pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, F: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_is_deleted(self as *mut Self, F) }
     }
 
@@ -701,7 +698,7 @@ impl MakeChamfer {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Shape(self as *mut Self)) }
     }
 
@@ -746,7 +743,7 @@ impl MakeFillet {
     /// ChFi3d_Polynomial  corresponds to  a    polynomial
     /// representation of circles.
     pub fn new_shape_filletshape(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -805,7 +802,7 @@ impl MakeFillet {
     /// Adds a  fillet contour in  the  builder  (builds a
     /// contour  of tangent edges).
     /// The Radius must be set after.
-    pub fn add_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_add_edge(self as *mut Self, E) }
     }
 
@@ -813,7 +810,7 @@ impl MakeFillet {
     /// Adds a  fillet description in  the  builder
     /// - builds a contour  of tangent edges,
     /// - sets the radius.
-    pub fn add_real_edge(&mut self, Radius: f64, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_real_edge(&mut self, Radius: f64, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_add_real_edge(self as *mut Self, Radius, E) }
     }
 
@@ -822,7 +819,7 @@ impl MakeFillet {
     /// - builds a contour  of tangent edges,
     /// - sets a linear radius evolution law between
     /// the first and last vertex of the spine.
-    pub fn add_real2_edge(&mut self, R1: f64, R2: f64, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_real2_edge(&mut self, R1: f64, R2: f64, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_add_real2_edge(self as *mut Self, R1, R2, E) }
     }
 
@@ -833,7 +830,7 @@ impl MakeFillet {
     pub fn add_handlelawfunction_edge(
         &mut self,
         L: &crate::ffi::HandleLawFunction,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
     ) {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeFillet_add_handlelawfunction_edge(self as *mut Self, L, E)
@@ -851,7 +848,7 @@ impl MakeFillet {
     pub fn add_array1ofpnt2d_edge(
         &mut self,
         UandR: &crate::ffi::TColgp_Array1OfPnt2d,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
     ) {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeFillet_add_array1ofpnt2d_edge(self as *mut Self, UandR, E)
@@ -980,7 +977,7 @@ impl MakeFillet {
     /// Warning
     /// False is returned if IC is outside the bounds of the table
     /// of contours or if E does not belong to the contour of index IC.
-    pub fn is_constant_int_edge(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn is_constant_int_edge(&mut self, IC: i32, E: &crate::topo_ds::Edge) -> bool {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeFillet_is_constant_int_edge(self as *mut Self, IC, E)
         }
@@ -993,13 +990,13 @@ impl MakeFillet {
     /// -   Use this function only if the radius is constant.
     /// -   -1 is returned if IC is outside the bounds of the
     /// table of contours or if E does not belong to the contour of index IC.
-    pub fn radius_int_edge(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) -> f64 {
+    pub fn radius_int_edge(&mut self, IC: i32, E: &crate::topo_ds::Edge) -> f64 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_radius_int_edge(self as *mut Self, IC, E) }
     }
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:191 - `BRepFilletAPI_MakeFillet::SetRadius()`
     /// Assigns Radius as the radius of the fillet on the edge E
-    pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::ffi::TopoDS_Edge) {
+    pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::topo_ds::Edge) {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeFillet_set_radius_real_int_edge(
                 self as *mut Self,
@@ -1011,12 +1008,7 @@ impl MakeFillet {
     }
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:195 - `BRepFilletAPI_MakeFillet::SetRadius()`
-    pub fn set_radius_real_int_vertex(
-        &mut self,
-        Radius: f64,
-        IC: i32,
-        V: &crate::ffi::TopoDS_Vertex,
-    ) {
+    pub fn set_radius_real_int_vertex(&mut self, Radius: f64, IC: i32, V: &crate::topo_ds::Vertex) {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeFillet_set_radius_real_int_vertex(
                 self as *mut Self,
@@ -1031,7 +1023,7 @@ impl MakeFillet {
     pub fn get_bounds(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         F: &mut f64,
         L: &mut f64,
     ) -> bool {
@@ -1042,7 +1034,7 @@ impl MakeFillet {
     pub fn get_law(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet_get_law(
@@ -1057,7 +1049,7 @@ impl MakeFillet {
     pub fn set_law(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         L: &crate::ffi::HandleLawFunction,
     ) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_set_law(self as *mut Self, IC, E, L) }
@@ -1096,7 +1088,7 @@ impl MakeFillet {
     /// Warning
     /// This index can change if a contour is removed from the
     /// internal data structure of this algorithm using the function Remove.
-    pub fn contour(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn contour(&self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_contour(self as *const Self, E) }
     }
 
@@ -1116,7 +1108,7 @@ impl MakeFillet {
     /// Returns a null shape if:
     /// -   I is outside the bounds of the table of contours, or
     /// -   J is outside the bounds of the table of edges of the index I contour.
-    pub fn edge(&self, I: i32, J: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, I: i32, J: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_edge(self as *const Self, I, J)) }
     }
 
@@ -1126,7 +1118,7 @@ impl MakeFillet {
     /// Warning
     /// Nothing is done if the edge E does not belong to the
     /// contour in the internal data structure of this algorithm.
-    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_remove(self as *mut Self, E) }
     }
 
@@ -1144,7 +1136,7 @@ impl MakeFillet {
     /// in the internal data structure of this algorithm.
     /// Warning
     /// Returns a null shape if IC is outside the bounds of the table of contours.
-    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet_first_vertex(
                 self as *const Self,
@@ -1158,7 +1150,7 @@ impl MakeFillet {
     /// in the internal data structure of this algorithm.
     /// Warning
     /// Returns a null shape if IC is outside the bounds of the table of contours.
-    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet_last_vertex(
                 self as *const Self,
@@ -1174,7 +1166,7 @@ impl MakeFillet {
     /// Returns -1. if:
     /// -   IC is outside the bounds of the table of contours, or
     /// -   V is not on the contour of index IC.
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_abscissa(self as *const Self, IC, V) }
     }
 
@@ -1186,7 +1178,7 @@ impl MakeFillet {
     /// Returns -1. if:
     /// -   IC is outside the bounds of the table of contours, or
     /// -   V is not on the contour of index IC.
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeFillet_relative_abscissa(self as *const Self, IC, V)
         }
@@ -1230,7 +1222,7 @@ impl MakeFillet {
     /// intersection of 4 or more edges of the shape, or
     /// -   the intersection of the fillet with a face which limits
     /// the contour is not fully contained in this face.
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_build(self as *mut Self, theRange) }
     }
 
@@ -1245,22 +1237,19 @@ impl MakeFillet {
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:332 - `BRepFilletAPI_MakeFillet::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <EorV>.
-    pub fn generated(
-        &mut self,
-        EorV: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, EorV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_generated(self as *mut Self, EorV)) }
     }
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:337 - `BRepFilletAPI_MakeFillet::Modified()`
     /// Returns the list  of shapes modified from the shape
     /// <F>.
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_modified(self as *mut Self, F)) }
     }
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:340 - `BRepFilletAPI_MakeFillet::IsDeleted()`
-    pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, F: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet_is_deleted(self as *mut Self, F) }
     }
 
@@ -1347,7 +1336,7 @@ impl MakeFillet {
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:378 - `BRepFilletAPI_MakeFillet::FaultyVertex()`
     /// returns the vertex where the computation failed
-    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet_faulty_vertex(
                 self as *const Self,
@@ -1365,7 +1354,7 @@ impl MakeFillet {
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:385 - `BRepFilletAPI_MakeFillet::BadShape()`
     /// if (HasResult()) returns the partial result
-    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet_bad_shape(
                 self as *const Self,
@@ -1446,7 +1435,7 @@ impl MakeFillet {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet_inherited_Shape(self as *mut Self)) }
     }
 
@@ -1513,7 +1502,7 @@ impl MakeFillet2d {
     /// -   ChFi2d_Ready if the initialization is correct,
     /// -   ChFi2d_NotPlanar if F is not planar,
     /// -   ChFi2d_NoFace if F is a null face.
-    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
+    pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet2d_ctor_face(F)) }
     }
 
@@ -1526,7 +1515,7 @@ impl MakeFillet2d {
     /// -   ChFi2d_Ready if the initialization is correct,
     /// -   ChFi2d_NotPlanar if F is not planar,
     /// -   ChFi2d_NoFace if F is a null face.
-    pub fn init_face(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_init_face(self as *mut Self, F) }
     }
 
@@ -1534,11 +1523,7 @@ impl MakeFillet2d {
     /// This initialize method allow to init the builder
     /// from a face RefFace and another face ModFace which derive from RefFace.
     /// This  is useful to modify a fillet or a chamfer already created on ModFace.
-    pub fn init_face2(
-        &mut self,
-        RefFace: &crate::ffi::TopoDS_Face,
-        ModFace: &crate::ffi::TopoDS_Face,
-    ) {
+    pub fn init_face2(&mut self, RefFace: &crate::topo_ds::Face, ModFace: &crate::topo_ds::Face) {
         unsafe {
             crate::ffi::BRepFilletAPI_MakeFillet2d_init_face2(self as *mut Self, RefFace, ModFace)
         }
@@ -1565,9 +1550,9 @@ impl MakeFillet2d {
     /// Standard_NegativeValue if Radius is less than or equal to zero.
     pub fn add_fillet(
         &mut self,
-        V: &crate::ffi::TopoDS_Vertex,
+        V: &crate::topo_ds::Vertex,
         Radius: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet2d_add_fillet(
                 self as *mut Self,
@@ -1595,9 +1580,9 @@ impl MakeFillet2d {
     /// Standard_NegativeValue if Radius is less than or equal to zero.
     pub fn modify_fillet(
         &mut self,
-        Fillet: &crate::ffi::TopoDS_Edge,
+        Fillet: &crate::topo_ds::Edge,
         Radius: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet2d_modify_fillet(
                 self as *mut Self,
@@ -1619,8 +1604,8 @@ impl MakeFillet2d {
     /// belong to the initial face.
     pub fn remove_fillet(
         &mut self,
-        Fillet: &crate::ffi::TopoDS_Edge,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        Fillet: &crate::topo_ds::Edge,
+    ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet2d_remove_fillet(
                 self as *mut Self,
@@ -1642,11 +1627,11 @@ impl MakeFillet2d {
     /// This function returns the chamfer and builds the resulting face.
     pub fn add_chamfer_edge2_real2(
         &mut self,
-        E1: &crate::ffi::TopoDS_Edge,
-        E2: &crate::ffi::TopoDS_Edge,
+        E1: &crate::topo_ds::Edge,
+        E2: &crate::topo_ds::Edge,
         D1: f64,
         D2: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepFilletAPI_MakeFillet2d_add_chamfer_edge2_real2(
@@ -1690,11 +1675,11 @@ impl MakeFillet2d {
     /// the status of the construction is not ChFi2d_IsDone.
     pub fn add_chamfer_edge_vertex_real2(
         &mut self,
-        E: &crate::ffi::TopoDS_Edge,
-        V: &crate::ffi::TopoDS_Vertex,
+        E: &crate::topo_ds::Edge,
+        V: &crate::topo_ds::Vertex,
         D: f64,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepFilletAPI_MakeFillet2d_add_chamfer_edge_vertex_real2(
@@ -1716,12 +1701,12 @@ impl MakeFillet2d {
     /// chamfer are on E1 and E2 at distances D1 and D2 respectively.
     pub fn modify_chamfer_edge3_real2(
         &mut self,
-        Chamfer: &crate::ffi::TopoDS_Edge,
-        E1: &crate::ffi::TopoDS_Edge,
-        E2: &crate::ffi::TopoDS_Edge,
+        Chamfer: &crate::topo_ds::Edge,
+        E1: &crate::topo_ds::Edge,
+        E2: &crate::topo_ds::Edge,
         D1: f64,
         D2: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepFilletAPI_MakeFillet2d_modify_chamfer_edge3_real2(
@@ -1766,11 +1751,11 @@ impl MakeFillet2d {
     /// construction is not ChFi2d_IsDone.
     pub fn modify_chamfer_edge2_real2(
         &mut self,
-        Chamfer: &crate::ffi::TopoDS_Edge,
-        E: &crate::ffi::TopoDS_Edge,
+        Chamfer: &crate::topo_ds::Edge,
+        E: &crate::topo_ds::Edge,
         D: f64,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepFilletAPI_MakeFillet2d_modify_chamfer_edge2_real2(
@@ -1796,8 +1781,8 @@ impl MakeFillet2d {
     /// not belong to the initial face.
     pub fn remove_chamfer(
         &mut self,
-        Chamfer: &crate::ffi::TopoDS_Edge,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+        Chamfer: &crate::topo_ds::Edge,
+    ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFilletAPI_MakeFillet2d_remove_chamfer(
                 self as *mut Self,
@@ -1811,7 +1796,7 @@ impl MakeFillet2d {
     /// algorithm is chamfered or filleted.
     /// Warning
     /// Returns false if E does not belong to the face modified by this algorithm.
-    pub fn is_modified(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn is_modified(&self, E: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_is_modified(self as *const Self, E) }
     }
 
@@ -1842,7 +1827,7 @@ impl MakeFillet2d {
     /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:264 - `BRepFilletAPI_MakeFillet2d::Modified()`
     /// Returns the list  of shapes modified from the shape
     /// <S>.
-    pub fn modified(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_modified(self as *mut Self, S)) }
     }
 
@@ -1860,7 +1845,7 @@ impl MakeFillet2d {
     }
 
     /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:274 - `BRepFilletAPI_MakeFillet2d::HasDescendant()`
-    pub fn has_descendant(&self, E: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn has_descendant(&self, E: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_has_descendant(self as *const Self, E) }
     }
 
@@ -1871,7 +1856,7 @@ impl MakeFillet2d {
     /// Exceptions
     /// Standard_NoSuchObject if the edge E does not
     /// belong to the initial face.
-    pub fn descendant_edge(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Edge {
+    pub fn descendant_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::ffi::BRepFilletAPI_MakeFillet2d_descendant_edge(self as *const Self, E))
         }
@@ -1883,7 +1868,7 @@ impl MakeFillet2d {
     /// built. If E has not been modified, this function returns E.
     /// Warning
     /// E is returned if it does not belong to the initial face.
-    pub fn basis_edge(&self, E: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Edge {
+    pub fn basis_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_basis_edge(self as *const Self, E)) }
     }
 
@@ -1899,7 +1884,7 @@ impl MakeFillet2d {
 
     /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:294 - `BRepFilletAPI_MakeFillet2d::Build()`
     /// Update the result and set the Done flag
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_build(self as *mut Self, theRange) }
     }
 
@@ -1942,19 +1927,19 @@ impl MakeFillet2d {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Generated(self as *mut Self, S))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(self as *mut Self, S) }
     }
 

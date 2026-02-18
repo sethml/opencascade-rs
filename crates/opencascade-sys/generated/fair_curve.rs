@@ -88,8 +88,8 @@ impl Batten {
     /// Precision::Confusion()). The function
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     pub fn new_pnt2d2_real2(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Height: f64,
         Slope: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -121,8 +121,8 @@ impl Batten {
     /// Precision::Confusion()). The function
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     pub fn new_pnt2d2_real(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Height: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d2_real2(P1, P2, Height, 0.0)
@@ -185,7 +185,7 @@ impl Batten {
     /// Precision::Confusion: P1.IsEqual(P2,
     /// Precision::Confusion()). The function
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
-    pub fn set_p1(&mut self, P1: &crate::ffi::gp_Pnt2d) {
+    pub fn set_p1(&mut self, P1: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::FairCurve_Batten_set_p1(self as *mut Self, P1) }
     }
 
@@ -200,7 +200,7 @@ impl Batten {
     /// Precision::Confusion: P1.IsEqual(P2,
     /// Precision::Confusion()). The function
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
-    pub fn set_p2(&mut self, P2: &crate::ffi::gp_Pnt2d) {
+    pub fn set_p2(&mut self, P2: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::FairCurve_Batten_set_p2(self as *mut Self, P2) }
     }
 
@@ -299,13 +299,13 @@ impl Batten {
 
     /// **Source:** `FairCurve_Batten.hxx`:190 - `FairCurve_Batten::GetP1()`
     /// Returns the established location of the point P1.
-    pub fn get_p1(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn get_p1(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::FairCurve_Batten_get_p1(self as *const Self)) }
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:193 - `FairCurve_Batten::GetP2()`
     /// Returns the established location of the point P2.
-    pub fn get_p2(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn get_p2(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::FairCurve_Batten_get_p2(self as *const Self)) }
     }
 
@@ -499,7 +499,7 @@ impl DistributionOfJerk {
         FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         NbValAux: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -513,7 +513,7 @@ impl DistributionOfJerk {
         FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
     ) -> crate::OwnedPtr<Self> {
         Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(
             BSplOrder,
@@ -612,7 +612,7 @@ impl DistributionOfSagging {
         FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         NbValAux: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -626,7 +626,7 @@ impl DistributionOfSagging {
         FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
     ) -> crate::OwnedPtr<Self> {
         Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(
             BSplOrder,
@@ -724,7 +724,7 @@ impl DistributionOfTension {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         LengthSliding: f64,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         NbValAux: i32,
         Uniform: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -740,7 +740,7 @@ impl DistributionOfTension {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         LengthSliding: f64,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         NbValAux: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(BSplOrder, FlatKnots, Poles, DerivativeOrder, LengthSliding, Law, NbValAux, false)
@@ -753,7 +753,7 @@ impl DistributionOfTension {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         LengthSliding: f64,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
     ) -> crate::OwnedPtr<Self> {
         Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(BSplOrder, FlatKnots, Poles, DerivativeOrder, LengthSliding, Law, 0, false)
     }
@@ -945,7 +945,7 @@ impl EnergyOfBatten {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         LengthSliding: f64,
         FreeSliding: bool,
         Angle1: f64,
@@ -964,7 +964,7 @@ impl EnergyOfBatten {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         LengthSliding: f64,
         FreeSliding: bool,
         Angle1: f64,
@@ -980,7 +980,7 @@ impl EnergyOfBatten {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         LengthSliding: f64,
         FreeSliding: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -995,7 +995,7 @@ impl EnergyOfBatten {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         LengthSliding: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, LengthSliding, true, 0.0, 0.0)
@@ -1131,7 +1131,7 @@ impl EnergyOfMVC {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         PhysicalRatio: f64,
         LengthSliding: f64,
         FreeSliding: bool,
@@ -1153,7 +1153,7 @@ impl EnergyOfMVC {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         PhysicalRatio: f64,
         LengthSliding: f64,
         FreeSliding: bool,
@@ -1172,7 +1172,7 @@ impl EnergyOfMVC {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         PhysicalRatio: f64,
         LengthSliding: f64,
         FreeSliding: bool,
@@ -1190,7 +1190,7 @@ impl EnergyOfMVC {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         PhysicalRatio: f64,
         LengthSliding: f64,
         FreeSliding: bool,
@@ -1207,7 +1207,7 @@ impl EnergyOfMVC {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         PhysicalRatio: f64,
         LengthSliding: f64,
         FreeSliding: bool,
@@ -1223,7 +1223,7 @@ impl EnergyOfMVC {
         Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
-        Law: &crate::ffi::FairCurve_BattenLaw,
+        Law: &BattenLaw,
         PhysicalRatio: f64,
         LengthSliding: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1385,8 +1385,8 @@ impl MinimalVariation {
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     /// Definition of the geometricals constraints
     pub fn new_pnt2d2_real3(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Heigth: f64,
         Slope: f64,
         PhysicalRatio: f64,
@@ -1431,8 +1431,8 @@ impl MinimalVariation {
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     /// Definition of the geometricals constraints
     pub fn new_pnt2d2_real2(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Heigth: f64,
         Slope: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1468,8 +1468,8 @@ impl MinimalVariation {
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     /// Definition of the geometricals constraints
     pub fn new_pnt2d2_real(
-        P1: &crate::ffi::gp_Pnt2d,
-        P2: &crate::ffi::gp_Pnt2d,
+        P1: &crate::gp::Pnt2d,
+        P2: &crate::gp::Pnt2d,
         Heigth: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d2_real3(P1, P2, Heigth, 0.0, 0.0)
@@ -1585,12 +1585,12 @@ impl MinimalVariation {
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:112 - `FairCurve_Batten::SetP1()`
-    pub fn set_p1(&mut self, P1: &crate::ffi::gp_Pnt2d) {
+    pub fn set_p1(&mut self, P1: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::FairCurve_MinimalVariation_inherited_SetP1(self as *mut Self, P1) }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:124 - `FairCurve_Batten::SetP2()`
-    pub fn set_p2(&mut self, P2: &crate::ffi::gp_Pnt2d) {
+    pub fn set_p2(&mut self, P2: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::FairCurve_MinimalVariation_inherited_SetP2(self as *mut Self, P2) }
     }
 
@@ -1665,12 +1665,12 @@ impl MinimalVariation {
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:190 - `FairCurve_Batten::GetP1()`
-    pub fn get_p1(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn get_p1(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::FairCurve_MinimalVariation_inherited_GetP1(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:193 - `FairCurve_Batten::GetP2()`
-    pub fn get_p2(&self) -> &crate::ffi::gp_Pnt2d {
+    pub fn get_p2(&self) -> &crate::gp::Pnt2d {
         unsafe { &*(crate::ffi::FairCurve_MinimalVariation_inherited_GetP2(self as *const Self)) }
     }
 
@@ -1733,7 +1733,7 @@ impl Newton {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor do not computation
     pub fn new_multiplevarfunctionwithhessian_real2_int_real_bool(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &crate::math::MultipleVarFunctionWithHessian,
         theSpatialTolerance: f64,
         theCriteriumTolerance: f64,
         theNbIterations: i32,
@@ -1752,7 +1752,7 @@ impl Newton {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor do not computation
     pub fn new_multiplevarfunctionwithhessian_real2_int_real(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &crate::math::MultipleVarFunctionWithHessian,
         theSpatialTolerance: f64,
         theCriteriumTolerance: f64,
         theNbIterations: i32,
@@ -1775,7 +1775,7 @@ impl Newton {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor do not computation
     pub fn new_multiplevarfunctionwithhessian_real2_int(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &crate::math::MultipleVarFunctionWithHessian,
         theSpatialTolerance: f64,
         theCriteriumTolerance: f64,
         theNbIterations: i32,
@@ -1797,7 +1797,7 @@ impl Newton {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor do not computation
     pub fn new_multiplevarfunctionwithhessian_real2(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &crate::math::MultipleVarFunctionWithHessian,
         theSpatialTolerance: f64,
         theCriteriumTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1818,7 +1818,7 @@ impl Newton {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor do not computation
     pub fn new_multiplevarfunctionwithhessian_real(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &crate::math::MultipleVarFunctionWithHessian,
         theSpatialTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunctionwithhessian_real2_int_real_bool(
@@ -1838,7 +1838,7 @@ impl Newton {
     /// or IsConverged() returns True for 2 successives Iterations.
     /// Warning: This constructor do not computation
     pub fn new_multiplevarfunctionwithhessian(
-        theFunction: &crate::ffi::math_MultipleVarFunctionWithHessian,
+        theFunction: &crate::math::MultipleVarFunctionWithHessian,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunctionwithhessian_real2_int_real_bool(
             theFunction,

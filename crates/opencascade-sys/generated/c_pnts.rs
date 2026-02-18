@@ -39,7 +39,7 @@ impl AbscissaPoint {
     /// <Resolution> is the error allowed in the computation.
     /// The computed point can be outside of the curve 's bounds.
     pub fn new_curve_real3(
-        C: &crate::ffi::Adaptor3d_Curve,
+        C: &crate::adaptor3d::Curve,
         Abscissa: f64,
         U0: f64,
         Resolution: f64,
@@ -57,7 +57,7 @@ impl AbscissaPoint {
     /// <Resolution> is the error allowed in the computation.
     /// The computed point can be outside of the curve 's bounds.
     pub fn new_curve2d_real3(
-        C: &crate::ffi::Adaptor2d_Curve2d,
+        C: &crate::adaptor2d::Curve2d,
         Abscissa: f64,
         U0: f64,
         Resolution: f64,
@@ -78,7 +78,7 @@ impl AbscissaPoint {
     /// <Resolution> is the error allowed in the computation.
     /// The computed point can be outside of the curve 's bounds.
     pub fn new_curve_real4(
-        C: &crate::ffi::Adaptor3d_Curve,
+        C: &crate::adaptor3d::Curve,
         Abscissa: f64,
         U0: f64,
         Ui: f64,
@@ -100,7 +100,7 @@ impl AbscissaPoint {
     /// <Resolution> is the error allowed in the computation.
     /// The computed point can be outside of the curve 's bounds.
     pub fn new_curve2d_real4(
-        C: &crate::ffi::Adaptor2d_Curve2d,
+        C: &crate::adaptor2d::Curve2d,
         Abscissa: f64,
         U0: f64,
         Ui: f64,
@@ -115,52 +115,46 @@ impl AbscissaPoint {
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:122 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>.
-    pub fn init_curve(&mut self, C: &crate::ffi::Adaptor3d_Curve) {
+    pub fn init_curve(&mut self, C: &crate::adaptor3d::Curve) {
         unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve(self as *mut Self, C) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:125 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>.
-    pub fn init_curve2d(&mut self, C: &crate::ffi::Adaptor2d_Curve2d) {
+    pub fn init_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
         unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d(self as *mut Self, C) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:128 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>.
-    pub fn init_curve_real(&mut self, C: &crate::ffi::Adaptor3d_Curve, Tol: f64) {
+    pub fn init_curve_real(&mut self, C: &crate::adaptor3d::Curve, Tol: f64) {
         unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve_real(self as *mut Self, C, Tol) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:131 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>.
-    pub fn init_curve2d_real(&mut self, C: &crate::ffi::Adaptor2d_Curve2d, Tol: f64) {
+    pub fn init_curve2d_real(&mut self, C: &crate::adaptor2d::Curve2d, Tol: f64) {
         unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d_real(self as *mut Self, C, Tol) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:135 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>
     /// between U1 and U2.
-    pub fn init_curve_real2(&mut self, C: &crate::ffi::Adaptor3d_Curve, U1: f64, U2: f64) {
+    pub fn init_curve_real2(&mut self, C: &crate::adaptor3d::Curve, U1: f64, U2: f64) {
         unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve_real2(self as *mut Self, C, U1, U2) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:141 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>
     /// between U1 and U2.
-    pub fn init_curve2d_real2(&mut self, C: &crate::ffi::Adaptor2d_Curve2d, U1: f64, U2: f64) {
+    pub fn init_curve2d_real2(&mut self, C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) {
         unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d_real2(self as *mut Self, C, U1, U2) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:147 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>
     /// between U1 and U2.
-    pub fn init_curve_real3(
-        &mut self,
-        C: &crate::ffi::Adaptor3d_Curve,
-        U1: f64,
-        U2: f64,
-        Tol: f64,
-    ) {
+    pub fn init_curve_real3(&mut self, C: &crate::adaptor3d::Curve, U1: f64, U2: f64, Tol: f64) {
         unsafe {
             crate::ffi::CPnts_AbscissaPoint_init_curve_real3(self as *mut Self, C, U1, U2, Tol)
         }
@@ -171,7 +165,7 @@ impl AbscissaPoint {
     /// between U1 and U2.
     pub fn init_curve2d_real3(
         &mut self,
-        C: &crate::ffi::Adaptor2d_Curve2d,
+        C: &crate::adaptor2d::Curve2d,
         U1: f64,
         U2: f64,
         Tol: f64,
@@ -256,55 +250,50 @@ impl AbscissaPoint {
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:41 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C>.
-    pub fn length_curve(C: &crate::ffi::Adaptor3d_Curve) -> f64 {
+    pub fn length_curve(C: &crate::adaptor3d::Curve) -> f64 {
         unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve(C) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:44 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C>.
-    pub fn length_curve2d(C: &crate::ffi::Adaptor2d_Curve2d) -> f64 {
+    pub fn length_curve2d(C: &crate::adaptor2d::Curve2d) -> f64 {
         unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d(C) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:47 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> with the given tolerance.
-    pub fn length_curve_real(C: &crate::ffi::Adaptor3d_Curve, Tol: f64) -> f64 {
+    pub fn length_curve_real(C: &crate::adaptor3d::Curve, Tol: f64) -> f64 {
         unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real(C, Tol) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:50 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> with the given tolerance.
-    pub fn length_curve2d_real(C: &crate::ffi::Adaptor2d_Curve2d, Tol: f64) -> f64 {
+    pub fn length_curve2d_real(C: &crate::adaptor2d::Curve2d, Tol: f64) -> f64 {
         unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real(C, Tol) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:53 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> between <U1> and <U2>.
-    pub fn length_curve_real2(C: &crate::ffi::Adaptor3d_Curve, U1: f64, U2: f64) -> f64 {
+    pub fn length_curve_real2(C: &crate::adaptor3d::Curve, U1: f64, U2: f64) -> f64 {
         unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real2(C, U1, U2) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:58 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> between <U1> and <U2>.
-    pub fn length_curve2d_real2(C: &crate::ffi::Adaptor2d_Curve2d, U1: f64, U2: f64) -> f64 {
+    pub fn length_curve2d_real2(C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) -> f64 {
         unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real2(C, U1, U2) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:63 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
-    pub fn length_curve_real3(C: &crate::ffi::Adaptor3d_Curve, U1: f64, U2: f64, Tol: f64) -> f64 {
+    pub fn length_curve_real3(C: &crate::adaptor3d::Curve, U1: f64, U2: f64, Tol: f64) -> f64 {
         unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real3(C, U1, U2, Tol) }
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:70 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
     /// creation of a indefinite AbscissaPoint.
-    pub fn length_curve2d_real3(
-        C: &crate::ffi::Adaptor2d_Curve2d,
-        U1: f64,
-        U2: f64,
-        Tol: f64,
-    ) -> f64 {
+    pub fn length_curve2d_real3(C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64, Tol: f64) -> f64 {
         unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real3(C, U1, U2, Tol) }
     }
 }
@@ -496,7 +485,7 @@ impl UniformDeflection {
     /// if the singularity is at the first point ,the next point
     /// calculated is the P(LastParameter)
     pub fn new_curve_real2_bool(
-        C: &crate::ffi::Adaptor3d_Curve,
+        C: &crate::adaptor3d::Curve,
         Deflection: f64,
         Resolution: f64,
         WithControl: bool,
@@ -514,7 +503,7 @@ impl UniformDeflection {
     /// **Source:** `CPnts_UniformDeflection.hxx`:80 - `CPnts_UniformDeflection::CPnts_UniformDeflection()`
     /// As above with 2d curve
     pub fn new_curve2d_real2_bool(
-        C: &crate::ffi::Adaptor2d_Curve2d,
+        C: &crate::adaptor2d::Curve2d,
         Deflection: f64,
         Resolution: f64,
         WithControl: bool,
@@ -535,7 +524,7 @@ impl UniformDeflection {
     /// <U1> and <U2> define the distribution span.
     /// <U1> and <U2> must be in the parametric range of the curve.
     pub fn new_curve_real4_bool(
-        C: &crate::ffi::Adaptor3d_Curve,
+        C: &crate::adaptor3d::Curve,
         Deflection: f64,
         U1: f64,
         U2: f64,
@@ -557,7 +546,7 @@ impl UniformDeflection {
     /// **Source:** `CPnts_UniformDeflection.hxx`:97 - `CPnts_UniformDeflection::CPnts_UniformDeflection()`
     /// As above with 2d curve
     pub fn new_curve2d_real4_bool(
-        C: &crate::ffi::Adaptor2d_Curve2d,
+        C: &crate::adaptor2d::Curve2d,
         Deflection: f64,
         U1: f64,
         U2: f64,
@@ -581,7 +570,7 @@ impl UniformDeflection {
     /// <Resolution> and <WithControl>
     pub fn initialize_curve_real2_bool(
         &mut self,
-        C: &crate::ffi::Adaptor3d_Curve,
+        C: &crate::adaptor3d::Curve,
         Deflection: f64,
         Resolution: f64,
         WithControl: bool,
@@ -602,7 +591,7 @@ impl UniformDeflection {
     /// <Resolution> and <WithControl>
     pub fn initialize_curve2d_real2_bool(
         &mut self,
-        C: &crate::ffi::Adaptor2d_Curve2d,
+        C: &crate::adaptor2d::Curve2d,
         Deflection: f64,
         Resolution: f64,
         WithControl: bool,
@@ -623,7 +612,7 @@ impl UniformDeflection {
     /// <U1>, <U2> and <WithControl>
     pub fn initialize_curve_real4_bool(
         &mut self,
-        C: &crate::ffi::Adaptor3d_Curve,
+        C: &crate::adaptor3d::Curve,
         Deflection: f64,
         U1: f64,
         U2: f64,
@@ -648,7 +637,7 @@ impl UniformDeflection {
     /// <U1>, <U2> and <WithControl>
     pub fn initialize_curve2d_real4_bool(
         &mut self,
-        C: &crate::ffi::Adaptor2d_Curve2d,
+        C: &crate::adaptor2d::Curve2d,
         Deflection: f64,
         U1: f64,
         U2: f64,
@@ -697,7 +686,7 @@ impl UniformDeflection {
 
     /// **Source:** `CPnts_UniformDeflection.hxx`:152 - `CPnts_UniformDeflection::Point()`
     /// return the computed parameter
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::CPnts_UniformDeflection_point(
                 self as *const Self,

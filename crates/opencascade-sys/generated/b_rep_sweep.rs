@@ -23,42 +23,42 @@ unsafe impl crate::CppDeletable for Builder {
 impl Builder {
     /// **Source:** `BRepSweep_Builder.hxx`:35 - `BRepSweep_Builder::BRepSweep_Builder()`
     /// Creates a Builder.
-    pub fn new_builder(aBuilder: &crate::ffi::BRep_Builder) -> crate::OwnedPtr<Self> {
+    pub fn new_builder(aBuilder: &crate::b_rep::Builder) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Builder_ctor_builder(aBuilder)) }
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:37 - `BRepSweep_Builder::Builder()`
-    pub fn builder(&self) -> &crate::ffi::BRep_Builder {
+    pub fn builder(&self) -> &crate::b_rep::Builder {
         unsafe { &*(crate::ffi::BRepSweep_Builder_builder(self as *const Self)) }
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:40 - `BRepSweep_Builder::MakeCompound()`
     /// Returns an empty Compound.
-    pub fn make_compound(&self, aCompound: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_compound(&self, aCompound: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_compound(self as *const Self, aCompound) }
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:43 - `BRepSweep_Builder::MakeCompSolid()`
     /// Returns an empty CompSolid.
-    pub fn make_comp_solid(&self, aCompSolid: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_comp_solid(&self, aCompSolid: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_comp_solid(self as *const Self, aCompSolid) }
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:46 - `BRepSweep_Builder::MakeSolid()`
     /// Returns an empty Solid.
-    pub fn make_solid(&self, aSolid: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_solid(&self, aSolid: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_solid(self as *const Self, aSolid) }
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:49 - `BRepSweep_Builder::MakeShell()`
     /// Returns an empty Shell.
-    pub fn make_shell(&self, aShell: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_shell(&self, aShell: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_shell(self as *const Self, aShell) }
     }
 
     /// **Source:** `BRepSweep_Builder.hxx`:52 - `BRepSweep_Builder::MakeWire()`
     /// Returns an empty Wire.
-    pub fn make_wire(&self, aWire: &mut crate::ffi::TopoDS_Shape) {
+    pub fn make_wire(&self, aWire: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_make_wire(self as *const Self, aWire) }
     }
 
@@ -67,8 +67,8 @@ impl Builder {
     /// <Orient> orientation.
     pub fn add_shape2_orientation(
         &self,
-        aShape1: &mut crate::ffi::TopoDS_Shape,
-        aShape2: &crate::ffi::TopoDS_Shape,
+        aShape1: &mut crate::topo_ds::Shape,
+        aShape2: &crate::topo_ds::Shape,
         Orient: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -83,11 +83,7 @@ impl Builder {
 
     /// **Source:** `BRepSweep_Builder.hxx`:61 - `BRepSweep_Builder::Add()`
     /// Adds the Shape 1 in the Shape 2.
-    pub fn add_shape2(
-        &self,
-        aShape1: &mut crate::ffi::TopoDS_Shape,
-        aShape2: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn add_shape2(&self, aShape1: &mut crate::topo_ds::Shape, aShape2: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepSweep_Builder_add_shape2(self as *const Self, aShape1, aShape2) }
     }
 }
@@ -148,9 +144,9 @@ impl NumLinearRegularSweep {
     /// geometric part, but without subcomponents.
     pub fn make_empty_vertex(
         &mut self,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_make_empty_vertex(
@@ -167,9 +163,9 @@ impl NumLinearRegularSweep {
     /// geometric part, but without subcomponents.
     pub fn make_empty_directing_edge(
         &mut self,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_make_empty_directing_edge(
@@ -186,9 +182,9 @@ impl NumLinearRegularSweep {
     /// geometric part, but without subcomponents.
     pub fn make_empty_generating_edge(
         &mut self,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenE: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_make_empty_generating_edge(
@@ -206,11 +202,11 @@ impl NumLinearRegularSweep {
     /// from aGenF, aGenV and aDirV .
     pub fn set_parameters(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenF: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenF: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_set_parameters(
@@ -230,11 +226,11 @@ impl NumLinearRegularSweep {
     /// from aGenV aDirE, and aDirV.
     pub fn set_directing_parameter(
         &mut self,
-        aNewEdge: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewEdge: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_set_directing_parameter(
@@ -254,11 +250,11 @@ impl NumLinearRegularSweep {
     /// from aGenE, aGenV and aDirV .
     pub fn set_generating_parameter(
         &mut self,
-        aNewEdge: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewEdge: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_set_generating_parameter(
@@ -280,9 +276,9 @@ impl NumLinearRegularSweep {
     /// directing  edge".
     pub fn make_empty_face(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_NumLinearRegularSweep_make_empty_face(
                 self as *mut Self,
@@ -298,11 +294,11 @@ impl NumLinearRegularSweep {
     /// aGenF, aGenE and aDirV.
     pub fn set_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenF: &crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenF: &crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -324,11 +320,11 @@ impl NumLinearRegularSweep {
     /// aGenE, aDirE and aDirV.
     pub fn set_generating_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+        aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -350,11 +346,11 @@ impl NumLinearRegularSweep {
     /// aGenE, aDirE and aGenV.
     pub fn set_directing_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -377,8 +373,8 @@ impl NumLinearRegularSweep {
     /// direction of the normal.
     pub fn direct_solid(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(
@@ -398,11 +394,11 @@ impl NumLinearRegularSweep {
     /// (addressed by aGenS and aDirS).
     pub fn ggd_shape_is_to_add(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aSubGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aSubGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_ggd_shape_is_to_add(
@@ -422,11 +418,11 @@ impl NumLinearRegularSweep {
     /// (addressed by aGenS and aDirS).
     pub fn gdd_shape_is_to_add(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-        aSubDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+        aSubDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_gdd_shape_is_to_add(
@@ -447,11 +443,11 @@ impl NumLinearRegularSweep {
     /// true.
     pub fn separated_wires(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aSubGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aSubGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_separated_wires(
@@ -472,8 +468,8 @@ impl NumLinearRegularSweep {
     /// a Compound of independent Shells.
     pub fn split_shell(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aNewShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_NumLinearRegularSweep_split_shell(
                 self as *const Self,
@@ -488,8 +484,8 @@ impl NumLinearRegularSweep {
     /// the generated edge and faces.
     pub fn set_continuity(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_set_continuity(
@@ -505,11 +501,7 @@ impl NumLinearRegularSweep {
     /// resulting Shape. In some  specific cases the shape
     /// can  be    geometrically   inexsistant,  then this
     /// function returns false.
-    pub fn has_shape(
-        &self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> bool {
+    pub fn has_shape(&self, aGenS: &crate::topo_ds::Shape, aDirS: &crate::sweep::NumShape) -> bool {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_has_shape(self as *const Self, aGenS, aDirS)
         }
@@ -517,7 +509,7 @@ impl NumLinearRegularSweep {
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:210 - `BRepSweep_NumLinearRegularSweep::IsInvariant()`
     /// Returns true if aGenS cannot be transformed.
-    pub fn is_invariant(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_invariant(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_is_invariant(self as *const Self, aGenS)
         }
@@ -528,9 +520,9 @@ impl NumLinearRegularSweep {
     /// aGenS.
     pub fn shape_shape_numshape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_shape_shape_numshape(
@@ -547,8 +539,8 @@ impl NumLinearRegularSweep {
     /// and aGenS.
     pub fn shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_NumLinearRegularSweep_shape_shape(
                 self as *mut Self,
@@ -560,14 +552,14 @@ impl NumLinearRegularSweep {
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     /// Returns true if the initial shape aGenS
     /// is used in result shape
-    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_NumLinearRegularSweep_is_used(self as *const Self, aGenS) }
     }
 
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     /// Returns true if the shape, generated from theS
     /// is used in result shape
-    pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepSweep_NumLinearRegularSweep_gen_is_used(self as *const Self, theS)
         }
@@ -576,7 +568,7 @@ impl NumLinearRegularSweep {
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:230 - `BRepSweep_NumLinearRegularSweep::Shape()`
     /// Returns the resulting  Shape indexed by  myDirWire
     /// and myGenShape.
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_NumLinearRegularSweep_shape(
                 self as *mut Self,
@@ -587,7 +579,7 @@ impl NumLinearRegularSweep {
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     /// Returns the resulting Shape  indexed by the  first
     /// Vertex  of myDirWire and myGenShape.
-    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_NumLinearRegularSweep_first_shape(
                 self as *mut Self,
@@ -598,7 +590,7 @@ impl NumLinearRegularSweep {
     /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     /// Returns the  resulting Shape  indexed by the  last
     /// Vertex of myDirWire and myGenShape.
-    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_NumLinearRegularSweep_last_shape(
                 self as *mut Self,
@@ -611,8 +603,8 @@ impl NumLinearRegularSweep {
     /// Vertex  of myDirWire and aGenS.
     pub fn first_shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepSweep_NumLinearRegularSweep_first_shape_shape(
@@ -628,8 +620,8 @@ impl NumLinearRegularSweep {
     /// Vertex of myDirWire and aGenS.
     pub fn last_shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_NumLinearRegularSweep_last_shape_shape(
                 self as *mut Self,
@@ -665,8 +657,8 @@ impl Prism {
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
     pub fn new_shape_vec_bool2(
-        S: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
+        S: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
         Copy: bool,
         Canonize: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -684,8 +676,8 @@ impl Prism {
     /// the direction D. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
     pub fn new_shape_dir_bool3(
-        S: &crate::ffi::TopoDS_Shape,
-        D: &crate::ffi::gp_Dir,
+        S: &crate::topo_ds::Shape,
+        D: &crate::gp::Dir,
         Inf: bool,
         Copy: bool,
         Canonize: bool,
@@ -702,8 +694,8 @@ impl Prism {
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
     pub fn new_shape_vec_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
+        S: &crate::topo_ds::Shape,
+        V: &crate::gp::Vec,
         Copy: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_vec_bool2(S, V, Copy, true)
@@ -713,10 +705,7 @@ impl Prism {
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
-    pub fn new_shape_vec(
-        S: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::gp_Vec,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_shape_vec(S: &crate::topo_ds::Shape, V: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         Self::new_shape_vec_bool2(S, V, false, true)
     }
 
@@ -727,8 +716,8 @@ impl Prism {
     /// the direction D. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
     pub fn new_shape_dir_bool2(
-        S: &crate::ffi::TopoDS_Shape,
-        D: &crate::ffi::gp_Dir,
+        S: &crate::topo_ds::Shape,
+        D: &crate::gp::Dir,
         Inf: bool,
         Copy: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -742,8 +731,8 @@ impl Prism {
     /// the direction D. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
     pub fn new_shape_dir_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        D: &crate::ffi::gp_Dir,
+        S: &crate::topo_ds::Shape,
+        D: &crate::gp::Dir,
         Inf: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_dir_bool3(S, D, Inf, false, true)
@@ -755,16 +744,13 @@ impl Prism {
     /// is infinite, if Inf is false the  prism is infinite in
     /// the direction D. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
-    pub fn new_shape_dir(
-        S: &crate::ffi::TopoDS_Shape,
-        D: &crate::ffi::gp_Dir,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_shape_dir(S: &crate::topo_ds::Shape, D: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         Self::new_shape_dir_bool3(S, D, true, false, true)
     }
 
     /// **Source:** `BRepSweep_Prism.hxx`:59 - `BRepSweep_Prism::Shape()`
     /// Returns the TopoDS Shape attached to the prism.
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_shape(self as *mut Self)) }
     }
 
@@ -773,8 +759,8 @@ impl Prism {
     /// (subShape  of the generating shape).
     pub fn shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_shape_shape(
                 self as *mut Self,
@@ -785,7 +771,7 @@ impl Prism {
 
     /// **Source:** `BRepSweep_Prism.hxx`:66 - `BRepSweep_Prism::FirstShape()`
     /// Returns the  TopoDS  Shape of the bottom of the prism.
-    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_first_shape(self as *mut Self))
         }
@@ -797,8 +783,8 @@ impl Prism {
     /// shape).
     pub fn first_shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_first_shape_shape(
                 self as *mut Self,
@@ -809,7 +795,7 @@ impl Prism {
 
     /// **Source:** `BRepSweep_Prism.hxx`:74 - `BRepSweep_Prism::LastShape()`
     /// Returns the TopoDS Shape of the top of the prism.
-    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_last_shape(self as *mut Self))
         }
@@ -821,8 +807,8 @@ impl Prism {
     /// shape).
     pub fn last_shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_last_shape_shape(
                 self as *mut Self,
@@ -834,21 +820,21 @@ impl Prism {
     /// **Source:** `BRepSweep_Prism.hxx`:83 - `BRepSweep_Prism::Vec()`
     /// Returns the Vector of the Prism,  if it is an infinite
     /// prism the Vec is unitar.
-    pub fn vec(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn vec(&self) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_vec(self as *const Self)) }
     }
 
     /// **Source:** `BRepSweep_Prism.hxx`:87 - `BRepSweep_Prism::IsUsed()`
     /// Returns true if the
     /// aGenS is used in resulting shape
-    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Prism_is_used(self as *const Self, aGenS) }
     }
 
     /// **Source:** `BRepSweep_Prism.hxx`:91 - `BRepSweep_Prism::GenIsUsed()`
     /// Returns true if the shape, generated from theS
     /// is used in result shape
-    pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Prism_gen_is_used(self as *const Self, theS) }
     }
 }
@@ -873,8 +859,8 @@ impl Revol {
     /// Builds the Revol of meridian S axis A  and angle D. If
     /// C is true S is copied.
     pub fn new_shape_ax1_real_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        A: &crate::ffi::gp_Ax1,
+        S: &crate::topo_ds::Shape,
+        A: &crate::gp::Ax1,
         D: f64,
         C: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -889,8 +875,8 @@ impl Revol {
     /// Builds the Revol of meridian S  axis A and angle 2*Pi.
     /// If C is true S is copied.
     pub fn new_shape_ax1_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        A: &crate::ffi::gp_Ax1,
+        S: &crate::topo_ds::Shape,
+        A: &crate::gp::Ax1,
         C: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -902,8 +888,8 @@ impl Revol {
     /// Builds the Revol of meridian S axis A  and angle D. If
     /// C is true S is copied.
     pub fn new_shape_ax1_real(
-        S: &crate::ffi::TopoDS_Shape,
-        A: &crate::ffi::gp_Ax1,
+        S: &crate::topo_ds::Shape,
+        A: &crate::gp::Ax1,
         D: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_ax1_real_bool(S, A, D, false)
@@ -912,16 +898,13 @@ impl Revol {
     /// **Source:** `BRepSweep_Revol.hxx`:47 - `BRepSweep_Revol::BRepSweep_Revol()`
     /// Builds the Revol of meridian S  axis A and angle 2*Pi.
     /// If C is true S is copied.
-    pub fn new_shape_ax1(
-        S: &crate::ffi::TopoDS_Shape,
-        A: &crate::ffi::gp_Ax1,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_shape_ax1(S: &crate::topo_ds::Shape, A: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         Self::new_shape_ax1_bool(S, A, false)
     }
 
     /// **Source:** `BRepSweep_Revol.hxx`:52 - `BRepSweep_Revol::Shape()`
     /// Returns the TopoDS Shape attached to the Revol.
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_shape(self as *mut Self)) }
     }
 
@@ -930,8 +913,8 @@ impl Revol {
     /// (subShape  of the generating shape).
     pub fn shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_shape_shape(
                 self as *mut Self,
@@ -943,7 +926,7 @@ impl Revol {
     /// **Source:** `BRepSweep_Revol.hxx`:60 - `BRepSweep_Revol::FirstShape()`
     /// Returns the first shape of the revol  (coinciding with
     /// the generating shape).
-    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_first_shape(self as *mut Self))
         }
@@ -954,8 +937,8 @@ impl Revol {
     /// the generating shape).
     pub fn first_shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_first_shape_shape(
                 self as *mut Self,
@@ -966,7 +949,7 @@ impl Revol {
 
     /// **Source:** `BRepSweep_Revol.hxx`:67 - `BRepSweep_Revol::LastShape()`
     /// Returns the TopoDS Shape of the top of the prism.
-    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_last_shape(self as *mut Self))
         }
@@ -978,8 +961,8 @@ impl Revol {
     /// shape).
     pub fn last_shape_shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_last_shape_shape(
                 self as *mut Self,
@@ -990,7 +973,7 @@ impl Revol {
 
     /// **Source:** `BRepSweep_Revol.hxx`:75 - `BRepSweep_Revol::Axe()`
     /// returns the axis
-    pub fn axe(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+    pub fn axe(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Revol_axe(self as *const Self)) }
     }
 
@@ -1002,7 +985,7 @@ impl Revol {
 
     /// **Source:** `BRepSweep_Revol.hxx`:81 - `BRepSweep_Revol::IsUsed()`
     /// Returns true if the aGenS is used in resulting Shape
-    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Revol_is_used(self as *const Self, aGenS) }
     }
 }
@@ -1027,10 +1010,10 @@ impl Rotation {
     /// Creates a topology  by rotating <S>  around A with the
     /// angle D.
     pub fn new_shape_numshape_location_ax1_real_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        N: &crate::ffi::Sweep_NumShape,
-        L: &crate::ffi::TopLoc_Location,
-        A: &crate::ffi::gp_Ax1,
+        S: &crate::topo_ds::Shape,
+        N: &crate::sweep::NumShape,
+        L: &crate::top_loc::Location,
+        A: &crate::gp::Ax1,
         D: f64,
         C: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -1048,9 +1031,9 @@ impl Rotation {
     /// geometric part, but without subcomponents.
     pub fn make_empty_vertex(
         &mut self,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_make_empty_vertex(
                 self as *mut Self,
@@ -1065,9 +1048,9 @@ impl Rotation {
     /// geometric part, but without subcomponents.
     pub fn make_empty_directing_edge(
         &mut self,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_make_empty_directing_edge(
                 self as *mut Self,
@@ -1082,9 +1065,9 @@ impl Rotation {
     /// geometric part, but without subcomponents.
     pub fn make_empty_generating_edge(
         &mut self,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenE: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_make_empty_generating_edge(
                 self as *mut Self,
@@ -1100,11 +1083,11 @@ impl Rotation {
     /// from aGenF, aGenV and aDirV .
     pub fn set_parameters(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenF: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenF: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Rotation_set_parameters(
@@ -1124,11 +1107,11 @@ impl Rotation {
     /// from aGenV aDirE, and aDirV.
     pub fn set_directing_parameter(
         &mut self,
-        aNewEdge: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewEdge: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Rotation_set_directing_parameter(
@@ -1148,11 +1131,11 @@ impl Rotation {
     /// from aGenE, aGenV and aDirV .
     pub fn set_generating_parameter(
         &mut self,
-        aNewEdge: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewEdge: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Rotation_set_generating_parameter(
@@ -1174,9 +1157,9 @@ impl Rotation {
     /// directing edge".
     pub fn make_empty_face(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_make_empty_face(
                 self as *mut Self,
@@ -1192,11 +1175,11 @@ impl Rotation {
     /// aGenF, aGenE and aDirV.
     pub fn set_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenF: &crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenF: &crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -1218,11 +1201,11 @@ impl Rotation {
     /// aGenE, aDirE and aDirV.
     pub fn set_generating_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+        aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -1244,11 +1227,11 @@ impl Rotation {
     /// aGenE, aDirE and aGenV.
     pub fn set_directing_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -1271,8 +1254,8 @@ impl Rotation {
     /// direction of the normal.
     pub fn direct_solid(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Rotation_direct_solid(
@@ -1290,11 +1273,11 @@ impl Rotation {
     /// (addressed by aGenS and aDirS).
     pub fn ggd_shape_is_to_add(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aSubGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aSubGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Rotation_ggd_shape_is_to_add(
@@ -1314,11 +1297,11 @@ impl Rotation {
     /// (addressed by aGenS and aDirS).
     pub fn gdd_shape_is_to_add(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-        aSubDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+        aSubDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Rotation_gdd_shape_is_to_add(
@@ -1340,11 +1323,11 @@ impl Rotation {
     /// return true is a planar face in a closed revol.
     pub fn separated_wires(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aSubGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aSubGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Rotation_separated_wires(
@@ -1365,8 +1348,8 @@ impl Rotation {
     /// a Compound of independent Shells.
     pub fn split_shell(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aNewShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_split_shell(
                 self as *const Self,
@@ -1380,24 +1363,20 @@ impl Rotation {
     /// resulting Shape. In some  specific cases the shape
     /// can  be    geometrically   inexsistant,  then this
     /// function returns false.
-    pub fn has_shape(
-        &self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> bool {
+    pub fn has_shape(&self, aGenS: &crate::topo_ds::Shape, aDirS: &crate::sweep::NumShape) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_has_shape(self as *const Self, aGenS, aDirS) }
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:185 - `BRepSweep_Rotation::IsInvariant()`
     /// Returns true when   the geometry of  aGenS  is not
     /// modified  by the rotation.
-    pub fn is_invariant(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_invariant(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_is_invariant(self as *const Self, aGenS) }
     }
 
     /// **Source:** `BRepSweep_Rotation.hxx`:188 - `BRepSweep_Rotation::Axe()`
     /// returns the axis
-    pub fn axe(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax1> {
+    pub fn axe(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_axe(self as *const Self))
         }
@@ -1445,8 +1424,8 @@ impl Rotation {
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
     pub fn process(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_inherited_Process(self as *mut Self, aGenS, aDirV) }
     }
@@ -1454,8 +1433,8 @@ impl Rotation {
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
     pub fn set_continuity(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Rotation_inherited_SetContinuity(self as *mut Self, aGenS, aDirS)
@@ -1465,9 +1444,9 @@ impl Rotation {
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_inherited_Shape(
                 self as *mut Self,
@@ -1478,17 +1457,17 @@ impl Rotation {
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
-    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_inherited_IsUsed(self as *const Self, aGenS) }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
-    pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Rotation_inherited_GenIsUsed(self as *const Self, theS) }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
-    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_inherited_FirstShape(
                 self as *mut Self,
@@ -1497,7 +1476,7 @@ impl Rotation {
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
-    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Rotation_inherited_LastShape(
                 self as *mut Self,
@@ -1531,7 +1510,7 @@ impl Tool {
     /// Initialize the tool  with <aShape>.  The IndexTool
     /// must prepare an indexation for  all  the subshapes
     /// of this shape.
-    pub fn new_shape(aShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(aShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Tool_ctor_shape(aShape)) }
     }
 
@@ -1543,13 +1522,13 @@ impl Tool {
 
     /// **Source:** `BRepSweep_Tool.hxx`:45 - `BRepSweep_Tool::Index()`
     /// Returns the index of <aShape>.
-    pub fn index(&self, aShape: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn index(&self, aShape: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::BRepSweep_Tool_index(self as *const Self, aShape) }
     }
 
     /// **Source:** `BRepSweep_Tool.hxx`:48 - `BRepSweep_Tool::Shape()`
     /// Returns the Shape at Index anIdex.
-    pub fn shape(&self, anIndex: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self, anIndex: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Tool_shape(
                 self as *const Self,
@@ -1560,7 +1539,7 @@ impl Tool {
 
     /// **Source:** `BRepSweep_Tool.hxx`:51 - `BRepSweep_Tool::Type()`
     /// Returns the type of <aShape>.
-    pub fn type_(&self, aShape: &crate::ffi::TopoDS_Shape) -> crate::top_abs::ShapeEnum {
+    pub fn type_(&self, aShape: &crate::topo_ds::Shape) -> crate::top_abs::ShapeEnum {
         unsafe {
             crate::top_abs::ShapeEnum::try_from(crate::ffi::BRepSweep_Tool_type_(
                 self as *const Self,
@@ -1572,7 +1551,7 @@ impl Tool {
 
     /// **Source:** `BRepSweep_Tool.hxx`:54 - `BRepSweep_Tool::Orientation()`
     /// Returns the Orientation of <aShape>.
-    pub fn orientation(&self, aShape: &crate::ffi::TopoDS_Shape) -> crate::top_abs::Orientation {
+    pub fn orientation(&self, aShape: &crate::topo_ds::Shape) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Tool_orientation(
                 self as *const Self,
@@ -1586,7 +1565,7 @@ impl Tool {
     /// Set the Orientation of <aShape> with Or.
     pub fn set_orientation(
         &self,
-        aShape: &mut crate::ffi::TopoDS_Shape,
+        aShape: &mut crate::topo_ds::Shape,
         Or: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -1617,10 +1596,10 @@ impl Translation {
     /// copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
     pub fn new_shape_numshape_location_vec_bool2(
-        S: &crate::ffi::TopoDS_Shape,
-        N: &crate::ffi::Sweep_NumShape,
-        L: &crate::ffi::TopLoc_Location,
-        V: &crate::ffi::gp_Vec,
+        S: &crate::topo_ds::Shape,
+        N: &crate::sweep::NumShape,
+        L: &crate::top_loc::Location,
+        V: &crate::gp::Vec,
         C: bool,
         Canonize: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -1639,10 +1618,10 @@ impl Translation {
     /// copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
     pub fn new_shape_numshape_location_vec_bool(
-        S: &crate::ffi::TopoDS_Shape,
-        N: &crate::ffi::Sweep_NumShape,
-        L: &crate::ffi::TopLoc_Location,
-        V: &crate::ffi::gp_Vec,
+        S: &crate::topo_ds::Shape,
+        N: &crate::sweep::NumShape,
+        L: &crate::top_loc::Location,
+        V: &crate::gp::Vec,
         C: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_numshape_location_vec_bool2(S, N, L, V, C, true)
@@ -1653,9 +1632,9 @@ impl Translation {
     /// geometric part, but without subcomponents.
     pub fn make_empty_vertex(
         &mut self,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_make_empty_vertex(
                 self as *mut Self,
@@ -1670,9 +1649,9 @@ impl Translation {
     /// geometric part, but without subcomponents.
     pub fn make_empty_directing_edge(
         &mut self,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_make_empty_directing_edge(
                 self as *mut Self,
@@ -1687,9 +1666,9 @@ impl Translation {
     /// geometric part, but without subcomponents.
     pub fn make_empty_generating_edge(
         &mut self,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenE: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_make_empty_generating_edge(
                 self as *mut Self,
@@ -1705,11 +1684,11 @@ impl Translation {
     /// from aGenF, aGenV and aDirV .
     pub fn set_parameters(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenF: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenF: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Translation_set_parameters(
@@ -1729,11 +1708,11 @@ impl Translation {
     /// from aGenV aDirE, and aDirV.
     pub fn set_directing_parameter(
         &mut self,
-        aNewEdge: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewEdge: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Translation_set_directing_parameter(
@@ -1753,11 +1732,11 @@ impl Translation {
     /// from aGenE, aGenV and aDirV .
     pub fn set_generating_parameter(
         &mut self,
-        aNewEdge: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewEdge: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Translation_set_generating_parameter(
@@ -1779,9 +1758,9 @@ impl Translation {
     /// directing  edge".
     pub fn make_empty_face(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_make_empty_face(
                 self as *mut Self,
@@ -1797,11 +1776,11 @@ impl Translation {
     /// aGenF, aGenE and aDirV.
     pub fn set_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenF: &crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenF: &crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -1823,11 +1802,11 @@ impl Translation {
     /// aGenE, aDirE and aDirV.
     pub fn set_generating_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+        aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -1849,11 +1828,11 @@ impl Translation {
     /// aGenE, aDirE and aGenV.
     pub fn set_directing_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -1876,8 +1855,8 @@ impl Translation {
     /// direction of the normal.
     pub fn direct_solid(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Translation_direct_solid(
@@ -1895,11 +1874,11 @@ impl Translation {
     /// (addressed by aGenS and aDirS).
     pub fn ggd_shape_is_to_add(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aSubGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aSubGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Translation_ggd_shape_is_to_add(
@@ -1919,11 +1898,11 @@ impl Translation {
     /// (addressed by aGenS and aDirS).
     pub fn gdd_shape_is_to_add(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-        aSubDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+        aSubDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Translation_gdd_shape_is_to_add(
@@ -1945,11 +1924,11 @@ impl Translation {
     /// Here it always returns false.
     pub fn separated_wires(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aSubGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aSubGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Translation_separated_wires(
@@ -1968,25 +1947,21 @@ impl Translation {
     /// resulting Shape. In some  specific cases the shape
     /// can  be    geometrically   inexsistant,  then this
     /// function returns false.
-    pub fn has_shape(
-        &self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> bool {
+    pub fn has_shape(&self, aGenS: &crate::topo_ds::Shape, aDirS: &crate::sweep::NumShape) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_has_shape(self as *const Self, aGenS, aDirS) }
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:175 - `BRepSweep_Translation::IsInvariant()`
     /// Returns  always     false   because    here    the
     /// transformation is a translation.
-    pub fn is_invariant(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_invariant(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_is_invariant(self as *const Self, aGenS) }
     }
 
     /// **Source:** `BRepSweep_Translation.hxx`:179 - `BRepSweep_Translation::Vec()`
     /// Returns the Vector of the Prism,  if it is an infinite
     /// prism the Vec is unitar.
-    pub fn vec(&self) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+    pub fn vec(&self) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_vec(self as *const Self))
         }
@@ -2030,8 +2005,8 @@ impl Translation {
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:55 - `BRepSweep_Trsf::Process()`
     pub fn process(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Translation_inherited_Process(self as *mut Self, aGenS, aDirV)
@@ -2041,8 +2016,8 @@ impl Translation {
     /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
     pub fn set_continuity(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Translation_inherited_SetContinuity(
@@ -2056,8 +2031,8 @@ impl Translation {
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
     pub fn split_shell(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aNewShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_inherited_SplitShell(
                 self as *const Self,
@@ -2069,9 +2044,9 @@ impl Translation {
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_inherited_Shape(
                 self as *mut Self,
@@ -2082,17 +2057,17 @@ impl Translation {
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
-    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_inherited_IsUsed(self as *const Self, aGenS) }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
-    pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Translation_inherited_GenIsUsed(self as *const Self, theS) }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
-    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_inherited_FirstShape(
                 self as *mut Self,
@@ -2101,7 +2076,7 @@ impl Translation {
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
-    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_inherited_LastShape(
                 self as *mut Self,
@@ -2155,8 +2130,8 @@ impl Trsf {
     /// of the shapes generated by aGenS and aDirV.
     pub fn process(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_process(self as *mut Self, aGenS, aDirV) }
     }
@@ -2166,9 +2141,9 @@ impl Trsf {
     /// geometric part, but without subcomponents.
     pub fn make_empty_vertex(
         &mut self,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_make_empty_vertex(
                 self as *mut Self,
@@ -2183,9 +2158,9 @@ impl Trsf {
     /// geometric part, but without subcomponents.
     pub fn make_empty_directing_edge(
         &mut self,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_make_empty_directing_edge(
                 self as *mut Self,
@@ -2200,9 +2175,9 @@ impl Trsf {
     /// geometric part, but without subcomponents.
     pub fn make_empty_generating_edge(
         &mut self,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenE: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_make_empty_generating_edge(
                 self as *mut Self,
@@ -2218,11 +2193,11 @@ impl Trsf {
     /// from aGenF, aGenV and aDirV .
     pub fn set_parameters(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenF: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenF: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Trsf_set_parameters(
@@ -2242,11 +2217,11 @@ impl Trsf {
     /// from aGenV aDirE, and aDirV.
     pub fn set_directing_parameter(
         &mut self,
-        aNewEdge: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewEdge: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Trsf_set_directing_parameter(
@@ -2266,11 +2241,11 @@ impl Trsf {
     /// from aGenE, aGenV and aDirV .
     pub fn set_generating_parameter(
         &mut self,
-        aNewEdge: &crate::ffi::TopoDS_Shape,
-        aNewVertex: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewEdge: &crate::topo_ds::Shape,
+        aNewVertex: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
     ) {
         unsafe {
             crate::ffi::BRepSweep_Trsf_set_generating_parameter(
@@ -2292,9 +2267,9 @@ impl Trsf {
     /// directing  edge".
     pub fn make_empty_face(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_make_empty_face(
                 self as *mut Self,
@@ -2310,11 +2285,11 @@ impl Trsf {
     /// aGenF, aGenE and aDirV.
     pub fn set_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenF: &crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenF: &crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -2336,11 +2311,11 @@ impl Trsf {
     /// aGenE, aDirE and aDirV.
     pub fn set_generating_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
-        aDirV: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
+        aDirV: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -2362,11 +2337,11 @@ impl Trsf {
     /// aGenE, aDirE and aGenV.
     pub fn set_directing_p_curve(
         &mut self,
-        aNewFace: &crate::ffi::TopoDS_Shape,
-        aNewEdge: &mut crate::ffi::TopoDS_Shape,
-        aGenE: &crate::ffi::TopoDS_Shape,
-        aGenV: &crate::ffi::TopoDS_Shape,
-        aDirE: &crate::ffi::Sweep_NumShape,
+        aNewFace: &crate::topo_ds::Shape,
+        aNewEdge: &mut crate::topo_ds::Shape,
+        aGenE: &crate::topo_ds::Shape,
+        aGenV: &crate::topo_ds::Shape,
+        aDirE: &crate::sweep::NumShape,
         orien: crate::top_abs::Orientation,
     ) {
         unsafe {
@@ -2388,11 +2363,11 @@ impl Trsf {
     /// (addressed by aGenS and aDirS).
     pub fn ggd_shape_is_to_add(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aSubGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aSubGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Trsf_ggd_shape_is_to_add(
@@ -2412,11 +2387,11 @@ impl Trsf {
     /// (addressed by aGenS and aDirS).
     pub fn gdd_shape_is_to_add(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-        aSubDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+        aSubDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Trsf_gdd_shape_is_to_add(
@@ -2437,11 +2412,11 @@ impl Trsf {
     /// true.
     pub fn separated_wires(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-        aNewSubShape: &crate::ffi::TopoDS_Shape,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aSubGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aNewShape: &crate::topo_ds::Shape,
+        aNewSubShape: &crate::topo_ds::Shape,
+        aGenS: &crate::topo_ds::Shape,
+        aSubGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> bool {
         unsafe {
             crate::ffi::BRepSweep_Trsf_separated_wires(
@@ -2460,18 +2435,14 @@ impl Trsf {
     /// resulting Shape. In some  specific cases the shape
     /// can  be    geometrically   inexsistant,  then this
     /// function returns false.
-    pub fn has_shape(
-        &self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> bool {
+    pub fn has_shape(&self, aGenS: &crate::topo_ds::Shape, aDirS: &crate::sweep::NumShape) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_has_shape(self as *const Self, aGenS, aDirS) }
     }
 
     /// **Source:** `BRepSweep_Trsf.hxx`:175 - `BRepSweep_Trsf::IsInvariant()`
     /// Returns  true if  the geometry   of  aGenS is  not
     /// modified by the trsf of the BRepSweep Trsf.
-    pub fn is_invariant(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_invariant(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_is_invariant(self as *const Self, aGenS) }
     }
 
@@ -2481,8 +2452,8 @@ impl Trsf {
     /// the generated edge and faces.
     pub fn set_continuity(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) {
         unsafe { crate::ffi::BRepSweep_Trsf_set_continuity(self as *mut Self, aGenS, aDirS) }
     }
@@ -2506,8 +2477,8 @@ impl Trsf {
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:158 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
     pub fn direct_solid(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
     ) -> crate::top_abs::Orientation {
         unsafe {
             crate::top_abs::Orientation::try_from(crate::ffi::BRepSweep_Trsf_inherited_DirectSolid(
@@ -2522,8 +2493,8 @@ impl Trsf {
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
     pub fn split_shell(
         &self,
-        aNewShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aNewShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_inherited_SplitShell(
                 self as *const Self,
@@ -2535,9 +2506,9 @@ impl Trsf {
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn shape(
         &mut self,
-        aGenS: &crate::ffi::TopoDS_Shape,
-        aDirS: &crate::ffi::Sweep_NumShape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        aGenS: &crate::topo_ds::Shape,
+        aDirS: &crate::sweep::NumShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_inherited_Shape(
                 self as *mut Self,
@@ -2548,17 +2519,17 @@ impl Trsf {
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
-    pub fn is_used(&self, aGenS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_used(&self, aGenS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_inherited_IsUsed(self as *const Self, aGenS) }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
-    pub fn gen_is_used(&self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn gen_is_used(&self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepSweep_Trsf_inherited_GenIsUsed(self as *const Self, theS) }
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
-    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_inherited_FirstShape(
                 self as *mut Self,
@@ -2567,7 +2538,7 @@ impl Trsf {
     }
 
     /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
-    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Trsf_inherited_LastShape(
                 self as *mut Self,

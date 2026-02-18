@@ -53,7 +53,7 @@ impl ClosedEdgeDivide {
     }
 
     /// **Source:** `ShapeUpgrade_ClosedEdgeDivide.hxx`:35 - `ShapeUpgrade_ClosedEdgeDivide::Compute()`
-    pub fn compute(&mut self, anEdge: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn compute(&mut self, anEdge: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_compute(self as *mut Self, anEdge) }
     }
 
@@ -116,7 +116,7 @@ impl ClosedEdgeDivide {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:42 - `ShapeUpgrade_EdgeDivide::SetFace()`
-    pub fn set_face(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetFace(self as *mut Self, F) }
     }
 
@@ -244,7 +244,7 @@ impl ClosedFaceDivide {
 
     /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:41 - `ShapeUpgrade_ClosedFaceDivide::ShapeUpgrade_ClosedFaceDivide()`
     /// Initialize by a Face.
-    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
+    pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedFaceDivide_ctor_face(F)) }
     }
 
@@ -328,7 +328,7 @@ impl ClosedFaceDivide {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
-    pub fn init(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn init(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Init(self as *mut Self, F) }
     }
 
@@ -357,7 +357,7 @@ impl ClosedFaceDivide {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:90 - `ShapeUpgrade_FaceDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Result(
                 self as *const Self,
@@ -1112,12 +1112,12 @@ impl EdgeDivide {
 
     /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:42 - `ShapeUpgrade_EdgeDivide::SetFace()`
     /// Sets supporting surface by face
-    pub fn set_face(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_set_face(self as *mut Self, F) }
     }
 
     /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:44 - `ShapeUpgrade_EdgeDivide::Compute()`
-    pub fn compute(&mut self, E: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn compute(&mut self, E: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_compute(self as *mut Self, E) }
     }
 
@@ -1265,13 +1265,13 @@ impl FaceDivide {
 
     /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:60 - `ShapeUpgrade_FaceDivide::ShapeUpgrade_FaceDivide()`
     /// Initialize by a Face.
-    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
+    pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivide_ctor_face(F)) }
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
     /// Initialize by a Face.
-    pub fn init(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn init(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivide_init(self as *mut Self, F) }
     }
 
@@ -1315,7 +1315,7 @@ impl FaceDivide {
 
     /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:90 - `ShapeUpgrade_FaceDivide::Result()`
     /// Gives the resulting Shell, or Face, or Null shape if not done.
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivide_result(
                 self as *const Self,
@@ -1464,7 +1464,7 @@ impl FaceDivideArea {
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:36 - `ShapeUpgrade_FaceDivideArea::ShapeUpgrade_FaceDivideArea()`
-    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
+    pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivideArea_ctor_face(F)) }
     }
 
@@ -1562,7 +1562,7 @@ impl FaceDivideArea {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
-    pub fn init(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn init(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Init(self as *mut Self, F) }
     }
 
@@ -1592,7 +1592,7 @@ impl FaceDivideArea {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:90 - `ShapeUpgrade_FaceDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Result(
                 self as *const Self,
@@ -1796,7 +1796,7 @@ impl FixSmallBezierCurves {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:46 - `ShapeUpgrade_FixSmallCurves::Init()`
-    pub fn init(&mut self, theEdge: &crate::ffi::TopoDS_Edge, theFace: &crate::ffi::TopoDS_Face) {
+    pub fn init(&mut self, theEdge: &crate::topo_ds::Edge, theFace: &crate::topo_ds::Face) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Init(
                 self as *mut Self,
@@ -1909,7 +1909,7 @@ impl FixSmallCurves {
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:46 - `ShapeUpgrade_FixSmallCurves::Init()`
-    pub fn init(&mut self, theEdge: &crate::ffi::TopoDS_Edge, theFace: &crate::ffi::TopoDS_Face) {
+    pub fn init(&mut self, theEdge: &crate::topo_ds::Edge, theFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_init(self as *mut Self, theEdge, theFace) }
     }
 
@@ -2065,7 +2065,7 @@ impl RemoveInternalWires {
     }
 
     /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:46 - `ShapeUpgrade_RemoveInternalWires::ShapeUpgrade_RemoveInternalWires()`
-    pub fn new_shape(theShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_RemoveInternalWires_ctor_shape(
                 theShape,
@@ -2075,7 +2075,7 @@ impl RemoveInternalWires {
 
     /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:49 - `ShapeUpgrade_RemoveInternalWires::Init()`
     /// Initialize by a Shape.
-    pub fn init(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_init(self as *mut Self, theShape) }
     }
 
@@ -2104,7 +2104,7 @@ impl RemoveInternalWires {
 
     /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:61 - `ShapeUpgrade_RemoveInternalWires::GetResult()`
     /// Get result shape
-    pub fn get_result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get_result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_RemoveInternalWires_get_result(
                 self as *const Self,
@@ -2291,13 +2291,13 @@ impl RemoveLocations {
 
     /// **Source:** `ShapeUpgrade_RemoveLocations.hxx`:39 - `ShapeUpgrade_RemoveLocations::Remove()`
     /// Removes all location correspondingly to RemoveLevel.
-    pub fn remove(&mut self, theShape: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn remove(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::ShapeUpgrade_RemoveLocations_remove(self as *mut Self, theShape) }
     }
 
     /// **Source:** `ShapeUpgrade_RemoveLocations.hxx`:42 - `ShapeUpgrade_RemoveLocations::GetResult()`
     /// Returns shape with removed locations.
-    pub fn get_result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn get_result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_RemoveLocations_get_result(
                 self as *const Self,
@@ -2335,8 +2335,8 @@ impl RemoveLocations {
     /// Returns modified shape obtained from initial shape.
     pub fn modified_shape(
         &self,
-        theInitShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theInitShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_RemoveLocations_modified_shape(
                 self as *const Self,
@@ -2433,7 +2433,7 @@ impl ShapeConvertToBezier {
 
     /// **Source:** `ShapeUpgrade_ShapeConvertToBezier.hxx`:44 - `ShapeUpgrade_ShapeConvertToBezier::ShapeUpgrade_ShapeConvertToBezier()`
     /// Initialize by a Shape.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeConvertToBezier_ctor_shape(S))
         }
@@ -2649,7 +2649,7 @@ impl ShapeConvertToBezier {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Init(self as *mut Self, S)
         }
@@ -2696,7 +2696,7 @@ impl ShapeConvertToBezier {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Result(self as *const Self),
@@ -2733,8 +2733,8 @@ impl ShapeConvertToBezier {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -2790,13 +2790,13 @@ impl ShapeDivide {
 
     /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:47 - `ShapeUpgrade_ShapeDivide::ShapeUpgrade_ShapeDivide()`
     /// Initialize by a Shape.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivide_ctor_shape(S)) }
     }
 
     /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     /// Initialize by a Shape.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_init(self as *mut Self, S) }
     }
 
@@ -2841,7 +2841,7 @@ impl ShapeDivide {
 
     /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
     /// Gives the resulting Shape, or Null shape if not done.
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivide_result(
                 self as *const Self,
@@ -2877,8 +2877,8 @@ impl ShapeDivide {
     /// Calls corresponding message of message registrator.
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -2939,7 +2939,7 @@ impl ShapeDivideAngle {
 
     /// **Source:** `ShapeUpgrade_ShapeDivideAngle.hxx`:39 - `ShapeUpgrade_ShapeDivideAngle::ShapeUpgrade_ShapeDivideAngle()`
     /// Initialize by a Shape.
-    pub fn new_real_shape(MaxAngle: f64, S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_real_shape(MaxAngle: f64, S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideAngle_ctor_real_shape(
                 MaxAngle, S,
@@ -2986,7 +2986,7 @@ impl ShapeDivideAngle {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Init(self as *mut Self, S) }
     }
 
@@ -3041,7 +3041,7 @@ impl ShapeDivideAngle {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Result(
                 self as *const Self,
@@ -3078,8 +3078,8 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -3135,7 +3135,7 @@ impl ShapeDivideArea {
 
     /// **Source:** `ShapeUpgrade_ShapeDivideArea.hxx`:36 - `ShapeUpgrade_ShapeDivideArea::ShapeUpgrade_ShapeDivideArea()`
     /// Initialize by a Shape.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideArea_ctor_shape(S)) }
     }
 
@@ -3191,7 +3191,7 @@ impl ShapeDivideArea {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Init(self as *mut Self, S) }
     }
 
@@ -3243,7 +3243,7 @@ impl ShapeDivideArea {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Result(
                 self as *const Self,
@@ -3280,8 +3280,8 @@ impl ShapeDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -3333,7 +3333,7 @@ unsafe impl crate::CppDeletable for ShapeDivideClosed {
 impl ShapeDivideClosed {
     /// **Source:** `ShapeUpgrade_ShapeDivideClosed.hxx`:35 - `ShapeUpgrade_ShapeDivideClosed::ShapeUpgrade_ShapeDivideClosed()`
     /// Initialises tool with shape and default parameter.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideClosed_ctor_shape(S))
         }
@@ -3367,7 +3367,7 @@ impl ShapeDivideClosed {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Init(self as *mut Self, S) }
     }
 
@@ -3422,7 +3422,7 @@ impl ShapeDivideClosed {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Result(
                 self as *const Self,
@@ -3459,8 +3459,8 @@ impl ShapeDivideClosed {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -3510,7 +3510,7 @@ unsafe impl crate::CppDeletable for ShapeDivideClosedEdges {
 impl ShapeDivideClosedEdges {
     /// **Source:** `ShapeUpgrade_ShapeDivideClosedEdges.hxx`:32 - `ShapeUpgrade_ShapeDivideClosedEdges::ShapeUpgrade_ShapeDivideClosedEdges()`
     /// Initialises tool with shape and default parameter.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_ctor_shape(S))
         }
@@ -3547,7 +3547,7 @@ impl ShapeDivideClosedEdges {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Init(self as *mut Self, S)
         }
@@ -3604,7 +3604,7 @@ impl ShapeDivideClosedEdges {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Result(
@@ -3643,8 +3643,8 @@ impl ShapeDivideClosedEdges {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -3700,7 +3700,7 @@ impl ShapeDivideContinuity {
 
     /// **Source:** `ShapeUpgrade_ShapeDivideContinuity.hxx`:38 - `ShapeUpgrade_ShapeDivideContinuity::ShapeUpgrade_ShapeDivideContinuity()`
     /// Initialize by a Shape.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivideContinuity_ctor_shape(S))
         }
@@ -3789,7 +3789,7 @@ impl ShapeDivideContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Init(self as *mut Self, S)
         }
@@ -3846,7 +3846,7 @@ impl ShapeDivideContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:75 - `ShapeUpgrade_ShapeDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Result(
@@ -3885,8 +3885,8 @@ impl ShapeDivideContinuity {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:94 - `ShapeUpgrade_ShapeDivide::SendMsg()`
     pub fn send_msg(
         &self,
-        shape: &crate::ffi::TopoDS_Shape,
-        message: &crate::ffi::Message_Msg,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
@@ -3954,9 +3954,9 @@ impl ShellSewing {
     /// shape
     pub fn apply_sewing(
         &mut self,
-        shape: &crate::ffi::TopoDS_Shape,
+        shape: &crate::topo_ds::Shape,
         tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShellSewing_apply_sewing(
                 self as *mut Self,
@@ -5564,7 +5564,7 @@ impl UnifySameDomain {
     /// Constructor defining input shape and necessary flags.
     /// It does not perform unification.
     pub fn new_shape_bool3(
-        aShape: &crate::ffi::TopoDS_Shape,
+        aShape: &crate::topo_ds::Shape,
         UnifyEdges: bool,
         UnifyFaces: bool,
         ConcatBSplines: bool,
@@ -5583,7 +5583,7 @@ impl UnifySameDomain {
     /// Constructor defining input shape and necessary flags.
     /// It does not perform unification.
     pub fn new_shape_bool2(
-        aShape: &crate::ffi::TopoDS_Shape,
+        aShape: &crate::topo_ds::Shape,
         UnifyEdges: bool,
         UnifyFaces: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -5594,7 +5594,7 @@ impl UnifySameDomain {
     /// Constructor defining input shape and necessary flags.
     /// It does not perform unification.
     pub fn new_shape_bool(
-        aShape: &crate::ffi::TopoDS_Shape,
+        aShape: &crate::topo_ds::Shape,
         UnifyEdges: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool3(aShape, UnifyEdges, true, false)
@@ -5603,7 +5603,7 @@ impl UnifySameDomain {
     /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:80 - `ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain()`
     /// Constructor defining input shape and necessary flags.
     /// It does not perform unification.
-    pub fn new_shape(aShape: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(aShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool3(aShape, true, true, false)
     }
 
@@ -5614,7 +5614,7 @@ impl UnifySameDomain {
     /// initialization.
     pub fn initialize(
         &mut self,
-        aShape: &crate::ffi::TopoDS_Shape,
+        aShape: &crate::topo_ds::Shape,
         UnifyEdges: bool,
         UnifyFaces: bool,
         ConcatBSplines: bool,
@@ -5650,7 +5650,7 @@ impl UnifySameDomain {
     /// If the shape is a vertex it forbids merging of connected edges.
     /// If the shape is a edge it forbids merging of connected faces.
     /// This method can be called several times to keep several shapes.
-    pub fn keep_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn keep_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_keep_shape(self as *mut Self, theShape) }
     }
 
@@ -5710,7 +5710,7 @@ impl UnifySameDomain {
 
     /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:134 - `ShapeUpgrade_UnifySameDomain::Shape()`
     /// Gives the resulting shape
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::ShapeUpgrade_UnifySameDomain_shape(self as *const Self)) }
     }
 
@@ -5810,7 +5810,7 @@ impl WireDivide {
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:64 - `ShapeUpgrade_WireDivide::Init()`
     /// Initializes by wire and face
-    pub fn init_wire_face(&mut self, W: &crate::ffi::TopoDS_Wire, F: &crate::ffi::TopoDS_Face) {
+    pub fn init_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_init_wire_face(self as *mut Self, W, F) }
     }
 
@@ -5818,7 +5818,7 @@ impl WireDivide {
     /// Initializes by wire and surface
     pub fn init_wire_handlegeomsurface(
         &mut self,
-        W: &crate::ffi::TopoDS_Wire,
+        W: &crate::topo_ds::Wire,
         S: &crate::ffi::HandleGeomSurface,
     ) {
         unsafe {
@@ -5828,19 +5828,19 @@ impl WireDivide {
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:70 - `ShapeUpgrade_WireDivide::Load()`
     /// Loads working wire
-    pub fn load_wire(&mut self, W: &crate::ffi::TopoDS_Wire) {
+    pub fn load_wire(&mut self, W: &crate::topo_ds::Wire) {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_load_wire(self as *mut Self, W) }
     }
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:73 - `ShapeUpgrade_WireDivide::Load()`
     /// Creates wire of one edge and calls Load for wire
-    pub fn load_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn load_edge(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_load_edge(self as *mut Self, E) }
     }
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:76 - `ShapeUpgrade_WireDivide::SetFace()`
     /// Sets supporting surface by face
-    pub fn set_face(&mut self, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_set_face(self as *mut Self, F) }
     }
 
@@ -5857,7 +5857,7 @@ impl WireDivide {
     pub fn set_surface_handlegeomsurface_location(
         &mut self,
         S: &crate::ffi::HandleGeomSurface,
-        L: &crate::ffi::TopLoc_Location,
+        L: &crate::top_loc::Location,
     ) {
         unsafe {
             crate::ffi::ShapeUpgrade_WireDivide_set_surface_handlegeomsurface_location(
@@ -5883,7 +5883,7 @@ impl WireDivide {
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:95 - `ShapeUpgrade_WireDivide::Wire()`
     /// Gives the resulting Wire (equal to initial one if not done
     /// or Null if not loaded)
-    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+    pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::ShapeUpgrade_WireDivide_wire(self as *const Self)) }
     }
 

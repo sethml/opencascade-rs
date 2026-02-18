@@ -28,7 +28,7 @@ impl Extremity {
     /// **Source:** `BRepBlend_Extremity.hxx`:42 - `BRepBlend_Extremity::BRepBlend_Extremity()`
     /// Creates an extremity on a surface
     pub fn new_pnt_real4(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         U: f64,
         V: f64,
         Param: f64,
@@ -45,7 +45,7 @@ impl Extremity {
     /// Creates an extremity on a surface. This extremity matches
     /// the vertex <Vtx>.
     pub fn new_pnt_real4_handleadaptor3dhvertex(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         U: f64,
         V: f64,
         Param: f64,
@@ -64,7 +64,7 @@ impl Extremity {
     /// **Source:** `BRepBlend_Extremity.hxx`:58 - `BRepBlend_Extremity::BRepBlend_Extremity()`
     /// Creates an extremity on a curve
     pub fn new_pnt_real3(
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         W: f64,
         Param: f64,
         Tol: f64,
@@ -80,7 +80,7 @@ impl Extremity {
     /// Set the values for an extremity on a surface.
     pub fn set_value_pnt_real4(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         U: f64,
         V: f64,
         Param: f64,
@@ -103,7 +103,7 @@ impl Extremity {
     /// extremity matches the vertex <Vtx>.
     pub fn set_value_pnt_real4_handleadaptor3dhvertex(
         &mut self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         U: f64,
         V: f64,
         Param: f64,
@@ -125,7 +125,7 @@ impl Extremity {
 
     /// **Source:** `BRepBlend_Extremity.hxx`:80 - `BRepBlend_Extremity::SetValue()`
     /// Set the values for an extremity on curve.
-    pub fn set_value_pnt_real3(&mut self, P: &crate::ffi::gp_Pnt, W: f64, Param: f64, Tol: f64) {
+    pub fn set_value_pnt_real3(&mut self, P: &crate::gp::Pnt, W: f64, Param: f64, Tol: f64) {
         unsafe {
             crate::ffi::BRepBlend_Extremity_set_value_pnt_real3(self as *mut Self, P, W, Param, Tol)
         }
@@ -133,14 +133,14 @@ impl Extremity {
 
     /// **Source:** `BRepBlend_Extremity.hxx`:86 - `BRepBlend_Extremity::Value()`
     /// This method returns the value of the point in 3d space.
-    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+    pub fn value(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::BRepBlend_Extremity_value(self as *const Self)) }
     }
 
     /// **Source:** `BRepBlend_Extremity.hxx`:90 - `BRepBlend_Extremity::SetTangent()`
     /// Set the tangent   vector  for an extremity on  a
     /// surface.
-    pub fn set_tangent(&mut self, Tangent: &crate::ffi::gp_Vec) {
+    pub fn set_tangent(&mut self, Tangent: &crate::gp::Vec) {
         unsafe { crate::ffi::BRepBlend_Extremity_set_tangent(self as *mut Self, Tangent) }
     }
 
@@ -153,7 +153,7 @@ impl Extremity {
     /// **Source:** `BRepBlend_Extremity.hxx`:97 - `BRepBlend_Extremity::Tangent()`
     /// This  method returns the   value of tangent  in 3d
     /// space.
-    pub fn tangent(&self) -> &crate::ffi::gp_Vec {
+    pub fn tangent(&self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepBlend_Extremity_tangent(self as *const Self)) }
     }
 
@@ -177,8 +177,8 @@ impl Extremity {
         &mut self,
         A: &crate::ffi::HandleAdaptor2dCurve2d,
         Param: f64,
-        TLine: &crate::ffi::IntSurf_Transition,
-        TArc: &crate::ffi::IntSurf_Transition,
+        TLine: &crate::int_surf::Transition,
+        TArc: &crate::int_surf::Transition,
     ) {
         unsafe { crate::ffi::BRepBlend_Extremity_add_arc(self as *mut Self, A, Param, TLine, TArc) }
     }
@@ -216,7 +216,7 @@ impl Extremity {
     }
 
     /// **Source:** `BRepBlend_Extremity.hxx`:133 - `BRepBlend_Extremity::PointOnRst()`
-    pub fn point_on_rst(&self, Index: i32) -> &crate::ffi::BRepBlend_PointOnRst {
+    pub fn point_on_rst(&self, Index: i32) -> &PointOnRst {
         unsafe { &*(crate::ffi::BRepBlend_Extremity_point_on_rst(self as *const Self, Index)) }
     }
 
@@ -262,8 +262,8 @@ impl PointOnRst {
     pub fn new_handleadaptor2dcurve2d_real_transition2(
         A: &crate::ffi::HandleAdaptor2dCurve2d,
         Param: f64,
-        TLine: &crate::ffi::IntSurf_Transition,
-        TArc: &crate::ffi::IntSurf_Transition,
+        TLine: &crate::int_surf::Transition,
+        TArc: &crate::int_surf::Transition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -281,8 +281,8 @@ impl PointOnRst {
         &mut self,
         A: &crate::ffi::HandleAdaptor2dCurve2d,
         Param: f64,
-        TLine: &crate::ffi::IntSurf_Transition,
-        TArc: &crate::ffi::IntSurf_Transition,
+        TLine: &crate::int_surf::Transition,
+        TArc: &crate::int_surf::Transition,
     ) {
         unsafe {
             crate::ffi::BRepBlend_PointOnRst_set_arc(self as *mut Self, A, Param, TLine, TArc)
@@ -299,14 +299,14 @@ impl PointOnRst {
     /// **Source:** `BRepBlend_PointOnRst.hxx`:56 - `BRepBlend_PointOnRst::TransitionOnLine()`
     /// Returns the transition of the point on the
     /// line on surface.
-    pub fn transition_on_line(&self) -> &crate::ffi::IntSurf_Transition {
+    pub fn transition_on_line(&self) -> &crate::int_surf::Transition {
         unsafe { &*(crate::ffi::BRepBlend_PointOnRst_transition_on_line(self as *const Self)) }
     }
 
     /// **Source:** `BRepBlend_PointOnRst.hxx`:60 - `BRepBlend_PointOnRst::TransitionOnArc()`
     /// Returns the transition of the point on the arc
     /// returned by Arc().
-    pub fn transition_on_arc(&self) -> &crate::ffi::IntSurf_Transition {
+    pub fn transition_on_arc(&self) -> &crate::int_surf::Transition {
         unsafe { &*(crate::ffi::BRepBlend_PointOnRst_transition_on_arc(self as *const Self)) }
     }
 

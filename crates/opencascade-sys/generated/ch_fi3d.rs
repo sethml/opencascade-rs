@@ -9,9 +9,9 @@
 /// **Source:** `ChFi3d.hxx`:39 - `ChFi3d::DefineConnectType`
 /// Defines the type of concavity in the edge of connection of two faces
 pub fn define_connect_type(
-    E: &crate::ffi::TopoDS_Edge,
-    F1: &crate::ffi::TopoDS_Face,
-    F2: &crate::ffi::TopoDS_Face,
+    E: &crate::topo_ds::Edge,
+    F1: &crate::topo_ds::Face,
+    F2: &crate::topo_ds::Face,
     SinTol: f64,
     CorrectPoint: bool,
 ) -> crate::ch_fi_ds::TypeOfConcavity {
@@ -29,9 +29,9 @@ pub fn define_connect_type(
 /// **Source:** `ChFi3d.hxx`:47 - `ChFi3d::IsTangentFaces`
 /// Returns true if theEdge between theFace1 and theFace2 is tangent
 pub fn is_tangent_faces(
-    theEdge: &crate::ffi::TopoDS_Edge,
-    theFace1: &crate::ffi::TopoDS_Face,
-    theFace2: &crate::ffi::TopoDS_Face,
+    theEdge: &crate::topo_ds::Edge,
+    theFace1: &crate::topo_ds::Face,
+    theFace2: &crate::topo_ds::Face,
     Order: crate::geom_abs::Shape,
 ) -> bool {
     unsafe { crate::ffi::ChFi3d_is_tangent_faces(theEdge, theFace1, theFace2, Order.into()) }
@@ -152,14 +152,14 @@ impl Builder {
 
     /// **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
     /// extracts from  the list the contour containing edge E.
-    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFi3d_Builder_remove(self as *mut Self, E) }
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
     /// gives the number of  the contour containing E or 0
     /// if E does  not  belong to  any  contour.
-    pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::ChFi3d_Builder_contains(self as *const Self, E) }
     }
 
@@ -188,7 +188,7 @@ impl Builder {
     /// **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
     /// returns the First vertex V of
     /// the contour of index IC.
-    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_first_vertex(
                 self as *const Self,
@@ -200,7 +200,7 @@ impl Builder {
     /// **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
     /// returns the Last vertex V of
     /// the contour of index IC.
-    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_last_vertex(
                 self as *const Self,
@@ -212,14 +212,14 @@ impl Builder {
     /// **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
     /// returns the abscissa of the vertex V on
     /// the contour of index IC.
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe { crate::ffi::ChFi3d_Builder_abscissa(self as *const Self, IC, V) }
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
     /// returns the relative abscissa([0.,1.]) of the
     /// vertex V on the contour of index IC.
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe { crate::ffi::ChFi3d_Builder_relative_abscissa(self as *const Self, IC, V) }
     }
 
@@ -252,16 +252,13 @@ impl Builder {
     /// **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
     /// if (Isdone()) makes the result.
     /// if (!Isdone())
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_shape(self as *const Self)) }
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
     /// Advanced  function for the history
-    pub fn generated(
-        &mut self,
-        EouV: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, EouV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::ChFi3d_Builder_generated(self as *mut Self, EouV)) }
     }
 
@@ -310,7 +307,7 @@ impl Builder {
 
     /// **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
     /// Returns the IV'th vertex on  which the calculation has failed.
-    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_faulty_vertex(
                 self as *const Self,
@@ -328,7 +325,7 @@ impl Builder {
     /// **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
     /// if (HasResult()) returns partial result
     /// if (!HasResult())
-    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_Builder_bad_shape(self as *const Self))
         }
@@ -412,14 +409,14 @@ impl ChBuilder {
     /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
     /// initializes the Builder with the Shape <S> for the
     /// computation of chamfers
-    pub fn new_shape_real(S: &crate::ffi::TopoDS_Shape, Ta: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_shape_real(S: &crate::topo_ds::Shape, Ta: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_ctor_shape_real(S, Ta)) }
     }
 
     /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
     /// initializes the Builder with the Shape <S> for the
     /// computation of chamfers
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_real(S, 1.0e-2)
     }
 
@@ -429,7 +426,7 @@ impl ChBuilder {
     /// The two distances (parameters of the chamfer) must
     /// be set after.
     /// if the edge <E> has more than 2 adjacent faces
-    pub fn add_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_add_edge(self as *mut Self, E) }
     }
 
@@ -438,7 +435,7 @@ impl ChBuilder {
     /// (the next are found by propagation ), and  the
     /// distance <Dis>
     /// if the edge <E> has more than 2 adjacent faces
-    pub fn add_real_edge(&mut self, Dis: f64, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_real_edge(&mut self, Dis: f64, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_add_real_edge(self as *mut Self, Dis, E) }
     }
 
@@ -447,7 +444,7 @@ impl ChBuilder {
     /// contour of index <IC> in the DS with <Dis> on <F>.
     /// if the face <F> is not one of common faces
     /// of an edge of the contour <IC>
-    pub fn set_dist(&mut self, Dis: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_dist(&mut self, Dis: f64, IC: i32, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_set_dist(self as *mut Self, Dis, IC, F) }
     }
 
@@ -467,8 +464,8 @@ impl ChBuilder {
         &mut self,
         Dis1: f64,
         Dis2: f64,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
     ) {
         unsafe {
             crate::ffi::ChFi3d_ChBuilder_add_real2_edge_face(self as *mut Self, Dis1, Dis2, E, F)
@@ -480,7 +477,7 @@ impl ChBuilder {
     /// contour of index <IC> in the DS with <Dis1> on <F>.
     /// if the face <F> is not one of common faces
     /// of an edge of the contour <IC>
-    pub fn set_dists(&mut self, Dis1: f64, Dis2: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_dists(&mut self, Dis1: f64, Dis2: f64, IC: i32, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_set_dists(self as *mut Self, Dis1, Dis2, IC, F) }
     }
 
@@ -500,8 +497,8 @@ impl ChBuilder {
         &mut self,
         Dis: f64,
         Angle: f64,
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
     ) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_add_da(self as *mut Self, Dis, Angle, E, F) }
     }
@@ -511,7 +508,7 @@ impl ChBuilder {
     /// contour of index <IC> in the DS with <Dis> on <F>.
     /// if the face <F> is not one of common faces
     /// of an edge of the contour <IC>
-    pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64, IC: i32, F: &crate::ffi::TopoDS_Face) {
+    pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64, IC: i32, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_set_dist_angle(self as *mut Self, Dis, Angle, IC, F) }
     }
 
@@ -627,12 +624,12 @@ impl ChBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
-    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Remove(self as *mut Self, E) }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
-    pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Contains(self as *const Self, E) }
     }
 
@@ -657,7 +654,7 @@ impl ChBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
-    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_FirstVertex(
                 self as *const Self,
@@ -667,7 +664,7 @@ impl ChBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
-    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_LastVertex(
                 self as *const Self,
@@ -677,12 +674,12 @@ impl ChBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Abscissa(self as *const Self, IC, V) }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe {
             crate::ffi::ChFi3d_ChBuilder_inherited_RelativeAbscissa(self as *const Self, IC, V)
         }
@@ -709,7 +706,7 @@ impl ChBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_Shape(
                 self as *const Self,
@@ -718,10 +715,7 @@ impl ChBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
-    pub fn generated(
-        &mut self,
-        EouV: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, EouV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::ChFi3d_ChBuilder_inherited_Generated(self as *mut Self, EouV)) }
     }
 
@@ -763,7 +757,7 @@ impl ChBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
-    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_FaultyVertex(
                 self as *const Self,
@@ -778,7 +772,7 @@ impl ChBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
-    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_ChBuilder_inherited_BadShape(
                 self as *const Self,
@@ -857,7 +851,7 @@ unsafe impl crate::CppDeletable for FilBuilder {
 impl FilBuilder {
     /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
     pub fn new_shape_filletshape_real(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
         Ta: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -872,7 +866,7 @@ impl FilBuilder {
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
     pub fn new_shape_filletshape(
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_filletshape_real(S, FShape, 1.0e-2)
@@ -899,13 +893,13 @@ impl FilBuilder {
     /// initialisation of  a contour with the first edge
     /// (the following are found  by propagation).
     /// Attention, you  need  to start  with  SetRadius.
-    pub fn add_edge(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_add_edge(self as *mut Self, E) }
     }
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:65 - `ChFi3d_FilBuilder::Add()`
     /// initialisation of the constant vector the corresponding  1st  edge.
-    pub fn add_real_edge(&mut self, Radius: f64, E: &crate::ffi::TopoDS_Edge) {
+    pub fn add_real_edge(&mut self, Radius: f64, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_add_real_edge(self as *mut Self, Radius, E) }
     }
 
@@ -949,7 +943,7 @@ impl FilBuilder {
     /// **Source:** `ChFi3d_FilBuilder.hxx`:84 - `ChFi3d_FilBuilder::SetRadius()`
     /// Set a constant on edge E of  the contour of
     /// index IC. Since  then  E is flagged as constant.
-    pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::ffi::TopoDS_Edge) {
+    pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::topo_ds::Edge) {
         unsafe {
             crate::ffi::ChFi3d_FilBuilder_set_radius_real_int_edge(self as *mut Self, Radius, IC, E)
         }
@@ -957,18 +951,13 @@ impl FilBuilder {
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:89 - `ChFi3d_FilBuilder::UnSet()`
     /// Extracts the flag constant and the vector of edge E.
-    pub fn un_set_int_edge(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) {
+    pub fn un_set_int_edge(&mut self, IC: i32, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_un_set_int_edge(self as *mut Self, IC, E) }
     }
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:92 - `ChFi3d_FilBuilder::SetRadius()`
     /// Set a vector on vertex  V of  the contour of index IC.
-    pub fn set_radius_real_int_vertex(
-        &mut self,
-        Radius: f64,
-        IC: i32,
-        V: &crate::ffi::TopoDS_Vertex,
-    ) {
+    pub fn set_radius_real_int_vertex(&mut self, Radius: f64, IC: i32, V: &crate::topo_ds::Vertex) {
         unsafe {
             crate::ffi::ChFi3d_FilBuilder_set_radius_real_int_vertex(
                 self as *mut Self,
@@ -981,14 +970,14 @@ impl FilBuilder {
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:97 - `ChFi3d_FilBuilder::UnSet()`
     /// Extracts the vector of  the vertex V.
-    pub fn un_set_int_vertex(&mut self, IC: i32, V: &crate::ffi::TopoDS_Vertex) {
+    pub fn un_set_int_vertex(&mut self, IC: i32, V: &crate::topo_ds::Vertex) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_un_set_int_vertex(self as *mut Self, IC, V) }
     }
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:101 - `ChFi3d_FilBuilder::SetRadius()`
     /// Set  a vertex on the point of parametre U in the edge IinC
     /// of  the contour of index IC
-    pub fn set_radius_xy_int2(&mut self, UandR: &crate::ffi::gp_XY, IC: i32, IinC: i32) {
+    pub fn set_radius_xy_int2(&mut self, UandR: &crate::gp::XY, IC: i32, IinC: i32) {
         unsafe {
             crate::ffi::ChFi3d_FilBuilder_set_radius_xy_int2(self as *mut Self, UandR, IC, IinC)
         }
@@ -996,13 +985,13 @@ impl FilBuilder {
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:106 - `ChFi3d_FilBuilder::IsConstant()`
     /// Returns true E is flagged as edge constant.
-    pub fn is_constant_int_edge(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn is_constant_int_edge(&mut self, IC: i32, E: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::ChFi3d_FilBuilder_is_constant_int_edge(self as *mut Self, IC, E) }
     }
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:109 - `ChFi3d_FilBuilder::Radius()`
     /// Returns the vector if E is flagged as edge constant.
-    pub fn radius_int_edge(&mut self, IC: i32, E: &crate::ffi::TopoDS_Edge) -> f64 {
+    pub fn radius_int_edge(&mut self, IC: i32, E: &crate::topo_ds::Edge) -> f64 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_radius_int_edge(self as *mut Self, IC, E) }
     }
 
@@ -1013,7 +1002,7 @@ impl FilBuilder {
     pub fn get_bounds(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         First: &mut f64,
         Last: &mut f64,
     ) -> bool {
@@ -1027,7 +1016,7 @@ impl FilBuilder {
     pub fn get_law(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
     ) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_get_law(
@@ -1044,7 +1033,7 @@ impl FilBuilder {
     pub fn set_law(
         &mut self,
         IC: i32,
-        E: &crate::ffi::TopoDS_Edge,
+        E: &crate::topo_ds::Edge,
         L: &crate::ffi::HandleLawFunction,
     ) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_set_law(self as *mut Self, IC, E, L) }
@@ -1120,12 +1109,12 @@ impl FilBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
-    pub fn remove(&mut self, E: &crate::ffi::TopoDS_Edge) {
+    pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Remove(self as *mut Self, E) }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
-    pub fn contains(&self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Contains(self as *const Self, E) }
     }
 
@@ -1150,7 +1139,7 @@ impl FilBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
-    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_FirstVertex(
                 self as *const Self,
@@ -1160,7 +1149,7 @@ impl FilBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
-    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_LastVertex(
                 self as *const Self,
@@ -1170,12 +1159,12 @@ impl FilBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
-    pub fn abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Abscissa(self as *const Self, IC, V) }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
-    pub fn relative_abscissa(&self, IC: i32, V: &crate::ffi::TopoDS_Vertex) -> f64 {
+    pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         unsafe {
             crate::ffi::ChFi3d_FilBuilder_inherited_RelativeAbscissa(self as *const Self, IC, V)
         }
@@ -1202,7 +1191,7 @@ impl FilBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:138 - `ChFi3d_Builder::Shape()`
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_Shape(
                 self as *const Self,
@@ -1211,10 +1200,7 @@ impl FilBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
-    pub fn generated(
-        &mut self,
-        EouV: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, EouV: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::ChFi3d_FilBuilder_inherited_Generated(self as *mut Self, EouV)) }
     }
 
@@ -1256,7 +1242,7 @@ impl FilBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
-    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_FaultyVertex(
                 self as *const Self,
@@ -1271,7 +1257,7 @@ impl FilBuilder {
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
-    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFi3d_FilBuilder_inherited_BadShape(
                 self as *const Self,

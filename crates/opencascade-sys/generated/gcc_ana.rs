@@ -35,9 +35,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to two 2d circles and
     /// having the center ON a 2d line.
     pub fn new_qualifiedcirc2_lin2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
+        OnLine: &crate::gp::Lin2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -54,9 +54,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to a 2d circle and a 2d line
     /// having the center ON a 2d line.
     pub fn new_qualifiedcirc_qualifiedlin_lin2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        OnLine: &crate::gp::Lin2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -73,9 +73,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to two 2d lines
     /// having the center ON a 2d line.
     pub fn new_qualifiedlin2_lin2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        OnLine: &crate::gp::Lin2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -92,9 +92,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to a 2d circle and a point
     /// having the center ON a 2d line.
     pub fn new_qualifiedcirc_pnt2d_lin2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Point2: &crate::gp::Pnt2d,
+        OnLine: &crate::gp::Lin2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -111,9 +111,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to a 2d line and a point
     /// having the center ON a 2d line.
     pub fn new_qualifiedlin_pnt2d_lin2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Point2: &crate::gp::Pnt2d,
+        OnLine: &crate::gp::Lin2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -130,9 +130,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to two points
     /// having the center ON a 2d line.
     pub fn new_pnt2d2_lin2d_real(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
+        OnLine: &crate::gp::Lin2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -147,9 +147,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to two 2d circles and
     /// having the center ON a 2d circle.
     pub fn new_qualifiedcirc2_circ2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
+        OnCirc: &crate::gp::Circ2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -166,9 +166,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to a circle and a line
     /// having the center ON a 2d circle.
     pub fn new_qualifiedcirc_qualifiedlin_circ2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        OnCirc: &crate::gp::Circ2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -185,9 +185,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to a circle and a point
     /// having the center ON a 2d circle.
     pub fn new_qualifiedcirc_pnt2d_circ2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Point2: &crate::gp::Pnt2d,
+        OnCirc: &crate::gp::Circ2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -204,9 +204,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to two 2d lines
     /// having the center ON a 2d circle.
     pub fn new_qualifiedlin2_circ2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        OnCirc: &crate::gp::Circ2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -223,9 +223,9 @@ impl Circ2d2TanOn {
     /// create 2d circles TANgent to a line and a point
     /// having the center ON a 2d circle.
     pub fn new_qualifiedlin_pnt2d_circ2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Point2: &crate::gp::Pnt2d,
+        OnCirc: &crate::gp::Circ2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -242,9 +242,9 @@ impl Circ2d2TanOn {
     /// 2d circles TANgent to two points having the center ON
     /// a 2d circle.
     pub fn new_pnt2d2_circ2d_real(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
+        OnCirc: &crate::gp::Circ2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -282,7 +282,7 @@ impl Circ2d2TanOn {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Circ2d2TanOn_this_solution(
                 self as *const Self,
@@ -331,7 +331,7 @@ impl Circ2d2TanOn {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2d2TanOn_tangency1(
@@ -357,7 +357,7 @@ impl Circ2d2TanOn {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2d2TanOn_tangency2(
@@ -379,7 +379,7 @@ impl Circ2d2TanOn {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntArg: &mut crate::ffi::gp_Pnt2d) {
+    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntArg: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::GccAna_Circ2d2TanOn_center_on3(self as *const Self, Index, ParArg, PntArg)
         }
@@ -455,8 +455,8 @@ impl Circ2d2TanRad {
     /// radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qualifiedcirc2_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -473,8 +473,8 @@ impl Circ2d2TanRad {
     /// with a radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qualifiedcirc_qualifiedlin_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -493,8 +493,8 @@ impl Circ2d2TanRad {
     /// with a radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qualifiedcirc_pnt2d_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Point2: &crate::gp::Pnt2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -513,8 +513,8 @@ impl Circ2d2TanRad {
     /// with a radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qualifiedlin_pnt2d_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Point2: &crate::gp::Pnt2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -533,8 +533,8 @@ impl Circ2d2TanRad {
     /// with a radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qualifiedlin2_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -551,8 +551,8 @@ impl Circ2d2TanRad {
     /// radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_pnt2d2_real2(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -587,7 +587,7 @@ impl Circ2d2TanRad {
     /// than the number of solutions.
     /// It raises NotDone if the construction algorithm did not
     /// succeed.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Circ2d2TanRad_this_solution(
                 self as *const Self,
@@ -626,7 +626,7 @@ impl Circ2d2TanRad {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2d2TanRad_tangency1(
@@ -653,7 +653,7 @@ impl Circ2d2TanRad {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2d2TanRad_tangency2(
@@ -725,9 +725,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedcirc3_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified3: &crate::ffi::GccEnt_QualifiedCirc,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
+        Qualified3: &crate::gcc_ent::QualifiedCirc,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -743,9 +743,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedcirc2_qualifiedlin_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified3: &crate::ffi::GccEnt_QualifiedLin,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
+        Qualified3: &crate::gcc_ent::QualifiedLin,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -763,9 +763,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedcirc_qualifiedlin2_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified3: &crate::ffi::GccEnt_QualifiedLin,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        Qualified3: &crate::gcc_ent::QualifiedLin,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -783,9 +783,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedlin3_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified3: &crate::ffi::GccEnt_QualifiedLin,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        Qualified3: &crate::gcc_ent::QualifiedLin,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -801,9 +801,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedcirc2_pnt2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
-        Point3: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
+        Point3: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -820,9 +820,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedcirc_qualifiedlin_pnt2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        Point3: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        Point3: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -840,9 +840,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedlin2_pnt2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        Point3: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        Point3: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -859,9 +859,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedcirc_pnt2d2_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Point2: &crate::ffi::gp_Pnt2d,
-        Point3: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Point2: &crate::gp::Pnt2d,
+        Point3: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -878,9 +878,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_qualifiedlin_pnt2d2_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Point2: &crate::ffi::gp_Pnt2d,
-        Point3: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Point2: &crate::gp::Pnt2d,
+        Point3: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -896,9 +896,9 @@ impl Circ2d3Tan {
     /// ConstructionError is raised if there is a problem during
     /// the computation.
     pub fn new_pnt2d3_real(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
-        Point3: &crate::ffi::gp_Pnt2d,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
+        Point3: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -935,7 +935,7 @@ impl Circ2d3Tan {
     /// Raises OutOfRange if Index is greater than
     /// the number of solutions.
     /// It raises NotDone if the algorithm failed.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Circ2d3Tan_this_solution(
                 self as *const Self,
@@ -983,7 +983,7 @@ impl Circ2d3Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2d3Tan_tangency1(
@@ -1010,7 +1010,7 @@ impl Circ2d3Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2d3Tan_tangency2(
@@ -1037,7 +1037,7 @@ impl Circ2d3Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2d3Tan_tangency3(
@@ -1105,8 +1105,8 @@ impl Circ2dBisec {
     /// **Source:** `GccAna_Circ2dBisec.hxx`:45 - `GccAna_Circ2dBisec::GccAna_Circ2dBisec()`
     /// Constructs bisecting curves between the two circles Circ1 and Circ2.
     pub fn new_circ2d2(
-        Circ1: &crate::ffi::gp_Circ2d,
-        Circ2: &crate::ffi::gp_Circ2d,
+        Circ1: &crate::gp::Circ2d,
+        Circ2: &crate::gp::Circ2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Circ2dBisec_ctor_circ2d2(Circ1, Circ2))
@@ -1178,8 +1178,8 @@ impl Circ2dTanCen {
     /// create 2d circles tangent to a circle and
     /// centered on a point.
     pub fn new_qualifiedcirc_pnt2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Pcenter: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Pcenter: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1196,8 +1196,8 @@ impl Circ2dTanCen {
     /// create 2d circles tangent to a line and
     /// centered on a point.
     pub fn new_lin2d_pnt2d(
-        Linetan: &crate::ffi::gp_Lin2d,
-        Pcenter: &crate::ffi::gp_Pnt2d,
+        Linetan: &crate::gp::Lin2d,
+        Pcenter: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Circ2dTanCen_ctor_lin2d_pnt2d(
@@ -1222,8 +1222,8 @@ impl Circ2dTanCen {
     /// GccEnt_BadQualifier if a qualifier is inconsistent with
     /// the argument it qualifies (for example, enclosing for a line).
     pub fn new_pnt2d2(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Pcenter: &crate::ffi::gp_Pnt2d,
+        Point1: &crate::gp::Pnt2d,
+        Pcenter: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Circ2dTanCen_ctor_pnt2d2(Point1, Pcenter))
@@ -1257,7 +1257,7 @@ impl Circ2dTanCen {
     /// Raises NotDone if the construction algorithm didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions or less than zer
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Circ2dTanCen_this_solution(
                 self as *const Self,
@@ -1297,7 +1297,7 @@ impl Circ2dTanCen {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2dTanCen_tangency1(
@@ -1368,8 +1368,8 @@ impl Circ2dTanOnRad {
     /// radius of the circ) because there is no solution.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qualifiedcirc_lin2d_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        OnLine: &crate::gp::Lin2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1389,8 +1389,8 @@ impl Circ2dTanOnRad {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qualifiedlin_lin2d_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        OnLine: &crate::gp::Lin2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1409,8 +1409,8 @@ impl Circ2dTanOnRad {
     /// 2d Line with a given radius.
     /// Tolerance is used to find solution in every limit cases.
     pub fn new_pnt2d_lin2d_real2(
-        Point1: &crate::ffi::gp_Pnt2d,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Point1: &crate::gp::Pnt2d,
+        OnLine: &crate::gp::Lin2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1428,8 +1428,8 @@ impl Circ2dTanOnRad {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qualifiedcirc_circ2d_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        OnCirc: &crate::gp::Circ2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1449,8 +1449,8 @@ impl Circ2dTanOnRad {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qualifiedlin_circ2d_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        OnCirc: &crate::gp::Circ2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1470,8 +1470,8 @@ impl Circ2dTanOnRad {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_pnt2d_circ2d_real2(
-        Point1: &crate::ffi::gp_Pnt2d,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Point1: &crate::gp::Pnt2d,
+        OnCirc: &crate::gp::Circ2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1508,7 +1508,7 @@ impl Circ2dTanOnRad {
     /// Raises NotDone if the construction algorithm  didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Circ2dTanOnRad_this_solution(
                 self as *const Self,
@@ -1555,7 +1555,7 @@ impl Circ2dTanOnRad {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Circ2dTanOnRad_tangency1(
@@ -1577,7 +1577,7 @@ impl Circ2dTanOnRad {
     /// Raises NotDone if the construction algorithm  didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::GccAna_Circ2dTanOnRad_center_on3(self as *const Self, Index, ParArg, PntSol)
         }
@@ -1621,8 +1621,8 @@ impl CircLin2dBisec {
     /// **Source:** `GccAna_CircLin2dBisec.hxx`:46 - `GccAna_CircLin2dBisec::GccAna_CircLin2dBisec()`
     /// Constructs bisecting curves between the circle Circle and the line Line.
     pub fn new_circ2d_lin2d(
-        Circle: &crate::ffi::gp_Circ2d,
-        Line: &crate::ffi::gp_Lin2d,
+        Circle: &crate::gp::Circ2d,
+        Line: &crate::gp::Lin2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_CircLin2dBisec_ctor_circ2d_lin2d(
@@ -1688,8 +1688,8 @@ impl CircPnt2dBisec {
     /// **Source:** `GccAna_CircPnt2dBisec.hxx`:49 - `GccAna_CircPnt2dBisec::GccAna_CircPnt2dBisec()`
     /// Constructs bisecting curves between the circle Circle1 and the point Point2.
     pub fn new_circ2d_pnt2d(
-        Circle1: &crate::ffi::gp_Circ2d,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Circle1: &crate::gp::Circ2d,
+        Point2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_CircPnt2dBisec_ctor_circ2d_pnt2d(
@@ -1702,8 +1702,8 @@ impl CircPnt2dBisec {
     /// Constructs bisecting curves between the circle Circle1 and the point Point2.
     /// Tolerance is used.
     pub fn new_circ2d_pnt2d_real(
-        Circle1: &crate::ffi::gp_Circ2d,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Circle1: &crate::gp::Circ2d,
+        Point2: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1776,8 +1776,8 @@ impl Lin2d2Tan {
     /// Tolerance is used because we can't create a line
     /// when the distance between the two points is too small.
     pub fn new_pnt2d2_real(
-        ThePoint1: &crate::ffi::gp_Pnt2d,
-        ThePoint2: &crate::ffi::gp_Pnt2d,
+        ThePoint1: &crate::gp::Pnt2d,
+        ThePoint2: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1797,8 +1797,8 @@ impl Lin2d2Tan {
     /// when the point is inside the solution according to
     /// the tolerance.
     pub fn new_qualifiedcirc_pnt2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        ThePoint: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        ThePoint: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1814,8 +1814,8 @@ impl Lin2d2Tan {
     /// Exception BadQualifier is raised in the case of
     /// EnclosedCirc
     pub fn new_qualifiedcirc2_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1847,7 +1847,7 @@ impl Lin2d2Tan {
     /// context of the algorithm-object. Raises OutOfRange is raised if Index is greater than
     /// the number of solutions.
     /// It raises NotDone if the algorithm failed.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2d2Tan_this_solution(
                 self as *const Self,
@@ -1897,7 +1897,7 @@ impl Lin2d2Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2d2Tan_tangency1(
@@ -1924,7 +1924,7 @@ impl Lin2d2Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2d2Tan_tangency2(
@@ -1972,10 +1972,7 @@ unsafe impl crate::CppDeletable for Lin2dBisec {
 impl Lin2dBisec {
     /// **Source:** `GccAna_Lin2dBisec.hxx`:54 - `GccAna_Lin2dBisec::GccAna_Lin2dBisec()`
     /// Constructs bisecting lines between the two lines Lin1 and Lin2.
-    pub fn new_lin2d2(
-        Lin1: &crate::ffi::gp_Lin2d,
-        Lin2: &crate::ffi::gp_Lin2d,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_lin2d2(Lin1: &crate::gp::Lin2d, Lin2: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dBisec_ctor_lin2d2(Lin1, Lin2)) }
     }
 
@@ -2004,7 +2001,7 @@ impl Lin2dBisec {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dBisec_this_solution(
                 self as *const Self,
@@ -2024,7 +2021,7 @@ impl Lin2dBisec {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2dBisec_intersection1(
@@ -2049,7 +2046,7 @@ impl Lin2dBisec {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2dBisec_intersection2(
@@ -2090,8 +2087,8 @@ impl Lin2dTanObl {
     /// create 2d line passing through a point and
     /// making an angle with a line.
     pub fn new_pnt2d_lin2d_real(
-        ThePoint: &crate::ffi::gp_Pnt2d,
-        TheLine: &crate::ffi::gp_Lin2d,
+        ThePoint: &crate::gp::Pnt2d,
+        TheLine: &crate::gp::Lin2d,
         TheAngle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2109,8 +2106,8 @@ impl Lin2dTanObl {
     /// GccEnt_BadQualifier if a qualifier is inconsistent with
     /// the argument it qualifies (for example, enclosed for a circle).
     pub fn new_qualifiedcirc_lin2d_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        TheLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        TheLine: &crate::gp::Lin2d,
         TheAngle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2143,7 +2140,7 @@ impl Lin2dTanObl {
     /// context of the algorithm-object.
     /// raises NotDone if the construction algorithm didn't succeed.
     /// It raises OutOfRange if Index is greater than the   number of solutions.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanObl_this_solution(
                 self as *const Self,
@@ -2187,7 +2184,7 @@ impl Lin2dTanObl {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2dTanObl_tangency1(
@@ -2210,7 +2207,7 @@ impl Lin2dTanObl {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2dTanObl_intersection2(
@@ -2254,8 +2251,8 @@ impl Lin2dTanPar {
     /// line passing through a point and parallel to
     /// another line.
     pub fn new_pnt2d_lin2d(
-        ThePoint: &crate::ffi::gp_Pnt2d,
-        Lin1: &crate::ffi::gp_Lin2d,
+        ThePoint: &crate::gp::Pnt2d,
+        Lin1: &crate::gp::Lin2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanPar_ctor_pnt2d_lin2d(
@@ -2272,8 +2269,8 @@ impl Lin2dTanPar {
     /// GccEnt_BadQualifier if a qualifier is inconsistent with
     /// the argument it qualifies (for example, enclosed for a circle).
     pub fn new_qualifiedcirc_lin2d(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Lin1: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Lin1: &crate::gp::Lin2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanPar_ctor_qualifiedcirc_lin2d(
@@ -2305,7 +2302,7 @@ impl Lin2dTanPar {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanPar_this_solution(
                 self as *const Self,
@@ -2347,7 +2344,7 @@ impl Lin2dTanPar {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        Pnt: &mut crate::ffi::gp_Pnt2d,
+        Pnt: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2dTanPar_tangency1(
@@ -2391,8 +2388,8 @@ impl Lin2dTanPer {
     /// create 2d lines passing through a point and
     /// perpendicular to a line.
     pub fn new_pnt2d_lin2d(
-        ThePnt: &crate::ffi::gp_Pnt2d,
-        TheLin: &crate::ffi::gp_Lin2d,
+        ThePnt: &crate::gp::Pnt2d,
+        TheLin: &crate::gp::Lin2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanPer_ctor_pnt2d_lin2d(
@@ -2406,8 +2403,8 @@ impl Lin2dTanPer {
     /// create 2d lines passing through a point and
     /// perpendicular to a circle.
     pub fn new_pnt2d_circ2d(
-        ThePnt: &crate::ffi::gp_Pnt2d,
-        TheCircle: &crate::ffi::gp_Circ2d,
+        ThePnt: &crate::gp::Pnt2d,
+        TheCircle: &crate::gp::Circ2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanPer_ctor_pnt2d_circ2d(
@@ -2421,8 +2418,8 @@ impl Lin2dTanPer {
     /// create 2d lines tangent to a circle and
     /// perpendicular to a line.
     pub fn new_qualifiedcirc_lin2d(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        TheLin: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        TheLin: &crate::gp::Lin2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanPer_ctor_qualifiedcirc_lin2d(
@@ -2436,8 +2433,8 @@ impl Lin2dTanPer {
     /// create 2d lines tangent to a circle and
     /// perpendicular to a circle.
     pub fn new_qualifiedcirc_circ2d(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        TheCircle: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        TheCircle: &crate::gp::Circ2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanPer_ctor_qualifiedcirc_circ2d(
@@ -2490,7 +2487,7 @@ impl Lin2dTanPer {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Lin2dTanPer_this_solution(
                 self as *const Self,
@@ -2515,7 +2512,7 @@ impl Lin2dTanPer {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        Pnt: &mut crate::ffi::gp_Pnt2d,
+        Pnt: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2dTanPer_tangency1(
@@ -2545,7 +2542,7 @@ impl Lin2dTanPer {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::GccAna_Lin2dTanPer_intersection2(
@@ -2586,8 +2583,8 @@ impl LinPnt2dBisec {
     /// **Source:** `GccAna_LinPnt2dBisec.hxx`:45 - `GccAna_LinPnt2dBisec::GccAna_LinPnt2dBisec()`
     /// Constructs a bisecting curve between the line Line1 and the point Point2.
     pub fn new_lin2d_pnt2d(
-        Line1: &crate::ffi::gp_Lin2d,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Line1: &crate::gp::Lin2d,
+        Point2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_LinPnt2dBisec_ctor_lin2d_pnt2d(
@@ -2707,8 +2704,8 @@ impl Pnt2dBisec {
     /// **Source:** `GccAna_Pnt2dBisec.hxx`:41 - `GccAna_Pnt2dBisec::GccAna_Pnt2dBisec()`
     /// Constructs a bisecting line between the points Point1 and Point2.
     pub fn new_pnt2d2(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Pnt2dBisec_ctor_pnt2d2(Point1, Point2))
@@ -2730,7 +2727,7 @@ impl Pnt2dBisec {
 
     /// **Source:** `GccAna_Pnt2dBisec.hxx`:51 - `GccAna_Pnt2dBisec::ThisSolution()`
     /// Returns a line, representing the solution computed by this algorithm.
-    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccAna_Pnt2dBisec_this_solution(
                 self as *const Self,

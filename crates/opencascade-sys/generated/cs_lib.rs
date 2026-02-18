@@ -16,7 +16,7 @@ pub fn dnnuv_int2_array2ofvec(
     Nu: i32,
     Nv: i32,
     DerSurf: &crate::ffi::TColgp_Array2OfVec,
-) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::CSLib_dnnuv_int2_array2ofvec(Nu, Nv, DerSurf)) }
 }
 /// **Source:** `CSLib.hxx`:135 - `CSLib::DNNUV`
@@ -29,7 +29,7 @@ pub fn dnnuv_int2_array2ofvec2(
     Nv: i32,
     DerSurf1: &crate::ffi::TColgp_Array2OfVec,
     DerSurf2: &crate::ffi::TColgp_Array2OfVec,
-) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::CSLib_dnnuv_int2_array2ofvec2(
             Nu, Nv, DerSurf1, DerSurf2,
@@ -51,7 +51,7 @@ pub fn dn_normal(
     DerNUV: &crate::ffi::TColgp_Array2OfVec,
     Iduref: i32,
     Idvref: i32,
-) -> crate::OwnedPtr<crate::ffi::gp_Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::CSLib_dn_normal(Nu, Nv, DerNUV, Iduref, Idvref))
     }
@@ -236,12 +236,12 @@ impl Class2d {
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:70 - `CSLib_Class2d::SiDans()`
-    pub fn si_dans(&self, P: &crate::ffi::gp_Pnt2d) -> i32 {
+    pub fn si_dans(&self, P: &crate::gp::Pnt2d) -> i32 {
         unsafe { crate::ffi::CSLib_Class2d_si_dans(self as *const Self, P) }
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:72 - `CSLib_Class2d::SiDans_OnMode()`
-    pub fn si_dans_on_mode(&self, P: &crate::ffi::gp_Pnt2d, Tol: f64) -> i32 {
+    pub fn si_dans_on_mode(&self, P: &crate::gp::Pnt2d, Tol: f64) -> i32 {
         unsafe { crate::ffi::CSLib_Class2d_si_dans_on_mode(self as *const Self, P, Tol) }
     }
 

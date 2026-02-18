@@ -7,17 +7,17 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `BRepFeat.hxx`:88 - `BRepFeat::Barycenter`
-pub fn barycenter(S: &crate::ffi::TopoDS_Shape, Pt: &mut crate::ffi::gp_Pnt) {
+pub fn barycenter(S: &crate::topo_ds::Shape, Pt: &mut crate::gp::Pnt) {
     unsafe { crate::ffi::BRepFeat_barycenter(S, Pt) }
 }
 /// **Source:** `BRepFeat.hxx`:90 - `BRepFeat::ParametricBarycenter`
-pub fn parametric_barycenter(S: &crate::ffi::TopoDS_Shape, C: &crate::ffi::HandleGeomCurve) -> f64 {
+pub fn parametric_barycenter(S: &crate::topo_ds::Shape, C: &crate::ffi::HandleGeomCurve) -> f64 {
     unsafe { crate::ffi::BRepFeat_parametric_barycenter(S, C) }
 }
 /// **Source:** `BRepFeat.hxx`:94 - `BRepFeat::ParametricMinMax`
 /// Ori = True taking account the orientation
 pub fn parametric_min_max(
-    S: &crate::ffi::TopoDS_Shape,
+    S: &crate::topo_ds::Shape,
     C: &crate::ffi::HandleGeomCurve,
     prmin: &mut f64,
     prmax: &mut f64,
@@ -31,19 +31,19 @@ pub fn parametric_min_max(
     }
 }
 /// **Source:** `BRepFeat.hxx`:103 - `BRepFeat::IsInside`
-pub fn is_inside(F1: &crate::ffi::TopoDS_Face, F2: &crate::ffi::TopoDS_Face) -> bool {
+pub fn is_inside(F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) -> bool {
     unsafe { crate::ffi::BRepFeat_is_inside(F1, F2) }
 }
 /// **Source:** `BRepFeat.hxx`:108 - `BRepFeat::FaceUntil`
-pub fn face_until(S: &crate::ffi::TopoDS_Shape, F: &mut crate::ffi::TopoDS_Face) {
+pub fn face_until(S: &crate::topo_ds::Shape, F: &mut crate::topo_ds::Face) {
     unsafe { crate::ffi::BRepFeat_face_until(S, F) }
 }
 /// **Source:** `BRepFeat.hxx`:110 - `BRepFeat::Tool`
 pub fn tool(
-    SRef: &crate::ffi::TopoDS_Shape,
-    Fac: &crate::ffi::TopoDS_Face,
+    SRef: &crate::topo_ds::Shape,
+    Fac: &crate::topo_ds::Face,
     Orf: crate::top_abs::Orientation,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Solid> {
+) -> crate::OwnedPtr<crate::topo_ds::Solid> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFeat_tool(SRef, Fac, Orf.into())) }
 }
 
@@ -238,7 +238,7 @@ impl Builder {
 
     /// **Source:** `BRepFeat_Builder.hxx`:57 - `BRepFeat_Builder::Init()`
     /// Initializes the object of local boolean operation.
-    pub fn init_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn init_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_Builder_init_shape(self as *mut Self, theShape) }
     }
 
@@ -246,8 +246,8 @@ impl Builder {
     /// Initializes the arguments of local boolean operation.
     pub fn init_shape2(
         &mut self,
-        theShape: &crate::ffi::TopoDS_Shape,
-        theTool: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
+        theTool: &crate::topo_ds::Shape,
     ) {
         unsafe { crate::ffi::BRepFeat_Builder_init_shape2(self as *mut Self, theShape, theTool) }
     }
@@ -286,14 +286,14 @@ impl Builder {
 
     /// **Source:** `BRepFeat_Builder.hxx`:81 - `BRepFeat_Builder::KeepPart()`
     /// Adds shape theS and all its sub-shapes into myShapes map.
-    pub fn keep_part(&mut self, theS: &crate::ffi::TopoDS_Shape) {
+    pub fn keep_part(&mut self, theS: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_Builder_keep_part(self as *mut Self, theS) }
     }
 
     /// **Source:** `BRepFeat_Builder.hxx`:85 - `BRepFeat_Builder::PerformResult()`
     /// Main function to build the result of the
     /// local operation required.
-    pub fn perform_result(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform_result(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_Builder_perform_result(self as *mut Self, theRange) }
     }
 
@@ -307,8 +307,8 @@ impl Builder {
     /// Rebuilds edges in accordance with the kept parts of the tool.
     pub fn rebuild_edge(
         &mut self,
-        theE: &crate::ffi::TopoDS_Shape,
-        theF: &crate::ffi::TopoDS_Face,
+        theE: &crate::topo_ds::Shape,
+        theF: &crate::topo_ds::Face,
         theME: &crate::ffi::TopTools_MapOfShape,
         aLEIm: &mut crate::ffi::TopTools_ListOfShape,
     ) {
@@ -334,7 +334,7 @@ impl Builder {
     /// Adds the shape S and its sub-shapes into myRemoved map.
     pub fn fill_removed_shape_mapofshape(
         &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
+        theS: &crate::topo_ds::Shape,
         theM: &mut crate::ffi::TopTools_MapOfShape,
     ) {
         unsafe {
@@ -411,12 +411,12 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BOP.hxx`:81 - `BOPAlgo_BOP::Perform()`
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_Perform(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
-    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_tool(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_AddTool(self as *mut Self, theShape) }
     }
 
@@ -440,7 +440,7 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_AddArgument(self as *mut Self, theShape) }
     }
 
@@ -496,8 +496,8 @@ impl Builder {
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &crate::bop_algo::PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BRepFeat_Builder_inherited_PerformWithFiller(
@@ -524,28 +524,22 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Modified(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Generated(self as *mut Self, theS)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_Builder_inherited_IsDeleted(self as *mut Self, theS) }
     }
 
@@ -699,19 +693,19 @@ unsafe impl crate::CppDeletable for Form {
 impl Form {
     /// **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
     /// returns the list of generated Faces.
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Form_modified(self as *mut Self, F)) }
     }
 
     /// **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
     /// returns a list of the created faces
     /// from the shape <S>.
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Form_generated(self as *mut Self, S)) }
     }
 
     /// **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_Form_is_deleted(self as *mut Self, S) }
     }
 
@@ -847,12 +841,12 @@ impl Form {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_Form_inherited_Build(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_Form_inherited_Shape(self as *mut Self)) }
     }
 
@@ -907,8 +901,8 @@ impl Gluer {
     /// Initializes the shapes to be glued, the new shape
     /// Snew and the basis shape Sbase.
     pub fn new_shape2(
-        Snew: &crate::ffi::TopoDS_Shape,
-        Sbase: &crate::ffi::TopoDS_Shape,
+        Snew: &crate::topo_ds::Shape,
+        Sbase: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFeat_Gluer_ctor_shape2(Snew, Sbase)) }
     }
@@ -916,7 +910,7 @@ impl Gluer {
     /// **Source:** `BRepFeat_Gluer.hxx`:62 - `BRepFeat_Gluer::Init()`
     /// Initializes the new shape Snew and the basis shape
     /// Sbase for the local glueing operation.
-    pub fn init(&mut self, Snew: &crate::ffi::TopoDS_Shape, Sbase: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, Snew: &crate::topo_ds::Shape, Sbase: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_Gluer_init(self as *mut Self, Snew, Sbase) }
     }
 
@@ -928,7 +922,7 @@ impl Gluer {
     /// The contact faces of the glued shape must not have
     /// parts outside the contact faces of the basis shape.
     /// This indicates that glueing is possible.
-    pub fn bind_face2(&mut self, Fnew: &crate::ffi::TopoDS_Face, Fbase: &crate::ffi::TopoDS_Face) {
+    pub fn bind_face2(&mut self, Fnew: &crate::topo_ds::Face, Fbase: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_Gluer_bind_face2(self as *mut Self, Fnew, Fbase) }
     }
 
@@ -937,7 +931,7 @@ impl Gluer {
     /// shape is the same as the edge Ebase in the basis
     /// shape and is therefore attached to the basis shape. This
     /// indicates that glueing is possible.
-    pub fn bind_edge2(&mut self, Enew: &crate::ffi::TopoDS_Edge, Ebase: &crate::ffi::TopoDS_Edge) {
+    pub fn bind_edge2(&mut self, Enew: &crate::topo_ds::Edge, Ebase: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFeat_Gluer_bind_edge2(self as *mut Self, Enew, Ebase) }
     }
 
@@ -954,33 +948,33 @@ impl Gluer {
 
     /// **Source:** `BRepFeat_Gluer.hxx`:83 - `BRepFeat_Gluer::BasisShape()`
     /// Returns the basis shape of the compound shape.
-    pub fn basis_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn basis_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_basis_shape(self as *const Self)) }
     }
 
     /// **Source:** `BRepFeat_Gluer.hxx`:86 - `BRepFeat_Gluer::GluedShape()`
     /// Returns the resulting compound shape.
-    pub fn glued_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn glued_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_glued_shape(self as *const Self)) }
     }
 
     /// **Source:** `BRepFeat_Gluer.hxx`:90 - `BRepFeat_Gluer::Build()`
     /// This is  called by  Shape().  It does  nothing but
     /// may be redefined.
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_Gluer_build(self as *mut Self, theRange) }
     }
 
     /// **Source:** `BRepFeat_Gluer.hxx`:95 - `BRepFeat_Gluer::IsDeleted()`
     /// returns the status of the Face after
     /// the shape creation.
-    pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, F: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_Gluer_is_deleted(self as *mut Self, F) }
     }
 
     /// **Source:** `BRepFeat_Gluer.hxx`:98 - `BRepFeat_Gluer::Modified()`
     /// returns the list of generated Faces.
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_modified(self as *mut Self, F)) }
     }
 
@@ -1011,12 +1005,12 @@ impl Gluer {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_Gluer_inherited_Generated(self as *mut Self, S)) }
     }
 
@@ -1054,14 +1048,14 @@ impl MakeCylindricalHole {
 
     /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:43 - `BRepFeat_MakeCylindricalHole::Init()`
     /// Sets the axis of the hole(s).
-    pub fn init_ax1(&mut self, Axis: &crate::ffi::gp_Ax1) {
+    pub fn init_ax1(&mut self, Axis: &crate::gp::Ax1) {
         unsafe { crate::ffi::BRepFeat_MakeCylindricalHole_init_ax1(self as *mut Self, Axis) }
     }
 
     /// **Source:** `BRepFeat_MakeCylindricalHole.hxx`:47 - `BRepFeat_MakeCylindricalHole::Init()`
     /// Sets the shape and  axis on which hole(s)  will be
     /// performed.
-    pub fn init_shape_ax1(&mut self, S: &crate::ffi::TopoDS_Shape, Axis: &crate::ffi::gp_Ax1) {
+    pub fn init_shape_ax1(&mut self, S: &crate::topo_ds::Shape, Axis: &crate::gp::Ax1) {
         unsafe {
             crate::ffi::BRepFeat_MakeCylindricalHole_init_shape_ax1(self as *mut Self, S, Axis)
         }
@@ -1290,14 +1284,14 @@ impl MakeCylindricalHole {
     }
 
     /// Inherited: **Source:** `BRepFeat_Builder.hxx`:81 - `BRepFeat_Builder::KeepPart()`
-    pub fn keep_part(&mut self, theS: &crate::ffi::TopoDS_Shape) {
+    pub fn keep_part(&mut self, theS: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BRepFeat_MakeCylindricalHole_inherited_KeepPart(self as *mut Self, theS)
         }
     }
 
     /// Inherited: **Source:** `BRepFeat_Builder.hxx`:85 - `BRepFeat_Builder::PerformResult()`
-    pub fn perform_result(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform_result(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe {
             crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PerformResult(
                 self as *mut Self,
@@ -1316,8 +1310,8 @@ impl MakeCylindricalHole {
     /// Inherited: **Source:** `BRepFeat_Builder.hxx`:92 - `BRepFeat_Builder::RebuildEdge()`
     pub fn rebuild_edge(
         &mut self,
-        theE: &crate::ffi::TopoDS_Shape,
-        theF: &crate::ffi::TopoDS_Face,
+        theE: &crate::topo_ds::Shape,
+        theF: &crate::topo_ds::Face,
         theME: &crate::ffi::TopTools_MapOfShape,
         aLEIm: &mut crate::ffi::TopTools_ListOfShape,
     ) {
@@ -1355,7 +1349,7 @@ impl MakeCylindricalHole {
     }
 
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:39 - `BOPAlgo_ToolsProvider::AddTool()`
-    pub fn add_tool(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_tool(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddTool(self as *mut Self, theShape)
         }
@@ -1386,7 +1380,7 @@ impl MakeCylindricalHole {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
-    pub fn add_argument(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BRepFeat_MakeCylindricalHole_inherited_AddArgument(
                 self as *mut Self,
@@ -1469,8 +1463,8 @@ impl MakeCylindricalHole {
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
-        theFiller: &crate::ffi::BOPAlgo_PaveFiller,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theFiller: &crate::bop_algo::PaveFiller,
+        theRange: &crate::message::ProgressRange,
     ) {
         unsafe {
             crate::ffi::BRepFeat_MakeCylindricalHole_inherited_PerformWithFiller(
@@ -1503,25 +1497,19 @@ impl MakeCylindricalHole {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Shape(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
-    pub fn modified(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Modified(self as *mut Self, theS))
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
-    pub fn generated(
-        &mut self,
-        theS: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, theS: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Generated(
                 self as *mut Self,
@@ -1531,7 +1519,7 @@ impl MakeCylindricalHole {
     }
 
     /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
-    pub fn is_deleted(&mut self, theS: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepFeat_MakeCylindricalHole_inherited_IsDeleted(self as *mut Self, theS)
         }
@@ -1738,9 +1726,9 @@ impl MakeDPrism {
     /// operation such as glueing can be performed.
     /// Initializes the draft prism class
     pub fn new_shape_face2_real_int_bool(
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Pbase: &crate::ffi::TopoDS_Face,
-        Skface: &crate::ffi::TopoDS_Face,
+        Sbase: &crate::topo_ds::Shape,
+        Pbase: &crate::topo_ds::Face,
+        Skface: &crate::topo_ds::Face,
         Angle: f64,
         Fuse: i32,
         Modify: bool,
@@ -1771,9 +1759,9 @@ impl MakeDPrism {
     /// operation such as glueing can be performed.
     pub fn init(
         &mut self,
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Pbase: &crate::ffi::TopoDS_Face,
-        Skface: &crate::ffi::TopoDS_Face,
+        Sbase: &crate::topo_ds::Shape,
+        Pbase: &crate::topo_ds::Face,
+        Skface: &crate::topo_ds::Face,
         Angle: f64,
         Fuse: i32,
         Modify: bool,
@@ -1796,7 +1784,7 @@ impl MakeDPrism {
     /// <OnFace>.
     /// Raises ConstructionError if the  face does not belong to the
     /// basis shape, or the edge to the prismed shape.
-    pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge, OnFace: &crate::ffi::TopoDS_Face) {
+    pub fn add(&mut self, E: &crate::topo_ds::Edge, OnFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_MakeDPrism_add(self as *mut Self, E, OnFace) }
     }
 
@@ -1806,7 +1794,7 @@ impl MakeDPrism {
     }
 
     /// **Source:** `BRepFeat_MakeDPrism.hxx`:104 - `BRepFeat_MakeDPrism::Perform()`
-    pub fn perform_shape(&mut self, Until: &crate::ffi::TopoDS_Shape) {
+    pub fn perform_shape(&mut self, Until: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakeDPrism_perform_shape(self as *mut Self, Until) }
     }
 
@@ -1816,11 +1804,7 @@ impl MakeDPrism {
     /// -   to a face Until
     /// -   from a face From to a height Until.
     /// Reconstructs the feature topologically according to the semantic option chosen.
-    pub fn perform_shape2(
-        &mut self,
-        From: &crate::ffi::TopoDS_Shape,
-        Until: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn perform_shape2(&mut self, From: &crate::topo_ds::Shape, Until: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakeDPrism_perform_shape2(self as *mut Self, From, Until) }
     }
 
@@ -1832,7 +1816,7 @@ impl MakeDPrism {
 
     /// **Source:** `BRepFeat_MakeDPrism.hxx`:117 - `BRepFeat_MakeDPrism::PerformFromEnd()`
     /// Realizes a semi-infinite prism, limited by the face Funtil.
-    pub fn perform_from_end(&mut self, FUntil: &crate::ffi::TopoDS_Shape) {
+    pub fn perform_from_end(&mut self, FUntil: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakeDPrism_perform_from_end(self as *mut Self, FUntil) }
     }
 
@@ -1846,7 +1830,7 @@ impl MakeDPrism {
     /// Assigns both a limiting shape, Until from
     /// TopoDS_Shape, and a height, Height at which to stop
     /// generation of the prism feature.
-    pub fn perform_until_height(&mut self, Until: &crate::ffi::TopoDS_Shape, Height: f64) {
+    pub fn perform_until_height(&mut self, Until: &crate::topo_ds::Shape, Height: f64) {
         unsafe {
             crate::ffi::BRepFeat_MakeDPrism_perform_until_height(self as *mut Self, Until, Height)
         }
@@ -1929,17 +1913,17 @@ impl MakeDPrism {
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Modified(self as *mut Self, F)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_IsDeleted(self as *mut Self, S) }
     }
 
@@ -2009,12 +1993,12 @@ impl MakeDPrism {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_MakeDPrism_inherited_Build(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_MakeDPrism_inherited_Shape(self as *mut Self)) }
     }
 
@@ -2073,11 +2057,11 @@ impl MakeLinearForm {
     /// -   adding matter with Boolean fusion using the
     /// setting 1 in case of the rib.
     pub fn new_shape_wire_handlegeomplane_vec2_int_bool(
-        Sbase: &crate::ffi::TopoDS_Shape,
-        W: &crate::ffi::TopoDS_Wire,
+        Sbase: &crate::topo_ds::Shape,
+        W: &crate::topo_ds::Wire,
         P: &crate::ffi::HandleGeomPlane,
-        Direction: &crate::ffi::gp_Vec,
-        Direction1: &crate::ffi::gp_Vec,
+        Direction: &crate::gp::Vec,
+        Direction1: &crate::gp::Vec,
         Fuse: i32,
         Modify: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2104,11 +2088,11 @@ impl MakeLinearForm {
     /// in case of the rib.
     pub fn init(
         &mut self,
-        Sbase: &crate::ffi::TopoDS_Shape,
-        W: &crate::ffi::TopoDS_Wire,
+        Sbase: &crate::topo_ds::Shape,
+        W: &crate::topo_ds::Wire,
         P: &crate::ffi::HandleGeomPlane,
-        Direction: &crate::ffi::gp_Vec,
-        Direction1: &crate::ffi::gp_Vec,
+        Direction: &crate::gp::Vec,
+        Direction1: &crate::gp::Vec,
         Fuse: i32,
         Modify: bool,
     ) {
@@ -2131,7 +2115,7 @@ impl MakeLinearForm {
     /// <OnFace>.
     /// Raises ConstructionError if the  face does not belong to the
     /// basis shape, or the edge to the prismed shape.
-    pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge, OnFace: &crate::ffi::TopoDS_Face) {
+    pub fn add(&mut self, E: &crate::topo_ds::Edge, OnFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_MakeLinearForm_add(self as *mut Self, E, OnFace) }
     }
 
@@ -2159,9 +2143,9 @@ impl MakeLinearForm {
     pub fn propagate(
         &mut self,
         L: &mut crate::ffi::TopTools_ListOfShape,
-        F: &crate::ffi::TopoDS_Face,
-        FPoint: &crate::ffi::gp_Pnt,
-        LPoint: &crate::ffi::gp_Pnt,
+        F: &crate::topo_ds::Face,
+        FPoint: &crate::gp::Pnt,
+        LPoint: &crate::gp::Pnt,
         falseside: &mut bool,
     ) -> bool {
         unsafe {
@@ -2223,17 +2207,17 @@ impl MakeLinearForm {
     }
 
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:60 - `BRepFeat_RibSlot::IsDeleted()`
-    pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, F: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_IsDeleted(self as *mut Self, F) }
     }
 
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:63 - `BRepFeat_RibSlot::Modified()`
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Modified(self as *mut Self, F)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Generated(self as *mut Self, S)) }
     }
 
@@ -2277,12 +2261,12 @@ impl MakeLinearForm {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_MakeLinearForm_inherited_Build(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_MakeLinearForm_inherited_Shape(self as *mut Self)) }
     }
 
@@ -2345,10 +2329,10 @@ impl MakePipe {
     /// the type of operation. If it is inside the basis
     /// shape, a local operation such as glueing can be performed.
     pub fn new_shape2_face_wire_int_bool(
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Pbase: &crate::ffi::TopoDS_Shape,
-        Skface: &crate::ffi::TopoDS_Face,
-        Spine: &crate::ffi::TopoDS_Wire,
+        Sbase: &crate::topo_ds::Shape,
+        Pbase: &crate::topo_ds::Shape,
+        Skface: &crate::topo_ds::Face,
+        Spine: &crate::topo_ds::Wire,
         Fuse: i32,
         Modify: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2371,10 +2355,10 @@ impl MakePipe {
     /// shape, a local operation such as glueing can be performed.
     pub fn init(
         &mut self,
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Pbase: &crate::ffi::TopoDS_Shape,
-        Skface: &crate::ffi::TopoDS_Face,
-        Spine: &crate::ffi::TopoDS_Wire,
+        Sbase: &crate::topo_ds::Shape,
+        Pbase: &crate::topo_ds::Shape,
+        Skface: &crate::topo_ds::Face,
+        Spine: &crate::topo_ds::Wire,
         Fuse: i32,
         Modify: bool,
     ) {
@@ -2395,7 +2379,7 @@ impl MakePipe {
     /// Indicates that the edge <E> will slide on the face
     /// <OnFace>. Raises ConstructionError  if the  face does not belong to the
     /// basis shape, or the edge to the prismed shape.
-    pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge, OnFace: &crate::ffi::TopoDS_Face) {
+    pub fn add(&mut self, E: &crate::topo_ds::Edge, OnFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_MakePipe_add(self as *mut Self, E, OnFace) }
     }
 
@@ -2405,7 +2389,7 @@ impl MakePipe {
     }
 
     /// **Source:** `BRepFeat_MakePipe.hxx`:96 - `BRepFeat_MakePipe::Perform()`
-    pub fn perform_shape(&mut self, Until: &crate::ffi::TopoDS_Shape) {
+    pub fn perform_shape(&mut self, Until: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakePipe_perform_shape(self as *mut Self, Until) }
     }
 
@@ -2414,11 +2398,7 @@ impl MakePipe {
     /// -   to a face Until
     /// -   from a face From to a height Until.
     /// Reconstructs the feature topologically according to the semantic option chosen.
-    pub fn perform_shape2(
-        &mut self,
-        From: &crate::ffi::TopoDS_Shape,
-        Until: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn perform_shape2(&mut self, From: &crate::topo_ds::Shape, Until: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakePipe_perform_shape2(self as *mut Self, From, Until) }
     }
 
@@ -2473,17 +2453,17 @@ impl MakePipe {
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Modified(self as *mut Self, F)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakePipe_inherited_IsDeleted(self as *mut Self, S) }
     }
 
@@ -2553,12 +2533,12 @@ impl MakePipe {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_MakePipe_inherited_Build(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_MakePipe_inherited_Shape(self as *mut Self)) }
     }
 
@@ -2628,10 +2608,10 @@ impl MakePrism {
     /// Standard_ConstructionError if the face
     /// does not belong to the basis or the prism shape.
     pub fn new_shape2_face_dir_int_bool(
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Pbase: &crate::ffi::TopoDS_Shape,
-        Skface: &crate::ffi::TopoDS_Face,
-        Direction: &crate::ffi::gp_Dir,
+        Sbase: &crate::topo_ds::Shape,
+        Pbase: &crate::topo_ds::Shape,
+        Skface: &crate::topo_ds::Face,
+        Direction: &crate::gp::Dir,
         Fuse: i32,
         Modify: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2655,10 +2635,10 @@ impl MakePrism {
     /// shape, a local operation such as glueing can be performed.
     pub fn init(
         &mut self,
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Pbase: &crate::ffi::TopoDS_Shape,
-        Skface: &crate::ffi::TopoDS_Face,
-        Direction: &crate::ffi::gp_Dir,
+        Sbase: &crate::topo_ds::Shape,
+        Pbase: &crate::topo_ds::Shape,
+        Skface: &crate::topo_ds::Face,
+        Direction: &crate::gp::Dir,
         Fuse: i32,
         Modify: bool,
     ) {
@@ -2679,7 +2659,7 @@ impl MakePrism {
     /// Indicates that the edge <E> will slide on the face
     /// <OnFace>. Raises ConstructionError if the  face does not belong to the
     /// basis shape, or the edge to the prismed shape.
-    pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge, OnFace: &crate::ffi::TopoDS_Face) {
+    pub fn add(&mut self, E: &crate::topo_ds::Edge, OnFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_MakePrism_add(self as *mut Self, E, OnFace) }
     }
 
@@ -2689,7 +2669,7 @@ impl MakePrism {
     }
 
     /// **Source:** `BRepFeat_MakePrism.hxx`:106 - `BRepFeat_MakePrism::Perform()`
-    pub fn perform_shape(&mut self, Until: &crate::ffi::TopoDS_Shape) {
+    pub fn perform_shape(&mut self, Until: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakePrism_perform_shape(self as *mut Self, Until) }
     }
 
@@ -2699,11 +2679,7 @@ impl MakePrism {
     /// -   to a face Until
     /// -   from a face From to a height Until.
     /// Reconstructs the feature topologically according to the semantic option chosen.
-    pub fn perform_shape2(
-        &mut self,
-        From: &crate::ffi::TopoDS_Shape,
-        Until: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn perform_shape2(&mut self, From: &crate::topo_ds::Shape, Until: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakePrism_perform_shape2(self as *mut Self, From, Until) }
     }
 
@@ -2716,7 +2692,7 @@ impl MakePrism {
 
     /// **Source:** `BRepFeat_MakePrism.hxx`:120 - `BRepFeat_MakePrism::PerformFromEnd()`
     /// Realizes a semi-infinite prism, limited by the face Funtil.
-    pub fn perform_from_end(&mut self, FUntil: &crate::ffi::TopoDS_Shape) {
+    pub fn perform_from_end(&mut self, FUntil: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakePrism_perform_from_end(self as *mut Self, FUntil) }
     }
 
@@ -2729,7 +2705,7 @@ impl MakePrism {
     /// **Source:** `BRepFeat_MakePrism.hxx`:127 - `BRepFeat_MakePrism::PerformUntilHeight()`
     /// Assigns both a limiting shape, Until from
     /// TopoDS_Shape, and a height, Length at which to stop generation of the prism feature.
-    pub fn perform_until_height(&mut self, Until: &crate::ffi::TopoDS_Shape, Length: f64) {
+    pub fn perform_until_height(&mut self, Until: &crate::topo_ds::Shape, Length: f64) {
         unsafe {
             crate::ffi::BRepFeat_MakePrism_perform_until_height(self as *mut Self, Until, Length)
         }
@@ -2790,17 +2766,17 @@ impl MakePrism {
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Modified(self as *mut Self, F)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakePrism_inherited_IsDeleted(self as *mut Self, S) }
     }
 
@@ -2870,12 +2846,12 @@ impl MakePrism {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_MakePrism_inherited_Build(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_MakePrism_inherited_Shape(self as *mut Self)) }
     }
 
@@ -2922,10 +2898,10 @@ impl MakeRevol {
     /// the type of operation. If it is inside the basis
     /// shape, a local operation such as glueing can be performed.
     pub fn new_shape2_face_ax1_int_bool(
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Pbase: &crate::ffi::TopoDS_Shape,
-        Skface: &crate::ffi::TopoDS_Face,
-        Axis: &crate::ffi::gp_Ax1,
+        Sbase: &crate::topo_ds::Shape,
+        Pbase: &crate::topo_ds::Shape,
+        Skface: &crate::topo_ds::Face,
+        Axis: &crate::gp::Ax1,
         Fuse: i32,
         Modify: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2939,10 +2915,10 @@ impl MakeRevol {
     /// **Source:** `BRepFeat_MakeRevol.hxx`:59 - `BRepFeat_MakeRevol::Init()`
     pub fn init(
         &mut self,
-        Sbase: &crate::ffi::TopoDS_Shape,
-        Pbase: &crate::ffi::TopoDS_Shape,
-        Skface: &crate::ffi::TopoDS_Face,
-        Axis: &crate::ffi::gp_Ax1,
+        Sbase: &crate::topo_ds::Shape,
+        Pbase: &crate::topo_ds::Shape,
+        Skface: &crate::topo_ds::Face,
+        Axis: &crate::gp::Ax1,
         Fuse: i32,
         Modify: bool,
     ) {
@@ -2963,7 +2939,7 @@ impl MakeRevol {
     /// Indicates that the edge <E> will slide on the face
     /// <OnFace>. Raises ConstructionError if the  face does not belong to the
     /// basis shape, or the edge to the prismed shape.
-    pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge, OnFace: &crate::ffi::TopoDS_Face) {
+    pub fn add(&mut self, E: &crate::topo_ds::Edge, OnFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_MakeRevol_add(self as *mut Self, E, OnFace) }
     }
 
@@ -2973,17 +2949,13 @@ impl MakeRevol {
     }
 
     /// **Source:** `BRepFeat_MakeRevol.hxx`:73 - `BRepFeat_MakeRevol::Perform()`
-    pub fn perform_shape(&mut self, Until: &crate::ffi::TopoDS_Shape) {
+    pub fn perform_shape(&mut self, Until: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakeRevol_perform_shape(self as *mut Self, Until) }
     }
 
     /// **Source:** `BRepFeat_MakeRevol.hxx`:76 - `BRepFeat_MakeRevol::Perform()`
     /// Reconstructs the feature topologically.
-    pub fn perform_shape2(
-        &mut self,
-        From: &crate::ffi::TopoDS_Shape,
-        Until: &crate::ffi::TopoDS_Shape,
-    ) {
+    pub fn perform_shape2(&mut self, From: &crate::topo_ds::Shape, Until: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_MakeRevol_perform_shape2(self as *mut Self, From, Until) }
     }
 
@@ -2998,7 +2970,7 @@ impl MakeRevol {
     /// Assigns both a limiting shape, Until from
     /// TopoDS_Shape, and an angle, Angle at
     /// which to stop generation of the revolved shell feature.
-    pub fn perform_until_angle(&mut self, Until: &crate::ffi::TopoDS_Shape, Angle: f64) {
+    pub fn perform_until_angle(&mut self, Until: &crate::topo_ds::Shape, Angle: f64) {
         unsafe {
             crate::ffi::BRepFeat_MakeRevol_perform_until_angle(self as *mut Self, Until, Angle)
         }
@@ -3057,17 +3029,17 @@ impl MakeRevol {
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:71 - `BRepFeat_Form::Modified()`
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Modified(self as *mut Self, F)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:76 - `BRepFeat_Form::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Generated(self as *mut Self, S)) }
     }
 
     /// Inherited: **Source:** `BRepFeat_Form.hxx`:79 - `BRepFeat_Form::IsDeleted()`
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_IsDeleted(self as *mut Self, S) }
     }
 
@@ -3137,12 +3109,12 @@ impl MakeRevol {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_MakeRevol_inherited_Build(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_MakeRevol_inherited_Shape(self as *mut Self)) }
     }
 
@@ -3200,10 +3172,10 @@ impl MakeRevolutionForm {
     /// -   removing matter with a Boolean cut using the setting 0 in case of the groove
     /// -   adding matter with Boolean fusion using the setting 1 in case of the rib.
     pub fn new_shape_wire_handlegeomplane_ax1_real2_int_bool(
-        Sbase: &crate::ffi::TopoDS_Shape,
-        W: &crate::ffi::TopoDS_Wire,
+        Sbase: &crate::topo_ds::Shape,
+        W: &crate::topo_ds::Wire,
         Plane: &crate::ffi::HandleGeomPlane,
-        Axis: &crate::ffi::gp_Ax1,
+        Axis: &crate::gp::Ax1,
         Height1: f64,
         Height2: f64,
         Fuse: i32,
@@ -3225,10 +3197,10 @@ impl MakeRevolutionForm {
     /// -   adding matter with Boolean fusion using the setting 1 in case of the rib.
     pub fn init(
         &mut self,
-        Sbase: &crate::ffi::TopoDS_Shape,
-        W: &crate::ffi::TopoDS_Wire,
+        Sbase: &crate::topo_ds::Shape,
+        W: &crate::topo_ds::Wire,
         Plane: &crate::ffi::HandleGeomPlane,
-        Axis: &crate::ffi::gp_Ax1,
+        Axis: &crate::gp::Ax1,
         Height1: f64,
         Height2: f64,
         Fuse: i32,
@@ -3253,7 +3225,7 @@ impl MakeRevolutionForm {
     /// Indicates that the edge <E> will slide on the face
     /// <OnFace>. Raises ConstructionError  if the  face does not belong to the
     /// basis shape, or the edge to the prismed shape.
-    pub fn add(&mut self, E: &crate::ffi::TopoDS_Edge, OnFace: &crate::ffi::TopoDS_Face) {
+    pub fn add(&mut self, E: &crate::topo_ds::Edge, OnFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_add(self as *mut Self, E, OnFace) }
     }
 
@@ -3268,9 +3240,9 @@ impl MakeRevolutionForm {
     pub fn propagate(
         &mut self,
         L: &mut crate::ffi::TopTools_ListOfShape,
-        F: &crate::ffi::TopoDS_Face,
-        FPoint: &crate::ffi::gp_Pnt,
-        LPoint: &crate::ffi::gp_Pnt,
+        F: &crate::topo_ds::Face,
+        FPoint: &crate::gp::Pnt,
+        LPoint: &crate::gp::Pnt,
         falseside: &mut bool,
     ) -> bool {
         unsafe {
@@ -3340,19 +3312,19 @@ impl MakeRevolutionForm {
     }
 
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:60 - `BRepFeat_RibSlot::IsDeleted()`
-    pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, F: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_MakeRevolutionForm_inherited_IsDeleted(self as *mut Self, F) }
     }
 
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:63 - `BRepFeat_RibSlot::Modified()`
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Modified(self as *mut Self, F))
         }
     }
 
     /// Inherited: **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Generated(self as *mut Self, S))
         }
@@ -3406,14 +3378,14 @@ impl MakeRevolutionForm {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe {
             crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Build(self as *mut Self, theRange)
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_MakeRevolutionForm_inherited_Shape(self as *mut Self)) }
     }
 
@@ -3455,19 +3427,19 @@ unsafe impl crate::CppDeletable for RibSlot {
 impl RibSlot {
     /// **Source:** `BRepFeat_RibSlot.hxx`:60 - `BRepFeat_RibSlot::IsDeleted()`
     /// Returns true if F a TopoDS_Shape of type edge or face has been deleted.
-    pub fn is_deleted(&mut self, F: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, F: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_RibSlot_is_deleted(self as *mut Self, F) }
     }
 
     /// **Source:** `BRepFeat_RibSlot.hxx`:63 - `BRepFeat_RibSlot::Modified()`
     /// Returns the list of generated Faces F. This list may be empty.
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_RibSlot_modified(self as *mut Self, F)) }
     }
 
     /// **Source:** `BRepFeat_RibSlot.hxx`:67 - `BRepFeat_RibSlot::Generated()`
     /// Returns a list TopTools_ListOfShape of the faces S created in the shape.
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_RibSlot_generated(self as *mut Self, S)) }
     }
 
@@ -3530,7 +3502,7 @@ impl RibSlot {
     }
 
     /// **Source:** `BRepFeat_RibSlot.hxx`:103 - `BRepFeat_RibSlot::IntPar()`
-    pub fn int_par(C: &crate::ffi::HandleGeomCurve, P: &crate::ffi::gp_Pnt) -> f64 {
+    pub fn int_par(C: &crate::ffi::HandleGeomCurve, P: &crate::gp::Pnt) -> f64 {
         unsafe { crate::ffi::BRepFeat_RibSlot_int_par(C, P) }
     }
 
@@ -3541,7 +3513,7 @@ impl RibSlot {
         par: f64,
         bnd: f64,
         Pln: &crate::ffi::HandleGeomPlane,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    ) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFeat_RibSlot_choice_of_faces(
                 faces, cc, par, bnd, Pln,
@@ -3576,12 +3548,12 @@ impl RibSlot {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_RibSlot_inherited_Build(self as *mut Self, theRange) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_RibSlot_inherited_Shape(self as *mut Self)) }
     }
 
@@ -3631,7 +3603,7 @@ impl SplitShape {
 
     /// **Source:** `BRepFeat_SplitShape.hxx`:58 - `BRepFeat_SplitShape::BRepFeat_SplitShape()`
     /// Creates the process  with the shape <S>.
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFeat_SplitShape_ctor_shape(S)) }
     }
 
@@ -3645,7 +3617,7 @@ impl SplitShape {
 
     /// **Source:** `BRepFeat_SplitShape.hxx`:66 - `BRepFeat_SplitShape::Init()`
     /// Initializes the process on the shape <S>.
-    pub fn init(&mut self, S: &crate::ffi::TopoDS_Shape) {
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFeat_SplitShape_init(self as *mut Self, S) }
     }
 
@@ -3661,13 +3633,13 @@ impl SplitShape {
     /// **Source:** `BRepFeat_SplitShape.hxx`:74 - `BRepFeat_SplitShape::Add()`
     /// Adds the wire <W> on the face <F>.
     /// Raises NoSuchObject  if <F> does not belong to the original shape.
-    pub fn add_wire_face(&mut self, W: &crate::ffi::TopoDS_Wire, F: &crate::ffi::TopoDS_Face) {
+    pub fn add_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_SplitShape_add_wire_face(self as *mut Self, W, F) }
     }
 
     /// **Source:** `BRepFeat_SplitShape.hxx`:77 - `BRepFeat_SplitShape::Add()`
     /// Adds the edge <E> on the face <F>.
-    pub fn add_edge_face(&mut self, E: &crate::ffi::TopoDS_Edge, F: &crate::ffi::TopoDS_Face) {
+    pub fn add_edge_face(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_SplitShape_add_edge_face(self as *mut Self, E, F) }
     }
 
@@ -3679,17 +3651,13 @@ impl SplitShape {
     /// must share common vertices.
     ///
     /// Raises NoSuchObject  if <F> does not belong to the original shape.
-    pub fn add_compound_face(
-        &mut self,
-        Comp: &crate::ffi::TopoDS_Compound,
-        F: &crate::ffi::TopoDS_Face,
-    ) {
+    pub fn add_compound_face(&mut self, Comp: &crate::topo_ds::Compound, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFeat_SplitShape_add_compound_face(self as *mut Self, Comp, F) }
     }
 
     /// **Source:** `BRepFeat_SplitShape.hxx`:89 - `BRepFeat_SplitShape::Add()`
     /// Adds the edge <E> on the existing edge <EOn>.
-    pub fn add_edge2(&mut self, E: &crate::ffi::TopoDS_Edge, EOn: &crate::ffi::TopoDS_Edge) {
+    pub fn add_edge2(&mut self, E: &crate::topo_ds::Edge, EOn: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepFeat_SplitShape_add_edge2(self as *mut Self, E, EOn) }
     }
 
@@ -3717,19 +3685,19 @@ impl SplitShape {
 
     /// **Source:** `BRepFeat_SplitShape.hxx`:105 - `BRepFeat_SplitShape::Build()`
     /// Builds the cut and the resulting faces and edges as well.
-    pub fn build(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepFeat_SplitShape_build(self as *mut Self, theRange) }
     }
 
     /// **Source:** `BRepFeat_SplitShape.hxx`:109 - `BRepFeat_SplitShape::IsDeleted()`
     /// Returns true if the shape has been deleted.
-    pub fn is_deleted(&mut self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFeat_SplitShape_is_deleted(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepFeat_SplitShape.hxx`:112 - `BRepFeat_SplitShape::Modified()`
     /// Returns the list of generated Faces.
-    pub fn modified(&mut self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified(&mut self, F: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_SplitShape_modified(self as *mut Self, F)) }
     }
 
@@ -3766,12 +3734,12 @@ impl SplitShape {
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
-    pub fn shape(&mut self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFeat_SplitShape_inherited_Shape(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:51 - `BRepBuilderAPI_MakeShape::Generated()`
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFeat_SplitShape_inherited_Generated(self as *mut Self, S)) }
     }
 

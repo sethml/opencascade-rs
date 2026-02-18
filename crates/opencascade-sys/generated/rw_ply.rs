@@ -24,7 +24,7 @@ impl CafWriter {
     /// **Source:** `RWPly_CafWriter.hxx`:40 - `RWPly_CafWriter::RWPly_CafWriter()`
     /// Main constructor.
     /// @param[in] theFile path to output PLY file
-    pub fn new_asciistring(theFile: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+    pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWPly_CafWriter_ctor_asciistring(theFile)) }
     }
 
@@ -35,7 +35,7 @@ impl CafWriter {
 
     /// **Source:** `RWPly_CafWriter.hxx`:46 - `RWPly_CafWriter::CoordinateSystemConverter()`
     /// Return transformation from OCCT to PLY coordinate system.
-    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe { &*(crate::ffi::RWPly_CafWriter_coordinate_system_converter(self as *const Self)) }
     }
 
@@ -43,7 +43,7 @@ impl CafWriter {
     /// Return transformation from OCCT to PLY coordinate system.
     pub fn change_coordinate_system_converter(
         &mut self,
-    ) -> &mut crate::ffi::RWMesh_CoordinateSystemConverter {
+    ) -> &mut crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &mut *(crate::ffi::RWPly_CafWriter_change_coordinate_system_converter(
                 self as *mut Self,
@@ -55,7 +55,7 @@ impl CafWriter {
     /// Set transformation from OCCT to PLY coordinate system.
     pub fn set_coordinate_system_converter(
         &mut self,
-        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+        theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         unsafe {
             crate::ffi::RWPly_CafWriter_set_coordinate_system_converter(
@@ -67,13 +67,13 @@ impl CafWriter {
 
     /// **Source:** `RWPly_CafWriter.hxx`:58 - `RWPly_CafWriter::DefaultStyle()`
     /// Return default material definition to be used for nodes with only color defined.
-    pub fn default_style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWPly_CafWriter_default_style(self as *const Self)) }
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:61 - `RWPly_CafWriter::SetDefaultStyle()`
     /// Set default material definition to be used for nodes with only color defined.
-    pub fn set_default_style(&mut self, theStyle: &crate::ffi::XCAFPrs_Style) {
+    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         unsafe { crate::ffi::RWPly_CafWriter_set_default_style(self as *mut Self, theStyle) }
     }
 
@@ -326,7 +326,7 @@ impl PlyWriterContext {
     /// @param[in] theColor RGB color values
     pub fn write_vertex(
         &mut self,
-        thePoint: &crate::ffi::gp_Pnt,
+        thePoint: &crate::gp::Pnt,
         theNorm: &crate::ffi::Graphic3d_Vec3,
         theUV: &crate::ffi::Graphic3d_Vec2,
         theColor: &crate::ffi::Graphic3d_Vec4ub,

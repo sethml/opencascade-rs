@@ -23,9 +23,7 @@
 /// The qualified curve is then constructed with this object:
 /// Geom2dGcc_QualifiedCurve
 /// myQCurve = Geom2dGcc::Unqualified(Obj);
-pub fn unqualified_curve(
-    Obj: &crate::ffi::Geom2dAdaptor_Curve,
-) -> crate::OwnedPtr<crate::ffi::Geom2dGcc_QualifiedCurve> {
+pub fn unqualified_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_unqualified_curve(Obj)) }
 }
 /// **Source:** `Geom2dGcc.hxx`:78 - `Geom2dGcc::Enclosing`
@@ -44,9 +42,7 @@ pub fn unqualified_curve(
 /// The qualified curve is then constructed with this object:
 /// Geom2dGcc_QualifiedCurve
 /// myQCurve = Geom2dGcc::Enclosing(Obj);
-pub fn enclosing_curve(
-    Obj: &crate::ffi::Geom2dAdaptor_Curve,
-) -> crate::OwnedPtr<crate::ffi::Geom2dGcc_QualifiedCurve> {
+pub fn enclosing_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_enclosing_curve(Obj)) }
 }
 /// **Source:** `Geom2dGcc.hxx`:95 - `Geom2dGcc::Enclosed`
@@ -65,9 +61,7 @@ pub fn enclosing_curve(
 /// The qualified curve is then constructed with this object:
 /// Geom2dGcc_QualifiedCurve
 /// myQCurve = Geom2dGcc::Enclosed(Obj);
-pub fn enclosed_curve(
-    Obj: &crate::ffi::Geom2dAdaptor_Curve,
-) -> crate::OwnedPtr<crate::ffi::Geom2dGcc_QualifiedCurve> {
+pub fn enclosed_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_enclosed_curve(Obj)) }
 }
 /// **Source:** `Geom2dGcc.hxx`:112 - `Geom2dGcc::Outside`
@@ -86,9 +80,7 @@ pub fn enclosed_curve(
 /// The qualified curve is then constructed with this object:
 /// Geom2dGcc_QualifiedCurve
 /// myQCurve = Geom2dGcc::Outside(Obj);
-pub fn outside_curve(
-    Obj: &crate::ffi::Geom2dAdaptor_Curve,
-) -> crate::OwnedPtr<crate::ffi::Geom2dGcc_QualifiedCurve> {
+pub fn outside_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_outside_curve(Obj)) }
 }
 
@@ -232,9 +224,9 @@ impl Circ2d2TanOn {
     /// ParamOn is the initial guess on the center curve OnCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedcurve2_curve_real4(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        OnCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &QualifiedCurve,
+        Qualified2: &QualifiedCurve,
+        OnCurve: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
         Param1: f64,
         Param2: f64,
@@ -257,9 +249,9 @@ impl Circ2d2TanOn {
     /// ParamOn is the initial guess on the center curve OnCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedcurve_handlegeom2dpoint_curve_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
         Point: &crate::ffi::HandleGeom2dPoint,
-        OnCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        OnCurve: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
         Param1: f64,
         ParamOn: f64,
@@ -277,7 +269,7 @@ impl Circ2d2TanOn {
     pub fn new_handlegeom2dpoint2_curve_real(
         Point1: &crate::ffi::HandleGeom2dPoint,
         Point2: &crate::ffi::HandleGeom2dPoint,
-        OnCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        OnCurve: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -290,12 +282,12 @@ impl Circ2d2TanOn {
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:92 - `Geom2dGcc_Circ2d2TanOn::Results()`
-    pub fn results_circ2d2tanon(&mut self, Circ: &crate::ffi::GccAna_Circ2d2TanOn) {
+    pub fn results_circ2d2tanon(&mut self, Circ: &crate::gcc_ana::Circ2d2TanOn) {
         unsafe { crate::ffi::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanon(self as *mut Self, Circ) }
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:94 - `Geom2dGcc_Circ2d2TanOn::Results()`
-    pub fn results_circ2d2tanongeo(&mut self, Circ: &crate::ffi::Geom2dGcc_Circ2d2TanOnGeo) {
+    pub fn results_circ2d2tanongeo(&mut self, Circ: &Circ2d2TanOnGeo) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanongeo(self as *mut Self, Circ)
         }
@@ -329,7 +321,7 @@ impl Circ2d2TanOn {
     /// to zero or greater than the number of solutions
     /// computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2d2TanOn_this_solution(
                 self as *const Self,
@@ -370,7 +362,7 @@ impl Circ2d2TanOn {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOn_tangency1(
@@ -393,7 +385,7 @@ impl Circ2d2TanOn {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOn_tangency2(
@@ -414,7 +406,7 @@ impl Circ2d2TanOn {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOn_center_on3(
                 self as *const Self,
@@ -492,9 +484,9 @@ impl Circ2d2TanOnGeo {
     /// create 2d circles TANgent to two 2d circles and
     /// having the center ON a curve.
     pub fn new_qualifiedcirc2_curve_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -511,9 +503,9 @@ impl Circ2d2TanOnGeo {
     /// create 2d circles TANgent to a 2d circle and a 2d line
     /// having the center ON a curve.
     pub fn new_qualifiedcirc_qualifiedlin_curve_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -530,9 +522,9 @@ impl Circ2d2TanOnGeo {
     /// create 2d circles TANgent to a 2d circle and a point
     /// having the center ON a curve.
     pub fn new_qualifiedcirc_pnt2d_curve_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Point2: &crate::gp::Pnt2d,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -549,9 +541,9 @@ impl Circ2d2TanOnGeo {
     /// create 2d circles TANgent to two 2d lines
     /// having the center ON a curve.
     pub fn new_qualifiedlin2_curve_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -568,9 +560,9 @@ impl Circ2d2TanOnGeo {
     /// create 2d circles TANgent to a 2d line and a point
     /// having the center ON a 2d line.
     pub fn new_qualifiedlin_pnt2d_curve_real(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::gp_Pnt2d,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &crate::gp::Pnt2d,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -587,9 +579,9 @@ impl Circ2d2TanOnGeo {
     /// create 2d circles TANgent to two points
     /// having the center ON a 2d line.
     pub fn new_pnt2d2_curve_real(
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -624,7 +616,7 @@ impl Circ2d2TanOnGeo {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_this_solution(
                 self as *const Self,
@@ -669,7 +661,7 @@ impl Circ2d2TanOnGeo {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_tangency1(
@@ -700,7 +692,7 @@ impl Circ2d2TanOnGeo {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_tangency2(
@@ -723,7 +715,7 @@ impl Circ2d2TanOnGeo {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_center_on3(
                 self as *const Self,
@@ -789,9 +781,9 @@ impl Circ2d2TanOnIter {
     /// Param2 is the initial guess on the curve QualifiedCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedcirc_qcurve_lin2d_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &QCurve,
+        OnLine: &crate::gp::Lin2d,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -813,9 +805,9 @@ impl Circ2d2TanOnIter {
     /// Param2 is the initial guess on the curve QualifiedCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedlin_qcurve_lin2d_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &QCurve,
+        OnLine: &crate::gp::Lin2d,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -838,9 +830,9 @@ impl Circ2d2TanOnIter {
     /// Param2 is the initial guess on the first QualifiedCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qcurve2_lin2d_real4(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &QCurve,
+        Qualified2: &QCurve,
+        OnLine: &crate::gp::Lin2d,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -862,9 +854,9 @@ impl Circ2d2TanOnIter {
     /// Param2 is the initial guess on the curve QualifiedCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qcurve_pnt2d_lin2d_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &QCurve,
+        Point2: &crate::gp::Pnt2d,
+        OnLine: &crate::gp::Lin2d,
         Param1: f64,
         Param2: f64,
         Tolerance: f64,
@@ -885,9 +877,9 @@ impl Circ2d2TanOnIter {
     /// Param2 is the initial guess on the curve QualifiedCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedcirc_qcurve_circ2d_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &QCurve,
+        OnCirc: &crate::gp::Circ2d,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -909,9 +901,9 @@ impl Circ2d2TanOnIter {
     /// Param2 is the initial guess on the curve QualifiedCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedlin_qcurve_circ2d_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &QCurve,
+        OnCirc: &crate::gp::Circ2d,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -934,9 +926,9 @@ impl Circ2d2TanOnIter {
     /// Param2 is the initial guess on the first QualifiedCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qcurve2_circ2d_real4(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &QCurve,
+        Qualified2: &QCurve,
+        OnCirc: &crate::gp::Circ2d,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -958,9 +950,9 @@ impl Circ2d2TanOnIter {
     /// Param2 is the initial guess on the curve QualifiedCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qcurve_pnt2d_circ2d_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &QCurve,
+        Point2: &crate::gp::Pnt2d,
+        OnCirc: &crate::gp::Circ2d,
         Param1: f64,
         Param2: f64,
         Tolerance: f64,
@@ -982,9 +974,9 @@ impl Circ2d2TanOnIter {
     /// ParamOn is the initial guess on the center curve OnCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedcirc_qcurve_curve_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &QCurve,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Param1: f64,
         Param2: f64,
         ParamOn: f64,
@@ -1007,9 +999,9 @@ impl Circ2d2TanOnIter {
     /// ParamOn is the initial guess on the center curve OnCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedlin_qcurve_curve_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &QCurve,
+        OnCurve: &crate::geom2d_adaptor::Curve,
         Param1: f64,
         Param2: f64,
         ParamOn: f64,
@@ -1032,9 +1024,9 @@ impl Circ2d2TanOnIter {
     /// ParamOn is the initial guess on the center curve OnCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qcurve_pnt2d_curve_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Point2: &crate::ffi::gp_Pnt2d,
-        OnCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &QCurve,
+        Point2: &crate::gp::Pnt2d,
+        OnCurve: &crate::geom2d_adaptor::Curve,
         Param1: f64,
         ParamOn: f64,
         Tolerance: f64,
@@ -1057,9 +1049,9 @@ impl Circ2d2TanOnIter {
     /// ParamOn is the initial guess on the center curve OnCurv.
     /// Tolerance is used for the limit cases.
     pub fn new_qcurve2_curve_real4(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        OnCurve: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &QCurve,
+        Qualified2: &QCurve,
+        OnCurve: &crate::geom2d_adaptor::Curve,
         Param1: f64,
         Param2: f64,
         ParamOn: f64,
@@ -1085,7 +1077,7 @@ impl Circ2d2TanOnIter {
     /// Returns the solution.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2d2TanOnIter_this_solution(
                 self as *const Self,
@@ -1113,7 +1105,7 @@ impl Circ2d2TanOnIter {
     /// on the argument curv.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOnIter_tangency1(
                 self as *const Self,
@@ -1133,7 +1125,7 @@ impl Circ2d2TanOnIter {
     /// on the argument curv.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOnIter_tangency2(
                 self as *const Self,
@@ -1149,7 +1141,7 @@ impl Circ2d2TanOnIter {
     /// result and the third argument.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn center_on3(&self, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn center_on3(&self, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOnIter_center_on3(self as *const Self, ParArg, PntSol)
         }
@@ -1207,8 +1199,8 @@ unsafe impl crate::CppDeletable for Circ2d2TanRad {
 impl Circ2d2TanRad {
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:64 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
     pub fn new_qualifiedcurve2_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
+        Qualified2: &QualifiedCurve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1223,7 +1215,7 @@ impl Circ2d2TanRad {
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:69 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
     pub fn new_qualifiedcurve_handlegeom2dpoint_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
         Point: &crate::ffi::HandleGeom2dPoint,
         Radius: f64,
         Tolerance: f64,
@@ -1277,14 +1269,14 @@ impl Circ2d2TanRad {
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:102 - `Geom2dGcc_Circ2d2TanRad::Results()`
-    pub fn results_circ2d2tanrad(&mut self, Circ: &crate::ffi::GccAna_Circ2d2TanRad) {
+    pub fn results_circ2d2tanrad(&mut self, Circ: &crate::gcc_ana::Circ2d2TanRad) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanrad(self as *mut Self, Circ)
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:104 - `Geom2dGcc_Circ2d2TanRad::Results()`
-    pub fn results_circ2d2tanradgeo(&mut self, Circ: &crate::ffi::Geom2dGcc_Circ2d2TanRadGeo) {
+    pub fn results_circ2d2tanradgeo(&mut self, Circ: &Circ2d2TanRadGeo) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanradgeo(self as *mut Self, Circ)
         }
@@ -1320,7 +1312,7 @@ impl Circ2d2TanRad {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2d2TanRad_this_solution(
                 self as *const Self,
@@ -1370,7 +1362,7 @@ impl Circ2d2TanRad {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanRad_tangency1(
@@ -1395,7 +1387,7 @@ impl Circ2d2TanRad {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanRad_tangency2(
@@ -1482,8 +1474,8 @@ impl Circ2d2TanRadGeo {
     /// with a radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qualifiedcirc_qcurve_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &QCurve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1502,8 +1494,8 @@ impl Circ2d2TanRadGeo {
     /// with a radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qualifiedlin_qcurve_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &QCurve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1522,8 +1514,8 @@ impl Circ2d2TanRadGeo {
     /// a radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qcurve2_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &QCurve,
+        Qualified2: &QCurve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1540,8 +1532,8 @@ impl Circ2d2TanRadGeo {
     /// with a radius of Radius.
     /// It raises NegativeValue if Radius is lower than zero.
     pub fn new_qcurve_pnt2d_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Qualified1: &QCurve,
+        Point2: &crate::gp::Pnt2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1576,7 +1568,7 @@ impl Circ2d2TanRadGeo {
     /// than the number of solutions.
     /// It raises NotDone if the construction algorithm did not
     /// succeed.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_this_solution(
                 self as *const Self,
@@ -1617,7 +1609,7 @@ impl Circ2d2TanRadGeo {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_tangency1(
@@ -1646,7 +1638,7 @@ impl Circ2d2TanRadGeo {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_tangency2(
@@ -1725,9 +1717,9 @@ impl Circ2d3Tan {
     /// Qualified1, Qualified2 or Qualified3 is more complex
     /// than a line or a circle).
     pub fn new_qualifiedcurve3_real4(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        Qualified3: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
+        Qualified2: &QualifiedCurve,
+        Qualified3: &QualifiedCurve,
         Tolerance: f64,
         Param1: f64,
         Param2: f64,
@@ -1752,8 +1744,8 @@ impl Circ2d3Tan {
     /// either Qualified1 or Qualified2 is more complex than
     /// a line or a circle).
     pub fn new_qualifiedcurve2_handlegeom2dpoint_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
+        Qualified2: &QualifiedCurve,
         Point: &crate::ffi::HandleGeom2dPoint,
         Tolerance: f64,
         Param1: f64,
@@ -1777,7 +1769,7 @@ impl Circ2d3Tan {
     /// chooses an iterative method to find the solution (i.e. if
     /// Qualified1 is more complex than a line or a circle)
     pub fn new_qualifiedcurve_handlegeom2dpoint2_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
         Point1: &crate::ffi::HandleGeom2dPoint,
         Point2: &crate::ffi::HandleGeom2dPoint,
         Tolerance: f64,
@@ -1834,7 +1826,7 @@ impl Circ2d3Tan {
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:135 - `Geom2dGcc_Circ2d3Tan::Results()`
     pub fn results(
         &mut self,
-        Circ: &crate::ffi::GccAna_Circ2d3Tan,
+        Circ: &crate::gcc_ana::Circ2d3Tan,
         Rank1: i32,
         Rank2: i32,
         Rank3: i32,
@@ -1865,7 +1857,7 @@ impl Circ2d3Tan {
     /// Be careful: the Index is only a way to get all the
     /// solutions, but is not associated to these outside the context
     /// of the algorithm-object.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2d3Tan_this_solution(
                 self as *const Self,
@@ -1908,7 +1900,7 @@ impl Circ2d3Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d3Tan_tangency1(
@@ -1931,7 +1923,7 @@ impl Circ2d3Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d3Tan_tangency2(
@@ -1954,7 +1946,7 @@ impl Circ2d3Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d3Tan_tangency3(
@@ -2022,9 +2014,9 @@ impl Circ2d3TanIter {
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 2 circles and a curve.
     pub fn new_qualifiedcirc2_qcurve_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified3: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedCirc,
+        Qualified3: &QCurve,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -2043,9 +2035,9 @@ impl Circ2d3TanIter {
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a circle and 2 curves.
     pub fn new_qualifiedcirc_qcurve2_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified3: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &QCurve,
+        Qualified3: &QCurve,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -2065,9 +2057,9 @@ impl Circ2d3TanIter {
     /// create 2d circles tangent to a circle and a line and
     /// a curve.
     pub fn new_qualifiedcirc_qualifiedlin_qcurve_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified3: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        Qualified3: &QCurve,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -2087,9 +2079,9 @@ impl Circ2d3TanIter {
     /// create 2d circles tangent to a circle and a point and
     /// a curve.
     pub fn new_qualifiedcirc_qcurve_pnt2d_real3(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        Point3: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &QCurve,
+        Point3: &crate::gp::Pnt2d,
         Param1: f64,
         Param2: f64,
         Tolerance: f64,
@@ -2107,9 +2099,9 @@ impl Circ2d3TanIter {
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 2 lines and a curve.
     pub fn new_qualifiedlin2_qcurve_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified3: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &crate::gcc_ent::QualifiedLin,
+        Qualified3: &QCurve,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -2128,9 +2120,9 @@ impl Circ2d3TanIter {
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a line and 2 curves.
     pub fn new_qualifiedlin_qcurve2_real4(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified3: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &QCurve,
+        Qualified3: &QCurve,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -2150,9 +2142,9 @@ impl Circ2d3TanIter {
     /// create 2d circles tangent to a line and a curve
     /// and a point.
     pub fn new_qualifiedlin_qcurve_pnt2d_real3(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        Point3: &crate::ffi::gp_Pnt2d,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        Qualified2: &QCurve,
+        Point3: &crate::gp::Pnt2d,
         Param1: f64,
         Param2: f64,
         Tolerance: f64,
@@ -2170,9 +2162,9 @@ impl Circ2d3TanIter {
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a curve and 2 points.
     pub fn new_qcurve_pnt2d2_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Point1: &crate::ffi::gp_Pnt2d,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Qualified1: &QCurve,
+        Point1: &crate::gp::Pnt2d,
+        Point2: &crate::gp::Pnt2d,
         Param1: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2189,9 +2181,9 @@ impl Circ2d3TanIter {
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 2 curves and a point.
     pub fn new_qcurve2_pnt2d_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        Point2: &crate::ffi::gp_Pnt2d,
+        Qualified1: &QCurve,
+        Qualified2: &QCurve,
+        Point2: &crate::gp::Pnt2d,
         Param1: f64,
         Param2: f64,
         Tolerance: f64,
@@ -2209,9 +2201,9 @@ impl Circ2d3TanIter {
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 3 curves.
     pub fn new_qcurve3_real4(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified3: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &QCurve,
+        Qualified2: &QCurve,
+        Qualified3: &QCurve,
         Param1: f64,
         Param2: f64,
         Param3: f64,
@@ -2235,7 +2227,7 @@ impl Circ2d3TanIter {
     /// Returns the solution.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2d3TanIter_this_solution(
                 self as *const Self,
@@ -2264,7 +2256,7 @@ impl Circ2d3TanIter {
     /// on the argument curv.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency1(
                 self as *const Self,
@@ -2284,7 +2276,7 @@ impl Circ2d3TanIter {
     /// on the argument curv.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency2(
                 self as *const Self,
@@ -2304,7 +2296,7 @@ impl Circ2d3TanIter {
     /// on the argument curv.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn tangency3(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn tangency3(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency3(
                 self as *const Self,
@@ -2383,7 +2375,7 @@ impl Circ2dTanCen {
     /// GccEnt_BadQualifier if a qualifier is inconsistent with
     /// the argument it qualifies (for example, enclosing for a line).
     pub fn new_qualifiedcurve_handlegeom2dpoint_real(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
         Pcenter: &crate::ffi::HandleGeom2dPoint,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2426,7 +2418,7 @@ impl Circ2dTanCen {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2dTanCen_this_solution(
                 self as *const Self,
@@ -2469,7 +2461,7 @@ impl Circ2dTanCen {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanCen_tangency1(
@@ -2536,8 +2528,8 @@ impl Circ2dTanCenGeo {
     /// create 2d circles tangent to a circle and
     /// centered on a point.
     pub fn new_qcurve_pnt2d_real(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Pcenter: &crate::ffi::gp_Pnt2d,
+        Qualified1: &QCurve,
+        Pcenter: &crate::gp::Pnt2d,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2573,7 +2565,7 @@ impl Circ2dTanCenGeo {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions or less than zero.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2dTanCenGeo_this_solution(
                 self as *const Self,
@@ -2609,7 +2601,7 @@ impl Circ2dTanCenGeo {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanCenGeo_tangency1(
@@ -2664,8 +2656,8 @@ impl Circ2dTanOnRad {
     /// centered on the 2D curve OnCurv and:
     /// -   tangential to the curve Qualified1
     pub fn new_qualifiedcurve_curve_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &QualifiedCurve,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2711,7 +2703,7 @@ impl Circ2dTanOnRad {
     /// }
     pub fn new_handlegeom2dpoint_curve_real2(
         Point1: &crate::ffi::HandleGeom2dPoint,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2725,14 +2717,14 @@ impl Circ2dTanOnRad {
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:109 - `Geom2dGcc_Circ2dTanOnRad::Results()`
-    pub fn results_circ2dtanonrad(&mut self, Circ: &crate::ffi::GccAna_Circ2dTanOnRad) {
+    pub fn results_circ2dtanonrad(&mut self, Circ: &crate::gcc_ana::Circ2dTanOnRad) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonrad(self as *mut Self, Circ)
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:111 - `Geom2dGcc_Circ2dTanOnRad::Results()`
-    pub fn results_circ2dtanonradgeo(&mut self, Circ: &crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo) {
+    pub fn results_circ2dtanonradgeo(&mut self, Circ: &Circ2dTanOnRadGeo) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonradgeo(self as *mut Self, Circ)
         }
@@ -2766,7 +2758,7 @@ impl Circ2dTanOnRad {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2dTanOnRad_this_solution(
                 self as *const Self,
@@ -2816,7 +2808,7 @@ impl Circ2dTanOnRad {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanOnRad_tangency1(
@@ -2840,7 +2832,7 @@ impl Circ2dTanOnRad {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanOnRad_center_on3(
                 self as *const Self,
@@ -2911,8 +2903,8 @@ impl Circ2dTanOnRadGeo {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qcurve_lin2d_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        OnLine: &crate::ffi::gp_Lin2d,
+        Qualified1: &QCurve,
+        OnLine: &crate::gp::Lin2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2932,8 +2924,8 @@ impl Circ2dTanOnRadGeo {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qcurve_circ2d_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        OnCirc: &crate::ffi::gp_Circ2d,
+        Qualified1: &QCurve,
+        OnCirc: &crate::gp::Circ2d,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2953,8 +2945,8 @@ impl Circ2dTanOnRadGeo {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qualifiedcirc_curve_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2974,8 +2966,8 @@ impl Circ2dTanOnRadGeo {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qualifiedlin_curve_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedLin,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &crate::gcc_ent::QualifiedLin,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2995,8 +2987,8 @@ impl Circ2dTanOnRadGeo {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_qcurve_curve_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Qualified1: &QCurve,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -3016,8 +3008,8 @@ impl Circ2dTanOnRadGeo {
     /// Tolerance is used to find solution in every limit cases.
     /// raises NegativeValue in case of NegativeRadius.
     pub fn new_pnt2d_curve_real2(
-        Point1: &crate::ffi::gp_Pnt2d,
-        OnCurv: &crate::ffi::Geom2dAdaptor_Curve,
+        Point1: &crate::gp::Pnt2d,
+        OnCurv: &crate::geom2d_adaptor::Curve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -3055,7 +3047,7 @@ impl Circ2dTanOnRadGeo {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_this_solution(
                 self as *const Self,
@@ -3093,7 +3085,7 @@ impl Circ2dTanOnRadGeo {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_tangency1(
@@ -3116,7 +3108,7 @@ impl Circ2dTanOnRadGeo {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_center_on3(
                 self as *const Self,
@@ -3160,62 +3152,59 @@ impl CurveTool {
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:33 - `Geom2dGcc_CurveTool::FirstParameter()`
-    pub fn first_parameter(C: &crate::ffi::Geom2dAdaptor_Curve) -> f64 {
+    pub fn first_parameter(C: &crate::geom2d_adaptor::Curve) -> f64 {
         unsafe { crate::ffi::Geom2dGcc_CurveTool_first_parameter(C) }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:35 - `Geom2dGcc_CurveTool::LastParameter()`
-    pub fn last_parameter(C: &crate::ffi::Geom2dAdaptor_Curve) -> f64 {
+    pub fn last_parameter(C: &crate::geom2d_adaptor::Curve) -> f64 {
         unsafe { crate::ffi::Geom2dGcc_CurveTool_last_parameter(C) }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:37 - `Geom2dGcc_CurveTool::EpsX()`
-    pub fn eps_x(C: &crate::ffi::Geom2dAdaptor_Curve, Tol: f64) -> f64 {
+    pub fn eps_x(C: &crate::geom2d_adaptor::Curve, Tol: f64) -> f64 {
         unsafe { crate::ffi::Geom2dGcc_CurveTool_eps_x(C, Tol) }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:39 - `Geom2dGcc_CurveTool::NbSamples()`
-    pub fn nb_samples(C: &crate::ffi::Geom2dAdaptor_Curve) -> i32 {
+    pub fn nb_samples(C: &crate::geom2d_adaptor::Curve) -> i32 {
         unsafe { crate::ffi::Geom2dGcc_CurveTool_nb_samples(C) }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:41 - `Geom2dGcc_CurveTool::Value()`
-    pub fn value(
-        C: &crate::ffi::Geom2dAdaptor_Curve,
-        X: f64,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn value(C: &crate::geom2d_adaptor::Curve, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_CurveTool_value(C, X)) }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:43 - `Geom2dGcc_CurveTool::D1()`
     pub fn d1(
-        C: &crate::ffi::Geom2dAdaptor_Curve,
+        C: &crate::geom2d_adaptor::Curve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        T: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        T: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::Geom2dGcc_CurveTool_d1(C, U, P, T) }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:48 - `Geom2dGcc_CurveTool::D2()`
     pub fn d2(
-        C: &crate::ffi::Geom2dAdaptor_Curve,
+        C: &crate::geom2d_adaptor::Curve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        T: &mut crate::ffi::gp_Vec2d,
-        N: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        T: &mut crate::gp::Vec2d,
+        N: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::Geom2dGcc_CurveTool_d2(C, U, P, T, N) }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:54 - `Geom2dGcc_CurveTool::D3()`
     pub fn d3(
-        C: &crate::ffi::Geom2dAdaptor_Curve,
+        C: &crate::geom2d_adaptor::Curve,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt2d,
-        T: &mut crate::ffi::gp_Vec2d,
-        N: &mut crate::ffi::gp_Vec2d,
-        dN: &mut crate::ffi::gp_Vec2d,
+        P: &mut crate::gp::Pnt2d,
+        T: &mut crate::gp::Vec2d,
+        N: &mut crate::gp::Vec2d,
+        dN: &mut crate::gp::Vec2d,
     ) {
         unsafe { crate::ffi::Geom2dGcc_CurveTool_d3(C, U, P, T, N, dN) }
     }
@@ -3239,8 +3228,8 @@ unsafe impl crate::CppDeletable for FunctionTanCirCu {
 impl FunctionTanCirCu {
     /// **Source:** `Geom2dGcc_FunctionTanCirCu.hxx`:35 - `Geom2dGcc_FunctionTanCirCu::Geom2dGcc_FunctionTanCirCu()`
     pub fn new_circ2d_curve(
-        Circ: &crate::ffi::gp_Circ2d,
-        Curv: &crate::ffi::Geom2dAdaptor_Curve,
+        Circ: &crate::gp::Circ2d,
+        Curv: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCirCu_ctor_circ2d_curve(
@@ -3332,8 +3321,8 @@ unsafe impl crate::CppDeletable for FunctionTanCuCu {
 impl FunctionTanCuCu {
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:39 - `Geom2dGcc_FunctionTanCuCu::Geom2dGcc_FunctionTanCuCu()`
     pub fn new_curve2(
-        Curv1: &crate::ffi::Geom2dAdaptor_Curve,
-        Curv2: &crate::ffi::Geom2dAdaptor_Curve,
+        Curv1: &crate::geom2d_adaptor::Curve,
+        Curv2: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuCu_ctor_curve2(
@@ -3344,8 +3333,8 @@ impl FunctionTanCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:42 - `Geom2dGcc_FunctionTanCuCu::Geom2dGcc_FunctionTanCuCu()`
     pub fn new_circ2d_curve(
-        Circ1: &crate::ffi::gp_Circ2d,
-        Curv2: &crate::ffi::Geom2dAdaptor_Curve,
+        Circ1: &crate::gp::Circ2d,
+        Curv2: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuCu_ctor_circ2d_curve(
@@ -3426,9 +3415,9 @@ unsafe impl crate::CppDeletable for FunctionTanCuCuCu {
 impl FunctionTanCuCuCu {
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:40 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_curve3(
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        C3: &crate::ffi::Geom2dAdaptor_Curve,
+        C1: &crate::geom2d_adaptor::Curve,
+        C2: &crate::geom2d_adaptor::Curve,
+        C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_curve3(
@@ -3439,9 +3428,9 @@ impl FunctionTanCuCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:44 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_circ2d_curve2(
-        C1: &crate::ffi::gp_Circ2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        C3: &crate::ffi::Geom2dAdaptor_Curve,
+        C1: &crate::gp::Circ2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve2(
@@ -3452,9 +3441,9 @@ impl FunctionTanCuCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:48 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_circ2d2_curve(
-        C1: &crate::ffi::gp_Circ2d,
-        C2: &crate::ffi::gp_Circ2d,
-        C3: &crate::ffi::Geom2dAdaptor_Curve,
+        C1: &crate::gp::Circ2d,
+        C2: &crate::gp::Circ2d,
+        C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d2_curve(
@@ -3465,9 +3454,9 @@ impl FunctionTanCuCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:52 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_circ2d_lin2d_curve(
-        C1: &crate::ffi::gp_Circ2d,
-        L2: &crate::ffi::gp_Lin2d,
-        C3: &crate::ffi::Geom2dAdaptor_Curve,
+        C1: &crate::gp::Circ2d,
+        L2: &crate::gp::Lin2d,
+        C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -3478,9 +3467,9 @@ impl FunctionTanCuCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:56 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_lin2d2_curve(
-        L1: &crate::ffi::gp_Lin2d,
-        L2: &crate::ffi::gp_Lin2d,
-        C3: &crate::ffi::Geom2dAdaptor_Curve,
+        L1: &crate::gp::Lin2d,
+        L2: &crate::gp::Lin2d,
+        C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d2_curve(
@@ -3491,9 +3480,9 @@ impl FunctionTanCuCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:60 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_lin2d_curve2(
-        L1: &crate::ffi::gp_Lin2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        C3: &crate::ffi::Geom2dAdaptor_Curve,
+        L1: &crate::gp::Lin2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        C3: &crate::geom2d_adaptor::Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve2(
@@ -3504,9 +3493,9 @@ impl FunctionTanCuCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:64 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_circ2d_curve_pnt2d(
-        C1: &crate::ffi::gp_Circ2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        P3: &crate::ffi::gp_Pnt2d,
+        C1: &crate::gp::Circ2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -3517,9 +3506,9 @@ impl FunctionTanCuCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:68 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_lin2d_curve_pnt2d(
-        L1: &crate::ffi::gp_Lin2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        P3: &crate::ffi::gp_Pnt2d,
+        L1: &crate::gp::Lin2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -3530,9 +3519,9 @@ impl FunctionTanCuCuCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:72 - `Geom2dGcc_FunctionTanCuCuCu::Geom2dGcc_FunctionTanCuCuCu()`
     pub fn new_curve_pnt2d2(
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        P2: &crate::ffi::gp_Pnt2d,
-        P3: &crate::ffi::gp_Pnt2d,
+        C1: &crate::geom2d_adaptor::Curve,
+        P2: &crate::gp::Pnt2d,
+        P3: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_curve_pnt2d2(
@@ -3617,9 +3606,9 @@ unsafe impl crate::CppDeletable for FunctionTanCuCuOnCu {
 impl FunctionTanCuCuOnCu {
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:40 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_curve2_circ2d_real(
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnCi: &crate::ffi::gp_Circ2d,
+        C1: &crate::geom2d_adaptor::Curve,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnCi: &crate::gp::Circ2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3633,9 +3622,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:45 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_circ2d_curve_circ2d_real(
-        C1: &crate::ffi::gp_Circ2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnCi: &crate::ffi::gp_Circ2d,
+        C1: &crate::gp::Circ2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnCi: &crate::gp::Circ2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3649,9 +3638,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:50 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_lin2d_curve_circ2d_real(
-        L1: &crate::ffi::gp_Lin2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnCi: &crate::ffi::gp_Circ2d,
+        L1: &crate::gp::Lin2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnCi: &crate::gp::Circ2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3665,9 +3654,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:55 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_curve_pnt2d_circ2d_real(
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        P2: &crate::ffi::gp_Pnt2d,
-        OnCi: &crate::ffi::gp_Circ2d,
+        C1: &crate::geom2d_adaptor::Curve,
+        P2: &crate::gp::Pnt2d,
+        OnCi: &crate::gp::Circ2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3681,9 +3670,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:60 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_curve2_lin2d_real(
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnLi: &crate::ffi::gp_Lin2d,
+        C1: &crate::geom2d_adaptor::Curve,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnLi: &crate::gp::Lin2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3695,9 +3684,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:65 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_circ2d_curve_lin2d_real(
-        C1: &crate::ffi::gp_Circ2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnLi: &crate::ffi::gp_Lin2d,
+        C1: &crate::gp::Circ2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnLi: &crate::gp::Lin2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3711,9 +3700,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:70 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_lin2d_curve_lin2d_real(
-        L1: &crate::ffi::gp_Lin2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnLi: &crate::ffi::gp_Lin2d,
+        L1: &crate::gp::Lin2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnLi: &crate::gp::Lin2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3727,9 +3716,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:75 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_curve_pnt2d_lin2d_real(
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        P2: &crate::ffi::gp_Pnt2d,
-        OnLi: &crate::ffi::gp_Lin2d,
+        C1: &crate::geom2d_adaptor::Curve,
+        P2: &crate::gp::Pnt2d,
+        OnLi: &crate::gp::Lin2d,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3743,9 +3732,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:80 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_curve3_real(
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnCu: &crate::ffi::Geom2dAdaptor_Curve,
+        C1: &crate::geom2d_adaptor::Curve,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnCu: &crate::geom2d_adaptor::Curve,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3757,9 +3746,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:85 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_circ2d_curve2_real(
-        C1: &crate::ffi::gp_Circ2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnCu: &crate::ffi::Geom2dAdaptor_Curve,
+        C1: &crate::gp::Circ2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnCu: &crate::geom2d_adaptor::Curve,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3773,9 +3762,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:90 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_lin2d_curve2_real(
-        L1: &crate::ffi::gp_Lin2d,
-        C2: &crate::ffi::Geom2dAdaptor_Curve,
-        OnCu: &crate::ffi::Geom2dAdaptor_Curve,
+        L1: &crate::gp::Lin2d,
+        C2: &crate::geom2d_adaptor::Curve,
+        OnCu: &crate::geom2d_adaptor::Curve,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3787,9 +3776,9 @@ impl FunctionTanCuCuOnCu {
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:95 - `Geom2dGcc_FunctionTanCuCuOnCu::Geom2dGcc_FunctionTanCuCuOnCu()`
     pub fn new_curve_pnt2d_curve_real(
-        C1: &crate::ffi::Geom2dAdaptor_Curve,
-        P1: &crate::ffi::gp_Pnt2d,
-        OnCu: &crate::ffi::Geom2dAdaptor_Curve,
+        C1: &crate::geom2d_adaptor::Curve,
+        P1: &crate::gp::Pnt2d,
+        OnCu: &crate::geom2d_adaptor::Curve,
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3878,8 +3867,8 @@ unsafe impl crate::CppDeletable for FunctionTanCuPnt {
 impl FunctionTanCuPnt {
     /// **Source:** `Geom2dGcc_FunctionTanCuPnt.hxx`:36 - `Geom2dGcc_FunctionTanCuPnt::Geom2dGcc_FunctionTanCuPnt()`
     pub fn new_curve_pnt2d(
-        C: &crate::ffi::Geom2dAdaptor_Curve,
-        Point: &crate::ffi::gp_Pnt2d,
+        C: &crate::geom2d_adaptor::Curve,
+        Point: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanCuPnt_ctor_curve_pnt2d(
@@ -3970,8 +3959,8 @@ unsafe impl crate::CppDeletable for FunctionTanObl {
 impl FunctionTanObl {
     /// **Source:** `Geom2dGcc_FunctionTanObl.hxx`:34 - `Geom2dGcc_FunctionTanObl::Geom2dGcc_FunctionTanObl()`
     pub fn new_curve_dir2d(
-        Curve: &crate::ffi::Geom2dAdaptor_Curve,
-        Dir: &crate::ffi::gp_Dir2d,
+        Curve: &crate::geom2d_adaptor::Curve,
+        Dir: &crate::gp::Dir2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_FunctionTanObl_ctor_curve_dir2d(
@@ -4143,8 +4132,8 @@ impl Lin2d2Tan {
     /// line tangent to two curves.
     /// Tolang is used to determine the tolerance for the tangency points.
     pub fn new_qualifiedcurve2_real(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
+        Qualified2: &QualifiedCurve,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4159,8 +4148,8 @@ impl Lin2d2Tan {
     /// lines passing through a point and tangent to a curve.
     /// Tolang is used to determine the tolerance for the tangency points.
     pub fn new_qualifiedcurve_pnt2d_real(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        ThePoint: &crate::ffi::gp_Pnt2d,
+        Qualified1: &QualifiedCurve,
+        ThePoint: &crate::gp::Pnt2d,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4179,8 +4168,8 @@ impl Lin2d2Tan {
     /// Param1 is used for the initial guess on the first curve.
     /// Param2 is used for the initial guess on the second curve.
     pub fn new_qualifiedcurve2_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QualifiedCurve,
+        Qualified1: &QualifiedCurve,
+        Qualified2: &QualifiedCurve,
         Tolang: f64,
         Param1: f64,
         Param2: f64,
@@ -4198,8 +4187,8 @@ impl Lin2d2Tan {
     /// Tolang is used to determine the tolerance for the tangency points.
     /// Param2 is used for the initial guess on the curve.
     pub fn new_qualifiedcurve_pnt2d_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        ThePoint: &crate::ffi::gp_Pnt2d,
+        Qualified1: &QualifiedCurve,
+        ThePoint: &crate::gp::Pnt2d,
         Tolang: f64,
         Param1: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -4239,7 +4228,7 @@ impl Lin2d2Tan {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Lin2d2Tan_this_solution(
                 self as *const Self,
@@ -4290,7 +4279,7 @@ impl Lin2d2Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Lin2d2Tan_tangency1(
@@ -4317,7 +4306,7 @@ impl Lin2d2Tan {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Lin2d2Tan_tangency2(
@@ -4361,8 +4350,8 @@ impl Lin2d2TanIter {
     /// tangency points.
     /// Param2 is used for the initial guess on the curve.
     pub fn new_qcurve_pnt2d_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        ThePoint: &crate::ffi::gp_Pnt2d,
+        Qualified1: &QCurve,
+        ThePoint: &crate::gp::Pnt2d,
         Param1: f64,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -4382,8 +4371,8 @@ impl Lin2d2TanIter {
     /// Exception BadQualifier is raised in the case of
     /// EnclosedCirc
     pub fn new_qualifiedcirc_qcurve_real2(
-        Qualified1: &crate::ffi::GccEnt_QualifiedCirc,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &crate::gcc_ent::QualifiedCirc,
+        Qualified2: &QCurve,
         Param2: f64,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -4404,8 +4393,8 @@ impl Lin2d2TanIter {
     /// Param1 is used for the initial guess on the first curve.
     /// Param2 is used for the initial guess on the second curve.
     pub fn new_qcurve2_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        Qualified2: &crate::ffi::Geom2dGcc_QCurve,
+        Qualified1: &QCurve,
+        Qualified2: &QCurve,
         Param1: f64,
         Param2: f64,
         Tolang: f64,
@@ -4426,7 +4415,7 @@ impl Lin2d2TanIter {
 
     /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:82 - `Geom2dGcc_Lin2d2TanIter::ThisSolution()`
     /// Returns the solution.
-    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Lin2d2TanIter_this_solution(
                 self as *const Self,
@@ -4452,7 +4441,7 @@ impl Lin2d2TanIter {
     /// the solution curv.
     /// ParArg is the intrinsic parameter of the point PntSol on
     /// the argument curv.
-    pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Lin2d2TanIter_tangency1(
                 self as *const Self,
@@ -4464,7 +4453,7 @@ impl Lin2d2TanIter {
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:96 - `Geom2dGcc_Lin2d2TanIter::Tangency2()`
-    pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Lin2d2TanIter_tangency2(
                 self as *const Self,
@@ -4507,8 +4496,8 @@ impl Lin2dTanObl {
     /// Angle must be in Radian.
     /// Tolang is the angular tolerance.
     pub fn new_qualifiedcurve_lin2d_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        TheLin: &crate::ffi::gp_Lin2d,
+        Qualified1: &QualifiedCurve,
+        TheLin: &crate::gp::Lin2d,
         TolAng: f64,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -4536,8 +4525,8 @@ impl Lin2dTanObl {
     /// GccEnt_BadQualifier if a qualifier is inconsistent with
     /// the argument it qualifies (for example, enclosed for a circle).
     pub fn new_qualifiedcurve_lin2d_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QualifiedCurve,
-        TheLin: &crate::ffi::gp_Lin2d,
+        Qualified1: &QualifiedCurve,
+        TheLin: &crate::gp::Lin2d,
         TolAng: f64,
         Param1: f64,
         Angle: f64,
@@ -4575,7 +4564,7 @@ impl Lin2dTanObl {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Lin2dTanObl_this_solution(
                 self as *const Self,
@@ -4617,7 +4606,7 @@ impl Lin2dTanObl {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Lin2dTanObl_tangency1(
@@ -4646,7 +4635,7 @@ impl Lin2dTanObl {
         Index: i32,
         ParSol: &mut f64,
         ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
+        PntSol: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::Geom2dGcc_Lin2dTanObl_intersection2(
@@ -4695,8 +4684,8 @@ impl Lin2dTanOblIter {
     /// Param2 is the initial guess on the curve QualifiedCurv.
     /// Tolang is the angular tolerance.
     pub fn new_qcurve_lin2d_real3(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        TheLin: &crate::ffi::gp_Lin2d,
+        Qualified1: &QCurve,
+        TheLin: &crate::gp::Lin2d,
         Param1: f64,
         TolAng: f64,
         Angle: f64,
@@ -4718,8 +4707,8 @@ impl Lin2dTanOblIter {
     /// Param2 is the initial guess on the curve QualifiedCurv.
     /// Tolang is the angular tolerance.
     pub fn new_qcurve_lin2d_real2(
-        Qualified1: &crate::ffi::Geom2dGcc_QCurve,
-        TheLin: &crate::ffi::gp_Lin2d,
+        Qualified1: &QCurve,
+        TheLin: &crate::gp::Lin2d,
         Param1: f64,
         TolAng: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -4734,7 +4723,7 @@ impl Lin2dTanOblIter {
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:53 - `Geom2dGcc_Lin2dTanOblIter::ThisSolution()`
-    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi::gp_Lin2d> {
+    pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_Lin2dTanOblIter_this_solution(
                 self as *const Self,
@@ -4750,7 +4739,7 @@ impl Lin2dTanOblIter {
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:57 - `Geom2dGcc_Lin2dTanOblIter::Tangency1()`
-    pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::ffi::gp_Pnt2d) {
+    pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Lin2dTanOblIter_tangency1(
                 self as *const Self,
@@ -4762,12 +4751,7 @@ impl Lin2dTanOblIter {
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:61 - `Geom2dGcc_Lin2dTanOblIter::Intersection2()`
-    pub fn intersection2(
-        &self,
-        ParSol: &mut f64,
-        ParArg: &mut f64,
-        PntSol: &mut crate::ffi::gp_Pnt2d,
-    ) {
+    pub fn intersection2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::Geom2dGcc_Lin2dTanOblIter_intersection2(
                 self as *const Self,
@@ -4801,7 +4785,7 @@ unsafe impl crate::CppDeletable for QCurve {
 impl QCurve {
     /// **Source:** `Geom2dGcc_QCurve.hxx`:34 - `Geom2dGcc_QCurve::Geom2dGcc_QCurve()`
     pub fn new_curve_position(
-        Curve: &crate::ffi::Geom2dAdaptor_Curve,
+        Curve: &crate::geom2d_adaptor::Curve,
         Qualifier: crate::gcc_ent::Position,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4813,7 +4797,7 @@ impl QCurve {
     }
 
     /// **Source:** `Geom2dGcc_QCurve.hxx`:37 - `Geom2dGcc_QCurve::Qualified()`
-    pub fn qualified(&self) -> crate::OwnedPtr<crate::ffi::Geom2dAdaptor_Curve> {
+    pub fn qualified(&self) -> crate::OwnedPtr<crate::geom2d_adaptor::Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_QCurve_qualified(self as *const Self))
         }
@@ -4903,7 +4887,7 @@ impl QualifiedCurve {
     /// Geom2dGcc_QualifiedCurve myQCurve ( Curve, myQualif );
     /// is private;
     pub fn new_curve_position(
-        Curve: &crate::ffi::Geom2dAdaptor_Curve,
+        Curve: &crate::geom2d_adaptor::Curve,
         Qualifier: crate::gcc_ent::Position,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4926,7 +4910,7 @@ impl QualifiedCurve {
     /// myQualifiedCurve = ... ;
     /// Geom2dAdaptor_Curve myAdaptedCurve = myQualifiedCurve.Qualified();
     /// Handle(Geom2d_Curve) = myAdaptedCurve.Curve();
-    pub fn qualified(&self) -> crate::OwnedPtr<crate::ffi::Geom2dAdaptor_Curve> {
+    pub fn qualified(&self) -> crate::OwnedPtr<crate::geom2d_adaptor::Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dGcc_QualifiedCurve_qualified(
                 self as *const Self,

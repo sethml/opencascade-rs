@@ -223,7 +223,7 @@ impl ShapeDefinitionRepresentation {
     /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:37 - `StepRepr_PropertyDefinitionRepresentation::Init()`
     pub fn init(
         &mut self,
-        aDefinition: &crate::ffi::StepRepr_RepresentedDefinition,
+        aDefinition: &crate::step_repr::RepresentedDefinition,
         aUsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
     ) {
         unsafe {
@@ -236,7 +236,7 @@ impl ShapeDefinitionRepresentation {
     }
 
     /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:41 - `StepRepr_PropertyDefinitionRepresentation::Definition()`
-    pub fn definition(&self) -> crate::OwnedPtr<crate::ffi::StepRepr_RepresentedDefinition> {
+    pub fn definition(&self) -> crate::OwnedPtr<crate::step_repr::RepresentedDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_Definition(
@@ -247,7 +247,7 @@ impl ShapeDefinitionRepresentation {
     }
 
     /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:44 - `StepRepr_PropertyDefinitionRepresentation::SetDefinition()`
-    pub fn set_definition(&mut self, Definition: &crate::ffi::StepRepr_RepresentedDefinition) {
+    pub fn set_definition(&mut self, Definition: &crate::step_repr::RepresentedDefinition) {
         unsafe {
             crate::ffi::StepShape_ShapeDefinitionRepresentation_inherited_SetDefinition(
                 self as *mut Self,

@@ -21,7 +21,7 @@ pub fn mix_bnd(Lin: &crate::ffi::HandleLawLinear) -> crate::OwnedPtr<crate::ffi:
 /// interpolation of NbPoints  points calculated  at quasi
 /// constant abscissa.
 pub fn reparametrize(
-    Curve: &crate::ffi::Adaptor3d_Curve,
+    Curve: &crate::adaptor3d::Curve,
     First: f64,
     Last: f64,
     HasDF: bool,

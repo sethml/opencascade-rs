@@ -29,7 +29,7 @@ impl GInter {
     /// **Source:** `Geom2dInt_GInter.hxx`:53 - `Geom2dInt_GInter::Geom2dInt_GInter()`
     /// Self Intersection of a curve
     pub fn new_curve2d_real2(
-        C: &crate::ffi::Adaptor2d_Curve2d,
+        C: &crate::adaptor2d::Curve2d,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -43,8 +43,8 @@ impl GInter {
     /// **Source:** `Geom2dInt_GInter.hxx`:58 - `Geom2dInt_GInter::Geom2dInt_GInter()`
     /// Self Intersection of a curve with a domain.
     pub fn new_curve2d_domain_real2(
-        C: &crate::ffi::Adaptor2d_Curve2d,
-        D: &crate::ffi::IntRes2d_Domain,
+        C: &crate::adaptor2d::Curve2d,
+        D: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -58,8 +58,8 @@ impl GInter {
     /// **Source:** `Geom2dInt_GInter.hxx`:64 - `Geom2dInt_GInter::Geom2dInt_GInter()`
     /// Intersection between 2 curves.
     pub fn new_curve2d2_real2(
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        C2: &crate::ffi::Adaptor2d_Curve2d,
+        C1: &crate::adaptor2d::Curve2d,
+        C2: &crate::adaptor2d::Curve2d,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -73,9 +73,9 @@ impl GInter {
     /// **Source:** `Geom2dInt_GInter.hxx`:70 - `Geom2dInt_GInter::Geom2dInt_GInter()`
     /// Intersection between 2 curves.
     pub fn new_curve2d_domain_curve2d_real2(
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        C2: &crate::ffi::Adaptor2d_Curve2d,
+        C1: &crate::adaptor2d::Curve2d,
+        D1: &crate::int_res2d::Domain,
+        C2: &crate::adaptor2d::Curve2d,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -91,9 +91,9 @@ impl GInter {
     /// **Source:** `Geom2dInt_GInter.hxx`:77 - `Geom2dInt_GInter::Geom2dInt_GInter()`
     /// Intersection between 2 curves.
     pub fn new_curve2d2_domain_real2(
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        C2: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C1: &crate::adaptor2d::Curve2d,
+        C2: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -107,10 +107,10 @@ impl GInter {
     /// **Source:** `Geom2dInt_GInter.hxx`:84 - `Geom2dInt_GInter::Geom2dInt_GInter()`
     /// Intersection between 2 curves.
     pub fn new_curve2d_domain_curve2d_domain_real2(
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        C2: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C1: &crate::adaptor2d::Curve2d,
+        D1: &crate::int_res2d::Domain,
+        C2: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -127,10 +127,10 @@ impl GInter {
     /// Intersection between 2 curves.
     pub fn perform_curve2d_domain_curve2d_domain_real2(
         &mut self,
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        C2: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C1: &crate::adaptor2d::Curve2d,
+        D1: &crate::int_res2d::Domain,
+        C2: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -151,8 +151,8 @@ impl GInter {
     /// Intersection between 2 curves.
     pub fn perform_curve2d2_real2(
         &mut self,
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        C2: &crate::ffi::Adaptor2d_Curve2d,
+        C1: &crate::adaptor2d::Curve2d,
+        C2: &crate::adaptor2d::Curve2d,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -171,8 +171,8 @@ impl GInter {
     /// Intersection between 2 curves.
     pub fn perform_curve2d_domain_real2(
         &mut self,
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        D1: &crate::ffi::IntRes2d_Domain,
+        C1: &crate::adaptor2d::Curve2d,
+        D1: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -191,7 +191,7 @@ impl GInter {
     /// Intersection between 2 curves.
     pub fn perform_curve2d_real2(
         &mut self,
-        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C1: &crate::adaptor2d::Curve2d,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -204,9 +204,9 @@ impl GInter {
     /// Intersection between 2 curves.
     pub fn perform_curve2d_domain_curve2d_real2(
         &mut self,
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        C2: &crate::ffi::Adaptor2d_Curve2d,
+        C1: &crate::adaptor2d::Curve2d,
+        D1: &crate::int_res2d::Domain,
+        C2: &crate::adaptor2d::Curve2d,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -226,9 +226,9 @@ impl GInter {
     /// Intersection between 2 curves.
     pub fn perform_curve2d2_domain_real2(
         &mut self,
-        C1: &crate::ffi::Adaptor2d_Curve2d,
-        C2: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C1: &crate::adaptor2d::Curve2d,
+        C2: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -248,9 +248,9 @@ impl GInter {
     /// Create a domain from a curve
     pub fn compute_domain(
         &self,
-        C1: &crate::ffi::Adaptor2d_Curve2d,
+        C1: &crate::adaptor2d::Curve2d,
         TolDomain: f64,
-    ) -> crate::OwnedPtr<crate::ffi::IntRes2d_Domain> {
+    ) -> crate::OwnedPtr<crate::int_res2d::Domain> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dInt_GInter_compute_domain(
                 self as *const Self,
@@ -289,7 +289,7 @@ impl GInter {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
-    pub fn point(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe { &*(crate::ffi::Geom2dInt_GInter_inherited_Point(self as *const Self, N)) }
     }
 
@@ -299,7 +299,7 @@ impl GInter {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
-    pub fn segment(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionSegment {
+    pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe { &*(crate::ffi::Geom2dInt_GInter_inherited_Segment(self as *const Self, N)) }
     }
 
@@ -337,10 +337,10 @@ impl IntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_IntConicCurveOfGInter.hxx`:47 - `Geom2dInt_IntConicCurveOfGInter::Geom2dInt_IntConicCurveOfGInter()`
     /// Intersection between a line and a parametric curve.
     pub fn new_lin2d_domain_curve2d_domain_real2(
-        L: &crate::ffi::gp_Lin2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -356,10 +356,10 @@ impl IntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_IntConicCurveOfGInter.hxx`:55 - `Geom2dInt_IntConicCurveOfGInter::Geom2dInt_IntConicCurveOfGInter()`
     /// Intersection between a line and a parametric curve.
     pub fn new_circ2d_domain_curve2d_domain_real2(
-        C: &crate::ffi::gp_Circ2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -375,10 +375,10 @@ impl IntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_IntConicCurveOfGInter.hxx`:63 - `Geom2dInt_IntConicCurveOfGInter::Geom2dInt_IntConicCurveOfGInter()`
     /// Intersection between an ellipse and a parametric curve.
     pub fn new_elips2d_domain_curve2d_domain_real2(
-        E: &crate::ffi::gp_Elips2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        E: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -390,10 +390,10 @@ impl IntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_IntConicCurveOfGInter.hxx`:71 - `Geom2dInt_IntConicCurveOfGInter::Geom2dInt_IntConicCurveOfGInter()`
     /// Intersection between a parabola and a parametric curve.
     pub fn new_parab2d_domain_curve2d_domain_real2(
-        Prb: &crate::ffi::gp_Parab2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        Prb: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -406,10 +406,10 @@ impl IntConicCurveOfGInter {
     /// Intersection between the main branch of an hyperbola
     /// and a parametric curve.
     pub fn new_hypr2d_domain_curve2d_domain_real2(
-        H: &crate::ffi::gp_Hypr2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        H: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -426,10 +426,10 @@ impl IntConicCurveOfGInter {
     /// Intersection between a line and a parametric curve.
     pub fn perform_lin2d_domain_curve2d_domain_real2(
         &mut self,
-        L: &crate::ffi::gp_Lin2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -450,10 +450,10 @@ impl IntConicCurveOfGInter {
     /// Intersection between a line and a parametric curve.
     pub fn perform_circ2d_domain_curve2d_domain_real2(
         &mut self,
-        C: &crate::ffi::gp_Circ2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -474,10 +474,10 @@ impl IntConicCurveOfGInter {
     /// Intersection between an ellipse and a parametric curve.
     pub fn perform_elips2d_domain_curve2d_domain_real2(
         &mut self,
-        E: &crate::ffi::gp_Elips2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        E: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -498,10 +498,10 @@ impl IntConicCurveOfGInter {
     /// Intersection between a parabola and a parametric curve.
     pub fn perform_parab2d_domain_curve2d_domain_real2(
         &mut self,
-        Prb: &crate::ffi::gp_Parab2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        Prb: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -523,10 +523,10 @@ impl IntConicCurveOfGInter {
     /// and a parametric curve.
     pub fn perform_hypr2d_domain_curve2d_domain_real2(
         &mut self,
-        H: &crate::ffi::gp_Hypr2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        H: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -563,7 +563,7 @@ impl IntConicCurveOfGInter {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
-    pub fn point(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
             &*(crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_Point(self as *const Self, N))
         }
@@ -577,7 +577,7 @@ impl IntConicCurveOfGInter {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
-    pub fn segment(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionSegment {
+    pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
             &*(crate::ffi::Geom2dInt_IntConicCurveOfGInter_inherited_Segment(
                 self as *const Self,
@@ -620,10 +620,10 @@ impl TheIntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntConicCurveOfGInter.hxx`:46 - `Geom2dInt_TheIntConicCurveOfGInter::Geom2dInt_TheIntConicCurveOfGInter()`
     /// Intersection between a line and a parametric curve.
     pub fn new_lin2d_domain_curve2d_domain_real2(
-        L: &crate::ffi::gp_Lin2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -635,10 +635,10 @@ impl TheIntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntConicCurveOfGInter.hxx`:54 - `Geom2dInt_TheIntConicCurveOfGInter::Geom2dInt_TheIntConicCurveOfGInter()`
     /// Intersection between a line and a parametric curve.
     pub fn new_circ2d_domain_curve2d_domain_real2(
-        C: &crate::ffi::gp_Circ2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -650,10 +650,10 @@ impl TheIntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntConicCurveOfGInter.hxx`:62 - `Geom2dInt_TheIntConicCurveOfGInter::Geom2dInt_TheIntConicCurveOfGInter()`
     /// Intersection between an ellipse and a parametric curve.
     pub fn new_elips2d_domain_curve2d_domain_real2(
-        E: &crate::ffi::gp_Elips2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        E: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -665,10 +665,10 @@ impl TheIntConicCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntConicCurveOfGInter.hxx`:70 - `Geom2dInt_TheIntConicCurveOfGInter::Geom2dInt_TheIntConicCurveOfGInter()`
     /// Intersection between a parabola and a parametric curve.
     pub fn new_parab2d_domain_curve2d_domain_real2(
-        Prb: &crate::ffi::gp_Parab2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        Prb: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -681,10 +681,10 @@ impl TheIntConicCurveOfGInter {
     /// Intersection between the main branch of an hyperbola
     /// and a parametric curve.
     pub fn new_hypr2d_domain_curve2d_domain_real2(
-        H: &crate::ffi::gp_Hypr2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        H: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -697,10 +697,10 @@ impl TheIntConicCurveOfGInter {
     /// Intersection between a line and a parametric curve.
     pub fn perform_lin2d_domain_curve2d_domain_real2(
         &mut self,
-        L: &crate::ffi::gp_Lin2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        L: &crate::gp::Lin2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -721,10 +721,10 @@ impl TheIntConicCurveOfGInter {
     /// Intersection between a line and a parametric curve.
     pub fn perform_circ2d_domain_curve2d_domain_real2(
         &mut self,
-        C: &crate::ffi::gp_Circ2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        C: &crate::gp::Circ2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -737,10 +737,10 @@ impl TheIntConicCurveOfGInter {
     /// Intersection between an ellipse and a parametric curve.
     pub fn perform_elips2d_domain_curve2d_domain_real2(
         &mut self,
-        E: &crate::ffi::gp_Elips2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        E: &crate::gp::Elips2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -753,10 +753,10 @@ impl TheIntConicCurveOfGInter {
     /// Intersection between a parabola and a parametric curve.
     pub fn perform_parab2d_domain_curve2d_domain_real2(
         &mut self,
-        Prb: &crate::ffi::gp_Parab2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        Prb: &crate::gp::Parab2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -770,10 +770,10 @@ impl TheIntConicCurveOfGInter {
     /// and a parametric curve.
     pub fn perform_hypr2d_domain_curve2d_domain_real2(
         &mut self,
-        H: &crate::ffi::gp_Hypr2d,
-        D1: &crate::ffi::IntRes2d_Domain,
-        PCurve: &crate::ffi::Adaptor2d_Curve2d,
-        D2: &crate::ffi::IntRes2d_Domain,
+        H: &crate::gp::Hypr2d,
+        D1: &crate::int_res2d::Domain,
+        PCurve: &crate::adaptor2d::Curve2d,
+        D2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -804,7 +804,7 @@ impl TheIntConicCurveOfGInter {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
-    pub fn point(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
             &*(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_Point(
                 self as *const Self,
@@ -821,7 +821,7 @@ impl TheIntConicCurveOfGInter {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
-    pub fn segment(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionSegment {
+    pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
             &*(crate::ffi::Geom2dInt_TheIntConicCurveOfGInter_inherited_Segment(
                 self as *const Self,
@@ -865,10 +865,10 @@ impl TheIntPCurvePCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntPCurvePCurveOfGInter.hxx`:41 - `Geom2dInt_TheIntPCurvePCurveOfGInter::Perform()`
     pub fn perform_curve2d_domain_curve2d_domain_real2(
         &mut self,
-        Curve1: &crate::ffi::Adaptor2d_Curve2d,
-        Domain1: &crate::ffi::IntRes2d_Domain,
-        Curve2: &crate::ffi::Adaptor2d_Curve2d,
-        Domain2: &crate::ffi::IntRes2d_Domain,
+        Curve1: &crate::adaptor2d::Curve2d,
+        Domain1: &crate::int_res2d::Domain,
+        Curve2: &crate::adaptor2d::Curve2d,
+        Domain2: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -880,8 +880,8 @@ impl TheIntPCurvePCurveOfGInter {
     /// **Source:** `Geom2dInt_TheIntPCurvePCurveOfGInter.hxx`:48 - `Geom2dInt_TheIntPCurvePCurveOfGInter::Perform()`
     pub fn perform_curve2d_domain_real2(
         &mut self,
-        Curve1: &crate::ffi::Adaptor2d_Curve2d,
-        Domain1: &crate::ffi::IntRes2d_Domain,
+        Curve1: &crate::adaptor2d::Curve2d,
+        Domain1: &crate::int_res2d::Domain,
         TolConf: f64,
         Tol: f64,
     ) {
@@ -936,7 +936,7 @@ impl TheIntPCurvePCurveOfGInter {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
-    pub fn point(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
             &*(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_Point(
                 self as *const Self,
@@ -955,7 +955,7 @@ impl TheIntPCurvePCurveOfGInter {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
-    pub fn segment(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionSegment {
+    pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
             &*(crate::ffi::Geom2dInt_TheIntPCurvePCurveOfGInter_inherited_Segment(
                 self as *const Self,

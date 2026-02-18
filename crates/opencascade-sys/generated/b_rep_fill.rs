@@ -9,18 +9,18 @@
 /// **Source:** `BRepFill.hxx`:41 - `BRepFill::Face`
 /// Computes a ruled surface between two edges.
 pub fn face_edge2(
-    Edge1: &crate::ffi::TopoDS_Edge,
-    Edge2: &crate::ffi::TopoDS_Edge,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    Edge1: &crate::topo_ds::Edge,
+    Edge2: &crate::topo_ds::Edge,
+) -> crate::OwnedPtr<crate::topo_ds::Face> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_face_edge2(Edge1, Edge2)) }
 }
 /// **Source:** `BRepFill.hxx`:45 - `BRepFill::Shell`
 /// Computes a ruled surface between two wires.
 /// The wires must have the same number of edges.
 pub fn shell_wire2(
-    Wire1: &crate::ffi::TopoDS_Wire,
-    Wire2: &crate::ffi::TopoDS_Wire,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shell> {
+    Wire1: &crate::topo_ds::Wire,
+    Wire2: &crate::topo_ds::Wire,
+) -> crate::OwnedPtr<crate::topo_ds::Shell> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_shell_wire2(Wire1, Wire2)) }
 }
 /// **Source:** `BRepFill.hxx`:53 - `BRepFill::Axe`
@@ -31,9 +31,9 @@ pub fn shell_wire2(
 /// <Direction> is normal to <Spine>.
 /// <Spine> is a plane wire or a plane face.
 pub fn axe(
-    Spine: &crate::ffi::TopoDS_Shape,
-    Profile: &crate::ffi::TopoDS_Wire,
-    AxeProf: &mut crate::ffi::gp_Ax3,
+    Spine: &crate::topo_ds::Shape,
+    Profile: &crate::topo_ds::Wire,
+    AxeProf: &mut crate::gp::Ax3,
     ProfOnSpine: &mut bool,
     Tol: f64,
 ) {
@@ -241,17 +241,17 @@ impl ACRLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
-    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+    pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::BRepFill_ACRLaw_inherited_Wire(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
-    pub fn edge(&self, Index: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFill_ACRLaw_inherited_Edge(self as *const Self, Index)) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
-    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ACRLaw_inherited_Vertex(
                 self as *const Self,
@@ -264,9 +264,9 @@ impl ACRLaw {
     pub fn perform_vertex(
         &self,
         Index: i32,
-        InputVertex: &crate::ffi::TopoDS_Vertex,
+        InputVertex: &crate::topo_ds::Vertex,
         TolMin: f64,
-        OutputVertex: &mut crate::ffi::TopoDS_Vertex,
+        OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
         unsafe {
@@ -311,7 +311,7 @@ impl ACRLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
-    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::ffi::TopoDS_Shape) {
+    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_ACRLaw_inherited_D0(self as *mut Self, Abscissa, Section) }
     }
 
@@ -346,8 +346,8 @@ impl AdvancedEvolved {
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:47 - `BRepFill_AdvancedEvolved::Perform()`
     pub fn perform(
         &mut self,
-        theSpine: &crate::ffi::TopoDS_Wire,
-        theProfile: &crate::ffi::TopoDS_Wire,
+        theSpine: &crate::topo_ds::Wire,
+        theProfile: &crate::topo_ds::Wire,
         theTolerance: f64,
         theSolidReq: bool,
     ) {
@@ -374,7 +374,7 @@ impl AdvancedEvolved {
 
     /// **Source:** `BRepFill_AdvancedEvolved.hxx`:61 - `BRepFill_AdvancedEvolved::Shape()`
     /// returns the resulting shape.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_AdvancedEvolved_shape(self as *const Self)) }
     }
 
@@ -408,12 +408,12 @@ impl ApproxSeewing {
     }
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:38 - `BRepFill_ApproxSeewing::BRepFill_ApproxSeewing()`
-    pub fn new_multiline(ML: &crate::ffi::BRepFill_MultiLine) -> crate::OwnedPtr<Self> {
+    pub fn new_multiline(ML: &MultiLine) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ApproxSeewing_ctor_multiline(ML)) }
     }
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:40 - `BRepFill_ApproxSeewing::Perform()`
-    pub fn perform(&mut self, ML: &crate::ffi::BRepFill_MultiLine) {
+    pub fn perform(&mut self, ML: &MultiLine) {
         unsafe { crate::ffi::BRepFill_ApproxSeewing_perform(self as *mut Self, ML) }
     }
 
@@ -519,7 +519,7 @@ impl CompatibleWires {
     /// <SubSection> of a section.
     pub fn generated_shapes(
         &self,
-        SubSection: &crate::ffi::TopoDS_Edge,
+        SubSection: &crate::topo_ds::Edge,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFill_CompatibleWires_generated_shapes(
@@ -569,7 +569,7 @@ impl ComputeCLine {
     /// The approximation will be done from degreemin to degreemax
     /// with a cutting if the corresponding boolean is True.
     pub fn new_multiline_int2_real2_bool_constraint2(
-        Line: &crate::ffi::BRepFill_MultiLine,
+        Line: &MultiLine,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -622,7 +622,7 @@ impl ComputeCLine {
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:61 - `BRepFill_ComputeCLine::Perform()`
     /// runs the algorithm after having initialized the fields.
-    pub fn perform(&mut self, Line: &crate::ffi::BRepFill_MultiLine) {
+    pub fn perform(&mut self, Line: &MultiLine) {
         unsafe { crate::ffi::BRepFill_ComputeCLine_perform(self as *mut Self, Line) }
     }
 
@@ -719,7 +719,7 @@ impl ComputeCLine {
 
     /// **Source:** `BRepFill_ComputeCLine.hxx`:108 - `BRepFill_ComputeCLine::Value()`
     /// returns the approximation MultiCurve of range <Index>.
-    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::AppParCurves_MultiCurve> {
+    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ComputeCLine_value(
                 self as *const Self,
@@ -907,14 +907,14 @@ impl CurveConstraint {
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:114 - `GeomPlate_CurveConstraint::LPropSurf()`
-    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::ffi::GeomLProp_SLProps {
+    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::geom_l_prop::SLProps {
         unsafe {
             &mut *(crate::ffi::BRepFill_CurveConstraint_inherited_LPropSurf(self as *mut Self, U))
         }
     }
 
     /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:116 - `GeomPlate_CurveConstraint::D0()`
-    pub fn d0(&self, U: f64, P: &mut crate::ffi::gp_Pnt) {
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         unsafe { crate::ffi::BRepFill_CurveConstraint_inherited_D0(self as *const Self, U, P) }
     }
 
@@ -922,9 +922,9 @@ impl CurveConstraint {
     pub fn d1(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BRepFill_CurveConstraint_inherited_D1(self as *const Self, U, P, V1, V2)
@@ -935,12 +935,12 @@ impl CurveConstraint {
     pub fn d2(
         &self,
         U: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V1: &mut crate::ffi::gp_Vec,
-        V2: &mut crate::ffi::gp_Vec,
-        V3: &mut crate::ffi::gp_Vec,
-        V4: &mut crate::ffi::gp_Vec,
-        V5: &mut crate::ffi::gp_Vec,
+        P: &mut crate::gp::Pnt,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
+        V4: &mut crate::gp::Vec,
+        V5: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BRepFill_CurveConstraint_inherited_D2(
@@ -1027,8 +1027,8 @@ unsafe impl crate::CppDeletable for Draft {
 impl Draft {
     /// **Source:** `BRepFill_Draft.hxx`:41 - `BRepFill_Draft::BRepFill_Draft()`
     pub fn new_shape_dir_real(
-        Shape: &crate::ffi::TopoDS_Shape,
-        Dir: &crate::ffi::gp_Dir,
+        Shape: &crate::topo_ds::Shape,
+        Dir: &crate::gp::Dir,
         Angle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1081,7 +1081,7 @@ impl Draft {
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:56 - `BRepFill_Draft::Perform()`
-    pub fn perform_shape_bool(&mut self, StopShape: &crate::ffi::TopoDS_Shape, KeepOutSide: bool) {
+    pub fn perform_shape_bool(&mut self, StopShape: &crate::topo_ds::Shape, KeepOutSide: bool) {
         unsafe {
             crate::ffi::BRepFill_Draft_perform_shape_bool(self as *mut Self, StopShape, KeepOutSide)
         }
@@ -1096,19 +1096,19 @@ impl Draft {
     /// Returns the draft surface
     /// To have the complete shape
     /// you have to use the Shape() methode.
-    pub fn shell(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shell> {
+    pub fn shell(&self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Draft_shell(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:68 - `BRepFill_Draft::Generated()`
     /// Returns the  list   of shapes generated   from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFill_Draft_generated(self as *mut Self, S)) }
     }
 
     /// **Source:** `BRepFill_Draft.hxx`:70 - `BRepFill_Draft::Shape()`
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Draft_shape(self as *const Self)) }
     }
 }
@@ -1228,17 +1228,17 @@ impl DraftLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
-    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+    pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::BRepFill_DraftLaw_inherited_Wire(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
-    pub fn edge(&self, Index: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFill_DraftLaw_inherited_Edge(self as *const Self, Index)) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
-    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_DraftLaw_inherited_Vertex(
                 self as *const Self,
@@ -1251,9 +1251,9 @@ impl DraftLaw {
     pub fn perform_vertex(
         &self,
         Index: i32,
-        InputVertex: &crate::ffi::TopoDS_Vertex,
+        InputVertex: &crate::topo_ds::Vertex,
         TolMin: f64,
-        OutputVertex: &mut crate::ffi::TopoDS_Vertex,
+        OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
         unsafe {
@@ -1298,7 +1298,7 @@ impl DraftLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
-    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::ffi::TopoDS_Shape) {
+    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_DraftLaw_inherited_D0(self as *mut Self, Abscissa, Section) }
     }
 
@@ -1325,7 +1325,7 @@ unsafe impl crate::CppDeletable for Edge3DLaw {
 impl Edge3DLaw {
     /// **Source:** `BRepFill_Edge3DLaw.hxx`:35 - `BRepFill_Edge3DLaw::BRepFill_Edge3DLaw()`
     pub fn new_wire_handlegeomfilllocationlaw(
-        Path: &crate::ffi::TopoDS_Wire,
+        Path: &crate::topo_ds::Wire,
         Law: &crate::ffi::HandleGeomFillLocationLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1417,17 +1417,17 @@ impl Edge3DLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
-    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+    pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::BRepFill_Edge3DLaw_inherited_Wire(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
-    pub fn edge(&self, Index: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFill_Edge3DLaw_inherited_Edge(self as *const Self, Index)) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
-    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Edge3DLaw_inherited_Vertex(
                 self as *const Self,
@@ -1440,9 +1440,9 @@ impl Edge3DLaw {
     pub fn perform_vertex(
         &self,
         Index: i32,
-        InputVertex: &crate::ffi::TopoDS_Vertex,
+        InputVertex: &crate::topo_ds::Vertex,
         TolMin: f64,
-        OutputVertex: &mut crate::ffi::TopoDS_Vertex,
+        OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
         unsafe {
@@ -1487,7 +1487,7 @@ impl Edge3DLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
-    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::ffi::TopoDS_Shape) {
+    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_D0(self as *mut Self, Abscissa, Section) }
     }
 
@@ -1520,8 +1520,8 @@ impl EdgeFaceAndOrder {
 
     /// **Source:** `BRepFill_EdgeFaceAndOrder.hxx`:35 - `BRepFill_EdgeFaceAndOrder::BRepFill_EdgeFaceAndOrder()`
     pub fn new_edge_face_shape(
-        anEdge: &crate::ffi::TopoDS_Edge,
-        aFace: &crate::ffi::TopoDS_Face,
+        anEdge: &crate::topo_ds::Edge,
+        aFace: &crate::topo_ds::Face,
         anOrder: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1551,8 +1551,8 @@ unsafe impl crate::CppDeletable for EdgeOnSurfLaw {
 impl EdgeOnSurfLaw {
     /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:34 - `BRepFill_EdgeOnSurfLaw::BRepFill_EdgeOnSurfLaw()`
     pub fn new_wire_shape(
-        Path: &crate::ffi::TopoDS_Wire,
-        Surf: &crate::ffi::TopoDS_Shape,
+        Path: &crate::topo_ds::Wire,
+        Surf: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_EdgeOnSurfLaw_ctor_wire_shape(
@@ -1655,17 +1655,17 @@ impl EdgeOnSurfLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
-    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+    pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Wire(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
-    pub fn edge(&self, Index: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Edge(self as *const Self, Index)) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
-    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Vertex(
                 self as *const Self,
@@ -1678,9 +1678,9 @@ impl EdgeOnSurfLaw {
     pub fn perform_vertex(
         &self,
         Index: i32,
-        InputVertex: &crate::ffi::TopoDS_Vertex,
+        InputVertex: &crate::topo_ds::Vertex,
         TolMin: f64,
-        OutputVertex: &mut crate::ffi::TopoDS_Vertex,
+        OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
         unsafe {
@@ -1725,7 +1725,7 @@ impl EdgeOnSurfLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
-    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::ffi::TopoDS_Shape) {
+    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_D0(self as *mut Self, Abscissa, Section)
         }
@@ -1768,9 +1768,9 @@ impl Evolved {
     /// colinear to the normal to <Spine>, and its
     /// <XDirection> mixed with the tangent to <Spine>.
     pub fn new_wire2_ax3_jointype_bool(
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Wire,
-        AxeProf: &crate::ffi::gp_Ax3,
+        Spine: &crate::topo_ds::Wire,
+        Profile: &crate::topo_ds::Wire,
+        AxeProf: &crate::gp::Ax3,
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -1789,9 +1789,9 @@ impl Evolved {
     /// Creates an  evolved shape  by sweeping the <Profile>
     /// along the <Spine>
     pub fn new_face_wire_ax3_jointype_bool(
-        Spine: &crate::ffi::TopoDS_Face,
-        Profile: &crate::ffi::TopoDS_Wire,
-        AxeProf: &crate::ffi::gp_Ax3,
+        Spine: &crate::topo_ds::Face,
+        Profile: &crate::topo_ds::Wire,
+        AxeProf: &crate::gp::Ax3,
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -1816,9 +1816,9 @@ impl Evolved {
     /// colinear to the normal to <Spine>, and its
     /// <XDirection> mixed with the tangent to <Spine>.
     pub fn new_wire2_ax3_jointype(
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Wire,
-        AxeProf: &crate::ffi::gp_Ax3,
+        Spine: &crate::topo_ds::Wire,
+        Profile: &crate::topo_ds::Wire,
+        AxeProf: &crate::gp::Ax3,
         Join: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
         Self::new_wire2_ax3_jointype_bool(Spine, Profile, AxeProf, Join, false)
@@ -1828,9 +1828,9 @@ impl Evolved {
     /// Creates an  evolved shape  by sweeping the <Profile>
     /// along the <Spine>
     pub fn new_face_wire_ax3_jointype(
-        Spine: &crate::ffi::TopoDS_Face,
-        Profile: &crate::ffi::TopoDS_Wire,
-        AxeProf: &crate::ffi::gp_Ax3,
+        Spine: &crate::topo_ds::Face,
+        Profile: &crate::topo_ds::Wire,
+        AxeProf: &crate::gp::Ax3,
         Join: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
         Self::new_face_wire_ax3_jointype_bool(Spine, Profile, AxeProf, Join, false)
@@ -1841,9 +1841,9 @@ impl Evolved {
     /// along the <Spine>
     pub fn perform_wire2_ax3_jointype_bool(
         &mut self,
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Wire,
-        AxeProf: &crate::ffi::gp_Ax3,
+        Spine: &crate::topo_ds::Wire,
+        Profile: &crate::topo_ds::Wire,
+        AxeProf: &crate::gp::Ax3,
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) {
@@ -1864,9 +1864,9 @@ impl Evolved {
     /// along the <Spine>
     pub fn perform_face_wire_ax3_jointype_bool(
         &mut self,
-        Spine: &crate::ffi::TopoDS_Face,
-        Profile: &crate::ffi::TopoDS_Wire,
-        AxeProf: &crate::ffi::gp_Ax3,
+        Spine: &crate::topo_ds::Face,
+        Profile: &crate::topo_ds::Wire,
+        AxeProf: &crate::gp::Ax3,
         Join: crate::geom_abs::JoinType,
         Solid: bool,
     ) {
@@ -1889,7 +1889,7 @@ impl Evolved {
 
     /// **Source:** `BRepFill_Evolved.hxx`:86 - `BRepFill_Evolved::Shape()`
     /// returns the generated shape.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Evolved_shape(self as *const Self)) }
     }
 
@@ -1899,8 +1899,8 @@ impl Evolved {
     /// <ProfShape> on the profile.
     pub fn generated_shapes(
         &self,
-        SpineShape: &crate::ffi::TopoDS_Shape,
-        ProfShape: &crate::ffi::TopoDS_Shape,
+        SpineShape: &crate::topo_ds::Shape,
+        ProfShape: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFill_Evolved_generated_shapes(
@@ -1923,13 +1923,13 @@ impl Evolved {
 
     /// **Source:** `BRepFill_Evolved.hxx`:97 - `BRepFill_Evolved::Top()`
     /// Return the face Top if <Solid> is True in the constructor.
-    pub fn top(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn top(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Evolved_top(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:100 - `BRepFill_Evolved::Bottom()`
     /// Return the face Bottom  if <Solid> is True in the constructor.
-    pub fn bottom(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn bottom(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Evolved_bottom(self as *const Self)) }
     }
 }
@@ -1956,7 +1956,7 @@ impl FaceAndOrder {
 
     /// **Source:** `BRepFill_FaceAndOrder.hxx`:35 - `BRepFill_FaceAndOrder::BRepFill_FaceAndOrder()`
     pub fn new_face_shape(
-        aFace: &crate::ffi::TopoDS_Face,
+        aFace: &crate::topo_ds::Face,
         anOrder: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2286,7 +2286,7 @@ impl Filling {
     /// at each point of surface.
     /// If this condition breaks, distortions of resulting surface
     /// are possible.
-    pub fn load_init_surface(&mut self, aFace: &crate::ffi::TopoDS_Face) {
+    pub fn load_init_surface(&mut self, aFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepFill_Filling_load_init_surface(self as *mut Self, aFace) }
     }
 
@@ -2304,7 +2304,7 @@ impl Filling {
     /// with the first face of the edge.
     pub fn add_edge_shape_bool(
         &mut self,
-        anEdge: &crate::ffi::TopoDS_Edge,
+        anEdge: &crate::topo_ds::Edge,
         Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
@@ -2332,8 +2332,8 @@ impl Filling {
     /// with the given face.
     pub fn add_edge_face_shape_bool(
         &mut self,
-        anEdge: &crate::ffi::TopoDS_Edge,
-        Support: &crate::ffi::TopoDS_Face,
+        anEdge: &crate::topo_ds::Edge,
+        Support: &crate::topo_ds::Face,
         Order: crate::geom_abs::Shape,
         IsBound: bool,
     ) -> i32 {
@@ -2354,7 +2354,7 @@ impl Filling {
     /// It is always a bound.
     pub fn add_face_shape(
         &mut self,
-        Support: &crate::ffi::TopoDS_Face,
+        Support: &crate::topo_ds::Face,
         Order: crate::geom_abs::Shape,
     ) -> i32 {
         unsafe {
@@ -2364,7 +2364,7 @@ impl Filling {
 
     /// **Source:** `BRepFill_Filling.hxx`:163 - `BRepFill_Filling::Add()`
     /// Adds a punctual constraint
-    pub fn add_pnt(&mut self, Point: &crate::ffi::gp_Pnt) -> i32 {
+    pub fn add_pnt(&mut self, Point: &crate::gp::Pnt) -> i32 {
         unsafe { crate::ffi::BRepFill_Filling_add_pnt(self as *mut Self, Point) }
     }
 
@@ -2374,7 +2374,7 @@ impl Filling {
         &mut self,
         U: f64,
         V: f64,
-        Support: &crate::ffi::TopoDS_Face,
+        Support: &crate::topo_ds::Face,
         Order: crate::geom_abs::Shape,
     ) -> i32 {
         unsafe {
@@ -2400,14 +2400,14 @@ impl Filling {
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:176 - `BRepFill_Filling::Face()`
-    pub fn face(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+    pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Filling_face(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Filling.hxx`:180 - `BRepFill_Filling::Generated()`
     /// Returns the list of shapes generated from the
     /// shape <S>.
-    pub fn generated(&mut self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generated(&mut self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::BRepFill_Filling_generated(self as *mut Self, S)) }
     }
 
@@ -2466,7 +2466,7 @@ impl Generator {
     }
 
     /// **Source:** `BRepFill_Generator.hxx`:44 - `BRepFill_Generator::AddWire()`
-    pub fn add_wire(&mut self, Wire: &crate::ffi::TopoDS_Wire) {
+    pub fn add_wire(&mut self, Wire: &crate::topo_ds::Wire) {
         unsafe { crate::ffi::BRepFill_Generator_add_wire(self as *mut Self, Wire) }
     }
 
@@ -2477,7 +2477,7 @@ impl Generator {
     }
 
     /// **Source:** `BRepFill_Generator.hxx`:49 - `BRepFill_Generator::Shell()`
-    pub fn shell(&self) -> &crate::ffi::TopoDS_Shell {
+    pub fn shell(&self) -> &crate::topo_ds::Shell {
         unsafe { &*(crate::ffi::BRepFill_Generator_shell(self as *const Self)) }
     }
 
@@ -2492,7 +2492,7 @@ impl Generator {
     /// <SSection>  of a  section.
     pub fn generated_shapes(
         &self,
-        SSection: &crate::ffi::TopoDS_Shape,
+        SSection: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFill_Generator_generated_shapes(self as *const Self, SSection))
@@ -2504,8 +2504,8 @@ impl Generator {
     /// If shape is not changed (replaced) during operation => returns the same shape
     pub fn result_shape(
         &self,
-        theShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Generator_result_shape(
                 self as *const Self,
@@ -2624,21 +2624,21 @@ impl LocationLaw {
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
     /// return the path
-    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+    pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::BRepFill_LocationLaw_wire(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
     /// Return the Edge of rank <Index> in the path
     /// <Index> have to be in [1, NbLaw()]
-    pub fn edge(&self, Index: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFill_LocationLaw_edge(self as *const Self, Index)) }
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
     /// Return the vertex of rank <Index> in the path
     /// <Index> have to be in [0, NbLaw()]
-    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_LocationLaw_vertex(
                 self as *const Self,
@@ -2659,9 +2659,9 @@ impl LocationLaw {
     pub fn perform_vertex(
         &self,
         Index: i32,
-        InputVertex: &crate::ffi::TopoDS_Vertex,
+        InputVertex: &crate::topo_ds::Vertex,
         TolMin: f64,
-        OutputVertex: &mut crate::ffi::TopoDS_Vertex,
+        OutputVertex: &mut crate::topo_ds::Vertex,
         Location: i32,
     ) {
         unsafe {
@@ -2713,7 +2713,7 @@ impl LocationLaw {
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
     /// Apply the Law to a shape, for a given Curvilinear abscissa
-    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::ffi::TopoDS_Shape) {
+    pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_LocationLaw_d0(self as *mut Self, Abscissa, Section) }
     }
 
@@ -2803,10 +2803,10 @@ impl MultiLine {
 
     /// **Source:** `BRepFill_MultiLine.hxx`:54 - `BRepFill_MultiLine::BRepFill_MultiLine()`
     pub fn new_face2_edge2_bool2_handlegeom2dcurve(
-        Face1: &crate::ffi::TopoDS_Face,
-        Face2: &crate::ffi::TopoDS_Face,
-        Edge1: &crate::ffi::TopoDS_Edge,
-        Edge2: &crate::ffi::TopoDS_Edge,
+        Face1: &crate::topo_ds::Face,
+        Face2: &crate::topo_ds::Face,
+        Edge1: &crate::topo_ds::Edge,
+        Edge2: &crate::topo_ds::Edge,
         Inv1: bool,
         Inv2: bool,
         Bissec: &crate::ffi::HandleGeom2dCurve,
@@ -2867,7 +2867,7 @@ impl MultiLine {
 
     /// **Source:** `BRepFill_MultiLine.hxx`:83 - `BRepFill_MultiLine::Value()`
     /// Returns the current point on the 3d curve
-    pub fn value_real(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value_real(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_MultiLine_value_real(
                 self as *const Self,
@@ -2879,7 +2879,7 @@ impl MultiLine {
     /// **Source:** `BRepFill_MultiLine.hxx`:87 - `BRepFill_MultiLine::ValueOnF1()`
     /// returns the current point on the PCurve of the
     /// first face
-    pub fn value_on_f1(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn value_on_f1(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_MultiLine_value_on_f1(
                 self as *const Self,
@@ -2891,7 +2891,7 @@ impl MultiLine {
     /// **Source:** `BRepFill_MultiLine.hxx`:91 - `BRepFill_MultiLine::ValueOnF2()`
     /// returns the current point on the PCurve of the
     /// first face
-    pub fn value_on_f2(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn value_on_f2(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_MultiLine_value_on_f2(
                 self as *const Self,
@@ -2904,9 +2904,9 @@ impl MultiLine {
     pub fn value3d_on_f1_on_f2(
         &self,
         U: f64,
-        P3d: &mut crate::ffi::gp_Pnt,
-        PF1: &mut crate::ffi::gp_Pnt2d,
-        PF2: &mut crate::ffi::gp_Pnt2d,
+        P3d: &mut crate::gp::Pnt,
+        PF1: &mut crate::gp::Pnt2d,
+        PF2: &mut crate::gp::Pnt2d,
     ) {
         unsafe {
             crate::ffi::BRepFill_MultiLine_value3d_on_f1_on_f2(
@@ -3084,7 +3084,7 @@ impl NSections {
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:72 - `BRepFill_NSections::Vertex()`
-    pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_NSections_vertex(
                 self as *const Self,
@@ -3095,7 +3095,7 @@ impl NSections {
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:75 - `BRepFill_NSections::D0()`
-    pub fn d0(&mut self, Param: f64, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn d0(&mut self, Param: f64, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_NSections_d0(self as *mut Self, Param, S) }
     }
 
@@ -3141,7 +3141,7 @@ impl NSections {
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
-    pub fn index_of_edge(&self, anEdge: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::BRepFill_NSections_inherited_IndexOfEdge(self as *const Self, anEdge) }
     }
 
@@ -3161,7 +3161,7 @@ impl NSections {
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
-    pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_NSections_inherited_CurrentEdge(
                 self as *mut Self,
@@ -3192,14 +3192,14 @@ impl OffsetAncestors {
     }
 
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:39 - `BRepFill_OffsetAncestors::BRepFill_OffsetAncestors()`
-    pub fn new_offsetwire(Paral: &mut crate::ffi::BRepFill_OffsetWire) -> crate::OwnedPtr<Self> {
+    pub fn new_offsetwire(Paral: &mut OffsetWire) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_OffsetAncestors_ctor_offsetwire(Paral))
         }
     }
 
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:41 - `BRepFill_OffsetAncestors::Perform()`
-    pub fn perform(&mut self, Paral: &mut crate::ffi::BRepFill_OffsetWire) {
+    pub fn perform(&mut self, Paral: &mut OffsetWire) {
         unsafe { crate::ffi::BRepFill_OffsetAncestors_perform(self as *mut Self, Paral) }
     }
 
@@ -3209,7 +3209,7 @@ impl OffsetAncestors {
     }
 
     /// **Source:** `BRepFill_OffsetAncestors.hxx`:45 - `BRepFill_OffsetAncestors::HasAncestor()`
-    pub fn has_ancestor(&self, S1: &crate::ffi::TopoDS_Edge) -> bool {
+    pub fn has_ancestor(&self, S1: &crate::topo_ds::Edge) -> bool {
         unsafe { crate::ffi::BRepFill_OffsetAncestors_has_ancestor(self as *const Self, S1) }
     }
 
@@ -3217,7 +3217,7 @@ impl OffsetAncestors {
     /// may return a Null Shape if S1 is not a subShape
     /// of <Paral>;
     /// if Perform is not done.
-    pub fn ancestor(&self, S1: &crate::ffi::TopoDS_Edge) -> &crate::ffi::TopoDS_Shape {
+    pub fn ancestor(&self, S1: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_OffsetAncestors_ancestor(self as *const Self, S1)) }
     }
 }
@@ -3255,7 +3255,7 @@ impl OffsetWire {
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:55 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
     pub fn new_face_jointype_bool(
-        Spine: &crate::ffi::TopoDS_Face,
+        Spine: &crate::topo_ds::Face,
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -3270,7 +3270,7 @@ impl OffsetWire {
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:55 - `BRepFill_OffsetWire::BRepFill_OffsetWire()`
     pub fn new_face_jointype(
-        Spine: &crate::ffi::TopoDS_Face,
+        Spine: &crate::topo_ds::Face,
         Join: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
         Self::new_face_jointype_bool(Spine, Join, false)
@@ -3280,7 +3280,7 @@ impl OffsetWire {
     /// Initialize the evaluation of Offsetting.
     pub fn init(
         &mut self,
-        Spine: &crate::ffi::TopoDS_Face,
+        Spine: &crate::topo_ds::Face,
         Join: crate::geom_abs::JoinType,
         IsOpenResult: bool,
     ) {
@@ -3306,10 +3306,10 @@ impl OffsetWire {
     /// Performs an  OffsetWire
     pub fn perform_with_bi_lo(
         &mut self,
-        WSP: &crate::ffi::TopoDS_Face,
+        WSP: &crate::topo_ds::Face,
         Offset: f64,
-        Locus: &crate::ffi::BRepMAT2d_BisectingLocus,
-        Link: &mut crate::ffi::BRepMAT2d_LinkTopoBilo,
+        Locus: &crate::b_rep_mat2d::BisectingLocus,
+        Link: &mut crate::b_rep_mat2d::LinkTopoBilo,
         Join: crate::geom_abs::JoinType,
         Alt: f64,
     ) {
@@ -3332,13 +3332,13 @@ impl OffsetWire {
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:79 - `BRepFill_OffsetWire::Spine()`
-    pub fn spine(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn spine(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepFill_OffsetWire_spine(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:82 - `BRepFill_OffsetWire::Shape()`
     /// returns the generated shape.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_OffsetWire_shape(self as *const Self)) }
     }
 
@@ -3348,7 +3348,7 @@ impl OffsetWire {
     /// Returns the last computed Offset.
     pub fn generated_shapes(
         &mut self,
-        SpineShape: &crate::ffi::TopoDS_Shape,
+        SpineShape: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::BRepFill_OffsetWire_generated_shapes(self as *mut Self, SpineShape))
@@ -3393,8 +3393,8 @@ impl Pipe {
 
     /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron_bool2(
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Shape,
+        Spine: &crate::topo_ds::Wire,
+        Profile: &crate::topo_ds::Shape,
         aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
         GeneratePartCase: bool,
@@ -3412,8 +3412,8 @@ impl Pipe {
 
     /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron_bool(
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Shape,
+        Spine: &crate::topo_ds::Wire,
+        Profile: &crate::topo_ds::Shape,
         aMode: crate::geom_fill::Trihedron,
         ForceApproxC1: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -3422,8 +3422,8 @@ impl Pipe {
 
     /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron(
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Shape,
+        Spine: &crate::topo_ds::Wire,
+        Profile: &crate::topo_ds::Shape,
         aMode: crate::geom_fill::Trihedron,
     ) -> crate::OwnedPtr<Self> {
         Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, false, false)
@@ -3432,8 +3432,8 @@ impl Pipe {
     /// **Source:** `BRepFill_Pipe.hxx`:59 - `BRepFill_Pipe::Perform()`
     pub fn perform(
         &mut self,
-        Spine: &crate::ffi::TopoDS_Wire,
-        Profile: &crate::ffi::TopoDS_Shape,
+        Spine: &crate::topo_ds::Wire,
+        Profile: &crate::topo_ds::Shape,
         GeneratePartCase: bool,
     ) {
         unsafe {
@@ -3442,17 +3442,17 @@ impl Pipe {
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:63 - `BRepFill_Pipe::Spine()`
-    pub fn spine(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn spine(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_spine(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:65 - `BRepFill_Pipe::Profile()`
-    pub fn profile(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn profile(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_profile(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:67 - `BRepFill_Pipe::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_shape(self as *const Self)) }
     }
 
@@ -3462,12 +3462,12 @@ impl Pipe {
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:71 - `BRepFill_Pipe::FirstShape()`
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_first_shape(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Pipe.hxx`:73 - `BRepFill_Pipe::LastShape()`
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Pipe_last_shape(self as *const Self)) }
     }
 
@@ -3476,7 +3476,7 @@ impl Pipe {
     /// shape <S>.
     pub fn generated(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         unsafe { crate::ffi::BRepFill_Pipe_generated(self as *mut Self, S, L) }
@@ -3488,9 +3488,9 @@ impl Pipe {
     /// if the edges are not in the spine or the profile
     pub fn face(
         &mut self,
-        ESpine: &crate::ffi::TopoDS_Edge,
-        EProfile: &crate::ffi::TopoDS_Edge,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Face> {
+        ESpine: &crate::topo_ds::Edge,
+        EProfile: &crate::topo_ds::Edge,
+    ) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_face(
                 self as *mut Self,
@@ -3507,9 +3507,9 @@ impl Pipe {
     /// the profile.
     pub fn edge(
         &mut self,
-        ESpine: &crate::ffi::TopoDS_Edge,
-        VProfile: &crate::ffi::TopoDS_Vertex,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+        ESpine: &crate::topo_ds::Edge,
+        VProfile: &crate::topo_ds::Vertex,
+    ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_edge(
                 self as *mut Self,
@@ -3525,8 +3525,8 @@ impl Pipe {
     /// if the vertex is not in the Spine
     pub fn section(
         &self,
-        VSpine: &crate::ffi::TopoDS_Vertex,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        VSpine: &crate::topo_ds::Vertex,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_section(
                 self as *const Self,
@@ -3538,10 +3538,7 @@ impl Pipe {
     /// **Source:** `BRepFill_Pipe.hxx`:97 - `BRepFill_Pipe::PipeLine()`
     /// Create a Wire by sweeping the Point along the <spine>
     /// if the <Spine> is undefined
-    pub fn pipe_line(
-        &mut self,
-        Point: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    pub fn pipe_line(&mut self, Point: &crate::gp::Pnt) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Pipe_pipe_line(self as *mut Self, Point))
         }
@@ -3568,7 +3565,7 @@ impl PipeShell {
     /// **Source:** `BRepFill_PipeShell.hxx`:58 - `BRepFill_PipeShell::BRepFill_PipeShell()`
     /// Set an sweep's mode
     /// If no mode are set, the mode used in MakePipe is used
-    pub fn new_wire(Spine: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+    pub fn new_wire(Spine: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_PipeShell_ctor_wire(Spine)) }
     }
 
@@ -3589,14 +3586,14 @@ impl PipeShell {
     /// **Source:** `BRepFill_PipeShell.hxx`:70 - `BRepFill_PipeShell::Set()`
     /// Set  an  fixed  trihedron  to  perform  the  sweeping
     /// all sections will be parallel.
-    pub fn set_ax2(&mut self, Axe: &crate::ffi::gp_Ax2) {
+    pub fn set_ax2(&mut self, Axe: &crate::gp::Ax2) {
         unsafe { crate::ffi::BRepFill_PipeShell_set_ax2(self as *mut Self, Axe) }
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:74 - `BRepFill_PipeShell::Set()`
     /// Set an fixed  BiNormal  direction to  perform
     /// the sweeping
-    pub fn set_dir(&mut self, BiNormal: &crate::ffi::gp_Dir) {
+    pub fn set_dir(&mut self, BiNormal: &crate::gp::Dir) {
         unsafe { crate::ffi::BRepFill_PipeShell_set_dir(self as *mut Self, BiNormal) }
     }
 
@@ -3605,7 +3602,7 @@ impl PipeShell {
     /// at   the spine, like    the  normal the surfaces.
     /// Warning: To  be  effective,  Each  edge  of  the  <spine>  must
     /// have an  representation  on   one   face  of<SpineSupport>
-    pub fn set_shape(&mut self, SpineSupport: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn set_shape(&mut self, SpineSupport: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::BRepFill_PipeShell_set_shape(self as *mut Self, SpineSupport) }
     }
 
@@ -3632,7 +3629,7 @@ impl PipeShell {
     /// along the path.
     pub fn set_wire_bool_typeofcontact(
         &mut self,
-        AuxiliarySpine: &crate::ffi::TopoDS_Wire,
+        AuxiliarySpine: &crate::topo_ds::Wire,
         CurvilinearEquivalence: bool,
         KeepContact: crate::b_rep_fill::TypeOfContact,
     ) {
@@ -3682,7 +3679,7 @@ impl PipeShell {
     /// Set an section. The correspondence with the spine, will be automatically performed.
     pub fn add_shape_bool2(
         &mut self,
-        Profile: &crate::ffi::TopoDS_Shape,
+        Profile: &crate::topo_ds::Shape,
         WithContact: bool,
         WithCorrection: bool,
     ) {
@@ -3700,8 +3697,8 @@ impl PipeShell {
     /// Set an section. The correspondence with the spine, is given by Location.
     pub fn add_shape_vertex_bool2(
         &mut self,
-        Profile: &crate::ffi::TopoDS_Shape,
-        Location: &crate::ffi::TopoDS_Vertex,
+        Profile: &crate::topo_ds::Shape,
+        Location: &crate::topo_ds::Vertex,
         WithContact: bool,
         WithCorrection: bool,
     ) {
@@ -3721,7 +3718,7 @@ impl PipeShell {
     /// The  homotetie's  centers  is  given  by  point  on  the  <Spine>.
     pub fn set_law_shape_handlelawfunction_bool2(
         &mut self,
-        Profile: &crate::ffi::TopoDS_Shape,
+        Profile: &crate::topo_ds::Shape,
         L: &crate::ffi::HandleLawFunction,
         WithContact: bool,
         WithCorrection: bool,
@@ -3742,9 +3739,9 @@ impl PipeShell {
     /// The  homotetie  center  is  given  by  point  on  the  <Spine>
     pub fn set_law_shape_handlelawfunction_vertex_bool2(
         &mut self,
-        Profile: &crate::ffi::TopoDS_Shape,
+        Profile: &crate::topo_ds::Shape,
         L: &crate::ffi::HandleLawFunction,
-        Location: &crate::ffi::TopoDS_Vertex,
+        Location: &crate::topo_ds::Vertex,
         WithContact: bool,
         WithCorrection: bool,
     ) {
@@ -3762,7 +3759,7 @@ impl PipeShell {
 
     /// **Source:** `BRepFill_PipeShell.hxx`:152 - `BRepFill_PipeShell::DeleteProfile()`
     /// Delete an section.
-    pub fn delete_profile(&mut self, Profile: &crate::ffi::TopoDS_Shape) {
+    pub fn delete_profile(&mut self, Profile: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_PipeShell_delete_profile(self as *mut Self, Profile) }
     }
 
@@ -3843,7 +3840,7 @@ impl PipeShell {
 
     /// **Source:** `BRepFill_PipeShell.hxx`:184 - `BRepFill_PipeShell::Shape()`
     /// Returns the result Shape.
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_shape(self as *const Self)) }
     }
 
@@ -3854,13 +3851,13 @@ impl PipeShell {
 
     /// **Source:** `BRepFill_PipeShell.hxx`:189 - `BRepFill_PipeShell::FirstShape()`
     /// Returns the  TopoDS  Shape of the bottom of the sweep.
-    pub fn first_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_first_shape(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_PipeShell.hxx`:192 - `BRepFill_PipeShell::LastShape()`
     /// Returns the TopoDS Shape of the top of the sweep.
-    pub fn last_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_last_shape(self as *const Self)) }
     }
 
@@ -3872,7 +3869,7 @@ impl PipeShell {
 
     /// **Source:** `BRepFill_PipeShell.hxx`:202 - `BRepFill_PipeShell::Spine()`
     /// Returns the spine
-    pub fn spine(&mut self) -> &crate::ffi::TopoDS_Wire {
+    pub fn spine(&mut self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::BRepFill_PipeShell_spine(self as *mut Self)) }
     }
 
@@ -3881,7 +3878,7 @@ impl PipeShell {
     /// shape <S>.
     pub fn generated(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         L: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         unsafe { crate::ffi::BRepFill_PipeShell_generated(self as *mut Self, S, L) }
@@ -3958,8 +3955,8 @@ impl Section {
 
     /// **Source:** `BRepFill_Section.hxx`:34 - `BRepFill_Section::BRepFill_Section()`
     pub fn new_shape_vertex_bool2(
-        Profile: &crate::ffi::TopoDS_Shape,
-        V: &crate::ffi::TopoDS_Vertex,
+        Profile: &crate::topo_ds::Shape,
+        V: &crate::topo_ds::Vertex,
         WithContact: bool,
         WithCorrection: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -3979,25 +3976,25 @@ impl Section {
     }
 
     /// **Source:** `BRepFill_Section.hxx`:41 - `BRepFill_Section::OriginalShape()`
-    pub fn original_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn original_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepFill_Section_original_shape(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Section.hxx`:43 - `BRepFill_Section::Wire()`
-    pub fn wire(&self) -> &crate::ffi::TopoDS_Wire {
+    pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe { &*(crate::ffi::BRepFill_Section_wire(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Section.hxx`:45 - `BRepFill_Section::Vertex()`
-    pub fn vertex(&self) -> &crate::ffi::TopoDS_Vertex {
+    pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe { &*(crate::ffi::BRepFill_Section_vertex(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_Section.hxx`:47 - `BRepFill_Section::ModifiedShape()`
     pub fn modified_shape(
         &self,
-        theShape: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        theShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Section_modified_shape(
                 self as *const Self,
@@ -4053,7 +4050,7 @@ impl SectionLaw {
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
-    pub fn index_of_edge(&self, anEdge: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::BRepFill_SectionLaw_index_of_edge(self as *const Self, anEdge) }
     }
 
@@ -4110,7 +4107,7 @@ impl SectionLaw {
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:68 - `BRepFill_SectionLaw::Vertex()`
-    pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_SectionLaw_vertex(
                 self as *const Self,
@@ -4121,17 +4118,17 @@ impl SectionLaw {
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:71 - `BRepFill_SectionLaw::D0()`
-    pub fn d0(&mut self, U: f64, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn d0(&mut self, U: f64, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_SectionLaw_d0(self as *mut Self, U, S) }
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:73 - `BRepFill_SectionLaw::Init()`
-    pub fn init(&mut self, W: &crate::ffi::TopoDS_Wire) {
+    pub fn init(&mut self, W: &crate::topo_ds::Wire) {
         unsafe { crate::ffi::BRepFill_SectionLaw_init(self as *mut Self, W) }
     }
 
     /// **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
-    pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_SectionLaw_current_edge(
                 self as *mut Self,
@@ -4198,7 +4195,7 @@ impl SectionPlacement {
     /// Automatic placement
     pub fn new_handlebrepfilllocationlaw_shape_bool2(
         Law: &crate::ffi::HandleBRepFillLocationLaw,
-        Section: &crate::ffi::TopoDS_Shape,
+        Section: &crate::topo_ds::Shape,
         WithContact: bool,
         WithCorrection: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -4218,8 +4215,8 @@ impl SectionPlacement {
     /// Placement on vertex
     pub fn new_handlebrepfilllocationlaw_shape2_bool2(
         Law: &crate::ffi::HandleBRepFillLocationLaw,
-        Section: &crate::ffi::TopoDS_Shape,
-        Vertex: &crate::ffi::TopoDS_Shape,
+        Section: &crate::topo_ds::Shape,
+        Vertex: &crate::topo_ds::Shape,
         WithContact: bool,
         WithCorrection: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -4240,7 +4237,7 @@ impl SectionPlacement {
     /// Automatic placement
     pub fn new_handlebrepfilllocationlaw_shape_bool(
         Law: &crate::ffi::HandleBRepFillLocationLaw,
-        Section: &crate::ffi::TopoDS_Shape,
+        Section: &crate::topo_ds::Shape,
         WithContact: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlebrepfilllocationlaw_shape_bool2(Law, Section, WithContact, false)
@@ -4250,7 +4247,7 @@ impl SectionPlacement {
     /// Automatic placement
     pub fn new_handlebrepfilllocationlaw_shape(
         Law: &crate::ffi::HandleBRepFillLocationLaw,
-        Section: &crate::ffi::TopoDS_Shape,
+        Section: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlebrepfilllocationlaw_shape_bool2(Law, Section, false, false)
     }
@@ -4259,8 +4256,8 @@ impl SectionPlacement {
     /// Placement on vertex
     pub fn new_handlebrepfilllocationlaw_shape2_bool(
         Law: &crate::ffi::HandleBRepFillLocationLaw,
-        Section: &crate::ffi::TopoDS_Shape,
-        Vertex: &crate::ffi::TopoDS_Shape,
+        Section: &crate::topo_ds::Shape,
+        Vertex: &crate::topo_ds::Shape,
         WithContact: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlebrepfilllocationlaw_shape2_bool2(Law, Section, Vertex, WithContact, false)
@@ -4270,14 +4267,14 @@ impl SectionPlacement {
     /// Placement on vertex
     pub fn new_handlebrepfilllocationlaw_shape2(
         Law: &crate::ffi::HandleBRepFillLocationLaw,
-        Section: &crate::ffi::TopoDS_Shape,
-        Vertex: &crate::ffi::TopoDS_Shape,
+        Section: &crate::topo_ds::Shape,
+        Vertex: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlebrepfilllocationlaw_shape2_bool2(Law, Section, Vertex, false, false)
     }
 
     /// **Source:** `BRepFill_SectionPlacement.hxx`:48 - `BRepFill_SectionPlacement::Transformation()`
-    pub fn transformation(&self) -> &crate::ffi::gp_Trsf {
+    pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe { &*(crate::ffi::BRepFill_SectionPlacement_transformation(self as *const Self)) }
     }
 
@@ -4304,7 +4301,7 @@ unsafe impl crate::CppDeletable for ShapeLaw {
 impl ShapeLaw {
     /// **Source:** `BRepFill_ShapeLaw.hxx`:43 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
-    pub fn new_vertex_bool(V: &crate::ffi::TopoDS_Vertex, Build: bool) -> crate::OwnedPtr<Self> {
+    pub fn new_vertex_bool(V: &crate::topo_ds::Vertex, Build: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ShapeLaw_ctor_vertex_bool(V, Build))
         }
@@ -4312,14 +4309,14 @@ impl ShapeLaw {
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:47 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
-    pub fn new_wire_bool(W: &crate::ffi::TopoDS_Wire, Build: bool) -> crate::OwnedPtr<Self> {
+    pub fn new_wire_bool(W: &crate::topo_ds::Wire, Build: bool) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ShapeLaw_ctor_wire_bool(W, Build)) }
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:51 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an evolutive Law
     pub fn new_wire_handlelawfunction_bool(
-        W: &crate::ffi::TopoDS_Wire,
+        W: &crate::topo_ds::Wire,
         L: &crate::ffi::HandleLawFunction,
         Build: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -4332,20 +4329,20 @@ impl ShapeLaw {
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:43 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
-    pub fn new_vertex(V: &crate::ffi::TopoDS_Vertex) -> crate::OwnedPtr<Self> {
+    pub fn new_vertex(V: &crate::topo_ds::Vertex) -> crate::OwnedPtr<Self> {
         Self::new_vertex_bool(V, true)
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:47 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
-    pub fn new_wire(W: &crate::ffi::TopoDS_Wire) -> crate::OwnedPtr<Self> {
+    pub fn new_wire(W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         Self::new_wire_bool(W, true)
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:51 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an evolutive Law
     pub fn new_wire_handlelawfunction(
-        W: &crate::ffi::TopoDS_Wire,
+        W: &crate::topo_ds::Wire,
         L: &crate::ffi::HandleLawFunction,
     ) -> crate::OwnedPtr<Self> {
         Self::new_wire_handlelawfunction_bool(W, L, true)
@@ -4391,7 +4388,7 @@ impl ShapeLaw {
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:72 - `BRepFill_ShapeLaw::Vertex()`
-    pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::ffi::TopoDS_Vertex> {
+    pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ShapeLaw_vertex(
                 self as *const Self,
@@ -4402,12 +4399,12 @@ impl ShapeLaw {
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:75 - `BRepFill_ShapeLaw::D0()`
-    pub fn d0(&mut self, Param: f64, S: &mut crate::ffi::TopoDS_Shape) {
+    pub fn d0(&mut self, Param: f64, S: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_ShapeLaw_d0(self as *mut Self, Param, S) }
     }
 
     /// **Source:** `BRepFill_ShapeLaw.hxx`:77 - `BRepFill_ShapeLaw::Edge()`
-    pub fn edge(&self, Index: i32) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepFill_ShapeLaw_edge(self as *const Self, Index)) }
     }
 
@@ -4453,7 +4450,7 @@ impl ShapeLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
-    pub fn index_of_edge(&self, anEdge: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_IndexOfEdge(self as *const Self, anEdge) }
     }
 
@@ -4473,7 +4470,7 @@ impl ShapeLaw {
     }
 
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
-    pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Edge> {
+    pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ShapeLaw_inherited_CurrentEdge(
                 self as *mut Self,
@@ -4513,8 +4510,8 @@ impl Sweep {
     /// **Source:** `BRepFill_Sweep.hxx`:50 - `BRepFill_Sweep::SetBounds()`
     pub fn set_bounds(
         &mut self,
-        FirstShape: &crate::ffi::TopoDS_Wire,
-        LastShape: &crate::ffi::TopoDS_Wire,
+        FirstShape: &crate::topo_ds::Wire,
+        LastShape: &crate::topo_ds::Wire,
     ) {
         unsafe { crate::ffi::BRepFill_Sweep_set_bounds(self as *mut Self, FirstShape, LastShape) }
     }
@@ -4609,7 +4606,7 @@ impl Sweep {
 
     /// **Source:** `BRepFill_Sweep.hxx`:105 - `BRepFill_Sweep::Shape()`
     /// returns the Sweeping Shape
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Sweep_shape(self as *const Self)) }
     }
 
@@ -4642,7 +4639,7 @@ impl Sweep {
 
     /// **Source:** `BRepFill_Sweep.hxx`:117 - `BRepFill_Sweep::Tape()`
     /// returns the Tape corresponding to Index-th edge of section
-    pub fn tape(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn tape(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Sweep_tape(self as *const Self, Index))
         }
@@ -4671,7 +4668,7 @@ impl TrimEdgeTool {
 
     /// **Source:** `BRepFill_TrimEdgeTool.hxx`:43 - `BRepFill_TrimEdgeTool::BRepFill_TrimEdgeTool()`
     pub fn new_bisec_handlegeom2dgeometry2_real(
-        Bisec: &crate::ffi::Bisector_Bisec,
+        Bisec: &crate::bisector::Bisec,
         S1: &crate::ffi::HandleGeom2dGeometry,
         S2: &crate::ffi::HandleGeom2dGeometry,
         Offset: f64,
@@ -4688,12 +4685,12 @@ impl TrimEdgeTool {
     /// **Source:** `BRepFill_TrimEdgeTool.hxx`:48 - `BRepFill_TrimEdgeTool::IntersectWith()`
     pub fn intersect_with(
         &mut self,
-        Edge1: &crate::ffi::TopoDS_Edge,
-        Edge2: &crate::ffi::TopoDS_Edge,
-        InitShape1: &crate::ffi::TopoDS_Shape,
-        InitShape2: &crate::ffi::TopoDS_Shape,
-        End1: &crate::ffi::TopoDS_Vertex,
-        End2: &crate::ffi::TopoDS_Vertex,
+        Edge1: &crate::topo_ds::Edge,
+        Edge2: &crate::topo_ds::Edge,
+        InitShape1: &crate::topo_ds::Shape,
+        InitShape2: &crate::topo_ds::Shape,
+        End1: &crate::topo_ds::Vertex,
+        End2: &crate::topo_ds::Vertex,
         theJoinType: crate::geom_abs::JoinType,
         IsOpenResult: bool,
         Params: &mut crate::ffi::TColgp_SequenceOfPnt,
@@ -4718,8 +4715,8 @@ impl TrimEdgeTool {
     pub fn add_or_confuse(
         &self,
         Start: bool,
-        Edge1: &crate::ffi::TopoDS_Edge,
-        Edge2: &crate::ffi::TopoDS_Edge,
+        Edge1: &crate::topo_ds::Edge,
+        Edge2: &crate::topo_ds::Edge,
         Params: &mut crate::ffi::TColgp_SequenceOfPnt,
     ) {
         unsafe {
@@ -4734,7 +4731,7 @@ impl TrimEdgeTool {
     }
 
     /// **Source:** `BRepFill_TrimEdgeTool.hxx`:63 - `BRepFill_TrimEdgeTool::IsInside()`
-    pub fn is_inside(&self, P: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn is_inside(&self, P: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::BRepFill_TrimEdgeTool_is_inside(self as *const Self, P) }
     }
 }
@@ -4764,8 +4761,8 @@ impl TrimShellCorner {
     pub fn new_handletoptoolsharray2ofshape_transitionstyle_ax2_vec(
         theFaces: &crate::ffi::HandleTopToolsHArray2OfShape,
         theTransition: crate::b_rep_fill::TransitionStyle,
-        theAxeOfBisPlane: &crate::ffi::gp_Ax2,
-        theIntPointCrossDir: &crate::ffi::gp_Vec,
+        theAxeOfBisPlane: &crate::gp::Ax2,
+        theIntPointCrossDir: &crate::gp::Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_TrimShellCorner_ctor_handletoptoolsharray2ofshape_transitionstyle_ax2_vec(theFaces, theTransition.into(), theAxeOfBisPlane, theIntPointCrossDir))
@@ -4811,7 +4808,7 @@ impl TrimShellCorner {
     /// **Source:** `BRepFill_TrimShellCorner.hxx`:62 - `BRepFill_TrimShellCorner::Modified()`
     pub fn modified(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         theModified: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         unsafe { crate::ffi::BRepFill_TrimShellCorner_modified(self as *mut Self, S, theModified) }
@@ -4837,10 +4834,10 @@ impl TrimSurfaceTool {
     /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:39 - `BRepFill_TrimSurfaceTool::BRepFill_TrimSurfaceTool()`
     pub fn new_handlegeom2dcurve_face2_edge2_bool2(
         Bis: &crate::ffi::HandleGeom2dCurve,
-        Face1: &crate::ffi::TopoDS_Face,
-        Face2: &crate::ffi::TopoDS_Face,
-        Edge1: &crate::ffi::TopoDS_Edge,
-        Edge2: &crate::ffi::TopoDS_Edge,
+        Face1: &crate::topo_ds::Face,
+        Face2: &crate::topo_ds::Face,
+        Edge1: &crate::topo_ds::Edge,
+        Edge2: &crate::topo_ds::Edge,
         Inv1: bool,
         Inv2: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -4863,8 +4860,8 @@ impl TrimSurfaceTool {
     /// raises if <Edge> is not a edge of Face1 or Face2.
     pub fn intersect_with(
         &self,
-        EdgeOnF1: &crate::ffi::TopoDS_Edge,
-        EdgeOnF2: &crate::ffi::TopoDS_Edge,
+        EdgeOnF1: &crate::topo_ds::Edge,
+        EdgeOnF2: &crate::topo_ds::Edge,
         Points: &mut crate::ffi::TColgp_SequenceOfPnt,
     ) {
         unsafe {
@@ -4879,14 +4876,14 @@ impl TrimSurfaceTool {
 
     /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:59 - `BRepFill_TrimSurfaceTool::IsOnFace()`
     /// returns True if the Line (P, DZ) intersect the Faces
-    pub fn is_on_face(&self, Point: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn is_on_face(&self, Point: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::BRepFill_TrimSurfaceTool_is_on_face(self as *const Self, Point) }
     }
 
     /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:63 - `BRepFill_TrimSurfaceTool::ProjOn()`
     /// returns the parameter of the  point <Point> on the
     /// Edge <Edge>, assuming that the point is on the edge.
-    pub fn proj_on(&self, Point: &crate::ffi::gp_Pnt2d, Edge: &crate::ffi::TopoDS_Edge) -> f64 {
+    pub fn proj_on(&self, Point: &crate::gp::Pnt2d, Edge: &crate::topo_ds::Edge) -> f64 {
         unsafe { crate::ffi::BRepFill_TrimSurfaceTool_proj_on(self as *const Self, Point, Edge) }
     }
 

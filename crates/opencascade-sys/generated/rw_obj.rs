@@ -11,7 +11,7 @@
 /// In case of error, returns Null handle.
 pub fn read_file_charptr_progressrange(
     theFile: &str,
-    aProgress: &crate::ffi::Message_ProgressRange,
+    aProgress: &crate::message::ProgressRange,
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     unsafe {
@@ -126,12 +126,12 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
-    pub fn root_prefix(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWObj_CafReader_inherited_RootPrefix(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
-    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::ffi::TCollection_AsciiString) {
+    pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
         unsafe {
             crate::ffi::RWObj_CafReader_inherited_SetRootPrefix(self as *mut Self, theRootPrefix)
         }
@@ -167,7 +167,7 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
-    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &*(crate::ffi::RWObj_CafReader_inherited_CoordinateSystemConverter(self as *const Self))
         }
@@ -176,7 +176,7 @@ impl CafReader {
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     pub fn set_coordinate_system_converter(
         &mut self,
-        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+        theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         unsafe {
             crate::ffi::RWObj_CafReader_inherited_SetCoordinateSystemConverter(
@@ -206,14 +206,14 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
-    pub fn system_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::ffi::RWObj_CafReader_inherited_SystemCoordinateSystem(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
-    pub fn set_system_coordinate_system(&mut self, theCS: &crate::ffi::gp_Ax3) {
+    pub fn set_system_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         unsafe {
             crate::ffi::RWObj_CafReader_inherited_SetSystemCoordinateSystem(
                 self as *mut Self,
@@ -242,14 +242,14 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
-    pub fn file_coordinate_system(&self) -> &crate::ffi::gp_Ax3 {
+    pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::ffi::RWObj_CafReader_inherited_FileCoordinateSystem(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
-    pub fn set_file_coordinate_system(&mut self, theCS: &crate::ffi::gp_Ax3) {
+    pub fn set_file_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         unsafe {
             crate::ffi::RWObj_CafReader_inherited_SetFileCoordinateSystem(self as *mut Self, theCS)
         }
@@ -258,8 +258,8 @@ impl CafReader {
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
     pub fn perform(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::RWObj_CafReader_inherited_Perform(self as *mut Self, theFile, theProgress)
@@ -272,7 +272,7 @@ impl CafReader {
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
-    pub fn single_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWObj_CafReader_inherited_SingleShape(
                 self as *const Self,
@@ -288,8 +288,8 @@ impl CafReader {
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
     pub fn probe_header(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::RWObj_CafReader_inherited_ProbeHeader(
@@ -319,7 +319,7 @@ impl CafWriter {
     /// **Source:** `RWObj_CafWriter.hxx`:41 - `RWObj_CafWriter::RWObj_CafWriter()`
     /// Main constructor.
     /// @param[in] theFile  path to output OBJ file
-    pub fn new_asciistring(theFile: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+    pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWObj_CafWriter_ctor_asciistring(theFile)) }
     }
 
@@ -330,7 +330,7 @@ impl CafWriter {
 
     /// **Source:** `RWObj_CafWriter.hxx`:47 - `RWObj_CafWriter::CoordinateSystemConverter()`
     /// Return transformation from OCCT to OBJ coordinate system.
-    pub fn coordinate_system_converter(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe { &*(crate::ffi::RWObj_CafWriter_coordinate_system_converter(self as *const Self)) }
     }
 
@@ -338,7 +338,7 @@ impl CafWriter {
     /// Return transformation from OCCT to OBJ coordinate system.
     pub fn change_coordinate_system_converter(
         &mut self,
-    ) -> &mut crate::ffi::RWMesh_CoordinateSystemConverter {
+    ) -> &mut crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &mut *(crate::ffi::RWObj_CafWriter_change_coordinate_system_converter(
                 self as *mut Self,
@@ -350,7 +350,7 @@ impl CafWriter {
     /// Set transformation from OCCT to OBJ coordinate system.
     pub fn set_coordinate_system_converter(
         &mut self,
-        theConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+        theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         unsafe {
             crate::ffi::RWObj_CafWriter_set_coordinate_system_converter(
@@ -362,13 +362,13 @@ impl CafWriter {
 
     /// **Source:** `RWObj_CafWriter.hxx`:59 - `RWObj_CafWriter::DefaultStyle()`
     /// Return default material definition to be used for nodes with only color defined.
-    pub fn default_style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWObj_CafWriter_default_style(self as *const Self)) }
     }
 
     /// **Source:** `RWObj_CafWriter.hxx`:62 - `RWObj_CafWriter::SetDefaultStyle()`
     /// Set default material definition to be used for nodes with only color defined.
-    pub fn set_default_style(&mut self, theStyle: &crate::ffi::XCAFPrs_Style) {
+    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         unsafe { crate::ffi::RWObj_CafWriter_set_default_style(self as *mut Self, theStyle) }
     }
 
@@ -452,7 +452,7 @@ unsafe impl crate::CppDeletable for ObjMaterialMap {
 impl ObjMaterialMap {
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:26 - `RWObj_ObjMaterialMap::RWObj_ObjMaterialMap()`
     /// Main constructor.
-    pub fn new_asciistring(theFile: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+    pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWObj_ObjMaterialMap_ctor_asciistring(theFile))
         }
@@ -467,8 +467,8 @@ impl ObjMaterialMap {
     /// Add material
     pub fn add_material(
         &mut self,
-        theStyle: &crate::ffi::XCAFPrs_Style,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        theStyle: &crate::xcaf_prs::Style,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWObj_ObjMaterialMap_add_material(
                 self as *mut Self,
@@ -481,9 +481,9 @@ impl ObjMaterialMap {
     /// Virtual method actually defining the material (e.g. export to the file).
     pub fn define_material(
         &mut self,
-        theStyle: &crate::ffi::XCAFPrs_Style,
-        theKey: &crate::ffi::TCollection_AsciiString,
-        theName: &crate::ffi::TCollection_AsciiString,
+        theStyle: &crate::xcaf_prs::Style,
+        theKey: &crate::t_collection::AsciiString,
+        theName: &crate::t_collection::AsciiString,
     ) {
         unsafe {
             crate::ffi::RWObj_ObjMaterialMap_define_material(
@@ -522,12 +522,12 @@ impl ObjMaterialMap {
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
-    pub fn default_style(&self) -> &crate::ffi::XCAFPrs_Style {
+    pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWObj_ObjMaterialMap_inherited_DefaultStyle(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:38 - `RWMesh_MaterialMap::SetDefaultStyle()`
-    pub fn set_default_style(&mut self, theStyle: &crate::ffi::XCAFPrs_Style) {
+    pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         unsafe {
             crate::ffi::RWObj_ObjMaterialMap_inherited_SetDefaultStyle(self as *mut Self, theStyle)
         }
@@ -536,8 +536,8 @@ impl ObjMaterialMap {
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:41 - `RWMesh_MaterialMap::FindMaterial()`
     pub fn find_material(
         &self,
-        theStyle: &crate::ffi::XCAFPrs_Style,
-    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        theStyle: &crate::xcaf_prs::Style,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWObj_ObjMaterialMap_inherited_FindMaterial(
                 self as *const Self,
@@ -554,9 +554,9 @@ impl ObjMaterialMap {
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:63 - `RWMesh_MaterialMap::CopyTexture()`
     pub fn copy_texture(
         &mut self,
-        theResTexture: &mut crate::ffi::TCollection_AsciiString,
+        theResTexture: &mut crate::t_collection::AsciiString,
         theTexture: &crate::ffi::HandleImageTexture,
-        theKey: &crate::ffi::TCollection_AsciiString,
+        theKey: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::RWObj_ObjMaterialMap_inherited_CopyTexture(
@@ -591,7 +591,7 @@ unsafe impl crate::CppDeletable for ObjWriterContext {
 impl ObjWriterContext {
     /// **Source:** `RWObj_ObjWriterContext.hxx`:26 - `RWObj_ObjWriterContext::RWObj_ObjWriterContext()`
     /// Main constructor.
-    pub fn new_asciistring(theName: &crate::ffi::TCollection_AsciiString) -> crate::OwnedPtr<Self> {
+    pub fn new_asciistring(theName: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWObj_ObjWriterContext_ctor_asciistring(theName))
         }
@@ -641,7 +641,7 @@ impl ObjWriterContext {
         &mut self,
         theNbNodes: i32,
         theNbElems: i32,
-        theMatLib: &crate::ffi::TCollection_AsciiString,
+        theMatLib: &crate::t_collection::AsciiString,
         theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
     ) -> bool {
         unsafe {
@@ -657,7 +657,7 @@ impl ObjWriterContext {
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:56 - `RWObj_ObjWriterContext::ActiveMaterial()`
     /// Return active material or empty string if not set.
-    pub fn active_material(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn active_material(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWObj_ObjWriterContext_active_material(self as *const Self)) }
     }
 
@@ -665,7 +665,7 @@ impl ObjWriterContext {
     /// Set active material.
     pub fn write_active_material(
         &mut self,
-        theMaterial: &crate::ffi::TCollection_AsciiString,
+        theMaterial: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::RWObj_ObjWriterContext_write_active_material(self as *mut Self, theMaterial)
@@ -704,7 +704,7 @@ impl ObjWriterContext {
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:77 - `RWObj_ObjWriterContext::WriteGroup()`
     /// Writing a group name
-    pub fn write_group(&mut self, theValue: &crate::ffi::TCollection_AsciiString) -> bool {
+    pub fn write_group(&mut self, theValue: &crate::t_collection::AsciiString) -> bool {
         unsafe { crate::ffi::RWObj_ObjWriterContext_write_group(self as *mut Self, theValue) }
     }
 
@@ -746,8 +746,8 @@ impl Reader {
     /// Returns true if success, false on error.
     pub fn read(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::RWObj_Reader_read(self as *mut Self, theFile, theProgress) }
     }
@@ -760,15 +760,15 @@ impl Reader {
     /// @sa FileComments(), ExternalFiles(), NbProbeNodes(), NbProbeElems().
     pub fn probe(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::RWObj_Reader_probe(self as *mut Self, theFile, theProgress) }
     }
 
     /// **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
     /// Returns file comments (lines starting with # at the beginning of file).
-    pub fn file_comments(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn file_comments(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::RWObj_Reader_file_comments(self as *const Self)) }
     }
 
@@ -798,7 +798,7 @@ impl Reader {
 
     /// **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
     /// Return transformation from one coordinate system to another; no transformation by default.
-    pub fn transformation(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn transformation(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe { &*(crate::ffi::RWObj_Reader_transformation(self as *const Self)) }
     }
 
@@ -808,7 +808,7 @@ impl Reader {
     /// so that it might be useful automatically transform data during file reading.
     pub fn set_transformation(
         &mut self,
-        theCSConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+        theCSConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         unsafe { crate::ffi::RWObj_Reader_set_transformation(self as *mut Self, theCSConverter) }
     }
@@ -859,6 +859,28 @@ impl HandleRWObjReader {
     /// Dereference this Handle to mutably access the underlying RWObj_Reader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_Reader {
         unsafe { &mut *(crate::ffi::HandleRWObjReader_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From RWObj_SubMesh.hxx
+// ========================
+
+/// **Source:** `RWObj_SubMesh.hxx`:21 - `RWObj_SubMesh`
+/// Sub-mesh definition for OBJ reader.
+pub use crate::ffi::RWObj_SubMesh as SubMesh;
+
+unsafe impl crate::CppDeletable for SubMesh {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::RWObj_SubMesh_destructor(ptr);
+    }
+}
+
+impl SubMesh {
+    /// **Source:** `RWObj_SubMesh.hxx` - `RWObj_SubMesh::RWObj_SubMesh()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWObj_SubMesh_ctor()) }
     }
 }
 
@@ -921,7 +943,7 @@ impl TriangulationReader {
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:59 - `RWObj_TriangulationReader::ResultShape()`
     /// Return result shape.
-    pub fn result_shape(&mut self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn result_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::RWObj_TriangulationReader_result_shape(
                 self as *mut Self,
@@ -958,8 +980,8 @@ impl TriangulationReader {
     /// Inherited: **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
     pub fn read(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::RWObj_TriangulationReader_inherited_Read(
@@ -973,8 +995,8 @@ impl TriangulationReader {
     /// Inherited: **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
     pub fn probe(
         &mut self,
-        theFile: &crate::ffi::TCollection_AsciiString,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theFile: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::RWObj_TriangulationReader_inherited_Probe(
@@ -986,7 +1008,7 @@ impl TriangulationReader {
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
-    pub fn file_comments(&self) -> &crate::ffi::TCollection_AsciiString {
+    pub fn file_comments(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::ffi::RWObj_TriangulationReader_inherited_FileComments(self as *const Self))
         }
@@ -1018,7 +1040,7 @@ impl TriangulationReader {
     }
 
     /// Inherited: **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
-    pub fn transformation(&self) -> &crate::ffi::RWMesh_CoordinateSystemConverter {
+    pub fn transformation(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &*(crate::ffi::RWObj_TriangulationReader_inherited_Transformation(self as *const Self))
         }
@@ -1027,7 +1049,7 @@ impl TriangulationReader {
     /// Inherited: **Source:** `RWObj_Reader.hxx`:126 - `RWObj_Reader::SetTransformation()`
     pub fn set_transformation(
         &mut self,
-        theCSConverter: &crate::ffi::RWMesh_CoordinateSystemConverter,
+        theCSConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         unsafe {
             crate::ffi::RWObj_TriangulationReader_inherited_SetTransformation(

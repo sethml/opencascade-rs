@@ -47,12 +47,7 @@ impl CurveTransition {
     /// **Source:** `TopTrans_CurveTransition.hxx`:55 - `TopTrans_CurveTransition::Reset()`
     /// Initialize a Transition with the local description
     /// of a Curve.
-    pub fn reset_dir2_real(
-        &mut self,
-        Tgt: &crate::ffi::gp_Dir,
-        Norm: &crate::ffi::gp_Dir,
-        Curv: f64,
-    ) {
+    pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
         unsafe {
             crate::ffi::TopTrans_CurveTransition_reset_dir2_real(self as *mut Self, Tgt, Norm, Curv)
         }
@@ -60,7 +55,7 @@ impl CurveTransition {
 
     /// **Source:** `TopTrans_CurveTransition.hxx`:58 - `TopTrans_CurveTransition::Reset()`
     /// Initialize a Transition with the local description of a straight line.
-    pub fn reset_dir(&mut self, Tgt: &crate::ffi::gp_Dir) {
+    pub fn reset_dir(&mut self, Tgt: &crate::gp::Dir) {
         unsafe { crate::ffi::TopTrans_CurveTransition_reset_dir(self as *mut Self, Tgt) }
     }
 
@@ -73,8 +68,8 @@ impl CurveTransition {
     pub fn compare(
         &mut self,
         Tole: f64,
-        Tang: &crate::ffi::gp_Dir,
-        Norm: &crate::ffi::gp_Dir,
+        Tang: &crate::gp::Dir,
+        Norm: &crate::gp::Dir,
         Curv: f64,
         S: crate::top_abs::Orientation,
         Or: crate::top_abs::Orientation,

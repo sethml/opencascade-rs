@@ -30,37 +30,37 @@ impl Edge {
 
     /// **Source:** `BRepClass_Edge.hxx`:38 - `BRepClass_Edge::BRepClass_Edge()`
     pub fn new_edge_face(
-        E: &crate::ffi::TopoDS_Edge,
-        F: &crate::ffi::TopoDS_Face,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass_Edge_ctor_edge_face(E, F)) }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:41 - `BRepClass_Edge::Edge()`
     /// Returns the current Edge
-    pub fn edge_mut(&mut self) -> &mut crate::ffi::TopoDS_Edge {
+    pub fn edge_mut(&mut self) -> &mut crate::topo_ds::Edge {
         unsafe { &mut *(crate::ffi::BRepClass_Edge_edge_mut(self as *mut Self)) }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:42 - `BRepClass_Edge::Edge()`
-    pub fn edge(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepClass_Edge_edge(self as *const Self)) }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:45 - `BRepClass_Edge::Face()`
     /// Returns the Face for the current Edge
-    pub fn face_mut(&mut self) -> &mut crate::ffi::TopoDS_Face {
+    pub fn face_mut(&mut self) -> &mut crate::topo_ds::Face {
         unsafe { &mut *(crate::ffi::BRepClass_Edge_face_mut(self as *mut Self)) }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:46 - `BRepClass_Edge::Face()`
-    pub fn face(&self) -> &crate::ffi::TopoDS_Face {
+    pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe { &*(crate::ffi::BRepClass_Edge_face(self as *const Self)) }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:49 - `BRepClass_Edge::NextEdge()`
     /// Returns the next Edge
-    pub fn next_edge(&self) -> &crate::ffi::TopoDS_Edge {
+    pub fn next_edge(&self) -> &crate::topo_ds::Edge {
         unsafe { &*(crate::ffi::BRepClass_Edge_next_edge(self as *const Self)) }
     }
 
@@ -127,14 +127,14 @@ impl FClass2dOfFClassifier {
     /// the original length of the segment on <L>  used to
     /// compute  intersections.   <Tol> is the   tolerance
     /// attached to the line segment in intersections.
-    pub fn reset(&mut self, L: &crate::ffi::gp_Lin2d, P: f64, Tol: f64) {
+    pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         unsafe { crate::ffi::BRepClass_FClass2dOfFClassifier_reset(self as *mut Self, L, P, Tol) }
     }
 
     /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:50 - `BRepClass_FClass2dOfFClassifier::Compare()`
     /// Updates  the classification process with  the edge
     /// <E> from the boundary.
-    pub fn compare(&mut self, E: &crate::ffi::BRepClass_Edge, Or: crate::top_abs::Orientation) {
+    pub fn compare(&mut self, E: &Edge, Or: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::BRepClass_FClass2dOfFClassifier_compare(self as *mut Self, E, Or.into())
         }
@@ -148,7 +148,7 @@ impl FClass2dOfFClassifier {
 
     /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:56 - `BRepClass_FClass2dOfFClassifier::Intersector()`
     /// Returns the intersecting algorithm.
-    pub fn intersector(&mut self) -> &mut crate::ffi::BRepClass_Intersector {
+    pub fn intersector(&mut self) -> &mut Intersector {
         unsafe {
             &mut *(crate::ffi::BRepClass_FClass2dOfFClassifier_intersector(self as *mut Self))
         }
@@ -209,8 +209,8 @@ impl FClassifier {
     /// Creates an algorithm to classify the Point  P with
     /// Tolerance <T> on the face described by <F>.
     pub fn new_faceexplorer_pnt2d_real(
-        F: &mut crate::ffi::BRepClass_FaceExplorer,
-        P: &crate::ffi::gp_Pnt2d,
+        F: &mut FaceExplorer,
+        P: &crate::gp::Pnt2d,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -223,12 +223,7 @@ impl FClassifier {
     /// **Source:** `BRepClass_FClassifier.hxx`:50 - `BRepClass_FClassifier::Perform()`
     /// Classify  the Point  P  with  Tolerance <T> on the
     /// face described by <F>.
-    pub fn perform(
-        &mut self,
-        F: &mut crate::ffi::BRepClass_FaceExplorer,
-        P: &crate::ffi::gp_Pnt2d,
-        Tol: f64,
-    ) {
+    pub fn perform(&mut self, F: &mut FaceExplorer, P: &crate::gp::Pnt2d, Tol: f64) {
         unsafe { crate::ffi::BRepClass_FClassifier_perform(self as *mut Self, F, P, Tol) }
     }
 
@@ -261,7 +256,7 @@ impl FClassifier {
     /// Returns   the    Edge  used   to    determine  the
     /// classification. When the State is ON  this  is the
     /// Edge containing the point.
-    pub fn edge(&self) -> &crate::ffi::BRepClass_Edge {
+    pub fn edge(&self) -> &Edge {
         unsafe { &*(crate::ffi::BRepClass_FClassifier_edge(self as *const Self)) }
     }
 
@@ -310,8 +305,8 @@ impl FaceClassifier {
     /// Creates an algorithm to classify the Point  P with
     /// Tolerance <T> on the face described by <F>.
     pub fn new_faceexplorer_pnt2d_real(
-        F: &mut crate::ffi::BRepClass_FaceExplorer,
-        P: &crate::ffi::gp_Pnt2d,
+        F: &mut FaceExplorer,
+        P: &crate::gp::Pnt2d,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -327,8 +322,8 @@ impl FaceClassifier {
     /// Recommended to use Bnd_Box if the number of edges > 10
     /// and the geometry is mostly spline
     pub fn new_face_pnt2d_real_bool_real(
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &crate::ffi::gp_Pnt2d,
+        theF: &crate::topo_ds::Face,
+        theP: &crate::gp::Pnt2d,
         theTol: f64,
         theUseBndBox: bool,
         theGapCheckTol: f64,
@@ -352,8 +347,8 @@ impl FaceClassifier {
     /// Recommended to use Bnd_Box if the number of edges > 10
     /// and the geometry is mostly spline
     pub fn new_face_pnt_real_bool_real(
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &crate::ffi::gp_Pnt,
+        theF: &crate::topo_ds::Face,
+        theP: &crate::gp::Pnt,
         theTol: f64,
         theUseBndBox: bool,
         theGapCheckTol: f64,
@@ -377,8 +372,8 @@ impl FaceClassifier {
     /// Recommended to use Bnd_Box if the number of edges > 10
     /// and the geometry is mostly spline
     pub fn new_face_pnt2d_real_bool(
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &crate::ffi::gp_Pnt2d,
+        theF: &crate::topo_ds::Face,
+        theP: &crate::gp::Pnt2d,
         theTol: f64,
         theUseBndBox: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -391,8 +386,8 @@ impl FaceClassifier {
     /// Recommended to use Bnd_Box if the number of edges > 10
     /// and the geometry is mostly spline
     pub fn new_face_pnt2d_real(
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &crate::ffi::gp_Pnt2d,
+        theF: &crate::topo_ds::Face,
+        theP: &crate::gp::Pnt2d,
         theTol: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_face_pnt2d_real_bool_real(theF, theP, theTol, false, 0.1)
@@ -404,8 +399,8 @@ impl FaceClassifier {
     /// Recommended to use Bnd_Box if the number of edges > 10
     /// and the geometry is mostly spline
     pub fn new_face_pnt_real_bool(
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &crate::ffi::gp_Pnt,
+        theF: &crate::topo_ds::Face,
+        theP: &crate::gp::Pnt,
         theTol: f64,
         theUseBndBox: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -418,8 +413,8 @@ impl FaceClassifier {
     /// Recommended to use Bnd_Box if the number of edges > 10
     /// and the geometry is mostly spline
     pub fn new_face_pnt_real(
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &crate::ffi::gp_Pnt,
+        theF: &crate::topo_ds::Face,
+        theP: &crate::gp::Pnt,
         theTol: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_face_pnt_real_bool_real(theF, theP, theTol, false, 0.1)
@@ -432,8 +427,8 @@ impl FaceClassifier {
     /// and the geometry is mostly spline
     pub fn perform_face_pnt2d_real_bool_real(
         &mut self,
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &crate::ffi::gp_Pnt2d,
+        theF: &crate::topo_ds::Face,
+        theP: &crate::gp::Pnt2d,
         theTol: f64,
         theUseBndBox: bool,
         theGapCheckTol: f64,
@@ -457,8 +452,8 @@ impl FaceClassifier {
     /// and the geometry is mostly spline
     pub fn perform_face_pnt_real_bool_real(
         &mut self,
-        theF: &crate::ffi::TopoDS_Face,
-        theP: &crate::ffi::gp_Pnt,
+        theF: &crate::topo_ds::Face,
+        theP: &crate::gp::Pnt,
         theTol: f64,
         theUseBndBox: bool,
         theGapCheckTol: f64,
@@ -512,7 +507,7 @@ impl FaceClassifier {
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:68 - `BRepClass_FClassifier::Edge()`
-    pub fn edge(&self) -> &crate::ffi::BRepClass_Edge {
+    pub fn edge(&self) -> &Edge {
         unsafe { &*(crate::ffi::BRepClass_FaceClassifier_inherited_Edge(self as *const Self)) }
     }
 
@@ -549,7 +544,7 @@ unsafe impl crate::CppDeletable for FaceExplorer {
 
 impl FaceExplorer {
     /// **Source:** `BRepClass_FaceExplorer.hxx`:39 - `BRepClass_FaceExplorer::BRepClass_FaceExplorer()`
-    pub fn new_face(F: &crate::ffi::TopoDS_Face) -> crate::OwnedPtr<Self> {
+    pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepClass_FaceExplorer_ctor_face(F)) }
     }
 
@@ -558,14 +553,14 @@ impl FaceExplorer {
     /// from the bounding box of the face. New Coordinates of the point
     /// will be on the line between the point and the center of the
     /// bounding box. Returns True if point was not changed.
-    pub fn check_point(&mut self, thePoint: &mut crate::ffi::gp_Pnt2d) -> bool {
+    pub fn check_point(&mut self, thePoint: &mut crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::BRepClass_FaceExplorer_check_point(self as *mut Self, thePoint) }
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:49 - `BRepClass_FaceExplorer::Reject()`
     /// Should  return  True  if the  point  is  outside a
     /// bounding volume of the face.
-    pub fn reject(&self, P: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn reject(&self, P: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::BRepClass_FaceExplorer_reject(self as *const Self, P) }
     }
 
@@ -575,8 +570,8 @@ impl FaceExplorer {
     /// compute  intersections.
     pub fn segment(
         &mut self,
-        P: &crate::ffi::gp_Pnt2d,
-        L: &mut crate::ffi::gp_Lin2d,
+        P: &crate::gp::Pnt2d,
+        L: &mut crate::gp::Lin2d,
         Par: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::BRepClass_FaceExplorer_segment(self as *mut Self, P, L, Par) }
@@ -588,8 +583,8 @@ impl FaceExplorer {
     /// compute  intersections. Each call gives another segment.
     pub fn other_segment(
         &mut self,
-        P: &crate::ffi::gp_Pnt2d,
-        L: &mut crate::ffi::gp_Lin2d,
+        P: &crate::gp::Pnt2d,
+        L: &mut crate::gp::Lin2d,
         Par: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::BRepClass_FaceExplorer_other_segment(self as *mut Self, P, L, Par) }
@@ -616,7 +611,7 @@ impl FaceExplorer {
     /// **Source:** `BRepClass_FaceExplorer.hxx`:72 - `BRepClass_FaceExplorer::RejectWire()`
     /// Returns True  if the wire  bounding volume does not
     /// intersect the segment.
-    pub fn reject_wire(&self, L: &crate::ffi::gp_Lin2d, Par: f64) -> bool {
+    pub fn reject_wire(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
         unsafe { crate::ffi::BRepClass_FaceExplorer_reject_wire(self as *const Self, L, Par) }
     }
 
@@ -642,13 +637,13 @@ impl FaceExplorer {
     /// **Source:** `BRepClass_FaceExplorer.hxx`:86 - `BRepClass_FaceExplorer::RejectEdge()`
     /// Returns True  if the edge  bounding volume does not
     /// intersect the segment.
-    pub fn reject_edge(&self, L: &crate::ffi::gp_Lin2d, Par: f64) -> bool {
+    pub fn reject_edge(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
         unsafe { crate::ffi::BRepClass_FaceExplorer_reject_edge(self as *const Self, L, Par) }
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:89 - `BRepClass_FaceExplorer::CurrentEdge()`
     /// Current edge in current wire and its orientation.
-    pub fn current_edge(&self, E: &mut crate::ffi::BRepClass_Edge, Or: &mut i32) {
+    pub fn current_edge(&self, E: &mut Edge, Or: &mut i32) {
         unsafe { crate::ffi::BRepClass_FaceExplorer_current_edge(self as *const Self, E, Or) }
     }
 
@@ -706,14 +701,14 @@ impl FacePassiveClassifier {
     /// the original length of the segment on <L>  used to
     /// compute  intersections.   <Tol> is the   tolerance
     /// attached to the line segment in intersections.
-    pub fn reset(&mut self, L: &crate::ffi::gp_Lin2d, P: f64, Tol: f64) {
+    pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         unsafe { crate::ffi::BRepClass_FacePassiveClassifier_reset(self as *mut Self, L, P, Tol) }
     }
 
     /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:51 - `BRepClass_FacePassiveClassifier::Compare()`
     /// Updates  the classification process with  the edge
     /// <E> from the boundary.
-    pub fn compare(&mut self, E: &crate::ffi::BRepClass_Edge, Or: crate::top_abs::Orientation) {
+    pub fn compare(&mut self, E: &Edge, Or: crate::top_abs::Orientation) {
         unsafe {
             crate::ffi::BRepClass_FacePassiveClassifier_compare(self as *mut Self, E, Or.into())
         }
@@ -727,7 +722,7 @@ impl FacePassiveClassifier {
 
     /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:57 - `BRepClass_FacePassiveClassifier::Intersector()`
     /// Returns the intersecting algorithm.
-    pub fn intersector(&mut self) -> &mut crate::ffi::BRepClass_Intersector {
+    pub fn intersector(&mut self) -> &mut Intersector {
         unsafe {
             &mut *(crate::ffi::BRepClass_FacePassiveClassifier_intersector(self as *mut Self))
         }
@@ -787,13 +782,7 @@ impl Intersector {
 
     /// **Source:** `BRepClass_Intersector.hxx`:38 - `BRepClass_Intersector::Perform()`
     /// Intersect the line segment and the edge.
-    pub fn perform(
-        &mut self,
-        L: &crate::ffi::gp_Lin2d,
-        P: f64,
-        Tol: f64,
-        E: &crate::ffi::BRepClass_Edge,
-    ) {
+    pub fn perform(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64, E: &Edge) {
         unsafe { crate::ffi::BRepClass_Intersector_perform(self as *mut Self, L, P, Tol, E) }
     }
 
@@ -803,10 +792,10 @@ impl Intersector {
     /// <U>.
     pub fn local_geometry(
         &self,
-        E: &crate::ffi::BRepClass_Edge,
+        E: &Edge,
         U: f64,
-        T: &mut crate::ffi::gp_Dir2d,
-        N: &mut crate::ffi::gp_Dir2d,
+        T: &mut crate::gp::Dir2d,
+        N: &mut crate::gp::Dir2d,
         C: &mut f64,
     ) {
         unsafe {
@@ -852,7 +841,7 @@ impl Intersector {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
-    pub fn point(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionPoint {
+    pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe { &*(crate::ffi::BRepClass_Intersector_inherited_Point(self as *const Self, N)) }
     }
 
@@ -862,7 +851,7 @@ impl Intersector {
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
-    pub fn segment(&self, N: i32) -> &crate::ffi::IntRes2d_IntersectionSegment {
+    pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe { &*(crate::ffi::BRepClass_Intersector_inherited_Segment(self as *const Self, N)) }
     }
 

@@ -163,32 +163,32 @@ impl Curve {
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:60 - `TopOpeBRepDS_Curve::SetShapes()`
-    pub fn set_shapes(&mut self, S1: &crate::ffi::TopoDS_Shape, S2: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TopOpeBRepDS_Curve_set_shapes(self as *mut Self, S1, S2) }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:62 - `TopOpeBRepDS_Curve::GetShapes()`
-    pub fn get_shapes(&self, S1: &mut crate::ffi::TopoDS_Shape, S2: &mut crate::ffi::TopoDS_Shape) {
+    pub fn get_shapes(&self, S1: &mut crate::topo_ds::Shape, S2: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::TopOpeBRepDS_Curve_get_shapes(self as *const Self, S1, S2) }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:64 - `TopOpeBRepDS_Curve::Shape1()`
-    pub fn shape1(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape1(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TopOpeBRepDS_Curve_shape1(self as *const Self)) }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:66 - `TopOpeBRepDS_Curve::ChangeShape1()`
-    pub fn change_shape1(&mut self) -> &mut crate::ffi::TopoDS_Shape {
+    pub fn change_shape1(&mut self) -> &mut crate::topo_ds::Shape {
         unsafe { &mut *(crate::ffi::TopOpeBRepDS_Curve_change_shape1(self as *mut Self)) }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:68 - `TopOpeBRepDS_Curve::Shape2()`
-    pub fn shape2(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape2(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TopOpeBRepDS_Curve_shape2(self as *const Self)) }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:70 - `TopOpeBRepDS_Curve::ChangeShape2()`
-    pub fn change_shape2(&mut self) -> &mut crate::ffi::TopoDS_Shape {
+    pub fn change_shape2(&mut self) -> &mut crate::topo_ds::Shape {
         unsafe { &mut *(crate::ffi::TopOpeBRepDS_Curve_change_shape2(self as *mut Self)) }
     }
 
@@ -305,7 +305,7 @@ impl CurveData {
     }
 
     /// **Source:** `TopOpeBRepDS_CurveData.hxx`:34 - `TopOpeBRepDS_CurveData::TopOpeBRepDS_CurveData()`
-    pub fn new_curve(C: &crate::ffi::TopOpeBRepDS_Curve) -> crate::OwnedPtr<Self> {
+    pub fn new_curve(C: &Curve) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_CurveData_ctor_curve(C)) }
     }
 
@@ -326,7 +326,7 @@ impl CurveData {
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
-    pub fn assign(&mut self, Other: &crate::ffi::TopOpeBRepDS_GeometryData) {
+    pub fn assign(&mut self, Other: &GeometryData) {
         unsafe { crate::ffi::TopOpeBRepDS_CurveData_inherited_Assign(self as *mut Self, Other) }
     }
 
@@ -371,7 +371,7 @@ unsafe impl crate::CppDeletable for CurvePointInterference {
 impl CurvePointInterference {
     /// **Source:** `TopOpeBRepDS_CurvePointInterference.hxx`:37 - `TopOpeBRepDS_CurvePointInterference::TopOpeBRepDS_CurvePointInterference()`
     pub fn new_transition_kind_int_kind_int_real(
-        T: &crate::ffi::TopOpeBRepDS_Transition,
+        T: &Transition,
         ST: crate::top_ope_b_rep_ds::Kind,
         S: i32,
         GT: crate::top_ope_b_rep_ds::Kind,
@@ -433,7 +433,7 @@ impl CurvePointInterference {
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
-    pub fn transition(&self) -> &crate::ffi::TopOpeBRepDS_Transition {
+    pub fn transition(&self) -> &Transition {
         unsafe {
             &*(crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_Transition(
                 self as *const Self,
@@ -442,7 +442,7 @@ impl CurvePointInterference {
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:69 - `TopOpeBRepDS_Interference::ChangeTransition()`
-    pub fn change_transition(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Transition {
+    pub fn change_transition(&mut self) -> &mut Transition {
         unsafe {
             &mut *(crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_ChangeTransition(
                 self as *mut Self,
@@ -551,7 +551,7 @@ impl DataStructure {
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:60 - `TopOpeBRepDS_DataStructure::AddSurface()`
     /// Insert a new surface. Returns the index.
-    pub fn add_surface(&mut self, S: &crate::ffi::TopOpeBRepDS_Surface) -> i32 {
+    pub fn add_surface(&mut self, S: &Surface) -> i32 {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_surface(self as *mut Self, S) }
     }
 
@@ -566,7 +566,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:66 - `TopOpeBRepDS_DataStructure::KeepSurface()`
-    pub fn keep_surface_surface(&self, S: &mut crate::ffi::TopOpeBRepDS_Surface) -> bool {
+    pub fn keep_surface_surface(&self, S: &mut Surface) -> bool {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_keep_surface_surface(self as *const Self, S)
         }
@@ -584,11 +584,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:70 - `TopOpeBRepDS_DataStructure::ChangeKeepSurface()`
-    pub fn change_keep_surface_surface_bool(
-        &mut self,
-        S: &mut crate::ffi::TopOpeBRepDS_Surface,
-        FindKeep: bool,
-    ) {
+    pub fn change_keep_surface_surface_bool(&mut self, S: &mut Surface, FindKeep: bool) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_change_keep_surface_surface_bool(
                 self as *mut Self,
@@ -600,7 +596,7 @@ impl DataStructure {
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:73 - `TopOpeBRepDS_DataStructure::AddCurve()`
     /// Insert a new curve. Returns the index.
-    pub fn add_curve(&mut self, S: &crate::ffi::TopOpeBRepDS_Curve) -> i32 {
+    pub fn add_curve(&mut self, S: &Curve) -> i32 {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_curve(self as *mut Self, S) }
     }
 
@@ -615,7 +611,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:79 - `TopOpeBRepDS_DataStructure::KeepCurve()`
-    pub fn keep_curve_curve(&self, C: &crate::ffi::TopOpeBRepDS_Curve) -> bool {
+    pub fn keep_curve_curve(&self, C: &Curve) -> bool {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_keep_curve_curve(self as *const Self, C) }
     }
 
@@ -631,11 +627,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:83 - `TopOpeBRepDS_DataStructure::ChangeKeepCurve()`
-    pub fn change_keep_curve_curve_bool(
-        &mut self,
-        C: &mut crate::ffi::TopOpeBRepDS_Curve,
-        FindKeep: bool,
-    ) {
+    pub fn change_keep_curve_curve_bool(&mut self, C: &mut Curve, FindKeep: bool) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_change_keep_curve_curve_bool(
                 self as *mut Self,
@@ -647,7 +639,7 @@ impl DataStructure {
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:86 - `TopOpeBRepDS_DataStructure::AddPoint()`
     /// Insert a new point. Returns the index.
-    pub fn add_point(&mut self, PDS: &crate::ffi::TopOpeBRepDS_Point) -> i32 {
+    pub fn add_point(&mut self, PDS: &Point) -> i32 {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_point(self as *mut Self, PDS) }
     }
 
@@ -655,9 +647,9 @@ impl DataStructure {
     /// Insert a new point. Returns the index.
     pub fn add_point_ss(
         &mut self,
-        PDS: &crate::ffi::TopOpeBRepDS_Point,
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
+        PDS: &Point,
+        S1: &crate::topo_ds::Shape,
+        S2: &crate::topo_ds::Shape,
     ) -> i32 {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_add_point_ss(self as *mut Self, PDS, S1, S2)
@@ -675,7 +667,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:97 - `TopOpeBRepDS_DataStructure::KeepPoint()`
-    pub fn keep_point_point(&self, P: &crate::ffi::TopOpeBRepDS_Point) -> bool {
+    pub fn keep_point_point(&self, P: &Point) -> bool {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_keep_point_point(self as *const Self, P) }
     }
 
@@ -691,11 +683,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:101 - `TopOpeBRepDS_DataStructure::ChangeKeepPoint()`
-    pub fn change_keep_point_point_bool(
-        &mut self,
-        P: &mut crate::ffi::TopOpeBRepDS_Point,
-        FindKeep: bool,
-    ) {
+    pub fn change_keep_point_point_bool(&mut self, P: &mut Point, FindKeep: bool) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_change_keep_point_point_bool(
                 self as *mut Self,
@@ -707,13 +695,13 @@ impl DataStructure {
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:104 - `TopOpeBRepDS_DataStructure::AddShape()`
     /// Insert a shape S. Returns the index.
-    pub fn add_shape_shape(&mut self, S: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn add_shape_shape(&mut self, S: &crate::topo_ds::Shape) -> i32 {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_shape_shape(self as *mut Self, S) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:107 - `TopOpeBRepDS_DataStructure::AddShape()`
     /// Insert a shape S which ancestor is I = 1 or 2. Returns the index.
-    pub fn add_shape_shape_int(&mut self, S: &crate::ffi::TopoDS_Shape, I: i32) -> i32 {
+    pub fn add_shape_shape_int(&mut self, S: &crate::topo_ds::Shape, I: i32) -> i32 {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_add_shape_shape_int(self as *mut Self, S, I)
         }
@@ -731,7 +719,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:112 - `TopOpeBRepDS_DataStructure::KeepShape()`
-    pub fn keep_shape_shape_bool(&self, S: &crate::ffi::TopoDS_Shape, FindKeep: bool) -> bool {
+    pub fn keep_shape_shape_bool(&self, S: &crate::topo_ds::Shape, FindKeep: bool) -> bool {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_keep_shape_shape_bool(
                 self as *const Self,
@@ -753,7 +741,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:117 - `TopOpeBRepDS_DataStructure::ChangeKeepShape()`
-    pub fn change_keep_shape_shape_bool(&mut self, S: &crate::ffi::TopoDS_Shape, FindKeep: bool) {
+    pub fn change_keep_shape_shape_bool(&mut self, S: &crate::topo_ds::Shape, FindKeep: bool) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_change_keep_shape_shape_bool(
                 self as *mut Self,
@@ -769,7 +757,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:121 - `TopOpeBRepDS_DataStructure::AddSectionEdge()`
-    pub fn add_section_edge(&mut self, E: &crate::ffi::TopoDS_Edge) -> i32 {
+    pub fn add_section_edge(&mut self, E: &crate::topo_ds::Edge) -> i32 {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_section_edge(self as *mut Self, E) }
     }
 
@@ -836,7 +824,7 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:141 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
     pub fn shape_interferences_shape_bool(
         &self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         FindKeep: bool,
     ) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
         unsafe {
@@ -879,7 +867,7 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:154 - `TopOpeBRepDS_DataStructure::ShapeSameDomain()`
     pub fn shape_same_domain_shape(
         &self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
     ) -> &crate::ffi::TopTools_ListOfShape {
         unsafe {
             &*(crate::ffi::TopOpeBRepDS_DataStructure_shape_same_domain_shape(
@@ -914,8 +902,8 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:164 - `TopOpeBRepDS_DataStructure::AddShapeSameDomain()`
     pub fn add_shape_same_domain(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
-        SSD: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
+        SSD: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_add_shape_same_domain(self as *mut Self, S, SSD)
@@ -925,8 +913,8 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:166 - `TopOpeBRepDS_DataStructure::RemoveShapeSameDomain()`
     pub fn remove_shape_same_domain(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
-        SSD: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
+        SSD: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_remove_shape_same_domain(
@@ -945,7 +933,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:170 - `TopOpeBRepDS_DataStructure::SameDomainRef()`
-    pub fn same_domain_ref_shape(&self, S: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn same_domain_ref_shape(&self, S: &crate::topo_ds::Shape) -> i32 {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ref_shape(self as *const Self, S)
         }
@@ -959,7 +947,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:174 - `TopOpeBRepDS_DataStructure::SameDomainRef()`
-    pub fn same_domain_ref_shape_int(&mut self, S: &crate::ffi::TopoDS_Shape, Ref: i32) {
+    pub fn same_domain_ref_shape_int(&mut self, S: &crate::topo_ds::Shape, Ref: i32) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ref_shape_int(
                 self as *mut Self,
@@ -982,7 +970,7 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:178 - `TopOpeBRepDS_DataStructure::SameDomainOri()`
     pub fn same_domain_ori_shape(
         &self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
     ) -> crate::top_ope_b_rep_ds::Config {
         unsafe {
             crate::top_ope_b_rep_ds::Config::try_from(
@@ -1009,7 +997,7 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:182 - `TopOpeBRepDS_DataStructure::SameDomainOri()`
     pub fn same_domain_ori_shape_config(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         Ori: crate::top_ope_b_rep_ds::Config,
     ) {
         unsafe {
@@ -1029,7 +1017,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:186 - `TopOpeBRepDS_DataStructure::SameDomainInd()`
-    pub fn same_domain_ind_shape(&self, S: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn same_domain_ind_shape(&self, S: &crate::topo_ds::Shape) -> i32 {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ind_shape(self as *const Self, S)
         }
@@ -1043,7 +1031,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:190 - `TopOpeBRepDS_DataStructure::SameDomainInd()`
-    pub fn same_domain_ind_shape_int(&mut self, S: &crate::ffi::TopoDS_Shape, Ind: i32) {
+    pub fn same_domain_ind_shape_int(&mut self, S: &crate::topo_ds::Shape, Ind: i32) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ind_shape_int(
                 self as *mut Self,
@@ -1059,7 +1047,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:194 - `TopOpeBRepDS_DataStructure::AncestorRank()`
-    pub fn ancestor_rank_shape(&self, S: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn ancestor_rank_shape(&self, S: &crate::topo_ds::Shape) -> i32 {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_ancestor_rank_shape(self as *const Self, S)
         }
@@ -1073,7 +1061,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:198 - `TopOpeBRepDS_DataStructure::AncestorRank()`
-    pub fn ancestor_rank_shape_int(&mut self, S: &crate::ffi::TopoDS_Shape, Ianc: i32) {
+    pub fn ancestor_rank_shape_int(&mut self, S: &crate::topo_ds::Shape, Ianc: i32) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_ancestor_rank_shape_int(
                 self as *mut Self,
@@ -1086,7 +1074,7 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:200 - `TopOpeBRepDS_DataStructure::AddShapeInterference()`
     pub fn add_shape_interference(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         unsafe {
@@ -1097,7 +1085,7 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:203 - `TopOpeBRepDS_DataStructure::RemoveShapeInterference()`
     pub fn remove_shape_interference(
         &mut self,
-        S: &crate::ffi::TopoDS_Shape,
+        S: &crate::topo_ds::Shape,
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         unsafe {
@@ -1112,8 +1100,8 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:206 - `TopOpeBRepDS_DataStructure::FillShapesSameDomain()`
     pub fn fill_shapes_same_domain_shape2_bool(
         &mut self,
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
+        S1: &crate::topo_ds::Shape,
+        S2: &crate::topo_ds::Shape,
         refFirst: bool,
     ) {
         unsafe {
@@ -1129,8 +1117,8 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:210 - `TopOpeBRepDS_DataStructure::FillShapesSameDomain()`
     pub fn fill_shapes_same_domain_shape2_config2_bool(
         &mut self,
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
+        S1: &crate::topo_ds::Shape,
+        S2: &crate::topo_ds::Shape,
         c1: crate::top_ope_b_rep_ds::Config,
         c2: crate::top_ope_b_rep_ds::Config,
         refFirst: bool,
@@ -1150,8 +1138,8 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:216 - `TopOpeBRepDS_DataStructure::UnfillShapesSameDomain()`
     pub fn unfill_shapes_same_domain(
         &mut self,
-        S1: &crate::ffi::TopoDS_Shape,
-        S2: &crate::ffi::TopoDS_Shape,
+        S1: &crate::topo_ds::Shape,
+        S2: &crate::topo_ds::Shape,
     ) {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_unfill_shapes_same_domain(
@@ -1194,13 +1182,13 @@ impl DataStructure {
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:231 - `TopOpeBRepDS_DataStructure::Surface()`
     /// Returns the surface of index <I>.
-    pub fn surface(&self, I: i32) -> &crate::ffi::TopOpeBRepDS_Surface {
+    pub fn surface(&self, I: i32) -> &Surface {
         unsafe { &*(crate::ffi::TopOpeBRepDS_DataStructure_surface(self as *const Self, I)) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:234 - `TopOpeBRepDS_DataStructure::ChangeSurface()`
     /// Returns the surface of index <I>.
-    pub fn change_surface(&mut self, I: i32) -> &mut crate::ffi::TopOpeBRepDS_Surface {
+    pub fn change_surface(&mut self, I: i32) -> &mut Surface {
         unsafe {
             &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_surface(self as *mut Self, I))
         }
@@ -1208,32 +1196,32 @@ impl DataStructure {
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:237 - `TopOpeBRepDS_DataStructure::Curve()`
     /// Returns the Curve of index <I>.
-    pub fn curve(&self, I: i32) -> &crate::ffi::TopOpeBRepDS_Curve {
+    pub fn curve(&self, I: i32) -> &Curve {
         unsafe { &*(crate::ffi::TopOpeBRepDS_DataStructure_curve(self as *const Self, I)) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:240 - `TopOpeBRepDS_DataStructure::ChangeCurve()`
     /// Returns the Curve of index <I>.
-    pub fn change_curve(&mut self, I: i32) -> &mut crate::ffi::TopOpeBRepDS_Curve {
+    pub fn change_curve(&mut self, I: i32) -> &mut Curve {
         unsafe { &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_curve(self as *mut Self, I)) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:243 - `TopOpeBRepDS_DataStructure::Point()`
     /// Returns the point of index <I>.
-    pub fn point(&self, I: i32) -> &crate::ffi::TopOpeBRepDS_Point {
+    pub fn point(&self, I: i32) -> &Point {
         unsafe { &*(crate::ffi::TopOpeBRepDS_DataStructure_point(self as *const Self, I)) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:246 - `TopOpeBRepDS_DataStructure::ChangePoint()`
     /// Returns the point of index <I>.
-    pub fn change_point(&mut self, I: i32) -> &mut crate::ffi::TopOpeBRepDS_Point {
+    pub fn change_point(&mut self, I: i32) -> &mut Point {
         unsafe { &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_point(self as *mut Self, I)) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:250 - `TopOpeBRepDS_DataStructure::Shape()`
     /// returns the shape of index I stored in
     /// the map myShapes, accessing a list of interference.
-    pub fn shape_int_bool(&self, I: i32, FindKeep: bool) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape_int_bool(&self, I: i32, FindKeep: bool) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::TopOpeBRepDS_DataStructure_shape_int_bool(
                 self as *const Self,
@@ -1247,7 +1235,7 @@ impl DataStructure {
     /// returns the index of shape <S> stored in
     /// the map myShapes, accessing a list of interference.
     /// returns 0 if <S> is not in the map.
-    pub fn shape_shape_bool(&self, S: &crate::ffi::TopoDS_Shape, FindKeep: bool) -> i32 {
+    pub fn shape_shape_bool(&self, S: &crate::topo_ds::Shape, FindKeep: bool) -> i32 {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_shape_shape_bool(
                 self as *const Self,
@@ -1258,7 +1246,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:259 - `TopOpeBRepDS_DataStructure::SectionEdge()`
-    pub fn section_edge_int_bool(&self, I: i32, FindKeep: bool) -> &crate::ffi::TopoDS_Edge {
+    pub fn section_edge_int_bool(&self, I: i32, FindKeep: bool) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::ffi::TopOpeBRepDS_DataStructure_section_edge_int_bool(
                 self as *const Self,
@@ -1269,7 +1257,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:264 - `TopOpeBRepDS_DataStructure::SectionEdge()`
-    pub fn section_edge_edge_bool(&self, E: &crate::ffi::TopoDS_Edge, FindKeep: bool) -> i32 {
+    pub fn section_edge_edge_bool(&self, E: &crate::topo_ds::Edge, FindKeep: bool) -> i32 {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_section_edge_edge_bool(
                 self as *const Self,
@@ -1280,7 +1268,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:267 - `TopOpeBRepDS_DataStructure::IsSectionEdge()`
-    pub fn is_section_edge(&self, E: &crate::ffi::TopoDS_Edge, FindKeep: bool) -> bool {
+    pub fn is_section_edge(&self, E: &crate::topo_ds::Edge, FindKeep: bool) -> bool {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_is_section_edge(self as *const Self, E, FindKeep)
         }
@@ -1293,13 +1281,13 @@ impl DataStructure {
     /// S a une liste d'interferences non vide.
     /// S = SOLID, FACE, EDGE : true/false
     /// S = SHELL, WIRE, VERTEX : false.
-    pub fn has_geometry(&self, S: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_geometry(&self, S: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_has_geometry(self as *const Self, S) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:278 - `TopOpeBRepDS_DataStructure::HasShape()`
     /// Returns True if <S> est dans myShapes
-    pub fn has_shape(&self, S: &crate::ffi::TopoDS_Shape, FindKeep: bool) -> bool {
+    pub fn has_shape(&self, S: &crate::topo_ds::Shape, FindKeep: bool) -> bool {
         unsafe {
             crate::ffi::TopOpeBRepDS_DataStructure_has_shape(self as *const Self, S, FindKeep)
         }
@@ -1308,19 +1296,19 @@ impl DataStructure {
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:281 - `TopOpeBRepDS_DataStructure::SetNewSurface()`
     pub fn set_new_surface(
         &mut self,
-        F: &crate::ffi::TopoDS_Shape,
+        F: &crate::topo_ds::Shape,
         S: &crate::ffi::HandleGeomSurface,
     ) {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_set_new_surface(self as *mut Self, F, S) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:283 - `TopOpeBRepDS_DataStructure::HasNewSurface()`
-    pub fn has_new_surface(&self, F: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn has_new_surface(&self, F: &crate::topo_ds::Shape) -> bool {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_has_new_surface(self as *const Self, F) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:285 - `TopOpeBRepDS_DataStructure::NewSurface()`
-    pub fn new_surface(&self, F: &crate::ffi::TopoDS_Shape) -> &crate::ffi::HandleGeomSurface {
+    pub fn new_surface(&self, F: &crate::topo_ds::Shape) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::TopOpeBRepDS_DataStructure_new_surface(self as *const Self, F)) }
     }
 
@@ -1357,10 +1345,7 @@ impl DataStructure {
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:299 - `TopOpeBRepDS_DataStructure::GetShapeWithState()`
-    pub fn get_shape_with_state(
-        &self,
-        aShape: &crate::ffi::TopoDS_Shape,
-    ) -> &crate::ffi::TopOpeBRepDS_ShapeWithState {
+    pub fn get_shape_with_state(&self, aShape: &crate::topo_ds::Shape) -> &ShapeWithState {
         unsafe {
             &*(crate::ffi::TopOpeBRepDS_DataStructure_get_shape_with_state(
                 self as *const Self,
@@ -1413,9 +1398,7 @@ impl GeometryData {
     }
 
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:35 - `TopOpeBRepDS_GeometryData::TopOpeBRepDS_GeometryData()`
-    pub fn new_geometrydata(
-        Other: &crate::ffi::TopOpeBRepDS_GeometryData,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_geometrydata(Other: &GeometryData) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_GeometryData_ctor_geometrydata(
                 Other,
@@ -1424,7 +1407,7 @@ impl GeometryData {
     }
 
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
-    pub fn assign(&mut self, Other: &crate::ffi::TopOpeBRepDS_GeometryData) {
+    pub fn assign(&mut self, Other: &GeometryData) {
         unsafe { crate::ffi::TopOpeBRepDS_GeometryData_assign(self as *mut Self, Other) }
     }
 
@@ -1488,7 +1471,7 @@ impl Interference {
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:59 - `TopOpeBRepDS_Interference::TopOpeBRepDS_Interference()`
     pub fn new_transition_kind_int_kind_int(
-        Transition: &crate::ffi::TopOpeBRepDS_Transition,
+        Transition: &Transition,
         SupportType: crate::top_ope_b_rep_ds::Kind,
         Support: i32,
         GeometryType: crate::top_ope_b_rep_ds::Kind,
@@ -1519,19 +1502,19 @@ impl Interference {
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
-    pub fn transition(&self) -> &crate::ffi::TopOpeBRepDS_Transition {
+    pub fn transition(&self) -> &Transition {
         unsafe { &*(crate::ffi::TopOpeBRepDS_Interference_transition(self as *const Self)) }
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:69 - `TopOpeBRepDS_Interference::ChangeTransition()`
-    pub fn change_transition(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Transition {
+    pub fn change_transition(&mut self) -> &mut Transition {
         unsafe {
             &mut *(crate::ffi::TopOpeBRepDS_Interference_change_transition(self as *mut Self))
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:71 - `TopOpeBRepDS_Interference::Transition()`
-    pub fn transition_transition(&mut self, T: &crate::ffi::TopOpeBRepDS_Transition) {
+    pub fn transition_transition(&mut self, T: &Transition) {
         unsafe { crate::ffi::TopOpeBRepDS_Interference_transition_transition(self as *mut Self, T) }
     }
 
@@ -1680,27 +1663,27 @@ impl Point {
     }
 
     /// **Source:** `TopOpeBRepDS_Point.hxx`:35 - `TopOpeBRepDS_Point::TopOpeBRepDS_Point()`
-    pub fn new_pnt_real(P: &crate::ffi::gp_Pnt, T: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt_real(P: &crate::gp::Pnt, T: f64) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Point_ctor_pnt_real(P, T)) }
     }
 
     /// **Source:** `TopOpeBRepDS_Point.hxx`:37 - `TopOpeBRepDS_Point::TopOpeBRepDS_Point()`
-    pub fn new_shape(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<Self> {
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Point_ctor_shape(S)) }
     }
 
     /// **Source:** `TopOpeBRepDS_Point.hxx`:39 - `TopOpeBRepDS_Point::IsEqual()`
-    pub fn is_equal(&self, other: &crate::ffi::TopOpeBRepDS_Point) -> bool {
+    pub fn is_equal(&self, other: &Point) -> bool {
         unsafe { crate::ffi::TopOpeBRepDS_Point_is_equal(self as *const Self, other) }
     }
 
     /// **Source:** `TopOpeBRepDS_Point.hxx`:41 - `TopOpeBRepDS_Point::Point()`
-    pub fn point(&self) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::TopOpeBRepDS_Point_point(self as *const Self)) }
     }
 
     /// **Source:** `TopOpeBRepDS_Point.hxx`:43 - `TopOpeBRepDS_Point::ChangePoint()`
-    pub fn change_point(&mut self) -> &mut crate::ffi::gp_Pnt {
+    pub fn change_point(&mut self) -> &mut crate::gp::Pnt {
         unsafe { &mut *(crate::ffi::TopOpeBRepDS_Point_change_point(self as *mut Self)) }
     }
 
@@ -1745,16 +1728,12 @@ impl PointData {
     }
 
     /// **Source:** `TopOpeBRepDS_PointData.hxx`:34 - `TopOpeBRepDS_PointData::TopOpeBRepDS_PointData()`
-    pub fn new_point(P: &crate::ffi::TopOpeBRepDS_Point) -> crate::OwnedPtr<Self> {
+    pub fn new_point(P: &Point) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_PointData_ctor_point(P)) }
     }
 
     /// **Source:** `TopOpeBRepDS_PointData.hxx`:36 - `TopOpeBRepDS_PointData::TopOpeBRepDS_PointData()`
-    pub fn new_point_int2(
-        P: &crate::ffi::TopOpeBRepDS_Point,
-        I1: i32,
-        I2: i32,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_point_int2(P: &Point, I1: i32, I2: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_PointData_ctor_point_int2(P, I1, I2))
         }
@@ -1782,7 +1761,7 @@ impl PointData {
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
-    pub fn assign(&mut self, Other: &crate::ffi::TopOpeBRepDS_GeometryData) {
+    pub fn assign(&mut self, Other: &GeometryData) {
         unsafe { crate::ffi::TopOpeBRepDS_PointData_inherited_Assign(self as *mut Self, Other) }
     }
 
@@ -1879,7 +1858,7 @@ impl ShapeWithState {
     }
 
     /// **Source:** `TopOpeBRepDS_ShapeWithState.hxx`:38 - `TopOpeBRepDS_ShapeWithState::AddPart()`
-    pub fn add_part(&mut self, aShape: &crate::ffi::TopoDS_Shape, aState: crate::top_abs::State) {
+    pub fn add_part(&mut self, aShape: &crate::topo_ds::Shape, aState: crate::top_abs::State) {
         unsafe {
             crate::ffi::TopOpeBRepDS_ShapeWithState_add_part(
                 self as *mut Self,
@@ -1967,12 +1946,12 @@ impl Surface {
     }
 
     /// **Source:** `TopOpeBRepDS_Surface.hxx`:38 - `TopOpeBRepDS_Surface::TopOpeBRepDS_Surface()`
-    pub fn new_surface(Other: &crate::ffi::TopOpeBRepDS_Surface) -> crate::OwnedPtr<Self> {
+    pub fn new_surface(Other: &Surface) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Surface_ctor_surface(Other)) }
     }
 
     /// **Source:** `TopOpeBRepDS_Surface.hxx`:40 - `TopOpeBRepDS_Surface::Assign()`
-    pub fn assign(&mut self, Other: &crate::ffi::TopOpeBRepDS_Surface) {
+    pub fn assign(&mut self, Other: &Surface) {
         unsafe { crate::ffi::TopOpeBRepDS_Surface_assign(self as *mut Self, Other) }
     }
 
@@ -2027,7 +2006,7 @@ impl SurfaceCurveInterference {
 
     /// **Source:** `TopOpeBRepDS_SurfaceCurveInterference.hxx`:39 - `TopOpeBRepDS_SurfaceCurveInterference::TopOpeBRepDS_SurfaceCurveInterference()`
     pub fn new_transition_kind_int_kind_int_handlegeom2dcurve(
-        Transition: &crate::ffi::TopOpeBRepDS_Transition,
+        Transition: &Transition,
         SupportType: crate::top_ope_b_rep_ds::Kind,
         Support: i32,
         GeometryType: crate::top_ope_b_rep_ds::Kind,
@@ -2105,7 +2084,7 @@ impl SurfaceCurveInterference {
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
-    pub fn transition(&self) -> &crate::ffi::TopOpeBRepDS_Transition {
+    pub fn transition(&self) -> &Transition {
         unsafe {
             &*(crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_Transition(
                 self as *const Self,
@@ -2114,7 +2093,7 @@ impl SurfaceCurveInterference {
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:69 - `TopOpeBRepDS_Interference::ChangeTransition()`
-    pub fn change_transition(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Transition {
+    pub fn change_transition(&mut self) -> &mut Transition {
         unsafe {
             &mut *(crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_ChangeTransition(
                 self as *mut Self,
@@ -2213,7 +2192,7 @@ impl SurfaceData {
     }
 
     /// **Source:** `TopOpeBRepDS_SurfaceData.hxx`:33 - `TopOpeBRepDS_SurfaceData::TopOpeBRepDS_SurfaceData()`
-    pub fn new_surface(S: &crate::ffi::TopOpeBRepDS_Surface) -> crate::OwnedPtr<Self> {
+    pub fn new_surface(S: &Surface) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_SurfaceData_ctor_surface(S)) }
     }
 
@@ -2236,7 +2215,7 @@ impl SurfaceData {
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
-    pub fn assign(&mut self, Other: &crate::ffi::TopOpeBRepDS_GeometryData) {
+    pub fn assign(&mut self, Other: &GeometryData) {
         unsafe { crate::ffi::TopOpeBRepDS_SurfaceData_inherited_Assign(self as *mut Self, Other) }
     }
 
@@ -2512,7 +2491,7 @@ impl Transition {
     }
 
     /// **Source:** `TopOpeBRepDS_Transition.hxx`:107 - `TopOpeBRepDS_Transition::Complement()`
-    pub fn complement(&self) -> crate::OwnedPtr<crate::ffi::TopOpeBRepDS_Transition> {
+    pub fn complement(&self) -> crate::OwnedPtr<Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_Transition_complement(
                 self as *const Self,

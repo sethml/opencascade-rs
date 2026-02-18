@@ -28,10 +28,7 @@ impl B2d {
 
     /// **Source:** `Bnd_B2d.hxx`:41 - `Bnd_B2d::Bnd_B2d()`
     /// Constructor.
-    pub fn new_xy2(
-        theCenter: &crate::ffi::gp_XY,
-        theHSize: &crate::ffi::gp_XY,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_xy2(theCenter: &crate::gp::XY, theHSize: &crate::gp::XY) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B2d_ctor_xy2(theCenter, theHSize)) }
     }
 
@@ -49,19 +46,19 @@ impl B2d {
 
     /// **Source:** `Bnd_B2d.hxx`:50 - `Bnd_B2d::Add()`
     /// Update the box by a point.
-    pub fn add_xy(&mut self, thePnt: &crate::ffi::gp_XY) {
+    pub fn add_xy(&mut self, thePnt: &crate::gp::XY) {
         unsafe { crate::ffi::Bnd_B2d_add_xy(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:53 - `Bnd_B2d::Add()`
     /// Update the box by a point.
-    pub fn add_pnt2d(&mut self, thePnt: &crate::ffi::gp_Pnt2d) {
+    pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::Bnd_B2d_add_pnt2d(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:56 - `Bnd_B2d::Add()`
     /// Update the box by another box.
-    pub fn add_b2d(&mut self, theBox: &crate::ffi::Bnd_B2d) {
+    pub fn add_b2d(&mut self, theBox: &B2d) {
         unsafe { crate::ffi::Bnd_B2d_add_b2d(self as *mut Self, theBox) }
     }
 
@@ -69,7 +66,7 @@ impl B2d {
     /// Query a box corner: (Center - HSize). You must make sure that
     /// the box is NOT VOID (see IsVoid()), otherwise the method returns
     /// irrelevant result.
-    pub fn corner_min(&self) -> crate::OwnedPtr<crate::ffi::gp_XY> {
+    pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B2d_corner_min(self as *const Self)) }
     }
 
@@ -77,7 +74,7 @@ impl B2d {
     /// Query a box corner: (Center + HSize). You must make sure that
     /// the box is NOT VOID (see IsVoid()), otherwise the method returns
     /// irrelevant result.
-    pub fn corner_max(&self) -> crate::OwnedPtr<crate::ffi::gp_XY> {
+    pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B2d_corner_max(self as *const Self)) }
     }
 
@@ -98,17 +95,14 @@ impl B2d {
     /// Limit the Box by the internals of theOtherBox.
     /// Returns True if the limitation takes place, otherwise False
     /// indicating that the boxes do not intersect.
-    pub fn limit(&mut self, theOtherBox: &crate::ffi::Bnd_B2d) -> bool {
+    pub fn limit(&mut self, theOtherBox: &B2d) -> bool {
         unsafe { crate::ffi::Bnd_B2d_limit(self as *mut Self, theOtherBox) }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:82 - `Bnd_B2d::Transformed()`
     /// Transform the bounding box with the given transformation.
     /// The resulting box will be larger if theTrsf contains rotation.
-    pub fn transformed(
-        &self,
-        theTrsf: &crate::ffi::gp_Trsf2d,
-    ) -> crate::OwnedPtr<crate::ffi::Bnd_B2d> {
+    pub fn transformed(&self, theTrsf: &crate::gp::Trsf2d) -> crate::OwnedPtr<B2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_B2d_transformed(self as *const Self, theTrsf))
         }
@@ -117,7 +111,7 @@ impl B2d {
     /// **Source:** `Bnd_B2d.hxx`:86 - `Bnd_B2d::IsOut()`
     /// Check the given point for the inclusion in the Box.
     /// Returns True if the point is outside.
-    pub fn is_out_xy(&self, thePnt: &crate::ffi::gp_XY) -> bool {
+    pub fn is_out_xy(&self, thePnt: &crate::gp::XY) -> bool {
         unsafe { crate::ffi::Bnd_B2d_is_out_xy(self as *const Self, thePnt) }
     }
 
@@ -126,7 +120,7 @@ impl B2d {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_xy_real_bool(
         &self,
-        theCenter: &crate::ffi::gp_XY,
+        theCenter: &crate::gp::XY,
         theRadius: f64,
         isCircleHollow: bool,
     ) -> bool {
@@ -143,7 +137,7 @@ impl B2d {
     /// **Source:** `Bnd_B2d.hxx`:97 - `Bnd_B2d::IsOut()`
     /// Check the given box for the intersection with the current box.
     /// Returns True if there is no intersection between boxes.
-    pub fn is_out_b2d(&self, theOtherBox: &crate::ffi::Bnd_B2d) -> bool {
+    pub fn is_out_b2d(&self, theOtherBox: &B2d) -> bool {
         unsafe { crate::ffi::Bnd_B2d_is_out_b2d(self as *const Self, theOtherBox) }
     }
 
@@ -151,18 +145,14 @@ impl B2d {
     /// Check the given box oriented by the given transformation
     /// for the intersection with the current box.
     /// Returns True if there is no intersection between boxes.
-    pub fn is_out_b2d_trsf2d(
-        &self,
-        theOtherBox: &crate::ffi::Bnd_B2d,
-        theTrsf: &crate::ffi::gp_Trsf2d,
-    ) -> bool {
+    pub fn is_out_b2d_trsf2d(&self, theOtherBox: &B2d, theTrsf: &crate::gp::Trsf2d) -> bool {
         unsafe { crate::ffi::Bnd_B2d_is_out_b2d_trsf2d(self as *const Self, theOtherBox, theTrsf) }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:107 - `Bnd_B2d::IsOut()`
     /// Check the given Line for the intersection with the current box.
     /// Returns True if there is no intersection.
-    pub fn is_out_ax2d(&self, theLine: &crate::ffi::gp_Ax2d) -> bool {
+    pub fn is_out_ax2d(&self, theLine: &crate::gp::Ax2d) -> bool {
         unsafe { crate::ffi::Bnd_B2d_is_out_ax2d(self as *const Self, theLine) }
     }
 
@@ -170,14 +160,14 @@ impl B2d {
     /// Check the Segment defined by the couple of input points
     /// for the intersection with the current box.
     /// Returns True if there is no intersection.
-    pub fn is_out_xy2(&self, theP0: &crate::ffi::gp_XY, theP1: &crate::ffi::gp_XY) -> bool {
+    pub fn is_out_xy2(&self, theP0: &crate::gp::XY, theP1: &crate::gp::XY) -> bool {
         unsafe { crate::ffi::Bnd_B2d_is_out_xy2(self as *const Self, theP0, theP1) }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:116 - `Bnd_B2d::IsIn()`
     /// Check that the box 'this' is inside the given box 'theBox'. Returns
     /// True if 'this' box is fully inside 'theBox'.
-    pub fn is_in_b2d(&self, theBox: &crate::ffi::Bnd_B2d) -> bool {
+    pub fn is_in_b2d(&self, theBox: &B2d) -> bool {
         unsafe { crate::ffi::Bnd_B2d_is_in_b2d(self as *const Self, theBox) }
     }
 
@@ -185,24 +175,20 @@ impl B2d {
     /// Check that the box 'this' is inside the given box 'theBox'
     /// transformed by 'theTrsf'. Returns True if 'this' box is fully
     /// inside the transformed 'theBox'.
-    pub fn is_in_b2d_trsf2d(
-        &self,
-        theBox: &crate::ffi::Bnd_B2d,
-        theTrsf: &crate::ffi::gp_Trsf2d,
-    ) -> bool {
+    pub fn is_in_b2d_trsf2d(&self, theBox: &B2d, theTrsf: &crate::gp::Trsf2d) -> bool {
         unsafe { crate::ffi::Bnd_B2d_is_in_b2d_trsf2d(self as *const Self, theBox, theTrsf) }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:124 - `Bnd_B2d::SetCenter()`
     /// Set the Center coordinates
-    pub fn set_center(&mut self, theCenter: &crate::ffi::gp_XY) {
+    pub fn set_center(&mut self, theCenter: &crate::gp::XY) {
         unsafe { crate::ffi::Bnd_B2d_set_center(self as *mut Self, theCenter) }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:128 - `Bnd_B2d::SetHSize()`
     /// Set the HSize (half-diagonal) coordinates.
     /// All components of theHSize must be non-negative.
-    pub fn set_h_size(&mut self, theHSize: &crate::ffi::gp_XY) {
+    pub fn set_h_size(&mut self, theHSize: &crate::gp::XY) {
         unsafe { crate::ffi::Bnd_B2d_set_h_size(self as *mut Self, theHSize) }
     }
 
@@ -234,10 +220,7 @@ impl B2f {
 
     /// **Source:** `Bnd_B2f.hxx`:40 - `Bnd_B2f::Bnd_B2f()`
     /// Constructor.
-    pub fn new_xy2(
-        theCenter: &crate::ffi::gp_XY,
-        theHSize: &crate::ffi::gp_XY,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_xy2(theCenter: &crate::gp::XY, theHSize: &crate::gp::XY) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B2f_ctor_xy2(theCenter, theHSize)) }
     }
 
@@ -255,19 +238,19 @@ impl B2f {
 
     /// **Source:** `Bnd_B2f.hxx`:49 - `Bnd_B2f::Add()`
     /// Update the box by a point.
-    pub fn add_xy(&mut self, thePnt: &crate::ffi::gp_XY) {
+    pub fn add_xy(&mut self, thePnt: &crate::gp::XY) {
         unsafe { crate::ffi::Bnd_B2f_add_xy(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:52 - `Bnd_B2f::Add()`
     /// Update the box by a point.
-    pub fn add_pnt2d(&mut self, thePnt: &crate::ffi::gp_Pnt2d) {
+    pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::Bnd_B2f_add_pnt2d(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:55 - `Bnd_B2f::Add()`
     /// Update the box by another box.
-    pub fn add_b2f(&mut self, theBox: &crate::ffi::Bnd_B2f) {
+    pub fn add_b2f(&mut self, theBox: &B2f) {
         unsafe { crate::ffi::Bnd_B2f_add_b2f(self as *mut Self, theBox) }
     }
 
@@ -275,7 +258,7 @@ impl B2f {
     /// Query a box corner: (Center - HSize). You must make sure that
     /// the box is NOT VOID (see IsVoid()), otherwise the method returns
     /// irrelevant result.
-    pub fn corner_min(&self) -> crate::OwnedPtr<crate::ffi::gp_XY> {
+    pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B2f_corner_min(self as *const Self)) }
     }
 
@@ -283,7 +266,7 @@ impl B2f {
     /// Query a box corner: (Center + HSize). You must make sure that
     /// the box is NOT VOID (see IsVoid()), otherwise the method returns
     /// irrelevant result.
-    pub fn corner_max(&self) -> crate::OwnedPtr<crate::ffi::gp_XY> {
+    pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B2f_corner_max(self as *const Self)) }
     }
 
@@ -304,17 +287,14 @@ impl B2f {
     /// Limit the Box by the internals of theOtherBox.
     /// Returns True if the limitation takes place, otherwise False
     /// indicating that the boxes do not intersect.
-    pub fn limit(&mut self, theOtherBox: &crate::ffi::Bnd_B2f) -> bool {
+    pub fn limit(&mut self, theOtherBox: &B2f) -> bool {
         unsafe { crate::ffi::Bnd_B2f_limit(self as *mut Self, theOtherBox) }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:81 - `Bnd_B2f::Transformed()`
     /// Transform the bounding box with the given transformation.
     /// The resulting box will be larger if theTrsf contains rotation.
-    pub fn transformed(
-        &self,
-        theTrsf: &crate::ffi::gp_Trsf2d,
-    ) -> crate::OwnedPtr<crate::ffi::Bnd_B2f> {
+    pub fn transformed(&self, theTrsf: &crate::gp::Trsf2d) -> crate::OwnedPtr<B2f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_B2f_transformed(self as *const Self, theTrsf))
         }
@@ -323,7 +303,7 @@ impl B2f {
     /// **Source:** `Bnd_B2f.hxx`:85 - `Bnd_B2f::IsOut()`
     /// Check the given point for the inclusion in the Box.
     /// Returns True if the point is outside.
-    pub fn is_out_xy(&self, thePnt: &crate::ffi::gp_XY) -> bool {
+    pub fn is_out_xy(&self, thePnt: &crate::gp::XY) -> bool {
         unsafe { crate::ffi::Bnd_B2f_is_out_xy(self as *const Self, thePnt) }
     }
 
@@ -332,7 +312,7 @@ impl B2f {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_xy_real_bool(
         &self,
-        theCenter: &crate::ffi::gp_XY,
+        theCenter: &crate::gp::XY,
         theRadius: f64,
         isCircleHollow: bool,
     ) -> bool {
@@ -349,7 +329,7 @@ impl B2f {
     /// **Source:** `Bnd_B2f.hxx`:96 - `Bnd_B2f::IsOut()`
     /// Check the given box for the intersection with the current box.
     /// Returns True if there is no intersection between boxes.
-    pub fn is_out_b2f(&self, theOtherBox: &crate::ffi::Bnd_B2f) -> bool {
+    pub fn is_out_b2f(&self, theOtherBox: &B2f) -> bool {
         unsafe { crate::ffi::Bnd_B2f_is_out_b2f(self as *const Self, theOtherBox) }
     }
 
@@ -357,18 +337,14 @@ impl B2f {
     /// Check the given box oriented by the given transformation
     /// for the intersection with the current box.
     /// Returns True if there is no intersection between boxes.
-    pub fn is_out_b2f_trsf2d(
-        &self,
-        theOtherBox: &crate::ffi::Bnd_B2f,
-        theTrsf: &crate::ffi::gp_Trsf2d,
-    ) -> bool {
+    pub fn is_out_b2f_trsf2d(&self, theOtherBox: &B2f, theTrsf: &crate::gp::Trsf2d) -> bool {
         unsafe { crate::ffi::Bnd_B2f_is_out_b2f_trsf2d(self as *const Self, theOtherBox, theTrsf) }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:106 - `Bnd_B2f::IsOut()`
     /// Check the given Line for the intersection with the current box.
     /// Returns True if there is no intersection.
-    pub fn is_out_ax2d(&self, theLine: &crate::ffi::gp_Ax2d) -> bool {
+    pub fn is_out_ax2d(&self, theLine: &crate::gp::Ax2d) -> bool {
         unsafe { crate::ffi::Bnd_B2f_is_out_ax2d(self as *const Self, theLine) }
     }
 
@@ -376,14 +352,14 @@ impl B2f {
     /// Check the Segment defined by the couple of input points
     /// for the intersection with the current box.
     /// Returns True if there is no intersection.
-    pub fn is_out_xy2(&self, theP0: &crate::ffi::gp_XY, theP1: &crate::ffi::gp_XY) -> bool {
+    pub fn is_out_xy2(&self, theP0: &crate::gp::XY, theP1: &crate::gp::XY) -> bool {
         unsafe { crate::ffi::Bnd_B2f_is_out_xy2(self as *const Self, theP0, theP1) }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:115 - `Bnd_B2f::IsIn()`
     /// Check that the box 'this' is inside the given box 'theBox'. Returns
     /// True if 'this' box is fully inside 'theBox'.
-    pub fn is_in_b2f(&self, theBox: &crate::ffi::Bnd_B2f) -> bool {
+    pub fn is_in_b2f(&self, theBox: &B2f) -> bool {
         unsafe { crate::ffi::Bnd_B2f_is_in_b2f(self as *const Self, theBox) }
     }
 
@@ -391,24 +367,20 @@ impl B2f {
     /// Check that the box 'this' is inside the given box 'theBox'
     /// transformed by 'theTrsf'. Returns True if 'this' box is fully
     /// inside the transformed 'theBox'.
-    pub fn is_in_b2f_trsf2d(
-        &self,
-        theBox: &crate::ffi::Bnd_B2f,
-        theTrsf: &crate::ffi::gp_Trsf2d,
-    ) -> bool {
+    pub fn is_in_b2f_trsf2d(&self, theBox: &B2f, theTrsf: &crate::gp::Trsf2d) -> bool {
         unsafe { crate::ffi::Bnd_B2f_is_in_b2f_trsf2d(self as *const Self, theBox, theTrsf) }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:123 - `Bnd_B2f::SetCenter()`
     /// Set the Center coordinates
-    pub fn set_center(&mut self, theCenter: &crate::ffi::gp_XY) {
+    pub fn set_center(&mut self, theCenter: &crate::gp::XY) {
         unsafe { crate::ffi::Bnd_B2f_set_center(self as *mut Self, theCenter) }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:127 - `Bnd_B2f::SetHSize()`
     /// Set the HSize (half-diagonal) coordinates.
     /// All components of theHSize must be non-negative.
-    pub fn set_h_size(&mut self, theHSize: &crate::ffi::gp_XY) {
+    pub fn set_h_size(&mut self, theHSize: &crate::gp::XY) {
         unsafe { crate::ffi::Bnd_B2f_set_h_size(self as *mut Self, theHSize) }
     }
 
@@ -441,8 +413,8 @@ impl B3d {
     /// **Source:** `Bnd_B3d.hxx`:42 - `Bnd_B3d::Bnd_B3d()`
     /// Constructor.
     pub fn new_xyz2(
-        theCenter: &crate::ffi::gp_XYZ,
-        theHSize: &crate::ffi::gp_XYZ,
+        theCenter: &crate::gp::XYZ,
+        theHSize: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B3d_ctor_xyz2(theCenter, theHSize)) }
     }
@@ -461,19 +433,19 @@ impl B3d {
 
     /// **Source:** `Bnd_B3d.hxx`:51 - `Bnd_B3d::Add()`
     /// Update the box by a point.
-    pub fn add_xyz(&mut self, thePnt: &crate::ffi::gp_XYZ) {
+    pub fn add_xyz(&mut self, thePnt: &crate::gp::XYZ) {
         unsafe { crate::ffi::Bnd_B3d_add_xyz(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_B3d.hxx`:54 - `Bnd_B3d::Add()`
     /// Update the box by a point.
-    pub fn add_pnt(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn add_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe { crate::ffi::Bnd_B3d_add_pnt(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_B3d.hxx`:57 - `Bnd_B3d::Add()`
     /// Update the box by another box.
-    pub fn add_b3d(&mut self, theBox: &crate::ffi::Bnd_B3d) {
+    pub fn add_b3d(&mut self, theBox: &B3d) {
         unsafe { crate::ffi::Bnd_B3d_add_b3d(self as *mut Self, theBox) }
     }
 
@@ -481,7 +453,7 @@ impl B3d {
     /// Query the lower corner: (Center - HSize). You must make sure that
     /// the box is NOT VOID (see IsVoid()), otherwise the method returns
     /// irrelevant result.
-    pub fn corner_min(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B3d_corner_min(self as *const Self)) }
     }
 
@@ -489,7 +461,7 @@ impl B3d {
     /// Query the upper corner: (Center + HSize). You must make sure that
     /// the box is NOT VOID (see IsVoid()), otherwise the method returns
     /// irrelevant result.
-    pub fn corner_max(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B3d_corner_max(self as *const Self)) }
     }
 
@@ -510,17 +482,14 @@ impl B3d {
     /// Limit the Box by the internals of theOtherBox.
     /// Returns True if the limitation takes place, otherwise False
     /// indicating that the boxes do not intersect.
-    pub fn limit(&mut self, theOtherBox: &crate::ffi::Bnd_B3d) -> bool {
+    pub fn limit(&mut self, theOtherBox: &B3d) -> bool {
         unsafe { crate::ffi::Bnd_B3d_limit(self as *mut Self, theOtherBox) }
     }
 
     /// **Source:** `Bnd_B3d.hxx`:83 - `Bnd_B3d::Transformed()`
     /// Transform the bounding box with the given transformation.
     /// The resulting box will be larger if theTrsf contains rotation.
-    pub fn transformed(
-        &self,
-        theTrsf: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::Bnd_B3d> {
+    pub fn transformed(&self, theTrsf: &crate::gp::Trsf) -> crate::OwnedPtr<B3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_B3d_transformed(self as *const Self, theTrsf))
         }
@@ -529,7 +498,7 @@ impl B3d {
     /// **Source:** `Bnd_B3d.hxx`:87 - `Bnd_B3d::IsOut()`
     /// Check the given point for the inclusion in the Box.
     /// Returns True if the point is outside.
-    pub fn is_out_xyz(&self, thePnt: &crate::ffi::gp_XYZ) -> bool {
+    pub fn is_out_xyz(&self, thePnt: &crate::gp::XYZ) -> bool {
         unsafe { crate::ffi::Bnd_B3d_is_out_xyz(self as *const Self, thePnt) }
     }
 
@@ -541,7 +510,7 @@ impl B3d {
     /// this method would report an intersection).
     pub fn is_out_xyz_real_bool(
         &self,
-        theCenter: &crate::ffi::gp_XYZ,
+        theCenter: &crate::gp::XYZ,
         theRadius: f64,
         isSphereHollow: bool,
     ) -> bool {
@@ -558,7 +527,7 @@ impl B3d {
     /// **Source:** `Bnd_B3d.hxx`:101 - `Bnd_B3d::IsOut()`
     /// Check the given box for the intersection with the current box.
     /// Returns True if there is no intersection between boxes.
-    pub fn is_out_b3d(&self, theOtherBox: &crate::ffi::Bnd_B3d) -> bool {
+    pub fn is_out_b3d(&self, theOtherBox: &B3d) -> bool {
         unsafe { crate::ffi::Bnd_B3d_is_out_b3d(self as *const Self, theOtherBox) }
     }
 
@@ -566,11 +535,7 @@ impl B3d {
     /// Check the given box oriented by the given transformation
     /// for the intersection with the current box.
     /// Returns True if there is no intersection between boxes.
-    pub fn is_out_b3d_trsf(
-        &self,
-        theOtherBox: &crate::ffi::Bnd_B3d,
-        theTrsf: &crate::ffi::gp_Trsf,
-    ) -> bool {
+    pub fn is_out_b3d_trsf(&self, theOtherBox: &B3d, theTrsf: &crate::gp::Trsf) -> bool {
         unsafe { crate::ffi::Bnd_B3d_is_out_b3d_trsf(self as *const Self, theOtherBox, theTrsf) }
     }
 
@@ -583,7 +548,7 @@ impl B3d {
     /// of the line 'theLine' or the radius of the cylinder along 'theLine'
     pub fn is_out_ax1_bool_real(
         &self,
-        theLine: &crate::ffi::gp_Ax1,
+        theLine: &crate::gp::Ax1,
         isRay: bool,
         theOverthickness: f64,
     ) -> bool {
@@ -600,14 +565,14 @@ impl B3d {
     /// **Source:** `Bnd_B3d.hxx`:120 - `Bnd_B3d::IsOut()`
     /// Check the given Plane for the intersection with the current box.
     /// Returns True if there is no intersection.
-    pub fn is_out_ax3(&self, thePlane: &crate::ffi::gp_Ax3) -> bool {
+    pub fn is_out_ax3(&self, thePlane: &crate::gp::Ax3) -> bool {
         unsafe { crate::ffi::Bnd_B3d_is_out_ax3(self as *const Self, thePlane) }
     }
 
     /// **Source:** `Bnd_B3d.hxx`:124 - `Bnd_B3d::IsIn()`
     /// Check that the box 'this' is inside the given box 'theBox'. Returns
     /// True if 'this' box is fully inside 'theBox'.
-    pub fn is_in_b3d(&self, theBox: &crate::ffi::Bnd_B3d) -> bool {
+    pub fn is_in_b3d(&self, theBox: &B3d) -> bool {
         unsafe { crate::ffi::Bnd_B3d_is_in_b3d(self as *const Self, theBox) }
     }
 
@@ -615,24 +580,20 @@ impl B3d {
     /// Check that the box 'this' is inside the given box 'theBox'
     /// transformed by 'theTrsf'. Returns True if 'this' box is fully
     /// inside the transformed 'theBox'.
-    pub fn is_in_b3d_trsf(
-        &self,
-        theBox: &crate::ffi::Bnd_B3d,
-        theTrsf: &crate::ffi::gp_Trsf,
-    ) -> bool {
+    pub fn is_in_b3d_trsf(&self, theBox: &B3d, theTrsf: &crate::gp::Trsf) -> bool {
         unsafe { crate::ffi::Bnd_B3d_is_in_b3d_trsf(self as *const Self, theBox, theTrsf) }
     }
 
     /// **Source:** `Bnd_B3d.hxx`:132 - `Bnd_B3d::SetCenter()`
     /// Set the Center coordinates
-    pub fn set_center(&mut self, theCenter: &crate::ffi::gp_XYZ) {
+    pub fn set_center(&mut self, theCenter: &crate::gp::XYZ) {
         unsafe { crate::ffi::Bnd_B3d_set_center(self as *mut Self, theCenter) }
     }
 
     /// **Source:** `Bnd_B3d.hxx`:136 - `Bnd_B3d::SetHSize()`
     /// Set the HSize (half-diagonal) coordinates.
     /// All components of theHSize must be non-negative.
-    pub fn set_h_size(&mut self, theHSize: &crate::ffi::gp_XYZ) {
+    pub fn set_h_size(&mut self, theHSize: &crate::gp::XYZ) {
         unsafe { crate::ffi::Bnd_B3d_set_h_size(self as *mut Self, theHSize) }
     }
 
@@ -665,8 +626,8 @@ impl B3f {
     /// **Source:** `Bnd_B3f.hxx`:38 - `Bnd_B3f::Bnd_B3f()`
     /// Constructor.
     pub fn new_xyz2(
-        theCenter: &crate::ffi::gp_XYZ,
-        theHSize: &crate::ffi::gp_XYZ,
+        theCenter: &crate::gp::XYZ,
+        theHSize: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B3f_ctor_xyz2(theCenter, theHSize)) }
     }
@@ -685,19 +646,19 @@ impl B3f {
 
     /// **Source:** `Bnd_B3f.hxx`:47 - `Bnd_B3f::Add()`
     /// Update the box by a point.
-    pub fn add_xyz(&mut self, thePnt: &crate::ffi::gp_XYZ) {
+    pub fn add_xyz(&mut self, thePnt: &crate::gp::XYZ) {
         unsafe { crate::ffi::Bnd_B3f_add_xyz(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_B3f.hxx`:50 - `Bnd_B3f::Add()`
     /// Update the box by a point.
-    pub fn add_pnt(&mut self, thePnt: &crate::ffi::gp_Pnt) {
+    pub fn add_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         unsafe { crate::ffi::Bnd_B3f_add_pnt(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_B3f.hxx`:53 - `Bnd_B3f::Add()`
     /// Update the box by another box.
-    pub fn add_b3f(&mut self, theBox: &crate::ffi::Bnd_B3f) {
+    pub fn add_b3f(&mut self, theBox: &B3f) {
         unsafe { crate::ffi::Bnd_B3f_add_b3f(self as *mut Self, theBox) }
     }
 
@@ -705,7 +666,7 @@ impl B3f {
     /// Query the lower corner: (Center - HSize). You must make sure that
     /// the box is NOT VOID (see IsVoid()), otherwise the method returns
     /// irrelevant result.
-    pub fn corner_min(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B3f_corner_min(self as *const Self)) }
     }
 
@@ -713,7 +674,7 @@ impl B3f {
     /// Query the upper corner: (Center + HSize). You must make sure that
     /// the box is NOT VOID (see IsVoid()), otherwise the method returns
     /// irrelevant result.
-    pub fn corner_max(&self) -> crate::OwnedPtr<crate::ffi::gp_XYZ> {
+    pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_B3f_corner_max(self as *const Self)) }
     }
 
@@ -734,17 +695,14 @@ impl B3f {
     /// Limit the Box by the internals of theOtherBox.
     /// Returns True if the limitation takes place, otherwise False
     /// indicating that the boxes do not intersect.
-    pub fn limit(&mut self, theOtherBox: &crate::ffi::Bnd_B3f) -> bool {
+    pub fn limit(&mut self, theOtherBox: &B3f) -> bool {
         unsafe { crate::ffi::Bnd_B3f_limit(self as *mut Self, theOtherBox) }
     }
 
     /// **Source:** `Bnd_B3f.hxx`:79 - `Bnd_B3f::Transformed()`
     /// Transform the bounding box with the given transformation.
     /// The resulting box will be larger if theTrsf contains rotation.
-    pub fn transformed(
-        &self,
-        theTrsf: &crate::ffi::gp_Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::Bnd_B3f> {
+    pub fn transformed(&self, theTrsf: &crate::gp::Trsf) -> crate::OwnedPtr<B3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_B3f_transformed(self as *const Self, theTrsf))
         }
@@ -753,7 +711,7 @@ impl B3f {
     /// **Source:** `Bnd_B3f.hxx`:83 - `Bnd_B3f::IsOut()`
     /// Check the given point for the inclusion in the Box.
     /// Returns True if the point is outside.
-    pub fn is_out_xyz(&self, thePnt: &crate::ffi::gp_XYZ) -> bool {
+    pub fn is_out_xyz(&self, thePnt: &crate::gp::XYZ) -> bool {
         unsafe { crate::ffi::Bnd_B3f_is_out_xyz(self as *const Self, thePnt) }
     }
 
@@ -765,7 +723,7 @@ impl B3f {
     /// this method would report an intersection).
     pub fn is_out_xyz_real_bool(
         &self,
-        theCenter: &crate::ffi::gp_XYZ,
+        theCenter: &crate::gp::XYZ,
         theRadius: f64,
         isSphereHollow: bool,
     ) -> bool {
@@ -782,7 +740,7 @@ impl B3f {
     /// **Source:** `Bnd_B3f.hxx`:97 - `Bnd_B3f::IsOut()`
     /// Check the given box for the intersection with the current box.
     /// Returns True if there is no intersection between boxes.
-    pub fn is_out_b3f(&self, theOtherBox: &crate::ffi::Bnd_B3f) -> bool {
+    pub fn is_out_b3f(&self, theOtherBox: &B3f) -> bool {
         unsafe { crate::ffi::Bnd_B3f_is_out_b3f(self as *const Self, theOtherBox) }
     }
 
@@ -790,11 +748,7 @@ impl B3f {
     /// Check the given box oriented by the given transformation
     /// for the intersection with the current box.
     /// Returns True if there is no intersection between boxes.
-    pub fn is_out_b3f_trsf(
-        &self,
-        theOtherBox: &crate::ffi::Bnd_B3f,
-        theTrsf: &crate::ffi::gp_Trsf,
-    ) -> bool {
+    pub fn is_out_b3f_trsf(&self, theOtherBox: &B3f, theTrsf: &crate::gp::Trsf) -> bool {
         unsafe { crate::ffi::Bnd_B3f_is_out_b3f_trsf(self as *const Self, theOtherBox, theTrsf) }
     }
 
@@ -807,7 +761,7 @@ impl B3f {
     /// of the line 'theLine' or the radius of the cylinder along 'theLine'
     pub fn is_out_ax1_bool_real(
         &self,
-        theLine: &crate::ffi::gp_Ax1,
+        theLine: &crate::gp::Ax1,
         isRay: bool,
         theOverthickness: f64,
     ) -> bool {
@@ -824,14 +778,14 @@ impl B3f {
     /// **Source:** `Bnd_B3f.hxx`:116 - `Bnd_B3f::IsOut()`
     /// Check the given Plane for the intersection with the current box.
     /// Returns True if there is no intersection.
-    pub fn is_out_ax3(&self, thePlane: &crate::ffi::gp_Ax3) -> bool {
+    pub fn is_out_ax3(&self, thePlane: &crate::gp::Ax3) -> bool {
         unsafe { crate::ffi::Bnd_B3f_is_out_ax3(self as *const Self, thePlane) }
     }
 
     /// **Source:** `Bnd_B3f.hxx`:120 - `Bnd_B3f::IsIn()`
     /// Check that the box 'this' is inside the given box 'theBox'. Returns
     /// True if 'this' box is fully inside 'theBox'.
-    pub fn is_in_b3f(&self, theBox: &crate::ffi::Bnd_B3f) -> bool {
+    pub fn is_in_b3f(&self, theBox: &B3f) -> bool {
         unsafe { crate::ffi::Bnd_B3f_is_in_b3f(self as *const Self, theBox) }
     }
 
@@ -839,24 +793,20 @@ impl B3f {
     /// Check that the box 'this' is inside the given box 'theBox'
     /// transformed by 'theTrsf'. Returns True if 'this' box is fully
     /// inside the transformed 'theBox'.
-    pub fn is_in_b3f_trsf(
-        &self,
-        theBox: &crate::ffi::Bnd_B3f,
-        theTrsf: &crate::ffi::gp_Trsf,
-    ) -> bool {
+    pub fn is_in_b3f_trsf(&self, theBox: &B3f, theTrsf: &crate::gp::Trsf) -> bool {
         unsafe { crate::ffi::Bnd_B3f_is_in_b3f_trsf(self as *const Self, theBox, theTrsf) }
     }
 
     /// **Source:** `Bnd_B3f.hxx`:128 - `Bnd_B3f::SetCenter()`
     /// Set the Center coordinates
-    pub fn set_center(&mut self, theCenter: &crate::ffi::gp_XYZ) {
+    pub fn set_center(&mut self, theCenter: &crate::gp::XYZ) {
         unsafe { crate::ffi::Bnd_B3f_set_center(self as *mut Self, theCenter) }
     }
 
     /// **Source:** `Bnd_B3f.hxx`:132 - `Bnd_B3f::SetHSize()`
     /// Set the HSize (half-diagonal) coordinates.
     /// All components of theHSize must be non-negative.
-    pub fn set_h_size(&mut self, theHSize: &crate::ffi::gp_XYZ) {
+    pub fn set_h_size(&mut self, theHSize: &crate::gp::XYZ) {
         unsafe { crate::ffi::Bnd_B3f_set_h_size(self as *mut Self, theHSize) }
     }
 
@@ -899,7 +849,7 @@ impl BoundSortBox {
     /// -   the set of bounding boxes SetOfBox.
     pub fn initialize_box_handlebndharray1ofbox(
         &mut self,
-        CompleteBox: &crate::ffi::Bnd_Box,
+        CompleteBox: &Box,
         SetOfBox: &crate::ffi::HandleBndHArray1OfBox,
     ) {
         unsafe {
@@ -932,7 +882,7 @@ impl BoundSortBox {
     /// -   the maximum number nbComponents
     /// of the bounding boxes to be managed. Use the Add
     /// function to define the array of bounding boxes to be sorted by this algorithm.
-    pub fn initialize_box_int(&mut self, CompleteBox: &crate::ffi::Bnd_Box, nbComponents: i32) {
+    pub fn initialize_box_int(&mut self, CompleteBox: &Box, nbComponents: i32) {
         unsafe {
             crate::ffi::Bnd_BoundSortBox_initialize_box_int(
                 self as *mut Self,
@@ -959,7 +909,7 @@ impl BoundSortBox {
     /// - Standard_MultiplyDefined if a box already exists at
     /// position boxIndex in the array of boxes to be sorted by
     /// this comparison algorithm.
-    pub fn add(&mut self, theBox: &crate::ffi::Bnd_Box, boxIndex: i32) {
+    pub fn add(&mut self, theBox: &Box, boxIndex: i32) {
         unsafe { crate::ffi::Bnd_BoundSortBox_add(self as *mut Self, theBox, boxIndex) }
     }
 
@@ -969,10 +919,7 @@ impl BoundSortBox {
     /// comparison algorithm, and returns the list of intersecting
     /// bounding boxes as a list of indexes on the array of
     /// bounding boxes used by this algorithm.
-    pub fn compare_box(
-        &mut self,
-        theBox: &crate::ffi::Bnd_Box,
-    ) -> &crate::ffi::TColStd_ListOfInteger {
+    pub fn compare_box(&mut self, theBox: &Box) -> &crate::ffi::TColStd_ListOfInteger {
         unsafe { &*(crate::ffi::Bnd_BoundSortBox_compare_box(self as *mut Self, theBox)) }
     }
 
@@ -982,7 +929,7 @@ impl BoundSortBox {
     /// comparison algorithm, and returns the list of intersecting
     /// bounding boxes as a list of indexes on the array of
     /// bounding boxes used by this algorithm.
-    pub fn compare_pln(&mut self, P: &crate::ffi::gp_Pln) -> &crate::ffi::TColStd_ListOfInteger {
+    pub fn compare_pln(&mut self, P: &crate::gp::Pln) -> &crate::ffi::TColStd_ListOfInteger {
         unsafe { &*(crate::ffi::Bnd_BoundSortBox_compare_pln(self as *mut Self, P)) }
     }
 
@@ -1055,10 +1002,7 @@ impl Box {
     /// Creates a bounding box, it contains:
     /// -   minimum/maximum point of bounding box,
     /// The constructed box is qualified Void. Its gap is null.
-    pub fn new_pnt2(
-        theMin: &crate::ffi::gp_Pnt,
-        theMax: &crate::ffi::gp_Pnt,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pnt2(theMin: &crate::gp::Pnt, theMax: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Box_ctor_pnt2(theMin, theMax)) }
     }
 
@@ -1079,7 +1023,7 @@ impl Box {
     /// Sets this bounding box so that it bounds
     /// -   the point P. This involves first setting this bounding box
     /// to be void and then adding the point P.
-    pub fn set_pnt(&mut self, P: &crate::ffi::gp_Pnt) {
+    pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::Bnd_Box_set_pnt(self as *mut Self, P) }
     }
 
@@ -1089,7 +1033,7 @@ impl Box {
     /// points M defined by M=P+u*D, where u is greater than
     /// or equal to 0, are inside the bounding volume. This
     /// involves first setting this box to be void and then adding   the half-line.
-    pub fn set_pnt_dir(&mut self, P: &crate::ffi::gp_Pnt, D: &crate::ffi::gp_Dir) {
+    pub fn set_pnt_dir(&mut self, P: &crate::gp::Pnt, D: &crate::gp::Dir) {
         unsafe { crate::ffi::Bnd_Box_set_pnt_dir(self as *mut Self, P, D) }
     }
 
@@ -1184,7 +1128,7 @@ impl Box {
     /// may be equal to +/- Precision::Infinite().
     /// Standard_ConstructionError exception will be thrown if the box is void.
     /// if IsVoid()
-    pub fn corner_min(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Box_corner_min(self as *const Self)) }
     }
 
@@ -1194,7 +1138,7 @@ impl Box {
     /// may be equal to +/- Precision::Infinite().
     /// Standard_ConstructionError exception will be thrown if the box is void.
     /// if IsVoid()
-    pub fn corner_max(&self) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Box_corner_max(self as *const Self)) }
     }
 
@@ -1326,7 +1270,7 @@ impl Box {
     /// Applying a geometric transformation (for example, a
     /// rotation) to a bounding box generally increases its
     /// dimensions. This is not optimal for algorithms which use it.
-    pub fn transformed(&self, T: &crate::ffi::gp_Trsf) -> crate::OwnedPtr<crate::ffi::Bnd_Box> {
+    pub fn transformed(&self, T: &crate::gp::Trsf) -> crate::OwnedPtr<Box> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_Box_transformed(self as *const Self, T))
         }
@@ -1334,19 +1278,19 @@ impl Box {
 
     /// **Source:** `Bnd_Box.hxx`:230 - `Bnd_Box::Add()`
     /// Adds the box <Other> to <me>.
-    pub fn add_box(&mut self, Other: &crate::ffi::Bnd_Box) {
+    pub fn add_box(&mut self, Other: &Box) {
         unsafe { crate::ffi::Bnd_Box_add_box(self as *mut Self, Other) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:233 - `Bnd_Box::Add()`
     /// Adds a Pnt to the box.
-    pub fn add_pnt(&mut self, P: &crate::ffi::gp_Pnt) {
+    pub fn add_pnt(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::Bnd_Box_add_pnt(self as *mut Self, P) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:236 - `Bnd_Box::Add()`
     /// Extends  <me> from the Pnt <P> in the direction <D>.
-    pub fn add_pnt_dir(&mut self, P: &crate::ffi::gp_Pnt, D: &crate::ffi::gp_Dir) {
+    pub fn add_pnt_dir(&mut self, P: &crate::gp::Pnt, D: &crate::gp::Dir) {
         unsafe { crate::ffi::Bnd_Box_add_pnt_dir(self as *mut Self, P, D) }
     }
 
@@ -1354,38 +1298,38 @@ impl Box {
     /// Extends the Box  in the given Direction, i.e. adds
     /// an  half-line. The   box  may become   infinite in
     /// 1,2 or 3 directions.
-    pub fn add_dir(&mut self, D: &crate::ffi::gp_Dir) {
+    pub fn add_dir(&mut self, D: &crate::gp::Dir) {
         unsafe { crate::ffi::Bnd_Box_add_dir(self as *mut Self, D) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:244 - `Bnd_Box::IsOut()`
     /// Returns True if the Pnt is out the box.
-    pub fn is_out_pnt(&self, P: &crate::ffi::gp_Pnt) -> bool {
+    pub fn is_out_pnt(&self, P: &crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_pnt(self as *const Self, P) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:247 - `Bnd_Box::IsOut()`
     /// Returns False if the line intersects the box.
-    pub fn is_out_lin(&self, L: &crate::ffi::gp_Lin) -> bool {
+    pub fn is_out_lin(&self, L: &crate::gp::Lin) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_lin(self as *const Self, L) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:250 - `Bnd_Box::IsOut()`
     /// Returns False if the plane intersects the box.
-    pub fn is_out_pln(&self, P: &crate::ffi::gp_Pln) -> bool {
+    pub fn is_out_pln(&self, P: &crate::gp::Pln) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_pln(self as *const Self, P) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:253 - `Bnd_Box::IsOut()`
     /// Returns False if the <Box> intersects or is inside <me>.
-    pub fn is_out_box(&self, Other: &crate::ffi::Bnd_Box) -> bool {
+    pub fn is_out_box(&self, Other: &Box) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_box(self as *const Self, Other) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:257 - `Bnd_Box::IsOut()`
     /// Returns False if  the transformed <Box> intersects
     /// or  is inside <me>.
-    pub fn is_out_box_trsf(&self, Other: &crate::ffi::Bnd_Box, T: &crate::ffi::gp_Trsf) -> bool {
+    pub fn is_out_box_trsf(&self, Other: &Box, T: &crate::gp::Trsf) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_box_trsf(self as *const Self, Other, T) }
     }
 
@@ -1394,9 +1338,9 @@ impl Box {
     /// or  is inside the transformed box <me>.
     pub fn is_out_trsf_box_trsf(
         &self,
-        T1: &crate::ffi::gp_Trsf,
-        Other: &crate::ffi::Bnd_Box,
-        T2: &crate::ffi::gp_Trsf,
+        T1: &crate::gp::Trsf,
+        Other: &Box,
+        T2: &crate::gp::Trsf,
     ) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_trsf_box_trsf(self as *const Self, T1, Other, T2) }
     }
@@ -1407,16 +1351,16 @@ impl Box {
     /// direction <D> intersects the box.
     pub fn is_out_pnt2_dir(
         &self,
-        P1: &crate::ffi::gp_Pnt,
-        P2: &crate::ffi::gp_Pnt,
-        D: &crate::ffi::gp_Dir,
+        P1: &crate::gp::Pnt,
+        P2: &crate::gp::Pnt,
+        D: &crate::gp::Dir,
     ) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_pnt2_dir(self as *const Self, P1, P2, D) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:271 - `Bnd_Box::Distance()`
     /// Computes the minimum distance between two boxes.
-    pub fn distance(&self, Other: &crate::ffi::Bnd_Box) -> f64 {
+    pub fn distance(&self, Other: &Box) -> f64 {
         unsafe { crate::ffi::Bnd_Box_distance(self as *const Self, Other) }
     }
 
@@ -1436,7 +1380,7 @@ impl Box {
     /// box). This can be a Void box in case if its sides has been defined as infinite (Open) without
     /// adding any finite points. WARNING! This method relies on Open flags, the infinite points added
     /// using Add() method will be returned as is.
-    pub fn finite_part(&self) -> crate::OwnedPtr<crate::ffi::Bnd_Box> {
+    pub fn finite_part(&self) -> crate::OwnedPtr<Box> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Box_finite_part(self as *const Self)) }
     }
 
@@ -1509,7 +1453,7 @@ impl Box2d {
     /// Sets this 2D bounding box so that it bounds
     /// the point P. This involves first setting this bounding box
     /// to be void and then adding the point PThe rectangle bounds   the  point <P>.
-    pub fn set_pnt2d(&mut self, thePnt: &crate::ffi::gp_Pnt2d) {
+    pub fn set_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::Bnd_Box2d_set_pnt2d(self as *mut Self, thePnt) }
     }
 
@@ -1519,11 +1463,7 @@ impl Box2d {
     /// points M defined by M=P+u*D, where u is greater than
     /// or equal to 0, are inside the bounding area. This involves
     /// first setting this 2D box to be void and then adding the   half-line.
-    pub fn set_pnt2d_dir2d(
-        &mut self,
-        thePnt: &crate::ffi::gp_Pnt2d,
-        theDir: &crate::ffi::gp_Dir2d,
-    ) {
+    pub fn set_pnt2d_dir2d(&mut self, thePnt: &crate::gp::Pnt2d, theDir: &crate::gp::Dir2d) {
         unsafe { crate::ffi::Bnd_Box2d_set_pnt2d_dir2d(self as *mut Self, thePnt, theDir) }
     }
 
@@ -1641,7 +1581,7 @@ impl Box2d {
     /// Applying a geometric transformation (for example, a
     /// rotation) to a bounding box generally increases its
     /// dimensions. This is not optimal for algorithms which use it.
-    pub fn transformed(&self, T: &crate::ffi::gp_Trsf2d) -> crate::OwnedPtr<crate::ffi::Bnd_Box2d> {
+    pub fn transformed(&self, T: &crate::gp::Trsf2d) -> crate::OwnedPtr<Box2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_Box2d_transformed(self as *const Self, T))
         }
@@ -1649,23 +1589,19 @@ impl Box2d {
 
     /// **Source:** `Bnd_Box2d.hxx`:180 - `Bnd_Box2d::Add()`
     /// Adds the 2d box <Other> to <me>.
-    pub fn add_box2d(&mut self, Other: &crate::ffi::Bnd_Box2d) {
+    pub fn add_box2d(&mut self, Other: &Box2d) {
         unsafe { crate::ffi::Bnd_Box2d_add_box2d(self as *mut Self, Other) }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:183 - `Bnd_Box2d::Add()`
     /// Adds the 2d point.
-    pub fn add_pnt2d(&mut self, thePnt: &crate::ffi::gp_Pnt2d) {
+    pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::Bnd_Box2d_add_pnt2d(self as *mut Self, thePnt) }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:186 - `Bnd_Box2d::Add()`
     /// Extends bounding box from thePnt in the direction theDir.
-    pub fn add_pnt2d_dir2d(
-        &mut self,
-        thePnt: &crate::ffi::gp_Pnt2d,
-        theDir: &crate::ffi::gp_Dir2d,
-    ) {
+    pub fn add_pnt2d_dir2d(&mut self, thePnt: &crate::gp::Pnt2d, theDir: &crate::gp::Dir2d) {
         unsafe { crate::ffi::Bnd_Box2d_add_pnt2d_dir2d(self as *mut Self, thePnt, theDir) }
     }
 
@@ -1673,45 +1609,37 @@ impl Box2d {
     /// Extends the Box  in the given Direction, i.e. adds
     /// a half-line. The box may become infinite in 1 or 2
     /// directions.
-    pub fn add_dir2d(&mut self, D: &crate::ffi::gp_Dir2d) {
+    pub fn add_dir2d(&mut self, D: &crate::gp::Dir2d) {
         unsafe { crate::ffi::Bnd_Box2d_add_dir2d(self as *mut Self, D) }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:198 - `Bnd_Box2d::IsOut()`
     /// Returns True if the 2d pnt <P> is out <me>.
-    pub fn is_out_pnt2d(&self, P: &crate::ffi::gp_Pnt2d) -> bool {
+    pub fn is_out_pnt2d(&self, P: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::Bnd_Box2d_is_out_pnt2d(self as *const Self, P) }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:201 - `Bnd_Box2d::IsOut()`
     /// Returns True if the line doesn't intersect the box.
-    pub fn is_out_lin2d(&self, theL: &crate::ffi::gp_Lin2d) -> bool {
+    pub fn is_out_lin2d(&self, theL: &crate::gp::Lin2d) -> bool {
         unsafe { crate::ffi::Bnd_Box2d_is_out_lin2d(self as *const Self, theL) }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:204 - `Bnd_Box2d::IsOut()`
     /// Returns True if the segment doesn't intersect the box.
-    pub fn is_out_pnt2d2(
-        &self,
-        theP0: &crate::ffi::gp_Pnt2d,
-        theP1: &crate::ffi::gp_Pnt2d,
-    ) -> bool {
+    pub fn is_out_pnt2d2(&self, theP0: &crate::gp::Pnt2d, theP1: &crate::gp::Pnt2d) -> bool {
         unsafe { crate::ffi::Bnd_Box2d_is_out_pnt2d2(self as *const Self, theP0, theP1) }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:207 - `Bnd_Box2d::IsOut()`
     /// Returns True if <Box2d> is out <me>.
-    pub fn is_out_box2d(&self, Other: &crate::ffi::Bnd_Box2d) -> bool {
+    pub fn is_out_box2d(&self, Other: &Box2d) -> bool {
         unsafe { crate::ffi::Bnd_Box2d_is_out_box2d(self as *const Self, Other) }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:210 - `Bnd_Box2d::IsOut()`
     /// Returns True if transformed <Box2d> is out <me>.
-    pub fn is_out_box2d_trsf2d(
-        &self,
-        theOther: &crate::ffi::Bnd_Box2d,
-        theTrsf: &crate::ffi::gp_Trsf2d,
-    ) -> bool {
+    pub fn is_out_box2d_trsf2d(&self, theOther: &Box2d, theTrsf: &crate::gp::Trsf2d) -> bool {
         unsafe { crate::ffi::Bnd_Box2d_is_out_box2d_trsf2d(self as *const Self, theOther, theTrsf) }
     }
 
@@ -1721,9 +1649,9 @@ impl Box2d {
     /// of <me> and <Other>, to transform them and to test.
     pub fn is_out_trsf2d_box2d_trsf2d(
         &self,
-        T1: &crate::ffi::gp_Trsf2d,
-        Other: &crate::ffi::Bnd_Box2d,
-        T2: &crate::ffi::gp_Trsf2d,
+        T1: &crate::gp::Trsf2d,
+        Other: &Box2d,
+        T2: &crate::gp::Trsf2d,
     ) -> bool {
         unsafe {
             crate::ffi::Bnd_Box2d_is_out_trsf2d_box2d_trsf2d(self as *const Self, T1, Other, T2)
@@ -2072,10 +2000,10 @@ impl OBB {
     /// **Source:** `Bnd_OBB.hxx`:51 - `Bnd_OBB::Bnd_OBB()`
     /// Constructor taking all defining parameters
     pub fn new_pnt_dir3_real3(
-        theCenter: &crate::ffi::gp_Pnt,
-        theXDirection: &crate::ffi::gp_Dir,
-        theYDirection: &crate::ffi::gp_Dir,
-        theZDirection: &crate::ffi::gp_Dir,
+        theCenter: &crate::gp::Pnt,
+        theXDirection: &crate::gp::Dir,
+        theYDirection: &crate::gp::Dir,
+        theZDirection: &crate::gp::Dir,
         theHXSize: f64,
         theHYSize: f64,
         theHZSize: f64,
@@ -2095,7 +2023,7 @@ impl OBB {
 
     /// **Source:** `Bnd_OBB.hxx`:75 - `Bnd_OBB::Bnd_OBB()`
     /// Constructor to create OBB from AABB.
-    pub fn new_box(theBox: &crate::ffi::Bnd_Box) -> crate::OwnedPtr<Self> {
+    pub fn new_box(theBox: &Box) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_OBB_ctor_box(theBox)) }
     }
 
@@ -2126,25 +2054,25 @@ impl OBB {
 
     /// **Source:** `Bnd_OBB.hxx`:112 - `Bnd_OBB::SetCenter()`
     /// Sets the center of OBB
-    pub fn set_center(&mut self, theCenter: &crate::ffi::gp_Pnt) {
+    pub fn set_center(&mut self, theCenter: &crate::gp::Pnt) {
         unsafe { crate::ffi::Bnd_OBB_set_center(self as *mut Self, theCenter) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:115 - `Bnd_OBB::SetXComponent()`
     /// Sets the X component of OBB - direction and size
-    pub fn set_x_component(&mut self, theXDirection: &crate::ffi::gp_Dir, theHXSize: f64) {
+    pub fn set_x_component(&mut self, theXDirection: &crate::gp::Dir, theHXSize: f64) {
         unsafe { crate::ffi::Bnd_OBB_set_x_component(self as *mut Self, theXDirection, theHXSize) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:124 - `Bnd_OBB::SetYComponent()`
     /// Sets the Y component of OBB - direction and size
-    pub fn set_y_component(&mut self, theYDirection: &crate::ffi::gp_Dir, theHYSize: f64) {
+    pub fn set_y_component(&mut self, theYDirection: &crate::gp::Dir, theHYSize: f64) {
         unsafe { crate::ffi::Bnd_OBB_set_y_component(self as *mut Self, theYDirection, theHYSize) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:133 - `Bnd_OBB::SetZComponent()`
     /// Sets the Z component of OBB - direction and size
-    pub fn set_z_component(&mut self, theZDirection: &crate::ffi::gp_Dir, theHZSize: f64) {
+    pub fn set_z_component(&mut self, theZDirection: &crate::gp::Dir, theHZSize: f64) {
         unsafe { crate::ffi::Bnd_OBB_set_z_component(self as *mut Self, theZDirection, theHZSize) }
     }
 
@@ -2156,31 +2084,31 @@ impl OBB {
     /// gp_Trsf aLoc;
     /// aLoc.SetTransformation (theOBB.Position(), gp::XOY());
     /// @endcode
-    pub fn position(&self) -> crate::OwnedPtr<crate::ffi::gp_Ax3> {
+    pub fn position(&self) -> crate::OwnedPtr<crate::gp::Ax3> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_OBB_position(self as *const Self)) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:151 - `Bnd_OBB::Center()`
     /// Returns the center of OBB
-    pub fn center(&self) -> &crate::ffi::gp_XYZ {
+    pub fn center(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Bnd_OBB_center(self as *const Self)) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:154 - `Bnd_OBB::XDirection()`
     /// Returns the X Direction of OBB
-    pub fn x_direction(&self) -> &crate::ffi::gp_XYZ {
+    pub fn x_direction(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Bnd_OBB_x_direction(self as *const Self)) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:157 - `Bnd_OBB::YDirection()`
     /// Returns the Y Direction of OBB
-    pub fn y_direction(&self) -> &crate::ffi::gp_XYZ {
+    pub fn y_direction(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Bnd_OBB_y_direction(self as *const Self)) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:160 - `Bnd_OBB::ZDirection()`
     /// Returns the Z Direction of OBB
-    pub fn z_direction(&self) -> &crate::ffi::gp_XYZ {
+    pub fn z_direction(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Bnd_OBB_z_direction(self as *const Self)) }
     }
 
@@ -2240,33 +2168,33 @@ impl OBB {
 
     /// **Source:** `Bnd_OBB.hxx`:243 - `Bnd_OBB::IsOut()`
     /// Check if the box do not interfere the other box.
-    pub fn is_out_obb(&self, theOther: &crate::ffi::Bnd_OBB) -> bool {
+    pub fn is_out_obb(&self, theOther: &OBB) -> bool {
         unsafe { crate::ffi::Bnd_OBB_is_out_obb(self as *const Self, theOther) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:246 - `Bnd_OBB::IsOut()`
     /// Check if the point is inside of <this>.
-    pub fn is_out_pnt(&self, theP: &crate::ffi::gp_Pnt) -> bool {
+    pub fn is_out_pnt(&self, theP: &crate::gp::Pnt) -> bool {
         unsafe { crate::ffi::Bnd_OBB_is_out_pnt(self as *const Self, theP) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:249 - `Bnd_OBB::IsCompletelyInside()`
     /// Check if the theOther is completely inside *this.
-    pub fn is_completely_inside(&self, theOther: &crate::ffi::Bnd_OBB) -> bool {
+    pub fn is_completely_inside(&self, theOther: &OBB) -> bool {
         unsafe { crate::ffi::Bnd_OBB_is_completely_inside(self as *const Self, theOther) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:253 - `Bnd_OBB::Add()`
     /// Rebuilds this in order to include all previous objects
     /// (which it was created from) and theOther.
-    pub fn add_obb(&mut self, theOther: &crate::ffi::Bnd_OBB) {
+    pub fn add_obb(&mut self, theOther: &OBB) {
         unsafe { crate::ffi::Bnd_OBB_add_obb(self as *mut Self, theOther) }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:257 - `Bnd_OBB::Add()`
     /// Rebuilds this in order to include all previous objects
     /// (which it was created from) and theP.
-    pub fn add_pnt(&mut self, theP: &crate::ffi::gp_Pnt) {
+    pub fn add_pnt(&mut self, theP: &crate::gp::Pnt) {
         unsafe { crate::ffi::Bnd_OBB_add_pnt(self as *mut Self, theP) }
     }
 
@@ -2307,7 +2235,7 @@ impl Range {
 
     /// **Source:** `Bnd_Range.hxx`:46 - `Bnd_Range::Common()`
     /// Replaces <this> with common-part of <this> and theOther
-    pub fn common(&mut self, theOther: &crate::ffi::Bnd_Range) {
+    pub fn common(&mut self, theOther: &Range) {
         unsafe { crate::ffi::Bnd_Range_common(self as *mut Self, theOther) }
     }
 
@@ -2317,7 +2245,7 @@ impl Range {
     /// Returns false if the operation cannot be done (e.g.
     /// input arguments are empty or separated).
     /// @sa use method ::Add() to merge two ranges unconditionally
-    pub fn union(&mut self, theOther: &crate::ffi::Bnd_Range) -> bool {
+    pub fn union(&mut self, theOther: &Range) -> bool {
         unsafe { crate::ffi::Bnd_Range_union(self as *mut Self, theOther) }
     }
 
@@ -2344,7 +2272,7 @@ impl Range {
     /// **Source:** `Bnd_Range.hxx`:96 - `Bnd_Range::Add()`
     /// Extends this range to include both ranges.
     /// @sa use method ::Union() to check if two ranges overlap method merging
-    pub fn add_range(&mut self, theRange: &crate::ffi::Bnd_Range) {
+    pub fn add_range(&mut self, theRange: &Range) {
         unsafe { crate::ffi::Bnd_Range_add_range(self as *mut Self, theRange) }
     }
 
@@ -2414,7 +2342,7 @@ impl Range {
 
     /// **Source:** `Bnd_Range.hxx`:196 - `Bnd_Range::Shifted()`
     /// Returns the copy of <*this> shifted by theVal
-    pub fn shifted(&self, theVal: f64) -> crate::OwnedPtr<crate::ffi::Bnd_Range> {
+    pub fn shifted(&self, theVal: f64) -> crate::OwnedPtr<Range> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_Range_shifted(self as *const Self, theVal))
         }
@@ -2448,7 +2376,7 @@ impl Range {
 
     /// **Source:** `Bnd_Range.hxx`:238 - `Bnd_Range::IsOut()`
     /// Returns True if the given range is out of this range.
-    pub fn is_out_range(&self, theRange: &crate::ffi::Bnd_Range) -> bool {
+    pub fn is_out_range(&self, theRange: &Range) -> bool {
         unsafe { crate::ffi::Bnd_Range_is_out_range(self as *const Self, theRange) }
     }
 
@@ -2483,7 +2411,7 @@ impl Sphere {
     /// **Source:** `Bnd_Sphere.hxx`:38 - `Bnd_Sphere::Bnd_Sphere()`
     /// Constructor of a definite sphere
     pub fn new_xyz_real_int2(
-        theCntr: &crate::ffi::gp_XYZ,
+        theCntr: &crate::gp::XYZ,
         theRad: f64,
         theU: i32,
         theV: i32,
@@ -2521,7 +2449,7 @@ impl Sphere {
 
     /// **Source:** `Bnd_Sphere.hxx`:56 - `Bnd_Sphere::Center()`
     /// Returns center of sphere object
-    pub fn center(&self) -> &crate::ffi::gp_XYZ {
+    pub fn center(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Bnd_Sphere_center(self as *const Self)) }
     }
 
@@ -2535,7 +2463,7 @@ impl Sphere {
     /// Calculate and return minimal and maximal distance to sphere.
     /// NOTE: This function is tightly optimized; any modifications
     /// may affect performance!
-    pub fn distances(&self, theXYZ: &crate::ffi::gp_XYZ, theMin: &mut f64, theMax: &mut f64) {
+    pub fn distances(&self, theXYZ: &crate::gp::XYZ, theMin: &mut f64, theMax: &mut f64) {
         unsafe { crate::ffi::Bnd_Sphere_distances(self as *const Self, theXYZ, theMin, theMax) }
     }
 
@@ -2543,12 +2471,7 @@ impl Sphere {
     /// Calculate and return minimal and maximal distance to sphere.
     /// NOTE: This function is tightly optimized; any modifications
     /// may affect performance!
-    pub fn square_distances(
-        &self,
-        theXYZ: &crate::ffi::gp_XYZ,
-        theMin: &mut f64,
-        theMax: &mut f64,
-    ) {
+    pub fn square_distances(&self, theXYZ: &crate::gp::XYZ, theMin: &mut f64, theMax: &mut f64) {
         unsafe {
             crate::ffi::Bnd_Sphere_square_distances(self as *const Self, theXYZ, theMin, theMax)
         }
@@ -2559,8 +2482,8 @@ impl Sphere {
     /// Returns true if success
     pub fn project(
         &self,
-        theNode: &crate::ffi::gp_XYZ,
-        theProjNode: &mut crate::ffi::gp_XYZ,
+        theNode: &crate::gp::XYZ,
+        theProjNode: &mut crate::gp::XYZ,
         theDist: &mut f64,
         theInside: &mut bool,
     ) -> bool {
@@ -2576,27 +2499,27 @@ impl Sphere {
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:82 - `Bnd_Sphere::Distance()`
-    pub fn distance(&self, theNode: &crate::ffi::gp_XYZ) -> f64 {
+    pub fn distance(&self, theNode: &crate::gp::XYZ) -> f64 {
         unsafe { crate::ffi::Bnd_Sphere_distance(self as *const Self, theNode) }
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:84 - `Bnd_Sphere::SquareDistance()`
-    pub fn square_distance(&self, theNode: &crate::ffi::gp_XYZ) -> f64 {
+    pub fn square_distance(&self, theNode: &crate::gp::XYZ) -> f64 {
         unsafe { crate::ffi::Bnd_Sphere_square_distance(self as *const Self, theNode) }
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:86 - `Bnd_Sphere::Add()`
-    pub fn add(&mut self, theOther: &crate::ffi::Bnd_Sphere) {
+    pub fn add(&mut self, theOther: &Sphere) {
         unsafe { crate::ffi::Bnd_Sphere_add(self as *mut Self, theOther) }
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:88 - `Bnd_Sphere::IsOut()`
-    pub fn is_out_sphere(&self, theOther: &crate::ffi::Bnd_Sphere) -> bool {
+    pub fn is_out_sphere(&self, theOther: &Sphere) -> bool {
         unsafe { crate::ffi::Bnd_Sphere_is_out_sphere(self as *const Self, theOther) }
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:90 - `Bnd_Sphere::IsOut()`
-    pub fn is_out_xyz_real(&self, thePnt: &crate::ffi::gp_XYZ, theMaxDist: &mut f64) -> bool {
+    pub fn is_out_xyz_real(&self, thePnt: &crate::gp::XYZ, theMaxDist: &mut f64) -> bool {
         unsafe { crate::ffi::Bnd_Sphere_is_out_xyz_real(self as *const Self, thePnt, theMaxDist) }
     }
 

@@ -75,7 +75,7 @@ impl Curve {
     /// on the curve.
     pub fn set_cylinder_quad_values(
         &mut self,
-        Cylinder: &crate::ffi::gp_Cylinder,
+        Cylinder: &crate::gp::Cylinder,
         Qxx: f64,
         Qyy: f64,
         Qzz: f64,
@@ -120,7 +120,7 @@ impl Curve {
     /// Derivative on the curve.
     pub fn set_cone_quad_values(
         &mut self,
-        Cone: &crate::ffi::gp_Cone,
+        Cone: &crate::gp::Cone,
         Qxx: f64,
         Qyy: f64,
         Qzz: f64,
@@ -193,7 +193,7 @@ impl Curve {
 
     /// **Source:** `IntAna_Curve.hxx`:95 - `IntAna_Curve::Value()`
     /// Returns the point at parameter Theta on the curve.
-    pub fn value(&mut self, Theta: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn value(&mut self, Theta: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_Curve_value(self as *mut Self, Theta))
         }
@@ -202,12 +202,7 @@ impl Curve {
     /// **Source:** `IntAna_Curve.hxx`:99 - `IntAna_Curve::D1u()`
     /// Returns the point and the first derivative at parameter
     /// Theta on the curve.
-    pub fn d1u(
-        &mut self,
-        Theta: f64,
-        P: &mut crate::ffi::gp_Pnt,
-        V: &mut crate::ffi::gp_Vec,
-    ) -> bool {
+    pub fn d1u(&mut self, Theta: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) -> bool {
         unsafe { crate::ffi::IntAna_Curve_d1u(self as *mut Self, Theta, P, V) }
     }
 
@@ -219,7 +214,7 @@ impl Curve {
     /// theParams is always sorted in ascending order.
     pub fn find_parameter(
         &self,
-        P: &crate::ffi::gp_Pnt,
+        P: &crate::gp::Pnt,
         theParams: &mut crate::ffi::TColStd_ListOfReal,
     ) {
         unsafe { crate::ffi::IntAna_Curve_find_parameter(self as *const Self, P, theParams) }
@@ -272,9 +267,9 @@ impl Int3Pln {
     /// Determination of the intersection point between
     /// 3 planes.
     pub fn new_pln3(
-        P1: &crate::ffi::gp_Pln,
-        P2: &crate::ffi::gp_Pln,
-        P3: &crate::ffi::gp_Pln,
+        P1: &crate::gp::Pln,
+        P2: &crate::gp::Pln,
+        P3: &crate::gp::Pln,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna_Int3Pln_ctor_pln3(P1, P2, P3)) }
     }
@@ -282,12 +277,7 @@ impl Int3Pln {
     /// **Source:** `IntAna_Int3Pln.hxx`:42 - `IntAna_Int3Pln::Perform()`
     /// Determination of the intersection point between
     /// 3 planes.
-    pub fn perform(
-        &mut self,
-        P1: &crate::ffi::gp_Pln,
-        P2: &crate::ffi::gp_Pln,
-        P3: &crate::ffi::gp_Pln,
-    ) {
+    pub fn perform(&mut self, P1: &crate::gp::Pln, P2: &crate::gp::Pln, P3: &crate::gp::Pln) {
         unsafe { crate::ffi::IntAna_Int3Pln_perform(self as *mut Self, P1, P2, P3) }
     }
 
@@ -307,7 +297,7 @@ impl Int3Pln {
 
     /// **Source:** `IntAna_Int3Pln.hxx`:53 - `IntAna_Int3Pln::Value()`
     /// Returns the intersection point.
-    pub fn value(&self) -> &crate::ffi::gp_Pnt {
+    pub fn value(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntAna_Int3Pln_value(self as *const Self)) }
     }
 }
@@ -350,19 +340,13 @@ impl IntConicQuad {
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:58 - `IntAna_IntConicQuad::IntAna_IntConicQuad()`
     /// Creates the intersection between a line and a quadric.
-    pub fn new_lin_quadric(
-        L: &crate::ffi::gp_Lin,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_lin_quadric(L: &crate::gp::Lin, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna_IntConicQuad_ctor_lin_quadric(L, Q)) }
     }
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:64 - `IntAna_IntConicQuad::IntAna_IntConicQuad()`
     /// Creates the intersection between a circle and a quadric.
-    pub fn new_circ_quadric(
-        C: &crate::ffi::gp_Circ,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_circ_quadric(C: &crate::gp::Circ, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_IntConicQuad_ctor_circ_quadric(C, Q))
         }
@@ -370,10 +354,7 @@ impl IntConicQuad {
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:70 - `IntAna_IntConicQuad::IntAna_IntConicQuad()`
     /// Creates the intersection between an ellipse and a quadric.
-    pub fn new_elips_quadric(
-        E: &crate::ffi::gp_Elips,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_elips_quadric(E: &crate::gp::Elips, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_IntConicQuad_ctor_elips_quadric(E, Q))
         }
@@ -381,10 +362,7 @@ impl IntConicQuad {
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:76 - `IntAna_IntConicQuad::IntAna_IntConicQuad()`
     /// Creates the intersection between a parabola and a quadric.
-    pub fn new_parab_quadric(
-        P: &crate::ffi::gp_Parab,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_parab_quadric(P: &crate::gp::Parab, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_IntConicQuad_ctor_parab_quadric(P, Q))
         }
@@ -393,10 +371,7 @@ impl IntConicQuad {
     /// **Source:** `IntAna_IntConicQuad.hxx`:83 - `IntAna_IntConicQuad::IntAna_IntConicQuad()`
     /// Creates the intersection between an hyperbola and
     /// a quadric.
-    pub fn new_hypr_quadric(
-        H: &crate::ffi::gp_Hypr,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_hypr_quadric(H: &crate::gp::Hypr, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_IntConicQuad_ctor_hypr_quadric(H, Q))
         }
@@ -409,8 +384,8 @@ impl IntConicQuad {
     /// Tol is used to check the distance between line and plane
     /// on the distance <Len> from the origin of the line.
     pub fn new_lin_pln_real3(
-        L: &crate::ffi::gp_Lin,
-        P: &crate::ffi::gp_Pln,
+        L: &crate::gp::Lin,
+        P: &crate::gp::Pln,
         Tolang: f64,
         Tol: f64,
         Len: f64,
@@ -428,8 +403,8 @@ impl IntConicQuad {
     /// vectors is null.
     /// Tol is used to determine if a distance is null.
     pub fn new_circ_pln_real2(
-        C: &crate::ffi::gp_Circ,
-        P: &crate::ffi::gp_Pln,
+        C: &crate::gp::Circ,
+        P: &crate::gp::Pln,
         Tolang: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -446,8 +421,8 @@ impl IntConicQuad {
     /// vectors is null.
     /// Tol is used to determine if a distance is null.
     pub fn new_elips_pln_real2(
-        E: &crate::ffi::gp_Elips,
-        P: &crate::ffi::gp_Pln,
+        E: &crate::gp::Elips,
+        P: &crate::gp::Pln,
         Tolang: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -463,8 +438,8 @@ impl IntConicQuad {
     /// Tolang is used to determine if the angle between two
     /// vectors is null.
     pub fn new_parab_pln_real(
-        Pb: &crate::ffi::gp_Parab,
-        P: &crate::ffi::gp_Pln,
+        Pb: &crate::gp::Parab,
+        P: &crate::gp::Pln,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -479,8 +454,8 @@ impl IntConicQuad {
     /// Tolang is used to determine if the angle between two
     /// vectors is null.
     pub fn new_hypr_pln_real(
-        H: &crate::ffi::gp_Hypr,
-        P: &crate::ffi::gp_Pln,
+        H: &crate::gp::Hypr,
+        P: &crate::gp::Pln,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -497,8 +472,8 @@ impl IntConicQuad {
     /// Tol is used to check the distance between line and plane
     /// on the distance <Len> from the origin of the line.
     pub fn new_lin_pln_real2(
-        L: &crate::ffi::gp_Lin,
-        P: &crate::ffi::gp_Pln,
+        L: &crate::gp::Lin,
+        P: &crate::gp::Pln,
         Tolang: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -512,8 +487,8 @@ impl IntConicQuad {
     /// Tol is used to check the distance between line and plane
     /// on the distance <Len> from the origin of the line.
     pub fn new_lin_pln_real(
-        L: &crate::ffi::gp_Lin,
-        P: &crate::ffi::gp_Pln,
+        L: &crate::gp::Lin,
+        P: &crate::gp::Pln,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_lin_pln_real3(L, P, Tolang, 0.0, 0.0)
@@ -521,47 +496,31 @@ impl IntConicQuad {
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:61 - `IntAna_IntConicQuad::Perform()`
     /// Intersects a line and a quadric.
-    pub fn perform_lin_quadric(&mut self, L: &crate::ffi::gp_Lin, Q: &crate::ffi::IntAna_Quadric) {
+    pub fn perform_lin_quadric(&mut self, L: &crate::gp::Lin, Q: &Quadric) {
         unsafe { crate::ffi::IntAna_IntConicQuad_perform_lin_quadric(self as *mut Self, L, Q) }
     }
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:67 - `IntAna_IntConicQuad::Perform()`
     /// Intersects a circle and a quadric.
-    pub fn perform_circ_quadric(
-        &mut self,
-        C: &crate::ffi::gp_Circ,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) {
+    pub fn perform_circ_quadric(&mut self, C: &crate::gp::Circ, Q: &Quadric) {
         unsafe { crate::ffi::IntAna_IntConicQuad_perform_circ_quadric(self as *mut Self, C, Q) }
     }
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:73 - `IntAna_IntConicQuad::Perform()`
     /// Intersects an ellipse and a quadric.
-    pub fn perform_elips_quadric(
-        &mut self,
-        E: &crate::ffi::gp_Elips,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) {
+    pub fn perform_elips_quadric(&mut self, E: &crate::gp::Elips, Q: &Quadric) {
         unsafe { crate::ffi::IntAna_IntConicQuad_perform_elips_quadric(self as *mut Self, E, Q) }
     }
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:79 - `IntAna_IntConicQuad::Perform()`
     /// Intersects a parabola and a quadric.
-    pub fn perform_parab_quadric(
-        &mut self,
-        P: &crate::ffi::gp_Parab,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) {
+    pub fn perform_parab_quadric(&mut self, P: &crate::gp::Parab, Q: &Quadric) {
         unsafe { crate::ffi::IntAna_IntConicQuad_perform_parab_quadric(self as *mut Self, P, Q) }
     }
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:86 - `IntAna_IntConicQuad::Perform()`
     /// Intersects an hyperbola and a quadric.
-    pub fn perform_hypr_quadric(
-        &mut self,
-        H: &crate::ffi::gp_Hypr,
-        Q: &crate::ffi::IntAna_Quadric,
-    ) {
+    pub fn perform_hypr_quadric(&mut self, H: &crate::gp::Hypr, Q: &Quadric) {
         unsafe { crate::ffi::IntAna_IntConicQuad_perform_hypr_quadric(self as *mut Self, H, Q) }
     }
 
@@ -573,8 +532,8 @@ impl IntConicQuad {
     /// on the distance <Len> from the origin of the line.
     pub fn perform_lin_pln_real3(
         &mut self,
-        L: &crate::ffi::gp_Lin,
-        P: &crate::ffi::gp_Pln,
+        L: &crate::gp::Lin,
+        P: &crate::gp::Pln,
         Tolang: f64,
         Tol: f64,
         Len: f64,
@@ -598,8 +557,8 @@ impl IntConicQuad {
     /// Tol is used to determine if a distance is null.
     pub fn perform_circ_pln_real2(
         &mut self,
-        C: &crate::ffi::gp_Circ,
-        P: &crate::ffi::gp_Pln,
+        C: &crate::gp::Circ,
+        P: &crate::gp::Pln,
         Tolang: f64,
         Tol: f64,
     ) {
@@ -621,8 +580,8 @@ impl IntConicQuad {
     /// Tol is used to determine if a distance is null.
     pub fn perform_elips_pln_real2(
         &mut self,
-        E: &crate::ffi::gp_Elips,
-        P: &crate::ffi::gp_Pln,
+        E: &crate::gp::Elips,
+        P: &crate::gp::Pln,
         Tolang: f64,
         Tol: f64,
     ) {
@@ -643,8 +602,8 @@ impl IntConicQuad {
     /// vectors is null.
     pub fn perform_parab_pln_real(
         &mut self,
-        Pb: &crate::ffi::gp_Parab,
-        P: &crate::ffi::gp_Pln,
+        Pb: &crate::gp::Parab,
+        P: &crate::gp::Pln,
         Tolang: f64,
     ) {
         unsafe {
@@ -656,12 +615,7 @@ impl IntConicQuad {
     /// Intersects an hyperbola and a plane.
     /// Tolang is used to determine if the angle between two
     /// vectors is null.
-    pub fn perform_hypr_pln_real(
-        &mut self,
-        H: &crate::ffi::gp_Hypr,
-        P: &crate::ffi::gp_Pln,
-        Tolang: f64,
-    ) {
+    pub fn perform_hypr_pln_real(&mut self, H: &crate::gp::Hypr, P: &crate::gp::Pln, Tolang: f64) {
         unsafe {
             crate::ffi::IntAna_IntConicQuad_perform_hypr_pln_real(self as *mut Self, H, P, Tolang)
         }
@@ -694,7 +648,7 @@ impl IntConicQuad {
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:184 - `IntAna_IntConicQuad::Point()`
     /// Returns the point of range N.
-    pub fn point(&self, N: i32) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self, N: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntAna_IntConicQuad_point(self as *const Self, N)) }
     }
 
@@ -728,16 +682,13 @@ impl IntLinTorus {
 
     /// **Source:** `IntAna_IntLinTorus.hxx`:37 - `IntAna_IntLinTorus::IntAna_IntLinTorus()`
     /// Creates the intersection between a line and a torus.
-    pub fn new_lin_torus(
-        L: &crate::ffi::gp_Lin,
-        T: &crate::ffi::gp_Torus,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_lin_torus(L: &crate::gp::Lin, T: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna_IntLinTorus_ctor_lin_torus(L, T)) }
     }
 
     /// **Source:** `IntAna_IntLinTorus.hxx`:40 - `IntAna_IntLinTorus::Perform()`
     /// Intersects a line and a torus.
-    pub fn perform(&mut self, L: &crate::ffi::gp_Lin, T: &crate::ffi::gp_Torus) {
+    pub fn perform(&mut self, L: &crate::gp::Lin, T: &crate::gp::Torus) {
         unsafe { crate::ffi::IntAna_IntLinTorus_perform(self as *mut Self, L, T) }
     }
 
@@ -755,7 +706,7 @@ impl IntLinTorus {
 
     /// **Source:** `IntAna_IntLinTorus.hxx`:49 - `IntAna_IntLinTorus::Value()`
     /// Returns the intersection point of range Index.
-    pub fn value(&self, Index: i32) -> &crate::ffi::gp_Pnt {
+    pub fn value(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntAna_IntLinTorus_value(self as *const Self, Index)) }
     }
 
@@ -809,8 +760,8 @@ impl IntQuadQuad {
     /// Creates the intersection between a cylinder and a quadric .
     /// Tol est a definir plus precisemment.
     pub fn new_cylinder_quadric_real(
-        C: &crate::ffi::gp_Cylinder,
-        Q: &crate::ffi::IntAna_Quadric,
+        C: &crate::gp::Cylinder,
+        Q: &Quadric,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -824,8 +775,8 @@ impl IntQuadQuad {
     /// Creates the intersection between a cone and a quadric.
     /// Tol est a definir plus precisemment.
     pub fn new_cone_quadric_real(
-        C: &crate::ffi::gp_Cone,
-        Q: &crate::ffi::IntAna_Quadric,
+        C: &crate::gp::Cone,
+        Q: &Quadric,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -840,8 +791,8 @@ impl IntQuadQuad {
     /// Tol est a definir plus precisemment.
     pub fn perform_cylinder_quadric_real(
         &mut self,
-        C: &crate::ffi::gp_Cylinder,
-        Q: &crate::ffi::IntAna_Quadric,
+        C: &crate::gp::Cylinder,
+        Q: &Quadric,
         Tol: f64,
     ) {
         unsafe {
@@ -857,12 +808,7 @@ impl IntQuadQuad {
     /// **Source:** `IntAna_IntQuadQuad.hxx`:67 - `IntAna_IntQuadQuad::Perform()`
     /// Intersects a cone and a quadric.
     /// Tol est a definir plus precisemment.
-    pub fn perform_cone_quadric_real(
-        &mut self,
-        C: &crate::ffi::gp_Cone,
-        Q: &crate::ffi::IntAna_Quadric,
-        Tol: f64,
-    ) {
+    pub fn perform_cone_quadric_real(&mut self, C: &crate::gp::Cone, Q: &Quadric, Tol: f64) {
         unsafe {
             crate::ffi::IntAna_IntQuadQuad_perform_cone_quadric_real(self as *mut Self, C, Q, Tol)
         }
@@ -889,7 +835,7 @@ impl IntQuadQuad {
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:80 - `IntAna_IntQuadQuad::Curve()`
     /// Returns the curve of range N.
-    pub fn curve(&self, N: i32) -> &crate::ffi::IntAna_Curve {
+    pub fn curve(&self, N: i32) -> &Curve {
         unsafe { &*(crate::ffi::IntAna_IntQuadQuad_curve(self as *const Self, N)) }
     }
 
@@ -901,7 +847,7 @@ impl IntQuadQuad {
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:86 - `IntAna_IntQuadQuad::Point()`
     /// Returns the point of range N.
-    pub fn point(&self, N: i32) -> &crate::ffi::gp_Pnt {
+    pub fn point(&self, N: i32) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntAna_IntQuadQuad_point(self as *const Self, N)) }
     }
 
@@ -998,8 +944,8 @@ impl QuadQuadGeo {
     /// Tol is the tolerance used to determine if the planes
     /// are identical (only when they are parallel).
     pub fn new_pln2_real2(
-        P1: &crate::ffi::gp_Pln,
-        P2: &crate::ffi::gp_Pln,
+        P1: &crate::gp::Pln,
+        P2: &crate::gp::Pln,
         TolAng: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1021,8 +967,8 @@ impl QuadQuadGeo {
     /// H is the height of the cylinder <Cyl>. It is  used to check
     /// whether the plane and cylinder are parallel.
     pub fn new_pln_cylinder_real3(
-        P: &crate::ffi::gp_Pln,
-        C: &crate::ffi::gp_Cylinder,
+        P: &crate::gp::Pln,
+        C: &crate::gp::Cylinder,
         Tolang: f64,
         Tol: f64,
         H: f64,
@@ -1036,10 +982,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:112 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between a plane and a sphere.
-    pub fn new_pln_sphere(
-        P: &crate::ffi::gp_Pln,
-        S: &crate::ffi::gp_Sphere,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_pln_sphere(P: &crate::gp::Pln, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna_QuadQuadGeo_ctor_pln_sphere(P, S)) }
     }
 
@@ -1052,8 +995,8 @@ impl QuadQuadGeo {
     /// Tol is the tolerance used to determine if the apex
     /// of the cone is in the plane.
     pub fn new_pln_cone_real2(
-        P: &crate::ffi::gp_Pln,
-        C: &crate::ffi::gp_Cone,
+        P: &crate::gp::Pln,
+        C: &crate::gp::Cone,
         Tolang: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1067,8 +1010,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:142 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between two cylinders.
     pub fn new_cylinder2_real(
-        Cyl1: &crate::ffi::gp_Cylinder,
-        Cyl2: &crate::ffi::gp_Cylinder,
+        Cyl1: &crate::gp::Cylinder,
+        Cyl2: &crate::gp::Cylinder,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1081,8 +1024,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:152 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between a Cylinder and a Sphere.
     pub fn new_cylinder_sphere_real(
-        Cyl: &crate::ffi::gp_Cylinder,
-        Sph: &crate::ffi::gp_Sphere,
+        Cyl: &crate::gp::Cylinder,
+        Sph: &crate::gp::Sphere,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1095,8 +1038,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:162 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between a Cylinder and a Cone
     pub fn new_cylinder_cone_real(
-        Cyl: &crate::ffi::gp_Cylinder,
-        Con: &crate::ffi::gp_Cone,
+        Cyl: &crate::gp::Cylinder,
+        Con: &crate::gp::Cone,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1109,8 +1052,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:170 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between two Spheres.
     pub fn new_sphere2_real(
-        Sph1: &crate::ffi::gp_Sphere,
-        Sph2: &crate::ffi::gp_Sphere,
+        Sph1: &crate::gp::Sphere,
+        Sph2: &crate::gp::Sphere,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1123,8 +1066,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:180 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between a Sphere and a Cone.
     pub fn new_sphere_cone_real(
-        Sph: &crate::ffi::gp_Sphere,
-        Con: &crate::ffi::gp_Cone,
+        Sph: &crate::gp::Sphere,
+        Con: &crate::gp::Cone,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1137,8 +1080,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:188 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between two cones.
     pub fn new_cone2_real(
-        Con1: &crate::ffi::gp_Cone,
-        Con2: &crate::ffi::gp_Cone,
+        Con1: &crate::gp::Cone,
+        Con2: &crate::gp::Cone,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1151,8 +1094,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:196 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between plane and torus.
     pub fn new_pln_torus_real(
-        Pln: &crate::ffi::gp_Pln,
-        Tor: &crate::ffi::gp_Torus,
+        Pln: &crate::gp::Pln,
+        Tor: &crate::gp::Torus,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1165,8 +1108,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:204 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between cylinder and torus.
     pub fn new_cylinder_torus_real(
-        Cyl: &crate::ffi::gp_Cylinder,
-        Tor: &crate::ffi::gp_Torus,
+        Cyl: &crate::gp::Cylinder,
+        Tor: &crate::gp::Torus,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1179,8 +1122,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:214 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between cone and torus.
     pub fn new_cone_torus_real(
-        Con: &crate::ffi::gp_Cone,
-        Tor: &crate::ffi::gp_Torus,
+        Con: &crate::gp::Cone,
+        Tor: &crate::gp::Torus,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1193,8 +1136,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:222 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between sphere and torus.
     pub fn new_sphere_torus_real(
-        Sph: &crate::ffi::gp_Sphere,
-        Tor: &crate::ffi::gp_Torus,
+        Sph: &crate::gp::Sphere,
+        Tor: &crate::gp::Torus,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1207,8 +1150,8 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:230 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between two toruses.
     pub fn new_torus2_real(
-        Tor1: &crate::ffi::gp_Torus,
-        Tor2: &crate::ffi::gp_Torus,
+        Tor1: &crate::gp::Torus,
+        Tor2: &crate::gp::Torus,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1229,8 +1172,8 @@ impl QuadQuadGeo {
     /// H is the height of the cylinder <Cyl>. It is  used to check
     /// whether the plane and cylinder are parallel.
     pub fn new_pln_cylinder_real2(
-        P: &crate::ffi::gp_Pln,
-        C: &crate::ffi::gp_Cylinder,
+        P: &crate::gp::Pln,
+        C: &crate::gp::Cylinder,
         Tolang: f64,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1245,8 +1188,8 @@ impl QuadQuadGeo {
     /// are identical (only when they are parallel).
     pub fn perform_pln2_real2(
         &mut self,
-        P1: &crate::ffi::gp_Pln,
-        P2: &crate::ffi::gp_Pln,
+        P1: &crate::gp::Pln,
+        P2: &crate::gp::Pln,
         TolAng: f64,
         Tol: f64,
     ) {
@@ -1273,8 +1216,8 @@ impl QuadQuadGeo {
     /// whether the plane and cylinder are parallel.
     pub fn perform_pln_cylinder_real3(
         &mut self,
-        P: &crate::ffi::gp_Pln,
-        C: &crate::ffi::gp_Cylinder,
+        P: &crate::gp::Pln,
+        C: &crate::gp::Cylinder,
         Tolang: f64,
         Tol: f64,
         H: f64,
@@ -1293,7 +1236,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:115 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects a plane and a sphere.
-    pub fn perform_pln_sphere(&mut self, P: &crate::ffi::gp_Pln, S: &crate::ffi::gp_Sphere) {
+    pub fn perform_pln_sphere(&mut self, P: &crate::gp::Pln, S: &crate::gp::Sphere) {
         unsafe { crate::ffi::IntAna_QuadQuadGeo_perform_pln_sphere(self as *mut Self, P, S) }
     }
 
@@ -1307,8 +1250,8 @@ impl QuadQuadGeo {
     /// of the cone is in the plane.
     pub fn perform_pln_cone_real2(
         &mut self,
-        P: &crate::ffi::gp_Pln,
-        C: &crate::ffi::gp_Cone,
+        P: &crate::gp::Pln,
+        C: &crate::gp::Cone,
         Tolang: f64,
         Tol: f64,
     ) {
@@ -1327,8 +1270,8 @@ impl QuadQuadGeo {
     /// Intersects two cylinders
     pub fn perform_cylinder2_real(
         &mut self,
-        Cyl1: &crate::ffi::gp_Cylinder,
-        Cyl2: &crate::ffi::gp_Cylinder,
+        Cyl1: &crate::gp::Cylinder,
+        Cyl2: &crate::gp::Cylinder,
         Tol: f64,
     ) {
         unsafe {
@@ -1345,8 +1288,8 @@ impl QuadQuadGeo {
     /// Intersects a cylinder and a sphere.
     pub fn perform_cylinder_sphere_real(
         &mut self,
-        Cyl: &crate::ffi::gp_Cylinder,
-        Sph: &crate::ffi::gp_Sphere,
+        Cyl: &crate::gp::Cylinder,
+        Sph: &crate::gp::Sphere,
         Tol: f64,
     ) {
         unsafe {
@@ -1363,8 +1306,8 @@ impl QuadQuadGeo {
     /// Intersects a cylinder and a cone.
     pub fn perform_cylinder_cone_real(
         &mut self,
-        Cyl: &crate::ffi::gp_Cylinder,
-        Con: &crate::ffi::gp_Cone,
+        Cyl: &crate::gp::Cylinder,
+        Con: &crate::gp::Cone,
         Tol: f64,
     ) {
         unsafe {
@@ -1381,8 +1324,8 @@ impl QuadQuadGeo {
     /// Intersects a two spheres.
     pub fn perform_sphere2_real(
         &mut self,
-        Sph1: &crate::ffi::gp_Sphere,
-        Sph2: &crate::ffi::gp_Sphere,
+        Sph1: &crate::gp::Sphere,
+        Sph2: &crate::gp::Sphere,
         Tol: f64,
     ) {
         unsafe {
@@ -1394,8 +1337,8 @@ impl QuadQuadGeo {
     /// Intersects a sphere and a cone.
     pub fn perform_sphere_cone_real(
         &mut self,
-        Sph: &crate::ffi::gp_Sphere,
-        Con: &crate::ffi::gp_Cone,
+        Sph: &crate::gp::Sphere,
+        Con: &crate::gp::Cone,
         Tol: f64,
     ) {
         unsafe {
@@ -1410,12 +1353,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:193 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects two cones.
-    pub fn perform_cone2_real(
-        &mut self,
-        Con1: &crate::ffi::gp_Cone,
-        Con2: &crate::ffi::gp_Cone,
-        Tol: f64,
-    ) {
+    pub fn perform_cone2_real(&mut self, Con1: &crate::gp::Cone, Con2: &crate::gp::Cone, Tol: f64) {
         unsafe {
             crate::ffi::IntAna_QuadQuadGeo_perform_cone2_real(self as *mut Self, Con1, Con2, Tol)
         }
@@ -1425,8 +1363,8 @@ impl QuadQuadGeo {
     /// Intersects plane and torus.
     pub fn perform_pln_torus_real(
         &mut self,
-        Pln: &crate::ffi::gp_Pln,
-        Tor: &crate::ffi::gp_Torus,
+        Pln: &crate::gp::Pln,
+        Tor: &crate::gp::Torus,
         Tol: f64,
     ) {
         unsafe {
@@ -1438,8 +1376,8 @@ impl QuadQuadGeo {
     /// Intersects cylinder and torus.
     pub fn perform_cylinder_torus_real(
         &mut self,
-        Cyl: &crate::ffi::gp_Cylinder,
-        Tor: &crate::ffi::gp_Torus,
+        Cyl: &crate::gp::Cylinder,
+        Tor: &crate::gp::Torus,
         Tol: f64,
     ) {
         unsafe {
@@ -1456,8 +1394,8 @@ impl QuadQuadGeo {
     /// Intersects cone and torus.
     pub fn perform_cone_torus_real(
         &mut self,
-        Con: &crate::ffi::gp_Cone,
-        Tor: &crate::ffi::gp_Torus,
+        Con: &crate::gp::Cone,
+        Tor: &crate::gp::Torus,
         Tol: f64,
     ) {
         unsafe {
@@ -1469,8 +1407,8 @@ impl QuadQuadGeo {
     /// Intersects sphere and torus.
     pub fn perform_sphere_torus_real(
         &mut self,
-        Sph: &crate::ffi::gp_Sphere,
-        Tor: &crate::ffi::gp_Torus,
+        Sph: &crate::gp::Sphere,
+        Tor: &crate::gp::Torus,
         Tol: f64,
     ) {
         unsafe {
@@ -1487,8 +1425,8 @@ impl QuadQuadGeo {
     /// Intersects two toruses.
     pub fn perform_torus2_real(
         &mut self,
-        Tor1: &crate::ffi::gp_Torus,
-        Tor2: &crate::ffi::gp_Torus,
+        Tor1: &crate::gp::Torus,
+        Tor2: &crate::gp::Torus,
         Tol: f64,
     ) {
         unsafe {
@@ -1529,7 +1467,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:255 - `IntAna_QuadQuadGeo::Point()`
     /// Returns the point solution of range Num.
-    pub fn point(&self, Num: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_QuadQuadGeo_point(
                 self as *const Self,
@@ -1540,7 +1478,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:258 - `IntAna_QuadQuadGeo::Line()`
     /// Returns the line solution of range Num.
-    pub fn line(&self, Num: i32) -> crate::OwnedPtr<crate::ffi::gp_Lin> {
+    pub fn line(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_QuadQuadGeo_line(self as *const Self, Num))
         }
@@ -1548,7 +1486,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:261 - `IntAna_QuadQuadGeo::Circle()`
     /// Returns the circle solution of range Num.
-    pub fn circle(&self, Num: i32) -> crate::OwnedPtr<crate::ffi::gp_Circ> {
+    pub fn circle(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_QuadQuadGeo_circle(
                 self as *const Self,
@@ -1559,7 +1497,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:264 - `IntAna_QuadQuadGeo::Ellipse()`
     /// Returns the ellipse solution of range Num.
-    pub fn ellipse(&self, Num: i32) -> crate::OwnedPtr<crate::ffi::gp_Elips> {
+    pub fn ellipse(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_QuadQuadGeo_ellipse(
                 self as *const Self,
@@ -1570,7 +1508,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:267 - `IntAna_QuadQuadGeo::Parabola()`
     /// Returns the parabola solution of range Num.
-    pub fn parabola(&self, Num: i32) -> crate::OwnedPtr<crate::ffi::gp_Parab> {
+    pub fn parabola(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_QuadQuadGeo_parabola(
                 self as *const Self,
@@ -1581,7 +1519,7 @@ impl QuadQuadGeo {
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:270 - `IntAna_QuadQuadGeo::Hyperbola()`
     /// Returns the hyperbola solution of range Num.
-    pub fn hyperbola(&self, Num: i32) -> crate::OwnedPtr<crate::ffi::gp_Hypr> {
+    pub fn hyperbola(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntAna_QuadQuadGeo_hyperbola(
                 self as *const Self,
@@ -1596,7 +1534,7 @@ impl QuadQuadGeo {
     }
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:274 - `IntAna_QuadQuadGeo::PChar()`
-    pub fn p_char(&self) -> &crate::ffi::gp_Pnt {
+    pub fn p_char(&self) -> &crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntAna_QuadQuadGeo_p_char(self as *const Self)) }
     }
 }
@@ -1625,49 +1563,49 @@ impl Quadric {
 
     /// **Source:** `IntAna_Quadric.hxx`:39 - `IntAna_Quadric::IntAna_Quadric()`
     /// Creates a Quadric from a Pln
-    pub fn new_pln(P: &crate::ffi::gp_Pln) -> crate::OwnedPtr<Self> {
+    pub fn new_pln(P: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna_Quadric_ctor_pln(P)) }
     }
 
     /// **Source:** `IntAna_Quadric.hxx`:42 - `IntAna_Quadric::IntAna_Quadric()`
     /// Creates a Quadric from a Sphere
-    pub fn new_sphere(Sph: &crate::ffi::gp_Sphere) -> crate::OwnedPtr<Self> {
+    pub fn new_sphere(Sph: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna_Quadric_ctor_sphere(Sph)) }
     }
 
     /// **Source:** `IntAna_Quadric.hxx`:45 - `IntAna_Quadric::IntAna_Quadric()`
     /// Creates a Quadric from a Cylinder
-    pub fn new_cylinder(Cyl: &crate::ffi::gp_Cylinder) -> crate::OwnedPtr<Self> {
+    pub fn new_cylinder(Cyl: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna_Quadric_ctor_cylinder(Cyl)) }
     }
 
     /// **Source:** `IntAna_Quadric.hxx`:48 - `IntAna_Quadric::IntAna_Quadric()`
     /// Creates a Quadric from a Cone
-    pub fn new_cone(Cone: &crate::ffi::gp_Cone) -> crate::OwnedPtr<Self> {
+    pub fn new_cone(Cone: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntAna_Quadric_ctor_cone(Cone)) }
     }
 
     /// **Source:** `IntAna_Quadric.hxx`:51 - `IntAna_Quadric::SetQuadric()`
     /// Initializes the quadric with a Pln
-    pub fn set_quadric_pln(&mut self, P: &crate::ffi::gp_Pln) {
+    pub fn set_quadric_pln(&mut self, P: &crate::gp::Pln) {
         unsafe { crate::ffi::IntAna_Quadric_set_quadric_pln(self as *mut Self, P) }
     }
 
     /// **Source:** `IntAna_Quadric.hxx`:54 - `IntAna_Quadric::SetQuadric()`
     /// Initialize the quadric with a Sphere
-    pub fn set_quadric_sphere(&mut self, Sph: &crate::ffi::gp_Sphere) {
+    pub fn set_quadric_sphere(&mut self, Sph: &crate::gp::Sphere) {
         unsafe { crate::ffi::IntAna_Quadric_set_quadric_sphere(self as *mut Self, Sph) }
     }
 
     /// **Source:** `IntAna_Quadric.hxx`:57 - `IntAna_Quadric::SetQuadric()`
     /// Initializes the quadric with a Cone
-    pub fn set_quadric_cone(&mut self, Con: &crate::ffi::gp_Cone) {
+    pub fn set_quadric_cone(&mut self, Con: &crate::gp::Cone) {
         unsafe { crate::ffi::IntAna_Quadric_set_quadric_cone(self as *mut Self, Con) }
     }
 
     /// **Source:** `IntAna_Quadric.hxx`:60 - `IntAna_Quadric::SetQuadric()`
     /// Initializes the quadric with a Cylinder
-    pub fn set_quadric_cylinder(&mut self, Cyl: &crate::ffi::gp_Cylinder) {
+    pub fn set_quadric_cylinder(&mut self, Cyl: &crate::gp::Cylinder) {
         unsafe { crate::ffi::IntAna_Quadric_set_quadric_cylinder(self as *mut Self, Cyl) }
     }
 
@@ -1724,7 +1662,7 @@ impl Quadric {
         xCY: &mut f64,
         xCZ: &mut f64,
         xCCte: &mut f64,
-        Axis: &crate::ffi::gp_Ax3,
+        Axis: &crate::gp::Ax3,
     ) {
         unsafe {
             crate::ffi::IntAna_Quadric_new_coefficients(

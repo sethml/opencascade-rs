@@ -146,7 +146,7 @@ impl BoundaryParamsRangeSplitter {
 
     /// **Source:** `BRepMesh_BoundaryParamsRangeSplitter.hxx`:33 - `BRepMesh_BoundaryParamsRangeSplitter::AddPoint()`
     /// Registers border point.
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_add_point(self as *mut Self, thePoint)
         }
@@ -219,9 +219,9 @@ impl BoundaryParamsRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Scale(
@@ -234,7 +234,7 @@ impl BoundaryParamsRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::BRepMesh_BoundaryParamsRangeSplitter_inherited_Point(
@@ -272,7 +272,7 @@ impl Circle {
     /// Constructor.
     /// @param theLocation location of a circle.
     /// @param theRadius radius of a circle.
-    pub fn new_xy_real(theLocation: &crate::ffi::gp_XY, theRadius: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_xy_real(theLocation: &crate::gp::XY, theRadius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_Circle_ctor_xy_real(
                 theLocation,
@@ -284,7 +284,7 @@ impl Circle {
     /// **Source:** `BRepMesh_Circle.hxx`:45 - `BRepMesh_Circle::SetLocation()`
     /// Sets location of a circle.
     /// @param theLocation location of a circle.
-    pub fn set_location(&mut self, theLocation: &crate::ffi::gp_XY) {
+    pub fn set_location(&mut self, theLocation: &crate::gp::XY) {
         unsafe { crate::ffi::BRepMesh_Circle_set_location(self as *mut Self, theLocation) }
     }
 
@@ -297,7 +297,7 @@ impl Circle {
 
     /// **Source:** `BRepMesh_Circle.hxx`:52 - `BRepMesh_Circle::Location()`
     /// Returns location of a circle.
-    pub fn location(&self) -> &crate::ffi::gp_XY {
+    pub fn location(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::BRepMesh_Circle_location(self as *const Self)) }
     }
 
@@ -355,7 +355,7 @@ impl CircleTool {
     /// Sets limits of inspection area.
     /// @param theMin bottom left corner of inspection area.
     /// @param theMax top right corner of inspection area.
-    pub fn set_min_max_size(&mut self, theMin: &crate::ffi::gp_XY, theMax: &crate::ffi::gp_XY) {
+    pub fn set_min_max_size(&mut self, theMin: &crate::gp::XY, theMax: &crate::gp::XY) {
         unsafe {
             crate::ffi::BRepMesh_CircleTool_set_min_max_size(self as *mut Self, theMin, theMax)
         }
@@ -371,7 +371,7 @@ impl CircleTool {
     /// Binds the circle to the tool.
     /// @param theIndex index a circle should be bound with.
     /// @param theCircle circle to be bound.
-    pub fn bind_int_circ2d(&mut self, theIndex: i32, theCircle: &crate::ffi::gp_Circ2d) {
+    pub fn bind_int_circ2d(&mut self, theIndex: i32, theCircle: &crate::gp::Circ2d) {
         unsafe {
             crate::ffi::BRepMesh_CircleTool_bind_int_circ2d(self as *mut Self, theIndex, theCircle)
         }
@@ -388,9 +388,9 @@ impl CircleTool {
     pub fn bind_int_xy3(
         &mut self,
         theIndex: i32,
-        thePoint1: &crate::ffi::gp_XY,
-        thePoint2: &crate::ffi::gp_XY,
-        thePoint3: &crate::ffi::gp_XY,
+        thePoint1: &crate::gp::XY,
+        thePoint2: &crate::gp::XY,
+        thePoint3: &crate::gp::XY,
     ) -> bool {
         unsafe {
             crate::ffi::BRepMesh_CircleTool_bind_int_xy3(
@@ -427,10 +427,10 @@ impl CircleTool {
     /// @return FALSE in case of impossibility to build a circle
     /// on the given points, TRUE elsewhere.
     pub fn make_circle(
-        thePoint1: &crate::ffi::gp_XY,
-        thePoint2: &crate::ffi::gp_XY,
-        thePoint3: &crate::ffi::gp_XY,
-        theLocation: &mut crate::ffi::gp_XY,
+        thePoint1: &crate::gp::XY,
+        thePoint2: &crate::gp::XY,
+        thePoint3: &crate::gp::XY,
+        theLocation: &mut crate::gp::XY,
         theRadius: &mut f64,
     ) -> bool {
         unsafe {
@@ -471,7 +471,7 @@ impl Classifier {
     /// Performs classification of the given point regarding to face internals.
     /// @param thePoint Point in parametric space to be classified.
     /// @return TopAbs_IN if point lies within face boundaries and TopAbs_OUT elsewhere.
-    pub fn perform(&self, thePoint: &crate::ffi::gp_Pnt2d) -> crate::top_abs::State {
+    pub fn perform(&self, thePoint: &crate::gp::Pnt2d) -> crate::top_abs::State {
         unsafe {
             crate::top_abs::State::try_from(crate::ffi::BRepMesh_Classifier_perform(
                 self as *const Self,
@@ -571,7 +571,7 @@ impl ConeRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_ConeRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
         }
@@ -590,9 +590,9 @@ impl ConeRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Scale(
                 self as *const Self,
@@ -603,7 +603,7 @@ impl ConeRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ConeRangeSplitter_inherited_Point(
                 self as *const Self,
@@ -775,7 +775,7 @@ impl Context {
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:97 - `IMeshTools_Context::DiscretizeFaces()`
-    pub fn discretize_faces(&mut self, theRange: &crate::ffi::Message_ProgressRange) -> bool {
+    pub fn discretize_faces(&mut self, theRange: &crate::message::ProgressRange) -> bool {
         unsafe {
             crate::ffi::BRepMesh_Context_inherited_DiscretizeFaces(self as *mut Self, theRange)
         }
@@ -858,24 +858,24 @@ impl Context {
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:186 - `IMeshTools_Context::GetParameters()`
-    pub fn get_parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
+    pub fn get_parameters(&self) -> &crate::i_mesh_tools::Parameters {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetParameters(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `IMeshTools_Context.hxx`:189 - `IMeshTools_Context::ChangeParameters()`
-    pub fn change_parameters(&mut self) -> &mut crate::ffi::IMeshTools_Parameters {
+    pub fn change_parameters(&mut self) -> &mut crate::i_mesh_tools::Parameters {
         unsafe {
             &mut *(crate::ffi::BRepMesh_Context_inherited_ChangeParameters(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepMesh_Context_inherited_SetShape(self as *mut Self, theShape) }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
-    pub fn get_shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepMesh_Context_inherited_GetShape(self as *const Self)) }
     }
 }
@@ -910,7 +910,7 @@ impl CurveTessellator {
     pub fn value(
         &self,
         theIndex: i32,
-        thePoint: &mut crate::ffi::gp_Pnt,
+        thePoint: &mut crate::gp::Pnt,
         theParameter: &mut f64,
     ) -> bool {
         unsafe {
@@ -1092,7 +1092,7 @@ impl CylinderRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_AddPoint(
                 self as *mut Self,
@@ -1116,9 +1116,9 @@ impl CylinderRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Scale(
                 self as *const Self,
@@ -1129,7 +1129,7 @@ impl CylinderRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_CylinderRangeSplitter_inherited_Point(
                 self as *const Self,
@@ -1168,7 +1168,7 @@ impl DataStructureOfDelaun {
     /// @param isForceAdd adds the given node to structure without
     /// checking on coincidence with other nodes.
     /// @return index of the node in the structure.
-    pub fn add_node(&mut self, theNode: &crate::ffi::BRepMesh_Vertex, isForceAdd: bool) -> i32 {
+    pub fn add_node(&mut self, theNode: &Vertex, isForceAdd: bool) -> i32 {
         unsafe {
             crate::ffi::BRepMesh_DataStructureOfDelaun_add_node(
                 self as *mut Self,
@@ -1182,7 +1182,7 @@ impl DataStructureOfDelaun {
     /// Finds the index of the given node.
     /// @param theNode node to find.
     /// @return index of the given element of zero if node is not in the mesh.
-    pub fn index_of_vertex(&mut self, theNode: &crate::ffi::BRepMesh_Vertex) -> i32 {
+    pub fn index_of_vertex(&mut self, theNode: &Vertex) -> i32 {
         unsafe {
             crate::ffi::BRepMesh_DataStructureOfDelaun_index_of_vertex(self as *mut Self, theNode)
         }
@@ -1192,7 +1192,7 @@ impl DataStructureOfDelaun {
     /// Get node by the index.
     /// @param theIndex index of a node.
     /// @return node with the given index.
-    pub fn get_node(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Vertex {
+    pub fn get_node(&mut self, theIndex: i32) -> &Vertex {
         unsafe {
             &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_node(self as *mut Self, theIndex))
         }
@@ -1203,11 +1203,7 @@ impl DataStructureOfDelaun {
     /// @param theIndex index of node to be substituted.
     /// @param theNewNode substituting node.
     /// @return FALSE in case if new node is already in the structure, TRUE elsewhere.
-    pub fn substitute_node(
-        &mut self,
-        theIndex: i32,
-        theNewNode: &crate::ffi::BRepMesh_Vertex,
-    ) -> bool {
+    pub fn substitute_node(&mut self, theIndex: i32, theNewNode: &Vertex) -> bool {
         unsafe {
             crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_node(
                 self as *mut Self,
@@ -1244,7 +1240,7 @@ impl DataStructureOfDelaun {
     /// Adds link to the mesh if it is not already in the mesh.
     /// @param theLink link to be added to the mesh.
     /// @return index of the link in the structure.
-    pub fn add_link(&mut self, theLink: &crate::ffi::BRepMesh_Edge) -> i32 {
+    pub fn add_link(&mut self, theLink: &Edge) -> i32 {
         unsafe { crate::ffi::BRepMesh_DataStructureOfDelaun_add_link(self as *mut Self, theLink) }
     }
 
@@ -1252,7 +1248,7 @@ impl DataStructureOfDelaun {
     /// Finds the index of the given link.
     /// @param theLink link to find.
     /// @return index of the given element of zero if link is not in the mesh.
-    pub fn index_of_edge(&self, theLink: &crate::ffi::BRepMesh_Edge) -> i32 {
+    pub fn index_of_edge(&self, theLink: &Edge) -> i32 {
         unsafe {
             crate::ffi::BRepMesh_DataStructureOfDelaun_index_of_edge(self as *const Self, theLink)
         }
@@ -1262,7 +1258,7 @@ impl DataStructureOfDelaun {
     /// Get link by the index.
     /// @param theIndex index of a link.
     /// @return link with the given index.
-    pub fn get_link(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Edge {
+    pub fn get_link(&mut self, theIndex: i32) -> &Edge {
         unsafe {
             &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_link(self as *mut Self, theIndex))
         }
@@ -1273,11 +1269,7 @@ impl DataStructureOfDelaun {
     /// @param theIndex index of link to be substituted.
     /// @param theNewLink substituting link.
     /// @return FALSE in case if new link is already in the structure, TRUE elsewhere.
-    pub fn substitute_link(
-        &mut self,
-        theIndex: i32,
-        theNewLink: &crate::ffi::BRepMesh_Edge,
-    ) -> bool {
+    pub fn substitute_link(&mut self, theIndex: i32, theNewLink: &Edge) -> bool {
         unsafe {
             crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_link(
                 self as *mut Self,
@@ -1307,7 +1299,7 @@ impl DataStructureOfDelaun {
     /// Returns indices of elements connected to the link with the given index.
     /// @param theLinkIndex index of link whose data should be retrieved.
     /// @return indices of elements connected to the link.
-    pub fn elements_connected_to(&self, theLinkIndex: i32) -> &crate::ffi::BRepMesh_PairOfIndex {
+    pub fn elements_connected_to(&self, theLinkIndex: i32) -> &PairOfIndex {
         unsafe {
             &*(crate::ffi::BRepMesh_DataStructureOfDelaun_elements_connected_to(
                 self as *const Self,
@@ -1327,7 +1319,7 @@ impl DataStructureOfDelaun {
     /// Adds element to the mesh if it is not already in the mesh.
     /// @param theElement element to be added to the mesh.
     /// @return index of the element in the structure.
-    pub fn add_element(&mut self, theElement: &crate::ffi::BRepMesh_Triangle) -> i32 {
+    pub fn add_element(&mut self, theElement: &Triangle) -> i32 {
         unsafe {
             crate::ffi::BRepMesh_DataStructureOfDelaun_add_element(self as *mut Self, theElement)
         }
@@ -1337,7 +1329,7 @@ impl DataStructureOfDelaun {
     /// Get element by the index.
     /// @param theIndex index of an element.
     /// @return element with the given index.
-    pub fn get_element(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Triangle {
+    pub fn get_element(&mut self, theIndex: i32) -> &Triangle {
         unsafe {
             &*(crate::ffi::BRepMesh_DataStructureOfDelaun_get_element(self as *mut Self, theIndex))
         }
@@ -1348,11 +1340,7 @@ impl DataStructureOfDelaun {
     /// @param theIndex index of element to be substituted.
     /// @param theNewLink substituting element.
     /// @return FALSE in case if new element is already in the structure, TRUE elsewhere.
-    pub fn substitute_element(
-        &mut self,
-        theIndex: i32,
-        theNewElement: &crate::ffi::BRepMesh_Triangle,
-    ) -> bool {
+    pub fn substitute_element(&mut self, theIndex: i32, theNewElement: &Triangle) -> bool {
         unsafe {
             crate::ffi::BRepMesh_DataStructureOfDelaun_substitute_element(
                 self as *mut Self,
@@ -1478,7 +1466,7 @@ impl DefaultRangeSplitter {
 
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
     /// Registers border point.
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::BRepMesh_DefaultRangeSplitter_add_point(self as *mut Self, thePoint) }
     }
 
@@ -1503,9 +1491,9 @@ impl DefaultRangeSplitter {
     /// @return scaled point.
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_scale(
                 self as *const Self,
@@ -1518,7 +1506,7 @@ impl DefaultRangeSplitter {
     /// **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
     /// Returns point in 3d space corresponded to the given
     /// point defined in parametric space of surface.
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DefaultRangeSplitter_point(
                 self as *const Self,
@@ -1562,7 +1550,7 @@ impl Deflection {
     /// @param theMaxShapeSize maximum size of the whole shape.
     /// @return absolute deflection for the shape.
     pub fn compute_absolute_deflection(
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theRelativeDeflection: f64,
         theMaxShapeSize: f64,
     ) -> f64 {
@@ -1783,7 +1771,7 @@ impl DelabellaMeshAlgoFactory {
     pub fn get_algo(
         &self,
         theSurfaceType: crate::geom_abs::SurfaceType,
-        theParameters: &crate::ffi::IMeshTools_Parameters,
+        theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_DelabellaMeshAlgoFactory_get_algo(
@@ -1885,7 +1873,7 @@ impl Delaun {
 
     /// **Source:** `BRepMesh_Delaun.hxx`:70 - `BRepMesh_Delaun::RemoveVertex()`
     /// Removes a vertex from the triangulation.
-    pub fn remove_vertex(&mut self, theVertex: &crate::ffi::BRepMesh_Vertex) {
+    pub fn remove_vertex(&mut self, theVertex: &Vertex) {
         unsafe { crate::ffi::BRepMesh_Delaun_remove_vertex(self as *mut Self, theVertex) }
     }
 
@@ -1910,25 +1898,25 @@ impl Delaun {
 
     /// **Source:** `BRepMesh_Delaun.hxx`:102 - `BRepMesh_Delaun::GetVertex()`
     /// Gives vertex with the given index
-    pub fn get_vertex(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Vertex {
+    pub fn get_vertex(&self, theIndex: i32) -> &Vertex {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_get_vertex(self as *const Self, theIndex)) }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:108 - `BRepMesh_Delaun::GetEdge()`
     /// Gives edge with the given index
-    pub fn get_edge(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Edge {
+    pub fn get_edge(&self, theIndex: i32) -> &Edge {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_get_edge(self as *const Self, theIndex)) }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:114 - `BRepMesh_Delaun::GetTriangle()`
     /// Gives triangle with the given index
-    pub fn get_triangle(&self, theIndex: i32) -> &crate::ffi::BRepMesh_Triangle {
+    pub fn get_triangle(&self, theIndex: i32) -> &Triangle {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_get_triangle(self as *const Self, theIndex)) }
     }
 
     /// **Source:** `BRepMesh_Delaun.hxx`:120 - `BRepMesh_Delaun::Circles()`
     /// Returns tool used to build mesh consistent to Delaunay criteria.
-    pub fn circles(&self) -> &crate::ffi::BRepMesh_CircleTool {
+    pub fn circles(&self) -> &CircleTool {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_circles(self as *const Self)) }
     }
 
@@ -2053,12 +2041,12 @@ unsafe impl crate::CppDeletable for DiscretRoot {
 impl DiscretRoot {
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:31 - `BRepMesh_DiscretRoot::SetShape()`
     /// Set the shape to triangulate.
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepMesh_DiscretRoot_set_shape(self as *mut Self, theShape) }
     }
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:33 - `BRepMesh_DiscretRoot::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepMesh_DiscretRoot_shape(self as *const Self)) }
     }
 
@@ -2070,7 +2058,7 @@ impl DiscretRoot {
 
     /// **Source:** `BRepMesh_DiscretRoot.hxx`:39 - `BRepMesh_DiscretRoot::Perform()`
     /// Compute triangulation for set shape.
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepMesh_DiscretRoot_perform(self as *mut Self, theRange) }
     }
 
@@ -2173,7 +2161,7 @@ impl Edge {
     /// Checks if the given edge and this one have the same orientation.
     /// @param theOther edge to be checked against this one.
     /// \return TRUE if edges have the same orientation, FALSE if not.
-    pub fn is_same_orientation(&self, theOther: &crate::ffi::BRepMesh_Edge) -> bool {
+    pub fn is_same_orientation(&self, theOther: &Edge) -> bool {
         unsafe { crate::ffi::BRepMesh_Edge_is_same_orientation(self as *const Self, theOther) }
     }
 
@@ -2181,7 +2169,7 @@ impl Edge {
     /// Checks for equality with another edge.
     /// @param theOther edge to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
-    pub fn is_equal(&self, theOther: &crate::ffi::BRepMesh_Edge) -> bool {
+    pub fn is_equal(&self, theOther: &Edge) -> bool {
         unsafe { crate::ffi::BRepMesh_Edge_is_equal(self as *const Self, theOther) }
     }
 
@@ -2293,7 +2281,7 @@ impl EdgeTessellationExtractor {
     pub fn value(
         &self,
         theIndex: i32,
-        thePoint: &mut crate::ffi::gp_Pnt,
+        thePoint: &mut crate::gp::Pnt,
         theParameter: &mut f64,
     ) -> bool {
         unsafe {
@@ -2429,7 +2417,7 @@ impl ExtrusionRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_AddPoint(
                 self as *mut Self,
@@ -2446,9 +2434,9 @@ impl ExtrusionRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Scale(
                 self as *const Self,
@@ -2459,7 +2447,7 @@ impl ExtrusionRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ExtrusionRangeSplitter_inherited_Point(
                 self as *const Self,
@@ -2540,6 +2528,24 @@ impl HandleBRepMeshFaceChecker {
     /// Dereference this Handle to mutably access the underlying BRepMesh_FaceChecker
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepMesh_FaceChecker {
         unsafe { &mut *(crate::ffi::HandleBRepMeshFaceChecker_get_mut(self as *mut Self)) }
+    }
+}
+
+/// **Source:** `BRepMesh_FaceChecker.hxx`:33 - `BRepMesh_FaceChecker_Segment`
+/// @name mesher API
+/// Identifies segment inside face.
+pub use crate::ffi::BRepMesh_FaceChecker_Segment as FaceChecker_Segment;
+
+unsafe impl crate::CppDeletable for FaceChecker_Segment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_FaceChecker_Segment_destructor(ptr);
+    }
+}
+
+impl FaceChecker_Segment {
+    /// **Source:** `BRepMesh_FaceChecker.hxx`:39 - `BRepMesh_FaceChecker_Segment::BRepMesh_FaceChecker_Segment()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_FaceChecker_Segment_ctor()) }
     }
 }
 
@@ -2636,7 +2642,7 @@ impl GeomTool {
     /// @param theAngDeflection angular deflection.
     /// @param theMinPointsNb minimum number of points to be produced.
     pub fn new_curve_real4_int_real(
-        theCurve: &crate::ffi::BRepAdaptor_Curve,
+        theCurve: &crate::b_rep_adaptor::Curve,
         theFirstParam: f64,
         theLastParam: f64,
         theLinDeflection: f64,
@@ -2666,7 +2672,7 @@ impl GeomTool {
     /// @return index of new added point or found with parametric tolerance
     pub fn add_point(
         &mut self,
-        thePoint: &crate::ffi::gp_Pnt,
+        thePoint: &crate::gp::Pnt,
         theParam: f64,
         theIsReplace: bool,
     ) -> i32 {
@@ -2700,8 +2706,8 @@ impl GeomTool {
         theIndex: i32,
         theIsoParam: f64,
         theParam: &mut f64,
-        thePoint: &mut crate::ffi::gp_Pnt,
-        theUV: &mut crate::ffi::gp_Pnt2d,
+        thePoint: &mut crate::gp::Pnt,
+        theUV: &mut crate::gp::Pnt2d,
     ) -> bool {
         unsafe {
             crate::ffi::BRepMesh_GeomTool_value(
@@ -2731,13 +2737,13 @@ impl GeomTool {
     /// @param[out] theIntPnt point of intersection.
     /// @return status of intersection check.
     pub fn int_seg_seg(
-        theStartPnt1: &crate::ffi::gp_XY,
-        theEndPnt1: &crate::ffi::gp_XY,
-        theStartPnt2: &crate::ffi::gp_XY,
-        theEndPnt2: &crate::ffi::gp_XY,
+        theStartPnt1: &crate::gp::XY,
+        theEndPnt1: &crate::gp::XY,
+        theStartPnt2: &crate::gp::XY,
+        theEndPnt2: &crate::gp::XY,
         isConsiderEndPointTouch: bool,
         isConsiderPointOnSegment: bool,
-        theIntPnt: &mut crate::ffi::gp_Pnt2d,
+        theIntPnt: &mut crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<crate::ffi::BRepMesh_GeomTool_IntFlag> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_int_seg_seg(
@@ -2755,9 +2761,9 @@ impl GeomTool {
     /// **Source:** `BRepMesh_GeomTool.hxx`:183 - `BRepMesh_GeomTool::SquareDeflectionOfSegment()`
     /// Compute deflection of the given segment.
     pub fn square_deflection_of_segment(
-        theFirstPoint: &crate::ffi::gp_Pnt,
-        theLastPoint: &crate::ffi::gp_Pnt,
-        theMidPoint: &crate::ffi::gp_Pnt,
+        theFirstPoint: &crate::gp::Pnt,
+        theLastPoint: &crate::gp::Pnt,
+        theMidPoint: &crate::gp::Pnt,
     ) -> f64 {
         unsafe {
             crate::ffi::BRepMesh_GeomTool_square_deflection_of_segment(
@@ -2803,7 +2809,7 @@ impl IncrementalMesh {
     /// @param theAngDeflection angular deflection.
     /// @param isInParallel if TRUE shape will be meshed in parallel.
     pub fn new_shape_real_bool_real_bool(
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theLinDeflection: f64,
         isRelative: bool,
         theAngDeflection: f64,
@@ -2828,9 +2834,9 @@ impl IncrementalMesh {
     /// @param theShape shape to be meshed.
     /// @param theParameters - parameters of meshing
     pub fn new_shape_parameters_progressrange(
-        theShape: &crate::ffi::TopoDS_Shape,
-        theParameters: &crate::ffi::IMeshTools_Parameters,
-        theRange: &crate::ffi::Message_ProgressRange,
+        theShape: &crate::topo_ds::Shape,
+        theParameters: &crate::i_mesh_tools::Parameters,
+        theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -2854,7 +2860,7 @@ impl IncrementalMesh {
     /// @param theAngDeflection angular deflection.
     /// @param isInParallel if TRUE shape will be meshed in parallel.
     pub fn new_shape_real_bool_real(
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theLinDeflection: f64,
         isRelative: bool,
         theAngDeflection: f64,
@@ -2879,7 +2885,7 @@ impl IncrementalMesh {
     /// @param theAngDeflection angular deflection.
     /// @param isInParallel if TRUE shape will be meshed in parallel.
     pub fn new_shape_real_bool(
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theLinDeflection: f64,
         isRelative: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2897,7 +2903,7 @@ impl IncrementalMesh {
     /// @param theAngDeflection angular deflection.
     /// @param isInParallel if TRUE shape will be meshed in parallel.
     pub fn new_shape_real(
-        theShape: &crate::ffi::TopoDS_Shape,
+        theShape: &crate::topo_ds::Shape,
         theLinDeflection: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_real_bool_real_bool(theShape, theLinDeflection, false, 0.5, false)
@@ -2905,20 +2911,20 @@ impl IncrementalMesh {
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:57 - `BRepMesh_IncrementalMesh::Perform()`
     /// Performs meshing of the shape.
-    pub fn perform(&mut self, theRange: &crate::ffi::Message_ProgressRange) {
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         unsafe { crate::ffi::BRepMesh_IncrementalMesh_perform(self as *mut Self, theRange) }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:66 - `BRepMesh_IncrementalMesh::Parameters()`
     /// @name accessing to parameters.
     /// Returns meshing parameters
-    pub fn parameters(&self) -> &crate::ffi::IMeshTools_Parameters {
+    pub fn parameters(&self) -> &crate::i_mesh_tools::Parameters {
         unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_parameters(self as *const Self)) }
     }
 
     /// **Source:** `BRepMesh_IncrementalMesh.hxx`:69 - `BRepMesh_IncrementalMesh::ChangeParameters()`
     /// Returns modifiable meshing parameters
-    pub fn change_parameters(&mut self) -> &mut crate::ffi::IMeshTools_Parameters {
+    pub fn change_parameters(&mut self) -> &mut crate::i_mesh_tools::Parameters {
         unsafe { &mut *(crate::ffi::BRepMesh_IncrementalMesh_change_parameters(self as *mut Self)) }
     }
 
@@ -2984,14 +2990,14 @@ impl IncrementalMesh {
     }
 
     /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:31 - `BRepMesh_DiscretRoot::SetShape()`
-    pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BRepMesh_IncrementalMesh_inherited_SetShape(self as *mut Self, theShape)
         }
     }
 
     /// Inherited: **Source:** `BRepMesh_DiscretRoot.hxx`:33 - `BRepMesh_DiscretRoot::Shape()`
-    pub fn shape(&self) -> &crate::ffi::TopoDS_Shape {
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BRepMesh_IncrementalMesh_inherited_Shape(self as *const Self)) }
     }
 
@@ -3028,7 +3034,7 @@ impl MeshAlgoFactory {
     pub fn get_algo(
         &self,
         theSurfaceType: crate::geom_abs::SurfaceType,
-        theParameters: &crate::ffi::IMeshTools_Parameters,
+        theParameters: &crate::i_mesh_tools::Parameters,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshAlgo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshAlgoFactory_get_algo(
@@ -3205,6 +3211,35 @@ impl HandleBRepMeshMeshTool {
     }
 }
 
+/// **Source:** `BRepMesh_MeshTool.hxx`:33 - `BRepMesh_MeshTool_NodeClassifier`
+/// Helper functor intended to separate points to left and right from the constraint.
+pub use crate::ffi::BRepMesh_MeshTool_NodeClassifier as MeshTool_NodeClassifier;
+
+unsafe impl crate::CppDeletable for MeshTool_NodeClassifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepMesh_MeshTool_NodeClassifier_destructor(ptr);
+    }
+}
+
+impl MeshTool_NodeClassifier {
+    /// **Source:** `BRepMesh_MeshTool.hxx`:36 - `BRepMesh_MeshTool_NodeClassifier::BRepMesh_MeshTool_NodeClassifier()`
+    pub fn new_edge_handlebrepmeshdatastructureofdelaun(
+        theConstraint: &Edge,
+        theStructure: &crate::ffi::HandleBRepMeshDataStructureOfDelaun,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_MeshTool_NodeClassifier_ctor_edge_handlebrepmeshdatastructureofdelaun(theConstraint, theStructure))
+        }
+    }
+
+    /// **Source:** `BRepMesh_MeshTool.hxx`:48 - `BRepMesh_MeshTool_NodeClassifier::IsAbove()`
+    pub fn is_above(&self, theNodeIndex: i32) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_NodeClassifier_is_above(self as *const Self, theNodeIndex)
+        }
+    }
+}
+
 // ========================
 // From BRepMesh_ModelBuilder.hxx
 // ========================
@@ -3286,12 +3321,12 @@ impl ModelBuilder {
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
-    pub fn get_status(&self) -> &crate::ffi::Message_ExecStatus {
+    pub fn get_status(&self) -> &crate::message::ExecStatus {
         unsafe { &*(crate::ffi::BRepMesh_ModelBuilder_inherited_GetStatus(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
-    pub fn change_status(&mut self) -> &mut crate::ffi::Message_ExecStatus {
+    pub fn change_status(&mut self) -> &mut crate::message::ExecStatus {
         unsafe {
             &mut *(crate::ffi::BRepMesh_ModelBuilder_inherited_ChangeStatus(self as *mut Self))
         }
@@ -3321,7 +3356,7 @@ impl ModelBuilder {
     /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
     pub fn send_status_messages(
         &self,
-        theFilter: &crate::ffi::Message_ExecStatus,
+        theFilter: &crate::message::ExecStatus,
         theTraceLevel: crate::message::Gravity,
         theMaxCount: i32,
     ) {
@@ -3630,7 +3665,7 @@ impl NURBSRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
         }
@@ -3644,9 +3679,9 @@ impl NURBSRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Scale(
                 self as *const Self,
@@ -3657,7 +3692,7 @@ impl NURBSRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_NURBSRangeSplitter_inherited_Point(
                 self as *const Self,
@@ -3715,7 +3750,7 @@ impl OrientedEdge {
     /// Checks this and other edge for equality.
     /// @param theOther edge to be checked against this one.
     /// @return TRUE if edges have the same orientation, FALSE if not.
-    pub fn is_equal(&self, theOther: &crate::ffi::BRepMesh_OrientedEdge) -> bool {
+    pub fn is_equal(&self, theOther: &OrientedEdge) -> bool {
         unsafe { crate::ffi::BRepMesh_OrientedEdge_is_equal(self as *const Self, theOther) }
     }
 }
@@ -3858,7 +3893,7 @@ impl SelectorOfDataStructureOfDelaun {
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:42 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given node.
-    pub fn neighbours_of_vertex(&mut self, theNode: &crate::ffi::BRepMesh_Vertex) {
+    pub fn neighbours_of_vertex(&mut self, theNode: &Vertex) {
         unsafe {
             crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_vertex(
                 self as *mut Self,
@@ -3880,7 +3915,7 @@ impl SelectorOfDataStructureOfDelaun {
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:48 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given link.
-    pub fn neighbours_of_edge(&mut self, theLink: &crate::ffi::BRepMesh_Edge) {
+    pub fn neighbours_of_edge(&mut self, theLink: &Edge) {
         unsafe {
             crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_edge(
                 self as *mut Self,
@@ -3902,7 +3937,7 @@ impl SelectorOfDataStructureOfDelaun {
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:54 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursOf()`
     /// Selects all neighboring elements of the given element.
-    pub fn neighbours_of_triangle(&mut self, theElement: &crate::ffi::BRepMesh_Triangle) {
+    pub fn neighbours_of_triangle(&mut self, theElement: &Triangle) {
         unsafe {
             crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_triangle(
                 self as *mut Self,
@@ -3924,7 +3959,7 @@ impl SelectorOfDataStructureOfDelaun {
 
     /// **Source:** `BRepMesh_SelectorOfDataStructureOfDelaun.hxx`:60 - `BRepMesh_SelectorOfDataStructureOfDelaun::NeighboursByEdgeOf()`
     /// Selects all neighboring elements by links of the given element.
-    pub fn neighbours_by_edge_of(&mut self, theElement: &crate::ffi::BRepMesh_Triangle) {
+    pub fn neighbours_by_edge_of(&mut self, theElement: &Triangle) {
         unsafe {
             crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_by_edge_of(
                 self as *mut Self,
@@ -3937,7 +3972,7 @@ impl SelectorOfDataStructureOfDelaun {
     /// Adds a level of neighbours by edge to the selector.
     pub fn neighbours_of_selectorofdatastructureofdelaun(
         &mut self,
-        arg0: &crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun,
+        arg0: &SelectorOfDataStructureOfDelaun,
     ) {
         unsafe {
             crate::ffi::BRepMesh_SelectorOfDataStructureOfDelaun_neighbours_of_selectorofdatastructureofdelaun(self as *mut Self, arg0)
@@ -4045,7 +4080,7 @@ impl ShapeTool {
     /// **Source:** `BRepMesh_ShapeTool.hxx`:38 - `BRepMesh_ShapeTool::MaxFaceTolerance()`
     /// Returns maximum tolerance of the given face.
     /// Considers tolerances of edges and vertices contained in the given face.
-    pub fn max_face_tolerance(theFace: &crate::ffi::TopoDS_Face) -> f64 {
+    pub fn max_face_tolerance(theFace: &crate::topo_ds::Face) -> f64 {
         unsafe { crate::ffi::BRepMesh_ShapeTool_max_face_tolerance(theFace) }
     }
 
@@ -4054,7 +4089,7 @@ impl ShapeTool {
     /// If the given bounding box is void leaves the resulting value unchanged.
     /// @param theBox bounding box to be processed.
     /// @param theMaxDimension maximum dimension of the given box.
-    pub fn box_max_dimension(theBox: &crate::ffi::Bnd_Box, theMaxDimension: &mut f64) {
+    pub fn box_max_dimension(theBox: &crate::bnd::Box, theMaxDimension: &mut f64) {
         unsafe { crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension) }
     }
 
@@ -4063,7 +4098,7 @@ impl ShapeTool {
     /// @param theFace face to be updated by triangulation.
     /// @param theTriangulation triangulation to be stored into the face.
     pub fn add_in_face(
-        theFace: &crate::ffi::TopoDS_Face,
+        theFace: &crate::topo_ds::Face,
         theTriangulation: &mut crate::ffi::HandlePolyTriangulation,
     ) {
         unsafe { crate::ffi::BRepMesh_ShapeTool_add_in_face(theFace, theTriangulation) }
@@ -4072,7 +4107,7 @@ impl ShapeTool {
     /// **Source:** `BRepMesh_ShapeTool.hxx`:64 - `BRepMesh_ShapeTool::NullifyFace()`
     /// Nullifies triangulation stored in the face.
     /// @param theFace face to be updated by null triangulation.
-    pub fn nullify_face(theFace: &crate::ffi::TopoDS_Face) {
+    pub fn nullify_face(theFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_face(theFace) }
     }
 
@@ -4082,9 +4117,9 @@ impl ShapeTool {
     /// @param theTriangulation triangulation the given edge is associated to.
     /// @param theLocation face location.
     pub fn nullify_edge_edge_handlepolytriangulation_location(
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
-        theLocation: &crate::ffi::TopLoc_Location,
+        theLocation: &crate::top_loc::Location,
     ) {
         unsafe {
             crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_handlepolytriangulation_location(
@@ -4100,8 +4135,8 @@ impl ShapeTool {
     /// @param theEdge edge to be updated by null polygon.
     /// @param theLocation face location.
     pub fn nullify_edge_edge_location(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theLocation: &crate::ffi::TopLoc_Location,
+        theEdge: &crate::topo_ds::Edge,
+        theLocation: &crate::top_loc::Location,
     ) {
         unsafe { crate::ffi::BRepMesh_ShapeTool_nullify_edge_edge_location(theEdge, theLocation) }
     }
@@ -4113,10 +4148,10 @@ impl ShapeTool {
     /// @param theTriangulation triangulation the given edge is associated to.
     /// @param theLocation face location.
     pub fn update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
         thePolygon: &crate::ffi::HandlePolyPolygonOnTriangulation,
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
-        theLocation: &crate::ffi::TopLoc_Location,
+        theLocation: &crate::top_loc::Location,
     ) {
         unsafe {
             crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation_handlepolytriangulation_location(theEdge, thePolygon, theTriangulation, theLocation)
@@ -4128,7 +4163,7 @@ impl ShapeTool {
     /// @param theEdge edge to be updated.
     /// @param thePolygon tessellated representation of the edge to be stored.
     pub fn update_edge_edge_handlepolypolygon3d(
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
         thePolygon: &crate::ffi::HandlePolyPolygon3D,
     ) {
         unsafe {
@@ -4146,11 +4181,11 @@ impl ShapeTool {
     /// @param theTriangulation triangulation the given edge is associated to.
     /// @param theLocation face location.
     pub fn update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
         thePolygon1: &crate::ffi::HandlePolyPolygonOnTriangulation,
         thePolygon2: &crate::ffi::HandlePolyPolygonOnTriangulation,
         theTriangulation: &crate::ffi::HandlePolyTriangulation,
-        theLocation: &crate::ffi::TopLoc_Location,
+        theLocation: &crate::top_loc::Location,
     ) {
         unsafe {
             crate::ffi::BRepMesh_ShapeTool_update_edge_edge_handlepolypolygonontriangulation2_handlepolytriangulation_location(theEdge, thePolygon1, thePolygon2, theTriangulation, theLocation)
@@ -4162,9 +4197,9 @@ impl ShapeTool {
     /// @param thePnt point to be transformed.
     /// @param theLoc location to be applied.
     pub fn use_location(
-        thePnt: &crate::ffi::gp_Pnt,
-        theLoc: &crate::ffi::TopLoc_Location,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+        thePnt: &crate::gp::Pnt,
+        theLoc: &crate::top_loc::Location,
+    ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_ShapeTool_use_location(thePnt, theLoc))
         }
@@ -4173,10 +4208,10 @@ impl ShapeTool {
     /// **Source:** `BRepMesh_ShapeTool.hxx`:116 - `BRepMesh_ShapeTool::UVPoints()`
     /// Gets the strict UV locations of the extremities of the edge using pcurve.
     pub fn uv_points(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
-        theFirstPoint2d: &mut crate::ffi::gp_Pnt2d,
-        theLastPoint2d: &mut crate::ffi::gp_Pnt2d,
+        theEdge: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
+        theFirstPoint2d: &mut crate::gp::Pnt2d,
+        theLastPoint2d: &mut crate::gp::Pnt2d,
         isConsiderOrientation: bool,
     ) -> bool {
         unsafe {
@@ -4193,8 +4228,8 @@ impl ShapeTool {
     /// **Source:** `BRepMesh_ShapeTool.hxx`:124 - `BRepMesh_ShapeTool::Range()`
     /// Gets the parametric range of the given edge on the given face.
     pub fn range_edge_face_handlegeom2dcurve_real2_bool(
-        theEdge: &crate::ffi::TopoDS_Edge,
-        theFace: &crate::ffi::TopoDS_Face,
+        theEdge: &crate::topo_ds::Edge,
+        theFace: &crate::topo_ds::Face,
         thePCurve: &mut crate::ffi::HandleGeom2dCurve,
         theFirstParam: &mut f64,
         theLastParam: &mut f64,
@@ -4215,7 +4250,7 @@ impl ShapeTool {
     /// **Source:** `BRepMesh_ShapeTool.hxx`:133 - `BRepMesh_ShapeTool::Range()`
     /// Gets the 3d range of the given edge.
     pub fn range_edge_handlegeomcurve_real2_bool(
-        theEdge: &crate::ffi::TopoDS_Edge,
+        theEdge: &crate::topo_ds::Edge,
         theCurve: &mut crate::ffi::HandleGeomCurve,
         theFirstParam: &mut f64,
         theLastParam: &mut f64,
@@ -4296,13 +4331,13 @@ unsafe impl crate::CppDeletable for ShapeVisitor {
 impl ShapeVisitor {
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:44 - `BRepMesh_ShapeVisitor::Visit()`
     /// Handles TopoDS_Face object.
-    pub fn visit_face(&mut self, theFace: &crate::ffi::TopoDS_Face) {
+    pub fn visit_face(&mut self, theFace: &crate::topo_ds::Face) {
         unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_face(self as *mut Self, theFace) }
     }
 
     /// **Source:** `BRepMesh_ShapeVisitor.hxx`:47 - `BRepMesh_ShapeVisitor::Visit()`
     /// Handles TopoDS_Edge object.
-    pub fn visit_edge(&mut self, theEdge: &crate::ffi::TopoDS_Edge) {
+    pub fn visit_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
         unsafe { crate::ffi::BRepMesh_ShapeVisitor_visit_edge(self as *mut Self, theEdge) }
     }
 
@@ -4383,7 +4418,7 @@ impl SphereRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_SphereRangeSplitter_inherited_AddPoint(self as *mut Self, thePoint)
         }
@@ -4402,9 +4437,9 @@ impl SphereRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Scale(
                 self as *const Self,
@@ -4415,7 +4450,7 @@ impl SphereRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_SphereRangeSplitter_inherited_Point(
                 self as *const Self,
@@ -4449,7 +4484,7 @@ impl TorusRangeSplitter {
 
     /// **Source:** `BRepMesh_TorusRangeSplitter.hxx`:38 - `BRepMesh_TorusRangeSplitter::AddPoint()`
     /// Registers border point.
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe { crate::ffi::BRepMesh_TorusRangeSplitter_add_point(self as *mut Self, thePoint) }
     }
 
@@ -4502,9 +4537,9 @@ impl TorusRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Scale(
                 self as *const Self,
@@ -4515,7 +4550,7 @@ impl TorusRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_TorusRangeSplitter_inherited_Point(
                 self as *const Self,
@@ -4570,7 +4605,7 @@ impl Triangle {
     /// Checks for equality with another triangle.
     /// @param theOther triangle to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
-    pub fn is_equal(&self, theOther: &crate::ffi::BRepMesh_Triangle) -> bool {
+    pub fn is_equal(&self, theOther: &Triangle) -> bool {
         unsafe { crate::ffi::BRepMesh_Triangle_is_equal(self as *const Self, theOther) }
     }
 }
@@ -4638,7 +4673,7 @@ impl UVParamRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_AddPoint(
                 self as *mut Self,
@@ -4662,9 +4697,9 @@ impl UVParamRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Scale(
                 self as *const Self,
@@ -4675,7 +4710,7 @@ impl UVParamRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UVParamRangeSplitter_inherited_Point(
                 self as *const Self,
@@ -4769,7 +4804,7 @@ impl UndefinedRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:42 - `BRepMesh_DefaultRangeSplitter::AddPoint()`
-    pub fn add_point(&mut self, thePoint: &crate::ffi::gp_Pnt2d) {
+    pub fn add_point(&mut self, thePoint: &crate::gp::Pnt2d) {
         unsafe {
             crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_AddPoint(
                 self as *mut Self,
@@ -4786,9 +4821,9 @@ impl UndefinedRangeSplitter {
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:56 - `BRepMesh_DefaultRangeSplitter::Scale()`
     pub fn scale(
         &self,
-        thePoint: &crate::ffi::gp_Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
         isToFaceBasis: bool,
-    ) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Scale(
                 self as *const Self,
@@ -4799,7 +4834,7 @@ impl UndefinedRangeSplitter {
     }
 
     /// Inherited: **Source:** `BRepMesh_DefaultRangeSplitter.hxx`:66 - `BRepMesh_DefaultRangeSplitter::Point()`
-    pub fn point(&self, thePoint2d: &crate::ffi::gp_Pnt2d) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn point(&self, thePoint2d: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_UndefinedRangeSplitter_inherited_Point(
                 self as *const Self,
@@ -4838,7 +4873,7 @@ impl Vertex {
     /// @param theLocation3d index of 3d point to be associated with vertex.
     /// @param theMovability movability of the vertex.
     pub fn new_xy_int_degreeoffreedom(
-        theUV: &crate::ffi::gp_XY,
+        theUV: &crate::gp::XY,
         theLocation3d: i32,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) -> crate::OwnedPtr<Self> {
@@ -4877,7 +4912,7 @@ impl Vertex {
     /// @param theMovability movability of the vertex.
     pub fn initialize(
         &mut self,
-        theUV: &crate::ffi::gp_XY,
+        theUV: &crate::gp::XY,
         theLocation3d: i32,
         theMovability: crate::b_rep_mesh::DegreeOfFreedom,
     ) {
@@ -4893,13 +4928,13 @@ impl Vertex {
 
     /// **Source:** `BRepMesh_Vertex.hxx`:76 - `BRepMesh_Vertex::Coord()`
     /// Returns position of the vertex in parametric space.
-    pub fn coord(&self) -> &crate::ffi::gp_XY {
+    pub fn coord(&self) -> &crate::gp::XY {
         unsafe { &*(crate::ffi::BRepMesh_Vertex_coord(self as *const Self)) }
     }
 
     /// **Source:** `BRepMesh_Vertex.hxx`:79 - `BRepMesh_Vertex::ChangeCoord()`
     /// Returns position of the vertex in parametric space for modification.
-    pub fn change_coord(&mut self) -> &mut crate::ffi::gp_XY {
+    pub fn change_coord(&mut self) -> &mut crate::gp::XY {
         unsafe { &mut *(crate::ffi::BRepMesh_Vertex_change_coord(self as *mut Self)) }
     }
 
@@ -4932,7 +4967,7 @@ impl Vertex {
     /// Checks for equality with another vertex.
     /// @param theOther vertex to be checked against this one.
     /// @return TRUE if equal, FALSE if not.
-    pub fn is_equal(&self, theOther: &crate::ffi::BRepMesh_Vertex) -> bool {
+    pub fn is_equal(&self, theOther: &Vertex) -> bool {
         unsafe { crate::ffi::BRepMesh_Vertex_is_equal(self as *const Self, theOther) }
     }
 }
@@ -5019,7 +5054,7 @@ impl VertexTool {
     /// @param isForceAdd adds the given node to structure without
     /// checking on coincidence with other nodes.
     /// @return index of the node in the structure.
-    pub fn add(&mut self, theVertex: &crate::ffi::BRepMesh_Vertex, isForceAdd: bool) -> i32 {
+    pub fn add(&mut self, theVertex: &Vertex, isForceAdd: bool) -> i32 {
         unsafe { crate::ffi::BRepMesh_VertexTool_add(self as *mut Self, theVertex, isForceAdd) }
     }
 
@@ -5031,13 +5066,13 @@ impl VertexTool {
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:99 - `BRepMesh_VertexTool::FindKey()`
     /// Returns vertex by the given index.
-    pub fn find_key(&mut self, theIndex: i32) -> &crate::ffi::BRepMesh_Vertex {
+    pub fn find_key(&mut self, theIndex: i32) -> &Vertex {
         unsafe { &*(crate::ffi::BRepMesh_VertexTool_find_key(self as *mut Self, theIndex)) }
     }
 
     /// **Source:** `BRepMesh_VertexTool.hxx`:105 - `BRepMesh_VertexTool::FindIndex()`
     /// Returns index of the given vertex.
-    pub fn find_index(&mut self, theVertex: &crate::ffi::BRepMesh_Vertex) -> i32 {
+    pub fn find_index(&mut self, theVertex: &Vertex) -> i32 {
         unsafe { crate::ffi::BRepMesh_VertexTool_find_index(self as *mut Self, theVertex) }
     }
 
@@ -5057,7 +5092,7 @@ impl VertexTool {
     /// Substitutes vertex with the given by the given vertex with attributes.
     /// @param theIndex index of vertex to be substituted.
     /// @param theVertex replacement vertex.
-    pub fn substitute(&mut self, theIndex: i32, theVertex: &crate::ffi::BRepMesh_Vertex) {
+    pub fn substitute(&mut self, theIndex: i32, theVertex: &Vertex) {
         unsafe {
             crate::ffi::BRepMesh_VertexTool_substitute(self as *mut Self, theIndex, theVertex)
         }

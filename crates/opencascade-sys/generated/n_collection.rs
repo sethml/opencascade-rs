@@ -10,26 +10,26 @@
 /// C++ enum: `NCollection_CellFilter_Action`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
-pub enum CellFilterAction {
+pub enum CellFilter_Action {
     /// < Target is needed and should be kept
     Keep = 0,
     /// < Target is not needed and can be removed from the current cell
     Purge = 1,
 }
 
-impl From<CellFilterAction> for i32 {
-    fn from(value: CellFilterAction) -> Self {
+impl From<CellFilter_Action> for i32 {
+    fn from(value: CellFilter_Action) -> Self {
         value as i32
     }
 }
 
-impl TryFrom<i32> for CellFilterAction {
+impl TryFrom<i32> for CellFilter_Action {
     type Error = i32;
 
     fn try_from(value: i32) -> Result<Self, i32> {
         match value {
-            0 => Ok(CellFilterAction::Keep),
-            1 => Ok(CellFilterAction::Purge),
+            0 => Ok(CellFilter_Action::Keep),
+            1 => Ok(CellFilter_Action::Purge),
             _ => Err(value),
         }
     }
@@ -294,6 +294,87 @@ impl BaseList {
     }
 }
 
+/// **Source:** `NCollection_BaseList.hxx`:44 - `NCollection_BaseList_Iterator`
+/// Memory allocation
+pub use crate::ffi::NCollection_BaseList_Iterator as BaseList_Iterator;
+
+unsafe impl crate::CppDeletable for BaseList_Iterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_BaseList_Iterator_destructor(ptr);
+    }
+}
+
+impl BaseList_Iterator {
+    /// **Source:** `NCollection_BaseList.hxx`:48 - `NCollection_BaseList_Iterator::NCollection_BaseList_Iterator()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::NCollection_BaseList_Iterator_ctor()) }
+    }
+
+    /// **Source:** `NCollection_BaseList.hxx`:55 - `NCollection_BaseList_Iterator::NCollection_BaseList_Iterator()`
+    pub fn new_baselist(theList: &BaseList) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_BaseList_Iterator_ctor_baselist(
+                theList,
+            ))
+        }
+    }
+
+    /// **Source:** `NCollection_BaseList.hxx`:62 - `NCollection_BaseList_Iterator::Init()`
+    pub fn init(&mut self, theList: &BaseList) {
+        unsafe { crate::ffi::NCollection_BaseList_Iterator_init(self as *mut Self, theList) }
+    }
+
+    /// **Source:** `NCollection_BaseList.hxx`:69 - `NCollection_BaseList_Iterator::Initialize()`
+    pub fn initialize(&mut self, theList: &BaseList) {
+        unsafe { crate::ffi::NCollection_BaseList_Iterator_initialize(self as *mut Self, theList) }
+    }
+
+    /// **Source:** `NCollection_BaseList.hxx`:72 - `NCollection_BaseList_Iterator::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::NCollection_BaseList_Iterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_BaseList.hxx`:81 - `NCollection_BaseList_Iterator::IsEqual()`
+    /// Performs comparison of two iterators
+    pub fn is_equal(&self, theOther: &BaseList_Iterator) -> bool {
+        unsafe { crate::ffi::NCollection_BaseList_Iterator_is_equal(self as *const Self, theOther) }
+    }
+}
+
+// ========================
+// From NCollection_BaseMap.hxx
+// ========================
+
+/// **Source:** `NCollection_BaseMap.hxx`:46 - `NCollection_BaseMap_Iterator`
+/// Memory allocation
+pub use crate::ffi::NCollection_BaseMap_Iterator as BaseMap_Iterator;
+
+unsafe impl crate::CppDeletable for BaseMap_Iterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_BaseMap_Iterator_destructor(ptr);
+    }
+}
+
+impl BaseMap_Iterator {
+    /// **Source:** `NCollection_BaseMap.hxx`:79 - `NCollection_BaseMap_Iterator::Initialize()`
+    /// Initialize
+    pub fn initialize(&mut self, theMap: &crate::ffi::NCollection_BaseMap) {
+        unsafe { crate::ffi::NCollection_BaseMap_Iterator_initialize(self as *mut Self, theMap) }
+    }
+
+    /// **Source:** `NCollection_BaseMap.hxx`:91 - `NCollection_BaseMap_Iterator::Reset()`
+    /// Reset
+    pub fn reset(&mut self) {
+        unsafe { crate::ffi::NCollection_BaseMap_Iterator_reset(self as *mut Self) }
+    }
+
+    /// **Source:** `NCollection_BaseMap.hxx`:99 - `NCollection_BaseMap_Iterator::IsEqual()`
+    /// Performs comparison of two iterators.
+    pub fn is_equal(&self, theOther: &BaseMap_Iterator) -> bool {
+        unsafe { crate::ffi::NCollection_BaseMap_Iterator_is_equal(self as *const Self, theOther) }
+    }
+}
+
 // ========================
 // From NCollection_BasePointerVector.hxx
 // ========================
@@ -323,9 +404,7 @@ impl BasePointerVector {
 
     /// **Source:** `NCollection_BasePointerVector.hxx`:41 - `NCollection_BasePointerVector::NCollection_BasePointerVector()`
     /// Copy data from another vector
-    pub fn new_basepointervector(
-        theOther: &crate::ffi::NCollection_BasePointerVector,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_basepointervector(theOther: &BasePointerVector) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::NCollection_BasePointerVector_ctor_basepointervector(theOther),
@@ -363,6 +442,57 @@ impl BasePointerVector {
         unsafe {
             crate::ffi::NCollection_BasePointerVector_clear(self as *mut Self, theReleaseMemory)
         }
+    }
+}
+
+// ========================
+// From NCollection_BaseSequence.hxx
+// ========================
+
+/// **Source:** `NCollection_BaseSequence.hxx`:65 - `NCollection_BaseSequence_Iterator`
+/// Memory allocation
+pub use crate::ffi::NCollection_BaseSequence_Iterator as BaseSequence_Iterator;
+
+unsafe impl crate::CppDeletable for BaseSequence_Iterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_BaseSequence_Iterator_destructor(ptr);
+    }
+}
+
+impl BaseSequence_Iterator {
+    /// **Source:** `NCollection_BaseSequence.hxx`:69 - `NCollection_BaseSequence_Iterator::NCollection_BaseSequence_Iterator()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::NCollection_BaseSequence_Iterator_ctor()) }
+    }
+
+    /// **Source:** `NCollection_BaseSequence.hxx`:76 - `NCollection_BaseSequence_Iterator::NCollection_BaseSequence_Iterator()`
+    /// Constructor with initialisation
+    pub fn new_basesequence_bool(
+        theSeq: &crate::ffi::NCollection_BaseSequence,
+        isStart: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::NCollection_BaseSequence_Iterator_ctor_basesequence_bool(
+                    theSeq, isStart,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `NCollection_BaseSequence.hxx`:82 - `NCollection_BaseSequence_Iterator::Init()`
+    /// Initialisation
+    pub fn init(&mut self, theSeq: &crate::ffi::NCollection_BaseSequence, isStart: bool) {
+        unsafe {
+            crate::ffi::NCollection_BaseSequence_Iterator_init(self as *mut Self, theSeq, isStart)
+        }
+    }
+
+    /// **Source:** `NCollection_BaseSequence.hxx`:90 - `NCollection_BaseSequence_Iterator::Previous()`
+    /// Switch to previous element; note that it will reset
+    pub fn previous(&mut self) {
+        unsafe { crate::ffi::NCollection_BaseSequence_Iterator_previous(self as *mut Self) }
     }
 }
 
@@ -660,6 +790,58 @@ impl IncAllocator {
                 self as *mut Self,
             ))
         }
+    }
+}
+
+/// **Source:** `NCollection_IncAllocator.hxx`:98 - `NCollection_IncAllocator_IBlock`
+/// Forward list to keep multi-time allocated pointers.
+/// On Reset operation objects will be reused.
+pub use crate::ffi::NCollection_IncAllocator_IBlock as IncAllocator_IBlock;
+
+unsafe impl crate::CppDeletable for IncAllocator_IBlock {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_IncAllocator_IBlock_destructor(ptr);
+    }
+}
+
+// ========================
+// From NCollection_SparseArrayBase.hxx
+// ========================
+
+/// **Source:** `NCollection_SparseArrayBase.hxx`:146 - `NCollection_SparseArrayBase_Iterator`
+///
+/// Iterator
+pub use crate::ffi::NCollection_SparseArrayBase_Iterator as SparseArrayBase_Iterator;
+
+unsafe impl crate::CppDeletable for SparseArrayBase_Iterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::NCollection_SparseArrayBase_Iterator_destructor(ptr);
+    }
+}
+
+impl SparseArrayBase_Iterator {
+    /// **Source:** `NCollection_SparseArrayBase.hxx`:152 - `NCollection_SparseArrayBase_Iterator::Restart()`
+    /// Restart iterations on the same array
+    pub fn restart(&mut self) {
+        unsafe { crate::ffi::NCollection_SparseArrayBase_Iterator_restart(self as *mut Self) }
+    }
+
+    /// **Source:** `NCollection_SparseArrayBase.hxx`:155 - `NCollection_SparseArrayBase_Iterator::More()`
+    /// Returns True if current item is available
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::NCollection_SparseArrayBase_Iterator_more(self as *const Self) }
+    }
+
+    /// **Source:** `NCollection_SparseArrayBase.hxx`:158 - `NCollection_SparseArrayBase_Iterator::Next()`
+    /// Advances to the next item
+    pub fn next(&mut self) {
+        unsafe { crate::ffi::NCollection_SparseArrayBase_Iterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `NCollection_SparseArrayBase.hxx`:161 - `NCollection_SparseArrayBase_Iterator::Index()`
+    /// Returns current index
+    pub fn index(&self) -> usize {
+        unsafe { crate::ffi::NCollection_SparseArrayBase_Iterator_index(self as *const Self) }
     }
 }
 

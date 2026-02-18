@@ -137,8 +137,8 @@ impl LexicalCompare {
     /// Returns True if <Left> is lower than <Right>.
     pub fn is_lower(
         &self,
-        Left: &crate::ffi::TCollection_AsciiString,
-        Right: &crate::ffi::TCollection_AsciiString,
+        Left: &crate::t_collection::AsciiString,
+        Right: &crate::t_collection::AsciiString,
     ) -> bool {
         unsafe { crate::ffi::Resource_LexicalCompare_is_lower(self as *const Self, Left, Right) }
     }
@@ -195,9 +195,9 @@ impl Manager {
     /// @param[in] theUserDefaultsDirectory  user folder for looking description file
     /// @param[in] theIsVerbose  print verbose messages
     pub fn new_asciistring3_bool(
-        theName: &crate::ffi::TCollection_AsciiString,
-        theDefaultsDirectory: &crate::ffi::TCollection_AsciiString,
-        theUserDefaultsDirectory: &crate::ffi::TCollection_AsciiString,
+        theName: &crate::t_collection::AsciiString,
+        theDefaultsDirectory: &crate::t_collection::AsciiString,
+        theUserDefaultsDirectory: &crate::t_collection::AsciiString,
         theIsVerbose: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -234,9 +234,9 @@ impl Manager {
     /// @param[in] theUserDefaultsDirectory  user folder for looking description file
     /// @param[in] theIsVerbose  print verbose messages
     pub fn new_asciistring3(
-        theName: &crate::ffi::TCollection_AsciiString,
-        theDefaultsDirectory: &crate::ffi::TCollection_AsciiString,
-        theUserDefaultsDirectory: &crate::ffi::TCollection_AsciiString,
+        theName: &crate::t_collection::AsciiString,
+        theDefaultsDirectory: &crate::t_collection::AsciiString,
+        theUserDefaultsDirectory: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         Self::new_asciistring3_bool(theName, theDefaultsDirectory, theUserDefaultsDirectory, false)
     }
@@ -266,8 +266,8 @@ impl Manager {
     /// returns True if the Resource does exist.
     pub fn find_asciistring2(
         &self,
-        theResource: &crate::ffi::TCollection_AsciiString,
-        theValue: &mut crate::ffi::TCollection_AsciiString,
+        theResource: &crate::t_collection::AsciiString,
+        theValue: &mut crate::t_collection::AsciiString,
     ) -> bool {
         unsafe {
             crate::ffi::Resource_Manager_find_asciistring2(
@@ -379,7 +379,7 @@ impl Manager {
     /// If corresponding environment variable is not set
     /// or file doesn't exist returns empty string.
     pub fn get_resource_path(
-        aPath: &mut crate::ffi::TCollection_AsciiString,
+        aPath: &mut crate::t_collection::AsciiString,
         aName: &str,
         isUserDefaults: bool,
     ) {
@@ -510,10 +510,7 @@ impl Unicode {
     /// **Source:** `Resource_Unicode.hxx`:41 - `Resource_Unicode::ConvertSJISToUnicode()`
     /// Converts non-ASCII CString <fromstr> in SJIS format
     /// to Unicode ExtendedString <tostr>.
-    pub fn convert_sjis_to_unicode(
-        fromstr: &str,
-        tostr: &mut crate::ffi::TCollection_ExtendedString,
-    ) {
+    pub fn convert_sjis_to_unicode(fromstr: &str, tostr: &mut crate::t_collection::ExtendedString) {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
         unsafe { crate::ffi::Resource_Unicode_convert_sjis_to_unicode(c_fromstr.as_ptr(), tostr) }
     }
@@ -521,10 +518,7 @@ impl Unicode {
     /// **Source:** `Resource_Unicode.hxx`:46 - `Resource_Unicode::ConvertEUCToUnicode()`
     /// Converts non-ASCII CString <fromstr> in EUC format
     /// to Unicode ExtendedString <tostr>.
-    pub fn convert_euc_to_unicode(
-        fromstr: &str,
-        tostr: &mut crate::ffi::TCollection_ExtendedString,
-    ) {
+    pub fn convert_euc_to_unicode(fromstr: &str, tostr: &mut crate::t_collection::ExtendedString) {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
         unsafe { crate::ffi::Resource_Unicode_convert_euc_to_unicode(c_fromstr.as_ptr(), tostr) }
     }
@@ -532,10 +526,7 @@ impl Unicode {
     /// **Source:** `Resource_Unicode.hxx`:51 - `Resource_Unicode::ConvertGBToUnicode()`
     /// Converts non-ASCII CString <fromstr> in GB format
     /// to Unicode ExtendedString <tostr>.
-    pub fn convert_gb_to_unicode(
-        fromstr: &str,
-        tostr: &mut crate::ffi::TCollection_ExtendedString,
-    ) {
+    pub fn convert_gb_to_unicode(fromstr: &str, tostr: &mut crate::t_collection::ExtendedString) {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
         unsafe { crate::ffi::Resource_Unicode_convert_gb_to_unicode(c_fromstr.as_ptr(), tostr) }
     }
@@ -545,7 +536,7 @@ impl Unicode {
     /// to Unicode ExtendedString <tostr>.
     pub fn convert_gbk_to_unicode(
         fromstr: &str,
-        tostr: &mut crate::ffi::TCollection_ExtendedString,
+        tostr: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
         unsafe { crate::ffi::Resource_Unicode_convert_gbk_to_unicode(c_fromstr.as_ptr(), tostr) }
@@ -556,7 +547,7 @@ impl Unicode {
     /// to Unicode ExtendedString <tostr>.
     pub fn convert_big5_to_unicode(
         fromstr: &str,
-        tostr: &mut crate::ffi::TCollection_ExtendedString,
+        tostr: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         let c_fromstr = std::ffi::CString::new(fromstr).unwrap();
         unsafe { crate::ffi::Resource_Unicode_convert_big5_to_unicode(c_fromstr.as_ptr(), tostr) }
@@ -595,7 +586,7 @@ impl Unicode {
     /// extended characters.
     pub fn convert_format_to_unicode_charptr_extendedstring(
         theFromStr: &str,
-        theToStr: &mut crate::ffi::TCollection_ExtendedString,
+        theToStr: &mut crate::t_collection::ExtendedString,
     ) {
         let c_theFromStr = std::ffi::CString::new(theFromStr).unwrap();
         unsafe {
@@ -615,7 +606,7 @@ impl Unicode {
     pub fn convert_format_to_unicode_formattype_charptr_extendedstring(
         theFormat: crate::resource::FormatType,
         theFromStr: &str,
-        theToStr: &mut crate::ffi::TCollection_ExtendedString,
+        theToStr: &mut crate::t_collection::ExtendedString,
     ) {
         let c_theFromStr = std::ffi::CString::new(theFromStr).unwrap();
         unsafe {

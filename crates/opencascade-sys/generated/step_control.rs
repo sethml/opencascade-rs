@@ -311,7 +311,7 @@ impl ActorWrite {
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
         TP: &crate::ffi::HandleTransferProcessForFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_inherited_Transferring(
@@ -467,7 +467,7 @@ impl Controller {
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
-    pub fn recognize_write_shape(&self, shape: &crate::ffi::TopoDS_Shape, modetrans: i32) -> bool {
+    pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         unsafe {
             crate::ffi::STEPControl_Controller_inherited_RecognizeWriteShape(
                 self as *const Self,
@@ -555,7 +555,7 @@ impl Reader {
     pub fn read_file_charptr_parameters(
         &mut self,
         filename: &str,
-        theParams: &crate::ffi::DESTEP_Parameters,
+        theParams: &crate::destep::Parameters,
     ) -> crate::if_select::ReturnStatus {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe {
@@ -575,11 +575,7 @@ impl Reader {
     /// Default is the first one
     /// Returns True if a shape has resulted, false else
     /// Same as inherited TransferOneRoot, kept for compatibility
-    pub fn transfer_root(
-        &mut self,
-        num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
+    pub fn transfer_root(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe { crate::ffi::STEPControl_Reader_transfer_root(self as *mut Self, num, theProgress) }
     }
 
@@ -648,7 +644,7 @@ impl Reader {
     pub fn transfer_one_root(
         &mut self,
         num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::STEPControl_Reader_inherited_TransferOneRoot(
@@ -660,11 +656,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
-    pub fn transfer_one(
-        &mut self,
-        num: i32,
-        theProgress: &crate::ffi::Message_ProgressRange,
-    ) -> bool {
+    pub fn transfer_one(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         unsafe {
             crate::ffi::STEPControl_Reader_inherited_TransferOne(
                 self as *mut Self,
@@ -678,7 +670,7 @@ impl Reader {
     pub fn transfer_list(
         &mut self,
         list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         unsafe {
             crate::ffi::STEPControl_Reader_inherited_TransferList(
@@ -690,7 +682,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
-    pub fn transfer_roots(&mut self, theProgress: &crate::ffi::Message_ProgressRange) -> i32 {
+    pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         unsafe {
             crate::ffi::STEPControl_Reader_inherited_TransferRoots(self as *mut Self, theProgress)
         }
@@ -707,7 +699,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:210 - `XSControl_Reader::Shape()`
-    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_Shape(
                 self as *const Self,
@@ -717,7 +709,7 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:217 - `XSControl_Reader::OneShape()`
-    pub fn one_shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_OneShape(
                 self as *const Self,
@@ -813,10 +805,10 @@ impl Writer {
     /// geometric_curve_set entity.
     pub fn transfer_shape_stepmodeltype_bool_progressrange(
         &mut self,
-        sh: &crate::ffi::TopoDS_Shape,
+        sh: &crate::topo_ds::Shape,
         mode: crate::step_control::StepModelType,
         compgraph: bool,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         unsafe {
             crate::if_select::ReturnStatus::try_from(
@@ -836,11 +828,11 @@ impl Writer {
     /// Translates shape sh to a STEP entity
     pub fn transfer_shape_stepmodeltype_parameters_bool_progressrange(
         &mut self,
-        sh: &crate::ffi::TopoDS_Shape,
+        sh: &crate::topo_ds::Shape,
         mode: crate::step_control::StepModelType,
-        theParams: &crate::ffi::DESTEP_Parameters,
+        theParams: &crate::destep::Parameters,
         compgraph: bool,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         unsafe {
             crate::if_select::ReturnStatus::try_from(crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(self as *mut Self, sh, mode.into(), theParams, compgraph, theProgress)).unwrap()

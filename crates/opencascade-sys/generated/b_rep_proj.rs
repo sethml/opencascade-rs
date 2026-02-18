@@ -27,9 +27,9 @@ impl Projection {
     /// **Source:** `BRepProj_Projection.hxx`:42 - `BRepProj_Projection::BRepProj_Projection()`
     /// Makes a Cylindrical projection of Wire om Shape
     pub fn new_shape2_dir(
-        Wire: &crate::ffi::TopoDS_Shape,
-        Shape: &crate::ffi::TopoDS_Shape,
-        D: &crate::ffi::gp_Dir,
+        Wire: &crate::topo_ds::Shape,
+        Shape: &crate::topo_ds::Shape,
+        D: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepProj_Projection_ctor_shape2_dir(
@@ -41,9 +41,9 @@ impl Projection {
     /// **Source:** `BRepProj_Projection.hxx`:47 - `BRepProj_Projection::BRepProj_Projection()`
     /// Makes a Conical projection of Wire om Shape
     pub fn new_shape2_pnt(
-        Wire: &crate::ffi::TopoDS_Shape,
-        Shape: &crate::ffi::TopoDS_Shape,
-        P: &crate::ffi::gp_Pnt,
+        Wire: &crate::topo_ds::Shape,
+        Shape: &crate::topo_ds::Shape,
+        P: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepProj_Projection_ctor_shape2_pnt(
@@ -78,7 +78,7 @@ impl Projection {
 
     /// **Source:** `BRepProj_Projection.hxx`:64 - `BRepProj_Projection::Current()`
     /// Returns the current result wire.
-    pub fn current(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Wire> {
+    pub fn current(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepProj_Projection_current(self as *const Self))
         }
@@ -86,7 +86,7 @@ impl Projection {
 
     /// **Source:** `BRepProj_Projection.hxx`:67 - `BRepProj_Projection::Shape()`
     /// Returns the complete result as compound of wires.
-    pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Compound> {
+    pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Compound> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepProj_Projection_shape(self as *const Self))
         }

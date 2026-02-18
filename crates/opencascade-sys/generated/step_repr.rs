@@ -504,7 +504,7 @@ impl ProductDefinitionShape {
         aName: &crate::ffi::HandleTCollectionHAsciiString,
         hasDescription: bool,
         aDescription: &crate::ffi::HandleTCollectionHAsciiString,
-        aDefinition: &crate::ffi::StepRepr_CharacterizedDefinition,
+        aDefinition: &CharacterizedDefinition,
     ) {
         unsafe {
             crate::ffi::StepRepr_ProductDefinitionShape_inherited_Init(
@@ -564,7 +564,7 @@ impl ProductDefinitionShape {
     }
 
     /// Inherited: **Source:** `StepRepr_PropertyDefinition.hxx`:59 - `StepRepr_PropertyDefinition::Definition()`
-    pub fn definition(&self) -> crate::OwnedPtr<crate::ffi::StepRepr_CharacterizedDefinition> {
+    pub fn definition(&self) -> crate::OwnedPtr<CharacterizedDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepRepr_ProductDefinitionShape_inherited_Definition(
@@ -575,7 +575,7 @@ impl ProductDefinitionShape {
     }
 
     /// Inherited: **Source:** `StepRepr_PropertyDefinition.hxx`:62 - `StepRepr_PropertyDefinition::SetDefinition()`
-    pub fn set_definition(&mut self, Definition: &crate::ffi::StepRepr_CharacterizedDefinition) {
+    pub fn set_definition(&mut self, Definition: &CharacterizedDefinition) {
         unsafe {
             crate::ffi::StepRepr_ProductDefinitionShape_inherited_SetDefinition(
                 self as *mut Self,
@@ -613,7 +613,7 @@ impl PropertyDefinition {
         aName: &crate::ffi::HandleTCollectionHAsciiString,
         hasDescription: bool,
         aDescription: &crate::ffi::HandleTCollectionHAsciiString,
-        aDefinition: &crate::ffi::StepRepr_CharacterizedDefinition,
+        aDefinition: &CharacterizedDefinition,
     ) {
         unsafe {
             crate::ffi::StepRepr_PropertyDefinition_init(
@@ -668,7 +668,7 @@ impl PropertyDefinition {
 
     /// **Source:** `StepRepr_PropertyDefinition.hxx`:59 - `StepRepr_PropertyDefinition::Definition()`
     /// Returns field Definition
-    pub fn definition(&self) -> crate::OwnedPtr<crate::ffi::StepRepr_CharacterizedDefinition> {
+    pub fn definition(&self) -> crate::OwnedPtr<CharacterizedDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::StepRepr_PropertyDefinition_definition(
                 self as *const Self,
@@ -678,7 +678,7 @@ impl PropertyDefinition {
 
     /// **Source:** `StepRepr_PropertyDefinition.hxx`:62 - `StepRepr_PropertyDefinition::SetDefinition()`
     /// Set field Definition
-    pub fn set_definition(&mut self, Definition: &crate::ffi::StepRepr_CharacterizedDefinition) {
+    pub fn set_definition(&mut self, Definition: &CharacterizedDefinition) {
         unsafe {
             crate::ffi::StepRepr_PropertyDefinition_set_definition(self as *mut Self, Definition)
         }
@@ -762,7 +762,7 @@ impl PropertyDefinitionRepresentation {
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
-        aDefinition: &crate::ffi::StepRepr_RepresentedDefinition,
+        aDefinition: &RepresentedDefinition,
         aUsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
     ) {
         unsafe {
@@ -776,7 +776,7 @@ impl PropertyDefinitionRepresentation {
 
     /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:41 - `StepRepr_PropertyDefinitionRepresentation::Definition()`
     /// Returns field Definition
-    pub fn definition(&self) -> crate::OwnedPtr<crate::ffi::StepRepr_RepresentedDefinition> {
+    pub fn definition(&self) -> crate::OwnedPtr<RepresentedDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepRepr_PropertyDefinitionRepresentation_definition(
@@ -788,7 +788,7 @@ impl PropertyDefinitionRepresentation {
 
     /// **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:44 - `StepRepr_PropertyDefinitionRepresentation::SetDefinition()`
     /// Set field Definition
-    pub fn set_definition(&mut self, Definition: &crate::ffi::StepRepr_RepresentedDefinition) {
+    pub fn set_definition(&mut self, Definition: &RepresentedDefinition) {
         unsafe {
             crate::ffi::StepRepr_PropertyDefinitionRepresentation_set_definition(
                 self as *mut Self,

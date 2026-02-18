@@ -133,7 +133,7 @@ impl CircleToBSplineCurve {
     /// The equivalent B-spline curve has the same orientation
     /// as the circle C.
     pub fn new_circ2d_parameterisationtype(
-        C: &crate::ffi::gp_Circ2d,
+        C: &crate::gp::Circ2d,
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -154,7 +154,7 @@ impl CircleToBSplineCurve {
     ///
     /// Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
     pub fn new_circ2d_real2_parameterisationtype(
-        C: &crate::ffi::gp_Circ2d,
+        C: &crate::gp::Circ2d,
         U1: f64,
         U2: f64,
         Parameterisation: crate::convert::ParameterisationType,
@@ -212,7 +212,7 @@ impl CircleToBSplineCurve {
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:80 - `Convert_ConicToBSplineCurve::Pole()`
-    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_CircleToBSplineCurve_inherited_Pole(
                 self as *const Self,
@@ -870,7 +870,7 @@ impl ConeToBSplineSurface {
     /// Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
     /// Raised if V1 = V2.
     pub fn new_cone_real4(
-        C: &crate::ffi::gp_Cone,
+        C: &crate::gp::Cone,
         U1: f64,
         U2: f64,
         V1: f64,
@@ -888,7 +888,7 @@ impl ConeToBSplineSurface {
     /// Cone in the U and V parametric directions.
     ///
     /// Raised if V1 = V2.
-    pub fn new_cone_real2(C: &crate::ffi::gp_Cone, V1: f64, V2: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_cone_real2(C: &crate::gp::Cone, V1: f64, V2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_ConeToBSplineSurface_ctor_cone_real2(
                 C, V1, V2,
@@ -957,7 +957,7 @@ impl ConeToBSplineSurface {
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:98 - `Convert_ElementarySurfaceToBSplineSurface::Pole()`
-    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_ConeToBSplineSurface_inherited_Pole(
                 self as *const Self,
@@ -1084,7 +1084,7 @@ impl ConicToBSplineCurve {
     /// Exceptions
     /// Standard_OutOfRange if Index is outside the bounds of
     /// the poles table of the BSpline curve whose data is computed in this framework.
-    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_ConicToBSplineCurve_pole(
                 self as *const Self,
@@ -1155,7 +1155,7 @@ impl CylinderToBSplineSurface {
     /// Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
     /// Raised if V1 = V2.
     pub fn new_cylinder_real4(
-        Cyl: &crate::ffi::gp_Cylinder,
+        Cyl: &crate::gp::Cylinder,
         U1: f64,
         U2: f64,
         V1: f64,
@@ -1176,7 +1176,7 @@ impl CylinderToBSplineSurface {
     ///
     /// Raised if V1 = V2.
     pub fn new_cylinder_real2(
-        Cyl: &crate::ffi::gp_Cylinder,
+        Cyl: &crate::gp::Cylinder,
         V1: f64,
         V2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1260,7 +1260,7 @@ impl CylinderToBSplineSurface {
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:98 - `Convert_ElementarySurfaceToBSplineSurface::Pole()`
-    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_CylinderToBSplineSurface_inherited_Pole(
                 self as *const Self,
@@ -1439,7 +1439,7 @@ impl ElementarySurfaceToBSplineSurface {
     /// parametric direction, or
     /// -   VIndex is outside the bounds of the poles table in the v
     /// parametric direction.
-    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_ElementarySurfaceToBSplineSurface_pole(
                 self as *const Self,
@@ -1546,7 +1546,7 @@ impl EllipseToBSplineCurve {
     /// The equivalent B-spline curve has the same orientation
     /// as the ellipse E.
     pub fn new_elips2d_parameterisationtype(
-        E: &crate::ffi::gp_Elips2d,
+        E: &crate::gp::Elips2d,
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1566,7 +1566,7 @@ impl EllipseToBSplineCurve {
     ///
     /// Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
     pub fn new_elips2d_real2_parameterisationtype(
-        E: &crate::ffi::gp_Elips2d,
+        E: &crate::gp::Elips2d,
         U1: f64,
         U2: f64,
         Parameterisation: crate::convert::ParameterisationType,
@@ -1624,7 +1624,7 @@ impl EllipseToBSplineCurve {
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:80 - `Convert_ConicToBSplineCurve::Pole()`
-    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_EllipseToBSplineCurve_inherited_Pole(
                 self as *const Self,
@@ -1861,7 +1861,7 @@ impl HyperbolaToBSplineCurve {
     /// The hyperbola H is limited between the parametric values U1, U2
     /// and the equivalent B-spline curve has the same orientation as the
     /// hyperbola.
-    pub fn new_hypr2d_real2(H: &crate::ffi::gp_Hypr2d, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_hypr2d_real2(H: &crate::gp::Hypr2d, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::Convert_HyperbolaToBSplineCurve_ctor_hypr2d_real2(H, U1, U2),
@@ -1914,7 +1914,7 @@ impl HyperbolaToBSplineCurve {
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:80 - `Convert_ConicToBSplineCurve::Pole()`
-    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_Pole(
                 self as *const Self,
@@ -1975,11 +1975,7 @@ impl ParabolaToBSplineCurve {
     /// The parabola Prb is limited between the parametric values U1, U2
     /// and the equivalent B-spline curve as the same orientation as the
     /// parabola Prb.
-    pub fn new_parab2d_real2(
-        Prb: &crate::ffi::gp_Parab2d,
-        U1: f64,
-        U2: f64,
-    ) -> crate::OwnedPtr<Self> {
+    pub fn new_parab2d_real2(Prb: &crate::gp::Parab2d, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::Convert_ParabolaToBSplineCurve_ctor_parab2d_real2(Prb, U1, U2),
@@ -2028,7 +2024,7 @@ impl ParabolaToBSplineCurve {
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:80 - `Convert_ConicToBSplineCurve::Pole()`
-    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt2d> {
+    pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_ParabolaToBSplineCurve_inherited_Pole(
                 self as *const Self,
@@ -2094,7 +2090,7 @@ impl SphereToBSplineSurface {
     /// Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
     /// Raised if V1 = V2.
     pub fn new_sphere_real4(
-        Sph: &crate::ffi::gp_Sphere,
+        Sph: &crate::gp::Sphere,
         U1: f64,
         U2: f64,
         V1: f64,
@@ -2115,7 +2111,7 @@ impl SphereToBSplineSurface {
     /// Param1 = Param2 + 2.0 * Pi
     /// Raised if UTrim = False and Param1 = Param2
     pub fn new_sphere_real2_bool(
-        Sph: &crate::ffi::gp_Sphere,
+        Sph: &crate::gp::Sphere,
         Param1: f64,
         Param2: f64,
         UTrim: bool,
@@ -2132,7 +2128,7 @@ impl SphereToBSplineSurface {
     /// **Source:** `Convert_SphereToBSplineSurface.hxx`:68 - `Convert_SphereToBSplineSurface::Convert_SphereToBSplineSurface()`
     /// The equivalent B-spline surface as the same orientation
     /// as the sphere in the U and V parametric directions.
-    pub fn new_sphere(Sph: &crate::ffi::gp_Sphere) -> crate::OwnedPtr<Self> {
+    pub fn new_sphere(Sph: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_SphereToBSplineSurface_ctor_sphere(Sph))
         }
@@ -2146,7 +2142,7 @@ impl SphereToBSplineSurface {
     /// Param1 = Param2 + 2.0 * Pi
     /// Raised if UTrim = False and Param1 = Param2
     pub fn new_sphere_real2(
-        Sph: &crate::ffi::gp_Sphere,
+        Sph: &crate::gp::Sphere,
         Param1: f64,
         Param2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2222,7 +2218,7 @@ impl SphereToBSplineSurface {
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:98 - `Convert_ElementarySurfaceToBSplineSurface::Pole()`
-    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_SphereToBSplineSurface_inherited_Pole(
                 self as *const Self,
@@ -2310,7 +2306,7 @@ impl TorusToBSplineSurface {
     /// Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
     /// Raised if V1 = V2 or V1 = V2 + 2.0 * Pi
     pub fn new_torus_real4(
-        T: &crate::ffi::gp_Torus,
+        T: &crate::gp::Torus,
         U1: f64,
         U2: f64,
         V1: f64,
@@ -2329,7 +2325,7 @@ impl TorusToBSplineSurface {
     ///
     /// Raised if Param1 = Param2 or Param1 = Param2 + 2.0 * Pi
     pub fn new_torus_real2_bool(
-        T: &crate::ffi::gp_Torus,
+        T: &crate::gp::Torus,
         Param1: f64,
         Param2: f64,
         UTrim: bool,
@@ -2346,7 +2342,7 @@ impl TorusToBSplineSurface {
     /// **Source:** `Convert_TorusToBSplineSurface.hxx`:66 - `Convert_TorusToBSplineSurface::Convert_TorusToBSplineSurface()`
     /// The equivalent B-spline surface as the same orientation as the
     /// torus in the U and V parametric directions.
-    pub fn new_torus(T: &crate::ffi::gp_Torus) -> crate::OwnedPtr<Self> {
+    pub fn new_torus(T: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_TorusToBSplineSurface_ctor_torus(T))
         }
@@ -2358,7 +2354,7 @@ impl TorusToBSplineSurface {
     ///
     /// Raised if Param1 = Param2 or Param1 = Param2 + 2.0 * Pi
     pub fn new_torus_real2(
-        T: &crate::ffi::gp_Torus,
+        T: &crate::gp::Torus,
         Param1: f64,
         Param2: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2426,7 +2422,7 @@ impl TorusToBSplineSurface {
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:98 - `Convert_ElementarySurfaceToBSplineSurface::Pole()`
-    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
+    pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Convert_TorusToBSplineSurface_inherited_Pole(
                 self as *const Self,

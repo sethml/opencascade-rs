@@ -96,7 +96,7 @@ impl ActorOfFinderProcess {
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
         TP: &crate::ffi::HandleTransferProcessForFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_transferring(
@@ -233,7 +233,7 @@ impl ActorOfProcessForFinder {
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
         TP: &crate::ffi::HandleTransferProcessForFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForFinder_transferring(
@@ -1259,7 +1259,7 @@ impl FinderProcess {
     pub fn send_fail(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::Transfer_FinderProcess_inherited_SendFail(self as *mut Self, start, amsg)
@@ -1270,7 +1270,7 @@ impl FinderProcess {
     pub fn send_warning(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::Transfer_FinderProcess_inherited_SendWarning(self as *mut Self, start, amsg)
@@ -1281,7 +1281,7 @@ impl FinderProcess {
     pub fn send_msg(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::Transfer_FinderProcess_inherited_SendMsg(self as *mut Self, start, amsg)
@@ -1393,7 +1393,7 @@ impl FinderProcess {
     pub fn transferring(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_Transferring(
@@ -1408,7 +1408,7 @@ impl FinderProcess {
     pub fn transfer(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::Transfer_FinderProcess_inherited_Transfer(
@@ -1458,10 +1458,7 @@ impl FinderProcess {
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:406 - `Transfer_ProcessForFinder::CheckList()`
-    pub fn check_list(
-        &self,
-        erronly: bool,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn check_list(&self, erronly: bool) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_CheckList(
                 self as *const Self,
@@ -1476,7 +1473,7 @@ impl FinderProcess {
         start: &crate::ffi::HandleTransferFinder,
         level: i32,
         erronly: bool,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_inherited_CheckListOne(
                 self as *const Self,
@@ -1853,7 +1850,7 @@ impl ProcessForFinder {
     pub fn send_fail(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe { crate::ffi::Transfer_ProcessForFinder_send_fail(self as *mut Self, start, amsg) }
     }
@@ -1863,7 +1860,7 @@ impl ProcessForFinder {
     pub fn send_warning(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::Transfer_ProcessForFinder_send_warning(self as *mut Self, start, amsg)
@@ -1876,7 +1873,7 @@ impl ProcessForFinder {
     pub fn send_msg(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe { crate::ffi::Transfer_ProcessForFinder_send_msg(self as *mut Self, start, amsg) }
     }
@@ -1923,7 +1920,7 @@ impl ProcessForFinder {
     pub fn add_fail_handletransferfinder_msg(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::Transfer_ProcessForFinder_add_fail_handletransferfinder_msg(
@@ -1961,7 +1958,7 @@ impl ProcessForFinder {
     pub fn add_warning_handletransferfinder_msg(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        amsg: &crate::ffi::Message_Msg,
+        amsg: &crate::message::Msg,
     ) {
         unsafe {
             crate::ffi::Transfer_ProcessForFinder_add_warning_handletransferfinder_msg(
@@ -2144,7 +2141,7 @@ impl ProcessForFinder {
     pub fn transferring(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_transferring(
@@ -2161,7 +2158,7 @@ impl ProcessForFinder {
     pub fn transfer(
         &mut self,
         start: &crate::ffi::HandleTransferFinder,
-        theProgress: &crate::ffi::Message_ProgressRange,
+        theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
             crate::ffi::Transfer_ProcessForFinder_transfer(self as *mut Self, start, theProgress)
@@ -2223,10 +2220,7 @@ impl ProcessForFinder {
     /// messages are attached, or are in abnormal state : that case
     /// gives a specific message
     /// If <erronly> is True, checks with Warnings only are ignored
-    pub fn check_list(
-        &self,
-        erronly: bool,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    pub fn check_list(&self, erronly: bool) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_check_list(
                 self as *const Self,
@@ -2244,7 +2238,7 @@ impl ProcessForFinder {
         start: &crate::ffi::HandleTransferFinder,
         level: i32,
         erronly: bool,
-    ) -> crate::OwnedPtr<crate::ffi::Interface_CheckIterator> {
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_ProcessForFinder_check_list_one(
                 self as *const Self,
