@@ -717,7 +717,7 @@ fn generate_output(
             ffi_name.clone()
         } else {
             // Use module-relative short name derivation
-            opencascade_binding_generator::type_mapping::short_name_for_module(ffi_name, module_prefix)
+            opencascade_binding_generator::type_mapping::safe_short_name(&opencascade_binding_generator::type_mapping::short_name_for_module(ffi_name, module_prefix))
         };
         extra_types_by_module
             .entry(module_prefix.clone())

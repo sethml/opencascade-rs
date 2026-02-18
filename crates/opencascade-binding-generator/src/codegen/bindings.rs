@@ -910,7 +910,7 @@ pub(crate) fn build_class_public_info(all_classes: &[&ParsedClass]) -> HashMap<S
         .map(|c| {
             let ffi_name = c.name.replace("::", "_");
             let module_rust = crate::module_graph::module_to_rust_name(&c.module);
-            let short = crate::type_mapping::short_name_for_module(&ffi_name, &c.module);
+            let short = crate::type_mapping::safe_short_name(&crate::type_mapping::short_name_for_module(&ffi_name, &c.module));
             (c.name.clone(), (module_rust, short))
         })
         .collect()
@@ -1784,7 +1784,7 @@ pub fn compute_class_bindings(
     ClassBindings {
         cpp_name: cpp_name.clone(),
         cpp_qualified_name: class.name.clone(),
-        short_name: crate::type_mapping::short_name_for_module(cpp_name, &class.module),
+        short_name: crate::type_mapping::safe_short_name(&crate::type_mapping::short_name_for_module(cpp_name, &class.module)),
         module: class.module.clone(),
         is_abstract: effectively_abstract,
         is_handle_type: class.is_handle_type,
@@ -2244,7 +2244,7 @@ fn compute_upcast_bindings(
                 base_ffi_name.clone()
             };
 
-            let base_short_name = type_mapping::short_name_for_module(&base_ffi_name, &base_module);
+            let base_short_name = type_mapping::safe_short_name(&type_mapping::short_name_for_module(&base_ffi_name, &base_module));
 
             let impl_method_name = if base_module == class.module {
                 format!("as_{}", heck::AsSnakeCase(&base_short_name))
