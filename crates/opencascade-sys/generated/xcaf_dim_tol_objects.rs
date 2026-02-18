@@ -813,14 +813,21 @@ impl DatumObject {
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:64 - `XCAFDimTolObjects_DatumObject::GetModifierWithValue()`
     /// Retrieves datum modifier with value.
-    pub fn get_modifier_with_value(&self, theModifier: &mut i32, theValue: &mut f64) {
+    pub fn get_modifier_with_value(
+        &self,
+        theModifier: &mut crate::xcaf_dim_tol_objects::DatumModifWithValue,
+        theValue: &mut f64,
+    ) {
+        let mut theModifier_i32_: i32 = (*theModifier).into();
         unsafe {
             crate::ffi::XCAFDimTolObjects_DatumObject_get_modifier_with_value(
                 self as *const Self,
-                theModifier,
+                &mut theModifier_i32_,
                 theValue,
             )
-        }
+        };
+        *theModifier =
+            crate::xcaf_dim_tol_objects::DatumModifWithValue::try_from(theModifier_i32_).unwrap();
     }
 
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:68 - `XCAFDimTolObjects_DatumObject::SetModifierWithValue()`
@@ -1483,17 +1490,24 @@ impl DimensionObject {
     pub fn get_class_of_tolerance(
         &self,
         theHole: &mut bool,
-        theFormVariance: &mut i32,
-        theGrade: &mut i32,
+        theFormVariance: &mut crate::xcaf_dim_tol_objects::DimensionFormVariance,
+        theGrade: &mut crate::xcaf_dim_tol_objects::DimensionGrade,
     ) -> bool {
-        unsafe {
+        let mut theFormVariance_i32_: i32 = (*theFormVariance).into();
+        let mut theGrade_i32_: i32 = (*theGrade).into();
+        let result_ = unsafe {
             crate::ffi::XCAFDimTolObjects_DimensionObject_get_class_of_tolerance(
                 self as *const Self,
                 theHole,
-                theFormVariance,
-                theGrade,
+                &mut theFormVariance_i32_,
+                &mut theGrade_i32_,
             )
-        }
+        };
+        *theFormVariance =
+            crate::xcaf_dim_tol_objects::DimensionFormVariance::try_from(theFormVariance_i32_)
+                .unwrap();
+        *theGrade = crate::xcaf_dim_tol_objects::DimensionGrade::try_from(theGrade_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:162 - `XCAFDimTolObjects_DimensionObject::SetNbOfDecimalPlaces()`

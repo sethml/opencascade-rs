@@ -4895,8 +4895,9 @@ impl TrimSurfaceTool {
         Curve: &mut crate::ffi::HandleGeomCurve,
         PCurve1: &mut crate::ffi::HandleGeom2dCurve,
         PCurve2: &mut crate::ffi::HandleGeom2dCurve,
-        myCont: &mut i32,
+        myCont: &mut crate::geom_abs::Shape,
     ) {
+        let mut myCont_i32_: i32 = (*myCont).into();
         unsafe {
             crate::ffi::BRepFill_TrimSurfaceTool_project(
                 self as *const Self,
@@ -4905,9 +4906,10 @@ impl TrimSurfaceTool {
                 Curve,
                 PCurve1,
                 PCurve2,
-                myCont,
+                &mut myCont_i32_,
             )
-        }
+        };
+        *myCont = crate::geom_abs::Shape::try_from(myCont_i32_).unwrap();
     }
 }
 

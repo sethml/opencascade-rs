@@ -1759,10 +1759,16 @@ impl Tool {
         E: &crate::topo_ds::Edge,
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
-        O1: &mut i32,
-        O2: &mut i32,
+        O1: &mut crate::top_abs::Orientation,
+        O2: &mut crate::top_abs::Orientation,
     ) {
-        unsafe { crate::ffi::BRepOffset_Tool_orient_section(E, F1, F2, O1, O2) }
+        let mut O1_i32_: i32 = (*O1).into();
+        let mut O2_i32_: i32 = (*O2).into();
+        unsafe {
+            crate::ffi::BRepOffset_Tool_orient_section(E, F1, F2, &mut O1_i32_, &mut O2_i32_)
+        };
+        *O1 = crate::top_abs::Orientation::try_from(O1_i32_).unwrap();
+        *O2 = crate::top_abs::Orientation::try_from(O2_i32_).unwrap();
     }
 
     /// **Source:** `BRepOffset_Tool.hxx`:66 - `BRepOffset_Tool::FindCommonShapes()`

@@ -2013,8 +2013,26 @@ impl Data {
     /// Returns the local  3D   state of the  intersection
     /// between the current edge and the current face at the
     /// <p1> and <p2> parameters.
-    pub fn edge_state(&mut self, p1: f64, p2: f64, stbef: &mut i32, staf: &mut i32) {
-        unsafe { crate::ffi::HLRBRep_Data_edge_state(self as *mut Self, p1, p2, stbef, staf) }
+    pub fn edge_state(
+        &mut self,
+        p1: f64,
+        p2: f64,
+        stbef: &mut crate::top_abs::State,
+        staf: &mut crate::top_abs::State,
+    ) {
+        let mut stbef_i32_: i32 = (*stbef).into();
+        let mut staf_i32_: i32 = (*staf).into();
+        unsafe {
+            crate::ffi::HLRBRep_Data_edge_state(
+                self as *mut Self,
+                p1,
+                p2,
+                &mut stbef_i32_,
+                &mut staf_i32_,
+            )
+        };
+        *stbef = crate::top_abs::State::try_from(stbef_i32_).unwrap();
+        *staf = crate::top_abs::State::try_from(staf_i32_).unwrap();
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:166 - `HLRBRep_Data::EdgeOfTheHidingFace()`

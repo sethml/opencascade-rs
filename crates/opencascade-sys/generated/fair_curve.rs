@@ -258,10 +258,23 @@ impl Batten {
     /// -   NullHeight
     /// The parameters Tolerance and NbIterations control
     /// how precise the computation is, and how long it will take.
-    pub fn compute(&mut self, Code: &mut i32, NbIterations: i32, Tolerance: f64) -> bool {
-        unsafe {
-            crate::ffi::FairCurve_Batten_compute(self as *mut Self, Code, NbIterations, Tolerance)
-        }
+    pub fn compute(
+        &mut self,
+        Code: &mut crate::fair_curve::AnalysisCode,
+        NbIterations: i32,
+        Tolerance: f64,
+    ) -> bool {
+        let mut Code_i32_: i32 = (*Code).into();
+        let result_ = unsafe {
+            crate::ffi::FairCurve_Batten_compute(
+                self as *mut Self,
+                &mut Code_i32_,
+                NbIterations,
+                Tolerance,
+            )
+        };
+        *Code = crate::fair_curve::AnalysisCode::try_from(Code_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:174 - `FairCurve_Batten::SlidingOfReference()`
@@ -1509,15 +1522,23 @@ impl MinimalVariation {
     /// NbIterations and Tolerance. The tolerance setting
     /// allows you to control the precision of computation, and
     /// the maximum number of iterations allows you to set a limit on computation time.
-    pub fn compute(&mut self, ACode: &mut i32, NbIterations: i32, Tolerance: f64) -> bool {
-        unsafe {
+    pub fn compute(
+        &mut self,
+        ACode: &mut crate::fair_curve::AnalysisCode,
+        NbIterations: i32,
+        Tolerance: f64,
+    ) -> bool {
+        let mut ACode_i32_: i32 = (*ACode).into();
+        let result_ = unsafe {
             crate::ffi::FairCurve_MinimalVariation_compute(
                 self as *mut Self,
-                ACode,
+                &mut ACode_i32_,
                 NbIterations,
                 Tolerance,
             )
-        }
+        };
+        *ACode = crate::fair_curve::AnalysisCode::try_from(ACode_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `FairCurve_MinimalVariation.hxx`:98 - `FairCurve_MinimalVariation::GetCurvature1()`

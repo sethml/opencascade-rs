@@ -341,15 +341,24 @@ impl Circ2d2TanOn {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Index: i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOn_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:137 - `Geom2dGcc_Circ2d2TanOn::Tangency1()`
@@ -632,15 +641,24 @@ impl Circ2d2TanOnGeo {
     /// It returns the real qualifiers (the qualifiers given to the
     /// constructor method in case of enclosed, enclosing and outside
     /// and the qualifiers computedin case of unqualified).
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Index: i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:142 - `Geom2dGcc_Circ2d2TanOnGeo::Tangency1()`
@@ -1086,14 +1104,22 @@ impl Circ2d2TanOnIter {
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:217 - `Geom2dGcc_Circ2d2TanOnIter::WhichQualifier()`
-    pub fn which_qualifier(&self, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanOnIter_which_qualifier(
                 self as *const Self,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:227 - `Geom2dGcc_Circ2d2TanOnIter::Tangency1()`
@@ -1339,15 +1365,24 @@ impl Circ2d2TanRad {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Index: i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanRad_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:158 - `Geom2dGcc_Circ2d2TanRad::Tangency1()`
@@ -1583,15 +1618,24 @@ impl Circ2d2TanRadGeo {
     /// It returns the real qualifiers (the qualifiers given to the
     /// constructor method in case of enclosed, enclosing and outside
     /// and the qualifiers computedin case of unqualified).
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Index: i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:133 - `Geom2dGcc_Circ2d2TanRadGeo::Tangency1()`
@@ -1875,19 +1919,25 @@ impl Circ2d3Tan {
     pub fn which_qualifier(
         &self,
         Index: i32,
-        Qualif1: &mut i32,
-        Qualif2: &mut i32,
-        Qualif3: &mut i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+        Qualif3: &mut crate::gcc_ent::Position,
     ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
+        let mut Qualif3_i32_: i32 = (*Qualif3).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d3Tan_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
-                Qualif3,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+                &mut Qualif3_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
+        *Qualif3 = crate::gcc_ent::Position::try_from(Qualif3_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:170 - `Geom2dGcc_Circ2d3Tan::Tangency1()`
@@ -2236,15 +2286,26 @@ impl Circ2d3TanIter {
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:150 - `Geom2dGcc_Circ2d3TanIter::WhichQualifier()`
-    pub fn which_qualifier(&self, Qualif1: &mut i32, Qualif2: &mut i32, Qualif3: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+        Qualif3: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
+        let mut Qualif3_i32_: i32 = (*Qualif3).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2d3TanIter_which_qualifier(
                 self as *const Self,
-                Qualif1,
-                Qualif2,
-                Qualif3,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+                &mut Qualif3_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
+        *Qualif3 = crate::gcc_ent::Position::try_from(Qualif3_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:162 - `Geom2dGcc_Circ2d3TanIter::Tangency1()`
@@ -2441,10 +2502,16 @@ impl Circ2dTanCen {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCen_which_qualifier(self as *const Self, Index, Qualif1)
-        }
+            crate::ffi::Geom2dGcc_Circ2dTanCen_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:123 - `Geom2dGcc_Circ2dTanCen::Tangency1()`
@@ -2575,14 +2642,16 @@ impl Circ2dTanCenGeo {
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:83 - `Geom2dGcc_Circ2dTanCenGeo::WhichQualifier()`
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanCenGeo_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
+                &mut Qualif1_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:95 - `Geom2dGcc_Circ2dTanCenGeo::Tangency1()`
@@ -2782,14 +2851,16 @@ impl Circ2dTanOnRad {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanOnRad_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
+                &mut Qualif1_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:162 - `Geom2dGcc_Circ2dTanOnRad::Tangency1()`
@@ -3057,14 +3128,16 @@ impl Circ2dTanOnRadGeo {
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:145 - `Geom2dGcc_Circ2dTanOnRadGeo::WhichQualifier()`
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
             crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
+                &mut Qualif1_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:159 - `Geom2dGcc_Circ2dTanOnRadGeo::Tangency1()`
@@ -4253,15 +4326,24 @@ impl Lin2d2Tan {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Index: i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::Geom2dGcc_Lin2d2Tan_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:138 - `Geom2dGcc_Lin2d2Tan::Tangency1()`
@@ -4424,14 +4506,22 @@ impl Lin2d2TanIter {
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:84 - `Geom2dGcc_Lin2d2TanIter::WhichQualifier()`
-    pub fn which_qualifier(&self, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::Geom2dGcc_Lin2d2TanIter_which_qualifier(
                 self as *const Self,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:92 - `Geom2dGcc_Lin2d2TanIter::Tangency1()`
@@ -4588,10 +4678,16 @@ impl Lin2dTanObl {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanObl_which_qualifier(self as *const Self, Index, Qualif1)
-        }
+            crate::ffi::Geom2dGcc_Lin2dTanObl_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:120 - `Geom2dGcc_Lin2dTanObl::Tangency1()`
@@ -4732,10 +4828,15 @@ impl Lin2dTanOblIter {
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:55 - `Geom2dGcc_Lin2dTanOblIter::WhichQualifier()`
-    pub fn which_qualifier(&self, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanOblIter_which_qualifier(self as *const Self, Qualif1)
-        }
+            crate::ffi::Geom2dGcc_Lin2dTanOblIter_which_qualifier(
+                self as *const Self,
+                &mut Qualif1_i32_,
+            )
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:57 - `Geom2dGcc_Lin2dTanOblIter::Tangency1()`

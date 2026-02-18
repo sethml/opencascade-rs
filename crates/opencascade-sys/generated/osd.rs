@@ -4159,8 +4159,30 @@ impl Protection {
 
     /// **Source:** `OSD_Protection.hxx`:65 - `OSD_Protection::Values()`
     /// Retrieves values of fields
-    pub fn values(&mut self, System: &mut i32, User: &mut i32, Group: &mut i32, World: &mut i32) {
-        unsafe { crate::ffi::OSD_Protection_values(self as *mut Self, System, User, Group, World) }
+    pub fn values(
+        &mut self,
+        System: &mut crate::osd::SingleProtection,
+        User: &mut crate::osd::SingleProtection,
+        Group: &mut crate::osd::SingleProtection,
+        World: &mut crate::osd::SingleProtection,
+    ) {
+        let mut System_i32_: i32 = (*System).into();
+        let mut User_i32_: i32 = (*User).into();
+        let mut Group_i32_: i32 = (*Group).into();
+        let mut World_i32_: i32 = (*World).into();
+        unsafe {
+            crate::ffi::OSD_Protection_values(
+                self as *mut Self,
+                &mut System_i32_,
+                &mut User_i32_,
+                &mut Group_i32_,
+                &mut World_i32_,
+            )
+        };
+        *System = crate::osd::SingleProtection::try_from(System_i32_).unwrap();
+        *User = crate::osd::SingleProtection::try_from(User_i32_).unwrap();
+        *Group = crate::osd::SingleProtection::try_from(Group_i32_).unwrap();
+        *World = crate::osd::SingleProtection::try_from(World_i32_).unwrap();
     }
 
     /// **Source:** `OSD_Protection.hxx`:71 - `OSD_Protection::SetValues()`
@@ -4255,8 +4277,16 @@ impl Protection {
     /// Add a right to a single protection.
     /// ex: aProt = RWD
     /// me.Add(aProt,X)  ->  aProt = RWXD
-    pub fn add(&mut self, aProt: &mut i32, aRight: crate::osd::SingleProtection) {
-        unsafe { crate::ffi::OSD_Protection_add(self as *mut Self, aProt, aRight.into()) }
+    pub fn add(
+        &mut self,
+        aProt: &mut crate::osd::SingleProtection,
+        aRight: crate::osd::SingleProtection,
+    ) {
+        let mut aProt_i32_: i32 = (*aProt).into();
+        unsafe {
+            crate::ffi::OSD_Protection_add(self as *mut Self, &mut aProt_i32_, aRight.into())
+        };
+        *aProt = crate::osd::SingleProtection::try_from(aProt_i32_).unwrap();
     }
 
     /// **Source:** `OSD_Protection.hxx`:109 - `OSD_Protection::Sub()`
@@ -4264,8 +4294,16 @@ impl Protection {
     /// ex: aProt = RWD
     /// me.Sub(aProt,RW) ->  aProt = D
     /// But me.Sub(aProt,RWX) is also valid and gives same result.
-    pub fn sub(&mut self, aProt: &mut i32, aRight: crate::osd::SingleProtection) {
-        unsafe { crate::ffi::OSD_Protection_sub(self as *mut Self, aProt, aRight.into()) }
+    pub fn sub(
+        &mut self,
+        aProt: &mut crate::osd::SingleProtection,
+        aRight: crate::osd::SingleProtection,
+    ) {
+        let mut aProt_i32_: i32 = (*aProt).into();
+        unsafe {
+            crate::ffi::OSD_Protection_sub(self as *mut Self, &mut aProt_i32_, aRight.into())
+        };
+        *aProt = crate::osd::SingleProtection::try_from(aProt_i32_).unwrap();
     }
 }
 

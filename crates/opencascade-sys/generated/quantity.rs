@@ -1370,14 +1370,20 @@ impl Color {
     /// Finds color from predefined names.
     /// For example, the name of the color which corresponds to "BLACK" is Quantity_NOC_BLACK.
     /// Returns FALSE if name is unknown.
-    pub fn color_from_name_charptr_nameofcolor(theName: &str, theColor: &mut i32) -> bool {
+    pub fn color_from_name_charptr_nameofcolor(
+        theName: &str,
+        theColor: &mut crate::quantity::NameOfColor,
+    ) -> bool {
         let c_theName = std::ffi::CString::new(theName).unwrap();
-        unsafe {
+        let mut theColor_i32_: i32 = (*theColor).into();
+        let result_ = unsafe {
             crate::ffi::Quantity_Color_color_from_name_charptr_nameofcolor(
                 c_theName.as_ptr(),
-                theColor,
+                &mut theColor_i32_,
             )
-        }
+        };
+        *theColor = crate::quantity::NameOfColor::try_from(theColor_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `Quantity_Color.hxx`:201 - `Quantity_Color::ColorFromName()`

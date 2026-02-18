@@ -539,52 +539,80 @@ impl GDTProperty {
     pub fn get_dim_class_of_tolerance(
         theLAF: &crate::ffi::HandleStepShapeLimitsAndFits,
         theHolle: &mut bool,
-        theFV: &mut i32,
-        theG: &mut i32,
+        theFV: &mut crate::xcaf_dim_tol_objects::DimensionFormVariance,
+        theG: &mut crate::xcaf_dim_tol_objects::DimensionGrade,
     ) {
+        let mut theFV_i32_: i32 = (*theFV).into();
+        let mut theG_i32_: i32 = (*theG).into();
         unsafe {
             crate::ffi::STEPCAFControl_GDTProperty_get_dim_class_of_tolerance(
-                theLAF, theHolle, theFV, theG,
+                theLAF,
+                theHolle,
+                &mut theFV_i32_,
+                &mut theG_i32_,
             )
-        }
+        };
+        *theFV = crate::xcaf_dim_tol_objects::DimensionFormVariance::try_from(theFV_i32_).unwrap();
+        *theG = crate::xcaf_dim_tol_objects::DimensionGrade::try_from(theG_i32_).unwrap();
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:61 - `STEPCAFControl_GDTProperty::GetDimType()`
     pub fn get_dim_type(
         theName: &crate::ffi::HandleTCollectionHAsciiString,
-        theType: &mut i32,
+        theType: &mut crate::xcaf_dim_tol_objects::DimensionType,
     ) -> bool {
-        unsafe { crate::ffi::STEPCAFControl_GDTProperty_get_dim_type(theName, theType) }
+        let mut theType_i32_: i32 = (*theType).into();
+        let result_ = unsafe {
+            crate::ffi::STEPCAFControl_GDTProperty_get_dim_type(theName, &mut theType_i32_)
+        };
+        *theType = crate::xcaf_dim_tol_objects::DimensionType::try_from(theType_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:65 - `STEPCAFControl_GDTProperty::GetDatumTargetType()`
     pub fn get_datum_target_type(
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-        theType: &mut i32,
+        theType: &mut crate::xcaf_dim_tol_objects::DatumTargetType,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_GDTProperty_get_datum_target_type(theDescription, theType)
-        }
+        let mut theType_i32_: i32 = (*theType).into();
+        let result_ = unsafe {
+            crate::ffi::STEPCAFControl_GDTProperty_get_datum_target_type(
+                theDescription,
+                &mut theType_i32_,
+            )
+        };
+        *theType = crate::xcaf_dim_tol_objects::DatumTargetType::try_from(theType_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:69 - `STEPCAFControl_GDTProperty::GetDimQualifierType()`
     pub fn get_dim_qualifier_type(
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-        theType: &mut i32,
+        theType: &mut crate::xcaf_dim_tol_objects::DimensionQualifier,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_GDTProperty_get_dim_qualifier_type(theDescription, theType)
-        }
+        let mut theType_i32_: i32 = (*theType).into();
+        let result_ = unsafe {
+            crate::ffi::STEPCAFControl_GDTProperty_get_dim_qualifier_type(
+                theDescription,
+                &mut theType_i32_,
+            )
+        };
+        *theType = crate::xcaf_dim_tol_objects::DimensionQualifier::try_from(theType_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:73 - `STEPCAFControl_GDTProperty::GetTolValueType()`
     pub fn get_tol_value_type_handletcollectionhasciistring_geomtolerancetypevalue(
         theDescription: &crate::ffi::HandleTCollectionHAsciiString,
-        theType: &mut i32,
+        theType: &mut crate::xcaf_dim_tol_objects::GeomToleranceTypeValue,
     ) -> bool {
-        unsafe {
-            crate::ffi::STEPCAFControl_GDTProperty_get_tol_value_type_handletcollectionhasciistring_geomtolerancetypevalue(theDescription, theType)
-        }
+        let mut theType_i32_: i32 = (*theType).into();
+        let result_ = unsafe {
+            crate::ffi::STEPCAFControl_GDTProperty_get_tol_value_type_handletcollectionhasciistring_geomtolerancetypevalue(theDescription, &mut theType_i32_)
+        };
+        *theType =
+            crate::xcaf_dim_tol_objects::GeomToleranceTypeValue::try_from(theType_i32_).unwrap();
+        result_
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:77 - `STEPCAFControl_GDTProperty::GetTolValueType()`

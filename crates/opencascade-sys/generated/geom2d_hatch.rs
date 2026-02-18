@@ -294,8 +294,16 @@ impl Elements {
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:84 - `Geom2dHatch_Elements::CurrentEdge()`
-    pub fn current_edge(&self, E: &mut crate::geom2d_adaptor::Curve, Or: &mut i32) {
-        unsafe { crate::ffi::Geom2dHatch_Elements_current_edge(self as *const Self, E, Or) }
+    pub fn current_edge(
+        &self,
+        E: &mut crate::geom2d_adaptor::Curve,
+        Or: &mut crate::top_abs::Orientation,
+    ) {
+        let mut Or_i32_: i32 = (*Or).into();
+        unsafe {
+            crate::ffi::Geom2dHatch_Elements_current_edge(self as *const Self, E, &mut Or_i32_)
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
     }
 }
 

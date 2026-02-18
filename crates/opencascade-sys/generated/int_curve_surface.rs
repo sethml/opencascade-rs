@@ -267,8 +267,9 @@ impl IntersectionPoint {
         USurf: &mut f64,
         VSurf: &mut f64,
         UCurv: &mut f64,
-        TrCurv: &mut i32,
+        TrCurv: &mut crate::int_curve_surface::TransitionOnCurve,
     ) {
+        let mut TrCurv_i32_: i32 = (*TrCurv).into();
         unsafe {
             crate::ffi::IntCurveSurface_IntersectionPoint_values(
                 self as *const Self,
@@ -276,9 +277,10 @@ impl IntersectionPoint {
                 USurf,
                 VSurf,
                 UCurv,
-                TrCurv,
+                &mut TrCurv_i32_,
             )
-        }
+        };
+        *TrCurv = crate::int_curve_surface::TransitionOnCurve::try_from(TrCurv_i32_).unwrap();
     }
 
     /// **Source:** `IntCurveSurface_IntersectionPoint.hxx`:59 - `IntCurveSurface_IntersectionPoint::Pnt()`

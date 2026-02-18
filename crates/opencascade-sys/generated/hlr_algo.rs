@@ -439,8 +439,18 @@ impl Coincidence {
     }
 
     /// **Source:** `HLRAlgo_Coincidence.hxx`:69 - `HLRAlgo_Coincidence::State3D()`
-    pub fn state3_d(&self, stbef: &mut i32, staft: &mut i32) {
-        unsafe { crate::ffi::HLRAlgo_Coincidence_state3_d(self as *const Self, stbef, staft) }
+    pub fn state3_d(&self, stbef: &mut crate::top_abs::State, staft: &mut crate::top_abs::State) {
+        let mut stbef_i32_: i32 = (*stbef).into();
+        let mut staft_i32_: i32 = (*staft).into();
+        unsafe {
+            crate::ffi::HLRAlgo_Coincidence_state3_d(
+                self as *const Self,
+                &mut stbef_i32_,
+                &mut staft_i32_,
+            )
+        };
+        *stbef = crate::top_abs::State::try_from(stbef_i32_).unwrap();
+        *staft = crate::top_abs::State::try_from(staft_i32_).unwrap();
     }
 }
 

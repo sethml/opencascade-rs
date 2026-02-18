@@ -628,10 +628,13 @@ fn emit_free_function_wrapper(
         .map(|p| format!("{}: {}", p.rust_name, p.rust_reexport_type))
         .collect();
 
-    // Build args with .into() for enum params, CString conversion for &str params
+    // Build args with .into() for enum params, CString conversion for &str params,
+    // and &mut i32 local for &mut enum params
     let args: Vec<String> = func.params.iter()
         .map(|p| {
-            if p.rust_reexport_type == "&str" {
+            if p.mut_ref_enum_rust_type.is_some() {
+                format!("&mut {}_i32_", p.rust_name)
+            } else if p.rust_reexport_type == "&str" {
                 format!("c_{}.as_ptr()", p.rust_name)
             } else if p.enum_rust_type.is_some() {
                 format!("{}.into()", p.rust_name)
@@ -641,10 +644,18 @@ fn emit_free_function_wrapper(
         })
         .collect();
 
-    // Generate CString prelude for &str params
+    // Generate prelude for CString (&str) params and &mut enum params
     let prelude: String = func.params.iter()
-        .filter(|p| p.rust_reexport_type == "&str")
-        .map(|p| format!("    let c_{} = std::ffi::CString::new({}).unwrap();\n", p.rust_name, p.rust_name))
+        .map(|p| {
+            let mut s = String::new();
+            if p.rust_reexport_type == "&str" {
+                s.push_str(&format!("    let c_{} = std::ffi::CString::new({}).unwrap();\n", p.rust_name, p.rust_name));
+            }
+            if p.mut_ref_enum_rust_type.is_some() {
+                s.push_str(&format!("    let mut {}_i32_: i32 = (*{}).into();\n", p.rust_name, p.rust_name));
+            }
+            s
+        })
         .collect();
 
     // Build return type string
@@ -679,9 +690,33 @@ fn emit_free_function_wrapper(
         call_expr
     };
 
+    // Generate postamble for &mut enum writeback
+    let postamble: String = func.params.iter()
+        .filter_map(|p| {
+            p.mut_ref_enum_rust_type.as_ref().map(|enum_type| {
+                format!("    *{} = {}::try_from({}_i32_).unwrap();\n", p.rust_name, enum_type, p.rust_name)
+            })
+        })
+        .collect();
+
+    let has_return = !return_type_str.is_empty();
+
     writeln!(output, "pub fn {}({}){} {{", func.rust_ffi_name, params.join(", "), return_type_str).unwrap();
     write!(output, "{}", prelude).unwrap();
-    writeln!(output, "    unsafe {{ {} }}", body).unwrap();
+
+    if postamble.is_empty() {
+        writeln!(output, "    unsafe {{ {} }}", body).unwrap();
+    } else if has_return {
+        writeln!(output, "    let result_ = unsafe {{ {} }};", body).unwrap();
+        write!(output, "{}", postamble).unwrap();
+        writeln!(output, "    result_").unwrap();
+    } else {
+        writeln!(output, "    unsafe {{ {} }};", body).unwrap();
+        // Trim trailing newline from postamble for clean formatting
+        write!(output, "{}", postamble.trim_end_matches('\n')).unwrap();
+        writeln!(output).unwrap();
+    }
+
     writeln!(output, "}}").unwrap();
 }
 

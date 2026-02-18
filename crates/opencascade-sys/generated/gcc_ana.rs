@@ -307,15 +307,24 @@ impl Circ2d2TanOn {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Index: i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::GccAna_Circ2d2TanOn_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Circ2d2TanOn.hxx`:196 - `GccAna_Circ2d2TanOn::Tangency1()`
@@ -602,15 +611,24 @@ impl Circ2d2TanRad {
     /// It returns the real qualifiers (the qualifiers given to the
     /// constructor method in case of enclosed, enclosing and outside
     /// and the qualifiers computedin case of unqualified).
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Index: i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::GccAna_Circ2d2TanRad_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Circ2d2TanRad.hxx`:150 - `GccAna_Circ2d2TanRad::Tangency1()`
@@ -954,19 +972,25 @@ impl Circ2d3Tan {
     pub fn which_qualifier(
         &self,
         Index: i32,
-        Qualif1: &mut i32,
-        Qualif2: &mut i32,
-        Qualif3: &mut i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+        Qualif3: &mut crate::gcc_ent::Position,
     ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
+        let mut Qualif3_i32_: i32 = (*Qualif3).into();
         unsafe {
             crate::ffi::GccAna_Circ2d3Tan_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
-                Qualif3,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
+                &mut Qualif3_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
+        *Qualif3 = crate::gcc_ent::Position::try_from(Qualif3_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Circ2d3Tan.hxx`:193 - `GccAna_Circ2d3Tan::Tangency1()`
@@ -1275,10 +1299,16 @@ impl Circ2dTanCen {
     /// It returns the real qualifiers (the qualifiers given to the
     /// constructor method in case of enclosed, enclosing and outside
     /// and the qualifiers computedin case of unqualified).
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
-            crate::ffi::GccAna_Circ2dTanCen_which_qualifier(self as *const Self, Index, Qualif1)
-        }
+            crate::ffi::GccAna_Circ2dTanCen_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Circ2dTanCen.hxx`:127 - `GccAna_Circ2dTanCen::Tangency1()`
@@ -1532,10 +1562,16 @@ impl Circ2dTanOnRad {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
-            crate::ffi::GccAna_Circ2dTanOnRad_which_qualifier(self as *const Self, Index, Qualif1)
-        }
+            crate::ffi::GccAna_Circ2dTanOnRad_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:173 - `GccAna_Circ2dTanOnRad::Tangency1()`
@@ -1872,15 +1908,24 @@ impl Lin2d2Tan {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32, Qualif2: &mut i32) {
+    pub fn which_qualifier(
+        &self,
+        Index: i32,
+        Qualif1: &mut crate::gcc_ent::Position,
+        Qualif2: &mut crate::gcc_ent::Position,
+    ) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
+        let mut Qualif2_i32_: i32 = (*Qualif2).into();
         unsafe {
             crate::ffi::GccAna_Lin2d2Tan_which_qualifier(
                 self as *const Self,
                 Index,
-                Qualif1,
-                Qualif2,
+                &mut Qualif1_i32_,
+                &mut Qualif2_i32_,
             )
-        }
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
+        *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Lin2d2Tan.hxx`:125 - `GccAna_Lin2d2Tan::Tangency1()`
@@ -2164,10 +2209,16 @@ impl Lin2dTanObl {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
-            crate::ffi::GccAna_Lin2dTanObl_which_qualifier(self as *const Self, Index, Qualif1)
-        }
+            crate::ffi::GccAna_Lin2dTanObl_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Lin2dTanObl.hxx`:105 - `GccAna_Lin2dTanObl::Tangency1()`
@@ -2321,10 +2372,16 @@ impl Lin2dTanPar {
     /// didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
-            crate::ffi::GccAna_Lin2dTanPar_which_qualifier(self as *const Self, Index, Qualif1)
-        }
+            crate::ffi::GccAna_Lin2dTanPar_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Lin2dTanPar.hxx`:102 - `GccAna_Lin2dTanPar::Tangency1()`
@@ -2471,10 +2528,16 @@ impl Lin2dTanPer {
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
     /// StdFail_NotDone if the construction fails.
-    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut i32) {
+    pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
+        let mut Qualif1_i32_: i32 = (*Qualif1).into();
         unsafe {
-            crate::ffi::GccAna_Lin2dTanPer_which_qualifier(self as *const Self, Index, Qualif1)
-        }
+            crate::ffi::GccAna_Lin2dTanPer_which_qualifier(
+                self as *const Self,
+                Index,
+                &mut Qualif1_i32_,
+            )
+        };
+        *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
     /// **Source:** `GccAna_Lin2dTanPer.hxx`:104 - `GccAna_Lin2dTanPer::ThisSolution()`

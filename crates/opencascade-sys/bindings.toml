@@ -246,8 +246,6 @@ exclude_headers = [
     # that the generator can't resolve correctly.
     "BVH_Properties.hxx",
 
-    # Codegen bug: val_enum_ undeclared identifier.
-    "ShapeProcess_ShapeContext.hxx",
 
     # Protected operator delete (TDF_LabelNode).
     "TDF_LabelNode.hxx",

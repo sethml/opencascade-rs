@@ -398,6 +398,276 @@ impl HandleShapeProcessOperator {
 }
 
 // ========================
+// From ShapeProcess_ShapeContext.hxx
+// ========================
+
+/// **Source:** `ShapeProcess_ShapeContext.hxx`:39 - `ShapeProcess_ShapeContext`
+/// Extends Context to handle shapes
+/// Contains map of shape-shape, and messages
+/// attached to shapes
+pub use crate::ffi::ShapeProcess_ShapeContext as ShapeContext;
+
+unsafe impl crate::CppDeletable for ShapeContext {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::ShapeProcess_ShapeContext_destructor(ptr);
+    }
+}
+
+impl ShapeContext {
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:43 - `ShapeProcess_ShapeContext::ShapeProcess_ShapeContext()`
+    pub fn new_charptr2(file: &str, seq: &str) -> crate::OwnedPtr<Self> {
+        let c_file = std::ffi::CString::new(file).unwrap();
+        let c_seq = std::ffi::CString::new(seq).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_ShapeContext_ctor_charptr2(
+                c_file.as_ptr(),
+                c_seq.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:48 - `ShapeProcess_ShapeContext::ShapeProcess_ShapeContext()`
+    /// Initializes a tool by resource file and shape
+    /// to be processed
+    pub fn new_shape_charptr2(
+        S: &crate::topo_ds::Shape,
+        file: &str,
+        seq: &str,
+    ) -> crate::OwnedPtr<Self> {
+        let c_file = std::ffi::CString::new(file).unwrap();
+        let c_seq = std::ffi::CString::new(seq).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_ShapeContext_ctor_shape_charptr2(
+                S,
+                c_file.as_ptr(),
+                c_seq.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:53 - `ShapeProcess_ShapeContext::Init()`
+    /// Initializes tool by a new shape and clears all results
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::ShapeProcess_ShapeContext_init(self as *mut Self, S) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:56 - `ShapeProcess_ShapeContext::Shape()`
+    /// Returns shape being processed
+    pub fn shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::ShapeProcess_ShapeContext_shape(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:59 - `ShapeProcess_ShapeContext::Result()`
+    /// Returns current result
+    pub fn result(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::ShapeProcess_ShapeContext_result(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:63 - `ShapeProcess_ShapeContext::Map()`
+    /// Returns map of replacements shape -> shape
+    /// This map is not recursive
+    pub fn map(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+        unsafe { &*(crate::ffi::ShapeProcess_ShapeContext_map(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:72 - `ShapeProcess_ShapeContext::SetDetalisation()`
+    pub fn set_detalisation(&mut self, level: crate::top_abs::ShapeEnum) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_set_detalisation(self as *mut Self, level.into())
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:80 - `ShapeProcess_ShapeContext::GetDetalisation()`
+    /// Set and get value for detalisation level
+    /// Only shapes of types from TopoDS_COMPOUND and until
+    /// specified detalisation level will be recorded in maps
+    /// To cancel mapping, use TopAbs_SHAPE
+    /// To force full mapping, use TopAbs_VERTEX
+    /// The default level is TopAbs_FACE
+    pub fn get_detalisation(&self) -> crate::top_abs::ShapeEnum {
+        unsafe {
+            crate::top_abs::ShapeEnum::try_from(
+                crate::ffi::ShapeProcess_ShapeContext_get_detalisation(self as *const Self),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:88 - `ShapeProcess_ShapeContext::SetResult()`
+    /// Sets a new result shape
+    /// NOTE: this method should be used very carefully
+    /// to keep consistency of modifications
+    /// It is recommended to use RecordModification() methods
+    /// with explicit definition of mapping from current
+    /// result to a new one
+    pub fn set_result(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::ShapeProcess_ShapeContext_set_result(self as *mut Self, S) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:116 - `ShapeProcess_ShapeContext::AddMessage()`
+    /// Record a message for shape S
+    /// Shape S should be one of subshapes of original shape
+    /// (or whole one), but not one of intermediate shapes
+    /// Records only if Message() is not Null
+    pub fn add_message(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+        msg: &crate::message::Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_add_message(
+                self as *mut Self,
+                S,
+                msg,
+                gravity.into(),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:122 - `ShapeProcess_ShapeContext::GetContinuity()`
+    /// Get value of parameter as being of the type GeomAbs_Shape
+    /// Returns False if parameter is not defined or has a wrong type
+    pub fn get_continuity(&self, param: &str, val: &mut crate::geom_abs::Shape) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        let mut val_i32_: i32 = (*val).into();
+        let result_ = unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_get_continuity(
+                self as *const Self,
+                c_param.as_ptr(),
+                &mut val_i32_,
+            )
+        };
+        *val = crate::geom_abs::Shape::try_from(val_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:128 - `ShapeProcess_ShapeContext::ContinuityVal()`
+    /// Get value of parameter as being of the type GeomAbs_Shape
+    /// If parameter is not defined or does not have expected
+    /// type, returns default value as specified
+    pub fn continuity_val(
+        &self,
+        param: &str,
+        def: crate::geom_abs::Shape,
+    ) -> crate::geom_abs::Shape {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::geom_abs::Shape::try_from(crate::ffi::ShapeProcess_ShapeContext_continuity_val(
+                self as *const Self,
+                c_param.as_ptr(),
+                def.into(),
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:132 - `ShapeProcess_ShapeContext::PrintStatistics()`
+    /// Prints statistics on Shape Processing onto the current Messenger.
+    pub fn print_statistics(&self) {
+        unsafe { crate::ffi::ShapeProcess_ShapeContext_print_statistics(self as *const Self) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:135 - `ShapeProcess_ShapeContext::SetNonManifold()`
+    /// Set NonManifold flag
+    pub fn set_non_manifold(&mut self, theNonManifold: bool) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_set_non_manifold(
+                self as *mut Self,
+                theNonManifold,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:138 - `ShapeProcess_ShapeContext::IsNonManifold()`
+    /// Get NonManifold flag
+    pub fn is_non_manifold(&mut self) -> bool {
+        unsafe { crate::ffi::ShapeProcess_ShapeContext_is_non_manifold(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:140 - `ShapeProcess_ShapeContext::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeProcess_ShapeContext_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:140 - `ShapeProcess_ShapeContext::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::ShapeProcess_ShapeContext_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:140 - `ShapeProcess_ShapeContext::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::ShapeProcess_ShapeContext_get_type_descriptor()) }
+    }
+
+    /// Upcast to ShapeProcess_Context
+    pub fn as_context(&self) -> &Context {
+        unsafe {
+            &*(crate::ffi::ShapeProcess_ShapeContext_as_ShapeProcess_Context(self as *const Self))
+        }
+    }
+
+    /// Upcast to ShapeProcess_Context (mutable)
+    pub fn as_context_mut(&mut self) -> &mut Context {
+        unsafe {
+            &mut *(crate::ffi::ShapeProcess_ShapeContext_as_ShapeProcess_Context_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeProcess_Context.hxx`:63 - `ShapeProcess_Context::ResourceManager()`
+    pub fn resource_manager(&self) -> &crate::ffi::HandleResourceManager {
+        unsafe {
+            &*(crate::ffi::ShapeProcess_ShapeContext_inherited_ResourceManager(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeProcess_Context.hxx`:69 - `ShapeProcess_Context::UnSetScope()`
+    pub fn un_set_scope(&mut self) {
+        unsafe { crate::ffi::ShapeProcess_ShapeContext_inherited_UnSetScope(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `ShapeProcess_Context.hxx`:103 - `ShapeProcess_Context::SetMessenger()`
+    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_inherited_SetMessenger(
+                self as *mut Self,
+                messenger,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeProcess_Context.hxx`:106 - `ShapeProcess_Context::Messenger()`
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_ShapeContext_inherited_Messenger(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeProcess_Context.hxx`:114 - `ShapeProcess_Context::SetTraceLevel()`
+    pub fn set_trace_level(&mut self, tracelev: i32) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_inherited_SetTraceLevel(
+                self as *mut Self,
+                tracelev,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeProcess_Context.hxx`:117 - `ShapeProcess_Context::TraceLevel()`
+    pub fn trace_level(&self) -> i32 {
+        unsafe { crate::ffi::ShapeProcess_ShapeContext_inherited_TraceLevel(self as *const Self) }
+    }
+}
+
+// ========================
 // From ShapeProcess_UOperator.hxx
 // ========================
 
@@ -473,6 +743,4 @@ impl UOperator {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
-    ShapeProcess_OperFunc as OperFunc, ShapeProcess_ShapeContext as ShapeContext,
-};
+pub use crate::ffi::ShapeProcess_OperFunc as OperFunc;

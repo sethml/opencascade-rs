@@ -643,8 +643,12 @@ impl FaceExplorer {
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:89 - `BRepClass_FaceExplorer::CurrentEdge()`
     /// Current edge in current wire and its orientation.
-    pub fn current_edge(&self, E: &mut Edge, Or: &mut i32) {
-        unsafe { crate::ffi::BRepClass_FaceExplorer_current_edge(self as *const Self, E, Or) }
+    pub fn current_edge(&self, E: &mut Edge, Or: &mut crate::top_abs::Orientation) {
+        let mut Or_i32_: i32 = (*Or).into();
+        unsafe {
+            crate::ffi::BRepClass_FaceExplorer_current_edge(self as *const Self, E, &mut Or_i32_)
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
     }
 
     /// **Source:** `BRepClass_FaceExplorer.hxx`:92 - `BRepClass_FaceExplorer::MaxTolerance()`

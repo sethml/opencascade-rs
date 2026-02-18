@@ -419,9 +419,10 @@ let my_body = mk_fuse.shape();
 - **Bitset/flag enums remain `i32`** — most enum parameters now use typed Rust
   enums, but enums used as bitmasks (names containing "Flag" or "Mask", or
   values that are powers of 2) are still `i32`.
-- **Some methods with `&mut` enum out-params use `&mut i32`** — when a method
-  has an enum output parameter (e.g., `TopAbs_State& state`), the Rust
-  signature uses `&mut i32`. Convert back with `TryFrom`.
+- **`&mut` enum out-params use typed enum references** — when a method has an
+  enum output parameter (e.g., `GeomAbs_Shape& val`), the Rust signature uses
+  a typed enum reference (e.g., `&mut crate::geom_abs::Shape`). The binding
+  handles the `i32` ↔ enum conversion automatically.
 
 ## RTTI Type Identification
 
