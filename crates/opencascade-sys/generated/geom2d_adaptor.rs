@@ -143,6 +143,16 @@ impl Curve {
         unsafe { crate::ffi::Geom2dAdaptor_Curve_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `Geom2dAdaptor_Curve.hxx`:109 - `Geom2dAdaptor_Curve::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Geom2dAdaptor_Curve_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `Geom2dAdaptor_Curve.hxx`:116 - `Geom2dAdaptor_Curve::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to

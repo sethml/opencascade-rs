@@ -241,6 +241,12 @@ impl Analyse {
         unsafe { crate::ffi::BRepOffset_Analyse_is_done(self as *const Self) }
     }
 
+    /// **Source:** `BRepOffset_Analyse.hxx`:66 - `BRepOffset_Analyse::Type()`
+    /// Returns the connectivity type of the edge
+    pub fn type_(&self, theE: &crate::ffi::TopoDS_Edge) -> &crate::ffi::BRepOffset_ListOfInterval {
+        unsafe { &*(crate::ffi::BRepOffset_Analyse_type_(self as *const Self, theE)) }
+    }
+
     /// **Source:** `BRepOffset_Analyse.hxx`:70 - `BRepOffset_Analyse::Edges()`
     /// Stores in <L> all the edges of Type <T>
     /// on the vertex <V>.
@@ -395,6 +401,12 @@ impl Analyse {
         unsafe { crate::ffi::BRepOffset_Analyse_set_offset_value(self as *mut Self, theOffset) }
     }
 
+    /// **Source:** `BRepOffset_Analyse.hxx`:127 - `BRepOffset_Analyse::SetFaceOffsetMap()`
+    /// Sets the face-offset data map to analyze tangential cases
+    pub fn set_face_offset_map(&mut self, theMap: &crate::ffi::TopTools_DataMapOfShapeReal) {
+        unsafe { crate::ffi::BRepOffset_Analyse_set_face_offset_map(self as *mut Self, theMap) }
+    }
+
     /// **Source:** `BRepOffset_Analyse.hxx`:131 - `BRepOffset_Analyse::NewFaces()`
     /// Returns the new faces constructed between tangent faces
     /// having different offset values on the shape
@@ -546,6 +558,65 @@ impl Inter3d {
                 Analyse,
                 InitOffsetFace,
                 theRange,
+            )
+        }
+    }
+
+    /// **Source:** `BRepOffset_Inter3d.hxx`:70 - `BRepOffset_Inter3d::ConnexIntByInt()`
+    /// Computes intersection of the offset faces that have to be connected by
+    /// sharp edges, i.e. it computes intersection between extended offset faces.
+    pub fn connex_int_by_int(
+        &mut self,
+        SI: &crate::ffi::TopoDS_Shape,
+        MapSF: &crate::ffi::BRepOffset_DataMapOfShapeOffset,
+        A: &crate::ffi::BRepOffset_Analyse,
+        MES: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+        Build: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+        Failed: &mut crate::ffi::TopTools_ListOfShape,
+        theRange: &crate::ffi::Message_ProgressRange,
+        bIsPlanar: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffset_Inter3d_connex_int_by_int(
+                self as *mut Self,
+                SI,
+                MapSF,
+                A,
+                MES,
+                Build,
+                Failed,
+                theRange,
+                bIsPlanar,
+            )
+        }
+    }
+
+    /// **Source:** `BRepOffset_Inter3d.hxx`:80 - `BRepOffset_Inter3d::ContextIntByInt()`
+    /// Computes intersection with not offset faces .
+    pub fn context_int_by_int(
+        &mut self,
+        ContextFaces: &crate::ffi::TopTools_IndexedMapOfShape,
+        ExtentContext: bool,
+        MapSF: &crate::ffi::BRepOffset_DataMapOfShapeOffset,
+        A: &crate::ffi::BRepOffset_Analyse,
+        MES: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+        Build: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+        Failed: &mut crate::ffi::TopTools_ListOfShape,
+        theRange: &crate::ffi::Message_ProgressRange,
+        bIsPlanar: bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepOffset_Inter3d_context_int_by_int(
+                self as *mut Self,
+                ContextFaces,
+                ExtentContext,
+                MapSF,
+                A,
+                MES,
+                Build,
+                Failed,
+                theRange,
+                bIsPlanar,
             )
         }
     }
@@ -1929,6 +2000,17 @@ impl Tool {
         NOnV2: &mut crate::ffi::TopTools_DataMapOfShapeShape,
     ) {
         unsafe { crate::ffi::BRepOffset_Tool_build_neighbour(W, F, NOnV1, NOnV2) }
+    }
+
+    /// **Source:** `BRepOffset_Tool.hxx`:178 - `BRepOffset_Tool::MapVertexEdges()`
+    /// Store in MVE for a vertex <V>  in <S> the incident
+    /// edges <E> in <S>.
+    /// An Edge is Store only one Time for a vertex.
+    pub fn map_vertex_edges(
+        S: &crate::ffi::TopoDS_Shape,
+        MVE: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
+    ) {
+        unsafe { crate::ffi::BRepOffset_Tool_map_vertex_edges(S, MVE) }
     }
 
     /// **Source:** `BRepOffset_Tool.hxx`:187 - `BRepOffset_Tool::Deboucle3D()`

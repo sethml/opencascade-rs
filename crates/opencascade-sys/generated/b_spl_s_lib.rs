@@ -147,6 +147,29 @@ unsafe impl crate::CppDeletable for Cache {
 }
 
 impl Cache {
+    /// **Source:** `BSplSLib_Cache.hxx`:37 - `BSplSLib_Cache::BSplSLib_Cache()`
+    /// Constructor for caching of the span for the surface
+    /// \param theDegreeU    degree along the first parameter (U) of the surface
+    /// \param thePeriodicU  identify the surface is periodical along U axis
+    /// \param theFlatKnotsU knots of the surface (with repetition) along U axis
+    /// \param theDegreeV    degree along the second parameter (V) of the surface
+    /// \param thePeriodicV  identify the surface is periodical along V axis
+    /// \param theFlatKnotsV knots of the surface (with repetition) along V axis
+    /// \param theWeights    array of weights of corresponding poles
+    pub fn new_int_bool_array1ofreal_int_bool_array1ofreal_array2ofrealptr(
+        theDegreeU: &i32,
+        thePeriodicU: &bool,
+        theFlatKnotsU: &crate::ffi::TColStd_Array1OfReal,
+        theDegreeV: &i32,
+        thePeriodicV: &bool,
+        theFlatKnotsV: &crate::ffi::TColStd_Array1OfReal,
+        theWeights: Option<&crate::ffi::TColStd_Array2OfReal>,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BSplSLib_Cache_ctor_int_bool_array1ofreal_int_bool_array1ofreal_array2ofrealptr(theDegreeU, thePeriodicU, theFlatKnotsU, theDegreeV, thePeriodicV, theFlatKnotsV, theWeights.map_or(std::ptr::null(), |r| r as *const _)))
+        }
+    }
+
     /// **Source:** `BSplSLib_Cache.hxx`:48 - `BSplSLib_Cache::IsCacheValid()`
     /// Verifies validity of the cache using parameters of the point
     /// \param theParameterU  first parameter of the point placed in the span
@@ -157,6 +180,40 @@ impl Cache {
                 self as *const Self,
                 theParameterU,
                 theParameterV,
+            )
+        }
+    }
+
+    /// **Source:** `BSplSLib_Cache.hxx`:62 - `BSplSLib_Cache::BuildCache()`
+    /// Recomputes the cache data. Does not verify validity of the cache
+    /// \param theParameterU  the parametric value on the U axis to identify the span
+    /// \param theParameterV  the parametric value on the V axis to identify the span
+    /// \param theDegreeU     degree along U axis
+    /// \param thePeriodicU   identify whether the surface is periodic along U axis
+    /// \param theFlatKnotsU  flat knots of the surface along U axis
+    /// \param theDegreeV     degree along V axis
+    /// \param thePeriodicV   identify whether the surface is periodic along V axis
+    /// \param theFlatKnotsV  flat knots of the surface along V axis
+    /// \param thePoles       array of poles of the surface
+    /// \param theWeights     array of weights of corresponding poles
+    pub fn build_cache(
+        &mut self,
+        theParameterU: &f64,
+        theParameterV: &f64,
+        theFlatKnotsU: &crate::ffi::TColStd_Array1OfReal,
+        theFlatKnotsV: &crate::ffi::TColStd_Array1OfReal,
+        thePoles: &crate::ffi::TColgp_Array2OfPnt,
+        theWeights: Option<&crate::ffi::TColStd_Array2OfReal>,
+    ) {
+        unsafe {
+            crate::ffi::BSplSLib_Cache_build_cache(
+                self as *mut Self,
+                theParameterU,
+                theParameterV,
+                theFlatKnotsU,
+                theFlatKnotsV,
+                thePoles,
+                theWeights.map_or(std::ptr::null(), |r| r as *const _),
             )
         }
     }

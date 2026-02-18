@@ -994,6 +994,20 @@ impl CoherentTriangulation {
         }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:209 - `Poly_CoherentTriangulation::GetFreeNodes()`
+    ///
+    /// Create a list of free nodes. These nodes may appear as a result of any
+    /// custom mesh decimation or RemoveDegenerated() call. This analysis is
+    /// necessary if you support additional data structures based on the
+    /// triangulation (e.g., edges on the surface boundary).
+    /// @param lstNodes
+    /// <tt>[out]</tt> List that receives the indices of free nodes.
+    pub fn get_free_nodes(&self, lstNodes: &mut crate::ffi::TColStd_ListOfInteger) -> bool {
+        unsafe {
+            crate::ffi::Poly_CoherentTriangulation_get_free_nodes(self as *const Self, lstNodes)
+        }
+    }
+
     /// **Source:** `Poly_CoherentTriangulation.hxx`:214 - `Poly_CoherentTriangulation::MaxNode()`
     ///
     /// Query the index of the last node in the triangulation
@@ -1366,6 +1380,27 @@ impl HArray1OfTriangle {
                 theLower, theUpper,
             ))
         }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+    pub fn new_array1oftriangle(
+        theOther: &crate::ffi::Poly_Array1OfTriangle,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_array1oftriangle(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Poly_Array1OfTriangle {
+        unsafe { &*(crate::ffi::Poly_HArray1OfTriangle_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Poly_Array1OfTriangle {
+        unsafe { &mut *(crate::ffi::Poly_HArray1OfTriangle_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::DynamicType()`
@@ -1990,6 +2025,26 @@ impl Polygon3D {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Poly_Polygon3D_ctor_array1ofpnt(Nodes)) }
     }
 
+    /// **Source:** `Poly_Polygon3D.hxx`:49 - `Poly_Polygon3D::Poly_Polygon3D()`
+    /// Constructs a 3D polygon defined by
+    /// the table of points, Nodes, and the parallel table of
+    /// parameters, Parameters, where each value of the table
+    /// Parameters is the parameter of the corresponding point
+    /// on the curve approximated by the constructed polygon.
+    /// Warning
+    /// Both the Nodes and Parameters tables must have the
+    /// same bounds. This property is not checked at construction time.
+    pub fn new_array1ofpnt_array1ofreal(
+        Nodes: &crate::ffi::TColgp_Array1OfPnt,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_Polygon3D_ctor_array1ofpnt_array1ofreal(
+                Nodes, Parameters,
+            ))
+        }
+    }
+
     /// **Source:** `Poly_Polygon3D.hxx`:53 - `Poly_Polygon3D::Copy()`
     /// Creates a copy of current polygon
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon3D> {
@@ -2034,6 +2089,22 @@ impl Polygon3D {
     /// HasParameters function checks if   parameters are associated with the nodes of this polygon.
     pub fn has_parameters(&self) -> bool {
         unsafe { crate::ffi::Poly_Polygon3D_has_parameters(self as *const Self) }
+    }
+
+    /// **Source:** `Poly_Polygon3D.hxx`:79 - `Poly_Polygon3D::Parameters()`
+    /// Returns true if parameters are associated with the nodes
+    /// in this polygon.
+    pub fn parameters(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Poly_Polygon3D_parameters(self as *const Self)) }
+    }
+
+    /// **Source:** `Poly_Polygon3D.hxx`:85 - `Poly_Polygon3D::ChangeParameters()`
+    /// Returns the table of the parameters associated with each node in this polygon.
+    /// ChangeParameters function returns the array as shared.
+    /// Therefore if the table is selected by reference you can, by simply modifying it,
+    /// directly modify the data structure of this polygon.
+    pub fn change_parameters(&mut self) -> &mut crate::ffi::TColStd_Array1OfReal {
+        unsafe { &mut *(crate::ffi::Poly_Polygon3D_change_parameters(self as *mut Self)) }
     }
 
     /// **Source:** `Poly_Polygon3D.hxx`:91 - `Poly_Polygon3D::DynamicType()`
@@ -2117,6 +2188,44 @@ impl PolygonOnTriangulation {
                 theNbNodes,
                 theHasParams,
             ))
+        }
+    }
+
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:50 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+    /// Constructs a 3D polygon on the triangulation of a shape,
+    /// defined by the table of nodes, <Nodes>.
+    pub fn new_array1ofinteger(
+        Nodes: &crate::ffi::TColStd_Array1OfInteger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger(
+                Nodes,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:63 - `Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation()`
+    /// Constructs a 3D polygon on the triangulation of a shape, defined by:
+    /// -   the table of nodes, Nodes, and the table of parameters, <Parameters>.
+    /// where:
+    /// -   a node value is an index in the table of nodes specific
+    /// to an existing triangulation of a shape
+    /// -   and a parameter value is the value of the parameter of
+    /// the corresponding point on the curve approximated by
+    /// the constructed polygon.
+    /// Warning
+    /// The tables Nodes and Parameters must be the same size.
+    /// This property is not checked at construction time.
+    pub fn new_array1ofinteger_array1ofreal(
+        Nodes: &crate::ffi::TColStd_Array1OfInteger,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Poly_PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(
+                    Nodes, Parameters,
+                ),
+            )
         }
     }
 
@@ -2204,6 +2313,14 @@ impl PolygonOnTriangulation {
         unsafe {
             crate::ffi::Poly_PolygonOnTriangulation_set_parameters(self as *mut Self, theParameters)
         }
+    }
+
+    /// **Source:** `Poly_PolygonOnTriangulation.hxx`:122 - `Poly_PolygonOnTriangulation::Nodes()`
+    /// Returns the table of nodes for this polygon.
+    /// A node value is an index in the table of nodes specific to an existing triangulation of a
+    /// shape.
+    pub fn nodes(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::Poly_PolygonOnTriangulation_nodes(self as *const Self)) }
     }
 
     /// **Source:** `Poly_PolygonOnTriangulation.hxx`:127 - `Poly_PolygonOnTriangulation::Parameters()`
@@ -2381,6 +2498,43 @@ impl Triangulation {
                 theHasUVNodes,
                 theHasNormals,
             ))
+        }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:82 - `Poly_Triangulation::Poly_Triangulation()`
+    /// Constructs a triangulation from a set of triangles. The
+    /// triangulation is initialized with 3D points from Nodes and triangles
+    /// from Triangles.
+    pub fn new_array1ofpnt_array1oftriangle(
+        Nodes: &crate::ffi::TColgp_Array1OfPnt,
+        Triangles: &crate::ffi::Poly_Array1OfTriangle,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Poly_Triangulation_ctor_array1ofpnt_array1oftriangle(Nodes, Triangles),
+            )
+        }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:92 - `Poly_Triangulation::Poly_Triangulation()`
+    /// Constructs a triangulation from a set of triangles. The
+    /// triangulation is initialized with 3D points from Nodes, 2D points from
+    /// UVNodes and triangles from Triangles, where
+    /// coordinates of a 2D point from UVNodes are the
+    /// (u, v) parameters of the corresponding 3D point
+    /// from Nodes on the surface approximated by the
+    /// constructed triangulation.
+    pub fn new_array1ofpnt_array1ofpnt2d_array1oftriangle(
+        Nodes: &crate::ffi::TColgp_Array1OfPnt,
+        UVNodes: &crate::ffi::TColgp_Array1OfPnt2d,
+        Triangles: &crate::ffi::Poly_Array1OfTriangle,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Poly_Triangulation_ctor_array1ofpnt_array1ofpnt2d_array1oftriangle(
+                    Nodes, UVNodes, Triangles,
+                ),
+            )
         }
     }
 
@@ -2761,6 +2915,13 @@ impl Triangulation {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `Poly_Triangulation.hxx`:320 - `Poly_Triangulation::InternalTriangles()`
+    /// Returns an internal array of triangles.
+    /// Triangle()/SetTriangle() should be used instead in portable code.
+    pub fn internal_triangles(&mut self) -> &mut crate::ffi::Poly_Array1OfTriangle {
+        unsafe { &mut *(crate::ffi::Poly_Triangulation_internal_triangles(self as *mut Self)) }
     }
 
     /// **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`

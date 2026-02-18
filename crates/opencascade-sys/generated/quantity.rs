@@ -1172,6 +1172,12 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:62 - `Quantity_Color::Quantity_Color()`
+    /// Define color from linear RGB values.
+    pub fn new_vec3(theRgb: &crate::ffi::Graphic3d_Vec3) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_Color_ctor_vec3(theRgb)) }
+    }
+
     /// **Source:** `Quantity_Color.hxx`:65 - `Quantity_Color::Name()`
     /// Returns the name of the nearest color from the Quantity_NameOfColor enumeration.
     pub fn name(&self) -> crate::quantity::NameOfColor {
@@ -1189,6 +1195,12 @@ impl Color {
         unsafe {
             crate::ffi::Quantity_Color_set_values_nameofcolor(self as *mut Self, theName.into())
         }
+    }
+
+    /// **Source:** `Quantity_Color.hxx`:74 - `Quantity_Color::Rgb()`
+    /// Return the color as vector of 3 float elements.
+    pub fn rgb(&self) -> &crate::ffi::Graphic3d_Vec3 {
+        unsafe { &*(crate::ffi::Quantity_Color_rgb(self as *const Self)) }
     }
 
     /// **Source:** `Quantity_Color.hxx`:81 - `Quantity_Color::Values()`
@@ -1539,6 +1551,12 @@ impl ColorRGBA {
                 theRgb, theAlpha,
             ))
         }
+    }
+
+    /// **Source:** `Quantity_ColorRGBA.hxx`:45 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
+    /// Creates the color from RGBA vector.
+    pub fn new_vec4(theRgba: &crate::ffi::Graphic3d_Vec4) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Quantity_ColorRGBA_ctor_vec4(theRgba)) }
     }
 
     /// **Source:** `Quantity_ColorRGBA.hxx`:52 - `Quantity_ColorRGBA::Quantity_ColorRGBA()`
@@ -2065,6 +2083,27 @@ impl HArray1OfColor {
                 theLower, theUpper,
             ))
         }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
+    pub fn new_array1ofcolor(
+        theOther: &crate::ffi::Quantity_Array1OfColor,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_HArray1OfColor_ctor_array1ofcolor(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Quantity_Array1OfColor {
+        unsafe { &*(crate::ffi::Quantity_HArray1OfColor_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Quantity_Array1OfColor {
+        unsafe { &mut *(crate::ffi::Quantity_HArray1OfColor_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::DynamicType()`

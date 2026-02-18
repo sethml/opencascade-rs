@@ -151,6 +151,38 @@ impl Intersection {
         }
     }
 
+    /// **Source:** `IntPatch_Intersection.hxx`:107 - `IntPatch_Intersection::Perform()`
+    /// If isGeomInt == Standard_False, then method
+    /// Param-Param intersection will be used.
+    /// Flag theIsReqToKeepRLine has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// When intersection result returns IntPatch_RLine and another
+    /// IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==TRUE)
+    /// will always keep both lines even if they are coincided.
+    /// Flag theIsReqToPostWLProc has been entered only for
+    /// compatibility with TopOpeBRep package. It shall be deleted
+    /// after deleting TopOpeBRep.
+    /// If theIsReqToPostWLProc == FALSE, then we will work with Walking-line
+    /// obtained after intersection algorithm directly (without any post-processing).
+    pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_listofpnton2s_bool3(
+        &mut self,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        TolArc: f64,
+        TolTang: f64,
+        LOfPnts: &mut crate::ffi::IntSurf_ListOfPntOn2S,
+        isGeomInt: bool,
+        theIsReqToKeepRLine: bool,
+        theIsReqToPostWLProc: bool,
+    ) {
+        unsafe {
+            crate::ffi::IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_listofpnton2s_bool3(self as *mut Self, S1, D1, S2, D2, TolArc, TolTang, LOfPnts, isGeomInt, theIsReqToKeepRLine, theIsReqToPostWLProc)
+        }
+    }
+
     /// **Source:** `IntPatch_Intersection.hxx`:119 - `IntPatch_Intersection::Perform()`
     /// Perform with start point
     pub fn perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real6(
@@ -239,6 +271,11 @@ impl Intersection {
     /// An exception is raised if Index<=0 or Index>NbLine.
     pub fn line(&self, Index: i32) -> &crate::ffi::HandleIntPatchLine {
         unsafe { &*(crate::ffi::IntPatch_Intersection_line(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `IntPatch_Intersection.hxx`:168 - `IntPatch_Intersection::SequenceOfLine()`
+    pub fn sequence_of_line(&self) -> &crate::ffi::IntPatch_SequenceOfLine {
+        unsafe { &*(crate::ffi::IntPatch_Intersection_sequence_of_line(self as *const Self)) }
     }
 
     /// **Source:** `IntPatch_Intersection.hxx`:172 - `IntPatch_Intersection::Dump()`

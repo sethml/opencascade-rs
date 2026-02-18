@@ -263,11 +263,89 @@ unsafe impl crate::CppDeletable for Cache {
 }
 
 impl Cache {
+    /// **Source:** `BSplCLib_Cache.hxx`:33 - `BSplCLib_Cache::BSplCLib_Cache()`
+    /// Constructor, prepares data structures for caching values on a 2d curve.
+    /// \param theDegree     degree of the curve
+    /// \param thePeriodic   identify whether the curve is periodic
+    /// \param theFlatKnots  knots of Bezier/B-spline curve (with repetitions)
+    /// \param thePoles2d    array of poles of 2D curve
+    /// \param theWeights    array of weights of corresponding poles
+    pub fn new_int_bool_array1ofreal_array1ofpnt2d_array1ofrealptr(
+        theDegree: &i32,
+        thePeriodic: &bool,
+        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
+        thePoles2d: &crate::ffi::TColgp_Array1OfPnt2d,
+        theWeights: Option<&crate::ffi::TColStd_Array1OfReal>,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BSplCLib_Cache_ctor_int_bool_array1ofreal_array1ofpnt2d_array1ofrealptr(
+                    theDegree,
+                    thePeriodic,
+                    theFlatKnots,
+                    thePoles2d,
+                    theWeights.map_or(std::ptr::null(), |r| r as *const _),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BSplCLib_Cache.hxx`:45 - `BSplCLib_Cache::BSplCLib_Cache()`
+    /// Constructor, prepares data structures for caching values on a 3d curve.
+    /// \param theDegree     degree of the curve
+    /// \param thePeriodic   identify whether the curve is periodic
+    /// \param theFlatKnots  knots of Bezier/B-spline curve (with repetitions)
+    /// \param thePoles      array of poles of 3D curve
+    /// \param theWeights    array of weights of corresponding poles
+    pub fn new_int_bool_array1ofreal_array1ofpnt_array1ofrealptr(
+        theDegree: &i32,
+        thePeriodic: &bool,
+        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
+        thePoles: &crate::ffi::TColgp_Array1OfPnt,
+        theWeights: Option<&crate::ffi::TColStd_Array1OfReal>,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BSplCLib_Cache_ctor_int_bool_array1ofreal_array1ofpnt_array1ofrealptr(
+                    theDegree,
+                    thePeriodic,
+                    theFlatKnots,
+                    thePoles,
+                    theWeights.map_or(std::ptr::null(), |r| r as *const _),
+                ),
+            )
+        }
+    }
+
     /// **Source:** `BSplCLib_Cache.hxx`:53 - `BSplCLib_Cache::IsCacheValid()`
     /// Verifies validity of the cache using flat parameter of the point
     /// \param theParameter parameter of the point placed in the span
     pub fn is_cache_valid(&self, theParameter: f64) -> bool {
         unsafe { crate::ffi::BSplCLib_Cache_is_cache_valid(self as *const Self, theParameter) }
+    }
+
+    /// **Source:** `BSplCLib_Cache.hxx`:70 - `BSplCLib_Cache::BuildCache()`
+    /// Recomputes the cache data for 3D curves. Does not verify validity of the cache
+    /// \param theParameter  the value on the knot's axis to identify the span
+    /// \param theFlatKnots  knots of Bezier/B-spline curve (with repetitions)
+    /// \param thePoles      array of poles of 3D curve
+    /// \param theWeights    array of weights of corresponding poles
+    pub fn build_cache(
+        &mut self,
+        theParameter: &f64,
+        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
+        thePoles: &crate::ffi::TColgp_Array1OfPnt,
+        theWeights: Option<&crate::ffi::TColStd_Array1OfReal>,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_Cache_build_cache(
+                self as *mut Self,
+                theParameter,
+                theFlatKnots,
+                thePoles,
+                theWeights.map_or(std::ptr::null(), |r| r as *const _),
+            )
+        }
     }
 
     /// **Source:** `BSplCLib_Cache.hxx`:78 - `BSplCLib_Cache::D0()`
@@ -483,6 +561,25 @@ unsafe impl crate::CppDeletable for CacheParams {
 }
 
 impl CacheParams {
+    /// **Source:** `BSplCLib_CacheParams.hxx`:40 - `BSplCLib_CacheParams::BSplCLib_CacheParams()`
+    /// Constructor, prepares data structures for caching.
+    /// \param theDegree     degree of the B-spline (or Bezier)
+    /// \param thePeriodic   identify whether the B-spline is periodic
+    /// \param theFlatKnots  knots of Bezier / B-spline parameterization
+    pub fn new_int_bool_array1ofreal(
+        theDegree: i32,
+        thePeriodic: bool,
+        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BSplCLib_CacheParams_ctor_int_bool_array1ofreal(
+                theDegree,
+                thePeriodic,
+                theFlatKnots,
+            ))
+        }
+    }
+
     /// **Source:** `BSplCLib_CacheParams.hxx`:57 - `BSplCLib_CacheParams::PeriodicNormalization()`
     /// Normalizes the parameter for periodic B-splines
     /// \param theParameter the value to be normalized into the knots array
@@ -501,6 +598,24 @@ impl CacheParams {
     pub fn is_cache_valid(&self, theParameter: f64) -> bool {
         unsafe {
             crate::ffi::BSplCLib_CacheParams_is_cache_valid(self as *const Self, theParameter)
+        }
+    }
+
+    /// **Source:** `BSplCLib_CacheParams.hxx`:90 - `BSplCLib_CacheParams::LocateParameter()`
+    /// Computes span for the specified parameter
+    /// \param theParameter parameter of the point placed in the span
+    /// \param theFlatKnots  knots of Bezier / B-spline parameterization
+    pub fn locate_parameter(
+        &mut self,
+        theParameter: &mut f64,
+        theFlatKnots: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::BSplCLib_CacheParams_locate_parameter(
+                self as *mut Self,
+                theParameter,
+                theFlatKnots,
+            )
         }
     }
 }

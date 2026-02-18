@@ -590,6 +590,25 @@ impl Reader {
         unsafe { crate::ffi::STEPControl_Reader_nb_roots_for_transfer(self as *mut Self) }
     }
 
+    /// **Source:** `STEPControl_Reader.hxx`:120 - `STEPControl_Reader::FileUnits()`
+    /// Returns sequence of all unit names for shape representations
+    /// found in file
+    pub fn file_units(
+        &mut self,
+        theUnitLengthNames: &mut crate::ffi::TColStd_SequenceOfAsciiString,
+        theUnitAngleNames: &mut crate::ffi::TColStd_SequenceOfAsciiString,
+        theUnitSolidAngleNames: &mut crate::ffi::TColStd_SequenceOfAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::STEPControl_Reader_file_units(
+                self as *mut Self,
+                theUnitLengthNames,
+                theUnitAngleNames,
+                theUnitSolidAngleNames,
+            )
+        }
+    }
+
     /// **Source:** `STEPControl_Reader.hxx`:126 - `STEPControl_Reader::SetSystemLengthUnit()`
     /// Sets system length unit used by transfer process.
     /// Performs only if a model is not NULL

@@ -702,6 +702,13 @@ impl BooleanList {
         unsafe { crate::ffi::TDataStd_BooleanList_last(self as *const Self) }
     }
 
+    /// **Source:** `TDataStd_BooleanList.hxx`:68 - `TDataStd_BooleanList::List()`
+    /// 1 - means TRUE,
+    /// 0 - means FALSE.
+    pub fn list(&self) -> &crate::ffi::TDataStd_ListOfByte {
+        unsafe { &*(crate::ffi::TDataStd_BooleanList_list(self as *const Self)) }
+    }
+
     /// **Source:** `TDataStd_BooleanList.hxx`:72 - `TDataStd_BooleanList::InsertBefore()`
     /// Inserts the <value> before the <index> position.
     /// The indices start with 1 .. Extent().
@@ -2807,6 +2814,11 @@ impl Expression {
         unsafe { &*(crate::ffi::TDataStd_Expression_get_expression(self as *const Self)) }
     }
 
+    /// **Source:** `TDataStd_Expression.hxx`:63 - `TDataStd_Expression::GetVariables()`
+    pub fn get_variables(&mut self) -> &mut crate::ffi::TDF_AttributeList {
+        unsafe { &mut *(crate::ffi::TDataStd_Expression_get_variables(self as *mut Self)) }
+    }
+
     /// **Source:** `TDataStd_Expression.hxx`:65 - `TDataStd_Expression::ID()`
     pub fn id(&self) -> &crate::ffi::Standard_GUID {
         unsafe { &*(crate::ffi::TDataStd_Expression_id(self as *const Self)) }
@@ -3556,6 +3568,11 @@ impl ExtStringList {
     /// **Source:** `TDataStd_ExtStringList.hxx`:95 - `TDataStd_ExtStringList::Last()`
     pub fn last(&self) -> &crate::ffi::TCollection_ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_ExtStringList_last(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_ExtStringList.hxx`:97 - `TDataStd_ExtStringList::List()`
+    pub fn list(&self) -> &crate::ffi::TDataStd_ListOfExtendedString {
+        unsafe { &*(crate::ffi::TDataStd_ExtStringList_list(self as *const Self)) }
     }
 
     /// **Source:** `TDataStd_ExtStringList.hxx`:99 - `TDataStd_ExtStringList::ID()`
@@ -4636,6 +4653,17 @@ impl HDataMapOfStringInteger {
         }
     }
 
+    /// **Source:** `TDataStd_HDataMapOfStringInteger.hxx`:33 - `TDataStd_HDataMapOfStringInteger::TDataStd_HDataMapOfStringInteger()`
+    pub fn new_datamapofstringinteger(
+        theOther: &crate::ffi::TColStd_DataMapOfStringInteger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_HDataMapOfStringInteger_ctor_datamapofstringinteger(theOther),
+            )
+        }
+    }
+
     /// **Source:** `TDataStd_HDataMapOfStringInteger.hxx`:31 - `TDataStd_HDataMapOfStringInteger::TDataStd_HDataMapOfStringInteger()`
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
@@ -4645,6 +4673,18 @@ impl HDataMapOfStringInteger {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::TDataStd_HDataMapOfStringInteger_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringInteger.hxx`:35 - `TDataStd_HDataMapOfStringInteger::Map()`
+    pub fn map(&self) -> &crate::ffi::TColStd_DataMapOfStringInteger {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringInteger_map(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringInteger.hxx`:37 - `TDataStd_HDataMapOfStringInteger::ChangeMap()`
+    pub fn change_map(&mut self) -> &mut crate::ffi::TColStd_DataMapOfStringInteger {
+        unsafe {
+            &mut *(crate::ffi::TDataStd_HDataMapOfStringInteger_change_map(self as *mut Self))
         }
     }
 
@@ -4884,6 +4924,23 @@ impl HLabelArray1 {
                 theLower, theUpper,
             ))
         }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::TDataStd_HLabelArray1()`
+    pub fn new_labelarray1(theOther: &crate::ffi::TDataStd_LabelArray1) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HLabelArray1_ctor_labelarray1(theOther))
+        }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TDataStd_LabelArray1 {
+        unsafe { &*(crate::ffi::TDataStd_HLabelArray1_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TDataStd_LabelArray1 {
+        unsafe { &mut *(crate::ffi::TDataStd_HLabelArray1_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::DynamicType()`
@@ -6028,6 +6085,11 @@ impl IntegerList {
     /// **Source:** `TDataStd_IntegerList.hxx`:94 - `TDataStd_IntegerList::Last()`
     pub fn last(&self) -> i32 {
         unsafe { crate::ffi::TDataStd_IntegerList_last(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_IntegerList.hxx`:96 - `TDataStd_IntegerList::List()`
+    pub fn list(&self) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::TDataStd_IntegerList_list(self as *const Self)) }
     }
 
     /// **Source:** `TDataStd_IntegerList.hxx`:98 - `TDataStd_IntegerList::ID()`
@@ -7543,6 +7605,11 @@ impl RealList {
         unsafe { crate::ffi::TDataStd_RealList_last(self as *const Self) }
     }
 
+    /// **Source:** `TDataStd_RealList.hxx`:97 - `TDataStd_RealList::List()`
+    pub fn list(&self) -> &crate::ffi::TColStd_ListOfReal {
+        unsafe { &*(crate::ffi::TDataStd_RealList_list(self as *const Self)) }
+    }
+
     /// **Source:** `TDataStd_RealList.hxx`:99 - `TDataStd_RealList::ID()`
     pub fn id(&self) -> &crate::ffi::Standard_GUID {
         unsafe { &*(crate::ffi::TDataStd_RealList_id(self as *const Self)) }
@@ -8264,6 +8331,11 @@ impl ReferenceList {
         unsafe { &*(crate::ffi::TDataStd_ReferenceList_last(self as *const Self)) }
     }
 
+    /// **Source:** `TDataStd_ReferenceList.hxx`:98 - `TDataStd_ReferenceList::List()`
+    pub fn list(&self) -> &crate::ffi::TDF_LabelList {
+        unsafe { &*(crate::ffi::TDataStd_ReferenceList_list(self as *const Self)) }
+    }
+
     /// **Source:** `TDataStd_ReferenceList.hxx`:100 - `TDataStd_ReferenceList::ID()`
     pub fn id(&self) -> &crate::ffi::Standard_GUID {
         unsafe { &*(crate::ffi::TDataStd_ReferenceList_id(self as *const Self)) }
@@ -8623,6 +8695,11 @@ impl Relation {
     /// Inherited: **Source:** `TDataStd_Expression.hxx`:61 - `TDataStd_Expression::GetExpression()`
     pub fn get_expression(&self) -> &crate::ffi::TCollection_ExtendedString {
         unsafe { &*(crate::ffi::TDataStd_Relation_inherited_GetExpression(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `TDataStd_Expression.hxx`:63 - `TDataStd_Expression::GetVariables()`
+    pub fn get_variables(&mut self) -> &mut crate::ffi::TDF_AttributeList {
+        unsafe { &mut *(crate::ffi::TDataStd_Relation_inherited_GetVariables(self as *mut Self)) }
     }
 
     /// Inherited: **Source:** `TDataStd_Expression.hxx`:67 - `TDataStd_Expression::Restore()`

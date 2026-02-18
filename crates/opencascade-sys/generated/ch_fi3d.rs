@@ -354,6 +354,40 @@ impl Builder {
         unsafe { crate::ffi::ChFi3d_Builder_reset(self as *mut Self) }
     }
 
+    /// **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
+    /// Method, implemented in the inheritants, calculates
+    /// the elements of construction of the surface (fillet or
+    /// chamfer).
+    pub fn split_k_part(
+        &mut self,
+        Data: &crate::ffi::HandleChFiDSSurfData,
+        SetData: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Iedge: i32,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Intf: &mut bool,
+        Intl: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ChFi3d_Builder_split_k_part(
+                self as *mut Self,
+                Data,
+                SetData,
+                Spine,
+                Iedge,
+                S1,
+                I1,
+                S2,
+                I2,
+                Intf,
+                Intl,
+            )
+        }
+    }
+
     /// **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
         unsafe { crate::ffi::ChFi3d_Builder_perform_two_cornerby_inter(self as *mut Self, Index) }
@@ -765,6 +799,37 @@ impl ChBuilder {
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
+    pub fn split_k_part(
+        &mut self,
+        Data: &crate::ffi::HandleChFiDSSurfData,
+        SetData: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Iedge: i32,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Intf: &mut bool,
+        Intl: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ChFi3d_ChBuilder_inherited_SplitKPart(
+                self as *mut Self,
+                Data,
+                SetData,
+                Spine,
+                Iedge,
+                S1,
+                I1,
+                S2,
+                I2,
+                Intf,
+                Intl,
+            )
+        }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
@@ -1227,6 +1292,37 @@ impl FilBuilder {
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Reset(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
+    pub fn split_k_part(
+        &mut self,
+        Data: &crate::ffi::HandleChFiDSSurfData,
+        SetData: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+        Spine: &crate::ffi::HandleChFiDSSpine,
+        Iedge: i32,
+        S1: &crate::ffi::HandleAdaptor3dSurface,
+        I1: &crate::ffi::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi::HandleAdaptor3dSurface,
+        I2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Intf: &mut bool,
+        Intl: &mut bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ChFi3d_FilBuilder_inherited_SplitKPart(
+                self as *mut Self,
+                Data,
+                SetData,
+                Spine,
+                Iedge,
+                S1,
+                I1,
+                S2,
+                I2,
+                Intf,
+                Intl,
+            )
+        }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`

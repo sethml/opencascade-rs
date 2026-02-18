@@ -401,6 +401,167 @@ unsafe impl crate::CppDeletable for BSplineCurve {
 }
 
 impl BSplineCurve {
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:161 - `Geom2d_BSplineCurve::Geom2d_BSplineCurve()`
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    /// The following conditions must be verified.
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(Poles, Knots, Multiplicities, Degree, Periodic))
+        }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:192 - `Geom2d_BSplineCurve::Geom2d_BSplineCurve()`
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// The following conditions must be verified.
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(Poles, Weights, Knots, Multiplicities, Degree, Periodic))
+        }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:161 - `Geom2d_BSplineCurve::Geom2d_BSplineCurve()`
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    /// The following conditions must be verified.
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt2d_array1ofreal_array1ofinteger_int(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:192 - `Geom2d_BSplineCurve::Geom2d_BSplineCurve()`
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// The following conditions must be verified.
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt2d_array1ofreal2_array1ofinteger_int(
+        Poles: &crate::ffi::TColgp_Array1OfPnt2d,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
     /// **Source:** `Geom2d_BSplineCurve.hxx`:207 - `Geom2d_BSplineCurve::IncreaseDegree()`
     /// Increases the degree of this BSpline curve to
     /// Degree. As a result, the poles, weights and
@@ -496,6 +657,43 @@ impl BSplineCurve {
                 U,
                 M,
                 ParametricTolerance,
+            )
+        }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:294 - `Geom2d_BSplineCurve::InsertKnots()`
+    /// Inserts the values of the array Knots, with the
+    /// respective multiplicities given by the array Mults, into
+    /// the knots table of this BSpline curve.
+    /// If a value of the array Knots is an existing knot, its multiplicity is:
+    /// - increased by M, if Add is true, or
+    /// - increased to M, if Add is false (default value).
+    /// The tolerance criterion used for knot equality is the
+    /// larger of the values ParametricTolerance (defaulted
+    /// to 0.) and Standard_Real::Epsilon(U),
+    /// where U is the current knot value.
+    /// Warning
+    /// - For a value of the array Knots which is less than
+    /// the first parameter or greater than the last
+    /// parameter of this BSpline curve, nothing is done.
+    /// - For a value of the array Mults which is negative or
+    /// null, nothing is done.
+    /// - The multiplicity of a knot is limited to the degree of
+    /// this BSpline curve.
+    pub fn insert_knots(
+        &mut self,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_insert_knots(
+                self as *mut Self,
+                Knots,
+                Mults,
+                ParametricTolerance,
+                Add,
             )
         }
     }
@@ -625,6 +823,18 @@ impl BSplineCurve {
     /// Standard_OutOfRange if Index is outside the bounds of the knots table.
     pub fn set_knot_int_real(&mut self, Index: i32, K: f64) {
         unsafe { crate::ffi::Geom2d_BSplineCurve_set_knot_int_real(self as *mut Self, Index, K) }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:411 - `Geom2d_BSplineCurve::SetKnots()`
+    /// Modifies this BSpline curve by assigning the array
+    /// K to its knots table. The multiplicity of the knots is not modified.
+    /// Exceptions
+    /// Standard_ConstructionError if the values in the
+    /// array K are not in ascending order.
+    /// Standard_OutOfRange if the bounds of the array
+    /// K are not respectively 1 and the number of knots of this BSpline curve.
+    pub fn set_knots(&mut self, K: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_set_knots(self as *mut Self, K) }
     }
 
     /// **Source:** `Geom2d_BSplineCurve.hxx`:428 - `Geom2d_BSplineCurve::SetKnot()`
@@ -1058,6 +1268,47 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_knot(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:729 - `Geom2d_BSplineCurve::Knots()`
+    /// returns the knot values of the B-spline curve;
+    ///
+    /// Raised K.Lower() is less than number of first knot or
+    /// K.Upper() is more than number of last knot.
+    pub fn knots_array1ofreal(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_knots_array1ofreal(self as *const Self, K) }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:732 - `Geom2d_BSplineCurve::Knots()`
+    /// returns the knot values of the B-spline curve;
+    pub fn knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:743 - `Geom2d_BSplineCurve::KnotSequence()`
+    /// Returns the knots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// K = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    ///
+    /// Raised if K.Lower() is less than number of first knot
+    /// in knot sequence with repetitions or K.Upper() is more
+    /// than number of last knot in knot sequence with repetitions.
+    pub fn knot_sequence_array1ofreal(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_knot_sequence_array1ofreal(self as *const Self, K)
+        }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:750 - `Geom2d_BSplineCurve::KnotSequence()`
+    /// Returns the knots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// K = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    pub fn knot_sequence(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_knot_sequence(self as *const Self)) }
+    }
+
     /// **Source:** `Geom2d_BSplineCurve.hxx`:763 - `Geom2d_BSplineCurve::KnotDistribution()`
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
     /// If all the knots differ by a positive constant from the
@@ -1102,6 +1353,22 @@ impl BSplineCurve {
     /// Raised if Index < 1 or Index > NbKnots
     pub fn multiplicity(&self, Index: i32) -> i32 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_multiplicity(self as *const Self, Index) }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:800 - `Geom2d_BSplineCurve::Multiplicities()`
+    /// Returns the multiplicity of the knots of the curve.
+    ///
+    /// Raised if the length of M is not equal to NbKnots.
+    pub fn multiplicities_array1ofinteger(&self, M: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_multiplicities_array1ofinteger(self as *const Self, M)
+        }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:803 - `Geom2d_BSplineCurve::Multiplicities()`
+    /// returns the multiplicity of the knots of the curve.
+    pub fn multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::Geom2d_BSplineCurve_multiplicities(self as *const Self)) }
     }
 
     /// **Source:** `Geom2d_BSplineCurve.hxx`:807 - `Geom2d_BSplineCurve::NbKnots()`
@@ -1156,6 +1423,14 @@ impl BSplineCurve {
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_weight(self as *const Self, Index) }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:837 - `Geom2d_BSplineCurve::Weights()`
+    /// Returns the weights of the B-spline curve;
+    ///
+    /// Raised if the length of W is not equal to NbPoles.
+    pub fn weights(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom2d_BSplineCurve_weights(self as *const Self, W) }
     }
 
     /// **Source:** `Geom2d_BSplineCurve.hxx`:843 - `Geom2d_BSplineCurve::Transform()`
@@ -1516,6 +1791,29 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom2d_BezierCurve.hxx`:108 - `Geom2d_BezierCurve::Geom2d_BezierCurve()`
+    /// Creates a rational Bezier curve with the set of poles
+    /// CurvePoles and the set of weights  PoleWeights .
+    /// If all the weights are identical the curve is considered
+    /// as non rational.  Raises ConstructionError if
+    /// the number of poles is greater than  MaxDegree + 1 or lower
+    /// than 2 or CurvePoles and CurveWeights have not the same length
+    /// or one weight value is lower or equal to Resolution from
+    /// package gp.
+    pub fn new_array1ofpnt2d_array1ofreal(
+        CurvePoles: &crate::ffi::TColgp_Array1OfPnt2d,
+        PoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom2d_BezierCurve_ctor_array1ofpnt2d_array1ofreal(
+                    CurvePoles,
+                    PoleWeights,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Geom2d_BezierCurve.hxx`:115 - `Geom2d_BezierCurve::Increase()`
     /// Increases the degree of a bezier curve. Degree is the new
     /// degree of <me>.
@@ -1793,6 +2091,14 @@ impl BezierCurve {
     /// Raised if Index is not in the range [1, NbPoles]
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Geom2d_BezierCurve_weight(self as *const Self, Index) }
+    }
+
+    /// **Source:** `Geom2d_BezierCurve.hxx`:280 - `Geom2d_BezierCurve::Weights()`
+    /// Returns all the weights of the curve.
+    ///
+    /// Raised if the length of W is not equal to the number of poles.
+    pub fn weights(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom2d_BezierCurve_weights(self as *const Self, W) }
     }
 
     /// **Source:** `Geom2d_BezierCurve.hxx`:291 - `Geom2d_BezierCurve::Transform()`

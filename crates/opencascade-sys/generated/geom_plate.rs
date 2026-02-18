@@ -86,6 +86,21 @@ impl BuildAveragePlane {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:55 - `GeomPlate_BuildAveragePlane::GeomPlate_BuildAveragePlane()`
+    /// Creates the plane from the "best vector"
+    pub fn new_sequenceofvec_handletcolgpharray1ofpnt(
+        Normals: &crate::ffi::TColgp_SequenceOfVec,
+        Pts: &crate::ffi::HandleTColgpHArray1OfPnt,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_BuildAveragePlane_ctor_sequenceofvec_handletcolgpharray1ofpnt(
+                    Normals, Pts,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:59 - `GeomPlate_BuildAveragePlane::Plane()`
     /// Return the average Plane.
     pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
@@ -129,6 +144,21 @@ impl BuildAveragePlane {
                 Umax,
                 Vmin,
                 Vmax,
+            )
+        }
+    }
+
+    /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:77 - `GeomPlate_BuildAveragePlane::HalfSpace()`
+    pub fn half_space(
+        NewNormals: &crate::ffi::TColgp_SequenceOfVec,
+        Normals: &mut crate::ffi::TColgp_SequenceOfVec,
+        Bset: &mut crate::ffi::GeomPlate_SequenceOfAij,
+        LinTol: f64,
+        AngTol: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomPlate_BuildAveragePlane_half_space(
+                NewNormals, Normals, Bset, LinTol, AngTol,
             )
         }
     }
@@ -860,6 +890,30 @@ impl BuildPlateSurface {
         }
     }
 
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:154 - `GeomPlate_BuildPlateSurface::Disc2dContour()`
+    pub fn disc2d_contour(&mut self, nbp: i32, Seq2d: &mut crate::ffi::TColgp_SequenceOfXY) {
+        unsafe {
+            crate::ffi::GeomPlate_BuildPlateSurface_disc2d_contour(self as *mut Self, nbp, Seq2d)
+        }
+    }
+
+    /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:156 - `GeomPlate_BuildPlateSurface::Disc3dContour()`
+    pub fn disc3d_contour(
+        &mut self,
+        nbp: i32,
+        iordre: i32,
+        Seq3d: &mut crate::ffi::TColgp_SequenceOfXYZ,
+    ) {
+        unsafe {
+            crate::ffi::GeomPlate_BuildPlateSurface_disc3d_contour(
+                self as *mut Self,
+                nbp,
+                iordre,
+                Seq3d,
+            )
+        }
+    }
+
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:161 - `GeomPlate_BuildPlateSurface::IsDone()`
     /// Tests whether computation of the plate has been completed.
     pub fn is_done(&self) -> bool {
@@ -1357,6 +1411,27 @@ impl HArray1OfHCurve {
         }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
+    pub fn new_array1ofhcurve(
+        theOther: &crate::ffi::GeomPlate_Array1OfHCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_array1ofhcurve(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::Array1()`
+    pub fn array1(&self) -> &crate::ffi::GeomPlate_Array1OfHCurve {
+        unsafe { &*(crate::ffi::GeomPlate_HArray1OfHCurve_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::GeomPlate_Array1OfHCurve {
+        unsafe { &mut *(crate::ffi::GeomPlate_HArray1OfHCurve_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomPlate_HArray1OfHCurve_dynamic_type(self as *const Self)) }
@@ -1436,6 +1511,29 @@ impl HArray1OfSequenceOfReal {
         }
     }
 
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
+    pub fn new_array1ofsequenceofreal(
+        theOther: &crate::ffi::GeomPlate_Array1OfSequenceOfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_array1ofsequenceofreal(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::Array1()`
+    pub fn array1(&self) -> &crate::ffi::GeomPlate_Array1OfSequenceOfReal {
+        unsafe { &*(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::GeomPlate_Array1OfSequenceOfReal {
+        unsafe {
+            &mut *(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_change_array1(self as *mut Self))
+        }
+    }
+
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -1509,6 +1607,42 @@ impl HSequenceOfCurveConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor())
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::GeomPlate_HSequenceOfCurveConstraint()`
+    pub fn new_sequenceofcurveconstraint(
+        theOther: &crate::ffi::GeomPlate_SequenceOfCurveConstraint,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor_sequenceofcurveconstraint(
+                    theOther,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::GeomPlate_SequenceOfCurveConstraint {
+        unsafe {
+            &*(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_sequence(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::GeomPlate_SequenceOfCurveConstraint) {
+        unsafe {
+            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_append(self as *mut Self, theSequence)
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::GeomPlate_SequenceOfCurveConstraint {
+        unsafe {
+            &mut *(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_change_sequence(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -1589,6 +1723,42 @@ impl HSequenceOfPointConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor())
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::GeomPlate_HSequenceOfPointConstraint()`
+    pub fn new_sequenceofpointconstraint(
+        theOther: &crate::ffi::GeomPlate_SequenceOfPointConstraint,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor_sequenceofpointconstraint(
+                    theOther,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::GeomPlate_SequenceOfPointConstraint {
+        unsafe {
+            &*(crate::ffi::GeomPlate_HSequenceOfPointConstraint_sequence(self as *const Self))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::GeomPlate_SequenceOfPointConstraint) {
+        unsafe {
+            crate::ffi::GeomPlate_HSequenceOfPointConstraint_append(self as *mut Self, theSequence)
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::GeomPlate_SequenceOfPointConstraint {
+        unsafe {
+            &mut *(crate::ffi::GeomPlate_HSequenceOfPointConstraint_change_sequence(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -1792,6 +1962,19 @@ unsafe impl crate::CppDeletable for PlateG0Criterion {
 }
 
 impl PlateG0Criterion {
+    /// **Source:** `GeomPlate_PlateG0Criterion.hxx`:37 - `GeomPlate_PlateG0Criterion::GeomPlate_PlateG0Criterion()`
+    pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
+        Data: &crate::ffi::TColgp_SequenceOfXY,
+        G0Data: &crate::ffi::TColgp_SequenceOfXYZ,
+        Maximum: f64,
+        Type: crate::adv_app2_var::CriterionType,
+        Repart: crate::adv_app2_var::CriterionRepartition,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PlateG0Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G0Data, Maximum, Type.into(), Repart.into()))
+        }
+    }
+
     /// Upcast to AdvApp2Var_Criterion
     pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
         unsafe {
@@ -1849,6 +2032,19 @@ unsafe impl crate::CppDeletable for PlateG1Criterion {
 }
 
 impl PlateG1Criterion {
+    /// **Source:** `GeomPlate_PlateG1Criterion.hxx`:37 - `GeomPlate_PlateG1Criterion::GeomPlate_PlateG1Criterion()`
+    pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
+        Data: &crate::ffi::TColgp_SequenceOfXY,
+        G1Data: &crate::ffi::TColgp_SequenceOfXYZ,
+        Maximum: f64,
+        Type: crate::adv_app2_var::CriterionType,
+        Repart: crate::adv_app2_var::CriterionRepartition,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_PlateG1Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G1Data, Maximum, Type.into(), Repart.into()))
+        }
+    }
+
     /// Upcast to AdvApp2Var_Criterion
     pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
         unsafe {
@@ -2631,6 +2827,11 @@ impl Surface {
     /// **Source:** `GeomPlate_Surface.hxx`:276 - `GeomPlate_Surface::RealBounds()`
     pub fn real_bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         unsafe { crate::ffi::GeomPlate_Surface_real_bounds(self as *const Self, U1, U2, V1, V2) }
+    }
+
+    /// **Source:** `GeomPlate_Surface.hxx`:281 - `GeomPlate_Surface::Constraints()`
+    pub fn constraints(&self, Seq: &mut crate::ffi::TColgp_SequenceOfXY) {
+        unsafe { crate::ffi::GeomPlate_Surface_constraints(self as *const Self, Seq) }
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:283 - `GeomPlate_Surface::DynamicType()`

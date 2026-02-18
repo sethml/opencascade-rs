@@ -1476,6 +1476,29 @@ impl HArray1OfHAsciiString {
         }
     }
 
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
+    pub fn new_array1ofhasciistring(
+        theOther: &crate::ffi::Interface_Array1OfHAsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Interface_HArray1OfHAsciiString_ctor_array1ofhasciistring(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Interface_Array1OfHAsciiString {
+        unsafe { &*(crate::ffi::Interface_HArray1OfHAsciiString_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Interface_Array1OfHAsciiString {
+        unsafe {
+            &mut *(crate::ffi::Interface_HArray1OfHAsciiString_change_array1(self as *mut Self))
+        }
+    }
+
     /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Interface_HArray1OfHAsciiString_dynamic_type(self as *const Self)) }
@@ -1546,6 +1569,32 @@ impl HSequenceOfCheck {
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Interface_HSequenceOfCheck()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_HSequenceOfCheck_ctor()) }
+    }
+
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Interface_HSequenceOfCheck()`
+    pub fn new_sequenceofcheck(
+        theOther: &crate::ffi::Interface_SequenceOfCheck,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HSequenceOfCheck_ctor_sequenceofcheck(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::Interface_SequenceOfCheck {
+        unsafe { &*(crate::ffi::Interface_HSequenceOfCheck_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::Interface_SequenceOfCheck) {
+        unsafe { crate::ffi::Interface_HSequenceOfCheck_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::Interface_SequenceOfCheck {
+        unsafe { &mut *(crate::ffi::Interface_HSequenceOfCheck_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::DynamicType()`

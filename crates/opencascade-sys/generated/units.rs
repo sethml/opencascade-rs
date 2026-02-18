@@ -1136,6 +1136,30 @@ impl QuantitiesSequence {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_QuantitiesSequence_ctor()) }
     }
 
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Units_QuantitiesSequence()`
+    pub fn new_qtssequence(theOther: &crate::ffi::Units_QtsSequence) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_QuantitiesSequence_ctor_qtssequence(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::Units_QtsSequence {
+        unsafe { &*(crate::ffi::Units_QuantitiesSequence_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::Units_QtsSequence) {
+        unsafe { crate::ffi::Units_QuantitiesSequence_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::Units_QtsSequence {
+        unsafe { &mut *(crate::ffi::Units_QuantitiesSequence_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Units_QuantitiesSequence_dynamic_type(self as *const Self)) }
@@ -2203,6 +2227,28 @@ impl TokensSequence {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_TokensSequence_ctor()) }
     }
 
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Units_TokensSequence()`
+    pub fn new_tkssequence(theOther: &crate::ffi::Units_TksSequence) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_TokensSequence_ctor_tkssequence(theOther))
+        }
+    }
+
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::Units_TksSequence {
+        unsafe { &*(crate::ffi::Units_TokensSequence_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::Units_TksSequence) {
+        unsafe { crate::ffi::Units_TokensSequence_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::Units_TksSequence {
+        unsafe { &mut *(crate::ffi::Units_TokensSequence_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Units_TokensSequence_dynamic_type(self as *const Self)) }
@@ -2761,6 +2807,28 @@ impl UnitsSequence {
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Units_UnitsSequence()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSequence_ctor()) }
+    }
+
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Units_UnitsSequence()`
+    pub fn new_utssequence(theOther: &crate::ffi::Units_UtsSequence) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsSequence_ctor_utssequence(theOther))
+        }
+    }
+
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::Units_UtsSequence {
+        unsafe { &*(crate::ffi::Units_UnitsSequence_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::Units_UtsSequence) {
+        unsafe { crate::ffi::Units_UnitsSequence_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::Units_UtsSequence {
+        unsafe { &mut *(crate::ffi::Units_UnitsSequence_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::DynamicType()`

@@ -562,6 +562,50 @@ impl PointsToBSpline {
         }
     }
 
+    /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:81 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
+    /// Approximate  a BSpline  Curve passing  through  an
+    /// array of  Point.  Of coordinates :
+    ///
+    /// X = X0 + DX * (i-YValues.Lower())
+    /// Y = YValues(i)
+    ///
+    /// With i in the range YValues.Lower(), YValues.Upper()
+    ///
+    /// The BSpline will be parametrized  from t = X0 to
+    /// X0 + DX * (YValues.Upper() - YValues.Lower())
+    ///
+    /// And will satisfy X(t) = t
+    ///
+    /// The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol2D
+    pub fn new_array1ofreal_real2_int2_shape_real(
+        YValues: &crate::ffi::TColStd_Array1OfReal,
+        X0: f64,
+        DX: f64,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+        Tol2D: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom2dAPI_PointsToBSpline_ctor_array1ofreal_real2_int2_shape_real(
+                    YValues,
+                    X0,
+                    DX,
+                    DegMin,
+                    DegMax,
+                    Continuity.into(),
+                    Tol2D,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:96 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
     /// Approximate  a BSpline  Curve passing  through  an
     /// array of  Point.  The resulting BSpline will  have
@@ -580,6 +624,29 @@ impl PointsToBSpline {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_parametrizationtype_int2_shape_real(Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D))
+        }
+    }
+
+    /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:112 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
+    /// Approximate  a  BSpline  Curve  passing through an
+    /// array of Point,  which parameters are given by the
+    /// array <Parameters>.
+    /// The resulting  BSpline   will have the   following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol2D
+    pub fn new_array1ofpnt2d_array1ofreal_int2_shape_real(
+        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+        Tol2D: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_array1ofreal_int2_shape_real(Points, Parameters, DegMin, DegMax, Continuity.into(), Tol2D))
         }
     }
 
@@ -629,6 +696,39 @@ impl PointsToBSpline {
         Self::new_array1ofpnt2d_int2_shape_real(Points, DegMin, DegMax, Continuity, 1.0e-6)
     }
 
+    /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:81 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
+    /// Approximate  a BSpline  Curve passing  through  an
+    /// array of  Point.  Of coordinates :
+    ///
+    /// X = X0 + DX * (i-YValues.Lower())
+    /// Y = YValues(i)
+    ///
+    /// With i in the range YValues.Lower(), YValues.Upper()
+    ///
+    /// The BSpline will be parametrized  from t = X0 to
+    /// X0 + DX * (YValues.Upper() - YValues.Lower())
+    ///
+    /// And will satisfy X(t) = t
+    ///
+    /// The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol2D
+    pub fn new_array1ofreal_real2_int2_shape(
+        YValues: &crate::ffi::TColStd_Array1OfReal,
+        X0: f64,
+        DX: f64,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofreal_real2_int2_shape_real(
+            YValues, X0, DX, DegMin, DegMax, Continuity, 1.0e-6,
+        )
+    }
+
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:96 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
     /// Approximate  a BSpline  Curve passing  through  an
     /// array of  Point.  The resulting BSpline will  have
@@ -646,6 +746,28 @@ impl PointsToBSpline {
     ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofpnt2d_parametrizationtype_int2_shape_real(
             Points, ParType, DegMin, DegMax, Continuity, 1.0e-3,
+        )
+    }
+
+    /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:112 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
+    /// Approximate  a  BSpline  Curve  passing through an
+    /// array of Point,  which parameters are given by the
+    /// array <Parameters>.
+    /// The resulting  BSpline   will have the   following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol2D
+    pub fn new_array1ofpnt2d_array1ofreal_int2_shape(
+        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofpnt2d_array1ofreal_int2_shape_real(
+            Points, Parameters, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 
@@ -695,6 +817,50 @@ impl PointsToBSpline {
         }
     }
 
+    /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:163 - `Geom2dAPI_PointsToBSpline::Init()`
+    /// Approximate  a BSpline  Curve passing  through  an
+    /// array of  Point.  Of coordinates :
+    ///
+    /// X = X0 + DX * (i-YValues.Lower())
+    /// Y = YValues(i)
+    ///
+    /// With i in the range YValues.Lower(), YValues.Upper()
+    ///
+    /// The BSpline will be parametrized  from t = X0 to
+    /// X0 + DX * (YValues.Upper() - YValues.Lower())
+    ///
+    /// And will satisfy X(t) = t
+    ///
+    /// The resulting BSpline will  have
+    /// the following properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol2D
+    pub fn init_array1ofreal_real2_int2_shape_real(
+        &mut self,
+        YValues: &crate::ffi::TColStd_Array1OfReal,
+        X0: f64,
+        DX: f64,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+        Tol2D: f64,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dAPI_PointsToBSpline_init_array1ofreal_real2_int2_shape_real(
+                self as *mut Self,
+                YValues,
+                X0,
+                DX,
+                DegMin,
+                DegMax,
+                Continuity.into(),
+                Tol2D,
+            )
+        }
+    }
+
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:178 - `Geom2dAPI_PointsToBSpline::Init()`
     /// Approximate  a BSpline  Curve passing  through  an
     /// array of  Point.  The resulting BSpline will  have
@@ -714,6 +880,38 @@ impl PointsToBSpline {
     ) {
         unsafe {
             crate::ffi::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_parametrizationtype_int2_shape_real(self as *mut Self, Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)
+        }
+    }
+
+    /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:194 - `Geom2dAPI_PointsToBSpline::Init()`
+    /// Approximate  a  BSpline  Curve  passing through an
+    /// array of Point,  which parameters are given by the
+    /// array <Parameters>.
+    /// The resulting  BSpline   will have the   following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol2D
+    pub fn init_array1ofpnt2d_array1ofreal_int2_shape_real(
+        &mut self,
+        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+        Tol2D: f64,
+    ) {
+        unsafe {
+            crate::ffi::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_array1ofreal_int2_shape_real(
+                self as *mut Self,
+                Points,
+                Parameters,
+                DegMin,
+                DegMax,
+                Continuity.into(),
+                Tol2D,
+            )
         }
     }
 

@@ -1423,6 +1423,43 @@ impl Data {
         unsafe { crate::ffi::TDF_Data_register_label(self as *mut Self, aLabel) }
     }
 
+    /// **Source:** `TDF_Data.hxx`:147 - `TDF_Data::LabelNodeAllocator()`
+    /// Returns TDF_HAllocator, which is an
+    /// incremental allocator used by
+    /// TDF_LabelNode.
+    /// This allocator is used to
+    /// manage TDF_LabelNode objects,
+    /// but it can also be used for
+    /// allocating memory to
+    /// application-specific data (be
+    /// careful because this
+    /// allocator does not release
+    /// the memory).
+    /// The benefits of this
+    /// allocation scheme are
+    /// noticeable when dealing with
+    /// large OCAF documents, due to:
+    /// 1.    Very quick allocation of
+    /// objects (memory heap is not
+    /// used, the algorithm that
+    /// replaces it is very simple).
+    /// 2.    Very quick destruction of
+    /// objects (memory is released not
+    /// by destructors of TDF_LabelNode,
+    /// but rather by the destructor of
+    /// TDF_Data).
+    /// 3.  TDF_LabelNode objects do not
+    /// fragmentize the memory; they are
+    /// kept compactly in a number of
+    /// arrays of 16K each.
+    /// 4.    Swapping is reduced on large
+    /// data, because each document now
+    /// occupies a smaller number of
+    /// memory pages.
+    pub fn label_node_allocator(&self) -> &crate::ffi::TDF_HAllocator {
+        unsafe { &*(crate::ffi::TDF_Data_label_node_allocator(self as *const Self)) }
+    }
+
     /// **Source:** `TDF_Data.hxx`:155 - `TDF_Data::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDF_Data_dynamic_type(self as *const Self)) }
@@ -1530,6 +1567,12 @@ impl DataSet {
     /// Adds a root label to <myRootLabels>.
     pub fn add_root(&mut self, aLabel: &crate::ffi::TDF_Label) {
         unsafe { crate::ffi::TDF_DataSet_add_root(self as *mut Self, aLabel) }
+    }
+
+    /// **Source:** `TDF_DataSet.hxx`:72 - `TDF_DataSet::Roots()`
+    /// Returns <myRootLabels> to be used or updated.
+    pub fn roots(&mut self) -> &mut crate::ffi::TDF_LabelList {
+        unsafe { &mut *(crate::ffi::TDF_DataSet_roots(self as *mut Self)) }
     }
 
     /// **Source:** `TDF_DataSet.hxx`:80 - `TDF_DataSet::DynamicType()`
@@ -1856,6 +1899,19 @@ impl Delta {
     /// Returns the field <myEndTime>.
     pub fn end_time(&self) -> i32 {
         unsafe { crate::ffi::TDF_Delta_end_time(self as *const Self) }
+    }
+
+    /// **Source:** `TDF_Delta.hxx`:60 - `TDF_Delta::Labels()`
+    /// Adds in <aLabelList> the labels of the attribute deltas.
+    /// Caution: <aLabelList> is not cleared before use.
+    pub fn labels(&self, aLabelList: &mut crate::ffi::TDF_LabelList) {
+        unsafe { crate::ffi::TDF_Delta_labels(self as *const Self, aLabelList) }
+    }
+
+    /// **Source:** `TDF_Delta.hxx`:63 - `TDF_Delta::AttributeDeltas()`
+    /// Returns the field <myAttDeltaList>.
+    pub fn attribute_deltas(&self) -> &crate::ffi::TDF_AttributeDeltaList {
+        unsafe { &*(crate::ffi::TDF_Delta_attribute_deltas(self as *const Self)) }
     }
 
     /// **Source:** `TDF_Delta.hxx`:66 - `TDF_Delta::Name()`
@@ -2402,6 +2458,12 @@ impl DerivedAttribute {
         let c_theType = std::ffi::CString::new(theType).unwrap();
         unsafe { &*(crate::ffi::TDF_DerivedAttribute_type_name(c_theType.as_ptr())) }
     }
+
+    /// **Source:** `TDF_DerivedAttribute.hxx`:81 - `TDF_DerivedAttribute::Attributes()`
+    /// Returns all the derived registered attributes list.
+    pub fn attributes(theList: &mut crate::ffi::TDF_AttributeList) {
+        unsafe { crate::ffi::TDF_DerivedAttribute_attributes(theList) }
+    }
 }
 
 // ========================
@@ -2430,6 +2492,27 @@ impl HAttributeArray1 {
                 theLower, theUpper,
             ))
         }
+    }
+
+    /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::TDF_HAttributeArray1()`
+    pub fn new_attributearray1(
+        theOther: &crate::ffi::TDF_AttributeArray1,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_HAttributeArray1_ctor_attributearray1(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TDF_AttributeArray1 {
+        unsafe { &*(crate::ffi::TDF_HAttributeArray1_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TDF_AttributeArray1 {
+        unsafe { &mut *(crate::ffi::TDF_HAttributeArray1_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `TDF_HAttributeArray1.hxx`:23 - `TDF_HAttributeArray1::DynamicType()`
@@ -2553,16 +2636,32 @@ impl IDFilter {
     /// An attribute with <anID> as ID is to be kept and
     /// the filter will answer true to the question
     /// IsKept(<anID>).
-    pub fn keep(&mut self, anID: &crate::ffi::Standard_GUID) {
-        unsafe { crate::ffi::TDF_IDFilter_keep(self as *mut Self, anID) }
+    pub fn keep_guid(&mut self, anID: &crate::ffi::Standard_GUID) {
+        unsafe { crate::ffi::TDF_IDFilter_keep_guid(self as *mut Self, anID) }
+    }
+
+    /// **Source:** `TDF_IDFilter.hxx`:68 - `TDF_IDFilter::Keep()`
+    /// Attributes with ID owned by <anIDList> are to be kept and
+    /// the filter will answer true to the question
+    /// IsKept(<anID>) with ID from <anIDList>.
+    pub fn keep_idlist(&mut self, anIDList: &crate::ffi::TDF_IDList) {
+        unsafe { crate::ffi::TDF_IDFilter_keep_idlist(self as *mut Self, anIDList) }
     }
 
     /// **Source:** `TDF_IDFilter.hxx`:73 - `TDF_IDFilter::Ignore()`
     /// An attribute with <anID> as ID is to be ignored and
     /// the filter will answer false to the question
     /// IsKept(<anID>).
-    pub fn ignore(&mut self, anID: &crate::ffi::Standard_GUID) {
-        unsafe { crate::ffi::TDF_IDFilter_ignore(self as *mut Self, anID) }
+    pub fn ignore_guid(&mut self, anID: &crate::ffi::Standard_GUID) {
+        unsafe { crate::ffi::TDF_IDFilter_ignore_guid(self as *mut Self, anID) }
+    }
+
+    /// **Source:** `TDF_IDFilter.hxx`:78 - `TDF_IDFilter::Ignore()`
+    /// Attributes with ID owned by <anIDList> are to be
+    /// ignored and the filter will answer false to the
+    /// question IsKept(<anID>) with ID from <anIDList>.
+    pub fn ignore_idlist(&mut self, anIDList: &crate::ffi::TDF_IDList) {
+        unsafe { crate::ffi::TDF_IDFilter_ignore_idlist(self as *mut Self, anIDList) }
     }
 
     /// **Source:** `TDF_IDFilter.hxx`:81 - `TDF_IDFilter::IsKept()`
@@ -2589,6 +2688,13 @@ impl IDFilter {
         unsafe {
             crate::ffi::TDF_IDFilter_is_ignored_handletdfattribute(self as *const Self, anAtt)
         }
+    }
+
+    /// **Source:** `TDF_IDFilter.hxx`:94 - `TDF_IDFilter::IDList()`
+    /// Copies the list of ID to be kept or ignored in
+    /// <anIDList>. <anIDList> is cleared before use.
+    pub fn id_list(&self, anIDList: &mut crate::ffi::TDF_IDList) {
+        unsafe { crate::ffi::TDF_IDFilter_id_list(self as *const Self, anIDList) }
     }
 
     /// **Source:** `TDF_IDFilter.hxx`:98 - `TDF_IDFilter::Copy()`
@@ -3359,6 +3465,14 @@ impl RelocationTable {
         unsafe { crate::ffi::TDF_RelocationTable_clear(self as *mut Self) }
     }
 
+    /// **Source:** `TDF_RelocationTable.hxx`:148 - `TDF_RelocationTable::TransientTable()`
+    /// Returns <myTransientTable> to be used or updated.
+    pub fn transient_table(
+        &mut self,
+    ) -> &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient {
+        unsafe { &mut *(crate::ffi::TDF_RelocationTable_transient_table(self as *mut Self)) }
+    }
+
     /// **Source:** `TDF_RelocationTable.hxx`:156 - `TDF_RelocationTable::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDF_RelocationTable_dynamic_type(self as *const Self)) }
@@ -3791,6 +3905,26 @@ impl Tool {
         unsafe { crate::ffi::TDF_Tool_entry(aLabel, anEntry) }
     }
 
+    /// **Source:** `TDF_Tool.hxx`:119 - `TDF_Tool::TagList()`
+    /// Returns the entry of <aLabel> as list of integers
+    /// in <aTagList>.
+    pub fn tag_list_label_listofinteger(
+        aLabel: &crate::ffi::TDF_Label,
+        aTagList: &mut crate::ffi::TColStd_ListOfInteger,
+    ) {
+        unsafe { crate::ffi::TDF_Tool_tag_list_label_listofinteger(aLabel, aTagList) }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:123 - `TDF_Tool::TagList()`
+    /// Returns the entry expressed by <anEntry> as list
+    /// of integers in <aTagList>.
+    pub fn tag_list_asciistring_listofinteger(
+        anEntry: &crate::ffi::TCollection_AsciiString,
+        aTagList: &mut crate::ffi::TColStd_ListOfInteger,
+    ) {
+        unsafe { crate::ffi::TDF_Tool_tag_list_asciistring_listofinteger(anEntry, aTagList) }
+    }
+
     /// **Source:** `TDF_Tool.hxx`:129 - `TDF_Tool::Label()`
     /// Returns the label expressed by <anEntry>; creates
     /// the label if it does not exist and if <create> is
@@ -3825,6 +3959,23 @@ impl Tool {
                 c_anEntry.as_ptr(),
                 aLabel,
                 create,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:145 - `TDF_Tool::Label()`
+    /// Returns the label expressed by <anEntry>; creates
+    /// the label if it does not exist and if <create> is
+    /// true.
+    pub fn label_handletdfdata_listofinteger_label_bool(
+        aDF: &crate::ffi::HandleTDFData,
+        aTagList: &crate::ffi::TColStd_ListOfInteger,
+        aLabel: &mut crate::ffi::TDF_Label,
+        create: bool,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Tool_label_handletdfdata_listofinteger_label_bool(
+                aDF, aTagList, aLabel, create,
             )
         }
     }

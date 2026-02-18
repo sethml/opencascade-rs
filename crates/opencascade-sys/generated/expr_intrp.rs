@@ -176,6 +176,16 @@ impl GenExp {
             &mut *(crate::ffi::ExprIntrp_GenExp_as_ExprIntrp_Generator_mut(self as *mut Self))
         }
     }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
+    pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
+        unsafe { &*(crate::ffi::ExprIntrp_GenExp_inherited_GetNamed(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
+        unsafe { &*(crate::ffi::ExprIntrp_GenExp_inherited_GetFunctions(self as *const Self)) }
+    }
 }
 
 // ========================
@@ -234,6 +244,16 @@ impl GenFct {
         unsafe {
             &mut *(crate::ffi::ExprIntrp_GenFct_as_ExprIntrp_Generator_mut(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
+    pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
+        unsafe { &*(crate::ffi::ExprIntrp_GenFct_inherited_GetNamed(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
+        unsafe { &*(crate::ffi::ExprIntrp_GenFct_inherited_GetFunctions(self as *const Self)) }
     }
 }
 
@@ -305,6 +325,16 @@ impl GenRel {
             &mut *(crate::ffi::ExprIntrp_GenRel_as_ExprIntrp_Generator_mut(self as *mut Self))
         }
     }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
+    pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
+        unsafe { &*(crate::ffi::ExprIntrp_GenRel_inherited_GetNamed(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
+        unsafe { &*(crate::ffi::ExprIntrp_GenRel_inherited_GetFunctions(self as *const Self)) }
+    }
 }
 
 // ========================
@@ -323,6 +353,16 @@ unsafe impl crate::CppDeletable for Generator {
 }
 
 impl Generator {
+    /// **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
+    pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
+        unsafe { &*(crate::ffi::ExprIntrp_Generator_get_named(self as *const Self)) }
+    }
+
+    /// **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
+        unsafe { &*(crate::ffi::ExprIntrp_Generator_get_functions(self as *const Self)) }
+    }
+
     /// **Source:** `ExprIntrp_Generator.hxx`:56 - `ExprIntrp_Generator::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ExprIntrp_Generator_dynamic_type(self as *const Self)) }

@@ -514,6 +514,20 @@ impl EdgeTool {
     pub fn nb_intervals(C: &crate::ffi::BRepAdaptor_Curve, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::BRepGProp_EdgeTool_nb_intervals(C, S.into()) }
     }
+
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:74 - `BRepGProp_EdgeTool::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(
+        C: &crate::ffi::BRepAdaptor_Curve,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::BRepGProp_EdgeTool_intervals(C, T, S.into()) }
+    }
 }
 
 // ========================
@@ -615,6 +629,16 @@ impl Face {
         unsafe { crate::ffi::BRepGProp_Face_su_int_subs(self as *const Self) }
     }
 
+    /// **Source:** `BRepGProp_Face.hxx`:75 - `BRepGProp_Face::UKnots()`
+    pub fn u_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepGProp_Face_u_knots(self as *const Self, Knots) }
+    }
+
+    /// **Source:** `BRepGProp_Face.hxx`:77 - `BRepGProp_Face::VKnots()`
+    pub fn v_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepGProp_Face_v_knots(self as *const Self, Knots) }
+    }
+
     /// **Source:** `BRepGProp_Face.hxx`:79 - `BRepGProp_Face::LIntOrder()`
     pub fn l_int_order(&self, Eps: f64) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_l_int_order(self as *const Self, Eps) }
@@ -623,6 +647,11 @@ impl Face {
     /// **Source:** `BRepGProp_Face.hxx`:81 - `BRepGProp_Face::LIntSubs()`
     pub fn l_int_subs(&self) -> i32 {
         unsafe { crate::ffi::BRepGProp_Face_l_int_subs(self as *const Self) }
+    }
+
+    /// **Source:** `BRepGProp_Face.hxx`:83 - `BRepGProp_Face::LKnots()`
+    pub fn l_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::BRepGProp_Face_l_knots(self as *const Self, Knots) }
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:88 - `BRepGProp_Face::UIntegrationOrder()`

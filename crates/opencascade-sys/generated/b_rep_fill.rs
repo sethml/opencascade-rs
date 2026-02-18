@@ -225,6 +225,11 @@ impl ACRLaw {
         unsafe { crate::ffi::BRepFill_ACRLaw_inherited_NbHoles(self as *mut Self, Tol) }
     }
 
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Holes(self as *const Self, Interval) }
+    }
+
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         unsafe { crate::ffi::BRepFill_ACRLaw_inherited_NbLaw(self as *const Self) }
@@ -522,6 +527,11 @@ impl CompatibleWires {
                 SubSection,
             ))
         }
+    }
+
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:60 - `BRepFill_CompatibleWires::Generated()`
+    pub fn generated(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BRepFill_CompatibleWires_generated(self as *const Self)) }
     }
 
     /// **Source:** `BRepFill_CompatibleWires.hxx`:62 - `BRepFill_CompatibleWires::IsDegeneratedFirstSection()`
@@ -1202,6 +1212,11 @@ impl DraftLaw {
         unsafe { crate::ffi::BRepFill_DraftLaw_inherited_NbHoles(self as *mut Self, Tol) }
     }
 
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Holes(self as *const Self, Interval) }
+    }
+
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         unsafe { crate::ffi::BRepFill_DraftLaw_inherited_NbLaw(self as *const Self) }
@@ -1384,6 +1399,11 @@ impl Edge3DLaw {
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
         unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_NbHoles(self as *mut Self, Tol) }
+    }
+
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_Holes(self as *const Self, Interval) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
@@ -1617,6 +1637,11 @@ impl EdgeOnSurfLaw {
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
         unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_NbHoles(self as *mut Self, Tol) }
+    }
+
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Holes(self as *const Self, Interval) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
@@ -2456,6 +2481,12 @@ impl Generator {
         unsafe { &*(crate::ffi::BRepFill_Generator_shell(self as *const Self)) }
     }
 
+    /// **Source:** `BRepFill_Generator.hxx`:52 - `BRepFill_Generator::Generated()`
+    /// Returns  all   the shapes created
+    pub fn generated(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BRepFill_Generator_generated(self as *const Self)) }
+    }
+
     /// **Source:** `BRepFill_Generator.hxx`:56 - `BRepFill_Generator::GeneratedShapes()`
     /// Returns   the  shapes  created  from   a  subshape
     /// <SSection>  of a  section.
@@ -2571,6 +2602,11 @@ impl LocationLaw {
     /// **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
         unsafe { crate::ffi::BRepFill_LocationLaw_nb_holes(self as *mut Self, Tol) }
+    }
+
+    /// **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::BRepFill_LocationLaw_holes(self as *const Self, Interval) }
     }
 
     /// **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
@@ -2973,10 +3009,39 @@ impl NSections {
         }
     }
 
+    /// **Source:** `BRepFill_NSections.hxx`:48 - `BRepFill_NSections::BRepFill_NSections()`
+    /// Construct
+    pub fn new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(
+        S: &crate::ffi::TopTools_SequenceOfShape,
+        Trsfs: &crate::ffi::GeomFill_SequenceOfTrsf,
+        P: &crate::ffi::TColStd_SequenceOfReal,
+        VF: f64,
+        VL: f64,
+        Build: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_NSections_ctor_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(S, Trsfs, P, VF, VL, Build))
+        }
+    }
+
     /// **Source:** `BRepFill_NSections.hxx`:44 - `BRepFill_NSections::BRepFill_NSections()`
     /// Construct
     pub fn new_sequenceofshape(S: &crate::ffi::TopTools_SequenceOfShape) -> crate::OwnedPtr<Self> {
         Self::new_sequenceofshape_bool(S, true)
+    }
+
+    /// **Source:** `BRepFill_NSections.hxx`:48 - `BRepFill_NSections::BRepFill_NSections()`
+    /// Construct
+    pub fn new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2(
+        S: &crate::ffi::TopTools_SequenceOfShape,
+        Trsfs: &crate::ffi::GeomFill_SequenceOfTrsf,
+        P: &crate::ffi::TColStd_SequenceOfReal,
+        VF: f64,
+        VL: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(
+            S, Trsfs, P, VF, VL, true,
+        )
     }
 
     /// **Source:** `BRepFill_NSections.hxx`:56 - `BRepFill_NSections::IsVertex()`
@@ -4495,6 +4560,47 @@ impl Sweep {
         unsafe { crate::ffi::BRepFill_Sweep_set_force_approx_c1(self as *mut Self, ForceApproxC1) }
     }
 
+    /// **Source:** `BRepFill_Sweep.hxx`:92 - `BRepFill_Sweep::Build()`
+    /// Build the Sweep Surface
+    /// Transition define Transition strategy
+    /// Approx define Approximation Strategy
+    /// - GeomFill_Section : The composed Function Location X Section
+    /// is directly approximated.
+    /// - GeomFill_Location : The location law is approximated, and the
+    /// SweepSurface builds an algebraic composition
+    /// of approximated location law and section law
+    /// This option is Ok, if Section.Surface() methode
+    /// is effective.
+    /// Continuity : The continuity in v waiting on the surface
+    /// Degmax     : The maximum degree in v required on the surface
+    /// Segmax     : The maximum number of span in v required on
+    /// the surface.
+    pub fn build(
+        &mut self,
+        ReversedEdges: &mut crate::ffi::TopTools_MapOfShape,
+        Tapes: &mut crate::ffi::BRepFill_DataMapOfShapeHArray2OfShape,
+        Rails: &mut crate::ffi::BRepFill_DataMapOfShapeHArray2OfShape,
+        Transition: crate::b_rep_fill::TransitionStyle,
+        Continuity: crate::geom_abs::Shape,
+        Approx: crate::geom_fill::ApproxStyle,
+        Degmax: i32,
+        Segmax: i32,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_Sweep_build(
+                self as *mut Self,
+                ReversedEdges,
+                Tapes,
+                Rails,
+                Transition.into(),
+                Continuity.into(),
+                Approx.into(),
+                Degmax,
+                Segmax,
+            )
+        }
+    }
+
     /// **Source:** `BRepFill_Sweep.hxx`:102 - `BRepFill_Sweep::IsDone()`
     /// Say if the Shape is Build.
     pub fn is_done(&self) -> bool {
@@ -4575,6 +4681,54 @@ impl TrimEdgeTool {
                 crate::ffi::BRepFill_TrimEdgeTool_ctor_bisec_handlegeom2dgeometry2_real(
                     Bisec, S1, S2, Offset,
                 ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:48 - `BRepFill_TrimEdgeTool::IntersectWith()`
+    pub fn intersect_with(
+        &mut self,
+        Edge1: &crate::ffi::TopoDS_Edge,
+        Edge2: &crate::ffi::TopoDS_Edge,
+        InitShape1: &crate::ffi::TopoDS_Shape,
+        InitShape2: &crate::ffi::TopoDS_Shape,
+        End1: &crate::ffi::TopoDS_Vertex,
+        End2: &crate::ffi::TopoDS_Vertex,
+        theJoinType: crate::geom_abs::JoinType,
+        IsOpenResult: bool,
+        Params: &mut crate::ffi::TColgp_SequenceOfPnt,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_TrimEdgeTool_intersect_with(
+                self as *mut Self,
+                Edge1,
+                Edge2,
+                InitShape1,
+                InitShape2,
+                End1,
+                End2,
+                theJoinType.into(),
+                IsOpenResult,
+                Params,
+            )
+        }
+    }
+
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:58 - `BRepFill_TrimEdgeTool::AddOrConfuse()`
+    pub fn add_or_confuse(
+        &self,
+        Start: bool,
+        Edge1: &crate::ffi::TopoDS_Edge,
+        Edge2: &crate::ffi::TopoDS_Edge,
+        Params: &mut crate::ffi::TColgp_SequenceOfPnt,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_TrimEdgeTool_add_or_confuse(
+                self as *const Self,
+                Start,
+                Edge1,
+                Edge2,
+                Params,
             )
         }
     }
@@ -4695,6 +4849,30 @@ impl TrimSurfaceTool {
                 crate::ffi::BRepFill_TrimSurfaceTool_ctor_handlegeom2dcurve_face2_edge2_bool2(
                     Bis, Face1, Face2, Edge1, Edge2, Inv1, Inv2,
                 ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:54 - `BRepFill_TrimSurfaceTool::IntersectWith()`
+    /// Intersect <Bis>  with the  projection of the edges
+    /// <EdgeOnFi> and returns the intersecting parameters
+    /// on Bis and on the edges
+    /// P.X() : Parameter on Bis
+    /// P.Y() : Parameter on EdgeOnF1
+    /// P.Z() : Parameter on EdgeOnF2
+    /// raises if <Edge> is not a edge of Face1 or Face2.
+    pub fn intersect_with(
+        &self,
+        EdgeOnF1: &crate::ffi::TopoDS_Edge,
+        EdgeOnF2: &crate::ffi::TopoDS_Edge,
+        Points: &mut crate::ffi::TColgp_SequenceOfPnt,
+    ) {
+        unsafe {
+            crate::ffi::BRepFill_TrimSurfaceTool_intersect_with(
+                self as *const Self,
+                EdgeOnF1,
+                EdgeOnF2,
+                Points,
             )
         }
     }

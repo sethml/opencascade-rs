@@ -407,6 +407,17 @@ impl Curve2dTool {
         unsafe { crate::ffi::Extrema_Curve2dTool_nb_intervals(C, S.into()) }
     }
 
+    /// **Source:** `Extrema_Curve2dTool.hxx`:60 - `Extrema_Curve2dTool::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    pub fn intervals(
+        C: &crate::ffi::Adaptor2d_Curve2d,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::Extrema_Curve2dTool_intervals(C, T, S.into()) }
+    }
+
     /// **Source:** `Extrema_Curve2dTool.hxx`:65 - `Extrema_Curve2dTool::DeflCurvIntervals()`
     /// Returns the parameters bounding the intervals of subdivision of curve
     /// according to Curvature deflection. Value of deflection is defined in method.
@@ -616,6 +627,20 @@ impl CurveTool {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(C: &mut crate::ffi::Adaptor3d_Curve, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Extrema_CurveTool_nb_intervals(C, S.into()) }
+    }
+
+    /// **Source:** `Extrema_CurveTool.hxx`:62 - `Extrema_CurveTool::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(
+        C: &mut crate::ffi::Adaptor3d_Curve,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::Extrema_CurveTool_intervals(C, T, S.into()) }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:67 - `Extrema_CurveTool::DeflCurvIntervals()`
@@ -5066,6 +5091,24 @@ impl FuncExtCS {
         unsafe { &*(crate::ffi::Extrema_FuncExtCS_point_on_surface(self as *const Self, N)) }
     }
 
+    /// **Source:** `Extrema_FuncExtCS.hxx`:81 - `Extrema_FuncExtCS::SquareDistances()`
+    /// Change Sequence of SquareDistance
+    pub fn square_distances(&mut self) -> &mut crate::ffi::TColStd_SequenceOfReal {
+        unsafe { &mut *(crate::ffi::Extrema_FuncExtCS_square_distances(self as *mut Self)) }
+    }
+
+    /// **Source:** `Extrema_FuncExtCS.hxx`:84 - `Extrema_FuncExtCS::PointsOnCurve()`
+    /// Change Sequence of PointOnCurv
+    pub fn points_on_curve(&mut self) -> &mut crate::ffi::Extrema_SequenceOfPOnCurv {
+        unsafe { &mut *(crate::ffi::Extrema_FuncExtCS_points_on_curve(self as *mut Self)) }
+    }
+
+    /// **Source:** `Extrema_FuncExtCS.hxx`:87 - `Extrema_FuncExtCS::PointsOnSurf()`
+    /// Change Sequence of PointOnSurf
+    pub fn points_on_surf(&mut self) -> &mut crate::ffi::Extrema_SequenceOfPOnSurf {
+        unsafe { &mut *(crate::ffi::Extrema_FuncExtCS_points_on_surf(self as *mut Self)) }
+    }
+
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
@@ -6729,6 +6772,27 @@ impl HArray1OfPOnCurv {
         }
     }
 
+    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
+    pub fn new_array1ofponcurv(
+        theOther: &crate::ffi::Extrema_Array1OfPOnCurv,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_ctor_array1ofponcurv(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Extrema_Array1OfPOnCurv {
+        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Extrema_Array1OfPOnCurv {
+        unsafe { &mut *(crate::ffi::Extrema_HArray1OfPOnCurv_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv_dynamic_type(self as *const Self)) }
@@ -6806,6 +6870,27 @@ impl HArray1OfPOnCurv2d {
                 theLower, theUpper,
             ))
         }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
+    pub fn new_array1ofponcurv2d(
+        theOther: &crate::ffi::Extrema_Array1OfPOnCurv2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_array1ofponcurv2d(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Extrema_Array1OfPOnCurv2d {
+        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnCurv2d_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Extrema_Array1OfPOnCurv2d {
+        unsafe { &mut *(crate::ffi::Extrema_HArray1OfPOnCurv2d_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::DynamicType()`
@@ -6887,6 +6972,27 @@ impl HArray1OfPOnSurf {
         }
     }
 
+    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
+    pub fn new_array1ofponsurf(
+        theOther: &crate::ffi::Extrema_Array1OfPOnSurf,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_ctor_array1ofponsurf(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Extrema_Array1OfPOnSurf {
+        unsafe { &*(crate::ffi::Extrema_HArray1OfPOnSurf_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Extrema_Array1OfPOnSurf {
+        unsafe { &mut *(crate::ffi::Extrema_HArray1OfPOnSurf_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Extrema_HArray1OfPOnSurf_dynamic_type(self as *const Self)) }
@@ -6952,6 +7058,27 @@ unsafe impl crate::CppDeletable for HArray2OfPOnCurv {
 }
 
 impl HArray2OfPOnCurv {
+    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Extrema_HArray2OfPOnCurv()`
+    pub fn new_array2ofponcurv(
+        theOther: &crate::ffi::Extrema_Array2OfPOnCurv,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv_ctor_array2ofponcurv(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Array2()`
+    pub fn array2(&self) -> &crate::ffi::Extrema_Array2OfPOnCurv {
+        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::Extrema_Array2OfPOnCurv {
+        unsafe { &mut *(crate::ffi::Extrema_HArray2OfPOnCurv_change_array2(self as *mut Self)) }
+    }
+
     /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv_dynamic_type(self as *const Self)) }
@@ -7017,6 +7144,27 @@ unsafe impl crate::CppDeletable for HArray2OfPOnCurv2d {
 }
 
 impl HArray2OfPOnCurv2d {
+    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Extrema_HArray2OfPOnCurv2d()`
+    pub fn new_array2ofponcurv2d(
+        theOther: &crate::ffi::Extrema_Array2OfPOnCurv2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_array2ofponcurv2d(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Array2()`
+    pub fn array2(&self) -> &crate::ffi::Extrema_Array2OfPOnCurv2d {
+        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv2d_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::Extrema_Array2OfPOnCurv2d {
+        unsafe { &mut *(crate::ffi::Extrema_HArray2OfPOnCurv2d_change_array2(self as *mut Self)) }
+    }
+
     /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Extrema_HArray2OfPOnCurv2d_dynamic_type(self as *const Self)) }
@@ -7082,6 +7230,27 @@ unsafe impl crate::CppDeletable for HArray2OfPOnSurf {
 }
 
 impl HArray2OfPOnSurf {
+    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Extrema_HArray2OfPOnSurf()`
+    pub fn new_array2ofponsurf(
+        theOther: &crate::ffi::Extrema_Array2OfPOnSurf,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnSurf_ctor_array2ofponsurf(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Array2()`
+    pub fn array2(&self) -> &crate::ffi::Extrema_Array2OfPOnSurf {
+        unsafe { &*(crate::ffi::Extrema_HArray2OfPOnSurf_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::Extrema_Array2OfPOnSurf {
+        unsafe { &mut *(crate::ffi::Extrema_HArray2OfPOnSurf_change_array2(self as *mut Self)) }
+    }
+
     /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Extrema_HArray2OfPOnSurf_dynamic_type(self as *const Self)) }

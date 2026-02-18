@@ -1316,6 +1316,19 @@ impl Node {
         unsafe { crate::ffi::MAT_Node_index(self as *const Self) }
     }
 
+    /// **Source:** `MAT_Node.hxx`:50 - `MAT_Node::LinkedArcs()`
+    /// Returns in <S> the Arcs linked to <me>.
+    pub fn linked_arcs(&self, S: &mut crate::ffi::MAT_SequenceOfArc) {
+        unsafe { crate::ffi::MAT_Node_linked_arcs(self as *const Self, S) }
+    }
+
+    /// **Source:** `MAT_Node.hxx`:54 - `MAT_Node::NearElts()`
+    /// Returns  in <S> the BasicElts equidistant
+    /// to <me>.
+    pub fn near_elts(&self, S: &mut crate::ffi::MAT_SequenceOfBasicElt) {
+        unsafe { crate::ffi::MAT_Node_near_elts(self as *const Self, S) }
+    }
+
     /// **Source:** `MAT_Node.hxx`:56 - `MAT_Node::Distance()`
     pub fn distance(&self) -> f64 {
         unsafe { crate::ffi::MAT_Node_distance(self as *const Self) }

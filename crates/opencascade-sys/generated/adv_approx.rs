@@ -106,6 +106,18 @@ impl ApproxAFunction {
         unsafe { crate::ffi::AdvApprox_ApproxAFunction_nb_poles(self as *const Self) }
     }
 
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:131 - `AdvApprox_ApproxAFunction::Poles1d()`
+    /// returns the poles at Index from the 1d subspace
+    pub fn poles1d_int_array1ofreal(&self, Index: i32, P: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::AdvApprox_ApproxAFunction_poles1d_int_array1ofreal(
+                self as *const Self,
+                Index,
+                P,
+            )
+        }
+    }
+
     /// **Source:** `AdvApprox_ApproxAFunction.hxx`:134 - `AdvApprox_ApproxAFunction::Poles2d()`
     /// returns the poles at Index from the 2d subspace
     pub fn poles2d_int_array1ofpnt2d(&self, Index: i32, P: &mut crate::ffi::TColgp_Array1OfPnt2d) {

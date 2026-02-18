@@ -311,8 +311,18 @@ impl Curve {
     }
 
     /// **Source:** `ShapeConstruct_Curve.hxx`:104 - `ShapeConstruct_Curve::FixKnots()`
-    pub fn fix_knots(knots: &mut crate::ffi::HandleTColStdHArray1OfReal) -> bool {
-        unsafe { crate::ffi::ShapeConstruct_Curve_fix_knots(knots) }
+    pub fn fix_knots_handletcolstdharray1ofreal(
+        knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
+    ) -> bool {
+        unsafe { crate::ffi::ShapeConstruct_Curve_fix_knots_handletcolstdharray1ofreal(knots) }
+    }
+
+    /// **Source:** `ShapeConstruct_Curve.hxx`:109 - `ShapeConstruct_Curve::FixKnots()`
+    /// Fix bspline knots to ensure that there is enough
+    /// gap between neighbouring values
+    /// Returns True if something fixed (by shifting knot)
+    pub fn fix_knots_array1ofreal(knots: &mut crate::ffi::TColStd_Array1OfReal) -> bool {
+        unsafe { crate::ffi::ShapeConstruct_Curve_fix_knots_array1ofreal(knots) }
     }
 }
 

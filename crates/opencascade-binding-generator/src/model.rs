@@ -517,6 +517,17 @@ impl Type {
         }
     }
 
+    /// Check if this type is a pointer type suitable for nullable parameter binding.
+    /// Similar to `Param::is_nullable_ptr()` but operates on a bare `Type` without
+    /// requiring a `has_default` check. Excludes `const char*` (handled as strings).
+    pub fn is_nullable_ptr(&self) -> bool {
+        match self {
+            Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => false,
+            Type::ConstPtr(_) | Type::MutPtr(_) => true,
+            _ => false,
+        }
+    }
+
     /// Check if this type is a nested/qualified type (e.g., SomeClass::value_type) or template type
     /// that couldn't be resolved to a simple type name.
     pub fn is_nested_type(&self) -> bool {

@@ -193,6 +193,13 @@ impl ConfigurationNode {
             )
         }
     }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    pub fn custom_activation(&mut self, arg0: &crate::ffi::TColStd_ListOfAsciiString) {
+        unsafe {
+            crate::ffi::DEXCAF_ConfigurationNode_inherited_CustomActivation(self as *mut Self, arg0)
+        }
+    }
 }
 
 // ========================

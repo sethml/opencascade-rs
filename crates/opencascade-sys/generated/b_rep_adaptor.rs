@@ -168,6 +168,16 @@ impl CompCurve {
         unsafe { crate::ffi::BRepAdaptor_CompCurve_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `BRepAdaptor_CompCurve.hxx`:113 - `BRepAdaptor_CompCurve::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepAdaptor_CompCurve_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `BRepAdaptor_CompCurve.hxx`:120 - `BRepAdaptor_CompCurve::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -571,6 +581,16 @@ impl Curve {
         unsafe { crate::ffi::BRepAdaptor_Curve_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `BRepAdaptor_Curve.hxx`:131 - `BRepAdaptor_Curve::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepAdaptor_Curve_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `BRepAdaptor_Curve.hxx`:138 - `BRepAdaptor_Curve::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -950,6 +970,13 @@ impl Curve2d {
         }
     }
 
+    /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:109 - `Geom2dAdaptor_Curve::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::BRepAdaptor_Curve2d_inherited_Intervals(self as *const Self, T, S.into())
+        }
+    }
+
     /// Inherited: **Source:** `Geom2dAdaptor_Curve.hxx`:116 - `Geom2dAdaptor_Curve::Trim()`
     pub fn trim(
         &self,
@@ -1170,6 +1197,27 @@ impl HArray1OfCurve {
         }
     }
 
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
+    pub fn new_array1ofcurve(
+        theOther: &crate::ffi::BRepAdaptor_Array1OfCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::Array1()`
+    pub fn array1(&self) -> &crate::ffi::BRepAdaptor_Array1OfCurve {
+        unsafe { &*(crate::ffi::BRepAdaptor_HArray1OfCurve_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::BRepAdaptor_Array1OfCurve {
+        unsafe { &mut *(crate::ffi::BRepAdaptor_HArray1OfCurve_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepAdaptor_HArray1OfCurve_dynamic_type(self as *const Self)) }
@@ -1376,6 +1424,20 @@ impl Surface {
     /// intervals.
     pub fn nb_v_intervals(&self, theSh: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::BRepAdaptor_Surface_nb_v_intervals(self as *const Self, theSh.into()) }
+    }
+
+    /// **Source:** `BRepAdaptor_Surface.hxx`:125 - `BRepAdaptor_Surface::UIntervals()`
+    /// Returns the  intervals with the requested continuity
+    /// in the U direction.
+    pub fn u_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepAdaptor_Surface_u_intervals(self as *const Self, T, S.into()) }
+    }
+
+    /// **Source:** `BRepAdaptor_Surface.hxx`:130 - `BRepAdaptor_Surface::VIntervals()`
+    /// Returns the  intervals with the requested continuity
+    /// in the V direction.
+    pub fn v_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BRepAdaptor_Surface_v_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `BRepAdaptor_Surface.hxx`:138 - `BRepAdaptor_Surface::UTrim()`

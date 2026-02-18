@@ -77,6 +77,20 @@ impl Driver {
         }
     }
 
+    /// **Source:** `TFunction_Driver.hxx`:74 - `TFunction_Driver::Arguments()`
+    /// The method fills-in the list by labels,
+    /// where the arguments of the function are located.
+    pub fn arguments(&self, args: &mut crate::ffi::TDF_LabelList) {
+        unsafe { crate::ffi::TFunction_Driver_arguments(self as *const Self, args) }
+    }
+
+    /// **Source:** `TFunction_Driver.hxx`:78 - `TFunction_Driver::Results()`
+    /// The method fills-in the list by labels,
+    /// where the results of the function are located.
+    pub fn results(&self, res: &mut crate::ffi::TDF_LabelList) {
+        unsafe { crate::ffi::TFunction_Driver_results(self as *const Self, res) }
+    }
+
     /// **Source:** `TFunction_Driver.hxx`:80 - `TFunction_Driver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TFunction_Driver_dynamic_type(self as *const Self)) }
@@ -580,6 +594,12 @@ impl GraphNode {
         unsafe { crate::ffi::TFunction_GraphNode_remove_previous_label(self as *mut Self, func) }
     }
 
+    /// **Source:** `TFunction_GraphNode.hxx`:67 - `TFunction_GraphNode::GetPrevious()`
+    /// Returns a map of previous functions.
+    pub fn get_previous(&self) -> &crate::ffi::TColStd_MapOfInteger {
+        unsafe { &*(crate::ffi::TFunction_GraphNode_get_previous(self as *const Self)) }
+    }
+
     /// **Source:** `TFunction_GraphNode.hxx`:70 - `TFunction_GraphNode::RemoveAllPrevious()`
     /// Clears a map of previous functions.
     pub fn remove_all_previous(&mut self) {
@@ -608,6 +628,12 @@ impl GraphNode {
     /// Removes a reference to the function as a next one.
     pub fn remove_next_label(&mut self, func: &crate::ffi::TDF_Label) -> bool {
         unsafe { crate::ffi::TFunction_GraphNode_remove_next_label(self as *mut Self, func) }
+    }
+
+    /// **Source:** `TFunction_GraphNode.hxx`:85 - `TFunction_GraphNode::GetNext()`
+    /// Returns a map of next functions.
+    pub fn get_next(&self) -> &crate::ffi::TColStd_MapOfInteger {
+        unsafe { &*(crate::ffi::TFunction_GraphNode_get_next(self as *const Self)) }
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:88 - `TFunction_GraphNode::RemoveAllNext()`
@@ -908,6 +934,35 @@ impl HArray1OfDataMapOfGUIDDriver {
         }
     }
 
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::TFunction_HArray1OfDataMapOfGUIDDriver()`
+    pub fn new_array1ofdatamapofguiddriver(
+        theOther: &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_array1ofdatamapofguiddriver(
+                    theOther,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver {
+        unsafe {
+            &*(crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_array1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver {
+        unsafe {
+            &mut *(crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -1012,6 +1067,32 @@ impl IFunction {
     /// Updates the dependencies of this function only.
     pub fn update_dependencies(&self) -> bool {
         unsafe { crate::ffi::TFunction_IFunction_update_dependencies(self as *const Self) }
+    }
+
+    /// **Source:** `TFunction_IFunction.hxx`:73 - `TFunction_IFunction::Arguments()`
+    /// The method fills-in the list by labels,
+    /// where the arguments of the function are located.
+    pub fn arguments(&self, args: &mut crate::ffi::TDF_LabelList) {
+        unsafe { crate::ffi::TFunction_IFunction_arguments(self as *const Self, args) }
+    }
+
+    /// **Source:** `TFunction_IFunction.hxx`:77 - `TFunction_IFunction::Results()`
+    /// The method fills-in the list by labels,
+    /// where the results of the function are located.
+    pub fn results(&self, res: &mut crate::ffi::TDF_LabelList) {
+        unsafe { crate::ffi::TFunction_IFunction_results(self as *const Self, res) }
+    }
+
+    /// **Source:** `TFunction_IFunction.hxx`:80 - `TFunction_IFunction::GetPrevious()`
+    /// Returns a list of previous functions.
+    pub fn get_previous(&self, prev: &mut crate::ffi::TDF_LabelList) {
+        unsafe { crate::ffi::TFunction_IFunction_get_previous(self as *const Self, prev) }
+    }
+
+    /// **Source:** `TFunction_IFunction.hxx`:83 - `TFunction_IFunction::GetNext()`
+    /// Returns a list of next functions.
+    pub fn get_next(&self, prev: &mut crate::ffi::TDF_LabelList) {
+        unsafe { crate::ffi::TFunction_IFunction_get_next(self as *const Self, prev) }
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:86 - `TFunction_IFunction::GetStatus()`
@@ -1128,6 +1209,15 @@ impl Iterator {
     /// maximum number of threads may be used to calculate the model.
     pub fn get_max_nb_threads(&self) -> i32 {
         unsafe { crate::ffi::TFunction_Iterator_get_max_nb_threads(self as *const Self) }
+    }
+
+    /// **Source:** `TFunction_Iterator.hxx`:67 - `TFunction_Iterator::Current()`
+    /// Returns the current list of functions.
+    /// If the iterator uses the execution status,
+    /// the returned list contains only the functions
+    /// with "not executed" status.
+    pub fn current(&self) -> &crate::ffi::TDF_LabelList {
+        unsafe { &*(crate::ffi::TFunction_Iterator_current(self as *const Self)) }
     }
 
     /// **Source:** `TFunction_Iterator.hxx`:70 - `TFunction_Iterator::More()`

@@ -557,12 +557,13 @@ fn generate_output(
     // Compute ClassBindings once for ALL classes — shared by all three generators
     let collection_type_names: std::collections::HashSet<String> =
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
+    let extra_typedef_names = parser::get_collected_typedef_names();
     let all_bindings =
-        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names);
+        codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names);
 
     // Compute FunctionBindings once for ALL free functions — shared by all three generators
     let all_function_bindings = codegen::bindings::compute_all_function_bindings(
-        symbol_table, all_classes, &collection_type_names, known_headers,
+        symbol_table, all_classes, &collection_type_names, &extra_typedef_names, known_headers,
     );
 
     // Track generated files for formatting

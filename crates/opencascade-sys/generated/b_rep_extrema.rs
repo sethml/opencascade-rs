@@ -365,6 +365,18 @@ impl DistanceSS {
     pub fn dist_value(&self) -> f64 {
         unsafe { crate::ffi::BRepExtrema_DistanceSS_dist_value(self as *const Self) }
     }
+
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:74 - `BRepExtrema_DistanceSS::Seq1Value()`
+    /// Returns the list of solutions on the first shape.
+    pub fn seq1_value(&self) -> &crate::ffi::BRepExtrema_SeqOfSolution {
+        unsafe { &*(crate::ffi::BRepExtrema_DistanceSS_seq1_value(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:77 - `BRepExtrema_DistanceSS::Seq2Value()`
+    /// Returns the list of solutions on the second shape.
+    pub fn seq2_value(&self) -> &crate::ffi::BRepExtrema_SeqOfSolution {
+        unsafe { &*(crate::ffi::BRepExtrema_DistanceSS_seq2_value(self as *const Self)) }
+    }
 }
 
 // ========================

@@ -87,6 +87,25 @@ impl Circuit {
         Self::new_jointype_bool(aJoinType, false)
     }
 
+    /// **Source:** `MAT2d_Circuit.hxx`:50 - `MAT2d_Circuit::Perform()`
+    pub fn perform(
+        &mut self,
+        aFigure: &mut crate::ffi::MAT2d_SequenceOfSequenceOfGeometry,
+        IsClosed: &crate::ffi::TColStd_SequenceOfBoolean,
+        IndRefLine: i32,
+        Trigo: bool,
+    ) {
+        unsafe {
+            crate::ffi::MAT2d_Circuit_perform(
+                self as *mut Self,
+                aFigure,
+                IsClosed,
+                IndRefLine,
+                Trigo,
+            )
+        }
+    }
+
     /// **Source:** `MAT2d_Circuit.hxx`:56 - `MAT2d_Circuit::NumberOfItems()`
     /// Returns the Number of Items .
     pub fn number_of_items(&self) -> i32 {
@@ -105,6 +124,18 @@ impl Circuit {
     /// Returns the number of items on the line <IndexLine>.
     pub fn line_length(&self, IndexLine: i32) -> i32 {
         unsafe { crate::ffi::MAT2d_Circuit_line_length(self as *const Self, IndexLine) }
+    }
+
+    /// **Source:** `MAT2d_Circuit.hxx`:67 - `MAT2d_Circuit::RefToEqui()`
+    /// Returns the set of index of the items in <me>corresponding
+    /// to the curve <IndCurve> on the line <IndLine> from the
+    /// initial figure.
+    pub fn ref_to_equi(
+        &self,
+        IndLine: i32,
+        IndCurve: i32,
+    ) -> &crate::ffi::TColStd_SequenceOfInteger {
+        unsafe { &*(crate::ffi::MAT2d_Circuit_ref_to_equi(self as *const Self, IndLine, IndCurve)) }
     }
 
     /// **Source:** `MAT2d_Circuit.hxx`:71 - `MAT2d_Circuit::Connexion()`
@@ -606,6 +637,20 @@ impl MiniPath {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::MAT2d_MiniPath_ctor()) }
     }
 
+    /// **Source:** `MAT2d_MiniPath.hxx`:55 - `MAT2d_MiniPath::Perform()`
+    /// Computes the path  to link the  lines in <Figure>.
+    /// the path   starts on the  line  of index <IndStart>
+    /// <Sense>  = True    if  the Circuit turns in the
+    /// trigonometric  sense.
+    pub fn perform(
+        &mut self,
+        Figure: &crate::ffi::MAT2d_SequenceOfSequenceOfGeometry,
+        IndStart: i32,
+        Sense: bool,
+    ) {
+        unsafe { crate::ffi::MAT2d_MiniPath_perform(self as *mut Self, Figure, IndStart, Sense) }
+    }
+
     /// **Source:** `MAT2d_MiniPath.hxx`:71 - `MAT2d_MiniPath::RunOnConnexions()`
     /// Run on the set of connexions to compute the path.
     /// the path is an exploration of the tree which contains
@@ -623,11 +668,25 @@ impl MiniPath {
         unsafe { crate::ffi::MAT2d_MiniPath_run_on_connexions(self as *mut Self) }
     }
 
+    /// **Source:** `MAT2d_MiniPath.hxx`:75 - `MAT2d_MiniPath::Path()`
+    /// Returns  the  sequence of  connexions corresponding to
+    /// the  path.
+    pub fn path(&self) -> &crate::ffi::MAT2d_SequenceOfConnexion {
+        unsafe { &*(crate::ffi::MAT2d_MiniPath_path(self as *const Self)) }
+    }
+
     /// **Source:** `MAT2d_MiniPath.hxx`:79 - `MAT2d_MiniPath::IsConnexionsFrom()`
     /// Returns <True> if there is one Connexion which starts
     /// on line designed by <Index>.
     pub fn is_connexions_from(&self, Index: i32) -> bool {
         unsafe { crate::ffi::MAT2d_MiniPath_is_connexions_from(self as *const Self, Index) }
+    }
+
+    /// **Source:** `MAT2d_MiniPath.hxx`:83 - `MAT2d_MiniPath::ConnexionsFrom()`
+    /// Returns    the  connexions  which   start  on line
+    /// designed  by <Index>.
+    pub fn connexions_from(&mut self, Index: i32) -> &mut crate::ffi::MAT2d_SequenceOfConnexion {
+        unsafe { &mut *(crate::ffi::MAT2d_MiniPath_connexions_from(self as *mut Self, Index)) }
     }
 
     /// **Source:** `MAT2d_MiniPath.hxx`:87 - `MAT2d_MiniPath::IsRoot()`

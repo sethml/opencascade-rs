@@ -1148,6 +1148,31 @@ impl HArray1OfDatumReferenceModifier {
         }
     }
 
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::StepDimTol_HArray1OfDatumReferenceModifier()`
+    pub fn new_array1ofdatumreferencemodifier(
+        theOther: &crate::ffi::StepDimTol_Array1OfDatumReferenceModifier,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_ctor_array1ofdatumreferencemodifier(theOther))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepDimTol_Array1OfDatumReferenceModifier {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_array1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::StepDimTol_Array1OfDatumReferenceModifier {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -1240,6 +1265,31 @@ impl HArray1OfDatumSystemOrReference {
                     theLower, theUpper,
                 ),
             )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::StepDimTol_HArray1OfDatumSystemOrReference()`
+    pub fn new_array1ofdatumsystemorreference(
+        theOther: &crate::ffi::StepDimTol_Array1OfDatumSystemOrReference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_ctor_array1ofdatumsystemorreference(theOther))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepDimTol_Array1OfDatumSystemOrReference {
+        unsafe {
+            &*(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_array1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::StepDimTol_Array1OfDatumSystemOrReference {
+        unsafe {
+            &mut *(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_change_array1(
+                self as *mut Self,
+            ))
         }
     }
 

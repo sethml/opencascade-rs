@@ -476,6 +476,18 @@ impl CompProjectedCurve {
         }
     }
 
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:197 - `ProjLib_CompProjectedCurve::Intervals()`
+    /// Returns  the  parameters  corresponding  to
+    /// S  discontinuities.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::ProjLib_CompProjectedCurve_intervals(self as *const Self, T, S.into())
+        }
+    }
+
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:202 - `ProjLib_CompProjectedCurve::MaxDistance()`
     /// returns  the  maximum  distance  between
     /// curve  to  project  and  surface
@@ -1562,6 +1574,38 @@ impl HSequenceOfHSequenceOfPnt {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_ctor()) }
     }
 
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::ProjLib_HSequenceOfHSequenceOfPnt()`
+    pub fn new_sequenceofhsequenceofpnt(
+        theOther: &crate::ffi::ProjLib_SequenceOfHSequenceOfPnt,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_ctor_sequenceofhsequenceofpnt(
+                    theOther,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::ProjLib_SequenceOfHSequenceOfPnt {
+        unsafe { &*(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::ProjLib_SequenceOfHSequenceOfPnt) {
+        unsafe {
+            crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_append(self as *mut Self, theSequence)
+        }
+    }
+
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::ProjLib_SequenceOfHSequenceOfPnt {
+        unsafe {
+            &mut *(crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_change_sequence(self as *mut Self))
+        }
+    }
+
     /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -2098,6 +2142,15 @@ impl ProjectOnPlane {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:101 - `ProjLib_ProjectOnPlane::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals of continuity <S>.
+    ///
+    /// The array must provide enough room to accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::ProjLib_ProjectOnPlane_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:108 - `ProjLib_ProjectOnPlane::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -2611,6 +2664,16 @@ impl ProjectedCurve {
     /// intervals.
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::ProjLib_ProjectedCurve_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:133 - `ProjLib_ProjectedCurve::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide enough room to accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::ProjLib_ProjectedCurve_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `ProjLib_ProjectedCurve.hxx`:140 - `ProjLib_ProjectedCurve::Trim()`

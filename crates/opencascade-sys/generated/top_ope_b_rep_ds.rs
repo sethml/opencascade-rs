@@ -330,6 +330,22 @@ impl CurveData {
         unsafe { crate::ffi::TopOpeBRepDS_CurveData_inherited_Assign(self as *mut Self, Other) }
     }
 
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:41 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn interferences(&self) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_CurveData_inherited_Interferences(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:43 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn change_interferences(&mut self) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_CurveData_inherited_ChangeInterferences(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         unsafe {
@@ -757,6 +773,109 @@ impl DataStructure {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_section_edge(self as *mut Self, E) }
     }
 
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:123 - `TopOpeBRepDS_DataStructure::SurfaceInterferences()`
+    pub fn surface_interferences(&self, I: i32) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_DataStructure_surface_interferences(self as *const Self, I))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:126 - `TopOpeBRepDS_DataStructure::ChangeSurfaceInterferences()`
+    pub fn change_surface_interferences(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_surface_interferences(
+                self as *mut Self,
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:129 - `TopOpeBRepDS_DataStructure::CurveInterferences()`
+    pub fn curve_interferences(&self, I: i32) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_DataStructure_curve_interferences(self as *const Self, I))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:132 - `TopOpeBRepDS_DataStructure::ChangeCurveInterferences()`
+    pub fn change_curve_interferences(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_curve_interferences(
+                self as *mut Self,
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:135 - `TopOpeBRepDS_DataStructure::PointInterferences()`
+    pub fn point_interferences(&self, I: i32) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_DataStructure_point_interferences(self as *const Self, I))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:138 - `TopOpeBRepDS_DataStructure::ChangePointInterferences()`
+    pub fn change_point_interferences(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_point_interferences(
+                self as *mut Self,
+                I,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:141 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
+    pub fn shape_interferences_shape_bool(
+        &self,
+        S: &crate::ffi::TopoDS_Shape,
+        FindKeep: bool,
+    ) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_DataStructure_shape_interferences_shape_bool(
+                self as *const Self,
+                S,
+                FindKeep,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:147 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
+    pub fn shape_interferences_int_bool(
+        &self,
+        I: i32,
+        FindKeep: bool,
+    ) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_DataStructure_shape_interferences_int_bool(
+                self as *const Self,
+                I,
+                FindKeep,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:151 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences()`
+    pub fn change_shape_interferences(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_shape_interferences(
+                self as *mut Self,
+                I,
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:154 - `TopOpeBRepDS_DataStructure::ShapeSameDomain()`
     pub fn shape_same_domain_shape(
         &self,
@@ -785,6 +904,11 @@ impl DataStructure {
                 I,
             ))
         }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:162 - `TopOpeBRepDS_DataStructure::ChangeShapes()`
+    pub fn change_shapes(&mut self) -> &mut crate::ffi::TopOpeBRepDS_MapOfShapeData {
+        unsafe { &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_shapes(self as *mut Self)) }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:164 - `TopOpeBRepDS_DataStructure::AddShapeSameDomain()`
@@ -1210,6 +1334,28 @@ impl DataStructure {
         unsafe { crate::ffi::TopOpeBRepDS_DataStructure_isfafa(self as *const Self) }
     }
 
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:291 - `TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithStateObj()`
+    pub fn change_map_of_shape_with_state_obj(
+        &mut self,
+    ) -> &mut crate::ffi::TopOpeBRepDS_IndexedDataMapOfShapeWithState {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_map_of_shape_with_state_obj(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:293 - `TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithStateTool()`
+    pub fn change_map_of_shape_with_state_tool(
+        &mut self,
+    ) -> &mut crate::ffi::TopOpeBRepDS_IndexedDataMapOfShapeWithState {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_DataStructure_change_map_of_shape_with_state_tool(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:299 - `TopOpeBRepDS_DataStructure::GetShapeWithState()`
     pub fn get_shape_with_state(
         &self,
@@ -1280,6 +1426,18 @@ impl GeometryData {
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
     pub fn assign(&mut self, Other: &crate::ffi::TopOpeBRepDS_GeometryData) {
         unsafe { crate::ffi::TopOpeBRepDS_GeometryData_assign(self as *mut Self, Other) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:41 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn interferences(&self) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_GeometryData_interferences(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:43 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn change_interferences(&mut self) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_GeometryData_change_interferences(self as *mut Self))
+        }
     }
 
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`
@@ -1628,6 +1786,22 @@ impl PointData {
         unsafe { crate::ffi::TopOpeBRepDS_PointData_inherited_Assign(self as *mut Self, Other) }
     }
 
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:41 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn interferences(&self) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_PointData_inherited_Interferences(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:43 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn change_interferences(&mut self) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_PointData_inherited_ChangeInterferences(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         unsafe {
@@ -1653,6 +1827,18 @@ impl ShapeData {
     /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:34 - `TopOpeBRepDS_ShapeData::TopOpeBRepDS_ShapeData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_ShapeData_ctor()) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:36 - `TopOpeBRepDS_ShapeData::Interferences()`
+    pub fn interferences(&self) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe { &*(crate::ffi::TopOpeBRepDS_ShapeData_interferences(self as *const Self)) }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:38 - `TopOpeBRepDS_ShapeData::ChangeInterferences()`
+    pub fn change_interferences(&mut self) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_ShapeData_change_interferences(self as *mut Self))
+        }
     }
 
     /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:40 - `TopOpeBRepDS_ShapeData::Keep()`
@@ -2052,6 +2238,22 @@ impl SurfaceData {
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
     pub fn assign(&mut self, Other: &crate::ffi::TopOpeBRepDS_GeometryData) {
         unsafe { crate::ffi::TopOpeBRepDS_SurfaceData_inherited_Assign(self as *mut Self, Other) }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:41 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn interferences(&self) -> &crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &*(crate::ffi::TopOpeBRepDS_SurfaceData_inherited_Interferences(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:43 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn change_interferences(&mut self) -> &mut crate::ffi::TopOpeBRepDS_ListOfInterference {
+        unsafe {
+            &mut *(crate::ffi::TopOpeBRepDS_SurfaceData_inherited_ChangeInterferences(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`

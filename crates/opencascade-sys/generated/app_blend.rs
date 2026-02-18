@@ -26,6 +26,29 @@ impl Approx {
         unsafe { crate::ffi::AppBlend_Approx_is_done(self as *const Self) }
     }
 
+    /// **Source:** `AppBlend_Approx.hxx`:46 - `AppBlend_Approx::Surface()`
+    pub fn surface(
+        &self,
+        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::AppBlend_Approx_surface(
+                self as *const Self,
+                TPoles,
+                TWeights,
+                TUKnots,
+                TVKnots,
+                TUMults,
+                TVMults,
+            )
+        }
+    }
+
     /// **Source:** `AppBlend_Approx.hxx`:53 - `AppBlend_Approx::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::AppBlend_Approx_u_degree(self as *const Self) }
@@ -41,9 +64,47 @@ impl Approx {
         unsafe { &*(crate::ffi::AppBlend_Approx_surf_poles(self as *const Self)) }
     }
 
+    /// **Source:** `AppBlend_Approx.hxx`:59 - `AppBlend_Approx::SurfWeights()`
+    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+        unsafe { &*(crate::ffi::AppBlend_Approx_surf_weights(self as *const Self)) }
+    }
+
+    /// **Source:** `AppBlend_Approx.hxx`:61 - `AppBlend_Approx::SurfUKnots()`
+    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::AppBlend_Approx_surf_u_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `AppBlend_Approx.hxx`:63 - `AppBlend_Approx::SurfVKnots()`
+    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::AppBlend_Approx_surf_v_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `AppBlend_Approx.hxx`:65 - `AppBlend_Approx::SurfUMults()`
+    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::AppBlend_Approx_surf_u_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `AppBlend_Approx.hxx`:67 - `AppBlend_Approx::SurfVMults()`
+    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::AppBlend_Approx_surf_v_mults(self as *const Self)) }
+    }
+
     /// **Source:** `AppBlend_Approx.hxx`:69 - `AppBlend_Approx::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         unsafe { crate::ffi::AppBlend_Approx_nb_curves2d(self as *const Self) }
+    }
+
+    /// **Source:** `AppBlend_Approx.hxx`:75 - `AppBlend_Approx::Curve2d()`
+    pub fn curve2d(
+        &self,
+        Index: i32,
+        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::AppBlend_Approx_curve2d(self as *const Self, Index, TPoles, TKnots, TMults)
+        }
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:80 - `AppBlend_Approx::Curves2dDegree()`
@@ -54,6 +115,16 @@ impl Approx {
     /// **Source:** `AppBlend_Approx.hxx`:82 - `AppBlend_Approx::Curve2dPoles()`
     pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
         unsafe { &*(crate::ffi::AppBlend_Approx_curve2d_poles(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `AppBlend_Approx.hxx`:85 - `AppBlend_Approx::Curves2dKnots()`
+    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::AppBlend_Approx_curves2d_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `AppBlend_Approx.hxx`:87 - `AppBlend_Approx::Curves2dMults()`
+    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::AppBlend_Approx_curves2d_mults(self as *const Self)) }
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:89 - `AppBlend_Approx::TolReached()`

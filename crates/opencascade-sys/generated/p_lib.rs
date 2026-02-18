@@ -420,6 +420,73 @@ unsafe impl crate::CppDeletable for Base {
 }
 
 impl Base {
+    /// **Source:** `PLib_Base.hxx`:37 - `PLib_Base::ToCoefficients()`
+    /// Convert the polynomial P(t) in the canonical base.
+    pub fn to_coefficients(
+        &self,
+        Dimension: i32,
+        Degree: i32,
+        CoeffinBase: &crate::ffi::TColStd_Array1OfReal,
+        Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_Base_to_coefficients(
+                self as *const Self,
+                Dimension,
+                Degree,
+                CoeffinBase,
+                Coefficients,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_Base.hxx`:43 - `PLib_Base::D0()`
+    /// Compute the values of the basis functions in u
+    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::PLib_Base_d0(self as *mut Self, U, BasisValue) }
+    }
+
+    /// **Source:** `PLib_Base.hxx`:47 - `PLib_Base::D1()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d1(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe { crate::ffi::PLib_Base_d1(self as *mut Self, U, BasisValue, BasisD1) }
+    }
+
+    /// **Source:** `PLib_Base.hxx`:53 - `PLib_Base::D2()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d2(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe { crate::ffi::PLib_Base_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2) }
+    }
+
+    /// **Source:** `PLib_Base.hxx`:60 - `PLib_Base::D3()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d3(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_Base_d3(self as *mut Self, U, BasisValue, BasisD1, BasisD2, BasisD3)
+        }
+    }
+
     /// **Source:** `PLib_Base.hxx`:67 - `PLib_Base::WorkDegree()`
     /// returns WorkDegree
     pub fn work_degree(&self) -> i32 {
@@ -483,6 +550,117 @@ impl DoubleJacobiPolynomial {
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:33 - `PLib_DoubleJacobiPolynomial::PLib_DoubleJacobiPolynomial()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::PLib_DoubleJacobiPolynomial_ctor()) }
+    }
+
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:38 - `PLib_DoubleJacobiPolynomial::MaxErrorU()`
+    pub fn max_error_u(
+        &self,
+        Dimension: i32,
+        DegreeU: i32,
+        DegreeV: i32,
+        dJacCoeff: i32,
+        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::PLib_DoubleJacobiPolynomial_max_error_u(
+                self as *const Self,
+                Dimension,
+                DegreeU,
+                DegreeV,
+                dJacCoeff,
+                JacCoeff,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:44 - `PLib_DoubleJacobiPolynomial::MaxErrorV()`
+    pub fn max_error_v(
+        &self,
+        Dimension: i32,
+        DegreeU: i32,
+        DegreeV: i32,
+        dJacCoeff: i32,
+        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::PLib_DoubleJacobiPolynomial_max_error_v(
+                self as *const Self,
+                Dimension,
+                DegreeU,
+                DegreeV,
+                dJacCoeff,
+                JacCoeff,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:50 - `PLib_DoubleJacobiPolynomial::MaxError()`
+    pub fn max_error(
+        &self,
+        Dimension: i32,
+        MinDegreeU: i32,
+        MaxDegreeU: i32,
+        MinDegreeV: i32,
+        MaxDegreeV: i32,
+        dJacCoeff: i32,
+        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        Error: f64,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::PLib_DoubleJacobiPolynomial_max_error(
+                self as *const Self,
+                Dimension,
+                MinDegreeU,
+                MaxDegreeU,
+                MinDegreeV,
+                MaxDegreeV,
+                dJacCoeff,
+                JacCoeff,
+                Error,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:71 - `PLib_DoubleJacobiPolynomial::AverageError()`
+    pub fn average_error(
+        &self,
+        Dimension: i32,
+        DegreeU: i32,
+        DegreeV: i32,
+        dJacCoeff: i32,
+        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::PLib_DoubleJacobiPolynomial_average_error(
+                self as *const Self,
+                Dimension,
+                DegreeU,
+                DegreeV,
+                dJacCoeff,
+                JacCoeff,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:77 - `PLib_DoubleJacobiPolynomial::WDoubleJacobiToCoefficients()`
+    pub fn w_double_jacobi_to_coefficients(
+        &self,
+        Dimension: i32,
+        DegreeU: i32,
+        DegreeV: i32,
+        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_DoubleJacobiPolynomial_w_double_jacobi_to_coefficients(
+                self as *const Self,
+                Dimension,
+                DegreeU,
+                DegreeV,
+                JacCoeff,
+                Coefficients,
+            )
+        }
     }
 
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:90 - `PLib_DoubleJacobiPolynomial::TabMaxU()`
@@ -596,6 +774,82 @@ impl HermitJacobi {
         }
     }
 
+    /// **Source:** `PLib_HermitJacobi.hxx`:100 - `PLib_HermitJacobi::ToCoefficients()`
+    /// Convert the polynomial P(t) = H(t) + W(t) Q(t) in the canonical base.
+    pub fn to_coefficients(
+        &self,
+        Dimension: i32,
+        Degree: i32,
+        HermJacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_HermitJacobi_to_coefficients(
+                self as *const Self,
+                Dimension,
+                Degree,
+                HermJacCoeff,
+                Coefficients,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_HermitJacobi.hxx`:106 - `PLib_HermitJacobi::D0()`
+    /// Compute the values of the basis functions in u
+    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::PLib_HermitJacobi_d0(self as *mut Self, U, BasisValue) }
+    }
+
+    /// **Source:** `PLib_HermitJacobi.hxx`:111 - `PLib_HermitJacobi::D1()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d1(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe { crate::ffi::PLib_HermitJacobi_d1(self as *mut Self, U, BasisValue, BasisD1) }
+    }
+
+    /// **Source:** `PLib_HermitJacobi.hxx`:117 - `PLib_HermitJacobi::D2()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d2(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_HermitJacobi_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2)
+        }
+    }
+
+    /// **Source:** `PLib_HermitJacobi.hxx`:124 - `PLib_HermitJacobi::D3()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d3(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_HermitJacobi_d3(
+                self as *mut Self,
+                U,
+                BasisValue,
+                BasisD1,
+                BasisD2,
+                BasisD3,
+            )
+        }
+    }
+
     /// **Source:** `PLib_HermitJacobi.hxx`:131 - `PLib_HermitJacobi::WorkDegree()`
     /// returns WorkDegree
     pub fn work_degree(&self) -> i32 {
@@ -696,6 +950,51 @@ impl JacobiPolynomial {
         }
     }
 
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:80 - `PLib_JacobiPolynomial::Points()`
+    /// returns  the  Jacobi  Points   for  Gauss  integration ie
+    /// the positive values of the Legendre roots by increasing values
+    /// NbGaussPoints is the number of   points chosen for the  integral
+    /// computation.
+    /// TabPoints (0,NbGaussPoints/2)
+    /// TabPoints (0) is loaded only for the odd values of NbGaussPoints
+    /// The possible values for NbGaussPoints are : 8, 10,
+    /// 15, 20, 25, 30, 35, 40, 50, 61
+    /// NbGaussPoints must be greater than Degree
+    pub fn points(&self, NbGaussPoints: i32, TabPoints: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::PLib_JacobiPolynomial_points(self as *const Self, NbGaussPoints, TabPoints)
+        }
+    }
+
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:92 - `PLib_JacobiPolynomial::Weights()`
+    /// returns the Jacobi weights for Gauss integration only for
+    /// the positive    values of the  Legendre roots   in the order they
+    /// are given by the method Points
+    /// NbGaussPoints   is the number of points chosen   for  the integral
+    /// computation.
+    /// TabWeights  (0,NbGaussPoints/2,0,Degree)
+    /// TabWeights (0,.) are only loaded for the odd values of NbGaussPoints
+    /// The possible values for NbGaussPoints are : 8 , 10 , 15 ,20 ,25 , 30,
+    /// 35 , 40 , 50 , 61 NbGaussPoints must be greater than Degree
+    pub fn weights(&self, NbGaussPoints: i32, TabWeights: &mut crate::ffi::TColStd_Array2OfReal) {
+        unsafe {
+            crate::ffi::PLib_JacobiPolynomial_weights(
+                self as *const Self,
+                NbGaussPoints,
+                TabWeights,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:99 - `PLib_JacobiPolynomial::MaxValue()`
+    /// this method loads for k=0,q the maximum value of
+    /// abs ( W(t)*Jk(t) )for t bellonging to [-1,1]
+    /// This values are loaded is the array TabMax(0,myWorkDegree-2*(myNivConst+1))
+    /// MaxValue ( me ; TabMaxPointer : in  out  Real );
+    pub fn max_value(&self, TabMax: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::PLib_JacobiPolynomial_max_value(self as *const Self, TabMax) }
+    }
+
     /// **Source:** `PLib_JacobiPolynomial.hxx`:104 - `PLib_JacobiPolynomial::MaxError()`
     /// This  method computes the  maximum  error on the polynomial
     /// W(t) Q(t)  obtained  by   missing  the   coefficients of  JacCoeff   from
@@ -719,6 +1018,82 @@ impl JacobiPolynomial {
                 Dimension,
                 JacCoeff,
                 NewDegree,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:125 - `PLib_JacobiPolynomial::ToCoefficients()`
+    /// Convert the polynomial P(t) = R(t) + W(t) Q(t) in the canonical base.
+    pub fn to_coefficients(
+        &self,
+        Dimension: i32,
+        Degree: i32,
+        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_JacobiPolynomial_to_coefficients(
+                self as *const Self,
+                Dimension,
+                Degree,
+                JacCoeff,
+                Coefficients,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:131 - `PLib_JacobiPolynomial::D0()`
+    /// Compute the values of the basis functions in u
+    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::PLib_JacobiPolynomial_d0(self as *mut Self, U, BasisValue) }
+    }
+
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:136 - `PLib_JacobiPolynomial::D1()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d1(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe { crate::ffi::PLib_JacobiPolynomial_d1(self as *mut Self, U, BasisValue, BasisD1) }
+    }
+
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:142 - `PLib_JacobiPolynomial::D2()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d2(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_JacobiPolynomial_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2)
+        }
+    }
+
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:149 - `PLib_JacobiPolynomial::D3()`
+    /// Compute the values and the derivatives values of
+    /// the basis functions in u
+    pub fn d3(
+        &mut self,
+        U: f64,
+        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::PLib_JacobiPolynomial_d3(
+                self as *mut Self,
+                U,
+                BasisValue,
+                BasisD1,
+                BasisD2,
+                BasisD3,
             )
         }
     }

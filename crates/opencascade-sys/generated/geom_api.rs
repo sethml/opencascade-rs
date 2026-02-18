@@ -1295,6 +1295,38 @@ impl PointsToBSpline {
         }
     }
 
+    /// **Source:** `GeomAPI_PointsToBSpline.hxx`:83 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+    /// Approximate  a  BSpline  Curve  passing through an
+    /// array of Point,  which parameters are given by the
+    /// array <Parameters>.
+    /// The resulting  BSpline   will have the   following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    pub fn new_array1ofpnt_array1ofreal_int2_shape_real(
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+        Tol3D: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2_shape_real(
+                    Points,
+                    Parameters,
+                    DegMin,
+                    DegMax,
+                    Continuity.into(),
+                    Tol3D,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `GeomAPI_PointsToBSpline.hxx`:94 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
     /// Approximate a BSpline Curve  passing through an
     /// array of Point using variational smoothing algorithm,
@@ -1358,6 +1390,28 @@ impl PointsToBSpline {
     ) -> crate::OwnedPtr<Self> {
         Self::new_array1ofpnt_parametrizationtype_int2_shape_real(
             Points, ParType, DegMin, DegMax, Continuity, 1.0e-3,
+        )
+    }
+
+    /// **Source:** `GeomAPI_PointsToBSpline.hxx`:83 - `GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline()`
+    /// Approximate  a  BSpline  Curve  passing through an
+    /// array of Point,  which parameters are given by the
+    /// array <Parameters>.
+    /// The resulting  BSpline   will have the   following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    pub fn new_array1ofpnt_array1ofreal_int2_shape(
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofpnt_array1ofreal_int2_shape_real(
+            Points, Parameters, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 
@@ -1429,6 +1483,38 @@ impl PointsToBSpline {
                 self as *mut Self,
                 Points,
                 ParType.into(),
+                DegMin,
+                DegMax,
+                Continuity.into(),
+                Tol3D,
+            )
+        }
+    }
+
+    /// **Source:** `GeomAPI_PointsToBSpline.hxx`:138 - `GeomAPI_PointsToBSpline::Init()`
+    /// Approximate  a  BSpline  Curve  passing through an
+    /// array of Point,  which parameters are given by the
+    /// array <Parameters>.
+    /// The resulting  BSpline   will have the   following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    pub fn init_array1ofpnt_array1ofreal_int2_shape_real(
+        &mut self,
+        Points: &crate::ffi::TColgp_Array1OfPnt,
+        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+        Tol3D: f64,
+    ) {
+        unsafe {
+            crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_array1ofreal_int2_shape_real(
+                self as *mut Self,
+                Points,
+                Parameters,
                 DegMin,
                 DegMax,
                 Continuity.into(),
@@ -1621,6 +1707,51 @@ impl PointsToBSplineSurface {
         }
     }
 
+    /// **Source:** `GeomAPI_PointsToBSplineSurface.hxx`:143 - `GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface()`
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.
+    ///
+    /// The points will be constructed as follow:
+    /// P(i,j) = gp_Pnt( X0 + (i-1)*dX ,
+    /// Y0 + (j-1)*dY ,
+    /// ZPoints(i,j)   )
+    ///
+    /// The resulting BSpline will  have the following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    /// 4- the parametrization of the surface will verify:
+    /// S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
+    pub fn new_array2ofreal_real4_int2_shape_real(
+        ZPoints: &crate::ffi::TColStd_Array2OfReal,
+        X0: f64,
+        dX: f64,
+        Y0: f64,
+        dY: f64,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+        Tol3D: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofreal_real4_int2_shape_real(
+                    ZPoints,
+                    X0,
+                    dX,
+                    Y0,
+                    dY,
+                    DegMin,
+                    DegMax,
+                    Continuity.into(),
+                    Tol3D,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `GeomAPI_PointsToBSplineSurface.hxx`:92 - `GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface()`
     /// Approximates  a BSpline  Surface passing  through  an
     /// array of  Points.  The resulting BSpline will  have
@@ -1673,6 +1804,38 @@ impl PointsToBSplineSurface {
     ) -> crate::OwnedPtr<Self> {
         Self::new_array2ofpnt_real3_int_shape_real(
             Points, Weight1, Weight2, Weight3, DegMax, Continuity, 1.0e-3,
+        )
+    }
+
+    /// **Source:** `GeomAPI_PointsToBSplineSurface.hxx`:143 - `GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface()`
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.
+    ///
+    /// The points will be constructed as follow:
+    /// P(i,j) = gp_Pnt( X0 + (i-1)*dX ,
+    /// Y0 + (j-1)*dY ,
+    /// ZPoints(i,j)   )
+    ///
+    /// The resulting BSpline will  have the following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    /// 4- the parametrization of the surface will verify:
+    /// S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
+    pub fn new_array2ofreal_real4_int2_shape(
+        ZPoints: &crate::ffi::TColStd_Array2OfReal,
+        X0: f64,
+        dX: f64,
+        Y0: f64,
+        dY: f64,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array2ofreal_real4_int2_shape_real(
+            ZPoints, X0, dX, Y0, dY, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 
@@ -1738,6 +1901,86 @@ impl PointsToBSplineSurface {
     ) {
         unsafe {
             crate::ffi::GeomAPI_PointsToBSplineSurface_interpolate_array2ofpnt_parametrizationtype_bool(self as *mut Self, Points, ParType.into(), thePeriodic)
+        }
+    }
+
+    /// **Source:** `GeomAPI_PointsToBSplineSurface.hxx`:203 - `GeomAPI_PointsToBSplineSurface::Init()`
+    /// Approximates  a BSpline  Surface passing  through  an
+    /// array of  Points.
+    ///
+    /// The points will be constructed as follow:
+    /// P(i,j) = gp_Pnt( X0 + (i-1)*dX ,
+    /// Y0 + (j-1)*dY ,
+    /// ZPoints(i,j)   )
+    ///
+    /// The resulting BSpline will  have the following
+    /// properties:
+    /// 1- his degree will be in the range [Degmin,Degmax]
+    /// 2- his  continuity will be  at  least <Continuity>
+    /// 3- the distance from the point <Points> to the
+    /// BSpline will be lower to Tol3D
+    /// 4- the parametrization of the surface will verify:
+    /// S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
+    pub fn init_array2ofreal_real4_int2_shape_real(
+        &mut self,
+        ZPoints: &crate::ffi::TColStd_Array2OfReal,
+        X0: f64,
+        dX: f64,
+        Y0: f64,
+        dY: f64,
+        DegMin: i32,
+        DegMax: i32,
+        Continuity: crate::geom_abs::Shape,
+        Tol3D: f64,
+    ) {
+        unsafe {
+            crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofreal_real4_int2_shape_real(
+                self as *mut Self,
+                ZPoints,
+                X0,
+                dX,
+                Y0,
+                dY,
+                DegMin,
+                DegMax,
+                Continuity.into(),
+                Tol3D,
+            )
+        }
+    }
+
+    /// **Source:** `GeomAPI_PointsToBSplineSurface.hxx`:228 - `GeomAPI_PointsToBSplineSurface::Interpolate()`
+    /// Interpolates  a BSpline  Surface passing  through  an
+    /// array of  Points.
+    ///
+    /// The points will be constructed as follow:
+    /// P(i,j) = gp_Pnt( X0 + (i-1)*dX ,
+    /// Y0 + (j-1)*dY ,
+    /// ZPoints(i,j)   )
+    ///
+    /// The resulting BSpline will  have the following
+    /// properties:
+    /// 1- his degree will be 3
+    /// 2- his  continuity will be  C2.
+    /// 4- the parametrization of the surface will verify:
+    /// S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
+    pub fn interpolate_array2ofreal_real4(
+        &mut self,
+        ZPoints: &crate::ffi::TColStd_Array2OfReal,
+        X0: f64,
+        dX: f64,
+        Y0: f64,
+        dY: f64,
+    ) {
+        unsafe {
+            crate::ffi::GeomAPI_PointsToBSplineSurface_interpolate_array2ofreal_real4(
+                self as *mut Self,
+                ZPoints,
+                X0,
+                dX,
+                Y0,
+                dY,
+            )
         }
     }
 

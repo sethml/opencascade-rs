@@ -328,6 +328,26 @@ impl AlgoTools {
         }
     }
 
+    /// **Source:** `BOPTools_AlgoTools.hxx`:229 - `BOPTools_AlgoTools::GetFaceOff()`
+    /// @name Face classification relatively solid
+    /// For the face theFace and its edge theEdge
+    /// finds the face suitable to produce shell.
+    /// theLCEF - set of faces to search. All faces
+    /// from theLCEF must share edge theEdge
+    pub fn get_face_off(
+        theEdge: &crate::ffi::TopoDS_Edge,
+        theFace: &crate::ffi::TopoDS_Face,
+        theLCEF: &mut crate::ffi::BOPTools_ListOfCoupleOfShape,
+        theFaceOff: &mut crate::ffi::TopoDS_Face,
+        theContext: &crate::ffi::HandleIntToolsContext,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BOPTools_AlgoTools_get_face_off(
+                theEdge, theFace, theLCEF, theFaceOff, theContext,
+            )
+        }
+    }
+
     /// **Source:** `BOPTools_AlgoTools.hxx`:243 - `BOPTools_AlgoTools::IsInternalFace()`
     /// Returns True if the face theFace is inside of the
     /// couple of faces theFace1, theFace2.
@@ -570,19 +590,52 @@ impl AlgoTools {
     /// elements of type <theElementType> connected through the shapes
     /// of the type <theConnectionType>.
     /// The blocks are stored into the list <theLCB>.
-    pub fn make_connexity_blocks(
+    pub fn make_connexity_blocks_shape_shapeenum2_listofshape(
         theS: &crate::ffi::TopoDS_Shape,
         theConnectionType: crate::top_abs::ShapeEnum,
         theElementType: crate::top_abs::ShapeEnum,
         theLCB: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks(
+            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listofshape(
                 theS,
                 theConnectionType.into(),
                 theElementType.into(),
                 theLCB,
             )
+        }
+    }
+
+    /// **Source:** `BOPTools_AlgoTools.hxx`:416 - `BOPTools_AlgoTools::MakeConnexityBlocks()`
+    /// For the compound <theS> builds the blocks (compounds) of
+    /// elements of type <theElementType> connected through the shapes
+    /// of the type <theConnectionType>.
+    /// The blocks are stored into the list of lists <theLCB>.
+    /// Returns also the connection map <theConnectionMap>, filled during operation.
+    pub fn make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(
+        theS: &crate::ffi::TopoDS_Shape,
+        theConnectionType: crate::top_abs::ShapeEnum,
+        theElementType: crate::top_abs::ShapeEnum,
+        theLCB: &mut crate::ffi::TopTools_ListOfListOfShape,
+        theConnectionMap: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+    ) {
+        unsafe {
+            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(theS, theConnectionType.into(), theElementType.into(), theLCB, theConnectionMap)
+        }
+    }
+
+    /// **Source:** `BOPTools_AlgoTools.hxx`:426 - `BOPTools_AlgoTools::MakeConnexityBlocks()`
+    /// Makes connexity blocks of elements of the given type with the given type of the
+    /// connecting elements. The blocks are checked on regularity (multi-connectivity)
+    /// and stored to the list of blocks <theLCB>.
+    pub fn make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(
+        theLS: &crate::ffi::TopTools_ListOfShape,
+        theConnectionType: crate::top_abs::ShapeEnum,
+        theElementType: crate::top_abs::ShapeEnum,
+        theLCB: &mut crate::ffi::BOPTools_ListOfConnexityBlock,
+    ) {
+        unsafe {
+            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(theLS, theConnectionType.into(), theElementType.into(), theLCB)
         }
     }
 

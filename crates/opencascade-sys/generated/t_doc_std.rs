@@ -224,6 +224,22 @@ impl Application {
         }
     }
 
+    /// **Source:** `TDocStd_Application.hxx`:149 - `TDocStd_Application::ReadingFormats()`
+    /// Returns the sequence of reading formats supported by the application.
+    ///
+    /// @param theFormats - sequence of reading formats. Output parameter.
+    pub fn reading_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
+        unsafe { crate::ffi::TDocStd_Application_reading_formats(self as *mut Self, theFormats) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:154 - `TDocStd_Application::WritingFormats()`
+    /// Returns the sequence of writing formats supported by the application.
+    ///
+    /// @param theFormats - sequence of writing formats. Output parameter.
+    pub fn writing_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
+        unsafe { crate::ffi::TDocStd_Application_writing_formats(self as *mut Self, theFormats) }
+    }
+
     /// **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
     /// returns the number of documents handled by the current applicative session.
     pub fn nb_documents(&self) -> i32 {
@@ -395,6 +411,11 @@ impl ApplicationDelta {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_ApplicationDelta_ctor()) }
     }
 
+    /// **Source:** `TDocStd_ApplicationDelta.hxx`:35 - `TDocStd_ApplicationDelta::GetDocuments()`
+    pub fn get_documents(&mut self) -> &mut crate::ffi::TDocStd_SequenceOfDocument {
+        unsafe { &mut *(crate::ffi::TDocStd_ApplicationDelta_get_documents(self as *mut Self)) }
+    }
+
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:37 - `TDocStd_ApplicationDelta::GetName()`
     pub fn get_name(&self) -> &crate::ffi::TCollection_ExtendedString {
         unsafe { &*(crate::ffi::TDocStd_ApplicationDelta_get_name(self as *const Self)) }
@@ -534,6 +555,20 @@ impl CompoundDelta {
     /// Inherited: **Source:** `TDF_Delta.hxx`:56 - `TDF_Delta::EndTime()`
     pub fn end_time(&self) -> i32 {
         unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_EndTime(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Delta.hxx`:60 - `TDF_Delta::Labels()`
+    pub fn labels(&self, aLabelList: &mut crate::ffi::TDF_LabelList) {
+        unsafe {
+            crate::ffi::TDocStd_CompoundDelta_inherited_Labels(self as *const Self, aLabelList)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Delta.hxx`:63 - `TDF_Delta::AttributeDeltas()`
+    pub fn attribute_deltas(&self) -> &crate::ffi::TDF_AttributeDeltaList {
+        unsafe {
+            &*(crate::ffi::TDocStd_CompoundDelta_inherited_AttributeDeltas(self as *const Self))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:66 - `TDF_Delta::Name()`
@@ -816,6 +851,16 @@ impl Document {
         unsafe { crate::ffi::TDocStd_Document_redo(self as *mut Self) }
     }
 
+    /// **Source:** `TDocStd_Document.hxx`:175 - `TDocStd_Document::GetUndos()`
+    pub fn get_undos(&self) -> &crate::ffi::TDF_DeltaList {
+        unsafe { &*(crate::ffi::TDocStd_Document_get_undos(self as *const Self)) }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:177 - `TDocStd_Document::GetRedos()`
+    pub fn get_redos(&self) -> &crate::ffi::TDF_DeltaList {
+        unsafe { &*(crate::ffi::TDocStd_Document_get_redos(self as *const Self)) }
+    }
+
     /// **Source:** `TDocStd_Document.hxx`:181 - `TDocStd_Document::RemoveFirstUndo()`
     /// Removes the first undo in the list of document undos.
     /// It is used in the application when the undo limit is exceed.
@@ -977,6 +1022,13 @@ impl Document {
         unsafe { &*(crate::ffi::TDocStd_Document_get_type_descriptor()) }
     }
 
+    /// Inherited: **Source:** `CDM_Document.hxx`:95 - `CDM_Document::Extensions()`
+    pub fn extensions(&self, Extensions: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe {
+            crate::ffi::TDocStd_Document_inherited_Extensions(self as *const Self, Extensions)
+        }
+    }
+
     /// Inherited: **Source:** `CDM_Document.hxx`:115 - `CDM_Document::RemoveReference()`
     pub fn remove_reference(&mut self, aReferenceIdentifier: i32) {
         unsafe {
@@ -1093,6 +1145,16 @@ impl Document {
     /// Inherited: **Source:** `CDM_Document.hxx`:206 - `CDM_Document::AddComment()`
     pub fn add_comment(&mut self, aComment: &crate::ffi::TCollection_ExtendedString) {
         unsafe { crate::ffi::TDocStd_Document_inherited_AddComment(self as *mut Self, aComment) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:209 - `CDM_Document::SetComments()`
+    pub fn set_comments(&mut self, aComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_SetComments(self as *mut Self, aComments) }
+    }
+
+    /// Inherited: **Source:** `CDM_Document.hxx`:213 - `CDM_Document::Comments()`
+    pub fn comments(&self, aComments: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
+        unsafe { crate::ffi::TDocStd_Document_inherited_Comments(self as *const Self, aComments) }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:223 - `CDM_Document::StorageVersion()`
@@ -1680,6 +1742,22 @@ impl MultiTransactionManager {
         unsafe { crate::ffi::TDocStd_MultiTransactionManager_redo(self as *mut Self) }
     }
 
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:74 - `TDocStd_MultiTransactionManager::GetAvailableUndos()`
+    /// Returns available manager undos.
+    pub fn get_available_undos(&self) -> &crate::ffi::TDocStd_SequenceOfApplicationDelta {
+        unsafe {
+            &*(crate::ffi::TDocStd_MultiTransactionManager_get_available_undos(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:77 - `TDocStd_MultiTransactionManager::GetAvailableRedos()`
+    /// Returns available manager redos.
+    pub fn get_available_redos(&self) -> &crate::ffi::TDocStd_SequenceOfApplicationDelta {
+        unsafe {
+            &*(crate::ffi::TDocStd_MultiTransactionManager_get_available_redos(self as *const Self))
+        }
+    }
+
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:82 - `TDocStd_MultiTransactionManager::OpenCommand()`
     /// Opens transaction in each document and sets the flag that
     /// transaction is opened. If there are already opened transactions in the documents,
@@ -1730,6 +1808,12 @@ impl MultiTransactionManager {
     /// all documents which have been modified during the transaction.
     pub fn remove_last_undo(&mut self) {
         unsafe { crate::ffi::TDocStd_MultiTransactionManager_remove_last_undo(self as *mut Self) }
+    }
+
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:116 - `TDocStd_MultiTransactionManager::Documents()`
+    /// Returns the added documents to the transaction manager.
+    pub fn documents(&self) -> &crate::ffi::TDocStd_SequenceOfDocument {
+        unsafe { &*(crate::ffi::TDocStd_MultiTransactionManager_documents(self as *const Self)) }
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:122 - `TDocStd_MultiTransactionManager::SetNestedTransactionMode()`

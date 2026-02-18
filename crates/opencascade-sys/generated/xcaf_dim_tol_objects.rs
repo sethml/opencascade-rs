@@ -800,6 +800,17 @@ impl DatumObject {
         unsafe { crate::ffi::XCAFDimTolObjects_DatumObject_set_name(self as *mut Self, theTag) }
     }
 
+    /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:61 - `XCAFDimTolObjects_DatumObject::SetModifiers()`
+    /// Sets new sequence of datum modifiers.
+    pub fn set_modifiers(
+        &mut self,
+        theModifiers: &crate::ffi::XCAFDimTolObjects_DatumModifiersSequence,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDimTolObjects_DatumObject_set_modifiers(self as *mut Self, theModifiers)
+        }
+    }
+
     /// **Source:** `XCAFDimTolObjects_DatumObject.hxx`:64 - `XCAFDimTolObjects_DatumObject::GetModifierWithValue()`
     /// Retrieves datum modifier with value.
     pub fn get_modifier_with_value(&self, theModifier: &mut i32, theValue: &mut f64) {
@@ -1497,6 +1508,20 @@ impl DimensionObject {
         }
     }
 
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:172 - `XCAFDimTolObjects_DimensionObject::SetModifiers()`
+    /// Sets new sequence of dimension modifiers.
+    pub fn set_modifiers(
+        &mut self,
+        theModifiers: &crate::ffi::XCAFDimTolObjects_DimensionModifiersSequence,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDimTolObjects_DimensionObject_set_modifiers(
+                self as *mut Self,
+                theModifiers,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:176 - `XCAFDimTolObjects_DimensionObject::AddModifier()`
     /// Adds a modifier to the dimension sequence of modifiers.
     pub fn add_modifier(&mut self, theModifier: crate::xcaf_dim_tol_objects::DimensionModif) {
@@ -2001,6 +2026,20 @@ impl GeomToleranceObject {
         }
     }
 
+    /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:92 - `XCAFDimTolObjects_GeomToleranceObject::SetModifiers()`
+    /// Sets new sequence of tolerance modifiers.
+    pub fn set_modifiers(
+        &mut self,
+        theModifiers: &crate::ffi::XCAFDimTolObjects_GeomToleranceModifiersSequence,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDimTolObjects_GeomToleranceObject_set_modifiers(
+                self as *mut Self,
+                theModifiers,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDimTolObjects_GeomToleranceObject.hxx`:96 - `XCAFDimTolObjects_GeomToleranceObject::AddModifier()`
     /// Adds a tolerance modifier to the sequence of modifiers.
     pub fn add_modifier(&mut self, theModifier: crate::xcaf_dim_tol_objects::GeomToleranceModif) {
@@ -2313,6 +2352,37 @@ unsafe impl crate::CppDeletable for Tool {
 }
 
 impl Tool {
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:42 - `XCAFDimTolObjects_Tool::GetDimensions()`
+    /// Returns a sequence of Dimensions currently stored
+    /// in the GD&T table
+    pub fn get_dimensions(
+        &self,
+        theDimensionObjectSequence: &mut crate::ffi::XCAFDimTolObjects_DimensionObjectSequence,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDimTolObjects_Tool_get_dimensions(
+                self as *const Self,
+                theDimensionObjectSequence,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:47 - `XCAFDimTolObjects_Tool::GetRefDimensions()`
+    /// Returns all Dimensions defined for Shape
+    pub fn get_ref_dimensions(
+        &self,
+        theShape: &crate::ffi::TopoDS_Shape,
+        theDimensions: &mut crate::ffi::XCAFDimTolObjects_DimensionObjectSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDimTolObjects_Tool_get_ref_dimensions(
+                self as *const Self,
+                theShape,
+                theDimensions,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDimTolObjects_Tool.hxx`:66 - `XCAFDimTolObjects_Tool::GetRefDatum()`
     /// Returns DatumObject defined for Shape
     pub fn get_ref_datum(

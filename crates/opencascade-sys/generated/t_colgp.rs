@@ -3172,6 +3172,30 @@ impl HSequenceOfDir {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir_ctor()) }
     }
 
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::TColgp_HSequenceOfDir()`
+    pub fn new_sequenceofdir(theOther: &crate::ffi::TColgp_SequenceOfDir) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir_ctor_sequenceofdir(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfDir {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfDir) {
+        unsafe { crate::ffi::TColgp_HSequenceOfDir_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfDir {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfDir_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColgp_HSequenceOfDir_dynamic_type(self as *const Self)) }
@@ -3238,6 +3262,32 @@ impl HSequenceOfDir2d {
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::TColgp_HSequenceOfDir2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::TColgp_HSequenceOfDir2d()`
+    pub fn new_sequenceofdir2d(
+        theOther: &crate::ffi::TColgp_SequenceOfDir2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfDir2d {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfDir2d_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfDir2d) {
+        unsafe { crate::ffi::TColgp_HSequenceOfDir2d_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfDir2d {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfDir2d_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::DynamicType()`
@@ -3308,6 +3358,30 @@ impl HSequenceOfPnt {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_ctor()) }
     }
 
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::TColgp_HSequenceOfPnt()`
+    pub fn new_sequenceofpnt(theOther: &crate::ffi::TColgp_SequenceOfPnt) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt_ctor_sequenceofpnt(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfPnt {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfPnt) {
+        unsafe { crate::ffi::TColgp_HSequenceOfPnt_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfPnt {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfPnt_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt_dynamic_type(self as *const Self)) }
@@ -3374,6 +3448,32 @@ impl HSequenceOfPnt2d {
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::TColgp_HSequenceOfPnt2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::TColgp_HSequenceOfPnt2d()`
+    pub fn new_sequenceofpnt2d(
+        theOther: &crate::ffi::TColgp_SequenceOfPnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfPnt2d {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfPnt2d_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfPnt2d) {
+        unsafe { crate::ffi::TColgp_HSequenceOfPnt2d_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfPnt2d {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfPnt2d_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::DynamicType()`
@@ -3444,6 +3544,30 @@ impl HSequenceOfVec {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec_ctor()) }
     }
 
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::TColgp_HSequenceOfVec()`
+    pub fn new_sequenceofvec(theOther: &crate::ffi::TColgp_SequenceOfVec) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec_ctor_sequenceofvec(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfVec {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfVec) {
+        unsafe { crate::ffi::TColgp_HSequenceOfVec_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfVec {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfVec_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColgp_HSequenceOfVec_dynamic_type(self as *const Self)) }
@@ -3510,6 +3634,32 @@ impl HSequenceOfVec2d {
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::TColgp_HSequenceOfVec2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec2d_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::TColgp_HSequenceOfVec2d()`
+    pub fn new_sequenceofvec2d(
+        theOther: &crate::ffi::TColgp_SequenceOfVec2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfVec2d {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfVec2d_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfVec2d) {
+        unsafe { crate::ffi::TColgp_HSequenceOfVec2d_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfVec2d {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfVec2d_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::DynamicType()`
@@ -3580,6 +3730,28 @@ impl HSequenceOfXY {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXY_ctor()) }
     }
 
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::TColgp_HSequenceOfXY()`
+    pub fn new_sequenceofxy(theOther: &crate::ffi::TColgp_SequenceOfXY) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXY_ctor_sequenceofxy(theOther))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfXY {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXY_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfXY) {
+        unsafe { crate::ffi::TColgp_HSequenceOfXY_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfXY {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfXY_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColgp_HSequenceOfXY_dynamic_type(self as *const Self)) }
@@ -3646,6 +3818,30 @@ impl HSequenceOfXYZ {
     /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::TColgp_HSequenceOfXYZ()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXYZ_ctor()) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::TColgp_HSequenceOfXYZ()`
+    pub fn new_sequenceofxyz(theOther: &crate::ffi::TColgp_SequenceOfXYZ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfXYZ {
+        unsafe { &*(crate::ffi::TColgp_HSequenceOfXYZ_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfXYZ) {
+        unsafe { crate::ffi::TColgp_HSequenceOfXYZ_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfXYZ {
+        unsafe { &mut *(crate::ffi::TColgp_HSequenceOfXYZ_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::DynamicType()`

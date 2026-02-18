@@ -932,6 +932,19 @@ unsafe impl crate::CppDeletable for EigenValuesSearcher {
 }
 
 impl EigenValuesSearcher {
+    /// **Source:** `math_EigenValuesSearcher.hxx`:37 - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
+    pub fn new_array1ofreal2(
+        Diagonal: &crate::ffi::TColStd_Array1OfReal,
+        Subdiagonal: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::math_EigenValuesSearcher_ctor_array1ofreal2(
+                Diagonal,
+                Subdiagonal,
+            ))
+        }
+    }
+
     /// **Source:** `math_EigenValuesSearcher.hxx`:42 - `math_EigenValuesSearcher::IsDone()`
     /// Returns Standard_True if computation is performed
     /// successfully.

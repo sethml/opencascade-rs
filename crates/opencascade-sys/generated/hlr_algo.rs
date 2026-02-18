@@ -794,6 +794,27 @@ impl HArray1OfPHDat {
         }
     }
 
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
+    pub fn new_array1ofphdat(
+        theOther: &crate::ffi::HLRAlgo_Array1OfPHDat,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPHDat_ctor_array1ofphdat(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::Array1()`
+    pub fn array1(&self) -> &crate::ffi::HLRAlgo_Array1OfPHDat {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPHDat_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfPHDat {
+        unsafe { &mut *(crate::ffi::HLRAlgo_HArray1OfPHDat_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPHDat_dynamic_type(self as *const Self)) }
@@ -869,6 +890,27 @@ impl HArray1OfPINod {
                 theLower, theUpper,
             ))
         }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
+    pub fn new_array1ofpinod(
+        theOther: &crate::ffi::HLRAlgo_Array1OfPINod,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_ctor_array1ofpinod(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::Array1()`
+    pub fn array1(&self) -> &crate::ffi::HLRAlgo_Array1OfPINod {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPINod_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfPINod {
+        unsafe { &mut *(crate::ffi::HLRAlgo_HArray1OfPINod_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::DynamicType()`
@@ -948,6 +990,27 @@ impl HArray1OfPISeg {
         }
     }
 
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
+    pub fn new_array1ofpiseg(
+        theOther: &crate::ffi::HLRAlgo_Array1OfPISeg,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPISeg_ctor_array1ofpiseg(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::Array1()`
+    pub fn array1(&self) -> &crate::ffi::HLRAlgo_Array1OfPISeg {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPISeg_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfPISeg {
+        unsafe { &mut *(crate::ffi::HLRAlgo_HArray1OfPISeg_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::HLRAlgo_HArray1OfPISeg_dynamic_type(self as *const Self)) }
@@ -1023,6 +1086,27 @@ impl HArray1OfTData {
                 theLower, theUpper,
             ))
         }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
+    pub fn new_array1oftdata(
+        theOther: &crate::ffi::HLRAlgo_Array1OfTData,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfTData_ctor_array1oftdata(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::Array1()`
+    pub fn array1(&self) -> &crate::ffi::HLRAlgo_Array1OfTData {
+        unsafe { &*(crate::ffi::HLRAlgo_HArray1OfTData_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfTData {
+        unsafe { &mut *(crate::ffi::HLRAlgo_HArray1OfTData_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::DynamicType()`
@@ -1492,6 +1576,16 @@ impl PolyData {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyData_nodes(self as *mut Self)) }
     }
 
+    /// **Source:** `HLRAlgo_PolyData.hxx`:106 - `HLRAlgo_PolyData::TData()`
+    pub fn t_data(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfTData {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyData_t_data(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyData.hxx`:108 - `HLRAlgo_PolyData::PHDat()`
+    pub fn ph_dat(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfPHDat {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyData_ph_dat(self as *mut Self)) }
+    }
+
     /// **Source:** `HLRAlgo_PolyData.hxx`:112 - `HLRAlgo_PolyData::Hiding()`
     pub fn hiding(&self) -> bool {
         unsafe { crate::ffi::HLRAlgo_PolyData_hiding(self as *const Self) }
@@ -1603,6 +1697,23 @@ impl PolyInternalData {
         }
     }
 
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:39 - `HLRAlgo_PolyInternalData::UpdateLinks()`
+    pub fn update_links(
+        &mut self,
+        theTData: &mut crate::ffi::HLRAlgo_Array1OfTData,
+        thePISeg: &mut crate::ffi::HLRAlgo_Array1OfPISeg,
+        thePINod: &mut crate::ffi::HLRAlgo_Array1OfPINod,
+    ) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_update_links(
+                self as *mut Self,
+                theTData,
+                thePISeg,
+                thePINod,
+            )
+        }
+    }
+
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:62 - `HLRAlgo_PolyInternalData::Dump()`
     pub fn dump(&self) {
         unsafe { crate::ffi::HLRAlgo_PolyInternalData_dump(self as *const Self) }
@@ -1656,6 +1767,21 @@ impl PolyInternalData {
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:89 - `HLRAlgo_PolyInternalData::IntOutL()`
     pub fn int_out_l_bool(&mut self, B: bool) {
         unsafe { crate::ffi::HLRAlgo_PolyInternalData_int_out_l_bool(self as *mut Self, B) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:91 - `HLRAlgo_PolyInternalData::TData()`
+    pub fn t_data(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfTData {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyInternalData_t_data(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:93 - `HLRAlgo_PolyInternalData::PISeg()`
+    pub fn pi_seg(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfPISeg {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyInternalData_pi_seg(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:95 - `HLRAlgo_PolyInternalData::PINod()`
+    pub fn pi_nod(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfPINod {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyInternalData_pi_nod(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:97 - `HLRAlgo_PolyInternalData::DynamicType()`
@@ -1808,6 +1934,11 @@ impl PolyShellData {
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:44 - `HLRAlgo_PolyShellData::Hiding()`
     pub fn hiding(&self) -> bool {
         unsafe { crate::ffi::HLRAlgo_PolyShellData_hiding(self as *const Self) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:50 - `HLRAlgo_PolyShellData::Edges()`
+    pub fn edges(&mut self) -> &mut crate::ffi::HLRAlgo_ListOfBPoint {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyShellData_edges(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::DynamicType()`

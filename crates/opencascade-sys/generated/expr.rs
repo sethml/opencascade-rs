@@ -85,6 +85,19 @@ impl Absolute {
         unsafe { crate::ffi::Expr_Absolute_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Absolute.hxx`:62 - `Expr_Absolute::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Absolute_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_Absolute.hxx`:66 - `Expr_Absolute::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -236,6 +249,19 @@ impl ArcCosine {
     /// **Source:** `Expr_ArcCosine.hxx`:52 - `Expr_ArcCosine::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArcCosine_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArcCosine.hxx`:62 - `Expr_ArcCosine::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_ArcCosine_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_ArcCosine.hxx`:66 - `Expr_ArcCosine::String()`
@@ -391,6 +417,19 @@ impl ArcSine {
         unsafe { crate::ffi::Expr_ArcSine_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_ArcSine.hxx`:62 - `Expr_ArcSine::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_ArcSine_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_ArcSine.hxx`:66 - `Expr_ArcSine::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -540,6 +579,19 @@ impl ArcTangent {
     /// **Source:** `Expr_ArcTangent.hxx`:52 - `Expr_ArcTangent::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArcTangent_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArcTangent.hxx`:62 - `Expr_ArcTangent::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_ArcTangent_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_ArcTangent.hxx`:66 - `Expr_ArcTangent::String()`
@@ -699,6 +751,19 @@ impl ArgCosh {
         unsafe { crate::ffi::Expr_ArgCosh_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_ArgCosh.hxx`:62 - `Expr_ArgCosh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_ArgCosh_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_ArgCosh.hxx`:66 - `Expr_ArgCosh::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -850,6 +915,19 @@ impl ArgSinh {
         unsafe { crate::ffi::Expr_ArgSinh_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_ArgSinh.hxx`:62 - `Expr_ArgSinh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_ArgSinh_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_ArgSinh.hxx`:66 - `Expr_ArgSinh::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -999,6 +1077,19 @@ impl ArgTanh {
     /// **Source:** `Expr_ArgTanh.hxx`:52 - `Expr_ArgTanh::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArgTanh_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArgTanh.hxx`:62 - `Expr_ArgTanh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_ArgTanh_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_ArgTanh.hxx`:66 - `Expr_ArgTanh::String()`
@@ -1244,6 +1335,17 @@ impl BinaryExpression {
         }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::Expr_BinaryExpression_inherited_Evaluate(self as *const Self, vars, vals)
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_BinaryExpression_inherited_EvaluateNumeric(self as *const Self) }
@@ -1326,6 +1428,19 @@ impl BinaryFunction {
     /// **Source:** `Expr_BinaryFunction.hxx`:62 - `Expr_BinaryFunction::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_BinaryFunction_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_BinaryFunction.hxx`:72 - `Expr_BinaryFunction::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_BinaryFunction_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_BinaryFunction.hxx`:76 - `Expr_BinaryFunction::String()`
@@ -1497,6 +1612,19 @@ impl Cosh {
         unsafe { crate::ffi::Expr_Cosh_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Cosh.hxx`:63 - `Expr_Cosh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Cosh_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_Cosh.hxx`:67 - `Expr_Cosh::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -1644,6 +1772,19 @@ impl Cosine {
     /// **Source:** `Expr_Cosine.hxx`:53 - `Expr_Cosine::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Cosine_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Cosine.hxx`:63 - `Expr_Cosine::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Cosine_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_Cosine.hxx`:67 - `Expr_Cosine::String()`
@@ -1796,6 +1937,19 @@ impl Difference {
     /// **Source:** `Expr_Difference.hxx`:54 - `Expr_Difference::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Difference_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Difference.hxx`:70 - `Expr_Difference::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Difference_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_Difference.hxx`:74 - `Expr_Difference::String()`
@@ -2129,6 +2283,19 @@ impl Division {
         unsafe { crate::ffi::Expr_Division_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Division.hxx`:64 - `Expr_Division::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Division_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_Division.hxx`:68 - `Expr_Division::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -2452,6 +2619,19 @@ impl Exponential {
         unsafe { crate::ffi::Expr_Exponential_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Exponential.hxx`:62 - `Expr_Exponential::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Exponential_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_Exponential.hxx`:66 - `Expr_Exponential::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -2610,6 +2790,19 @@ impl Exponentiate {
     /// **Source:** `Expr_Exponentiate.hxx`:54 - `Expr_Exponentiate::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Exponentiate_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Exponentiate.hxx`:64 - `Expr_Exponentiate::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Exponentiate_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_Exponentiate.hxx`:68 - `Expr_Exponentiate::String()`
@@ -2810,6 +3003,18 @@ impl FunctionDerivative {
         unsafe { crate::ffi::Expr_FunctionDerivative_nb_of_variables(self as *const Self) }
     }
 
+    /// **Source:** `Expr_FunctionDerivative.hxx`:59 - `Expr_FunctionDerivative::Evaluate()`
+    /// Computes the value of <me> with the given variables.
+    /// Raises DimensionMismatch if Length(vars) is different from
+    /// Length(values).
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        values: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_FunctionDerivative_evaluate(self as *const Self, vars, values) }
+    }
+
     /// **Source:** `Expr_FunctionDerivative.hxx`:63 - `Expr_FunctionDerivative::Copy()`
     /// Returns a copy of <me> with the same form.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
@@ -3006,6 +3211,19 @@ impl GeneralExpression {
         unsafe { crate::ffi::Expr_GeneralExpression_is_identical(self as *const Self, Other) }
     }
 
+    /// **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_GeneralExpression_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -3092,6 +3310,18 @@ impl GeneralFunction {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_GeneralFunction_copy(self as *const Self))
         }
+    }
+
+    /// **Source:** `Expr_GeneralFunction.hxx`:63 - `Expr_GeneralFunction::Evaluate()`
+    /// Computes the value of <me> with the given variables.
+    /// Raises NotEvaluable if <vars> does not match all variables
+    /// of <me>.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_GeneralFunction_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_GeneralFunction.hxx`:68 - `Expr_GeneralFunction::IsIdentical()`
@@ -4285,6 +4515,19 @@ impl LogOf10 {
         unsafe { crate::ffi::Expr_LogOf10_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_LogOf10.hxx`:63 - `Expr_LogOf10::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_LogOf10_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_LogOf10.hxx`:67 - `Expr_LogOf10::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -4432,6 +4675,19 @@ impl LogOfe {
     /// **Source:** `Expr_LogOfe.hxx`:53 - `Expr_LogOfe::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_LogOfe_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_LogOfe.hxx`:63 - `Expr_LogOfe::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_LogOfe_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_LogOfe.hxx`:67 - `Expr_LogOfe::String()`
@@ -4624,6 +4880,17 @@ impl NamedConstant {
     /// **Source:** `Expr_NamedConstant.hxx`:75 - `Expr_NamedConstant::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_NamedConstant_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_NamedConstant.hxx`:93 - `Expr_NamedConstant::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_NamedConstant_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_NamedConstant.hxx`:96 - `Expr_NamedConstant::DynamicType()`
@@ -4845,6 +5112,17 @@ impl NamedExpression {
         unsafe { crate::ffi::Expr_NamedExpression_inherited_IsLinear(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::Expr_NamedExpression_inherited_Evaluate(self as *const Self, vars, vals)
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_NamedExpression_inherited_EvaluateNumeric(self as *const Self) }
@@ -4865,6 +5143,19 @@ unsafe impl crate::CppDeletable for NamedFunction {
 }
 
 impl NamedFunction {
+    /// **Source:** `Expr_NamedFunction.hxx`:40 - `Expr_NamedFunction::Expr_NamedFunction()`
+    /// Creates a function of given variables <vars> with name
+    /// <name> defined by the expression <exp>.
+    pub fn new_asciistring_handleexprgeneralexpression_array1ofnamedunknown(
+        name: &crate::ffi::TCollection_AsciiString,
+        exp: &crate::ffi::HandleExprGeneralExpression,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedFunction_ctor_asciistring_handleexprgeneralexpression_array1ofnamedunknown(name, exp, vars))
+        }
+    }
+
     /// **Source:** `Expr_NamedFunction.hxx`:45 - `Expr_NamedFunction::SetName()`
     /// Sets the name <newname> to <me>.
     pub fn set_name(&mut self, newname: &crate::ffi::TCollection_AsciiString) {
@@ -4883,6 +5174,18 @@ impl NamedFunction {
     /// Returns the number of variables of <me>.
     pub fn nb_of_variables(&self) -> i32 {
         unsafe { crate::ffi::Expr_NamedFunction_nb_of_variables(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_NamedFunction.hxx`:63 - `Expr_NamedFunction::Evaluate()`
+    /// Computes the value of <me> with the given variables.
+    /// Raises DimensionMismatch if Length(vars) is different from
+    /// Length(values).
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        values: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_NamedFunction_evaluate(self as *const Self, vars, values) }
     }
 
     /// **Source:** `Expr_NamedFunction.hxx`:67 - `Expr_NamedFunction::Copy()`
@@ -5069,6 +5372,19 @@ impl NamedUnknown {
     /// **Source:** `Expr_NamedUnknown.hxx`:83 - `Expr_NamedUnknown::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_NamedUnknown_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_NamedUnknown.hxx`:98 - `Expr_NamedUnknown::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_NamedUnknown_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_NamedUnknown.hxx`:101 - `Expr_NamedUnknown::DynamicType()`
@@ -5402,6 +5718,17 @@ impl NumericValue {
         unsafe { crate::ffi::Expr_NumericValue_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_NumericValue.hxx`:97 - `Expr_NumericValue::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_NumericValue_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_NumericValue.hxx`:101 - `Expr_NumericValue::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -5591,6 +5918,17 @@ impl PolyExpression {
         unsafe { crate::ffi::Expr_PolyExpression_inherited_IsIdentical(self as *const Self, Other) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::Expr_PolyExpression_inherited_Evaluate(self as *const Self, vars, vals)
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_PolyExpression_inherited_EvaluateNumeric(self as *const Self) }
@@ -5622,6 +5960,17 @@ unsafe impl crate::CppDeletable for PolyFunction {
 }
 
 impl PolyFunction {
+    /// **Source:** `Expr_PolyFunction.hxx`:42 - `Expr_PolyFunction::Expr_PolyFunction()`
+    /// Creates <me> as <func>(<exps_1>,<exps_2>,...,<exps_n>)
+    pub fn new_handleexprgeneralfunction_array1ofgeneralexpression(
+        func: &crate::ffi::HandleExprGeneralFunction,
+        exps: &crate::ffi::Expr_Array1OfGeneralExpression,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyFunction_ctor_handleexprgeneralfunction_array1ofgeneralexpression(func, exps))
+        }
+    }
+
     /// **Source:** `Expr_PolyFunction.hxx`:46 - `Expr_PolyFunction::Function()`
     /// Returns the function defining <me>.
     pub fn function(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
@@ -5660,6 +6009,19 @@ impl PolyFunction {
     /// **Source:** `Expr_PolyFunction.hxx`:61 - `Expr_PolyFunction::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_PolyFunction_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_PolyFunction.hxx`:71 - `Expr_PolyFunction::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_PolyFunction_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_PolyFunction.hxx`:75 - `Expr_PolyFunction::String()`
@@ -5782,6 +6144,18 @@ unsafe impl crate::CppDeletable for Product {
 }
 
 impl Product {
+    /// **Source:** `Expr_Product.hxx`:39 - `Expr_Product::Expr_Product()`
+    /// Creates the product of all members of sequence <exps>
+    pub fn new_sequenceofgeneralexpression(
+        exps: &crate::ffi::Expr_SequenceOfGeneralExpression,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Product_ctor_sequenceofgeneralexpression(
+                exps,
+            ))
+        }
+    }
+
     /// **Source:** `Expr_Product.hxx`:42 - `Expr_Product::Expr_Product()`
     /// Creates the product of <exp1> and <exp2>.
     pub fn new_handleexprgeneralexpression2(
@@ -5823,6 +6197,19 @@ impl Product {
     /// **Source:** `Expr_Product.hxx`:58 - `Expr_Product::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Product_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Product.hxx`:68 - `Expr_Product::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Product_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_Product.hxx`:72 - `Expr_Product::String()`
@@ -6056,6 +6443,19 @@ impl Sign {
         unsafe { crate::ffi::Expr_Sign_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Sign.hxx`:63 - `Expr_Sign::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Sign_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_Sign.hxx`:67 - `Expr_Sign::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -6201,6 +6601,19 @@ impl Sine {
     /// **Source:** `Expr_Sine.hxx`:53 - `Expr_Sine::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Sine_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Sine.hxx`:63 - `Expr_Sine::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Sine_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_Sine.hxx`:67 - `Expr_Sine::String()`
@@ -6505,6 +6918,19 @@ impl Sinh {
         unsafe { crate::ffi::Expr_Sinh_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Sinh.hxx`:63 - `Expr_Sinh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Sinh_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_Sinh.hxx`:67 - `Expr_Sinh::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -6652,6 +7078,19 @@ impl Square {
     /// **Source:** `Expr_Square.hxx`:53 - `Expr_Square::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Square_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Square.hxx`:63 - `Expr_Square::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Square_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_Square.hxx`:67 - `Expr_Square::String()`
@@ -6805,6 +7244,19 @@ impl SquareRoot {
         unsafe { crate::ffi::Expr_SquareRoot_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_SquareRoot.hxx`:63 - `Expr_SquareRoot::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_SquareRoot_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_SquareRoot.hxx`:67 - `Expr_SquareRoot::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -6920,6 +7372,16 @@ unsafe impl crate::CppDeletable for Sum {
 }
 
 impl Sum {
+    /// **Source:** `Expr_Sum.hxx`:40 - `Expr_Sum::Expr_Sum()`
+    /// Creates the sum of all the members of sequence <exps>.
+    pub fn new_sequenceofgeneralexpression(
+        exps: &crate::ffi::Expr_SequenceOfGeneralExpression,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sum_ctor_sequenceofgeneralexpression(exps))
+        }
+    }
+
     /// **Source:** `Expr_Sum.hxx`:43 - `Expr_Sum::Expr_Sum()`
     /// Creates the sum of <exp1> and <exp2>.
     pub fn new_handleexprgeneralexpression2(
@@ -6959,6 +7421,19 @@ impl Sum {
     /// **Source:** `Expr_Sum.hxx`:59 - `Expr_Sum::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Sum_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Sum.hxx`:75 - `Expr_Sum::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Sum_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_Sum.hxx`:79 - `Expr_Sum::String()`
@@ -7266,6 +7741,19 @@ impl Tangent {
         unsafe { crate::ffi::Expr_Tangent_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Tangent.hxx`:63 - `Expr_Tangent::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Tangent_evaluate(self as *const Self, vars, vals) }
+    }
+
     /// **Source:** `Expr_Tangent.hxx`:67 - `Expr_Tangent::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
@@ -7411,6 +7899,19 @@ impl Tanh {
     /// **Source:** `Expr_Tanh.hxx`:53 - `Expr_Tanh::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Tanh_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Tanh.hxx`:63 - `Expr_Tanh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_Tanh_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_Tanh.hxx`:67 - `Expr_Tanh::String()`
@@ -7643,6 +8144,17 @@ impl UnaryExpression {
         }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::Expr_UnaryExpression_inherited_Evaluate(self as *const Self, vars, vals)
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_UnaryExpression_inherited_EvaluateNumeric(self as *const Self) }
@@ -7724,6 +8236,19 @@ impl UnaryFunction {
     /// **Source:** `Expr_UnaryFunction.hxx`:61 - `Expr_UnaryFunction::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_UnaryFunction_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_UnaryFunction.hxx`:71 - `Expr_UnaryFunction::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_UnaryFunction_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_UnaryFunction.hxx`:75 - `Expr_UnaryFunction::String()`
@@ -7883,6 +8408,19 @@ impl UnaryMinus {
     /// **Source:** `Expr_UnaryMinus.hxx`:54 - `Expr_UnaryMinus::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_UnaryMinus_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_UnaryMinus.hxx`:70 - `Expr_UnaryMinus::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi::Expr_Array1OfNamedUnknown,
+        vals: &crate::ffi::TColStd_Array1OfReal,
+    ) -> f64 {
+        unsafe { crate::ffi::Expr_UnaryMinus_evaluate(self as *const Self, vars, vals) }
     }
 
     /// **Source:** `Expr_UnaryMinus.hxx`:74 - `Expr_UnaryMinus::String()`

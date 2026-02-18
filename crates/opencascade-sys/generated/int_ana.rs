@@ -211,6 +211,20 @@ impl Curve {
         unsafe { crate::ffi::IntAna_Curve_d1u(self as *mut Self, Theta, P, V) }
     }
 
+    /// **Source:** `IntAna_Curve.hxx`:106 - `IntAna_Curve::FindParameter()`
+    /// Tries to find the parameter of the point P on the curve.
+    /// If the method returns False, the "projection" is
+    /// impossible.
+    /// If the method returns True at least one parameter has been found.
+    /// theParams is always sorted in ascending order.
+    pub fn find_parameter(
+        &self,
+        P: &crate::ffi::gp_Pnt,
+        theParams: &mut crate::ffi::TColStd_ListOfReal,
+    ) {
+        unsafe { crate::ffi::IntAna_Curve_find_parameter(self as *const Self, P, theParams) }
+    }
+
     /// **Source:** `IntAna_Curve.hxx`:110 - `IntAna_Curve::SetIsFirstOpen()`
     /// If flag is True, the Curve is not defined at the
     /// first parameter of its domain.

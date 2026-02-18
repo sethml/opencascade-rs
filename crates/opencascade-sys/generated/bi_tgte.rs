@@ -375,6 +375,16 @@ impl CurveOnEdge {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:73 - `BiTgte_CurveOnEdge::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BiTgte_CurveOnEdge_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:80 - `BiTgte_CurveOnEdge::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -666,6 +676,16 @@ impl CurveOnVertex {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:70 - `BiTgte_CurveOnVertex::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::BiTgte_CurveOnVertex_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:77 - `BiTgte_CurveOnVertex::Trim()`

@@ -354,6 +354,33 @@ impl HArray1OfRepresentationItem {
         }
     }
 
+    /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::StepRepr_HArray1OfRepresentationItem()`
+    pub fn new_array1ofrepresentationitem(
+        theOther: &crate::ffi::StepRepr_Array1OfRepresentationItem,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_HArray1OfRepresentationItem_ctor_array1ofrepresentationitem(
+                    theOther,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepRepr_Array1OfRepresentationItem {
+        unsafe { &*(crate::ffi::StepRepr_HArray1OfRepresentationItem_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::StepRepr_Array1OfRepresentationItem {
+        unsafe {
+            &mut *(crate::ffi::StepRepr_HArray1OfRepresentationItem_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {

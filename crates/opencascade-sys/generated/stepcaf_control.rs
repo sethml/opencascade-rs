@@ -707,6 +707,25 @@ impl GDTProperty {
             .unwrap()
         }
     }
+
+    /// **Source:** `STEPCAFControl_GDTProperty.hxx`:115 - `STEPCAFControl_GDTProperty::GetDatumRefModifiers()`
+    pub fn get_datum_ref_modifiers(
+        theModifiers: &crate::ffi::XCAFDimTolObjects_DatumModifiersSequence,
+        theModifWithVal: crate::xcaf_dim_tol_objects::DatumModifWithValue,
+        theValue: f64,
+        theUnit: &crate::ffi::StepBasic_Unit,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolHArray1OfDatumReferenceModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPCAFControl_GDTProperty_get_datum_ref_modifiers(
+                    theModifiers,
+                    theModifWithVal.into(),
+                    theValue,
+                    theUnit,
+                ),
+            )
+        }
+    }
 }
 
 // ========================
@@ -932,6 +951,11 @@ impl Reader {
     pub fn get_view_mode(&self) -> bool {
         unsafe { crate::ffi::STEPCAFControl_Reader_get_view_mode(self as *const Self) }
     }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:226 - `STEPCAFControl_Reader::GetShapeLabelMap()`
+    pub fn get_shape_label_map(&self) -> &crate::ffi::XCAFDoc_DataMapOfShapeLabel {
+        unsafe { &*(crate::ffi::STEPCAFControl_Reader_get_shape_label_map(self as *const Self)) }
+    }
 }
 
 // ========================
@@ -1015,6 +1039,41 @@ impl Writer {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
         unsafe {
             crate::ffi::STEPCAFControl_Writer_transfer_label_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabel, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:132 - `STEPCAFControl_Writer::Transfer()`
+    /// Method to writing sequence of root assemblies
+    /// or part of the file specified by use by one label
+    pub fn transfer_labelsequence_stepmodeltype_charptr_progressrange(
+        &mut self,
+        theLabelSeq: &crate::ffi::TDF_LabelSequence,
+        theMode: crate::step_control::StepModelType,
+        theIsMulti: &str,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_transfer_labelsequence_stepmodeltype_charptr_progressrange(self as *mut Self, theLabelSeq, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:142 - `STEPCAFControl_Writer::Transfer()`
+    /// Method to writing sequence of root assemblies
+    /// or part of the file specified by use by one label.
+    /// This method is utilized if there's a need to set parameters avoiding
+    /// initialization from Interface_Static
+    pub fn transfer_labelsequence_parameters_stepmodeltype_charptr_progressrange(
+        &mut self,
+        theLabelSeq: &crate::ffi::TDF_LabelSequence,
+        theParams: &crate::ffi::DESTEP_Parameters,
+        theMode: crate::step_control::StepModelType,
+        theIsMulti: &str,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_transfer_labelsequence_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabelSeq, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
         }
     }
 

@@ -34,6 +34,29 @@ impl HArray1OfBSplineCurve {
         }
     }
 
+    /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::TColGeom2d_HArray1OfBSplineCurve()`
+    pub fn new_array1ofbsplinecurve(
+        theOther: &crate::ffi::TColGeom2d_Array1OfBSplineCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_array1ofbsplinecurve(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColGeom2d_Array1OfBSplineCurve {
+        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColGeom2d_Array1OfBSplineCurve {
+        unsafe {
+            &mut *(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_change_array1(self as *mut Self))
+        }
+    }
+
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -114,6 +137,29 @@ impl HArray1OfBezierCurve {
             crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_int2(
                 theLower, theUpper,
             ))
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::TColGeom2d_HArray1OfBezierCurve()`
+    pub fn new_array1ofbeziercurve(
+        theOther: &crate::ffi::TColGeom2d_Array1OfBezierCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_array1ofbeziercurve(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColGeom2d_Array1OfBezierCurve {
+        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfBezierCurve_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColGeom2d_Array1OfBezierCurve {
+        unsafe {
+            &mut *(crate::ffi::TColGeom2d_HArray1OfBezierCurve_change_array1(self as *mut Self))
         }
     }
 
@@ -198,6 +244,27 @@ impl HArray1OfCurve {
         }
     }
 
+    /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::TColGeom2d_HArray1OfCurve()`
+    pub fn new_array1ofcurve(
+        theOther: &crate::ffi::TColGeom2d_Array1OfCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_ctor_array1ofcurve(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TColGeom2d_Array1OfCurve {
+        unsafe { &*(crate::ffi::TColGeom2d_HArray1OfCurve_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TColGeom2d_Array1OfCurve {
+        unsafe { &mut *(crate::ffi::TColGeom2d_HArray1OfCurve_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TColGeom2d_HArray1OfCurve_dynamic_type(self as *const Self)) }
@@ -266,6 +333,40 @@ impl HSequenceOfBoundedCurve {
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::TColGeom2d_HSequenceOfBoundedCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_ctor()) }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::TColGeom2d_HSequenceOfBoundedCurve()`
+    pub fn new_sequenceofboundedcurve(
+        theOther: &crate::ffi::TColGeom2d_SequenceOfBoundedCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_ctor_sequenceofboundedcurve(
+                    theOther,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColGeom2d_SequenceOfBoundedCurve {
+        unsafe { &*(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColGeom2d_SequenceOfBoundedCurve) {
+        unsafe {
+            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append(self as *mut Self, theSequence)
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColGeom2d_SequenceOfBoundedCurve {
+        unsafe {
+            &mut *(crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_change_sequence(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::DynamicType()`
@@ -340,6 +441,34 @@ impl HSequenceOfCurve {
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::TColGeom2d_HSequenceOfCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HSequenceOfCurve_ctor()) }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::TColGeom2d_HSequenceOfCurve()`
+    pub fn new_sequenceofcurve(
+        theOther: &crate::ffi::TColGeom2d_SequenceOfCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HSequenceOfCurve_ctor_sequenceofcurve(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TColGeom2d_SequenceOfCurve {
+        unsafe { &*(crate::ffi::TColGeom2d_HSequenceOfCurve_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TColGeom2d_SequenceOfCurve) {
+        unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColGeom2d_SequenceOfCurve {
+        unsafe {
+            &mut *(crate::ffi::TColGeom2d_HSequenceOfCurve_change_sequence(self as *mut Self))
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::DynamicType()`

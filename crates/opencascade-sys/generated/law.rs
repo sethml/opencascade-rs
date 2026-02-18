@@ -129,6 +129,14 @@ impl BSpFunc {
         unsafe { crate::ffi::Law_BSpFunc_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals of continuity <S>.
+    /// The array must provide enough room to accommodate for the parameters, i.e. T.Length() >
+    /// NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Law_BSpFunc_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`
     pub fn value(&mut self, X: f64) -> f64 {
         unsafe { crate::ffi::Law_BSpFunc_value(self as *mut Self, X) }
@@ -339,6 +347,92 @@ unsafe impl crate::CppDeletable for BSpline {
 }
 
 impl BSpline {
+    /// **Source:** `Law_BSpline.hxx`:93 - `Law_BSpline::Law_BSpline()`
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofreal2_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Law_BSpline_ctor_array1ofreal2_array1ofinteger_int_bool(
+                    Poles,
+                    Knots,
+                    Multiplicities,
+                    Degree,
+                    Periodic,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Law_BSpline.hxx`:101 - `Law_BSpline::Law_BSpline()`
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofreal3_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColStd_Array1OfReal,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Law_BSpline_ctor_array1ofreal3_array1ofinteger_int_bool(
+                    Poles,
+                    Weights,
+                    Knots,
+                    Multiplicities,
+                    Degree,
+                    Periodic,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Law_BSpline.hxx`:93 - `Law_BSpline::Law_BSpline()`
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofreal2_array1ofinteger_int(
+        Poles: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofreal2_array1ofinteger_int_bool(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
+    /// **Source:** `Law_BSpline.hxx`:101 - `Law_BSpline::Law_BSpline()`
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofreal3_array1ofinteger_int(
+        Poles: &crate::ffi::TColStd_Array1OfReal,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofreal3_array1ofinteger_int_bool(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
     /// **Source:** `Law_BSpline.hxx`:111 - `Law_BSpline::IncreaseDegree()`
     /// Increase the degree to  <Degree>. Nothing is  done
     /// if  <Degree>   is lower or  equal  to the  current
@@ -401,6 +495,43 @@ impl BSpline {
     pub fn insert_knot(&mut self, U: f64, M: i32, ParametricTolerance: f64, Add: bool) {
         unsafe {
             crate::ffi::Law_BSpline_insert_knot(self as *mut Self, U, M, ParametricTolerance, Add)
+        }
+    }
+
+    /// **Source:** `Law_BSpline.hxx`:181 - `Law_BSpline::InsertKnots()`
+    /// Inserts a set of knots  values in  the sequence of
+    /// knots.
+    ///
+    /// For each U = Knots(i), M = Mults(i)
+    ///
+    /// If <U>  is an existing  knot  the  multiplicity is
+    /// increased by  <M> if  <Add>  is True, increased to
+    /// <M> if <Add> is False.
+    ///
+    /// If U  is  not  on the parameter  range  nothing is
+    /// done.
+    ///
+    /// If the multiplicity is negative or null nothing is
+    /// done. The  new   multiplicity  is limited  to  the
+    /// degree.
+    ///
+    /// The  tolerance criterion  for  knots  equality  is
+    /// the max of Epsilon(U) and ParametricTolerance.
+    pub fn insert_knots(
+        &mut self,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        unsafe {
+            crate::ffi::Law_BSpline_insert_knots(
+                self as *mut Self,
+                Knots,
+                Mults,
+                ParametricTolerance,
+                Add,
+            )
         }
     }
 
@@ -470,6 +601,17 @@ impl BSpline {
     /// Raised if Index < 1 || Index > NbKnots
     pub fn set_knot_int_real(&mut self, Index: i32, K: f64) {
         unsafe { crate::ffi::Law_BSpline_set_knot_int_real(self as *mut Self, Index, K) }
+    }
+
+    /// **Source:** `Law_BSpline.hxx`:247 - `Law_BSpline::SetKnots()`
+    /// Changes all the knots of the curve
+    /// The multiplicity of the knots are not modified.
+    ///
+    /// Raised if there is an index such that K (Index+1) <= K (Index).
+    ///
+    /// Raised if  K.Lower() < 1 or K.Upper() > NbKnots
+    pub fn set_knots(&mut self, K: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Law_BSpline_set_knots(self as *mut Self, K) }
     }
 
     /// **Source:** `Law_BSpline.hxx`:257 - `Law_BSpline::SetKnot()`
@@ -738,6 +880,26 @@ impl BSpline {
         unsafe { crate::ffi::Law_BSpline_knot(self as *const Self, Index) }
     }
 
+    /// **Source:** `Law_BSpline.hxx`:438 - `Law_BSpline::Knots()`
+    /// returns the knot values of the B-spline curve;
+    ///
+    /// Raised if the length of K is not equal to the number of knots.
+    pub fn knots(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Law_BSpline_knots(self as *const Self, K) }
+    }
+
+    /// **Source:** `Law_BSpline.hxx`:447 - `Law_BSpline::KnotSequence()`
+    /// Returns the knots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// K = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    ///
+    /// Raised if the length of K is not equal to NbPoles + Degree + 1
+    pub fn knot_sequence(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Law_BSpline_knot_sequence(self as *const Self, K) }
+    }
+
     /// **Source:** `Law_BSpline.hxx`:460 - `Law_BSpline::KnotDistribution()`
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
     /// If all the knots differ by a positive constant from the
@@ -784,6 +946,14 @@ impl BSpline {
         unsafe { crate::ffi::Law_BSpline_multiplicity(self as *const Self, Index) }
     }
 
+    /// **Source:** `Law_BSpline.hxx`:497 - `Law_BSpline::Multiplicities()`
+    /// Returns the multiplicity of the knots of the curve.
+    ///
+    /// Raised if the length of M is not equal to NbKnots.
+    pub fn multiplicities(&self, M: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::Law_BSpline_multiplicities(self as *const Self, M) }
+    }
+
     /// **Source:** `Law_BSpline.hxx`:501 - `Law_BSpline::NbKnots()`
     /// Returns the number of knots. This method returns the number of
     /// knot without repetition of multiple knots.
@@ -804,6 +974,14 @@ impl BSpline {
         unsafe { crate::ffi::Law_BSpline_pole(self as *const Self, Index) }
     }
 
+    /// **Source:** `Law_BSpline.hxx`:513 - `Law_BSpline::Poles()`
+    /// Returns the poles of the B-spline curve;
+    ///
+    /// Raised if the length of P is not equal to the number of poles.
+    pub fn poles(&self, P: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Law_BSpline_poles(self as *const Self, P) }
+    }
+
     /// **Source:** `Law_BSpline.hxx`:519 - `Law_BSpline::StartPoint()`
     /// Returns the start point of the curve.
     /// Warnings :
@@ -818,6 +996,14 @@ impl BSpline {
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Law_BSpline_weight(self as *const Self, Index) }
+    }
+
+    /// **Source:** `Law_BSpline.hxx`:528 - `Law_BSpline::Weights()`
+    /// Returns the weights of the B-spline curve;
+    ///
+    /// Raised if the length of W is not equal to NbPoles.
+    pub fn weights(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Law_BSpline_weights(self as *const Self, W) }
     }
 
     /// **Source:** `Law_BSpline.hxx`:557 - `Law_BSpline::Resolution()`
@@ -944,6 +1130,15 @@ impl BSplineKnotSplitting {
         unsafe { crate::ffi::Law_BSplineKnotSplitting_nb_splits(self as *const Self) }
     }
 
+    /// **Source:** `Law_BSplineKnotSplitting.hxx`:67 - `Law_BSplineKnotSplitting::Splitting()`
+    /// Returns the indexes of the BSpline curve knots corresponding to
+    /// the splitting.
+    ///
+    /// Raised if the length of SplitValues is not equal to NbSPlit.
+    pub fn splitting(&self, SplitValues: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::Law_BSplineKnotSplitting_splitting(self as *const Self, SplitValues) }
+    }
+
     /// **Source:** `Law_BSplineKnotSplitting.hxx`:73 - `Law_BSplineKnotSplitting::SplitValue()`
     /// Returns the index of the knot corresponding to the splitting
     /// of range Index.
@@ -1006,6 +1201,14 @@ impl Composite {
         unsafe { crate::ffi::Law_Composite_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `Law_Composite.hxx`:62 - `Law_Composite::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals of continuity <S>.
+    /// The array must provide enough room to accommodate for the parameters,
+    /// i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Law_Composite_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `Law_Composite.hxx`:66 - `Law_Composite::Value()`
     /// Returns the value at parameter X.
     pub fn value(&mut self, X: f64) -> f64 {
@@ -1059,6 +1262,11 @@ impl Composite {
     /// to compute at parameter W.
     pub fn change_elementary_law(&mut self, W: f64) -> &mut crate::ffi::HandleLawFunction {
         unsafe { &mut *(crate::ffi::Law_Composite_change_elementary_law(self as *mut Self, W)) }
+    }
+
+    /// **Source:** `Law_Composite.hxx`:97 - `Law_Composite::ChangeLaws()`
+    pub fn change_laws(&mut self) -> &mut crate::ffi::Law_Laws {
+        unsafe { &mut *(crate::ffi::Law_Composite_change_laws(self as *mut Self)) }
     }
 
     /// **Source:** `Law_Composite.hxx`:99 - `Law_Composite::IsPeriodic()`
@@ -1178,6 +1386,11 @@ impl Constant {
     /// Returns  1
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Law_Constant_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `Law_Constant.hxx`:50 - `Law_Constant::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Law_Constant_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `Law_Constant.hxx`:54 - `Law_Constant::Value()`
@@ -1316,6 +1529,14 @@ impl Function {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Law_Function_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `Law_Function.hxx`:46 - `Law_Function::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals of continuity <S>.
+    /// The array must provide enough room to accommodate for the parameters,
+    /// i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Law_Function_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `Law_Function.hxx`:49 - `Law_Function::Value()`
@@ -1672,6 +1893,11 @@ impl Interpol {
         unsafe { crate::ffi::Law_Interpol_inherited_NbIntervals(self as *const Self, S.into()) }
     }
 
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Law_Interpol_inherited_Intervals(self as *const Self, T, S.into()) }
+    }
+
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`
     pub fn value(&mut self, X: f64) -> f64 {
         unsafe { crate::ffi::Law_Interpol_inherited_Value(self as *mut Self, X) }
@@ -1829,8 +2055,29 @@ impl Interpolate {
 
     /// **Source:** `Law_Interpolate.hxx`:61 - `Law_Interpolate::Load()`
     /// loads initial and final tangents if any.
-    pub fn load(&mut self, InitialTangent: f64, FinalTangent: f64) {
-        unsafe { crate::ffi::Law_Interpolate_load(self as *mut Self, InitialTangent, FinalTangent) }
+    pub fn load_real2(&mut self, InitialTangent: f64, FinalTangent: f64) {
+        unsafe {
+            crate::ffi::Law_Interpolate_load_real2(self as *mut Self, InitialTangent, FinalTangent)
+        }
+    }
+
+    /// **Source:** `Law_Interpolate.hxx`:67 - `Law_Interpolate::Load()`
+    /// loads the tangents. We should have as many tangents as
+    /// they are points  in the array if TangentFlags.Value(i)
+    /// is    Standard_True  use the tangent Tangents.Value(i)
+    /// otherwise the tangent is not constrained.
+    pub fn load_array1ofreal_handletcolstdharray1ofboolean(
+        &mut self,
+        Tangents: &crate::ffi::TColStd_Array1OfReal,
+        TangentFlags: &crate::ffi::HandleTColStdHArray1OfBoolean,
+    ) {
+        unsafe {
+            crate::ffi::Law_Interpolate_load_array1ofreal_handletcolstdharray1ofboolean(
+                self as *mut Self,
+                Tangents,
+                TangentFlags,
+            )
+        }
     }
 
     /// **Source:** `Law_Interpolate.hxx`:71 - `Law_Interpolate::ClearTangents()`
@@ -1899,6 +2146,11 @@ impl Linear {
     /// Returns  1
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Law_Linear_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `Law_Linear.hxx`:54 - `Law_Linear::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Law_Linear_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `Law_Linear.hxx`:58 - `Law_Linear::Value()`
@@ -2124,6 +2376,11 @@ impl S {
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:50 - `Law_BSpFunc::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Law_S_inherited_NbIntervals(self as *const Self, S.into()) }
+    }
+
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Law_S_inherited_Intervals(self as *const Self, T, S.into()) }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`

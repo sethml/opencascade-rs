@@ -723,6 +723,18 @@ impl CompositeSurface {
         }
     }
 
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:85 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
+    /// Initializes by a grid of surfaces (calls Init()).
+    pub fn new_handletcolgeomharray2ofsurface_array1ofreal2(
+        GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
+        UJoints: &crate::ffi::TColStd_Array1OfReal,
+        VJoints: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_array1ofreal2(GridSurf, UJoints, VJoints))
+        }
+    }
+
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:102 - `ShapeExtend_CompositeSurface::Init()`
     /// Initializes by a grid of surfaces.
     /// All the Surfaces of the grid must have geometrical
@@ -736,13 +748,35 @@ impl CompositeSurface {
     /// ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc.
     /// ShapeExtend_Uniform: Ui = i-1, Vj = j-1
     /// ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv
-    pub fn init(
+    pub fn init_handletcolgeomharray2ofsurface_parametrisation(
         &mut self,
         GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
         param: crate::shape_extend::Parametrisation,
     ) -> bool {
         unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_init(self as *mut Self, GridSurf, param.into())
+            crate::ffi::ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_parametrisation(self as *mut Self, GridSurf, param.into())
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:115 - `ShapeExtend_CompositeSurface::Init()`
+    /// Initializes by a grid of surfaces with given global
+    /// parametrisation defined by UJoints and VJoints arrays,
+    /// each having length equal to number of patches in corresponding
+    /// direction + 1. Global joint values should be sorted in
+    /// increasing order.
+    /// All the Surfaces of the grid must have geometrical
+    /// connectivity as stated above.
+    /// If geometrical connectivity is not satisfied, method
+    /// returns False.
+    /// However, class is initialized even in that case.
+    pub fn init_handletcolgeomharray2ofsurface_array1ofreal2(
+        &mut self,
+        GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
+        UJoints: &crate::ffi::TColStd_Array1OfReal,
+        VJoints: &crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_array1ofreal2(self as *mut Self, GridSurf, UJoints, VJoints)
         }
     }
 
@@ -810,6 +844,30 @@ impl CompositeSurface {
     /// on the composite surface)
     pub fn v_joint_value(&self, j: i32) -> f64 {
         unsafe { crate::ffi::ShapeExtend_CompositeSurface_v_joint_value(self as *const Self, j) }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:157 - `ShapeExtend_CompositeSurface::SetUJointValues()`
+    /// Sets the array of U values corresponding to joint
+    /// points, which define global parametrisation of the surface.
+    /// Number of values in array should be equal to NbUPatches()+1.
+    /// All the values should be sorted in increasing order.
+    /// If this is not satisfied, does nothing and returns False.
+    pub fn set_u_joint_values(&mut self, UJoints: &crate::ffi::TColStd_Array1OfReal) -> bool {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_set_u_joint_values(self as *mut Self, UJoints)
+        }
+    }
+
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:164 - `ShapeExtend_CompositeSurface::SetVJointValues()`
+    /// Sets the array of V values corresponding to joint
+    /// points, which define global parametrisation of the surface
+    /// Number of values in array should be equal to NbVPatches()+1.
+    /// All the values should be sorted in increasing order.
+    /// If this is not satisfied, does nothing and returns False.
+    pub fn set_v_joint_values(&mut self, VJoints: &crate::ffi::TColStd_Array1OfReal) -> bool {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_set_v_joint_values(self as *mut Self, VJoints)
+        }
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:168 - `ShapeExtend_CompositeSurface::SetUFirstValue()`
@@ -1689,6 +1747,12 @@ impl MsgRegistrator {
                 gravity.into(),
             )
         }
+    }
+
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:66 - `ShapeExtend_MsgRegistrator::MapShape()`
+    /// Returns a Map of shapes and message list
+    pub fn map_shape(&self) -> &crate::ffi::ShapeExtend_DataMapOfShapeListOfMsg {
+        unsafe { &*(crate::ffi::ShapeExtend_MsgRegistrator_map_shape(self as *const Self)) }
     }
 
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:68 - `ShapeExtend_MsgRegistrator::DynamicType()`
