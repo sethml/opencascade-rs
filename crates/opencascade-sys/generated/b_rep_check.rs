@@ -78,7 +78,7 @@ impl From<Status> for i32 {
 impl TryFrom<i32> for Status {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Status::Noerror),
             1 => Ok(Status::Invalidpointoncurve),
@@ -463,12 +463,12 @@ impl Edge {
     }
 
     /// Upcast to BRepCheck_Result
-    pub fn as_result(&self) -> &Result_ {
+    pub fn as_result(&self) -> &Result {
         unsafe { &*(crate::ffi::BRepCheck_Edge_as_BRepCheck_Result(self as *const Self)) }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
-    pub fn as_result_mut(&mut self) -> &mut Result_ {
+    pub fn as_result_mut(&mut self) -> &mut Result {
         unsafe { &mut *(crate::ffi::BRepCheck_Edge_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
@@ -650,12 +650,12 @@ impl Face {
     }
 
     /// Upcast to BRepCheck_Result
-    pub fn as_result(&self) -> &Result_ {
+    pub fn as_result(&self) -> &Result {
         unsafe { &*(crate::ffi::BRepCheck_Face_as_BRepCheck_Result(self as *const Self)) }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
-    pub fn as_result_mut(&mut self) -> &mut Result_ {
+    pub fn as_result_mut(&mut self) -> &mut Result {
         unsafe { &mut *(crate::ffi::BRepCheck_Face_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
@@ -729,15 +729,15 @@ impl Face {
 // ========================
 
 /// **Source:** `BRepCheck_Result.hxx`:29 - `BRepCheck_Result`
-pub use crate::ffi::BRepCheck_Result as Result_;
+pub use crate::ffi::BRepCheck_Result as Result;
 
-unsafe impl crate::CppDeletable for Result_ {
+unsafe impl crate::CppDeletable for Result {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::BRepCheck_Result_destructor(ptr);
     }
 }
 
-impl Result_ {
+impl Result {
     /// **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepCheck_Result_init(self as *mut Self, S) }
@@ -962,12 +962,12 @@ impl Shell {
     }
 
     /// Upcast to BRepCheck_Result
-    pub fn as_result(&self) -> &Result_ {
+    pub fn as_result(&self) -> &Result {
         unsafe { &*(crate::ffi::BRepCheck_Shell_as_BRepCheck_Result(self as *const Self)) }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
-    pub fn as_result_mut(&mut self) -> &mut Result_ {
+    pub fn as_result_mut(&mut self) -> &mut Result {
         unsafe { &mut *(crate::ffi::BRepCheck_Shell_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
@@ -1114,12 +1114,12 @@ impl Solid {
     }
 
     /// Upcast to BRepCheck_Result
-    pub fn as_result(&self) -> &Result_ {
+    pub fn as_result(&self) -> &Result {
         unsafe { &*(crate::ffi::BRepCheck_Solid_as_BRepCheck_Result(self as *const Self)) }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
-    pub fn as_result_mut(&mut self) -> &mut Result_ {
+    pub fn as_result_mut(&mut self) -> &mut Result {
         unsafe { &mut *(crate::ffi::BRepCheck_Solid_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
@@ -1247,12 +1247,12 @@ impl Vertex {
     }
 
     /// Upcast to BRepCheck_Result
-    pub fn as_result(&self) -> &Result_ {
+    pub fn as_result(&self) -> &Result {
         unsafe { &*(crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result(self as *const Self)) }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
-    pub fn as_result_mut(&mut self) -> &mut Result_ {
+    pub fn as_result_mut(&mut self) -> &mut Result {
         unsafe { &mut *(crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
@@ -1502,12 +1502,12 @@ impl Wire {
     }
 
     /// Upcast to BRepCheck_Result
-    pub fn as_result(&self) -> &Result_ {
+    pub fn as_result(&self) -> &Result {
         unsafe { &*(crate::ffi::BRepCheck_Wire_as_BRepCheck_Result(self as *const Self)) }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
-    pub fn as_result_mut(&mut self) -> &mut Result_ {
+    pub fn as_result_mut(&mut self) -> &mut Result {
         unsafe { &mut *(crate::ffi::BRepCheck_Wire_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 

@@ -165,7 +165,7 @@ impl From<ConsoleColor> for i32 {
 impl TryFrom<i32> for ConsoleColor {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ConsoleColor::ConsolecolorDefault),
             1 => Ok(ConsoleColor::ConsolecolorBlack),
@@ -207,7 +207,7 @@ impl From<Gravity> for i32 {
 impl TryFrom<i32> for Gravity {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Gravity::Trace),
             1 => Ok(Gravity::Info),
@@ -261,7 +261,7 @@ impl From<MetricType> for i32 {
 impl TryFrom<i32> for MetricType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(MetricType::MetrictypeNone),
             1 => Ok(MetricType::MetrictypeThreadcpuusertime),
@@ -556,7 +556,7 @@ impl From<Status> for i32 {
 impl TryFrom<i32> for Status {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Status::None),
             256 => Ok(Status::Done1),
@@ -713,7 +713,7 @@ impl From<StatusType> for i32 {
 impl TryFrom<i32> for StatusType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             256 => Ok(StatusType::Done),
             512 => Ok(StatusType::Warn),

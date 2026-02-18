@@ -204,18 +204,20 @@ pub fn map_self_type(ty: &Type, is_const: bool) -> RustTypeMapping {
     }
 }
 
-/// Reserved names that can't be used as type names
-const FFI_RESERVED_NAMES: &[&str] = &["Vec", "Box", "String", "Result", "Option"];
+/// Reserved names that would conflict with Rust standard library types.
+/// Currently unused — we allow short names like `Vec`, `Box`, `Result` because
+/// they live inside module namespaces and don't shadow prelude names.
+const FFI_RESERVED_NAMES: &[&str] = &[];
 
 /// Check if a short name is reserved and needs escaping
 pub fn is_reserved_name(name: &str) -> bool {
     FFI_RESERVED_NAMES.contains(&name)
 }
 
-/// Get the safe Rust name for a short class name, escaping reserved names with trailing underscore
+/// Get the safe Rust name for a short class name.
+/// With an empty reserved list, this is effectively a no-op.
 pub fn safe_short_name(short_name: &str) -> String {
     if is_reserved_name(short_name) {
-        // Add trailing underscore for reserved names (will be re-exported with correct name)
         format!("{}_", short_name)
     } else {
         short_name.to_string()

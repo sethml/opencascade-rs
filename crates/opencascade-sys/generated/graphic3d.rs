@@ -33,7 +33,7 @@ impl From<AlphaMode> for i32 {
 impl TryFrom<i32> for AlphaMode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(AlphaMode::AlphamodeOpaque),
             1 => Ok(AlphaMode::AlphamodeMask),
@@ -70,7 +70,7 @@ impl From<TypeOfBackfacingModel> for i32 {
 impl TryFrom<i32> for TypeOfBackfacingModel {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelAuto),
             1 => Ok(TypeOfBackfacingModel::TypeofbackfacingmodelDoublesided),

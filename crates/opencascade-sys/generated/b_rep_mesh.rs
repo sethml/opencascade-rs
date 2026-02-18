@@ -28,7 +28,7 @@ impl From<DegreeOfFreedom> for i32 {
 impl TryFrom<i32> for DegreeOfFreedom {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DegreeOfFreedom::Free),
             1 => Ok(DegreeOfFreedom::Involume),
@@ -61,7 +61,7 @@ impl From<FactoryError> for i32 {
 impl TryFrom<i32> for FactoryError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(FactoryError::FeNoerror),
             1 => Ok(FactoryError::FeLibrarynotfound),
@@ -4089,7 +4089,7 @@ impl ShapeTool {
     /// If the given bounding box is void leaves the resulting value unchanged.
     /// @param theBox bounding box to be processed.
     /// @param theMaxDimension maximum dimension of the given box.
-    pub fn box_max_dimension(theBox: &crate::bnd::Box_, theMaxDimension: &mut f64) {
+    pub fn box_max_dimension(theBox: &crate::bnd::Box, theMaxDimension: &mut f64) {
         unsafe { crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension) }
     }
 

@@ -532,7 +532,7 @@ impl From<NameOfColor> for i32 {
 impl TryFrom<i32> for NameOfColor {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(NameOfColor::NocBlack),
             1 => Ok(NameOfColor::NocMatrablue),
@@ -1105,7 +1105,7 @@ impl From<TypeOfColor> for i32 {
 impl TryFrom<i32> for TypeOfColor {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(TypeOfColor::TocRgb),
             1 => Ok(TypeOfColor::TocSrgb),

@@ -2197,7 +2197,7 @@ impl ProjectOnPlane {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_d1(self as *const Self, U, P, V) }
     }
 
@@ -2210,8 +2210,8 @@ impl ProjectOnPlane {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -2225,9 +2225,9 @@ impl ProjectOnPlane {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
-        V3: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -2238,7 +2238,7 @@ impl ProjectOnPlane {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_dn(
                 self as *const Self,

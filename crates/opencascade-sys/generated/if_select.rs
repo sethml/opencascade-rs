@@ -53,7 +53,7 @@ impl From<EditValue> for i32 {
 impl TryFrom<i32> for EditValue {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(EditValue::Optional),
             1 => Ok(EditValue::Editable),
@@ -117,7 +117,7 @@ impl From<PrintCount> for i32 {
 impl TryFrom<i32> for PrintCount {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(PrintCount::Itemsbyentity),
             1 => Ok(PrintCount::Countbyitem),
@@ -156,7 +156,7 @@ impl From<PrintFail> for i32 {
 impl TryFrom<i32> for PrintFail {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(PrintFail::Failonly),
             1 => Ok(PrintFail::Failandwarn),
@@ -184,7 +184,7 @@ impl From<RemainMode> for i32 {
 impl TryFrom<i32> for RemainMode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(RemainMode::Remainforget),
             1 => Ok(RemainMode::Remaincompute),
@@ -222,7 +222,7 @@ impl From<ReturnStatus> for i32 {
 impl TryFrom<i32> for ReturnStatus {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ReturnStatus::Retvoid),
             1 => Ok(ReturnStatus::Retdone),

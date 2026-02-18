@@ -54,7 +54,7 @@ impl From<PIType> for i32 {
 impl TryFrom<i32> for PIType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(PIType::External),
             1 => Ok(PIType::Face),
@@ -718,8 +718,8 @@ impl Tool {
     pub fn lin_box(
         &mut self,
         theLin: &crate::gp::Lin,
-        bounding: &crate::bnd::Box_,
-        boxLin: &mut crate::bnd::Box_,
+        bounding: &crate::bnd::Box,
+        boxLin: &mut crate::bnd::Box,
     ) {
         unsafe { crate::ffi::Intf_Tool_lin_box(self as *mut Self, theLin, bounding, boxLin) }
     }
@@ -728,8 +728,8 @@ impl Tool {
     pub fn hypr_box(
         &mut self,
         theHypr: &crate::gp::Hypr,
-        bounding: &crate::bnd::Box_,
-        boxHypr: &mut crate::bnd::Box_,
+        bounding: &crate::bnd::Box,
+        boxHypr: &mut crate::bnd::Box,
     ) {
         unsafe { crate::ffi::Intf_Tool_hypr_box(self as *mut Self, theHypr, bounding, boxHypr) }
     }
@@ -738,8 +738,8 @@ impl Tool {
     pub fn parab_box(
         &mut self,
         theParab: &crate::gp::Parab,
-        bounding: &crate::bnd::Box_,
-        boxHypr: &mut crate::bnd::Box_,
+        bounding: &crate::bnd::Box,
+        boxHypr: &mut crate::bnd::Box,
     ) {
         unsafe { crate::ffi::Intf_Tool_parab_box(self as *mut Self, theParab, bounding, boxHypr) }
     }

@@ -25,7 +25,7 @@ impl From<ElementType> for i32 {
 impl TryFrom<i32> for ElementType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ElementType::Node),
             1 => Ok(ElementType::Uisoedge),
@@ -53,7 +53,7 @@ impl From<ExtAlgo> for i32 {
 impl TryFrom<i32> for ExtAlgo {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ExtAlgo::ExtalgoGrad),
             1 => Ok(ExtAlgo::ExtalgoTree),
@@ -80,7 +80,7 @@ impl From<ExtFlag> for i32 {
 impl TryFrom<i32> for ExtFlag {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ExtFlag::ExtflagMin),
             1 => Ok(ExtFlag::ExtflagMax),
@@ -668,12 +668,7 @@ impl CurveTool {
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:81 - `Extrema_CurveTool::D1()`
-    pub fn d1(
-        C: &crate::adaptor3d::Curve,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V: &mut crate::gp::Vec_,
-    ) {
+    pub fn d1(C: &crate::adaptor3d::Curve, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::Extrema_CurveTool_d1(C, U, P, V) }
     }
 
@@ -682,8 +677,8 @@ impl CurveTool {
         C: &crate::adaptor3d::Curve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::Extrema_CurveTool_d2(C, U, P, V1, V2) }
     }
@@ -693,15 +688,15 @@ impl CurveTool {
         C: &crate::adaptor3d::Curve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
-        V3: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::Extrema_CurveTool_d3(C, U, P, V1, V2, V3) }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:96 - `Extrema_CurveTool::DN()`
-    pub fn dn(C: &crate::adaptor3d::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
+    pub fn dn(C: &crate::adaptor3d::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_dn(C, U, N)) }
     }
 

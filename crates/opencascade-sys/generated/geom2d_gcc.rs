@@ -105,7 +105,7 @@ impl From<Type1> for i32 {
 impl TryFrom<i32> for Type1 {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Type1::Cucucu),
             1 => Ok(Type1::Cicucu),
@@ -145,7 +145,7 @@ impl From<Type2> for i32 {
 impl TryFrom<i32> for Type2 {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Type2::Cucuoncu),
             1 => Ok(Type2::Cicuoncu),
@@ -181,7 +181,7 @@ impl From<Type3> for i32 {
 impl TryFrom<i32> for Type3 {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Type3::Cucu),
             1 => Ok(Type3::Cicu),

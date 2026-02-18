@@ -1184,14 +1184,14 @@ impl CurveRangeLocalizeData {
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:43 - `IntTools_CurveRangeLocalizeData::AddBox()`
-    pub fn add_box(&mut self, theRange: &CurveRangeSample, theBox: &crate::bnd::Box_) {
+    pub fn add_box(&mut self, theRange: &CurveRangeSample, theBox: &crate::bnd::Box) {
         unsafe {
             crate::ffi::IntTools_CurveRangeLocalizeData_add_box(self as *mut Self, theRange, theBox)
         }
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:45 - `IntTools_CurveRangeLocalizeData::FindBox()`
-    pub fn find_box(&self, theRange: &CurveRangeSample, theBox: &mut crate::bnd::Box_) -> bool {
+    pub fn find_box(&self, theRange: &CurveRangeSample, theBox: &mut crate::bnd::Box) -> bool {
         unsafe {
             crate::ffi::IntTools_CurveRangeLocalizeData_find_box(
                 self as *const Self,
@@ -2486,7 +2486,7 @@ impl ShrunkRange {
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:53 - `IntTools_ShrunkRange::BndBox()`
-    pub fn bnd_box(&self) -> &crate::bnd::Box_ {
+    pub fn bnd_box(&self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::IntTools_ShrunkRange_bnd_box(self as *const Self)) }
     }
 
@@ -2604,7 +2604,7 @@ impl SurfaceRangeLocalizeData {
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:65 - `IntTools_SurfaceRangeLocalizeData::AddBox()`
-    pub fn add_box(&mut self, theRange: &SurfaceRangeSample, theBox: &crate::bnd::Box_) {
+    pub fn add_box(&mut self, theRange: &SurfaceRangeSample, theBox: &crate::bnd::Box) {
         unsafe {
             crate::ffi::IntTools_SurfaceRangeLocalizeData_add_box(
                 self as *mut Self,
@@ -2615,7 +2615,7 @@ impl SurfaceRangeLocalizeData {
     }
 
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:67 - `IntTools_SurfaceRangeLocalizeData::FindBox()`
-    pub fn find_box(&self, theRange: &SurfaceRangeSample, theBox: &mut crate::bnd::Box_) -> bool {
+    pub fn find_box(&self, theRange: &SurfaceRangeSample, theBox: &mut crate::bnd::Box) -> bool {
         unsafe {
             crate::ffi::IntTools_SurfaceRangeLocalizeData_find_box(
                 self as *const Self,
@@ -3245,7 +3245,7 @@ impl Tools {
     /// **Source:** `IntTools_Tools.hxx`:141 - `IntTools_Tools::CheckCurve()`
     /// Checks if the curve is not covered by the default tolerance (confusion).<br>
     /// Builds bounding box for the curve and stores it into <theBox>.
-    pub fn check_curve(theCurve: &Curve, theBox: &mut crate::bnd::Box_) -> bool {
+    pub fn check_curve(theCurve: &Curve, theBox: &mut crate::bnd::Box) -> bool {
         unsafe { crate::ffi::IntTools_Tools_check_curve(theCurve, theBox) }
     }
 

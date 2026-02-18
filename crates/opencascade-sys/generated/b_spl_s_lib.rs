@@ -239,8 +239,8 @@ impl Cache {
         theU: &f64,
         theV: &f64,
         thePoint: &mut crate::gp::Pnt,
-        theTangentU: &mut crate::gp::Vec_,
-        theTangentV: &mut crate::gp::Vec_,
+        theTangentU: &mut crate::gp::Vec,
+        theTangentV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplSLib_Cache_d1(
@@ -269,11 +269,11 @@ impl Cache {
         theU: &f64,
         theV: &f64,
         thePoint: &mut crate::gp::Pnt,
-        theTangentU: &mut crate::gp::Vec_,
-        theTangentV: &mut crate::gp::Vec_,
-        theCurvatureU: &mut crate::gp::Vec_,
-        theCurvatureV: &mut crate::gp::Vec_,
-        theCurvatureUV: &mut crate::gp::Vec_,
+        theTangentU: &mut crate::gp::Vec,
+        theTangentV: &mut crate::gp::Vec,
+        theCurvatureU: &mut crate::gp::Vec,
+        theCurvatureV: &mut crate::gp::Vec,
+        theCurvatureUV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplSLib_Cache_d2(

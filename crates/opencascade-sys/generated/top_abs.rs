@@ -162,7 +162,7 @@ impl From<Orientation> for i32 {
 impl TryFrom<i32> for Orientation {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Orientation::Forward),
             1 => Ok(Orientation::Reversed),
@@ -222,7 +222,7 @@ impl From<ShapeEnum> for i32 {
 impl TryFrom<i32> for ShapeEnum {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ShapeEnum::Compound),
             1 => Ok(ShapeEnum::Compsolid),
@@ -262,7 +262,7 @@ impl From<State> for i32 {
 impl TryFrom<i32> for State {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(State::In),
             1 => Ok(State::Out),

@@ -24,7 +24,7 @@ impl From<SupportType> for i32 {
 impl TryFrom<i32> for SupportType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(SupportType::Isvertex),
             1 => Ok(SupportType::Isonedge),
@@ -330,8 +330,8 @@ impl DistanceSS {
     pub fn new_shape2_box2_real2_extflag_extalgo(
         theS1: &crate::topo_ds::Shape,
         theS2: &crate::topo_ds::Shape,
-        theBox1: &crate::bnd::Box_,
-        theBox2: &crate::bnd::Box_,
+        theBox1: &crate::bnd::Box,
+        theBox2: &crate::bnd::Box,
         theDstRef: f64,
         theDeflection: f64,
         theExtFlag: i32,

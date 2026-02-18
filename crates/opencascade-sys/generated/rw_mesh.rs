@@ -51,7 +51,7 @@ impl From<CafReaderStatusEx> for i32 {
 impl TryFrom<i32> for CafReaderStatusEx {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(CafReaderStatusEx::CafreaderstatusexNone),
             1 => Ok(CafReaderStatusEx::CafreaderstatusexPartial),
@@ -85,7 +85,7 @@ impl From<CoordinateSystem> for i32 {
 impl TryFrom<i32> for CoordinateSystem {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             -1 => Ok(CoordinateSystem::CoordinatesystemUndefined),
             0 => Ok(CoordinateSystem::CoordinatesystemPosyfwdPoszup),
@@ -128,7 +128,7 @@ impl From<NameFormat> for i32 {
 impl TryFrom<i32> for NameFormat {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(NameFormat::NameformatEmpty),
             1 => Ok(NameFormat::NameformatProduct),
@@ -1896,14 +1896,14 @@ impl TriangulationSource {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
-    pub fn cached_min_max(&self) -> &crate::bnd::Box_ {
+    pub fn cached_min_max(&self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::ffi::RWMesh_TriangulationSource_inherited_CachedMinMax(self as *const Self))
         }
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
-    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box_) {
+    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
         unsafe {
             crate::ffi::RWMesh_TriangulationSource_inherited_SetCachedMinMax(
                 self as *mut Self,
@@ -1929,7 +1929,7 @@ impl TriangulationSource {
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
     pub fn min_max(
         &self,
-        theBox: &mut crate::bnd::Box_,
+        theBox: &mut crate::bnd::Box,
         theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {

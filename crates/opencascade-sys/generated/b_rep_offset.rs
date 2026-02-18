@@ -65,7 +65,7 @@ impl From<Error> for i32 {
 impl TryFrom<i32> for Error {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Error::Noerror),
             1 => Ok(Error::Unknownerror),
@@ -104,7 +104,7 @@ impl From<Simple_Status> for i32 {
 impl TryFrom<i32> for Simple_Status {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Simple_Status::Ok),
             1 => Ok(Simple_Status::Nullinputshape),
@@ -142,7 +142,7 @@ impl From<Mode> for i32 {
 impl TryFrom<i32> for Mode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Mode::Skin),
             1 => Ok(Mode::Pipe),
@@ -176,7 +176,7 @@ impl From<Status> for i32 {
 impl TryFrom<i32> for Status {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Status::Good),
             1 => Ok(Status::Reversed),

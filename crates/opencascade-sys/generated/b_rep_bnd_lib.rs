@@ -26,7 +26,7 @@
 /// -   The resulting bounding box may be somewhat larger than the object.
 pub fn add_shape_box_bool(
     S: &crate::topo_ds::Shape,
-    B: &mut crate::bnd::Box_,
+    B: &mut crate::bnd::Box,
     useTriangulation: bool,
 ) {
     unsafe { crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation) }
@@ -43,7 +43,7 @@ pub fn add_shape_box_bool(
 /// tolerance value of the sub-shapes as is the case with the
 /// Add function. So the added part of the resulting bounding
 /// box is closer to the shape S.
-pub fn add_close(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box_) {
+pub fn add_close(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box) {
     unsafe { crate::ffi::BRepBndLib_add_close(S, B) }
 }
 /// **Source:** `BRepBndLib.hxx`:78 - `BRepBndLib::AddOptimal`
@@ -58,7 +58,7 @@ pub fn add_close(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box_) {
 /// numerical calculation use tolerance Precision::Confusion().
 pub fn add_optimal(
     S: &crate::topo_ds::Shape,
-    B: &mut crate::bnd::Box_,
+    B: &mut crate::bnd::Box,
     useTriangulation: bool,
     useShapeTolerance: bool,
 ) {

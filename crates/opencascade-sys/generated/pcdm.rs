@@ -94,7 +94,7 @@ impl From<ReaderStatus> for i32 {
 impl TryFrom<i32> for ReaderStatus {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ReaderStatus::RsOk),
             1 => Ok(ReaderStatus::RsNodriver),
@@ -160,7 +160,7 @@ impl From<StoreStatus> for i32 {
 impl TryFrom<i32> for StoreStatus {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(StoreStatus::SsOk),
             1 => Ok(StoreStatus::SsDriverfailure),

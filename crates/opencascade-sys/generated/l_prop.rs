@@ -25,7 +25,7 @@ impl From<Status> for i32 {
 impl TryFrom<i32> for Status {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Status::Undecided),
             1 => Ok(Status::Undefined),
@@ -58,7 +58,7 @@ impl From<CIType> for i32 {
 impl TryFrom<i32> for CIType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(CIType::Inflection),
             1 => Ok(CIType::Mincur),

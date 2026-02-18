@@ -93,35 +93,35 @@ impl SLProps {
     /// **Source:** `BRepLProp_SLProps.hxx`:84 - `BRepLProp_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1u(&mut self) -> &crate::gp::Vec_ {
+    pub fn d1u(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_d1u(self as *mut Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:88 - `BRepLProp_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1v(&mut self) -> &crate::gp::Vec_ {
+    pub fn d1v(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_d1v(self as *mut Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:92 - `BRepLProp_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
-    pub fn d2u(&mut self) -> &crate::gp::Vec_ {
+    pub fn d2u(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_d2u(self as *mut Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:96 - `BRepLProp_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d2v(&mut self) -> &crate::gp::Vec_ {
+    pub fn d2v(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_d2v(self as *mut Self)) }
     }
 
     /// **Source:** `BRepLProp_SLProps.hxx`:100 - `BRepLProp_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn duv(&mut self) -> &crate::gp::Vec_ {
+    pub fn duv(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepLProp_SLProps_duv(self as *mut Self)) }
     }
 

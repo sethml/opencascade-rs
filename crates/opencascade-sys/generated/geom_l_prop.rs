@@ -142,21 +142,21 @@ impl CLProps {
     /// **Source:** `GeomLProp_CLProps.hxx`:88 - `GeomLProp_CLProps::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1(&mut self) -> &crate::gp::Vec_ {
+    pub fn d1(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_CLProps_d1(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:92 - `GeomLProp_CLProps::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d2(&mut self) -> &crate::gp::Vec_ {
+    pub fn d2(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_CLProps_d2(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:96 - `GeomLProp_CLProps::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d3(&mut self) -> &crate::gp::Vec_ {
+    pub fn d3(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_CLProps_d3(self as *mut Self)) }
     }
 
@@ -226,7 +226,7 @@ impl CurveTool {
         C: &crate::ffi::HandleGeomCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_CurveTool_d1(C, U, P, V1) }
     }
@@ -238,8 +238,8 @@ impl CurveTool {
         C: &crate::ffi::HandleGeomCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_CurveTool_d2(C, U, P, V1, V2) }
     }
@@ -252,9 +252,9 @@ impl CurveTool {
         C: &crate::ffi::HandleGeomCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
-        V3: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_CurveTool_d3(C, U, P, V1, V2, V3) }
     }
@@ -371,35 +371,35 @@ impl SLProps {
     /// **Source:** `GeomLProp_SLProps.hxx`:84 - `GeomLProp_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1u(&mut self) -> &crate::gp::Vec_ {
+    pub fn d1u(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_d1u(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:88 - `GeomLProp_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1v(&mut self) -> &crate::gp::Vec_ {
+    pub fn d1v(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_d1v(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:92 - `GeomLProp_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
-    pub fn d2u(&mut self) -> &crate::gp::Vec_ {
+    pub fn d2u(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_d2u(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:96 - `GeomLProp_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d2v(&mut self) -> &crate::gp::Vec_ {
+    pub fn d2v(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_d2v(self as *mut Self)) }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:100 - `GeomLProp_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn duv(&mut self) -> &crate::gp::Vec_ {
+    pub fn duv(&mut self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::GeomLProp_SLProps_duv(self as *mut Self)) }
     }
 
@@ -523,8 +523,8 @@ impl SurfaceTool {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec_,
-        D1V: &mut crate::gp::Vec_,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_SurfaceTool_d1(S, U, V, P, D1U, D1V) }
     }
@@ -537,11 +537,11 @@ impl SurfaceTool {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec_,
-        D1V: &mut crate::gp::Vec_,
-        D2U: &mut crate::gp::Vec_,
-        D2V: &mut crate::gp::Vec_,
-        DUV: &mut crate::gp::Vec_,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        DUV: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomLProp_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV) }
     }
@@ -553,7 +553,7 @@ impl SurfaceTool {
         V: f64,
         IU: i32,
         IV: i32,
-    ) -> crate::OwnedPtr<crate::gp::Vec_> {
+    ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomLProp_SurfaceTool_dn(S, U, V, IU, IV)) }
     }
 

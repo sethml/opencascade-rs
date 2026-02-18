@@ -452,7 +452,7 @@ impl From<EdgeError> for i32 {
 impl TryFrom<i32> for EdgeError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(EdgeError::Edgedone),
             1 => Ok(EdgeError::Pointprojectionfailed),
@@ -489,7 +489,7 @@ impl From<FaceError> for i32 {
 impl TryFrom<i32> for FaceError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(FaceError::Facedone),
             1 => Ok(FaceError::Noface),
@@ -522,7 +522,7 @@ impl From<ShapeModification> for i32 {
 impl TryFrom<i32> for ShapeModification {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ShapeModification::Preserved),
             1 => Ok(ShapeModification::Deleted),
@@ -554,7 +554,7 @@ impl From<ShellError> for i32 {
 impl TryFrom<i32> for ShellError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ShellError::Shelldone),
             1 => Ok(ShellError::Emptyshell),
@@ -586,7 +586,7 @@ impl From<WireError> for i32 {
 impl TryFrom<i32> for WireError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(WireError::Wiredone),
             1 => Ok(WireError::Emptywire),

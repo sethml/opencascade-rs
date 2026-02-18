@@ -32,7 +32,7 @@ impl From<ParamType> for i32 {
 impl TryFrom<i32> for ParamType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ParamType::Parammisc),
             1 => Ok(ParamType::Paraminteger),
@@ -73,7 +73,7 @@ impl From<DataState> for i32 {
 impl TryFrom<i32> for DataState {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DataState::Stateok),
             1 => Ok(DataState::Loadwarning),
@@ -112,7 +112,7 @@ impl From<CheckStatus> for i32 {
 impl TryFrom<i32> for CheckStatus {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(CheckStatus::Checkok),
             1 => Ok(CheckStatus::Checkwarning),

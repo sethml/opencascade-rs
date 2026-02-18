@@ -26,7 +26,7 @@ impl From<RealEnum> for i32 {
 impl TryFrom<i32> for RealEnum {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(RealEnum::Scalar),
             1 => Ok(RealEnum::Length),

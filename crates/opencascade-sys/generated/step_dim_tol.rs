@@ -36,7 +36,7 @@ impl From<GeometricToleranceModifier> for i32 {
 impl TryFrom<i32> for GeometricToleranceModifier {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GeometricToleranceModifier::Gtmanycrosssection),
             1 => Ok(GeometricToleranceModifier::Gtmcommonzone),
@@ -88,7 +88,7 @@ impl From<GeometricToleranceType> for i32 {
 impl TryFrom<i32> for GeometricToleranceType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GeometricToleranceType::Gttangularitytolerance),
             1 => Ok(GeometricToleranceType::Gttcircularrunouttolerance),
@@ -147,7 +147,7 @@ impl From<SimpleDatumReferenceModifier> for i32 {
 impl TryFrom<i32> for SimpleDatumReferenceModifier {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(SimpleDatumReferenceModifier::Sdrmanycrosssection),
             1 => Ok(SimpleDatumReferenceModifier::Sdrmanylongitudinalsection),
@@ -195,7 +195,7 @@ impl From<DatumReferenceModifierType> for i32 {
 impl TryFrom<i32> for DatumReferenceModifierType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DatumReferenceModifierType::Circularorcylindrical),
             1 => Ok(DatumReferenceModifierType::Distance),

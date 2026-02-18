@@ -42,7 +42,7 @@ impl BndBoxTreeSelectorPoint {
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:42 - `BRepClass3d_BndBoxTreeSelectorPoint::Reject()`
-    pub fn reject(&self, theBox: &crate::bnd::Box_) -> bool {
+    pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
         unsafe {
             crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_reject(self as *const Self, theBox)
         }
@@ -83,7 +83,7 @@ impl BndBoxTreeSelectorLine {
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:83 - `BRepClass3d_BndBoxTreeSelectorLine::Reject()`
-    pub fn reject(&self, theBox: &crate::bnd::Box_) -> bool {
+    pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
         unsafe {
             crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_reject(self as *const Self, theBox)
         }
@@ -678,7 +678,7 @@ impl SolidExplorer {
     }
 
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:175 - `BRepClass3d_SolidExplorer::Box()`
-    pub fn box_(&self) -> &crate::bnd::Box_ {
+    pub fn box_(&self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::BRepClass3d_SolidExplorer_box_(self as *const Self)) }
     }
 
@@ -736,8 +736,8 @@ impl SolidExplorer {
         u: &mut f64,
         v: &mut f64,
         Param: &mut f64,
-        theVecD1U: &mut crate::gp::Vec_,
-        theVecD1V: &mut crate::gp::Vec_,
+        theVecD1U: &mut crate::gp::Vec,
+        theVecD1V: &mut crate::gp::Vec,
     ) -> bool {
         unsafe {
             crate::ffi::BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real3_vec2(

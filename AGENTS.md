@@ -1,20 +1,19 @@
-My goal is to make crates/opencascade-sys a more complete FFI layer to access
-the C++ OCCT library.
+My goal is to make crates/opencascade-sys a more complete FFI layer to access the C++ OCCT library.
 
-In order to do that, there's a work-in-progress tool
-crates/opencascade-binding-generator. The README.md in that directory describes
-the architecture, CLI usage, and future work. Use
-scripts/regenerate-bindings.sh in order to run the generator and regenerate the
-ffi files in opencascade-sys/generated. You must regenerate bindings after modifying opencascade-binding-generator.
-Use scripts/run-binding-generator-tests.sh to run the binding generator unit
-tests. It sets up DYLD_LIBRARY_PATH for libclang on macOS. You can pass extra
-args, e.g. `./scripts/run-binding-generator-tests.sh -- --test-threads=1`.
+In order to do that, there's a tool crates/opencascade-binding-generator. The README.md in that directory describes the architecture, CLI usage, and future work. Use scripts/regenerate-bindings.sh to regenerate the ffi files in opencascade-sys/generated after modifying opencascade-binding-generator.
+
+
+Before comitting, always make sure that everything builds and tests pass with:
+```
+scripts/regenerate-bindings.sh
+cargo build
+scripts/run-binding-generator-tests.sh
+cargo test --workspace --exclude opencascade-binding-generator
+```
 
 You can find opencascade OCCT C++ headers and source in crates/occt-sys/OCCT/src/, and documentation in crates/occt-sys/OCCT/dox/.
 
-Avoid using head or tail when doing builds or regenerating bindings to avoid missing compile errors. Run
-builds and tests with `time`. When they take more than 5 minutes, stop and ask
-the user if they want to speed them up.
+Avoid using head or tail when doing builds or regenerating bindings to avoid missing compile errors. Run builds and tests with `time`. When they take more than 5 minutes, stop and ask the user if they want to speed them up.
 
 Do not use /tmp/ for temporary files. Use tmp/ in the project directory instead.
 

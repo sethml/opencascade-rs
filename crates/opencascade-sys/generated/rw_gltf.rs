@@ -36,7 +36,7 @@ impl From<GltfAccessorCompType> for i32 {
 impl TryFrom<i32> for GltfAccessorCompType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GltfAccessorCompType::GltfaccessorcomptypeUnknown),
             5120 => Ok(GltfAccessorCompType::GltfaccessorcomptypeInt8),
@@ -83,7 +83,7 @@ impl From<GltfAccessorLayout> for i32 {
 impl TryFrom<i32> for GltfAccessorLayout {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GltfAccessorLayout::GltfaccessorlayoutUnknown),
             1 => Ok(GltfAccessorLayout::GltfaccessorlayoutScalar),
@@ -121,7 +121,7 @@ impl From<GltfAlphaMode> for i32 {
 impl TryFrom<i32> for GltfAlphaMode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GltfAlphaMode::GltfalphamodeOpaque),
             1 => Ok(GltfAlphaMode::GltfalphamodeMask),
@@ -165,7 +165,7 @@ impl From<GltfArrayType> for i32 {
 impl TryFrom<i32> for GltfArrayType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GltfArrayType::GltfarraytypeUnknown),
             1 => Ok(GltfArrayType::GltfarraytypeIndices),
@@ -203,7 +203,7 @@ impl From<GltfBufferViewTarget> for i32 {
 impl TryFrom<i32> for GltfBufferViewTarget {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GltfBufferViewTarget::GltfbufferviewtargetUnknown),
             34962 => Ok(GltfBufferViewTarget::GltfbufferviewtargetArrayBuffer),
@@ -246,7 +246,7 @@ impl From<GltfPrimitiveMode> for i32 {
 impl TryFrom<i32> for GltfPrimitiveMode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             -1 => Ok(GltfPrimitiveMode::GltfprimitivemodeUnknown),
             0 => Ok(GltfPrimitiveMode::GltfprimitivemodePoints),
@@ -317,7 +317,7 @@ impl From<GltfRootElement> for i32 {
 impl TryFrom<i32> for GltfRootElement {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GltfRootElement::GltfrootelementAsset),
             1 => Ok(GltfRootElement::GltfrootelementScenes),
@@ -366,7 +366,7 @@ impl From<WriterTrsfFormat> for i32 {
 impl TryFrom<i32> for WriterTrsfFormat {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(WriterTrsfFormat::WritertrsfformatCompact),
             1 => Ok(WriterTrsfFormat::WritertrsfformatMat4),
@@ -1250,7 +1250,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
-    pub fn cached_min_max(&self) -> &crate::bnd::Box_ {
+    pub fn cached_min_max(&self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_CachedMinMax(
                 self as *const Self,
@@ -1259,7 +1259,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
-    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box_) {
+    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
         unsafe {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetCachedMinMax(
                 self as *mut Self,
@@ -1287,7 +1287,7 @@ impl GltfLatePrimitiveArray {
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
     pub fn min_max(
         &self,
-        theBox: &mut crate::bnd::Box_,
+        theBox: &mut crate::bnd::Box,
         theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {

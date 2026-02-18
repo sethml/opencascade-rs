@@ -28,7 +28,7 @@ impl From<CriterionType> for i32 {
 impl TryFrom<i32> for CriterionType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(CriterionType::Absolute),
             1 => Ok(CriterionType::Relative),
@@ -59,7 +59,7 @@ impl From<CriterionRepartition> for i32 {
 impl TryFrom<i32> for CriterionRepartition {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(CriterionRepartition::Regular),
             1 => Ok(CriterionRepartition::Incremental),

@@ -49,7 +49,7 @@ pub fn dn_real2_pln_int2(
     Pl: &crate::gp::Pln,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_pln_int2(U, V, Pl, Nu, Nv)) }
 }
 /// **Source:** `ElSLib.hxx`:84 - `ElSLib::DN`
@@ -59,7 +59,7 @@ pub fn dn_real2_cone_int2(
     C: &crate::gp::Cone,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_cone_int2(U, V, C, Nu, Nv)) }
 }
 /// **Source:** `ElSLib.hxx`:90 - `ElSLib::DN`
@@ -69,7 +69,7 @@ pub fn dn_real2_cylinder_int2(
     C: &crate::gp::Cylinder,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_cylinder_int2(U, V, C, Nu, Nv)) }
 }
 /// **Source:** `ElSLib.hxx`:96 - `ElSLib::DN`
@@ -79,7 +79,7 @@ pub fn dn_real2_sphere_int2(
     S: &crate::gp::Sphere,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_sphere_int2(U, V, S, Nu, Nv)) }
 }
 /// **Source:** `ElSLib.hxx`:102 - `ElSLib::DN`
@@ -89,7 +89,7 @@ pub fn dn_real2_torus_int2(
     T: &crate::gp::Torus,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_dn_real2_torus_int2(U, V, T, Nu, Nv)) }
 }
 /// **Source:** `ElSLib.hxx`:111 - `ElSLib::D0`
@@ -126,8 +126,8 @@ pub fn d1_real2_pln_pnt_vec2(
     V: f64,
     Pl: &crate::gp::Pln,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d1_real2_pln_pnt_vec2(U, V, Pl, P, Vu, Vv) }
 }
@@ -137,8 +137,8 @@ pub fn d1_real2_cone_pnt_vec2(
     V: f64,
     C: &crate::gp::Cone,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d1_real2_cone_pnt_vec2(U, V, C, P, Vu, Vv) }
 }
@@ -148,8 +148,8 @@ pub fn d1_real2_cylinder_pnt_vec2(
     V: f64,
     C: &crate::gp::Cylinder,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d1_real2_cylinder_pnt_vec2(U, V, C, P, Vu, Vv) }
 }
@@ -159,8 +159,8 @@ pub fn d1_real2_sphere_pnt_vec2(
     V: f64,
     S: &crate::gp::Sphere,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d1_real2_sphere_pnt_vec2(U, V, S, P, Vu, Vv) }
 }
@@ -170,8 +170,8 @@ pub fn d1_real2_torus_pnt_vec2(
     V: f64,
     T: &crate::gp::Torus,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d1_real2_torus_pnt_vec2(U, V, T, P, Vu, Vv) }
 }
@@ -187,11 +187,11 @@ pub fn d2_real2_cone_pnt_vec5(
     V: f64,
     C: &crate::gp::Cone,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d2_real2_cone_pnt_vec5(U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv) }
 }
@@ -201,11 +201,11 @@ pub fn d2_real2_cylinder_pnt_vec5(
     V: f64,
     C: &crate::gp::Cylinder,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d2_real2_cylinder_pnt_vec5(U, V, C, P, Vu, Vv, Vuu, Vvv, Vuv) }
 }
@@ -215,11 +215,11 @@ pub fn d2_real2_sphere_pnt_vec5(
     V: f64,
     S: &crate::gp::Sphere,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d2_real2_sphere_pnt_vec5(U, V, S, P, Vu, Vv, Vuu, Vvv, Vuv) }
 }
@@ -229,11 +229,11 @@ pub fn d2_real2_torus_pnt_vec5(
     V: f64,
     T: &crate::gp::Torus,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_d2_real2_torus_pnt_vec5(U, V, T, P, Vu, Vv, Vuu, Vvv, Vuv) }
 }
@@ -252,15 +252,15 @@ pub fn d3_real2_cone_pnt_vec9(
     V: f64,
     C: &crate::gp::Cone,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
-    Vuuu: &mut crate::gp::Vec_,
-    Vvvv: &mut crate::gp::Vec_,
-    Vuuv: &mut crate::gp::Vec_,
-    Vuvv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
+    Vuuu: &mut crate::gp::Vec,
+    Vvvv: &mut crate::gp::Vec,
+    Vuuv: &mut crate::gp::Vec,
+    Vuvv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_d3_real2_cone_pnt_vec9(
@@ -274,15 +274,15 @@ pub fn d3_real2_cylinder_pnt_vec9(
     V: f64,
     C: &crate::gp::Cylinder,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
-    Vuuu: &mut crate::gp::Vec_,
-    Vvvv: &mut crate::gp::Vec_,
-    Vuuv: &mut crate::gp::Vec_,
-    Vuvv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
+    Vuuu: &mut crate::gp::Vec,
+    Vvvv: &mut crate::gp::Vec,
+    Vuuv: &mut crate::gp::Vec,
+    Vuvv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_d3_real2_cylinder_pnt_vec9(
@@ -296,15 +296,15 @@ pub fn d3_real2_sphere_pnt_vec9(
     V: f64,
     S: &crate::gp::Sphere,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
-    Vuuu: &mut crate::gp::Vec_,
-    Vvvv: &mut crate::gp::Vec_,
-    Vuuv: &mut crate::gp::Vec_,
-    Vuvv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
+    Vuuu: &mut crate::gp::Vec,
+    Vvvv: &mut crate::gp::Vec,
+    Vuuv: &mut crate::gp::Vec,
+    Vuvv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_d3_real2_sphere_pnt_vec9(
@@ -326,15 +326,15 @@ pub fn d3_real2_torus_pnt_vec9(
     V: f64,
     T: &crate::gp::Torus,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
-    Vuuu: &mut crate::gp::Vec_,
-    Vvvv: &mut crate::gp::Vec_,
-    Vuuv: &mut crate::gp::Vec_,
-    Vuvv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
+    Vuuu: &mut crate::gp::Vec,
+    Vvvv: &mut crate::gp::Vec,
+    Vuuv: &mut crate::gp::Vec,
+    Vuvv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_d3_real2_torus_pnt_vec9(
@@ -399,7 +399,7 @@ pub fn plane_dn(
     Pos: &crate::gp::Ax3,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_plane_dn(U, V, Pos, Nu, Nv)) }
 }
 /// **Source:** `ElSLib.hxx`:312 - `ElSLib::CylinderDN`
@@ -410,7 +410,7 @@ pub fn cylinder_dn(
     Radius: f64,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cylinder_dn(U, V, Pos, Radius, Nu, Nv)) }
 }
 /// **Source:** `ElSLib.hxx`:319 - `ElSLib::ConeDN`
@@ -422,7 +422,7 @@ pub fn cone_dn(
     SAngle: f64,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::ElSLib_cone_dn(U, V, Pos, Radius, SAngle, Nu, Nv))
     }
@@ -435,7 +435,7 @@ pub fn sphere_dn(
     Radius: f64,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElSLib_sphere_dn(U, V, Pos, Radius, Nu, Nv)) }
 }
 /// **Source:** `ElSLib.hxx`:334 - `ElSLib::TorusDN`
@@ -447,7 +447,7 @@ pub fn torus_dn(
     MinorRadius: f64,
     Nu: i32,
     Nv: i32,
-) -> crate::OwnedPtr<crate::gp::Vec_> {
+) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::ElSLib_torus_dn(
             U,
@@ -500,8 +500,8 @@ pub fn plane_d1(
     V: f64,
     Pos: &crate::gp::Ax3,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_plane_d1(U, V, Pos, P, Vu, Vv) }
 }
@@ -513,8 +513,8 @@ pub fn cone_d1(
     Radius: f64,
     SAngle: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_cone_d1(U, V, Pos, Radius, SAngle, P, Vu, Vv) }
 }
@@ -525,8 +525,8 @@ pub fn cylinder_d1(
     Pos: &crate::gp::Ax3,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_cylinder_d1(U, V, Pos, Radius, P, Vu, Vv) }
 }
@@ -537,8 +537,8 @@ pub fn sphere_d1(
     Pos: &crate::gp::Ax3,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_sphere_d1(U, V, Pos, Radius, P, Vu, Vv) }
 }
@@ -550,8 +550,8 @@ pub fn torus_d1(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_torus_d1(U, V, Pos, MajorRadius, MinorRadius, P, Vu, Vv) }
 }
@@ -563,11 +563,11 @@ pub fn cone_d2(
     Radius: f64,
     SAngle: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_cone_d2(U, V, Pos, Radius, SAngle, P, Vu, Vv, Vuu, Vvv, Vuv) }
 }
@@ -578,11 +578,11 @@ pub fn cylinder_d2(
     Pos: &crate::gp::Ax3,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_cylinder_d2(U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv) }
 }
@@ -593,11 +593,11 @@ pub fn sphere_d2(
     Pos: &crate::gp::Ax3,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
 ) {
     unsafe { crate::ffi::ElSLib_sphere_d2(U, V, Pos, Radius, P, Vu, Vv, Vuu, Vvv, Vuv) }
 }
@@ -609,11 +609,11 @@ pub fn torus_d2(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_torus_d2(U, V, Pos, MajorRadius, MinorRadius, P, Vu, Vv, Vuu, Vvv, Vuv)
@@ -627,15 +627,15 @@ pub fn cone_d3(
     Radius: f64,
     SAngle: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
-    Vuuu: &mut crate::gp::Vec_,
-    Vvvv: &mut crate::gp::Vec_,
-    Vuuv: &mut crate::gp::Vec_,
-    Vuvv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
+    Vuuu: &mut crate::gp::Vec,
+    Vvvv: &mut crate::gp::Vec,
+    Vuuv: &mut crate::gp::Vec,
+    Vuvv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_cone_d3(
@@ -650,15 +650,15 @@ pub fn cylinder_d3(
     Pos: &crate::gp::Ax3,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
-    Vuuu: &mut crate::gp::Vec_,
-    Vvvv: &mut crate::gp::Vec_,
-    Vuuv: &mut crate::gp::Vec_,
-    Vuvv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
+    Vuuu: &mut crate::gp::Vec,
+    Vvvv: &mut crate::gp::Vec,
+    Vuuv: &mut crate::gp::Vec,
+    Vuvv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_cylinder_d3(
@@ -673,15 +673,15 @@ pub fn sphere_d3(
     Pos: &crate::gp::Ax3,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
-    Vuuu: &mut crate::gp::Vec_,
-    Vvvv: &mut crate::gp::Vec_,
-    Vuuv: &mut crate::gp::Vec_,
-    Vuvv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
+    Vuuu: &mut crate::gp::Vec,
+    Vvvv: &mut crate::gp::Vec,
+    Vuuv: &mut crate::gp::Vec,
+    Vuvv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_sphere_d3(
@@ -700,15 +700,15 @@ pub fn torus_d3(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    Vu: &mut crate::gp::Vec_,
-    Vv: &mut crate::gp::Vec_,
-    Vuu: &mut crate::gp::Vec_,
-    Vvv: &mut crate::gp::Vec_,
-    Vuv: &mut crate::gp::Vec_,
-    Vuuu: &mut crate::gp::Vec_,
-    Vvvv: &mut crate::gp::Vec_,
-    Vuuv: &mut crate::gp::Vec_,
-    Vuvv: &mut crate::gp::Vec_,
+    Vu: &mut crate::gp::Vec,
+    Vv: &mut crate::gp::Vec,
+    Vuu: &mut crate::gp::Vec,
+    Vvv: &mut crate::gp::Vec,
+    Vuv: &mut crate::gp::Vec,
+    Vuuu: &mut crate::gp::Vec,
+    Vvvv: &mut crate::gp::Vec,
+    Vuuv: &mut crate::gp::Vec,
+    Vuvv: &mut crate::gp::Vec,
 ) {
     unsafe {
         crate::ffi::ElSLib_torus_d3(

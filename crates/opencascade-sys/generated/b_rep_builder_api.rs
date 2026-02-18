@@ -74,7 +74,7 @@ impl From<EdgeError> for i32 {
 impl TryFrom<i32> for EdgeError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(EdgeError::Edgedone),
             1 => Ok(EdgeError::Pointprojectionfailed),
@@ -121,7 +121,7 @@ impl From<FaceError> for i32 {
 impl TryFrom<i32> for FaceError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(FaceError::Facedone),
             1 => Ok(FaceError::Noface),
@@ -153,7 +153,7 @@ impl From<PipeError> for i32 {
 impl TryFrom<i32> for PipeError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(PipeError::Pipedone),
             1 => Ok(PipeError::Pipenotdone),
@@ -192,7 +192,7 @@ impl From<ShapeModification> for i32 {
 impl TryFrom<i32> for ShapeModification {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ShapeModification::Preserved),
             1 => Ok(ShapeModification::Deleted),
@@ -232,7 +232,7 @@ impl From<ShellError> for i32 {
 impl TryFrom<i32> for ShellError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ShellError::Shelldone),
             1 => Ok(ShellError::Emptyshell),
@@ -262,7 +262,7 @@ impl From<TransitionMode> for i32 {
 impl TryFrom<i32> for TransitionMode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(TransitionMode::Transformed),
             1 => Ok(TransitionMode::Rightcorner),
@@ -301,7 +301,7 @@ impl From<WireError> for i32 {
 impl TryFrom<i32> for WireError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(WireError::Wiredone),
             1 => Ok(WireError::Emptywire),
@@ -341,7 +341,7 @@ impl BndBoxTreeSelector {
     /// Implementation of rejection method
     /// @return
     /// True if the bounding box does not intersect with the current
-    pub fn reject(&self, theBox: &crate::bnd::Box_) -> bool {
+    pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
         unsafe { crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_reject(self as *const Self, theBox) }
     }
 
@@ -353,7 +353,7 @@ impl BndBoxTreeSelector {
 
     /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:62 - `BRepBuilderAPI_BndBoxTreeSelector::SetCurrent()`
     /// Set current box to search for overlapping with him
-    pub fn set_current(&mut self, theBox: &crate::bnd::Box_) {
+    pub fn set_current(&mut self, theBox: &crate::bnd::Box) {
         unsafe {
             crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_set_current(self as *mut Self, theBox)
         }

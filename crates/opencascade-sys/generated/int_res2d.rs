@@ -24,7 +24,7 @@ impl From<Position> for i32 {
 impl TryFrom<i32> for Position {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Position::Head),
             1 => Ok(Position::Middle),
@@ -52,7 +52,7 @@ impl From<Situation> for i32 {
 impl TryFrom<i32> for Situation {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Situation::Inside),
             1 => Ok(Situation::Outside),
@@ -81,7 +81,7 @@ impl From<TypeTrans> for i32 {
 impl TryFrom<i32> for TypeTrans {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(TypeTrans::In),
             1 => Ok(TypeTrans::Out),

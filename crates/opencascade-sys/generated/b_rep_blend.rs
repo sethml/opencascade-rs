@@ -140,7 +140,7 @@ impl Extremity {
     /// **Source:** `BRepBlend_Extremity.hxx`:90 - `BRepBlend_Extremity::SetTangent()`
     /// Set the tangent   vector  for an extremity on  a
     /// surface.
-    pub fn set_tangent(&mut self, Tangent: &crate::gp::Vec_) {
+    pub fn set_tangent(&mut self, Tangent: &crate::gp::Vec) {
         unsafe { crate::ffi::BRepBlend_Extremity_set_tangent(self as *mut Self, Tangent) }
     }
 
@@ -153,7 +153,7 @@ impl Extremity {
     /// **Source:** `BRepBlend_Extremity.hxx`:97 - `BRepBlend_Extremity::Tangent()`
     /// This  method returns the   value of tangent  in 3d
     /// space.
-    pub fn tangent(&self) -> &crate::gp::Vec_ {
+    pub fn tangent(&self) -> &crate::gp::Vec {
         unsafe { &*(crate::ffi::BRepBlend_Extremity_tangent(self as *const Self)) }
     }
 

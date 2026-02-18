@@ -24,7 +24,7 @@ impl From<Config> for i32 {
 impl TryFrom<i32> for Config {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Config::Unshgeometry),
             1 => Ok(Config::Sameoriented),
@@ -62,7 +62,7 @@ impl From<Kind> for i32 {
 impl TryFrom<i32> for Kind {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Kind::Point),
             1 => Ok(Kind::Curve),

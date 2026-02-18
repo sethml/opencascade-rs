@@ -157,7 +157,7 @@ impl From<FromWhere> for i32 {
 impl TryFrom<i32> for FromWhere {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(FromWhere::Frombeginning),
             1 => Ok(FromWhere::Fromhere),
@@ -188,7 +188,7 @@ impl From<KindFile> for i32 {
 impl TryFrom<i32> for KindFile {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(KindFile::File),
             1 => Ok(KindFile::Directory),
@@ -218,7 +218,7 @@ impl From<LoadMode> for i32 {
 impl TryFrom<i32> for LoadMode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(LoadMode::RtldLazy),
             1 => Ok(LoadMode::RtldNow),
@@ -258,7 +258,7 @@ impl From<LockType> for i32 {
 impl TryFrom<i32> for LockType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(LockType::Nolock),
             1 => Ok(LockType::Readlock),
@@ -298,7 +298,7 @@ impl From<OEMType> for i32 {
 impl TryFrom<i32> for OEMType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(OEMType::Unavailable),
             1 => Ok(OEMType::Sun),
@@ -336,7 +336,7 @@ impl From<OpenMode> for i32 {
 impl TryFrom<i32> for OpenMode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(OpenMode::Readonly),
             1 => Ok(OpenMode::Writeonly),
@@ -371,7 +371,7 @@ impl From<SignalMode> for i32 {
 impl TryFrom<i32> for SignalMode {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(SignalMode::SignalmodeAsis),
             1 => Ok(SignalMode::SignalmodeSet),
@@ -418,7 +418,7 @@ impl From<SingleProtection> for i32 {
 impl TryFrom<i32> for SingleProtection {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(SingleProtection::None),
             1 => Ok(SingleProtection::R),
@@ -475,7 +475,7 @@ impl From<SysType> for i32 {
 impl TryFrom<i32> for SysType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(SysType::Unknown),
             1 => Ok(SysType::Default),
@@ -526,7 +526,7 @@ impl From<WhoAmI> for i32 {
 impl TryFrom<i32> for WhoAmI {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(WhoAmI::Wdirectory),
             1 => Ok(WhoAmI::Wdirectoryiterator),

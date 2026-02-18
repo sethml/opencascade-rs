@@ -43,7 +43,7 @@ impl From<DefType> for i32 {
 impl TryFrom<i32> for DefType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DefType::Defvoid),
             1 => Ok(DefType::Defvalue),
@@ -92,7 +92,7 @@ impl From<DefList> for i32 {
 impl TryFrom<i32> for DefList {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DefList::Defnone),
             1 => Ok(DefList::Defone),

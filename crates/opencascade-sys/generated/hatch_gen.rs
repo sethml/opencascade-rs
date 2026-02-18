@@ -27,7 +27,7 @@ impl From<ErrorStatus> for i32 {
 impl TryFrom<i32> for ErrorStatus {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ErrorStatus::Noproblem),
             1 => Ok(ErrorStatus::Trimfailure),
@@ -60,7 +60,7 @@ impl From<IntersectionType> for i32 {
 impl TryFrom<i32> for IntersectionType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(IntersectionType::True),
             1 => Ok(IntersectionType::Touch),

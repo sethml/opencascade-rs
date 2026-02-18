@@ -77,7 +77,7 @@ impl From<PerfSelection> for i32 {
 impl TryFrom<i32> for PerfSelection {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(PerfSelection::Noselection),
             1 => Ok(PerfSelection::Selectionfu),
@@ -107,7 +107,7 @@ impl From<Status> for i32 {
 impl TryFrom<i32> for Status {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Status::Noerror),
             1 => Ok(Status::Invalidplacement),
@@ -161,7 +161,7 @@ impl From<StatusError> for i32 {
 impl TryFrom<i32> for StatusError {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(StatusError::Ok),
             1 => Ok(StatusError::Baddirect),
@@ -2118,8 +2118,8 @@ impl MakeLinearForm {
         Sbase: &crate::topo_ds::Shape,
         W: &crate::topo_ds::Wire,
         P: &crate::ffi::HandleGeomPlane,
-        Direction: &crate::gp::Vec_,
-        Direction1: &crate::gp::Vec_,
+        Direction: &crate::gp::Vec,
+        Direction1: &crate::gp::Vec,
         Fuse: i32,
         Modify: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2149,8 +2149,8 @@ impl MakeLinearForm {
         Sbase: &crate::topo_ds::Shape,
         W: &crate::topo_ds::Wire,
         P: &crate::ffi::HandleGeomPlane,
-        Direction: &crate::gp::Vec_,
-        Direction1: &crate::gp::Vec_,
+        Direction: &crate::gp::Vec,
+        Direction1: &crate::gp::Vec,
         Fuse: i32,
         Modify: bool,
     ) {

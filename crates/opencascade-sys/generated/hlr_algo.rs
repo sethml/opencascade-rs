@@ -73,7 +73,7 @@ impl From<PolyMask> for i32 {
 impl TryFrom<i32> for PolyMask {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             1 => Ok(PolyMask::PolymaskEmskoutlin1),
             2 => Ok(PolyMask::PolymaskEmskoutlin2),
@@ -2402,7 +2402,7 @@ impl Projector {
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:96 - `HLRAlgo_Projector::Transform()`
-    pub fn transform_vec(&self, D: &mut crate::gp::Vec_) {
+    pub fn transform_vec(&self, D: &mut crate::gp::Vec) {
         unsafe { crate::ffi::HLRAlgo_Projector_transform_vec(self as *const Self, D) }
     }
 
@@ -2428,7 +2428,7 @@ impl Projector {
     pub fn project_pnt_vec_pnt2d_vec2d(
         &self,
         P: &crate::gp::Pnt,
-        D1: &crate::gp::Vec_,
+        D1: &crate::gp::Vec,
         Pout: &mut crate::gp::Pnt2d,
         D1out: &mut crate::gp::Vec2d,
     ) {

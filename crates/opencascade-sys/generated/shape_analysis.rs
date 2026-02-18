@@ -105,7 +105,7 @@ impl BoxBndTreeSelector {
     }
 
     /// **Source:** `ShapeAnalysis_BoxBndTree.hxx`:49 - `ShapeAnalysis_BoxBndTreeSelector::DefineBoxes()`
-    pub fn define_boxes(&mut self, theFBox: &crate::bnd::Box_, theLBox: &crate::bnd::Box_) {
+    pub fn define_boxes(&mut self, theFBox: &crate::bnd::Box, theLBox: &crate::bnd::Box) {
         unsafe {
             crate::ffi::ShapeAnalysis_BoxBndTreeSelector_define_boxes(
                 self as *mut Self,
@@ -184,7 +184,7 @@ impl BoxBndTreeSelector {
     }
 
     /// **Source:** `ShapeAnalysis_BoxBndTree.hxx`:92 - `ShapeAnalysis_BoxBndTreeSelector::Reject()`
-    pub fn reject(&self, theBnd: &crate::bnd::Box_) -> bool {
+    pub fn reject(&self, theBnd: &crate::bnd::Box) -> bool {
         unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_reject(self as *const Self, theBnd) }
     }
 }
@@ -3598,22 +3598,22 @@ impl Surface {
     }
 
     /// **Source:** `ShapeAnalysis_Surface.hxx`:301 - `ShapeAnalysis_Surface::GetBoxUF()`
-    pub fn get_box_uf(&mut self) -> &crate::bnd::Box_ {
+    pub fn get_box_uf(&mut self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_box_uf(self as *mut Self)) }
     }
 
     /// **Source:** `ShapeAnalysis_Surface.hxx`:303 - `ShapeAnalysis_Surface::GetBoxUL()`
-    pub fn get_box_ul(&mut self) -> &crate::bnd::Box_ {
+    pub fn get_box_ul(&mut self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_box_ul(self as *mut Self)) }
     }
 
     /// **Source:** `ShapeAnalysis_Surface.hxx`:305 - `ShapeAnalysis_Surface::GetBoxVF()`
-    pub fn get_box_vf(&mut self) -> &crate::bnd::Box_ {
+    pub fn get_box_vf(&mut self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_box_vf(self as *mut Self)) }
     }
 
     /// **Source:** `ShapeAnalysis_Surface.hxx`:307 - `ShapeAnalysis_Surface::GetBoxVL()`
-    pub fn get_box_vl(&mut self) -> &crate::bnd::Box_ {
+    pub fn get_box_vl(&mut self) -> &crate::bnd::Box {
         unsafe { &*(crate::ffi::ShapeAnalysis_Surface_get_box_vl(self as *mut Self)) }
     }
 

@@ -27,7 +27,7 @@ impl From<ErrorTypeStatus> for i32 {
 impl TryFrom<i32> for ErrorTypeStatus {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ErrorTypeStatus::Emptylist),
             1 => Ok(ErrorTypeStatus::Edgenotg1),
@@ -58,7 +58,7 @@ impl From<StatusDone> for i32 {
 impl TryFrom<i32> for StatusDone {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(StatusDone::Isok),
             1 => Ok(StatusDone::Isnotok),
@@ -86,7 +86,7 @@ impl From<StatusType> for i32 {
 impl TryFrom<i32> for StatusType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(StatusType::Twoextremityonedge),
             1 => Ok(StatusType::Oneextremityonedge),

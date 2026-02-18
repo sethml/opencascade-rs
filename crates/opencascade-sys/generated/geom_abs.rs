@@ -28,7 +28,7 @@ impl From<BSplKnotDistribution> for i32 {
 impl TryFrom<i32> for BSplKnotDistribution {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(BSplKnotDistribution::Nonuniform),
             1 => Ok(BSplKnotDistribution::Uniform),
@@ -64,7 +64,7 @@ impl From<CurveType> for i32 {
 impl TryFrom<i32> for CurveType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(CurveType::Line),
             1 => Ok(CurveType::Circle),
@@ -100,7 +100,7 @@ impl From<IsoType> for i32 {
 impl TryFrom<i32> for IsoType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(IsoType::Isou),
             1 => Ok(IsoType::Isov),
@@ -131,7 +131,7 @@ impl From<JoinType> for i32 {
 impl TryFrom<i32> for JoinType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(JoinType::Arc),
             1 => Ok(JoinType::Tangent),
@@ -190,7 +190,7 @@ impl From<Shape> for i32 {
 impl TryFrom<i32> for Shape {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Shape::C0),
             1 => Ok(Shape::G1),
@@ -230,7 +230,7 @@ impl From<SurfaceType> for i32 {
 impl TryFrom<i32> for SurfaceType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(SurfaceType::Plane),
             1 => Ok(SurfaceType::Cylinder),

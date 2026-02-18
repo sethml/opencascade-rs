@@ -46,7 +46,7 @@ impl From<JsonKey> for i32 {
 impl TryFrom<i32> for JsonKey {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(JsonKey::JsonkeyNone),
             1 => Ok(JsonKey::JsonkeyOpenchild),
@@ -79,7 +79,7 @@ impl From<HandlerStatus> for i32 {
 impl TryFrom<i32> for HandlerStatus {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(HandlerStatus::Handlervoid),
             1 => Ok(HandlerStatus::Handlerjumped),

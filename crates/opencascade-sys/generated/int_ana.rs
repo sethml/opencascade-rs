@@ -31,7 +31,7 @@ impl From<ResultType> for i32 {
 impl TryFrom<i32> for ResultType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ResultType::Point),
             1 => Ok(ResultType::Line),
@@ -202,7 +202,7 @@ impl Curve {
     /// **Source:** `IntAna_Curve.hxx`:99 - `IntAna_Curve::D1u()`
     /// Returns the point and the first derivative at parameter
     /// Theta on the curve.
-    pub fn d1u(&mut self, Theta: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) -> bool {
+    pub fn d1u(&mut self, Theta: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) -> bool {
         unsafe { crate::ffi::IntAna_Curve_d1u(self as *mut Self, Theta, P, V) }
     }
 

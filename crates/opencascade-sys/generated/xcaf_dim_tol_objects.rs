@@ -26,7 +26,7 @@ impl From<AngularQualifier> for i32 {
 impl TryFrom<i32> for AngularQualifier {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(AngularQualifier::AngularqualifierNone),
             1 => Ok(AngularQualifier::AngularqualifierSmall),
@@ -58,7 +58,7 @@ impl From<DatumModifWithValue> for i32 {
 impl TryFrom<i32> for DatumModifWithValue {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DatumModifWithValue::DatummodifwithvalueNone),
             1 => Ok(DatumModifWithValue::DatummodifwithvalueCircularorcylindrical),
@@ -108,7 +108,7 @@ impl From<DatumSingleModif> for i32 {
 impl TryFrom<i32> for DatumSingleModif {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DatumSingleModif::DatumsinglemodifAnycrosssection),
             1 => Ok(DatumSingleModif::DatumsinglemodifAnyLongitudinalsection),
@@ -158,7 +158,7 @@ impl From<DatumTargetType> for i32 {
 impl TryFrom<i32> for DatumTargetType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DatumTargetType::DatumtargettypePoint),
             1 => Ok(DatumTargetType::DatumtargettypeLine),
@@ -215,7 +215,7 @@ impl From<DimensionFormVariance> for i32 {
 impl TryFrom<i32> for DimensionFormVariance {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DimensionFormVariance::DimensionformvarianceNone),
             1 => Ok(DimensionFormVariance::DimensionformvarianceA),
@@ -287,7 +287,7 @@ impl From<DimensionGrade> for i32 {
 impl TryFrom<i32> for DimensionGrade {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DimensionGrade::DimensiongradeIt01),
             1 => Ok(DimensionGrade::DimensiongradeIt0),
@@ -354,7 +354,7 @@ impl From<DimensionModif> for i32 {
 impl TryFrom<i32> for DimensionModif {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DimensionModif::DimensionmodifControlledradius),
             1 => Ok(DimensionModif::DimensionmodifSquare),
@@ -405,7 +405,7 @@ impl From<DimensionQualifier> for i32 {
 impl TryFrom<i32> for DimensionQualifier {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DimensionQualifier::DimensionqualifierNone),
             1 => Ok(DimensionQualifier::DimensionqualifierMin),
@@ -464,7 +464,7 @@ impl From<DimensionType> for i32 {
 impl TryFrom<i32> for DimensionType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(DimensionType::DimensiontypeLocationNone),
             1 => Ok(DimensionType::DimensiontypeLocationCurveddistance),
@@ -522,7 +522,7 @@ impl From<GeomToleranceMatReqModif> for i32 {
 impl TryFrom<i32> for GeomToleranceMatReqModif {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GeomToleranceMatReqModif::GeomtolerancematreqmodifNone),
             1 => Ok(GeomToleranceMatReqModif::GeomtolerancematreqmodifM),
@@ -565,7 +565,7 @@ impl From<GeomToleranceModif> for i32 {
 impl TryFrom<i32> for GeomToleranceModif {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GeomToleranceModif::GeomtolerancemodifAnyCrossSection),
             1 => Ok(GeomToleranceModif::GeomtolerancemodifCommonZone),
@@ -621,7 +621,7 @@ impl From<GeomToleranceType> for i32 {
 impl TryFrom<i32> for GeomToleranceType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GeomToleranceType::GeomtolerancetypeNone),
             1 => Ok(GeomToleranceType::GeomtolerancetypeAngularity),
@@ -663,7 +663,7 @@ impl From<GeomToleranceTypeValue> for i32 {
 impl TryFrom<i32> for GeomToleranceTypeValue {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GeomToleranceTypeValue::GeomtolerancetypevalueNone),
             1 => Ok(GeomToleranceTypeValue::GeomtolerancetypevalueDiameter),
@@ -693,7 +693,7 @@ impl From<GeomToleranceZoneModif> for i32 {
 impl TryFrom<i32> for GeomToleranceZoneModif {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GeomToleranceZoneModif::GeomtolerancezonemodifNone),
             1 => Ok(GeomToleranceZoneModif::GeomtolerancezonemodifProjected),
@@ -723,7 +723,7 @@ impl From<ToleranceZoneAffectedPlane> for i32 {
 impl TryFrom<i32> for ToleranceZoneAffectedPlane {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ToleranceZoneAffectedPlane::TolerancezoneaffectedplaneNone),
             1 => Ok(ToleranceZoneAffectedPlane::TolerancezoneaffectedplaneIntersection),

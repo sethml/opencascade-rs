@@ -317,7 +317,7 @@ impl From<KnotDistribution> for i32 {
 impl TryFrom<i32> for KnotDistribution {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(KnotDistribution::Nonuniform),
             1 => Ok(KnotDistribution::Uniform),
@@ -355,7 +355,7 @@ impl From<MultDistribution> for i32 {
 impl TryFrom<i32> for MultDistribution {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(MultDistribution::Nonconstant),
             1 => Ok(MultDistribution::Constant),
@@ -512,7 +512,7 @@ impl Cache {
         &self,
         theParameter: &f64,
         thePoint: &mut crate::gp::Pnt,
-        theTangent: &mut crate::gp::Vec_,
+        theTangent: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d1_real_pnt_vec(
@@ -554,8 +554,8 @@ impl Cache {
         &self,
         theParameter: &f64,
         thePoint: &mut crate::gp::Pnt,
-        theTangent: &mut crate::gp::Vec_,
-        theCurvature: &mut crate::gp::Vec_,
+        theTangent: &mut crate::gp::Vec,
+        theCurvature: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d2_real_pnt_vec2(
@@ -601,9 +601,9 @@ impl Cache {
         &self,
         theParameter: &f64,
         thePoint: &mut crate::gp::Pnt,
-        theTangent: &mut crate::gp::Vec_,
-        theCurvature: &mut crate::gp::Vec_,
-        theTorsion: &mut crate::gp::Vec_,
+        theTangent: &mut crate::gp::Vec,
+        theCurvature: &mut crate::gp::Vec,
+        theTorsion: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d3_real_pnt_vec3(

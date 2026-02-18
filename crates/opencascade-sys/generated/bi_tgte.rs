@@ -27,7 +27,7 @@ impl From<ContactType> for i32 {
 impl TryFrom<i32> for ContactType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(ContactType::Faceface),
             1 => Ok(ContactType::Faceedge),
@@ -440,7 +440,7 @@ impl CurveOnEdge {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_d1(self as *const Self, U, P, V) }
     }
 
@@ -453,8 +453,8 @@ impl CurveOnEdge {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -468,9 +468,9 @@ impl CurveOnEdge {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
-        V3: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::BiTgte_CurveOnEdge_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -481,7 +481,7 @@ impl CurveOnEdge {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_dn(self as *const Self, U, N))
         }
@@ -746,7 +746,7 @@ impl CurveOnVertex {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_d1(self as *const Self, U, P, V) }
     }
 
@@ -759,8 +759,8 @@ impl CurveOnVertex {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -774,9 +774,9 @@ impl CurveOnVertex {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
-        V3: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::BiTgte_CurveOnVertex_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -787,7 +787,7 @@ impl CurveOnVertex {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_dn(
                 self as *const Self,

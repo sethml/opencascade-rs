@@ -30,7 +30,7 @@ impl Aij {
     }
 
     /// **Source:** `GeomPlate_Aij.hxx`:34 - `GeomPlate_Aij::GeomPlate_Aij()`
-    pub fn new_int2_vec(anInd1: i32, anInd2: i32, aVec: &crate::gp::Vec_) -> crate::OwnedPtr<Self> {
+    pub fn new_int2_vec(anInd1: i32, anInd2: i32, aVec: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Aij_ctor_int2_vec(anInd1, anInd2, aVec))
         }
@@ -1249,8 +1249,8 @@ impl CurveConstraint {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomPlate_CurveConstraint_d1(self as *const Self, U, P, V1, V2) }
     }
@@ -1260,11 +1260,11 @@ impl CurveConstraint {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
-        V3: &mut crate::gp::Vec_,
-        V4: &mut crate::gp::Vec_,
-        V5: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
+        V4: &mut crate::gp::Vec,
+        V5: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomPlate_CurveConstraint_d2(self as *const Self, U, P, V1, V2, V3, V4, V5)
@@ -2337,7 +2337,7 @@ impl PointConstraint {
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:124 - `GeomPlate_PointConstraint::D1()`
-    pub fn d1(&self, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_, V2: &mut crate::gp::Vec_) {
+    pub fn d1(&self, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec, V2: &mut crate::gp::Vec) {
         unsafe { crate::ffi::GeomPlate_PointConstraint_d1(self as *const Self, P, V1, V2) }
     }
 
@@ -2345,11 +2345,11 @@ impl PointConstraint {
     pub fn d2(
         &self,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec_,
-        V2: &mut crate::gp::Vec_,
-        V3: &mut crate::gp::Vec_,
-        V4: &mut crate::gp::Vec_,
-        V5: &mut crate::gp::Vec_,
+        V1: &mut crate::gp::Vec,
+        V2: &mut crate::gp::Vec,
+        V3: &mut crate::gp::Vec,
+        V4: &mut crate::gp::Vec,
+        V5: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomPlate_PointConstraint_d2(self as *const Self, P, V1, V2, V3, V4, V5)
@@ -2698,8 +2698,8 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec_,
-        D1V: &mut crate::gp::Vec_,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
     ) {
         unsafe { crate::ffi::GeomPlate_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -2713,11 +2713,11 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec_,
-        D1V: &mut crate::gp::Vec_,
-        D2U: &mut crate::gp::Vec_,
-        D2V: &mut crate::gp::Vec_,
-        D2UV: &mut crate::gp::Vec_,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomPlate_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
@@ -2733,15 +2733,15 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec_,
-        D1V: &mut crate::gp::Vec_,
-        D2U: &mut crate::gp::Vec_,
-        D2V: &mut crate::gp::Vec_,
-        D2UV: &mut crate::gp::Vec_,
-        D3U: &mut crate::gp::Vec_,
-        D3V: &mut crate::gp::Vec_,
-        D3UUV: &mut crate::gp::Vec_,
-        D3UVV: &mut crate::gp::Vec_,
+        D1U: &mut crate::gp::Vec,
+        D1V: &mut crate::gp::Vec,
+        D2U: &mut crate::gp::Vec,
+        D2V: &mut crate::gp::Vec,
+        D2UV: &mut crate::gp::Vec,
+        D3U: &mut crate::gp::Vec,
+        D3V: &mut crate::gp::Vec,
+        D3UUV: &mut crate::gp::Vec,
+        D3UVV: &mut crate::gp::Vec,
     ) {
         unsafe {
             crate::ffi::GeomPlate_Surface_d3(
@@ -2770,7 +2770,7 @@ impl Surface {
     /// Raised if the continuity of the surface is not CNu in the U
     /// direction or not CNv in the V direction.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_dn(
                 self as *const Self,
@@ -2918,7 +2918,7 @@ impl Surface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec_) {
+    pub fn translate(&mut self, V: &crate::gp::Vec) {
         unsafe { crate::ffi::GeomPlate_Surface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -2978,7 +2978,7 @@ impl Surface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec_,
+        V: &crate::gp::Vec,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_Surface_inherited_Translated(

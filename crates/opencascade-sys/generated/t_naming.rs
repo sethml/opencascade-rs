@@ -169,7 +169,7 @@ impl From<Evolution> for i32 {
 impl TryFrom<i32> for Evolution {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Evolution::Primitive),
             1 => Ok(Evolution::Generated),
@@ -210,7 +210,7 @@ impl From<NameType> for i32 {
 impl TryFrom<i32> for NameType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(NameType::Unknown),
             1 => Ok(NameType::Identity),

@@ -26,7 +26,7 @@ impl From<StatusErrorType> for i32 {
 impl TryFrom<i32> for StatusErrorType {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(StatusErrorType::Nullfirstderivative),
             1 => Ok(StatusErrorType::Nullsecondderivative),

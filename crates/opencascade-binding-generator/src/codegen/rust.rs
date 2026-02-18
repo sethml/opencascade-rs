@@ -583,7 +583,7 @@ fn emit_rust_enum(output: &mut String, resolved: &crate::resolver::ResolvedEnum)
     writeln!(output, "impl TryFrom<i32> for {} {{", name).unwrap();
     writeln!(output, "    type Error = i32;").unwrap();
     writeln!(output).unwrap();
-    writeln!(output, "    fn try_from(value: i32) -> Result<Self, i32> {{").unwrap();
+    writeln!(output, "    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {{").unwrap();
     writeln!(output, "        match value {{").unwrap();
     for (variant, value) in &unique_variants {
         writeln!(output, "            {} => Ok({}::{}),", value, name, variant.rust_name).unwrap();

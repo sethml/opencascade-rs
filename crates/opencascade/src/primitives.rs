@@ -114,8 +114,8 @@ fn make_dir(p: DVec3) -> opencascade_sys::OwnedPtr<gp::Dir> {
     gp::Dir::new_real3(p.x, p.y, p.z)
 }
 
-fn make_vec(vec: DVec3) -> opencascade_sys::OwnedPtr<gp::Vec_> {
-    gp::Vec_::new_real3(vec.x, vec.y, vec.z)
+fn make_vec(vec: DVec3) -> opencascade_sys::OwnedPtr<gp::Vec> {
+    gp::Vec::new_real3(vec.x, vec.y, vec.z)
 }
 
 fn make_axis_1(origin: DVec3, dir: DVec3) -> opencascade_sys::OwnedPtr<gp::Ax1> {

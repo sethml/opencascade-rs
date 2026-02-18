@@ -33,7 +33,7 @@ impl From<CheckStatus> for i32 {
 impl TryFrom<i32> for CheckStatus {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(CheckStatus::Checkunknown),
             1 => Ok(CheckStatus::Badtype),
@@ -108,7 +108,7 @@ impl From<GlueEnum> for i32 {
 impl TryFrom<i32> for GlueEnum {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(GlueEnum::Glueoff),
             1 => Ok(GlueEnum::Glueshift),
@@ -139,7 +139,7 @@ impl From<Operation> for i32 {
 impl TryFrom<i32> for Operation {
     type Error = i32;
 
-    fn try_from(value: i32) -> Result<Self, i32> {
+    fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
             0 => Ok(Operation::Common),
             1 => Ok(Operation::Fuse),
@@ -9927,8 +9927,8 @@ impl Tools {
     /// @param thePoint the Point to compute transformation to
     /// @param theCriteria the Criteria to check whether thranformation is required
     pub fn trsf_to_point(
-        theBox1: &crate::bnd::Box_,
-        theBox2: &crate::bnd::Box_,
+        theBox1: &crate::bnd::Box,
+        theBox2: &crate::bnd::Box,
         theTrsf: &mut crate::gp::Trsf,
         thePoint: &crate::gp::Pnt,
         theCriteria: f64,
