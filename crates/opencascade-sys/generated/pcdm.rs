@@ -227,6 +227,16 @@ impl ReaderFilter {
         }
     }
 
+    /// **Source:** `PCDM_ReaderFilter.hxx`:57 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
+    /// Creates a filter to append the content of file to open to existing document.
+    pub fn new_appendmode(
+        theAppend: &crate::ffi::PCDM_ReaderFilter_AppendMode,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::PCDM_ReaderFilter_ctor_appendmode(theAppend))
+        }
+    }
+
     /// **Source:** `PCDM_ReaderFilter.hxx`:63 - `PCDM_ReaderFilter::AddSkipped()`
     /// Adds skipped attribute by type.
     pub fn add_skipped_handlestandardtype(&mut self, theSkipped: &crate::ffi::HandleStandardType) {
@@ -317,6 +327,12 @@ impl ReaderFilter {
     /// Returns true if only part of the document tree will be retrieved.
     pub fn is_part_tree(&mut self) -> bool {
         unsafe { crate::ffi::PCDM_ReaderFilter_is_part_tree(self as *mut Self) }
+    }
+
+    /// **Source:** `PCDM_ReaderFilter.hxx`:107 - `PCDM_ReaderFilter::Mode()`
+    /// Returns the append mode.
+    pub fn mode(&mut self) -> &mut crate::ffi::PCDM_ReaderFilter_AppendMode {
+        unsafe { &mut *(crate::ffi::PCDM_ReaderFilter_mode(self as *mut Self)) }
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:110 - `PCDM_ReaderFilter::IsAppendMode()`

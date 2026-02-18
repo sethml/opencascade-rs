@@ -252,6 +252,13 @@ impl CLocaleSentry {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_CLocaleSentry_ctor()) }
     }
+
+    /// **Source:** `Standard_CLocaleSentry.hxx`:77 - `Standard_CLocaleSentry::GetCLocale()`
+    /// @return locale "C" instance (locale_t within xlocale or _locale_t within Windows)
+    /// to be used for _l functions with locale argument.
+    pub fn get_c_locale() -> crate::OwnedPtr<crate::ffi::Standard_CLocaleSentry_clocale_t> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_CLocaleSentry_get_c_locale()) }
+    }
 }
 
 // ========================
@@ -1418,6 +1425,14 @@ impl MMgrOpt {
     /// Returns number of actually freed blocks
     pub fn purge(&mut self, isDestroyed: bool) -> i32 {
         unsafe { crate::ffi::Standard_MMgrOpt_purge(self as *mut Self, isDestroyed) }
+    }
+
+    /// **Source:** `Standard_MMgrOpt.hxx`:109 - `Standard_MMgrOpt::SetCallBackFunction()`
+    /// Set the callback function. You may pass 0 there to turn off the callback.
+    /// The callback function, if set, will be automatically called from within
+    /// Allocate and Free methods.
+    pub fn set_call_back_function(pFunc: &crate::ffi::Standard_MMgrOpt_TPCallBackFunc) {
+        unsafe { crate::ffi::Standard_MMgrOpt_set_call_back_function(pFunc) }
     }
 }
 

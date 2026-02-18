@@ -6,27 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `ShapeCustom.hxx`:55 - `ShapeCustom::ApplyModifier`
-/// Applies modifier to shape and checks sharing in the case assemblies.
-pub fn apply_modifier(
-    S: &crate::ffi::TopoDS_Shape,
-    M: &crate::ffi::HandleBRepToolsModification,
-    context: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-    MD: &mut crate::ffi::BRepTools_Modifier,
-    theProgress: &crate::ffi::Message_ProgressRange,
-    aReShape: &crate::ffi::HandleShapeBuildReShape,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_apply_modifier(
-            S,
-            M,
-            context,
-            MD,
-            theProgress,
-            aReShape,
-        ))
-    }
-}
 /// **Source:** `ShapeCustom.hxx`:64 - `ShapeCustom::DirectFaces`
 /// Returns a new shape without indirect surfaces.
 pub fn direct_faces(S: &crate::ffi::TopoDS_Shape) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {

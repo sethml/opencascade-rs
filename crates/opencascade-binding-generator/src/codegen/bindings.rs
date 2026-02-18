@@ -362,7 +362,7 @@ fn type_to_ffi_full_name(ty: &Type) -> String {
             if name == "char" {
                 "std::ffi::c_char".to_string()
             } else {
-                name.clone() // Full C++ name like gp_Pnt, TopLoc_Location
+                Type::ffi_safe_class_name(name) // Parent::Nested -> Parent_Nested
             }
         }
         Type::Handle(name) => format!("Handle{}", name.replace("_", "")),
@@ -384,7 +384,7 @@ fn type_to_ffi_full_name(ty: &Type) -> String {
 fn return_type_to_ffi_full_name(ty: &Type) -> String {
     match ty {
         Type::Class(name) if name != "char" => {
-            format!("*mut {}", name)
+            format!("*mut {}", Type::ffi_safe_class_name(name))
         }
         Type::Handle(name) => {
             format!("*mut Handle{}", name.replace("_", ""))
@@ -869,7 +869,7 @@ fn type_to_rust_string(ty: &Type) -> String {
             if name == "char" {
                 "std::ffi::c_char".to_string()
             } else {
-                format!("crate::ffi::{}", name)
+                format!("crate::ffi::{}", Type::ffi_safe_class_name(name))
             }
         }
         Type::Handle(name) => format!("crate::ffi::Handle{}", name.replace("_", "")),
@@ -893,7 +893,7 @@ fn type_to_rust_string(ty: &Type) -> String {
 fn return_type_to_rust_string(ty: &Type) -> String {
     match ty {
         Type::Class(name) if name != "char" => {
-            format!("crate::OwnedPtr<crate::ffi::{}>", name)
+            format!("crate::OwnedPtr<crate::ffi::{}>", Type::ffi_safe_class_name(name))
         }
         Type::Handle(name) => {
             format!(
@@ -2496,12 +2496,35 @@ pub fn compute_all_class_bindings(
     // Classes with CppDeletable impls: ParsedClasses (without protected dtor) +
     // the 91 manually-specified known collections (which get generated destructors).
     // NCollection typedef names from extra_typedef_names are NOT included here.
-    let deletable_class_names: HashSet<String> = all_classes
+    // Nested types (Parent::Nested) get destructors generated, so include them too.
+    let mut deletable_class_names: HashSet<String> = all_classes
         .iter()
         .filter(|c| !c.has_protected_destructor)
         .map(|c| c.name.clone())
         .chain(collection_names.iter().cloned())
         .collect();
+
+    // Add nested types (those with :: in their name) as deletable
+    // since we generate destructors for them
+    let known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
+    for class in all_classes {
+        for method in &class.methods {
+            if let Some(ref ret) = method.return_type {
+                collect_nested_deletable_names(ret, &known_class_names, &mut deletable_class_names);
+            }
+            for param in &method.params {
+                collect_nested_deletable_names(&param.ty, &known_class_names, &mut deletable_class_names);
+            }
+        }
+        for method in &class.static_methods {
+            if let Some(ref ret) = method.return_type {
+                collect_nested_deletable_names(ret, &known_class_names, &mut deletable_class_names);
+            }
+            for param in &method.params {
+                collect_nested_deletable_names(&param.ty, &known_class_names, &mut deletable_class_names);
+            }
+        }
+    }
 
     // Full known-type set (for param filtering): adds NCollection template typedefs
     // so methods passing them as params pass the unknown-type filter.
@@ -2546,6 +2569,25 @@ pub fn compute_all_class_bindings(
 
 // ── Free function bindings ──────────────────────────────────────────────────
 
+/// Collect nested type names (Parent::Nested) that should be considered deletable.
+/// These get destructors generated via the nested type destructor mechanism.
+fn collect_nested_deletable_names(ty: &Type, known_classes: &HashSet<&str>, out: &mut HashSet<String>) {
+    match ty {
+        Type::Class(name) if name.contains("::") => {
+            if let Some(parent) = name.split("::").next() {
+                if known_classes.contains(parent) {
+                    out.insert(name.clone());
+                }
+            }
+        }
+        Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) |
+        Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+            collect_nested_deletable_names(inner, known_classes, out);
+        }
+        _ => {}
+    }
+}
+
 /// Collect C++ headers needed for a type (for #include directives in wrappers.hxx).
 fn collect_headers_for_type(ty: &Type, headers: &mut HashSet<String>, known_headers: &HashSet<String>) {
     if ty.is_unbindable() {
@@ -2557,6 +2599,18 @@ fn collect_headers_for_type(ty: &Type, headers: &mut HashSet<String>, known_head
                 "bool" | "char" | "int" | "unsigned" | "float" | "double" |
                 "void" | "size_t" | "Standard_Address"
             ) {
+                return;
+            }
+            // For nested types (Parent::Nested), include the parent class header
+            if name.contains("::") {
+                if let Some(parent) = name.split("::").next() {
+                    if parent.contains('_') || parent.starts_with("Standard") {
+                        let header = format!("{}.hxx", parent);
+                        if known_headers.is_empty() || known_headers.contains(&header) {
+                            headers.insert(header);
+                        }
+                    }
+                }
                 return;
             }
             if !name.contains('_') && !name.starts_with("Standard") {
@@ -2599,12 +2653,23 @@ pub fn compute_all_function_bindings(
     }
 
     // Build TypeContext
-    let deletable_class_names: HashSet<String> = all_classes
+    let mut deletable_class_names: HashSet<String> = all_classes
         .iter()
         .filter(|c| !c.has_protected_destructor)
         .map(|c| c.name.clone())
         .chain(collection_names.iter().cloned())
         .collect();
+
+    // Add nested types as deletable (they get destructor generation)
+    let known_class_names: HashSet<&str> = all_classes.iter().map(|c| c.name.as_str()).collect();
+    for func in &all_functions {
+        if let Some(ref ret) = func.return_type {
+            collect_nested_deletable_names(&ret.original, &known_class_names, &mut deletable_class_names);
+        }
+        for param in &func.params {
+            collect_nested_deletable_names(&param.ty.original, &known_class_names, &mut deletable_class_names);
+        }
+    }
 
     let mut all_class_names: HashSet<String> =
         all_classes.iter().map(|c| c.name.clone()).collect();
@@ -2666,6 +2731,27 @@ pub fn compute_all_function_bindings(
     let mut result = Vec::new();
 
     for func in &all_functions {
+        // Skip functions with unbindable types
+        let has_unbindable_param = func.params.iter().any(|p| {
+            p.ty.original.is_unbindable() || type_uses_unknown_type(&p.ty.original, &ffi_ctx)
+        });
+        if has_unbindable_param {
+            continue;
+        }
+        if let Some(ref ret) = func.return_type {
+            if ret.original.is_unbindable() || type_uses_unknown_type(&ret.original, &ffi_ctx) {
+                continue;
+            }
+            // CppDeletable check for return types (same as class methods)
+            if let Type::Class(name) = &ret.original {
+                if let Some(ref deletable) = ffi_ctx.deletable_class_names {
+                    if !deletable.contains(name.as_str()) && !ffi_ctx.all_enums.contains(name.as_str()) {
+                        continue;
+                    }
+                }
+            }
+        }
+
         let base_rust_name = &func.rust_name;
         let is_overloaded = name_groups.get(base_rust_name).copied().unwrap_or(0) > 1;
 

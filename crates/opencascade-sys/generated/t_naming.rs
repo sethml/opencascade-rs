@@ -58,17 +58,6 @@ pub fn change_shapes(
 pub fn transform(label: &crate::ffi::TDF_Label, aTransformation: &crate::ffi::gp_Trsf) {
     unsafe { crate::ffi::TNaming_transform(label, aTransformation) }
 }
-/// **Source:** `TNaming.hxx`:138 - `TNaming::Replicate`
-/// Replicates the named shape with the transformation <T>
-/// on the label <L> (and sub-labels if necessary)
-/// (TNaming_GENERATED is set)
-pub fn replicate_handletnamingnamedshape_trsf_label(
-    NS: &crate::ffi::HandleTNamingNamedShape,
-    T: &crate::ffi::gp_Trsf,
-    L: &crate::ffi::TDF_Label,
-) {
-    unsafe { crate::ffi::TNaming_replicate_handletnamingnamedshape_trsf_label(NS, T, L) }
-}
 /// **Source:** `TNaming.hxx`:145 - `TNaming::Replicate`
 /// Replicates the shape with the transformation <T>
 /// on the label <L> (and sub-labels if necessary)

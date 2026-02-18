@@ -93,9 +93,21 @@ fn collect_type_headers(ty: &Option<Type>, headers: &mut HashSet<String>, known_
                 ) {
                     return;
                 }
-                // Skip nested types (e.g., Message_Messenger::StreamBuffer resolved to just StreamBuffer)
-                // OCCT classes follow Module_ClassName pattern, so classes without underscore
-                // (except Standard types) are likely nested types that don't have their own header
+                // For nested types (Parent::Nested), include the parent class header
+                if let Some(parent) = name.split("::").next() {
+                    if name.contains("::") {
+                        // Nested type — include the parent's header
+                        if parent.contains('_') || parent.starts_with("Standard") {
+                            let header = format!("{}.hxx", parent);
+                            if known_headers.is_empty() || known_headers.contains(&header) {
+                                headers.insert(header);
+                            }
+                        }
+                        return;
+                    }
+                }
+                // Skip types without underscore that aren't Standard* — likely nested types
+                // whose qualified name was resolved by clang to just the leaf name
                 if !name.contains('_') && !name.starts_with("Standard") {
                     return;
                 }
@@ -229,6 +241,7 @@ pub fn generate_wrappers(
     _symbol_table: &SymbolTable,
     all_bindings: &[super::bindings::ClassBindings],
     function_bindings: &[super::bindings::FunctionBinding],
+    nested_types: &[super::rust::NestedTypeInfo],
 ) -> String {
     let mut output = String::new();
 
@@ -285,6 +298,21 @@ pub fn generate_wrappers(
 
     // Generate wrappers for ALL namespace-level free functions
     generate_function_wrappers(&mut output, function_bindings, known_headers);
+
+    // Generate destructors for nested types (e.g., Message_Messenger::StreamBuffer)
+    if !nested_types.is_empty() {
+        writeln!(output).unwrap();
+        writeln!(output, "// Nested type destructors").unwrap();
+        for nt in nested_types {
+            writeln!(
+                output,
+                "extern \"C\" void {ffi}_destructor({cpp}* self_) {{ delete self_; }}",
+                ffi = nt.ffi_name,
+                cpp = nt.cpp_name
+            )
+            .unwrap();
+        }
+    }
 
     // Generate collection wrappers
     if !collections.is_empty() {

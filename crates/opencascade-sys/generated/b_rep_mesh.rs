@@ -2715,6 +2715,43 @@ impl GeomTool {
         }
     }
 
+    /// **Source:** `BRepMesh_GeomTool.hxx`:174 - `BRepMesh_GeomTool::IntSegSeg()`
+    /// Checks intersection between the two segments.
+    /// Checks that intersection point lies within ranges of both segments.
+    /// @param theStartPnt1 start point of first segment.
+    /// @param theEndPnt1 end point of first segment.
+    /// @param theStartPnt2 start point of second segment.
+    /// @param theEndPnt2 end point of second segment.
+    /// @param isConsiderEndPointTouch if TRUE EndPointTouch status will be
+    /// returned in case if segments are touching by end points, if FALSE
+    /// returns NoIntersection flag.
+    /// @param isConsiderPointOnSegment if TRUE PointOnSegment status will be
+    /// returned in case if end point of one segment lies onto another one,
+    /// if FALSE returns NoIntersection flag.
+    /// @param[out] theIntPnt point of intersection.
+    /// @return status of intersection check.
+    pub fn int_seg_seg(
+        theStartPnt1: &crate::ffi::gp_XY,
+        theEndPnt1: &crate::ffi::gp_XY,
+        theStartPnt2: &crate::ffi::gp_XY,
+        theEndPnt2: &crate::ffi::gp_XY,
+        isConsiderEndPointTouch: bool,
+        isConsiderPointOnSegment: bool,
+        theIntPnt: &mut crate::ffi::gp_Pnt2d,
+    ) -> crate::OwnedPtr<crate::ffi::BRepMesh_GeomTool_IntFlag> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepMesh_GeomTool_int_seg_seg(
+                theStartPnt1,
+                theEndPnt1,
+                theStartPnt2,
+                theEndPnt2,
+                isConsiderEndPointTouch,
+                isConsiderPointOnSegment,
+                theIntPnt,
+            ))
+        }
+    }
+
     /// **Source:** `BRepMesh_GeomTool.hxx`:183 - `BRepMesh_GeomTool::SquareDeflectionOfSegment()`
     /// Compute deflection of the given segment.
     pub fn square_deflection_of_segment(

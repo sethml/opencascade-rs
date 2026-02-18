@@ -1306,14 +1306,17 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // Check if this type's declaration is nested inside a class
     // This catches types like DESTEP_Parameters::ReadMode_ProductContext that
     // appear as "ReadMode_ProductContext" in method signatures but are actually nested
-    if let Some(decl) = clang_type.get_declaration() {
-        if let Some(parent) = decl.get_semantic_parent() {
-            let parent_kind = parent.get_kind();
-            if parent_kind == EntityKind::ClassDecl || parent_kind == EntityKind::StructDecl {
-                // This is a nested type - include the parent class name to mark it as nested
-                if let Some(parent_name) = parent.get_name() {
-                    let nested_name = format!("{}::{}", parent_name, clean_name);
-                    return Type::Class(nested_name);
+    // Only apply if clean_name is NOT already qualified (doesn't contain ::)
+    if !clean_name.contains("::") {
+        if let Some(decl) = clang_type.get_declaration() {
+            if let Some(parent) = decl.get_semantic_parent() {
+                let parent_kind = parent.get_kind();
+                if parent_kind == EntityKind::ClassDecl || parent_kind == EntityKind::StructDecl {
+                    // This is a nested type - include the parent class name to mark it as nested
+                    if let Some(parent_name) = parent.get_name() {
+                        let nested_name = format!("{}::{}", parent_name, clean_name);
+                        return Type::Class(nested_name);
+                    }
                 }
             }
         }

@@ -571,7 +571,7 @@ fn generate_output(
 
     // 1. Generate ffi.rs
     println!("Generating ffi.rs...");
-    let ffi_code = codegen::rust::generate_ffi(
+    let (ffi_code, nested_types) = codegen::rust::generate_ffi(
         all_classes,
         &all_headers_list,
         &all_collections,
@@ -594,6 +594,7 @@ fn generate_output(
         symbol_table,
         &all_bindings,
         &all_function_bindings,
+        &nested_types,
     );
     let cpp_path = args.output.join("wrappers.cpp");
     std::fs::write(&cpp_path, &cpp_code)?;

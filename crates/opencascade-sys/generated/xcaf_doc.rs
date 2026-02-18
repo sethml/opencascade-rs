@@ -504,6 +504,23 @@ impl AssemblyGraph {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_children(self as *const Self, theNode)) }
     }
 
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:126 - `XCAFDoc_AssemblyGraph::GetNodeType()`
+    /// \brief Returns the node type from \ref NodeType enum.
+    /// \param[in]  theNode - one-based node ID.
+    /// \return node type.
+    /// \sa NodeType
+    pub fn get_node_type(
+        &self,
+        theNode: i32,
+    ) -> crate::OwnedPtr<crate::ffi::XCAFDoc_AssemblyGraph_NodeType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_get_node_type(
+                self as *const Self,
+                theNode,
+            ))
+        }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:131 - `XCAFDoc_AssemblyGraph::GetNode()`
     /// \brief returns object ID by node ID.
     /// \param[in]  theNode - one-based node ID.

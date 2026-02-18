@@ -557,6 +557,12 @@ impl Type {
         }
     }
 
+    /// Convert a nested C++ type name to a valid Rust FFI identifier.
+    /// `Parent::Nested` becomes `Parent_Nested`. Non-nested names pass through.
+    pub fn ffi_safe_class_name(name: &str) -> String {
+        name.replace("::", "_")
+    }
+
     /// Check if this type is an rvalue reference (T&&)
     /// Rvalue references are not bindable through the FFI
     pub fn is_rvalue_ref(&self) -> bool {
@@ -565,10 +571,44 @@ impl Type {
 
     /// Check if this type is unbindable through the FFI.
     /// Note: const char* (C strings) ARE bindable - we generate wrappers that pass const char* directly.
-    /// Nested types are still included here as a fallback - if canonical type resolution
-    /// in the parser couldn't resolve them, they remain unbindable.
+    /// Nested types (Parent::Nested) are supported via name flattening
+    /// (Parent::Nested → Parent_Nested in Rust FFI), BUT unresolved template types
+    /// and unqualified names without underscore remain unbindable.
     pub fn is_unbindable(&self) -> bool {
-        self.is_stream() || self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_nested_type() || self.is_rvalue_ref()
+        self.is_stream() || self.is_void_ptr() || self.is_array() || self.is_raw_ptr() || self.is_rvalue_ref() || self.is_unresolved_template_type()
+    }
+
+    /// Check if this type is an unresolved template or bare nested type that can't be
+    /// represented in Rust FFI. Qualified nested types (`Parent::Nested` where parent
+    /// follows OCCT naming) ARE representable.
+    fn is_unresolved_template_type(&self) -> bool {
+        match self {
+            Type::Class(name) => {
+                // Template types with angle brackets are not representable
+                if name.contains('<') || name.contains('>') {
+                    return true;
+                }
+                // Qualified nested types (Parent::Nested) are representable if
+                // the parent follows OCCT naming (contains '_')
+                if name.contains("::") {
+                    return false;
+                }
+                // Types without underscore that aren't primitives are likely
+                // unqualified nested types (e.g., StreamBuffer from
+                // Message_Messenger::StreamBuffer resolved by clang to bare name)
+                if !name.contains('_') {
+                    if matches!(name.as_str(), "bool" | "char" | "int" | "unsigned" | "float" | "double" | "void" | "size_t") {
+                        return false;
+                    }
+                    return true;
+                }
+                false
+            }
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) | Type::ConstPtr(inner) | Type::MutPtr(inner) => {
+                inner.is_unresolved_template_type()
+            }
+            _ => false,
+        }
     }
 
     /// Convert this type to a Rust type string for use in method signatures
@@ -614,11 +654,13 @@ impl Type {
                 format!("Handle{}", short)
             }
             Type::Class(name) => {
+                // Flatten nested types: Parent::Nested -> Parent_Nested
+                let flat = Type::ffi_safe_class_name(name);
                 // Extract short name from full OCCT name (e.g., "gp_Pnt" -> "Pnt")
-                if let Some(underscore_pos) = name.find('_') {
-                    name[underscore_pos + 1..].to_string()
+                if let Some(underscore_pos) = flat.find('_') {
+                    flat[underscore_pos + 1..].to_string()
                 } else {
-                    name.clone()
+                    flat
                 }
             }
         }
@@ -669,11 +711,13 @@ impl Type {
                 format!("ffi::Handle{}", short)
             }
             Type::Class(name) => {
+                // Flatten nested types: Parent::Nested -> Parent_Nested
+                let flat = Type::ffi_safe_class_name(name);
                 // Extract short name from full OCCT name (e.g., "gp_Pnt" -> "Pnt")
-                let short_name = if let Some(underscore_pos) = name.find('_') {
-                    &name[underscore_pos + 1..]
+                let short_name = if let Some(underscore_pos) = flat.find('_') {
+                    &flat[underscore_pos + 1..]
                 } else {
-                    name.as_str()
+                    flat.as_str()
                 };
                 // Handle FFI reserved names (Vec, Box, String, etc.)
                 let safe_name = match short_name {
@@ -689,10 +733,17 @@ impl Type {
 }
 
 /// Extract short name from a class name (e.g., "gp_Pnt" -> "pnt")
+/// For nested types like "Parent::Nested", uses only the leaf name.
 fn extract_short_name(name: &str) -> String {
-    if let Some(underscore_pos) = name.find('_') {
-        name[underscore_pos + 1..].to_lowercase()
+    // Strip parent class qualifier for nested types
+    let leaf = if let Some(pos) = name.rfind("::") {
+        &name[pos + 2..]
     } else {
-        name.to_lowercase()
+        name
+    };
+    if let Some(underscore_pos) = leaf.find('_') {
+        leaf[underscore_pos + 1..].to_lowercase()
+    } else {
+        leaf.to_lowercase()
     }
 }

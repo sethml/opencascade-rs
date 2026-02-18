@@ -35,29 +35,6 @@ pub fn same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgreg
 pub fn encode_regularity_shape_real_2(shape: &crate::ffi::TopoDS_Shape, tolang: f64) {
     unsafe { crate::ffi::ShapeFix_encode_regularity_shape_real_2(shape, tolang) }
 }
-/// **Source:** `ShapeFix.hxx`:70 - `ShapeFix::RemoveSmallEdges`
-/// Removes edges which are less than given tolerance from shape
-/// with help of ShapeFix_Wire::FixSmall()
-pub fn remove_small_edges(
-    shape: &mut crate::ffi::TopoDS_Shape,
-    Tolerance: f64,
-    context: &mut crate::ffi::HandleShapeBuildReShape,
-) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
-    unsafe {
-        crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_remove_small_edges(
-            shape, Tolerance, context,
-        ))
-    }
-}
-/// **Source:** `ShapeFix.hxx`:75 - `ShapeFix::FixVertexPosition`
-/// Fix position of the vertices having tolerance more tnan specified one.;
-pub fn fix_vertex_position(
-    theshape: &mut crate::ffi::TopoDS_Shape,
-    theTolerance: f64,
-    thecontext: &crate::ffi::HandleShapeBuildReShape,
-) -> bool {
-    unsafe { crate::ffi::ShapeFix_fix_vertex_position(theshape, theTolerance, thecontext) }
-}
 /// **Source:** `ShapeFix.hxx`:81 - `ShapeFix::LeastEdgeSize`
 /// Calculate size of least edge;
 pub fn least_edge_size(theshape: &mut crate::ffi::TopoDS_Shape) -> f64 {

@@ -3058,11 +3058,35 @@ impl MemInfo {
         Self::new_bool(true)
     }
 
+    /// **Source:** `OSD_MemInfo.hxx`:70 - `OSD_MemInfo::IsActive()`
+    /// Return true if the counter is active
+    pub fn is_active(&self, theCounter: &crate::ffi::OSD_MemInfo_Counter) -> bool {
+        unsafe { crate::ffi::OSD_MemInfo_is_active(self as *const Self, theCounter) }
+    }
+
     /// **Source:** `OSD_MemInfo.hxx`:77 - `OSD_MemInfo::SetActive()`
     /// Set all counters active. The information is collected for active counters.
     /// @param theActive state for counters
-    pub fn set_active(&mut self, theActive: bool) {
-        unsafe { crate::ffi::OSD_MemInfo_set_active(self as *mut Self, theActive) }
+    pub fn set_active_bool(&mut self, theActive: bool) {
+        unsafe { crate::ffi::OSD_MemInfo_set_active_bool(self as *mut Self, theActive) }
+    }
+
+    /// **Source:** `OSD_MemInfo.hxx`:82 - `OSD_MemInfo::SetActive()`
+    /// Set the counter active. The information is collected for active counters.
+    /// @param theCounter type of counter
+    /// @param theActive state for the counter
+    pub fn set_active_counter_bool(
+        &mut self,
+        theCounter: &crate::ffi::OSD_MemInfo_Counter,
+        theActive: bool,
+    ) {
+        unsafe {
+            crate::ffi::OSD_MemInfo_set_active_counter_bool(
+                self as *mut Self,
+                theCounter,
+                theActive,
+            )
+        }
     }
 
     /// **Source:** `OSD_MemInfo.hxx`:88 - `OSD_MemInfo::Clear()`
@@ -3081,6 +3105,30 @@ impl MemInfo {
     /// Return the string representation for all available counter.
     pub fn to_string(&self) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::OSD_MemInfo_to_string(self as *const Self)) }
+    }
+
+    /// **Source:** `OSD_MemInfo.hxx`:99 - `OSD_MemInfo::Value()`
+    /// Return value of specified counter in bytes.
+    /// Notice that NOT all counters are available on various systems.
+    /// Standard_Size(-1) means invalid (unavailable) value.
+    pub fn value(&self, theCounter: &crate::ffi::OSD_MemInfo_Counter) -> usize {
+        unsafe { crate::ffi::OSD_MemInfo_value(self as *const Self, theCounter) }
+    }
+
+    /// **Source:** `OSD_MemInfo.hxx`:104 - `OSD_MemInfo::ValueMiB()`
+    /// Return value of specified counter in MiB.
+    /// Notice that NOT all counters are available on various systems.
+    /// Standard_Size(-1) means invalid (unavailable) value.
+    pub fn value_mi_b(&self, theCounter: &crate::ffi::OSD_MemInfo_Counter) -> usize {
+        unsafe { crate::ffi::OSD_MemInfo_value_mi_b(self as *const Self, theCounter) }
+    }
+
+    /// **Source:** `OSD_MemInfo.hxx`:109 - `OSD_MemInfo::ValuePreciseMiB()`
+    /// Return floating value of specified counter in MiB.
+    /// Notice that NOT all counters are available on various systems.
+    /// Standard_Real(-1) means invalid (unavailable) value.
+    pub fn value_precise_mi_b(&self, theCounter: &crate::ffi::OSD_MemInfo_Counter) -> f64 {
+        unsafe { crate::ffi::OSD_MemInfo_value_precise_mi_b(self as *const Self, theCounter) }
     }
 
     /// **Source:** `OSD_MemInfo.hxx`:113 - `OSD_MemInfo::PrintInfo()`

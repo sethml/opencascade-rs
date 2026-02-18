@@ -162,7 +162,7 @@ pub fn map_type_to_rust(ty: &Type) -> RustTypeMapping {
         Type::Class(class_name) => {
             let source_module = extract_module_from_class(class_name);
             RustTypeMapping {
-                rust_type: class_name.clone(),
+                rust_type: Type::ffi_safe_class_name(class_name),
                 needs_unique_ptr: true, // C++ classes returned as *mut T, caller must free
                 needs_pin: false,
                 source_module,
@@ -310,7 +310,18 @@ pub struct TypeContext<'a> {
 pub fn type_uses_unknown_class(ty: &Type, all_classes: &std::collections::HashSet<String>) -> bool {
     match ty {
         Type::Handle(class_name) => !all_classes.contains(class_name),
-        Type::Class(class_name) => !all_classes.contains(class_name),
+        Type::Class(class_name) => {
+            if all_classes.contains(class_name) {
+                return false;
+            }
+            // Nested types (Parent::Nested) are known if the parent class is known
+            if let Some(parent) = class_name.split("::").next() {
+                if class_name.contains("::") && all_classes.contains(parent) {
+                    return false;
+                }
+            }
+            true
+        }
         Type::ConstRef(inner) | Type::MutRef(inner) => type_uses_unknown_class(inner, all_classes),
         _ => false,
     }
@@ -326,7 +337,18 @@ pub fn type_uses_unknown_handle(
 ) -> bool {
     match ty {
         Type::Handle(class_name) => !handle_able_classes.contains(class_name),
-        Type::Class(class_name) => !all_classes.contains(class_name),
+        Type::Class(class_name) => {
+            if all_classes.contains(class_name) {
+                return false;
+            }
+            // Nested types (Parent::Nested) are known if the parent class is known
+            if let Some(parent) = class_name.split("::").next() {
+                if class_name.contains("::") && all_classes.contains(parent) {
+                    return false;
+                }
+            }
+            true
+        }
         Type::ConstRef(inner) | Type::MutRef(inner) => {
             type_uses_unknown_handle(inner, all_classes, handle_able_classes)
         }
@@ -374,8 +396,10 @@ pub fn map_type_in_context(ty: &Type, ctx: &TypeContext) -> RustTypeMapping {
                 }
             } else {
                 // Use full C++ name for cross-module types (will be aliased)
+                // Flatten nested type names (Parent::Nested -> Parent_Nested)
+                let ffi_name = Type::ffi_safe_class_name(class_name);
                 RustTypeMapping {
-                    rust_type: class_name.clone(),
+                    rust_type: ffi_name,
                     needs_unique_ptr: true,
                     needs_pin: false,
                     source_module: type_module,

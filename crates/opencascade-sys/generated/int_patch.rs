@@ -1327,6 +1327,22 @@ impl WLine {
         unsafe { crate::ffi::IntPatch_WLine_is_purging_allowed(self as *mut Self) }
     }
 
+    /// **Source:** `IntPatch_WLine.hxx`:204 - `IntPatch_WLine::GetCreatingWay()`
+    /// Returns the way of <*this> creation.
+    pub fn get_creating_way(&self) -> crate::OwnedPtr<crate::ffi::IntPatch_WLine_IntPatch_WLType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntPatch_WLine_get_creating_way(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IntPatch_WLine.hxx`:207 - `IntPatch_WLine::SetCreatingWayInfo()`
+    /// Sets the info about the way of <*this> creation.
+    pub fn set_creating_way_info(&mut self, theAlgo: &crate::ffi::IntPatch_WLine_IntPatch_WLType) {
+        unsafe { crate::ffi::IntPatch_WLine_set_creating_way_info(self as *mut Self, theAlgo) }
+    }
+
     /// **Source:** `IntPatch_WLine.hxx`:209 - `IntPatch_WLine::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IntPatch_WLine_dynamic_type(self as *const Self)) }

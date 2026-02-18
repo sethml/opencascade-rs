@@ -6,23 +6,6 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `XSControl.hxx`:37 - `XSControl::Session`
-/// Returns the WorkSession of a SessionPilot, but casts it as
-/// from XSControl : it then gives access to Control & Transfers
-pub fn session(
-    pilot: &crate::ffi::HandleIFSelectSessionPilot,
-) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_session(pilot)) }
-}
-/// **Source:** `XSControl.hxx`:42 - `XSControl::Vars`
-/// Returns the Vars of a SessionPilot, it is brought by Session
-/// it provides access to external variables
-pub fn vars(
-    pilot: &crate::ffi::HandleIFSelectSessionPilot,
-) -> crate::OwnedPtr<crate::ffi::HandleXSControlVars> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_vars(pilot)) }
-}
-
 // ========================
 // From XSControl_ConnectedShapes.hxx
 // ========================

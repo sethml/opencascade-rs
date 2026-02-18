@@ -6585,6 +6585,19 @@ impl MakeConnected {
         unsafe { crate::ffi::BOPAlgo_MakeConnected_perform(self as *mut Self) }
     }
 
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:164 - `BOPAlgo_MakeConnected::MakePeriodic()`
+    /// @name Shape periodicity & repetition
+    /// Makes the connected shape periodic.
+    /// Repeated calls of this method overwrite the previous calls
+    /// working with the basis connected shape.
+    /// @param[in] theParams  Periodic options.
+    pub fn make_periodic(
+        &mut self,
+        theParams: &crate::ffi::BOPAlgo_MakePeriodic_PeriodicityParams,
+    ) {
+        unsafe { crate::ffi::BOPAlgo_MakeConnected_make_periodic(self as *mut Self, theParams) }
+    }
+
     /// **Source:** `BOPAlgo_MakeConnected.hxx`:171 - `BOPAlgo_MakeConnected::RepeatShape()`
     /// Performs repetition of the periodic shape in specified direction
     /// required number of times.
@@ -6910,6 +6923,27 @@ impl MakePeriodic {
     /// @param[in] theShape  The shape to make periodic.
     pub fn set_shape(&mut self, theShape: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BOPAlgo_MakePeriodic_set_shape(self as *mut Self, theShape) }
+    }
+
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:172 - `BOPAlgo_MakePeriodic::SetPeriodicityParameters()`
+    /// @name Setters/Getters for periodicity parameters structure
+    /// Sets the periodicity parameters.
+    /// @param[in] theParams  Periodicity parameters
+    pub fn set_periodicity_parameters(
+        &mut self,
+        theParams: &crate::ffi::BOPAlgo_MakePeriodic_PeriodicityParams,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_MakePeriodic_set_periodicity_parameters(
+                self as *mut Self,
+                theParams,
+            )
+        }
+    }
+
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:177 - `BOPAlgo_MakePeriodic::PeriodicityParameters()`
+    pub fn periodicity_parameters(&self) -> &crate::ffi::BOPAlgo_MakePeriodic_PeriodicityParams {
+        unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_periodicity_parameters(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_MakePeriodic.hxx`:188 - `BOPAlgo_MakePeriodic::MakePeriodic()`

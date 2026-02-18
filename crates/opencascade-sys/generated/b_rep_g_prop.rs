@@ -793,6 +793,14 @@ unsafe impl crate::CppDeletable for Gauss {
 }
 
 impl Gauss {
+    /// **Source:** `BRepGProp_Gauss.hxx`:73 - `BRepGProp_Gauss::BRepGProp_Gauss()`
+    /// Constructor
+    pub fn new_gausstype(
+        theType: &crate::ffi::BRepGProp_Gauss_BRepGProp_GaussType,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_Gauss_ctor_gausstype(theType)) }
+    }
+
     /// **Source:** `BRepGProp_Gauss.hxx`:106 - `BRepGProp_Gauss::Compute()`
     /// Computes the global properties of a surface. Surface can be closed.
     /// The method is quick and its precision is enough for many cases of analytical surfaces.
@@ -1034,6 +1042,16 @@ unsafe impl crate::CppDeletable for MeshProps {
 }
 
 impl MeshProps {
+    /// **Source:** `BRepGProp_MeshProps.hxx`:42 - `BRepGProp_MeshProps::BRepGProp_MeshProps()`
+    /// Constructor takes the type of object.
+    pub fn new_meshobjtype(
+        theType: &crate::ffi::BRepGProp_MeshProps_BRepGProp_MeshObjType,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_MeshProps_ctor_meshobjtype(theType))
+        }
+    }
+
     /// **Source:** `BRepGProp_MeshProps.hxx`:48 - `BRepGProp_MeshProps::SetLocation()`
     /// Sets the point relative which the calculation is to be done
     pub fn set_location(&mut self, theLocation: &crate::ffi::gp_Pnt) {
@@ -1074,6 +1092,18 @@ impl MeshProps {
                 theMesh,
                 theOri.into(),
             )
+        }
+    }
+
+    /// **Source:** `BRepGProp_MeshProps.hxx`:76 - `BRepGProp_MeshProps::GetMeshObjType()`
+    /// Get type of mesh object
+    pub fn get_mesh_obj_type(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::BRepGProp_MeshProps_BRepGProp_MeshObjType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepGProp_MeshProps_get_mesh_obj_type(
+                self as *const Self,
+            ))
         }
     }
 

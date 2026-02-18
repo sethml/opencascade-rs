@@ -22,29 +22,59 @@
 pub fn default_messenger() -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_default_messenger()) }
 }
+/// **Source:** `Message.hxx`:55 - `Message::Send`
+/// @name Short-cuts to DefaultMessenger
+pub fn send_gravity(
+    theGravity: crate::message::Gravity,
+) -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_send_gravity(theGravity.into())) }
+}
 /// **Source:** `Message.hxx`:60 - `Message::Send`
-pub fn send(theMessage: &crate::ffi::TCollection_AsciiString, theGravity: crate::message::Gravity) {
-    unsafe { crate::ffi::Message_send(theMessage, theGravity.into()) }
+pub fn send_asciistring_gravity(
+    theMessage: &crate::ffi::TCollection_AsciiString,
+    theGravity: crate::message::Gravity,
+) {
+    unsafe { crate::ffi::Message_send_asciistring_gravity(theMessage, theGravity.into()) }
+}
+/// **Source:** `Message.hxx`:65 - `Message::SendFail`
+pub fn send_fail() -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_send_fail()) }
+}
+/// **Source:** `Message.hxx`:67 - `Message::SendAlarm`
+pub fn send_alarm() -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_send_alarm()) }
+}
+/// **Source:** `Message.hxx`:69 - `Message::SendWarning`
+pub fn send_warning() -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_send_warning()) }
+}
+/// **Source:** `Message.hxx`:71 - `Message::SendInfo`
+pub fn send_info() -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_send_info()) }
+}
+/// **Source:** `Message.hxx`:73 - `Message::SendTrace`
+pub fn send_trace() -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_send_trace()) }
 }
 /// **Source:** `Message.hxx`:75 - `Message::SendFail`
-pub fn send_fail(theMessage: &crate::ffi::TCollection_AsciiString) {
-    unsafe { crate::ffi::Message_send_fail(theMessage) }
+pub fn send_fail_asciistring(theMessage: &crate::ffi::TCollection_AsciiString) {
+    unsafe { crate::ffi::Message_send_fail_asciistring(theMessage) }
 }
 /// **Source:** `Message.hxx`:80 - `Message::SendAlarm`
-pub fn send_alarm(theMessage: &crate::ffi::TCollection_AsciiString) {
-    unsafe { crate::ffi::Message_send_alarm(theMessage) }
+pub fn send_alarm_asciistring(theMessage: &crate::ffi::TCollection_AsciiString) {
+    unsafe { crate::ffi::Message_send_alarm_asciistring(theMessage) }
 }
 /// **Source:** `Message.hxx`:85 - `Message::SendWarning`
-pub fn send_warning(theMessage: &crate::ffi::TCollection_AsciiString) {
-    unsafe { crate::ffi::Message_send_warning(theMessage) }
+pub fn send_warning_asciistring(theMessage: &crate::ffi::TCollection_AsciiString) {
+    unsafe { crate::ffi::Message_send_warning_asciistring(theMessage) }
 }
 /// **Source:** `Message.hxx`:90 - `Message::SendInfo`
-pub fn send_info(theMessage: &crate::ffi::TCollection_AsciiString) {
-    unsafe { crate::ffi::Message_send_info(theMessage) }
+pub fn send_info_asciistring(theMessage: &crate::ffi::TCollection_AsciiString) {
+    unsafe { crate::ffi::Message_send_info_asciistring(theMessage) }
 }
 /// **Source:** `Message.hxx`:95 - `Message::SendTrace`
-pub fn send_trace(theMessage: &crate::ffi::TCollection_AsciiString) {
-    unsafe { crate::ffi::Message_send_trace(theMessage) }
+pub fn send_trace_asciistring(theMessage: &crate::ffi::TCollection_AsciiString) {
+    unsafe { crate::ffi::Message_send_trace_asciistring(theMessage) }
 }
 /// **Source:** `Message.hxx`:106 - `Message::FillTime`
 /// Returns the string filled with values of hours, minutes and seconds.
@@ -58,12 +88,6 @@ pub fn fill_time(
     Second: f64,
 ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_fill_time(Hour, Minute, Second)) }
-}
-/// **Source:** `Message.hxx`:113 - `Message::DefaultReport`
-/// returns the only one instance of Report
-/// When theToCreate is true - automatically creates message report when not exist.
-pub fn default_report(theToCreate: bool) -> crate::OwnedPtr<crate::ffi::HandleMessageReport> {
-    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_default_report(theToCreate)) }
 }
 /// **Source:** `Message.hxx`:126 - `Message::MetricToString`
 /// Returns the string name for a given metric type.
@@ -88,6 +112,17 @@ pub fn metric_from_string(theString: &str) -> crate::message::MetricType {
         ))
         .unwrap()
     }
+}
+/// **Source:** `Message.hxx`:142 - `Message::ToOSDMetric`
+/// Converts message metric to OSD memory info type.
+/// @param[in] theMetric  message metric
+/// @param[out] theMemInfo  filled memory info type
+/// @return true if converted
+pub fn to_osd_metric(
+    theMetric: crate::message::MetricType,
+    theMemInfo: &mut crate::ffi::OSD_MemInfo_Counter,
+) -> bool {
+    unsafe { crate::ffi::Message_to_osd_metric(theMetric.into(), theMemInfo) }
 }
 
 /// Color definition for console/terminal output (limited palette).
@@ -2238,34 +2273,98 @@ impl Messenger {
         }
     }
 
+    /// **Source:** `Message_Messenger.hxx`:194 - `Message_Messenger::Send()`
+    /// Create string buffer for message of specified type
+    pub fn send_gravity(
+        &mut self,
+        theGravity: crate::message::Gravity,
+    ) -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Messenger_send_gravity(
+                self as *mut Self,
+                theGravity.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:201 - `Message_Messenger::SendFail()`
+    /// Create string buffer for sending Fail message
+    pub fn send_fail(&mut self) -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Messenger_send_fail(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:204 - `Message_Messenger::SendAlarm()`
+    /// Create string buffer for sending Alarm message
+    pub fn send_alarm(&mut self) -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Messenger_send_alarm(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:207 - `Message_Messenger::SendWarning()`
+    /// Create string buffer for sending Warning message
+    pub fn send_warning(&mut self) -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Messenger_send_warning(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:210 - `Message_Messenger::SendInfo()`
+    /// Create string buffer for sending Info message
+    pub fn send_info(&mut self) -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Messenger_send_info(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:213 - `Message_Messenger::SendTrace()`
+    /// Create string buffer for sending Trace message
+    pub fn send_trace(&mut self) -> crate::OwnedPtr<crate::ffi::Message_Messenger_StreamBuffer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_Messenger_send_trace(self as *mut Self))
+        }
+    }
+
     /// **Source:** `Message_Messenger.hxx`:216 - `Message_Messenger::SendFail()`
     /// Short-cut to Send (theMessage, Message_Fail)
-    pub fn send_fail(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
-        unsafe { crate::ffi::Message_Messenger_send_fail(self as *mut Self, theMessage) }
+    pub fn send_fail_asciistring(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::Message_Messenger_send_fail_asciistring(self as *mut Self, theMessage)
+        }
     }
 
     /// **Source:** `Message_Messenger.hxx`:219 - `Message_Messenger::SendAlarm()`
     /// Short-cut to Send (theMessage, Message_Alarm)
-    pub fn send_alarm(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
-        unsafe { crate::ffi::Message_Messenger_send_alarm(self as *mut Self, theMessage) }
+    pub fn send_alarm_asciistring(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::Message_Messenger_send_alarm_asciistring(self as *mut Self, theMessage)
+        }
     }
 
     /// **Source:** `Message_Messenger.hxx`:222 - `Message_Messenger::SendWarning()`
     /// Short-cut to Send (theMessage, Message_Warning)
-    pub fn send_warning(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
-        unsafe { crate::ffi::Message_Messenger_send_warning(self as *mut Self, theMessage) }
+    pub fn send_warning_asciistring(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::Message_Messenger_send_warning_asciistring(self as *mut Self, theMessage)
+        }
     }
 
     /// **Source:** `Message_Messenger.hxx`:225 - `Message_Messenger::SendInfo()`
     /// Short-cut to Send (theMessage, Message_Info)
-    pub fn send_info(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
-        unsafe { crate::ffi::Message_Messenger_send_info(self as *mut Self, theMessage) }
+    pub fn send_info_asciistring(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::Message_Messenger_send_info_asciistring(self as *mut Self, theMessage)
+        }
     }
 
     /// **Source:** `Message_Messenger.hxx`:228 - `Message_Messenger::SendTrace()`
     /// Short-cut to Send (theMessage, Message_Trace)
-    pub fn send_trace(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
-        unsafe { crate::ffi::Message_Messenger_send_trace(self as *mut Self, theMessage) }
+    pub fn send_trace_asciistring(&mut self, theMessage: &crate::ffi::TCollection_AsciiString) {
+        unsafe {
+            crate::ffi::Message_Messenger_send_trace_asciistring(self as *mut Self, theMessage)
+        }
     }
 
     /// **Source:** `Message_Messenger.hxx`:55 - `Message_Messenger::get_type_name()`

@@ -252,6 +252,19 @@ impl Parameters {
     pub fn reset(&mut self) {
         unsafe { crate::ffi::DESTEP_Parameters_reset(self as *mut Self) }
     }
+
+    /// **Source:** `DESTEP_Parameters.hxx`:133 - `DESTEP_Parameters::GetString()`
+    pub fn get_string(
+        &mut self,
+        theMode: &crate::ffi::DESTEP_Parameters_ReadMode_ProductContext,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DESTEP_Parameters_get_string(
+                self as *mut Self,
+                theMode,
+            ))
+        }
+    }
 }
 
 // ========================

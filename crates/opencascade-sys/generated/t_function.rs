@@ -935,6 +935,37 @@ impl HArray1OfDataMapOfGUIDDriver {
     }
 
     /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::TFunction_HArray1OfDataMapOfGUIDDriver()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::TFunction_HArray1OfDataMapOfGUIDDriver()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::TFunction_HArray1OfDataMapOfGUIDDriver()`
     pub fn new_array1ofdatamapofguiddriver(
         theOther: &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver,
     ) -> crate::OwnedPtr<Self> {

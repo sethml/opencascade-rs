@@ -1928,6 +1928,17 @@ impl Data {
         unsafe { &mut *(crate::ffi::HLRBRep_Data_face_map(self as *mut Self)) }
     }
 
+    /// **Source:** `HLRBRep_Data.hxx`:100 - `HLRBRep_Data::InitBoundSort()`
+    /// to compare with only non rejected edges.
+    pub fn init_bound_sort(
+        &mut self,
+        MinMaxTot: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+        e1: i32,
+        e2: i32,
+    ) {
+        unsafe { crate::ffi::HLRBRep_Data_init_bound_sort(self as *mut Self, MinMaxTot, e1, e2) }
+    }
+
     /// **Source:** `HLRBRep_Data.hxx`:106 - `HLRBRep_Data::InitEdge()`
     /// Begin an iteration only  on visible Edges
     /// crossing the face number <FI>.
@@ -2534,6 +2545,16 @@ impl EdgeData {
     /// **Source:** `HLRBRep_EdgeData.hxx`:123 - `HLRBRep_EdgeData::VEnd()`
     pub fn v_end_int(&mut self, I: i32) {
         unsafe { crate::ffi::HLRBRep_EdgeData_v_end_int(self as *mut Self, I) }
+    }
+
+    /// **Source:** `HLRBRep_EdgeData.hxx`:125 - `HLRBRep_EdgeData::UpdateMinMax()`
+    pub fn update_min_max(&mut self, theTotMinMax: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices) {
+        unsafe { crate::ffi::HLRBRep_EdgeData_update_min_max(self as *mut Self, theTotMinMax) }
+    }
+
+    /// **Source:** `HLRBRep_EdgeData.hxx`:130 - `HLRBRep_EdgeData::MinMax()`
+    pub fn min_max(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices {
+        unsafe { &mut *(crate::ffi::HLRBRep_EdgeData_min_max(self as *mut Self)) }
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:132 - `HLRBRep_EdgeData::Status()`
@@ -5205,6 +5226,16 @@ impl ShapeBounds {
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:71 - `HLRBRep_ShapeBounds::NbOfIso()`
     pub fn nb_of_iso(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_ShapeBounds_nb_of_iso(self as *const Self) }
+    }
+
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:84 - `HLRBRep_ShapeBounds::UpdateMinMax()`
+    pub fn update_min_max(&mut self, theTotMinMax: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices) {
+        unsafe { crate::ffi::HLRBRep_ShapeBounds_update_min_max(self as *mut Self, theTotMinMax) }
+    }
+
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:89 - `HLRBRep_ShapeBounds::MinMax()`
+    pub fn min_max(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices {
+        unsafe { &mut *(crate::ffi::HLRBRep_ShapeBounds_min_max(self as *mut Self)) }
     }
 }
 

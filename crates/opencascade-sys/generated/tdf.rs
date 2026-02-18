@@ -2441,6 +2441,24 @@ impl DerivedAttribute {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_DerivedAttribute_ctor()) }
     }
 
+    /// **Source:** `TDF_DerivedAttribute.hxx`:70 - `TDF_DerivedAttribute::Register()`
+    /// Registers a derived by the pointer to a method that creates a new derived attribute instance
+    pub fn register(
+        theNewAttributeFunction: &crate::ffi::TDF_DerivedAttribute_NewDerived,
+        theNameSpace: &str,
+        theTypeName: &str,
+    ) -> crate::OwnedPtr<crate::ffi::TDF_DerivedAttribute_NewDerived> {
+        let c_theNameSpace = std::ffi::CString::new(theNameSpace).unwrap();
+        let c_theTypeName = std::ffi::CString::new(theTypeName).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_DerivedAttribute_register(
+                theNewAttributeFunction,
+                c_theNameSpace.as_ptr(),
+                c_theTypeName.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `TDF_DerivedAttribute.hxx`:75 - `TDF_DerivedAttribute::Attribute()`
     /// Returns the derived registered attribute by its type.
     pub fn attribute(theType: &str) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {

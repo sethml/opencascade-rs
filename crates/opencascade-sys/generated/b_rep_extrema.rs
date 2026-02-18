@@ -400,6 +400,23 @@ impl ElementFilter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ElementFilter_ctor()) }
     }
+
+    /// **Source:** `BRepExtrema_ElementFilter.hxx`:41 - `BRepExtrema_ElementFilter::PreCheckElements()`
+    /// Checks if two mesh elements should be tested for overlapping/intersection
+    /// (used for detection correct/incorrect cases of shared edges and vertices).
+    pub fn pre_check_elements(
+        &mut self,
+        arg0: i32,
+        arg1: i32,
+    ) -> crate::OwnedPtr<crate::ffi::BRepExtrema_ElementFilter_FilterResult> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ElementFilter_pre_check_elements(
+                self as *mut Self,
+                arg0,
+                arg1,
+            ))
+        }
+    }
 }
 
 // ========================

@@ -134,7 +134,7 @@ pub fn generate_ffi(
     symbol_table: &crate::resolver::SymbolTable,
     all_bindings: &[super::bindings::ClassBindings],
     function_bindings: &[super::bindings::FunctionBinding],
-) -> String {
+) -> (String, Vec<NestedTypeInfo>) {
     // Get all classes with protected destructors
     let protected_destructor_class_names = symbol_table.protected_destructor_class_names();
 
@@ -163,13 +163,46 @@ pub fn generate_ffi(
 
     // Collect opaque type declarations (types referenced but not defined)
     let collected_types = collect_referenced_types(all_classes);
-    let opaque_type_decls = generate_opaque_declarations(
+    let (opaque_type_decls, nested_types) = generate_opaque_declarations(
         &collected_types,
         all_classes,
         all_enum_names,
         &protected_destructor_class_names,
         &collection_type_names,
     );
+
+    // Generate nested type destructor declarations for ffi extern block
+    let nested_destructor_decls = if nested_types.is_empty() {
+        String::new()
+    } else {
+        let mut s = String::new();
+        writeln!(s).unwrap();
+        writeln!(s, "    // ========================").unwrap();
+        writeln!(s, "    // Nested type destructors").unwrap();
+        writeln!(s, "    // ========================").unwrap();
+        writeln!(s).unwrap();
+        for nt in &nested_types {
+            writeln!(s, "    pub fn {}_destructor(self_: *mut {});", nt.ffi_name, nt.ffi_name).unwrap();
+        }
+        s
+    };
+
+    // Generate CppDeletable impls for nested types
+    let nested_deletable_impls = if nested_types.is_empty() {
+        String::new()
+    } else {
+        let mut s = String::new();
+        writeln!(s).unwrap();
+        writeln!(s, "// CppDeletable impls for nested types").unwrap();
+        for nt in &nested_types {
+            writeln!(s, "unsafe impl crate::CppDeletable for {} {{", nt.ffi_name).unwrap();
+            writeln!(s, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
+            writeln!(s, "        {}_destructor(ptr);", nt.ffi_name).unwrap();
+            writeln!(s, "    }}").unwrap();
+            writeln!(s, "}}").unwrap();
+        }
+        s
+    };
 
     // Build the output
     let mut out = String::new();
@@ -252,8 +285,14 @@ pub fn generate_ffi(
 
         out.push_str(&coll_ffi_decls);
 
+        // Nested type destructor declarations
+        out.push_str(&nested_destructor_decls);
+
         // Close extern "C" block
         writeln!(out, "}}").unwrap();
+
+        // CppDeletable impls for nested types (must be after extern block)
+        out.push_str(&nested_deletable_impls);
     } else {
         // Open extern "C" block
         writeln!(out, "extern \"C\" {{").unwrap();
@@ -278,11 +317,17 @@ pub fn generate_ffi(
             out.push_str(&function_items);
         }
 
+        // Nested type destructor declarations
+        out.push_str(&nested_destructor_decls);
+
         // Close extern "C" block
         writeln!(out, "}}").unwrap();
+
+        // CppDeletable impls for nested types (must be after extern block)
+        out.push_str(&nested_deletable_impls);
     }
 
-    out
+    (out, nested_types)
 }
 
 /// Generate free function declarations from pre-computed FunctionBindings.
@@ -369,15 +414,24 @@ fn generate_handle_declarations(classes: &[&ParsedClass], extra_handle_able: &Ha
 }
 
 /// Generate opaque type declarations
+/// Nested type info for destructor generation.
+/// (cpp_name with ::, ffi_name with _)
+pub struct NestedTypeInfo {
+    pub cpp_name: String,
+    pub ffi_name: String,
+}
+
 fn generate_opaque_declarations(
     collected_types: &CollectedTypes,
     classes: &[&ParsedClass],
     all_enum_names: &HashSet<String>,
     protected_destructor_classes: &HashSet<String>,
     collection_type_names: &HashSet<String>,
-) -> String {
+) -> (String, Vec<NestedTypeInfo>) {
     let defined_classes: HashSet<_> = classes.iter().map(|c| c.name.clone()).collect();
     let mut out = String::new();
+    let mut emitted: HashSet<String> = HashSet::new();
+    let mut nested_types: Vec<NestedTypeInfo> = Vec::new();
 
     for type_name in &collected_types.classes {
         if defined_classes.contains(type_name) {
@@ -396,23 +450,39 @@ fn generate_opaque_declarations(
         if collection_type_names.contains(type_name) {
             continue;
         }
-        // Skip namespace-scoped types (e.g., "IMeshData::ListOfPnt2d") — extern "C"
-        // doesn't support `::` in type names within FFI declarations
-        if type_name.contains("::") {
-            continue;
-        }
+        // Nested C++ types (e.g., "Poly_CoherentTriangulation::TwoIntegers") get
+        // flattened to valid Rust identifiers ("Poly_CoherentTriangulation_TwoIntegers")
+        let is_nested = type_name.contains("::");
+        let safe_name = if is_nested {
+            type_name.replace("::", "_")
+        } else {
+            type_name.clone()
+        };
         // Skip types with pointer/ref qualifiers leaked into the name
         // (e.g., "IMeshData_Edge *const" from typedef resolution)
-        if type_name.contains('*') || type_name.contains('&') {
+        if safe_name.contains('*') || safe_name.contains('&') {
+            continue;
+        }
+        // Avoid duplicate opaque declarations (flattened nested name might collide
+        // with an existing class name or another nested type)
+        if defined_classes.contains(&safe_name) || !emitted.insert(safe_name.clone()) {
             continue;
         }
 
         writeln!(out, "/// Referenced type from C++").unwrap();
         writeln!(out, "#[repr(C)]").unwrap();
-        writeln!(out, "pub struct {} {{ _opaque: [u8; 0] }}", type_name).unwrap();
+        writeln!(out, "pub struct {} {{ _opaque: [u8; 0] }}", safe_name).unwrap();
+
+        // Track nested types for destructor generation
+        if is_nested {
+            nested_types.push(NestedTypeInfo {
+                cpp_name: type_name.clone(),
+                ffi_name: safe_name,
+            });
+        }
     }
 
-    out
+    (out, nested_types)
 }
 
 // UniquePtr impl blocks are no longer needed with extern "C" FFI

@@ -1469,6 +1469,55 @@ unsafe impl crate::CppDeletable for MakeLoops {
 }
 
 impl MakeLoops {
+    /// **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
+    /// Adds a link to the set. theOrient defines which orientations of the link
+    /// are allowed.
+    pub fn add_link(&mut self, theLink: &crate::ffi::Poly_MakeLoops_Link) {
+        unsafe { crate::ffi::Poly_MakeLoops_add_link(self as *mut Self, theLink) }
+    }
+
+    /// **Source:** `Poly_MakeLoops.hxx`:193 - `Poly_MakeLoops::ReplaceLink()`
+    /// Replace one link with another (e.g. to change order of nodes)
+    pub fn replace_link(
+        &mut self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+        theNewLink: &crate::ffi::Poly_MakeLoops_Link,
+    ) {
+        unsafe { crate::ffi::Poly_MakeLoops_replace_link(self as *mut Self, theLink, theNewLink) }
+    }
+
+    /// **Source:** `Poly_MakeLoops.hxx`:198 - `Poly_MakeLoops::SetLinkOrientation()`
+    /// Set a new value of orientation of a link already added earlier.
+    /// It can be used with LF_None to exclude the link from consideration.
+    /// Returns the old value of orientation.
+    pub fn set_link_orientation(
+        &mut self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+        theOrient: &crate::ffi::Poly_MakeLoops_LinkFlag,
+    ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_LinkFlag> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_MakeLoops_set_link_orientation(
+                self as *mut Self,
+                theLink,
+                theOrient,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_MakeLoops.hxx`:201 - `Poly_MakeLoops::FindLink()`
+    /// Find the link stored in algo by value
+    pub fn find_link(
+        &self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+    ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_Link> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_MakeLoops_find_link(
+                self as *const Self,
+                theLink,
+            ))
+        }
+    }
+
     /// **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     /// Does the work. Returns the collection of result codes
     pub fn perform(&mut self) -> i32 {
@@ -1481,10 +1530,22 @@ impl MakeLoops {
         unsafe { crate::ffi::Poly_MakeLoops_get_nb_loops(self as *const Self) }
     }
 
+    /// **Source:** `Poly_MakeLoops.hxx`:217 - `Poly_MakeLoops::GetLoop()`
+    /// Returns the loop of the given index
+    pub fn get_loop(&self, theIndex: i32) -> &crate::ffi::Poly_MakeLoops_Loop {
+        unsafe { &*(crate::ffi::Poly_MakeLoops_get_loop(self as *const Self, theIndex)) }
+    }
+
     /// **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     /// Returns the number of detected hanging chains
     pub fn get_nb_hanging(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops_get_nb_hanging(self as *const Self) }
+    }
+
+    /// **Source:** `Poly_MakeLoops.hxx`:223 - `Poly_MakeLoops::GetHangingLinks()`
+    /// Fills in the list of hanging links
+    pub fn get_hanging_links(&self, theLinks: &mut crate::ffi::Poly_MakeLoops_ListOfLink) {
+        unsafe { crate::ffi::Poly_MakeLoops_get_hanging_links(self as *const Self, theLinks) }
     }
 }
 
@@ -1508,6 +1569,54 @@ impl MakeLoops3D {
         unsafe { &mut *(crate::ffi::Poly_MakeLoops3D_as_Poly_MakeLoops_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
+    pub fn add_link(&mut self, theLink: &crate::ffi::Poly_MakeLoops_Link) {
+        unsafe { crate::ffi::Poly_MakeLoops3D_inherited_AddLink(self as *mut Self, theLink) }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:193 - `Poly_MakeLoops::ReplaceLink()`
+    pub fn replace_link(
+        &mut self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+        theNewLink: &crate::ffi::Poly_MakeLoops_Link,
+    ) {
+        unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_ReplaceLink(
+                self as *mut Self,
+                theLink,
+                theNewLink,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:198 - `Poly_MakeLoops::SetLinkOrientation()`
+    pub fn set_link_orientation(
+        &mut self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+        theOrient: &crate::ffi::Poly_MakeLoops_LinkFlag,
+    ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_LinkFlag> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_MakeLoops3D_inherited_SetLinkOrientation(
+                self as *mut Self,
+                theLink,
+                theOrient,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:201 - `Poly_MakeLoops::FindLink()`
+    pub fn find_link(
+        &self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+    ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_Link> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_MakeLoops3D_inherited_FindLink(
+                self as *const Self,
+                theLink,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     pub fn perform(&mut self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops3D_inherited_Perform(self as *mut Self) }
@@ -1518,9 +1627,21 @@ impl MakeLoops3D {
         unsafe { crate::ffi::Poly_MakeLoops3D_inherited_GetNbLoops(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:217 - `Poly_MakeLoops::GetLoop()`
+    pub fn get_loop(&self, theIndex: i32) -> &crate::ffi::Poly_MakeLoops_Loop {
+        unsafe { &*(crate::ffi::Poly_MakeLoops3D_inherited_GetLoop(self as *const Self, theIndex)) }
+    }
+
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     pub fn get_nb_hanging(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops3D_inherited_GetNbHanging(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:223 - `Poly_MakeLoops::GetHangingLinks()`
+    pub fn get_hanging_links(&self, theLinks: &mut crate::ffi::Poly_MakeLoops_ListOfLink) {
+        unsafe {
+            crate::ffi::Poly_MakeLoops3D_inherited_GetHangingLinks(self as *const Self, theLinks)
+        }
     }
 }
 
@@ -1544,6 +1665,54 @@ impl MakeLoops2D {
         unsafe { &mut *(crate::ffi::Poly_MakeLoops2D_as_Poly_MakeLoops_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:190 - `Poly_MakeLoops::AddLink()`
+    pub fn add_link(&mut self, theLink: &crate::ffi::Poly_MakeLoops_Link) {
+        unsafe { crate::ffi::Poly_MakeLoops2D_inherited_AddLink(self as *mut Self, theLink) }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:193 - `Poly_MakeLoops::ReplaceLink()`
+    pub fn replace_link(
+        &mut self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+        theNewLink: &crate::ffi::Poly_MakeLoops_Link,
+    ) {
+        unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_ReplaceLink(
+                self as *mut Self,
+                theLink,
+                theNewLink,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:198 - `Poly_MakeLoops::SetLinkOrientation()`
+    pub fn set_link_orientation(
+        &mut self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+        theOrient: &crate::ffi::Poly_MakeLoops_LinkFlag,
+    ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_LinkFlag> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_MakeLoops2D_inherited_SetLinkOrientation(
+                self as *mut Self,
+                theLink,
+                theOrient,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:201 - `Poly_MakeLoops::FindLink()`
+    pub fn find_link(
+        &self,
+        theLink: &crate::ffi::Poly_MakeLoops_Link,
+    ) -> crate::OwnedPtr<crate::ffi::Poly_MakeLoops_Link> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_MakeLoops2D_inherited_FindLink(
+                self as *const Self,
+                theLink,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:211 - `Poly_MakeLoops::Perform()`
     pub fn perform(&mut self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops2D_inherited_Perform(self as *mut Self) }
@@ -1554,9 +1723,21 @@ impl MakeLoops2D {
         unsafe { crate::ffi::Poly_MakeLoops2D_inherited_GetNbLoops(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:217 - `Poly_MakeLoops::GetLoop()`
+    pub fn get_loop(&self, theIndex: i32) -> &crate::ffi::Poly_MakeLoops_Loop {
+        unsafe { &*(crate::ffi::Poly_MakeLoops2D_inherited_GetLoop(self as *const Self, theIndex)) }
+    }
+
     /// Inherited: **Source:** `Poly_MakeLoops.hxx`:220 - `Poly_MakeLoops::GetNbHanging()`
     pub fn get_nb_hanging(&self) -> i32 {
         unsafe { crate::ffi::Poly_MakeLoops2D_inherited_GetNbHanging(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Poly_MakeLoops.hxx`:223 - `Poly_MakeLoops::GetHangingLinks()`
+    pub fn get_hanging_links(&self, theLinks: &mut crate::ffi::Poly_MakeLoops_ListOfLink) {
+        unsafe {
+            crate::ffi::Poly_MakeLoops2D_inherited_GetHangingLinks(self as *const Self, theLinks)
+        }
     }
 }
 

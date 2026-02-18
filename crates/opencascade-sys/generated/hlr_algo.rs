@@ -6,6 +6,48 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `HLRAlgo.hxx`:65 - `HLRAlgo::EncodeMinMax`
+pub fn encode_min_max(
+    Min: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    Max: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    MinMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+) {
+    unsafe { crate::ffi::HLRAlgo_encode_min_max(Min, Max, MinMax) }
+}
+/// **Source:** `HLRAlgo.hxx`:69 - `HLRAlgo::SizeBox`
+pub fn size_box(
+    Min: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    Max: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+) -> f64 {
+    unsafe { crate::ffi::HLRAlgo_size_box(Min, Max) }
+}
+/// **Source:** `HLRAlgo.hxx`:72 - `HLRAlgo::DecodeMinMax`
+pub fn decode_min_max(
+    MinMax: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    Min: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    Max: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+) {
+    unsafe { crate::ffi::HLRAlgo_decode_min_max(MinMax, Min, Max) }
+}
+/// **Source:** `HLRAlgo.hxx`:76 - `HLRAlgo::CopyMinMax`
+pub fn copy_min_max(
+    IMin: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    IMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    OMin: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    OMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+) {
+    unsafe { crate::ffi::HLRAlgo_copy_min_max(IMin, IMax, OMin, OMax) }
+}
+/// **Source:** `HLRAlgo.hxx`:85 - `HLRAlgo::AddMinMax`
+pub fn add_min_max(
+    IMin: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    IMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    OMin: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+    OMax: &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices,
+) {
+    unsafe { crate::ffi::HLRAlgo_add_min_max(IMin, IMax, OMin, OMax) }
+}
+
 /// C++ enum: `HLRAlgo_PolyMask`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -295,6 +337,16 @@ impl BiPoint {
     /// **Source:** `HLRAlgo_BiPoint.hxx`:235 - `HLRAlgo_BiPoint::Hidden()`
     pub fn hidden_bool(&mut self, B: bool) {
         unsafe { crate::ffi::HLRAlgo_BiPoint_hidden_bool(self as *mut Self, B) }
+    }
+
+    /// **Source:** `HLRAlgo_BiPoint.hxx`:243 - `HLRAlgo_BiPoint::Indices()`
+    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_BiPoint_IndicesT {
+        unsafe { &mut *(crate::ffi::HLRAlgo_BiPoint_indices(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_BiPoint.hxx`:245 - `HLRAlgo_BiPoint::Points()`
+    pub fn points(&mut self) -> &mut crate::ffi::HLRAlgo_BiPoint_PointsT {
+        unsafe { &mut *(crate::ffi::HLRAlgo_BiPoint_points(self as *mut Self)) }
     }
 }
 
@@ -715,6 +767,16 @@ impl EdgesBlock {
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:149 - `HLRAlgo_EdgesBlock::IsoLine()`
     pub fn iso_line_int_bool(&mut self, I: i32, B: bool) {
         unsafe { crate::ffi::HLRAlgo_EdgesBlock_iso_line_int_bool(self as *mut Self, I, B) }
+    }
+
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:157 - `HLRAlgo_EdgesBlock::UpdateMinMax()`
+    pub fn update_min_max(&mut self, TotMinMax: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices) {
+        unsafe { crate::ffi::HLRAlgo_EdgesBlock_update_min_max(self as *mut Self, TotMinMax) }
+    }
+
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:159 - `HLRAlgo_EdgesBlock::MinMax()`
+    pub fn min_max(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices {
+        unsafe { &mut *(crate::ffi::HLRAlgo_EdgesBlock_min_max(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:161 - `HLRAlgo_EdgesBlock::DynamicType()`
@@ -1586,9 +1648,41 @@ impl PolyData {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyData_ph_dat(self as *mut Self)) }
     }
 
+    /// **Source:** `HLRAlgo_PolyData.hxx`:110 - `HLRAlgo_PolyData::UpdateGlobalMinMax()`
+    pub fn update_global_min_max(&mut self, theBox: &mut crate::ffi::HLRAlgo_PolyData_Box) {
+        unsafe { crate::ffi::HLRAlgo_PolyData_update_global_min_max(self as *mut Self, theBox) }
+    }
+
     /// **Source:** `HLRAlgo_PolyData.hxx`:112 - `HLRAlgo_PolyData::Hiding()`
     pub fn hiding(&self) -> bool {
         unsafe { crate::ffi::HLRAlgo_PolyData_hiding(self as *const Self) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyData.hxx`:115 - `HLRAlgo_PolyData::HideByPolyData()`
+    /// process hiding between <Pt1> and <Pt2>.
+    pub fn hide_by_poly_data(
+        &mut self,
+        thePoints: &crate::ffi::HLRAlgo_BiPoint_PointsT,
+        theTriangle: &mut crate::ffi::HLRAlgo_PolyData_Triangle,
+        theIndices: &mut crate::ffi::HLRAlgo_BiPoint_IndicesT,
+        HidingShell: bool,
+        status: &mut crate::ffi::HLRAlgo_EdgeStatus,
+    ) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyData_hide_by_poly_data(
+                self as *mut Self,
+                thePoints,
+                theTriangle,
+                theIndices,
+                HidingShell,
+                status,
+            )
+        }
+    }
+
+    /// **Source:** `HLRAlgo_PolyData.hxx`:121 - `HLRAlgo_PolyData::Indices()`
+    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_PolyData_FaceIndices {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyData_indices(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:123 - `HLRAlgo_PolyData::DynamicType()`
@@ -1672,6 +1766,16 @@ impl PolyHidingData {
                 D,
             )
         }
+    }
+
+    /// **Source:** `HLRAlgo_PolyHidingData.hxx`:64 - `HLRAlgo_PolyHidingData::Indices()`
+    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_PolyHidingData_TriangleIndices {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyHidingData_indices(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyHidingData.hxx`:66 - `HLRAlgo_PolyHidingData::Plane()`
+    pub fn plane(&mut self) -> &mut crate::ffi::HLRAlgo_PolyHidingData_PlaneT {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyHidingData_plane(self as *mut Self)) }
     }
 }
 
@@ -1855,6 +1959,16 @@ impl PolyInternalNode {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyInternalNode_ctor()) }
     }
 
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:62 - `HLRAlgo_PolyInternalNode::Indices()`
+    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_PolyInternalNode_NodeIndices {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyInternalNode_indices(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::Data()`
+    pub fn data(&mut self) -> &mut crate::ffi::HLRAlgo_PolyInternalNode_NodeData {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyInternalNode_data(self as *mut Self)) }
+    }
+
     /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:66 - `HLRAlgo_PolyInternalNode::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::HLRAlgo_PolyInternalNode_dynamic_type(self as *const Self)) }
@@ -1926,6 +2040,13 @@ impl PolyShellData {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_PolyShellData_ctor_int(nbFace)) }
     }
 
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:40 - `HLRAlgo_PolyShellData::UpdateGlobalMinMax()`
+    pub fn update_global_min_max(&mut self, theBox: &mut crate::ffi::HLRAlgo_PolyData_Box) {
+        unsafe {
+            crate::ffi::HLRAlgo_PolyShellData_update_global_min_max(self as *mut Self, theBox)
+        }
+    }
+
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:42 - `HLRAlgo_PolyShellData::UpdateHiding()`
     pub fn update_hiding(&mut self, nbHiding: i32) {
         unsafe { crate::ffi::HLRAlgo_PolyShellData_update_hiding(self as *mut Self, nbHiding) }
@@ -1939,6 +2060,11 @@ impl PolyShellData {
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:50 - `HLRAlgo_PolyShellData::Edges()`
     pub fn edges(&mut self) -> &mut crate::ffi::HLRAlgo_ListOfBPoint {
         unsafe { &mut *(crate::ffi::HLRAlgo_PolyShellData_edges(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:52 - `HLRAlgo_PolyShellData::Indices()`
+    pub fn indices(&mut self) -> &mut crate::ffi::HLRAlgo_PolyShellData_ShellIndices {
+        unsafe { &mut *(crate::ffi::HLRAlgo_PolyShellData_indices(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::DynamicType()`
@@ -2212,6 +2338,16 @@ impl WiresBlock {
     /// **Source:** `HLRAlgo_WiresBlock.hxx`:51 - `HLRAlgo_WiresBlock::Wire()`
     pub fn wire(&mut self, I: i32) -> &mut crate::ffi::HandleHLRAlgoEdgesBlock {
         unsafe { &mut *(crate::ffi::HLRAlgo_WiresBlock_wire(self as *mut Self, I)) }
+    }
+
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:56 - `HLRAlgo_WiresBlock::UpdateMinMax()`
+    pub fn update_min_max(&mut self, theMinMaxes: &crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices) {
+        unsafe { crate::ffi::HLRAlgo_WiresBlock_update_min_max(self as *mut Self, theMinMaxes) }
+    }
+
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:61 - `HLRAlgo_WiresBlock::MinMax()`
+    pub fn min_max(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock_MinMaxIndices {
+        unsafe { &mut *(crate::ffi::HLRAlgo_WiresBlock_min_max(self as *mut Self)) }
     }
 
     /// **Source:** `HLRAlgo_WiresBlock.hxx`:63 - `HLRAlgo_WiresBlock::DynamicType()`

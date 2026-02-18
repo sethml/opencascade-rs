@@ -595,6 +595,33 @@ impl HArray1OfInteger {
     }
 
     /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColStd_Array1OfInteger_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColStd_Array1OfInteger_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfInteger_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfInteger.hxx`:22 - `TColStd_HArray1OfInteger::TColStd_HArray1OfInteger()`
     pub fn new_array1ofinteger(
         theOther: &crate::ffi::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
@@ -691,6 +718,35 @@ impl HArray1OfListOfInteger {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfListOfInteger_ctor_int2(
                 theLower, theUpper,
             ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::TColStd_HArray1OfListOfInteger()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColStd_Array1OfListOfInteger_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfListOfInteger_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfListOfInteger.hxx`:21 - `TColStd_HArray1OfListOfInteger::TColStd_HArray1OfListOfInteger()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColStd_Array1OfListOfInteger_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColStd_HArray1OfListOfInteger_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -888,6 +944,33 @@ impl HArray1OfTransient {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_ctor_int2(
                 theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColStd_Array1OfTransient_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfTransient.hxx`:22 - `TColStd_HArray1OfTransient::TColStd_HArray1OfTransient()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColStd_Array1OfTransient_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfTransient_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
             ))
         }
     }
@@ -1193,6 +1276,21 @@ impl HArray2OfInteger {
     }
 
     /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::TColStd_HArray2OfInteger()`
+    pub fn new_int4_type(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::TColStd_Array2OfInteger_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfInteger_ctor_int4_type(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray2OfInteger.hxx`:22 - `TColStd_HArray2OfInteger::TColStd_HArray2OfInteger()`
     pub fn new_array2ofinteger(
         theOther: &crate::ffi::TColStd_Array2OfInteger,
     ) -> crate::OwnedPtr<Self> {
@@ -1372,6 +1470,21 @@ unsafe impl crate::CppDeletable for HArray2OfTransient {
 }
 
 impl HArray2OfTransient {
+    /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::TColStd_HArray2OfTransient()`
+    pub fn new_int4_type(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::TColStd_Array2OfTransient_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfTransient_ctor_int4_type(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
+    }
+
     /// **Source:** `TColStd_HArray2OfTransient.hxx`:22 - `TColStd_HArray2OfTransient::TColStd_HArray2OfTransient()`
     pub fn new_array2oftransient(
         theOther: &crate::ffi::TColStd_Array2OfTransient,
@@ -1821,9 +1934,22 @@ impl HSequenceOfHAsciiString {
     }
 
     /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TColStd_SequenceOfHAsciiString) {
+    pub fn append_type(&mut self, theItem: &crate::ffi::TColStd_SequenceOfHAsciiString_value_type) {
         unsafe {
-            crate::ffi::TColStd_HSequenceOfHAsciiString_append(self as *mut Self, theSequence)
+            crate::ffi::TColStd_HSequenceOfHAsciiString_append_type(self as *mut Self, theItem)
+        }
+    }
+
+    /// **Source:** `TColStd_HSequenceOfHAsciiString.hxx`:21 - `TColStd_HSequenceOfHAsciiString::Append()`
+    pub fn append_sequenceofhasciistring(
+        &mut self,
+        theSequence: &mut crate::ffi::TColStd_SequenceOfHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::TColStd_HSequenceOfHAsciiString_append_sequenceofhasciistring(
+                self as *mut Self,
+                theSequence,
+            )
         }
     }
 
@@ -1925,9 +2051,25 @@ impl HSequenceOfHExtendedString {
     }
 
     /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TColStd_SequenceOfHExtendedString) {
+    pub fn append_type(
+        &mut self,
+        theItem: &crate::ffi::TColStd_SequenceOfHExtendedString_value_type,
+    ) {
         unsafe {
-            crate::ffi::TColStd_HSequenceOfHExtendedString_append(self as *mut Self, theSequence)
+            crate::ffi::TColStd_HSequenceOfHExtendedString_append_type(self as *mut Self, theItem)
+        }
+    }
+
+    /// **Source:** `TColStd_HSequenceOfHExtendedString.hxx`:21 - `TColStd_HSequenceOfHExtendedString::Append()`
+    pub fn append_sequenceofhextendedstring(
+        &mut self,
+        theSequence: &mut crate::ffi::TColStd_SequenceOfHExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TColStd_HSequenceOfHExtendedString_append_sequenceofhextendedstring(
+                self as *mut Self,
+                theSequence,
+            )
         }
     }
 
@@ -2031,8 +2173,21 @@ impl HSequenceOfInteger {
     }
 
     /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TColStd_SequenceOfInteger) {
-        unsafe { crate::ffi::TColStd_HSequenceOfInteger_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::TColStd_SequenceOfInteger_value_type) {
+        unsafe { crate::ffi::TColStd_HSequenceOfInteger_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::Append()`
+    pub fn append_sequenceofinteger(
+        &mut self,
+        theSequence: &mut crate::ffi::TColStd_SequenceOfInteger,
+    ) {
+        unsafe {
+            crate::ffi::TColStd_HSequenceOfInteger_append_sequenceofinteger(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `TColStd_HSequenceOfInteger.hxx`:22 - `TColStd_HSequenceOfInteger::ChangeSequence()`
@@ -2221,8 +2376,21 @@ impl HSequenceOfTransient {
     }
 
     /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TColStd_SequenceOfTransient) {
-        unsafe { crate::ffi::TColStd_HSequenceOfTransient_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::TColStd_SequenceOfTransient_value_type) {
+        unsafe { crate::ffi::TColStd_HSequenceOfTransient_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::Append()`
+    pub fn append_sequenceoftransient(
+        &mut self,
+        theSequence: &mut crate::ffi::TColStd_SequenceOfTransient,
+    ) {
+        unsafe {
+            crate::ffi::TColStd_HSequenceOfTransient_append_sequenceoftransient(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `TColStd_HSequenceOfTransient.hxx`:22 - `TColStd_HSequenceOfTransient::ChangeSequence()`
