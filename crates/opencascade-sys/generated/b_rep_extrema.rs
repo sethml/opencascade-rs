@@ -955,6 +955,62 @@ impl ExtPF {
 }
 
 // ========================
+// From BRepExtrema_OverlapTool.hxx
+// ========================
+
+/// **Source:** `BRepExtrema_OverlapTool.hxx`:38 - `BRepExtrema_OverlapTool`
+/// Tool class for for detection of overlapping of two BVH primitive sets.
+/// This tool is not intended to be used independently, and is integrated
+/// in other classes, implementing algorithms based on shape tessellation
+/// (BRepExtrema_ShapeProximity and BRepExtrema_SelfIntersection).
+///
+/// Note that input element sets may correspond to different shapes or to
+/// the same shape. In first case, tessellations of two given shapes will
+/// be tested for intersection (or overlapping, if tolerance is not zero).
+/// In second case, tessellation of single shape will be tested for self-
+/// intersections. Please note that algorithm results are approximate and
+/// depend greatly on the quality of input tessellation(s).
+pub use crate::ffi::BRepExtrema_OverlapTool as OverlapTool;
+
+unsafe impl crate::CppDeletable for OverlapTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepExtrema_OverlapTool_destructor(ptr);
+    }
+}
+
+impl OverlapTool {
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:42 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
+    /// Creates new uninitialized overlap tool.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_OverlapTool_ctor()) }
+    }
+
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:54 - `BRepExtrema_OverlapTool::Perform()`
+    /// Performs searching of overlapped mesh elements.
+    pub fn perform(&mut self, theTolerance: f64) {
+        unsafe { crate::ffi::BRepExtrema_OverlapTool_perform(self as *mut Self, theTolerance) }
+    }
+
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:57 - `BRepExtrema_OverlapTool::IsDone()`
+    /// Is overlap test completed?
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepExtrema_OverlapTool_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:60 - `BRepExtrema_OverlapTool::MarkDirty()`
+    /// Marks test results as outdated.
+    pub fn mark_dirty(&mut self) {
+        unsafe { crate::ffi::BRepExtrema_OverlapTool_mark_dirty(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:93 - `BRepExtrema_OverlapTool::Accept()`
+    /// Defines the rules for leaf acceptance
+    pub fn accept(&mut self, theLeaf1: i32, theLeaf2: i32) -> bool {
+        unsafe { crate::ffi::BRepExtrema_OverlapTool_accept(self as *mut Self, theLeaf1, theLeaf2) }
+    }
+}
+
+// ========================
 // From BRepExtrema_Poly.hxx
 // ========================
 
@@ -984,6 +1040,142 @@ impl Poly {
         dist: &mut f64,
     ) -> bool {
         unsafe { crate::ffi::BRepExtrema_Poly_distance(S1, S2, P1, P2, dist) }
+    }
+}
+
+// ========================
+// From BRepExtrema_ProximityDistTool.hxx
+// ========================
+
+/// **Source:** `BRepExtrema_ProximityDistTool.hxx`:36 - `BRepExtrema_ProximityDistTool`
+/// Tool class for computation the proximity distance from first
+/// primitive set to second one that is the maximal from minimum
+/// perpendicular distances. If no perpendicular distance is found, the
+/// minimum distance will be returned.
+/// This tool is not intended to be used independently, and is integrated
+/// in other classes, implementing algorithms based on shape tessellation
+/// (BRepExtrema_ProximityValueTool).
+///
+/// Please note that algorithm results are approximate and depend greatly
+/// on the quality of input tessellation(s).
+pub use crate::ffi::BRepExtrema_ProximityDistTool as ProximityDistTool;
+
+unsafe impl crate::CppDeletable for ProximityDistTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepExtrema_ProximityDistTool_destructor(ptr);
+    }
+}
+
+impl ProximityDistTool {
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:92 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
+    /// Creates new uninitialized tool.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ProximityDistTool_ctor()) }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:118 - `BRepExtrema_ProximityDistTool::Perform()`
+    /// Performs searching of the proximity distance.
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepExtrema_ProximityDistTool_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:128 - `BRepExtrema_ProximityDistTool::Accept()`
+    /// Defines the rules for leaf acceptance.
+    pub fn accept(&mut self, theSgmIdx: i32, arg1: &f64) -> bool {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_accept(self as *mut Self, theSgmIdx, arg1)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:152 - `BRepExtrema_ProximityDistTool::ProximityPointsStatus()`
+    /// Returns status of points on triangles sets, which provide the proximity distance.
+    pub fn proximity_points_status(
+        &self,
+        thePointStatus1: &mut crate::ffi::BRepExtrema_ProximityDistTool_ProxPnt_Status,
+        thePointStatus2: &mut crate::ffi::BRepExtrema_ProximityDistTool_ProxPnt_Status,
+    ) {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_proximity_points_status(
+                self as *const Self,
+                thePointStatus1,
+                thePointStatus2,
+            )
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:159 - `BRepExtrema_ProximityDistTool::ProximityDistance()`
+    /// Returns the computed distance
+    pub fn proximity_distance(&self) -> f64 {
+        unsafe { crate::ffi::BRepExtrema_ProximityDistTool_proximity_distance(self as *const Self) }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:133 - `BRepExtrema_ProximityDistTool::IsNodeOnBorder()`
+    /// Returns true if the node is on the boarder.
+    pub fn is_node_on_border(theNodeIdx: i32, theTr: &crate::ffi::HandlePolyTriangulation) -> bool {
+        unsafe { crate::ffi::BRepExtrema_ProximityDistTool_is_node_on_border(theNodeIdx, theTr) }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:137 - `BRepExtrema_ProximityDistTool::IsEdgeOnBorder()`
+    /// Returns true if the edge is on the boarder.
+    pub fn is_edge_on_border(
+        theTrgIdx: i32,
+        theFirstEdgeNodeIdx: i32,
+        theSecondEdgeNodeIdx: i32,
+        theTr: &crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_is_edge_on_border(
+                theTrgIdx,
+                theFirstEdgeNodeIdx,
+                theSecondEdgeNodeIdx,
+                theTr,
+            )
+        }
+    }
+}
+
+/// **Source:** `BRepExtrema_ProximityDistTool.hxx`:52 - `BRepExtrema_ProximityDistTool_PrjState`
+/// Struct with information about projection point state from 2nd BVH,
+/// providing proximity point of 2nd shape
+pub use crate::ffi::BRepExtrema_ProximityDistTool_PrjState as ProximityDistTool_PrjState;
+
+unsafe impl crate::CppDeletable for ProximityDistTool_PrjState {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepExtrema_ProximityDistTool_PrjState_destructor(ptr);
+    }
+}
+
+impl ProximityDistTool_PrjState {
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:73 - `BRepExtrema_ProximityDistTool_PrjState::GetTrgIdx()`
+    pub fn get_trg_idx(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_trg_idx(self as *const Self)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:75 - `BRepExtrema_ProximityDistTool_PrjState::GetPrjState()`
+    pub fn get_prj_state(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_prj_state(self as *const Self)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:77 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfFirstNode()`
+    pub fn get_number_of_first_node(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_number_of_first_node(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:79 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfLastNode()`
+    pub fn get_number_of_last_node(&self) -> i32 {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_number_of_last_node(
+                self as *const Self,
+            )
+        }
     }
 }
 
@@ -1065,6 +1257,280 @@ impl ProximityValueTool {
                 thePoint2,
             )
         }
+    }
+}
+
+// ========================
+// From BRepExtrema_SelfIntersection.hxx
+// ========================
+
+/// **Source:** `BRepExtrema_SelfIntersection.hxx`:34 - `BRepExtrema_SelfIntersection`
+/// Tool class for detection of self-sections in the given shape.
+/// This class is based on BRepExtrema_OverlapTool and thus uses
+/// shape tessellation to detect incorrect mesh fragments (pairs
+/// of overlapped triangles belonging to different faces). Thus,
+/// a result depends critically on the quality of mesh generator
+/// (e.g., BREP mesh is not always a good choice, because it can
+/// contain gaps between adjacent face triangulations, which may
+/// not share vertices on common edge; thus false overlap can be
+/// detected). As a result, this tool can be used for relatively
+/// fast approximated test which provides sub-set of potentially
+/// overlapped faces.
+pub use crate::ffi::BRepExtrema_SelfIntersection as SelfIntersection;
+
+unsafe impl crate::CppDeletable for SelfIntersection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepExtrema_SelfIntersection_destructor(ptr);
+    }
+}
+
+impl SelfIntersection {
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:40 - `BRepExtrema_SelfIntersection::BRepExtrema_SelfIntersection()`
+    /// Creates uninitialized self-intersection tool.
+    pub fn new_real(theTolerance: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_SelfIntersection_ctor_real(
+                theTolerance,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:43 - `BRepExtrema_SelfIntersection::BRepExtrema_SelfIntersection()`
+    /// Creates self-intersection tool for the given shape.
+    pub fn new_shape_real(
+        theShape: &crate::topo_ds::Shape,
+        theTolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_SelfIntersection_ctor_shape_real(
+                theShape,
+                theTolerance,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:40 - `BRepExtrema_SelfIntersection::BRepExtrema_SelfIntersection()`
+    /// Creates uninitialized self-intersection tool.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        Self::new_real(0.0)
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:43 - `BRepExtrema_SelfIntersection::BRepExtrema_SelfIntersection()`
+    /// Creates self-intersection tool for the given shape.
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
+        Self::new_shape_real(theShape, 0.0)
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:48 - `BRepExtrema_SelfIntersection::Tolerance()`
+    /// Returns tolerance value used for self-intersection test.
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::BRepExtrema_SelfIntersection_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:51 - `BRepExtrema_SelfIntersection::SetTolerance()`
+    /// Sets tolerance value used for self-intersection test.
+    pub fn set_tolerance(&mut self, theTolerance: f64) {
+        unsafe {
+            crate::ffi::BRepExtrema_SelfIntersection_set_tolerance(self as *mut Self, theTolerance)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:54 - `BRepExtrema_SelfIntersection::LoadShape()`
+    /// Loads shape for detection of self-intersections.
+    pub fn load_shape(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::BRepExtrema_SelfIntersection_load_shape(self as *mut Self, theShape) }
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:57 - `BRepExtrema_SelfIntersection::Perform()`
+    /// Performs detection of self-intersections.
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepExtrema_SelfIntersection_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:60 - `BRepExtrema_SelfIntersection::IsDone()`
+    /// True if the detection is completed.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepExtrema_SelfIntersection_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepExtrema_SelfIntersection.hxx`:69 - `BRepExtrema_SelfIntersection::GetSubShape()`
+    /// Returns sub-shape from the shape for the given index (started from 0).
+    pub fn get_sub_shape(&self, theID: i32) -> &crate::topo_ds::Face {
+        unsafe {
+            &*(crate::ffi::BRepExtrema_SelfIntersection_get_sub_shape(self as *const Self, theID))
+        }
+    }
+
+    /// Upcast to BRepExtrema_ElementFilter
+    pub fn as_element_filter(&self) -> &ElementFilter {
+        unsafe {
+            &*(crate::ffi::BRepExtrema_SelfIntersection_as_BRepExtrema_ElementFilter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to BRepExtrema_ElementFilter (mutable)
+    pub fn as_element_filter_mut(&mut self) -> &mut ElementFilter {
+        unsafe {
+            &mut *(crate::ffi::BRepExtrema_SelfIntersection_as_BRepExtrema_ElementFilter_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+}
+
+// ========================
+// From BRepExtrema_ShapeProximity.hxx
+// ========================
+
+/// **Source:** `BRepExtrema_ShapeProximity.hxx`:48 - `BRepExtrema_ShapeProximity`
+/// @brief Tool class for shape proximity detection.
+///
+/// First approach:
+/// For two given shapes and given tolerance (offset from the mesh) the algorithm allows
+/// to determine whether or not they are overlapped. The algorithm input consists of any
+/// shapes which can be decomposed into individual faces (used as basic shape elements).
+///
+/// The algorithm can be run in two modes. If tolerance is set to zero, the algorithm
+/// will detect only intersecting faces (containing triangles with common points). If
+/// tolerance is set to positive value, the algorithm will also detect faces located
+/// on distance less than the given tolerance from each other.
+///
+/// Second approach:
+/// Compute the proximity value between two shapes (handles only edge/edge or face/face cases)
+/// if the tolerance is not defined (Precision::Infinite()).
+/// In this case the proximity value is a minimal thickness of a layer containing both shapes.
+///
+/// For the both approaches the high performance is achieved through the use of existing
+/// triangulation of faces. So, poly triangulation (with the desired deflection) should already
+/// be built. Note that solution is approximate (and corresponds to the deflection used for
+/// triangulation).
+pub use crate::ffi::BRepExtrema_ShapeProximity as ShapeProximity;
+
+unsafe impl crate::CppDeletable for ShapeProximity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepExtrema_ShapeProximity_destructor(ptr);
+    }
+}
+
+impl ShapeProximity {
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:53 - `BRepExtrema_ShapeProximity::BRepExtrema_ShapeProximity()`
+    /// Creates empty proximity tool.
+    pub fn new_real(theTolerance: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ShapeProximity_ctor_real(
+                theTolerance,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:57 - `BRepExtrema_ShapeProximity::BRepExtrema_ShapeProximity()`
+    /// Creates proximity tool for the given two shapes.
+    pub fn new_shape2_real(
+        theShape1: &crate::topo_ds::Shape,
+        theShape2: &crate::topo_ds::Shape,
+        theTolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_ShapeProximity_ctor_shape2_real(
+                theShape1,
+                theShape2,
+                theTolerance,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:64 - `BRepExtrema_ShapeProximity::Tolerance()`
+    /// Returns tolerance value for overlap test (distance between shapes).
+    pub fn tolerance(&self) -> f64 {
+        unsafe { crate::ffi::BRepExtrema_ShapeProximity_tolerance(self as *const Self) }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:67 - `BRepExtrema_ShapeProximity::SetTolerance()`
+    /// Sets tolerance value for overlap test (distance between shapes).
+    pub fn set_tolerance(&mut self, theTolerance: f64) {
+        unsafe {
+            crate::ffi::BRepExtrema_ShapeProximity_set_tolerance(self as *mut Self, theTolerance)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:70 - `BRepExtrema_ShapeProximity::Proximity()`
+    /// Returns proximity value calculated for the whole input shapes.
+    pub fn proximity(&self) -> f64 {
+        unsafe { crate::ffi::BRepExtrema_ShapeProximity_proximity(self as *const Self) }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:73 - `BRepExtrema_ShapeProximity::LoadShape1()`
+    /// Loads 1st shape into proximity tool.
+    pub fn load_shape1(&mut self, theShape1: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::BRepExtrema_ShapeProximity_load_shape1(self as *mut Self, theShape1) }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:76 - `BRepExtrema_ShapeProximity::LoadShape2()`
+    /// Loads 2nd shape into proximity tool.
+    pub fn load_shape2(&mut self, theShape2: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::BRepExtrema_ShapeProximity_load_shape2(self as *mut Self, theShape2) }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:80 - `BRepExtrema_ShapeProximity::SetNbSamples1()`
+    /// Set number of sample points on the 1st shape used to compute the proximity value.
+    /// In case of 0, all triangulation nodes will be used.
+    pub fn set_nb_samples1(&mut self, theNbSamples: i32) {
+        unsafe {
+            crate::ffi::BRepExtrema_ShapeProximity_set_nb_samples1(self as *mut Self, theNbSamples)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:84 - `BRepExtrema_ShapeProximity::SetNbSamples2()`
+    /// Set number of sample points on the 2nd shape used to compute the proximity value.
+    /// In case of 0, all triangulation nodes will be used.
+    pub fn set_nb_samples2(&mut self, theNbSamples: i32) {
+        unsafe {
+            crate::ffi::BRepExtrema_ShapeProximity_set_nb_samples2(self as *mut Self, theNbSamples)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:87 - `BRepExtrema_ShapeProximity::Perform()`
+    /// Performs search of overlapped faces.
+    pub fn perform(&mut self) {
+        unsafe { crate::ffi::BRepExtrema_ShapeProximity_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:90 - `BRepExtrema_ShapeProximity::IsDone()`
+    /// True if the search is completed.
+    pub fn is_done(&self) -> bool {
+        unsafe { crate::ffi::BRepExtrema_ShapeProximity_is_done(self as *const Self) }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:105 - `BRepExtrema_ShapeProximity::GetSubShape1()`
+    /// Returns sub-shape from 1st shape with the given index (started from 0).
+    pub fn get_sub_shape1(&self, theID: i32) -> &crate::topo_ds::Shape {
+        unsafe {
+            &*(crate::ffi::BRepExtrema_ShapeProximity_get_sub_shape1(self as *const Self, theID))
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:111 - `BRepExtrema_ShapeProximity::GetSubShape2()`
+    /// Returns sub-shape from 1st shape with the given index (started from 0).
+    pub fn get_sub_shape2(&self, theID: i32) -> &crate::topo_ds::Shape {
+        unsafe {
+            &*(crate::ffi::BRepExtrema_ShapeProximity_get_sub_shape2(self as *const Self, theID))
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:124 - `BRepExtrema_ShapeProximity::ProximityPoint1()`
+    /// Returns the point on the 1st shape, which could be used as a reference point
+    /// for the value of the proximity.
+    pub fn proximity_point1(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_proximity_point1(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:128 - `BRepExtrema_ShapeProximity::ProximityPoint2()`
+    /// Returns the point on the 2nd shape, which could be used as a reference point
+    /// for the value of the proximity.
+    pub fn proximity_point2(&self) -> &crate::gp::Pnt {
+        unsafe { &*(crate::ffi::BRepExtrema_ShapeProximity_proximity_point2(self as *const Self)) }
     }
 }
 
@@ -1235,6 +1701,122 @@ impl SolutionElem {
 }
 
 // ========================
+// From BRepExtrema_TriangleSet.hxx
+// ========================
+
+/// **Source:** `BRepExtrema_TriangleSet.hxx`:29 - `BRepExtrema_TriangleSet`
+/// Triangle set corresponding to specific face.
+pub use crate::ffi::BRepExtrema_TriangleSet as TriangleSet;
+
+unsafe impl crate::CppDeletable for TriangleSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepExtrema_TriangleSet_destructor(ptr);
+    }
+}
+
+impl TriangleSet {
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:33 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
+    /// Creates empty triangle set.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepExtrema_TriangleSet_ctor()) }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:43 - `BRepExtrema_TriangleSet::Size()`
+    /// @name methods implementing BVH set interface
+    /// Returns total number of triangles.
+    pub fn size(&self) -> i32 {
+        unsafe { crate::ffi::BRepExtrema_TriangleSet_size(self as *const Self) }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:53 - `BRepExtrema_TriangleSet::Center()`
+    /// Returns centroid position along specified axis.
+    pub fn center(&self, theIndex: i32, theAxis: i32) -> f64 {
+        unsafe {
+            crate::ffi::BRepExtrema_TriangleSet_center(self as *const Self, theIndex, theAxis)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:57 - `BRepExtrema_TriangleSet::Swap()`
+    /// Swaps indices of two specified triangles.
+    pub fn swap(&mut self, theIndex1: i32, theIndex2: i32) {
+        unsafe { crate::ffi::BRepExtrema_TriangleSet_swap(self as *mut Self, theIndex1, theIndex2) }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:62 - `BRepExtrema_TriangleSet::Clear()`
+    /// Clears triangle set data.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::BRepExtrema_TriangleSet_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:77 - `BRepExtrema_TriangleSet::GetVtxIndices()`
+    /// Returns vertex indices of the given triangle.
+    pub fn get_vtx_indices(
+        &self,
+        theIndex: i32,
+        theVtxIndices: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::BRepExtrema_TriangleSet_get_vtx_indices(
+                self as *const Self,
+                theIndex,
+                theVtxIndices,
+            )
+        }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:81 - `BRepExtrema_TriangleSet::GetFaceID()`
+    /// Returns face ID of the given triangle.
+    pub fn get_face_id(&self, theIndex: i32) -> i32 {
+        unsafe { crate::ffi::BRepExtrema_TriangleSet_get_face_id(self as *const Self, theIndex) }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:84 - `BRepExtrema_TriangleSet::GetShapeIDOfVtx()`
+    /// Returns shape ID of the given vertex index.
+    pub fn get_shape_id_of_vtx(&self, theIndex: i32) -> i32 {
+        unsafe {
+            crate::ffi::BRepExtrema_TriangleSet_get_shape_id_of_vtx(self as *const Self, theIndex)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:88 - `BRepExtrema_TriangleSet::GetVtxIdxInShape()`
+    /// Returns vertex index in tringulation of the shape, which vertex belongs,
+    /// with the given vtx ID in whole set.
+    pub fn get_vtx_idx_in_shape(&self, theIndex: i32) -> i32 {
+        unsafe {
+            crate::ffi::BRepExtrema_TriangleSet_get_vtx_idx_in_shape(self as *const Self, theIndex)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:92 - `BRepExtrema_TriangleSet::GetTrgIdxInShape()`
+    /// Returns triangle index (before swapping) in tringulation of the shape, which triangle belongs,
+    /// with the given trg ID in whole set (after swapping).
+    pub fn get_trg_idx_in_shape(&self, theIndex: i32) -> i32 {
+        unsafe {
+            crate::ffi::BRepExtrema_TriangleSet_get_trg_idx_in_shape(self as *const Self, theIndex)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepExtrema_TriangleSet_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepExtrema_TriangleSet_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepExtrema_TriangleSet_get_type_descriptor()) }
+    }
+}
+
+// ========================
 // From BRepExtrema_UnCompatibleShape.hxx
 // ========================
 
@@ -1306,6 +1888,6 @@ impl UnCompatibleShape {
 // ========================
 
 pub use crate::ffi::{
+    BRepExtrema_MapOfIntegerPackedMapOfInteger as MapOfIntegerPackedMapOfInteger,
     BRepExtrema_SeqOfSolution as SeqOfSolution, BRepExtrema_ShapeList as ShapeList,
-    BRepExtrema_TriangleSet as TriangleSet,
 };

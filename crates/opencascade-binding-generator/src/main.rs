@@ -116,13 +116,16 @@ fn main() -> Result<()> {
         println!("Loaded config: {} modules, {} individual headers, {} exclusions -> {} headers",
             cfg.modules.len(), cfg.include_headers.len(), cfg.exclude_headers.len(), headers.len());
 
-        // Parse exclude_methods into (ClassName, MethodName) pairs
+        // Parse exclude_methods into (ClassName, MethodName) pairs.
+        // Uses rsplit to support nested classes: "Outer::Inner::Method" splits
+        // as class="Outer::Inner", method="Method".
         let method_exclusions: HashSet<(String, String)> = cfg.exclude_methods
             .iter()
             .filter_map(|s| {
-                let parts: Vec<&str> = s.splitn(2, "::").collect();
-                if parts.len() == 2 {
-                    Some((parts[0].to_string(), parts[1].to_string()))
+                if let Some(pos) = s.rfind("::") {
+                    let class_name = s[..pos].to_string();
+                    let method_name = s[pos + 2..].to_string();
+                    Some((class_name, method_name))
                 } else {
                     eprintln!("Warning: invalid exclude_methods entry (expected ClassName::MethodName): {}", s);
                     None

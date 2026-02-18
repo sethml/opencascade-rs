@@ -387,4 +387,4 @@ impl HandleBVHTreeBaseTransient {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::BVH_Properties as Properties;
+pub use crate::ffi::{BVH_Array3d as Array3d, BVH_Properties as Properties, BVH_Vec3d as Vec3d};

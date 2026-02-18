@@ -774,9 +774,21 @@ fn extract_base_classes(entity: &Entity) -> Vec<String> {
                 let base_name = base_type.get_display_name();
                 // Only include OCCT classes (those with underscore prefix pattern)
                 // Skip Standard_Transient and other non-shape base classes
-                if base_name.contains('_')
-                    && !base_name.contains("Standard_")
-                {
+                if !base_name.contains('_') || base_name.contains("Standard_") {
+                    continue;
+                }
+                // Template base classes (e.g. BVH_PairTraverse<Standard_Real, 3>)
+                // can't be used directly as type names. Try to resolve via the
+                // typedef map (e.g. BVH_PrimitiveSet<double, 3> -> BVH_PrimitiveSet3d).
+                // If no typedef is found, skip the base — the concrete class's own
+                // methods are still fully usable, only upcasts to the template base
+                // are lost.
+                if base_name.contains('<') {
+                    if let Some(typedef_name) = lookup_typedef(&base_name) {
+                        base_classes.push(typedef_name);
+                    }
+                    // else: no typedef found, skip this template base
+                } else {
                     base_classes.push(base_name);
                 }
             }

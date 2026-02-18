@@ -246,13 +246,6 @@ exclude_headers = [
     # that the generator can't resolve correctly.
     "BVH_Properties.hxx",
 
-    # BRepExtrema classes depend on BVH templates with complex type params.
-    "BRepExtrema_OverlapTool.hxx",
-    "BRepExtrema_ProximityDistTool.hxx",
-    "BRepExtrema_SelfIntersection.hxx",
-    "BRepExtrema_ShapeProximity.hxx",
-    "BRepExtrema_TriangleSet.hxx",
-
     # Protected inherited member (BOPAlgo_PaveFiller::Clear is protected).
     "BOPAlgo_CheckerSI.hxx",
 
@@ -296,6 +289,11 @@ exclude_methods = [
     # XSAlgo_ShapeProcessor: ReadProcessingData() returns std::pair<ParameterMap, bitset>
     # which clang misresolves to Standard_Integer in batch parsing mode.
     "XSAlgo_ShapeProcessor::ReadProcessingData",
+
+    # BRepExtrema_ProximityDistTool::PrjState: constructor takes BVH_PrjState
+    # (a template-dependent enum typedef) misresolved to Standard_Integer.
+    # PrjState is an internal struct not exposed by public methods.
+    "BRepExtrema_ProximityDistTool::PrjState::*",
 ]
 
 [general]
@@ -362,17 +360,26 @@ resolve_deps = true
 #    canonical mapping) vs a template/record underlying type (blocking it).
 #    Handles both TypeKind::Typedef and TypeKind::Elaborated (clang sugar).
 #
-# 3. BVH/Template-Heavy Classes
-#    ──────────────────────────
-#    Root cause: Some classes use deeply-nested BVH tree templates or other
-#    complex template patterns that the generator cannot resolve.
+# 3. BVH/Template-Heavy Classes (SOLVED)
+#    ──────────────────────────────────────
+#    Root cause: Some classes inherit from BVH template specializations
+#    (e.g., BVH_PairTraverse<Standard_Real, 3>) whose raw template names
+#    with angle brackets can't be used as identifiers.
 #
-#    Affected: BRepExtrema_OverlapTool, BRepExtrema_SelfIntersection,
-#    BRepExtrema_TriangleSet, BRepExtrema_ProximityDistTool,
-#    BRepExtrema_ProximityValueTool
+#    Solution: extract_base_classes() in parser.rs now filters template
+#    base classes: if the base name contains '<', it tries to resolve it
+#    via the typedef map (e.g., BVH_PrimitiveSet<double, 3> →
+#    BVH_PrimitiveSet3d). If no typedef exists, the base is dropped.
+#    The concrete class's own methods are fully accessible; only upcasts
+#    to the unresolvable template base are lost.
 #
-#    Potential solutions: Skip classes with unresolvable template parameters
-#    automatically, or pre-declare the template specializations.
+#    Additionally, exclude_methods parsing was fixed to support nested
+#    classes (uses rsplit to split "Outer::Inner::Method" correctly).
+#    BRepExtrema_ProximityDistTool::PrjState has a constructor where
+#    clang misresolves BVH_PrjState (template-dependent enum) to
+#    Standard_Integer; this is excluded via exclude_methods.
+#
+#    5 BRepExtrema headers UNBLOCKED.
 #
 # 4. External Dependencies
 #    ─────────────────────
