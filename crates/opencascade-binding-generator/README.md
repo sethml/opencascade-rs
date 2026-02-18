@@ -439,6 +439,8 @@ Currently headers are selected via `bindings.toml`. OCCT ships 6,875 `.hxx` head
 
 5. **Windows-only headers** — `OSD_WNT.hxx` includes `<windows.h>`, fails on macOS/Linux. Non-blocking.
 
+6. **Nested C++ types** — OCCT defines ~173 nested structs, enums, and typedefs inside classes (e.g., `Poly_CoherentTriangulation::TwoIntegers`, `AIS_PointCloud::DisplayMode`, `BOPTools_PairSelector::PairIDs`). libclang parses these as bare names without parent class qualification, so the generator emits unqualified names like `TwoIntegers` instead of `Poly_CoherentTriangulation::TwoIntegers` in C++ wrappers, causing compilation failures. The generator currently skips methods whose nullable pointer parameters reference unknown/nested types; similar checks exist for constructors and static methods. Currently no methods in our bound classes are blocked by this (the affected classes aren't bound yet), but expanding to more modules will hit this. Fixing it requires: (a) tracking the parent class for nested type definitions during parsing, (b) emitting fully qualified names in C++ wrappers, and (c) declaring the nested types in the Rust FFI layer (possibly as opaque types or with a `ParentClass_NestedType` naming convention).
+
 ### System Include Path Auto-Detection
 
 Currently `-I` path is passed manually. Could auto-detect from `occt-sys`.

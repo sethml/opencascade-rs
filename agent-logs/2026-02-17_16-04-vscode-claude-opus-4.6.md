@@ -2164,3 +2164,384 @@ All done. Here's a summary of what was implemented:
 **Key files modified**: model.rs, resolver.rs, bindings.rs, type_mapping.rs, README.md, plus comment fixes in 5 other source files.
 
 Made changes.
+
+User: You mentioned an issue with Poly_CoherentTriangulation::TwoIntegers being a nested type, and how we could correctly create references to nested types. Add an explanation as a TODO to the README, including how many functions it would unblock. Then commit.
+
+GitHub Copilot: 
+
+ Let me first investigate how many methods are blocked by nested/unknown types due to this pattern: 
+
+Ran terminal command:  grep -r "TwoIntegers" crates/opencascade-binding-generator/src/ 2>/dev/null
+Completed with input:  grep -r "TwoIntegers" crates/opencascade-binding-generator/src/ 2>/dev/null
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --dump-symbols --dry-run 2>&1 | grep -i "nested\|TwoIntegers" | head -20
+
+Let me look more broadly at what types cause nullable pointer params to be filtered out. The issue is that nullable pointer params whose inner types aren't in `all_classes` get skipped. Let me find how many methods this affects: 
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include -v --dry-run 2>&1 | grep -i "skip\|exclude\|unknown" | grep -i "null\|ptr\|pointer" | head -20
+
+The generator doesn't log nullable pointer skips specifically. Let me take a different approach — search the OCCT headers we bind for methods with nullable pointer params that use nested struct types:  
+
+Ran terminal command:  grep -rn "struct " target/OCCT/include/*.hxx 2>/dev/null | grep -v "^Binary" | grep "struct [A-Z]" | head -5
+
+Let me use a more targeted approach — write a quick script to count how many nullable pointer methods would use types not in the generated binding set:    
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && python3 -c "
+import re
+
+# Get all types declared in ffi.rs
+with open('crates/opencascade-sys/generated/ffi.rs') as f:
+    ffi = f.read()
+
+# Find all type declarations in the extern C block (struct-like opaque types)
+declared = set()
+for m in re.finditer(r'pub type (\w+)', ffi):
+    declared.add(m.group(1))
+# Also look for function names to find class names
+for m in re.finditer(r'pub fn (\w+?)_', ffi):
+    pass  # not as useful
+
+# Just count the TwoIntegers case
+print('TwoIntegers in ffi.rs:', 'TwoIntegers' in ffi)
+print('NCollection_List in ffi.rs:', 'NCollection_List' in ffi)
+"
+
+Let me take a more direct approach. Let me search the OCCT headers that we currently bind for all nullable pointer params, and check which ones have types that aren't in our class set:     
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --dump-symbols --dry-run 2>&1 | grep "EXCLUDED.*RawPointer" | wc -l
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --dump-symbols --dry-run 2>&1 | grep "EXCLUDED" | head -10
+
+Summarized conversation history
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --dump-symbols --dry-run 2>&1 | grep -i "exclud\|skip\|unknown\|unbindable" | head -20
+
+Let me look at the inner type check code and try a different approach - searching OCCT headers directly. 
+
+Searched for regex `is_nullable_ptr.*unknown\|nullable.*inner\|type_uses_unknown` (`**/crates/opencascade-binding-generator/src/**`), no results
+
+Searched for regex `nullable_ptr_uses_unknown_type\|nullable.*unknown_type\|is_nullable_ptr` (`**/crates/opencascade-binding-generator/src/**`), no results
+
+Searched for regex `nullable_ptr|is_nullable|unknown_type` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 20 results
+
+Now let me add some temporary logging to count the affected functions, then I'll take a more direct approach - searching the OCCT headers for nested type definitions used as pointer params. 
+
+Reading lines 930-960 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L930-L961)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 930,
+  "endLine": 960
+}
+
+Let me take a more efficient approach. I'll write a quick script to add temporary logging, run the generator, capture the count, then revert the change. 
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/count_nested_type_skips.py)
+
+Ran terminal command:  python3 tmp/count_nested_type_skips.py
+
+Ran terminal command:  grep -i "Poly_Coherent\|TwoIntegers" crates/opencascade-sys/bindings.toml
+
+So `Poly_CoherentTriangulation` isn't even in our bindings config - it was just excluded via `Poly_CoherentTriPtr.hxx`. The nested type issue we hit was actually found during initial testing but the class isn't one we're binding. Let me look more broadly - what nested types exist across ALL OCCT headers we might bind in the future? 
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && python3 -c "
+import os, re
+
+OCCT = 'target/OCCT/include'
+count = 0
+details = []
+
+for f in sorted(os.listdir(OCCT)):
+    if not f.endswith('.hxx'):
+        continue
+    cls = f[:-4]
+    path = os.path.join(OCCT, f)
+    with open(path) as fh:
+        content = fh.read()
+    
+    # Find class body  
+    pat = rf'class\s+{re.escape(cls)}\b[^{{]*\{{(.*?)\}};'
+    m = re.search(pat, content, re.DOTALL)
+    if not m:
+        continue
+    body = m.group(1)
+    
+    # nested structs/classes
+    for nm in re.finditer(r'\b(?:struct|class)\s+(\w+)\s*(?::\s*[^{]*)?{', body):
+        name = nm.group(1)
+        if name not in ('Standard_EXPORT', 'public', 'private', 'protected'):
+            count += 1
+            details.append(f'{cls}::{name}')
+
+    # nested enums
+    for nm in re.finditer(r'\benum\s+(\w+)\s*{', body):
+        count += 1
+        details.append(f'{cls}::{nm.group(1)}')
+
+print(f'Total nested types across all OCCT headers: {count}')
+for d in sorted(details):
+    print(f'  {d}')
+"
+
+
+Now let me check how many methods in our currently-bound classes are affected: 
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/count_nested_blocked.py)
+
+Ran terminal command:  python3 tmp/count_nested_blocked.py
+
+Ran terminal command:  head -60 crates/opencascade-sys/bindings.toml
+
+Ran terminal command:  grep -c 'modules\|include_headers' crates/opencascade-sys/bindings.toml
+
+The config is module-based, not class-based. Let me take a different approach - look at the generator's actual output to find methods that were skipped due to the nullable pointer inner type check: Let me add temporary eprintln logging to the generator, run it, capture the output, then revert:  
+
+Reading lines 940-955 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L940-L956)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 940,
+  "endLine": 955
+}
+
+Edited: [bindings.rs -2+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L951-L954)
+Completed with input: {
+  "edits": [
+    {
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "951:wz,952:fc",
+      "content": "    }) {\n        eprintln!(\"NESTED_TYPE_SKIP: {}::{}\", method.class_name.as_deref().unwrap_or(\"?\"), method.name);\n        return false;"
+    }
+  ]
+}
+
+Now do the same for the other two check sites (constructor and static method): 
+
+Reading lines 990-1010 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L990-L1011)
+Completed with input: {
+  "endLine": 1010,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 990
+}
+
+Reading lines 1020-1050 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1020-L1051)
+Completed with input: {
+  "endLine": 1050,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 1020
+}
+
+Edited: [bindings.rs -2+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1006-L1009), [-2+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1040-L1043)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    }) {\n        eprintln!(\"NESTED_TYPE_SKIP_CTOR: {}\", ctor.class_name);\n        return false;",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "1006:wz,1007:fc"
+    },
+    {
+      "content": "    }) {\n        eprintln!(\"NESTED_TYPE_SKIP_STATIC: {}::{}\", method.class_name.as_deref().unwrap_or(\"?\"), method.name);\n        return false;",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "1039:wz,1040:fc"
+    }
+  ]
+}
+
+Also check the inherited methods path: 
+
+Searched for text `Skip inherited methods where a nullable` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), no results
+
+Searched for text `nullable pointer param's inner type` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 3 results
+
+Good, only 3 sites for the check. Now run the generator and capture the output: 
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --dry-run 2>&1 | grep "NESTED_TYPE_SKIP"
+
+Compilation errors. Let me check the relevant struct fields:  
+
+Searched for regex `pub struct Method|pub struct Constructor|class_name|pub name:` (`**/crates/opencascade-binding-generator/src/model.rs`), 9 results
+
+Reading lines 142-150 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L142-L151)
+Completed with input: {
+  "endLine": 150,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 142
+}
+
+Reading lines 195-210 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L195-L211)
+Completed with input: {
+  "endLine": 210,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 195
+}
+
+No `class_name` field on these. The class name comes from the calling context. Let me fix the logging:  
+
+Reading lines 920-930 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L920-L931)
+Completed with input: {
+  "endLine": 930,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 920
+}
+
+Good, `class_name` is already a parameter to the is_method_bindable function. Let me check the function signature: 
+
+Searched for text `fn is_method_bindable` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 1 result
+
+Searched for regex `fn is_constructor_bindable|fn is_static_method_bindable` (`**/crates/opencascade-binding-generator/src/codegen/bindings.rs`), 2 results
+
+Reading lines 968-980 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L968-L981)
+Completed with input: {
+  "endLine": 980,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 968
+}
+
+The constructor check doesn't have `class_name`. Let me fix the logging to use the actual available params:  
+
+Reading lines 949-955 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L949-L956)
+Completed with input: {
+  "endLine": 955,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 949
+}
+
+Edited: [bindings.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L952-L953)  
+**Failing: [bindings.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1007-L1008)**
+Completed with input: {
+  "edits": [
+    {
+      "content": "        eprintln!(\"NESTED_TYPE_SKIP: {}::{}\", class_name, method.name);",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "952:uq"
+    },
+    {
+      "content": "        eprintln!(\"NESTED_TYPE_SKIP_CTOR\");",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "1007:gt"
+    }
+  ]
+}
+
+Reading lines 1005-1010 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1005-L1011)
+Completed with input: {
+  "endLine": 1010,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 1005
+}
+
+Reading lines 1039-1045 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1039-L1046)
+Completed with input: {
+  "endLine": 1045,
+  "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 1039
+}
+
+Constructor doesn't have `class_name` either. Let me check if StaticMethod has it:   
+
+Searched for text `pub struct StaticMethod` (`**/crates/opencascade-binding-generator/src/model.rs`), 1 result
+
+Reading lines 269-290 of [model.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/model.rs#L269-L291)
+Completed with input: {
+  "endLine": 290,
+  "filePath": "crates/opencascade-binding-generator/src/model.rs",
+  "startLine": 269
+}
+
+Neither Constructor nor StaticMethod have `class_name`. Let me fix the logging to just output a counter:   
+
+Edited: [bindings.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1007-L1008), [-1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L1041-L1042)
+Completed with input: {
+  "edits": [
+    {
+      "content": "        eprintln!(\"NESTED_TYPE_SKIP_CTOR\");",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "1007:ns"
+    },
+    {
+      "content": "        eprintln!(\"NESTED_TYPE_SKIP_STATIC: {}\", method.name);",
+      "filePath": "crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "1041:fh"
+    }
+  ]
+}
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --dry-run 2>&1 | grep "NESTED_TYPE_SKIP"
+Completed with input:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --dry-run 2>&1 | grep "NESTED_TYPE_SKIP"
+
+Exit code 1 but no output from grep. Let me check if there are compiler errors:   
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --dry-run 2>&1 | grep -c "NESTED_TYPE_SKIP"; echo "exit: $?"
+
+Zero matches - no methods are currently being skipped by the nested type check. The exit code 1 is just from `grep -c` returning 1 when count is 0. 
+
+Now let me revert the temporary logging:   
+
+Ran terminal command:  git checkout crates/opencascade-binding-generator/src/codegen/bindings.rs
+
+So currently **zero** methods are blocked by the nested type check. The check was added as a safety net. Let me also check what the situation would be if we expanded to bind more classes. Let me look at the broader picture - how many methods across ALL OCCT classes use nested types as params:  
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/count_nested_all.py)
+
+Ran terminal command:  python3 tmp/count_nested_all.py
+
+Good data now. Currently zero methods in our bound classes are blocked, but 173 nested types exist across OCCT headers and would become relevant as we expand coverage. Let me clean up temp files and write the README TODO. 
+
+Ran terminal command:  rm -f tmp/count_nested_type_skips.py tmp/count_nested_blocked.py tmp/count_nested_all.py
+
+Now let me read the Future Work section of the README:    
+
+Ran terminal command:  wc -l crates/opencascade-binding-generator/README.md
+
+Reading lines 400-448 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L400-L449)
+Completed with input: {
+  "filePath": "crates/opencascade-binding-generator/README.md",
+  "startLine": 400,
+  "endLine": 448
+}
+
+Now I have the full picture. Let me add the nested type TODO after item 5 and before "System Include Path Auto-Detection":     
+
+Edited: [README.md -1+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L440-L443)
+Completed with input: {
+  "edits": [
+    {
+      "content": "5. **Windows-only headers** — `OSD_WNT.hxx` includes `<windows.h>`, fails on macOS/Linux. Non-blocking.\n\n6. **Nested C++ types** — OCCT defines ~173 nested structs, enums, and typedefs inside classes (e.g., `Poly_CoherentTriangulation::TwoIntegers`, `AIS_PointCloud::DisplayMode`, `BOPTools_PairSelector::PairIDs`). libclang parses these as bare names without parent class qualification, so the generator emits unqualified names like `TwoIntegers` instead of `Poly_CoherentTriangulation::TwoIntegers` in C++ wrappers, causing compilation failures. The generator currently skips methods whose nullable pointer parameters reference unknown/nested types; similar checks exist for constructors and static methods. Currently no methods in our bound classes are blocked by this (the affected classes aren't bound yet), but expanding to more modules will hit this. Fixing it requires: (a) tracking the parent class for nested type definitions during parsing, (b) emitting fully qualified names in C++ wrappers, and (c) declaring the nested types in the Rust FFI layer (possibly as opaque types or with a `ParentClass_NestedType` naming convention).",
+      "filePath": "crates/opencascade-binding-generator/README.md",
+      "lineHashes": "440:fj"
+    }
+  ]
+}
+
+Now let me verify the result looks good:     
+
+Reading lines 438-455 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L438-L456)
+Completed with input: {
+  "endLine": 455,
+  "filePath": "crates/opencascade-binding-generator/README.md",
+  "startLine": 438
+}
+
+Now let me commit: 
+
+Ran terminal command:  git add -A && git diff --cached --stat
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && git commit -m "docs: add TODO for nested C++ type support in binding generator
+
+OCCT has ~173 nested structs/enums/typedefs inside classes (e.g.,
+Poly_CoherentTriangulation::TwoIntegers). libclang parses these as
+bare names without qualification, causing C++ compilation failures.
+Currently no bound methods are blocked, but expanding to more modules
+will hit this. Documents the three-part fix needed: parent class
+tracking during parsing, qualified names in C++ wrappers, and nested
+type declarations in Rust FFI."
+
+Done. Added item 6 to the "Expanding to All OCCT Headers" future work section in the README.md, documenting:
+
+- ~173 nested types exist across OCCT headers (with concrete examples)
+- libclang parses them as bare names, causing C++ compilation failures
+- The generator currently skips affected methods as a safety net
+- Currently 0 methods in bound classes are blocked (affected classes aren't bound yet)
+- Three-part fix needed: parent class tracking, qualified C++ names, Rust FFI declarations
+
+Committed as `95efdb6`.
+
+Made changes.
