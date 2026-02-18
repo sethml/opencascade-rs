@@ -1567,6 +1567,7 @@ pub fn compute_class_bindings(
     ncollection_element_types: &HashMap<String, String>,
     ncollection_primitive_classes: &HashSet<String>,
     reexport_ctx: Option<&ReexportTypeContext>,
+    exclude_methods: &HashSet<(String, String)>,
 ) -> ClassBindings {
     // Flatten C++ nested class names (e.g., "Parent::Child" -> "Parent_Child")
     // for use as valid Rust identifiers in ffi.rs
@@ -1577,8 +1578,13 @@ pub fn compute_class_bindings(
     let effectively_abstract = is_effectively_abstract(class, all_classes_by_name, symbol_table);
 
     // ── Constructors ────────────────────────────────────────────────────
+    let exclude_ctors = exclude_methods.contains(&(class.name.clone(), class.name.clone()))
+        || exclude_methods.contains(&(class.name.clone(), "*".to_string()));
     let constructors = if !effectively_abstract && !class.has_protected_destructor {
         let mut ctors = compute_constructor_bindings(class, ffi_ctx, handle_able_classes, ncollection_element_types, reexport_ctx);
+        if exclude_ctors {
+            ctors.clear();
+        }
         // If no bindable constructors AND no explicit constructors at all,
         // generate a synthetic default constructor (uses C++ implicit default).
         // We must NOT generate synthetic constructors when:
@@ -1604,6 +1610,7 @@ pub fn compute_class_bindings(
     let direct_methods_raw: Vec<&Method> = class
         .methods
         .iter()
+        .filter(|m| !exclude_methods.contains(&(class.name.clone(), m.name.clone())))
         .filter(|m| is_method_bindable(m, ffi_ctx, cpp_name) && !needs_wrapper_function(m, all_enum_names))
         .filter(|m| !method_has_misresolved_element_type(&m.params, m.return_type.as_ref(), cpp_name, ncollection_primitive_classes))
         .collect();
@@ -1639,6 +1646,7 @@ pub fn compute_class_bindings(
     let wrapper_methods_raw: Vec<&Method> = class
         .methods
         .iter()
+        .filter(|m| !exclude_methods.contains(&(class.name.clone(), m.name.clone())))
         .filter(|m| is_method_bindable(m, ffi_ctx, cpp_name) && needs_wrapper_function(m, all_enum_names))
         .filter(|m| !method_has_misresolved_element_type(&m.params, m.return_type.as_ref(), cpp_name, ncollection_primitive_classes))
         .collect();
@@ -1714,10 +1722,11 @@ pub fn compute_class_bindings(
         })
         .collect();
 
-    // ── Static methods ──────────────────────────────────────────────────
+    // ── Static methods ────────────────────────────────────────────────────
     let static_methods_raw: Vec<&StaticMethod> = class
         .static_methods
         .iter()
+        .filter(|m| !exclude_methods.contains(&(class.name.clone(), m.name.clone())))
         .filter(|m| is_static_method_bindable(m, ffi_ctx))
         .filter(|m| !method_has_misresolved_element_type(&m.params, m.return_type.as_ref(), cpp_name, ncollection_primitive_classes))
         .collect();
@@ -2673,6 +2682,7 @@ pub fn compute_all_class_bindings(
     symbol_table: &SymbolTable,
     collection_names: &HashSet<String>,
     extra_typedef_names: &HashSet<String>,
+    exclude_methods: &HashSet<(String, String)>,
 ) -> Vec<ClassBindings> {
     // Classes with CppDeletable impls: ParsedClasses (without protected dtor) +
     // the 91 manually-specified known collections (which get generated destructors).
@@ -2749,7 +2759,7 @@ pub fn compute_all_class_bindings(
                 class_public_info: &class_public_info,
                 current_module_rust: crate::module_graph::module_to_rust_name(&class.module),
             };
-            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, &ncollection_element_types, &ncollection_primitive_classes, Some(&reexport_ctx))
+            compute_class_bindings(class, &ffi_ctx, symbol_table, &handle_able_classes, &all_classes_by_name, &ncollection_element_types, &ncollection_primitive_classes, Some(&reexport_ctx), exclude_methods)
         })
         .collect()
 }
@@ -4885,6 +4895,7 @@ mod tests {
             &HashMap::new(),
             &HashSet::new(),
             None,
+            &HashSet::new(),
         );
 
         assert_eq!(bindings.cpp_name, "gp_Pnt");
@@ -4975,6 +4986,7 @@ mod tests {
             &HashMap::new(),
             &HashSet::new(),
             None,
+            &HashSet::new(),
         );
 
         assert!(bindings.constructors.is_empty());

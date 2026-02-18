@@ -233,4 +233,5 @@ pub mod xcaf_doc;
 pub mod xcaf_note_objects;
 pub mod xcaf_prs;
 pub mod xcaf_view;
+pub mod xs_algo;
 pub mod xs_control;

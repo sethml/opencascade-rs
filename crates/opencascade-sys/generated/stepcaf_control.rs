@@ -185,6 +185,15 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_ActorWrite_inherited_GetShapeProcessFlags(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
@@ -956,6 +965,16 @@ impl Reader {
     pub fn get_shape_label_map(&self) -> &crate::ffi::XCAFDoc_DataMapOfShapeLabel {
         unsafe { &*(crate::ffi::STEPCAFControl_Reader_get_shape_label_map(self as *const Self)) }
     }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:259 - `STEPCAFControl_Reader::GetShapeProcessFlags()`
+    /// Returns flags defining operations to be performed on shapes.
+    /// @return Pair of values defining operations to be performed on shapes and a boolean value
+    /// that indicates whether the flags were set.
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_Reader_get_shape_process_flags(self as *const Self))
+        }
+    }
 }
 
 // ========================
@@ -1203,5 +1222,15 @@ impl Writer {
     /// **Source:** `STEPCAFControl_Writer.hxx`:227 - `STEPCAFControl_Writer::GetMaterialMode()`
     pub fn get_material_mode(&self) -> bool {
         unsafe { crate::ffi::STEPCAFControl_Writer_get_material_mode(self as *const Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:260 - `STEPCAFControl_Writer::GetShapeProcessFlags()`
+    /// Returns flags defining operations to be performed on shapes.
+    /// @return Pair of values defining operations to be performed on shapes and a boolean value
+    /// that indicates whether the flags were set.
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_Writer_get_shape_process_flags(self as *const Self))
+        }
     }
 }

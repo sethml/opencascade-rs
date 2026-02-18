@@ -166,6 +166,33 @@ impl HArray1OfBoolean {
     }
 
     /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColStd_Array1OfBoolean_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColStd_Array1OfBoolean_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfBoolean_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfBoolean.hxx`:21 - `TColStd_HArray1OfBoolean::TColStd_HArray1OfBoolean()`
     pub fn new_array1ofboolean(
         theOther: &crate::ffi::TColStd_Array1OfBoolean,
     ) -> crate::OwnedPtr<Self> {
@@ -266,6 +293,33 @@ impl HArray1OfByte {
     }
 
     /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColStd_Array1OfByte_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColStd_Array1OfByte_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfByte.hxx`:21 - `TColStd_HArray1OfByte::TColStd_HArray1OfByte()`
     pub fn new_array1ofbyte(theOther: &crate::ffi::TColStd_Array1OfByte) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfByte_ctor_array1ofbyte(theOther))
@@ -355,6 +409,33 @@ impl HArray1OfCharacter {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfCharacter_ctor_int2(
                 theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColStd_Array1OfCharacter_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfCharacter_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfCharacter.hxx`:22 - `TColStd_HArray1OfCharacter::TColStd_HArray1OfCharacter()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColStd_Array1OfCharacter_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfCharacter_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
             ))
         }
     }
@@ -855,6 +936,33 @@ impl HArray1OfReal {
     }
 
     /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColStd_Array1OfReal_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColStd_Array1OfReal_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray1OfReal.hxx`:21 - `TColStd_HArray1OfReal::TColStd_HArray1OfReal()`
     pub fn new_array1ofreal(theOther: &crate::ffi::TColStd_Array1OfReal) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray1OfReal_ctor_array1ofreal(theOther))
@@ -1076,6 +1184,21 @@ impl HArray2OfBoolean {
     }
 
     /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::TColStd_HArray2OfBoolean()`
+    pub fn new_int4_type(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::TColStd_Array2OfBoolean_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfBoolean_ctor_int4_type(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray2OfBoolean.hxx`:22 - `TColStd_HArray2OfBoolean::TColStd_HArray2OfBoolean()`
     pub fn new_array2ofboolean(
         theOther: &crate::ffi::TColStd_Array2OfBoolean,
     ) -> crate::OwnedPtr<Self> {
@@ -1171,6 +1294,21 @@ impl HArray2OfCharacter {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfCharacter_ctor_int4(
                 theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray2OfCharacter.hxx`:22 - `TColStd_HArray2OfCharacter::TColStd_HArray2OfCharacter()`
+    pub fn new_int4_type(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::TColStd_Array2OfCharacter_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfCharacter_ctor_int4_type(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
             ))
         }
     }
@@ -1386,6 +1524,21 @@ impl HArray2OfReal {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_int4(
                 theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
+    }
+
+    /// **Source:** `TColStd_HArray2OfReal.hxx`:21 - `TColStd_HArray2OfReal::TColStd_HArray2OfReal()`
+    pub fn new_int4_type(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::TColStd_Array2OfReal_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColStd_HArray2OfReal_ctor_int4_type(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
             ))
         }
     }
@@ -2280,8 +2433,18 @@ impl HSequenceOfReal {
     }
 
     /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TColStd_SequenceOfReal) {
-        unsafe { crate::ffi::TColStd_HSequenceOfReal_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::TColStd_SequenceOfReal_value_type) {
+        unsafe { crate::ffi::TColStd_HSequenceOfReal_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::Append()`
+    pub fn append_sequenceofreal(&mut self, theSequence: &mut crate::ffi::TColStd_SequenceOfReal) {
+        unsafe {
+            crate::ffi::TColStd_HSequenceOfReal_append_sequenceofreal(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `TColStd_HSequenceOfReal.hxx`:21 - `TColStd_HSequenceOfReal::ChangeSequence()`

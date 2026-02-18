@@ -108,6 +108,18 @@ impl ActorOfFinderProcess {
         }
     }
 
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
+    /// Returns flags defining operations to be performed on shapes.
+    /// @return Pair of values defining operations to be performed on shapes and a boolean value
+    /// that indicates whether the flags were set.
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfFinderProcess_get_shape_process_flags(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Transfer_ActorOfFinderProcess_dynamic_type(self as *const Self)) }
@@ -482,6 +494,19 @@ impl ActorOfTransientProcess {
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:38 - `Transfer_ActorOfTransientProcess::Transfer_ActorOfTransientProcess()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfTransientProcess_ctor()) }
+    }
+
+    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
+    /// Returns flags defining operations to be performed on shapes.
+    /// @return Pair: the flags defining operations to be performed on shapes and a boolean value that
+    /// indicates
+    /// whether the flags were set.
+    pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfTransientProcess_get_processing_flags(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::DynamicType()`

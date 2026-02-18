@@ -4080,6 +4080,11 @@ impl ParallelAlgo {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_ParallelAlgo_inherited_GetReport(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_ParallelAlgo_inherited_ClearWarnings(self as *mut Self) }
@@ -4363,6 +4368,11 @@ impl ArgumentAnalyzer {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_inherited_GetReport(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_ArgumentAnalyzer_inherited_ClearWarnings(self as *mut Self) }
@@ -4627,6 +4637,29 @@ impl BOP {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    pub fn build_bop(
+        &mut self,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::message::ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_BOP_inherited_BuildBOP(
+                self as *mut Self,
+                theObjects,
+                theObjState.into(),
+                theTools,
+                theToolsState.into(),
+                theRange,
+                theReport,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
     pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Images(self as *const Self)) }
@@ -4729,6 +4762,11 @@ impl BOP {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BOPAlgo_BOP_inherited_HasWarning(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -4934,6 +4972,95 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// @name BOPs on open solids
+    /// Builds the result shape according to the given states for the objects
+    /// and tools. These states can be unambiguously converted into the Boolean operation type.
+    /// Thus, it performs the Boolean operation on the given groups of shapes.
+    ///
+    /// The result is built basing on the result of Builder operation (GF or any other).
+    /// The only condition for the Builder is that the splits of faces should be created
+    /// and classified relatively solids.
+    ///
+    /// The method uses classification approach for choosing the faces which will
+    /// participate in building the result shape:
+    /// - All faces from each group having the given state for the opposite group
+    /// will be taken into result.
+    ///
+    /// Such approach shows better results (in comparison with BOPAlgo_BuilderSolid approach)
+    /// when working with open solids. However, the result may not be always
+    /// correct on such data (at least, not as expected) as the correct classification
+    /// of the faces relatively open solids is not always possible and may vary
+    /// depending on the chosen classification point on the face.
+    ///
+    /// History is not created for the solids in this method.
+    ///
+    /// To avoid pollution of the report of Builder algorithm, there is a possibility to pass
+    /// the different report to collect the alerts of the method only. But, if the new report
+    /// is not given, the Builder report will be used.
+    /// So, even if Builder passed without any errors, but some error has been stored into its report
+    /// in this method, for the following calls the Builder report must be cleared.
+    ///
+    /// The method may set the following errors:
+    /// - BOPAlgo_AlertBuilderFailed - Building operation has not been performed yet or failed;
+    /// - BOPAlgo_AlertBOPNotSet - invalid BOP type is given (COMMON/FUSE/CUT/CUT21 are supported);
+    /// - BOPAlgo_AlertTooFewArguments - arguments are not given;
+    /// - BOPAlgo_AlertUnknownShape - the shape is unknown for the operation.
+    ///
+    /// Parameters:
+    /// @param theObjects     - The group of Objects for BOP;
+    /// @param theObjState    - State for objects faces to pass into result;
+    /// @param theTools       - The group of Tools for BOP;
+    /// @param theToolsState  - State for tools faces to pass into result;
+    /// @param theReport      - The alternative report to avoid pollution of the main one.
+    pub fn build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(
+        &mut self,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::message::ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Builder_build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(self as *mut Self, theObjects, theObjState.into(), theTools, theToolsState.into(), theRange, theReport)
+        }
+    }
+
+    /// **Source:** `BOPAlgo_Builder.hxx`:213 - `BOPAlgo_Builder::BuildBOP()`
+    /// Builds the result of Boolean operation of given type
+    /// basing on the result of Builder operation (GF or any other).
+    ///
+    /// The method converts the given type of operation into the states
+    /// for the objects and tools required for their face to pass into result
+    /// and performs the call to the same method, but with states instead
+    /// of operation type.
+    ///
+    /// The conversion looks as follows:
+    /// - COMMON is built from the faces of objects located IN any of the tools
+    /// and vice versa.
+    /// - FUSE   is built from the faces OUT of all given shapes;
+    /// - CUT    is built from the faces of the objects OUT of the tools and
+    /// faces of the tools located IN solids of the objects.
+    ///
+    /// @param theObjects   - The group of Objects for BOP;
+    /// @param theTools     - The group of Tools for BOP;
+    /// @param theOperation - The BOP type;
+    /// @param theRange     - The parameter to progressIndicator
+    /// @param theReport    - The alternative report to avoid pollution of the global one.
+    pub fn build_bop_listofshape2_operation_progressrange_handlemessagereport(
+        &mut self,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theOperation: crate::bop_algo::Operation,
+        theRange: &crate::message::ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Builder_build_bop_listofshape2_operation_progressrange_handlemessagereport(self as *mut Self, theObjects, theTools, theOperation.into(), theRange, theReport)
+        }
+    }
+
     /// **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
     /// @name Images/Origins
     /// Returns the map of images.
@@ -5065,6 +5192,11 @@ impl Builder {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BOPAlgo_Builder_inherited_HasWarning(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -5262,6 +5394,11 @@ impl BuilderFace {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderFace_inherited_GetReport(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_BuilderFace_inherited_ClearWarnings(self as *mut Self) }
@@ -5445,6 +5582,11 @@ impl BuilderShape {
         unsafe {
             crate::ffi::BOPAlgo_BuilderShape_inherited_HasWarning(self as *const Self, theType)
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderShape_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -5685,6 +5827,11 @@ impl BuilderSolid {
         unsafe {
             crate::ffi::BOPAlgo_BuilderSolid_inherited_HasWarning(self as *const Self, theType)
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderSolid_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -6119,6 +6266,29 @@ impl CellsBuilder {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    pub fn build_bop(
+        &mut self,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::message::ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_CellsBuilder_inherited_BuildBOP(
+                self as *mut Self,
+                theObjects,
+                theObjState.into(),
+                theTools,
+                theToolsState.into(),
+                theRange,
+                theReport,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
     pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Images(self as *const Self)) }
@@ -6230,6 +6400,11 @@ impl CellsBuilder {
         unsafe {
             crate::ffi::BOPAlgo_CellsBuilder_inherited_HasWarning(self as *const Self, theType)
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -6731,6 +6906,11 @@ impl MakeConnected {
         unsafe {
             crate::ffi::BOPAlgo_MakeConnected_inherited_HasWarning(self as *const Self, theType)
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_MakeConnected_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -7341,6 +7521,11 @@ impl MakePeriodic {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_MakePeriodic_inherited_GetReport(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_MakePeriodic_inherited_ClearWarnings(self as *mut Self) }
@@ -7672,6 +7857,29 @@ impl MakerVolume {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    pub fn build_bop(
+        &mut self,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::message::ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_MakerVolume_inherited_BuildBOP(
+                self as *mut Self,
+                theObjects,
+                theObjState.into(),
+                theTools,
+                theToolsState.into(),
+                theRange,
+                theReport,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
     pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Images(self as *const Self)) }
@@ -7781,6 +7989,11 @@ impl MakerVolume {
         unsafe {
             crate::ffi::BOPAlgo_MakerVolume_inherited_HasWarning(self as *const Self, theType)
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -7912,6 +8125,12 @@ impl Options {
     /// Returns true if algorithm has generated warning of specified type
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BOPAlgo_Options_has_warning(self as *const Self, theType) }
+    }
+
+    /// **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    /// Returns report collecting all errors and warnings
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_Options_get_report(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -8176,6 +8395,11 @@ impl PaveFiller {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BOPAlgo_PaveFiller_inherited_HasWarning(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_PaveFiller_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -8542,6 +8766,11 @@ impl RemoveFeatures {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_RemoveFeatures_inherited_GetReport(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         unsafe { crate::ffi::BOPAlgo_RemoveFeatures_inherited_ClearWarnings(self as *mut Self) }
@@ -8743,6 +8972,29 @@ impl Section {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    pub fn build_bop(
+        &mut self,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::message::ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Section_inherited_BuildBOP(
+                self as *mut Self,
+                theObjects,
+                theObjState.into(),
+                theTools,
+                theToolsState.into(),
+                theRange,
+                theReport,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
     pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Images(self as *const Self)) }
@@ -8847,6 +9099,11 @@ impl Section {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BOPAlgo_Section_inherited_HasWarning(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -9091,6 +9348,11 @@ impl ShellSplitter {
         unsafe {
             crate::ffi::BOPAlgo_ShellSplitter_inherited_HasWarning(self as *const Self, theType)
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_ShellSplitter_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -9340,6 +9602,29 @@ impl Splitter {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    pub fn build_bop(
+        &mut self,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::message::ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Splitter_inherited_BuildBOP(
+                self as *mut Self,
+                theObjects,
+                theObjState.into(),
+                theTools,
+                theToolsState.into(),
+                theRange,
+                theReport,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
     pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Images(self as *const Self)) }
@@ -9444,6 +9729,11 @@ impl Splitter {
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::BOPAlgo_Splitter_inherited_HasWarning(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -9844,6 +10134,29 @@ impl ToolsProvider {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    pub fn build_bop(
+        &mut self,
+        theObjects: &crate::ffi::TopTools_ListOfShape,
+        theObjState: crate::top_abs::State,
+        theTools: &crate::ffi::TopTools_ListOfShape,
+        theToolsState: crate::top_abs::State,
+        theRange: &crate::message::ProgressRange,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_ToolsProvider_inherited_BuildBOP(
+                self as *mut Self,
+                theObjects,
+                theObjState.into(),
+                theTools,
+                theToolsState.into(),
+                theRange,
+                theReport,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
     pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
         unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Images(self as *const Self)) }
@@ -9959,6 +10272,11 @@ impl ToolsProvider {
         unsafe {
             crate::ffi::BOPAlgo_ToolsProvider_inherited_HasWarning(self as *const Self, theType)
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
@@ -10201,6 +10519,11 @@ impl WireSplitter {
         unsafe {
             crate::ffi::BOPAlgo_WireSplitter_inherited_HasWarning(self as *const Self, theType)
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_WireSplitter_inherited_GetReport(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`

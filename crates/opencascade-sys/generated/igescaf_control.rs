@@ -268,6 +268,15 @@ impl Reader {
             )
         }
     }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::IGESCAFControl_Reader_inherited_GetShapeProcessFlags(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================

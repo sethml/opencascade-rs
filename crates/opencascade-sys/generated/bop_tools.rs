@@ -472,6 +472,23 @@ impl AlgoTools {
         }
     }
 
+    /// **Source:** `BOPTools_AlgoTools.hxx`:323 - `BOPTools_AlgoTools::IsSplitToReverseWithWarn()`
+    /// Add-on for the *IsSplitToReverse()* to check for its errors
+    /// and in case of any add the *BOPAlgo_AlertUnableToOrientTheShape*
+    /// warning to the report.
+    pub fn is_split_to_reverse_with_warn(
+        theSplit: &crate::topo_ds::Shape,
+        theShape: &crate::topo_ds::Shape,
+        theContext: &crate::ffi::HandleIntToolsContext,
+        theReport: &crate::ffi::HandleMessageReport,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_with_warn(
+                theSplit, theShape, theContext, theReport,
+            )
+        }
+    }
+
     /// **Source:** `BOPTools_AlgoTools.hxx`:349 - `BOPTools_AlgoTools::IsSplitToReverse()`
     /// Checks if the normal direction of the split face is opposite to
     /// the normal direction of the original face.

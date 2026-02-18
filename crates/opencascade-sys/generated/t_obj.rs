@@ -2688,6 +2688,330 @@ impl HandleTObjHSequenceOfObject {
 }
 
 // ========================
+// From TObj_TIntSparseArray.hxx
+// ========================
+
+/// **Source:** `TObj_TIntSparseArray.hxx`:35 - `TObj_TIntSparseArray`
+///
+/// OCAF Attribute to store a set of positive integer values in the OCAF tree.
+/// Each value is identified by ID (positive integer).
+/// The supporting underlying data structure is NCollection_SparseArray of integers.
+pub use crate::ffi::TObj_TIntSparseArray as TIntSparseArray;
+
+unsafe impl crate::CppDeletable for TIntSparseArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TObj_TIntSparseArray_destructor(ptr);
+    }
+}
+
+impl TIntSparseArray {
+    /// **Source:** `TObj_TIntSparseArray.hxx`:39 - `TObj_TIntSparseArray::TObj_TIntSparseArray()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_TIntSparseArray_ctor()) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:45 - `TObj_TIntSparseArray::ID()`
+    /// Returns the ID of this attribute.
+    pub fn id(&self) -> &crate::standard::GUID {
+        unsafe { &*(crate::ffi::TObj_TIntSparseArray_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:54 - `TObj_TIntSparseArray::Size()`
+    /// Returns the number of stored values in the set
+    pub fn size(&self) -> usize {
+        unsafe { crate::ffi::TObj_TIntSparseArray_size(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:62 - `TObj_TIntSparseArray::HasValue()`
+    /// Returns true if the value with the given ID is present.
+    pub fn has_value(&self, theId: usize) -> bool {
+        unsafe { crate::ffi::TObj_TIntSparseArray_has_value(self as *const Self, theId) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:66 - `TObj_TIntSparseArray::Value()`
+    /// Returns the value by its ID.
+    /// Raises an exception if no value is stored with this ID
+    pub fn value(&self, theId: usize) -> i32 {
+        unsafe { crate::ffi::TObj_TIntSparseArray_value(self as *const Self, theId) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:70 - `TObj_TIntSparseArray::SetValue()`
+    /// Sets the value with the given ID.
+    /// Raises an exception if theId is not positive
+    pub fn set_value(&mut self, theId: usize, theValue: i32) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_set_value(self as *mut Self, theId, theValue) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:74 - `TObj_TIntSparseArray::UnsetValue()`
+    /// Unsets the value with the given ID.
+    /// Raises an exception if theId is not positive
+    pub fn unset_value(&mut self, theId: usize) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_unset_value(self as *mut Self, theId) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:77 - `TObj_TIntSparseArray::Clear()`
+    /// Clears the set
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:84 - `TObj_TIntSparseArray::NewEmpty()`
+    /// Returns an new empty TObj_TIntSparseArray attribute. It is used by the
+    /// copy algorithm.
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_TIntSparseArray_new_empty(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:87 - `TObj_TIntSparseArray::BackupCopy()`
+    /// Moves this delta into a new other attribute.
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_TIntSparseArray_backup_copy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:90 - `TObj_TIntSparseArray::Restore()`
+    /// Restores the set using info saved in backup attribute theDelta.
+    pub fn restore(&mut self, theDelta: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_restore(self as *mut Self, theDelta) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:94 - `TObj_TIntSparseArray::Paste()`
+    /// This method is used when copying an attribute from a source structure
+    /// into a target structure.
+    pub fn paste(
+        &self,
+        theInto: &crate::ffi::HandleTDFAttribute,
+        theRT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_paste(self as *const Self, theInto, theRT) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:99 - `TObj_TIntSparseArray::BeforeCommitTransaction()`
+    /// It is called just before Commit or Abort transaction
+    /// and does Backup() to create a delta
+    pub fn before_commit_transaction(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_before_commit_transaction(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:106 - `TObj_TIntSparseArray::AfterUndo()`
+    /// Clears my modification delta; called after application of theDelta
+    pub fn after_undo(
+        &mut self,
+        theDelta: &crate::ffi::HandleTDFAttributeDelta,
+        toForce: bool,
+    ) -> bool {
+        unsafe { crate::ffi::TObj_TIntSparseArray_after_undo(self as *mut Self, theDelta, toForce) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:114 - `TObj_TIntSparseArray::SetDoBackup()`
+    /// Sets the flag pointing to the necessity to maintain a modification delta.
+    /// It is called by the retrieval driver
+    pub fn set_do_backup(&mut self, toDo: bool) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_set_do_backup(self as *mut Self, toDo) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:116 - `TObj_TIntSparseArray::ClearDelta()`
+    pub fn clear_delta(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_clear_delta(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:137 - `TObj_TIntSparseArray::DynamicType()`
+    /// CASCADE RTTI
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_TIntSparseArray_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:42 - `TObj_TIntSparseArray::GetID()`
+    /// This method is used in implementation of ID()
+    pub fn get_id() -> &'static crate::standard::GUID {
+        unsafe { &*(crate::ffi::TObj_TIntSparseArray_get_id()) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:137 - `TObj_TIntSparseArray::get_type_name()`
+    /// CASCADE RTTI
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TObj_TIntSparseArray_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:137 - `TObj_TIntSparseArray::get_type_descriptor()`
+    /// CASCADE RTTI
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_TIntSparseArray_get_type_descriptor()) }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::TObj_TIntSparseArray_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::TObj_TIntSparseArray_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_SetID(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_TIntSparseArray_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    pub fn transaction(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_Transaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    pub fn until_transaction(&self) -> i32 {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_UntilTransaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    pub fn is_valid(&self) -> bool {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_IsValid(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    pub fn is_new(&self) -> bool {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_IsNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    pub fn is_forgotten(&self) -> bool {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_IsForgotten(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_IsAttribute(self as *const Self, anID) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    pub fn find_attribute(
+        &self,
+        anID: &crate::standard::GUID,
+        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_AddAttribute(self as *const Self, other)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_ForgetAttribute(self as *const Self, aguid)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    pub fn forget_all_attributes(&self, clearChildren: bool) {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    pub fn after_addition(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_AfterAddition(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    pub fn before_removal(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_BeforeRemoval(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    pub fn before_forget(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_BeforeForget(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    pub fn after_resume(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_AfterResume(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    pub fn before_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    pub fn backup(&mut self) {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_Backup(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    pub fn is_backuped(&self) -> bool {
+        unsafe { crate::ffi::TObj_TIntSparseArray_inherited_IsBackuped(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    pub fn forget(&mut self, aTransaction: i32) {
+        unsafe {
+            crate::ffi::TObj_TIntSparseArray_inherited_Forget(self as *mut Self, aTransaction)
+        }
+    }
+}
+
+// ========================
 // From TObj_TModel.hxx
 // ========================
 

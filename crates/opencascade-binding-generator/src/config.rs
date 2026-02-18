@@ -26,6 +26,14 @@ pub struct BindingConfig {
     /// Include specific individual headers (from modules not fully listed in `modules`).
     #[serde(default)]
     pub include_headers: Vec<String>,
+
+    /// Exclude specific methods/constructors from binding generation.
+    /// Format: "ClassName::MethodName" for instance/static methods,
+    /// or "ClassName::ClassName" for constructors (C++ constructor naming convention).
+    /// Methods matching these patterns will be skipped during codegen,
+    /// even though the rest of the class is bound.
+    #[serde(default)]
+    pub exclude_methods: Vec<String>,
 }
 
 /// General configuration options.

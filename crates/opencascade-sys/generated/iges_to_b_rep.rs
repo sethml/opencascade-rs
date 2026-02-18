@@ -199,6 +199,13 @@ impl Actor {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
+    pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_Actor_inherited_GetProcessingFlags(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {

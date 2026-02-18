@@ -89,6 +89,12 @@ pub fn fill_time(
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_fill_time(Hour, Minute, Second)) }
 }
+/// **Source:** `Message.hxx`:113 - `Message::DefaultReport`
+/// returns the only one instance of Report
+/// When theToCreate is true - automatically creates message report when not exist.
+pub fn default_report(theToCreate: bool) -> crate::OwnedPtr<crate::ffi::HandleMessageReport> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_default_report(theToCreate)) }
+}
 /// **Source:** `Message.hxx`:126 - `Message::MetricToString`
 /// Returns the string name for a given metric type.
 /// @param theType metric type
@@ -914,6 +920,26 @@ impl AlertExtended {
     /// **Source:** `Message_AlertExtended.hxx`:85 - `Message_AlertExtended::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Message_AlertExtended_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_AlertExtended.hxx`:38 - `Message_AlertExtended::AddAlert()`
+    /// Creates new instance of the alert and put it into report with Message_Info gravity.
+    /// It does nothing if such kind of gravity is not active in the report
+    /// @param theReport the message report where new alert is placed
+    /// @param theAttribute container of additional values of the alert
+    /// @return created alert or NULL if Message_Info is not active in report
+    pub fn add_alert(
+        theReport: &crate::ffi::HandleMessageReport,
+        theAttribute: &crate::ffi::HandleMessageAttribute,
+        theGravity: crate::message::Gravity,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_AlertExtended_add_alert(
+                theReport,
+                theAttribute,
+                theGravity.into(),
+            ))
+        }
     }
 
     /// **Source:** `Message_AlertExtended.hxx`:85 - `Message_AlertExtended::get_type_name()`
@@ -3097,6 +3123,19 @@ impl PrinterToReport {
         unsafe { &*(crate::ffi::Message_PrinterToReport_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Message_PrinterToReport.hxx`:36 - `Message_PrinterToReport::Report()`
+    /// Returns the current or default report
+    pub fn report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::Message_PrinterToReport_report(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_PrinterToReport.hxx`:40 - `Message_PrinterToReport::SetReport()`
+    /// Sets the printer report
+    /// @param theReport report for messages processing, if NULL, the default report is used
+    pub fn set_report(&mut self, theReport: &crate::ffi::HandleMessageReport) {
+        unsafe { crate::ffi::Message_PrinterToReport_set_report(self as *mut Self, theReport) }
+    }
+
     /// **Source:** `Message_PrinterToReport.hxx`:27 - `Message_PrinterToReport::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3842,10 +3881,302 @@ impl ProgressSentry {
 }
 
 // ========================
+// From Message_Report.hxx
+// ========================
+
+/// **Source:** `Message_Report.hxx`:56 - `Message_Report`
+/// Container for alert messages, sorted according to their gravity.
+///
+/// For each gravity level, alerts are stored in simple list.
+/// If alert being added can be merged with another alert of the same
+/// type already in the list, it is merged and not added to the list.
+///
+/// This class is intended to be used as follows:
+///
+/// - In the process of execution, algorithm fills report by alert objects
+/// using methods AddAlert()
+///
+/// - The result can be queried for presence of particular alert using
+/// methods HasAlert()
+///
+/// - The reports produced by nested or sequentially executed algorithms
+/// can be collected in one using method Merge()
+///
+/// - The report can be shown to the user either as plain text with method
+/// Dump() or in more advanced way, by iterating over lists returned by GetAlerts()
+///
+/// - Report can be cleared by methods Clear() (usually after reporting)
+///
+/// Message_PrinterToReport is a printer in Messenger to convert data sent to messenger into report
+pub use crate::ffi::Message_Report as Report;
+
+unsafe impl crate::CppDeletable for Report {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Message_Report_destructor(ptr);
+    }
+}
+
+impl Report {
+    /// **Source:** `Message_Report.hxx`:60 - `Message_Report::Message_Report()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_Report_ctor()) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:64 - `Message_Report::AddAlert()`
+    /// Add alert with specified gravity.
+    /// This method is thread-safe, i.e. alerts can be added from parallel threads safely.
+    pub fn add_alert(
+        &mut self,
+        theGravity: crate::message::Gravity,
+        theAlert: &crate::ffi::HandleMessageAlert,
+    ) {
+        unsafe {
+            crate::ffi::Message_Report_add_alert(self as *mut Self, theGravity.into(), theAlert)
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:67 - `Message_Report::GetAlerts()`
+    /// Returns list of collected alerts with specified gravity
+    pub fn get_alerts(
+        &self,
+        theGravity: crate::message::Gravity,
+    ) -> &crate::ffi::Message_ListOfAlert {
+        unsafe { &*(crate::ffi::Message_Report_get_alerts(self as *const Self, theGravity.into())) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:70 - `Message_Report::HasAlert()`
+    /// Returns true if specific type of alert is recorded
+    pub fn has_alert_handlestandardtype(
+        &mut self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Message_Report_has_alert_handlestandardtype(self as *mut Self, theType)
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:73 - `Message_Report::HasAlert()`
+    /// Returns true if specific type of alert is recorded with specified gravity
+    pub fn has_alert_handlestandardtype_gravity(
+        &mut self,
+        theType: &crate::ffi::HandleStandardType,
+        theGravity: crate::message::Gravity,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Message_Report_has_alert_handlestandardtype_gravity(
+                self as *mut Self,
+                theType,
+                theGravity.into(),
+            )
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:79 - `Message_Report::IsActiveInMessenger()`
+    /// Returns true if a report printer for the current report is registered in the messenger
+    /// @param theMessenger the messenger. If it's NULL, the default messenger is used
+    pub fn is_active_in_messenger(
+        &self,
+        theMessenger: &crate::ffi::HandleMessageMessenger,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Message_Report_is_active_in_messenger(self as *const Self, theMessenger)
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:85 - `Message_Report::ActivateInMessenger()`
+    /// Creates an instance of Message_PrinterToReport with the current report and register it in
+    /// messenger
+    /// @param toActivate if true, activated else deactivated
+    /// @param theMessenger the messenger. If it's NULL, the default messenger is used
+    pub fn activate_in_messenger(
+        &mut self,
+        toActivate: bool,
+        theMessenger: &crate::ffi::HandleMessageMessenger,
+    ) {
+        unsafe {
+            crate::ffi::Message_Report_activate_in_messenger(
+                self as *mut Self,
+                toActivate,
+                theMessenger,
+            )
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:91 - `Message_Report::UpdateActiveInMessenger()`
+    /// Updates internal flag IsActiveInMessenger.
+    /// It becomes true if messenger contains at least one instance of Message_PrinterToReport.
+    /// @param theMessenger the messenger. If it's NULL, the default messenger is used
+    pub fn update_active_in_messenger(
+        &mut self,
+        theMessenger: &crate::ffi::HandleMessageMessenger,
+    ) {
+        unsafe {
+            crate::ffi::Message_Report_update_active_in_messenger(self as *mut Self, theMessenger)
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:102 - `Message_Report::Clear()`
+    /// Clears all collected alerts
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::Message_Report_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:105 - `Message_Report::Clear()`
+    /// Clears collected alerts with specified gravity
+    pub fn clear_gravity(&mut self, theGravity: crate::message::Gravity) {
+        unsafe { crate::ffi::Message_Report_clear_gravity(self as *mut Self, theGravity.into()) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:108 - `Message_Report::Clear()`
+    /// Clears collected alerts with specified type
+    pub fn clear_handlestandardtype(&mut self, theType: &crate::ffi::HandleStandardType) {
+        unsafe { crate::ffi::Message_Report_clear_handlestandardtype(self as *mut Self, theType) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:118 - `Message_Report::SetActiveMetric()`
+    /// Sets metrics to compute when alerts are performed
+    /// @param theMetrics container of metrics
+    pub fn set_active_metric(
+        &mut self,
+        theMetricType: crate::message::MetricType,
+        theActivate: bool,
+    ) {
+        unsafe {
+            crate::ffi::Message_Report_set_active_metric(
+                self as *mut Self,
+                theMetricType.into(),
+                theActivate,
+            )
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:122 - `Message_Report::ClearMetrics()`
+    /// Removes all activated metrics
+    pub fn clear_metrics(&mut self) {
+        unsafe { crate::ffi::Message_Report_clear_metrics(self as *mut Self) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:127 - `Message_Report::Limit()`
+    /// Returns maximum number of collecting alerts. If the limit is achieved,
+    /// first alert is removed, the new alert is added in the container.
+    /// @return the limit value
+    pub fn limit(&self) -> i32 {
+        unsafe { crate::ffi::Message_Report_limit(self as *const Self) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:131 - `Message_Report::SetLimit()`
+    /// Sets maximum number of collecting alerts.
+    /// @param theLimit limit value
+    pub fn set_limit(&mut self, theLimit: i32) {
+        unsafe { crate::ffi::Message_Report_set_limit(self as *mut Self, theLimit) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:140 - `Message_Report::SendMessages()`
+    /// Sends all collected alerts to messenger.
+    pub fn send_messages_handlemessagemessenger(
+        &mut self,
+        theMessenger: &crate::ffi::HandleMessageMessenger,
+    ) {
+        unsafe {
+            crate::ffi::Message_Report_send_messages_handlemessagemessenger(
+                self as *mut Self,
+                theMessenger,
+            )
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:145 - `Message_Report::SendMessages()`
+    /// Dumps collected alerts with specified gravity to messenger.
+    /// Default implementation creates Message_Msg object with a message
+    /// key returned by alert, and sends it in the messenger.
+    pub fn send_messages_handlemessagemessenger_gravity(
+        &mut self,
+        theMessenger: &crate::ffi::HandleMessageMessenger,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_Report_send_messages_handlemessagemessenger_gravity(
+                self as *mut Self,
+                theMessenger,
+                theGravity.into(),
+            )
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:149 - `Message_Report::Merge()`
+    /// Merges data from theOther report into this
+    pub fn merge_handlemessagereport(&mut self, theOther: &crate::ffi::HandleMessageReport) {
+        unsafe { crate::ffi::Message_Report_merge_handlemessagereport(self as *mut Self, theOther) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:152 - `Message_Report::Merge()`
+    /// Merges alerts with specified gravity from theOther report into this
+    pub fn merge_handlemessagereport_gravity(
+        &mut self,
+        theOther: &crate::ffi::HandleMessageReport,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_Report_merge_handlemessagereport_gravity(
+                self as *mut Self,
+                theOther,
+                theGravity.into(),
+            )
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:158 - `Message_Report::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Message_Report_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_Report.hxx`:158 - `Message_Report::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Message_Report_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Message_Report.hxx`:158 - `Message_Report::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::Message_Report_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessageReport> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_Report_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleMessageReport;
+
+unsafe impl crate::CppDeletable for HandleMessageReport {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMessageReport_destructor(ptr);
+    }
+}
+
+impl HandleMessageReport {
+    /// Dereference this Handle to access the underlying Message_Report
+    pub fn get(&self) -> &crate::ffi::Message_Report {
+        unsafe { &*(crate::ffi::HandleMessageReport_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_Report
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Message_Report {
+        unsafe { &mut *(crate::ffi::HandleMessageReport_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::{
-    Message_ListOfAlert as ListOfAlert, Message_Report as Report,
-    Message_SequenceOfPrinters as SequenceOfPrinters,
+    Message_ListOfAlert as ListOfAlert, Message_SequenceOfPrinters as SequenceOfPrinters,
 };

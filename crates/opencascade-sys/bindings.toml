@@ -268,25 +268,35 @@ exclude_headers = [
     # XSControl_Vars: const char*& output parameter (name) mishandled by generator.
     "XSControl_Vars.hxx",
 
-    # Message_Report: ActiveMetrics() return type NCollection_IndexedMap<Message_MetricType>
-    # is misresolved to Standard_Integer by clang in batch parsing mode.
-    "Message_Report.hxx",
-
-    # math_Matrix: methods reference math_Vector (typedef of math_VectorBase<>)
-    # which clang misresolves to int in batch parsing mode.
-    "math_Matrix.hxx",
-
-    # TObj_TIntSparseArray: GetIterator() returns NCollection_SparseArray::ConstIterator
-    # which clang misresolves to Standard_Integer in batch parsing mode.
-    "TObj_TIntSparseArray.hxx",
-
-    # XSAlgo_ShapeProcessor: constructor takes NCollection_DataMap param misresolved to int;
-    # ReadProcessingData returns std::pair<DataMap, bitset> misresolved to int.
-    "XSAlgo_ShapeProcessor.hxx",
 ]
 
 # Include specific individual headers (from modules not fully included above).
 include_headers = []
+
+# Exclude specific methods/constructors that clang misresolves in batch parsing mode.
+# When clang can't fully instantiate certain template types, it misresolves them to
+# Standard_Integer (int). This corruption affects both canonical AND display names,
+# so the parser's heuristic guards cannot detect it. These methods are excluded
+# individually so the rest of each class remains accessible.
+# Format: "ClassName::MethodName" for methods, "ClassName::ClassName" for constructors.
+exclude_methods = [
+    # math_Matrix: Row() and Col() return math_VectorBase<> (typedef math_Vector)
+    # which clang misresolves to Standard_Integer in batch parsing mode.
+    "math_Matrix::Row",
+    "math_Matrix::Col",
+
+    # TObj_TIntSparseArray: GetIterator() returns NCollection_SparseArray<int>::ConstIterator
+    # which clang misresolves to Standard_Integer in batch parsing mode.
+    "TObj_TIntSparseArray::GetIterator",
+
+    # XSAlgo_ShapeProcessor: constructor takes NCollection_DataMap param (class-scoped
+    # using alias "ParameterMap") misresolved to Standard_Integer by clang.
+    "XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor",
+
+    # XSAlgo_ShapeProcessor: ReadProcessingData() returns std::pair<ParameterMap, bitset>
+    # which clang misresolves to Standard_Integer in batch parsing mode.
+    "XSAlgo_ShapeProcessor::ReadProcessingData",
+]
 
 [general]
 resolve_deps = true
@@ -327,6 +337,17 @@ resolve_deps = true
 #
 #    ~120 headers successfully UNBLOCKED by these combined fixes.
 #
+#    Additionally, parse_type() now preserves template/namespaced display names
+#    instead of falling through to Type::Class(canonical) when canonical looks
+#    like a primitive. This prevents misresolved templates from generating
+#    incorrect bindings (the method is then naturally filtered out as unknown).
+#
+#    For cases where clang corrupts BOTH the canonical AND display name
+#    (resolving templates to Standard_Integer even in the display name),
+#    the `exclude_methods` config provides method-level exclusions. These are
+#    used for the handful of methods where the three-layer guard cannot help
+#    because the type information is completely lost at the clang level.
+#    The rest of each affected class remains fully accessible.
 #
 # 2. Primitive Typedef vs Template Typedef Ambiguity
 #    ────────────────────────────────────────────────

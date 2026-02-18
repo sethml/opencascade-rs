@@ -323,6 +323,42 @@ pub fn eval_cubic_hermite(
         )
     }
 }
+/// **Source:** `PLib.hxx`:327 - `PLib::HermiteCoefficients`
+/// This build the coefficient of Hermite's polynomes on
+/// [FirstParameter, LastParameter]
+///
+/// if j <= FirstOrder+1 then
+///
+/// MatrixCoefs[i, j] = ith coefficient of the polynome H0,j-1
+///
+/// else
+///
+/// MatrixCoefs[i, j] = ith coefficient of the polynome H1,k
+/// with k = j - FirstOrder - 2
+///
+/// return false if
+/// - |FirstParameter| > 100
+/// - |LastParameter| > 100
+/// - |FirstParameter| +|LastParameter| < 1/100
+/// -   |LastParameter - FirstParameter|
+/// / (|FirstParameter| +|LastParameter|)  < 1/100
+pub fn hermite_coefficients(
+    FirstParameter: f64,
+    LastParameter: f64,
+    FirstOrder: i32,
+    LastOrder: i32,
+    MatrixCoefs: &mut crate::math::Matrix,
+) -> bool {
+    unsafe {
+        crate::ffi::PLib_hermite_coefficients(
+            FirstParameter,
+            LastParameter,
+            FirstOrder,
+            LastOrder,
+            MatrixCoefs,
+        )
+    }
+}
 /// **Source:** `PLib.hxx`:420 - `PLib::JacobiParameters`
 /// Compute the number of points used for integral
 /// computations (NbGaussPoints) and the degree of Jacobi

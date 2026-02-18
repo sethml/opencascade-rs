@@ -35,6 +35,33 @@ impl HArray1OfShortReal {
     }
 
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TShort_Array1OfShortReal_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TShort_Array1OfShortReal_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
     pub fn new_array1ofshortreal(
         theOther: &crate::ffi::TShort_Array1OfShortReal,
     ) -> crate::OwnedPtr<Self> {
@@ -130,6 +157,21 @@ impl HArray2OfShortReal {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray2OfShortReal_ctor_int4(
                 theRowLow, theRowUpp, theColLow, theColUpp,
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::TShort_HArray2OfShortReal()`
+    pub fn new_int4_type(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::ffi::TShort_Array2OfShortReal_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray2OfShortReal_ctor_int4_type(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
             ))
         }
     }
@@ -242,8 +284,21 @@ impl HSequenceOfShortReal {
     }
 
     /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TShort_SequenceOfShortReal) {
-        unsafe { crate::ffi::TShort_HSequenceOfShortReal_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::TShort_SequenceOfShortReal_value_type) {
+        unsafe { crate::ffi::TShort_HSequenceOfShortReal_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Append()`
+    pub fn append_sequenceofshortreal(
+        &mut self,
+        theSequence: &mut crate::ffi::TShort_SequenceOfShortReal,
+    ) {
+        unsafe {
+            crate::ffi::TShort_HSequenceOfShortReal_append_sequenceofshortreal(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::ChangeSequence()`

@@ -110,6 +110,15 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::IGESControl_ActorWrite_inherited_GetShapeProcessFlags(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
@@ -710,6 +719,13 @@ impl Reader {
                 what,
                 mode,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe {
+            &*(crate::ffi::IGESControl_Reader_inherited_GetShapeProcessFlags(self as *const Self))
         }
     }
 }

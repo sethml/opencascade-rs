@@ -4991,6 +4991,18 @@ impl FunctionDraft {
         unsafe { crate::ffi::GeomFill_FunctionDraft_nb_equations(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_FunctionDraft.hxx`:84 - `GeomFill_FunctionDraft::DerivTX()`
+    /// returns the values <D> of  the TX derivatives for
+    /// the parameter Param .
+    pub fn deriv_tx(
+        &mut self,
+        dN: &crate::gp::Vec_,
+        teta: f64,
+        D: &mut crate::math::Matrix,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_FunctionDraft_deriv_tx(self as *mut Self, dN, teta, D) }
+    }
+
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,

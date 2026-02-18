@@ -1412,8 +1412,14 @@ fn parse_type(clang_type: &clang::Type) -> Type {
             .trim_end_matches(" *")
             .trim();
         
-        // Only use canonical if it's simpler (no :: or <)
-        if !canonical_clean.contains("::") && !canonical_clean.contains('<') && !canonical_clean.is_empty() {
+        // Only use canonical if it's simpler (no :: or <) AND still looks like a class name.
+        // When clang misresolves NCollection templates, canonical becomes "int" or another
+        // primitive — using that would produce Type::Class("int") which is nonsensical. By
+        // keeping the template/namespaced spelling, type_uses_unknown_type() will properly
+        // filter methods with unresolvable types.
+        let canonical_looks_like_class = canonical_clean
+            .starts_with(|c: char| c.is_ascii_uppercase());
+        if !canonical_clean.contains("::") && !canonical_clean.contains('<') && !canonical_clean.is_empty() && canonical_looks_like_class {
             return Type::Class(canonical_clean.to_string());
         }
     }

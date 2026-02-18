@@ -742,6 +742,14 @@ impl Reader {
             crate::ffi::XSControl_Reader_print_stats_transfer(self as *const Self, what, mode)
         }
     }
+
+    /// **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
+    /// Returns flags defining operations to be performed on shapes.
+    /// @return Pair of values defining operations to be performed on shapes and a boolean value
+    /// that indicates whether the flags were set.
+    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+        unsafe { &*(crate::ffi::XSControl_Reader_get_shape_process_flags(self as *const Self)) }
+    }
 }
 
 // ========================
