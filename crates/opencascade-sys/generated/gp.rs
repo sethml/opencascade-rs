@@ -514,14 +514,14 @@ impl Ax1 {
 
     /// **Source:** `gp_Ax1.hxx`:208 - `gp_Ax1::Translate()`
     /// Translates this axis by the vector theV, and assigns the result to this axis.
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Ax1_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Ax1.hxx`:212 - `gp_Ax1::Translated()`
     /// Translates this axis by the vector theV,
     /// and creates a new one.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Ax1> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Ax1_translated_vec(self as *const Self, theV))
         }
@@ -939,14 +939,14 @@ impl Ax2 {
     }
 
     /// **Source:** `gp_Ax2.hxx`:339 - `gp_Ax2::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Ax2_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Ax2.hxx`:343 - `gp_Ax2::Translated()`
     /// Translates an axis plaxement in the direction of the vector <theV>.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Ax2> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Ax2> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Ax2_translated_vec(self as *const Self, theV))
         }
@@ -1917,14 +1917,14 @@ impl Ax3 {
     }
 
     /// **Source:** `gp_Ax3.hxx`:297 - `gp_Ax3::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Ax3_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Ax3.hxx`:301 - `gp_Ax3::Translated()`
     /// Translates an axis plaxement in the direction of the vector
     /// <theV>. The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Ax3> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Ax3> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Ax3_translated_vec(self as *const Self, theV))
         }
@@ -2211,14 +2211,14 @@ impl Circ {
     }
 
     /// **Source:** `gp_Circ.hxx`:199 - `gp_Circ::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Circ_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Circ.hxx`:203 - `gp_Circ::Translated()`
     /// Translates a circle in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Circ> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Circ_translated_vec(self as *const Self, theV))
         }
@@ -2907,14 +2907,14 @@ impl Cone {
     }
 
     /// **Source:** `gp_Cone.hxx`:207 - `gp_Cone::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Cone_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Cone.hxx`:211 - `gp_Cone::Translated()`
     /// Translates a cone in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Cone> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Cone> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Cone_translated_vec(self as *const Self, theV))
         }
@@ -3218,14 +3218,14 @@ impl Cylinder {
     }
 
     /// **Source:** `gp_Cylinder.hxx`:168 - `gp_Cylinder::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Cylinder_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:172 - `gp_Cylinder::Translated()`
     /// Translates a cylinder in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Cylinder> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Cylinder_translated_vec(
                 self as *const Self,
@@ -3287,7 +3287,7 @@ impl Dir {
     /// **Source:** `gp_Dir.hxx`:48 - `gp_Dir::gp_Dir()`
     /// Normalizes the vector theV and creates a direction. Raises ConstructionError if
     /// theV.Magnitude() <= Resolution.
-    pub fn new_vec(theV: &Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_vec(theV: &Vec_) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Dir_ctor_vec(theV)) }
     }
 
@@ -4253,14 +4253,14 @@ impl Elips {
     }
 
     /// **Source:** `gp_Elips.hxx`:239 - `gp_Elips::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Elips_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Elips.hxx`:243 - `gp_Elips::Translated()`
     /// Translates an ellipse in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Elips> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Elips_translated_vec(
                 self as *const Self,
@@ -5642,14 +5642,14 @@ impl Hypr {
     }
 
     /// **Source:** `gp_Hypr.hxx`:318 - `gp_Hypr::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Hypr_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Hypr.hxx`:322 - `gp_Hypr::Translated()`
     /// Translates an hyperbola in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Hypr> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Hypr_translated_vec(self as *const Self, theV))
         }
@@ -6430,14 +6430,14 @@ impl Lin {
     }
 
     /// **Source:** `gp_Lin.hxx`:188 - `gp_Lin::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Lin_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Lin.hxx`:192 - `gp_Lin::Translated()`
     /// Translates a line in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Lin> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Lin_translated_vec(self as *const Self, theV))
         }
@@ -7631,14 +7631,14 @@ impl Parab {
     }
 
     /// **Source:** `gp_Parab.hxx`:197 - `gp_Parab::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Parab_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Parab.hxx`:201 - `gp_Parab::Translated()`
     /// Translates a parabola in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Parab> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Parab_translated_vec(
                 self as *const Self,
@@ -8401,14 +8401,14 @@ impl Pln {
     }
 
     /// **Source:** `gp_Pln.hxx`:254 - `gp_Pln::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Pln_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Pln.hxx`:258 - `gp_Pln::Translated()`
     /// Translates a plane in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Pln> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Pln_translated_vec(self as *const Self, theV))
         }
@@ -8683,12 +8683,12 @@ impl Pnt {
     /// **Source:** `gp_Pnt.hxx`:188 - `gp_Pnt::Translate()`
     /// Translates a point in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Pnt_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Pnt.hxx`:190 - `gp_Pnt::Translated()`
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Pnt> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_translated_vec(self as *const Self, theV))
         }
@@ -9003,7 +9003,7 @@ impl Quaternion {
     /// **Source:** `gp_Quaternion.hxx`:58 - `gp_Quaternion::gp_Quaternion()`
     /// Creates quaternion representing shortest-arc rotation
     /// operator producing vector theVecTo from vector theVecFrom.
-    pub fn new_vec2(theVecFrom: &Vec, theVecTo: &Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_vec2(theVecFrom: &Vec_, theVecTo: &Vec_) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Quaternion_ctor_vec2(theVecFrom, theVecTo))
         }
@@ -9016,9 +9016,9 @@ impl Quaternion {
     /// rotation and is used when theVecTo and theVecFrom are directed
     /// oppositely.
     pub fn new_vec3(
-        theVecFrom: &Vec,
-        theVecTo: &Vec,
-        theHelpCrossVec: &Vec,
+        theVecFrom: &Vec_,
+        theVecTo: &Vec_,
+        theHelpCrossVec: &Vec_,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Quaternion_ctor_vec3(
@@ -9032,7 +9032,7 @@ impl Quaternion {
     /// **Source:** `gp_Quaternion.hxx`:75 - `gp_Quaternion::gp_Quaternion()`
     /// Creates quaternion representing rotation on angle
     /// theAngle around vector theAxis
-    pub fn new_vec_real(theAxis: &Vec, theAngle: f64) -> crate::OwnedPtr<Self> {
+    pub fn new_vec_real(theAxis: &Vec_, theAngle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Quaternion_ctor_vec_real(theAxis, theAngle))
         }
@@ -9056,7 +9056,7 @@ impl Quaternion {
     /// vector theVecTo from vector theVecFrom.
     /// If vectors theVecFrom and theVecTo are opposite then rotation
     /// axis is computed as theVecFrom ^ (1,0,0) or theVecFrom ^ (0,0,1).
-    pub fn set_rotation_vec2(&mut self, theVecFrom: &Vec, theVecTo: &Vec) {
+    pub fn set_rotation_vec2(&mut self, theVecFrom: &Vec_, theVecTo: &Vec_) {
         unsafe {
             crate::ffi::gp_Quaternion_set_rotation_vec2(self as *mut Self, theVecFrom, theVecTo)
         }
@@ -9067,7 +9067,12 @@ impl Quaternion {
     /// vector theVecTo from vector theVecFrom.
     /// If vectors theVecFrom and theVecTo are opposite then rotation
     /// axis is computed as theVecFrom ^ theHelpCrossVec.
-    pub fn set_rotation_vec3(&mut self, theVecFrom: &Vec, theVecTo: &Vec, theHelpCrossVec: &Vec) {
+    pub fn set_rotation_vec3(
+        &mut self,
+        theVecFrom: &Vec_,
+        theVecTo: &Vec_,
+        theHelpCrossVec: &Vec_,
+    ) {
         unsafe {
             crate::ffi::gp_Quaternion_set_rotation_vec3(
                 self as *mut Self,
@@ -9080,7 +9085,7 @@ impl Quaternion {
 
     /// **Source:** `gp_Quaternion.hxx`:102 - `gp_Quaternion::SetVectorAndAngle()`
     /// Create a unit quaternion from Axis+Angle representation
-    pub fn set_vector_and_angle(&mut self, theAxis: &Vec, theAngle: f64) {
+    pub fn set_vector_and_angle(&mut self, theAxis: &Vec_, theAngle: f64) {
         unsafe {
             crate::ffi::gp_Quaternion_set_vector_and_angle(self as *mut Self, theAxis, theAngle)
         }
@@ -9089,7 +9094,7 @@ impl Quaternion {
     /// **Source:** `gp_Quaternion.hxx`:106 - `gp_Quaternion::GetVectorAndAngle()`
     /// Convert a quaternion to Axis+Angle representation,
     /// preserve the axis direction and angle from -PI to +PI
-    pub fn get_vector_and_angle(&self, theAxis: &mut Vec, theAngle: &mut f64) {
+    pub fn get_vector_and_angle(&self, theAxis: &mut Vec_, theAngle: &mut f64) {
         unsafe {
             crate::ffi::gp_Quaternion_get_vector_and_angle(self as *const Self, theAxis, theAngle)
         }
@@ -9354,7 +9359,7 @@ impl Quaternion {
 
     /// **Source:** `gp_Quaternion.hxx`:293 - `gp_Quaternion::Multiply()`
     /// Rotates vector by quaternion as rotation operator
-    pub fn multiply_vec(&self, theVec: &Vec) -> crate::OwnedPtr<Vec> {
+    pub fn multiply_vec(&self, theVec: &Vec_) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Quaternion_multiply_vec(
                 self as *const Self,
@@ -9796,14 +9801,14 @@ impl Sphere {
     }
 
     /// **Source:** `gp_Sphere.hxx`:176 - `gp_Sphere::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Sphere_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Sphere.hxx`:180 - `gp_Sphere::Translated()`
     /// Translates a sphere in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Sphere> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Sphere_translated_vec(
                 self as *const Self,
@@ -10137,14 +10142,14 @@ impl Torus {
     }
 
     /// **Source:** `gp_Torus.hxx`:225 - `gp_Torus::Translate()`
-    pub fn translate_vec(&mut self, theV: &Vec) {
+    pub fn translate_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Torus_translate_vec(self as *mut Self, theV) }
     }
 
     /// **Source:** `gp_Torus.hxx`:229 - `gp_Torus::Translated()`
     /// Translates a torus in the direction of the vector theV.
     /// The magnitude of the translation is the vector's magnitude.
-    pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Torus> {
+    pub fn translated_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Torus_translated_vec(
                 self as *const Self,
@@ -10364,14 +10369,14 @@ impl Trsf {
 
     /// **Source:** `gp_Trsf.hxx`:173 - `gp_Trsf::SetTransformation()`
     /// Sets transformation by directly specified rotation and translation.
-    pub fn set_transformation_quaternion_vec(&mut self, R: &Quaternion, theT: &Vec) {
+    pub fn set_transformation_quaternion_vec(&mut self, R: &Quaternion, theT: &Vec_) {
         unsafe { crate::ffi::gp_Trsf_set_transformation_quaternion_vec(self as *mut Self, R, theT) }
     }
 
     /// **Source:** `gp_Trsf.hxx`:177 - `gp_Trsf::SetTranslation()`
     /// Changes the transformation into a translation.
     /// theV is the vector of the translation.
-    pub fn set_translation_vec(&mut self, theV: &Vec) {
+    pub fn set_translation_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Trsf_set_translation_vec(self as *mut Self, theV) }
     }
 
@@ -10384,7 +10389,7 @@ impl Trsf {
 
     /// **Source:** `gp_Trsf.hxx`:184 - `gp_Trsf::SetTranslationPart()`
     /// Replaces the translation vector with the vector theV.
-    pub fn set_translation_part(&mut self, theV: &Vec) {
+    pub fn set_translation_part(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Trsf_set_translation_part(self as *mut Self, theV) }
     }
 
@@ -10876,15 +10881,15 @@ impl Trsf2d {
 
 /// **Source:** `gp_Vec.hxx`:29 - `gp_Vec`
 /// Defines a non-persistent vector in 3D space.
-pub use crate::ffi::gp_Vec as Vec;
+pub use crate::ffi::gp_Vec as Vec_;
 
-unsafe impl crate::CppDeletable for Vec {
+unsafe impl crate::CppDeletable for Vec_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::gp_Vec_destructor(ptr);
     }
 }
 
-impl Vec {
+impl Vec_ {
     /// **Source:** `gp_Vec.hxx`:35 - `gp_Vec::gp_Vec()`
     /// Creates a zero vector.
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -11004,7 +11009,7 @@ impl Vec {
     /// for the magnitude and theAngularTolerance for the direction.
     pub fn is_equal(
         &self,
-        theOther: &Vec,
+        theOther: &Vec_,
         theLinearTolerance: f64,
         theAngularTolerance: f64,
     ) -> bool {
@@ -11022,7 +11027,7 @@ impl Vec {
     /// Returns True if abs(<me>.Angle(theOther) - PI/2.) <= theAngularTolerance
     /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
     /// theOther.Magnitude() <= Resolution from gp
-    pub fn is_normal(&self, theOther: &Vec, theAngularTolerance: f64) -> bool {
+    pub fn is_normal(&self, theOther: &Vec_, theAngularTolerance: f64) -> bool {
         unsafe { crate::ffi::gp_Vec_is_normal(self as *const Self, theOther, theAngularTolerance) }
     }
 
@@ -11030,7 +11035,7 @@ impl Vec {
     /// Returns True if PI - <me>.Angle(theOther) <= theAngularTolerance
     /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
     /// Other.Magnitude() <= Resolution from gp
-    pub fn is_opposite(&self, theOther: &Vec, theAngularTolerance: f64) -> bool {
+    pub fn is_opposite(&self, theOther: &Vec_, theAngularTolerance: f64) -> bool {
         unsafe {
             crate::ffi::gp_Vec_is_opposite(self as *const Self, theOther, theAngularTolerance)
         }
@@ -11043,7 +11048,7 @@ impl Vec {
     /// a plane but two vectors with opposite directions are considered
     /// as parallel. Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution or
     /// Other.Magnitude() <= Resolution from gp
-    pub fn is_parallel(&self, theOther: &Vec, theAngularTolerance: f64) -> bool {
+    pub fn is_parallel(&self, theOther: &Vec_, theAngularTolerance: f64) -> bool {
         unsafe {
             crate::ffi::gp_Vec_is_parallel(self as *const Self, theOther, theAngularTolerance)
         }
@@ -11055,7 +11060,7 @@ impl Vec {
     /// Raises VectorWithNullMagnitude if <me>.Magnitude() <= Resolution from gp or
     /// theOther.Magnitude() <= Resolution because the angular value is
     /// indefinite if one of the vectors has a null magnitude.
-    pub fn angle(&self, theOther: &Vec) -> f64 {
+    pub fn angle(&self, theOther: &Vec_) -> f64 {
         unsafe { crate::ffi::gp_Vec_angle(self as *const Self, theOther) }
     }
 
@@ -11074,7 +11079,7 @@ impl Vec {
     /// Standard_DomainError if this vector, the vector theOther,
     /// and the vector theVRef are coplanar, unless this vector and
     /// the vector theOther are parallel.
-    pub fn angle_with_ref(&self, theOther: &Vec, theVRef: &Vec) -> f64 {
+    pub fn angle_with_ref(&self, theOther: &Vec_, theVRef: &Vec_) -> f64 {
         unsafe { crate::ffi::gp_Vec_angle_with_ref(self as *const Self, theOther, theVRef) }
     }
 
@@ -11092,13 +11097,13 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:178 - `gp_Vec::Add()`
     /// Adds two vectors
-    pub fn add(&mut self, theOther: &Vec) {
+    pub fn add(&mut self, theOther: &Vec_) {
         unsafe { crate::ffi::gp_Vec_add(self as *mut Self, theOther) }
     }
 
     /// **Source:** `gp_Vec.hxx`:183 - `gp_Vec::Added()`
     /// Adds two vectors
-    pub fn added(&self, theOther: &Vec) -> crate::OwnedPtr<Vec> {
+    pub fn added(&self, theOther: &Vec_) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_added(self as *const Self, theOther))
         }
@@ -11106,13 +11111,13 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:193 - `gp_Vec::Subtract()`
     /// Subtracts two vectors
-    pub fn subtract(&mut self, theRight: &Vec) {
+    pub fn subtract(&mut self, theRight: &Vec_) {
         unsafe { crate::ffi::gp_Vec_subtract(self as *mut Self, theRight) }
     }
 
     /// **Source:** `gp_Vec.hxx`:198 - `gp_Vec::Subtracted()`
     /// Subtracts two vectors
-    pub fn subtracted(&self, theRight: &Vec) -> crate::OwnedPtr<Vec> {
+    pub fn subtracted(&self, theRight: &Vec_) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_subtracted(self as *const Self, theRight))
         }
@@ -11126,7 +11131,7 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:213 - `gp_Vec::Multiplied()`
     /// Multiplies a vector by a scalar
-    pub fn multiplied(&self, theScalar: f64) -> crate::OwnedPtr<Vec> {
+    pub fn multiplied(&self, theScalar: f64) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_multiplied(self as *const Self, theScalar))
         }
@@ -11140,7 +11145,7 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:231 - `gp_Vec::Divided()`
     /// Divides a vector by a scalar
-    pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<Vec> {
+    pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_divided(self as *const Self, theScalar))
         }
@@ -11148,13 +11153,13 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:244 - `gp_Vec::Cross()`
     /// computes the cross product between two vectors
-    pub fn cross(&mut self, theRight: &Vec) {
+    pub fn cross(&mut self, theRight: &Vec_) {
         unsafe { crate::ffi::gp_Vec_cross(self as *mut Self, theRight) }
     }
 
     /// **Source:** `gp_Vec.hxx`:249 - `gp_Vec::Crossed()`
     /// computes the cross product between two vectors
-    pub fn crossed(&self, theRight: &Vec) -> crate::OwnedPtr<Vec> {
+    pub fn crossed(&self, theRight: &Vec_) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_crossed(self as *const Self, theRight))
         }
@@ -11164,7 +11169,7 @@ impl Vec {
     /// Computes the magnitude of the cross
     /// product between <me> and theRight.
     /// Returns || <me> ^ theRight ||
-    pub fn cross_magnitude(&self, theRight: &Vec) -> f64 {
+    pub fn cross_magnitude(&self, theRight: &Vec_) -> f64 {
         unsafe { crate::ffi::gp_Vec_cross_magnitude(self as *const Self, theRight) }
     }
 
@@ -11172,21 +11177,21 @@ impl Vec {
     /// Computes the square magnitude of
     /// the cross product between <me> and theRight.
     /// Returns || <me> ^ theRight ||**2
-    pub fn cross_square_magnitude(&self, theRight: &Vec) -> f64 {
+    pub fn cross_square_magnitude(&self, theRight: &Vec_) -> f64 {
         unsafe { crate::ffi::gp_Vec_cross_square_magnitude(self as *const Self, theRight) }
     }
 
     /// **Source:** `gp_Vec.hxx`:276 - `gp_Vec::CrossCross()`
     /// Computes the triple vector product.
     /// <me> ^= (theV1 ^ theV2)
-    pub fn cross_cross(&mut self, theV1: &Vec, theV2: &Vec) {
+    pub fn cross_cross(&mut self, theV1: &Vec_, theV2: &Vec_) {
         unsafe { crate::ffi::gp_Vec_cross_cross(self as *mut Self, theV1, theV2) }
     }
 
     /// **Source:** `gp_Vec.hxx`:283 - `gp_Vec::CrossCrossed()`
     /// Computes the triple vector product.
     /// <me> ^ (theV1 ^ theV2)
-    pub fn cross_crossed(&self, theV1: &Vec, theV2: &Vec) -> crate::OwnedPtr<Vec> {
+    pub fn cross_crossed(&self, theV1: &Vec_, theV2: &Vec_) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_cross_crossed(
                 self as *const Self,
@@ -11198,13 +11203,13 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:291 - `gp_Vec::Dot()`
     /// computes the scalar product
-    pub fn dot(&self, theOther: &Vec) -> f64 {
+    pub fn dot(&self, theOther: &Vec_) -> f64 {
         unsafe { crate::ffi::gp_Vec_dot(self as *const Self, theOther) }
     }
 
     /// **Source:** `gp_Vec.hxx`:296 - `gp_Vec::DotCross()`
     /// Computes the triple scalar product <me> * (theV1 ^ theV2).
-    pub fn dot_cross(&self, theV1: &Vec, theV2: &Vec) -> f64 {
+    pub fn dot_cross(&self, theV1: &Vec_, theV2: &Vec_) -> f64 {
         unsafe { crate::ffi::gp_Vec_dot_cross(self as *const Self, theV1, theV2) }
     }
 
@@ -11220,7 +11225,7 @@ impl Vec {
     /// normalizes a vector
     /// Raises an exception if the magnitude of the vector is
     /// lower or equal to Resolution from gp.
-    pub fn normalized(&self) -> crate::OwnedPtr<Vec> {
+    pub fn normalized(&self) -> crate::OwnedPtr<Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_normalized(self as *const Self)) }
     }
 
@@ -11232,7 +11237,7 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:321 - `gp_Vec::Reversed()`
     /// Reverses the direction of a vector
-    pub fn reversed(&self) -> crate::OwnedPtr<Vec> {
+    pub fn reversed(&self) -> crate::OwnedPtr<Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_reversed(self as *const Self)) }
     }
 
@@ -11242,12 +11247,12 @@ impl Vec {
     pub fn set_linear_form_real_vec_real_vec_real_vec2(
         &mut self,
         theA1: f64,
-        theV1: &Vec,
+        theV1: &Vec_,
         theA2: f64,
-        theV2: &Vec,
+        theV2: &Vec_,
         theA3: f64,
-        theV3: &Vec,
-        theV4: &Vec,
+        theV3: &Vec_,
+        theV4: &Vec_,
     ) {
         unsafe {
             crate::ffi::gp_Vec_set_linear_form_real_vec_real_vec_real_vec2(
@@ -11269,11 +11274,11 @@ impl Vec {
     pub fn set_linear_form_real_vec_real_vec_real_vec(
         &mut self,
         theA1: f64,
-        theV1: &Vec,
+        theV1: &Vec_,
         theA2: f64,
-        theV2: &Vec,
+        theV2: &Vec_,
         theA3: f64,
-        theV3: &Vec,
+        theV3: &Vec_,
     ) {
         unsafe {
             crate::ffi::gp_Vec_set_linear_form_real_vec_real_vec_real_vec(
@@ -11294,10 +11299,10 @@ impl Vec {
     pub fn set_linear_form_real_vec_real_vec2(
         &mut self,
         theA1: f64,
-        theV1: &Vec,
+        theV1: &Vec_,
         theA2: f64,
-        theV2: &Vec,
-        theV3: &Vec,
+        theV2: &Vec_,
+        theV3: &Vec_,
     ) {
         unsafe {
             crate::ffi::gp_Vec_set_linear_form_real_vec_real_vec2(
@@ -11317,9 +11322,9 @@ impl Vec {
     pub fn set_linear_form_real_vec_real_vec(
         &mut self,
         theA1: f64,
-        theV1: &Vec,
+        theV1: &Vec_,
         theA2: f64,
-        theV2: &Vec,
+        theV2: &Vec_,
     ) {
         unsafe {
             crate::ffi::gp_Vec_set_linear_form_real_vec_real_vec(
@@ -11334,7 +11339,7 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:377 - `gp_Vec::SetLinearForm()`
     /// <me> is set to the following linear form : theA1 * theV1 + theV2
-    pub fn set_linear_form_real_vec2(&mut self, theA1: f64, theV1: &Vec, theV2: &Vec) {
+    pub fn set_linear_form_real_vec2(&mut self, theA1: f64, theV1: &Vec_, theV2: &Vec_) {
         unsafe {
             crate::ffi::gp_Vec_set_linear_form_real_vec2(self as *mut Self, theA1, theV1, theV2)
         }
@@ -11342,12 +11347,12 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:383 - `gp_Vec::SetLinearForm()`
     /// <me> is set to the following linear form : theV1 + theV2
-    pub fn set_linear_form_vec2(&mut self, theV1: &Vec, theV2: &Vec) {
+    pub fn set_linear_form_vec2(&mut self, theV1: &Vec_, theV2: &Vec_) {
         unsafe { crate::ffi::gp_Vec_set_linear_form_vec2(self as *mut Self, theV1, theV2) }
     }
 
     /// **Source:** `gp_Vec.hxx`:388 - `gp_Vec::Mirror()`
-    pub fn mirror_vec(&mut self, theV: &Vec) {
+    pub fn mirror_vec(&mut self, theV: &Vec_) {
         unsafe { crate::ffi::gp_Vec_mirror_vec(self as *mut Self, theV) }
     }
 
@@ -11355,7 +11360,7 @@ impl Vec {
     /// Performs the symmetrical transformation of a vector
     /// with respect to the vector theV which is the center of
     /// the  symmetry.
-    pub fn mirrored_vec(&self, theV: &Vec) -> crate::OwnedPtr<Vec> {
+    pub fn mirrored_vec(&self, theV: &Vec_) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_mirrored_vec(self as *const Self, theV))
         }
@@ -11370,7 +11375,7 @@ impl Vec {
     /// Performs the symmetrical transformation of a vector
     /// with respect to an axis placement which is the axis
     /// of the symmetry.
-    pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Vec> {
+    pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_mirrored_ax1(self as *const Self, theA1))
         }
@@ -11385,7 +11390,7 @@ impl Vec {
     /// Performs the symmetrical transformation of a vector
     /// with respect to a plane. The axis placement theA2 locates
     /// the plane of the symmetry : (Location, XDirection, YDirection).
-    pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Vec> {
+    pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_mirrored_ax2(self as *const Self, theA2))
         }
@@ -11399,7 +11404,7 @@ impl Vec {
     /// **Source:** `gp_Vec.hxx`:413 - `gp_Vec::Rotated()`
     /// Rotates a vector. theA1 is the axis of the rotation.
     /// theAng is the angular value of the rotation in radians.
-    pub fn rotated(&self, theA1: &Ax1, theAng: f64) -> crate::OwnedPtr<Vec> {
+    pub fn rotated(&self, theA1: &Ax1, theAng: f64) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_rotated(
                 self as *const Self,
@@ -11416,7 +11421,7 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:423 - `gp_Vec::Scaled()`
     /// Scales a vector. theS is the scaling value.
-    pub fn scaled(&self, theS: f64) -> crate::OwnedPtr<Vec> {
+    pub fn scaled(&self, theS: f64) -> crate::OwnedPtr<Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_scaled(self as *const Self, theS)) }
     }
 
@@ -11428,7 +11433,7 @@ impl Vec {
 
     /// **Source:** `gp_Vec.hxx`:434 - `gp_Vec::Transformed()`
     /// Transforms a vector with the transformation theT.
-    pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Vec> {
+    pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::gp_Vec_transformed(self as *const Self, theT))
         }

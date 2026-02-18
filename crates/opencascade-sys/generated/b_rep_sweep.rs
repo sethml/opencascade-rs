@@ -658,7 +658,7 @@ impl Prism {
     /// are attempted to be canonized in simple types
     pub fn new_shape_vec_bool2(
         S: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         Copy: bool,
         Canonize: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -695,7 +695,7 @@ impl Prism {
     /// are attempted to be canonized in simple types
     pub fn new_shape_vec_bool(
         S: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         Copy: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_vec_bool2(S, V, Copy, true)
@@ -705,7 +705,7 @@ impl Prism {
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
-    pub fn new_shape_vec(S: &crate::topo_ds::Shape, V: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_shape_vec(S: &crate::topo_ds::Shape, V: &crate::gp::Vec_) -> crate::OwnedPtr<Self> {
         Self::new_shape_vec_bool2(S, V, false, true)
     }
 
@@ -820,7 +820,7 @@ impl Prism {
     /// **Source:** `BRepSweep_Prism.hxx`:83 - `BRepSweep_Prism::Vec()`
     /// Returns the Vector of the Prism,  if it is an infinite
     /// prism the Vec is unitar.
-    pub fn vec(&self) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn vec(&self) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Prism_vec(self as *const Self)) }
     }
 
@@ -1599,7 +1599,7 @@ impl Translation {
         S: &crate::topo_ds::Shape,
         N: &crate::sweep::NumShape,
         L: &crate::top_loc::Location,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         C: bool,
         Canonize: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -1621,7 +1621,7 @@ impl Translation {
         S: &crate::topo_ds::Shape,
         N: &crate::sweep::NumShape,
         L: &crate::top_loc::Location,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         C: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_numshape_location_vec_bool2(S, N, L, V, C, true)
@@ -1961,7 +1961,7 @@ impl Translation {
     /// **Source:** `BRepSweep_Translation.hxx`:179 - `BRepSweep_Translation::Vec()`
     /// Returns the Vector of the Prism,  if it is an infinite
     /// prism the Vec is unitar.
-    pub fn vec(&self) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn vec(&self) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepSweep_Translation_vec(self as *const Self))
         }

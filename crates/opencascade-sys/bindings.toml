@@ -224,18 +224,8 @@ modules = [
 # Exclude specific headers (even if their module is in `modules` above).
 exclude_headers = [
 
-    # Transfer_Finder: GetStringAttribute has const char*& output parameter.
-    # Now handled: method is skipped with warning, needs manual binding.
-    # "Transfer_Finder.hxx",
-
-    # BRepFill_AdvancedEvolved: SetTemporaryDirectory has const char* const& parameter.
-    # Now handled: method is skipped with warning, needs manual binding.
-    # "BRepFill_AdvancedEvolved.hxx",
-
-    # Protected operator new/delete: class has protected allocation operators
-    # (inherited from Message_ProgressScope), can't use std::make_unique.
-    "Message_ProgressScope.hxx",
-    "Message_ProgressSentry.hxx",
+    # Protected inheritance from Message_ProgressScope makes operator new/delete
+    # protected; the class cannot be heap-allocated via std::make_unique.
     "Message_LazyProgressScope.hxx",
 
     # No suitable operator delete for Poly_CoherentTriPtr.
@@ -279,19 +269,6 @@ exclude_headers = [
 
     # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.
     "RWObj_MtlReader.hxx",
-
-    # BRepCheck_Result: the local re-export name "Result" collides with Rust's
-    # prelude Result<T,E> type, and upcast methods reference "Result_" which
-    # doesn't exist. All BRepCheck classes that inherit from BRepCheck_Result
-    # are affected.
-    "BRepCheck_Result.hxx",
-    "BRepCheck_Analyzer.hxx",
-    "BRepCheck_Edge.hxx",
-    "BRepCheck_Face.hxx",
-    "BRepCheck_Shell.hxx",
-    "BRepCheck_Solid.hxx",
-    "BRepCheck_Vertex.hxx",
-    "BRepCheck_Wire.hxx",
 
     # XSControl_Vars: const char*& output parameter (name) mishandled by generator.
     "XSControl_Vars.hxx",
@@ -394,14 +371,20 @@ resolve_deps = true
 #    RWGltf_GltfSceneNodeMap, RWGltf_CafReader, RWMesh_FaceIterator,
 #    RWObj_CafReader, StdStorage_Root
 #
-# 5. Name Collisions and Method Conflicts
-#    ────────────────────────────────────
+# 5. Name Collisions and Method Conflicts (PARTIALLY SOLVED)
+#    ─────────────────────────────────────────────────────────
 #    Some headers produce duplicate method names or conflict with Rust
 #    reserved words in ways the generator can't resolve.
 #
-#    Affected: TObj_HiddenPartition (duplicate new_label method from static
-#    constructor and inherited method), IntPatch_WLine/IntPatch_ImpImpIntersection
-#    (name conflicts or unmapped operator types).
+#    Rust prelude collision (SOLVED): BRepCheck_Result's short name "Result"
+#    collided with Rust's prelude Result<T,E>. Fixed by applying safe_short_name()
+#    consistently in codegen — reserved names get trailing underscore (Result_).
+#    All 8 BRepCheck headers now unblocked.
+#
+#    Remaining: TObj_HiddenPartition (duplicate new_label method from static
+#    constructor and inherited method), TDataStd_NamedData (PascalCase vs
+#    camelCase methods colliding in snake_case), IntPatch_WLine/
+#    IntPatch_ImpImpIntersection (name conflicts or unmapped operator types).
 #
 # 6. Modules Not Included (Intentionally Excluded)
 #    ─────────────────────────────────────────────

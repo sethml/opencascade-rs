@@ -4089,7 +4089,7 @@ impl ShapeTool {
     /// If the given bounding box is void leaves the resulting value unchanged.
     /// @param theBox bounding box to be processed.
     /// @param theMaxDimension maximum dimension of the given box.
-    pub fn box_max_dimension(theBox: &crate::bnd::Box, theMaxDimension: &mut f64) {
+    pub fn box_max_dimension(theBox: &crate::bnd::Box_, theMaxDimension: &mut f64) {
         unsafe { crate::ffi::BRepMesh_ShapeTool_box_max_dimension(theBox, theMaxDimension) }
     }
 

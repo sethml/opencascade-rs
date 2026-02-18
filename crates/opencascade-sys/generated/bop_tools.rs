@@ -932,7 +932,7 @@ impl AlgoTools2D {
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:50 - `BOPTools_AlgoTools2D::EdgeTangent()`
     /// Compute tangent for the edge  <aE> [in 3D]  at parameter <aT>
-    pub fn edge_tangent(anE: &crate::topo_ds::Edge, aT: f64, Tau: &mut crate::gp::Vec) -> bool {
+    pub fn edge_tangent(anE: &crate::topo_ds::Edge, aT: f64, Tau: &mut crate::gp::Vec_) -> bool {
         unsafe { crate::ffi::BOPTools_AlgoTools2D_edge_tangent(anE, aT, Tau) }
     }
 

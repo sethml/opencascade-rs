@@ -330,8 +330,8 @@ impl DistanceSS {
     pub fn new_shape2_box2_real2_extflag_extalgo(
         theS1: &crate::topo_ds::Shape,
         theS2: &crate::topo_ds::Shape,
-        theBox1: &crate::bnd::Box,
-        theBox2: &crate::bnd::Box,
+        theBox1: &crate::bnd::Box_,
+        theBox2: &crate::bnd::Box_,
         theDstRef: f64,
         theDeflection: f64,
         theExtFlag: i32,

@@ -503,7 +503,7 @@ impl EdgeTool {
         C: &crate::b_rep_adaptor::Curve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::BRepGProp_EdgeTool_d1(C, U, P, V1) }
     }
@@ -671,7 +671,7 @@ impl Face {
     /// **Source:** `BRepGProp_Face.hxx`:98 - `BRepGProp_Face::Normal()`
     /// Computes the point of parameter U, V on the Face <S> and
     /// the normal to the face at this point.
-    pub fn normal(&self, U: f64, V: f64, P: &mut crate::gp::Pnt, VNor: &mut crate::gp::Vec) {
+    pub fn normal(&self, U: f64, V: f64, P: &mut crate::gp::Pnt, VNor: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::BRepGProp_Face_normal(self as *const Self, U, V, P, VNor) }
     }
 

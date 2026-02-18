@@ -542,7 +542,7 @@ impl BCurveTool {
         C: &crate::b_rep_adaptor::Curve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V: &mut crate::gp::Vec,
+        V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::HLRBRep_BCurveTool_d1(C, U, P, V) }
     }
@@ -556,8 +556,8 @@ impl BCurveTool {
         C: &crate::b_rep_adaptor::Curve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::HLRBRep_BCurveTool_d2(C, U, P, V1, V2) }
     }
@@ -571,9 +571,9 @@ impl BCurveTool {
         C: &crate::b_rep_adaptor::Curve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::HLRBRep_BCurveTool_d3(C, U, P, V1, V2, V3) }
     }
@@ -584,7 +584,7 @@ impl BCurveTool {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(C: &crate::b_rep_adaptor::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(C: &crate::b_rep_adaptor::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_BCurveTool_dn(C, U, N)) }
     }
 
@@ -829,8 +829,8 @@ impl BSurfaceTool {
         u: f64,
         v: f64,
         P: &mut crate::gp::Pnt,
-        D1u: &mut crate::gp::Vec,
-        D1v: &mut crate::gp::Vec,
+        D1u: &mut crate::gp::Vec_,
+        D1v: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::HLRBRep_BSurfaceTool_d1(S, u, v, P, D1u, D1v) }
     }
@@ -841,11 +841,11 @@ impl BSurfaceTool {
         u: f64,
         v: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::HLRBRep_BSurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV) }
     }
@@ -856,15 +856,15 @@ impl BSurfaceTool {
         u: f64,
         v: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::HLRBRep_BSurfaceTool_d3(
@@ -880,7 +880,7 @@ impl BSurfaceTool {
         v: f64,
         Nu: i32,
         Nv: i32,
-    ) -> crate::OwnedPtr<crate::gp::Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_BSurfaceTool_dn(S, u, v, Nu, Nv)) }
     }
 
@@ -1527,7 +1527,7 @@ impl Curve {
     /// **Source:** `HLRBRep_Curve.hxx`:96 - `HLRBRep_Curve::D1()`
     /// Computes the point of parameter  U on the curve
     /// with its first derivative.
-    pub fn d1_real_pnt_vec(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
+    pub fn d1_real_pnt_vec(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::HLRBRep_Curve_d1_real_pnt_vec(self as *const Self, U, P, V) }
     }
 
@@ -4029,7 +4029,7 @@ impl LineTool {
     /// first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(C: &crate::gp::Lin, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
+    pub fn d1(C: &crate::gp::Lin, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::HLRBRep_LineTool_d1(C, U, P, V) }
     }
 
@@ -4042,8 +4042,8 @@ impl LineTool {
         C: &crate::gp::Lin,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::HLRBRep_LineTool_d2(C, U, P, V1, V2) }
     }
@@ -4057,9 +4057,9 @@ impl LineTool {
         C: &crate::gp::Lin,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::HLRBRep_LineTool_d3(C, U, P, V1, V2, V3) }
     }
@@ -4070,7 +4070,7 @@ impl LineTool {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(C: &crate::gp::Lin, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(C: &crate::gp::Lin, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_LineTool_dn(C, U, N)) }
     }
 
@@ -5011,35 +5011,35 @@ impl SLProps {
     /// **Source:** `HLRBRep_SLProps.hxx`:82 - `HLRBRep_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1u(&mut self) -> &crate::gp::Vec {
+    pub fn d1u(&mut self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::HLRBRep_SLProps_d1u(self as *mut Self)) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:86 - `HLRBRep_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d1v(&mut self) -> &crate::gp::Vec {
+    pub fn d1v(&mut self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::HLRBRep_SLProps_d1v(self as *mut Self)) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:90 - `HLRBRep_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
-    pub fn d2u(&mut self) -> &crate::gp::Vec {
+    pub fn d2u(&mut self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::HLRBRep_SLProps_d2u(self as *mut Self)) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:94 - `HLRBRep_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn d2v(&mut self) -> &crate::gp::Vec {
+    pub fn d2v(&mut self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::HLRBRep_SLProps_d2v(self as *mut Self)) }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:98 - `HLRBRep_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
-    pub fn duv(&mut self) -> &crate::gp::Vec {
+    pub fn duv(&mut self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::HLRBRep_SLProps_duv(self as *mut Self)) }
     }
 
@@ -5388,8 +5388,8 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::HLRBRep_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -5404,11 +5404,11 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::HLRBRep_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
@@ -5425,15 +5425,15 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::HLRBRep_Surface_d3(
@@ -5461,7 +5461,7 @@ impl Surface {
     /// Raised if the current U  interval is not not CNu
     /// and the current V interval is not CNv.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_Surface_dn(
                 self as *const Self,
@@ -6776,7 +6776,7 @@ impl ThePolygonOfInterCSurf {
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:51 - `HLRBRep_ThePolygonOfInterCSurf::Bounding()`
     /// Give the bounding box of the polygon.
-    pub fn bounding(&self) -> &crate::bnd::Box {
+    pub fn bounding(&self) -> &crate::bnd::Box_ {
         unsafe { &*(crate::ffi::HLRBRep_ThePolygonOfInterCSurf_bounding(self as *const Self)) }
     }
 
@@ -6889,7 +6889,7 @@ impl ThePolygonToolOfInterCSurf {
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:37 - `HLRBRep_ThePolygonToolOfInterCSurf::Bounding()`
     /// Give the bounding box of the polygon.
-    pub fn bounding(thePolygon: &ThePolygonOfInterCSurf) -> &'static crate::bnd::Box {
+    pub fn bounding(thePolygon: &ThePolygonOfInterCSurf) -> &'static crate::bnd::Box_ {
         unsafe { &*(crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_bounding(thePolygon)) }
     }
 
@@ -7061,7 +7061,7 @@ impl ThePolyhedronOfInterCSurf {
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:117 - `HLRBRep_ThePolyhedronOfInterCSurf::Bounding()`
     /// Give the bounding box of the MaTriangle.
-    pub fn bounding(&self) -> &crate::bnd::Box {
+    pub fn bounding(&self) -> &crate::bnd::Box_ {
         unsafe { &*(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_bounding(self as *const Self)) }
     }
 
@@ -7215,7 +7215,7 @@ impl ThePolyhedronToolOfInterCSurf {
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:39 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Bounding()`
     /// Give the bounding box of the PolyhedronTool.
-    pub fn bounding(thePolyh: &ThePolyhedronOfInterCSurf) -> &'static crate::bnd::Box {
+    pub fn bounding(thePolyh: &ThePolyhedronOfInterCSurf) -> &'static crate::bnd::Box_ {
         unsafe { &*(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_bounding(thePolyh)) }
     }
 

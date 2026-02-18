@@ -668,7 +668,12 @@ impl CurveTool {
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:81 - `Extrema_CurveTool::D1()`
-    pub fn d1(C: &crate::adaptor3d::Curve, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
+    pub fn d1(
+        C: &crate::adaptor3d::Curve,
+        U: f64,
+        P: &mut crate::gp::Pnt,
+        V: &mut crate::gp::Vec_,
+    ) {
         unsafe { crate::ffi::Extrema_CurveTool_d1(C, U, P, V) }
     }
 
@@ -677,8 +682,8 @@ impl CurveTool {
         C: &crate::adaptor3d::Curve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Extrema_CurveTool_d2(C, U, P, V1, V2) }
     }
@@ -688,15 +693,15 @@ impl CurveTool {
         C: &crate::adaptor3d::Curve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Extrema_CurveTool_d3(C, U, P, V1, V2, V3) }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:96 - `Extrema_CurveTool::DN()`
-    pub fn dn(C: &crate::adaptor3d::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(C: &crate::adaptor3d::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_CurveTool_dn(C, U, N)) }
     }
 

@@ -790,7 +790,7 @@ impl MakeDir {
     /// **Source:** `gce_MakeDir.hxx`:44 - `gce_MakeDir::gce_MakeDir()`
     /// Normalizes the vector V and creates a direction.
     /// Status is "NullVector" if V.Magnitude() <= Resolution.
-    pub fn new_vec(V: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_vec(V: &crate::gp::Vec_) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeDir_ctor_vec(V)) }
     }
 
@@ -2460,7 +2460,7 @@ unsafe impl crate::CppDeletable for MakeTranslation {
 impl MakeTranslation {
     /// **Source:** `gce_MakeTranslation.hxx`:40 - `gce_MakeTranslation::gce_MakeTranslation()`
     /// Constructs a translation along the vector " Vect"
-    pub fn new_vec(Vect: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_vec(Vect: &crate::gp::Vec_) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::gce_MakeTranslation_ctor_vec(Vect)) }
     }
 

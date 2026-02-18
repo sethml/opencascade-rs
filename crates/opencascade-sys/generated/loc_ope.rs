@@ -903,7 +903,7 @@ impl LinearForm {
     /// **Source:** `LocOpe_LinearForm.hxx`:38 - `LocOpe_LinearForm::LocOpe_LinearForm()`
     pub fn new_shape_vec_pnt2(
         Base: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         Pnt1: &crate::gp::Pnt,
         Pnt2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
@@ -917,8 +917,8 @@ impl LinearForm {
     /// **Source:** `LocOpe_LinearForm.hxx`:43 - `LocOpe_LinearForm::LocOpe_LinearForm()`
     pub fn new_shape_vec2_pnt2(
         Base: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
-        Vectra: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
+        Vectra: &crate::gp::Vec_,
         Pnt1: &crate::gp::Pnt,
         Pnt2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
@@ -933,7 +933,7 @@ impl LinearForm {
     pub fn perform_shape_vec_pnt2(
         &mut self,
         Base: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         Pnt1: &crate::gp::Pnt,
         Pnt2: &crate::gp::Pnt,
     ) {
@@ -952,8 +952,8 @@ impl LinearForm {
     pub fn perform_shape_vec2_pnt2(
         &mut self,
         Base: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
-        Vectra: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
+        Vectra: &crate::gp::Vec_,
         Pnt1: &crate::gp::Pnt,
         Pnt2: &crate::gp::Pnt,
     ) {
@@ -1161,7 +1161,7 @@ impl Prism {
     /// **Source:** `LocOpe_Prism.hxx`:40 - `LocOpe_Prism::LocOpe_Prism()`
     pub fn new_shape_vec(
         Base: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Prism_ctor_shape_vec(Base, V)) }
     }
@@ -1169,8 +1169,8 @@ impl Prism {
     /// **Source:** `LocOpe_Prism.hxx`:42 - `LocOpe_Prism::LocOpe_Prism()`
     pub fn new_shape_vec2(
         Base: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
-        Vectra: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
+        Vectra: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Prism_ctor_shape_vec2(Base, V, Vectra))
@@ -1178,7 +1178,7 @@ impl Prism {
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:44 - `LocOpe_Prism::Perform()`
-    pub fn perform_shape_vec(&mut self, Base: &crate::topo_ds::Shape, V: &crate::gp::Vec) {
+    pub fn perform_shape_vec(&mut self, Base: &crate::topo_ds::Shape, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::LocOpe_Prism_perform_shape_vec(self as *mut Self, Base, V) }
     }
 
@@ -1186,8 +1186,8 @@ impl Prism {
     pub fn perform_shape_vec2(
         &mut self,
         Base: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
-        Vtra: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
+        Vtra: &crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::LocOpe_Prism_perform_shape_vec2(self as *mut Self, Base, V, Vtra) }
     }

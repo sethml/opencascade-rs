@@ -193,7 +193,7 @@ impl Axis1Placement {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Axis1Placement_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -253,7 +253,7 @@ impl Axis1Placement {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Axis1Placement_inherited_Translated(
@@ -550,7 +550,7 @@ impl Axis2Placement {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Axis2Placement_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -610,7 +610,7 @@ impl Axis2Placement {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Axis2Placement_inherited_Translated(
@@ -811,7 +811,7 @@ impl AxisPlacement {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_AxisPlacement_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -876,7 +876,7 @@ impl AxisPlacement {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_AxisPlacement_inherited_Translated(
@@ -1641,7 +1641,7 @@ impl BSplineCurve {
 
     /// **Source:** `Geom_BSplineCurve.hxx`:522 - `Geom_BSplineCurve::D1()`
     /// Raised if the continuity of the curve is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BSplineCurve_d1(self as *const Self, U, P, V1) }
     }
 
@@ -1651,8 +1651,8 @@ impl BSplineCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_BSplineCurve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -1663,9 +1663,9 @@ impl BSplineCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_BSplineCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -1693,7 +1693,7 @@ impl BSplineCurve {
     /// the same as if we consider the whole definition of the
     /// curve. Of course the evaluations are different outside
     /// this parametric domain.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineCurve_dn(self as *const Self, U, N))
         }
@@ -1728,7 +1728,7 @@ impl BSplineCurve {
         FromK1: i32,
         ToK2: i32,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BSplineCurve_local_d1(self as *const Self, U, FromK1, ToK2, P, V1)
@@ -1745,8 +1745,8 @@ impl BSplineCurve {
         FromK1: i32,
         ToK2: i32,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BSplineCurve_local_d2(self as *const Self, U, FromK1, ToK2, P, V1, V2)
@@ -1763,9 +1763,9 @@ impl BSplineCurve {
         FromK1: i32,
         ToK2: i32,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BSplineCurve_local_d3(
@@ -1792,7 +1792,7 @@ impl BSplineCurve {
         FromK1: i32,
         ToK2: i32,
         N: i32,
-    ) -> crate::OwnedPtr<crate::gp::Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineCurve_local_dn(
                 self as *const Self,
@@ -2211,7 +2211,7 @@ impl BSplineCurve {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BSplineCurve_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -2271,7 +2271,7 @@ impl BSplineCurve {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineCurve_inherited_Translated(
@@ -3940,8 +3940,8 @@ impl BSplineSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_BSplineSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -3953,11 +3953,11 @@ impl BSplineSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BSplineSurface_d2(
@@ -3981,15 +3981,15 @@ impl BSplineSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BSplineSurface_d3(
@@ -4032,7 +4032,7 @@ impl BSplineSurface {
     /// the evaluations are the same as if we consider the whole
     /// definition of the surface. Of course the evaluations are
     /// different outside this parametric domain.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_dn(
                 self as *const Self,
@@ -4083,8 +4083,8 @@ impl BSplineSurface {
         FromVK1: i32,
         ToVK2: i32,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BSplineSurface_local_d1(
@@ -4115,11 +4115,11 @@ impl BSplineSurface {
         FromVK1: i32,
         ToVK2: i32,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BSplineSurface_local_d2(
@@ -4153,15 +4153,15 @@ impl BSplineSurface {
         FromVK1: i32,
         ToVK2: i32,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BSplineSurface_local_d3(
@@ -4201,7 +4201,7 @@ impl BSplineSurface {
         ToVK2: i32,
         Nu: i32,
         Nv: i32,
-    ) -> crate::OwnedPtr<crate::gp::Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_local_dn(
                 self as *const Self,
@@ -4492,7 +4492,7 @@ impl BSplineSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BSplineSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -4552,7 +4552,7 @@ impl BSplineSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_inherited_Translated(
@@ -4917,7 +4917,7 @@ impl BezierCurve {
     }
 
     /// **Source:** `Geom_BezierCurve.hxx`:239 - `Geom_BezierCurve::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BezierCurve_d1(self as *const Self, U, P, V1) }
     }
 
@@ -4926,8 +4926,8 @@ impl BezierCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_BezierCurve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -4944,9 +4944,9 @@ impl BezierCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_BezierCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -4956,7 +4956,7 @@ impl BezierCurve {
     /// computes the vector corresponding to the Nth derivative.
     /// Note: the parameter U can be outside the bounds of the curve.
     /// Exceptions Standard_RangeError if N is less than 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierCurve_dn(self as *const Self, U, N))
         }
@@ -5175,7 +5175,7 @@ impl BezierCurve {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BezierCurve_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -5235,7 +5235,7 @@ impl BezierCurve {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierCurve_inherited_Translated(
@@ -5944,8 +5944,8 @@ impl BezierSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_BezierSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -5956,11 +5956,11 @@ impl BezierSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BezierSurface_d2(
@@ -5991,15 +5991,15 @@ impl BezierSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BezierSurface_d3(
@@ -6028,7 +6028,7 @@ impl BezierSurface {
     /// Exceptions
     /// Standard_RangeError if:
     /// - Nu + Nv is less than 1, or Nu or Nv is negative.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_dn(
                 self as *const Self,
@@ -6372,7 +6372,7 @@ impl BezierSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BezierSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -6432,7 +6432,7 @@ impl BezierSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_inherited_Translated(
@@ -6659,7 +6659,7 @@ impl BoundedCurve {
     }
 
     /// Inherited: **Source:** `Geom_Curve.hxx`:184 - `Geom_Curve::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BoundedCurve_inherited_D1(self as *const Self, U, P, V1) }
     }
 
@@ -6668,8 +6668,8 @@ impl BoundedCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_BoundedCurve_inherited_D2(self as *const Self, U, P, V1, V2) }
     }
@@ -6679,15 +6679,15 @@ impl BoundedCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_BoundedCurve_inherited_D3(self as *const Self, U, P, V1, V2, V3) }
     }
 
     /// Inherited: **Source:** `Geom_Curve.hxx`:210 - `Geom_Curve::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedCurve_inherited_DN(
                 self as *const Self,
@@ -6723,7 +6723,7 @@ impl BoundedCurve {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BoundedCurve_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -6788,7 +6788,7 @@ impl BoundedCurve {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedCurve_inherited_Translated(
@@ -7135,8 +7135,8 @@ impl BoundedSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BoundedSurface_inherited_D1(self as *const Self, U, V, P, D1U, D1V)
@@ -7149,11 +7149,11 @@ impl BoundedSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BoundedSurface_inherited_D2(
@@ -7176,15 +7176,15 @@ impl BoundedSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_BoundedSurface_inherited_D3(
@@ -7206,7 +7206,7 @@ impl BoundedSurface {
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:267 - `Geom_Surface::DN()`
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_DN(
                 self as *const Self,
@@ -7245,7 +7245,7 @@ impl BoundedSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_BoundedSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -7310,7 +7310,7 @@ impl BoundedSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_BoundedSurface_inherited_Translated(
@@ -7604,7 +7604,7 @@ impl CartesianPoint {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_CartesianPoint_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -7664,7 +7664,7 @@ impl CartesianPoint {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_CartesianPoint_inherited_Translated(
@@ -7855,7 +7855,7 @@ impl Circle {
 
     /// **Source:** `Geom_Circle.hxx`:127 - `Geom_Circle::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Circle_d1(self as *const Self, U, P, V1) }
     }
 
@@ -7866,8 +7866,8 @@ impl Circle {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Circle_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -7879,9 +7879,9 @@ impl Circle {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Circle_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -7890,7 +7890,7 @@ impl Circle {
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Circle_dn(self as *const Self, U, N)) }
     }
 
@@ -8076,7 +8076,7 @@ impl Circle {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Circle_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -8136,7 +8136,7 @@ impl Circle {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Circle_inherited_Translated(
@@ -8426,7 +8426,7 @@ impl Conic {
     }
 
     /// Inherited: **Source:** `Geom_Curve.hxx`:184 - `Geom_Curve::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Conic_inherited_D1(self as *const Self, U, P, V1) }
     }
 
@@ -8435,8 +8435,8 @@ impl Conic {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Conic_inherited_D2(self as *const Self, U, P, V1, V2) }
     }
@@ -8446,15 +8446,15 @@ impl Conic {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Conic_inherited_D3(self as *const Self, U, P, V1, V2, V3) }
     }
 
     /// Inherited: **Source:** `Geom_Curve.hxx`:210 - `Geom_Curve::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Conic_inherited_DN(
                 self as *const Self,
@@ -8490,7 +8490,7 @@ impl Conic {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Conic_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -8555,7 +8555,7 @@ impl Conic {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Conic_inherited_Translated(
@@ -9006,8 +9006,8 @@ impl ConicalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_ConicalSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -9019,11 +9019,11 @@ impl ConicalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_ConicalSurface_d2(
@@ -9048,15 +9048,15 @@ impl ConicalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_ConicalSurface_d3(
@@ -9085,7 +9085,7 @@ impl ConicalSurface {
     /// Standard_RangeError if:
     /// - Nu + Nv is less than 1,
     /// - Nu or Nv is negative.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_dn(
                 self as *const Self,
@@ -9283,7 +9283,7 @@ impl ConicalSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_ConicalSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -9343,7 +9343,7 @@ impl ConicalSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_ConicalSurface_inherited_Translated(
@@ -9607,7 +9607,7 @@ impl Curve {
     /// **Source:** `Geom_Curve.hxx`:184 - `Geom_Curve::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
     /// Raised if the continuity of the curve is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Curve_d1(self as *const Self, U, P, V1) }
     }
 
@@ -9619,8 +9619,8 @@ impl Curve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Curve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -9633,9 +9633,9 @@ impl Curve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Curve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -9648,7 +9648,7 @@ impl Curve {
     /// Raised if the   derivative  cannot  be  computed
     /// easily. e.g. rational bspline and n > 3.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Curve_dn(self as *const Self, U, N)) }
     }
 
@@ -9711,7 +9711,7 @@ impl Curve {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Curve_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -9776,7 +9776,7 @@ impl Curve {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Curve_inherited_Translated(
@@ -10234,8 +10234,8 @@ impl CylindricalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_CylindricalSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -10248,11 +10248,11 @@ impl CylindricalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_CylindricalSurface_d2(
@@ -10277,15 +10277,15 @@ impl CylindricalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_CylindricalSurface_d3(
@@ -10310,7 +10310,7 @@ impl CylindricalSurface {
     /// Computes the derivative of order Nu in the direction u and Nv
     /// in the direction v.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_dn(
                 self as *const Self,
@@ -10523,7 +10523,7 @@ impl CylindricalSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_CylindricalSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -10583,7 +10583,7 @@ impl CylindricalSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_CylindricalSurface_inherited_Translated(
@@ -10914,7 +10914,7 @@ impl Direction {
     }
 
     /// Inherited: **Source:** `Geom_Vector.hxx`:125 - `Geom_Vector::Vec()`
-    pub fn vec(&self) -> &crate::gp::Vec {
+    pub fn vec(&self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::Geom_Direction_inherited_Vec(self as *const Self)) }
     }
 
@@ -10934,7 +10934,7 @@ impl Direction {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Direction_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -10994,7 +10994,7 @@ impl Direction {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Direction_inherited_Translated(
@@ -11346,8 +11346,8 @@ impl ElementarySurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_ElementarySurface_inherited_D1(self as *const Self, U, V, P, D1U, D1V)
@@ -11360,11 +11360,11 @@ impl ElementarySurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_ElementarySurface_inherited_D2(
@@ -11387,15 +11387,15 @@ impl ElementarySurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_ElementarySurface_inherited_D3(
@@ -11417,7 +11417,7 @@ impl ElementarySurface {
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:267 - `Geom_Surface::DN()`
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_DN(
                 self as *const Self,
@@ -11456,7 +11456,7 @@ impl ElementarySurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_ElementarySurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -11521,7 +11521,7 @@ impl ElementarySurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_ElementarySurface_inherited_Translated(
@@ -11902,7 +11902,7 @@ impl Ellipse {
     }
 
     /// **Source:** `Geom_Ellipse.hxx`:187 - `Geom_Ellipse::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Ellipse_d1(self as *const Self, U, P, V1) }
     }
 
@@ -11913,8 +11913,8 @@ impl Ellipse {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Ellipse_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -11926,9 +11926,9 @@ impl Ellipse {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Ellipse_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -11937,7 +11937,7 @@ impl Ellipse {
     /// For the point of parameter U of this ellipse, computes
     /// the vector corresponding to the Nth derivative.
     /// Exceptions Standard_RangeError if N is less than 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Ellipse_dn(self as *const Self, U, N)) }
     }
 
@@ -12125,7 +12125,7 @@ impl Ellipse {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Ellipse_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -12185,7 +12185,7 @@ impl Ellipse {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Ellipse_inherited_Translated(
@@ -12313,7 +12313,7 @@ impl Geometry {
 
     /// **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
     /// Translates a Geometry.  V is the vector of the translation.
-    pub fn translate_vec(&mut self, V: &crate::gp::Vec) {
+    pub fn translate_vec(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Geometry_translate_vec(self as *mut Self, V) }
     }
 
@@ -12411,7 +12411,7 @@ impl Geometry {
     /// **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated_vec(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Geometry_translated_vec(
@@ -13367,7 +13367,7 @@ impl Hyperbola {
 
     /// **Source:** `Geom_Hyperbola.hxx`:236 - `Geom_Hyperbola::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Hyperbola_d1(self as *const Self, U, P, V1) }
     }
 
@@ -13378,8 +13378,8 @@ impl Hyperbola {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Hyperbola_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -13391,9 +13391,9 @@ impl Hyperbola {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Hyperbola_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -13402,7 +13402,7 @@ impl Hyperbola {
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Hyperbola_dn(self as *const Self, U, N))
         }
@@ -13598,7 +13598,7 @@ impl Hyperbola {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Hyperbola_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -13658,7 +13658,7 @@ impl Hyperbola {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Hyperbola_inherited_Translated(
@@ -13865,7 +13865,7 @@ impl Line {
 
     /// **Source:** `Geom_Line.hxx`:118 - `Geom_Line::D1()`
     /// Returns the point P of parameter u and the first derivative V1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Line_d1(self as *const Self, U, P, V1) }
     }
 
@@ -13877,8 +13877,8 @@ impl Line {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Line_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -13889,9 +13889,9 @@ impl Line {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Line_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -13900,7 +13900,7 @@ impl Line {
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_Line_dn(self as *const Self, U, N)) }
     }
 
@@ -14026,7 +14026,7 @@ impl Line {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Line_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -14086,7 +14086,7 @@ impl Line {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Line_inherited_Translated(
@@ -14360,7 +14360,7 @@ impl OffsetCurve {
     /// if the continuity of the basis curve is not C2.
     /// Nevertheless, it's OK to use it  on portion
     /// where the curve is C2
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_OffsetCurve_d1(self as *const Self, U, P, V1) }
     }
 
@@ -14373,8 +14373,8 @@ impl OffsetCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_OffsetCurve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -14384,9 +14384,9 @@ impl OffsetCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_OffsetCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -14406,7 +14406,7 @@ impl OffsetCurve {
     /// raised if it is not possible to compute a unique offset
     /// direction.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetCurve_dn(self as *const Self, U, N))
         }
@@ -14603,7 +14603,7 @@ impl OffsetCurve {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_OffsetCurve_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -14663,7 +14663,7 @@ impl OffsetCurve {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetCurve_inherited_Translated(
@@ -15064,8 +15064,8 @@ impl OffsetSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_OffsetSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -15077,11 +15077,11 @@ impl OffsetSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_OffsetSurface_d2(
@@ -15105,15 +15105,15 @@ impl OffsetSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_OffsetSurface_d3(
@@ -15150,7 +15150,7 @@ impl OffsetSurface {
     /// Warnings:
     /// The exception UndefinedValue or UndefinedDerivative is
     /// raised if it is not possible to compute a unique offset direction.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_dn(
                 self as *const Self,
@@ -15385,7 +15385,7 @@ impl OffsetSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_OffsetSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -15445,7 +15445,7 @@ impl OffsetSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_OffsetSurface_inherited_Translated(
@@ -15818,7 +15818,7 @@ impl Parabola {
 
     /// **Source:** `Geom_Parabola.hxx`:167 - `Geom_Parabola::D1()`
     /// Returns the point P of parameter U and the first derivative V1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Parabola_d1(self as *const Self, U, P, V1) }
     }
 
@@ -15829,8 +15829,8 @@ impl Parabola {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Parabola_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -15842,9 +15842,9 @@ impl Parabola {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Parabola_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -15853,7 +15853,7 @@ impl Parabola {
     /// For the point of parameter U of this parabola,
     /// computes the vector corresponding to the Nth derivative.
     /// Exceptions Standard_RangeError if N is less than 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Parabola_dn(self as *const Self, U, N))
         }
@@ -16066,7 +16066,7 @@ impl Parabola {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Parabola_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -16126,7 +16126,7 @@ impl Parabola {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Parabola_inherited_Translated(
@@ -16423,8 +16423,8 @@ impl Plane {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Plane_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -16437,11 +16437,11 @@ impl Plane {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Plane_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV) }
     }
@@ -16454,15 +16454,15 @@ impl Plane {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_Plane_d3(
@@ -16487,7 +16487,7 @@ impl Plane {
     /// Computes the derivative of order Nu in the direction u
     /// and Nv in the direction v.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_dn(self as *const Self, U, V, Nu, Nv))
         }
@@ -16664,7 +16664,7 @@ impl Plane {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Plane_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -16724,7 +16724,7 @@ impl Plane {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Plane_inherited_Translated(
@@ -16889,7 +16889,7 @@ impl Point {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Point_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -16954,7 +16954,7 @@ impl Point {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Point_inherited_Translated(
@@ -17450,8 +17450,8 @@ impl RectangularTrimmedSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_RectangularTrimmedSurface_d1(self as *const Self, U, V, P, D1U, D1V)
@@ -17468,11 +17468,11 @@ impl RectangularTrimmedSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_RectangularTrimmedSurface_d2(
@@ -17499,15 +17499,15 @@ impl RectangularTrimmedSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_RectangularTrimmedSurface_d3(
@@ -17535,7 +17535,7 @@ impl RectangularTrimmedSurface {
     /// Warning!  UndefinedDerivative raised if the continuity of the surface is not CNu in the U
     /// parametric direction and CNv in the V parametric direction.
     /// RangeError Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_RectangularTrimmedSurface_dn(
                 self as *const Self,
@@ -17751,7 +17751,7 @@ impl RectangularTrimmedSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe {
             crate::ffi::Geom_RectangularTrimmedSurface_inherited_Translate(self as *mut Self, V)
         }
@@ -17817,7 +17817,7 @@ impl RectangularTrimmedSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -18153,8 +18153,8 @@ impl SphericalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_SphericalSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -18167,11 +18167,11 @@ impl SphericalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SphericalSurface_d2(
@@ -18196,15 +18196,15 @@ impl SphericalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SphericalSurface_d3(
@@ -18229,7 +18229,7 @@ impl SphericalSurface {
     /// Computes the derivative of order Nu in the direction u
     /// and Nv in the direction v.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_dn(
                 self as *const Self,
@@ -18465,7 +18465,7 @@ impl SphericalSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_SphericalSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -18525,7 +18525,7 @@ impl SphericalSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SphericalSurface_inherited_Translated(
@@ -18874,8 +18874,8 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -18889,11 +18889,11 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
@@ -18909,15 +18909,15 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_Surface_d3(
@@ -18944,7 +18944,7 @@ impl Surface {
     ///
     /// Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V
     /// direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Surface_dn(
                 self as *const Self,
@@ -19014,7 +19014,7 @@ impl Surface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Surface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -19079,7 +19079,7 @@ impl Surface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Surface_inherited_Translated(
@@ -19606,8 +19606,8 @@ impl SurfaceOfLinearExtrusion {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SurfaceOfLinearExtrusion_d1(self as *const Self, U, V, P, D1U, D1V)
@@ -19624,11 +19624,11 @@ impl SurfaceOfLinearExtrusion {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SurfaceOfLinearExtrusion_d2(
@@ -19654,15 +19654,15 @@ impl SurfaceOfLinearExtrusion {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SurfaceOfLinearExtrusion_d3(
@@ -19689,7 +19689,7 @@ impl SurfaceOfLinearExtrusion {
     /// Raises UndefinedDerivative if the continuity of the surface is not CNu in the u
     /// direction and CNv in the v direction.
     /// Raises RangeError if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfLinearExtrusion_dn(
                 self as *const Self,
@@ -19938,7 +19938,7 @@ impl SurfaceOfLinearExtrusion {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe {
             crate::ffi::Geom_SurfaceOfLinearExtrusion_inherited_Translate(self as *mut Self, V)
         }
@@ -20002,7 +20002,7 @@ impl SurfaceOfLinearExtrusion {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(
@@ -20413,8 +20413,8 @@ impl SurfaceOfRevolution {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -20428,11 +20428,11 @@ impl SurfaceOfRevolution {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SurfaceOfRevolution_d2(
@@ -20458,15 +20458,15 @@ impl SurfaceOfRevolution {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SurfaceOfRevolution_d3(
@@ -20502,7 +20502,7 @@ impl SurfaceOfRevolution {
     /// else  P  is betveen discontinuities
     /// can be evaluated using methods  of
     /// global evaluations    P  =  S( U ,V )
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_dn(
                 self as *const Self,
@@ -20677,7 +20677,7 @@ impl SurfaceOfRevolution {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_SurfaceOfRevolution_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -20737,7 +20737,7 @@ impl SurfaceOfRevolution {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SurfaceOfRevolution_inherited_Translated(
@@ -21043,8 +21043,8 @@ impl SweptSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SweptSurface_inherited_D1(self as *const Self, U, V, P, D1U, D1V)
@@ -21057,11 +21057,11 @@ impl SweptSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SweptSurface_inherited_D2(
@@ -21084,15 +21084,15 @@ impl SweptSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_SweptSurface_inherited_D3(
@@ -21114,7 +21114,7 @@ impl SweptSurface {
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:267 - `Geom_Surface::DN()`
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_DN(
                 self as *const Self,
@@ -21153,7 +21153,7 @@ impl SweptSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_SweptSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -21218,7 +21218,7 @@ impl SweptSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_SweptSurface_inherited_Translated(
@@ -21586,8 +21586,8 @@ impl ToroidalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_ToroidalSurface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -21600,11 +21600,11 @@ impl ToroidalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_ToroidalSurface_d2(
@@ -21629,15 +21629,15 @@ impl ToroidalSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::Geom_ToroidalSurface_d3(
@@ -21662,7 +21662,7 @@ impl ToroidalSurface {
     /// Computes the derivative of order Nu in the direction u and
     /// Nv in the direction v.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_dn(
                 self as *const Self,
@@ -21894,7 +21894,7 @@ impl ToroidalSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_ToroidalSurface_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -21954,7 +21954,7 @@ impl ToroidalSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_ToroidalSurface_inherited_Translated(
@@ -22165,7 +22165,7 @@ impl Transformation {
     /// **Source:** `Geom_Transformation.hxx`:132 - `Geom_Transformation::SetTranslation()`
     /// Makes the transformation into a translation.
     /// V is the vector of the translation.
-    pub fn set_translation_vec(&mut self, theVec: &crate::gp::Vec) {
+    pub fn set_translation_vec(&mut self, theVec: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Transformation_set_translation_vec(self as *mut Self, theVec) }
     }
 
@@ -22691,7 +22691,7 @@ impl TrimmedCurve {
 
     /// **Source:** `Geom_TrimmedCurve.hxx`:200 - `Geom_TrimmedCurve::D1()`
     /// Raised if the continuity of the curve is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_TrimmedCurve_d1(self as *const Self, U, P, V1) }
     }
 
@@ -22701,8 +22701,8 @@ impl TrimmedCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_TrimmedCurve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -22713,9 +22713,9 @@ impl TrimmedCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::Geom_TrimmedCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -22725,7 +22725,7 @@ impl TrimmedCurve {
     /// Raised if the continuity of the curve is not CN.
     /// Raised if N < 1.
     /// geometric transformations
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_TrimmedCurve_dn(self as *const Self, U, N))
         }
@@ -22870,7 +22870,7 @@ impl TrimmedCurve {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_TrimmedCurve_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -22930,7 +22930,7 @@ impl TrimmedCurve {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_TrimmedCurve_inherited_Translated(
@@ -23300,7 +23300,7 @@ impl Vector {
 
     /// **Source:** `Geom_Vector.hxx`:125 - `Geom_Vector::Vec()`
     /// Converts this vector into a gp_Vec vector.
-    pub fn vec(&self) -> &crate::gp::Vec {
+    pub fn vec(&self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::Geom_Vector_vec(self as *const Self)) }
     }
 
@@ -23349,7 +23349,7 @@ impl Vector {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_Vector_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -23414,7 +23414,7 @@ impl Vector {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_Vector_inherited_Translated(
@@ -23513,7 +23513,7 @@ unsafe impl crate::CppDeletable for VectorWithMagnitude {
 impl VectorWithMagnitude {
     /// **Source:** `Geom_VectorWithMagnitude.hxx`:39 - `Geom_VectorWithMagnitude::Geom_VectorWithMagnitude()`
     /// Creates a transient copy of V.
-    pub fn new_vec(V: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_vec(V: &crate::gp::Vec_) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_VectorWithMagnitude_ctor_vec(V)) }
     }
 
@@ -23540,7 +23540,7 @@ impl VectorWithMagnitude {
 
     /// **Source:** `Geom_VectorWithMagnitude.hxx`:56 - `Geom_VectorWithMagnitude::SetVec()`
     /// Converts the gp_Vec vector V into this vector.
-    pub fn set_vec(&mut self, V: &crate::gp::Vec) {
+    pub fn set_vec(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_set_vec(self as *mut Self, V) }
     }
 
@@ -23869,7 +23869,7 @@ impl VectorWithMagnitude {
     }
 
     /// Inherited: **Source:** `Geom_Vector.hxx`:125 - `Geom_Vector::Vec()`
-    pub fn vec(&self) -> &crate::gp::Vec {
+    pub fn vec(&self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::Geom_VectorWithMagnitude_inherited_Vec(self as *const Self)) }
     }
 
@@ -23889,7 +23889,7 @@ impl VectorWithMagnitude {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::Geom_VectorWithMagnitude_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -23949,7 +23949,7 @@ impl VectorWithMagnitude {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Geom_VectorWithMagnitude_inherited_Translated(

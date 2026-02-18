@@ -341,7 +341,7 @@ impl BndBoxTreeSelector {
     /// Implementation of rejection method
     /// @return
     /// True if the bounding box does not intersect with the current
-    pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
+    pub fn reject(&self, theBox: &crate::bnd::Box_) -> bool {
         unsafe { crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_reject(self as *const Self, theBox) }
     }
 
@@ -353,7 +353,7 @@ impl BndBoxTreeSelector {
 
     /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:62 - `BRepBuilderAPI_BndBoxTreeSelector::SetCurrent()`
     /// Set current box to search for overlapping with him
-    pub fn set_current(&mut self, theBox: &crate::bnd::Box) {
+    pub fn set_current(&mut self, theBox: &crate::bnd::Box_) {
         unsafe {
             crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_set_current(self as *mut Self, theBox)
         }

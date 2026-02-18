@@ -9637,8 +9637,8 @@ impl Tools {
     /// @param thePoint the Point to compute transformation to
     /// @param theCriteria the Criteria to check whether thranformation is required
     pub fn trsf_to_point(
-        theBox1: &crate::bnd::Box,
-        theBox2: &crate::bnd::Box,
+        theBox1: &crate::bnd::Box_,
+        theBox2: &crate::bnd::Box_,
         theTrsf: &mut crate::gp::Trsf,
         thePoint: &crate::gp::Pnt,
         theCriteria: f64,

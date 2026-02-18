@@ -470,21 +470,21 @@ impl Curve {
     /// **Source:** `BOPDS_Curve.hxx`:57 - `BOPDS_Curve::SetBox()`
     /// Modifier
     /// Sets the bounding box <theBox> of the curve
-    pub fn set_box(&mut self, theBox: &crate::bnd::Box) {
+    pub fn set_box(&mut self, theBox: &crate::bnd::Box_) {
         unsafe { crate::ffi::BOPDS_Curve_set_box(self as *mut Self, theBox) }
     }
 
     /// **Source:** `BOPDS_Curve.hxx`:61 - `BOPDS_Curve::Box()`
     /// Selector
     /// Returns the bounding box of the curve
-    pub fn box_(&self) -> &crate::bnd::Box {
+    pub fn box_(&self) -> &crate::bnd::Box_ {
         unsafe { &*(crate::ffi::BOPDS_Curve_box_(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_Curve.hxx`:65 - `BOPDS_Curve::ChangeBox()`
     /// Selector/Modifier
     /// Returns the bounding box of the curve
-    pub fn change_box(&mut self) -> &mut crate::bnd::Box {
+    pub fn change_box(&mut self) -> &mut crate::bnd::Box_ {
         unsafe { &mut *(crate::ffi::BOPDS_Curve_change_box(self as *mut Self)) }
     }
 
@@ -1065,7 +1065,7 @@ impl DS {
     pub fn build_bnd_box_solid(
         &mut self,
         theIndex: i32,
-        theBox: &mut crate::bnd::Box,
+        theBox: &mut crate::bnd::Box_,
         theCheckInverted: bool,
     ) {
         unsafe {
@@ -2789,7 +2789,7 @@ impl PaveBlock {
         &mut self,
         theTS1: f64,
         theTS2: f64,
-        theBox: &crate::bnd::Box,
+        theBox: &crate::bnd::Box_,
         theIsSplittable: bool,
     ) {
         unsafe {
@@ -2813,7 +2813,7 @@ impl PaveBlock {
         &self,
         theTS1: &mut f64,
         theTS2: &mut f64,
-        theBox: &mut crate::bnd::Box,
+        theBox: &mut crate::bnd::Box_,
         theIsSplittable: &mut bool,
     ) {
         unsafe {
@@ -3045,21 +3045,21 @@ impl ShapeInfo {
     /// **Source:** `BOPDS_ShapeInfo.hxx`:63 - `BOPDS_ShapeInfo::SetBox()`
     /// Modifier
     /// Sets the boundung box of the shape theBox
-    pub fn set_box(&mut self, theBox: &crate::bnd::Box) {
+    pub fn set_box(&mut self, theBox: &crate::bnd::Box_) {
         unsafe { crate::ffi::BOPDS_ShapeInfo_set_box(self as *mut Self, theBox) }
     }
 
     /// **Source:** `BOPDS_ShapeInfo.hxx`:67 - `BOPDS_ShapeInfo::Box()`
     /// Selector
     /// Returns the boundung box of the shape
-    pub fn box_(&self) -> &crate::bnd::Box {
+    pub fn box_(&self) -> &crate::bnd::Box_ {
         unsafe { &*(crate::ffi::BOPDS_ShapeInfo_box_(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_ShapeInfo.hxx`:71 - `BOPDS_ShapeInfo::ChangeBox()`
     /// Selector/Modifier
     /// Returns the boundung box of the shape
-    pub fn change_box(&mut self) -> &mut crate::bnd::Box {
+    pub fn change_box(&mut self) -> &mut crate::bnd::Box_ {
         unsafe { &mut *(crate::ffi::BOPDS_ShapeInfo_change_box(self as *mut Self)) }
     }
 

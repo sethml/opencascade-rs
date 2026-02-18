@@ -121,3 +121,1463 @@ impl TryFrom<i32> for Status {
         }
     }
 }
+
+// ========================
+// From BRepCheck_Analyzer.hxx
+// ========================
+
+/// **Source:** `BRepCheck_Analyzer.hxx`:36 - `BRepCheck_Analyzer`
+/// A framework to check the overall
+/// validity of a shape. For a shape to be valid in Open
+/// CASCADE, it - or its component subshapes - must respect certain
+/// criteria. These criteria are checked by the function IsValid.
+/// Once you have determined whether a shape is valid or not, you can
+/// diagnose its specific anomalies and correct them using the services of
+/// the ShapeAnalysis, ShapeUpgrade, and ShapeFix packages.
+pub use crate::ffi::BRepCheck_Analyzer as Analyzer;
+
+unsafe impl crate::CppDeletable for Analyzer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepCheck_Analyzer_destructor(ptr);
+    }
+}
+
+impl Analyzer {
+    /// **Source:** `BRepCheck_Analyzer.hxx`:58 - `BRepCheck_Analyzer::BRepCheck_Analyzer()`
+    /// Constructs a shape validation object defined by the shape S.
+    /// <S> is the  shape  to control.  <GeomControls>  If
+    /// False   only topological informaions  are checked.
+    /// The geometricals controls are
+    /// For a Vertex :
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For an Edge :
+    /// BRepCheck_InvalidCurveOnClosedSurface,
+    /// BRepCheck_InvalidCurveOnSurface,
+    /// BRepCheck_InvalidSameParameterFlag,
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For a face :
+    /// BRepCheck_UnorientableShape,
+    /// BRepCheck_IntersectingWires,
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For a wire :
+    /// BRepCheck_SelfIntersectingWire
+    pub fn new_shape_bool3(
+        S: &crate::topo_ds::Shape,
+        GeomControls: bool,
+        theIsParallel: bool,
+        theIsExact: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Analyzer_ctor_shape_bool3(
+                S,
+                GeomControls,
+                theIsParallel,
+                theIsExact,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:58 - `BRepCheck_Analyzer::BRepCheck_Analyzer()`
+    /// Constructs a shape validation object defined by the shape S.
+    /// <S> is the  shape  to control.  <GeomControls>  If
+    /// False   only topological informaions  are checked.
+    /// The geometricals controls are
+    /// For a Vertex :
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For an Edge :
+    /// BRepCheck_InvalidCurveOnClosedSurface,
+    /// BRepCheck_InvalidCurveOnSurface,
+    /// BRepCheck_InvalidSameParameterFlag,
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For a face :
+    /// BRepCheck_UnorientableShape,
+    /// BRepCheck_IntersectingWires,
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For a wire :
+    /// BRepCheck_SelfIntersectingWire
+    pub fn new_shape_bool2(
+        S: &crate::topo_ds::Shape,
+        GeomControls: bool,
+        theIsParallel: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_shape_bool3(S, GeomControls, theIsParallel, false)
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:58 - `BRepCheck_Analyzer::BRepCheck_Analyzer()`
+    /// Constructs a shape validation object defined by the shape S.
+    /// <S> is the  shape  to control.  <GeomControls>  If
+    /// False   only topological informaions  are checked.
+    /// The geometricals controls are
+    /// For a Vertex :
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For an Edge :
+    /// BRepCheck_InvalidCurveOnClosedSurface,
+    /// BRepCheck_InvalidCurveOnSurface,
+    /// BRepCheck_InvalidSameParameterFlag,
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For a face :
+    /// BRepCheck_UnorientableShape,
+    /// BRepCheck_IntersectingWires,
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For a wire :
+    /// BRepCheck_SelfIntersectingWire
+    pub fn new_shape_bool(S: &crate::topo_ds::Shape, GeomControls: bool) -> crate::OwnedPtr<Self> {
+        Self::new_shape_bool3(S, GeomControls, false, false)
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:58 - `BRepCheck_Analyzer::BRepCheck_Analyzer()`
+    /// Constructs a shape validation object defined by the shape S.
+    /// <S> is the  shape  to control.  <GeomControls>  If
+    /// False   only topological informaions  are checked.
+    /// The geometricals controls are
+    /// For a Vertex :
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For an Edge :
+    /// BRepCheck_InvalidCurveOnClosedSurface,
+    /// BRepCheck_InvalidCurveOnSurface,
+    /// BRepCheck_InvalidSameParameterFlag,
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For a face :
+    /// BRepCheck_UnorientableShape,
+    /// BRepCheck_IntersectingWires,
+    /// BRepCheck_InvalidToleranceValue  NYI
+    /// For a wire :
+    /// BRepCheck_SelfIntersectingWire
+    pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
+        Self::new_shape_bool3(S, true, false, false)
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:84 - `BRepCheck_Analyzer::Init()`
+    /// <S> is the  shape  to control.  <GeomControls>  If
+    /// False   only topological informaions  are checked.
+    /// The geometricals controls are
+    /// For a Vertex :
+    /// BRepCheck_InvalidTolerance  NYI
+    /// For an Edge :
+    /// BRepCheck_InvalidCurveOnClosedSurface,
+    /// BRepCheck_InvalidCurveOnSurface,
+    /// BRepCheck_InvalidSameParameterFlag,
+    /// BRepCheck_InvalidTolerance  NYI
+    /// For a face :
+    /// BRepCheck_UnorientableShape,
+    /// BRepCheck_IntersectingWires,
+    /// BRepCheck_InvalidTolerance  NYI
+    /// For a wire :
+    /// BRepCheck_SelfIntersectingWire
+    pub fn init(&mut self, S: &crate::topo_ds::Shape, GeomControls: bool) {
+        unsafe { crate::ffi::BRepCheck_Analyzer_init(self as *mut Self, S, GeomControls) }
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:92 - `BRepCheck_Analyzer::SetExactMethod()`
+    /// Sets method to calculate distance: Calculating in finite number of points (if theIsExact
+    /// is false, faster, but possible not correct result) or exact calculating by using
+    /// BRepLib_CheckCurveOnSurface class (if theIsExact is true, slowly, but more correctly).
+    /// Exact method is used only when edge is SameParameter.
+    /// Default method is calculating in finite number of points
+    pub fn set_exact_method(&mut self, theIsExact: bool) {
+        unsafe { crate::ffi::BRepCheck_Analyzer_set_exact_method(self as *mut Self, theIsExact) }
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:95 - `BRepCheck_Analyzer::IsExactMethod()`
+    /// Returns true if exact method selected
+    pub fn is_exact_method(&mut self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Analyzer_is_exact_method(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:98 - `BRepCheck_Analyzer::SetParallel()`
+    /// Sets parallel flag
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe { crate::ffi::BRepCheck_Analyzer_set_parallel(self as *mut Self, theIsParallel) }
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:101 - `BRepCheck_Analyzer::IsParallel()`
+    /// Returns true if parallel flag is set
+    pub fn is_parallel(&mut self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Analyzer_is_parallel(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:106 - `BRepCheck_Analyzer::IsValid()`
+    /// <S> is a  subshape of the  original shape. Returns
+    /// <STandard_True> if no default has been detected on
+    /// <S> and any of its subshape.
+    pub fn is_valid_shape(&self, S: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::BRepCheck_Analyzer_is_valid_shape(self as *const Self, S) }
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:147 - `BRepCheck_Analyzer::IsValid()`
+    /// Returns true if no defect is
+    /// detected on the shape S or any of its subshapes.
+    /// Returns true if the shape S is valid.
+    /// This function checks whether a given shape is valid by checking that:
+    /// -      the topology is correct
+    /// -      parameterization of edges in particular is correct.
+    /// For the topology to be correct, the following conditions must be satisfied:
+    /// -      edges should have at least two vertices if they are not
+    /// degenerate edges. The vertices should be within the range of
+    /// the bounding edges at the tolerance specified in the vertex,
+    /// -      edges should share at least one face. The representation of
+    /// the edges should be within the tolerance criterion assigned to them.
+    /// -      wires defining a face should not self-intersect and should be closed,
+    /// - there should be one wire which contains all other wires inside a face,
+    /// -      wires should be correctly oriented with respect to each of the edges,
+    /// -      faces should be correctly oriented, in particular with
+    /// respect to adjacent faces if these faces define a solid,
+    /// -      shells defining a solid should be closed. There should
+    /// be one enclosing shell if the shape is a solid;
+    /// To check parameterization of edge, there are 2 approaches depending on
+    /// the edge?s contextual situation.
+    /// -      if the edge is either single, or it is in the context
+    /// of a wire or a compound, its parameterization is defined by
+    /// the parameterization of its 3D curve and is considered as    valid.
+    /// -      If the edge is in the context of a face, it should
+    /// have SameParameter and SameRange flags set to Standard_True. To
+    /// check these flags, you should call the function
+    /// BRep_Tool::SameParameter and BRep_Tool::SameRange for an
+    /// edge. If at least one of these flags is set to Standard_False,
+    /// the edge is considered as invalid without any additional check.
+    /// If the edge is contained by a face, and it has SameParameter and
+    /// SameRange flags set to Standard_True, IsValid checks
+    /// whether representation of the edge on face, in context of which the
+    /// edge is considered, has the same parameterization up to the
+    /// tolerance value coded on the edge. For a given parameter t on the edge
+    /// having C as a 3D curve and one PCurve P on a surface S (base
+    /// surface of the reference face), this checks that |C(t) - S(P(t))|
+    /// is less than or equal to tolerance, where tolerance is the tolerance
+    /// value coded on the edge.
+    pub fn is_valid(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Analyzer_is_valid(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Analyzer.hxx`:149 - `BRepCheck_Analyzer::Result()`
+    pub fn result(&self, theSubS: &crate::topo_ds::Shape) -> &crate::ffi::HandleBRepCheckResult {
+        unsafe { &*(crate::ffi::BRepCheck_Analyzer_result(self as *const Self, theSubS)) }
+    }
+}
+
+// ========================
+// From BRepCheck_Edge.hxx
+// ========================
+
+/// **Source:** `BRepCheck_Edge.hxx`:31 - `BRepCheck_Edge`
+pub use crate::ffi::BRepCheck_Edge as Edge;
+
+unsafe impl crate::CppDeletable for Edge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepCheck_Edge_destructor(ptr);
+    }
+}
+
+impl Edge {
+    /// **Source:** `BRepCheck_Edge.hxx`:35 - `BRepCheck_Edge::BRepCheck_Edge()`
+    pub fn new_edge(E: &crate::topo_ds::Edge) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Edge_ctor_edge(E)) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:37 - `BRepCheck_Edge::InContext()`
+    pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Edge_in_context(self as *mut Self, ContextShape) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:39 - `BRepCheck_Edge::Minimum()`
+    pub fn minimum(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Edge_minimum(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:41 - `BRepCheck_Edge::Blind()`
+    pub fn blind(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Edge_blind(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:43 - `BRepCheck_Edge::GeometricControls()`
+    pub fn geometric_controls(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Edge_geometric_controls(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:45 - `BRepCheck_Edge::GeometricControls()`
+    pub fn geometric_controls_bool(&mut self, B: bool) {
+        unsafe { crate::ffi::BRepCheck_Edge_geometric_controls_bool(self as *mut Self, B) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:47 - `BRepCheck_Edge::Tolerance()`
+    pub fn tolerance(&mut self) -> f64 {
+        unsafe { crate::ffi::BRepCheck_Edge_tolerance(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:50 - `BRepCheck_Edge::SetStatus()`
+    /// Sets status of Edge;
+    pub fn set_status(&mut self, theStatus: crate::b_rep_check::Status) {
+        unsafe { crate::ffi::BRepCheck_Edge_set_status(self as *mut Self, theStatus.into()) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:57 - `BRepCheck_Edge::SetExactMethod()`
+    /// Sets method to calculate distance: Calculating in finite number of points (if theIsExact
+    /// is false, faster, but possible not correct result) or exact calculating by using
+    /// BRepLib_CheckCurveOnSurface class (if theIsExact is true, slowly, but more correctly).
+    /// Exact method is used only when edge is SameParameter.
+    /// Default method is calculating in finite number of points
+    pub fn set_exact_method(&mut self, theIsExact: bool) {
+        unsafe { crate::ffi::BRepCheck_Edge_set_exact_method(self as *mut Self, theIsExact) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:60 - `BRepCheck_Edge::IsExactMethod()`
+    /// Returns true if exact method selected
+    pub fn is_exact_method(&mut self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Edge_is_exact_method(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:64 - `BRepCheck_Edge::CheckPolygonOnTriangulation()`
+    /// Checks, if polygon on triangulation of heEdge
+    /// is out of 3D-curve of this edge.
+    pub fn check_polygon_on_triangulation(
+        &mut self,
+        theEdge: &crate::topo_ds::Edge,
+    ) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(
+                crate::ffi::BRepCheck_Edge_check_polygon_on_triangulation(
+                    self as *mut Self,
+                    theEdge,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:66 - `BRepCheck_Edge::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Edge_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:66 - `BRepCheck_Edge::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Edge_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Edge.hxx`:66 - `BRepCheck_Edge::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Edge_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepCheck_Result
+    pub fn as_result(&self) -> &Result_ {
+        unsafe { &*(crate::ffi::BRepCheck_Edge_as_BRepCheck_Result(self as *const Self)) }
+    }
+
+    /// Upcast to BRepCheck_Result (mutable)
+    pub fn as_result_mut(&mut self) -> &mut Result_ {
+        unsafe { &mut *(crate::ffi::BRepCheck_Edge_as_BRepCheck_Result_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_Init(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_SetFailStatus(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    pub fn status(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Edge_inherited_Status(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    pub fn is_minimum(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_IsMinimum(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    pub fn is_blind(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_IsBlind(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    pub fn init_context_iterator(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_InitContextIterator(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    pub fn more_shape_in_context(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_MoreShapeInContext(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    pub fn contextual_shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepCheck_Edge_inherited_ContextualShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    pub fn status_on_shape(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Edge_inherited_StatusOnShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    pub fn next_shape_in_context(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Edge_inherited_NextShapeInContext(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe {
+            crate::ffi::BRepCheck_Edge_inherited_SetParallel(self as *mut Self, theIsParallel)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepCheck_Edge_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+// ========================
+// From BRepCheck_Face.hxx
+// ========================
+
+/// **Source:** `BRepCheck_Face.hxx`:32 - `BRepCheck_Face`
+pub use crate::ffi::BRepCheck_Face as Face;
+
+unsafe impl crate::CppDeletable for Face {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepCheck_Face_destructor(ptr);
+    }
+}
+
+impl Face {
+    /// **Source:** `BRepCheck_Face.hxx`:36 - `BRepCheck_Face::BRepCheck_Face()`
+    pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Face_ctor_face(F)) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:38 - `BRepCheck_Face::InContext()`
+    pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Face_in_context(self as *mut Self, ContextShape) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:40 - `BRepCheck_Face::Minimum()`
+    pub fn minimum(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Face_minimum(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:42 - `BRepCheck_Face::Blind()`
+    pub fn blind(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Face_blind(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:44 - `BRepCheck_Face::IntersectWires()`
+    pub fn intersect_wires(&mut self, Update: bool) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Face_intersect_wires(
+                self as *mut Self,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:46 - `BRepCheck_Face::ClassifyWires()`
+    pub fn classify_wires(&mut self, Update: bool) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Face_classify_wires(
+                self as *mut Self,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:49 - `BRepCheck_Face::OrientationOfWires()`
+    pub fn orientation_of_wires(&mut self, Update: bool) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Face_orientation_of_wires(
+                self as *mut Self,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:51 - `BRepCheck_Face::SetUnorientable()`
+    pub fn set_unorientable(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Face_set_unorientable(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:54 - `BRepCheck_Face::SetStatus()`
+    /// Sets status of Face;
+    pub fn set_status(&mut self, theStatus: crate::b_rep_check::Status) {
+        unsafe { crate::ffi::BRepCheck_Face_set_status(self as *mut Self, theStatus.into()) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:56 - `BRepCheck_Face::IsUnorientable()`
+    pub fn is_unorientable(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Face_is_unorientable(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:58 - `BRepCheck_Face::GeometricControls()`
+    pub fn geometric_controls(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Face_geometric_controls(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:60 - `BRepCheck_Face::GeometricControls()`
+    pub fn geometric_controls_bool(&mut self, B: bool) {
+        unsafe { crate::ffi::BRepCheck_Face_geometric_controls_bool(self as *mut Self, B) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:62 - `BRepCheck_Face::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Face_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:62 - `BRepCheck_Face::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Face_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Face.hxx`:62 - `BRepCheck_Face::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Face_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepCheck_Result
+    pub fn as_result(&self) -> &Result_ {
+        unsafe { &*(crate::ffi::BRepCheck_Face_as_BRepCheck_Result(self as *const Self)) }
+    }
+
+    /// Upcast to BRepCheck_Result (mutable)
+    pub fn as_result_mut(&mut self) -> &mut Result_ {
+        unsafe { &mut *(crate::ffi::BRepCheck_Face_as_BRepCheck_Result_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_Init(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_SetFailStatus(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    pub fn status(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Face_inherited_Status(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    pub fn is_minimum(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_IsMinimum(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    pub fn is_blind(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_IsBlind(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    pub fn init_context_iterator(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_InitContextIterator(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    pub fn more_shape_in_context(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_MoreShapeInContext(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    pub fn contextual_shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepCheck_Face_inherited_ContextualShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    pub fn status_on_shape(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Face_inherited_StatusOnShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    pub fn next_shape_in_context(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Face_inherited_NextShapeInContext(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe {
+            crate::ffi::BRepCheck_Face_inherited_SetParallel(self as *mut Self, theIsParallel)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepCheck_Face_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+// ========================
+// From BRepCheck_Result.hxx
+// ========================
+
+/// **Source:** `BRepCheck_Result.hxx`:29 - `BRepCheck_Result`
+pub use crate::ffi::BRepCheck_Result as Result_;
+
+unsafe impl crate::CppDeletable for Result_ {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepCheck_Result_destructor(ptr);
+    }
+}
+
+impl Result_ {
+    /// **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Result_init(self as *mut Self, S) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::InContext()`
+    pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Result_in_context(self as *mut Self, ContextShape) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:37 - `BRepCheck_Result::Minimum()`
+    pub fn minimum(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Result_minimum(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:39 - `BRepCheck_Result::Blind()`
+    pub fn blind(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Result_blind(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Result_set_fail_status(self as *mut Self, S) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    pub fn status(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Result_status(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    pub fn is_minimum(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Result_is_minimum(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    pub fn is_blind(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Result_is_blind(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    pub fn init_context_iterator(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Result_init_context_iterator(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    pub fn more_shape_in_context(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Result_more_shape_in_context(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    pub fn contextual_shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepCheck_Result_contextual_shape(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    pub fn status_on_shape(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Result_status_on_shape(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    pub fn next_shape_in_context(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Result_next_shape_in_context(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe { crate::ffi::BRepCheck_Result_set_parallel(self as *mut Self, theIsParallel) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
+        unsafe { crate::ffi::BRepCheck_Result_is_status_on_shape(self as *const Self, theShape) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:66 - `BRepCheck_Result::StatusOnShape()`
+    pub fn status_on_shape_shape(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+    ) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe {
+            &*(crate::ffi::BRepCheck_Result_status_on_shape_shape(self as *const Self, theShape))
+        }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:73 - `BRepCheck_Result::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Result_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:73 - `BRepCheck_Result::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Result_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Result.hxx`:73 - `BRepCheck_Result::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Result_get_type_descriptor()) }
+    }
+}
+
+pub use crate::ffi::HandleBRepCheckResult;
+
+unsafe impl crate::CppDeletable for HandleBRepCheckResult {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCheckResult_destructor(ptr);
+    }
+}
+
+impl HandleBRepCheckResult {
+    /// Dereference this Handle to access the underlying BRepCheck_Result
+    pub fn get(&self) -> &crate::ffi::BRepCheck_Result {
+        unsafe { &*(crate::ffi::HandleBRepCheckResult_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepCheck_Result
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Result {
+        unsafe { &mut *(crate::ffi::HandleBRepCheckResult_get_mut(self as *mut Self)) }
+    }
+}
+
+// ========================
+// From BRepCheck_Shell.hxx
+// ========================
+
+/// **Source:** `BRepCheck_Shell.hxx`:32 - `BRepCheck_Shell`
+pub use crate::ffi::BRepCheck_Shell as Shell;
+
+unsafe impl crate::CppDeletable for Shell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepCheck_Shell_destructor(ptr);
+    }
+}
+
+impl Shell {
+    /// **Source:** `BRepCheck_Shell.hxx`:36 - `BRepCheck_Shell::BRepCheck_Shell()`
+    pub fn new_shell(S: &crate::topo_ds::Shell) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Shell_ctor_shell(S)) }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:38 - `BRepCheck_Shell::InContext()`
+    pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Shell_in_context(self as *mut Self, ContextShape) }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:40 - `BRepCheck_Shell::Minimum()`
+    pub fn minimum(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Shell_minimum(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:42 - `BRepCheck_Shell::Blind()`
+    pub fn blind(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Shell_blind(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:48 - `BRepCheck_Shell::Closed()`
+    /// Checks if the oriented  faces of the shell  give a
+    /// closed shell.    If the  wire is  closed,  returns
+    /// BRepCheck_NoError.If      <Update>     is  set  to
+    /// Standard_True, registers the status in the list.
+    pub fn closed(&mut self, Update: bool) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Shell_closed(
+                self as *mut Self,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:54 - `BRepCheck_Shell::Orientation()`
+    /// Checks if the   oriented faces  of  the shell  are
+    /// correctly oriented.  An internal  call is  made to
+    /// the  method  Closed.   If  <Update>    is set   to
+    /// Standard_True, registers the status in the list.
+    pub fn orientation(&mut self, Update: bool) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Shell_orientation(
+                self as *mut Self,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:56 - `BRepCheck_Shell::SetUnorientable()`
+    pub fn set_unorientable(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Shell_set_unorientable(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:58 - `BRepCheck_Shell::IsUnorientable()`
+    pub fn is_unorientable(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Shell_is_unorientable(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:60 - `BRepCheck_Shell::NbConnectedSet()`
+    pub fn nb_connected_set(&mut self, theSets: &mut crate::ffi::TopTools_ListOfShape) -> i32 {
+        unsafe { crate::ffi::BRepCheck_Shell_nb_connected_set(self as *mut Self, theSets) }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:62 - `BRepCheck_Shell::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Shell_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:62 - `BRepCheck_Shell::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Shell_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Shell.hxx`:62 - `BRepCheck_Shell::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Shell_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepCheck_Result
+    pub fn as_result(&self) -> &Result_ {
+        unsafe { &*(crate::ffi::BRepCheck_Shell_as_BRepCheck_Result(self as *const Self)) }
+    }
+
+    /// Upcast to BRepCheck_Result (mutable)
+    pub fn as_result_mut(&mut self) -> &mut Result_ {
+        unsafe { &mut *(crate::ffi::BRepCheck_Shell_as_BRepCheck_Result_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_Init(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_SetFailStatus(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    pub fn status(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Shell_inherited_Status(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    pub fn is_minimum(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_IsMinimum(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    pub fn is_blind(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_IsBlind(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    pub fn init_context_iterator(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_InitContextIterator(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    pub fn more_shape_in_context(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_MoreShapeInContext(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    pub fn contextual_shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepCheck_Shell_inherited_ContextualShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    pub fn status_on_shape(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Shell_inherited_StatusOnShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    pub fn next_shape_in_context(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Shell_inherited_NextShapeInContext(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe {
+            crate::ffi::BRepCheck_Shell_inherited_SetParallel(self as *mut Self, theIsParallel)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepCheck_Shell_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+// ========================
+// From BRepCheck_Solid.hxx
+// ========================
+
+/// **Source:** `BRepCheck_Solid.hxx`:29 - `BRepCheck_Solid`
+/// The class is to check a solid.
+pub use crate::ffi::BRepCheck_Solid as Solid;
+
+unsafe impl crate::CppDeletable for Solid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepCheck_Solid_destructor(ptr);
+    }
+}
+
+impl Solid {
+    /// **Source:** `BRepCheck_Solid.hxx`:35 - `BRepCheck_Solid::BRepCheck_Solid()`
+    /// Constructor
+    /// <theS> is the solid to check
+    pub fn new_solid(theS: &crate::topo_ds::Solid) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Solid_ctor_solid(theS)) }
+    }
+
+    /// **Source:** `BRepCheck_Solid.hxx`:39 - `BRepCheck_Solid::InContext()`
+    /// Checks the solid in context of
+    /// the shape <theContextShape>
+    pub fn in_context(&mut self, theContextShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Solid_in_context(self as *mut Self, theContextShape) }
+    }
+
+    /// **Source:** `BRepCheck_Solid.hxx`:59 - `BRepCheck_Solid::Minimum()`
+    /// Checks the solid per se.
+    ///
+    /// The scan area is:
+    /// 1.  Shells that overlaps each other
+    /// Status:  BRepCheck_InvalidImbricationOfShells
+    ///
+    /// 2.  Detached parts of the solid (vertices, edges)
+    /// that have non-internal orientation
+    /// Status:  BRepCheck_BadOrientationOfSubshape
+    ///
+    /// 3.  For closed, non-internal shells:
+    /// 3.1 Shells containing entities  of the solid that
+    /// are outside towards the shells
+    /// Status:  BRepCheck_SubshapeNotInShape
+    ///
+    /// 3.2 Shells that encloses other Shells
+    /// (for non-holes)
+    /// Status:  BRepCheck_EnclosedRegion
+    pub fn minimum(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Solid_minimum(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Solid.hxx`:62 - `BRepCheck_Solid::Blind()`
+    /// see the parent class for more details
+    pub fn blind(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Solid_blind(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Solid.hxx`:64 - `BRepCheck_Solid::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Solid_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Solid.hxx`:64 - `BRepCheck_Solid::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Solid_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Solid.hxx`:64 - `BRepCheck_Solid::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Solid_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepCheck_Result
+    pub fn as_result(&self) -> &Result_ {
+        unsafe { &*(crate::ffi::BRepCheck_Solid_as_BRepCheck_Result(self as *const Self)) }
+    }
+
+    /// Upcast to BRepCheck_Result (mutable)
+    pub fn as_result_mut(&mut self) -> &mut Result_ {
+        unsafe { &mut *(crate::ffi::BRepCheck_Solid_as_BRepCheck_Result_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_Init(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_SetFailStatus(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    pub fn status(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Solid_inherited_Status(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    pub fn is_minimum(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_IsMinimum(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    pub fn is_blind(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_IsBlind(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    pub fn init_context_iterator(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_InitContextIterator(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    pub fn more_shape_in_context(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_MoreShapeInContext(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    pub fn contextual_shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepCheck_Solid_inherited_ContextualShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    pub fn status_on_shape(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Solid_inherited_StatusOnShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    pub fn next_shape_in_context(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Solid_inherited_NextShapeInContext(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe {
+            crate::ffi::BRepCheck_Solid_inherited_SetParallel(self as *mut Self, theIsParallel)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepCheck_Solid_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+// ========================
+// From BRepCheck_Vertex.hxx
+// ========================
+
+/// **Source:** `BRepCheck_Vertex.hxx`:30 - `BRepCheck_Vertex`
+pub use crate::ffi::BRepCheck_Vertex as Vertex;
+
+unsafe impl crate::CppDeletable for Vertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepCheck_Vertex_destructor(ptr);
+    }
+}
+
+impl Vertex {
+    /// **Source:** `BRepCheck_Vertex.hxx`:34 - `BRepCheck_Vertex::BRepCheck_Vertex()`
+    pub fn new_vertex(V: &crate::topo_ds::Vertex) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Vertex_ctor_vertex(V)) }
+    }
+
+    /// **Source:** `BRepCheck_Vertex.hxx`:36 - `BRepCheck_Vertex::InContext()`
+    pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Vertex_in_context(self as *mut Self, ContextShape) }
+    }
+
+    /// **Source:** `BRepCheck_Vertex.hxx`:38 - `BRepCheck_Vertex::Minimum()`
+    pub fn minimum(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Vertex_minimum(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Vertex.hxx`:40 - `BRepCheck_Vertex::Blind()`
+    pub fn blind(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Vertex_blind(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Vertex.hxx`:42 - `BRepCheck_Vertex::Tolerance()`
+    pub fn tolerance(&mut self) -> f64 {
+        unsafe { crate::ffi::BRepCheck_Vertex_tolerance(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Vertex.hxx`:44 - `BRepCheck_Vertex::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Vertex_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Vertex.hxx`:44 - `BRepCheck_Vertex::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Vertex_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Vertex.hxx`:44 - `BRepCheck_Vertex::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Vertex_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepCheck_Result
+    pub fn as_result(&self) -> &Result_ {
+        unsafe { &*(crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result(self as *const Self)) }
+    }
+
+    /// Upcast to BRepCheck_Result (mutable)
+    pub fn as_result_mut(&mut self) -> &mut Result_ {
+        unsafe { &mut *(crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_Init(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_SetFailStatus(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    pub fn status(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Vertex_inherited_Status(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    pub fn is_minimum(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_IsMinimum(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    pub fn is_blind(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_IsBlind(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    pub fn init_context_iterator(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_InitContextIterator(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    pub fn more_shape_in_context(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_MoreShapeInContext(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    pub fn contextual_shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepCheck_Vertex_inherited_ContextualShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    pub fn status_on_shape(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Vertex_inherited_StatusOnShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    pub fn next_shape_in_context(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Vertex_inherited_NextShapeInContext(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe {
+            crate::ffi::BRepCheck_Vertex_inherited_SetParallel(self as *mut Self, theIsParallel)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepCheck_Vertex_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+// ========================
+// From BRepCheck_Wire.hxx
+// ========================
+
+/// **Source:** `BRepCheck_Wire.hxx`:34 - `BRepCheck_Wire`
+pub use crate::ffi::BRepCheck_Wire as Wire;
+
+unsafe impl crate::CppDeletable for Wire {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BRepCheck_Wire_destructor(ptr);
+    }
+}
+
+impl Wire {
+    /// **Source:** `BRepCheck_Wire.hxx`:38 - `BRepCheck_Wire::BRepCheck_Wire()`
+    pub fn new_wire(W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Wire_ctor_wire(W)) }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:43 - `BRepCheck_Wire::InContext()`
+    /// if <ContextShape> is  a  face, consequently checks
+    /// SelfIntersect(),   Closed(),   Orientation()   and
+    /// Closed2d until faulty is found
+    pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Wire_in_context(self as *mut Self, ContextShape) }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:47 - `BRepCheck_Wire::Minimum()`
+    /// checks that the  wire  is  not empty and "connex".
+    /// Called by constructor
+    pub fn minimum(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Wire_minimum(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:50 - `BRepCheck_Wire::Blind()`
+    /// Does nothing
+    pub fn blind(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Wire_blind(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:65 - `BRepCheck_Wire::Closed()`
+    /// Checks if the  oriented  edges of the wire  give a
+    /// closed  wire.   If the  wire   is closed,  returns
+    /// BRepCheck_NoError.    Warning :  if the first  and
+    /// last  edge   are  infinite,   the  wire   will  be
+    /// considered as a closed one.  If <Update> is set to
+    /// Standard_True, registers the status in the list.
+    /// May return (and registers):
+    /// **BRepCheck_NotConnected,   if    wire    is   not
+    /// topologically closed
+    /// **BRepCheck_RedundantEdge, if an  edge  is in wire
+    /// more than 3 times  or  in  case of 2 occurrences if
+    /// not with FORWARD and REVERSED orientation.
+    /// **BRepCheck_NoError
+    pub fn closed(&mut self, Update: bool) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Wire_closed(
+                self as *mut Self,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:72 - `BRepCheck_Wire::Closed2d()`
+    /// Checks if edges of the  wire give a wire closed in
+    /// 2d space.
+    /// Returns BRepCheck_NoError,  or BRepCheck_NotClosed
+    /// If <Update> is set to Standard_True, registers the
+    /// status in the list.
+    pub fn closed2d(
+        &mut self,
+        F: &crate::topo_ds::Face,
+        Update: bool,
+    ) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Wire_closed2d(
+                self as *mut Self,
+                F,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:86 - `BRepCheck_Wire::Orientation()`
+    /// Checks   if  the oriented edges   of  the wire are
+    /// correctly oriented.  An  internal call is made  to
+    /// the  method Closed.   If no face  exists, call the
+    /// method with   a  null  face  (TopoDS_face()).   If
+    /// <Update> is  set  to Standard_True,  registers the
+    /// status in the list.
+    /// May return (and registers):
+    /// BRepCheck_InvalidDegeneratedFlag,
+    /// BRepCheck_BadOrientationOfSubshape,
+    /// BRepCheck_NotClosed,
+    /// BRepCheck_NoError
+    pub fn orientation(
+        &mut self,
+        F: &crate::topo_ds::Face,
+        Update: bool,
+    ) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Wire_orientation(
+                self as *mut Self,
+                F,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:100 - `BRepCheck_Wire::SelfIntersect()`
+    /// Checks if  the wire intersect   itself on the face
+    /// <F>.  <E1>  and <E2>   are the first  intersecting
+    /// edges  found.  <E2>  may  be a  null  edge when  a
+    /// self-intersecting edge is found.If <Update> is set
+    /// to Standard_True,   registers  the  status in  the
+    /// list.
+    /// May return (and register):
+    /// BRepCheck_EmptyWire,
+    /// BRepCheck_SelfIntersectingWire,
+    /// BRepCheck_NoCurveOnSurface,
+    /// BRepCheck_NoError
+    pub fn self_intersect(
+        &mut self,
+        F: &crate::topo_ds::Face,
+        E1: &mut crate::topo_ds::Edge,
+        E2: &mut crate::topo_ds::Edge,
+        Update: bool,
+    ) -> crate::b_rep_check::Status {
+        unsafe {
+            crate::b_rep_check::Status::try_from(crate::ffi::BRepCheck_Wire_self_intersect(
+                self as *mut Self,
+                F,
+                E1,
+                E2,
+                Update,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:106 - `BRepCheck_Wire::GeometricControls()`
+    /// report SelfIntersect() check would be (is) done
+    pub fn geometric_controls(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Wire_geometric_controls(self as *const Self) }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:109 - `BRepCheck_Wire::GeometricControls()`
+    /// set SelfIntersect() to be checked
+    pub fn geometric_controls_bool(&mut self, B: bool) {
+        unsafe { crate::ffi::BRepCheck_Wire_geometric_controls_bool(self as *mut Self, B) }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:112 - `BRepCheck_Wire::SetStatus()`
+    /// Sets status of Wire;
+    pub fn set_status(&mut self, theStatus: crate::b_rep_check::Status) {
+        unsafe { crate::ffi::BRepCheck_Wire_set_status(self as *mut Self, theStatus.into()) }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:114 - `BRepCheck_Wire::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Wire_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:114 - `BRepCheck_Wire::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::BRepCheck_Wire_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `BRepCheck_Wire.hxx`:114 - `BRepCheck_Wire::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::BRepCheck_Wire_get_type_descriptor()) }
+    }
+
+    /// Upcast to BRepCheck_Result
+    pub fn as_result(&self) -> &Result_ {
+        unsafe { &*(crate::ffi::BRepCheck_Wire_as_BRepCheck_Result(self as *const Self)) }
+    }
+
+    /// Upcast to BRepCheck_Result (mutable)
+    pub fn as_result_mut(&mut self) -> &mut Result_ {
+        unsafe { &mut *(crate::ffi::BRepCheck_Wire_as_BRepCheck_Result_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_Init(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_SetFailStatus(self as *mut Self, S) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    pub fn status(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Wire_inherited_Status(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    pub fn is_minimum(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_IsMinimum(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    pub fn is_blind(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_IsBlind(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    pub fn init_context_iterator(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_InitContextIterator(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    pub fn more_shape_in_context(&self) -> bool {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_MoreShapeInContext(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    pub fn contextual_shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::BRepCheck_Wire_inherited_ContextualShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    pub fn status_on_shape(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
+        unsafe { &*(crate::ffi::BRepCheck_Wire_inherited_StatusOnShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    pub fn next_shape_in_context(&mut self) {
+        unsafe { crate::ffi::BRepCheck_Wire_inherited_NextShapeInContext(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    pub fn set_parallel(&mut self, theIsParallel: bool) {
+        unsafe {
+            crate::ffi::BRepCheck_Wire_inherited_SetParallel(self as *mut Self, theIsParallel)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepCheck_Wire_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::BRepCheck_ListOfStatus as ListOfStatus;

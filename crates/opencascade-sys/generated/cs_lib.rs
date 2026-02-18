@@ -16,7 +16,7 @@ pub fn dnnuv_int2_array2ofvec(
     Nu: i32,
     Nv: i32,
     DerSurf: &crate::ffi::TColgp_Array2OfVec,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::CSLib_dnnuv_int2_array2ofvec(Nu, Nv, DerSurf)) }
 }
 /// **Source:** `CSLib.hxx`:135 - `CSLib::DNNUV`
@@ -29,7 +29,7 @@ pub fn dnnuv_int2_array2ofvec2(
     Nv: i32,
     DerSurf1: &crate::ffi::TColgp_Array2OfVec,
     DerSurf2: &crate::ffi::TColgp_Array2OfVec,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::CSLib_dnnuv_int2_array2ofvec2(
             Nu, Nv, DerSurf1, DerSurf2,
@@ -51,7 +51,7 @@ pub fn dn_normal(
     DerNUV: &crate::ffi::TColgp_Array2OfVec,
     Iduref: i32,
     Idvref: i32,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::CSLib_dn_normal(Nu, Nv, DerNUV, Iduref, Idvref))
     }

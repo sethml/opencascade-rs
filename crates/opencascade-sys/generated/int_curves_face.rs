@@ -234,7 +234,7 @@ impl Intersector {
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:128 - `IntCurvesFace_Intersector::Bounding()`
-    pub fn bounding(&self) -> crate::OwnedPtr<crate::bnd::Box> {
+    pub fn bounding(&self) -> crate::OwnedPtr<crate::bnd::Box_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntCurvesFace_Intersector_bounding(
                 self as *const Self,

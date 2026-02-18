@@ -1250,7 +1250,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
-    pub fn cached_min_max(&self) -> &crate::bnd::Box {
+    pub fn cached_min_max(&self) -> &crate::bnd::Box_ {
         unsafe {
             &*(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_CachedMinMax(
                 self as *const Self,
@@ -1259,7 +1259,7 @@ impl GltfLatePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
-    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
+    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box_) {
         unsafe {
             crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_SetCachedMinMax(
                 self as *mut Self,
@@ -1287,7 +1287,7 @@ impl GltfLatePrimitiveArray {
     /// Inherited: **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
     pub fn min_max(
         &self,
-        theBox: &mut crate::bnd::Box,
+        theBox: &mut crate::bnd::Box_,
         theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {

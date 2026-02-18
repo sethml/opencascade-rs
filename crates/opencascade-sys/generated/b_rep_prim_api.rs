@@ -929,7 +929,7 @@ impl MakePrism {
     /// are attempted to be canonized in simple types
     pub fn new_shape_vec_bool2(
         S: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         Copy: bool,
         Canonize: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -967,7 +967,7 @@ impl MakePrism {
     /// are attempted to be canonized in simple types
     pub fn new_shape_vec_bool(
         S: &crate::topo_ds::Shape,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         Copy: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_vec_bool2(S, V, Copy, true)
@@ -977,7 +977,7 @@ impl MakePrism {
     /// Builds the prism of base S and vector V. If C is true,
     /// S is copied. If Canonize is true then generated surfaces
     /// are attempted to be canonized in simple types
-    pub fn new_shape_vec(S: &crate::topo_ds::Shape, V: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_shape_vec(S: &crate::topo_ds::Shape, V: &crate::gp::Vec_) -> crate::OwnedPtr<Self> {
         Self::new_shape_vec_bool2(S, V, false, true)
     }
 

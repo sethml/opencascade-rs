@@ -380,7 +380,7 @@ impl ComplexCurve {
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:83 - `ShapeExtend_ComplexCurve::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::ShapeExtend_ComplexCurve_d1(self as *const Self, U, P, V1) }
     }
 
@@ -389,8 +389,8 @@ impl ComplexCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::ShapeExtend_ComplexCurve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -400,15 +400,15 @@ impl ComplexCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::ShapeExtend_ComplexCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:98 - `ShapeExtend_ComplexCurve::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_dn(
                 self as *const Self,
@@ -538,7 +538,7 @@ impl ComplexCurve {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Translate(self as *mut Self, V) }
     }
 
@@ -598,7 +598,7 @@ impl ComplexCurve {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_ComplexCurve_inherited_Translated(
@@ -1147,8 +1147,8 @@ impl CompositeSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::ShapeExtend_CompositeSurface_d1(self as *const Self, U, V, P, D1U, D1V)
@@ -1163,11 +1163,11 @@ impl CompositeSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::ShapeExtend_CompositeSurface_d2(
@@ -1192,15 +1192,15 @@ impl CompositeSurface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::ShapeExtend_CompositeSurface_d3(
@@ -1224,7 +1224,7 @@ impl CompositeSurface {
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:330 - `ShapeExtend_CompositeSurface::DN()`
     /// Computes the derivative of order Nu in the direction U and Nv
     /// in the direction V at the point P(U, V).
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_CompositeSurface_dn(
                 self as *const Self,
@@ -1396,7 +1396,7 @@ impl CompositeSurface {
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
-    pub fn translate(&mut self, V: &crate::gp::Vec) {
+    pub fn translate(&mut self, V: &crate::gp::Vec_) {
         unsafe {
             crate::ffi::ShapeExtend_CompositeSurface_inherited_Translate(self as *mut Self, V)
         }
@@ -1460,7 +1460,7 @@ impl CompositeSurface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:104 - `Geom_Geometry::Translated()`
     pub fn translated(
         &self,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(

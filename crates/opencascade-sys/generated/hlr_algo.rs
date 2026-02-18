@@ -2402,7 +2402,7 @@ impl Projector {
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:96 - `HLRAlgo_Projector::Transform()`
-    pub fn transform_vec(&self, D: &mut crate::gp::Vec) {
+    pub fn transform_vec(&self, D: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::HLRAlgo_Projector_transform_vec(self as *const Self, D) }
     }
 
@@ -2428,7 +2428,7 @@ impl Projector {
     pub fn project_pnt_vec_pnt2d_vec2d(
         &self,
         P: &crate::gp::Pnt,
-        D1: &crate::gp::Vec,
+        D1: &crate::gp::Vec_,
         Pout: &mut crate::gp::Pnt2d,
         D1out: &mut crate::gp::Vec2d,
     ) {

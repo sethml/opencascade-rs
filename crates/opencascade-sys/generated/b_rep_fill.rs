@@ -923,8 +923,8 @@ impl CurveConstraint {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::BRepFill_CurveConstraint_inherited_D1(self as *const Self, U, P, V1, V2)
@@ -936,11 +936,11 @@ impl CurveConstraint {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
-        V4: &mut crate::gp::Vec,
-        V5: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
+        V4: &mut crate::gp::Vec_,
+        V5: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::BRepFill_CurveConstraint_inherited_D2(
@@ -4762,7 +4762,7 @@ impl TrimShellCorner {
         theFaces: &crate::ffi::HandleTopToolsHArray2OfShape,
         theTransition: crate::b_rep_fill::TransitionStyle,
         theAxeOfBisPlane: &crate::gp::Ax2,
-        theIntPointCrossDir: &crate::gp::Vec,
+        theIntPointCrossDir: &crate::gp::Vec_,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_TrimShellCorner_ctor_handletoptoolsharray2ofshape_transitionstyle_ax2_vec(theFaces, theTransition.into(), theAxeOfBisPlane, theIntPointCrossDir))

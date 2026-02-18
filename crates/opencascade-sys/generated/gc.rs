@@ -111,7 +111,7 @@ impl MakeArcOfCircle {
     /// P2 is collinear with the vector V.
     pub fn new_pnt_vec_pnt(
         P1: &crate::gp::Pnt,
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1630,7 +1630,7 @@ unsafe impl crate::CppDeletable for MakeTranslation {
 impl MakeTranslation {
     /// **Source:** `GC_MakeTranslation.hxx`:41 - `GC_MakeTranslation::GC_MakeTranslation()`
     /// Constructs a translation along the vector " Vect "
-    pub fn new_vec(Vect: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
+    pub fn new_vec(Vect: &crate::gp::Vec_) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GC_MakeTranslation_ctor_vec(Vect)) }
     }
 

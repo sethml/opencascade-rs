@@ -659,9 +659,9 @@ impl PEquation {
     pub fn box_(
         &self,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::GProp_PEquation_box_(self as *const Self, P, V1, V2, V3) }
     }
@@ -1031,7 +1031,7 @@ impl PrincipalProps {
     /// if the system has a point of symmetry there is an infinity of
     /// solutions. It is not possible to defines the three axis of
     /// inertia.
-    pub fn first_axis_of_inertia(&self) -> &crate::gp::Vec {
+    pub fn first_axis_of_inertia(&self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::GProp_PrincipalProps_first_axis_of_inertia(self as *const Self)) }
     }
 
@@ -1040,7 +1040,7 @@ impl PrincipalProps {
     ///
     /// if the system has a point of symmetry or an axis of symmetry the
     /// second and the third axis of symmetry are undefined.
-    pub fn second_axis_of_inertia(&self) -> &crate::gp::Vec {
+    pub fn second_axis_of_inertia(&self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::GProp_PrincipalProps_second_axis_of_inertia(self as *const Self)) }
     }
 
@@ -1070,7 +1070,7 @@ impl PrincipalProps {
     ///
     /// if the system has a point of symmetry or an axis of symmetry the
     /// second and the third axis of symmetry are undefined.
-    pub fn third_axis_of_inertia(&self) -> &crate::gp::Vec {
+    pub fn third_axis_of_inertia(&self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::GProp_PrincipalProps_third_axis_of_inertia(self as *const Self)) }
     }
 

@@ -236,7 +236,7 @@ impl CompCurve {
     /// with its first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::BRepAdaptor_CompCurve_d1(self as *const Self, U, P, V) }
     }
 
@@ -249,8 +249,8 @@ impl CompCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::BRepAdaptor_CompCurve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -264,9 +264,9 @@ impl CompCurve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::BRepAdaptor_CompCurve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -277,7 +277,7 @@ impl CompCurve {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_dn(
                 self as *const Self,
@@ -642,7 +642,7 @@ impl Curve {
     /// with its first derivative.
     /// Raised if the continuity of the current interval
     /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::BRepAdaptor_Curve_d1(self as *const Self, U, P, V) }
     }
 
@@ -655,8 +655,8 @@ impl Curve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::BRepAdaptor_Curve_d2(self as *const Self, U, P, V1, V2) }
     }
@@ -670,9 +670,9 @@ impl Curve {
         &self,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::BRepAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3) }
     }
@@ -683,7 +683,7 @@ impl Curve {
     /// Raised if the continuity of the current interval
     /// is not CN.
     /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_dn(self as *const Self, U, N))
         }
@@ -1538,8 +1538,8 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::BRepAdaptor_Surface_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
@@ -1554,11 +1554,11 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::BRepAdaptor_Surface_d2(
@@ -1585,15 +1585,15 @@ impl Surface {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
-        D2U: &mut crate::gp::Vec,
-        D2V: &mut crate::gp::Vec,
-        D2UV: &mut crate::gp::Vec,
-        D3U: &mut crate::gp::Vec,
-        D3V: &mut crate::gp::Vec,
-        D3UUV: &mut crate::gp::Vec,
-        D3UVV: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
+        D2U: &mut crate::gp::Vec_,
+        D2V: &mut crate::gp::Vec_,
+        D2UV: &mut crate::gp::Vec_,
+        D3U: &mut crate::gp::Vec_,
+        D3V: &mut crate::gp::Vec_,
+        D3UUV: &mut crate::gp::Vec_,
+        D3UVV: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::BRepAdaptor_Surface_d3(
@@ -1620,7 +1620,7 @@ impl Surface {
     /// Raised if the current U  interval is not not CNu
     /// and the current V interval is not CNv.
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_dn(
                 self as *const Self,

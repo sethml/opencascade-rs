@@ -294,7 +294,7 @@ impl CommonPoint {
 
     /// **Source:** `ChFiDS_CommonPoint.hxx`:69 - `ChFiDS_CommonPoint::SetVector()`
     /// Set the output 3d  vector
-    pub fn set_vector(&mut self, theVector: &crate::gp::Vec) {
+    pub fn set_vector(&mut self, theVector: &crate::gp::Vec_) {
         unsafe { crate::ffi::ChFiDS_CommonPoint_set_vector(self as *mut Self, theVector) }
     }
 
@@ -379,7 +379,7 @@ impl CommonPoint {
 
     /// **Source:** `ChFiDS_CommonPoint.hxx`:130 - `ChFiDS_CommonPoint::Vector()`
     /// Returns the output  3d vector
-    pub fn vector(&self) -> &crate::gp::Vec {
+    pub fn vector(&self) -> &crate::gp::Vec_ {
         unsafe { &*(crate::ffi::ChFiDS_CommonPoint_vector(self as *const Self)) }
     }
 }
@@ -520,7 +520,7 @@ impl ElSpine {
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
-    pub fn d1(&self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d1(self as *const Self, AbsC, P, V1) }
     }
 
@@ -529,8 +529,8 @@ impl ElSpine {
         &self,
         AbsC: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d2(self as *const Self, AbsC, P, V1, V2) }
     }
@@ -540,9 +540,9 @@ impl ElSpine {
         &self,
         AbsC: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::ChFiDS_ElSpine_d3(self as *const Self, AbsC, P, V1, V2, V3) }
     }
@@ -573,12 +573,12 @@ impl ElSpine {
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
-    pub fn first_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec) {
+    pub fn first_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::ChFiDS_ElSpine_first_point_and_tgt(self as *const Self, P, T) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
-    pub fn last_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec) {
+    pub fn last_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::ChFiDS_ElSpine_last_point_and_tgt(self as *const Self, P, T) }
     }
 
@@ -593,12 +593,12 @@ impl ElSpine {
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
-    pub fn set_first_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec) {
+    pub fn set_first_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec_) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_first_point_and_tgt(self as *mut Self, P, T) }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
-    pub fn set_last_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec) {
+    pub fn set_last_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec_) {
         unsafe { crate::ffi::ChFiDS_ElSpine_set_last_point_and_tgt(self as *mut Self, P, T) }
     }
 
@@ -705,7 +705,7 @@ impl ElSpine {
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:123 - `Adaptor3d_Curve::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_inherited_DN(
                 self as *const Self,
@@ -1393,7 +1393,7 @@ impl Spine {
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
-    pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
+    pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::ChFiDS_Spine_d1(self as *mut Self, AbsC, P, V1) }
     }
 
@@ -1402,8 +1402,8 @@ impl Spine {
         &mut self,
         AbsC: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::ChFiDS_Spine_d2(self as *mut Self, AbsC, P, V1, V2) }
     }

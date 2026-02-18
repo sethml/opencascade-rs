@@ -3246,7 +3246,7 @@ impl Triangulation {
     /// **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
     /// Returns cached min - max range of triangulation data,
     /// which is VOID by default (e.g, no cached information).
-    pub fn cached_min_max(&self) -> &crate::bnd::Box {
+    pub fn cached_min_max(&self) -> &crate::bnd::Box_ {
         unsafe { &*(crate::ffi::Poly_Triangulation_cached_min_max(self as *const Self)) }
     }
 
@@ -3255,7 +3255,7 @@ impl Triangulation {
     /// The bounding box should exactly match actual range of triangulation data
     /// without a gap or transformation, or otherwise undefined behavior will be observed.
     /// Passing a VOID range invalidates the cache.
-    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
+    pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box_) {
         unsafe { crate::ffi::Poly_Triangulation_set_cached_min_max(self as *mut Self, theBox) }
     }
 
@@ -3286,7 +3286,7 @@ impl Triangulation {
     /// cached min - max range).
     pub fn min_max(
         &self,
-        theBox: &mut crate::bnd::Box,
+        theBox: &mut crate::bnd::Box_,
         theTrsf: &crate::gp::Trsf,
         theIsAccurate: bool,
     ) -> bool {

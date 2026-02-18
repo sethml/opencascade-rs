@@ -95,8 +95,8 @@ pub fn adjust_extremity(
     Curve: &mut crate::ffi::HandleGeomBoundedCurve,
     P1: &crate::gp::Pnt,
     P2: &crate::gp::Pnt,
-    T1: &crate::gp::Vec,
-    T2: &crate::gp::Vec,
+    T1: &crate::gp::Vec_,
+    T2: &crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::GeomLib_adjust_extremity(Curve, P1, P2, T1, T2) }
 }

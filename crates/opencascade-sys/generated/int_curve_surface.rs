@@ -790,7 +790,7 @@ impl TheHCurveTool {
         C: &crate::ffi::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V: &mut crate::gp::Vec,
+        V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d1(C, U, P, V) }
     }
@@ -804,8 +804,8 @@ impl TheHCurveTool {
         C: &crate::ffi::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d2(C, U, P, V1, V2) }
     }
@@ -819,9 +819,9 @@ impl TheHCurveTool {
         C: &crate::ffi::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
+        V3: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::IntCurveSurface_TheHCurveTool_d3(C, U, P, V1, V2, V3) }
     }
@@ -836,7 +836,7 @@ impl TheHCurveTool {
         C: &crate::ffi::HandleAdaptor3dCurve,
         U: f64,
         N: i32,
-    ) -> crate::OwnedPtr<crate::gp::Vec> {
+    ) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntCurveSurface_TheHCurveTool_dn(C, U, N)) }
     }
 
@@ -1283,7 +1283,7 @@ impl ThePolygonOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolygonOfHInter.hxx`:47 - `IntCurveSurface_ThePolygonOfHInter::Bounding()`
     /// Give the bounding box of the polygon.
-    pub fn bounding(&self) -> &crate::bnd::Box {
+    pub fn bounding(&self) -> &crate::bnd::Box_ {
         unsafe { &*(crate::ffi::IntCurveSurface_ThePolygonOfHInter_bounding(self as *const Self)) }
     }
 
@@ -1403,7 +1403,7 @@ impl ThePolygonToolOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolygonToolOfHInter.hxx`:35 - `IntCurveSurface_ThePolygonToolOfHInter::Bounding()`
     /// Give the bounding box of the polygon.
-    pub fn bounding(thePolygon: &ThePolygonOfHInter) -> &'static crate::bnd::Box {
+    pub fn bounding(thePolygon: &ThePolygonOfHInter) -> &'static crate::bnd::Box_ {
         unsafe { &*(crate::ffi::IntCurveSurface_ThePolygonToolOfHInter_bounding(thePolygon)) }
     }
 
@@ -1634,7 +1634,7 @@ impl ThePolyhedronOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:110 - `IntCurveSurface_ThePolyhedronOfHInter::Bounding()`
     /// Give the bounding box of the MaTriangle.
-    pub fn bounding(&self) -> &crate::bnd::Box {
+    pub fn bounding(&self) -> &crate::bnd::Box_ {
         unsafe {
             &*(crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_bounding(self as *const Self))
         }
@@ -1802,7 +1802,7 @@ impl ThePolyhedronToolOfHInter {
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:37 - `IntCurveSurface_ThePolyhedronToolOfHInter::Bounding()`
     /// Give the bounding box of the PolyhedronTool.
-    pub fn bounding(thePolyh: &ThePolyhedronOfHInter) -> &'static crate::bnd::Box {
+    pub fn bounding(thePolyh: &ThePolyhedronOfHInter) -> &'static crate::bnd::Box_ {
         unsafe { &*(crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_bounding(thePolyh)) }
     }
 

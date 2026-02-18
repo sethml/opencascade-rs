@@ -305,7 +305,7 @@ impl MultiBSpCurve {
         CuIndex: i32,
         U: f64,
         Pt: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt_vec(
@@ -351,8 +351,8 @@ impl MultiBSpCurve {
         CuIndex: i32,
         U: f64,
         Pt: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt_vec2(
@@ -748,7 +748,7 @@ impl MultiCurve {
         CuIndex: i32,
         U: f64,
         Pt: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt_vec(
@@ -794,8 +794,8 @@ impl MultiCurve {
         CuIndex: i32,
         U: f64,
         Pt: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
+        V1: &mut crate::gp::Vec_,
+        V2: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt_vec2(

@@ -64,7 +64,7 @@ pub fn d1_real_lin_pnt_vec(
     U: f64,
     L: &crate::gp::Lin,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d1_real_lin_pnt_vec(U, L, P, V1) }
 }
@@ -73,7 +73,7 @@ pub fn d1_real_circ_pnt_vec(
     U: f64,
     C: &crate::gp::Circ,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d1_real_circ_pnt_vec(U, C, P, V1) }
 }
@@ -82,7 +82,7 @@ pub fn d1_real_elips_pnt_vec(
     U: f64,
     E: &crate::gp::Elips,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d1_real_elips_pnt_vec(U, E, P, V1) }
 }
@@ -91,7 +91,7 @@ pub fn d1_real_hypr_pnt_vec(
     U: f64,
     H: &crate::gp::Hypr,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d1_real_hypr_pnt_vec(U, H, P, V1) }
 }
@@ -100,7 +100,7 @@ pub fn d1_real_parab_pnt_vec(
     U: f64,
     Prb: &crate::gp::Parab,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d1_real_parab_pnt_vec(U, Prb, P, V1) }
 }
@@ -116,8 +116,8 @@ pub fn d2_real_circ_pnt_vec2(
     U: f64,
     C: &crate::gp::Circ,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d2_real_circ_pnt_vec2(U, C, P, V1, V2) }
 }
@@ -126,8 +126,8 @@ pub fn d2_real_elips_pnt_vec2(
     U: f64,
     E: &crate::gp::Elips,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d2_real_elips_pnt_vec2(U, E, P, V1, V2) }
 }
@@ -136,8 +136,8 @@ pub fn d2_real_hypr_pnt_vec2(
     U: f64,
     H: &crate::gp::Hypr,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d2_real_hypr_pnt_vec2(U, H, P, V1, V2) }
 }
@@ -146,8 +146,8 @@ pub fn d2_real_parab_pnt_vec2(
     U: f64,
     Prb: &crate::gp::Parab,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d2_real_parab_pnt_vec2(U, Prb, P, V1, V2) }
 }
@@ -164,9 +164,9 @@ pub fn d3_real_circ_pnt_vec3(
     U: f64,
     C: &crate::gp::Circ,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
-    V3: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
+    V3: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d3_real_circ_pnt_vec3(U, C, P, V1, V2, V3) }
 }
@@ -175,9 +175,9 @@ pub fn d3_real_elips_pnt_vec3(
     U: f64,
     E: &crate::gp::Elips,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
-    V3: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
+    V3: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d3_real_elips_pnt_vec3(U, E, P, V1, V2, V3) }
 }
@@ -186,9 +186,9 @@ pub fn d3_real_hypr_pnt_vec3(
     U: f64,
     H: &crate::gp::Hypr,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
-    V3: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
+    V3: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_d3_real_hypr_pnt_vec3(U, H, P, V1, V2, V3) }
 }
@@ -200,19 +200,19 @@ pub fn d3_real_hypr_pnt_vec3(
 /// -   a gp_Vec2d vector for a curve in 2D space.
 /// In the following functions N is the order of derivation
 /// and should be greater than 0
-pub fn dn_real_lin_int(U: f64, L: &crate::gp::Lin, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+pub fn dn_real_lin_int(U: f64, L: &crate::gp::Lin, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElCLib_dn_real_lin_int(U, L, N)) }
 }
 /// **Source:** `ElCLib.hxx`:181 - `ElCLib::DN`
-pub fn dn_real_circ_int(U: f64, C: &crate::gp::Circ, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+pub fn dn_real_circ_int(U: f64, C: &crate::gp::Circ, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElCLib_dn_real_circ_int(U, C, N)) }
 }
 /// **Source:** `ElCLib.hxx`:183 - `ElCLib::DN`
-pub fn dn_real_elips_int(U: f64, E: &crate::gp::Elips, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+pub fn dn_real_elips_int(U: f64, E: &crate::gp::Elips, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElCLib_dn_real_elips_int(U, E, N)) }
 }
 /// **Source:** `ElCLib.hxx`:185 - `ElCLib::DN`
-pub fn dn_real_hypr_int(U: f64, H: &crate::gp::Hypr, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+pub fn dn_real_hypr_int(U: f64, H: &crate::gp::Hypr, N: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElCLib_dn_real_hypr_int(U, H, N)) }
 }
 /// **Source:** `ElCLib.hxx`:187 - `ElCLib::DN`
@@ -220,7 +220,7 @@ pub fn dn_real_parab_int(
     U: f64,
     Prb: &crate::gp::Parab,
     N: i32,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElCLib_dn_real_parab_int(U, Prb, N)) }
 }
 /// **Source:** `ElCLib.hxx`:189 - `ElCLib::Value`
@@ -471,7 +471,7 @@ pub fn line_d1_real_ax1_pnt_vec(
     U: f64,
     Pos: &crate::gp::Ax1,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_line_d1_real_ax1_pnt_vec(U, Pos, P, V1) }
 }
@@ -481,7 +481,7 @@ pub fn circle_d1_real_ax2_real_pnt_vec(
     Pos: &crate::gp::Ax2,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_circle_d1_real_ax2_real_pnt_vec(U, Pos, Radius, P, V1) }
 }
@@ -492,7 +492,7 @@ pub fn ellipse_d1_real_ax2_real2_pnt_vec(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe {
         crate::ffi::ElCLib_ellipse_d1_real_ax2_real2_pnt_vec(
@@ -512,7 +512,7 @@ pub fn hyperbola_d1_real_ax2_real2_pnt_vec(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe {
         crate::ffi::ElCLib_hyperbola_d1_real_ax2_real2_pnt_vec(
@@ -531,7 +531,7 @@ pub fn parabola_d1_real_ax2_real_pnt_vec(
     Pos: &crate::gp::Ax2,
     Focal: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_parabola_d1_real_ax2_real_pnt_vec(U, Pos, Focal, P, V1) }
 }
@@ -541,8 +541,8 @@ pub fn circle_d2_real_ax2_real_pnt_vec2(
     Pos: &crate::gp::Ax2,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_circle_d2_real_ax2_real_pnt_vec2(U, Pos, Radius, P, V1, V2) }
 }
@@ -553,8 +553,8 @@ pub fn ellipse_d2_real_ax2_real2_pnt_vec2(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
 ) {
     unsafe {
         crate::ffi::ElCLib_ellipse_d2_real_ax2_real2_pnt_vec2(
@@ -575,8 +575,8 @@ pub fn hyperbola_d2_real_ax2_real2_pnt_vec2(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
 ) {
     unsafe {
         crate::ffi::ElCLib_hyperbola_d2_real_ax2_real2_pnt_vec2(
@@ -596,8 +596,8 @@ pub fn parabola_d2_real_ax2_real_pnt_vec2(
     Pos: &crate::gp::Ax2,
     Focal: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_parabola_d2_real_ax2_real_pnt_vec2(U, Pos, Focal, P, V1, V2) }
 }
@@ -607,9 +607,9 @@ pub fn circle_d3_real_ax2_real_pnt_vec3(
     Pos: &crate::gp::Ax2,
     Radius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
-    V3: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
+    V3: &mut crate::gp::Vec_,
 ) {
     unsafe { crate::ffi::ElCLib_circle_d3_real_ax2_real_pnt_vec3(U, Pos, Radius, P, V1, V2, V3) }
 }
@@ -620,9 +620,9 @@ pub fn ellipse_d3_real_ax2_real2_pnt_vec3(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
-    V3: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
+    V3: &mut crate::gp::Vec_,
 ) {
     unsafe {
         crate::ffi::ElCLib_ellipse_d3_real_ax2_real2_pnt_vec3(
@@ -644,9 +644,9 @@ pub fn hyperbola_d3_real_ax2_real2_pnt_vec3(
     MajorRadius: f64,
     MinorRadius: f64,
     P: &mut crate::gp::Pnt,
-    V1: &mut crate::gp::Vec,
-    V2: &mut crate::gp::Vec,
-    V3: &mut crate::gp::Vec,
+    V1: &mut crate::gp::Vec_,
+    V2: &mut crate::gp::Vec_,
+    V3: &mut crate::gp::Vec_,
 ) {
     unsafe {
         crate::ffi::ElCLib_hyperbola_d3_real_ax2_real2_pnt_vec3(
@@ -668,7 +668,7 @@ pub fn line_dn_real_ax1_int(
     U: f64,
     Pos: &crate::gp::Ax1,
     N: i32,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElCLib_line_dn_real_ax1_int(U, Pos, N)) }
 }
 /// **Source:** `ElCLib.hxx`:386 - `ElCLib::CircleDN`
@@ -677,7 +677,7 @@ pub fn circle_dn_real_ax2_real_int(
     Pos: &crate::gp::Ax2,
     Radius: f64,
     N: i32,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::ElCLib_circle_dn_real_ax2_real_int(U, Pos, Radius, N))
     }
@@ -689,7 +689,7 @@ pub fn ellipse_dn_real_ax2_real2_int(
     MajorRadius: f64,
     MinorRadius: f64,
     N: i32,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::ElCLib_ellipse_dn_real_ax2_real2_int(
             U,
@@ -707,7 +707,7 @@ pub fn hyperbola_dn_real_ax2_real2_int(
     MajorRadius: f64,
     MinorRadius: f64,
     N: i32,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::ElCLib_hyperbola_dn_real_ax2_real2_int(
             U,
@@ -724,7 +724,7 @@ pub fn parabola_dn_real_ax2_real_int(
     Pos: &crate::gp::Ax2,
     Focal: f64,
     N: i32,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::ffi::ElCLib_parabola_dn_real_ax2_real_int(
             U, Pos, Focal, N,
@@ -1234,7 +1234,7 @@ pub fn to3d_ax2_pnt2d(
 pub fn to3d_ax2_vec2d(
     Pos: &crate::gp::Ax2,
     V: &crate::gp::Vec2d,
-) -> crate::OwnedPtr<crate::gp::Vec> {
+) -> crate::OwnedPtr<crate::gp::Vec_> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ElCLib_to3d_ax2_vec2d(Pos, V)) }
 }
 /// **Source:** `ElCLib.hxx`:660 - `ElCLib::To3d`

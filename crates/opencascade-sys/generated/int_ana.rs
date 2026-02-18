@@ -202,7 +202,7 @@ impl Curve {
     /// **Source:** `IntAna_Curve.hxx`:99 - `IntAna_Curve::D1u()`
     /// Returns the point and the first derivative at parameter
     /// Theta on the curve.
-    pub fn d1u(&mut self, Theta: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) -> bool {
+    pub fn d1u(&mut self, Theta: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec_) -> bool {
         unsafe { crate::ffi::IntAna_Curve_d1u(self as *mut Self, Theta, P, V) }
     }
 

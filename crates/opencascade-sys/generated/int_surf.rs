@@ -422,14 +422,14 @@ impl Quadric {
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:69 - `IntSurf_Quadric::Gradient()`
-    pub fn gradient(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn gradient(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_gradient(self as *const Self, P))
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:71 - `IntSurf_Quadric::ValAndGrad()`
-    pub fn val_and_grad(&self, P: &crate::gp::Pnt, Dist: &mut f64, Grad: &mut crate::gp::Vec) {
+    pub fn val_and_grad(&self, P: &crate::gp::Pnt, Dist: &mut f64, Grad: &mut crate::gp::Vec_) {
         unsafe { crate::ffi::IntSurf_Quadric_val_and_grad(self as *const Self, P, Dist, Grad) }
     }
 
@@ -485,14 +485,14 @@ impl Quadric {
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
-        D1U: &mut crate::gp::Vec,
-        D1V: &mut crate::gp::Vec,
+        D1U: &mut crate::gp::Vec_,
+        D1V: &mut crate::gp::Vec_,
     ) {
         unsafe { crate::ffi::IntSurf_Quadric_d1(self as *const Self, U, V, P, D1U, D1V) }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:93 - `IntSurf_Quadric::DN()`
-    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_dn(
                 self as *const Self,
@@ -505,7 +505,7 @@ impl Quadric {
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:98 - `IntSurf_Quadric::Normale()`
-    pub fn normale_real2(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn normale_real2(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_normale_real2(
                 self as *const Self,
@@ -521,7 +521,7 @@ impl Quadric {
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:102 - `IntSurf_Quadric::Normale()`
-    pub fn normale_pnt(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::gp::Vec> {
+    pub fn normale_pnt(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::gp::Vec_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IntSurf_Quadric_normale_pnt(
                 self as *const Self,

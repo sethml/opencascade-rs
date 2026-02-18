@@ -1148,8 +1148,8 @@ impl Interpolate {
     /// defined at the time of initialization).
     pub fn load_vec2_bool(
         &mut self,
-        InitialTangent: &crate::gp::Vec,
-        FinalTangent: &crate::gp::Vec,
+        InitialTangent: &crate::gp::Vec_,
+        FinalTangent: &crate::gp::Vec_,
         Scale: bool,
     ) {
         unsafe {

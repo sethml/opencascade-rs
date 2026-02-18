@@ -1955,7 +1955,7 @@ unsafe impl crate::CppDeletable for MakeVector {
 impl MakeVector {
     /// **Source:** `GeomToStep_MakeVector.hxx`:41 - `GeomToStep_MakeVector::GeomToStep_MakeVector()`
     pub fn new_vec_factors(
-        V: &crate::gp::Vec,
+        V: &crate::gp::Vec_,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {

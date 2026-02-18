@@ -3354,6 +3354,494 @@ impl ProgressRange {
 }
 
 // ========================
+// From Message_ProgressScope.hxx
+// ========================
+
+/// **Source:** `Message_ProgressScope.hxx`:192 - `Message_ProgressScope`
+/// Message_ProgressScope class provides convenient way to advance progress
+/// indicator in context of complex program organized in hierarchical way,
+/// where usually it is difficult (or even not possible) to consider process
+/// as linear with fixed step.
+///
+/// On every level (sub-operation) in hierarchy of operations
+/// the local instance of the Message_ProgressScope class is created.
+/// It takes a part of the upper-level scope (via Message_ProgressRange) and provides
+/// a way to consider this part as independent scale with locally defined range.
+///
+/// The position on the local scale may be advanced using the method Next(),
+/// which allows iteration-like advancement. This method can take argument to
+/// advance by the specified value (with default step equal to 1).
+/// This method returns Message_ProgressRange object that takes responsibility
+/// of making the specified step, either directly at its destruction or by
+/// delegating this task to another sub-scope created from that range object.
+///
+/// It is important that sub-scope must have life time less than
+/// the life time of its parent scope that provided the range.
+/// The usage pattern is to create scope objects as local variables in the
+/// functions that do the job, and pass range objects returned by Next() to
+/// the functions of the lower level, to allow them creating their own scopes.
+///
+/// The scope has a name that can be used in visualization of the progress.
+/// It can be null. Note that when C string literal is used as a name, then its
+/// value is not copied, just pointer is stored. In other variants (char pointer
+/// or a string class) the string is copied, which is additional overhead.
+///
+/// The same instance of the progress scope! must not be used concurrently from different threads.
+/// For the algorithm running its tasks in parallel threads, a common scope is
+/// created before the parallel execution, and the range objects produced by method
+/// Next() are used to initialise the data pertinent to each task.
+/// Then the progress is advanced within each task using its own range object.
+/// See example below.
+///
+/// Note that while a range of the scope is specified using Standard_Real
+/// (double) parameter, it is expected to be a positive integer value.
+/// If the range is not an integer, method Next() shall be called with
+/// explicit step argument, and the rounded value returned by method Value()
+/// may be not coherent with the step and range.
+///
+/// A scope can be created with option "infinite". This is useful when
+/// the number of steps is not known by the time of the scope creation.
+/// In this case the progress will be advanced logarithmically, approaching
+/// the end of the scope at infinite number of steps. The parameter Max
+/// for infinite scope indicates number of steps corresponding to mid-range.
+///
+/// A progress scope created with empty constructor is not connected to any
+/// progress indicator, and passing the range created on it to any algorithm
+/// allows it executing safely without actual progress indication.
+///
+/// Example of preparation of progress indicator:
+///
+/// @code{.cpp}
+/// Handle(Message_ProgressIndicator) aProgress = ...; // assume it can be null
+/// func (Message_ProgressIndicator::Start (aProgress));
+/// @endcode
+///
+/// Example of usage in sequential process:
+///
+/// @code{.cpp}
+/// Message_ProgressScope aWholePS(aRange, "Whole process", 100);
+///
+/// // do one step taking 20%
+/// func1 (aWholePS.Next (20)); // func1 will take 20% of the whole scope
+/// if (aWholePS.UserBreak()) // exit prematurely if the user requested break
+/// return;
+///
+/// // ... do next step taking 50%
+/// func2 (aWholePS.Next (50));
+/// if (aWholePS.UserBreak())
+/// return;
+/// @endcode
+///
+/// Example of usage in nested cycle:
+///
+/// @code{.cpp}
+/// // Outer cycle
+/// Message_ProgressScope anOuter (theProgress, "Outer", nbOuter);
+/// for (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++)
+/// {
+/// // Inner cycle
+/// Message_ProgressScope anInner (anOuter.Next(), "Inner", nbInner);
+/// for (Standard_Integer j = 0; j < nbInner && anInner.More(); j++)
+/// {
+/// // Cycle body
+/// func (anInner.Next());
+/// }
+/// }
+/// @endcode
+///
+/// Example of use in function:
+///
+/// @code{.cpp}
+/// //! Implementation of iterative algorithm showing its progress
+/// func (const Message_ProgressRange& theProgress)
+/// {
+/// // Create local scope covering the given progress range.
+/// // Set this scope to count aNbSteps steps.
+/// Message_ProgressScope aScope (theProgress, "", aNbSteps);
+/// for (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++)
+/// {
+/// // Optional: pass range returned by method Next() to the nested algorithm
+/// // to allow it to show its progress too (by creating its own scope object).
+/// // In any case the progress will advance to the next step by the end of the func2 call.
+/// func2 (aScope.Next());
+/// }
+/// }
+/// @endcode
+///
+/// Example of usage in parallel process:
+///
+/// @code{.cpp}
+/// struct Task
+/// {
+/// Data& Data;
+/// Message_ProgressRange Range;
+///
+/// Task (const Data& theData, const Message_ProgressRange& theRange)
+/// : Data (theData), Range (theRange) {}
+/// };
+/// struct Functor
+/// {
+/// void operator() (Task& theTask) const
+/// {
+/// // Note: it is essential that this method is executed only once for the same Task object
+/// Message_ProgressScope aPS (theTask.Range, NULL, theTask.Data.NbItems);
+/// for (Standard_Integer i = 0; i < theTask.Data.NbSteps && aPS.More(); i++)
+/// {
+/// do_job (theTask.Data.Item[i], aPS.Next());
+/// }
+/// }
+/// };
+/// ...
+/// {
+/// std::vector<Data> aData = ...;
+/// std::vector<Task> aTasks;
+///
+/// Message_ProgressScope aPS (aRootRange, "Data processing", aData.size());
+/// for (Standard_Integer i = 0; i < aData.size(); ++i)
+/// aTasks.push_back (Task (aData[i], aPS.Next()));
+///
+/// OSD_Parallel::ForEach (aTasks.begin(), aTasks.end(), Functor());
+/// }
+/// @endcode
+///
+/// For lightweight algorithms that do not need advancing the progress
+/// within individual tasks the code can be simplified to avoid inner scopes:
+///
+/// @code
+/// struct Functor
+/// {
+/// void operator() (Task& theTask) const
+/// {
+/// if (theTask.Range.More())
+/// {
+/// do_job (theTask.Data);
+/// // advance the progress
+/// theTask.Range.Close();
+/// }
+/// }
+/// };
+/// @endcode
+pub use crate::ffi::Message_ProgressScope as ProgressScope;
+
+unsafe impl crate::CppDeletable for ProgressScope {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Message_ProgressScope_destructor(ptr);
+    }
+}
+
+impl ProgressScope {
+    /// **Source:** `Message_ProgressScope.hxx`:199 - `Message_ProgressScope::Message_ProgressScope()`
+    /// @name Preparation methods
+    /// Creates dummy scope.
+    /// It can be safely passed to algorithms; no progress indication will be done.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_ProgressScope_ctor()) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:225 - `Message_ProgressScope::Message_ProgressScope()`
+    /// Creates a new scope taking responsibility of the part of the progress
+    /// scale described by theRange. The new scope has own range from 0 to
+    /// theMax, which is mapped to the given range.
+    ///
+    /// The topmost scope is created and owned by Message_ProgressIndicator
+    /// and its pointer is contained in the Message_ProgressRange returned by the Start() method of
+    /// progress indicator.
+    ///
+    /// @param[in][out] theRange  range to fill (will be disarmed)
+    /// @param[in] theName        new scope name
+    /// @param[in] theMax         number of steps in scope
+    /// @param[in] isInfinite     infinite flag
+    pub fn new_progressrange_asciistring_real_bool(
+        theRange: &ProgressRange,
+        theName: &crate::t_collection::AsciiString,
+        theMax: f64,
+        isInfinite: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Message_ProgressScope_ctor_progressrange_asciistring_real_bool(
+                    theRange, theName, theMax, isInfinite,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:225 - `Message_ProgressScope::Message_ProgressScope()`
+    /// Creates a new scope taking responsibility of the part of the progress
+    /// scale described by theRange. The new scope has own range from 0 to
+    /// theMax, which is mapped to the given range.
+    ///
+    /// The topmost scope is created and owned by Message_ProgressIndicator
+    /// and its pointer is contained in the Message_ProgressRange returned by the Start() method of
+    /// progress indicator.
+    ///
+    /// @param[in][out] theRange  range to fill (will be disarmed)
+    /// @param[in] theName        new scope name
+    /// @param[in] theMax         number of steps in scope
+    /// @param[in] isInfinite     infinite flag
+    pub fn new_progressrange_asciistring_real(
+        theRange: &ProgressRange,
+        theName: &crate::t_collection::AsciiString,
+        theMax: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_progressrange_asciistring_real_bool(theRange, theName, theMax, false)
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:267 - `Message_ProgressScope::SetName()`
+    /// Sets the name of the scope.
+    pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
+        unsafe { crate::ffi::Message_ProgressScope_set_name(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:302 - `Message_ProgressScope::UserBreak()`
+    /// @name Advance by iterations
+    /// Returns true if ProgressIndicator signals UserBreak
+    pub fn user_break(&self) -> bool {
+        unsafe { crate::ffi::Message_ProgressScope_user_break(self as *const Self) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:305 - `Message_ProgressScope::More()`
+    /// Returns false if ProgressIndicator signals UserBreak
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::Message_ProgressScope_more(self as *const Self) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:309 - `Message_ProgressScope::Next()`
+    /// Advances position by specified step and returns the range
+    /// covering this step
+    pub fn next(&mut self, theStep: f64) -> crate::OwnedPtr<ProgressRange> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_ProgressScope_next(
+                self as *mut Self,
+                theStep,
+            ))
+        }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:314 - `Message_ProgressScope::Show()`
+    /// @name Auxiliary methods to use in ProgressIndicator
+    /// Force update of presentation of the progress indicator.
+    /// Should not be called concurrently.
+    pub fn show(&mut self) {
+        unsafe { crate::ffi::Message_ProgressScope_show(self as *mut Self) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:317 - `Message_ProgressScope::IsActive()`
+    /// Returns true if this progress scope is attached to some indicator.
+    pub fn is_active(&self) -> bool {
+        unsafe { crate::ffi::Message_ProgressScope_is_active(self as *const Self) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:322 - `Message_ProgressScope::Name()`
+    /// Returns the name of the scope (may be null).
+    /// Scopes with null name (e.g. root scope) should
+    /// be bypassed when reporting progress to the user.
+    pub fn name(&self) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Message_ProgressScope_name(self as *const Self))
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:328 - `Message_ProgressScope::MaxValue()`
+    /// Returns the maximal value of progress in this scope
+    pub fn max_value(&self) -> f64 {
+        unsafe { crate::ffi::Message_ProgressScope_max_value(self as *const Self) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:340 - `Message_ProgressScope::Value()`
+    /// Returns the current value of progress in this scope.
+    ///
+    /// The value is computed by mapping current global progress into
+    /// this scope range; the result is rounded up to integer.
+    /// Note that if MaxValue() is not an integer, Value() can be
+    /// greater than MaxValue() due to that rounding.
+    ///
+    /// This method should not be called concurrently while the progress
+    /// is advancing, except from implementation of method Show() in
+    /// descendant of Message_ProgressIndicator.
+    pub fn value(&self) -> f64 {
+        unsafe { crate::ffi::Message_ProgressScope_value(self as *const Self) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:343 - `Message_ProgressScope::IsInfinite()`
+    /// Returns the infinite flag
+    pub fn is_infinite(&self) -> bool {
+        unsafe { crate::ffi::Message_ProgressScope_is_infinite(self as *const Self) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:346 - `Message_ProgressScope::GetPortion()`
+    /// Get the portion of the indicator covered by this scope (from 0 to 1)
+    pub fn get_portion(&self) -> f64 {
+        unsafe { crate::ffi::Message_ProgressScope_get_portion(self as *const Self) }
+    }
+
+    /// **Source:** `Message_ProgressScope.hxx`:363 - `Message_ProgressScope::Close()`
+    /// Closes the scope and advances the progress to its end.
+    /// Closed scope should not be used.
+    pub fn close(&mut self) {
+        unsafe { crate::ffi::Message_ProgressScope_close(self as *mut Self) }
+    }
+}
+
+// ========================
+// From Message_ProgressSentry.hxx
+// ========================
+
+/// **Source:** `Message_ProgressSentry.hxx`:23 - `Message_ProgressSentry`
+/// Functionality of this class (Message_ProgressSentry) has been superseded by
+/// Message_ProgressScope. This class is kept just to simplify transition of an old code and will be
+/// removed in future.
+pub use crate::ffi::Message_ProgressSentry as ProgressSentry;
+
+unsafe impl crate::CppDeletable for ProgressSentry {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::Message_ProgressSentry_destructor(ptr);
+    }
+}
+
+impl ProgressSentry {
+    /// **Source:** `Message_ProgressSentry.hxx`:27 - `Message_ProgressSentry::Message_ProgressSentry()`
+    /// Deprecated constructor, Message_ProgressScope should be created instead.
+    pub fn new_progressrange_charptr_real3_bool_real(
+        theRange: &ProgressRange,
+        theName: &str,
+        theMin: f64,
+        theMax: f64,
+        theStep: f64,
+        theIsInf: bool,
+        theNewScopeSpan: f64,
+    ) -> crate::OwnedPtr<Self> {
+        let c_theName = std::ffi::CString::new(theName).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Message_ProgressSentry_ctor_progressrange_charptr_real3_bool_real(
+                    theRange,
+                    c_theName.as_ptr(),
+                    theMin,
+                    theMax,
+                    theStep,
+                    theIsInf,
+                    theNewScopeSpan,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Message_ProgressSentry.hxx`:27 - `Message_ProgressSentry::Message_ProgressSentry()`
+    /// Deprecated constructor, Message_ProgressScope should be created instead.
+    pub fn new_progressrange_charptr_real3_bool(
+        theRange: &ProgressRange,
+        theName: &str,
+        theMin: f64,
+        theMax: f64,
+        theStep: f64,
+        theIsInf: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_progressrange_charptr_real3_bool_real(
+            theRange, theName, theMin, theMax, theStep, theIsInf, 0.0,
+        )
+    }
+
+    /// **Source:** `Message_ProgressSentry.hxx`:27 - `Message_ProgressSentry::Message_ProgressSentry()`
+    /// Deprecated constructor, Message_ProgressScope should be created instead.
+    pub fn new_progressrange_charptr_real3(
+        theRange: &ProgressRange,
+        theName: &str,
+        theMin: f64,
+        theMax: f64,
+        theStep: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_progressrange_charptr_real3_bool_real(
+            theRange, theName, theMin, theMax, theStep, false, 0.0,
+        )
+    }
+
+    /// **Source:** `Message_ProgressSentry.hxx`:43 - `Message_ProgressSentry::Relieve()`
+    /// Method Relieve() was replaced by Close() in Message_ProgressScope
+    pub fn relieve(&mut self) {
+        unsafe { crate::ffi::Message_ProgressSentry_relieve(self as *mut Self) }
+    }
+
+    /// Upcast to Message_ProgressScope
+    pub fn as_progress_scope(&self) -> &ProgressScope {
+        unsafe {
+            &*(crate::ffi::Message_ProgressSentry_as_Message_ProgressScope(self as *const Self))
+        }
+    }
+
+    /// Upcast to Message_ProgressScope (mutable)
+    pub fn as_progress_scope_mut(&mut self) -> &mut ProgressScope {
+        unsafe {
+            &mut *(crate::ffi::Message_ProgressSentry_as_Message_ProgressScope_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:267 - `Message_ProgressScope::SetName()`
+    pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_SetName(self as *mut Self, theName) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:302 - `Message_ProgressScope::UserBreak()`
+    pub fn user_break(&self) -> bool {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_UserBreak(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:305 - `Message_ProgressScope::More()`
+    pub fn more(&self) -> bool {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_More(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:309 - `Message_ProgressScope::Next()`
+    pub fn next(&mut self, theStep: f64) -> crate::OwnedPtr<ProgressRange> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_ProgressSentry_inherited_Next(
+                self as *mut Self,
+                theStep,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:314 - `Message_ProgressScope::Show()`
+    pub fn show(&mut self) {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_Show(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:317 - `Message_ProgressScope::IsActive()`
+    pub fn is_active(&self) -> bool {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_IsActive(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:328 - `Message_ProgressScope::MaxValue()`
+    pub fn max_value(&self) -> f64 {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_MaxValue(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:340 - `Message_ProgressScope::Value()`
+    pub fn value(&self) -> f64 {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_Value(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:343 - `Message_ProgressScope::IsInfinite()`
+    pub fn is_infinite(&self) -> bool {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_IsInfinite(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:346 - `Message_ProgressScope::GetPortion()`
+    pub fn get_portion(&self) -> f64 {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_GetPortion(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:363 - `Message_ProgressScope::Close()`
+    pub fn close(&mut self) {
+        unsafe { crate::ffi::Message_ProgressSentry_inherited_Close(self as *mut Self) }
+    }
+}
+
+// ========================
 // Additional type re-exports
 // ========================
 

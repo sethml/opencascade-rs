@@ -2060,8 +2060,8 @@ impl MakeLinearForm {
         Sbase: &crate::topo_ds::Shape,
         W: &crate::topo_ds::Wire,
         P: &crate::ffi::HandleGeomPlane,
-        Direction: &crate::gp::Vec,
-        Direction1: &crate::gp::Vec,
+        Direction: &crate::gp::Vec_,
+        Direction1: &crate::gp::Vec_,
         Fuse: i32,
         Modify: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -2091,8 +2091,8 @@ impl MakeLinearForm {
         Sbase: &crate::topo_ds::Shape,
         W: &crate::topo_ds::Wire,
         P: &crate::ffi::HandleGeomPlane,
-        Direction: &crate::gp::Vec,
-        Direction1: &crate::gp::Vec,
+        Direction: &crate::gp::Vec_,
+        Direction1: &crate::gp::Vec_,
         Fuse: i32,
         Modify: bool,
     ) {

@@ -392,7 +392,7 @@ impl Cache {
         &self,
         theParameter: &f64,
         thePoint: &mut crate::gp::Pnt,
-        theTangent: &mut crate::gp::Vec,
+        theTangent: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d1_real_pnt_vec(
@@ -434,8 +434,8 @@ impl Cache {
         &self,
         theParameter: &f64,
         thePoint: &mut crate::gp::Pnt,
-        theTangent: &mut crate::gp::Vec,
-        theCurvature: &mut crate::gp::Vec,
+        theTangent: &mut crate::gp::Vec_,
+        theCurvature: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d2_real_pnt_vec2(
@@ -481,9 +481,9 @@ impl Cache {
         &self,
         theParameter: &f64,
         thePoint: &mut crate::gp::Pnt,
-        theTangent: &mut crate::gp::Vec,
-        theCurvature: &mut crate::gp::Vec,
-        theTorsion: &mut crate::gp::Vec,
+        theTangent: &mut crate::gp::Vec_,
+        theCurvature: &mut crate::gp::Vec_,
+        theTorsion: &mut crate::gp::Vec_,
     ) {
         unsafe {
             crate::ffi::BSplCLib_Cache_d3_real_pnt_vec3(

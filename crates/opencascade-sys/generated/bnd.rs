@@ -849,7 +849,7 @@ impl BoundSortBox {
     /// -   the set of bounding boxes SetOfBox.
     pub fn initialize_box_handlebndharray1ofbox(
         &mut self,
-        CompleteBox: &Box,
+        CompleteBox: &Box_,
         SetOfBox: &crate::ffi::HandleBndHArray1OfBox,
     ) {
         unsafe {
@@ -882,7 +882,7 @@ impl BoundSortBox {
     /// -   the maximum number nbComponents
     /// of the bounding boxes to be managed. Use the Add
     /// function to define the array of bounding boxes to be sorted by this algorithm.
-    pub fn initialize_box_int(&mut self, CompleteBox: &Box, nbComponents: i32) {
+    pub fn initialize_box_int(&mut self, CompleteBox: &Box_, nbComponents: i32) {
         unsafe {
             crate::ffi::Bnd_BoundSortBox_initialize_box_int(
                 self as *mut Self,
@@ -909,7 +909,7 @@ impl BoundSortBox {
     /// - Standard_MultiplyDefined if a box already exists at
     /// position boxIndex in the array of boxes to be sorted by
     /// this comparison algorithm.
-    pub fn add(&mut self, theBox: &Box, boxIndex: i32) {
+    pub fn add(&mut self, theBox: &Box_, boxIndex: i32) {
         unsafe { crate::ffi::Bnd_BoundSortBox_add(self as *mut Self, theBox, boxIndex) }
     }
 
@@ -919,7 +919,7 @@ impl BoundSortBox {
     /// comparison algorithm, and returns the list of intersecting
     /// bounding boxes as a list of indexes on the array of
     /// bounding boxes used by this algorithm.
-    pub fn compare_box(&mut self, theBox: &Box) -> &crate::ffi::TColStd_ListOfInteger {
+    pub fn compare_box(&mut self, theBox: &Box_) -> &crate::ffi::TColStd_ListOfInteger {
         unsafe { &*(crate::ffi::Bnd_BoundSortBox_compare_box(self as *mut Self, theBox)) }
     }
 
@@ -982,15 +982,15 @@ impl BoundSortBox {
 /// bounding box if it is infinite or empty, and
 /// -   a gap, which is included on both sides in any direction
 /// when consulting the finite bounds of the box.
-pub use crate::ffi::Bnd_Box as Box;
+pub use crate::ffi::Bnd_Box as Box_;
 
-unsafe impl crate::CppDeletable for Box {
+unsafe impl crate::CppDeletable for Box_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::Bnd_Box_destructor(ptr);
     }
 }
 
-impl Box {
+impl Box_ {
     /// **Source:** `Bnd_Box.hxx`:66 - `Bnd_Box::Bnd_Box()`
     /// Creates an empty Box.
     /// The constructed box is qualified Void. Its gap is null.
@@ -1270,7 +1270,7 @@ impl Box {
     /// Applying a geometric transformation (for example, a
     /// rotation) to a bounding box generally increases its
     /// dimensions. This is not optimal for algorithms which use it.
-    pub fn transformed(&self, T: &crate::gp::Trsf) -> crate::OwnedPtr<Box> {
+    pub fn transformed(&self, T: &crate::gp::Trsf) -> crate::OwnedPtr<Box_> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_Box_transformed(self as *const Self, T))
         }
@@ -1278,7 +1278,7 @@ impl Box {
 
     /// **Source:** `Bnd_Box.hxx`:230 - `Bnd_Box::Add()`
     /// Adds the box <Other> to <me>.
-    pub fn add_box(&mut self, Other: &Box) {
+    pub fn add_box(&mut self, Other: &Box_) {
         unsafe { crate::ffi::Bnd_Box_add_box(self as *mut Self, Other) }
     }
 
@@ -1322,14 +1322,14 @@ impl Box {
 
     /// **Source:** `Bnd_Box.hxx`:253 - `Bnd_Box::IsOut()`
     /// Returns False if the <Box> intersects or is inside <me>.
-    pub fn is_out_box(&self, Other: &Box) -> bool {
+    pub fn is_out_box(&self, Other: &Box_) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_box(self as *const Self, Other) }
     }
 
     /// **Source:** `Bnd_Box.hxx`:257 - `Bnd_Box::IsOut()`
     /// Returns False if  the transformed <Box> intersects
     /// or  is inside <me>.
-    pub fn is_out_box_trsf(&self, Other: &Box, T: &crate::gp::Trsf) -> bool {
+    pub fn is_out_box_trsf(&self, Other: &Box_, T: &crate::gp::Trsf) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_box_trsf(self as *const Self, Other, T) }
     }
 
@@ -1339,7 +1339,7 @@ impl Box {
     pub fn is_out_trsf_box_trsf(
         &self,
         T1: &crate::gp::Trsf,
-        Other: &Box,
+        Other: &Box_,
         T2: &crate::gp::Trsf,
     ) -> bool {
         unsafe { crate::ffi::Bnd_Box_is_out_trsf_box_trsf(self as *const Self, T1, Other, T2) }
@@ -1360,7 +1360,7 @@ impl Box {
 
     /// **Source:** `Bnd_Box.hxx`:271 - `Bnd_Box::Distance()`
     /// Computes the minimum distance between two boxes.
-    pub fn distance(&self, Other: &Box) -> f64 {
+    pub fn distance(&self, Other: &Box_) -> f64 {
         unsafe { crate::ffi::Bnd_Box_distance(self as *const Self, Other) }
     }
 
@@ -1380,7 +1380,7 @@ impl Box {
     /// box). This can be a Void box in case if its sides has been defined as infinite (Open) without
     /// adding any finite points. WARNING! This method relies on Open flags, the infinite points added
     /// using Add() method will be returned as is.
-    pub fn finite_part(&self) -> crate::OwnedPtr<Box> {
+    pub fn finite_part(&self) -> crate::OwnedPtr<Box_> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_Box_finite_part(self as *const Self)) }
     }
 
@@ -2023,7 +2023,7 @@ impl OBB {
 
     /// **Source:** `Bnd_OBB.hxx`:75 - `Bnd_OBB::Bnd_OBB()`
     /// Constructor to create OBB from AABB.
-    pub fn new_box(theBox: &Box) -> crate::OwnedPtr<Self> {
+    pub fn new_box(theBox: &Box_) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_OBB_ctor_box(theBox)) }
     }
 
