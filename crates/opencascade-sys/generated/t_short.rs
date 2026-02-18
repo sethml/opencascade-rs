@@ -34,6 +34,27 @@ impl HArray1OfShortReal {
         }
     }
 
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
+    pub fn new_array1ofshortreal(
+        theOther: &crate::ffi::TShort_Array1OfShortReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray1OfShortReal_ctor_array1ofshortreal(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TShort_Array1OfShortReal {
+        unsafe { &*(crate::ffi::TShort_HArray1OfShortReal_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TShort_Array1OfShortReal {
+        unsafe { &mut *(crate::ffi::TShort_HArray1OfShortReal_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TShort_HArray1OfShortReal_dynamic_type(self as *const Self)) }
@@ -113,6 +134,27 @@ impl HArray2OfShortReal {
         }
     }
 
+    /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::TShort_HArray2OfShortReal()`
+    pub fn new_array2ofshortreal(
+        theOther: &crate::ffi::TShort_Array2OfShortReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TShort_HArray2OfShortReal_ctor_array2ofshortreal(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TShort_Array2OfShortReal {
+        unsafe { &*(crate::ffi::TShort_HArray2OfShortReal_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TShort_Array2OfShortReal {
+        unsafe { &mut *(crate::ffi::TShort_HArray2OfShortReal_change_array2(self as *mut Self)) }
+    }
+
     /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TShort_HArray2OfShortReal_dynamic_type(self as *const Self)) }
@@ -181,6 +223,34 @@ impl HSequenceOfShortReal {
     /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::TShort_HSequenceOfShortReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TShort_HSequenceOfShortReal_ctor()) }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::TShort_HSequenceOfShortReal()`
+    pub fn new_sequenceofshortreal(
+        theOther: &crate::ffi::TShort_SequenceOfShortReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TShort_HSequenceOfShortReal_ctor_sequenceofshortreal(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TShort_SequenceOfShortReal {
+        unsafe { &*(crate::ffi::TShort_HSequenceOfShortReal_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TShort_SequenceOfShortReal) {
+        unsafe { crate::ffi::TShort_HSequenceOfShortReal_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TShort_SequenceOfShortReal {
+        unsafe {
+            &mut *(crate::ffi::TShort_HSequenceOfShortReal_change_sequence(self as *mut Self))
+        }
     }
 
     /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::DynamicType()`

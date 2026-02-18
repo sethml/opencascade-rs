@@ -183,6 +183,21 @@ impl CSIntersector {
         unsafe { crate::ffi::LocOpe_CSIntersector_init(self as *mut Self, S) }
     }
 
+    /// **Source:** `LocOpe_CSIntersector.hxx`:50 - `LocOpe_CSIntersector::Perform()`
+    pub fn perform_sequenceoflin(&mut self, Slin: &crate::ffi::LocOpe_SequenceOfLin) {
+        unsafe { crate::ffi::LocOpe_CSIntersector_perform_sequenceoflin(self as *mut Self, Slin) }
+    }
+
+    /// **Source:** `LocOpe_CSIntersector.hxx`:52 - `LocOpe_CSIntersector::Perform()`
+    pub fn perform_sequenceofcirc(&mut self, Scir: &crate::ffi::LocOpe_SequenceOfCirc) {
+        unsafe { crate::ffi::LocOpe_CSIntersector_perform_sequenceofcirc(self as *mut Self, Scir) }
+    }
+
+    /// **Source:** `LocOpe_CSIntersector.hxx`:54 - `LocOpe_CSIntersector::Perform()`
+    pub fn perform_sequenceofcurve(&mut self, Scur: &crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::LocOpe_CSIntersector_perform_sequenceofcurve(self as *mut Self, Scur) }
+    }
+
     /// **Source:** `LocOpe_CSIntersector.hxx`:58 - `LocOpe_CSIntersector::IsDone()`
     /// Returns <Standard_True>  if the  intersection  has
     /// been done.
@@ -375,6 +390,11 @@ impl DPrism {
     /// **Source:** `LocOpe_DPrism.hxx`:62 - `LocOpe_DPrism::Shapes()`
     pub fn shapes(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_DPrism_shapes(self as *const Self, S)) }
+    }
+
+    /// **Source:** `LocOpe_DPrism.hxx`:64 - `LocOpe_DPrism::Curves()`
+    pub fn curves(&self, SCurves: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::LocOpe_DPrism_curves(self as *const Self, SCurves) }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:66 - `LocOpe_DPrism::BarycCurve()`
@@ -1032,6 +1052,14 @@ impl Pipe {
         unsafe { &*(crate::ffi::LocOpe_Pipe_shapes(self as *mut Self, S)) }
     }
 
+    /// **Source:** `LocOpe_Pipe.hxx`:54 - `LocOpe_Pipe::Curves()`
+    pub fn curves(
+        &mut self,
+        Spt: &crate::ffi::TColgp_SequenceOfPnt,
+    ) -> &crate::ffi::TColGeom_SequenceOfCurve {
+        unsafe { &*(crate::ffi::LocOpe_Pipe_curves(self as *mut Self, Spt)) }
+    }
+
     /// **Source:** `LocOpe_Pipe.hxx`:56 - `LocOpe_Pipe::BarycCurve()`
     pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::LocOpe_Pipe_baryc_curve(self as *mut Self)) }
@@ -1190,6 +1218,11 @@ impl Prism {
         unsafe { &*(crate::ffi::LocOpe_Prism_shapes(self as *const Self, S)) }
     }
 
+    /// **Source:** `LocOpe_Prism.hxx`:56 - `LocOpe_Prism::Curves()`
+    pub fn curves(&self, SCurves: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::LocOpe_Prism_curves(self as *const Self, SCurves) }
+    }
+
     /// **Source:** `LocOpe_Prism.hxx`:58 - `LocOpe_Prism::BarycCurve()`
     pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe {
@@ -1295,6 +1328,11 @@ impl Revol {
     /// **Source:** `LocOpe_Revol.hxx`:64 - `LocOpe_Revol::Shapes()`
     pub fn shapes(&self, S: &crate::ffi::TopoDS_Shape) -> &crate::ffi::TopTools_ListOfShape {
         unsafe { &*(crate::ffi::LocOpe_Revol_shapes(self as *const Self, S)) }
+    }
+
+    /// **Source:** `LocOpe_Revol.hxx`:66 - `LocOpe_Revol::Curves()`
+    pub fn curves(&self, SCurves: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::LocOpe_Revol_curves(self as *const Self, SCurves) }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:68 - `LocOpe_Revol::BarycCurve()`

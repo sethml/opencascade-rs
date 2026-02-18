@@ -185,6 +185,22 @@ impl ComposeShell {
         unsafe { crate::ffi::ShapeFix_ComposeShell_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `ShapeFix_ComposeShell.hxx`:141 - `ShapeFix_ComposeShell::DispatchWires()`
+    /// Creates new faces from the set of (closed) wires. Each wire
+    /// is put on corresponding patch in the composite surface,
+    /// and all pcurves on the initial (pseudo)face are reassigned to
+    /// that surface. If several wires are one inside another, single
+    /// face is created.
+    pub fn dispatch_wires(
+        &self,
+        faces: &mut crate::ffi::TopTools_SequenceOfShape,
+        wires: &mut crate::ffi::ShapeFix_SequenceOfWireSegment,
+    ) {
+        unsafe {
+            crate::ffi::ShapeFix_ComposeShell_dispatch_wires(self as *const Self, faces, wires)
+        }
+    }
+
     /// **Source:** `ShapeFix_ComposeShell.hxx`:145 - `ShapeFix_ComposeShell::SetTransferParamTool()`
     /// Sets tool for transfer parameters from 3d to 2d and vice versa.
     pub fn set_transfer_param_tool(
@@ -1085,6 +1101,28 @@ impl Face {
         unsafe { crate::ffi::ShapeFix_Face_fix_orientation(self as *mut Self) }
     }
 
+    /// **Source:** `ShapeFix_Face.hxx`:186 - `ShapeFix_Face::FixOrientation()`
+    /// Fixes orientation of wires on the face
+    /// It tries to make all wires lie outside all others (according
+    /// to orientation) by reversing orientation of some of them.
+    /// If face lying on sphere or torus has single wire and
+    /// AddNaturalBoundMode is True, that wire is not reversed in
+    /// any case (supposing that natural bound will be added).
+    /// Returns True if wires were reversed
+    /// OutWires return information about out wires + list of
+    /// internal wires for each (for performing split face).
+    pub fn fix_orientation_datamapofshapelistofshape(
+        &mut self,
+        MapWires: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeFix_Face_fix_orientation_datamapofshapelistofshape(
+                self as *mut Self,
+                MapWires,
+            )
+        }
+    }
+
     /// **Source:** `ShapeFix_Face.hxx`:194 - `ShapeFix_Face::FixAddNaturalBound()`
     /// Adds natural boundary on face if it is missing.
     /// Two cases are supported:
@@ -1136,6 +1174,16 @@ impl Face {
     /// Queries on status after Perform()
     pub fn fix_wires_two_coinc_edges(&mut self) -> bool {
         unsafe { crate::ffi::ShapeFix_Face_fix_wires_two_coinc_edges(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeFix_Face.hxx`:223 - `ShapeFix_Face::FixSplitFace()`
+    /// Split face if there are more than one out wire
+    /// using inrormation after FixOrientation()
+    pub fn fix_split_face(
+        &mut self,
+        MapWires: &crate::ffi::TopTools_DataMapOfShapeListOfShape,
+    ) -> bool {
+        unsafe { crate::ffi::ShapeFix_Face_fix_split_face(self as *mut Self, MapWires) }
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:230 - `ShapeFix_Face::FixPeriodicDegenerated()`
@@ -4383,6 +4431,57 @@ impl Wireframe {
     /// If precision is 0.0, uses Precision::Confusion().
     pub fn fix_small_edges(&mut self) -> bool {
         unsafe { crate::ffi::ShapeFix_Wireframe_fix_small_edges(self as *mut Self) }
+    }
+
+    /// **Source:** `ShapeFix_Wireframe.hxx`:60 - `ShapeFix_Wireframe::CheckSmallEdges()`
+    /// Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps.
+    /// Returns True if at least one small edge has been found.
+    pub fn check_small_edges(
+        &mut self,
+        theSmallEdges: &mut crate::ffi::TopTools_MapOfShape,
+        theEdgeToFaces: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        theFaceWithSmall: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        theMultyEdges: &mut crate::ffi::TopTools_MapOfShape,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeFix_Wireframe_check_small_edges(
+                self as *mut Self,
+                theSmallEdges,
+                theEdgeToFaces,
+                theFaceWithSmall,
+                theMultyEdges,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeFix_Wireframe.hxx`:73 - `ShapeFix_Wireframe::MergeSmallEdges()`
+    /// Auxiliary tool for FixSmallEdges which merges small edges.
+    /// If theModeDrop is equal to Standard_True then small edges,
+    /// which cannot be connected with adjacent edges are dropped.
+    /// Otherwise they are kept.
+    /// theLimitAngle specifies maximum allowed tangency
+    /// discontinuity between adjacent edges.
+    /// If theLimitAngle is equal to -1, this angle is not taken into account.
+    pub fn merge_small_edges(
+        &mut self,
+        theSmallEdges: &mut crate::ffi::TopTools_MapOfShape,
+        theEdgeToFaces: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        theFaceWithSmall: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        theMultyEdges: &mut crate::ffi::TopTools_MapOfShape,
+        theModeDrop: bool,
+        theLimitAngle: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeFix_Wireframe_merge_small_edges(
+                self as *mut Self,
+                theSmallEdges,
+                theEdgeToFaces,
+                theFaceWithSmall,
+                theMultyEdges,
+                theModeDrop,
+                theLimitAngle,
+            )
+        }
     }
 
     /// **Source:** `ShapeFix_Wireframe.hxx`:86 - `ShapeFix_Wireframe::StatusWireGaps()`

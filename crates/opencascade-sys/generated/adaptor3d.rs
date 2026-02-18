@@ -79,6 +79,16 @@ impl Curve {
         unsafe { crate::ffi::Adaptor3d_Curve_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `Adaptor3d_Curve.hxx`:74 - `Adaptor3d_Curve::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Adaptor3d_Curve_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `Adaptor3d_Curve.hxx`:80 - `Adaptor3d_Curve::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -458,6 +468,16 @@ impl CurveOnSurface {
         unsafe { crate::ffi::Adaptor3d_CurveOnSurface_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:82 - `Adaptor3d_CurveOnSurface::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Adaptor3d_CurveOnSurface_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:89 - `Adaptor3d_CurveOnSurface::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -760,6 +780,24 @@ impl HSurfaceTool {
         theSh: crate::geom_abs::Shape,
     ) -> i32 {
         unsafe { crate::ffi::Adaptor3d_HSurfaceTool_nb_v_intervals(theSurf, theSh.into()) }
+    }
+
+    /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:77 - `Adaptor3d_HSurfaceTool::UIntervals()`
+    pub fn u_intervals(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theTab: &mut crate::ffi::TColStd_Array1OfReal,
+        theSh: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::Adaptor3d_HSurfaceTool_u_intervals(theSurf, theTab, theSh.into()) }
+    }
+
+    /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:84 - `Adaptor3d_HSurfaceTool::VIntervals()`
+    pub fn v_intervals(
+        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theTab: &mut crate::ffi::TColStd_Array1OfReal,
+        theSh: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::Adaptor3d_HSurfaceTool_v_intervals(theSurf, theTab, theSh.into()) }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:92 - `Adaptor3d_HSurfaceTool::UTrim()`
@@ -1453,6 +1491,16 @@ impl IsoCurve {
         unsafe { crate::ffi::Adaptor3d_IsoCurve_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `Adaptor3d_IsoCurve.hxx`:93 - `Adaptor3d_IsoCurve::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Adaptor3d_IsoCurve_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:100 - `Adaptor3d_IsoCurve::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -1784,6 +1832,20 @@ impl Surface {
     /// <S>. May be one if VContinuity(me) >= <S>
     pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Adaptor3d_Surface_nb_v_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `Adaptor3d_Surface.hxx`:87 - `Adaptor3d_Surface::UIntervals()`
+    /// Returns the  intervals with the requested continuity
+    /// in the U direction.
+    pub fn u_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Adaptor3d_Surface_u_intervals(self as *const Self, T, S.into()) }
+    }
+
+    /// **Source:** `Adaptor3d_Surface.hxx`:91 - `Adaptor3d_Surface::VIntervals()`
+    /// Returns the  intervals with the requested continuity
+    /// in the V direction.
+    pub fn v_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Adaptor3d_Surface_v_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:98 - `Adaptor3d_Surface::UTrim()`
@@ -2418,6 +2480,20 @@ impl TopolTool {
     /// compute the sample-points for the intersections algorithms
     pub fn nb_samples(&mut self) -> i32 {
         unsafe { crate::ffi::Adaptor3d_TopolTool_nb_samples(self as *mut Self) }
+    }
+
+    /// **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::UParameters()`
+    /// return the set of U parameters on the surface
+    /// obtained by the method SamplePnts
+    pub fn u_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Adaptor3d_TopolTool_u_parameters(self as *const Self, theArray) }
+    }
+
+    /// **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::VParameters()`
+    /// return the set of V parameters on the surface
+    /// obtained by the method SamplePnts
+    pub fn v_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Adaptor3d_TopolTool_v_parameters(self as *const Self, theArray) }
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:127 - `Adaptor3d_TopolTool::SamplePoint()`

@@ -550,6 +550,29 @@ impl HArray1OfListOfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
+    pub fn new_array1oflistofshape(
+        theOther: &crate::ffi::TopTools_Array1OfListOfShape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopTools_HArray1OfListOfShape_ctor_array1oflistofshape(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TopTools_Array1OfListOfShape {
+        unsafe { &*(crate::ffi::TopTools_HArray1OfListOfShape_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TopTools_Array1OfListOfShape {
+        unsafe {
+            &mut *(crate::ffi::TopTools_HArray1OfListOfShape_change_array1(self as *mut Self))
+        }
+    }
+
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray1OfListOfShape_dynamic_type(self as *const Self)) }
@@ -629,6 +652,27 @@ impl HArray1OfShape {
         }
     }
 
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
+    pub fn new_array1ofshape(
+        theOther: &crate::ffi::TopTools_Array1OfShape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray1OfShape_ctor_array1ofshape(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TopTools_Array1OfShape {
+        unsafe { &*(crate::ffi::TopTools_HArray1OfShape_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TopTools_Array1OfShape {
+        unsafe { &mut *(crate::ffi::TopTools_HArray1OfShape_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray1OfShape_dynamic_type(self as *const Self)) }
@@ -692,6 +736,27 @@ unsafe impl crate::CppDeletable for HArray2OfShape {
 }
 
 impl HArray2OfShape {
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
+    pub fn new_array2ofshape(
+        theOther: &crate::ffi::TopTools_Array2OfShape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray2OfShape_ctor_array2ofshape(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::Array2()`
+    pub fn array2(&self) -> &crate::ffi::TopTools_Array2OfShape {
+        unsafe { &*(crate::ffi::TopTools_HArray2OfShape_array2(self as *const Self)) }
+    }
+
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi::TopTools_Array2OfShape {
+        unsafe { &mut *(crate::ffi::TopTools_HArray2OfShape_change_array2(self as *mut Self)) }
+    }
+
     /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HArray2OfShape_dynamic_type(self as *const Self)) }

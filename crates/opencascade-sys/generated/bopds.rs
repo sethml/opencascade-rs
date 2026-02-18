@@ -54,6 +54,13 @@ impl CommonBlock {
         unsafe { crate::ffi::BOPDS_CommonBlock_add_pave_block(self as *mut Self, aPB) }
     }
 
+    /// **Source:** `BOPDS_CommonBlock.hxx`:56 - `BOPDS_CommonBlock::SetPaveBlocks()`
+    /// Modifier
+    /// Sets the list of pave blocks for the common block
+    pub fn set_pave_blocks(&mut self, aLPB: &crate::ffi::BOPDS_ListOfPaveBlock) {
+        unsafe { crate::ffi::BOPDS_CommonBlock_set_pave_blocks(self as *mut Self, aLPB) }
+    }
+
     /// **Source:** `BOPDS_CommonBlock.hxx`:62 - `BOPDS_CommonBlock::AddFace()`
     /// Modifier
     /// Adds the index of the face <aF>
@@ -61,6 +68,39 @@ impl CommonBlock {
     /// of the common block
     pub fn add_face(&mut self, aF: i32) {
         unsafe { crate::ffi::BOPDS_CommonBlock_add_face(self as *mut Self, aF) }
+    }
+
+    /// **Source:** `BOPDS_CommonBlock.hxx`:67 - `BOPDS_CommonBlock::SetFaces()`
+    /// Modifier
+    /// Sets the list of indices of faces <aLF>
+    /// of the common block
+    pub fn set_faces(&mut self, aLF: &crate::ffi::TColStd_ListOfInteger) {
+        unsafe { crate::ffi::BOPDS_CommonBlock_set_faces(self as *mut Self, aLF) }
+    }
+
+    /// **Source:** `BOPDS_CommonBlock.hxx`:73 - `BOPDS_CommonBlock::AppendFaces()`
+    /// Modifier
+    /// Appends the list of indices of faces <aLF>
+    /// to the list of indices of faces
+    /// of the common block (the input list is emptied)
+    pub fn append_faces(&mut self, aLF: &mut crate::ffi::TColStd_ListOfInteger) {
+        unsafe { crate::ffi::BOPDS_CommonBlock_append_faces(self as *mut Self, aLF) }
+    }
+
+    /// **Source:** `BOPDS_CommonBlock.hxx`:78 - `BOPDS_CommonBlock::PaveBlocks()`
+    /// Selector
+    /// Returns the list of pave blocks
+    /// of the common block
+    pub fn pave_blocks(&self) -> &crate::ffi::BOPDS_ListOfPaveBlock {
+        unsafe { &*(crate::ffi::BOPDS_CommonBlock_pave_blocks(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_CommonBlock.hxx`:83 - `BOPDS_CommonBlock::Faces()`
+    /// Selector
+    /// Returns the list of indices of faces
+    /// of the common block
+    pub fn faces(&self) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::BOPDS_CommonBlock_faces(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_CommonBlock.hxx`:88 - `BOPDS_CommonBlock::PaveBlock1()`
@@ -448,6 +488,27 @@ impl Curve {
         unsafe { &mut *(crate::ffi::BOPDS_Curve_change_box(self as *mut Self)) }
     }
 
+    /// **Source:** `BOPDS_Curve.hxx`:67 - `BOPDS_Curve::SetPaveBlocks()`
+    pub fn set_pave_blocks(&mut self, theLPB: &crate::ffi::BOPDS_ListOfPaveBlock) {
+        unsafe { crate::ffi::BOPDS_Curve_set_pave_blocks(self as *mut Self, theLPB) }
+    }
+
+    /// **Source:** `BOPDS_Curve.hxx`:72 - `BOPDS_Curve::PaveBlocks()`
+    /// Selector
+    /// Returns the list of pave blocks
+    /// of the curve
+    pub fn pave_blocks(&self) -> &crate::ffi::BOPDS_ListOfPaveBlock {
+        unsafe { &*(crate::ffi::BOPDS_Curve_pave_blocks(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_Curve.hxx`:77 - `BOPDS_Curve::ChangePaveBlocks()`
+    /// Selector/Modifier
+    /// Returns the list of pave blocks
+    /// of the curve
+    pub fn change_pave_blocks(&mut self) -> &mut crate::ffi::BOPDS_ListOfPaveBlock {
+        unsafe { &mut *(crate::ffi::BOPDS_Curve_change_pave_blocks(self as *mut Self)) }
+    }
+
     /// **Source:** `BOPDS_Curve.hxx`:81 - `BOPDS_Curve::InitPaveBlock1()`
     /// Creates  initial pave block
     /// of the curve
@@ -461,6 +522,22 @@ impl Curve {
     /// of the curve
     pub fn change_pave_block1(&mut self) -> &mut crate::ffi::HandleBOPDSPaveBlock {
         unsafe { &mut *(crate::ffi::BOPDS_Curve_change_pave_block1(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_Curve.hxx`:91 - `BOPDS_Curve::TechnoVertices()`
+    /// Selector
+    /// Returns list of indices of technologic vertices
+    /// of the curve
+    pub fn techno_vertices(&self) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::BOPDS_Curve_techno_vertices(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_Curve.hxx`:96 - `BOPDS_Curve::ChangeTechnoVertices()`
+    /// Selector/Modifier
+    /// Returns list of indices of technologic vertices
+    /// of the curve
+    pub fn change_techno_vertices(&mut self) -> &mut crate::ffi::TColStd_ListOfInteger {
+        unsafe { &mut *(crate::ffi::BOPDS_Curve_change_techno_vertices(self as *mut Self)) }
     }
 
     /// **Source:** `BOPDS_Curve.hxx`:101 - `BOPDS_Curve::HasEdge()`
@@ -672,6 +749,20 @@ impl DS {
         unsafe { crate::ffi::BOPDS_DS_has_pave_blocks(self as *const Self, theIndex) }
     }
 
+    /// **Source:** `BOPDS_DS.hxx`:178 - `BOPDS_DS::PaveBlocks()`
+    /// Selector
+    /// Returns the pave blocks for the shape with index theIndex
+    pub fn pave_blocks(&self, theIndex: i32) -> &crate::ffi::BOPDS_ListOfPaveBlock {
+        unsafe { &*(crate::ffi::BOPDS_DS_pave_blocks(self as *const Self, theIndex)) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:182 - `BOPDS_DS::ChangePaveBlocks()`
+    /// Selector/Modifier
+    /// Returns the pave blocks for the shape with index theIndex
+    pub fn change_pave_blocks(&mut self, theIndex: i32) -> &mut crate::ffi::BOPDS_ListOfPaveBlock {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_change_pave_blocks(self as *mut Self, theIndex)) }
+    }
+
     /// **Source:** `BOPDS_DS.hxx`:185 - `BOPDS_DS::UpdatePaveBlocks()`
     /// Update the pave blocks for the all shapes in data structure
     pub fn update_pave_blocks(&mut self) {
@@ -770,14 +861,44 @@ impl DS {
 
     /// **Source:** `BOPDS_DS.hxx`:233 - `BOPDS_DS::UpdateFaceInfoIn()`
     /// Update the state In of face with index theIndex
-    pub fn update_face_info_in(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::BOPDS_DS_update_face_info_in(self as *mut Self, theIndex) }
+    pub fn update_face_info_in_int(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_DS_update_face_info_in_int(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:236 - `BOPDS_DS::UpdateFaceInfoIn()`
+    /// Update the state IN for all faces in the given map
+    pub fn update_face_info_in_mapofinteger(
+        &mut self,
+        theFaces: &crate::ffi::TColStd_MapOfInteger,
+    ) {
+        unsafe {
+            crate::ffi::BOPDS_DS_update_face_info_in_mapofinteger(self as *mut Self, theFaces)
+        }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:239 - `BOPDS_DS::UpdateFaceInfoOn()`
     /// Update the state On of face with index theIndex
-    pub fn update_face_info_on(&mut self, theIndex: i32) {
-        unsafe { crate::ffi::BOPDS_DS_update_face_info_on(self as *mut Self, theIndex) }
+    pub fn update_face_info_on_int(&mut self, theIndex: i32) {
+        unsafe { crate::ffi::BOPDS_DS_update_face_info_on_int(self as *mut Self, theIndex) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:242 - `BOPDS_DS::UpdateFaceInfoOn()`
+    /// Update the state ON for all faces in the given map
+    pub fn update_face_info_on_mapofinteger(
+        &mut self,
+        theFaces: &crate::ffi::TColStd_MapOfInteger,
+    ) {
+        unsafe {
+            crate::ffi::BOPDS_DS_update_face_info_on_mapofinteger(self as *mut Self, theFaces)
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:261 - `BOPDS_DS::AloneVertices()`
+    /// Selector
+    /// Returns the indices of alone vertices
+    /// for the face with index theIndex
+    pub fn alone_vertices(&self, theF: i32, theLI: &mut crate::ffi::TColStd_ListOfInteger) {
+        unsafe { crate::ffi::BOPDS_DS_alone_vertices(self as *const Self, theF, theLI) }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:268 - `BOPDS_DS::RefineFaceInfoOn()`
@@ -793,6 +914,30 @@ impl DS {
     /// Removes any pave block from list of having IN state if it has also the state ON.
     pub fn refine_face_info_in(&mut self) {
         unsafe { crate::ffi::BOPDS_DS_refine_face_info_in(self as *mut Self) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:289 - `BOPDS_DS::SharedEdges()`
+    /// Returns the indices of edges that are  shared
+    /// for the faces with indices theF1, theF2
+    ///
+    /// same domain shapes
+    pub fn shared_edges(
+        &mut self,
+        theF1: i32,
+        theF2: i32,
+        theLI: &mut crate::ffi::TColStd_ListOfInteger,
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) {
+        unsafe {
+            crate::ffi::BOPDS_DS_shared_edges(self as *mut Self, theF1, theF2, theLI, theAllocator)
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:296 - `BOPDS_DS::ShapesSD()`
+    /// Selector
+    /// Returns the collection same domain shapes
+    pub fn shapes_sd(&mut self) -> &mut crate::ffi::TColStd_DataMapOfIntegerInteger {
+        unsafe { &mut *(crate::ffi::BOPDS_DS_shapes_sd(self as *mut Self)) }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:301 - `BOPDS_DS::AddShapeSD()`
@@ -861,6 +1006,13 @@ impl DS {
     /// **Source:** `BOPDS_DS.hxx`:396 - `BOPDS_DS::IsSubShape()`
     pub fn is_sub_shape(&mut self, theI1: i32, theI2: i32) -> bool {
         unsafe { crate::ffi::BOPDS_DS_is_sub_shape(self as *mut Self, theI1, theI2) }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:401 - `BOPDS_DS::Paves()`
+    /// Fills theLP with sorted paves
+    /// of the shape with index theIndex
+    pub fn paves(&mut self, theIndex: i32, theLP: &mut crate::ffi::BOPDS_ListOfPave) {
+        unsafe { crate::ffi::BOPDS_DS_paves(self as *mut Self, theIndex, theLP) }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:404 - `BOPDS_DS::UpdatePaveBlocksWithSDVertices()`
@@ -988,6 +1140,64 @@ impl FaceInfo {
     /// In
     pub fn index(&self) -> i32 {
         unsafe { crate::ffi::BOPDS_FaceInfo_index(self as *const Self) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:74 - `BOPDS_FaceInfo::VerticesIn()`
+    /// Selector
+    /// Returns the list of indices for vertices
+    /// of the face
+    /// that have state In
+    pub fn vertices_in(&self) -> &crate::ffi::TColStd_MapOfInteger {
+        unsafe { &*(crate::ffi::BOPDS_FaceInfo_vertices_in(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:82 - `BOPDS_FaceInfo::ChangeVerticesIn()`
+    /// Selector/Modifier
+    /// Returns the list of indices for vertices
+    /// of the face
+    /// that have state In
+    ///
+    /// On
+    pub fn change_vertices_in(&mut self) -> &mut crate::ffi::TColStd_MapOfInteger {
+        unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_vertices_in(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:99 - `BOPDS_FaceInfo::VerticesOn()`
+    /// Selector
+    /// Returns the list of indices for vertices
+    /// of the face
+    /// that have state On
+    pub fn vertices_on(&self) -> &crate::ffi::TColStd_MapOfInteger {
+        unsafe { &*(crate::ffi::BOPDS_FaceInfo_vertices_on(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:107 - `BOPDS_FaceInfo::ChangeVerticesOn()`
+    /// Selector/Modifier
+    /// Returns the list of indices for vertices
+    /// of the face
+    /// that have state On
+    ///
+    /// Sections
+    pub fn change_vertices_on(&mut self) -> &mut crate::ffi::TColStd_MapOfInteger {
+        unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_vertices_on(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:119 - `BOPDS_FaceInfo::VerticesSc()`
+    /// Selector
+    /// Returns the list of indices for section  vertices
+    /// of the face
+    pub fn vertices_sc(&self) -> &crate::ffi::TColStd_MapOfInteger {
+        unsafe { &*(crate::ffi::BOPDS_FaceInfo_vertices_sc(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:126 - `BOPDS_FaceInfo::ChangeVerticesSc()`
+    /// Selector/Modifier
+    /// Returns the list of indices for section  vertices
+    /// of the face
+    ///
+    /// Others
+    pub fn change_vertices_sc(&mut self) -> &mut crate::ffi::TColStd_MapOfInteger {
+        unsafe { &mut *(crate::ffi::BOPDS_FaceInfo_change_vertices_sc(self as *mut Self)) }
     }
 }
 
@@ -2102,6 +2312,13 @@ impl Iterator {
         }
     }
 
+    /// **Source:** `BOPDS_Iterator.hxx`:87 - `BOPDS_Iterator::IntersectExt()`
+    /// Updates the tree of Bounding Boxes with increased boxes and
+    /// intersects such elements with the tree.
+    pub fn intersect_ext(&mut self, theIndicies: &crate::ffi::TColStd_MapOfInteger) {
+        unsafe { crate::ffi::BOPDS_Iterator_intersect_ext(self as *mut Self, theIndicies) }
+    }
+
     /// **Source:** `BOPDS_Iterator.hxx`:90 - `BOPDS_Iterator::ExpectedLength()`
     /// Returns the number of intersections founded
     pub fn expected_length(&self) -> i32 {
@@ -2244,6 +2461,13 @@ impl IteratorSI {
                 theCheckOBB,
                 theFuzzyValue,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPDS_Iterator.hxx`:87 - `BOPDS_Iterator::IntersectExt()`
+    pub fn intersect_ext(&mut self, theIndicies: &crate::ffi::TColStd_MapOfInteger) {
+        unsafe {
+            crate::ffi::BOPDS_IteratorSI_inherited_IntersectExt(self as *mut Self, theIndicies)
         }
     }
 
@@ -2531,6 +2755,30 @@ impl PaveBlock {
         unsafe { crate::ffi::BOPDS_PaveBlock_remove_ext_pave(self as *mut Self, theVertNum) }
     }
 
+    /// **Source:** `BOPDS_PaveBlock.hxx`:127 - `BOPDS_PaveBlock::ExtPaves()`
+    /// Selector
+    /// Returns the  extra paves
+    pub fn ext_paves(&self) -> &crate::ffi::BOPDS_ListOfPave {
+        unsafe { &*(crate::ffi::BOPDS_PaveBlock_ext_paves(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_PaveBlock.hxx`:131 - `BOPDS_PaveBlock::ChangeExtPaves()`
+    /// Selector / Modifier
+    /// Returns the extra paves
+    pub fn change_ext_paves(&mut self) -> &mut crate::ffi::BOPDS_ListOfPave {
+        unsafe { &mut *(crate::ffi::BOPDS_PaveBlock_change_ext_paves(self as *mut Self)) }
+    }
+
+    /// **Source:** `BOPDS_PaveBlock.hxx`:138 - `BOPDS_PaveBlock::Update()`
+    /// Modifier
+    /// Updates the pave block. The extra paves are used
+    /// to create new pave blocks <theLPB>.
+    /// <theFlag> - if true, the first pave and the second
+    /// pave are used to produce new pave blocks.
+    pub fn update(&mut self, theLPB: &mut crate::ffi::BOPDS_ListOfPaveBlock, theFlag: bool) {
+        unsafe { crate::ffi::BOPDS_PaveBlock_update(self as *mut Self, theLPB, theFlag) }
+    }
+
     /// **Source:** `BOPDS_PaveBlock.hxx`:155 - `BOPDS_PaveBlock::SetShrunkData()`
     /// Modifier
     /// Sets the shrunk data for the pave block
@@ -2815,6 +3063,20 @@ impl ShapeInfo {
         unsafe { &mut *(crate::ffi::BOPDS_ShapeInfo_change_box(self as *mut Self)) }
     }
 
+    /// **Source:** `BOPDS_ShapeInfo.hxx`:75 - `BOPDS_ShapeInfo::SubShapes()`
+    /// Selector
+    /// Returns the list of indices of sub-shapes
+    pub fn sub_shapes(&self) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::BOPDS_ShapeInfo_sub_shapes(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_ShapeInfo.hxx`:79 - `BOPDS_ShapeInfo::ChangeSubShapes()`
+    /// Selector/ Modifier
+    /// Returns the list of indices of sub-shapes
+    pub fn change_sub_shapes(&mut self) -> &mut crate::ffi::TColStd_ListOfInteger {
+        unsafe { &mut *(crate::ffi::BOPDS_ShapeInfo_change_sub_shapes(self as *mut Self)) }
+    }
+
     /// **Source:** `BOPDS_ShapeInfo.hxx`:84 - `BOPDS_ShapeInfo::HasSubShape()`
     /// Query
     /// Returns true if the shape has sub-shape with
@@ -2925,6 +3187,30 @@ impl SubIterator {
     /// Returns the data structure
     pub fn ds(&self) -> &crate::ffi::BOPDS_DS {
         unsafe { &*(crate::ffi::BOPDS_SubIterator_ds(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_SubIterator.hxx`:54 - `BOPDS_SubIterator::SetSubSet1()`
+    /// Sets the first set of indices <theLI> to process
+    pub fn set_sub_set1(&mut self, theLI: &crate::ffi::TColStd_ListOfInteger) {
+        unsafe { crate::ffi::BOPDS_SubIterator_set_sub_set1(self as *mut Self, theLI) }
+    }
+
+    /// **Source:** `BOPDS_SubIterator.hxx`:60 - `BOPDS_SubIterator::SubSet1()`
+    /// Returns the first set of indices to process
+    pub fn sub_set1(&self) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::BOPDS_SubIterator_sub_set1(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPDS_SubIterator.hxx`:63 - `BOPDS_SubIterator::SetSubSet2()`
+    /// Sets the second set of indices <theLI> to process
+    pub fn set_sub_set2(&mut self, theLI: &crate::ffi::TColStd_ListOfInteger) {
+        unsafe { crate::ffi::BOPDS_SubIterator_set_sub_set2(self as *mut Self, theLI) }
+    }
+
+    /// **Source:** `BOPDS_SubIterator.hxx`:69 - `BOPDS_SubIterator::SubSet2()`
+    /// Returns the second set of indices to process
+    pub fn sub_set2(&self) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::BOPDS_SubIterator_sub_set2(self as *const Self)) }
     }
 
     /// **Source:** `BOPDS_SubIterator.hxx`:72 - `BOPDS_SubIterator::Initialize()`

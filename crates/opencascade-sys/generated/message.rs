@@ -1261,15 +1261,34 @@ impl Algorithm {
     /// **Source:** `Message_Algorithm.hxx`:207 - `Message_Algorithm::PrepareReport()`
     /// Prepares a string containing a list of integers contained
     /// in theError map, but not more than theMaxCount
-    pub fn prepare_report(
+    pub fn prepare_report_handletcolstdhpackedmapofinteger_int(
         theError: &crate::ffi::HandleTColStdHPackedMapOfInteger,
         theMaxCount: i32,
     ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::Message_Algorithm_prepare_report(
-                theError,
-                theMaxCount,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Message_Algorithm_prepare_report_handletcolstdhpackedmapofinteger_int(
+                    theError,
+                    theMaxCount,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Message_Algorithm.hxx`:213 - `Message_Algorithm::PrepareReport()`
+    /// Prepares a string containing a list of names contained
+    /// in theReportSeq sequence, but not more than theMaxCount
+    pub fn prepare_report_sequenceofhextendedstring_int(
+        theReportSeq: &crate::ffi::TColStd_SequenceOfHExtendedString,
+        theMaxCount: i32,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Message_Algorithm_prepare_report_sequenceofhextendedstring_int(
+                    theReportSeq,
+                    theMaxCount,
+                ),
+            )
         }
     }
 
@@ -1698,6 +1717,14 @@ impl CompositeAlerts {
     /// **Source:** `Message_CompositeAlerts.hxx`:25 - `Message_CompositeAlerts::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Message_CompositeAlerts_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_CompositeAlerts.hxx`:31 - `Message_CompositeAlerts::Alerts()`
+    /// Returns list of collected alerts with specified gravity
+    pub fn alerts(&self, theGravity: crate::message::Gravity) -> &crate::ffi::Message_ListOfAlert {
+        unsafe {
+            &*(crate::ffi::Message_CompositeAlerts_alerts(self as *const Self, theGravity.into()))
+        }
     }
 
     /// **Source:** `Message_CompositeAlerts.hxx`:37 - `Message_CompositeAlerts::AddAlert()`
@@ -2149,6 +2176,19 @@ impl Messenger {
     /// Returns number of removed printers.
     pub fn remove_printers(&mut self, theType: &crate::ffi::HandleStandardType) -> i32 {
         unsafe { crate::ffi::Message_Messenger_remove_printers(self as *mut Self, theType) }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:169 - `Message_Messenger::Printers()`
+    /// Returns current sequence of printers
+    pub fn printers(&self) -> &crate::ffi::Message_SequenceOfPrinters {
+        unsafe { &*(crate::ffi::Message_Messenger_printers(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:173 - `Message_Messenger::ChangePrinters()`
+    /// Returns sequence of printers
+    /// The sequence can be modified.
+    pub fn change_printers(&mut self) -> &mut crate::ffi::Message_SequenceOfPrinters {
+        unsafe { &mut *(crate::ffi::Message_Messenger_change_printers(self as *mut Self)) }
     }
 
     /// **Source:** `Message_Messenger.hxx`:178 - `Message_Messenger::Send()`

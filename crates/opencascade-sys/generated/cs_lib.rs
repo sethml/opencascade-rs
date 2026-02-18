@@ -210,6 +210,31 @@ impl Class2d {
         }
     }
 
+    /// **Source:** `CSLib_Class2d.hxx`:62 - `CSLib_Class2d::CSLib_Class2d()`
+    /// Constructs the 2D-polygon.
+    /// thePnts2d is the set of the vertices (closed polygon
+    /// will always be created inside of this constructor;
+    /// consequently, there is no point in repeating first and
+    /// last point in thePnts2d).
+    /// theTolu and theTolv are tolerances.
+    /// theUmin, theVmin, theUmax, theVmax are
+    /// UV-bounds of the polygon.
+    pub fn new_sequenceofpnt2d_real6(
+        thePnts2d: &crate::ffi::TColgp_SequenceOfPnt2d,
+        theTolU: f64,
+        theTolV: f64,
+        theUMin: f64,
+        theVMin: f64,
+        theUMax: f64,
+        theVMax: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CSLib_Class2d_ctor_sequenceofpnt2d_real6(
+                thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax,
+            ))
+        }
+    }
+
     /// **Source:** `CSLib_Class2d.hxx`:70 - `CSLib_Class2d::SiDans()`
     pub fn si_dans(&self, P: &crate::ffi::gp_Pnt2d) -> i32 {
         unsafe { crate::ffi::CSLib_Class2d_si_dans(self as *const Self, P) }
@@ -245,6 +270,16 @@ unsafe impl crate::CppDeletable for NormalPolyDef {
 }
 
 impl NormalPolyDef {
+    /// **Source:** `CSLib_NormalPolyDef.hxx`:33 - `CSLib_NormalPolyDef::CSLib_NormalPolyDef()`
+    pub fn new_int_array1ofreal(
+        k0: i32,
+        li: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::CSLib_NormalPolyDef_ctor_int_array1ofreal(k0, li))
+        }
+    }
+
     /// **Source:** `CSLib_NormalPolyDef.hxx`:38 - `CSLib_NormalPolyDef::Value()`
     /// computes the value <F>of the function for the variable <X>.
     /// Returns True if the calculation were successfully done,

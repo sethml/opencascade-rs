@@ -523,6 +523,16 @@ impl CurvlinFunc {
         unsafe { crate::ffi::Approx_CurvlinFunc_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `Approx_CurvlinFunc.hxx`:62 - `Approx_CurvlinFunc::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Approx_CurvlinFunc_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `Approx_CurvlinFunc.hxx`:65 - `Approx_CurvlinFunc::Trim()`
     /// if First < 0 or Last > 1
     pub fn trim(&mut self, First: f64, Last: f64, Tol: f64) {
@@ -572,6 +582,39 @@ impl CurvlinFunc {
     /// returns original parameter corresponding S.
     pub fn get_s_parameter(&self, U: f64) -> f64 {
         unsafe { crate::ffi::Approx_CurvlinFunc_get_s_parameter(self as *const Self, U) }
+    }
+
+    /// **Source:** `Approx_CurvlinFunc.hxx`:90 - `Approx_CurvlinFunc::EvalCase1()`
+    /// if myCase != 1
+    pub fn eval_case1(
+        &self,
+        S: f64,
+        Order: i32,
+        Result: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe { crate::ffi::Approx_CurvlinFunc_eval_case1(self as *const Self, S, Order, Result) }
+    }
+
+    /// **Source:** `Approx_CurvlinFunc.hxx`:95 - `Approx_CurvlinFunc::EvalCase2()`
+    /// if myCase != 2
+    pub fn eval_case2(
+        &self,
+        S: f64,
+        Order: i32,
+        Result: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe { crate::ffi::Approx_CurvlinFunc_eval_case2(self as *const Self, S, Order, Result) }
+    }
+
+    /// **Source:** `Approx_CurvlinFunc.hxx`:100 - `Approx_CurvlinFunc::EvalCase3()`
+    /// if myCase != 3
+    pub fn eval_case3(
+        &mut self,
+        S: f64,
+        Order: i32,
+        Result: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe { crate::ffi::Approx_CurvlinFunc_eval_case3(self as *mut Self, S, Order, Result) }
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:104 - `Approx_CurvlinFunc::DynamicType()`
@@ -1025,6 +1068,27 @@ impl HArray1OfAdHSurface {
         }
     }
 
+    /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::Approx_HArray1OfAdHSurface()`
+    pub fn new_array1ofadhsurface(
+        theOther: &crate::ffi::Approx_Array1OfAdHSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Approx_HArray1OfAdHSurface_ctor_array1ofadhsurface(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Approx_Array1OfAdHSurface {
+        unsafe { &*(crate::ffi::Approx_HArray1OfAdHSurface_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Approx_Array1OfAdHSurface {
+        unsafe { &mut *(crate::ffi::Approx_HArray1OfAdHSurface_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Approx_HArray1OfAdHSurface_dynamic_type(self as *const Self)) }
@@ -1102,6 +1166,27 @@ impl HArray1OfGTrsf2d {
                 theLower, theUpper,
             ))
         }
+    }
+
+    /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::Approx_HArray1OfGTrsf2d()`
+    pub fn new_array1ofgtrsf2d(
+        theOther: &crate::ffi::Approx_Array1OfGTrsf2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Approx_HArray1OfGTrsf2d_ctor_array1ofgtrsf2d(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Approx_Array1OfGTrsf2d {
+        unsafe { &*(crate::ffi::Approx_HArray1OfGTrsf2d_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Approx_Array1OfGTrsf2d {
+        unsafe { &mut *(crate::ffi::Approx_HArray1OfGTrsf2d_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::DynamicType()`
@@ -1185,6 +1270,19 @@ impl MCurvesToBSpCurve {
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:38 - `Approx_MCurvesToBSpCurve::Perform()`
     pub fn perform(&mut self) {
         unsafe { crate::ffi::Approx_MCurvesToBSpCurve_perform(self as *mut Self) }
+    }
+
+    /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:40 - `Approx_MCurvesToBSpCurve::Perform()`
+    pub fn perform_sequenceofmulticurve(
+        &mut self,
+        TheSeq: &crate::ffi::AppParCurves_SequenceOfMultiCurve,
+    ) {
+        unsafe {
+            crate::ffi::Approx_MCurvesToBSpCurve_perform_sequenceofmulticurve(
+                self as *mut Self,
+                TheSeq,
+            )
+        }
     }
 
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:43 - `Approx_MCurvesToBSpCurve::Value()`
@@ -1405,6 +1503,29 @@ impl SweepApproximation {
         unsafe { crate::ffi::Approx_SweepApproximation_is_done(self as *const Self) }
     }
 
+    /// **Source:** `Approx_SweepApproximation.hxx`:105 - `Approx_SweepApproximation::Surface()`
+    pub fn surface(
+        &self,
+        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::Approx_SweepApproximation_surface(
+                self as *const Self,
+                TPoles,
+                TWeights,
+                TUKnots,
+                TVKnots,
+                TUMults,
+                TVMults,
+            )
+        }
+    }
+
     /// **Source:** `Approx_SweepApproximation.hxx`:112 - `Approx_SweepApproximation::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::Approx_SweepApproximation_u_degree(self as *const Self) }
@@ -1418,6 +1539,31 @@ impl SweepApproximation {
     /// **Source:** `Approx_SweepApproximation.hxx`:116 - `Approx_SweepApproximation::SurfPoles()`
     pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
         unsafe { &*(crate::ffi::Approx_SweepApproximation_surf_poles(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_SweepApproximation.hxx`:118 - `Approx_SweepApproximation::SurfWeights()`
+    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+        unsafe { &*(crate::ffi::Approx_SweepApproximation_surf_weights(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_SweepApproximation.hxx`:120 - `Approx_SweepApproximation::SurfUKnots()`
+    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Approx_SweepApproximation_surf_u_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_SweepApproximation.hxx`:122 - `Approx_SweepApproximation::SurfVKnots()`
+    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Approx_SweepApproximation_surf_v_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_SweepApproximation.hxx`:124 - `Approx_SweepApproximation::SurfUMults()`
+    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::Approx_SweepApproximation_surf_u_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_SweepApproximation.hxx`:126 - `Approx_SweepApproximation::SurfVMults()`
+    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::Approx_SweepApproximation_surf_v_mults(self as *const Self)) }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:129 - `Approx_SweepApproximation::MaxErrorOnSurf()`
@@ -1437,6 +1583,25 @@ impl SweepApproximation {
         unsafe { crate::ffi::Approx_SweepApproximation_nb_curves2d(self as *const Self) }
     }
 
+    /// **Source:** `Approx_SweepApproximation.hxx`:140 - `Approx_SweepApproximation::Curve2d()`
+    pub fn curve2d(
+        &self,
+        Index: i32,
+        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::Approx_SweepApproximation_curve2d(
+                self as *const Self,
+                Index,
+                TPoles,
+                TKnots,
+                TMults,
+            )
+        }
+    }
+
     /// **Source:** `Approx_SweepApproximation.hxx`:145 - `Approx_SweepApproximation::Curves2dDegree()`
     pub fn curves2d_degree(&self) -> i32 {
         unsafe { crate::ffi::Approx_SweepApproximation_curves2d_degree(self as *const Self) }
@@ -1447,6 +1612,16 @@ impl SweepApproximation {
         unsafe {
             &*(crate::ffi::Approx_SweepApproximation_curve2d_poles(self as *const Self, Index))
         }
+    }
+
+    /// **Source:** `Approx_SweepApproximation.hxx`:149 - `Approx_SweepApproximation::Curves2dKnots()`
+    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Approx_SweepApproximation_curves2d_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `Approx_SweepApproximation.hxx`:151 - `Approx_SweepApproximation::Curves2dMults()`
+    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::Approx_SweepApproximation_curves2d_mults(self as *const Self)) }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:155 - `Approx_SweepApproximation::Max2dError()`
@@ -1489,10 +1664,116 @@ unsafe impl crate::CppDeletable for SweepFunction {
 }
 
 impl SweepFunction {
+    /// **Source:** `Approx_SweepFunction.hxx`:44 - `Approx_SweepFunction::D0()`
+    /// compute the section for v = param
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Approx_SweepFunction_d0(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
+    }
+
+    /// **Source:** `Approx_SweepFunction.hxx`:54 - `Approx_SweepFunction::D1()`
+    /// compute the first  derivative in v direction  of the
+    /// section for v =  param
+    /// Warning : It used only for C1 or C2 approximation
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Approx_SweepFunction_d1(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                Poles2d,
+                DPoles2d,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// **Source:** `Approx_SweepFunction.hxx`:67 - `Approx_SweepFunction::D2()`
+    /// compute the second derivative  in v direction of the
+    /// section  for v = param
+    /// Warning : It used only for C2 approximation
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Approx_SweepFunction_d2(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                D2Poles,
+                Poles2d,
+                DPoles2d,
+                D2Poles2d,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
     /// **Source:** `Approx_SweepFunction.hxx`:81 - `Approx_SweepFunction::Nb2dCurves()`
     /// get the number of 2d curves to  approximate.
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::Approx_SweepFunction_nb2d_curves(self as *const Self) }
+    }
+
+    /// **Source:** `Approx_SweepFunction.hxx`:89 - `Approx_SweepFunction::Knots()`
+    /// get the Knots of the section
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Approx_SweepFunction_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `Approx_SweepFunction.hxx`:92 - `Approx_SweepFunction::Mults()`
+    /// get the Multplicities of the section
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::Approx_SweepFunction_mults(self as *const Self, TMults) }
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:95 - `Approx_SweepFunction::IsRational()`
@@ -1507,6 +1788,16 @@ impl SweepFunction {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Approx_SweepFunction_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `Approx_SweepFunction.hxx`:107 - `Approx_SweepFunction::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Approx_SweepFunction_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:113 - `Approx_SweepFunction::SetInterval()`
@@ -1525,6 +1816,30 @@ impl SweepFunction {
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         unsafe {
             crate::ffi::Approx_SweepFunction_resolution(self as *const Self, Index, Tol, TolU, TolV)
+        }
+    }
+
+    /// **Source:** `Approx_SweepFunction.hxx`:128 - `Approx_SweepFunction::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to satisfy.
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary (in radian)
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Approx_SweepFunction_get_tolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
         }
     }
 
@@ -1553,6 +1868,14 @@ impl SweepFunction {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         unsafe { crate::ffi::Approx_SweepFunction_maximal_section(self as *const Self) }
+    }
+
+    /// **Source:** `Approx_SweepFunction.hxx`:151 - `Approx_SweepFunction::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles in all  sections.
+    /// This information is useful to control error in rational approximation.
+    /// Warning: Used only if <me> IsRational
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Approx_SweepFunction_get_minimal_weight(self as *const Self, Weigths) }
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:153 - `Approx_SweepFunction::DynamicType()`

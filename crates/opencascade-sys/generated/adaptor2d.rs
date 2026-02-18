@@ -80,6 +80,16 @@ impl Curve2d {
         unsafe { crate::ffi::Adaptor2d_Curve2d_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `Adaptor2d_Curve2d.hxx`:73 - `Adaptor2d_Curve2d::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Adaptor2d_Curve2d_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `Adaptor2d_Curve2d.hxx`:79 - `Adaptor2d_Curve2d::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -407,6 +417,16 @@ impl Line2d {
     /// intervals.
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Adaptor2d_Line2d_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `Adaptor2d_Line2d.hxx`:79 - `Adaptor2d_Line2d::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Adaptor2d_Line2d_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `Adaptor2d_Line2d.hxx`:86 - `Adaptor2d_Line2d::Trim()`
@@ -742,6 +762,16 @@ impl OffsetCurve {
     /// intervals.
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::Adaptor2d_OffsetCurve_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `Adaptor2d_OffsetCurve.hxx`:93 - `Adaptor2d_OffsetCurve::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::Adaptor2d_OffsetCurve_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `Adaptor2d_OffsetCurve.hxx`:100 - `Adaptor2d_OffsetCurve::Trim()`

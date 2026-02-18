@@ -103,6 +103,26 @@ impl Builder {
         }
     }
 
+    /// **Source:** `BRep_Builder.hxx`:84 - `BRep_Builder::MakeFace()`
+    /// Makes a Face with a list of triangulations and active one.
+    /// Use NULL active triangulation to set the first triangulation in list as active.
+    /// The triangulations is in the same reference system than the TFace.
+    pub fn make_face_face_listoftriangulation_handlepolytriangulation(
+        &self,
+        theFace: &mut crate::ffi::TopoDS_Face,
+        theTriangulations: &crate::ffi::Poly_ListOfTriangulation,
+        theActiveTriangulation: &crate::ffi::HandlePolyTriangulation,
+    ) {
+        unsafe {
+            crate::ffi::BRep_Builder_make_face_face_listoftriangulation_handlepolytriangulation(
+                self as *const Self,
+                theFace,
+                theTriangulations,
+                theActiveTriangulation,
+            )
+        }
+    }
+
     /// **Source:** `BRep_Builder.hxx`:91 - `BRep_Builder::UpdateFace()`
     /// Updates the face F using the tolerance value Tol,
     /// surface S and location Location.
@@ -4715,6 +4735,16 @@ impl TEdge {
         unsafe { crate::ffi::BRep_TEdge_degenerated_bool(self as *mut Self, S) }
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:72 - `BRep_TEdge::Curves()`
+    pub fn curves(&self) -> &crate::ffi::BRep_ListOfCurveRepresentation {
+        unsafe { &*(crate::ffi::BRep_TEdge_curves(self as *const Self)) }
+    }
+
+    /// **Source:** `BRep_TEdge.hxx`:74 - `BRep_TEdge::ChangeCurves()`
+    pub fn change_curves(&mut self) -> &mut crate::ffi::BRep_ListOfCurveRepresentation {
+        unsafe { &mut *(crate::ffi::BRep_TEdge_change_curves(self as *mut Self)) }
+    }
+
     /// **Source:** `BRep_TEdge.hxx`:77 - `BRep_TEdge::EmptyCopy()`
     /// Returns a copy  of the  TShape  with no sub-shapes.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
@@ -4950,6 +4980,33 @@ impl TFace {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TFace_empty_copy(self as *const Self)) }
     }
 
+    /// **Source:** `BRep_TFace.hxx`:119 - `BRep_TFace::Triangulations()`
+    /// Returns the list of available face triangulations.
+    pub fn triangulations(&self) -> &crate::ffi::Poly_ListOfTriangulation {
+        unsafe { &*(crate::ffi::BRep_TFace_triangulations(self as *const Self)) }
+    }
+
+    /// **Source:** `BRep_TFace.hxx`:127 - `BRep_TFace::Triangulations()`
+    /// Sets input list of triangulations and currently active triangulation for this face.
+    /// If list is empty internal list of triangulations will be cleared and active triangulation will
+    /// be nullified. Else this list will be saved and the input active triangulation be saved as
+    /// active. Use NULL active triangulation to set the first triangulation in list as active. Note:
+    /// the method throws exception if there is any NULL triangulation in input list or
+    /// if this list doesn't contain input active triangulation.
+    pub fn triangulations_listoftriangulation_handlepolytriangulation(
+        &mut self,
+        theTriangulations: &crate::ffi::Poly_ListOfTriangulation,
+        theActiveTriangulation: &crate::ffi::HandlePolyTriangulation,
+    ) {
+        unsafe {
+            crate::ffi::BRep_TFace_triangulations_listoftriangulation_handlepolytriangulation(
+                self as *mut Self,
+                theTriangulations,
+                theActiveTriangulation,
+            )
+        }
+    }
+
     /// **Source:** `BRep_TFace.hxx`:131 - `BRep_TFace::NbTriangulations()`
     /// Returns number of available face triangulations.
     pub fn nb_triangulations(&self) -> i32 {
@@ -5105,6 +5162,16 @@ impl TVertex {
     /// **Source:** `BRep_TVertex.hxx`:51 - `BRep_TVertex::Pnt()`
     pub fn pnt_pnt(&mut self, P: &crate::ffi::gp_Pnt) {
         unsafe { crate::ffi::BRep_TVertex_pnt_pnt(self as *mut Self, P) }
+    }
+
+    /// **Source:** `BRep_TVertex.hxx`:53 - `BRep_TVertex::Points()`
+    pub fn points(&self) -> &crate::ffi::BRep_ListOfPointRepresentation {
+        unsafe { &*(crate::ffi::BRep_TVertex_points(self as *const Self)) }
+    }
+
+    /// **Source:** `BRep_TVertex.hxx`:55 - `BRep_TVertex::ChangePoints()`
+    pub fn change_points(&mut self) -> &mut crate::ffi::BRep_ListOfPointRepresentation {
+        unsafe { &mut *(crate::ffi::BRep_TVertex_change_points(self as *mut Self)) }
     }
 
     /// **Source:** `BRep_TVertex.hxx`:58 - `BRep_TVertex::EmptyCopy()`
@@ -5276,6 +5343,18 @@ impl Tool {
         theMeshPurpose: u32,
     ) -> &'static crate::ffi::HandlePolyTriangulation {
         unsafe { &*(crate::ffi::BRep_Tool_triangulation(theFace, theLocation, theMeshPurpose)) }
+    }
+
+    /// **Source:** `BRep_Tool.hxx`:82 - `BRep_Tool::Triangulations()`
+    /// Returns all triangulations of the face.
+    /// @param[in] theFace  the input face.
+    /// @param[out] theLocation  the face location.
+    /// @return list of all available face triangulations.
+    pub fn triangulations(
+        theFace: &crate::ffi::TopoDS_Face,
+        theLocation: &mut crate::ffi::TopLoc_Location,
+    ) -> &'static crate::ffi::Poly_ListOfTriangulation {
+        unsafe { &*(crate::ffi::BRep_Tool_triangulations(theFace, theLocation)) }
     }
 
     /// **Source:** `BRep_Tool.hxx`:87 - `BRep_Tool::Tolerance()`

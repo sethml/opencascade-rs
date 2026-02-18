@@ -353,6 +353,45 @@ impl CopyShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_CopyShape_ctor()) }
     }
+
+    /// **Source:** `TNaming_CopyShape.hxx`:34 - `TNaming_CopyShape::CopyTool()`
+    /// Makes  copy  a  set  of  shape(s),  using the  aMap
+    pub fn copy_tool(
+        aShape: &crate::ffi::TopoDS_Shape,
+        aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+        aResult: &mut crate::ffi::TopoDS_Shape,
+    ) {
+        unsafe { crate::ffi::TNaming_CopyShape_copy_tool(aShape, aMap, aResult) }
+    }
+
+    /// **Source:** `TNaming_CopyShape.hxx`:39 - `TNaming_CopyShape::Translate()`
+    /// Translates  a  Transient  shape(s)  to  Transient
+    pub fn translate_shape_indexeddatamapoftransienttransient_shape_handletnamingtranslatetool(
+        aShape: &crate::ffi::TopoDS_Shape,
+        aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+        aResult: &mut crate::ffi::TopoDS_Shape,
+        TrTool: &crate::ffi::HandleTNamingTranslateTool,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_CopyShape_translate_shape_indexeddatamapoftransienttransient_shape_handletnamingtranslatetool(aShape, aMap, aResult, TrTool)
+        }
+    }
+
+    /// **Source:** `TNaming_CopyShape.hxx`:46 - `TNaming_CopyShape::Translate()`
+    /// Translates a Topological  Location  to an  other  Top.
+    /// Location
+    pub fn translate_location_indexeddatamapoftransienttransient(
+        L: &crate::ffi::TopLoc_Location,
+        aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+    ) -> crate::OwnedPtr<crate::ffi::TopLoc_Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_CopyShape_translate_location_indexeddatamapoftransienttransient(
+                    L, aMap,
+                ),
+            )
+        }
+    }
 }
 
 // ========================
@@ -840,6 +879,27 @@ impl Localizer {
         }
     }
 
+    /// **Source:** `TNaming_Localizer.hxx`:59 - `TNaming_Localizer::GoBack()`
+    pub fn go_back(
+        &mut self,
+        S: &crate::ffi::TopoDS_Shape,
+        Lab: &crate::ffi::TDF_Label,
+        Evol: crate::t_naming::Evolution,
+        OldS: &mut crate::ffi::TopTools_ListOfShape,
+        OldLab: &mut crate::ffi::TNaming_ListOfNamedShape,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_Localizer_go_back(
+                self as *mut Self,
+                S,
+                Lab,
+                Evol.into(),
+                OldS,
+                OldLab,
+            )
+        }
+    }
+
     /// **Source:** `TNaming_Localizer.hxx`:70 - `TNaming_Localizer::FindNeighbourg()`
     pub fn find_neighbourg(
         &mut self,
@@ -929,6 +989,11 @@ impl Name {
     /// **Source:** `TNaming_Name.hxx`:63 - `TNaming_Name::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Name_shape(self as *const Self)) }
+    }
+
+    /// **Source:** `TNaming_Name.hxx`:65 - `TNaming_Name::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi::TNaming_ListOfNamedShape {
+        unsafe { &*(crate::ffi::TNaming_Name_arguments(self as *const Self)) }
     }
 
     /// **Source:** `TNaming_Name.hxx`:69 - `TNaming_Name::Index()`
@@ -2155,6 +2220,21 @@ impl Tool {
         unsafe { crate::ffi::TNaming_Tool_has_label(access, aShape) }
     }
 
+    /// **Source:** `TNaming_Tool.hxx`:148 - `TNaming_Tool::InitialShape()`
+    /// Returns the shape created from the shape
+    /// aShape contained in the attribute anAcces.
+    pub fn initial_shape(
+        aShape: &crate::ffi::TopoDS_Shape,
+        anAcces: &crate::ffi::TDF_Label,
+        Labels: &mut crate::ffi::TDF_LabelList,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_initial_shape(
+                aShape, anAcces, Labels,
+            ))
+        }
+    }
+
     /// **Source:** `TNaming_Tool.hxx`:154 - `TNaming_Tool::ValidUntil()`
     /// Returns the last transaction where the creation of S
     /// is valid.
@@ -2230,6 +2310,36 @@ impl TranslateTool {
     /// **Source:** `TNaming_TranslateTool.hxx`:54 - `TNaming_TranslateTool::MakeCompound()`
     pub fn make_compound(&self, S: &mut crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::TNaming_TranslateTool_make_compound(self as *const Self, S) }
+    }
+
+    /// **Source:** `TNaming_TranslateTool.hxx`:56 - `TNaming_TranslateTool::UpdateVertex()`
+    pub fn update_vertex(
+        &self,
+        S1: &crate::ffi::TopoDS_Shape,
+        S2: &mut crate::ffi::TopoDS_Shape,
+        M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+    ) {
+        unsafe { crate::ffi::TNaming_TranslateTool_update_vertex(self as *const Self, S1, S2, M) }
+    }
+
+    /// **Source:** `TNaming_TranslateTool.hxx`:60 - `TNaming_TranslateTool::UpdateEdge()`
+    pub fn update_edge(
+        &self,
+        S1: &crate::ffi::TopoDS_Shape,
+        S2: &mut crate::ffi::TopoDS_Shape,
+        M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+    ) {
+        unsafe { crate::ffi::TNaming_TranslateTool_update_edge(self as *const Self, S1, S2, M) }
+    }
+
+    /// **Source:** `TNaming_TranslateTool.hxx`:64 - `TNaming_TranslateTool::UpdateFace()`
+    pub fn update_face(
+        &self,
+        S1: &crate::ffi::TopoDS_Shape,
+        S2: &mut crate::ffi::TopoDS_Shape,
+        M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+    ) {
+        unsafe { crate::ffi::TNaming_TranslateTool_update_face(self as *const Self, S1, S2, M) }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:68 - `TNaming_TranslateTool::UpdateShape()`
@@ -2369,6 +2479,11 @@ impl UsedShapes {
     /// **Source:** `TNaming_UsedShapes.hxx`:45 - `TNaming_UsedShapes::Destroy()`
     pub fn destroy(&mut self) {
         unsafe { crate::ffi::TNaming_UsedShapes_destroy(self as *mut Self) }
+    }
+
+    /// **Source:** `TNaming_UsedShapes.hxx`:49 - `TNaming_UsedShapes::Map()`
+    pub fn map(&mut self) -> &mut crate::ffi::TNaming_DataMapOfShapePtrRefShape {
+        unsafe { &mut *(crate::ffi::TNaming_UsedShapes_map(self as *mut Self)) }
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:52 - `TNaming_UsedShapes::ID()`

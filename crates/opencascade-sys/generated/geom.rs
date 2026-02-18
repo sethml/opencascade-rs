@@ -1070,6 +1070,174 @@ unsafe impl crate::CppDeletable for BSplineCurve {
 }
 
 impl BSplineCurve {
+    /// **Source:** `Geom_BSplineCurve.hxx`:134 - `Geom_BSplineCurve::Geom_BSplineCurve()`
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofpnt_array1ofreal_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal_array1ofinteger_int_bool(Poles, Knots, Multiplicities, Degree, Periodic))
+        }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// Raises ConstructionError subject to the following conditions
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Weights.Length() == Poles.Length()
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+        CheckRational: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineCurve_ctor_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(Poles, Weights, Knots, Multiplicities, Degree, Periodic, CheckRational))
+        }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:134 - `Geom_BSplineCurve::Geom_BSplineCurve()`
+    /// Creates a  non-rational B_spline curve   on  the
+    /// basis <Knots, Multiplicities> of degree <Degree>.
+    pub fn new_array1ofpnt_array1ofreal_array1ofinteger_int(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofpnt_array1ofreal_array1ofinteger_int_bool(
+            Poles,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+        )
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// Raises ConstructionError subject to the following conditions
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Weights.Length() == Poles.Length()
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+        Periodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            Periodic,
+            true,
+        )
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:167 - `Geom_BSplineCurve::Geom_BSplineCurve()`
+    /// Creates  a rational B_spline  curve  on the basis
+    /// <Knots, Multiplicities> of degree <Degree>.
+    /// Raises ConstructionError subject to the following conditions
+    /// 0 < Degree <= MaxDegree.
+    ///
+    /// Weights.Length() == Poles.Length()
+    ///
+    /// Knots.Length() == Mults.Length() >= 2
+    ///
+    /// Knots(i) < Knots(i+1) (Knots are increasing)
+    ///
+    /// 1 <= Mults(i) <= Degree
+    ///
+    /// On a non periodic curve the first and last multiplicities
+    /// may be Degree+1 (this is even recommended if you want the
+    /// curve to start and finish on the first and last pole).
+    ///
+    /// On a periodic  curve the first  and  the last multicities
+    /// must be the same.
+    ///
+    /// on non-periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2
+    ///
+    /// on periodic curves
+    ///
+    /// Poles.Length() == Sum(Mults(i)) except the first or last
+    pub fn new_array1ofpnt_array1ofreal2_array1ofinteger_int(
+        Poles: &crate::ffi::TColgp_Array1OfPnt,
+        Weights: &crate::ffi::TColStd_Array1OfReal,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Multiplicities: &crate::ffi::TColStd_Array1OfInteger,
+        Degree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array1ofpnt_array1ofreal2_array1ofinteger_int_bool2(
+            Poles,
+            Weights,
+            Knots,
+            Multiplicities,
+            Degree,
+            false,
+            true,
+        )
+    }
+
     /// **Source:** `Geom_BSplineCurve.hxx`:183 - `Geom_BSplineCurve::IncreaseDegree()`
     /// Increases the degree of this BSpline curve to
     /// Degree. As a result, the poles, weights and
@@ -1146,6 +1314,43 @@ impl BSplineCurve {
                 self as *mut Self,
                 U,
                 M,
+                ParametricTolerance,
+                Add,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:253 - `Geom_BSplineCurve::InsertKnots()`
+    /// Inserts a set of knots  values in  the sequence of
+    /// knots.
+    ///
+    /// For each U = Knots(i), M = Mults(i)
+    ///
+    /// If <U>  is an existing  knot  the  multiplicity is
+    /// increased by  <M> if  <Add>  is True, increased to
+    /// <M> if <Add> is False.
+    ///
+    /// If U  is  not  on the parameter  range  nothing is
+    /// done.
+    ///
+    /// If the multiplicity is negative or null nothing is
+    /// done. The  new   multiplicity  is limited  to  the
+    /// degree.
+    ///
+    /// The  tolerance criterion  for  knots  equality  is
+    /// the max of Epsilon(U) and ParametricTolerance.
+    pub fn insert_knots(
+        &mut self,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BSplineCurve_insert_knots(
+                self as *mut Self,
+                Knots,
+                Mults,
                 ParametricTolerance,
                 Add,
             )
@@ -1238,6 +1443,18 @@ impl BSplineCurve {
     /// Standard_OutOfRange if Index is outside the bounds of the knots table.
     pub fn set_knot_int_real(&mut self, Index: i32, K: f64) {
         unsafe { crate::ffi::Geom_BSplineCurve_set_knot_int_real(self as *mut Self, Index, K) }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:342 - `Geom_BSplineCurve::SetKnots()`
+    /// Modifies this BSpline curve by assigning the array
+    /// K to its knots table. The multiplicity of the knots is not modified.
+    /// Exceptions
+    /// Standard_ConstructionError if the values in the
+    /// array K are not in ascending order.
+    /// Standard_OutOfRange if the bounds of the array
+    /// K are not respectively 1 and the number of knots of this BSpline curve.
+    pub fn set_knots(&mut self, K: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BSplineCurve_set_knots(self as *mut Self, K) }
     }
 
     /// **Source:** `Geom_BSplineCurve.hxx`:352 - `Geom_BSplineCurve::SetKnot()`
@@ -1644,6 +1861,94 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom_BSplineCurve_knot(self as *const Self, Index) }
     }
 
+    /// **Source:** `Geom_BSplineCurve.hxx`:649 - `Geom_BSplineCurve::Knots()`
+    /// returns the knot values of the B-spline curve;
+    /// Warning
+    /// A knot with a multiplicity greater than 1 is not
+    /// repeated in the knot table. The Multiplicity function
+    /// can be used to obtain the multiplicity of each knot.
+    ///
+    /// Raised K.Lower() is less than number of first knot or
+    /// K.Upper() is more than number of last knot.
+    pub fn knots_array1ofreal(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BSplineCurve_knots_array1ofreal(self as *const Self, K) }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:656 - `Geom_BSplineCurve::Knots()`
+    /// returns the knot values of the B-spline curve;
+    /// Warning
+    /// A knot with a multiplicity greater than 1 is not
+    /// repeated in the knot table. The Multiplicity function
+    /// can be used to obtain the multiplicity of each knot.
+    pub fn knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Geom_BSplineCurve_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:711 - `Geom_BSplineCurve::KnotSequence()`
+    /// Returns K, the knots sequence of this BSpline curve.
+    /// In this sequence, knots with a multiplicity greater than 1 are repeated.
+    /// In the case of a non-periodic curve the length of the
+    /// sequence must be equal to the sum of the NbKnots
+    /// multiplicities of the knots of the curve (where
+    /// NbKnots is the number of knots of this BSpline
+    /// curve). This sum is also equal to : NbPoles + Degree + 1
+    /// where NbPoles is the number of poles and
+    /// Degree the degree of this BSpline curve.
+    /// In the case of a periodic curve, if there are k periodic
+    /// knots, the period is Knot(k+1) - Knot(1).
+    /// The initial sequence is built by writing knots 1 to k+1,
+    /// which are repeated according to their corresponding multiplicities.
+    /// If Degree is the degree of the curve, the degree of
+    /// continuity of the curve at the knot of index 1 (or k+1)
+    /// is equal to c = Degree + 1 - Mult(1). c
+    /// knots are then inserted at the beginning and end of
+    /// the initial sequence:
+    /// - the c values of knots preceding the first item
+    /// Knot(k+1) in the initial sequence are inserted
+    /// at the beginning; the period is subtracted from these c values;
+    /// - the c values of knots following the last item
+    /// Knot(1) in the initial sequence are inserted at
+    /// the end; the period is added to these c values.
+    /// The length of the sequence must therefore be equal to:
+    /// NbPoles + 2*Degree - Mult(1) + 2.
+    /// Example
+    /// For a non-periodic BSpline curve of degree 2 where:
+    /// - the array of knots is: { k1 k2 k3 k4 },
+    /// - with associated multiplicities: { 3 1 2 3 },
+    /// the knot sequence is:
+    /// K = { k1 k1 k1 k2 k3 k3 k4 k4 k4 }
+    /// For a periodic BSpline curve of degree 4 , which is
+    /// "C1" continuous at the first knot, and where :
+    /// - the periodic knots are: { k1 k2 k3 (k4) }
+    /// (3 periodic knots: the points of parameter k1 and k4
+    /// are identical, the period is p = k4 - k1),
+    /// - with associated multiplicities: { 3 1 2 (3) },
+    /// the degree of continuity at knots k1 and k4 is:
+    /// Degree + 1 - Mult(i) = 2.
+    /// 2 supplementary knots are added at the beginning
+    /// and end of the sequence:
+    /// - at the beginning: the 2 knots preceding k4 minus
+    /// the period; in this example, this is k3 - p both times;
+    /// - at the end: the 2 knots following k1 plus the period;
+    /// in this example, this is k2 + p and k3 + p.
+    /// The knot sequence is therefore:
+    /// K = { k3-p k3-p k1 k1 k1 k2 k3 k3
+    /// k4 k4 k4 k2+p k3+p }
+    /// Exceptions
+    /// Raised if K.Lower() is less than number of first knot
+    /// in knot sequence with repetitions or K.Upper() is more
+    /// than number of last knot in knot sequence with repetitions.
+    pub fn knot_sequence_array1ofreal(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BSplineCurve_knot_sequence_array1ofreal(self as *const Self, K) }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:715 - `Geom_BSplineCurve::KnotSequence()`
+    /// returns the knots of the B-spline curve.
+    /// Knots with multiplicit greater than 1 are repeated
+    pub fn knot_sequence(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Geom_BSplineCurve_knot_sequence(self as *const Self)) }
+    }
+
     /// **Source:** `Geom_BSplineCurve.hxx`:728 - `Geom_BSplineCurve::KnotDistribution()`
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
     /// If all the knots differ by a positive constant from the
@@ -1688,6 +1993,22 @@ impl BSplineCurve {
     /// Raised if Index < 1 or Index > NbKnots
     pub fn multiplicity(&self, Index: i32) -> i32 {
         unsafe { crate::ffi::Geom_BSplineCurve_multiplicity(self as *const Self, Index) }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:765 - `Geom_BSplineCurve::Multiplicities()`
+    /// Returns the multiplicity of the knots of the curve.
+    ///
+    /// Raised if the length of M is not equal to NbKnots.
+    pub fn multiplicities_array1ofinteger(&self, M: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe {
+            crate::ffi::Geom_BSplineCurve_multiplicities_array1ofinteger(self as *const Self, M)
+        }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:768 - `Geom_BSplineCurve::Multiplicities()`
+    /// returns the multiplicity of the knots of the curve.
+    pub fn multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::Geom_BSplineCurve_multiplicities(self as *const Self)) }
     }
 
     /// **Source:** `Geom_BSplineCurve.hxx`:772 - `Geom_BSplineCurve::NbKnots()`
@@ -1742,6 +2063,14 @@ impl BSplineCurve {
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Geom_BSplineCurve_weight(self as *const Self, Index) }
+    }
+
+    /// **Source:** `Geom_BSplineCurve.hxx`:802 - `Geom_BSplineCurve::Weights()`
+    /// Returns the weights of the B-spline curve;
+    ///
+    /// Raised if the length of W is not equal to NbPoles.
+    pub fn weights(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BSplineCurve_weights(self as *const Self, W) }
     }
 
     /// **Source:** `Geom_BSplineCurve.hxx`:808 - `Geom_BSplineCurve::Transform()`
@@ -2142,6 +2471,252 @@ unsafe impl crate::CppDeletable for BSplineSurface {
 }
 
 impl BSplineSurface {
+    /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    /// UKnots.Length() == UMults.Length() >= 2
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    /// on non-uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    /// on uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or last
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        UPeriodic: bool,
+        VPeriodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic))
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    ///
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    ///
+    /// UKnots.Length() == UMults.Length() >= 2
+    ///
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    ///
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    ///
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    ///
+    /// on non-uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    ///
+    /// on uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or
+    /// last
+    ///
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        Weights: &crate::ffi::TColStd_Array2OfReal,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        UPeriodic: bool,
+        VPeriodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BSplineSurface_ctor_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, VPeriodic))
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    /// UKnots.Length() == UMults.Length() >= 2
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    /// on non-uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    /// on uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or last
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        UPeriodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, false,
+        )
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:180 - `Geom_BSplineSurface::Geom_BSplineSurface()`
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    /// UKnots.Length() == UMults.Length() >= 2
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    /// on non-uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    /// on uperiodic surfaces
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or last
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array1ofreal2_array1ofinteger2_int2(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array2ofpnt_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, UKnots, VKnots, UMults, VMults, UDegree, VDegree, false, false,
+        )
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    ///
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    ///
+    /// UKnots.Length() == UMults.Length() >= 2
+    ///
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    ///
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    ///
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    ///
+    /// on non-uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    ///
+    /// on uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or
+    /// last
+    ///
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        Weights: &crate::ffi::TColStd_Array2OfReal,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+        UPeriodic: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, UPeriodic, false,
+        )
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:220 - `Geom_BSplineSurface::Geom_BSplineSurface()`
+    /// Creates  a non-rational b-spline surface (weights
+    /// default value is 1.).
+    ///
+    /// The following conditions must be verified.
+    /// 0 < UDegree <= MaxDegree.
+    ///
+    /// UKnots.Length() == UMults.Length() >= 2
+    ///
+    /// UKnots(i) < UKnots(i+1) (Knots are increasing)
+    /// 1 <= UMults(i) <= UDegree
+    ///
+    /// On a   non  uperiodic   surface    the  first and    last
+    /// umultiplicities  may  be     UDegree+1  (this   is   even
+    /// recommended if you want the curve  to start and finish on
+    /// the first and last pole).
+    ///
+    /// On a uperiodic     surface  the first    and   the   last
+    /// umultiplicities must be the same.
+    ///
+    /// on non-uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2
+    ///
+    /// on uperiodic surfaces
+    ///
+    /// Poles.ColLength() == Sum(UMults(i)) except the first or
+    /// last
+    ///
+    /// The previous conditions for U holds  also for V, with the
+    /// RowLength of the poles.
+    pub fn new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2(
+        Poles: &crate::ffi::TColgp_Array2OfPnt,
+        Weights: &crate::ffi::TColStd_Array2OfReal,
+        UKnots: &crate::ffi::TColStd_Array1OfReal,
+        VKnots: &crate::ffi::TColStd_Array1OfReal,
+        UMults: &crate::ffi::TColStd_Array1OfInteger,
+        VMults: &crate::ffi::TColStd_Array1OfInteger,
+        UDegree: i32,
+        VDegree: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_array2ofpnt_array2ofreal_array1ofreal2_array1ofinteger2_int2_bool2(
+            Poles, Weights, UKnots, VKnots, UMults, VMults, UDegree, VDegree, false, false,
+        )
+    }
+
     /// **Source:** `Geom_BSplineSurface.hxx`:239 - `Geom_BSplineSurface::ExchangeUV()`
     /// Exchanges the u and v parametric directions on
     /// this BSpline surface.
@@ -2321,6 +2896,82 @@ impl BSplineSurface {
     pub fn increase_degree(&mut self, UDegree: i32, VDegree: i32) {
         unsafe {
             crate::ffi::Geom_BSplineSurface_increase_degree(self as *mut Self, UDegree, VDegree)
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:392 - `Geom_BSplineSurface::InsertUKnots()`
+    /// Inserts into the knots table for the U
+    /// parametric direction of this BSpline surface:
+    /// - the values of the array Knots, with their respective
+    /// multiplicities, Mults.
+    /// If the knot value to insert already exists in the table, its multiplicity is:
+    /// - increased by M, if Add is true (the default), or
+    /// - increased to M, if Add is false.
+    /// The tolerance criterion used to check the equality of
+    /// the knots is the larger of the values ParametricTolerance and
+    /// Standard_Real::Epsilon(val), where val is the knot value to be inserted.
+    /// Warning
+    /// - If a given multiplicity coefficient is null, or negative, nothing is done.
+    /// - The new multiplicity of a knot is limited to the degree of this BSpline surface in the
+    /// corresponding parametric direction.
+    /// Exceptions
+    /// Standard_ConstructionError if a knot value to
+    /// insert is outside the bounds of this BSpline surface in
+    /// the specified parametric direction. The comparison
+    /// uses the precision criterion ParametricTolerance.
+    pub fn insert_u_knots(
+        &mut self,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_insert_u_knots(
+                self as *mut Self,
+                Knots,
+                Mults,
+                ParametricTolerance,
+                Add,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:416 - `Geom_BSplineSurface::InsertVKnots()`
+    /// Inserts into the knots table for the V
+    /// parametric direction of this BSpline surface:
+    /// - the values of the array Knots, with their respective
+    /// multiplicities, Mults.
+    /// If the knot value to insert already exists in the table, its multiplicity is:
+    /// - increased by M, if Add is true (the default), or
+    /// - increased to M, if Add is false.
+    /// The tolerance criterion used to check the equality of
+    /// the knots is the larger of the values ParametricTolerance and
+    /// Standard_Real::Epsilon(val), where val is the knot value to be inserted.
+    /// Warning
+    /// - If a given multiplicity coefficient is null, or negative, nothing is done.
+    /// - The new multiplicity of a knot is limited to the degree of this BSpline surface in the
+    /// corresponding parametric direction.
+    /// Exceptions
+    /// Standard_ConstructionError if a knot value to
+    /// insert is outside the bounds of this BSpline surface in
+    /// the specified parametric direction. The comparison
+    /// uses the precision criterion ParametricTolerance.
+    pub fn insert_v_knots(
+        &mut self,
+        Knots: &crate::ffi::TColStd_Array1OfReal,
+        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        ParametricTolerance: f64,
+        Add: bool,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_insert_v_knots(
+                self as *mut Self,
+                Knots,
+                Mults,
+                ParametricTolerance,
+                Add,
+            )
         }
     }
 
@@ -2636,6 +3287,17 @@ impl BSplineSurface {
         unsafe { crate::ffi::Geom_BSplineSurface_set_u_knot_int_real(self as *mut Self, UIndex, K) }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:634 - `Geom_BSplineSurface::SetUKnots()`
+    /// Changes all the U-knots of the surface.
+    /// The multiplicity of the knots are not modified.
+    ///
+    /// Raised if there is an index such that UK (Index+1) <= UK (Index).
+    ///
+    /// Raised if  UK.Lower() < 1 or UK.Upper() > NbUKnots
+    pub fn set_u_knots(&mut self, UK: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BSplineSurface_set_u_knots(self as *mut Self, UK) }
+    }
+
     /// **Source:** `Geom_BSplineSurface.hxx`:645 - `Geom_BSplineSurface::SetUKnot()`
     /// Changes the value of the UKnots of range UIndex and
     /// increases its multiplicity.
@@ -2660,6 +3322,17 @@ impl BSplineSurface {
     /// Raised if K >= VKnots(VIndex+1) or K <= VKnots(VIndex-1)
     pub fn set_v_knot_int_real(&mut self, VIndex: i32, K: f64) {
         unsafe { crate::ffi::Geom_BSplineSurface_set_v_knot_int_real(self as *mut Self, VIndex, K) }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:662 - `Geom_BSplineSurface::SetVKnots()`
+    /// Changes all the V-knots of the surface.
+    /// The multiplicity of the knots are not modified.
+    ///
+    /// Raised if there is an index such that VK (Index+1) <= VK (Index).
+    ///
+    /// Raised if  VK.Lower() < 1 or VK.Upper() > NbVKnots
+    pub fn set_v_knots(&mut self, VK: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BSplineSurface_set_v_knots(self as *mut Self, VK) }
     }
 
     /// **Source:** `Geom_BSplineSurface.hxx`:673 - `Geom_BSplineSurface::SetVKnot()`
@@ -2721,8 +3394,74 @@ impl BSplineSurface {
     /// Raised if Vindex < 1 or VIndex > NbVPoles.
     ///
     /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles.
-    pub fn set_pole_col(&mut self, VIndex: i32, CPoles: &crate::ffi::TColgp_Array1OfPnt) {
-        unsafe { crate::ffi::Geom_BSplineSurface_set_pole_col(self as *mut Self, VIndex, CPoles) }
+    pub fn set_pole_col_int_array1ofpnt(
+        &mut self,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_set_pole_col_int_array1ofpnt(
+                self as *mut Self,
+                VIndex,
+                CPoles,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:751 - `Geom_BSplineSurface::SetPoleCol()`
+    /// Changes a column of poles or a part of this column with the
+    /// corresponding weights. If the surface was rational it can
+    /// become non rational. If the surface was non rational it can
+    /// become rational.
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles
+    /// Raised if the bounds of CPoleWeights are not the same as the
+    /// bounds of CPoles.
+    /// Raised if one of the weight value of CPoleWeights is lower or
+    /// equal to Resolution from package gp.
+    pub fn set_pole_col_int_array1ofpnt_array1ofreal(
+        &mut self,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_set_pole_col_int_array1ofpnt_array1ofreal(
+                self as *mut Self,
+                VIndex,
+                CPoles,
+                CPoleWeights,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:766 - `Geom_BSplineSurface::SetPoleRow()`
+    /// Changes a row of poles or a part of this row with the
+    /// corresponding weights. If the surface was rational it can
+    /// become non rational. If the surface was non rational it can
+    /// become rational.
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles
+    /// raises if the bounds of CPoleWeights are not the same as the
+    /// bounds of CPoles.
+    /// Raised if one of the weight value of CPoleWeights is lower or
+    /// equal to Resolution from package gp.
+    pub fn set_pole_row_int_array1ofpnt_array1ofreal(
+        &mut self,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_set_pole_row_int_array1ofpnt_array1ofreal(
+                self as *mut Self,
+                UIndex,
+                CPoles,
+                CPoleWeights,
+            )
+        }
     }
 
     /// **Source:** `Geom_BSplineSurface.hxx`:774 - `Geom_BSplineSurface::SetPoleRow()`
@@ -2730,8 +3469,18 @@ impl BSplineSurface {
     /// Raised if Uindex < 1 or UIndex > NbUPoles.
     ///
     /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles.
-    pub fn set_pole_row(&mut self, UIndex: i32, CPoles: &crate::ffi::TColgp_Array1OfPnt) {
-        unsafe { crate::ffi::Geom_BSplineSurface_set_pole_row(self as *mut Self, UIndex, CPoles) }
+    pub fn set_pole_row_int_array1ofpnt(
+        &mut self,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_set_pole_row_int_array1ofpnt(
+                self as *mut Self,
+                UIndex,
+                CPoles,
+            )
+        }
     }
 
     /// **Source:** `Geom_BSplineSurface.hxx`:785 - `Geom_BSplineSurface::SetWeight()`
@@ -2747,6 +3496,36 @@ impl BSplineSurface {
     pub fn set_weight(&mut self, UIndex: i32, VIndex: i32, Weight: f64) {
         unsafe {
             crate::ffi::Geom_BSplineSurface_set_weight(self as *mut Self, UIndex, VIndex, Weight)
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:797 - `Geom_BSplineSurface::SetWeightCol()`
+    /// Changes a column of weights of a part of this column.
+    ///
+    /// Raised if VIndex < 1 or VIndex > NbVPoles
+    ///
+    /// Raised if CPoleWeights.Lower() < 1 or
+    /// CPoleWeights.Upper() > NbUPoles.
+    /// Raised if a weight value is lower or equal to Resolution
+    /// from package gp.
+    pub fn set_weight_col(&mut self, VIndex: i32, CPoleWeights: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_set_weight_col(self as *mut Self, VIndex, CPoleWeights)
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:808 - `Geom_BSplineSurface::SetWeightRow()`
+    /// Changes a row of weights or a part of this row.
+    ///
+    /// Raised if UIndex < 1 or UIndex > NbUPoles
+    ///
+    /// Raised if CPoleWeights.Lower() < 1 or
+    /// CPoleWeights.Upper() > NbVPoles.
+    /// Raised  if a weight value is lower or equal to Resolution
+    /// from package gp.
+    pub fn set_weight_row(&mut self, UIndex: i32, CPoleWeights: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_set_weight_row(self as *mut Self, UIndex, CPoleWeights)
         }
     }
 
@@ -2977,12 +3756,71 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:991 - `Geom_BSplineSurface::UKnots()`
+    /// Returns the knots in the U direction.
+    ///
+    /// Raised if the length of Ku is not equal to the number of knots
+    /// in the U direction.
+    pub fn u_knots_array1ofreal(&self, Ku: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BSplineSurface_u_knots_array1ofreal(self as *const Self, Ku) }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:994 - `Geom_BSplineSurface::UKnots()`
+    /// Returns the knots in the U direction.
+    pub fn u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Geom_BSplineSurface_u_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1003 - `Geom_BSplineSurface::UKnotSequence()`
+    /// Returns the uknots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    ///
+    /// Raised if the length of Ku is not equal to NbUPoles + UDegree + 1
+    pub fn u_knot_sequence_array1ofreal(&self, Ku: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_u_knot_sequence_array1ofreal(self as *const Self, Ku)
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1010 - `Geom_BSplineSurface::UKnotSequence()`
+    /// Returns the uknots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    pub fn u_knot_sequence(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Geom_BSplineSurface_u_knot_sequence(self as *const Self)) }
+    }
+
     /// **Source:** `Geom_BSplineSurface.hxx`:1015 - `Geom_BSplineSurface::UMultiplicity()`
     /// Returns the multiplicity value of knot of range UIndex in
     /// the u direction.
     /// Raised if UIndex < 1 or UIndex > NbUKnots.
     pub fn u_multiplicity(&self, UIndex: i32) -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_u_multiplicity(self as *const Self, UIndex) }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1021 - `Geom_BSplineSurface::UMultiplicities()`
+    /// Returns the multiplicities of the knots in the U direction.
+    ///
+    /// Raised if the length of Mu is not equal to the number of
+    /// knots in the U direction.
+    pub fn u_multiplicities_array1ofinteger(&self, Mu: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_u_multiplicities_array1ofinteger(
+                self as *const Self,
+                Mu,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1024 - `Geom_BSplineSurface::UMultiplicities()`
+    /// Returns the multiplicities of the knots in the U direction.
+    pub fn u_multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::Geom_BSplineSurface_u_multiplicities(self as *const Self)) }
     }
 
     /// **Source:** `Geom_BSplineSurface.hxx`:1028 - `Geom_BSplineSurface::VDegree()`
@@ -3022,12 +3860,71 @@ impl BSplineSurface {
         }
     }
 
+    /// **Source:** `Geom_BSplineSurface.hxx`:1053 - `Geom_BSplineSurface::VKnots()`
+    /// Returns the knots in the V direction.
+    ///
+    /// Raised if the length of Kv is not equal to the number of
+    /// knots in the V direction.
+    pub fn v_knots_array1ofreal(&self, Kv: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BSplineSurface_v_knots_array1ofreal(self as *const Self, Kv) }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1056 - `Geom_BSplineSurface::VKnots()`
+    /// Returns the knots in the V direction.
+    pub fn v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Geom_BSplineSurface_v_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1065 - `Geom_BSplineSurface::VKnotSequence()`
+    /// Returns the vknots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// Kv = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    ///
+    /// Raised if the length of Kv is not equal to NbVPoles + VDegree + 1
+    pub fn v_knot_sequence_array1ofreal(&self, Kv: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_v_knot_sequence_array1ofreal(self as *const Self, Kv)
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1072 - `Geom_BSplineSurface::VKnotSequence()`
+    /// Returns the vknots sequence.
+    /// In this sequence the knots with a multiplicity greater than 1
+    /// are repeated.
+    /// Example :
+    /// Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
+    pub fn v_knot_sequence(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::Geom_BSplineSurface_v_knot_sequence(self as *const Self)) }
+    }
+
     /// **Source:** `Geom_BSplineSurface.hxx`:1077 - `Geom_BSplineSurface::VMultiplicity()`
     /// Returns the multiplicity value of knot of range VIndex in
     /// the v direction.
     /// Raised if VIndex < 1 or VIndex > NbVKnots
     pub fn v_multiplicity(&self, VIndex: i32) -> i32 {
         unsafe { crate::ffi::Geom_BSplineSurface_v_multiplicity(self as *const Self, VIndex) }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1083 - `Geom_BSplineSurface::VMultiplicities()`
+    /// Returns the multiplicities of the knots in the V direction.
+    ///
+    /// Raised if the length of Mv is not equal to the number of
+    /// knots in the V direction.
+    pub fn v_multiplicities_array1ofinteger(&self, Mv: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe {
+            crate::ffi::Geom_BSplineSurface_v_multiplicities_array1ofinteger(
+                self as *const Self,
+                Mv,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1086 - `Geom_BSplineSurface::VMultiplicities()`
+    /// Returns the multiplicities of the knots in the V direction.
+    pub fn v_multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::Geom_BSplineSurface_v_multiplicities(self as *const Self)) }
     }
 
     /// **Source:** `Geom_BSplineSurface.hxx`:1092 - `Geom_BSplineSurface::Weight()`
@@ -3037,6 +3934,15 @@ impl BSplineSurface {
     /// or VIndex > NbVPoles.
     pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
         unsafe { crate::ffi::Geom_BSplineSurface_weight(self as *const Self, UIndex, VIndex) }
+    }
+
+    /// **Source:** `Geom_BSplineSurface.hxx`:1099 - `Geom_BSplineSurface::Weights()`
+    /// Returns the weights of the B-spline surface.
+    ///
+    /// Raised if the length of W in the U and V direction is
+    /// not equal to NbUPoles and NbVPoles.
+    pub fn weights(&self, W: &mut crate::ffi::TColStd_Array2OfReal) {
+        unsafe { crate::ffi::Geom_BSplineSurface_weights(self as *const Self, W) }
     }
 
     /// **Source:** `Geom_BSplineSurface.hxx`:1105 - `Geom_BSplineSurface::D0()`
@@ -3802,6 +4708,26 @@ impl BezierCurve {
         }
     }
 
+    /// **Source:** `Geom_BezierCurve.hxx`:104 - `Geom_BezierCurve::Geom_BezierCurve()`
+    /// Creates a rational Bezier curve with the set of poles
+    /// CurvePoles and the set of weights  PoleWeights .
+    /// If all the weights are identical the curve is considered
+    /// as non rational. Raises ConstructionError if
+    /// the number of poles is greater than  MaxDegree + 1 or lower
+    /// than 2 or CurvePoles and CurveWeights have not the same length
+    /// or one weight value is lower or equal to Resolution from package gp.
+    pub fn new_array1ofpnt_array1ofreal(
+        CurvePoles: &crate::ffi::TColgp_Array1OfPnt,
+        PoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierCurve_ctor_array1ofpnt_array1ofreal(
+                CurvePoles,
+                PoleWeights,
+            ))
+        }
+    }
+
     /// **Source:** `Geom_BezierCurve.hxx`:111 - `Geom_BezierCurve::Increase()`
     /// Increases the degree of a bezier curve. Degree is the new
     /// degree of <me>. Raises ConstructionError
@@ -4128,6 +5054,14 @@ impl BezierCurve {
     /// Raised if Index is not in the range [1, NbPoles]
     pub fn weight(&self, Index: i32) -> f64 {
         unsafe { crate::ffi::Geom_BezierCurve_weight(self as *const Self, Index) }
+    }
+
+    /// **Source:** `Geom_BezierCurve.hxx`:302 - `Geom_BezierCurve::Weights()`
+    /// Returns all the weights of the curve.
+    ///
+    /// Raised if the length of W is not equal to the number of poles.
+    pub fn weights(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_BezierCurve_weights(self as *const Self, W) }
     }
 
     /// **Source:** `Geom_BezierCurve.hxx`:313 - `Geom_BezierCurve::Transform()`
@@ -4494,6 +5428,34 @@ impl BezierSurface {
         }
     }
 
+    /// **Source:** `Geom_BezierSurface.hxx`:145 - `Geom_BezierSurface::Geom_BezierSurface()`
+    /// ---Purpose
+    /// Creates a rational Bezier surface with a set of poles and a
+    /// set of weights.
+    /// For the double array the row indice corresponds to the parametric
+    /// U direction and the columns indice corresponds to the parametric
+    /// V direction.
+    /// If all the weights are identical the surface is considered as
+    /// non-rational (the tolerance criterion is Resolution from package
+    /// gp).
+    ///
+    /// Raised if SurfacePoles and PoleWeights have not the same
+    /// Rowlength or have not the same ColLength.
+    /// Raised if PoleWeights (i, j) <= Resolution from gp;
+    /// Raised if the number of poles of the surface is lower than 2
+    /// or greater than MaxDegree + 1 in one of the two directions U or V.
+    pub fn new_array2ofpnt_array2ofreal(
+        SurfacePoles: &crate::ffi::TColgp_Array2OfPnt,
+        PoleWeights: &crate::ffi::TColStd_Array2OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom_BezierSurface_ctor_array2ofpnt_array2ofreal(
+                SurfacePoles,
+                PoleWeights,
+            ))
+        }
+    }
+
     /// **Source:** `Geom_BezierSurface.hxx`:154 - `Geom_BezierSurface::ExchangeUV()`
     /// Exchanges the direction U and V on a Bezier surface
     /// As a consequence:
@@ -4523,9 +5485,43 @@ impl BezierSurface {
     ///
     /// raises if VDegree is greater than MaxDegree.
     /// raises if the Length of CPoles is not equal to NbUPoles
-    pub fn insert_pole_col_after(&mut self, VIndex: i32, CPoles: &crate::ffi::TColgp_Array1OfPnt) {
+    pub fn insert_pole_col_after_int_array1ofpnt(
+        &mut self,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
         unsafe {
-            crate::ffi::Geom_BezierSurface_insert_pole_col_after(self as *mut Self, VIndex, CPoles)
+            crate::ffi::Geom_BezierSurface_insert_pole_col_after_int_array1ofpnt(
+                self as *mut Self,
+                VIndex,
+                CPoles,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:182 - `Geom_BezierSurface::InsertPoleColAfter()`
+    /// Inserts a column of poles and weights.
+    /// If the surface was non-rational it can become rational.
+    ///
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    /// Raised if
+    /// . VDegree is greater than MaxDegree.
+    /// . the Length of CPoles is not equal to NbUPoles
+    /// . a weight value is lower or equal to Resolution from
+    /// package gp
+    pub fn insert_pole_col_after_int_array1ofpnt_array1ofreal(
+        &mut self,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_insert_pole_col_after_int_array1ofpnt_array1ofreal(
+                self as *mut Self,
+                VIndex,
+                CPoles,
+                CPoleWeights,
+            )
         }
     }
 
@@ -4537,9 +5533,43 @@ impl BezierSurface {
     ///
     /// Raised if VDegree is greater than MaxDegree.
     /// Raised if the Length of CPoles is not equal to NbUPoles
-    pub fn insert_pole_col_before(&mut self, VIndex: i32, CPoles: &crate::ffi::TColgp_Array1OfPnt) {
+    pub fn insert_pole_col_before_int_array1ofpnt(
+        &mut self,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
         unsafe {
-            crate::ffi::Geom_BezierSurface_insert_pole_col_before(self as *mut Self, VIndex, CPoles)
+            crate::ffi::Geom_BezierSurface_insert_pole_col_before_int_array1ofpnt(
+                self as *mut Self,
+                VIndex,
+                CPoles,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:205 - `Geom_BezierSurface::InsertPoleColBefore()`
+    /// Inserts a column of poles and weights.
+    /// If the surface was non-rational it can become rational.
+    ///
+    /// Raised if Vindex < 1 or VIndex > NbVPoles.
+    /// Raised if :
+    /// . VDegree is greater than MaxDegree.
+    /// . the Length of CPoles is not equal to NbUPoles
+    /// . a weight value is lower or equal to Resolution from
+    /// package gp
+    pub fn insert_pole_col_before_int_array1ofpnt_array1ofreal(
+        &mut self,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_insert_pole_col_before_int_array1ofpnt_array1ofreal(
+                self as *mut Self,
+                VIndex,
+                CPoles,
+                CPoleWeights,
+            )
         }
     }
 
@@ -4551,9 +5581,43 @@ impl BezierSurface {
     ///
     /// Raised if UDegree is greater than MaxDegree.
     /// Raised if the Length of CPoles is not equal to NbVPoles
-    pub fn insert_pole_row_after(&mut self, UIndex: i32, CPoles: &crate::ffi::TColgp_Array1OfPnt) {
+    pub fn insert_pole_row_after_int_array1ofpnt(
+        &mut self,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
         unsafe {
-            crate::ffi::Geom_BezierSurface_insert_pole_row_after(self as *mut Self, UIndex, CPoles)
+            crate::ffi::Geom_BezierSurface_insert_pole_row_after_int_array1ofpnt(
+                self as *mut Self,
+                UIndex,
+                CPoles,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:228 - `Geom_BezierSurface::InsertPoleRowAfter()`
+    /// Inserts a row of poles and weights.
+    /// If the surface was non-rational it can become rational.
+    ///
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    /// Raised if :
+    /// . UDegree is greater than MaxDegree.
+    /// . the Length of CPoles is not equal to NbVPoles
+    /// . a weight value is lower or equal to Resolution from
+    /// package gp
+    pub fn insert_pole_row_after_int_array1ofpnt_array1ofreal(
+        &mut self,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_insert_pole_row_after_int_array1ofpnt_array1ofreal(
+                self as *mut Self,
+                UIndex,
+                CPoles,
+                CPoleWeights,
+            )
         }
     }
 
@@ -4565,9 +5629,43 @@ impl BezierSurface {
     ///
     /// Raised if UDegree is greater than MaxDegree.
     /// Raised if the Length of CPoles is not equal to NbVPoles
-    pub fn insert_pole_row_before(&mut self, UIndex: i32, CPoles: &crate::ffi::TColgp_Array1OfPnt) {
+    pub fn insert_pole_row_before_int_array1ofpnt(
+        &mut self,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
         unsafe {
-            crate::ffi::Geom_BezierSurface_insert_pole_row_before(self as *mut Self, UIndex, CPoles)
+            crate::ffi::Geom_BezierSurface_insert_pole_row_before_int_array1ofpnt(
+                self as *mut Self,
+                UIndex,
+                CPoles,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:251 - `Geom_BezierSurface::InsertPoleRowBefore()`
+    /// Inserts a row of poles and weights.
+    /// If the surface was non-rational it can become rational.
+    ///
+    /// Raised if Uindex < 1 or UIndex > NbUPoles.
+    /// Raised if :
+    /// . UDegree is greater than MaxDegree.
+    /// . the Length of CPoles is not equal to NbVPoles
+    /// . a weight value is lower or equal to Resolution from
+    /// package gp
+    pub fn insert_pole_row_before_int_array1ofpnt_array1ofreal(
+        &mut self,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_insert_pole_row_before_int_array1ofpnt_array1ofreal(
+                self as *mut Self,
+                UIndex,
+                CPoles,
+                CPoleWeights,
+            )
         }
     }
 
@@ -4665,8 +5763,46 @@ impl BezierSurface {
     /// Raised if VIndex < 1 or  VIndex > NbVPoles
     ///
     /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles
-    pub fn set_pole_col(&mut self, VIndex: i32, CPoles: &crate::ffi::TColgp_Array1OfPnt) {
-        unsafe { crate::ffi::Geom_BezierSurface_set_pole_col(self as *mut Self, VIndex, CPoles) }
+    pub fn set_pole_col_int_array1ofpnt(
+        &mut self,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_set_pole_col_int_array1ofpnt(
+                self as *mut Self,
+                VIndex,
+                CPoles,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:338 - `Geom_BezierSurface::SetPoleCol()`
+    /// Modifies a column of poles.
+    /// If the surface was rational it can become non-rational
+    /// If the surface was non-rational it can become rational.
+    /// The length of CPoles can be lower but not greater than NbUPoles
+    /// so you can modify just a part of the column.
+    /// Raised if VIndex < 1 or  VIndex > NbVPoles
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles
+    /// Raised if CPoleWeights and CPoles have not the same bounds.
+    /// Raised if one of the weight value CPoleWeights (i) is lower
+    /// or equal to Resolution from package gp.
+    pub fn set_pole_col_int_array1ofpnt_array1ofreal(
+        &mut self,
+        VIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_set_pole_col_int_array1ofpnt_array1ofreal(
+                self as *mut Self,
+                VIndex,
+                CPoles,
+                CPoleWeights,
+            )
+        }
     }
 
     /// **Source:** `Geom_BezierSurface.hxx`:348 - `Geom_BezierSurface::SetPoleRow()`
@@ -4676,8 +5812,46 @@ impl BezierSurface {
     /// Raised if UIndex < 1 or  UIndex > NbUPoles
     ///
     /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles
-    pub fn set_pole_row(&mut self, UIndex: i32, CPoles: &crate::ffi::TColgp_Array1OfPnt) {
-        unsafe { crate::ffi::Geom_BezierSurface_set_pole_row(self as *mut Self, UIndex, CPoles) }
+    pub fn set_pole_row_int_array1ofpnt(
+        &mut self,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_set_pole_row_int_array1ofpnt(
+                self as *mut Self,
+                UIndex,
+                CPoles,
+            )
+        }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:361 - `Geom_BezierSurface::SetPoleRow()`
+    /// Modifies a row of poles and weights.
+    /// If the surface was rational it can become non-rational.
+    /// If the surface was non-rational it can become rational.
+    /// The length of CPoles can be lower but not greater than NbVPoles
+    /// so you can modify just a part of the row.
+    /// Raised if UIndex < 1 or  UIndex > NbUPoles
+    ///
+    /// Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles
+    /// Raised if CPoleWeights and CPoles have not the same bounds.
+    /// Raised if one of the weight value CPoleWeights (i) is lower
+    /// or equal to Resolution from gp.
+    pub fn set_pole_row_int_array1ofpnt_array1ofreal(
+        &mut self,
+        UIndex: i32,
+        CPoles: &crate::ffi::TColgp_Array1OfPnt,
+        CPoleWeights: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_set_pole_row_int_array1ofpnt_array1ofreal(
+                self as *mut Self,
+                UIndex,
+                CPoles,
+                CPoleWeights,
+            )
+        }
     }
 
     /// **Source:** `Geom_BezierSurface.hxx`:372 - `Geom_BezierSurface::SetWeight()`
@@ -4691,6 +5865,42 @@ impl BezierSurface {
     pub fn set_weight(&mut self, UIndex: i32, VIndex: i32, Weight: f64) {
         unsafe {
             crate::ffi::Geom_BezierSurface_set_weight(self as *mut Self, UIndex, VIndex, Weight)
+        }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:387 - `Geom_BezierSurface::SetWeightCol()`
+    /// Modifies a column of weights.
+    /// If the surface was rational it can become non-rational.
+    /// If the surface was non-rational it can become rational.
+    /// The length of CPoleWeights can be lower but not greater than
+    /// NbUPoles.
+    /// Raised if VIndex < 1 or  VIndex > NbVPoles
+    ///
+    /// Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() >
+    /// NbUPoles
+    /// Raised if one of the weight value CPoleWeights (i) is lower
+    /// or equal to Resolution from package gp.
+    pub fn set_weight_col(&mut self, VIndex: i32, CPoleWeights: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_set_weight_col(self as *mut Self, VIndex, CPoleWeights)
+        }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:401 - `Geom_BezierSurface::SetWeightRow()`
+    /// Modifies a row of weights.
+    /// If the surface was rational it can become non-rational.
+    /// If the surface was non-rational it can become rational.
+    /// The length of CPoleWeights can be lower but not greater than
+    /// NbVPoles.
+    /// Raised if UIndex < 1 or  UIndex > NbUPoles
+    ///
+    /// Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() >
+    /// NbVPoles
+    /// Raised if one of the weight value CPoleWeights (i) is lower
+    /// or equal to Resolution from package gp.
+    pub fn set_weight_row(&mut self, UIndex: i32, CPoleWeights: &crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::Geom_BezierSurface_set_weight_row(self as *mut Self, UIndex, CPoleWeights)
         }
     }
 
@@ -4937,6 +6147,15 @@ impl BezierSurface {
     /// VIndex < 1 or VIndex > NbVPoles.
     pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
         unsafe { crate::ffi::Geom_BezierSurface_weight(self as *const Self, UIndex, VIndex) }
+    }
+
+    /// **Source:** `Geom_BezierSurface.hxx`:546 - `Geom_BezierSurface::Weights()`
+    /// Returns the weights of the Bezier surface.
+    ///
+    /// Raised if the length of W in the U an V direction is not
+    /// equal to NbUPoles and NbVPoles.
+    pub fn weights(&self, W: &mut crate::ffi::TColStd_Array2OfReal) {
+        unsafe { crate::ffi::Geom_BezierSurface_weights(self as *const Self, W) }
     }
 
     /// **Source:** `Geom_BezierSurface.hxx`:559 - `Geom_BezierSurface::IsUClosed()`
@@ -11819,6 +13038,34 @@ impl HSequenceOfBSplineSurface {
     /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Geom_HSequenceOfBSplineSurface()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Geom_HSequenceOfBSplineSurface_ctor()) }
+    }
+
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Geom_HSequenceOfBSplineSurface()`
+    pub fn new_sequenceofbsplinesurface(
+        theOther: &crate::ffi::Geom_SequenceOfBSplineSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom_HSequenceOfBSplineSurface_ctor_sequenceofbsplinesurface(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::Geom_SequenceOfBSplineSurface {
+        unsafe { &*(crate::ffi::Geom_HSequenceOfBSplineSurface_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::Geom_SequenceOfBSplineSurface) {
+        unsafe { crate::ffi::Geom_HSequenceOfBSplineSurface_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::Geom_SequenceOfBSplineSurface {
+        unsafe {
+            &mut *(crate::ffi::Geom_HSequenceOfBSplineSurface_change_sequence(self as *mut Self))
+        }
     }
 
     /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::DynamicType()`
@@ -20328,6 +21575,25 @@ impl ToroidalSurface {
     /// For a torus: U1 = V1 = 0 and U2 = V2 = 2*PI .
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         unsafe { crate::ffi::Geom_ToroidalSurface_bounds(self as *const Self, U1, U2, V1, V2) }
+    }
+
+    /// **Source:** `Geom_ToroidalSurface.hxx`:161 - `Geom_ToroidalSurface::Coefficients()`
+    /// Returns the coefficients of the implicit equation of the surface
+    /// in the absolute cartesian coordinate system :
+    /// Coef(1) * X**4 + Coef(2) * Y**4 + Coef(3) * Z**4 +
+    /// Coef(4) * X**3 * Y + Coef(5) * X**3 * Z + Coef(6) * Y**3 * X +
+    /// Coef(7) * Y**3 * Z + Coef(8) * Z**3 * X + Coef(9) * Z**3 * Y +
+    /// Coef(10) * X**2 * Y**2 + Coef(11) * X**2 * Z**2 +
+    /// Coef(12) * Y**2 * Z**2 + Coef(13) * X**3 + Coef(14) * Y**3 +
+    /// Coef(15) * Z**3 + Coef(16) * X**2 * Y + Coef(17) * X**2 * Z +
+    /// Coef(18) * Y**2 * X + Coef(19) * Y**2 * Z + Coef(20) * Z**2 * X +
+    /// Coef(21) * Z**2 * Y + Coef(22) * X**2 + Coef(23) * Y**2 +
+    /// Coef(24) * Z**2 + Coef(25) * X * Y + Coef(26) * X * Z +
+    /// Coef(27) * Y * Z + Coef(28) * X + Coef(29) * Y + Coef(30) *  Z +
+    /// Coef(31) = 0.0
+    /// Raised if the length of Coef is lower than 31.
+    pub fn coefficients(&self, Coef: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::Geom_ToroidalSurface_coefficients(self as *const Self, Coef) }
     }
 
     /// **Source:** `Geom_ToroidalSurface.hxx`:164 - `Geom_ToroidalSurface::MajorRadius()`

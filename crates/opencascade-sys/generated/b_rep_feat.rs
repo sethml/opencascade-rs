@@ -508,6 +508,16 @@ impl Builder {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Images(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_Origins(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         unsafe { &*(crate::ffi::BRepFeat_Builder_inherited_ShapesSD(self as *const Self)) }
@@ -786,6 +796,11 @@ impl Form {
     /// Initializes the topological construction if the selected face is present.
     pub fn perf_selection_valid(&mut self) {
         unsafe { crate::ffi::BRepFeat_Form_perf_selection_valid(self as *mut Self) }
+    }
+
+    /// **Source:** `BRepFeat_Form.hxx`:131 - `BRepFeat_Form::Curves()`
+    pub fn curves(&mut self, S: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::BRepFeat_Form_curves(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepFeat_Form.hxx`:133 - `BRepFeat_Form::BarycCurve()`
@@ -1466,6 +1481,20 @@ impl MakeCylindricalHole {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Images(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe {
+            &*(crate::ffi::BRepFeat_MakeCylindricalHole_inherited_Origins(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         unsafe {
@@ -1821,6 +1850,11 @@ impl MakeDPrism {
         unsafe {
             crate::ffi::BRepFeat_MakeDPrism_perform_until_height(self as *mut Self, Until, Height)
         }
+    }
+
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:127 - `BRepFeat_MakeDPrism::Curves()`
+    pub fn curves(&mut self, S: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::BRepFeat_MakeDPrism_curves(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepFeat_MakeDPrism.hxx`:129 - `BRepFeat_MakeDPrism::BarycCurve()`
@@ -2388,6 +2422,11 @@ impl MakePipe {
         unsafe { crate::ffi::BRepFeat_MakePipe_perform_shape2(self as *mut Self, From, Until) }
     }
 
+    /// **Source:** `BRepFeat_MakePipe.hxx`:104 - `BRepFeat_MakePipe::Curves()`
+    pub fn curves(&mut self, S: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::BRepFeat_MakePipe_curves(self as *mut Self, S) }
+    }
+
     /// **Source:** `BRepFeat_MakePipe.hxx`:106 - `BRepFeat_MakePipe::BarycCurve()`
     pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         unsafe {
@@ -2696,6 +2735,12 @@ impl MakePrism {
         }
     }
 
+    /// **Source:** `BRepFeat_MakePrism.hxx`:130 - `BRepFeat_MakePrism::Curves()`
+    /// Returns the list of curves S parallel to the axis of the prism.
+    pub fn curves(&mut self, S: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::BRepFeat_MakePrism_curves(self as *mut Self, S) }
+    }
+
     /// **Source:** `BRepFeat_MakePrism.hxx`:133 - `BRepFeat_MakePrism::BarycCurve()`
     /// Generates a curve along the center of mass of the primitive.
     pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
@@ -2957,6 +3002,11 @@ impl MakeRevol {
         unsafe {
             crate::ffi::BRepFeat_MakeRevol_perform_until_angle(self as *mut Self, Until, Angle)
         }
+    }
+
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:87 - `BRepFeat_MakeRevol::Curves()`
+    pub fn curves(&mut self, S: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+        unsafe { crate::ffi::BRepFeat_MakeRevol_curves(self as *mut Self, S) }
     }
 
     /// **Source:** `BRepFeat_MakeRevol.hxx`:89 - `BRepFeat_MakeRevol::BarycCurve()`

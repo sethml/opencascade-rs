@@ -414,6 +414,13 @@ unsafe impl crate::CppDeletable for UOperator {
 }
 
 impl UOperator {
+    /// **Source:** `ShapeProcess_UOperator.hxx`:37 - `ShapeProcess_UOperator::ShapeProcess_UOperator()`
+    /// Creates operator with implementation defined as
+    /// OperFunc (static function)
+    pub fn new_operfunc(func: &crate::ffi::ShapeProcess_OperFunc) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_UOperator_ctor_operfunc(func)) }
+    }
+
     /// **Source:** `ShapeProcess_UOperator.hxx`:40 - `ShapeProcess_UOperator::Perform()`
     /// Performs operation and records changes in the context
     pub fn perform(

@@ -403,7 +403,11 @@ fn safe_method_name(name: &str) -> String {
 }
 
 fn safe_param_name(name: &str) -> String {
-    if RUST_KEYWORDS.contains(&name) {
+    // In Rust, function parameters are patterns, so tuple variant names from
+    // the prelude (Ok, Err, Some, None) cannot be used as parameter names —
+    // they conflict as enum variant patterns. Append '_' to avoid E0530.
+    const RESERVED_PATTERNS: &[&str] = &["Ok", "Err", "Some", "None"];
+    if RUST_KEYWORDS.contains(&name) || RESERVED_PATTERNS.contains(&name) {
         format!("{}_", name)
     } else {
         name.to_string()
@@ -955,6 +959,18 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> b
         if type_uses_unknown_type(ret, ctx) {
             return false;
         }
+        // OwnedPtr<T> return type requires CppDeletable for T. ParsedClasses have
+        // generated destructors; the 91 known collections do too. But NCollection
+        // template typedef names (e.g., TColStd_ListOfAsciiString) added to
+        // all_class_names for param filtering don't have generated destructors.
+        // Enum types are represented as Type::Class in raw parsed types — allow them.
+        if let Type::Class(name) = ret {
+            if let Some(deletable) = ctx.deletable_class_names {
+                if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
+                    return false;
+                }
+            }
+        }
         // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
         if return_type_is_mut_ref_enum(ret, ctx.all_enums) {
             return false;
@@ -1041,6 +1057,15 @@ fn is_static_method_bindable(method: &StaticMethod, ctx: &TypeContext) -> bool {
     if let Some(ref ret) = method.return_type {
         if type_uses_unknown_type(ret, ctx) {
             return false;
+        }
+        // Same CppDeletable check as for instance methods (see is_method_bindable).
+        // Enum types are represented as Type::Class in raw parsed types — allow them.
+        if let Type::Class(name) = ret {
+            if let Some(deletable) = ctx.deletable_class_names {
+                if !deletable.contains(name.as_str()) && !ctx.all_enums.contains(name.as_str()) {
+                    return false;
+                }
+            }
         }
         // C-string returns (const char*) are handled via C++ wrappers returning const char*.
         // MutRef to enum return type can't be bound — extern "C" expects int32_t& but C++ has EnumType&
@@ -1659,8 +1684,20 @@ pub fn compute_class_bindings(
     };
 
     // ── Inherited methods ───────────────────────────────────────────────
-    let inherited_methods =
-        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums, ncollection_primitive_classes);
+    let inherited_methods_raw =
+        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums, ncollection_primitive_classes, ffi_ctx.deletable_class_names);
+    // Filter out inherited methods whose Rust name conflicts with a constructor or direct method
+    let ctor_and_method_names: std::collections::HashSet<&str> = constructors
+        .iter()
+        .map(|c| c.impl_method_name.as_str())
+        .chain(direct_methods.iter().map(|m| m.rust_name.as_str()))
+        .chain(wrapper_methods.iter().map(|m| m.impl_method_name.as_str()))
+        .chain(static_methods.iter().map(|m| m.impl_method_name.as_str()))
+        .collect();
+    let inherited_methods: Vec<InheritedMethodBinding> = inherited_methods_raw
+        .into_iter()
+        .filter(|im| !ctor_and_method_names.contains(im.impl_method_name.as_str()))
+        .collect();
 
     ClassBindings {
         cpp_name: cpp_name.clone(),
@@ -1756,7 +1793,7 @@ fn is_params_bindable(
     ctx: &TypeContext,
 ) -> bool {
     // By-value class/handle params are now supported via C++ wrappers (const T& conversion).
-    if params.iter().any(|p| p.ty.is_unbindable()) {
+    if params.iter().any(|p| p.ty.is_unbindable() && !p.is_nullable_ptr()) {
         return false;
     }
     if params
@@ -2200,6 +2237,7 @@ fn compute_inherited_method_bindings(
     all_class_names: &HashSet<String>,
     _all_enum_names: &HashSet<String>,
     ncollection_primitive_classes: &HashSet<String>,
+    deletable_class_names: Option<&HashSet<String>>,
 ) -> Vec<InheritedMethodBinding> {
     if class.has_protected_destructor {
         return Vec::new();
@@ -2273,6 +2311,18 @@ fn compute_inherited_method_bindings(
 
                 if uses_unknown_type {
                     continue;
+                }
+
+                // Skip inherited methods whose return type is a class without a
+                // generated destructor (OwnedPtr<T> requires CppDeletable for T)
+                if let Some(ref rt) = resolved_method.return_type {
+                    if let Type::Class(name) = &rt.original {
+                        if let Some(deletable) = deletable_class_names {
+                            if !deletable.contains(name.as_str()) && !_all_enum_names.contains(name.as_str()) {
+                                continue;
+                            }
+                        }
+                    }
                 }
 
                 // Skip nullable pointer params whose inner type is unknown
@@ -2441,12 +2491,24 @@ pub fn compute_all_class_bindings(
     all_classes: &[&ParsedClass],
     symbol_table: &SymbolTable,
     collection_names: &HashSet<String>,
+    extra_typedef_names: &HashSet<String>,
 ) -> Vec<ClassBindings> {
+    // Classes with CppDeletable impls: ParsedClasses (without protected dtor) +
+    // the 91 manually-specified known collections (which get generated destructors).
+    // NCollection typedef names from extra_typedef_names are NOT included here.
+    let deletable_class_names: HashSet<String> = all_classes
+        .iter()
+        .filter(|c| !c.has_protected_destructor)
+        .map(|c| c.name.clone())
+        .chain(collection_names.iter().cloned())
+        .collect();
+
+    // Full known-type set (for param filtering): adds NCollection template typedefs
+    // so methods passing them as params pass the unknown-type filter.
     let mut all_class_names: HashSet<String> =
         all_classes.iter().map(|c| c.name.clone()).collect();
-    // Collection typedefs are declared as opaque types in ffi.rs, so they're
-    // "known types" for method filtering purposes
     all_class_names.extend(collection_names.iter().cloned());
+    all_class_names.extend(extra_typedef_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
 
     let handle_able_classes: HashSet<String> = all_classes
@@ -2463,6 +2525,7 @@ pub fn compute_all_class_bindings(
         handle_able_classes: Some(&handle_able_classes),
         type_to_module: Some(&symbol_table.type_to_module),
         enum_rust_types: Some(&symbol_table.enum_rust_types),
+        deletable_class_names: Some(&deletable_class_names),
     };
 
     let all_classes_by_name: HashMap<String, &ParsedClass> = all_classes
@@ -2527,6 +2590,7 @@ pub fn compute_all_function_bindings(
     symbol_table: &SymbolTable,
     all_classes: &[&ParsedClass],
     collection_names: &HashSet<String>,
+    extra_typedef_names: &HashSet<String>,
     known_headers: &HashSet<String>,
 ) -> Vec<FunctionBinding> {
     let all_functions = symbol_table.all_included_functions();
@@ -2534,10 +2598,18 @@ pub fn compute_all_function_bindings(
         return Vec::new();
     }
 
-    // Build TypeContext (same as compute_all_class_bindings)
+    // Build TypeContext
+    let deletable_class_names: HashSet<String> = all_classes
+        .iter()
+        .filter(|c| !c.has_protected_destructor)
+        .map(|c| c.name.clone())
+        .chain(collection_names.iter().cloned())
+        .collect();
+
     let mut all_class_names: HashSet<String> =
         all_classes.iter().map(|c| c.name.clone()).collect();
     all_class_names.extend(collection_names.iter().cloned());
+    all_class_names.extend(extra_typedef_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
 
     let handle_able_classes: HashSet<String> = all_classes
@@ -2554,6 +2626,7 @@ pub fn compute_all_function_bindings(
         handle_able_classes: Some(&handle_able_classes),
         type_to_module: Some(&symbol_table.type_to_module),
         enum_rust_types: Some(&symbol_table.enum_rust_types),
+        deletable_class_names: Some(&deletable_class_names),
     };
 
     // Group by base rust_name to detect overloads
@@ -4463,6 +4536,7 @@ mod tests {
             handle_able_classes: Some(&handle_able_classes),
             type_to_module: None,
             enum_rust_types: None,
+            deletable_class_names: None,
         };
 
         // Create a minimal SymbolTable
@@ -4550,6 +4624,7 @@ mod tests {
             handle_able_classes: Some(&handle_able_classes),
             type_to_module: None,
             enum_rust_types: None,
+            deletable_class_names: None,
         };
 
         let symbol_table = SymbolTable {

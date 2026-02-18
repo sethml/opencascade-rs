@@ -180,6 +180,20 @@ impl Application {
         }
     }
 
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:149 - `TDocStd_Application::ReadingFormats()`
+    pub fn reading_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_ReadingFormats(self as *mut Self, theFormats)
+        }
+    }
+
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:154 - `TDocStd_Application::WritingFormats()`
+    pub fn writing_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
+        unsafe {
+            crate::ffi::TObj_Application_inherited_WritingFormats(self as *mut Self, theFormats)
+        }
+    }
+
     /// Inherited: **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
     pub fn nb_documents(&self) -> i32 {
         unsafe { crate::ffi::TObj_Application_inherited_NbDocuments(self as *const Self) }
@@ -1194,6 +1208,32 @@ impl HSequenceOfObject {
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::TObj_HSequenceOfObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_HSequenceOfObject_ctor()) }
+    }
+
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::TObj_HSequenceOfObject()`
+    pub fn new_sequenceofobject(
+        theOther: &crate::ffi::TObj_SequenceOfObject,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HSequenceOfObject_ctor_sequenceofobject(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::TObj_SequenceOfObject {
+        unsafe { &*(crate::ffi::TObj_HSequenceOfObject_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::TObj_SequenceOfObject) {
+        unsafe { crate::ffi::TObj_HSequenceOfObject_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::TObj_SequenceOfObject {
+        unsafe { &mut *(crate::ffi::TObj_HSequenceOfObject_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::DynamicType()`

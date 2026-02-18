@@ -267,6 +267,25 @@ unsafe impl crate::CppDeletable for Act {
 }
 
 impl Act {
+    /// **Source:** `IFSelect_Act.hxx`:56 - `IFSelect_Act::IFSelect_Act()`
+    /// Creates an Act with a name, help and a function
+    /// mode (Add or AddSet) is given when recording
+    pub fn new_charptr2_actfunc(
+        name: &str,
+        help: &str,
+        func: &crate::ffi::IFSelect_ActFunc,
+    ) -> crate::OwnedPtr<Self> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        let c_help = std::ffi::CString::new(help).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Act_ctor_charptr2_actfunc(
+                c_name.as_ptr(),
+                c_help.as_ptr(),
+                func,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_Act.hxx`:66 - `IFSelect_Act::Help()`
     /// Short Help for commands : returns the help given to create
     pub fn help(&self, number: i32) -> String {
@@ -290,6 +309,24 @@ impl Act {
         let c_group = std::ffi::CString::new(group).unwrap();
         let c_file = std::ffi::CString::new(file).unwrap();
         unsafe { crate::ffi::IFSelect_Act_set_group(c_group.as_ptr(), c_file.as_ptr()) }
+    }
+
+    /// **Source:** `IFSelect_Act.hxx`:76 - `IFSelect_Act::AddFunc()`
+    /// Adds a function with its name and help : creates an Act then
+    /// records it as normal function
+    pub fn add_func(name: &str, help: &str, func: &crate::ffi::IFSelect_ActFunc) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        let c_help = std::ffi::CString::new(help).unwrap();
+        unsafe { crate::ffi::IFSelect_Act_add_func(c_name.as_ptr(), c_help.as_ptr(), func) }
+    }
+
+    /// **Source:** `IFSelect_Act.hxx`:82 - `IFSelect_Act::AddFSet()`
+    /// Adds a function with its name and help : creates an Act then
+    /// records it as function for XSET (i.e. to create control item)
+    pub fn add_f_set(name: &str, help: &str, func: &crate::ffi::IFSelect_ActFunc) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        let c_help = std::ffi::CString::new(help).unwrap();
+        unsafe { crate::ffi::IFSelect_Act_add_f_set(c_name.as_ptr(), c_help.as_ptr(), func) }
     }
 
     /// **Source:** `IFSelect_Act.hxx`:86 - `IFSelect_Act::get_type_name()`
@@ -2070,6 +2107,23 @@ impl EditForm {
         }
     }
 
+    /// **Source:** `IFSelect_EditForm.hxx`:61 - `IFSelect_EditForm::IFSelect_EditForm()`
+    /// Creates an extracted EditForm from an Editor, limited to
+    /// the values identified in <nums>
+    /// A specific Label can be given
+    pub fn new_handleifselecteditor_sequenceofinteger_bool2_charptr(
+        editor: &crate::ffi::HandleIFSelectEditor,
+        nums: &crate::ffi::TColStd_SequenceOfInteger,
+        readonly: bool,
+        undoable: bool,
+        label: &str,
+    ) -> crate::OwnedPtr<Self> {
+        let c_label = std::ffi::CString::new(label).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_EditForm_ctor_handleifselecteditor_sequenceofinteger_bool2_charptr(editor, nums, readonly, undoable, c_label.as_ptr()))
+        }
+    }
+
     /// **Source:** `IFSelect_EditForm.hxx`:74 - `IFSelect_EditForm::EditKeepStatus()`
     /// Returns and may change the keep status on modif
     /// It starts as False
@@ -3193,6 +3247,32 @@ impl HSeqOfSelection {
     /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::IFSelect_HSeqOfSelection()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_HSeqOfSelection_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::IFSelect_HSeqOfSelection()`
+    pub fn new_tseqofselection(
+        theOther: &crate::ffi::IFSelect_TSeqOfSelection,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_HSeqOfSelection_ctor_tseqofselection(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::IFSelect_TSeqOfSelection {
+        unsafe { &*(crate::ffi::IFSelect_HSeqOfSelection_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::IFSelect_TSeqOfSelection) {
+        unsafe { crate::ffi::IFSelect_HSeqOfSelection_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::IFSelect_TSeqOfSelection {
+        unsafe { &mut *(crate::ffi::IFSelect_HSeqOfSelection_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::DynamicType()`
@@ -9269,6 +9349,13 @@ impl SelectionIterator {
     /// Adds a Selection to an iterator (if not yet noted)
     pub fn add_item(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectionIterator_add_item(self as *mut Self, sel) }
+    }
+
+    /// **Source:** `IFSelect_SelectionIterator.hxx`:51 - `IFSelect_SelectionIterator::AddList()`
+    /// Adds a list of Selections to an iterator (this list comes
+    /// from the description of a Selection or a Dispatch, etc...)
+    pub fn add_list(&mut self, list: &crate::ffi::IFSelect_TSeqOfSelection) {
+        unsafe { crate::ffi::IFSelect_SelectionIterator_add_list(self as *mut Self, list) }
     }
 
     /// **Source:** `IFSelect_SelectionIterator.hxx`:54 - `IFSelect_SelectionIterator::More()`

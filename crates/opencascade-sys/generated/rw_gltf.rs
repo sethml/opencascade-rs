@@ -689,6 +689,11 @@ impl CafReader {
         }
     }
 
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
+    pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
+        unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_Metadata(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
     pub fn probe_header(
         &mut self,
@@ -1087,6 +1092,15 @@ impl GltfLatePrimitiveArray {
         }
     }
 
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:94 - `RWMesh_TriangulationSource::InternalEdges()`
+    pub fn internal_edges(&mut self) -> &mut crate::ffi::TColStd_Array1OfInteger {
+        unsafe {
+            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalEdges(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:99 - `RWMesh_TriangulationSource::ResizeEdges()`
     pub fn resize_edges(&mut self, theNbEdges: i32, theToCopyOld: bool) {
         unsafe {
@@ -1407,6 +1421,15 @@ impl GltfLatePrimitiveArray {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:320 - `Poly_Triangulation::InternalTriangles()`
+    pub fn internal_triangles(&mut self) -> &mut crate::ffi::Poly_Array1OfTriangle {
+        unsafe {
+            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_InternalTriangles(
+                self as *mut Self,
+            ))
         }
     }
 

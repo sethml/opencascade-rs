@@ -280,6 +280,11 @@ impl CafReader {
         }
     }
 
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
+    pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
+        unsafe { &*(crate::ffi::RWObj_CafReader_inherited_Metadata(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
     pub fn probe_header(
         &mut self,
@@ -630,6 +635,26 @@ impl ObjWriterContext {
         }
     }
 
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:50 - `RWObj_ObjWriterContext::WriteHeader()`
+    /// Write the header.
+    pub fn write_header(
+        &mut self,
+        theNbNodes: i32,
+        theNbElems: i32,
+        theMatLib: &crate::ffi::TCollection_AsciiString,
+        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_ObjWriterContext_write_header(
+                self as *mut Self,
+                theNbNodes,
+                theNbElems,
+                theMatLib,
+                theFileInfo,
+            )
+        }
+    }
+
     /// **Source:** `RWObj_ObjWriterContext.hxx`:56 - `RWObj_ObjWriterContext::ActiveMaterial()`
     /// Return active material or empty string if not set.
     pub fn active_material(&self) -> &crate::ffi::TCollection_AsciiString {
@@ -645,6 +670,36 @@ impl ObjWriterContext {
         unsafe {
             crate::ffi::RWObj_ObjWriterContext_write_active_material(self as *mut Self, theMaterial)
         }
+    }
+
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:62 - `RWObj_ObjWriterContext::WriteTriangle()`
+    /// Writing a triangle
+    pub fn write_triangle(&mut self, theTri: &crate::ffi::Graphic3d_Vec3i) -> bool {
+        unsafe { crate::ffi::RWObj_ObjWriterContext_write_triangle(self as *mut Self, theTri) }
+    }
+
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:65 - `RWObj_ObjWriterContext::WriteQuad()`
+    /// Writing a quad
+    pub fn write_quad(&mut self, theQuad: &crate::ffi::Graphic3d_Vec4i) -> bool {
+        unsafe { crate::ffi::RWObj_ObjWriterContext_write_quad(self as *mut Self, theQuad) }
+    }
+
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:68 - `RWObj_ObjWriterContext::WriteVertex()`
+    /// Writing a vector
+    pub fn write_vertex(&mut self, theValue: &crate::ffi::Graphic3d_Vec3) -> bool {
+        unsafe { crate::ffi::RWObj_ObjWriterContext_write_vertex(self as *mut Self, theValue) }
+    }
+
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:71 - `RWObj_ObjWriterContext::WriteNormal()`
+    /// Writing a vector
+    pub fn write_normal(&mut self, theValue: &crate::ffi::Graphic3d_Vec3) -> bool {
+        unsafe { crate::ffi::RWObj_ObjWriterContext_write_normal(self as *mut Self, theValue) }
+    }
+
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:74 - `RWObj_ObjWriterContext::WriteTexCoord()`
+    /// Writing a vector
+    pub fn write_tex_coord(&mut self, theValue: &crate::ffi::Graphic3d_Vec2) -> bool {
+        unsafe { crate::ffi::RWObj_ObjWriterContext_write_tex_coord(self as *mut Self, theValue) }
     }
 
     /// **Source:** `RWObj_ObjWriterContext.hxx`:77 - `RWObj_ObjWriterContext::WriteGroup()`

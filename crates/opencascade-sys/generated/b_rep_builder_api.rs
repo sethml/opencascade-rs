@@ -358,6 +358,12 @@ impl BndBoxTreeSelector {
             crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_set_current(self as *mut Self, theBox)
         }
     }
+
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:65 - `BRepBuilderAPI_BndBoxTreeSelector::ResInd()`
+    /// Get list of indexes of boxes intersecting with the current box
+    pub fn res_ind(&mut self) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_res_ind(self as *mut Self)) }
+    }
 }
 
 // ========================
@@ -401,6 +407,16 @@ impl Collect {
     /// **Source:** `BRepBuilderAPI_Collect.hxx`:42 - `BRepBuilderAPI_Collect::Filter()`
     pub fn filter(&mut self, SF: &crate::ffi::TopoDS_Shape) {
         unsafe { crate::ffi::BRepBuilderAPI_Collect_filter(self as *mut Self, SF) }
+    }
+
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:44 - `BRepBuilderAPI_Collect::Modification()`
+    pub fn modification(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BRepBuilderAPI_Collect_modification(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:46 - `BRepBuilderAPI_Collect::Generated()`
+    pub fn generated(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BRepBuilderAPI_Collect_generated(self as *const Self)) }
     }
 }
 

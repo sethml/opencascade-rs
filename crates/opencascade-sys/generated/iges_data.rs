@@ -354,6 +354,27 @@ impl HArray1OfIGESEntity {
         }
     }
 
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
+    pub fn new_array1ofigesentity(
+        theOther: &crate::ffi::IGESData_Array1OfIGESEntity,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESData_HArray1OfIGESEntity_ctor_array1ofigesentity(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::Array1()`
+    pub fn array1(&self) -> &crate::ffi::IGESData_Array1OfIGESEntity {
+        unsafe { &*(crate::ffi::IGESData_HArray1OfIGESEntity_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::IGESData_Array1OfIGESEntity {
+        unsafe { &mut *(crate::ffi::IGESData_HArray1OfIGESEntity_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESData_HArray1OfIGESEntity_dynamic_type(self as *const Self)) }

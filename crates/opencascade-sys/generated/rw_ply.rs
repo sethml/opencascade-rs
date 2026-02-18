@@ -297,6 +297,51 @@ impl PlyWriterContext {
         unsafe { crate::ffi::RWPly_PlyWriterContext_is_opened(self as *const Self) }
     }
 
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:81 - `RWPly_PlyWriterContext::WriteHeader()`
+    /// Write the header.
+    /// @param[in] theNbNodes number of vertex nodes
+    /// @param[in] theNbElems number of mesh elements
+    /// @param[in] theFileInfo optional comments
+    pub fn write_header(
+        &mut self,
+        theNbNodes: i32,
+        theNbElems: i32,
+        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWPly_PlyWriterContext_write_header(
+                self as *mut Self,
+                theNbNodes,
+                theNbElems,
+                theFileInfo,
+            )
+        }
+    }
+
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:90 - `RWPly_PlyWriterContext::WriteVertex()`
+    /// Write single point with all attributes.
+    /// @param[in] thePoint 3D point coordinates
+    /// @param[in] theNorm  surface normal direction at the point
+    /// @param[in] theUV    surface/texture UV coordinates
+    /// @param[in] theColor RGB color values
+    pub fn write_vertex(
+        &mut self,
+        thePoint: &crate::ffi::gp_Pnt,
+        theNorm: &crate::ffi::Graphic3d_Vec3,
+        theUV: &crate::ffi::Graphic3d_Vec2,
+        theColor: &crate::ffi::Graphic3d_Vec4ub,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWPly_PlyWriterContext_write_vertex(
+                self as *mut Self,
+                thePoint,
+                theNorm,
+                theUV,
+                theColor,
+            )
+        }
+    }
+
     /// **Source:** `RWPly_PlyWriterContext.hxx`:96 - `RWPly_PlyWriterContext::NbWrittenVertices()`
     /// Return number of written vertices.
     pub fn nb_written_vertices(&self) -> i32 {
@@ -329,6 +374,18 @@ impl PlyWriterContext {
         unsafe {
             crate::ffi::RWPly_PlyWriterContext_set_surface_id_int(self as *mut Self, theSurfId)
         }
+    }
+
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:111 - `RWPly_PlyWriterContext::WriteTriangle()`
+    /// Writing a triangle.
+    pub fn write_triangle(&mut self, theTri: &crate::ffi::Graphic3d_Vec3i) -> bool {
+        unsafe { crate::ffi::RWPly_PlyWriterContext_write_triangle(self as *mut Self, theTri) }
+    }
+
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:114 - `RWPly_PlyWriterContext::WriteQuad()`
+    /// Writing a quad.
+    pub fn write_quad(&mut self, theQuad: &crate::ffi::Graphic3d_Vec4i) -> bool {
+        unsafe { crate::ffi::RWPly_PlyWriterContext_write_quad(self as *mut Self, theQuad) }
     }
 
     /// **Source:** `RWPly_PlyWriterContext.hxx`:117 - `RWPly_PlyWriterContext::NbWrittenElements()`

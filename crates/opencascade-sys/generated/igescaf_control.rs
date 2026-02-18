@@ -314,15 +314,38 @@ impl Writer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_Writer_ctor()) }
     }
 
+    /// **Source:** `IGESCAFControl_Writer.hxx`:84 - `IGESCAFControl_Writer::Transfer()`
+    /// Transfers labels to a IGES model
+    /// Returns True if translation is OK
+    pub fn transfer_labelsequence_progressrange(
+        &mut self,
+        labels: &crate::ffi::TDF_LabelSequence,
+        theProgress: &crate::ffi::Message_ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESCAFControl_Writer_transfer_labelsequence_progressrange(
+                self as *mut Self,
+                labels,
+                theProgress,
+            )
+        }
+    }
+
     /// **Source:** `IGESCAFControl_Writer.hxx`:90 - `IGESCAFControl_Writer::Transfer()`
     /// Transfers label to a IGES model
     /// Returns True if translation is OK
-    pub fn transfer(
+    pub fn transfer_label_progressrange(
         &mut self,
         label: &crate::ffi::TDF_Label,
         theProgress: &crate::ffi::Message_ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::IGESCAFControl_Writer_transfer(self as *mut Self, label, theProgress) }
+        unsafe {
+            crate::ffi::IGESCAFControl_Writer_transfer_label_progressrange(
+                self as *mut Self,
+                label,
+                theProgress,
+            )
+        }
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:106 - `IGESCAFControl_Writer::SetColorMode()`

@@ -541,6 +541,15 @@ impl Constraint {
         unsafe { &*(crate::ffi::TDataXtd_Constraint_get_id()) }
     }
 
+    /// **Source:** `TDataXtd_Constraint.hxx`:177 - `TDataXtd_Constraint::CollectChildConstraints()`
+    /// collects constraints on Childs for label <aLabel>
+    pub fn collect_child_constraints(
+        aLabel: &crate::ffi::TDF_Label,
+        TheList: &mut crate::ffi::TDF_LabelList,
+    ) {
+        unsafe { crate::ffi::TDataXtd_Constraint_collect_child_constraints(aLabel, TheList) }
+    }
+
     /// **Source:** `TDataXtd_Constraint.hxx`:193 - `TDataXtd_Constraint::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1100,6 +1109,25 @@ impl HArray1OfTrsf {
         }
     }
 
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
+    pub fn new_array1oftrsf(theOther: &crate::ffi::TDataXtd_Array1OfTrsf) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_HArray1OfTrsf_ctor_array1oftrsf(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::Array1()`
+    pub fn array1(&self) -> &crate::ffi::TDataXtd_Array1OfTrsf {
+        unsafe { &*(crate::ffi::TDataXtd_HArray1OfTrsf_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::TDataXtd_Array1OfTrsf {
+        unsafe { &mut *(crate::ffi::TDataXtd_HArray1OfTrsf_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataXtd_HArray1OfTrsf_dynamic_type(self as *const Self)) }
@@ -1180,6 +1208,12 @@ impl Pattern {
     /// Give the number of transformation
     pub fn nb_trsfs(&self) -> i32 {
         unsafe { crate::ffi::TDataXtd_Pattern_nb_trsfs(self as *const Self) }
+    }
+
+    /// **Source:** `TDataXtd_Pattern.hxx`:47 - `TDataXtd_Pattern::ComputeTrsfs()`
+    /// Give the transformations
+    pub fn compute_trsfs(&self, Trsfs: &mut crate::ffi::TDataXtd_Array1OfTrsf) {
+        unsafe { crate::ffi::TDataXtd_Pattern_compute_trsfs(self as *const Self, Trsfs) }
     }
 
     /// **Source:** `TDataXtd_Pattern.hxx`:49 - `TDataXtd_Pattern::DynamicType()`
@@ -1471,6 +1505,11 @@ impl PatternStd {
     /// **Source:** `TDataXtd_PatternStd.hxx`:92 - `TDataXtd_PatternStd::NbTrsfs()`
     pub fn nb_trsfs(&self) -> i32 {
         unsafe { crate::ffi::TDataXtd_PatternStd_nb_trsfs(self as *const Self) }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:94 - `TDataXtd_PatternStd::ComputeTrsfs()`
+    pub fn compute_trsfs(&self, Trsfs: &mut crate::ffi::TDataXtd_Array1OfTrsf) {
+        unsafe { crate::ffi::TDataXtd_PatternStd_compute_trsfs(self as *const Self, Trsfs) }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:96 - `TDataXtd_PatternStd::PatternID()`

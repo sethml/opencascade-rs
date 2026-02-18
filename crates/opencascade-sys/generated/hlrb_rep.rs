@@ -190,6 +190,11 @@ impl Algo {
         unsafe { crate::ffi::HLRBRep_Algo_inherited_Remove(self as *mut Self, I) }
     }
 
+    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
+    pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi::HLRBRep_SeqOfShapeBounds {
+        unsafe { &mut *(crate::ffi::HLRBRep_Algo_inherited_SeqOfShapeBounds(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:73 - `HLRBRep_InternalAlgo::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_Algo_inherited_NbShapes(self as *const Self) }
@@ -495,6 +500,20 @@ impl BCurveTool {
         unsafe { crate::ffi::HLRBRep_BCurveTool_nb_intervals(C, S.into()) }
     }
 
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:62 - `HLRBRep_BCurveTool::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(
+        C: &crate::ffi::BRepAdaptor_Curve,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::HLRBRep_BCurveTool_intervals(C, T, S.into()) }
+    }
+
     /// **Source:** `HLRBRep_BCurveTool.hxx`:64 - `HLRBRep_BCurveTool::IsClosed()`
     pub fn is_closed(C: &crate::ffi::BRepAdaptor_Curve) -> bool {
         unsafe { crate::ffi::HLRBRep_BCurveTool_is_closed(C) }
@@ -663,6 +682,15 @@ impl BCurveTool {
         unsafe { crate::ffi::HLRBRep_BCurveTool_poles(C, T) }
     }
 
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:143 - `HLRBRep_BCurveTool::PolesAndWeights()`
+    pub fn poles_and_weights(
+        C: &crate::ffi::BRepAdaptor_Curve,
+        T: &mut crate::ffi::TColgp_Array1OfPnt,
+        W: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe { crate::ffi::HLRBRep_BCurveTool_poles_and_weights(C, T, W) }
+    }
+
     /// **Source:** `HLRBRep_BCurveTool.hxx`:147 - `HLRBRep_BCurveTool::NbSamples()`
     pub fn nb_samples(C: &crate::ffi::BRepAdaptor_Curve, U0: f64, U1: f64) -> i32 {
         unsafe { crate::ffi::HLRBRep_BCurveTool_nb_samples(C, U0, U1) }
@@ -717,6 +745,24 @@ impl BSurfaceTool {
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:55 - `HLRBRep_BSurfaceTool::NbVIntervals()`
     pub fn nb_v_intervals(S: &crate::ffi::BRepAdaptor_Surface, Sh: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_v_intervals(S, Sh.into()) }
+    }
+
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:57 - `HLRBRep_BSurfaceTool::UIntervals()`
+    pub fn u_intervals(
+        S: &crate::ffi::BRepAdaptor_Surface,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        Sh: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_intervals(S, T, Sh.into()) }
+    }
+
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:61 - `HLRBRep_BSurfaceTool::VIntervals()`
+    pub fn v_intervals(
+        S: &crate::ffi::BRepAdaptor_Surface,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        Sh: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_intervals(S, T, Sh.into()) }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:66 - `HLRBRep_BSurfaceTool::UTrim()`
@@ -1551,6 +1597,16 @@ impl Curve {
         unsafe { crate::ffi::HLRBRep_Curve_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `HLRBRep_Curve.hxx`:120 - `HLRBRep_Curve::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::HLRBRep_Curve_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `HLRBRep_Curve.hxx`:122 - `HLRBRep_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::HLRBRep_Curve_is_closed(self as *const Self) }
@@ -1719,9 +1775,46 @@ impl Curve {
         }
     }
 
+    /// **Source:** `HLRBRep_Curve.hxx`:191 - `HLRBRep_Curve::PolesAndWeights()`
+    pub fn poles_and_weights_array1ofpnt2d_array1ofreal(
+        &self,
+        TP: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TW: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_Curve_poles_and_weights_array1ofpnt2d_array1ofreal(
+                self as *const Self,
+                TP,
+                TW,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_Curve.hxx`:193 - `HLRBRep_Curve::PolesAndWeights()`
+    pub fn poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(
+        &self,
+        aCurve: &crate::ffi::HandleGeomBSplineCurve,
+        TP: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TW: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(self as *const Self, aCurve, TP, TW)
+        }
+    }
+
     /// **Source:** `HLRBRep_Curve.hxx`:197 - `HLRBRep_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_Curve_nb_knots(self as *const Self) }
+    }
+
+    /// **Source:** `HLRBRep_Curve.hxx`:199 - `HLRBRep_Curve::Knots()`
+    pub fn knots(&self, kn: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::HLRBRep_Curve_knots(self as *const Self, kn) }
+    }
+
+    /// **Source:** `HLRBRep_Curve.hxx`:201 - `HLRBRep_Curve::Multiplicities()`
+    pub fn multiplicities(&self, mu: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::HLRBRep_Curve_multiplicities(self as *const Self, mu) }
     }
 }
 
@@ -1774,6 +1867,16 @@ impl Data {
         unsafe { crate::ffi::HLRBRep_Data_write(self as *mut Self, DS, dv, de, df) }
     }
 
+    /// **Source:** `HLRBRep_Data.hxx`:71 - `HLRBRep_Data::EDataArray()`
+    pub fn e_data_array(&mut self) -> &mut crate::ffi::HLRBRep_Array1OfEData {
+        unsafe { &mut *(crate::ffi::HLRBRep_Data_e_data_array(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRBRep_Data.hxx`:73 - `HLRBRep_Data::FDataArray()`
+    pub fn f_data_array(&mut self) -> &mut crate::ffi::HLRBRep_Array1OfFData {
+        unsafe { &mut *(crate::ffi::HLRBRep_Data_f_data_array(self as *mut Self)) }
+    }
+
     /// **Source:** `HLRBRep_Data.hxx`:77 - `HLRBRep_Data::Tolerance()`
     /// Set the  tolerance for the  rejections  during the
     /// exploration
@@ -1823,6 +1926,13 @@ impl Data {
     /// **Source:** `HLRBRep_Data.hxx`:97 - `HLRBRep_Data::FaceMap()`
     pub fn face_map(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfShape {
         unsafe { &mut *(crate::ffi::HLRBRep_Data_face_map(self as *mut Self)) }
+    }
+
+    /// **Source:** `HLRBRep_Data.hxx`:106 - `HLRBRep_Data::InitEdge()`
+    /// Begin an iteration only  on visible Edges
+    /// crossing the face number <FI>.
+    pub fn init_edge(&mut self, FI: i32, MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool) {
+        unsafe { crate::ffi::HLRBRep_Data_init_edge(self as *mut Self, FI, MST) }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:108 - `HLRBRep_Data::MoreEdge()`
@@ -1935,6 +2045,20 @@ impl Data {
     /// Hiding Face.
     pub fn edge_of_the_hiding_face(&self, E: i32, ED: &crate::ffi::HLRBRep_EdgeData) -> bool {
         unsafe { crate::ffi::HLRBRep_Data_edge_of_the_hiding_face(self as *const Self, E, ED) }
+    }
+
+    /// **Source:** `HLRBRep_Data.hxx`:172 - `HLRBRep_Data::HidingStartLevel()`
+    /// Returns the number of  levels of hiding face above
+    /// the   first  point  of   the    edge <ED>.     The
+    /// InterferenceList is  given to  compute far away of
+    /// the Interferences and then come back.
+    pub fn hiding_start_level(
+        &mut self,
+        E: i32,
+        ED: &crate::ffi::HLRBRep_EdgeData,
+        IL: &crate::ffi::HLRAlgo_InterferenceList,
+    ) -> i32 {
+        unsafe { crate::ffi::HLRBRep_Data_hiding_start_level(self as *mut Self, E, ED, IL) }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:178 - `HLRBRep_Data::Compare()`
@@ -2476,6 +2600,25 @@ impl EdgeIList {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_EdgeIList_ctor()) }
+    }
+
+    /// **Source:** `HLRBRep_EdgeIList.hxx`:34 - `HLRBRep_EdgeIList::AddInterference()`
+    /// Add the interference <I> to the list <IL>.
+    pub fn add_interference(
+        IL: &mut crate::ffi::HLRAlgo_InterferenceList,
+        I: &crate::ffi::HLRAlgo_Interference,
+        T: &crate::ffi::HLRBRep_EdgeInterferenceTool,
+    ) {
+        unsafe { crate::ffi::HLRBRep_EdgeIList_add_interference(IL, I, T) }
+    }
+
+    /// **Source:** `HLRBRep_EdgeIList.hxx`:39 - `HLRBRep_EdgeIList::ProcessComplex()`
+    /// Process complex transitions on the list IL.
+    pub fn process_complex(
+        IL: &mut crate::ffi::HLRAlgo_InterferenceList,
+        T: &crate::ffi::HLRBRep_EdgeInterferenceTool,
+    ) {
+        unsafe { crate::ffi::HLRBRep_EdgeIList_process_complex(IL, T) }
     }
 }
 
@@ -3372,6 +3515,13 @@ impl Hider {
     pub fn own_hiding(&mut self, FI: i32) {
         unsafe { crate::ffi::HLRBRep_Hider_own_hiding(self as *mut Self, FI) }
     }
+
+    /// **Source:** `HLRBRep_Hider.hxx`:43 - `HLRBRep_Hider::Hide()`
+    /// Removes from the edges,   the parts hidden by  the
+    /// hiding face number <FI>.
+    pub fn hide(&mut self, FI: i32, MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool) {
+        unsafe { crate::ffi::HLRBRep_Hider_hide(self as *mut Self, FI, MST) }
+    }
 }
 
 // ========================
@@ -3549,6 +3699,11 @@ impl InternalAlgo {
     /// remove the Shape of Index <I>.
     pub fn remove(&mut self, I: i32) {
         unsafe { crate::ffi::HLRBRep_InternalAlgo_remove(self as *mut Self, I) }
+    }
+
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
+    pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi::HLRBRep_SeqOfShapeBounds {
+        unsafe { &mut *(crate::ffi::HLRBRep_InternalAlgo_seq_of_shape_bounds(self as *mut Self)) }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:73 - `HLRBRep_InternalAlgo::NbShapes()`
@@ -3823,6 +3978,16 @@ impl LineTool {
         unsafe { crate::ffi::HLRBRep_LineTool_nb_intervals(C, S.into()) }
     }
 
+    /// **Source:** `HLRBRep_LineTool.hxx`:65 - `HLRBRep_LineTool::Intervals()`
+    /// Sets the current working interval.
+    pub fn intervals(
+        C: &crate::ffi::gp_Lin,
+        T: &mut crate::ffi::TColStd_Array1OfReal,
+        Sh: crate::geom_abs::Shape,
+    ) {
+        unsafe { crate::ffi::HLRBRep_LineTool_intervals(C, T, Sh.into()) }
+    }
+
     /// **Source:** `HLRBRep_LineTool.hxx`:69 - `HLRBRep_LineTool::IntervalFirst()`
     /// Returns  the  first  parameter    of  the  current
     /// interval.
@@ -3999,9 +4164,27 @@ impl LineTool {
         unsafe { crate::ffi::HLRBRep_LineTool_is_rational(C) }
     }
 
+    /// **Source:** `HLRBRep_LineTool.hxx`:150 - `HLRBRep_LineTool::PolesAndWeights()`
+    pub fn poles_and_weights(
+        C: &crate::ffi::gp_Lin,
+        TP: &mut crate::ffi::TColgp_Array1OfPnt,
+        TW: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe { crate::ffi::HLRBRep_LineTool_poles_and_weights(C, TP, TW) }
+    }
+
     /// **Source:** `HLRBRep_LineTool.hxx`:152 - `HLRBRep_LineTool::NbKnots()`
     pub fn nb_knots(C: &crate::ffi::gp_Lin) -> i32 {
         unsafe { crate::ffi::HLRBRep_LineTool_nb_knots(C) }
+    }
+
+    /// **Source:** `HLRBRep_LineTool.hxx`:154 - `HLRBRep_LineTool::KnotsAndMultiplicities()`
+    pub fn knots_and_multiplicities(
+        C: &crate::ffi::gp_Lin,
+        TK: &mut crate::ffi::TColStd_Array1OfReal,
+        TM: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe { crate::ffi::HLRBRep_LineTool_knots_and_multiplicities(C, TK, TM) }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:158 - `HLRBRep_LineTool::NbSamples()`
@@ -5973,6 +6156,18 @@ impl TheInterferenceOfInterCSurf {
         }
     }
 
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:59 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    /// Constructs   and   computes  an  interference   between the
+    /// Straight Lines and the Polyhedron.
+    pub fn new_array1oflin_thepolyhedronofintercsurf(
+        theLins: &crate::ffi::Intf_Array1OfLin,
+        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf(theLins, thePolyh))
+        }
+    }
+
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:80 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
     /// Constructs and computes an interference between the Polygon
     /// and the Polyhedron.
@@ -5996,6 +6191,19 @@ impl TheInterferenceOfInterCSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf_boundsortbox(theLin, thePolyh, theBoundSB))
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:94 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    /// Constructs   and   computes  an  interference   between the
+    /// Straight Lines and the Polyhedron.
+    pub fn new_array1oflin_thepolyhedronofintercsurf_boundsortbox(
+        theLins: &crate::ffi::Intf_Array1OfLin,
+        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
+        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf_boundsortbox(theLins, thePolyh, theBoundSB))
         }
     }
 
@@ -6029,6 +6237,19 @@ impl TheInterferenceOfInterCSurf {
         }
     }
 
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:75 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
+    /// Computes an interference  between the  Straight Lines  and
+    /// the Polyhedron.
+    pub fn perform_array1oflin_thepolyhedronofintercsurf(
+        &mut self,
+        theLins: &crate::ffi::Intf_Array1OfLin,
+        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf(self as *mut Self, theLins, thePolyh)
+        }
+    }
+
     /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:101 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
     /// Computes  an interference    between the   Polygon  and the
     /// Polyhedron.
@@ -6054,6 +6275,20 @@ impl TheInterferenceOfInterCSurf {
     ) {
         unsafe {
             crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLin, thePolyh, theBoundSB)
+        }
+    }
+
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:113 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
+    /// Computes an interference  between the  Straight Lines  and
+    /// the Polyhedron.
+    pub fn perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(
+        &mut self,
+        theLins: &crate::ffi::Intf_Array1OfLin,
+        thePolyh: &crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf,
+        theBoundSB: &mut crate::ffi::Bnd_BoundSortBox,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLins, thePolyh, theBoundSB)
         }
     }
 
@@ -6535,6 +6770,18 @@ impl ThePolygonOfInterCSurf {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_real2_int(Curve, U1, U2, NbPnt),
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:47 - `HLRBRep_ThePolygonOfInterCSurf::HLRBRep_ThePolygonOfInterCSurf()`
+    pub fn new_lin_array1ofreal(
+        Curve: &crate::ffi::gp_Lin,
+        Upars: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_array1ofreal(Curve, Upars),
             )
         }
     }

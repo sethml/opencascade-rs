@@ -4140,6 +4140,18 @@ impl PISteps {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_PISteps_ctor_int(theNbOp)) }
     }
 
+    /// **Source:** `BOPAlgo_Algo.hxx`:121 - `BOPAlgo_PISteps::Steps()`
+    /// Returns the steps
+    pub fn steps(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::BOPAlgo_PISteps_steps(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPAlgo_Algo.hxx`:124 - `BOPAlgo_PISteps::ChangeSteps()`
+    /// Returns modifiable steps
+    pub fn change_steps(&mut self) -> &mut crate::ffi::TColStd_Array1OfReal {
+        unsafe { &mut *(crate::ffi::BOPAlgo_PISteps_change_steps(self as *mut Self)) }
+    }
+
     /// **Source:** `BOPAlgo_Algo.hxx`:127 - `BOPAlgo_PISteps::SetStep()`
     /// Assign the value theStep to theOperation
     pub fn set_step(&mut self, theOperation: i32, theStep: f64) {
@@ -4283,6 +4295,12 @@ impl ArgumentAnalyzer {
     /// result of test
     pub fn has_faulty(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_ArgumentAnalyzer_has_faulty(self as *const Self) }
+    }
+
+    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:100 - `BOPAlgo_ArgumentAnalyzer::GetCheckResult()`
+    /// returns a result of test
+    pub fn get_check_result(&self) -> &crate::ffi::BOPAlgo_ListOfCheckResult {
+        unsafe { &*(crate::ffi::BOPAlgo_ArgumentAnalyzer_get_check_result(self as *const Self)) }
     }
 
     /// Upcast to BOPAlgo_Options
@@ -4609,6 +4627,16 @@ impl BOP {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Images(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_Origins(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         unsafe { &*(crate::ffi::BOPAlgo_BOP_inherited_ShapesSD(self as *const Self)) }
@@ -4910,6 +4938,19 @@ impl Builder {
         unsafe {
             crate::ffi::BOPAlgo_Builder_perform_with_filler(self as *mut Self, theFiller, theRange)
         }
+    }
+
+    /// **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    /// @name Images/Origins
+    /// Returns the map of images.
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_images(self as *const Self)) }
+    }
+
+    /// **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    /// Returns the map of origins.
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_Builder_origins(self as *const Self)) }
     }
 
     /// **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
@@ -5556,6 +5597,14 @@ impl BuilderSolid {
         unsafe { crate::ffi::BOPAlgo_BuilderSolid_perform(self as *mut Self, theRange) }
     }
 
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:101 - `BOPAlgo_BuilderSolid::GetBoxesMap()`
+    /// @name Getting the bounding boxes of the created solids
+    /// For classification purposes the algorithm builds the bounding boxes
+    /// for all created solids. This method returns the data map of solid - box pairs.
+    pub fn get_boxes_map(&self) -> &crate::ffi::TopTools_DataMapOfShapeBox {
+        unsafe { &*(crate::ffi::BOPAlgo_BuilderSolid_get_boxes_map(self as *const Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_options(&self) -> &Options {
         unsafe { &*(crate::ffi::BOPAlgo_BuilderSolid_as_BOPAlgo_Options(self as *const Self)) }
@@ -6086,6 +6135,16 @@ impl CellsBuilder {
                 theRange,
             )
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Images(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_CellsBuilder_inherited_Origins(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
@@ -7602,6 +7661,16 @@ impl MakerVolume {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Images(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_Origins(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         unsafe { &*(crate::ffi::BOPAlgo_MakerVolume_inherited_ShapesSD(self as *const Self)) }
@@ -8675,6 +8744,16 @@ impl Section {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Images(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_Origins(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         unsafe { &*(crate::ffi::BOPAlgo_Section_inherited_ShapesSD(self as *const Self)) }
@@ -9268,6 +9347,16 @@ impl Splitter {
         }
     }
 
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Images(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_Origins(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
     pub fn shapes_sd(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         unsafe { &*(crate::ffi::BOPAlgo_Splitter_inherited_ShapesSD(self as *const Self)) }
@@ -9479,6 +9568,75 @@ impl Tools {
         theAngTol: f64,
     ) -> bool {
         unsafe { crate::ffi::BOPAlgo_Tools_wires_to_faces(theWires, theFaces, theAngTol) }
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:173 - `BOPAlgo_Tools::IntersectVertices()`
+    /// Finds chains of intersecting vertices
+    pub fn intersect_vertices(
+        theVertices: &crate::ffi::TopTools_IndexedDataMapOfShapeReal,
+        theFuzzyValue: f64,
+        theChains: &mut crate::ffi::TopTools_ListOfListOfShape,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Tools_intersect_vertices(theVertices, theFuzzyValue, theChains)
+        }
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:191 - `BOPAlgo_Tools::ClassifyFaces()`
+    /// Classifies the faces <theFaces> relatively solids <theSolids>.
+    /// The IN faces for solids are stored into output data map <theInParts>.
+    ///
+    /// The map <theSolidsIF> contains INTERNAL faces of the solids, to avoid
+    /// their additional classification.
+    ///
+    /// Firstly, it checks the intersection of bounding boxes of the shapes.
+    /// If the Box is not stored in the <theShapeBoxMap> map, it builds the box.
+    /// If the bounding boxes of solid and face are interfering the classification is performed.
+    ///
+    /// It is assumed that all faces and solids are already intersected and
+    /// do not have any geometrically coinciding parts without topological
+    /// sharing of these parts
+    pub fn classify_faces(
+        theFaces: &crate::ffi::TopTools_ListOfShape,
+        theSolids: &crate::ffi::TopTools_ListOfShape,
+        theRunParallel: bool,
+        theContext: &mut crate::ffi::HandleIntToolsContext,
+        theInParts: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+        theShapeBoxMap: &crate::ffi::TopTools_DataMapOfShapeBox,
+        theSolidsIF: &crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        theRange: &crate::ffi::Message_ProgressRange,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Tools_classify_faces(
+                theFaces,
+                theSolids,
+                theRunParallel,
+                theContext,
+                theInParts,
+                theShapeBoxMap,
+                theSolidsIF,
+                theRange,
+            )
+        }
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:208 - `BOPAlgo_Tools::FillInternals()`
+    /// Classifies the given parts relatively the given solids and
+    /// fills the solids with the parts classified as INTERNAL.
+    ///
+    /// @param theSolids  - The solids to put internals to
+    /// @param theParts   - The parts to classify relatively solids
+    /// @param theImages  - Possible images of the parts that has to be classified
+    /// @param theContext - cached geometrical tools to speed-up classifications
+    pub fn fill_internals(
+        theSolids: &crate::ffi::TopTools_ListOfShape,
+        theParts: &crate::ffi::TopTools_ListOfShape,
+        theImages: &crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        theContext: &crate::ffi::HandleIntToolsContext,
+    ) {
+        unsafe {
+            crate::ffi::BOPAlgo_Tools_fill_internals(theSolids, theParts, theImages, theContext)
+        }
     }
 
     /// **Source:** `BOPAlgo_Tools.hxx`:222 - `BOPAlgo_Tools::TrsfToPoint()`
@@ -9697,6 +9855,16 @@ impl ToolsProvider {
                 theRange,
             )
         }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Images(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_ToolsProvider_inherited_Origins(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`

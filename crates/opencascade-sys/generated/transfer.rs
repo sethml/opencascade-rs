@@ -1546,6 +1546,32 @@ impl HSequenceOfFinder {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_HSequenceOfFinder_ctor()) }
     }
 
+    /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Transfer_HSequenceOfFinder()`
+    pub fn new_sequenceoffinder(
+        theOther: &crate::ffi::Transfer_SequenceOfFinder,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_HSequenceOfFinder_ctor_sequenceoffinder(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::Transfer_SequenceOfFinder {
+        unsafe { &*(crate::ffi::Transfer_HSequenceOfFinder_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::Transfer_SequenceOfFinder) {
+        unsafe { crate::ffi::Transfer_HSequenceOfFinder_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::Transfer_SequenceOfFinder {
+        unsafe { &mut *(crate::ffi::Transfer_HSequenceOfFinder_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Transfer_HSequenceOfFinder_dynamic_type(self as *const Self)) }

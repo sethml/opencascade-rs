@@ -452,6 +452,11 @@ impl ElSpine {
         unsafe { crate::ffi::ChFiDS_ElSpine_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `ChFiDS_ElSpine.hxx`:68 - `ChFiDS_ElSpine::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::ChFiDS_ElSpine_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `ChFiDS_ElSpine.hxx`:74 - `ChFiDS_ElSpine::Trim()`
     /// Returns    a  curve equivalent   of  <me>  between
     /// parameters <First>  and <Last>. <Tol>  is used  to
@@ -880,6 +885,30 @@ impl HData {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_HData_ctor()) }
     }
 
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
+    pub fn new_sequenceofsurfdata(
+        theOther: &crate::ffi::ChFiDS_SequenceOfSurfData,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_HData_ctor_sequenceofsurfdata(theOther))
+        }
+    }
+
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::ChFiDS_SequenceOfSurfData {
+        unsafe { &*(crate::ffi::ChFiDS_HData_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::ChFiDS_SequenceOfSurfData) {
+        unsafe { crate::ffi::ChFiDS_HData_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::ChFiDS_SequenceOfSurfData {
+        unsafe { &mut *(crate::ffi::ChFiDS_HData_change_sequence(self as *mut Self)) }
+    }
+
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_HData_dynamic_type(self as *const Self)) }
@@ -1061,6 +1090,21 @@ impl SecHArray1 {
         }
     }
 
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+    pub fn new_secarray1(theOther: &crate::ffi::ChFiDS_SecArray1) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_secarray1(theOther)) }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::Array1()`
+    pub fn array1(&self) -> &crate::ffi::ChFiDS_SecArray1 {
+        unsafe { &*(crate::ffi::ChFiDS_SecHArray1_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::ChFiDS_SecArray1 {
+        unsafe { &mut *(crate::ffi::ChFiDS_SecHArray1_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ChFiDS_SecHArray1_dynamic_type(self as *const Self)) }
@@ -1208,6 +1252,16 @@ impl Spine {
     /// section of free border or forms  a closed contour
     pub fn set_last_status(&mut self, S: crate::ch_fi_ds::State) {
         unsafe { crate::ffi::ChFiDS_Spine_set_last_status(self as *mut Self, S.into()) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:113 - `ChFiDS_Spine::ChangeElSpines()`
+    pub fn change_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
+        unsafe { &mut *(crate::ffi::ChFiDS_Spine_change_el_spines(self as *mut Self)) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:115 - `ChFiDS_Spine::ChangeOffsetElSpines()`
+    pub fn change_offset_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
+        unsafe { &mut *(crate::ffi::ChFiDS_Spine_change_offset_el_spines(self as *mut Self)) }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:117 - `ChFiDS_Spine::Reset()`
@@ -2028,6 +2082,16 @@ impl StripeMap {
     /// **Source:** `ChFiDS_StripeMap.hxx`:40 - `ChFiDS_StripeMap::Extent()`
     pub fn extent(&self) -> i32 {
         unsafe { crate::ffi::ChFiDS_StripeMap_extent(self as *const Self) }
+    }
+
+    /// **Source:** `ChFiDS_StripeMap.hxx`:42 - `ChFiDS_StripeMap::FindFromKey()`
+    pub fn find_from_key(&self, V: &crate::ffi::TopoDS_Vertex) -> &crate::ffi::ChFiDS_ListOfStripe {
+        unsafe { &*(crate::ffi::ChFiDS_StripeMap_find_from_key(self as *const Self, V)) }
+    }
+
+    /// **Source:** `ChFiDS_StripeMap.hxx`:46 - `ChFiDS_StripeMap::FindFromIndex()`
+    pub fn find_from_index(&self, I: i32) -> &crate::ffi::ChFiDS_ListOfStripe {
+        unsafe { &*(crate::ffi::ChFiDS_StripeMap_find_from_index(self as *const Self, I)) }
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:50 - `ChFiDS_StripeMap::FindKey()`

@@ -149,6 +149,35 @@ impl HArray1OfPresentationStyleAssignment {
         }
     }
 
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::StepVisual_HArray1OfPresentationStyleAssignment()`
+    pub fn new_array1ofpresentationstyleassignment(
+        theOther: &crate::ffi::StepVisual_Array1OfPresentationStyleAssignment,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor_array1ofpresentationstyleassignment(theOther))
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepVisual_Array1OfPresentationStyleAssignment {
+        unsafe {
+            &*(crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_array1(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::ChangeArray1()`
+    pub fn change_array1(
+        &mut self,
+    ) -> &mut crate::ffi::StepVisual_Array1OfPresentationStyleAssignment {
+        unsafe {
+            &mut *(crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_change_array1(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
@@ -247,6 +276,31 @@ impl HArray1OfPresentationStyleSelect {
                     theLower, theUpper,
                 ),
             )
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::StepVisual_HArray1OfPresentationStyleSelect()`
+    pub fn new_array1ofpresentationstyleselect(
+        theOther: &crate::ffi::StepVisual_Array1OfPresentationStyleSelect,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_ctor_array1ofpresentationstyleselect(theOther))
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::Array1()`
+    pub fn array1(&self) -> &crate::ffi::StepVisual_Array1OfPresentationStyleSelect {
+        unsafe {
+            &*(crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_array1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::StepVisual_Array1OfPresentationStyleSelect {
+        unsafe {
+            &mut *(crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_change_array1(
+                self as *mut Self,
+            ))
         }
     }
 

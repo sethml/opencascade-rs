@@ -298,6 +298,11 @@ pub struct TypeContext<'a> {
     /// Mapping from C++ enum name to qualified Rust enum type path.
     /// Value enums get typed Rust enums; bitset enums stay as i32.
     pub enum_rust_types: Option<&'a std::collections::HashMap<String, String>>,
+    /// Class names that have `CppDeletable` impls generated (ParsedClasses without
+    /// protected_destructor + the 91 manually-specified known collections).
+    /// Methods returning a bare `Class(name)` value (generating `OwnedPtr<name>`) are
+    /// only allowed if `name` is in this set. If `None`, no constraint is applied.
+    pub deletable_class_names: Option<&'a std::collections::HashSet<String>>,
 }
 
 /// Check if a type references an unknown class/handle

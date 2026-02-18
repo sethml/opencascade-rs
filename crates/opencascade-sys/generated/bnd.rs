@@ -963,6 +963,29 @@ impl BoundSortBox {
         unsafe { crate::ffi::Bnd_BoundSortBox_add(self as *mut Self, theBox, boxIndex) }
     }
 
+    /// **Source:** `Bnd_BoundSortBox.hxx`:86 - `Bnd_BoundSortBox::Compare()`
+    /// Compares the bounding box theBox,
+    /// with the set of bounding boxes to be sorted by this
+    /// comparison algorithm, and returns the list of intersecting
+    /// bounding boxes as a list of indexes on the array of
+    /// bounding boxes used by this algorithm.
+    pub fn compare_box(
+        &mut self,
+        theBox: &crate::ffi::Bnd_Box,
+    ) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::Bnd_BoundSortBox_compare_box(self as *mut Self, theBox)) }
+    }
+
+    /// **Source:** `Bnd_BoundSortBox.hxx`:93 - `Bnd_BoundSortBox::Compare()`
+    /// Compares the plane P
+    /// with the set of bounding boxes to be sorted by this
+    /// comparison algorithm, and returns the list of intersecting
+    /// bounding boxes as a list of indexes on the array of
+    /// bounding boxes used by this algorithm.
+    pub fn compare_pln(&mut self, P: &crate::ffi::gp_Pln) -> &crate::ffi::TColStd_ListOfInteger {
+        unsafe { &*(crate::ffi::Bnd_BoundSortBox_compare_pln(self as *mut Self, P)) }
+    }
+
     /// **Source:** `Bnd_BoundSortBox.hxx`:95 - `Bnd_BoundSortBox::Dump()`
     pub fn dump(&self) {
         unsafe { crate::ffi::Bnd_BoundSortBox_dump(self as *const Self) }
@@ -1750,6 +1773,23 @@ impl HArray1OfBox {
         }
     }
 
+    /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+    pub fn new_array1ofbox(theOther: &crate::ffi::Bnd_Array1OfBox) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox_ctor_array1ofbox(theOther))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfBox {
+        unsafe { &*(crate::ffi::Bnd_HArray1OfBox_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Bnd_Array1OfBox {
+        unsafe { &mut *(crate::ffi::Bnd_HArray1OfBox_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Bnd_HArray1OfBox_dynamic_type(self as *const Self)) }
@@ -1828,6 +1868,23 @@ impl HArray1OfBox2d {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox2d_ctor_int2(theLower, theUpper))
         }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::Bnd_HArray1OfBox2d()`
+    pub fn new_array1ofbox2d(theOther: &crate::ffi::Bnd_Array1OfBox2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox2d_ctor_array1ofbox2d(theOther))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfBox2d {
+        unsafe { &*(crate::ffi::Bnd_HArray1OfBox2d_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Bnd_Array1OfBox2d {
+        unsafe { &mut *(crate::ffi::Bnd_HArray1OfBox2d_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::DynamicType()`
@@ -1910,6 +1967,23 @@ impl HArray1OfSphere {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfSphere_ctor_int2(theLower, theUpper))
         }
+    }
+
+    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+    pub fn new_array1ofsphere(theOther: &crate::ffi::Bnd_Array1OfSphere) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfSphere_ctor_array1ofsphere(theOther))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Array1()`
+    pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfSphere {
+        unsafe { &*(crate::ffi::Bnd_HArray1OfSphere_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::Bnd_Array1OfSphere {
+        unsafe { &mut *(crate::ffi::Bnd_HArray1OfSphere_change_array1(self as *mut Self)) }
     }
 
     /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::DynamicType()`
@@ -2023,6 +2097,31 @@ impl OBB {
     /// Constructor to create OBB from AABB.
     pub fn new_box(theBox: &crate::ffi::Bnd_Box) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Bnd_OBB_ctor_box(theBox)) }
+    }
+
+    /// **Source:** `Bnd_OBB.hxx`:107 - `Bnd_OBB::ReBuild()`
+    /// Creates new OBB covering every point in theListOfPoints.
+    /// Tolerance of every such point is set by *theListOfTolerances array.
+    /// If this array is not void (not null-pointer) then the resulted Bnd_OBB
+    /// will be enlarged using tolerances of points lying on the box surface.
+    /// <theIsOptimal> flag defines the mode in which the OBB will be built.
+    /// Constructing Optimal box takes more time, but the resulting box is usually
+    /// more tight. In case of construction of Optimal OBB more possible
+    /// axes are checked.
+    pub fn re_build(
+        &mut self,
+        theListOfPoints: &crate::ffi::TColgp_Array1OfPnt,
+        theListOfTolerances: Option<&crate::ffi::TColStd_Array1OfReal>,
+        theIsOptimal: bool,
+    ) {
+        unsafe {
+            crate::ffi::Bnd_OBB_re_build(
+                self as *mut Self,
+                theListOfPoints,
+                theListOfTolerances.map_or(std::ptr::null(), |r| r as *const _),
+                theIsOptimal,
+            )
+        }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:112 - `Bnd_OBB::SetCenter()`

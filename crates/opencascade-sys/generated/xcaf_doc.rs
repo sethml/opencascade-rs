@@ -587,6 +587,20 @@ impl AssemblyItemId {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemId_ctor()) }
     }
 
+    /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:35 - `XCAFDoc_AssemblyItemId::XCAFDoc_AssemblyItemId()`
+    /// Constructs an item ID from a list of strings, where every
+    /// string is a label entry.
+    /// \param[in]  thePath - list of label entries.
+    pub fn new_listofasciistring(
+        thePath: &crate::ffi::TColStd_ListOfAsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemId_ctor_listofasciistring(
+                thePath,
+            ))
+        }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:40 - `XCAFDoc_AssemblyItemId::XCAFDoc_AssemblyItemId()`
     /// Constructs an item ID from a formatted path, where label entries
     /// are separated by '/' symbol.
@@ -601,12 +615,22 @@ impl AssemblyItemId {
         }
     }
 
+    /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:45 - `XCAFDoc_AssemblyItemId::Init()`
+    /// Initializes the item ID from a list of strings, where every
+    /// string is a label entry.
+    /// \param[in]  thePath - list of label entries.
+    pub fn init_listofasciistring(&mut self, thePath: &crate::ffi::TColStd_ListOfAsciiString) {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemId_init_listofasciistring(self as *mut Self, thePath)
+        }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:50 - `XCAFDoc_AssemblyItemId::Init()`
     /// Initializes the item ID from a formatted path, where label entries
     /// are separated by '/' symbol.
     /// \param[in]  theString - formatted full path.
-    pub fn init(&mut self, theString: &crate::ffi::TCollection_AsciiString) {
-        unsafe { crate::ffi::XCAFDoc_AssemblyItemId_init(self as *mut Self, theString) }
+    pub fn init_asciistring(&mut self, theString: &crate::ffi::TCollection_AsciiString) {
+        unsafe { crate::ffi::XCAFDoc_AssemblyItemId_init_asciistring(self as *mut Self, theString) }
     }
 
     /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:53 - `XCAFDoc_AssemblyItemId::IsNull()`
@@ -643,6 +667,12 @@ impl AssemblyItemId {
     /// \return true if this ID is equal to theOther, otherwise - false.
     pub fn is_equal(&self, theOther: &crate::ffi::XCAFDoc_AssemblyItemId) -> bool {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemId_is_equal(self as *const Self, theOther) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:74 - `XCAFDoc_AssemblyItemId::GetPath()`
+    /// Returns the full path as a list of label entries.
+    pub fn get_path(&self) -> &crate::ffi::TColStd_ListOfAsciiString {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyItemId_get_path(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_AssemblyItemId.hxx`:77 - `XCAFDoc_AssemblyItemId::ToString()`
@@ -739,6 +769,19 @@ impl AssemblyItemRef {
             crate::ffi::XCAFDoc_AssemblyItemRef_set_item_assemblyitemid(
                 self as *mut Self,
                 theItemId,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:115 - `XCAFDoc_AssemblyItemRef::SetItem()`
+    /// Sets the assembly item ID from a list of label entries
+    /// that the reference points to.
+    /// Extra reference data (if any) will be cleared.
+    pub fn set_item_listofasciistring(&mut self, thePath: &crate::ffi::TColStd_ListOfAsciiString) {
+        unsafe {
+            crate::ffi::XCAFDoc_AssemblyItemRef_set_item_listofasciistring(
+                self as *mut Self,
+                thePath,
             )
         }
     }
@@ -1487,6 +1530,15 @@ impl ClippingPlaneTool {
                 self as *const Self,
                 theLabel,
             )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:96 - `XCAFDoc_ClippingPlaneTool::GetClippingPlanes()`
+    /// Returns a sequence of clipping planes currently stored
+    /// in the ClippingPlane table
+    pub fn get_clipping_planes(&self, Labels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe {
+            crate::ffi::XCAFDoc_ClippingPlaneTool_get_clipping_planes(self as *const Self, Labels)
         }
     }
 
@@ -2252,6 +2304,13 @@ impl ColorTool {
     /// Removes color from the colortable
     pub fn remove_color(&self, lab: &crate::ffi::TDF_Label) {
         unsafe { crate::ffi::XCAFDoc_ColorTool_remove_color(self as *const Self, lab) }
+    }
+
+    /// **Source:** `XCAFDoc_ColorTool.hxx`:113 - `XCAFDoc_ColorTool::GetColors()`
+    /// Returns a sequence of colors currently stored
+    /// in the colortable
+    pub fn get_colors(&self, Labels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_ColorTool_get_colors(self as *const Self, Labels) }
     }
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:123 - `XCAFDoc_ColorTool::SetColor()`
@@ -3578,6 +3637,33 @@ impl DimTolTool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_dimension(self as *const Self, theLab) }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:64 - `XCAFDoc_DimTolTool::GetDimensionLabels()`
+    /// Returns a sequence of Dimension labels currently stored
+    /// in the GD&T table.
+    pub fn get_dimension_labels(&self, theLabels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_dimension_labels(self as *const Self, theLabels)
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:67 - `XCAFDoc_DimTolTool::SetDimension()`
+    /// Sets a dimension to sequences target labels.
+    pub fn set_dimension_labelsequence2_label(
+        &self,
+        theFirstLS: &crate::ffi::TDF_LabelSequence,
+        theSecondLS: &crate::ffi::TDF_LabelSequence,
+        theDimL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_dimension_labelsequence2_label(
+                self as *const Self,
+                theFirstLS,
+                theSecondLS,
+                theDimL,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:72 - `XCAFDoc_DimTolTool::SetDimension()`
     /// Sets a dimension to target labels.
     pub fn set_dimension_label3(
@@ -3608,6 +3694,22 @@ impl DimTolTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:80 - `XCAFDoc_DimTolTool::GetRefDimensionLabels()`
+    /// Returns all Dimension labels defined for theShapeL.
+    pub fn get_ref_dimension_labels(
+        &self,
+        theShapeL: &crate::ffi::TDF_Label,
+        theDimensions: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_ref_dimension_labels(
+                self as *const Self,
+                theShapeL,
+                theDimensions,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:84 - `XCAFDoc_DimTolTool::AddDimension()`
     /// Adds a dimension definition to the GD&T table and returns its label.
     pub fn add_dimension(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
@@ -3624,19 +3726,60 @@ impl DimTolTool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_geom_tolerance(self as *const Self, theLab) }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:90 - `XCAFDoc_DimTolTool::GetGeomToleranceLabels()`
+    /// Returns a sequence of Tolerance labels currently stored in the GD&T table.
+    pub fn get_geom_tolerance_labels(&self, theLabels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_geom_tolerance_labels(self as *const Self, theLabels)
+        }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:94 - `XCAFDoc_DimTolTool::SetGeomTolerance()`
     /// Sets a geometry tolerance from theGeomTolL to theL label.
     /// Checks if theGeomTolL is a geometry tolerance definition first.
-    pub fn set_geom_tolerance(
+    pub fn set_geom_tolerance_label2(
         &self,
         theL: &crate::ffi::TDF_Label,
         theGeomTolL: &crate::ffi::TDF_Label,
     ) {
         unsafe {
-            crate::ffi::XCAFDoc_DimTolTool_set_geom_tolerance(
+            crate::ffi::XCAFDoc_DimTolTool_set_geom_tolerance_label2(
                 self as *const Self,
                 theL,
                 theGeomTolL,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:98 - `XCAFDoc_DimTolTool::SetGeomTolerance()`
+    /// Sets a geometry tolerance from theGeomTolL to sequence of labels theL.
+    /// Checks if theGeomTolL is a geometry tolerance definition first.
+    pub fn set_geom_tolerance_labelsequence_label(
+        &self,
+        theL: &crate::ffi::TDF_LabelSequence,
+        theGeomTolL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_geom_tolerance_labelsequence_label(
+                self as *const Self,
+                theL,
+                theGeomTolL,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:102 - `XCAFDoc_DimTolTool::GetRefGeomToleranceLabels()`
+    /// Returns all GeomTolerance labels defined for theShapeL.
+    pub fn get_ref_geom_tolerance_labels(
+        &self,
+        theShapeL: &crate::ffi::TDF_Label,
+        theDimTols: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_ref_geom_tolerance_labels(
+                self as *const Self,
+                theShapeL,
+                theDimTols,
             )
         }
     }
@@ -3655,6 +3798,12 @@ impl DimTolTool {
     /// Returns True if theLab belongs to the GD&T table and is a dmension tolerance.
     pub fn is_dim_tol(&self, theLab: &crate::ffi::TDF_Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_dim_tol(self as *const Self, theLab) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:112 - `XCAFDoc_DimTolTool::GetDimTolLabels()`
+    /// Returns a sequence of D&GTs currently stored in the GD&T table.
+    pub fn get_dim_tol_labels(&self, Labels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_get_dim_tol_labels(self as *const Self, Labels) }
     }
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:119 - `XCAFDoc_DimTolTool::FindDimTol()`
@@ -3746,6 +3895,13 @@ impl DimTolTool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_is_datum(self as *const Self, lab) }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:172 - `XCAFDoc_DimTolTool::GetDatumLabels()`
+    /// Returns a sequence of Datums currently stored
+    /// in the GD&T table.
+    pub fn get_datum_labels(&self, Labels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_get_datum_labels(self as *const Self, Labels) }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:177 - `XCAFDoc_DimTolTool::FindDatum()`
     /// Finds a datum satisfying the specified name, description and
     /// identification and returns its label if found.
@@ -3795,11 +3951,27 @@ impl DimTolTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:192 - `XCAFDoc_DimTolTool::SetDatum()`
+    /// Sets a datum to the sequence of shape labels.
+    pub fn set_datum_labelsequence_label(
+        &self,
+        theShapeLabels: &crate::ffi::TDF_LabelSequence,
+        theDatumL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_set_datum_labelsequence_label(
+                self as *const Self,
+                theShapeLabels,
+                theDatumL,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:198 - `XCAFDoc_DimTolTool::SetDatum()`
     /// Sets a datum to theL label and binds it with theTolerL label.
     /// A datum with the specified name, description and identification
     /// is created if it isn't found in the GD&T table.
-    pub fn set_datum(
+    pub fn set_datum_label2_handletcollectionhasciistring3(
         &self,
         theL: &crate::ffi::TDF_Label,
         theTolerL: &crate::ffi::TDF_Label,
@@ -3808,7 +3980,7 @@ impl DimTolTool {
         theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         unsafe {
-            crate::ffi::XCAFDoc_DimTolTool_set_datum(
+            crate::ffi::XCAFDoc_DimTolTool_set_datum_label2_handletcollectionhasciistring3(
                 self as *const Self,
                 theL,
                 theTolerL,
@@ -3856,6 +4028,38 @@ impl DimTolTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:226 - `XCAFDoc_DimTolTool::GetTolerOfDatumLabels()`
+    /// Returns all GeomToleranses labels defined for theDatumL label.
+    pub fn get_toler_of_datum_labels(
+        &self,
+        theDatumL: &crate::ffi::TDF_Label,
+        theTols: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_toler_of_datum_labels(
+                self as *const Self,
+                theDatumL,
+                theTols,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:230 - `XCAFDoc_DimTolTool::GetRefDatumLabel()`
+    /// Returns Datum label defined for theShapeL label.
+    pub fn get_ref_datum_label(
+        &self,
+        theShapeL: &crate::ffi::TDF_Label,
+        theDatum: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_ref_datum_label(
+                self as *const Self,
+                theShapeL,
+                theDatum,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:234 - `XCAFDoc_DimTolTool::IsLocked()`
     /// Returns true if the given GDT is marked as locked.
     pub fn is_locked(&self, theViewL: &crate::ffi::TDF_Label) -> bool {
@@ -3895,6 +4099,45 @@ impl DimTolTool {
     /// Returns the standard GD&T tool GUID.
     pub fn get_id() -> &'static crate::ffi::Standard_GUID {
         unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_get_id()) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:153 - `XCAFDoc_DimTolTool::GetRefShapeLabel()`
+    /// Gets all shape labels referred by theL label of the GD&T table.
+    /// Returns False if there are no shape labels added to the sequences.
+    pub fn get_ref_shape_label(
+        theL: &crate::ffi::TDF_Label,
+        theShapeLFirst: &mut crate::ffi::TDF_LabelSequence,
+        theShapeLSecond: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_ref_shape_label(
+                theL,
+                theShapeLFirst,
+                theShapeLSecond,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:217 - `XCAFDoc_DimTolTool::GetDatumOfTolerLabels()`
+    /// Returns all Datum labels defined for theDimTolL label.
+    pub fn get_datum_of_toler_labels(
+        theDimTolL: &crate::ffi::TDF_Label,
+        theDatums: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DimTolTool_get_datum_of_toler_labels(theDimTolL, theDatums) }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:221 - `XCAFDoc_DimTolTool::GetDatumWithObjectOfTolerLabels()`
+    /// Returns all Datum labels with XCAFDimTolObjects_DatumObject defined for label theDimTolL.
+    pub fn get_datum_with_object_of_toler_labels(
+        theDimTolL: &crate::ffi::TDF_Label,
+        theDatums: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_datum_with_object_of_toler_labels(
+                theDimTolL, theDatums,
+            )
+        }
     }
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:258 - `XCAFDoc_DimTolTool::get_type_name()`
@@ -4877,6 +5120,27 @@ impl Editor {
         unsafe { crate::ffi::XCAFDoc_Editor_expand_label_bool(theDoc, theRecursively) }
     }
 
+    /// **Source:** `XCAFDoc_Editor.hxx`:58 - `XCAFDoc_Editor::Extract()`
+    /// Clones all labels to a new position, keeping the structure with all the attributes
+    /// @param[in] theSrcLabels original labels to copy from
+    /// @param[in] theDstLabel label to set result as a component of or a main document's label to
+    /// simply set new shape
+    /// @param[in] theIsNoVisMat get a VisMaterial attributes as is or convert to color
+    /// @return True if shape successfully extracted
+    pub fn extract_labelsequence_label_bool(
+        theSrcLabels: &crate::ffi::TDF_LabelSequence,
+        theDstLabel: &crate::ffi::TDF_Label,
+        theIsNoVisMat: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_Editor_extract_labelsequence_label_bool(
+                theSrcLabels,
+                theDstLabel,
+                theIsNoVisMat,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_Editor.hxx`:69 - `XCAFDoc_Editor::Extract()`
     /// Clones the label to a new position, keeping the structure with all the attributes
     /// @param[in] theSrcLabel original label to copy from
@@ -4884,12 +5148,14 @@ impl Editor {
     /// simply set new shape
     /// @param[in] theIsNoVisMat get a VisMaterial attributes as is or convert to color
     /// @return True if shape successfully extracted
-    pub fn extract(
+    pub fn extract_label2_bool(
         theSrcLabel: &crate::ffi::TDF_Label,
         theDstLabel: &crate::ffi::TDF_Label,
         theIsNoVisMat: bool,
     ) -> bool {
-        unsafe { crate::ffi::XCAFDoc_Editor_extract(theSrcLabel, theDstLabel, theIsNoVisMat) }
+        unsafe {
+            crate::ffi::XCAFDoc_Editor_extract_label2_bool(theSrcLabel, theDstLabel, theIsNoVisMat)
+        }
     }
 
     /// **Source:** `XCAFDoc_Editor.hxx`:148 - `XCAFDoc_Editor::RescaleGeometry()`
@@ -5653,6 +5919,13 @@ impl LayerTool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_remove_layer(self as *const Self, lab) }
     }
 
+    /// **Source:** `XCAFDoc_LayerTool.hxx`:97 - `XCAFDoc_LayerTool::GetLayerLabels()`
+    /// Returns a sequence of Layers currently stored
+    /// in the Layertable
+    pub fn get_layer_labels(&self, Labels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_get_layer_labels(self as *const Self, Labels) }
+    }
+
     /// **Source:** `XCAFDoc_LayerTool.hxx`:103 - `XCAFDoc_LayerTool::SetLayer()`
     /// Sets a link from label <L> to Layer
     /// defined by <LayerL>
@@ -5772,6 +6045,22 @@ impl LayerTool {
                 self as *mut Self,
                 L,
                 aLayerS,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_LayerTool.hxx`:143 - `XCAFDoc_LayerTool::GetLayers()`
+    /// Return sequence of labels <aLayerSL> that associated with label <L>.
+    pub fn get_layers_label_labelsequence(
+        &mut self,
+        L: &crate::ffi::TDF_Label,
+        aLayerLS: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_LayerTool_get_layers_label_labelsequence(
+                self as *mut Self,
+                L,
+                aLayerLS,
             )
         }
     }
@@ -5930,6 +6219,22 @@ impl LayerTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_LayerTool.hxx`:207 - `XCAFDoc_LayerTool::GetLayers()`
+    /// Return sequence of labels <aLayerLS> that associated with shape <Sh>.
+    pub fn get_layers_shape_labelsequence(
+        &mut self,
+        Sh: &crate::ffi::TopoDS_Shape,
+        aLayerLS: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_LayerTool_get_layers_shape_labelsequence(
+                self as *mut Self,
+                Sh,
+                aLayerLS,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_LayerTool.hxx`:210 - `XCAFDoc_LayerTool::GetLayers()`
     /// Return sequence of strings that associated with shape <Sh>.
     pub fn get_layers_shape(
@@ -5964,6 +6269,15 @@ impl LayerTool {
     /// **Source:** `XCAFDoc_LayerTool.hxx`:48 - `XCAFDoc_LayerTool::GetID()`
     pub fn get_id() -> &'static crate::ffi::Standard_GUID {
         unsafe { &*(crate::ffi::XCAFDoc_LayerTool_get_id()) }
+    }
+
+    /// **Source:** `XCAFDoc_LayerTool.hxx`:149 - `XCAFDoc_LayerTool::GetShapesOfLayer()`
+    /// Return sequanese of shape labels that assigned with layers to <ShLabels>.
+    pub fn get_shapes_of_layer(
+        theLayerL: &crate::ffi::TDF_Label,
+        theShLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_LayerTool_get_shapes_of_layer(theLayerL, theShLabels) }
     }
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:218 - `XCAFDoc_LayerTool::get_type_name()`
@@ -7080,6 +7394,13 @@ impl MaterialTool {
     /// is a Material definition
     pub fn is_material(&self, lab: &crate::ffi::TDF_Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_MaterialTool_is_material(self as *const Self, lab) }
+    }
+
+    /// **Source:** `XCAFDoc_MaterialTool.hxx`:62 - `XCAFDoc_MaterialTool::GetMaterialLabels()`
+    /// Returns a sequence of materials currently stored
+    /// in the material table
+    pub fn get_material_labels(&self, Labels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_MaterialTool_get_material_labels(self as *const Self, Labels) }
     }
 
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:65 - `XCAFDoc_MaterialTool::AddMaterial()`
@@ -8803,6 +9124,27 @@ impl NotesTool {
         unsafe { crate::ffi::XCAFDoc_NotesTool_nb_annotated_items(self as *const Self) }
     }
 
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:104 - `XCAFDoc_NotesTool::GetNotes()`
+    /// Returns all labels from the notes hive.
+    /// The label sequence isn't cleared beforehand.
+    /// \param[out]  theNoteLabels - sequence of labels.
+    pub fn get_notes_labelsequence(&self, theNoteLabels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_get_notes_labelsequence(
+                self as *const Self,
+                theNoteLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:109 - `XCAFDoc_NotesTool::GetAnnotatedItems()`
+    /// Returns all labels from the annotated items hive.
+    /// The label sequence isn't cleared beforehand.
+    /// \param[out]  theNoteLabels - sequence of labels.
+    pub fn get_annotated_items(&self, theLabels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_get_annotated_items(self as *const Self, theLabels) }
+    }
+
     /// **Source:** `XCAFDoc_NotesTool.hxx`:114 - `XCAFDoc_NotesTool::IsAnnotatedItem()`
     /// Checks if the given assembly item is annotated.
     /// \param[in]  theItemId - assembly item ID.
@@ -8943,6 +9285,120 @@ impl NotesTool {
                     theItemLabel,
                     theSubshapeIndex,
                 ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:230 - `XCAFDoc_NotesTool::GetNotes()`
+    /// Gets all note labels of the assembly item.
+    /// Notes linked to item's subshapes or attributes aren't
+    /// taken into account. The label sequence isn't cleared beforehand.
+    /// \param[in]  theItemId      - assembly item ID.
+    /// \param[out]  theNoteLabels - sequence of labels.
+    /// \return number of added labels.
+    pub fn get_notes_assemblyitemid_labelsequence(
+        &self,
+        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_get_notes_assemblyitemid_labelsequence(
+                self as *const Self,
+                theItemId,
+                theNoteLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:239 - `XCAFDoc_NotesTool::GetNotes()`
+    /// Gets all note labels of the labeled item.
+    /// Notes linked to item's attributes aren't
+    /// taken into account. The label sequence isn't cleared beforehand.
+    /// \param[in]  theItemLabel   - item label.
+    /// \param[out]  theNoteLabels - sequence of labels.
+    /// \return number of added labels.
+    pub fn get_notes_label_labelsequence(
+        &self,
+        theItemLabel: &crate::ffi::TDF_Label,
+        theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_get_notes_label_labelsequence(
+                self as *const Self,
+                theItemLabel,
+                theNoteLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:249 - `XCAFDoc_NotesTool::GetAttrNotes()`
+    /// Gets all note labels of the assembly item's attribute.
+    /// Notes linked to the item itself or to item's subshapes
+    /// aren't taken into account. The label sequence isn't cleared beforehand.
+    /// \param[in]  theItemId      - assembly item ID.
+    /// \param[in]  theGUID        - assembly item's attribute GUID.
+    /// \param[out]  theNoteLabels - sequence of labels.
+    /// \return number of added labels.
+    pub fn get_attr_notes_assemblyitemid_guid_labelsequence(
+        &self,
+        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theGUID: &crate::ffi::Standard_GUID,
+        theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_get_attr_notes_assemblyitemid_guid_labelsequence(
+                self as *const Self,
+                theItemId,
+                theGUID,
+                theNoteLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:260 - `XCAFDoc_NotesTool::GetAttrNotes()`
+    /// Gets all note labels of the labeled item's attribute.
+    /// Notes linked to the item itself or to item's subshapes
+    /// aren't taken into account. The label sequence isn't cleared beforehand.
+    /// \param[in]  theItemLabel   - item label.
+    /// \param[in]  theGUID        - item's attribute GUID.
+    /// \param[out]  theNoteLabels - sequence of labels.
+    /// \return number of added labels.
+    pub fn get_attr_notes_label_guid_labelsequence(
+        &self,
+        theItemLabel: &crate::ffi::TDF_Label,
+        theGUID: &crate::ffi::Standard_GUID,
+        theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_get_attr_notes_label_guid_labelsequence(
+                self as *const Self,
+                theItemLabel,
+                theGUID,
+                theNoteLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:271 - `XCAFDoc_NotesTool::GetSubshapeNotes()`
+    /// Gets all note labels of the annotated item.
+    /// Notes linked to the item itself or to item's attributes
+    /// taken into account. The label sequence isn't cleared beforehand.
+    /// \param[in]  theItemId        - assembly item ID.
+    /// \param[in]  theSubshapeIndex - assembly item's subshape index.
+    /// \param[out]  theNoteLabels   - sequence of labels.
+    /// \return number of added labels.
+    pub fn get_subshape_notes(
+        &self,
+        theItemId: &crate::ffi::XCAFDoc_AssemblyItemId,
+        theSubshapeIndex: i32,
+        theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_get_subshape_notes(
+                self as *const Self,
+                theItemId,
+                theSubshapeIndex,
+                theNoteLabels,
             )
         }
     }
@@ -9226,6 +9682,15 @@ impl NotesTool {
         unsafe { crate::ffi::XCAFDoc_NotesTool_delete_note(self as *mut Self, theNoteLabel) }
     }
 
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:483 - `XCAFDoc_NotesTool::DeleteNotes()`
+    /// Deletes the given notes.
+    /// Removes all links with items annotated by the notes.
+    /// \param[in]  theNoteLabels - note label sequence.
+    /// \return number of deleted notes.
+    pub fn delete_notes(&mut self, theNoteLabels: &mut crate::ffi::TDF_LabelSequence) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_NotesTool_delete_notes(self as *mut Self, theNoteLabels) }
+    }
+
     /// **Source:** `XCAFDoc_NotesTool.hxx`:488 - `XCAFDoc_NotesTool::DeleteAllNotes()`
     /// Deletes all notes.
     /// Clears all annotations.
@@ -9238,6 +9703,16 @@ impl NotesTool {
     /// Returns number of notes that aren't linked to annotated items.
     pub fn nb_orphan_notes(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_NotesTool_nb_orphan_notes(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:501 - `XCAFDoc_NotesTool::GetOrphanNotes()`
+    /// Returns note labels that aren't linked to annotated items.
+    /// The label sequence isn't cleared beforehand.
+    /// \param[out]  theNoteLabels - sequence of labels.
+    pub fn get_orphan_notes(&self, theNoteLabels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe {
+            crate::ffi::XCAFDoc_NotesTool_get_orphan_notes(self as *const Self, theNoteLabels)
+        }
     }
 
     /// **Source:** `XCAFDoc_NotesTool.hxx`:505 - `XCAFDoc_NotesTool::DeleteOrphanNotes()`
@@ -10039,6 +10514,19 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_compute_simple_shapes(self as *mut Self) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:271 - `XCAFDoc_ShapeTool::GetShapes()`
+    /// Returns a sequence of all top-level shapes
+    pub fn get_shapes(&self, Labels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_shapes(self as *const Self, Labels) }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:275 - `XCAFDoc_ShapeTool::GetFreeShapes()`
+    /// Returns a sequence of all top-level shapes
+    /// which are free (i.e. not referred by any other)
+    pub fn get_free_shapes(&self, FreeLabels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_free_shapes(self as *const Self, FreeLabels) }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:305 - `XCAFDoc_ShapeTool::AddComponent()`
     /// Adds a component given by its label and location to the assembly
     /// Note: assembly must be IsAssembly() or IsSimpleShape()
@@ -10188,6 +10676,38 @@ impl ShapeTool {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_id(self as *const Self)) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:383 - `XCAFDoc_ShapeTool::SetExternRefs()`
+    /// Sets the names of references on the no-step files
+    pub fn set_extern_refs_sequenceofhasciistring(
+        &self,
+        SHAS: &crate::ffi::TColStd_SequenceOfHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ShapeTool_set_extern_refs_sequenceofhasciistring(
+                    self as *const Self,
+                    SHAS,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:386 - `XCAFDoc_ShapeTool::SetExternRefs()`
+    /// Sets the names of references on the no-step files
+    pub fn set_extern_refs_label_sequenceofhasciistring(
+        &self,
+        L: &crate::ffi::TDF_Label,
+        SHAS: &crate::ffi::TColStd_SequenceOfHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ShapeTool_set_extern_refs_label_sequenceofhasciistring(
+                self as *const Self,
+                L,
+                SHAS,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:430 - `XCAFDoc_ShapeTool::RemoveSHUO()`
     /// Remove SHUO from component sublabel,
     /// remove all dependencies on other SHUO.
@@ -10195,6 +10715,22 @@ impl ShapeTool {
     /// NOTE: remove any styles that associated with this SHUO.
     pub fn remove_shuo(&self, SHUOLabel: &crate::ffi::TDF_Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_remove_shuo(self as *const Self, SHUOLabel) }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:437 - `XCAFDoc_ShapeTool::FindComponent()`
+    /// Search the path of labels in the document,
+    /// that corresponds the component from any assembly
+    /// Try to search the sequence of labels with location that
+    /// produce this shape as component of any assembly
+    /// NOTE: Clear sequence of labels before filling
+    pub fn find_component(
+        &self,
+        theShape: &crate::ffi::TopoDS_Shape,
+        Labels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ShapeTool_find_component(self as *const Self, theShape, Labels)
+        }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:468 - `XCAFDoc_ShapeTool::SetLocation()`
@@ -10321,6 +10857,20 @@ impl ShapeTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_get_shape_label(L)) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:213 - `XCAFDoc_ShapeTool::GetOneShape()`
+    /// Gets shape from a sequence of shape's labels
+    /// @param[in] theLabels a sequence of labels to get shapes from
+    /// @return original shape in case of one label and a compound of shapes in case of more
+    pub fn get_one_shape_labelsequence(
+        theLabels: &crate::ffi::TDF_LabelSequence,
+    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_get_one_shape_labelsequence(
+                theLabels,
+            ))
+        }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:258 - `XCAFDoc_ShapeTool::SetAutoNaming()`
     /// Sets auto-naming mode to <V>. If True then for added
     /// shapes, links, assemblies and SHUO's, the TDataStd_Name attribute
@@ -10342,6 +10892,17 @@ impl ShapeTool {
     /// description.
     pub fn auto_naming() -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_auto_naming() }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:279 - `XCAFDoc_ShapeTool::GetUsers()`
+    /// Returns list of labels which refer shape L as component
+    /// Returns number of users (0 if shape is free)
+    pub fn get_users(
+        L: &crate::ffi::TDF_Label,
+        Labels: &mut crate::ffi::TDF_LabelSequence,
+        getsubchilds: bool,
+    ) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_users(L, Labels, getsubchilds) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:285 - `XCAFDoc_ShapeTool::GetLocation()`
@@ -10366,12 +10927,78 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_nb_components(L, getsubchilds) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:298 - `XCAFDoc_ShapeTool::GetComponents()`
+    /// Returns list of components of assembly
+    /// Returns False if label is not assembly
+    pub fn get_components(
+        L: &crate::ffi::TDF_Label,
+        Labels: &mut crate::ffi::TDF_LabelSequence,
+        getsubchilds: bool,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_components(L, Labels, getsubchilds) }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:355 - `XCAFDoc_ShapeTool::GetSubShapes()`
+    /// Returns list of labels identifying subshapes of the given shape
+    /// Returns False if no subshapes are placed on that label
+    pub fn get_sub_shapes(
+        L: &crate::ffi::TDF_Label,
+        Labels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_sub_shapes(L, Labels) }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:380 - `XCAFDoc_ShapeTool::IsExternRef()`
     /// Returns True if the label is a label of external references, i.e.
     /// there are some reference on the no-step files, which are
     /// described in document only their names
     pub fn is_extern_ref(L: &crate::ffi::TDF_Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_is_extern_ref(L) }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:390 - `XCAFDoc_ShapeTool::GetExternRefs()`
+    /// Gets the names of references on the no-step files
+    pub fn get_extern_refs(
+        L: &crate::ffi::TDF_Label,
+        SHAS: &mut crate::ffi::TColStd_SequenceOfHAsciiString,
+    ) {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_extern_refs(L, SHAS) }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:407 - `XCAFDoc_ShapeTool::GetAllComponentSHUO()`
+    /// Returns founded SHUO GraphNodes of indicated component
+    /// Returns false in other case
+    pub fn get_all_component_shuo(
+        CompLabel: &crate::ffi::TDF_Label,
+        SHUOAttrs: &mut crate::ffi::TDF_AttributeSequence,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_all_component_shuo(CompLabel, SHUOAttrs) }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:415 - `XCAFDoc_ShapeTool::GetSHUOUpperUsage()`
+    /// Returns the sequence of labels of SHUO attributes,
+    /// which is upper_usage for this next_usage SHUO attribute
+    /// (that indicated by label)
+    /// NOTE: returns upper_usages only on one level (not recurse)
+    /// NOTE: do not clear the sequence before filling
+    pub fn get_shuo_upper_usage(
+        NextUsageL: &crate::ffi::TDF_Label,
+        Labels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_shuo_upper_usage(NextUsageL, Labels) }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:423 - `XCAFDoc_ShapeTool::GetSHUONextUsage()`
+    /// Returns the sequence of labels of SHUO attributes,
+    /// which is next_usage for this upper_usage SHUO attribute
+    /// (that indicated by label)
+    /// NOTE: returns next_usages only on one level (not recurse)
+    /// NOTE: do not clear the sequence before filling
+    pub fn get_shuo_next_usage(
+        UpperUsageL: &crate::ffi::TDF_Label,
+        Labels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_shuo_next_usage(UpperUsageL, Labels) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:495 - `XCAFDoc_ShapeTool::get_type_name()`
@@ -10884,10 +11511,175 @@ impl ViewTool {
         unsafe { crate::ffi::XCAFDoc_ViewTool_is_view(self as *const Self, theLabel) }
     }
 
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:59 - `XCAFDoc_ViewTool::GetViewLabels()`
+    /// Returns a sequence of View labels currently stored
+    /// in the View table
+    pub fn get_view_labels(&self, theLabels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_ViewTool_get_view_labels(self as *const Self, theLabels) }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:62 - `XCAFDoc_ViewTool::SetView()`
+    /// Sets a link with GUID
+    pub fn set_view_labelsequence5_label(
+        &self,
+        theShapes: &crate::ffi::TDF_LabelSequence,
+        theGDTs: &crate::ffi::TDF_LabelSequence,
+        theClippingPlanes: &crate::ffi::TDF_LabelSequence,
+        theNotes: &crate::ffi::TDF_LabelSequence,
+        theAnnotations: &crate::ffi::TDF_LabelSequence,
+        theViewL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_set_view_labelsequence5_label(
+                self as *const Self,
+                theShapes,
+                theGDTs,
+                theClippingPlanes,
+                theNotes,
+                theAnnotations,
+                theViewL,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:70 - `XCAFDoc_ViewTool::SetView()`
+    /// Sets a link with GUID
+    pub fn set_view_labelsequence3_label(
+        &self,
+        theShapes: &crate::ffi::TDF_LabelSequence,
+        theGDTs: &crate::ffi::TDF_LabelSequence,
+        theClippingPlanes: &crate::ffi::TDF_LabelSequence,
+        theViewL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_set_view_labelsequence3_label(
+                self as *const Self,
+                theShapes,
+                theGDTs,
+                theClippingPlanes,
+                theViewL,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:76 - `XCAFDoc_ViewTool::SetView()`
+    /// Sets a link with GUID
+    pub fn set_view_labelsequence2_label(
+        &self,
+        theShapes: &crate::ffi::TDF_LabelSequence,
+        theGDTs: &crate::ffi::TDF_LabelSequence,
+        theViewL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_set_view_labelsequence2_label(
+                self as *const Self,
+                theShapes,
+                theGDTs,
+                theViewL,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:81 - `XCAFDoc_ViewTool::SetClippingPlanes()`
+    /// Set Clipping planes to  given View
+    pub fn set_clipping_planes(
+        &self,
+        theClippingPlaneLabels: &crate::ffi::TDF_LabelSequence,
+        theViewL: &crate::ffi::TDF_Label,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_set_clipping_planes(
+                self as *const Self,
+                theClippingPlaneLabels,
+                theViewL,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_ViewTool.hxx`:85 - `XCAFDoc_ViewTool::RemoveView()`
     /// Remove View
     pub fn remove_view(&mut self, theViewL: &crate::ffi::TDF_Label) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_remove_view(self as *mut Self, theViewL) }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:88 - `XCAFDoc_ViewTool::GetViewLabelsForShape()`
+    /// Returns all View labels defined for label ShapeL
+    pub fn get_view_labels_for_shape(
+        &self,
+        theShapeL: &crate::ffi::TDF_Label,
+        theViews: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_view_labels_for_shape(
+                self as *const Self,
+                theShapeL,
+                theViews,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:92 - `XCAFDoc_ViewTool::GetViewLabelsForGDT()`
+    /// Returns all View labels defined for label GDTL
+    pub fn get_view_labels_for_gdt(
+        &self,
+        theGDTL: &crate::ffi::TDF_Label,
+        theViews: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_view_labels_for_gdt(
+                self as *const Self,
+                theGDTL,
+                theViews,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:96 - `XCAFDoc_ViewTool::GetViewLabelsForClippingPlane()`
+    /// Returns all View labels defined for label ClippingPlaneL
+    pub fn get_view_labels_for_clipping_plane(
+        &self,
+        theClippingPlaneL: &crate::ffi::TDF_Label,
+        theViews: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_view_labels_for_clipping_plane(
+                self as *const Self,
+                theClippingPlaneL,
+                theViews,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:100 - `XCAFDoc_ViewTool::GetViewLabelsForNote()`
+    /// Returns all View labels defined for label NoteL
+    pub fn get_view_labels_for_note(
+        &self,
+        theNoteL: &crate::ffi::TDF_Label,
+        theViews: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_view_labels_for_note(
+                self as *const Self,
+                theNoteL,
+                theViews,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:104 - `XCAFDoc_ViewTool::GetViewLabelsForAnnotation()`
+    /// Returns all View labels defined for label AnnotationL
+    pub fn get_view_labels_for_annotation(
+        &self,
+        theAnnotationL: &crate::ffi::TDF_Label,
+        theViews: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_view_labels_for_annotation(
+                self as *const Self,
+                theAnnotationL,
+                theViews,
+            )
+        }
     }
 
     /// **Source:** `XCAFDoc_ViewTool.hxx`:108 - `XCAFDoc_ViewTool::AddView()`
@@ -10895,6 +11687,91 @@ impl ViewTool {
     pub fn add_view(&mut self) -> crate::OwnedPtr<crate::ffi::TDF_Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_add_view(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:112 - `XCAFDoc_ViewTool::GetRefShapeLabel()`
+    /// Returns shape labels defined for label theViewL
+    /// Returns False if the theViewL is not in View table
+    pub fn get_ref_shape_label(
+        &self,
+        theViewL: &crate::ffi::TDF_Label,
+        theShapeLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_ref_shape_label(
+                self as *const Self,
+                theViewL,
+                theShapeLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:117 - `XCAFDoc_ViewTool::GetRefGDTLabel()`
+    /// Returns GDT labels defined for label theViewL
+    /// Returns False if the theViewL is not in View table
+    pub fn get_ref_gdt_label(
+        &self,
+        theViewL: &crate::ffi::TDF_Label,
+        theGDTLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_ref_gdt_label(
+                self as *const Self,
+                theViewL,
+                theGDTLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:123 - `XCAFDoc_ViewTool::GetRefClippingPlaneLabel()`
+    /// Returns ClippingPlane labels defined for label theViewL
+    /// Returns False if the theViewL is not in View table
+    pub fn get_ref_clipping_plane_label(
+        &self,
+        theViewL: &crate::ffi::TDF_Label,
+        theClippingPlaneLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_ref_clipping_plane_label(
+                self as *const Self,
+                theViewL,
+                theClippingPlaneLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:128 - `XCAFDoc_ViewTool::GetRefNoteLabel()`
+    /// Returns Notes labels defined for label theViewL
+    /// Returns False if the theViewL is not in View table
+    pub fn get_ref_note_label(
+        &self,
+        theViewL: &crate::ffi::TDF_Label,
+        theNoteLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_ref_note_label(
+                self as *const Self,
+                theViewL,
+                theNoteLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:134 - `XCAFDoc_ViewTool::GetRefAnnotationLabel()`
+    /// Returns Annotation labels defined for label theViewL
+    /// Returns False if the theViewL is not in View table
+    pub fn get_ref_annotation_label(
+        &self,
+        theViewL: &crate::ffi::TDF_Label,
+        theAnnotationLabels: &mut crate::ffi::TDF_LabelSequence,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ViewTool_get_ref_annotation_label(
+                self as *const Self,
+                theViewL,
+                theAnnotationLabels,
+            )
         }
     }
 
@@ -11742,6 +12619,12 @@ impl VisMaterialTool {
         unsafe {
             crate::ffi::XCAFDoc_VisMaterialTool_remove_material(self as *const Self, theLabel)
         }
+    }
+
+    /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:76 - `XCAFDoc_VisMaterialTool::GetMaterials()`
+    /// Returns a sequence of Materials currently stored in the Material Table.
+    pub fn get_materials(&self, Labels: &mut crate::ffi::TDF_LabelSequence) {
+        unsafe { crate::ffi::XCAFDoc_VisMaterialTool_get_materials(self as *const Self, Labels) }
     }
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:79 - `XCAFDoc_VisMaterialTool::SetShapeMaterial()`

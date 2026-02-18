@@ -371,6 +371,12 @@ impl CafReader {
         }
     }
 
+    /// **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
+    /// Return metadata map.
+    pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_metadata(self as *const Self)) }
+    }
+
     /// **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
     /// Open stream and pass it to ProbeHeader method.
     pub fn probe_header(
@@ -632,6 +638,17 @@ impl CoordinateSystemConverter {
             crate::ffi::RWMesh_CoordinateSystemConverter_transform_position(
                 self as *const Self,
                 thePos,
+            )
+        }
+    }
+
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:172 - `RWMesh_CoordinateSystemConverter::TransformNormal()`
+    /// Transform normal (e.g. exclude translation/scale part of transformation).
+    pub fn transform_normal(&self, theNorm: &mut crate::ffi::Graphic3d_Vec3) {
+        unsafe {
+            crate::ffi::RWMesh_CoordinateSystemConverter_transform_normal(
+                self as *const Self,
+                theNorm,
             )
         }
     }
@@ -1653,6 +1670,13 @@ impl TriangulationSource {
         }
     }
 
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:94 - `RWMesh_TriangulationSource::InternalEdges()`
+    /// Returns an internal array of edges.
+    /// Edge()/SetEdge() should be used instead in portable code.
+    pub fn internal_edges(&mut self) -> &mut crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &mut *(crate::ffi::RWMesh_TriangulationSource_internal_edges(self as *mut Self)) }
+    }
+
     /// **Source:** `RWMesh_TriangulationSource.hxx`:99 - `RWMesh_TriangulationSource::ResizeEdges()`
     /// Method resizing an internal array of triangles.
     /// @param[in] theNbTriangles  new number of triangles
@@ -1984,6 +2008,15 @@ impl TriangulationSource {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:320 - `Poly_Triangulation::InternalTriangles()`
+    pub fn internal_triangles(&mut self) -> &mut crate::ffi::Poly_Array1OfTriangle {
+        unsafe {
+            &mut *(crate::ffi::RWMesh_TriangulationSource_inherited_InternalTriangles(
+                self as *mut Self,
+            ))
         }
     }
 

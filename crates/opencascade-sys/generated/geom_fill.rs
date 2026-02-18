@@ -334,6 +334,29 @@ impl AppSurf {
         unsafe { crate::ffi::GeomFill_AppSurf_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_AppSurf.hxx`:114 - `GeomFill_AppSurf::Surface()`
+    pub fn surface(
+        &self,
+        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_AppSurf_surface(
+                self as *const Self,
+                TPoles,
+                TWeights,
+                TUKnots,
+                TVKnots,
+                TUMults,
+                TVMults,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_AppSurf.hxx`:121 - `GeomFill_AppSurf::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_AppSurf_u_degree(self as *const Self) }
@@ -349,9 +372,47 @@ impl AppSurf {
         unsafe { &*(crate::ffi::GeomFill_AppSurf_surf_poles(self as *const Self)) }
     }
 
+    /// **Source:** `GeomFill_AppSurf.hxx`:127 - `GeomFill_AppSurf::SurfWeights()`
+    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+        unsafe { &*(crate::ffi::GeomFill_AppSurf_surf_weights(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSurf.hxx`:129 - `GeomFill_AppSurf::SurfUKnots()`
+    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::GeomFill_AppSurf_surf_u_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSurf.hxx`:131 - `GeomFill_AppSurf::SurfVKnots()`
+    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::GeomFill_AppSurf_surf_v_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSurf.hxx`:133 - `GeomFill_AppSurf::SurfUMults()`
+    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::GeomFill_AppSurf_surf_u_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSurf.hxx`:135 - `GeomFill_AppSurf::SurfVMults()`
+    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::GeomFill_AppSurf_surf_v_mults(self as *const Self)) }
+    }
+
     /// **Source:** `GeomFill_AppSurf.hxx`:137 - `GeomFill_AppSurf::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_AppSurf_nb_curves2d(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_AppSurf.hxx`:143 - `GeomFill_AppSurf::Curve2d()`
+    pub fn curve2d(
+        &self,
+        Index: i32,
+        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_AppSurf_curve2d(self as *const Self, Index, TPoles, TKnots, TMults)
+        }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:148 - `GeomFill_AppSurf::Curves2dDegree()`
@@ -362,6 +423,16 @@ impl AppSurf {
     /// **Source:** `GeomFill_AppSurf.hxx`:150 - `GeomFill_AppSurf::Curve2dPoles()`
     pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
         unsafe { &*(crate::ffi::GeomFill_AppSurf_curve2d_poles(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `GeomFill_AppSurf.hxx`:152 - `GeomFill_AppSurf::Curves2dKnots()`
+    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::GeomFill_AppSurf_curves2d_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSurf.hxx`:154 - `GeomFill_AppSurf::Curves2dMults()`
+    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::GeomFill_AppSurf_curves2d_mults(self as *const Self)) }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:156 - `GeomFill_AppSurf::TolReached()`
@@ -559,6 +630,29 @@ impl AppSweep {
         unsafe { crate::ffi::GeomFill_AppSweep_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_AppSweep.hxx`:114 - `GeomFill_AppSweep::Surface()`
+    pub fn surface(
+        &self,
+        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_AppSweep_surface(
+                self as *const Self,
+                TPoles,
+                TWeights,
+                TUKnots,
+                TVKnots,
+                TUMults,
+                TVMults,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_AppSweep.hxx`:121 - `GeomFill_AppSweep::UDegree()`
     pub fn u_degree(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_AppSweep_u_degree(self as *const Self) }
@@ -574,9 +668,53 @@ impl AppSweep {
         unsafe { &*(crate::ffi::GeomFill_AppSweep_surf_poles(self as *const Self)) }
     }
 
+    /// **Source:** `GeomFill_AppSweep.hxx`:127 - `GeomFill_AppSweep::SurfWeights()`
+    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+        unsafe { &*(crate::ffi::GeomFill_AppSweep_surf_weights(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSweep.hxx`:129 - `GeomFill_AppSweep::SurfUKnots()`
+    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::GeomFill_AppSweep_surf_u_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSweep.hxx`:131 - `GeomFill_AppSweep::SurfVKnots()`
+    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::GeomFill_AppSweep_surf_v_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSweep.hxx`:133 - `GeomFill_AppSweep::SurfUMults()`
+    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::GeomFill_AppSweep_surf_u_mults(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSweep.hxx`:135 - `GeomFill_AppSweep::SurfVMults()`
+    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::GeomFill_AppSweep_surf_v_mults(self as *const Self)) }
+    }
+
     /// **Source:** `GeomFill_AppSweep.hxx`:137 - `GeomFill_AppSweep::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_AppSweep_nb_curves2d(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_AppSweep.hxx`:143 - `GeomFill_AppSweep::Curve2d()`
+    pub fn curve2d(
+        &self,
+        Index: i32,
+        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_AppSweep_curve2d(
+                self as *const Self,
+                Index,
+                TPoles,
+                TKnots,
+                TMults,
+            )
+        }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:148 - `GeomFill_AppSweep::Curves2dDegree()`
@@ -587,6 +725,16 @@ impl AppSweep {
     /// **Source:** `GeomFill_AppSweep.hxx`:150 - `GeomFill_AppSweep::Curve2dPoles()`
     pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
         unsafe { &*(crate::ffi::GeomFill_AppSweep_curve2d_poles(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `GeomFill_AppSweep.hxx`:152 - `GeomFill_AppSweep::Curves2dKnots()`
+    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+        unsafe { &*(crate::ffi::GeomFill_AppSweep_curves2d_knots(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_AppSweep.hxx`:154 - `GeomFill_AppSweep::Curves2dMults()`
+    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+        unsafe { &*(crate::ffi::GeomFill_AppSweep_curves2d_mults(self as *const Self)) }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:156 - `GeomFill_AppSweep::TolReached()`
@@ -1362,10 +1510,114 @@ impl CircularBlendFunc {
         Self::new_handleadaptor3dcurve3_real_bool(Path, Curve1, Curve2, Radius, false)
     }
 
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:60 - `GeomFill_CircularBlendFunc::D0()`
+    /// compute the section for v = param
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_CircularBlendFunc_d0(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:69 - `GeomFill_CircularBlendFunc::D1()`
+    /// compute the first  derivative in v direction  of the
+    /// section for v =  param
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_CircularBlendFunc_d1(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                Poles2d,
+                DPoles2d,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:81 - `GeomFill_CircularBlendFunc::D2()`
+    /// compute the second derivative  in v direction of the
+    /// section  for v = param
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_CircularBlendFunc_d2(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                D2Poles,
+                Poles2d,
+                DPoles2d,
+                D2Poles2d,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:95 - `GeomFill_CircularBlendFunc::Nb2dCurves()`
     /// get the number of 2d curves to  approximate.
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_CircularBlendFunc_nb2d_curves(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:103 - `GeomFill_CircularBlendFunc::Knots()`
+    /// get the Knots of the section
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_CircularBlendFunc_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:106 - `GeomFill_CircularBlendFunc::Mults()`
+    /// get the Multplicities of the section
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::GeomFill_CircularBlendFunc_mults(self as *const Self, TMults) }
     }
 
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:109 - `GeomFill_CircularBlendFunc::IsRational()`
@@ -1383,6 +1635,18 @@ impl CircularBlendFunc {
         }
     }
 
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:121 - `GeomFill_CircularBlendFunc::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::GeomFill_CircularBlendFunc_intervals(self as *const Self, T, S.into())
+        }
+    }
+
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:128 - `GeomFill_CircularBlendFunc::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the fonction
@@ -1391,6 +1655,30 @@ impl CircularBlendFunc {
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         unsafe {
             crate::ffi::GeomFill_CircularBlendFunc_set_interval(self as *mut Self, First, Last)
+        }
+    }
+
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:136 - `GeomFill_CircularBlendFunc::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary (in radian)
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_CircularBlendFunc_get_tolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
         }
     }
 
@@ -1421,6 +1709,16 @@ impl CircularBlendFunc {
     /// approximation.
     pub fn maximal_section(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_CircularBlendFunc_maximal_section(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:159 - `GeomFill_CircularBlendFunc::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// of all  sections.  This information is  useful to
+    /// perform well conditioned rational approximation.
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::GeomFill_CircularBlendFunc_get_minimal_weight(self as *const Self, Weigths)
+        }
     }
 
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:162 - `GeomFill_CircularBlendFunc::DynamicType()`
@@ -1598,6 +1896,16 @@ impl ConstantBiNormal {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::GeomFill_ConstantBiNormal_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `GeomFill_ConstantBiNormal.hxx`:90 - `GeomFill_ConstantBiNormal::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_ConstantBiNormal_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `GeomFill_ConstantBiNormal.hxx`:95 - `GeomFill_ConstantBiNormal::GetAverageLaw()`
@@ -1895,15 +2203,60 @@ impl Coons {
         }
     }
 
+    /// **Source:** `GeomFill_Coons.hxx`:39 - `GeomFill_Coons::GeomFill_Coons()`
+    pub fn new_array1ofpnt4_array1ofreal4(
+        P1: &crate::ffi::TColgp_Array1OfPnt,
+        P2: &crate::ffi::TColgp_Array1OfPnt,
+        P3: &crate::ffi::TColgp_Array1OfPnt,
+        P4: &crate::ffi::TColgp_Array1OfPnt,
+        W1: &crate::ffi::TColStd_Array1OfReal,
+        W2: &crate::ffi::TColStd_Array1OfReal,
+        W3: &crate::ffi::TColStd_Array1OfReal,
+        W4: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Coons_ctor_array1ofpnt4_array1ofreal4(
+                P1, P2, P3, P4, W1, W2, W3, W4,
+            ))
+        }
+    }
+
     /// **Source:** `GeomFill_Coons.hxx`:48 - `GeomFill_Coons::Init()`
-    pub fn init(
+    pub fn init_array1ofpnt4(
         &mut self,
         P1: &crate::ffi::TColgp_Array1OfPnt,
         P2: &crate::ffi::TColgp_Array1OfPnt,
         P3: &crate::ffi::TColgp_Array1OfPnt,
         P4: &crate::ffi::TColgp_Array1OfPnt,
     ) {
-        unsafe { crate::ffi::GeomFill_Coons_init(self as *mut Self, P1, P2, P3, P4) }
+        unsafe { crate::ffi::GeomFill_Coons_init_array1ofpnt4(self as *mut Self, P1, P2, P3, P4) }
+    }
+
+    /// **Source:** `GeomFill_Coons.hxx`:53 - `GeomFill_Coons::Init()`
+    pub fn init_array1ofpnt4_array1ofreal4(
+        &mut self,
+        P1: &crate::ffi::TColgp_Array1OfPnt,
+        P2: &crate::ffi::TColgp_Array1OfPnt,
+        P3: &crate::ffi::TColgp_Array1OfPnt,
+        P4: &crate::ffi::TColgp_Array1OfPnt,
+        W1: &crate::ffi::TColStd_Array1OfReal,
+        W2: &crate::ffi::TColStd_Array1OfReal,
+        W3: &crate::ffi::TColStd_Array1OfReal,
+        W4: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_Coons_init_array1ofpnt4_array1ofreal4(
+                self as *mut Self,
+                P1,
+                P2,
+                P3,
+                P4,
+                W1,
+                W2,
+                W3,
+                W4,
+            )
+        }
     }
 
     /// Upcast to GeomFill_Filling
@@ -1934,6 +2287,11 @@ impl Coons {
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:45 - `GeomFill_Filling::isRational()`
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::GeomFill_Coons_inherited_isRational(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GeomFill_Filling.hxx`:47 - `GeomFill_Filling::Weights()`
+    pub fn weights(&self, Weights: &mut crate::ffi::TColStd_Array2OfReal) {
+        unsafe { crate::ffi::GeomFill_Coons_inherited_Weights(self as *const Self, Weights) }
     }
 }
 
@@ -2324,6 +2682,16 @@ impl CorrectedFrenet {
         unsafe { crate::ffi::GeomFill_CorrectedFrenet_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_CorrectedFrenet.hxx`:100 - `GeomFill_CorrectedFrenet::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_CorrectedFrenet_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_CorrectedFrenet.hxx`:111 - `GeomFill_CorrectedFrenet::EvaluateBestMode()`
     /// Tries to define the best trihedron mode
     /// for the curve. It can be:
@@ -2595,6 +2963,18 @@ impl CurveAndTrihedron {
         }
     }
 
+    /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:108 - `GeomFill_CurveAndTrihedron::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::GeomFill_CurveAndTrihedron_intervals(self as *const Self, T, S.into())
+        }
+    }
+
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:115 - `GeomFill_CurveAndTrihedron::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -2785,12 +3165,44 @@ impl Curved {
         }
     }
 
+    /// **Source:** `GeomFill_Curved.hxx`:40 - `GeomFill_Curved::GeomFill_Curved()`
+    pub fn new_array1ofpnt4_array1ofreal4(
+        P1: &crate::ffi::TColgp_Array1OfPnt,
+        P2: &crate::ffi::TColgp_Array1OfPnt,
+        P3: &crate::ffi::TColgp_Array1OfPnt,
+        P4: &crate::ffi::TColgp_Array1OfPnt,
+        W1: &crate::ffi::TColStd_Array1OfReal,
+        W2: &crate::ffi::TColStd_Array1OfReal,
+        W3: &crate::ffi::TColStd_Array1OfReal,
+        W4: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Curved_ctor_array1ofpnt4_array1ofreal4(
+                P1, P2, P3, P4, W1, W2, W3, W4,
+            ))
+        }
+    }
+
     /// **Source:** `GeomFill_Curved.hxx`:49 - `GeomFill_Curved::GeomFill_Curved()`
     pub fn new_array1ofpnt2(
         P1: &crate::ffi::TColgp_Array1OfPnt,
         P2: &crate::ffi::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Curved_ctor_array1ofpnt2(P1, P2)) }
+    }
+
+    /// **Source:** `GeomFill_Curved.hxx`:51 - `GeomFill_Curved::GeomFill_Curved()`
+    pub fn new_array1ofpnt2_array1ofreal2(
+        P1: &crate::ffi::TColgp_Array1OfPnt,
+        P2: &crate::ffi::TColgp_Array1OfPnt,
+        W1: &crate::ffi::TColStd_Array1OfReal,
+        W2: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Curved_ctor_array1ofpnt2_array1ofreal2(
+                P1, P2, W1, W2,
+            ))
+        }
     }
 
     /// **Source:** `GeomFill_Curved.hxx`:56 - `GeomFill_Curved::Init()`
@@ -2804,6 +3216,33 @@ impl Curved {
         unsafe { crate::ffi::GeomFill_Curved_init_array1ofpnt4(self as *mut Self, P1, P2, P3, P4) }
     }
 
+    /// **Source:** `GeomFill_Curved.hxx`:61 - `GeomFill_Curved::Init()`
+    pub fn init_array1ofpnt4_array1ofreal4(
+        &mut self,
+        P1: &crate::ffi::TColgp_Array1OfPnt,
+        P2: &crate::ffi::TColgp_Array1OfPnt,
+        P3: &crate::ffi::TColgp_Array1OfPnt,
+        P4: &crate::ffi::TColgp_Array1OfPnt,
+        W1: &crate::ffi::TColStd_Array1OfReal,
+        W2: &crate::ffi::TColStd_Array1OfReal,
+        W3: &crate::ffi::TColStd_Array1OfReal,
+        W4: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_Curved_init_array1ofpnt4_array1ofreal4(
+                self as *mut Self,
+                P1,
+                P2,
+                P3,
+                P4,
+                W1,
+                W2,
+                W3,
+                W4,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_Curved.hxx`:70 - `GeomFill_Curved::Init()`
     pub fn init_array1ofpnt2(
         &mut self,
@@ -2811,6 +3250,25 @@ impl Curved {
         P2: &crate::ffi::TColgp_Array1OfPnt,
     ) {
         unsafe { crate::ffi::GeomFill_Curved_init_array1ofpnt2(self as *mut Self, P1, P2) }
+    }
+
+    /// **Source:** `GeomFill_Curved.hxx`:72 - `GeomFill_Curved::Init()`
+    pub fn init_array1ofpnt2_array1ofreal2(
+        &mut self,
+        P1: &crate::ffi::TColgp_Array1OfPnt,
+        P2: &crate::ffi::TColgp_Array1OfPnt,
+        W1: &crate::ffi::TColStd_Array1OfReal,
+        W2: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_Curved_init_array1ofpnt2_array1ofreal2(
+                self as *mut Self,
+                P1,
+                P2,
+                W1,
+                W2,
+            )
+        }
     }
 
     /// Upcast to GeomFill_Filling
@@ -2841,6 +3299,11 @@ impl Curved {
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:45 - `GeomFill_Filling::isRational()`
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::GeomFill_Curved_inherited_isRational(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GeomFill_Filling.hxx`:47 - `GeomFill_Filling::Weights()`
+    pub fn weights(&self, Weights: &mut crate::ffi::TColStd_Array2OfReal) {
+        unsafe { crate::ffi::GeomFill_Curved_inherited_Weights(self as *const Self, Weights) }
     }
 }
 
@@ -2951,6 +3414,16 @@ impl Darboux {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::GeomFill_Darboux_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `GeomFill_Darboux.hxx`:83 - `GeomFill_Darboux::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_Darboux_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `GeomFill_Darboux.hxx`:88 - `GeomFill_Darboux::GetAverageLaw()`
@@ -3348,6 +3821,18 @@ impl DiscreteTrihedron {
         }
     }
 
+    /// **Source:** `GeomFill_DiscreteTrihedron.hxx`:99 - `GeomFill_DiscreteTrihedron::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::GeomFill_DiscreteTrihedron_intervals(self as *const Self, T, S.into())
+        }
+    }
+
     /// **Source:** `GeomFill_DiscreteTrihedron.hxx`:104 - `GeomFill_DiscreteTrihedron::GetAverageLaw()`
     /// Get average value of Tangent(t) and Normal(t) it is usful to
     /// make fast approximation of rational  surfaces.
@@ -3571,6 +4056,16 @@ impl DraftTrihedron {
         unsafe { crate::ffi::GeomFill_DraftTrihedron_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_DraftTrihedron.hxx`:82 - `GeomFill_DraftTrihedron::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_DraftTrihedron_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_DraftTrihedron.hxx`:87 - `GeomFill_DraftTrihedron::GetAverageLaw()`
     /// Get average value of Tangent(t) and Normal(t) it is useful to
     /// make fast approximation of rational  surfaces.
@@ -3703,6 +4198,69 @@ impl EvolvedSection {
         }
     }
 
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:49 - `GeomFill_EvolvedSection::D0()`
+    /// compute the section for v = param
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_EvolvedSection_d0(self as *mut Self, Param, Poles, Weigths) }
+    }
+
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:56 - `GeomFill_EvolvedSection::D1()`
+    /// compute the first  derivative in v direction  of the
+    /// section for v =  param
+    /// Warning : It used only for C1 or C2 approximation
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_EvolvedSection_d1(
+                self as *mut Self,
+                Param,
+                Poles,
+                DPoles,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:65 - `GeomFill_EvolvedSection::D2()`
+    /// compute the second derivative  in v direction of the
+    /// section  for v = param
+    /// Warning : It used only for C2 approximation
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_EvolvedSection_d2(
+                self as *mut Self,
+                Param,
+                Poles,
+                DPoles,
+                D2Poles,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_EvolvedSection.hxx`:76 - `GeomFill_EvolvedSection::BSplineSurface()`
     /// give if possible an bspline Surface, like iso-v are the
     /// section.  If it is  not possible  this methode have  to
@@ -3713,6 +4271,18 @@ impl EvolvedSection {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:84 - `GeomFill_EvolvedSection::Knots()`
+    /// get the Knots of the section
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_EvolvedSection_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:87 - `GeomFill_EvolvedSection::Mults()`
+    /// get the Multplicities of the section
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::GeomFill_EvolvedSection_mults(self as *const Self, TMults) }
     }
 
     /// **Source:** `GeomFill_EvolvedSection.hxx`:90 - `GeomFill_EvolvedSection::IsRational()`
@@ -3741,6 +4311,16 @@ impl EvolvedSection {
         unsafe { crate::ffi::GeomFill_EvolvedSection_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:109 - `GeomFill_EvolvedSection::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_EvolvedSection_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_EvolvedSection.hxx`:116 - `GeomFill_EvolvedSection::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -3767,6 +4347,30 @@ impl EvolvedSection {
         unsafe { crate::ffi::GeomFill_EvolvedSection_get_domain(self as *const Self, First, Last) }
     }
 
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:135 - `GeomFill_EvolvedSection::GetTolerance()`
+    /// Returns the tolerances associated at each poles to
+    /// reach  in approximation, to satisfy: BoundTol error
+    /// at the   Boundary  AngleTol tangent error  at  the
+    /// Boundary  (in radian)  SurfTol   error inside the
+    /// surface.
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_EvolvedSection_get_tolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_EvolvedSection.hxx`:145 - `GeomFill_EvolvedSection::BarycentreOfSurf()`
     /// Get the barycentre of Surface.
     /// An   very  poor estimation is sufficient.
@@ -3787,6 +4391,18 @@ impl EvolvedSection {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_EvolvedSection_maximal_section(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:157 - `GeomFill_EvolvedSection::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// in all  sections.
+    /// This information is  useful to control error
+    /// in rational approximation.
+    /// Warning: Used only if <me> IsRational
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::GeomFill_EvolvedSection_get_minimal_weight(self as *const Self, Weigths)
+        }
     }
 
     /// **Source:** `GeomFill_EvolvedSection.hxx`:161 - `GeomFill_EvolvedSection::IsConstant()`
@@ -3908,6 +4524,11 @@ impl Filling {
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::GeomFill_Filling_is_rational(self as *const Self) }
     }
+
+    /// **Source:** `GeomFill_Filling.hxx`:47 - `GeomFill_Filling::Weights()`
+    pub fn weights(&self, Weights: &mut crate::ffi::TColStd_Array2OfReal) {
+        unsafe { crate::ffi::GeomFill_Filling_weights(self as *const Self, Weights) }
+    }
 }
 
 // ========================
@@ -4020,6 +4641,16 @@ impl Fixed {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::GeomFill_Fixed_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `GeomFill_Fixed.hxx`:82 - `GeomFill_Fixed::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_Fixed_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `GeomFill_Fixed.hxx`:87 - `GeomFill_Fixed::GetAverageLaw()`
@@ -4228,6 +4859,16 @@ impl Frenet {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::GeomFill_Frenet_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `GeomFill_Frenet.hxx`:91 - `GeomFill_Frenet::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_Frenet_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:96 - `GeomFill_Frenet::GetAverageLaw()`
@@ -4572,9 +5213,31 @@ impl Generator {
         unsafe { crate::ffi::GeomFill_Generator_inherited_Poles(self as *const Self, Index, Poles) }
     }
 
+    /// Inherited: **Source:** `GeomFill_Profiler.hxx`:72 - `GeomFill_Profiler::Weights()`
+    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::GeomFill_Generator_inherited_Weights(self as *const Self, Index, Weights)
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:75 - `GeomFill_Profiler::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_Generator_inherited_NbKnots(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GeomFill_Profiler.hxx`:80 - `GeomFill_Profiler::KnotsAndMults()`
+    pub fn knots_and_mults(
+        &self,
+        Knots: &mut crate::ffi::TColStd_Array1OfReal,
+        Mults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_Generator_inherited_KnotsAndMults(
+                self as *const Self,
+                Knots,
+                Mults,
+            )
+        }
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:83 - `GeomFill_Profiler::Curve()`
@@ -4716,6 +5379,16 @@ impl GuideTrihedronAC {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::GeomFill_GuideTrihedronAC_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:86 - `GeomFill_GuideTrihedronAC::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_GuideTrihedronAC_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:93 - `GeomFill_GuideTrihedronAC::SetInterval()`
@@ -5013,6 +5686,18 @@ impl GuideTrihedronPlan {
         }
     }
 
+    /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:100 - `GeomFill_GuideTrihedronPlan::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::GeomFill_GuideTrihedronPlan_intervals(self as *const Self, T, S.into())
+        }
+    }
+
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:105 - `GeomFill_GuideTrihedronPlan::GetAverageLaw()`
     /// Get average value of M(t) and V(t) it is usfull to
     /// make fast approximation of rational  surfaces.
@@ -5159,6 +5844,29 @@ impl HArray1OfLocationLaw {
         }
     }
 
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
+    pub fn new_array1oflocationlaw(
+        theOther: &crate::ffi::GeomFill_Array1OfLocationLaw,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_array1oflocationlaw(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::Array1()`
+    pub fn array1(&self) -> &crate::ffi::GeomFill_Array1OfLocationLaw {
+        unsafe { &*(crate::ffi::GeomFill_HArray1OfLocationLaw_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::GeomFill_Array1OfLocationLaw {
+        unsafe {
+            &mut *(crate::ffi::GeomFill_HArray1OfLocationLaw_change_array1(self as *mut Self))
+        }
+    }
+
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomFill_HArray1OfLocationLaw_dynamic_type(self as *const Self)) }
@@ -5238,6 +5946,27 @@ impl HArray1OfSectionLaw {
         }
     }
 
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
+    pub fn new_array1ofsectionlaw(
+        theOther: &crate::ffi::GeomFill_Array1OfSectionLaw,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_array1ofsectionlaw(theOther),
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::Array1()`
+    pub fn array1(&self) -> &crate::ffi::GeomFill_Array1OfSectionLaw {
+        unsafe { &*(crate::ffi::GeomFill_HArray1OfSectionLaw_array1(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi::GeomFill_Array1OfSectionLaw {
+        unsafe { &mut *(crate::ffi::GeomFill_HArray1OfSectionLaw_change_array1(self as *mut Self)) }
+    }
+
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomFill_HArray1OfSectionLaw_dynamic_type(self as *const Self)) }
@@ -5306,6 +6035,32 @@ impl HSequenceOfAx2 {
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::GeomFill_HSequenceOfAx2()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HSequenceOfAx2_ctor()) }
+    }
+
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::GeomFill_HSequenceOfAx2()`
+    pub fn new_sequenceofax2(
+        theOther: &crate::ffi::GeomFill_SequenceOfAx2,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HSequenceOfAx2_ctor_sequenceofax2(
+                theOther,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi::GeomFill_SequenceOfAx2 {
+        unsafe { &*(crate::ffi::GeomFill_HSequenceOfAx2_sequence(self as *const Self)) }
+    }
+
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Append()`
+    pub fn append(&mut self, theSequence: &mut crate::ffi::GeomFill_SequenceOfAx2) {
+        unsafe { crate::ffi::GeomFill_HSequenceOfAx2_append(self as *mut Self, theSequence) }
+    }
+
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi::GeomFill_SequenceOfAx2 {
+        unsafe { &mut *(crate::ffi::GeomFill_HSequenceOfAx2_change_sequence(self as *mut Self)) }
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::DynamicType()`
@@ -5671,6 +6426,16 @@ impl LocationDraft {
         unsafe { crate::ffi::GeomFill_LocationDraft_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_LocationDraft.hxx`:122 - `GeomFill_LocationDraft::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_LocationDraft_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_LocationDraft.hxx`:129 - `GeomFill_LocationDraft::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -6028,6 +6793,16 @@ impl LocationGuide {
         unsafe { crate::ffi::GeomFill_LocationGuide_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_LocationGuide.hxx`:135 - `GeomFill_LocationGuide::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_LocationGuide_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_LocationGuide.hxx`:142 - `GeomFill_LocationGuide::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -6375,6 +7150,16 @@ impl LocationLaw {
         unsafe { crate::ffi::GeomFill_LocationLaw_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_LocationLaw.hxx`:120 - `GeomFill_LocationLaw::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_LocationLaw_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_LocationLaw.hxx`:126 - `GeomFill_LocationLaw::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -6505,6 +7290,150 @@ unsafe impl crate::CppDeletable for NSections {
 }
 
 impl NSections {
+    /// **Source:** `GeomFill_NSections.hxx`:46 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves.
+    pub fn new_sequenceofcurve(NC: &crate::ffi::TColGeom_SequenceOfCurve) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_NSections_ctor_sequenceofcurve(NC))
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:49 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves and N associated parameters.
+    pub fn new_sequenceofcurve_sequenceofreal(
+        NC: &crate::ffi::TColGeom_SequenceOfCurve,
+        NP: &crate::ffi::TColStd_SequenceOfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal(NC, NP),
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:54 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves and N associated parameters.
+    /// UF and UL are the parametric bounds of the NSections
+    pub fn new_sequenceofcurve_sequenceofreal_real2(
+        NC: &crate::ffi::TColGeom_SequenceOfCurve,
+        NP: &crate::ffi::TColStd_SequenceOfReal,
+        UF: f64,
+        UL: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real2(
+                    NC, NP, UF, UL,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:62 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves and N associated parameters.
+    /// UF and UL are the parametric bounds of the NSections
+    /// VF and VL are the parametric bounds of the path
+    pub fn new_sequenceofcurve_sequenceofreal_real4(
+        NC: &crate::ffi::TColGeom_SequenceOfCurve,
+        NP: &crate::ffi::TColStd_SequenceOfReal,
+        UF: f64,
+        UL: f64,
+        VF: f64,
+        VL: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real4(
+                    NC, NP, UF, UL, VF, VL,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:74 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves and N associated parameters.
+    /// UF and UL are the parametric bounds of the NSections
+    /// VF and VL are the parametric bounds of the path
+    /// UF and UL are the parametric bounds of the NSections
+    /// Surf is a reference surface used by BRepFill_NSections
+    pub fn new_sequenceofcurve_sequenceoftrsf_sequenceofreal_real4_handlegeombsplinesurface(
+        NC: &crate::ffi::TColGeom_SequenceOfCurve,
+        Trsfs: &crate::ffi::GeomFill_SequenceOfTrsf,
+        NP: &crate::ffi::TColStd_SequenceOfReal,
+        UF: f64,
+        UL: f64,
+        VF: f64,
+        VL: f64,
+        Surf: &crate::ffi::HandleGeomBSplineSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceoftrsf_sequenceofreal_real4_handlegeombsplinesurface(NC, Trsfs, NP, UF, UL, VF, VL, Surf))
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:84 - `GeomFill_NSections::D0()`
+    /// compute the section for v = param
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_NSections_d0(self as *mut Self, Param, Poles, Weigths) }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:91 - `GeomFill_NSections::D1()`
+    /// compute the first  derivative in v direction  of the
+    /// section for v =  param
+    /// Warning : It used only for C1 or C2 approximation
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_NSections_d1(
+                self as *mut Self,
+                Param,
+                Poles,
+                DPoles,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:100 - `GeomFill_NSections::D2()`
+    /// compute the second derivative  in v direction of the
+    /// section  for v = param
+    /// Warning : It used only for C2 approximation
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_NSections_d2(
+                self as *mut Self,
+                Param,
+                Poles,
+                DPoles,
+                D2Poles,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_NSections.hxx`:109 - `GeomFill_NSections::SetSurface()`
     /// Sets the reference surface
     pub fn set_surface(&mut self, RefSurf: &crate::ffi::HandleGeomBSplineSurface) {
@@ -6527,6 +7456,18 @@ impl NSections {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:125 - `GeomFill_NSections::Knots()`
+    /// get the Knots of the section
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_NSections_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:128 - `GeomFill_NSections::Mults()`
+    /// get the Multplicities of the section
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::GeomFill_NSections_mults(self as *const Self, TMults) }
     }
 
     /// **Source:** `GeomFill_NSections.hxx`:131 - `GeomFill_NSections::IsRational()`
@@ -6555,6 +7496,16 @@ impl NSections {
         unsafe { crate::ffi::GeomFill_NSections_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_NSections.hxx`:150 - `GeomFill_NSections::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_NSections_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_NSections.hxx`:157 - `GeomFill_NSections::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -6579,6 +7530,30 @@ impl NSections {
         unsafe { crate::ffi::GeomFill_NSections_get_domain(self as *const Self, First, Last) }
     }
 
+    /// **Source:** `GeomFill_NSections.hxx`:176 - `GeomFill_NSections::GetTolerance()`
+    /// Returns the tolerances associated at each poles to
+    /// reach  in approximation, to satisfy: BoundTol error
+    /// at the   Boundary  AngleTol tangent error  at  the
+    /// Boundary  (in radian)  SurfTol   error inside the
+    /// surface.
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_NSections_get_tolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_NSections.hxx`:186 - `GeomFill_NSections::BarycentreOfSurf()`
     /// Get the barycentre of Surface.
     /// An   very  poor estimation is sufficient.
@@ -6599,6 +7574,16 @@ impl NSections {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_NSections_maximal_section(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:198 - `GeomFill_NSections::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// in all  sections.
+    /// This information is  useful to control error
+    /// in rational approximation.
+    /// Warning: Used only if <me> IsRational
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_NSections_get_minimal_weight(self as *const Self, Weigths) }
     }
 
     /// **Source:** `GeomFill_NSections.hxx`:202 - `GeomFill_NSections::IsConstant()`
@@ -6830,6 +7815,20 @@ impl Pipe {
         }
     }
 
+    /// **Source:** `GeomFill_Pipe.hxx`:127 - `GeomFill_Pipe::GeomFill_Pipe()`
+    /// Create a pipe with N  sections
+    /// The section evaluate from First to Last Section
+    pub fn new_handlegeomcurve_sequenceofcurve(
+        Path: &crate::ffi::HandleGeomCurve,
+        NSections: &crate::ffi::TColGeom_SequenceOfCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve_sequenceofcurve(Path, NSections),
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_Pipe.hxx`:132 - `GeomFill_Pipe::GeomFill_Pipe()`
     /// Create  a pipe  with  a constant  radius with  2
     /// guide-line.
@@ -6984,6 +7983,21 @@ impl Pipe {
                 Path,
                 FirstSect,
                 LastSect,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_Pipe.hxx`:206 - `GeomFill_Pipe::Init()`
+    pub fn init_handlegeomcurve_sequenceofcurve(
+        &mut self,
+        Path: &crate::ffi::HandleGeomCurve,
+        NSections: &crate::ffi::TColGeom_SequenceOfCurve,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_Pipe_init_handlegeomcurve_sequenceofcurve(
+                self as *mut Self,
+                Path,
+                NSections,
             )
         }
     }
@@ -7423,10 +8437,33 @@ impl Profiler {
         unsafe { crate::ffi::GeomFill_Profiler_poles(self as *const Self, Index, Poles) }
     }
 
+    /// **Source:** `GeomFill_Profiler.hxx`:72 - `GeomFill_Profiler::Weights()`
+    /// returns in <Weights> the weights of the BSplineCurve
+    /// from index <Index> adjusting to the current profile.
+    /// Raises if not yet perform
+    /// Raises if <Index> not in the range [1,NbCurves] or
+    /// if  the  length  of  <Weights>  is  not  equal  to
+    /// NbPoles().
+    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_Profiler_weights(self as *const Self, Index, Weights) }
+    }
+
     /// **Source:** `GeomFill_Profiler.hxx`:75 - `GeomFill_Profiler::NbKnots()`
     /// Raises if not yet perform
     pub fn nb_knots(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_Profiler_nb_knots(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_Profiler.hxx`:80 - `GeomFill_Profiler::KnotsAndMults()`
+    /// Raises if not yet perform
+    /// Raises if  the lengths of <Knots> and <Mults> are
+    /// not equal to NbKnots().
+    pub fn knots_and_mults(
+        &self,
+        Knots: &mut crate::ffi::TColStd_Array1OfReal,
+        Mults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe { crate::ffi::GeomFill_Profiler_knots_and_mults(self as *const Self, Knots, Mults) }
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:83 - `GeomFill_Profiler::Curve()`
@@ -7466,6 +8503,69 @@ impl QuasiAngularConvertor {
     pub fn init(&mut self) {
         unsafe { crate::ffi::GeomFill_QuasiAngularConvertor_init(self as *mut Self) }
     }
+
+    /// **Source:** `GeomFill_QuasiAngularConvertor.hxx`:45 - `GeomFill_QuasiAngularConvertor::Section()`
+    pub fn section_pnt2_vec_real_array1ofpnt_array1ofreal(
+        &mut self,
+        FirstPnt: &crate::ffi::gp_Pnt,
+        Center: &crate::ffi::gp_Pnt,
+        Dir: &crate::ffi::gp_Vec,
+        Angle: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Weights: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_QuasiAngularConvertor_section_pnt2_vec_real_array1ofpnt_array1ofreal(self as *mut Self, FirstPnt, Center, Dir, Angle, Poles, Weights)
+        }
+    }
+
+    /// **Source:** `GeomFill_QuasiAngularConvertor.hxx`:52 - `GeomFill_QuasiAngularConvertor::Section()`
+    pub fn section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec_array1ofreal2(
+        &mut self,
+        FirstPnt: &crate::ffi::gp_Pnt,
+        DFirstPnt: &crate::ffi::gp_Vec,
+        Center: &crate::ffi::gp_Pnt,
+        DCenter: &crate::ffi::gp_Vec,
+        Dir: &crate::ffi::gp_Vec,
+        DDir: &crate::ffi::gp_Vec,
+        Angle: f64,
+        DAngle: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weights: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeights: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_QuasiAngularConvertor_section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec_array1ofreal2(self as *mut Self, FirstPnt, DFirstPnt, Center, DCenter, Dir, DDir, Angle, DAngle, Poles, DPoles, Weights, DWeights)
+        }
+    }
+
+    /// **Source:** `GeomFill_QuasiAngularConvertor.hxx`:65 - `GeomFill_QuasiAngularConvertor::Section()`
+    pub fn section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2_array1ofreal3(
+        &mut self,
+        FirstPnt: &crate::ffi::gp_Pnt,
+        DFirstPnt: &crate::ffi::gp_Vec,
+        D2FirstPnt: &crate::ffi::gp_Vec,
+        Center: &crate::ffi::gp_Pnt,
+        DCenter: &crate::ffi::gp_Vec,
+        D2Center: &crate::ffi::gp_Vec,
+        Dir: &crate::ffi::gp_Vec,
+        DDir: &crate::ffi::gp_Vec,
+        D2Dir: &crate::ffi::gp_Vec,
+        Angle: f64,
+        DAngle: f64,
+        D2Angle: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weights: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeights: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weights: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_QuasiAngularConvertor_section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2_array1ofreal3(self as *mut Self, FirstPnt, DFirstPnt, D2FirstPnt, Center, DCenter, D2Center, Dir, DDir, D2Dir, Angle, DAngle, D2Angle, Poles, DPoles, D2Poles, Weights, DWeights, D2Weights)
+        }
+    }
 }
 
 // ========================
@@ -7493,6 +8593,54 @@ impl SectionGenerator {
     /// **Source:** `GeomFill_SectionGenerator.hxx`:44 - `GeomFill_SectionGenerator::SetParam()`
     pub fn set_param(&mut self, Params: &crate::ffi::HandleTColStdHArray1OfReal) {
         unsafe { crate::ffi::GeomFill_SectionGenerator_set_param(self as *mut Self, Params) }
+    }
+
+    /// **Source:** `GeomFill_SectionGenerator.hxx`:51 - `GeomFill_SectionGenerator::Knots()`
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_SectionGenerator_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `GeomFill_SectionGenerator.hxx`:53 - `GeomFill_SectionGenerator::Mults()`
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::GeomFill_SectionGenerator_mults(self as *const Self, TMults) }
+    }
+
+    /// **Source:** `GeomFill_SectionGenerator.hxx`:58 - `GeomFill_SectionGenerator::Section()`
+    /// Used for the first and last section
+    /// The method returns Standard_True if the derivatives
+    /// are computed, otherwise it returns Standard_False.
+    pub fn section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+        &self,
+        P: i32,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_SectionGenerator_section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *const Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        }
+    }
+
+    /// **Source:** `GeomFill_SectionGenerator.hxx`:66 - `GeomFill_SectionGenerator::Section()`
+    pub fn section_int_array1ofpnt_array1ofpnt2d_array1ofreal(
+        &self,
+        P: i32,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_SectionGenerator_section_int_array1ofpnt_array1ofpnt2d_array1ofreal(
+                self as *const Self,
+                P,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
     }
 
     /// **Source:** `GeomFill_SectionGenerator.hxx`:73 - `GeomFill_SectionGenerator::Parameter()`
@@ -7552,9 +8700,35 @@ impl SectionGenerator {
         }
     }
 
+    /// Inherited: **Source:** `GeomFill_Profiler.hxx`:72 - `GeomFill_Profiler::Weights()`
+    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::GeomFill_SectionGenerator_inherited_Weights(
+                self as *const Self,
+                Index,
+                Weights,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:75 - `GeomFill_Profiler::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_SectionGenerator_inherited_NbKnots(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GeomFill_Profiler.hxx`:80 - `GeomFill_Profiler::KnotsAndMults()`
+    pub fn knots_and_mults(
+        &self,
+        Knots: &mut crate::ffi::TColStd_Array1OfReal,
+        Mults: &mut crate::ffi::TColStd_Array1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_SectionGenerator_inherited_KnotsAndMults(
+                self as *const Self,
+                Knots,
+                Mults,
+            )
+        }
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:83 - `GeomFill_Profiler::Curve()`
@@ -7580,6 +8754,69 @@ unsafe impl crate::CppDeletable for SectionLaw {
 }
 
 impl SectionLaw {
+    /// **Source:** `GeomFill_SectionLaw.hxx`:43 - `GeomFill_SectionLaw::D0()`
+    /// compute the section for v = param
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_SectionLaw_d0(self as *mut Self, Param, Poles, Weigths) }
+    }
+
+    /// **Source:** `GeomFill_SectionLaw.hxx`:50 - `GeomFill_SectionLaw::D1()`
+    /// compute the first  derivative in v direction  of the
+    /// section for v =  param
+    /// Warning : It used only for C1 or C2 approximation
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_SectionLaw_d1(
+                self as *mut Self,
+                Param,
+                Poles,
+                DPoles,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_SectionLaw.hxx`:59 - `GeomFill_SectionLaw::D2()`
+    /// compute the second derivative  in v direction of the
+    /// section  for v = param
+    /// Warning : It used only for C2 approximation
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_SectionLaw_d2(
+                self as *mut Self,
+                Param,
+                Poles,
+                DPoles,
+                D2Poles,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_SectionLaw.hxx`:70 - `GeomFill_SectionLaw::BSplineSurface()`
     /// give if possible an bspline Surface, like iso-v are the
     /// section.   If it is  not possible this  methode have to
@@ -7590,6 +8827,18 @@ impl SectionLaw {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `GeomFill_SectionLaw.hxx`:78 - `GeomFill_SectionLaw::Knots()`
+    /// get the Knots of the section
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_SectionLaw_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `GeomFill_SectionLaw.hxx`:81 - `GeomFill_SectionLaw::Mults()`
+    /// get the Multplicities of the section
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::GeomFill_SectionLaw_mults(self as *const Self, TMults) }
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:84 - `GeomFill_SectionLaw::IsRational()`
@@ -7618,6 +8867,16 @@ impl SectionLaw {
         unsafe { crate::ffi::GeomFill_SectionLaw_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_SectionLaw.hxx`:102 - `GeomFill_SectionLaw::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_SectionLaw_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_SectionLaw.hxx`:108 - `GeomFill_SectionLaw::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -7640,6 +8899,30 @@ impl SectionLaw {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         unsafe { crate::ffi::GeomFill_SectionLaw_get_domain(self as *const Self, First, Last) }
+    }
+
+    /// **Source:** `GeomFill_SectionLaw.hxx`:124 - `GeomFill_SectionLaw::GetTolerance()`
+    /// Returns the tolerances associated at each poles to
+    /// reach  in approximation, to satisfy: BoundTol error
+    /// at the   Boundary  AngleTol tangent error  at  the
+    /// Boundary  (in radian)  SurfTol   error inside the
+    /// surface.
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_SectionLaw_get_tolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
+        }
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:132 - `GeomFill_SectionLaw::SetTolerance()`
@@ -7670,6 +8953,16 @@ impl SectionLaw {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_SectionLaw_maximal_section(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_SectionLaw.hxx`:151 - `GeomFill_SectionLaw::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// in all  sections.
+    /// This information is  useful to control error
+    /// in rational approximation.
+    /// Warning: Used only if <me> IsRational
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_SectionLaw_get_minimal_weight(self as *const Self, Weigths) }
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:154 - `GeomFill_SectionLaw::IsConstant()`
@@ -8120,6 +9413,16 @@ impl SnglrFunc {
         unsafe { crate::ffi::GeomFill_SnglrFunc_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_SnglrFunc.hxx`:59 - `GeomFill_SnglrFunc::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_SnglrFunc_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_SnglrFunc.hxx`:63 - `GeomFill_SnglrFunc::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
@@ -8387,15 +9690,60 @@ impl Stretch {
         }
     }
 
+    /// **Source:** `GeomFill_Stretch.hxx`:40 - `GeomFill_Stretch::GeomFill_Stretch()`
+    pub fn new_array1ofpnt4_array1ofreal4(
+        P1: &crate::ffi::TColgp_Array1OfPnt,
+        P2: &crate::ffi::TColgp_Array1OfPnt,
+        P3: &crate::ffi::TColgp_Array1OfPnt,
+        P4: &crate::ffi::TColgp_Array1OfPnt,
+        W1: &crate::ffi::TColStd_Array1OfReal,
+        W2: &crate::ffi::TColStd_Array1OfReal,
+        W3: &crate::ffi::TColStd_Array1OfReal,
+        W4: &crate::ffi::TColStd_Array1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Stretch_ctor_array1ofpnt4_array1ofreal4(
+                P1, P2, P3, P4, W1, W2, W3, W4,
+            ))
+        }
+    }
+
     /// **Source:** `GeomFill_Stretch.hxx`:49 - `GeomFill_Stretch::Init()`
-    pub fn init(
+    pub fn init_array1ofpnt4(
         &mut self,
         P1: &crate::ffi::TColgp_Array1OfPnt,
         P2: &crate::ffi::TColgp_Array1OfPnt,
         P3: &crate::ffi::TColgp_Array1OfPnt,
         P4: &crate::ffi::TColgp_Array1OfPnt,
     ) {
-        unsafe { crate::ffi::GeomFill_Stretch_init(self as *mut Self, P1, P2, P3, P4) }
+        unsafe { crate::ffi::GeomFill_Stretch_init_array1ofpnt4(self as *mut Self, P1, P2, P3, P4) }
+    }
+
+    /// **Source:** `GeomFill_Stretch.hxx`:54 - `GeomFill_Stretch::Init()`
+    pub fn init_array1ofpnt4_array1ofreal4(
+        &mut self,
+        P1: &crate::ffi::TColgp_Array1OfPnt,
+        P2: &crate::ffi::TColgp_Array1OfPnt,
+        P3: &crate::ffi::TColgp_Array1OfPnt,
+        P4: &crate::ffi::TColgp_Array1OfPnt,
+        W1: &crate::ffi::TColStd_Array1OfReal,
+        W2: &crate::ffi::TColStd_Array1OfReal,
+        W3: &crate::ffi::TColStd_Array1OfReal,
+        W4: &crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_Stretch_init_array1ofpnt4_array1ofreal4(
+                self as *mut Self,
+                P1,
+                P2,
+                P3,
+                P4,
+                W1,
+                W2,
+                W3,
+                W4,
+            )
+        }
     }
 
     /// Upcast to GeomFill_Filling
@@ -8426,6 +9774,11 @@ impl Stretch {
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:45 - `GeomFill_Filling::isRational()`
     pub fn is_rational(&self) -> bool {
         unsafe { crate::ffi::GeomFill_Stretch_inherited_isRational(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `GeomFill_Filling.hxx`:47 - `GeomFill_Filling::Weights()`
+    pub fn weights(&self, Weights: &mut crate::ffi::TColStd_Array2OfReal) {
+        unsafe { crate::ffi::GeomFill_Stretch_inherited_Weights(self as *const Self, Weights) }
     }
 }
 
@@ -8677,10 +10030,114 @@ impl SweepFunction {
         }
     }
 
+    /// **Source:** `GeomFill_SweepFunction.hxx`:54 - `GeomFill_SweepFunction::D0()`
+    /// compute the section for v = param
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_SweepFunction_d0(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_SweepFunction.hxx`:63 - `GeomFill_SweepFunction::D1()`
+    /// compute the first derivative in v direction of the
+    /// section for v = param
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_SweepFunction_d1(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                Poles2d,
+                DPoles2d,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_SweepFunction.hxx`:75 - `GeomFill_SweepFunction::D2()`
+    /// compute the second derivative  in v direction of the
+    /// section for v = param
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_SweepFunction_d2(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Poles,
+                DPoles,
+                D2Poles,
+                Poles2d,
+                DPoles2d,
+                D2Poles2d,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_SweepFunction.hxx`:89 - `GeomFill_SweepFunction::Nb2dCurves()`
     /// get the number of 2d curves to approximate.
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_SweepFunction_nb2d_curves(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_SweepFunction.hxx`:97 - `GeomFill_SweepFunction::Knots()`
+    /// get the Knots of the section
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_SweepFunction_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `GeomFill_SweepFunction.hxx`:100 - `GeomFill_SweepFunction::Mults()`
+    /// get the Multplicities of the section
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::GeomFill_SweepFunction_mults(self as *const Self, TMults) }
     }
 
     /// **Source:** `GeomFill_SweepFunction.hxx`:103 - `GeomFill_SweepFunction::IsRational()`
@@ -8694,6 +10151,16 @@ impl SweepFunction {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         unsafe { crate::ffi::GeomFill_SweepFunction_nb_intervals(self as *const Self, S.into()) }
+    }
+
+    /// **Source:** `GeomFill_SweepFunction.hxx`:115 - `GeomFill_SweepFunction::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_SweepFunction_intervals(self as *const Self, T, S.into()) }
     }
 
     /// **Source:** `GeomFill_SweepFunction.hxx`:122 - `GeomFill_SweepFunction::SetInterval()`
@@ -8718,6 +10185,30 @@ impl SweepFunction {
                 Tol,
                 TolU,
                 TolV,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_SweepFunction.hxx`:139 - `GeomFill_SweepFunction::GetTolerance()`
+    /// Returns the tolerance to reach in approximation
+    /// to respect
+    /// BoundTol error at the Boundary
+    /// AngleTol tangent error at the Boundary (in radian)
+    /// SurfTol error inside the surface.
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_SweepFunction_get_tolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
             )
         }
     }
@@ -8748,6 +10239,17 @@ impl SweepFunction {
     /// approximation.
     pub fn maximal_section(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_SweepFunction_maximal_section(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_SweepFunction.hxx`:164 - `GeomFill_SweepFunction::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// of all  sections.  This information is  useful to
+    /// perform well conditioned rational approximation.
+    /// Warning: Used only if <me> IsRational
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::GeomFill_SweepFunction_get_minimal_weight(self as *const Self, Weigths)
+        }
     }
 
     /// **Source:** `GeomFill_SweepFunction.hxx`:167 - `GeomFill_SweepFunction::DynamicType()`
@@ -8972,9 +10474,51 @@ impl SweepSectionGenerator {
         unsafe { crate::ffi::GeomFill_SweepSectionGenerator_perform(self as *mut Self, Polynomial) }
     }
 
+    /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:96 - `GeomFill_SweepSectionGenerator::Knots()`
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_SweepSectionGenerator_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:98 - `GeomFill_SweepSectionGenerator::Mults()`
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::GeomFill_SweepSectionGenerator_mults(self as *const Self, TMults) }
+    }
+
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:100 - `GeomFill_SweepSectionGenerator::NbSections()`
     pub fn nb_sections(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_SweepSectionGenerator_nb_sections(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:105 - `GeomFill_SweepSectionGenerator::Section()`
+    /// Used for the first and last section
+    /// The method returns Standard_True if the derivatives
+    /// are computed, otherwise it returns Standard_False.
+    pub fn section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+        &self,
+        P: i32,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_SweepSectionGenerator_section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *const Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+        }
+    }
+
+    /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:113 - `GeomFill_SweepSectionGenerator::Section()`
+    pub fn section_int_array1ofpnt_array1ofpnt2d_array1ofreal(
+        &self,
+        P: i32,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_SweepSectionGenerator_section_int_array1ofpnt_array1ofpnt2d_array1ofreal(self as *const Self, P, Poles, Poles2d, Weigths)
+        }
     }
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:119 - `GeomFill_SweepSectionGenerator::Transformation()`
@@ -9365,6 +10909,16 @@ impl TrihedronLaw {
         unsafe { crate::ffi::GeomFill_TrihedronLaw_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_TrihedronLaw.hxx`:86 - `GeomFill_TrihedronLaw::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_TrihedronLaw_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -9642,6 +11196,17 @@ impl TrihedronWithGuide {
         }
     }
 
+    /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:86 - `GeomFill_TrihedronLaw::Intervals()`
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe {
+            crate::ffi::GeomFill_TrihedronWithGuide_inherited_Intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         unsafe {
@@ -9745,6 +11310,69 @@ impl UniformSection {
         Self::new_handlegeomcurve_real2(C, 0.0, 1.0)
     }
 
+    /// **Source:** `GeomFill_UniformSection.hxx`:50 - `GeomFill_UniformSection::D0()`
+    /// compute the section for v = param
+    pub fn d0(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe { crate::ffi::GeomFill_UniformSection_d0(self as *mut Self, Param, Poles, Weigths) }
+    }
+
+    /// **Source:** `GeomFill_UniformSection.hxx`:57 - `GeomFill_UniformSection::D1()`
+    /// compute the first  derivative in v direction  of the
+    /// section for v =  param
+    /// Warning : It used only for C1 or C2 approximation
+    pub fn d1(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_UniformSection_d1(
+                self as *mut Self,
+                Param,
+                Poles,
+                DPoles,
+                Weigths,
+                DWeigths,
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_UniformSection.hxx`:66 - `GeomFill_UniformSection::D2()`
+    /// compute the second derivative  in v direction of the
+    /// section  for v = param
+    /// Warning : It used only for C2 approximation
+    pub fn d2(
+        &mut self,
+        Param: f64,
+        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+    ) -> bool {
+        unsafe {
+            crate::ffi::GeomFill_UniformSection_d2(
+                self as *mut Self,
+                Param,
+                Poles,
+                DPoles,
+                D2Poles,
+                Weigths,
+                DWeigths,
+                D2Weigths,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_UniformSection.hxx`:77 - `GeomFill_UniformSection::BSplineSurface()`
     /// give if possible an bspline Surface, like iso-v are the
     /// section.  If it is  not possible  this methode have  to
@@ -9755,6 +11383,18 @@ impl UniformSection {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `GeomFill_UniformSection.hxx`:85 - `GeomFill_UniformSection::Knots()`
+    /// get the Knots of the section
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe { crate::ffi::GeomFill_UniformSection_knots(self as *const Self, TKnots) }
+    }
+
+    /// **Source:** `GeomFill_UniformSection.hxx`:88 - `GeomFill_UniformSection::Mults()`
+    /// get the Multplicities of the section
+    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe { crate::ffi::GeomFill_UniformSection_mults(self as *const Self, TMults) }
     }
 
     /// **Source:** `GeomFill_UniformSection.hxx`:91 - `GeomFill_UniformSection::IsRational()`
@@ -9783,6 +11423,16 @@ impl UniformSection {
         unsafe { crate::ffi::GeomFill_UniformSection_nb_intervals(self as *const Self, S.into()) }
     }
 
+    /// **Source:** `GeomFill_UniformSection.hxx`:110 - `GeomFill_UniformSection::Intervals()`
+    /// Stores in <T> the  parameters bounding the intervals
+    /// of continuity <S>.
+    ///
+    /// The array must provide  enough room to  accommodate
+    /// for the parameters. i.e. T.Length() > NbIntervals()
+    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+        unsafe { crate::ffi::GeomFill_UniformSection_intervals(self as *const Self, T, S.into()) }
+    }
+
     /// **Source:** `GeomFill_UniformSection.hxx`:117 - `GeomFill_UniformSection::SetInterval()`
     /// Sets the bounds of the parametric interval on
     /// the function
@@ -9809,6 +11459,30 @@ impl UniformSection {
         unsafe { crate::ffi::GeomFill_UniformSection_get_domain(self as *const Self, First, Last) }
     }
 
+    /// **Source:** `GeomFill_UniformSection.hxx`:136 - `GeomFill_UniformSection::GetTolerance()`
+    /// Returns the tolerances associated at each poles to
+    /// reach  in approximation, to satisfy: BoundTol error
+    /// at the   Boundary  AngleTol tangent error  at  the
+    /// Boundary  (in radian)  SurfTol   error inside the
+    /// surface.
+    pub fn get_tolerance(
+        &self,
+        BoundTol: f64,
+        SurfTol: f64,
+        AngleTol: f64,
+        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_UniformSection_get_tolerance(
+                self as *const Self,
+                BoundTol,
+                SurfTol,
+                AngleTol,
+                Tol3d,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_UniformSection.hxx`:146 - `GeomFill_UniformSection::BarycentreOfSurf()`
     /// Get the barycentre of Surface.
     /// An   very  poor estimation is sufficient.
@@ -9829,6 +11503,18 @@ impl UniformSection {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_UniformSection_maximal_section(self as *const Self) }
+    }
+
+    /// **Source:** `GeomFill_UniformSection.hxx`:158 - `GeomFill_UniformSection::GetMinimalWeight()`
+    /// Compute the minimal value of weight for each poles
+    /// in all  sections.
+    /// This information is  useful to control error
+    /// in rational approximation.
+    /// Warning: Used only if <me> IsRational
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::GeomFill_UniformSection_get_minimal_weight(self as *const Self, Weigths)
+        }
     }
 
     /// **Source:** `GeomFill_UniformSection.hxx`:162 - `GeomFill_UniformSection::IsConstant()`

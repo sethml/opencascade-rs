@@ -295,6 +295,21 @@ impl BeanFaceIntersector {
         unsafe { crate::ffi::IntTools_BeanFaceIntersector_is_done(self as *const Self) }
     }
 
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:138 - `IntTools_BeanFaceIntersector::Result()`
+    pub fn result(&self) -> &crate::ffi::IntTools_SequenceOfRanges {
+        unsafe { &*(crate::ffi::IntTools_BeanFaceIntersector_result(self as *const Self)) }
+    }
+
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:140 - `IntTools_BeanFaceIntersector::Result()`
+    pub fn result_sequenceofranges(&self, theResults: &mut crate::ffi::IntTools_SequenceOfRanges) {
+        unsafe {
+            crate::ffi::IntTools_BeanFaceIntersector_result_sequenceofranges(
+                self as *const Self,
+                theResults,
+            )
+        }
+    }
+
     /// **Source:** `IntTools_BeanFaceIntersector.hxx`:143 - `IntTools_BeanFaceIntersector::MinimalSquareDistance()`
     /// Returns the minimal distance found between edge and face
     pub fn minimal_square_distance(&self) -> f64 {
@@ -420,6 +435,18 @@ impl CommonPrt {
     /// Returns the range of first edge.
     pub fn range1_real2(&self, tf: &mut f64, tl: &mut f64) {
         unsafe { crate::ffi::IntTools_CommonPrt_range1_real2(self as *const Self, tf, tl) }
+    }
+
+    /// **Source:** `IntTools_CommonPrt.hxx`:90 - `IntTools_CommonPrt::Ranges2()`
+    /// Returns the  ranges of second edge.
+    pub fn ranges2(&self) -> &crate::ffi::IntTools_SequenceOfRanges {
+        unsafe { &*(crate::ffi::IntTools_CommonPrt_ranges2(self as *const Self)) }
+    }
+
+    /// **Source:** `IntTools_CommonPrt.hxx`:93 - `IntTools_CommonPrt::ChangeRanges2()`
+    /// Returns the  ranges of second edge.
+    pub fn change_ranges2(&mut self) -> &mut crate::ffi::IntTools_SequenceOfRanges {
+        unsafe { &mut *(crate::ffi::IntTools_CommonPrt_change_ranges2(self as *mut Self)) }
     }
 
     /// **Source:** `IntTools_CommonPrt.hxx`:96 - `IntTools_CommonPrt::VertexParameter1()`
@@ -1188,6 +1215,13 @@ impl CurveRangeLocalizeData {
             crate::ffi::IntTools_CurveRangeLocalizeData_is_range_out(self as *const Self, theRange)
         }
     }
+
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:50 - `IntTools_CurveRangeLocalizeData::ListRangeOut()`
+    pub fn list_range_out(&self, theList: &mut crate::ffi::IntTools_ListOfCurveRangeSample) {
+        unsafe {
+            crate::ffi::IntTools_CurveRangeLocalizeData_list_range_out(self as *const Self, theList)
+        }
+    }
 }
 
 // ========================
@@ -1418,6 +1452,12 @@ impl EdgeEdge {
         unsafe { crate::ffi::IntTools_EdgeEdge_fuzzy_value(self as *const Self) }
     }
 
+    /// **Source:** `IntTools_EdgeEdge.hxx`:91 - `IntTools_EdgeEdge::CommonParts()`
+    /// Returns common parts
+    pub fn common_parts(&self) -> &crate::ffi::IntTools_SequenceOfCommonPrts {
+        unsafe { &*(crate::ffi::IntTools_EdgeEdge_common_parts(self as *const Self)) }
+    }
+
     /// **Source:** `IntTools_EdgeEdge.hxx`:94 - `IntTools_EdgeEdge::UseQuickCoincidenceCheck()`
     /// Sets the flag myQuickCoincidenceCheck
     pub fn use_quick_coincidence_check(&mut self, bFlag: bool) {
@@ -1571,6 +1611,13 @@ impl EdgeFace {
     /// 4 - projection failed.
     pub fn error_status(&self) -> i32 {
         unsafe { crate::ffi::IntTools_EdgeFace_error_status(self as *const Self) }
+    }
+
+    /// **Source:** `IntTools_EdgeFace.hxx`:123 - `IntTools_EdgeFace::CommonParts()`
+    /// @name Obtaining results
+    /// Returns resulting common parts
+    pub fn common_parts(&self) -> &crate::ffi::IntTools_SequenceOfCommonPrts {
+        unsafe { &*(crate::ffi::IntTools_EdgeFace_common_parts(self as *const Self)) }
     }
 
     /// **Source:** `IntTools_EdgeFace.hxx`:126 - `IntTools_EdgeFace::MinimalDistance()`
@@ -1737,6 +1784,18 @@ impl FaceFace {
         unsafe { crate::ffi::IntTools_FaceFace_is_done(self as *const Self) }
     }
 
+    /// **Source:** `IntTools_FaceFace.hxx`:57 - `IntTools_FaceFace::Lines()`
+    /// Returns sequence of 3d curves as result of intersection
+    pub fn lines(&self) -> &crate::ffi::IntTools_SequenceOfCurves {
+        unsafe { &*(crate::ffi::IntTools_FaceFace_lines(self as *const Self)) }
+    }
+
+    /// **Source:** `IntTools_FaceFace.hxx`:60 - `IntTools_FaceFace::Points()`
+    /// Returns sequence of 3d curves as result of intersection
+    pub fn points(&self) -> &crate::ffi::IntTools_SequenceOfPntOn2Faces {
+        unsafe { &*(crate::ffi::IntTools_FaceFace_points(self as *const Self)) }
+    }
+
     /// **Source:** `IntTools_FaceFace.hxx`:63 - `IntTools_FaceFace::Face1()`
     /// Returns first of processed faces
     pub fn face1(&self) -> &crate::ffi::TopoDS_Face {
@@ -1761,6 +1820,11 @@ impl FaceFace {
     /// remain untouched otherwise
     pub fn prepare_lines3_d(&mut self, bToSplit: bool) {
         unsafe { crate::ffi::IntTools_FaceFace_prepare_lines3_d(self as *mut Self, bToSplit) }
+    }
+
+    /// **Source:** `IntTools_FaceFace.hxx`:76 - `IntTools_FaceFace::SetList()`
+    pub fn set_list(&mut self, ListOfPnts: &mut crate::ffi::IntSurf_ListOfPntOn2S) {
+        unsafe { crate::ffi::IntTools_FaceFace_set_list(self as *mut Self, ListOfPnts) }
     }
 
     /// **Source:** `IntTools_FaceFace.hxx`:79 - `IntTools_FaceFace::SetContext()`
@@ -1826,6 +1890,24 @@ impl MarkedRangeSet {
         }
     }
 
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:45 - `IntTools_MarkedRangeSet::IntTools_MarkedRangeSet()`
+    /// Build set of ranges based on the array of progressive sorted values
+    ///
+    /// Warning:
+    /// The constructor do not check if the values of array are not sorted
+    /// It should be checked before function invocation
+    pub fn new_array1ofreal_int(
+        theSortedArray: &crate::ffi::TColStd_Array1OfReal,
+        theInitFlag: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntTools_MarkedRangeSet_ctor_array1ofreal_int(
+                theSortedArray,
+                theInitFlag,
+            ))
+        }
+    }
+
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:50 - `IntTools_MarkedRangeSet::SetBoundaries()`
     /// build set of ranges which consists of one range with
     /// boundary values theFirstBoundary and theLastBoundary
@@ -1840,6 +1922,26 @@ impl MarkedRangeSet {
                 self as *mut Self,
                 theFirstBoundary,
                 theLastBoundary,
+                theInitFlag,
+            )
+        }
+    }
+
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:59 - `IntTools_MarkedRangeSet::SetRanges()`
+    /// Build set of ranges based on the array of progressive sorted values
+    ///
+    /// Warning:
+    /// The function do not check if the values of array are not sorted
+    /// It should be checked before function invocation
+    pub fn set_ranges(
+        &mut self,
+        theSortedArray: &crate::ffi::TColStd_Array1OfReal,
+        theInitFlag: i32,
+    ) {
+        unsafe {
+            crate::ffi::IntTools_MarkedRangeSet_set_ranges(
+                self as *mut Self,
+                theSortedArray,
                 theInitFlag,
             )
         }
@@ -1954,6 +2056,11 @@ impl MarkedRangeSet {
     /// If theValue do not belong any range returns 0.
     pub fn get_index_real(&self, theValue: f64) -> i32 {
         unsafe { crate::ffi::IntTools_MarkedRangeSet_get_index_real(self as *const Self, theValue) }
+    }
+
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:110 - `IntTools_MarkedRangeSet::GetIndices()`
+    pub fn get_indices(&mut self, theValue: f64) -> &crate::ffi::TColStd_SequenceOfInteger {
+        unsafe { &*(crate::ffi::IntTools_MarkedRangeSet_get_indices(self as *mut Self, theValue)) }
     }
 
     /// **Source:** `IntTools_MarkedRangeSet.hxx`:117 - `IntTools_MarkedRangeSet::GetIndex()`
@@ -2553,6 +2660,16 @@ impl SurfaceRangeLocalizeData {
         }
     }
 
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:72 - `IntTools_SurfaceRangeLocalizeData::ListRangeOut()`
+    pub fn list_range_out(&self, theList: &mut crate::ffi::IntTools_ListOfSurfaceRangeSample) {
+        unsafe {
+            crate::ffi::IntTools_SurfaceRangeLocalizeData_list_range_out(
+                self as *const Self,
+                theList,
+            )
+        }
+    }
+
     /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:74 - `IntTools_SurfaceRangeLocalizeData::RemoveRangeOutAll()`
     pub fn remove_range_out_all(&mut self) {
         unsafe {
@@ -3121,6 +3238,27 @@ impl Tools {
         unsafe { crate::ffi::IntTools_Tools_intermediate_point(aFirst, aLast) }
     }
 
+    /// **Source:** `IntTools_Tools.hxx`:111 - `IntTools_Tools::SplitCurve()`
+    /// Split aC by average parameter if aC is closed in 3D.
+    /// Returns positive value if splitting has been done,
+    /// otherwise returns zero.
+    pub fn split_curve(
+        aC: &crate::ffi::IntTools_Curve,
+        aS: &mut crate::ffi::IntTools_SequenceOfCurves,
+    ) -> i32 {
+        unsafe { crate::ffi::IntTools_Tools_split_curve(aC, aS) }
+    }
+
+    /// **Source:** `IntTools_Tools.hxx`:116 - `IntTools_Tools::RejectLines()`
+    /// Puts curves from aSIn to aSOut except those curves that
+    /// are coincide with first curve from aSIn.
+    pub fn reject_lines(
+        aSIn: &crate::ffi::IntTools_SequenceOfCurves,
+        aSOut: &mut crate::ffi::IntTools_SequenceOfCurves,
+    ) {
+        unsafe { crate::ffi::IntTools_Tools_reject_lines(aSIn, aSOut) }
+    }
+
     /// **Source:** `IntTools_Tools.hxx`:120 - `IntTools_Tools::IsDirsCoinside()`
     /// Returns True if D1 and D2 coincide
     pub fn is_dirs_coinside_dir2(D1: &crate::ffi::gp_Dir, D2: &crate::ffi::gp_Dir) -> bool {
@@ -3525,6 +3663,20 @@ impl TopolTool {
                 self as *const Self,
                 V,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::UParameters()`
+    pub fn u_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::IntTools_TopolTool_inherited_UParameters(self as *const Self, theArray)
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::VParameters()`
+    pub fn v_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::IntTools_TopolTool_inherited_VParameters(self as *const Self, theArray)
         }
     }
 

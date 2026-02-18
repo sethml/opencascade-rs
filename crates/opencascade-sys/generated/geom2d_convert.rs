@@ -227,6 +227,12 @@ impl ApproxArcsSegments {
             )
         }
     }
+
+    /// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:44 - `Geom2dConvert_ApproxArcsSegments::GetResult()`
+    /// Get the result curve after approximation.
+    pub fn get_result(&self) -> &crate::ffi::TColGeom2d_SequenceOfCurve {
+        unsafe { &*(crate::ffi::Geom2dConvert_ApproxArcsSegments_get_result(self as *const Self)) }
+    }
 }
 
 // ========================
@@ -403,6 +409,32 @@ impl BSplineCurveKnotSplitting {
         }
     }
 
+    /// **Source:** `Geom2dConvert_BSplineCurveKnotSplitting.hxx`:91 - `Geom2dConvert_BSplineCurveKnotSplitting::Splitting()`
+    /// Loads the SplitValues table with the split knots
+    /// values computed in this framework. Each value in the
+    /// table is an index in the knots table of the BSpline
+    /// curve analysed by this algorithm.
+    /// The values in SplitValues are given in ascending
+    /// order and comprise the indices of the knots which
+    /// give the first and last points of the curve. Use two
+    /// consecutive values from the table as arguments of the
+    /// global function SplitBSplineCurve (provided by the
+    /// package Geom2dConvert) to split the curve.
+    /// Exceptions
+    /// Standard_DimensionError if the array SplitValues
+    /// was not created with the following bounds:
+    /// -   1, and
+    /// -   the number of split points computed in this
+    /// framework (as given by the function NbSplits).
+    pub fn splitting(&self, SplitValues: &mut crate::ffi::TColStd_Array1OfInteger) {
+        unsafe {
+            crate::ffi::Geom2dConvert_BSplineCurveKnotSplitting_splitting(
+                self as *const Self,
+                SplitValues,
+            )
+        }
+    }
+
     /// **Source:** `Geom2dConvert_BSplineCurveKnotSplitting.hxx`:106 - `Geom2dConvert_BSplineCurveKnotSplitting::SplitValue()`
     /// Returns the split knot of index Index to the split knots
     /// table computed in this framework. The returned value
@@ -515,6 +547,35 @@ impl BSplineCurveToBezierCurve {
                 self as *mut Self,
                 Index,
             ))
+        }
+    }
+
+    /// **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:99 - `Geom2dConvert_BSplineCurveToBezierCurve::Arcs()`
+    /// Constructs all the Bezier curves whose data is
+    /// computed by this algorithm and loads these curves
+    /// into the Curves table.
+    /// The Bezier curves have the same orientation as the
+    /// BSpline curve analyzed in this framework.
+    /// Exceptions
+    /// Standard_DimensionError if the Curves array was
+    /// not created with the following bounds:
+    /// -   1 , and
+    /// -   the number of adjacent Bezier arcs computed by
+    /// this algorithm (as given by the function NbArcs).
+    pub fn arcs(&mut self, Curves: &mut crate::ffi::TColGeom2d_Array1OfBezierCurve) {
+        unsafe {
+            crate::ffi::Geom2dConvert_BSplineCurveToBezierCurve_arcs(self as *mut Self, Curves)
+        }
+    }
+
+    /// **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:105 - `Geom2dConvert_BSplineCurveToBezierCurve::Knots()`
+    /// This methode returns the bspline's knots associated to
+    /// the converted arcs
+    /// Raises DimensionError if the length  of Curves is not equal to
+    /// NbArcs +  1
+    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+        unsafe {
+            crate::ffi::Geom2dConvert_BSplineCurveToBezierCurve_knots(self as *const Self, TKnots)
         }
     }
 

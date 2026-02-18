@@ -835,6 +835,12 @@ impl Check {
         unsafe { crate::ffi::BRepAlgoAPI_Check_is_valid(self as *mut Self) }
     }
 
+    /// **Source:** `BRepAlgoAPI_Check.hxx`:148 - `BRepAlgoAPI_Check::Result()`
+    /// Returns faulty shapes.
+    pub fn result(&mut self) -> &crate::ffi::BOPAlgo_ListOfCheckResult {
+        unsafe { &*(crate::ffi::BRepAlgoAPI_Check_result(self as *mut Self)) }
+    }
+
     /// Upcast to BOPAlgo_Options
     pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
         unsafe { &*(crate::ffi::BRepAlgoAPI_Check_as_BOPAlgo_Options(self as *const Self)) }

@@ -149,6 +149,28 @@ impl ConfigurationContext {
         }
     }
 
+    /// **Source:** `DE_ConfigurationContext.hxx`:102 - `DE_ConfigurationContext::GetStringSeq()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[out] theValue value to get by parameter
+    /// @param[in] theScope base parameter name
+    /// @return Standard_False if parameter is not defined or has a wrong type
+    pub fn get_string_seq(
+        &self,
+        theParam: &crate::ffi::TCollection_AsciiString,
+        theValue: &mut crate::ffi::TColStd_ListOfAsciiString,
+        theScope: &crate::ffi::TCollection_AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_get_string_seq(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        }
+    }
+
     /// **Source:** `DE_ConfigurationContext.hxx`:111 - `DE_ConfigurationContext::RealVal()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
@@ -471,6 +493,18 @@ impl ConfigurationNode {
     /// @param[in] theIsLoaded input load status
     pub fn set_enabled(&mut self, theIsLoaded: bool) {
         unsafe { crate::ffi::DE_ConfigurationNode_set_enabled(self as *mut Self, theIsLoaded) }
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// Custom function to activate commercial DE component.
+    /// The input is special sequence of values that described in
+    /// specific component documentation. Order is important.
+    /// Each component can have own way of activation.
+    ///
+    /// The main goal - real-time loading plug-in activation.
+    /// OpenSource components don't need to have activation process.
+    pub fn custom_activation(&mut self, arg0: &crate::ffi::TColStd_ListOfAsciiString) {
+        unsafe { crate::ffi::DE_ConfigurationNode_custom_activation(self as *mut Self, arg0) }
     }
 
     /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_name()`
@@ -811,6 +845,16 @@ impl ShapeFixConfigurationNode {
             )
         }
     }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    pub fn custom_activation(&mut self, arg0: &crate::ffi::TColStd_ListOfAsciiString) {
+        unsafe {
+            crate::ffi::DE_ShapeFixConfigurationNode_inherited_CustomActivation(
+                self as *mut Self,
+                arg0,
+            )
+        }
+    }
 }
 
 // ========================
@@ -936,6 +980,53 @@ impl Wrapper {
         }
     }
 
+    /// **Source:** `DE_Wrapper.hxx`:188 - `DE_Wrapper::Save()`
+    /// Writes configuration to the resource file
+    /// @param[in] theResourcePath file path to resource
+    /// @param[in] theIsRecursive flag to write values of all nodes
+    /// @param[in] theFormats list of formats to save. If empty, saves all available
+    /// @param[in] theVendors list of providers to save. If empty, saves all available
+    /// @return true if the Configuration has saved correctly
+    pub fn save_asciistring_bool_listofasciistring2(
+        &mut self,
+        theResourcePath: &crate::ffi::TCollection_AsciiString,
+        theIsRecursive: bool,
+        theFormats: &crate::ffi::TColStd_ListOfAsciiString,
+        theVendors: &crate::ffi::TColStd_ListOfAsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_save_asciistring_bool_listofasciistring2(
+                self as *mut Self,
+                theResourcePath,
+                theIsRecursive,
+                theFormats,
+                theVendors,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:199 - `DE_Wrapper::Save()`
+    /// Writes configuration to the string
+    /// @param[in] theIsRecursive flag to write values of all nodes
+    /// @param[in] theFormats list of formats to save. If empty, saves all available
+    /// @param[in] theVendors list of providers to save. If empty, saves all available
+    /// @return result resource string
+    pub fn save_bool_listofasciistring2(
+        &mut self,
+        theIsRecursive: bool,
+        theFormats: &crate::ffi::TColStd_ListOfAsciiString,
+        theVendors: &crate::ffi::TColStd_ListOfAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DE_Wrapper_save_bool_listofasciistring2(
+                self as *mut Self,
+                theIsRecursive,
+                theFormats,
+                theVendors,
+            ))
+        }
+    }
+
     /// **Source:** `DE_Wrapper.hxx`:206 - `DE_Wrapper::Bind()`
     /// Creates new node copy and adds to the map
     /// @param[in] theNode input node to copy
@@ -965,6 +1056,45 @@ impl Wrapper {
         theNode: &mut crate::ffi::HandleDEConfigurationNode,
     ) -> bool {
         unsafe { crate::ffi::DE_Wrapper_find(self as *const Self, theFormat, theVendor, theNode) }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:226 - `DE_Wrapper::ChangePriority()`
+    /// Changes provider priority to one format if it exists
+    /// @param[in] theFormat input node CAD format
+    /// @param[in] theVendorPriority priority of work with vendors
+    /// @param[in] theToDisable flag for disabling nodes that are not included in the priority
+    pub fn change_priority_asciistring_listofasciistring_bool(
+        &mut self,
+        theFormat: &crate::ffi::TCollection_AsciiString,
+        theVendorPriority: &crate::ffi::TColStd_ListOfAsciiString,
+        theToDisable: bool,
+    ) {
+        unsafe {
+            crate::ffi::DE_Wrapper_change_priority_asciistring_listofasciistring_bool(
+                self as *mut Self,
+                theFormat,
+                theVendorPriority,
+                theToDisable,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:233 - `DE_Wrapper::ChangePriority()`
+    /// Changes provider priority to all loaded nodes
+    /// @param[in] theVendorPriority priority of work with vendors
+    /// @param[in] theToDisable flag for disabling nodes that are not included in the priority
+    pub fn change_priority_listofasciistring_bool(
+        &mut self,
+        theVendorPriority: &crate::ffi::TColStd_ListOfAsciiString,
+        theToDisable: bool,
+    ) {
+        unsafe {
+            crate::ffi::DE_Wrapper_change_priority_listofasciistring_bool(
+                self as *mut Self,
+                theVendorPriority,
+                theToDisable,
+            )
+        }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:242 - `DE_Wrapper::FindProvider()`
