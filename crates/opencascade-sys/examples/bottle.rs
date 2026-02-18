@@ -76,7 +76,7 @@ pub fn main() {
 
     // Body : Prism the Profile
     let face_profile = b_rep_builder_api::MakeFace::new_wire_bool(wire_profile, false);
-    let prism_vec = gp::Vec::new_real3(0.0, 0.0, height);
+    let prism_vec = gp::Vec_::new_real3(0.0, 0.0, height);
     let mut body =
         b_rep_prim_api::MakePrism::new_shape_vec_bool2(face_profile.face().as_shape(), &prism_vec, false, true);
 

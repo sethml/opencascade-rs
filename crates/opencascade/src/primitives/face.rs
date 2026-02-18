@@ -285,7 +285,7 @@ impl Face {
         projector.lower_distance_parameters(&mut u, &mut v);
 
         let mut p = gp::Pnt::new();
-        let mut normal = gp::Vec::new();
+        let mut normal = gp::Vec_::new();
 
         let face = b_rep_g_prop::Face::new_face_bool(&self.inner, false);
         face.normal(u, v, &mut p, &mut normal);
