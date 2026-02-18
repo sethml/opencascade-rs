@@ -6588,6 +6588,231 @@ impl CheckResult {
 }
 
 // ========================
+// From BOPAlgo_CheckerSI.hxx
+// ========================
+
+/// **Source:** `BOPAlgo_CheckerSI.hxx`:36 - `BOPAlgo_CheckerSI`
+/// Checks the shape on self-interference.
+///
+/// The algorithm can set the following errors:
+/// - *BOPAlgo_AlertMultipleArguments* - The number of the input arguments is not one;
+/// - *BOPALgo_ErrorIntersectionFailed* - The check has been aborted during intersection of
+/// sub-shapes. In case the error has occurred during intersection of sub-shapes, i.e. in
+/// BOPAlgo_PaveFiller::PerformInternal() method, the errors from this method directly will be
+/// returned.
+pub use crate::ffi::BOPAlgo_CheckerSI as CheckerSI;
+
+unsafe impl crate::CppDeletable for CheckerSI {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::BOPAlgo_CheckerSI_destructor(ptr);
+    }
+}
+
+impl CheckerSI {
+    /// **Source:** `BOPAlgo_CheckerSI.hxx`:41 - `BOPAlgo_CheckerSI::BOPAlgo_CheckerSI()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_CheckerSI_ctor()) }
+    }
+
+    /// **Source:** `BOPAlgo_CheckerSI.hxx`:44 - `BOPAlgo_CheckerSI::Perform()`
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_perform(self as *mut Self, theRange) }
+    }
+
+    /// **Source:** `BOPAlgo_CheckerSI.hxx`:59 - `BOPAlgo_CheckerSI::SetLevelOfCheck()`
+    /// Sets the level of checking shape on self-interference.<br>
+    /// It defines which interferences will be checked:<br>
+    /// 0 - only V/V;<br>
+    /// 1 - V/V and V/E;<br>
+    /// 2 - V/V, V/E and E/E;<br>
+    /// 3 - V/V, V/E, E/E and V/F;<br>
+    /// 4 - V/V, V/E, E/E, V/F and E/F;<br>
+    /// 5 - V/V, V/E, E/E, V/F, E/F and F/F;<br>
+    /// 6 - V/V, V/E, E/E, V/F, E/F, F/F and V/S;<br>
+    /// 7 - V/V, V/E, E/E, V/F, E/F, F/F, V/S and E/S;<br>
+    /// 8 - V/V, V/E, E/E, V/F, E/F, F/F, V/S, E/S and F/S;<br>
+    /// 9 - V/V, V/E, E/E, V/F, E/F, F/F, V/S, E/S, F/S and S/S - all interferences (Default value)
+    pub fn set_level_of_check(&mut self, theLevel: i32) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_set_level_of_check(self as *mut Self, theLevel) }
+    }
+
+    /// Upcast to BOPAlgo_PaveFiller
+    pub fn as_pave_filler(&self) -> &PaveFiller {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_as_BOPAlgo_PaveFiller(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_PaveFiller (mutable)
+    pub fn as_pave_filler_mut(&mut self) -> &mut PaveFiller {
+        unsafe {
+            &mut *(crate::ffi::BOPAlgo_CheckerSI_as_BOPAlgo_PaveFiller_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to BOPAlgo_Options
+    pub fn as_options(&self) -> &Options {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_as_BOPAlgo_Options(self as *const Self)) }
+    }
+
+    /// Upcast to BOPAlgo_Options (mutable)
+    pub fn as_options_mut(&mut self) -> &mut Options {
+        unsafe { &mut *(crate::ffi::BOPAlgo_CheckerSI_as_BOPAlgo_Options_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::DS()`
+    pub fn ds(&mut self) -> &crate::bopds::DS {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_inherited_DS(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:126 - `BOPAlgo_PaveFiller::SetArguments()`
+    pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_SetArguments(self as *mut Self, theLS) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:129 - `BOPAlgo_PaveFiller::AddArgument()`
+    pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_AddArgument(self as *mut Self, theShape) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:132 - `BOPAlgo_PaveFiller::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_inherited_Arguments(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:134 - `BOPAlgo_PaveFiller::Context()`
+    pub fn context(&mut self) -> &crate::ffi::HandleIntToolsContext {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_inherited_Context(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:136 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
+    pub fn set_section_attribute(&mut self, theSecAttr: &SectionAttribute) {
+        unsafe {
+            crate::ffi::BOPAlgo_CheckerSI_inherited_SetSectionAttribute(
+                self as *mut Self,
+                theSecAttr,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:141 - `BOPAlgo_PaveFiller::SetNonDestructive()`
+    pub fn set_non_destructive(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_CheckerSI_inherited_SetNonDestructive(self as *mut Self, theFlag)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:146 - `BOPAlgo_PaveFiller::NonDestructive()`
+    pub fn non_destructive(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_NonDestructive(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:152 - `BOPAlgo_PaveFiller::SetGlue()`
+    pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
+        unsafe {
+            crate::ffi::BOPAlgo_CheckerSI_inherited_SetGlue(self as *mut Self, theGlue.into())
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:155 - `BOPAlgo_PaveFiller::Glue()`
+    pub fn glue(&self) -> crate::bop_algo::GlueEnum {
+        unsafe {
+            crate::bop_algo::GlueEnum::try_from(crate::ffi::BOPAlgo_CheckerSI_inherited_Glue(
+                self as *const Self,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:158 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
+    pub fn set_avoid_build_p_curve(&mut self, theValue: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_CheckerSI_inherited_SetAvoidBuildPCurve(self as *mut Self, theValue)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:161 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
+    pub fn is_avoid_build_p_curve(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_IsAvoidBuildPCurve(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
+    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_inherited_Allocator(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
+    pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_AddError(self as *mut Self, theAlert) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
+    pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_AddWarning(self as *mut Self, theAlert) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:73 - `BOPAlgo_Options::HasErrors()`
+    pub fn has_errors(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_HasErrors(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
+    pub fn has_error(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_HasError(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:82 - `BOPAlgo_Options::HasWarnings()`
+    pub fn has_warnings(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_HasWarnings(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
+    pub fn has_warning(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_HasWarning(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
+    pub fn get_report(&self) -> &crate::ffi::HandleMessageReport {
+        unsafe { &*(crate::ffi::BOPAlgo_CheckerSI_inherited_GetReport(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
+    pub fn clear_warnings(&mut self) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_ClearWarnings(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:114 - `BOPAlgo_Options::SetRunParallel()`
+    pub fn set_run_parallel(&mut self, theFlag: bool) {
+        unsafe {
+            crate::ffi::BOPAlgo_CheckerSI_inherited_SetRunParallel(self as *mut Self, theFlag)
+        }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:117 - `BOPAlgo_Options::RunParallel()`
+    pub fn run_parallel(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_RunParallel(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:123 - `BOPAlgo_Options::SetFuzzyValue()`
+    pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_SetFuzzyValue(self as *mut Self, theFuzz) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:126 - `BOPAlgo_Options::FuzzyValue()`
+    pub fn fuzzy_value(&self) -> f64 {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_FuzzyValue(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:132 - `BOPAlgo_Options::SetUseOBB()`
+    pub fn set_use_obb(&mut self, theUseOBB: bool) {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_SetUseOBB(self as *mut Self, theUseOBB) }
+    }
+
+    /// Inherited: **Source:** `BOPAlgo_Options.hxx`:135 - `BOPAlgo_Options::UseOBB()`
+    pub fn use_obb(&self) -> bool {
+        unsafe { crate::ffi::BOPAlgo_CheckerSI_inherited_UseOBB(self as *const Self) }
+    }
+}
+
+// ========================
 // From BOPAlgo_MakeConnected.hxx
 // ========================
 

@@ -130,6 +130,10 @@ pub struct ResolvedClass {
     pub methods: Vec<SymbolId>,
     /// Static method symbol IDs
     pub static_methods: Vec<SymbolId>,
+    /// All method names declared in this class (public AND protected/private).
+    /// Used to detect when an intermediate class has overridden a public ancestor
+    /// method as protected (access narrowing), preventing binding generation.
+    pub all_method_names: HashSet<String>,
 }
 
 /// Information about a resolved constructor
@@ -1015,6 +1019,7 @@ fn resolve_class(
         constructors: constructor_ids,
         methods: method_ids,
         static_methods: static_method_ids,
+        all_method_names: class.all_method_names.clone(),
     };
     
     table.classes_by_module

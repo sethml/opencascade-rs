@@ -2436,6 +2436,10 @@ fn compute_inherited_method_bindings(
     let existing_method_names: HashSet<String> =
         class.methods.iter().map(|m| m.name.clone()).collect();
     let mut seen_methods: HashSet<String> = HashSet::new();
+    // Methods that an intermediate ancestor has re-declared as protected/private.
+    // These must not be generated as inherited bindings even if a more-distant
+    // ancestor exposes them publicly (e.g. BOPAlgo_PaveFiller narrowing Clear()).
+    let mut protected_in_ancestors: HashSet<String> = HashSet::new();
     let mut result = Vec::new();
 
     let ancestors = symbol_table.get_all_ancestors_by_name(&class.name);
@@ -2443,6 +2447,18 @@ fn compute_inherited_method_bindings(
     for ancestor_name in &ancestors {
         if let Some(ancestor_class) = symbol_table.class_by_name(ancestor_name) {
             let ancestor_methods = symbol_table.included_methods(ancestor_class);
+
+            // Collect public method names for this ancestor.
+            let ancestor_public_names: HashSet<&str> =
+                ancestor_methods.iter().map(|m| m.cpp_name.as_str()).collect();
+            // Any method declared by this ancestor (in all_method_names) that is
+            // NOT publicly exposed has been narrowed (protected/private override).
+            // Block it from being inherited from further-up ancestors.
+            for method_name in &ancestor_class.all_method_names {
+                if !ancestor_public_names.contains(method_name.as_str()) {
+                    protected_in_ancestors.insert(method_name.clone());
+                }
+            }
 
             for resolved_method in ancestor_methods {
                 if existing_method_names.contains(&resolved_method.cpp_name) {
@@ -2452,6 +2468,12 @@ fn compute_inherited_method_bindings(
                     continue;
                 }
                 if seen_methods.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+                // Skip methods narrowed to protected/private in an intermediate ancestor.
+                // Example: BOPAlgo_PaveFiller overrides BOPAlgo_Options::Clear() as
+                // protected; BOPAlgo_CheckerSI must not inherit Clear() from Options.
+                if protected_in_ancestors.contains(&resolved_method.cpp_name) {
                     continue;
                 }
 

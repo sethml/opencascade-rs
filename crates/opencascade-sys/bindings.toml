@@ -246,9 +246,6 @@ exclude_headers = [
     # that the generator can't resolve correctly.
     "BVH_Properties.hxx",
 
-    # Protected inherited member (BOPAlgo_PaveFiller::Clear is protected).
-    "BOPAlgo_CheckerSI.hxx",
-
     # Codegen bug: val_enum_ undeclared identifier.
     "ShapeProcess_ShapeContext.hxx",
 
