@@ -226,6 +226,7 @@ exclude_headers = [
 
     # Protected inheritance from Message_ProgressScope makes operator new/delete
     # protected; the class cannot be heap-allocated via std::make_unique.
+    # This is intentional to hide the parent API. The class is stack-only by design.
     "Message_LazyProgressScope.hxx",
 
     # No suitable operator delete for Poly_CoherentTriPtr.
@@ -258,12 +259,6 @@ exclude_headers = [
     # Codegen bug: val_enum_ undeclared identifier.
     "ShapeProcess_ShapeContext.hxx",
 
-    # TDataStd_NamedData: redefinition of wrapper functions (overload clash).
-    "TDataStd_NamedData.hxx",
-
-    # TObj_Object: conflicting types for get_child_label.
-    "TObj_Object.hxx",
-
     # Protected operator delete (TDF_LabelNode).
     "TDF_LabelNode.hxx",
 
@@ -272,10 +267,6 @@ exclude_headers = [
 
     # XSControl_Vars: const char*& output parameter (name) mishandled by generator.
     "XSControl_Vars.hxx",
-
-    # TObj_HiddenPartition: duplicate new_label method — static constructor and
-    # inherited method collide in generated Rust code.
-    "TObj_HiddenPartition.hxx",
 
     # Message_Report: ActiveMetrics() return type NCollection_IndexedMap<Message_MetricType>
     # is misresolved to Standard_Integer by clang in batch parsing mode.

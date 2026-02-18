@@ -18,7 +18,7 @@ the user if they want to speed them up.
 
 Do not use /tmp/ for temporary files. Use tmp/ in the project directory instead.
 
-When writing scripts, if they're more than 5 lines write to a temporary file rather than using shell quoting to avoid quoting errors.
+When writing scripts, if they're more than 5 lines write to a temporary file rather than using shell quoting to avoid quoting errors. When doing a git commit, write the commit message to a temporary file rather than using shell quoting.
 
 Never git commit unless explicitly asked to do so.
 

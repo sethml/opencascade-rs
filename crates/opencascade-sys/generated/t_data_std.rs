@@ -6605,6 +6605,597 @@ impl Name {
 }
 
 // ========================
+// From TDataStd_NamedData.hxx
+// ========================
+
+/// **Source:** `TDataStd_NamedData.hxx`:39 - `TDataStd_NamedData`
+/// Contains a named data.
+pub use crate::ffi::TDataStd_NamedData as NamedData;
+
+unsafe impl crate::CppDeletable for NamedData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TDataStd_NamedData_destructor(ptr);
+    }
+}
+
+impl NamedData {
+    /// **Source:** `TDataStd_NamedData.hxx`:50 - `TDataStd_NamedData::TDataStd_NamedData()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_ctor()) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:53 - `TDataStd_NamedData::HasIntegers()`
+    /// Returns true if at least one named integer value is kept in the attribute.
+    pub fn has_integers(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_integers(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:57 - `TDataStd_NamedData::HasInteger()`
+    /// Returns true if the attribute contains specified by Name
+    /// integer value.
+    pub fn has_integer(&self, theName: &crate::t_collection::ExtendedString) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_integer(self as *const Self, theName) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:62 - `TDataStd_NamedData::GetInteger()`
+    /// Returns the integer value specified by the Name.
+    /// It returns 0 if internal map doesn't contain the specified
+    /// integer (use HasInteger() to check before).
+    pub fn get_integer(&mut self, theName: &crate::t_collection::ExtendedString) -> i32 {
+        unsafe { crate::ffi::TDataStd_NamedData_get_integer(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:66 - `TDataStd_NamedData::SetInteger()`
+    /// Defines a named integer.
+    /// If the integer already exists, it changes its value to <theInteger>.
+    pub fn set_integer(&mut self, theName: &crate::t_collection::ExtendedString, theInteger: i32) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_set_integer(self as *mut Self, theName, theInteger)
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:70 - `TDataStd_NamedData::GetIntegersContainer()`
+    /// Returns the internal container of named integers.
+    pub fn get_integers_container(&mut self) -> &crate::ffi::TColStd_DataMapOfStringInteger {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_get_integers_container(self as *mut Self)) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:73 - `TDataStd_NamedData::ChangeIntegers()`
+    /// Replace the container content by new content of the <theIntegers>.
+    pub fn change_integers(&mut self, theIntegers: &crate::ffi::TColStd_DataMapOfStringInteger) {
+        unsafe { crate::ffi::TDataStd_NamedData_change_integers(self as *mut Self, theIntegers) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:76 - `TDataStd_NamedData::HasReals()`
+    /// Returns true if at least one named real value is kept in the attribute.
+    pub fn has_reals(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_reals(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:79 - `TDataStd_NamedData::HasReal()`
+    /// Returns true if the attribute contains a real specified by Name.
+    pub fn has_real(&self, theName: &crate::t_collection::ExtendedString) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_real(self as *const Self, theName) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:84 - `TDataStd_NamedData::GetReal()`
+    /// Returns the named real.
+    /// It returns 0.0 if there is no such a named real
+    /// (use HasReal()).
+    pub fn get_real(&mut self, theName: &crate::t_collection::ExtendedString) -> f64 {
+        unsafe { crate::ffi::TDataStd_NamedData_get_real(self as *mut Self, theName) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:88 - `TDataStd_NamedData::SetReal()`
+    /// Defines a named real.
+    /// If the real already exists, it changes its value to <theReal>.
+    pub fn set_real(&mut self, theName: &crate::t_collection::ExtendedString, theReal: f64) {
+        unsafe { crate::ffi::TDataStd_NamedData_set_real(self as *mut Self, theName, theReal) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:98 - `TDataStd_NamedData::HasStrings()`
+    /// Returns true if there are some named strings in the attribute.
+    pub fn has_strings(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_strings(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:101 - `TDataStd_NamedData::HasString()`
+    /// Returns true if the attribute contains this named string.
+    pub fn has_string(&self, theName: &crate::t_collection::ExtendedString) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_string(self as *const Self, theName) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:106 - `TDataStd_NamedData::GetString()`
+    /// Returns the named string.
+    /// It returns an empty string if there is no such a named string
+    /// (use HasString()).
+    pub fn get_string(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+    ) -> &crate::t_collection::ExtendedString {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_get_string(self as *mut Self, theName)) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:111 - `TDataStd_NamedData::SetString()`
+    /// Defines a named string.
+    /// If the string already exists, it changes its value to <theString>.
+    pub fn set_string(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+        theString: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe { crate::ffi::TDataStd_NamedData_set_string(self as *mut Self, theName, theString) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:121 - `TDataStd_NamedData::HasBytes()`
+    /// Returns true if there are some named bytes in the attribute.
+    pub fn has_bytes(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_bytes(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:124 - `TDataStd_NamedData::HasByte()`
+    /// Returns true if the attribute contains this named byte.
+    pub fn has_byte(&self, theName: &crate::t_collection::ExtendedString) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_byte(self as *const Self, theName) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:143 - `TDataStd_NamedData::HasArraysOfIntegers()`
+    /// Returns true if there are some named arrays of integer values in the attribute.
+    pub fn has_arrays_of_integers(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_arrays_of_integers(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:147 - `TDataStd_NamedData::HasArrayOfIntegers()`
+    /// Returns true if the attribute contains this named array of integer values.
+    pub fn has_array_of_integers(&self, theName: &crate::t_collection::ExtendedString) -> bool {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_has_array_of_integers(self as *const Self, theName)
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:152 - `TDataStd_NamedData::GetArrayOfIntegers()`
+    /// Returns the named array of integer values.
+    /// It returns a NULL Handle if there is no such a named array of integers
+    /// (use HasArrayOfIntegers()).
+    pub fn get_array_of_integers(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+    ) -> &crate::ffi::HandleTColStdHArray1OfInteger {
+        unsafe {
+            &*(crate::ffi::TDataStd_NamedData_get_array_of_integers(self as *mut Self, theName))
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:159 - `TDataStd_NamedData::SetArrayOfIntegers()`
+    /// Defines a named array of integer values.
+    /// @param[in] theName  key
+    /// @param[in] theArrayOfIntegers  new value, overrides existing (passed array will be copied by
+    /// value!)
+    pub fn set_array_of_integers(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+        theArrayOfIntegers: &crate::ffi::HandleTColStdHArray1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_set_array_of_integers(
+                self as *mut Self,
+                theName,
+                theArrayOfIntegers,
+            )
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:174 - `TDataStd_NamedData::HasArraysOfReals()`
+    /// Returns true if there are some named arrays of real values in the attribute.
+    pub fn has_arrays_of_reals(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_arrays_of_reals(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:177 - `TDataStd_NamedData::HasArrayOfReals()`
+    /// Returns true if the attribute contains this named array of real values.
+    pub fn has_array_of_reals(&self, theName: &crate::t_collection::ExtendedString) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_array_of_reals(self as *const Self, theName) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:182 - `TDataStd_NamedData::GetArrayOfReals()`
+    /// Returns the named array of real values.
+    /// It returns a NULL Handle if there is no such a named array of reals
+    /// (use HasArrayOfReals()).
+    pub fn get_array_of_reals(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+    ) -> &crate::ffi::HandleTColStdHArray1OfReal {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_get_array_of_reals(self as *mut Self, theName)) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:189 - `TDataStd_NamedData::SetArrayOfReals()`
+    /// Defines a named array of real values.
+    /// @param[in] theName key
+    /// @param[in] theArrayOfReals new value, overrides existing (passed array will be copied by
+    /// value!)
+    pub fn set_array_of_reals(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+        theArrayOfReals: &crate::ffi::HandleTColStdHArray1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_set_array_of_reals(
+                self as *mut Self,
+                theName,
+                theArrayOfReals,
+            )
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:204 - `TDataStd_NamedData::Clear()`
+    /// Clear data.
+    pub fn clear(&mut self) {
+        unsafe { crate::ffi::TDataStd_NamedData_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:236 - `TDataStd_NamedData::HasDeferredData()`
+    /// @name late-load deferred data interface
+    /// Returns TRUE if some data is not loaded from deferred storage and can be loaded using
+    /// LoadDeferredData().
+    ///
+    /// Late-load interface allows to avoid loading auxiliary data into memory until it is needed by
+    /// application and also speed up reader by skipping data chunks in file. This feature requires
+    /// file format having special structure, and usually implies read-only access, therefore default
+    /// implementation will return FALSE here.
+    ///
+    /// Late-load elements require special attention to ensure data consistency,
+    /// as such elements are created in undefined state (no data) and Undo/Redo mechanism will not
+    /// work until deferred data being loaded.
+    ///
+    /// Usage scenarios:
+    /// - Application displays model in read-only way.
+    /// Late-load elements are loaded temporarily on demand and immediately unloaded.
+    /// theNamedData->LoadDeferredData (true);
+    /// TCollection_AsciiString aValue = theNamedData->GetString (theKey);
+    /// theNamedData->UnloadDeferredData();
+    /// - Application saves the model into another format.
+    /// All late-load elements should be loaded (at least temporary during operation).
+    /// - Application modifies the model.
+    /// Late-load element should be loaded with removed link to deferred storage,
+    /// so that Undo()/Redo() will work as expected since loading.
+    /// theNamedData->LoadDeferredData (false);
+    /// theNamedData->SetString (theKey, theNewValue);
+    pub fn has_deferred_data(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_has_deferred_data(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:245 - `TDataStd_NamedData::LoadDeferredData()`
+    /// Load data from deferred storage, without calling Backup().
+    /// As result, the content of the object will be overridden by data from deferred storage (which
+    /// is normally read-only).
+    /// @param[in] theToKeepDeferred  when TRUE, the link to deferred storage will be preserved
+    /// so that it will be possible calling UnloadDeferredData()
+    /// afterwards for releasing memory
+    /// @return FALSE if deferred storage is unavailable or deferred data has been already loaded
+    pub fn load_deferred_data(&mut self, theToKeepDeferred: bool) -> bool {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_load_deferred_data(self as *mut Self, theToKeepDeferred)
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:255 - `TDataStd_NamedData::UnloadDeferredData()`
+    /// Releases data if object has connected deferred storage, without calling Backup().
+    /// WARNING! This operation does not unload modifications to deferred storage (normally it is
+    /// read-only), so that modifications will be discarded (if any).
+    /// @return FALSE if object has no deferred data
+    pub fn unload_deferred_data(&mut self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_unload_deferred_data(self as *mut Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:259 - `TDataStd_NamedData::clear()`
+    /// Clear data without calling Backup().
+    pub fn clear_2(&mut self) {
+        unsafe { crate::ffi::TDataStd_NamedData_clear_2(self as *mut Self) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:262 - `TDataStd_NamedData::setInteger()`
+    /// Defines a named integer (without calling Backup).
+    pub fn set_integer_2(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+        theInteger: i32,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_set_integer_2(self as *mut Self, theName, theInteger)
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:266 - `TDataStd_NamedData::setReal()`
+    /// Defines a named real (without calling Backup).
+    pub fn set_real_2(&mut self, theName: &crate::t_collection::ExtendedString, theReal: f64) {
+        unsafe { crate::ffi::TDataStd_NamedData_set_real_2(self as *mut Self, theName, theReal) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:270 - `TDataStd_NamedData::setString()`
+    /// Defines a named string (without calling Backup).
+    pub fn set_string_2(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+        theString: &crate::t_collection::ExtendedString,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_set_string_2(self as *mut Self, theName, theString)
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:278 - `TDataStd_NamedData::setArrayOfIntegers()`
+    /// Defines a named array of integer values (without calling Backup).
+    pub fn set_array_of_integers_2(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+        theArrayOfIntegers: &crate::ffi::HandleTColStdHArray1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_set_array_of_integers_2(
+                self as *mut Self,
+                theName,
+                theArrayOfIntegers,
+            )
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:283 - `TDataStd_NamedData::setArrayOfReals()`
+    /// Defines a named array of real values (without calling Backup).
+    pub fn set_array_of_reals_2(
+        &mut self,
+        theName: &crate::t_collection::ExtendedString,
+        theArrayOfReals: &crate::ffi::HandleTColStdHArray1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_set_array_of_reals_2(
+                self as *mut Self,
+                theName,
+                theArrayOfReals,
+            )
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:287 - `TDataStd_NamedData::ID()`
+    /// @name TDF_Attribute interface
+    pub fn id(&self) -> &crate::standard::GUID {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_id(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:289 - `TDataStd_NamedData::Restore()`
+    pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::TDataStd_NamedData_restore(self as *mut Self, With) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:291 - `TDataStd_NamedData::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_new_empty(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:293 - `TDataStd_NamedData::Paste()`
+    pub fn paste(
+        &self,
+        Into: &crate::ffi::HandleTDFAttribute,
+        RT: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe { crate::ffi::TDataStd_NamedData_paste(self as *const Self, Into, RT) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:302 - `TDataStd_NamedData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:43 - `TDataStd_NamedData::GetID()`
+    /// Returns the ID of the named data attribute.
+    pub fn get_id() -> &'static crate::standard::GUID {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_get_id()) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:302 - `TDataStd_NamedData::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TDataStd_NamedData_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:302 - `TDataStd_NamedData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_get_type_descriptor()) }
+    }
+
+    /// Upcast to TDF_Attribute
+    pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_as_TDF_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to TDF_Attribute (mutable)
+    pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
+        unsafe { &mut *(crate::ffi::TDataStd_NamedData_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_SetID(self as *mut Self, arg0) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_inherited_Label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    pub fn transaction(&self) -> i32 {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_Transaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    pub fn until_transaction(&self) -> i32 {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_UntilTransaction(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    pub fn is_valid(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_IsValid(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    pub fn is_new(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_IsNew(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    pub fn is_forgotten(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_IsForgotten(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_IsAttribute(self as *const Self, anID) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    pub fn find_attribute(
+        &self,
+        anID: &crate::standard::GUID,
+        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_AddAttribute(self as *const Self, other) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_ForgetAttribute(self as *const Self, aguid)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    pub fn forget_all_attributes(&self, clearChildren: bool) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    pub fn after_addition(&mut self) {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_AfterAddition(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    pub fn before_removal(&mut self) {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_BeforeRemoval(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    pub fn before_forget(&mut self) {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_BeforeForget(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    pub fn after_resume(&mut self) {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_AfterResume(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_AfterRetrieval(self as *mut Self, forceIt)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    pub fn before_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    pub fn after_undo(
+        &mut self,
+        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        forceIt: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_AfterUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    pub fn before_commit_transaction(&mut self) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_BeforeCommitTransaction(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    pub fn backup(&mut self) {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_Backup(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    pub fn is_backuped(&self) -> bool {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_IsBackuped(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_inherited_BackupCopy(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_inherited_References(self as *const Self, aDataSet)
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    pub fn forget(&mut self, aTransaction: i32) {
+        unsafe { crate::ffi::TDataStd_NamedData_inherited_Forget(self as *mut Self, aTransaction) }
+    }
+}
+
+// ========================
 // From TDataStd_NoteBook.hxx
 // ========================
 
@@ -10076,5 +10667,4 @@ pub use crate::ffi::{
     TDataStd_DataMapOfStringReal as DataMapOfStringReal,
     TDataStd_DataMapOfStringString as DataMapOfStringString, TDataStd_LabelArray1 as LabelArray1,
     TDataStd_ListOfByte as ListOfByte, TDataStd_ListOfExtendedString as ListOfExtendedString,
-    TDataStd_NamedData as NamedData,
 };

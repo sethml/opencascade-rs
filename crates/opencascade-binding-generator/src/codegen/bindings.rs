@@ -1393,7 +1393,8 @@ fn compute_wrapper_method_names(methods: &[&Method]) -> Vec<String> {
         *name_counts.entry(method.name.clone()).or_insert(0) += 1;
     }
 
-    methods
+    // Pass 1: resolve C++ overloads (same C++ name, different params)
+    let mut names: Vec<String> = methods
         .iter()
         .map(|method| {
             let base_name = safe_method_name(&method.name);
@@ -1415,7 +1416,21 @@ fn compute_wrapper_method_names(methods: &[&Method]) -> Vec<String> {
                 base_name
             }
         })
-        .collect()
+        .collect();
+
+    // Pass 2: resolve cross-name collisions (different C++ names that produce
+    // the same snake_case name, e.g. SetInteger/setInteger → set_integer).
+    // Append _2, _3, ... to later duplicates.
+    let mut seen: HashMap<String, usize> = HashMap::new();
+    for name in &mut names {
+        let count = seen.entry(name.clone()).or_insert(0);
+        *count += 1;
+        if *count > 1 {
+            *name = format!("{}_{}", name, count);
+        }
+    }
+
+    names
 }
 
 /// Compute static method names with 3-level conflict resolution.
@@ -1431,7 +1446,7 @@ fn compute_static_method_names(
         *name_counts.entry(method.name.clone()).or_insert(0) += 1;
     }
 
-    methods
+    let mut results: Vec<(String, String)> = methods
         .iter()
         .map(|method| {
             let base_name = safe_method_name(&method.name);
@@ -1474,7 +1489,26 @@ fn compute_static_method_names(
 
             (ffi_fn_name_base, impl_method_name)
         })
-        .collect()
+        .collect();
+
+    // Pass 2: resolve cross-name collisions (different C++ names that produce
+    // the same snake_case name). Append _2, _3, ... to later duplicates.
+    let mut seen_ffi: HashMap<String, usize> = HashMap::new();
+    let mut seen_impl: HashMap<String, usize> = HashMap::new();
+    for (ffi_name, impl_name) in &mut results {
+        let ffi_count = seen_ffi.entry(ffi_name.clone()).or_insert(0);
+        *ffi_count += 1;
+        if *ffi_count > 1 {
+            *ffi_name = format!("{}_{}", ffi_name, ffi_count);
+        }
+        let impl_count = seen_impl.entry(impl_name.clone()).or_insert(0);
+        *impl_count += 1;
+        if *impl_count > 1 {
+            *impl_name = format!("{}_{}", impl_name, impl_count);
+        }
+    }
+
+    results
 }
 
 // ── Abstract class detection ────────────────────────────────────────────────
@@ -1770,10 +1804,30 @@ pub fn compute_class_bindings(
         .chain(wrapper_methods.iter().map(|m| m.impl_method_name.as_str()))
         .chain(static_methods.iter().map(|m| m.impl_method_name.as_str()))
         .collect();
-    let inherited_methods: Vec<InheritedMethodBinding> = inherited_methods_raw
+    let mut inherited_methods: Vec<InheritedMethodBinding> = inherited_methods_raw
         .into_iter()
         .filter(|im| !ctor_and_method_names.contains(im.impl_method_name.as_str()))
         .collect();
+    // Dedup inherited methods against each other (different C++ names that
+    // produce the same snake_case, e.g. GetChildLabel/getChildLabel).
+    // Also dedup the FFI function names (C++ wrappers) to avoid link-time
+    // collisions.
+    {
+        let mut seen_impl: HashMap<String, usize> = HashMap::new();
+        let mut seen_ffi: HashMap<String, usize> = HashMap::new();
+        for im in &mut inherited_methods {
+            let impl_count = seen_impl.entry(im.impl_method_name.clone()).or_insert(0);
+            *impl_count += 1;
+            if *impl_count > 1 {
+                im.impl_method_name = format!("{}_{}", im.impl_method_name, impl_count);
+            }
+            let ffi_count = seen_ffi.entry(im.ffi_fn_name.clone()).or_insert(0);
+            *ffi_count += 1;
+            if *ffi_count > 1 {
+                im.ffi_fn_name = format!("{}_{}", im.ffi_fn_name, ffi_count);
+            }
+        }
+    }
     // ── POD struct fields ────────────────────────────────────────────────
     let pod_fields = if class.is_pod_struct {
         compute_pod_field_bindings(&class.fields)

@@ -522,6 +522,485 @@ impl CheckModel {
 }
 
 // ========================
+// From TObj_HiddenPartition.hxx
+// ========================
+
+/// **Source:** `TObj_HiddenPartition.hxx`:27 - `TObj_HiddenPartition`
+///
+/// This class is partition is predefined hidden flag
+pub use crate::ffi::TObj_HiddenPartition as HiddenPartition;
+
+unsafe impl crate::CppDeletable for HiddenPartition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TObj_HiddenPartition_destructor(ptr);
+    }
+}
+
+impl HiddenPartition {
+    /// **Source:** `TObj_HiddenPartition.hxx`:31 - `TObj_HiddenPartition::TObj_HiddenPartition()`
+    /// constructor
+    pub fn new_label(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_ctor_label(theLabel)) }
+    }
+
+    /// **Source:** `TObj_HiddenPartition.hxx`:34 - `TObj_HiddenPartition::GetTypeFlags()`
+    /// Returns all flags of father except Visible
+    pub fn get_type_flags(&self) -> i32 {
+        unsafe { crate::ffi::TObj_HiddenPartition_get_type_flags(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_HiddenPartition.hxx`:41 - `TObj_HiddenPartition::DynamicType()`
+    /// CASCADE RTTI
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_HiddenPartition_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_HiddenPartition.hxx`:41 - `TObj_HiddenPartition::get_type_name()`
+    /// CASCADE RTTI
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TObj_HiddenPartition_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TObj_HiddenPartition.hxx`:41 - `TObj_HiddenPartition::get_type_descriptor()`
+    /// CASCADE RTTI
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_HiddenPartition_get_type_descriptor()) }
+    }
+
+    /// Upcast to TObj_Partition
+    pub fn as_partition(&self) -> &Partition {
+        unsafe { &*(crate::ffi::TObj_HiddenPartition_as_TObj_Partition(self as *const Self)) }
+    }
+
+    /// Upcast to TObj_Partition (mutable)
+    pub fn as_partition_mut(&mut self) -> &mut Partition {
+        unsafe { &mut *(crate::ffi::TObj_HiddenPartition_as_TObj_Partition_mut(self as *mut Self)) }
+    }
+
+    /// Upcast to TObj_Object
+    pub fn as_object(&self) -> &Object {
+        unsafe { &*(crate::ffi::TObj_HiddenPartition_as_TObj_Object(self as *const Self)) }
+    }
+
+    /// Upcast to TObj_Object (mutable)
+    pub fn as_object_mut(&mut self) -> &mut Object {
+        unsafe { &mut *(crate::ffi::TObj_HiddenPartition_as_TObj_Object_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `TObj_Partition.hxx`:66 - `TObj_Partition::SetName()`
+    pub fn set_name(&self, theName: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_SetName(self as *const Self, theName) }
+    }
+
+    /// Inherited: **Source:** `TObj_Partition.hxx`:75 - `TObj_Partition::AfterRetrieval()`
+    pub fn after_retrieval(&mut self) {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_AfterRetrieval(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Partition.hxx`:86 - `TObj_Partition::SetNamePrefix()`
+    pub fn set_name_prefix(&mut self, thePrefix: &crate::ffi::HandleTCollectionHExtendedString) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_SetNamePrefix(self as *mut Self, thePrefix)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Partition.hxx`:89 - `TObj_Partition::GetNamePrefix()`
+    pub fn get_name_prefix(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetNamePrefix(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Partition.hxx`:94 - `TObj_Partition::GetNewName()`
+    pub fn get_new_name(
+        &mut self,
+        theIsToChangeCount: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetNewName(
+                self as *mut Self,
+                theIsToChangeCount,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Partition.hxx`:98 - `TObj_Partition::GetLastIndex()`
+    pub fn get_last_index(&self) -> i32 {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_GetLastIndex(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Partition.hxx`:101 - `TObj_Partition::SetLastIndex()`
+    pub fn set_last_index(&mut self, theIndex: i32) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_SetLastIndex(self as *mut Self, theIndex)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Partition.hxx`:118 - `TObj_Partition::Update()`
+    pub fn update(&mut self) -> bool {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_Update(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:130 - `TObj_Object::GetChildren()`
+    pub fn get_children(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetChildren(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:134 - `TObj_Object::GetChildLabel()`
+    pub fn get_child_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetChildLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:137 - `TObj_Object::getChildLabel()`
+    pub fn get_child_label_2(&self, theRank: i32) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_getChildLabel(
+                self as *const Self,
+                theRank,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:145 - `TObj_Object::GetLabel()`
+    pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:148 - `TObj_Object::GetDataLabel()`
+    pub fn get_data_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetDataLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:151 - `TObj_Object::GetReferenceLabel()`
+    pub fn get_reference_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetReferenceLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:163 - `TObj_Object::GetName()`
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetName(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:183 - `TObj_Object::GetNameForClone()`
+    pub fn get_name_for_clone(
+        &self,
+        arg0: &crate::ffi::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetNameForClone(
+                self as *const Self,
+                arg0,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:194 - `TObj_Object::HasReference()`
+    pub fn has_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_HasReference(self as *const Self, theObject)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:198 - `TObj_Object::GetReferences()`
+    pub fn get_references(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetReferences(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:202 - `TObj_Object::RemoveAllReferences()`
+    pub fn remove_all_references(&mut self) {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_RemoveAllReferences(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:207 - `TObj_Object::GetBackReferences()`
+    pub fn get_back_references(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetBackReferences(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:213 - `TObj_Object::AddBackReference()`
+    pub fn add_back_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_AddBackReference(
+                self as *mut Self,
+                theObject,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:218 - `TObj_Object::RemoveBackReference()`
+    pub fn remove_back_reference(
+        &mut self,
+        theObject: &crate::ffi::HandleTObjObject,
+        theSingleOnly: bool,
+    ) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_RemoveBackReference(
+                self as *mut Self,
+                theObject,
+                theSingleOnly,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:224 - `TObj_Object::RemoveBackReferences()`
+    pub fn remove_back_references(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_RemoveBackReferences(
+                self as *mut Self,
+                theMode.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:227 - `TObj_Object::ClearBackReferences()`
+    pub fn clear_back_references(&mut self) {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_ClearBackReferences(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:230 - `TObj_Object::HasBackReferences()`
+    pub fn has_back_references(&self) -> bool {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_HasBackReferences(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:235 - `TObj_Object::ReplaceReference()`
+    pub fn replace_reference(
+        &mut self,
+        theOldObject: &crate::ffi::HandleTObjObject,
+        theNewObject: &crate::ffi::HandleTObjObject,
+    ) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_ReplaceReference(
+                self as *mut Self,
+                theOldObject,
+                theNewObject,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:241 - `TObj_Object::GetBadReference()`
+    pub fn get_bad_reference(
+        &self,
+        theRoot: &crate::tdf::Label,
+        theBadReference: &mut crate::tdf::Label,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_GetBadReference(
+                self as *const Self,
+                theRoot,
+                theBadReference,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:254 - `TObj_Object::RelocateReferences()`
+    pub fn relocate_references(
+        &mut self,
+        theFromRoot: &crate::tdf::Label,
+        theToRoot: &crate::tdf::Label,
+        theUpdateBackRefs: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_RelocateReferences(
+                self as *mut Self,
+                theFromRoot,
+                theToRoot,
+                theUpdateBackRefs,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:262 - `TObj_Object::CanRemoveReference()`
+    pub fn can_remove_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_CanRemoveReference(
+                self as *const Self,
+                theObject,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:265 - `TObj_Object::RemoveReference()`
+    pub fn remove_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_RemoveReference(self as *mut Self, theObject)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:270 - `TObj_Object::BeforeForgetReference()`
+    pub fn before_forget_reference(&mut self, arg0: &crate::tdf::Label) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_BeforeForgetReference(
+                self as *mut Self,
+                arg0,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:279 - `TObj_Object::CanDetach()`
+    pub fn can_detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_CanDetach(self as *mut Self, theMode.into())
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:287 - `TObj_Object::Detach()`
+    pub fn detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_Detach(self as *mut Self, theMode.into())
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:310 - `TObj_Object::GetFatherObject()`
+    pub fn get_father_object(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_GetFatherObject(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:320 - `TObj_Object::IsAlive()`
+    pub fn is_alive(&self) -> bool {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_IsAlive(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:334 - `TObj_Object::Clone()`
+    pub fn clone(
+        &mut self,
+        theTargetLabel: &crate::tdf::Label,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_HiddenPartition_inherited_Clone(
+                self as *mut Self,
+                theTargetLabel,
+                theRelocTable,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:339 - `TObj_Object::CopyReferences()`
+    pub fn copy_references(
+        &mut self,
+        theTargetObject: &crate::ffi::HandleTObjObject,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_CopyReferences(
+                self as *mut Self,
+                theTargetObject,
+                theRelocTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:343 - `TObj_Object::CopyChildren()`
+    pub fn copy_children(
+        &mut self,
+        theTargetLabel: &mut crate::tdf::Label,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_CopyChildren(
+                self as *mut Self,
+                theTargetLabel,
+                theRelocTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:352 - `TObj_Object::GetOrder()`
+    pub fn get_order(&self) -> i32 {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_GetOrder(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:363 - `TObj_Object::HasModifications()`
+    pub fn has_modifications(&self) -> bool {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_HasModifications(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:389 - `TObj_Object::GetFlags()`
+    pub fn get_flags(&self) -> i32 {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_GetFlags(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:392 - `TObj_Object::SetFlags()`
+    pub fn set_flags(&mut self, theMask: i32) {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_SetFlags(self as *mut Self, theMask) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:395 - `TObj_Object::TestFlags()`
+    pub fn test_flags(&self, theMask: i32) -> bool {
+        unsafe {
+            crate::ffi::TObj_HiddenPartition_inherited_TestFlags(self as *const Self, theMask)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:398 - `TObj_Object::ClearFlags()`
+    pub fn clear_flags(&mut self, theMask: i32) {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_ClearFlags(self as *mut Self, theMask) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:412 - `TObj_Object::BeforeStoring()`
+    pub fn before_storing(&mut self) {
+        unsafe { crate::ffi::TObj_HiddenPartition_inherited_BeforeStoring(self as *mut Self) }
+    }
+}
+
+// ========================
 // From TObj_LabelIterator.hxx
 // ========================
 
@@ -547,6 +1026,14 @@ impl LabelIterator {
     /// Move to the next Item
     pub fn next(&mut self) {
         unsafe { crate::ffi::TObj_LabelIterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_LabelIterator.hxx`:64 - `TObj_LabelIterator::Value()`
+    /// Returns the current item
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_LabelIterator_value(self as *const Self))
+        }
     }
 
     /// **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
@@ -619,6 +1106,14 @@ impl ModelIterator {
         unsafe { crate::ffi::TObj_ModelIterator_next(self as *mut Self) }
     }
 
+    /// **Source:** `TObj_ModelIterator.hxx`:50 - `TObj_ModelIterator::Value()`
+    /// Returns current object (or MainObj of Model if iteration has finished)
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_ModelIterator_value(self as *const Self))
+        }
+    }
+
     /// **Source:** `TObj_ModelIterator.hxx`:69 - `TObj_ModelIterator::DynamicType()`
     /// CASCADE RTTI
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
@@ -651,6 +1146,541 @@ impl ModelIterator {
         unsafe {
             &mut *(crate::ffi::TObj_ModelIterator_as_TObj_ObjectIterator_mut(self as *mut Self))
         }
+    }
+}
+
+// ========================
+// From TObj_Object.hxx
+// ========================
+
+/// **Source:** `TObj_Object.hxx`:43 - `TObj_Object`
+/// Basis class for transient objects in OCAF-based models
+pub use crate::ffi::TObj_Object as Object;
+
+unsafe impl crate::CppDeletable for Object {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TObj_Object_destructor(ptr);
+    }
+}
+
+impl Object {
+    /// **Source:** `TObj_Object.hxx`:130 - `TObj_Object::GetChildren()`
+    /// Returns iterator for the child objects.
+    /// This method provides tree-like view of the objects hierarchy.
+    /// The references to other objects are not considered as children.
+    /// theType narrows a variety of iterated objects
+    /// The default implementation search for children on 1 sublavel
+    /// of the children sub label
+    pub fn get_children(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_children(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:134 - `TObj_Object::GetChildLabel()`
+    /// Returns the label under which children are stored
+    pub fn get_child_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_child_label(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:137 - `TObj_Object::getChildLabel()`
+    /// Returns the label for child with rank
+    pub fn get_child_label_2(&self, theRank: i32) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_child_label_2(
+                self as *const Self,
+                theRank,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:145 - `TObj_Object::GetLabel()`
+    /// Returns the OCAF label on which object`s data are stored
+    pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_label(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:148 - `TObj_Object::GetDataLabel()`
+    /// Returns the label which is the root for data OCAF sub-tree
+    pub fn get_data_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_data_label(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:151 - `TObj_Object::GetReferenceLabel()`
+    /// Returns the label which is the root for reference OCAF sub-tree
+    pub fn get_reference_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_reference_label(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:163 - `TObj_Object::GetName()`
+    /// Returns the name of the object (empty string if object has no name)
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_name(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:166 - `TObj_Object::GetName()`
+    /// Returns the Standard_True is object has name and returns name to theName
+    pub fn get_name_extendedstring(
+        &self,
+        theName: &mut crate::t_collection::ExtendedString,
+    ) -> bool {
+        unsafe { crate::ffi::TObj_Object_get_name_extendedstring(self as *const Self, theName) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:169 - `TObj_Object::GetName()`
+    /// Returns the Standard_True is object has name and returns name to theName
+    pub fn get_name_asciistring(&self, theName: &mut crate::t_collection::AsciiString) -> bool {
+        unsafe { crate::ffi::TObj_Object_get_name_asciistring(self as *const Self, theName) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:173 - `TObj_Object::SetName()`
+    /// Sets name of the object. Returns False if theName is not unique.
+    pub fn set_name_handletcollectionhextendedstring(
+        &self,
+        theName: &crate::ffi::HandleTCollectionHExtendedString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Object_set_name_handletcollectionhextendedstring(
+                self as *const Self,
+                theName,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:176 - `TObj_Object::SetName()`
+    /// Sets name of the object. Returns False if theName is not unique.
+    pub fn set_name_handletcollectionhasciistring(
+        &self,
+        theName: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Object_set_name_handletcollectionhasciistring(
+                self as *const Self,
+                theName,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:179 - `TObj_Object::SetName()`
+    /// Sets name of the object. Returns False if theName is not unique.
+    pub fn set_name_charptr(&self, name: &str) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::TObj_Object_set_name_charptr(self as *const Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:183 - `TObj_Object::GetNameForClone()`
+    /// Returns name for copy
+    /// default implementation returns the same name
+    pub fn get_name_for_clone(
+        &self,
+        arg0: &crate::ffi::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_name_for_clone(
+                self as *const Self,
+                arg0,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:194 - `TObj_Object::HasReference()`
+    /// Returns True if object has reference to indicated object
+    pub fn has_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+        unsafe { crate::ffi::TObj_Object_has_reference(self as *const Self, theObject) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:198 - `TObj_Object::GetReferences()`
+    /// Returns an Iterator containing objects that compose the this one
+    /// theType narrows a variety of iterated objects
+    pub fn get_references(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_references(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:202 - `TObj_Object::RemoveAllReferences()`
+    /// Remove all references to other objects, by removing all reference attributes
+    pub fn remove_all_references(&mut self) {
+        unsafe { crate::ffi::TObj_Object_remove_all_references(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:207 - `TObj_Object::GetBackReferences()`
+    /// Returns iterator for the objects which depend on this one.
+    /// These referring objects may belong to other models.
+    /// theType narrows a variety of iterated objects
+    pub fn get_back_references(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_back_references(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:213 - `TObj_Object::AddBackReference()`
+    /// Registers another object as being dependent on this one.
+    /// Stores back references under sublabel 2 (purely transient data,
+    /// not subject to persistency).
+    pub fn add_back_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+        unsafe { crate::ffi::TObj_Object_add_back_reference(self as *mut Self, theObject) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:218 - `TObj_Object::RemoveBackReference()`
+    /// Removes information on dependent object (back reference).
+    /// If theSingleOnly is true only the first back reference is removed in the
+    /// case of duplicate items.
+    pub fn remove_back_reference(
+        &mut self,
+        theObject: &crate::ffi::HandleTObjObject,
+        theSingleOnly: bool,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Object_remove_back_reference(
+                self as *mut Self,
+                theObject,
+                theSingleOnly,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:224 - `TObj_Object::RemoveBackReferences()`
+    /// Removes all back reference by removing references from other to me.
+    pub fn remove_back_references(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe { crate::ffi::TObj_Object_remove_back_references(self as *mut Self, theMode.into()) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:227 - `TObj_Object::ClearBackReferences()`
+    /// The default implementation just clear the back references container
+    pub fn clear_back_references(&mut self) {
+        unsafe { crate::ffi::TObj_Object_clear_back_references(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:230 - `TObj_Object::HasBackReferences()`
+    /// Returns TRUE if object has 1 or more back references
+    pub fn has_back_references(&self) -> bool {
+        unsafe { crate::ffi::TObj_Object_has_back_references(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:235 - `TObj_Object::ReplaceReference()`
+    /// Replace reference from old object to new object.
+    /// If it is not possible, may raise exception.
+    /// If new object is null then simple remove reference to old object.
+    pub fn replace_reference(
+        &mut self,
+        theOldObject: &crate::ffi::HandleTObjObject,
+        theNewObject: &crate::ffi::HandleTObjObject,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Object_replace_reference(self as *mut Self, theOldObject, theNewObject)
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:241 - `TObj_Object::GetBadReference()`
+    /// Return True if this refers to the model theRoot belongs
+    /// to and a referred label is not a descendant of theRoot.
+    /// In this case theBadReference returns the currently referred label.
+    pub fn get_bad_reference(
+        &self,
+        theRoot: &crate::tdf::Label,
+        theBadReference: &mut crate::tdf::Label,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Object_get_bad_reference(self as *const Self, theRoot, theBadReference)
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:254 - `TObj_Object::RelocateReferences()`
+    /// Make that each reference pointing to a descendant label of
+    /// theFromRoot to point to an equivalent label under theToRoot.
+    /// Return False if a resulting reference does not point to
+    /// an TObj_Object
+    /// Example:
+    /// a referred object label = 0:3:24:7:2:7
+    /// theFromRoot             = 0:3:24
+    /// theToRoot               = 0:2
+    /// a new referred label    = 0:2:7:2:7
+    pub fn relocate_references(
+        &mut self,
+        theFromRoot: &crate::tdf::Label,
+        theToRoot: &crate::tdf::Label,
+        theUpdateBackRefs: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Object_relocate_references(
+                self as *mut Self,
+                theFromRoot,
+                theToRoot,
+                theUpdateBackRefs,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:262 - `TObj_Object::CanRemoveReference()`
+    /// Returns True if the referred object theObject can be deleted
+    /// without deletion of this object.
+    /// Default implementation does nothing and returns False.
+    pub fn can_remove_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+        unsafe { crate::ffi::TObj_Object_can_remove_reference(self as *const Self, theObject) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:265 - `TObj_Object::RemoveReference()`
+    /// Removes reference to the object by replace reference to NULL object
+    pub fn remove_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+        unsafe { crate::ffi::TObj_Object_remove_reference(self as *mut Self, theObject) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:270 - `TObj_Object::BeforeForgetReference()`
+    /// Invokes from TObj_TReference::BeforeForget().
+    /// theLabel - label on that reference become removed
+    /// Default implementation is empty
+    pub fn before_forget_reference(&mut self, arg0: &crate::tdf::Label) {
+        unsafe { crate::ffi::TObj_Object_before_forget_reference(self as *mut Self, arg0) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:279 - `TObj_Object::CanDetach()`
+    /// Checks if object can be detached with specified mode
+    pub fn can_detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe { crate::ffi::TObj_Object_can_detach(self as *mut Self, theMode.into()) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:287 - `TObj_Object::Detach()`
+    /// Deletes the object from the model.
+    /// The dependent objects are either deleted or modified when possible
+    /// (see description of TObj_DeletingMode enumeration for more details)
+    /// Returns True if deletion was successful.
+    /// Checks if object can be deleted.
+    /// Should be redefined for each specific kind of object
+    pub fn detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe { crate::ffi::TObj_Object_detach(self as *mut Self, theMode.into()) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:310 - `TObj_Object::GetFatherObject()`
+    /// Returns the father object, which may be NULL
+    /// theType gives type of father object to search
+    pub fn get_father_object(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_get_father_object(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:320 - `TObj_Object::IsAlive()`
+    /// Checks that object alive in model
+    /// Default implementation checks that object has TObject attribute at own label.
+    pub fn is_alive(&self) -> bool {
+        unsafe { crate::ffi::TObj_Object_is_alive(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:334 - `TObj_Object::Clone()`
+    /// Copy me to other label theTargetLabel
+    /// New object will not have all the reference that has me.
+    /// Coping object with data and childs, but change name by adding string "_copy"
+    /// As result return handle of new object (null handle is something wrong)
+    /// NOTE: BackReferences not coping.
+    /// After cloning all objects it is necessary to call copy references
+    /// with the same relocation table
+    pub fn clone(
+        &mut self,
+        theTargetLabel: &crate::tdf::Label,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_clone(
+                self as *mut Self,
+                theTargetLabel,
+                theRelocTable,
+            ))
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:339 - `TObj_Object::CopyReferences()`
+    /// Coping the references.
+    /// return Standard_False is Target object is different type
+    pub fn copy_references(
+        &mut self,
+        theTargetObject: &crate::ffi::HandleTObjObject,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Object_copy_references(
+                self as *mut Self,
+                theTargetObject,
+                theRelocTable,
+            )
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:343 - `TObj_Object::CopyChildren()`
+    /// Coping the children from source label to the target.
+    pub fn copy_children(
+        &mut self,
+        theTargetLabel: &mut crate::tdf::Label,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Object_copy_children(self as *mut Self, theTargetLabel, theRelocTable)
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:352 - `TObj_Object::GetOrder()`
+    /// returns order of object (or tag of their label if order is not initialised)
+    pub fn get_order(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Object_get_order(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:363 - `TObj_Object::HasModifications()`
+    ///
+    /// Public methods to check modifications of the object since last commit
+    ///
+    /// Returns true if object attributes or its children were modified in the current open
+    /// transaction
+    pub fn has_modifications(&self) -> bool {
+        unsafe { crate::ffi::TObj_Object_has_modifications(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:386 - `TObj_Object::GetTypeFlags()`
+    /// Returns flags (bitmask) that define properties of objects of that type
+    /// By default returns flag Visible
+    pub fn get_type_flags(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Object_get_type_flags(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:389 - `TObj_Object::GetFlags()`
+    /// Returns mask of seted flags
+    pub fn get_flags(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Object_get_flags(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:392 - `TObj_Object::SetFlags()`
+    /// Sets flags with defined mask.
+    pub fn set_flags(&mut self, theMask: i32) {
+        unsafe { crate::ffi::TObj_Object_set_flags(self as *mut Self, theMask) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:395 - `TObj_Object::TestFlags()`
+    /// tests flags by the mask.
+    pub fn test_flags(&self, theMask: i32) -> bool {
+        unsafe { crate::ffi::TObj_Object_test_flags(self as *const Self, theMask) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:398 - `TObj_Object::ClearFlags()`
+    /// clears flags by the mask.
+    pub fn clear_flags(&mut self, theMask: i32) {
+        unsafe { crate::ffi::TObj_Object_clear_flags(self as *mut Self, theMask) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:407 - `TObj_Object::AfterRetrieval()`
+    /// Performs updating the links and dependences of the object which are not
+    /// stored in persistence. Should be redefined if necessary.
+    pub fn after_retrieval(&mut self) {
+        unsafe { crate::ffi::TObj_Object_after_retrieval(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:412 - `TObj_Object::BeforeStoring()`
+    /// Performs storing the objects transient fields in OCAF document
+    /// which were outside transaction mechanism.
+    /// Default implementation does nothing
+    pub fn before_storing(&mut self) {
+        unsafe { crate::ffi::TObj_Object_before_storing(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:608 - `TObj_Object::DynamicType()`
+    /// CASCADE RTTI
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_Object_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:292 - `TObj_Object::Detach()`
+    /// Deletes the object from the label. Checks if object can be deleted.
+    /// Finds object on the label and detaches it by calling previous method.
+    /// Returns true if there is no object on the label after detaching
+    pub fn detach_label_deletingmode(
+        theLabel: &crate::tdf::Label,
+        theMode: crate::t_obj::DeletingMode,
+    ) -> bool {
+        unsafe { crate::ffi::TObj_Object_detach_label_deletingmode(theLabel, theMode.into()) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:304 - `TObj_Object::GetObj()`
+    /// Returns the Object attached to a given label.
+    /// Returns False if no object of type TObj_Object is stored on the
+    /// specified label.
+    /// If isSuper is true tries to find on the super labels.
+    pub fn get_obj(
+        theLabel: &crate::tdf::Label,
+        theResult: &mut crate::ffi::HandleTObjObject,
+        isSuper: bool,
+    ) -> bool {
+        unsafe { crate::ffi::TObj_Object_get_obj(theLabel, theResult, isSuper) }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:608 - `TObj_Object::get_type_name()`
+    /// CASCADE RTTI
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TObj_Object_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TObj_Object.hxx`:608 - `TObj_Object::get_type_descriptor()`
+    /// CASCADE RTTI
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TObj_Object_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_Object_to_handle(obj.into_raw())) }
+    }
+}
+
+pub use crate::ffi::HandleTObjObject;
+
+unsafe impl crate::CppDeletable for HandleTObjObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTObjObject_destructor(ptr);
+    }
+}
+
+impl HandleTObjObject {
+    /// Dereference this Handle to access the underlying TObj_Object
+    pub fn get(&self) -> &crate::ffi::TObj_Object {
+        unsafe { &*(crate::ffi::HandleTObjObject_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TObj_Object
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Object {
+        unsafe { &mut *(crate::ffi::HandleTObjObject_get_mut(self as *mut Self)) }
     }
 }
 
@@ -690,6 +1720,15 @@ impl ObjectIterator {
     /// Default implementation does nothing
     pub fn next(&mut self) {
         unsafe { crate::ffi::TObj_ObjectIterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_ObjectIterator.hxx`:49 - `TObj_ObjectIterator::Value()`
+    /// Returns current object (or null if iteration has finished)
+    /// Default implementation returns null handle
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_ObjectIterator_value(self as *const Self))
+        }
     }
 
     /// **Source:** `TObj_ObjectIterator.hxx`:53 - `TObj_ObjectIterator::DynamicType()`
@@ -877,6 +1916,15 @@ impl OcafObjectIterator {
         unsafe { crate::ffi::TObj_OcafObjectIterator_inherited_Next(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `TObj_LabelIterator.hxx`:64 - `TObj_LabelIterator::Value()`
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_OcafObjectIterator_inherited_Value(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
     pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TObj_OcafObjectIterator_inherited_LabelValue(self as *const Self)) }
@@ -1002,6 +2050,346 @@ impl Partition {
     pub fn as_object_mut(&mut self) -> &mut Object {
         unsafe { &mut *(crate::ffi::TObj_Partition_as_TObj_Object_mut(self as *mut Self)) }
     }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:130 - `TObj_Object::GetChildren()`
+    pub fn get_children(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetChildren(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:134 - `TObj_Object::GetChildLabel()`
+    pub fn get_child_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetChildLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:137 - `TObj_Object::getChildLabel()`
+    pub fn get_child_label_2(&self, theRank: i32) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_getChildLabel(
+                self as *const Self,
+                theRank,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:145 - `TObj_Object::GetLabel()`
+    pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:148 - `TObj_Object::GetDataLabel()`
+    pub fn get_data_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetDataLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:151 - `TObj_Object::GetReferenceLabel()`
+    pub fn get_reference_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetReferenceLabel(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:163 - `TObj_Object::GetName()`
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetName(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:183 - `TObj_Object::GetNameForClone()`
+    pub fn get_name_for_clone(
+        &self,
+        arg0: &crate::ffi::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetNameForClone(
+                self as *const Self,
+                arg0,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:194 - `TObj_Object::HasReference()`
+    pub fn has_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_HasReference(self as *const Self, theObject) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:198 - `TObj_Object::GetReferences()`
+    pub fn get_references(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetReferences(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:202 - `TObj_Object::RemoveAllReferences()`
+    pub fn remove_all_references(&mut self) {
+        unsafe { crate::ffi::TObj_Partition_inherited_RemoveAllReferences(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:207 - `TObj_Object::GetBackReferences()`
+    pub fn get_back_references(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetBackReferences(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:213 - `TObj_Object::AddBackReference()`
+    pub fn add_back_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_AddBackReference(self as *mut Self, theObject)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:218 - `TObj_Object::RemoveBackReference()`
+    pub fn remove_back_reference(
+        &mut self,
+        theObject: &crate::ffi::HandleTObjObject,
+        theSingleOnly: bool,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_RemoveBackReference(
+                self as *mut Self,
+                theObject,
+                theSingleOnly,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:224 - `TObj_Object::RemoveBackReferences()`
+    pub fn remove_back_references(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_RemoveBackReferences(
+                self as *mut Self,
+                theMode.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:227 - `TObj_Object::ClearBackReferences()`
+    pub fn clear_back_references(&mut self) {
+        unsafe { crate::ffi::TObj_Partition_inherited_ClearBackReferences(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:230 - `TObj_Object::HasBackReferences()`
+    pub fn has_back_references(&self) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_HasBackReferences(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:235 - `TObj_Object::ReplaceReference()`
+    pub fn replace_reference(
+        &mut self,
+        theOldObject: &crate::ffi::HandleTObjObject,
+        theNewObject: &crate::ffi::HandleTObjObject,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_ReplaceReference(
+                self as *mut Self,
+                theOldObject,
+                theNewObject,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:241 - `TObj_Object::GetBadReference()`
+    pub fn get_bad_reference(
+        &self,
+        theRoot: &crate::tdf::Label,
+        theBadReference: &mut crate::tdf::Label,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_GetBadReference(
+                self as *const Self,
+                theRoot,
+                theBadReference,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:254 - `TObj_Object::RelocateReferences()`
+    pub fn relocate_references(
+        &mut self,
+        theFromRoot: &crate::tdf::Label,
+        theToRoot: &crate::tdf::Label,
+        theUpdateBackRefs: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_RelocateReferences(
+                self as *mut Self,
+                theFromRoot,
+                theToRoot,
+                theUpdateBackRefs,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:262 - `TObj_Object::CanRemoveReference()`
+    pub fn can_remove_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_CanRemoveReference(self as *const Self, theObject)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:265 - `TObj_Object::RemoveReference()`
+    pub fn remove_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_RemoveReference(self as *mut Self, theObject)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:270 - `TObj_Object::BeforeForgetReference()`
+    pub fn before_forget_reference(&mut self, arg0: &crate::tdf::Label) {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_BeforeForgetReference(self as *mut Self, arg0)
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:279 - `TObj_Object::CanDetach()`
+    pub fn can_detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_CanDetach(self as *mut Self, theMode.into()) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:287 - `TObj_Object::Detach()`
+    pub fn detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_Detach(self as *mut Self, theMode.into()) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:310 - `TObj_Object::GetFatherObject()`
+    pub fn get_father_object(
+        &self,
+        theType: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_GetFatherObject(
+                self as *const Self,
+                theType,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:320 - `TObj_Object::IsAlive()`
+    pub fn is_alive(&self) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_IsAlive(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:334 - `TObj_Object::Clone()`
+    pub fn clone(
+        &mut self,
+        theTargetLabel: &crate::tdf::Label,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_Partition_inherited_Clone(
+                self as *mut Self,
+                theTargetLabel,
+                theRelocTable,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:339 - `TObj_Object::CopyReferences()`
+    pub fn copy_references(
+        &mut self,
+        theTargetObject: &crate::ffi::HandleTObjObject,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_CopyReferences(
+                self as *mut Self,
+                theTargetObject,
+                theRelocTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:343 - `TObj_Object::CopyChildren()`
+    pub fn copy_children(
+        &mut self,
+        theTargetLabel: &mut crate::tdf::Label,
+        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+    ) {
+        unsafe {
+            crate::ffi::TObj_Partition_inherited_CopyChildren(
+                self as *mut Self,
+                theTargetLabel,
+                theRelocTable,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:352 - `TObj_Object::GetOrder()`
+    pub fn get_order(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Partition_inherited_GetOrder(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:363 - `TObj_Object::HasModifications()`
+    pub fn has_modifications(&self) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_HasModifications(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:386 - `TObj_Object::GetTypeFlags()`
+    pub fn get_type_flags(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Partition_inherited_GetTypeFlags(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:389 - `TObj_Object::GetFlags()`
+    pub fn get_flags(&self) -> i32 {
+        unsafe { crate::ffi::TObj_Partition_inherited_GetFlags(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:392 - `TObj_Object::SetFlags()`
+    pub fn set_flags(&mut self, theMask: i32) {
+        unsafe { crate::ffi::TObj_Partition_inherited_SetFlags(self as *mut Self, theMask) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:395 - `TObj_Object::TestFlags()`
+    pub fn test_flags(&self, theMask: i32) -> bool {
+        unsafe { crate::ffi::TObj_Partition_inherited_TestFlags(self as *const Self, theMask) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:398 - `TObj_Object::ClearFlags()`
+    pub fn clear_flags(&mut self, theMask: i32) {
+        unsafe { crate::ffi::TObj_Partition_inherited_ClearFlags(self as *mut Self, theMask) }
+    }
+
+    /// Inherited: **Source:** `TObj_Object.hxx`:412 - `TObj_Object::BeforeStoring()`
+    pub fn before_storing(&mut self) {
+        unsafe { crate::ffi::TObj_Partition_inherited_BeforeStoring(self as *mut Self) }
+    }
 }
 
 // ========================
@@ -1108,6 +2496,15 @@ impl ReferenceIterator {
         unsafe { crate::ffi::TObj_ReferenceIterator_inherited_Next(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `TObj_LabelIterator.hxx`:64 - `TObj_LabelIterator::Value()`
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_ReferenceIterator_inherited_Value(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
     pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe { &*(crate::ffi::TObj_ReferenceIterator_inherited_LabelValue(self as *const Self)) }
@@ -1151,6 +2548,14 @@ impl SequenceIterator {
     /// Move to the next Item
     pub fn next(&mut self) {
         unsafe { crate::ffi::TObj_SequenceIterator_next(self as *mut Self) }
+    }
+
+    /// **Source:** `TObj_SequenceIterator.hxx`:60 - `TObj_SequenceIterator::Value()`
+    /// Returns the current item
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_SequenceIterator_value(self as *const Self))
+        }
     }
 
     /// **Source:** `TObj_SequenceIterator.hxx`:72 - `TObj_SequenceIterator::DynamicType()`
@@ -1864,6 +3269,18 @@ impl TObject {
         unsafe { &*(crate::ffi::TObj_TObject_id(self as *const Self)) }
     }
 
+    /// **Source:** `TObj_TObject.hxx`:60 - `TObj_TObject::Set()`
+    /// Sets the TObj_Object object
+    pub fn set(&mut self, theElem: &crate::ffi::HandleTObjObject) {
+        unsafe { crate::ffi::TObj_TObject_set(self as *mut Self, theElem) }
+    }
+
+    /// **Source:** `TObj_TObject.hxx`:63 - `TObj_TObject::Get()`
+    /// Returns the TObj_Object object
+    pub fn get(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_TObject_get(self as *const Self)) }
+    }
+
     /// **Source:** `TObj_TObject.hxx`:70 - `TObj_TObject::NewEmpty()`
     /// Returns an new empty TObj_TObject attribute. It is used by the
     /// copy algorithm.
@@ -2119,11 +3536,35 @@ impl TReference {
         unsafe { &*(crate::ffi::TObj_TReference_id(self as *const Self)) }
     }
 
+    /// **Source:** `TObj_TReference.hxx`:63 - `TObj_TReference::Set()`
+    /// Sets the reference to the theObject
+    pub fn set_handletobjobject_label(
+        &mut self,
+        theObject: &crate::ffi::HandleTObjObject,
+        theMasterLabel: &crate::tdf::Label,
+    ) {
+        unsafe {
+            crate::ffi::TObj_TReference_set_handletobjobject_label(
+                self as *mut Self,
+                theObject,
+                theMasterLabel,
+            )
+        }
+    }
+
     /// **Source:** `TObj_TReference.hxx`:67 - `TObj_TReference::Set()`
     /// Sets the reference to the theObject at indicated Label.
     /// It is method for persistent only. Don`t use anywhere else.
-    pub fn set(&mut self, theLabel: &crate::tdf::Label, theMasterLabel: &crate::tdf::Label) {
-        unsafe { crate::ffi::TObj_TReference_set(self as *mut Self, theLabel, theMasterLabel) }
+    pub fn set_label2(&mut self, theLabel: &crate::tdf::Label, theMasterLabel: &crate::tdf::Label) {
+        unsafe {
+            crate::ffi::TObj_TReference_set_label2(self as *mut Self, theLabel, theMasterLabel)
+        }
+    }
+
+    /// **Source:** `TObj_TReference.hxx`:70 - `TObj_TReference::Get()`
+    /// Returns the referenced theObject
+    pub fn get(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TObj_TReference_get(self as *const Self)) }
     }
 
     /// **Source:** `TObj_TReference.hxx`:73 - `TObj_TReference::GetMasterLabel()`
@@ -2628,6 +4069,5 @@ impl TXYZ {
 // ========================
 
 pub use crate::ffi::{
-    TObj_DataMapOfNameLabel as DataMapOfNameLabel, TObj_Object as Object,
-    TObj_SequenceOfObject as SequenceOfObject,
+    TObj_DataMapOfNameLabel as DataMapOfNameLabel, TObj_SequenceOfObject as SequenceOfObject,
 };
