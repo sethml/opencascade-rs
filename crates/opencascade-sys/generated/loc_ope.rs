@@ -669,6 +669,24 @@ impl HandleLocOpeGeneratedShape {
     pub fn get_mut(&mut self) -> &mut crate::ffi::LocOpe_GeneratedShape {
         unsafe { &mut *(crate::ffi::HandleLocOpeGeneratedShape_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<LocOpe_GeneratedShape> to Handle<LocOpe_GluedShape>
+    ///
+    /// Returns `None` if the handle does not point to a `LocOpe_GluedShape` (or subclass).
+    pub fn downcast_to_glued_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleLocOpeGluedShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleLocOpeGeneratedShape_downcast_to_HandleLocOpeGluedShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -842,6 +860,48 @@ impl GluedShape {
     pub fn as_generated_shape_mut(&mut self) -> &mut GeneratedShape {
         unsafe {
             &mut *(crate::ffi::LocOpe_GluedShape_as_LocOpe_GeneratedShape_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLocOpeGluedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::LocOpe_GluedShape_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleLocOpeGluedShape;
+
+unsafe impl crate::CppDeletable for HandleLocOpeGluedShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleLocOpeGluedShape_destructor(ptr);
+    }
+}
+
+impl HandleLocOpeGluedShape {
+    /// Dereference this Handle to access the underlying LocOpe_GluedShape
+    pub fn get(&self) -> &crate::ffi::LocOpe_GluedShape {
+        unsafe { &*(crate::ffi::HandleLocOpeGluedShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying LocOpe_GluedShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::LocOpe_GluedShape {
+        unsafe { &mut *(crate::ffi::HandleLocOpeGluedShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<LocOpe_GluedShape> to Handle<LocOpe_GeneratedShape>
+    pub fn to_handle_generated_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleLocOpeGeneratedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleLocOpeGluedShape_to_HandleLocOpeGeneratedShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

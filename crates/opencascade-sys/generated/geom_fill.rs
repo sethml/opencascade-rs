@@ -160,6 +160,9 @@ impl TryFrom<i32> for Trihedron {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleAdaptor3dCurve, HandleApproxSweepFunction};
+
 // ========================
 // From GeomFill_AppSurf.hxx
 // ========================
@@ -1300,6 +1303,15 @@ impl BoundWithSurf {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundWithSurf> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_BoundWithSurf_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
     pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         unsafe {
@@ -1315,6 +1327,37 @@ impl BoundWithSurf {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:71 - `GeomFill_Boundary::Tolang()`
     pub fn tolang(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_BoundWithSurf_inherited_Tolang(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillBoundWithSurf;
+
+unsafe impl crate::CppDeletable for HandleGeomFillBoundWithSurf {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillBoundWithSurf_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillBoundWithSurf {
+    /// Dereference this Handle to access the underlying GeomFill_BoundWithSurf
+    pub fn get(&self) -> &crate::ffi::GeomFill_BoundWithSurf {
+        unsafe { &*(crate::ffi::HandleGeomFillBoundWithSurf_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_BoundWithSurf
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_BoundWithSurf {
+        unsafe { &mut *(crate::ffi::HandleGeomFillBoundWithSurf_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_BoundWithSurf> to Handle<GeomFill_Boundary>
+    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillBoundWithSurf_to_HandleGeomFillBoundary(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1466,6 +1509,60 @@ impl HandleGeomFillBoundary {
     /// Dereference this Handle to mutably access the underlying GeomFill_Boundary
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Boundary {
         unsafe { &mut *(crate::ffi::HandleGeomFillBoundary_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<GeomFill_Boundary> to Handle<GeomFill_BoundWithSurf>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_BoundWithSurf` (or subclass).
+    pub fn downcast_to_bound_with_surf(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillBoundWithSurf>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillBoundary_downcast_to_HandleGeomFillBoundWithSurf(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_Boundary> to Handle<GeomFill_DegeneratedBound>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_DegeneratedBound` (or subclass).
+    pub fn downcast_to_degenerated_bound(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillDegeneratedBound>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillBoundary_downcast_to_HandleGeomFillDegeneratedBound(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_Boundary> to Handle<GeomFill_SimpleBound>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_SimpleBound` (or subclass).
+    pub fn downcast_to_simple_bound(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillSimpleBound>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillBoundary_downcast_to_HandleGeomFillSimpleBound(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -1776,6 +1873,17 @@ impl CircularBlendFunc {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillCircularBlendFunc> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_CircularBlendFunc_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Approx_SweepFunction.hxx`:118 - `Approx_SweepFunction::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         unsafe {
@@ -1785,6 +1893,39 @@ impl CircularBlendFunc {
                 Tol,
                 TolU,
                 TolV,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillCircularBlendFunc;
+
+unsafe impl crate::CppDeletable for HandleGeomFillCircularBlendFunc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillCircularBlendFunc_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillCircularBlendFunc {
+    /// Dereference this Handle to access the underlying GeomFill_CircularBlendFunc
+    pub fn get(&self) -> &crate::ffi::GeomFill_CircularBlendFunc {
+        unsafe { &*(crate::ffi::HandleGeomFillCircularBlendFunc_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_CircularBlendFunc
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_CircularBlendFunc {
+        unsafe { &mut *(crate::ffi::HandleGeomFillCircularBlendFunc_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_CircularBlendFunc> to Handle<Approx_SweepFunction>
+    pub fn to_handle_sweep_function(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillCircularBlendFunc_to_HandleApproxSweepFunction(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2001,6 +2142,17 @@ impl ConstantBiNormal {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillConstantBiNormal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_ConstantBiNormal_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         unsafe {
@@ -2029,6 +2181,39 @@ impl ConstantBiNormal {
                 self as *mut Self,
                 First,
                 Last,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillConstantBiNormal;
+
+unsafe impl crate::CppDeletable for HandleGeomFillConstantBiNormal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillConstantBiNormal_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillConstantBiNormal {
+    /// Dereference this Handle to access the underlying GeomFill_ConstantBiNormal
+    pub fn get(&self) -> &crate::ffi::GeomFill_ConstantBiNormal {
+        unsafe { &*(crate::ffi::HandleGeomFillConstantBiNormal_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_ConstantBiNormal
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_ConstantBiNormal {
+        unsafe { &mut *(crate::ffi::HandleGeomFillConstantBiNormal_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_ConstantBiNormal> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillConstantBiNormal_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2129,6 +2314,20 @@ impl ConstrainedFilling {
         }
     }
 
+    /// **Source:** `GeomFill_ConstrainedFilling.hxx`:97 - `GeomFill_ConstrainedFilling::SetDomain()`
+    /// Allows to modify domain on witch the blending function
+    /// associated to  the constrained boundary B  will propag
+    /// the  influence   of the  field   of  tangency.  Can be
+    /// useful to  reduce  influence of boundaries  on which
+    /// the Coons compatibility  conditions are not respected.
+    /// l is a  relative value of  the parametric range of  B.
+    /// Default value for l is 1 (used in Init).
+    /// Warning: Must be called after  Init with a constrained boundary
+    /// used in the call to Init.
+    pub fn set_domain(&mut self, l: f64, B: &crate::ffi::HandleGeomFillBoundWithSurf) {
+        unsafe { crate::ffi::GeomFill_ConstrainedFilling_set_domain(self as *mut Self, l, B) }
+    }
+
     /// **Source:** `GeomFill_ConstrainedFilling.hxx`:101 - `GeomFill_ConstrainedFilling::ReBuild()`
     /// Computes the  new poles  of  the surface using the  new
     /// blending  functions set by several calls to SetDomain.
@@ -2198,15 +2397,6 @@ impl ConstrainedFilling {
         unsafe { crate::ffi::GeomFill_ConstrainedFilling_check_result(self as *mut Self, I) }
     }
 }
-
-// ── Skipped symbols for ConstrainedFilling (1 total) ──
-// SKIPPED: **Source:** `GeomFill_ConstrainedFilling.hxx`:97 - `GeomFill_ConstrainedFilling::SetDomain`
-//   method: Allows to modify domain on witch the blending function
-//   method: associated to  the constrained boundary B  will propag
-//   method: the  influence   of the  field   of  tangency.  Can be
-//   Reason: param 'B' uses unknown type 'const Handle(GeomFill_BoundWithSurf)&'
-//   // pub fn set_domain(&mut self, l: f64, B: &HandleBoundWithSurf);
-//
 
 // ========================
 // From GeomFill_Coons.hxx
@@ -2812,6 +3002,17 @@ impl CorrectedFrenet {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillCorrectedFrenet> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_CorrectedFrenet_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         unsafe {
@@ -2829,6 +3030,39 @@ impl CorrectedFrenet {
                 self as *mut Self,
                 First,
                 Last,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillCorrectedFrenet;
+
+unsafe impl crate::CppDeletable for HandleGeomFillCorrectedFrenet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillCorrectedFrenet_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillCorrectedFrenet {
+    /// Dereference this Handle to access the underlying GeomFill_CorrectedFrenet
+    pub fn get(&self) -> &crate::ffi::GeomFill_CorrectedFrenet {
+        unsafe { &*(crate::ffi::HandleGeomFillCorrectedFrenet_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_CorrectedFrenet
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_CorrectedFrenet {
+        unsafe { &mut *(crate::ffi::HandleGeomFillCorrectedFrenet_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_CorrectedFrenet> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillCorrectedFrenet_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3109,6 +3343,17 @@ impl CurveAndTrihedron {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillCurveAndTrihedron> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_CurveAndTrihedron_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:88 - `GeomFill_LocationLaw::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_CurveAndTrihedron_inherited_Nb2dCurves(self as *const Self) }
@@ -3165,6 +3410,37 @@ impl CurveAndTrihedron {
                 self as *mut Self,
                 Tol3d,
                 Tol2d,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillCurveAndTrihedron;
+
+unsafe impl crate::CppDeletable for HandleGeomFillCurveAndTrihedron {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillCurveAndTrihedron_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillCurveAndTrihedron {
+    /// Dereference this Handle to access the underlying GeomFill_CurveAndTrihedron
+    pub fn get(&self) -> &crate::ffi::GeomFill_CurveAndTrihedron {
+        unsafe { &*(crate::ffi::HandleGeomFillCurveAndTrihedron_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_CurveAndTrihedron
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_CurveAndTrihedron {
+        unsafe { &mut *(crate::ffi::HandleGeomFillCurveAndTrihedron_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_CurveAndTrihedron> to Handle<GeomFill_LocationLaw>
+    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillCurveAndTrihedron_to_HandleGeomFillLocationLaw(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3524,6 +3800,13 @@ impl Darboux {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillDarboux> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Darboux_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:37 - `GeomFill_TrihedronLaw::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
         unsafe { crate::ffi::GeomFill_Darboux_inherited_SetCurve(self as *mut Self, C) }
@@ -3550,6 +3833,39 @@ impl Darboux {
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         unsafe {
             crate::ffi::GeomFill_Darboux_inherited_GetInterval(self as *mut Self, First, Last)
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillDarboux;
+
+unsafe impl crate::CppDeletable for HandleGeomFillDarboux {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillDarboux_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillDarboux {
+    /// Dereference this Handle to access the underlying GeomFill_Darboux
+    pub fn get(&self) -> &crate::ffi::GeomFill_Darboux {
+        unsafe { &*(crate::ffi::HandleGeomFillDarboux_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_Darboux
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Darboux {
+        unsafe { &mut *(crate::ffi::HandleGeomFillDarboux_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_Darboux> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillDarboux_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -3673,6 +3989,17 @@ impl DegeneratedBound {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillDegeneratedBound> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_DegeneratedBound_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:47 - `GeomFill_Boundary::HasNormals()`
     pub fn has_normals(&self) -> bool {
         unsafe { crate::ffi::GeomFill_DegeneratedBound_inherited_HasNormals(self as *const Self) }
@@ -3714,6 +4041,37 @@ impl DegeneratedBound {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:71 - `GeomFill_Boundary::Tolang()`
     pub fn tolang(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_DegeneratedBound_inherited_Tolang(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillDegeneratedBound;
+
+unsafe impl crate::CppDeletable for HandleGeomFillDegeneratedBound {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillDegeneratedBound_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillDegeneratedBound {
+    /// Dereference this Handle to access the underlying GeomFill_DegeneratedBound
+    pub fn get(&self) -> &crate::ffi::GeomFill_DegeneratedBound {
+        unsafe { &*(crate::ffi::HandleGeomFillDegeneratedBound_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_DegeneratedBound
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_DegeneratedBound {
+        unsafe { &mut *(crate::ffi::HandleGeomFillDegeneratedBound_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_DegeneratedBound> to Handle<GeomFill_Boundary>
+    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillDegeneratedBound_to_HandleGeomFillBoundary(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -3935,6 +4293,17 @@ impl DiscreteTrihedron {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillDiscreteTrihedron> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_DiscreteTrihedron_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         unsafe {
@@ -3963,6 +4332,39 @@ impl DiscreteTrihedron {
                 self as *mut Self,
                 First,
                 Last,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillDiscreteTrihedron;
+
+unsafe impl crate::CppDeletable for HandleGeomFillDiscreteTrihedron {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillDiscreteTrihedron_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillDiscreteTrihedron {
+    /// Dereference this Handle to access the underlying GeomFill_DiscreteTrihedron
+    pub fn get(&self) -> &crate::ffi::GeomFill_DiscreteTrihedron {
+        unsafe { &*(crate::ffi::HandleGeomFillDiscreteTrihedron_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_DiscreteTrihedron
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_DiscreteTrihedron {
+        unsafe { &mut *(crate::ffi::HandleGeomFillDiscreteTrihedron_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_DiscreteTrihedron> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillDiscreteTrihedron_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -4168,6 +4570,15 @@ impl DraftTrihedron {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillDraftTrihedron> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_DraftTrihedron_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:37 - `GeomFill_TrihedronLaw::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
         unsafe { crate::ffi::GeomFill_DraftTrihedron_inherited_SetCurve(self as *mut Self, C) }
@@ -4201,6 +4612,39 @@ impl DraftTrihedron {
                 self as *mut Self,
                 First,
                 Last,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillDraftTrihedron;
+
+unsafe impl crate::CppDeletable for HandleGeomFillDraftTrihedron {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillDraftTrihedron_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillDraftTrihedron {
+    /// Dereference this Handle to access the underlying GeomFill_DraftTrihedron
+    pub fn get(&self) -> &crate::ffi::GeomFill_DraftTrihedron {
+        unsafe { &*(crate::ffi::HandleGeomFillDraftTrihedron_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_DraftTrihedron
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_DraftTrihedron {
+        unsafe { &mut *(crate::ffi::HandleGeomFillDraftTrihedron_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_DraftTrihedron> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillDraftTrihedron_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -4492,6 +4936,15 @@ impl EvolvedSection {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillEvolvedSection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_EvolvedSection_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:132 - `GeomFill_SectionLaw::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         unsafe {
@@ -4517,6 +4970,37 @@ impl EvolvedSection {
                 self as *const Self,
                 Param,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillEvolvedSection;
+
+unsafe impl crate::CppDeletable for HandleGeomFillEvolvedSection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillEvolvedSection_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillEvolvedSection {
+    /// Dereference this Handle to access the underlying GeomFill_EvolvedSection
+    pub fn get(&self) -> &crate::ffi::GeomFill_EvolvedSection {
+        unsafe { &*(crate::ffi::HandleGeomFillEvolvedSection_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_EvolvedSection
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_EvolvedSection {
+        unsafe { &mut *(crate::ffi::HandleGeomFillEvolvedSection_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_EvolvedSection> to Handle<GeomFill_SectionLaw>
+    pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillEvolvedSection_to_HandleGeomFillSectionLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -4749,6 +5233,13 @@ impl Fixed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillFixed> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Fixed_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:37 - `GeomFill_TrihedronLaw::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
         unsafe { crate::ffi::GeomFill_Fixed_inherited_SetCurve(self as *mut Self, C) }
@@ -4777,6 +5268,37 @@ impl Fixed {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:110 - `GeomFill_TrihedronLaw::IsOnlyBy3dCurve()`
     pub fn is_only_by3d_curve(&self) -> bool {
         unsafe { crate::ffi::GeomFill_Fixed_inherited_IsOnlyBy3dCurve(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillFixed;
+
+unsafe impl crate::CppDeletable for HandleGeomFillFixed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillFixed_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillFixed {
+    /// Dereference this Handle to access the underlying GeomFill_Fixed
+    pub fn get(&self) -> &crate::ffi::GeomFill_Fixed {
+        unsafe { &*(crate::ffi::HandleGeomFillFixed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_Fixed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Fixed {
+        unsafe { &mut *(crate::ffi::HandleGeomFillFixed_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_Fixed> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillFixed_to_HandleGeomFillTrihedronLaw(self as *const Self),
+            )
+        }
     }
 }
 
@@ -4973,6 +5495,13 @@ impl Frenet {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillFrenet> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomFill_Frenet_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         unsafe {
@@ -4991,6 +5520,37 @@ impl Frenet {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         unsafe { crate::ffi::GeomFill_Frenet_inherited_GetInterval(self as *mut Self, First, Last) }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillFrenet;
+
+unsafe impl crate::CppDeletable for HandleGeomFillFrenet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillFrenet_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillFrenet {
+    /// Dereference this Handle to access the underlying GeomFill_Frenet
+    pub fn get(&self) -> &crate::ffi::GeomFill_Frenet {
+        unsafe { &*(crate::ffi::HandleGeomFillFrenet_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_Frenet
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Frenet {
+        unsafe { &mut *(crate::ffi::HandleGeomFillFrenet_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_Frenet> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillFrenet_to_HandleGeomFillTrihedronLaw(self as *const Self),
+            )
+        }
     }
 }
 
@@ -5622,6 +6182,17 @@ impl GuideTrihedronAC {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronAC> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_GuideTrihedronAC_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
     pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
@@ -5650,6 +6221,52 @@ impl GuideTrihedronAC {
                 self as *mut Self,
                 First,
                 Last,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillGuideTrihedronAC;
+
+unsafe impl crate::CppDeletable for HandleGeomFillGuideTrihedronAC {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillGuideTrihedronAC_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillGuideTrihedronAC {
+    /// Dereference this Handle to access the underlying GeomFill_GuideTrihedronAC
+    pub fn get(&self) -> &crate::ffi::GeomFill_GuideTrihedronAC {
+        unsafe { &*(crate::ffi::HandleGeomFillGuideTrihedronAC_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_GuideTrihedronAC
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_GuideTrihedronAC {
+        unsafe { &mut *(crate::ffi::HandleGeomFillGuideTrihedronAC_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_GuideTrihedronAC> to Handle<GeomFill_TrihedronWithGuide>
+    pub fn to_handle_trihedron_with_guide(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronWithGuide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillGuideTrihedronAC_to_HandleGeomFillTrihedronWithGuide(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomFill_GuideTrihedronAC> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillGuideTrihedronAC_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -5922,6 +6539,17 @@ impl GuideTrihedronPlan {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronPlan> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_GuideTrihedronPlan_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
     pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
@@ -5940,6 +6568,52 @@ impl GuideTrihedronPlan {
                 self as *mut Self,
                 First,
                 Last,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillGuideTrihedronPlan;
+
+unsafe impl crate::CppDeletable for HandleGeomFillGuideTrihedronPlan {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillGuideTrihedronPlan_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillGuideTrihedronPlan {
+    /// Dereference this Handle to access the underlying GeomFill_GuideTrihedronPlan
+    pub fn get(&self) -> &crate::ffi::GeomFill_GuideTrihedronPlan {
+        unsafe { &*(crate::ffi::HandleGeomFillGuideTrihedronPlan_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_GuideTrihedronPlan
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_GuideTrihedronPlan {
+        unsafe { &mut *(crate::ffi::HandleGeomFillGuideTrihedronPlan_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_GuideTrihedronPlan> to Handle<GeomFill_TrihedronWithGuide>
+    pub fn to_handle_trihedron_with_guide(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronWithGuide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillGuideTrihedronPlan_to_HandleGeomFillTrihedronWithGuide(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomFill_GuideTrihedronPlan> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillGuideTrihedronPlan_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -6701,6 +7375,15 @@ impl LocationDraft {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationDraft> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_LocationDraft_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:88 - `GeomFill_LocationLaw::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_LocationDraft_inherited_Nb2dCurves(self as *const Self) }
@@ -6728,6 +7411,37 @@ impl LocationDraft {
     }
 }
 
+pub use crate::ffi::HandleGeomFillLocationDraft;
+
+unsafe impl crate::CppDeletable for HandleGeomFillLocationDraft {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillLocationDraft_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillLocationDraft {
+    /// Dereference this Handle to access the underlying GeomFill_LocationDraft
+    pub fn get(&self) -> &crate::ffi::GeomFill_LocationDraft {
+        unsafe { &*(crate::ffi::HandleGeomFillLocationDraft_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_LocationDraft
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_LocationDraft {
+        unsafe { &mut *(crate::ffi::HandleGeomFillLocationDraft_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_LocationDraft> to Handle<GeomFill_LocationLaw>
+    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillLocationDraft_to_HandleGeomFillLocationLaw(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From GeomFill_LocationGuide.hxx
 // ========================
@@ -6742,6 +7456,17 @@ unsafe impl crate::CppDeletable for LocationGuide {
 }
 
 impl LocationGuide {
+    /// **Source:** `GeomFill_LocationGuide.hxx`:46 - `GeomFill_LocationGuide::GeomFill_LocationGuide()`
+    pub fn new_handlegeomfilltrihedronwithguide(
+        Triedre: &crate::ffi::HandleGeomFillTrihedronWithGuide,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_LocationGuide_ctor_handlegeomfilltrihedronwithguide(Triedre),
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_LocationGuide.hxx`:48 - `GeomFill_LocationGuide::Set()`
     pub fn set(
         &mut self,
@@ -7098,17 +7823,51 @@ impl LocationGuide {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationGuide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_LocationGuide_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:88 - `GeomFill_LocationLaw::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::GeomFill_LocationGuide_inherited_Nb2dCurves(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for LocationGuide (1 total) ──
-// SKIPPED: **Source:** `GeomFill_LocationGuide.hxx`:46 - `GeomFill_LocationGuide::GeomFill_LocationGuide`
-//   Reason: param 'Triedre' uses unknown Handle type
-//   // pub fn new_handlegeomfilltrihedronwithguide(Triedre: &HandleTrihedronWithGuide) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleGeomFillLocationGuide;
+
+unsafe impl crate::CppDeletable for HandleGeomFillLocationGuide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillLocationGuide_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillLocationGuide {
+    /// Dereference this Handle to access the underlying GeomFill_LocationGuide
+    pub fn get(&self) -> &crate::ffi::GeomFill_LocationGuide {
+        unsafe { &*(crate::ffi::HandleGeomFillLocationGuide_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_LocationGuide
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_LocationGuide {
+        unsafe { &mut *(crate::ffi::HandleGeomFillLocationGuide_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_LocationGuide> to Handle<GeomFill_LocationLaw>
+    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillLocationGuide_to_HandleGeomFillLocationLaw(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From GeomFill_LocationLaw.hxx
@@ -7419,6 +8178,60 @@ impl HandleGeomFillLocationLaw {
     /// Dereference this Handle to mutably access the underlying GeomFill_LocationLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_LocationLaw {
         unsafe { &mut *(crate::ffi::HandleGeomFillLocationLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<GeomFill_LocationLaw> to Handle<GeomFill_CurveAndTrihedron>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_CurveAndTrihedron` (or subclass).
+    pub fn downcast_to_curve_and_trihedron(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillCurveAndTrihedron>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillCurveAndTrihedron(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_LocationLaw> to Handle<GeomFill_LocationDraft>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_LocationDraft` (or subclass).
+    pub fn downcast_to_location_draft(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillLocationDraft>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillLocationDraft(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_LocationLaw> to Handle<GeomFill_LocationGuide>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_LocationGuide` (or subclass).
+    pub fn downcast_to_location_guide(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillLocationGuide>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillLocationGuide(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -7800,10 +8613,50 @@ impl NSections {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillNSections> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_NSections_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:132 - `GeomFill_SectionLaw::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         unsafe {
             crate::ffi::GeomFill_NSections_inherited_SetTolerance(self as *mut Self, Tol3d, Tol2d)
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillNSections;
+
+unsafe impl crate::CppDeletable for HandleGeomFillNSections {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillNSections_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillNSections {
+    /// Dereference this Handle to access the underlying GeomFill_NSections
+    pub fn get(&self) -> &crate::ffi::GeomFill_NSections {
+        unsafe { &*(crate::ffi::HandleGeomFillNSections_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_NSections
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_NSections {
+        unsafe { &mut *(crate::ffi::HandleGeomFillNSections_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_NSections> to Handle<GeomFill_SectionLaw>
+    pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillNSections_to_HandleGeomFillSectionLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -9200,6 +10053,60 @@ impl HandleGeomFillSectionLaw {
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_SectionLaw {
         unsafe { &mut *(crate::ffi::HandleGeomFillSectionLaw_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<GeomFill_SectionLaw> to Handle<GeomFill_EvolvedSection>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_EvolvedSection` (or subclass).
+    pub fn downcast_to_evolved_section(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillEvolvedSection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillEvolvedSection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_SectionLaw> to Handle<GeomFill_NSections>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_NSections` (or subclass).
+    pub fn downcast_to_n_sections(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillNSections>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillNSections(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_SectionLaw> to Handle<GeomFill_UniformSection>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_UniformSection` (or subclass).
+    pub fn downcast_to_uniform_section(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillUniformSection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillUniformSection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for SectionLaw (1 total) ──
@@ -9486,6 +10393,15 @@ impl SimpleBound {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSimpleBound> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SimpleBound_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:47 - `GeomFill_Boundary::HasNormals()`
     pub fn has_normals(&self) -> bool {
         unsafe { crate::ffi::GeomFill_SimpleBound_inherited_HasNormals(self as *const Self) }
@@ -9521,6 +10437,37 @@ impl SimpleBound {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:71 - `GeomFill_Boundary::Tolang()`
     pub fn tolang(&self) -> f64 {
         unsafe { crate::ffi::GeomFill_SimpleBound_inherited_Tolang(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillSimpleBound;
+
+unsafe impl crate::CppDeletable for HandleGeomFillSimpleBound {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillSimpleBound_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillSimpleBound {
+    /// Dereference this Handle to access the underlying GeomFill_SimpleBound
+    pub fn get(&self) -> &crate::ffi::GeomFill_SimpleBound {
+        unsafe { &*(crate::ffi::HandleGeomFillSimpleBound_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_SimpleBound
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_SimpleBound {
+        unsafe { &mut *(crate::ffi::HandleGeomFillSimpleBound_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_SimpleBound> to Handle<GeomFill_Boundary>
+    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillSimpleBound_to_HandleGeomFillBoundary(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -9694,6 +10641,15 @@ impl SnglrFunc {
         unsafe { &mut *(crate::ffi::GeomFill_SnglrFunc_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSnglrFunc> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::GeomFill_SnglrFunc_inherited_DynamicType(self as *const Self)) }
@@ -9818,6 +10774,35 @@ impl SnglrFunc {
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SnglrFunc_inherited_OffsetCurve(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillSnglrFunc;
+
+unsafe impl crate::CppDeletable for HandleGeomFillSnglrFunc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillSnglrFunc_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillSnglrFunc {
+    /// Dereference this Handle to access the underlying GeomFill_SnglrFunc
+    pub fn get(&self) -> &crate::ffi::GeomFill_SnglrFunc {
+        unsafe { &*(crate::ffi::HandleGeomFillSnglrFunc_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_SnglrFunc
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_SnglrFunc {
+        unsafe { &mut *(crate::ffi::HandleGeomFillSnglrFunc_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_SnglrFunc> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomFillSnglrFunc_to_HandleAdaptor3dCurve(
                 self as *const Self,
             ))
         }
@@ -10453,6 +11438,48 @@ impl SweepFunction {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSweepFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SweepFunction_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillSweepFunction;
+
+unsafe impl crate::CppDeletable for HandleGeomFillSweepFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillSweepFunction_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillSweepFunction {
+    /// Dereference this Handle to access the underlying GeomFill_SweepFunction
+    pub fn get(&self) -> &crate::ffi::GeomFill_SweepFunction {
+        unsafe { &*(crate::ffi::HandleGeomFillSweepFunction_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_SweepFunction
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_SweepFunction {
+        unsafe { &mut *(crate::ffi::HandleGeomFillSweepFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_SweepFunction> to Handle<Approx_SweepFunction>
+    pub fn to_handle_sweep_function(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillSweepFunction_to_HandleApproxSweepFunction(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
 }
 
 // ── Skipped symbols for SweepFunction (1 total) ──
@@ -10864,6 +11891,24 @@ impl HandleGeomFillTgtField {
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_TgtField {
         unsafe { &mut *(crate::ffi::HandleGeomFillTgtField_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<GeomFill_TgtField> to Handle<GeomFill_TgtOnCoons>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_TgtOnCoons` (or subclass).
+    pub fn downcast_to_tgt_on_coons(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillTgtOnCoons>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTgtField_downcast_to_HandleGeomFillTgtOnCoons(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -10953,6 +11998,15 @@ impl TgtOnCoons {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTgtOnCoons> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_TgtOnCoons_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_TgtField.hxx`:37 - `GeomFill_TgtField::IsScalable()`
     pub fn is_scalable(&self) -> bool {
         unsafe { crate::ffi::GeomFill_TgtOnCoons_inherited_IsScalable(self as *const Self) }
@@ -10961,6 +12015,35 @@ impl TgtOnCoons {
     /// Inherited: **Source:** `GeomFill_TgtField.hxx`:39 - `GeomFill_TgtField::Scale()`
     pub fn scale(&mut self, Func: &crate::ffi::HandleLawBSpline) {
         unsafe { crate::ffi::GeomFill_TgtOnCoons_inherited_Scale(self as *mut Self, Func) }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillTgtOnCoons;
+
+unsafe impl crate::CppDeletable for HandleGeomFillTgtOnCoons {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillTgtOnCoons_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillTgtOnCoons {
+    /// Dereference this Handle to access the underlying GeomFill_TgtOnCoons
+    pub fn get(&self) -> &crate::ffi::GeomFill_TgtOnCoons {
+        unsafe { &*(crate::ffi::HandleGeomFillTgtOnCoons_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_TgtOnCoons
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_TgtOnCoons {
+        unsafe { &mut *(crate::ffi::HandleGeomFillTgtOnCoons_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_TgtOnCoons> to Handle<GeomFill_TgtField>
+    pub fn to_handle_tgt_field(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTgtField> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillTgtOnCoons_to_HandleGeomFillTgtField(self as *const Self),
+            )
+        }
     }
 }
 
@@ -11191,6 +12274,164 @@ impl HandleGeomFillTrihedronLaw {
     /// Dereference this Handle to mutably access the underlying GeomFill_TrihedronLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_TrihedronLaw {
         unsafe { &mut *(crate::ffi::HandleGeomFillTrihedronLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_ConstantBiNormal>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_ConstantBiNormal` (or subclass).
+    pub fn downcast_to_constant_bi_normal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillConstantBiNormal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillConstantBiNormal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_CorrectedFrenet>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_CorrectedFrenet` (or subclass).
+    pub fn downcast_to_corrected_frenet(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillCorrectedFrenet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillCorrectedFrenet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_Darboux>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_Darboux` (or subclass).
+    pub fn downcast_to_darboux(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillDarboux>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDarboux(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_DiscreteTrihedron>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_DiscreteTrihedron` (or subclass).
+    pub fn downcast_to_discrete_trihedron(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillDiscreteTrihedron>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDiscreteTrihedron(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_DraftTrihedron>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_DraftTrihedron` (or subclass).
+    pub fn downcast_to_draft_trihedron(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillDraftTrihedron>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDraftTrihedron(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_Fixed>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_Fixed` (or subclass).
+    pub fn downcast_to_fixed(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillFixed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillFixed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_Frenet>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_Frenet` (or subclass).
+    pub fn downcast_to_frenet(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillFrenet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillFrenet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_GuideTrihedronAC>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_GuideTrihedronAC` (or subclass).
+    pub fn downcast_to_guide_trihedron_ac(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronAC>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillGuideTrihedronAC(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_GuideTrihedronPlan>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_GuideTrihedronPlan` (or subclass).
+    pub fn downcast_to_guide_trihedron_plan(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronPlan>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillGuideTrihedronPlan(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -11441,6 +12682,73 @@ impl TrihedronWithGuide {
     pub fn is_only_by3d_curve(&self) -> bool {
         unsafe {
             crate::ffi::GeomFill_TrihedronWithGuide_inherited_IsOnlyBy3dCurve(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillTrihedronWithGuide;
+
+unsafe impl crate::CppDeletable for HandleGeomFillTrihedronWithGuide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillTrihedronWithGuide_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillTrihedronWithGuide {
+    /// Dereference this Handle to access the underlying GeomFill_TrihedronWithGuide
+    pub fn get(&self) -> &crate::ffi::GeomFill_TrihedronWithGuide {
+        unsafe { &*(crate::ffi::HandleGeomFillTrihedronWithGuide_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_TrihedronWithGuide
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_TrihedronWithGuide {
+        unsafe { &mut *(crate::ffi::HandleGeomFillTrihedronWithGuide_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_TrihedronWithGuide> to Handle<GeomFill_TrihedronLaw>
+    pub fn to_handle_trihedron_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillTrihedronWithGuide_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronWithGuide> to Handle<GeomFill_GuideTrihedronAC>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_GuideTrihedronAC` (or subclass).
+    pub fn downcast_to_guide_trihedron_ac(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronAC>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronWithGuide_downcast_to_HandleGeomFillGuideTrihedronAC(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomFill_TrihedronWithGuide> to Handle<GeomFill_GuideTrihedronPlan>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_GuideTrihedronPlan` (or subclass).
+    pub fn downcast_to_guide_trihedron_plan(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronPlan>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomFillTrihedronWithGuide_downcast_to_HandleGeomFillGuideTrihedronPlan(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -11754,6 +13062,15 @@ impl UniformSection {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillUniformSection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_UniformSection_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:132 - `GeomFill_SectionLaw::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         unsafe {
@@ -11779,6 +13096,37 @@ impl UniformSection {
                 self as *const Self,
                 Param,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomFillUniformSection;
+
+unsafe impl crate::CppDeletable for HandleGeomFillUniformSection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomFillUniformSection_destructor(ptr);
+    }
+}
+
+impl HandleGeomFillUniformSection {
+    /// Dereference this Handle to access the underlying GeomFill_UniformSection
+    pub fn get(&self) -> &crate::ffi::GeomFill_UniformSection {
+        unsafe { &*(crate::ffi::HandleGeomFillUniformSection_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomFill_UniformSection
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_UniformSection {
+        unsafe { &mut *(crate::ffi::HandleGeomFillUniformSection_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomFill_UniformSection> to Handle<GeomFill_SectionLaw>
+    pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomFillUniformSection_to_HandleGeomFillSectionLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

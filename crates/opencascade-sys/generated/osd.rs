@@ -634,6 +634,44 @@ impl CachedFileSystem {
     pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
         unsafe { &mut *(crate::ffi::OSD_CachedFileSystem_as_OSD_FileSystem_mut(self as *mut Self)) }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleOSDCachedFileSystem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_CachedFileSystem_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleOSDCachedFileSystem;
+
+unsafe impl crate::CppDeletable for HandleOSDCachedFileSystem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleOSDCachedFileSystem_destructor(ptr);
+    }
+}
+
+impl HandleOSDCachedFileSystem {
+    /// Dereference this Handle to access the underlying OSD_CachedFileSystem
+    pub fn get(&self) -> &crate::ffi::OSD_CachedFileSystem {
+        unsafe { &*(crate::ffi::HandleOSDCachedFileSystem_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying OSD_CachedFileSystem
+    pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_CachedFileSystem {
+        unsafe { &mut *(crate::ffi::HandleOSDCachedFileSystem_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<OSD_CachedFileSystem> to Handle<OSD_FileSystem>
+    pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDFileSystem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleOSDCachedFileSystem_to_HandleOSDFileSystem(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ── Skipped symbols for CachedFileSystem (5 total) ──
@@ -3084,6 +3122,60 @@ impl HandleOSDFileSystem {
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_FileSystem {
         unsafe { &mut *(crate::ffi::HandleOSDFileSystem_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<OSD_FileSystem> to Handle<OSD_CachedFileSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `OSD_CachedFileSystem` (or subclass).
+    pub fn downcast_to_cached_file_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDCachedFileSystem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleOSDFileSystem_downcast_to_HandleOSDCachedFileSystem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<OSD_FileSystem> to Handle<OSD_FileSystemSelector>
+    ///
+    /// Returns `None` if the handle does not point to a `OSD_FileSystemSelector` (or subclass).
+    pub fn downcast_to_file_system_selector(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDFileSystemSelector>> {
+        let ptr = unsafe {
+            crate::ffi::HandleOSDFileSystem_downcast_to_HandleOSDFileSystemSelector(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<OSD_FileSystem> to Handle<OSD_LocalFileSystem>
+    ///
+    /// Returns `None` if the handle does not point to a `OSD_LocalFileSystem` (or subclass).
+    pub fn downcast_to_local_file_system(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDLocalFileSystem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleOSDFileSystem_downcast_to_HandleOSDLocalFileSystem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for FileSystem (6 total) ──
@@ -3206,6 +3298,44 @@ impl FileSystemSelector {
     pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
         unsafe {
             &mut *(crate::ffi::OSD_FileSystemSelector_as_OSD_FileSystem_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleOSDFileSystemSelector> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_FileSystemSelector_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleOSDFileSystemSelector;
+
+unsafe impl crate::CppDeletable for HandleOSDFileSystemSelector {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleOSDFileSystemSelector_destructor(ptr);
+    }
+}
+
+impl HandleOSDFileSystemSelector {
+    /// Dereference this Handle to access the underlying OSD_FileSystemSelector
+    pub fn get(&self) -> &crate::ffi::OSD_FileSystemSelector {
+        unsafe { &*(crate::ffi::HandleOSDFileSystemSelector_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying OSD_FileSystemSelector
+    pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_FileSystemSelector {
+        unsafe { &mut *(crate::ffi::HandleOSDFileSystemSelector_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<OSD_FileSystemSelector> to Handle<OSD_FileSystem>
+    pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDFileSystem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleOSDFileSystemSelector_to_HandleOSDFileSystem(self as *const Self),
+            )
         }
     }
 }
@@ -3382,6 +3512,44 @@ impl LocalFileSystem {
     /// Upcast to OSD_FileSystem (mutable)
     pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
         unsafe { &mut *(crate::ffi::OSD_LocalFileSystem_as_OSD_FileSystem_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleOSDLocalFileSystem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::OSD_LocalFileSystem_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleOSDLocalFileSystem;
+
+unsafe impl crate::CppDeletable for HandleOSDLocalFileSystem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleOSDLocalFileSystem_destructor(ptr);
+    }
+}
+
+impl HandleOSDLocalFileSystem {
+    /// Dereference this Handle to access the underlying OSD_LocalFileSystem
+    pub fn get(&self) -> &crate::ffi::OSD_LocalFileSystem {
+        unsafe { &*(crate::ffi::HandleOSDLocalFileSystem_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying OSD_LocalFileSystem
+    pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_LocalFileSystem {
+        unsafe { &mut *(crate::ffi::HandleOSDLocalFileSystem_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<OSD_LocalFileSystem> to Handle<OSD_FileSystem>
+    pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDFileSystem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleOSDLocalFileSystem_to_HandleOSDFileSystem(
+                self as *const Self,
+            ))
+        }
     }
 }
 

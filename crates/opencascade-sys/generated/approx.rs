@@ -67,6 +67,9 @@ impl TryFrom<i32> for Status {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleGeomFillCircularBlendFunc, HandleGeomFillSweepFunction};
+
 // ========================
 // From Approx_Curve2d.hxx
 // ========================
@@ -1409,15 +1412,18 @@ impl SameParameter {
             crate::OwnedPtr::from_raw(crate::ffi::Approx_SameParameter_curve3d(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for SameParameter (1 total) ──
-// SKIPPED: **Source:** `Approx_SameParameter.hxx`:78 - `Approx_SameParameter::CurveOnSurface`
-//   method: Returns the 3D curve on surface that has the same parameter as
-//   method: the 3D curve up to the specified tolerance.
-//   Reason: return type 'Handle(Adaptor3d_CurveOnSurface)' is unknown
-//   // pub fn curve_on_surface(&self) -> OwnedPtr<Handle<Adaptor3d_CurveOnSurface>>;
-//
+    /// **Source:** `Approx_SameParameter.hxx`:78 - `Approx_SameParameter::CurveOnSurface()`
+    /// Returns the 3D curve on surface that has the same parameter as
+    /// the 3D curve up to the specified tolerance.
+    pub fn curve_on_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Approx_SameParameter_curve_on_surface(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Approx_SweepApproximation.hxx
@@ -1952,6 +1958,42 @@ impl HandleApproxSweepFunction {
     /// Dereference this Handle to mutably access the underlying Approx_SweepFunction
     pub fn get_mut(&mut self) -> &mut crate::ffi::Approx_SweepFunction {
         unsafe { &mut *(crate::ffi::HandleApproxSweepFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Approx_SweepFunction> to Handle<GeomFill_CircularBlendFunc>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_CircularBlendFunc` (or subclass).
+    pub fn downcast_to_circular_blend_func(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillCircularBlendFunc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleGeomFillCircularBlendFunc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Approx_SweepFunction> to Handle<GeomFill_SweepFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_SweepFunction` (or subclass).
+    pub fn downcast_to_sweep_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillSweepFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleGeomFillSweepFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 

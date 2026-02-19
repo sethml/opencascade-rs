@@ -6,6 +6,12 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleStepReprRepresentationItem, HandleStepVisualTessellatedGeometricSet,
+    HandleStepVisualTessellatedItem,
+};
+
 // ========================
 // From StepGeom_GeometricRepresentationItem.hxx
 // ========================
@@ -69,6 +75,17 @@ impl GeometricRepresentationItem {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepGeomGeometricRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepGeom_GeometricRepresentationItem_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:36 - `StepRepr_RepresentationItem::Init()`
     pub fn init(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe {
@@ -97,6 +114,71 @@ impl GeometricRepresentationItem {
                     self as *const Self,
                 ),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepGeomGeometricRepresentationItem;
+
+unsafe impl crate::CppDeletable for HandleStepGeomGeometricRepresentationItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepGeomGeometricRepresentationItem_destructor(ptr);
+    }
+}
+
+impl HandleStepGeomGeometricRepresentationItem {
+    /// Dereference this Handle to access the underlying StepGeom_GeometricRepresentationItem
+    pub fn get(&self) -> &crate::ffi::StepGeom_GeometricRepresentationItem {
+        unsafe {
+            &*(crate::ffi::HandleStepGeomGeometricRepresentationItem_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepGeom_GeometricRepresentationItem
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepGeom_GeometricRepresentationItem {
+        unsafe {
+            &mut *(crate::ffi::HandleStepGeomGeometricRepresentationItem_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepGeom_GeometricRepresentationItem> to Handle<StepRepr_RepresentationItem>
+    pub fn to_handle_representation_item(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepGeomGeometricRepresentationItem_to_HandleStepReprRepresentationItem(self as *const Self))
+        }
+    }
+
+    /// Downcast Handle<StepGeom_GeometricRepresentationItem> to Handle<StepVisual_TessellatedGeometricSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedGeometricSet` (or subclass).
+    pub fn downcast_to_tessellated_geometric_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedGeometricSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepGeomGeometricRepresentationItem_downcast_to_HandleStepVisualTessellatedGeometricSet(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepGeom_GeometricRepresentationItem> to Handle<StepVisual_TessellatedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedItem` (or subclass).
+    pub fn downcast_to_tessellated_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepGeomGeometricRepresentationItem_downcast_to_HandleStepVisualTessellatedItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

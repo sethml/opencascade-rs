@@ -68,6 +68,12 @@ impl TryFrom<i32> for StatusExec {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleIGESControlActorWrite, HandleIGESToBRepActor, HandleSTEPCAFControlActorWrite,
+    HandleSTEPControlActorRead, HandleSTEPControlActorWrite,
+};
+
 // ========================
 // From Transfer_ActorOfFinderProcess.hxx
 // ========================
@@ -100,6 +106,40 @@ impl ActorOfFinderProcess {
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_transferring(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:52 - `Transfer_ActorOfFinderProcess::Transfer()`
+    pub fn transfer(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        TP: &crate::ffi::HandleTransferFinderProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_transfer(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:57 - `Transfer_ActorOfFinderProcess::TransferTransient()`
+    pub fn transfer_transient(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferFinderProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_transfer_transient(
                 self as *mut Self,
                 start,
                 TP,
@@ -155,6 +195,17 @@ impl ActorOfFinderProcess {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:55 - `Transfer_ActorOfProcessForFinder::Recognize()`
     pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
         unsafe {
@@ -200,19 +251,92 @@ impl ActorOfFinderProcess {
     }
 }
 
-// ── Skipped symbols for ActorOfFinderProcess (8 total) ──
+pub use crate::ffi::HandleTransferActorOfFinderProcess;
+
+unsafe impl crate::CppDeletable for HandleTransferActorOfFinderProcess {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTransferActorOfFinderProcess_destructor(ptr);
+    }
+}
+
+impl HandleTransferActorOfFinderProcess {
+    /// Dereference this Handle to access the underlying Transfer_ActorOfFinderProcess
+    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfFinderProcess {
+        unsafe { &*(crate::ffi::HandleTransferActorOfFinderProcess_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Transfer_ActorOfFinderProcess
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfFinderProcess {
+        unsafe { &mut *(crate::ffi::HandleTransferActorOfFinderProcess_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Transfer_ActorOfFinderProcess> to Handle<Transfer_ActorOfProcessForFinder>
+    pub fn to_handle_actor_of_process_for_finder(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTransferActorOfFinderProcess_to_HandleTransferActorOfProcessForFinder(self as *const Self))
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfFinderProcess> to Handle<IGESControl_ActorWrite>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESControl_ActorWrite` (or subclass).
+    pub fn downcast_to_iges_control_actor_write(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlActorWrite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfFinderProcess_downcast_to_HandleIGESControlActorWrite(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfFinderProcess> to Handle<STEPCAFControl_ActorWrite>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPCAFControl_ActorWrite` (or subclass).
+    pub fn downcast_to_stepcaf_control_actor_write(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfFinderProcess_downcast_to_HandleSTEPCAFControlActorWrite(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfFinderProcess> to Handle<STEPControl_ActorWrite>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPControl_ActorWrite` (or subclass).
+    pub fn downcast_to_step_control_actor_write(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfFinderProcess_downcast_to_HandleSTEPControlActorWrite(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for ActorOfFinderProcess (6 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans`
 //   method: Returns the Transfer Mode, modifiable
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn mode_trans(&mut self) -> &mut i32;
-//
-// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:52 - `Transfer_ActorOfFinderProcess::Transfer`
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
-//   // pub fn transfer(&mut self, start: &HandleFinder, TP: &HandleFinderProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
-// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:57 - `Transfer_ActorOfFinderProcess::TransferTransient`
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn transfer_transient(&mut self, start: &HandleTransient, TP: &HandleFinderProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Standard_Transient>>;
 //
 // SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:64 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
@@ -403,13 +527,77 @@ impl HandleTransferActorOfProcessForFinder {
             &mut *(crate::ffi::HandleTransferActorOfProcessForFinder_get_mut(self as *mut Self))
         }
     }
+
+    /// Downcast Handle<Transfer_ActorOfProcessForFinder> to Handle<IGESControl_ActorWrite>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESControl_ActorWrite` (or subclass).
+    pub fn downcast_to_iges_control_actor_write(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlActorWrite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfProcessForFinder_downcast_to_HandleIGESControlActorWrite(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfProcessForFinder> to Handle<STEPCAFControl_ActorWrite>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPCAFControl_ActorWrite` (or subclass).
+    pub fn downcast_to_stepcaf_control_actor_write(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfProcessForFinder_downcast_to_HandleSTEPCAFControlActorWrite(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfProcessForFinder> to Handle<STEPControl_ActorWrite>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPControl_ActorWrite` (or subclass).
+    pub fn downcast_to_step_control_actor_write(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfProcessForFinder_downcast_to_HandleSTEPControlActorWrite(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfProcessForFinder> to Handle<Transfer_ActorOfFinderProcess>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_ActorOfFinderProcess` (or subclass).
+    pub fn downcast_to_actor_of_finder_process(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfProcessForFinder_downcast_to_HandleTransferActorOfFinderProcess(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for ActorOfProcessForFinder (1 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:69 - `Transfer_ActorOfProcessForFinder::TransientResult`
 //   method: Prepares and Returns a Binder for a Transient Result
 //   method: Returns a Null Handle if <res> is itself Null
-//   Reason: param 'res' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: return type 'Handle(Transfer_SimpleBinderOfTransient)' is unknown
 //   // pub fn transient_result(&self, res: &HandleTransient) -> OwnedPtr<Handle<Transfer_SimpleBinderOfTransient>>;
 //
 
@@ -430,6 +618,24 @@ impl ActorOfProcessForTransient {
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:41 - `Transfer_ActorOfProcessForTransient::Transfer_ActorOfProcessForTransient()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfProcessForTransient_ctor()) }
+    }
+
+    /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:54 - `Transfer_ActorOfProcessForTransient::Recognize()`
+    /// Prerequisite for Transfer : the method Transfer is
+    /// called on a starting object only if Recognize has
+    /// returned True on it
+    /// This allows to define a list of Actors, each one
+    /// processing a definite kind of data
+    /// TransferProcess calls Recognize on each one before
+    /// calling Transfer. But even if Recognize has returned
+    /// True, Transfer can reject by returning a Null Binder
+    /// (afterwards rejection), the next actor is then invoked
+    ///
+    /// The provided default returns True, can be redefined
+    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::Transfer_ActorOfProcessForTransient_recognize(self as *mut Self, start)
+        }
     }
 
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
@@ -529,27 +735,68 @@ impl HandleTransferActorOfProcessForTransient {
             &mut *(crate::ffi::HandleTransferActorOfProcessForTransient_get_mut(self as *mut Self))
         }
     }
+
+    /// Downcast Handle<Transfer_ActorOfProcessForTransient> to Handle<IGESToBRep_Actor>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESToBRep_Actor` (or subclass).
+    pub fn downcast_to_actor(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfProcessForTransient_downcast_to_HandleIGESToBRepActor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfProcessForTransient> to Handle<STEPControl_ActorRead>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPControl_ActorRead` (or subclass).
+    pub fn downcast_to_actor_read(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlActorRead>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfProcessForTransient_downcast_to_HandleSTEPControlActorRead(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfProcessForTransient> to Handle<Transfer_ActorOfTransientProcess>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_ActorOfTransientProcess` (or subclass).
+    pub fn downcast_to_actor_of_transient_process(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfProcessForTransient_downcast_to_HandleTransferActorOfTransientProcess(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for ActorOfProcessForTransient (3 total) ──
-// SKIPPED: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:54 - `Transfer_ActorOfProcessForTransient::Recognize`
-//   method: Prerequisite for Transfer : the method Transfer is
-//   method: called on a starting object only if Recognize has
-//   method: returned True on it
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn recognize(&mut self, start: &HandleTransient) -> bool;
-//
+// ── Skipped symbols for ActorOfProcessForTransient (2 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:61 - `Transfer_ActorOfProcessForTransient::Transferring`
 //   method: Specific action of Transfer. The Result is stored in
 //   method: the returned Binder, or a Null Handle for "No result"
 //   method: (Default defined as doing nothing; should be deferred)
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_ProcessForTransient)&'
 //   // pub fn transferring(&mut self, start: &HandleTransient, TP: &HandleProcessForTransient, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
 //
 // SKIPPED: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:68 - `Transfer_ActorOfProcessForTransient::TransientResult`
 //   method: Prepares and Returns a Binder for a Transient Result
 //   method: Returns a Null Handle if <res> is itself Null
-//   Reason: param 'res' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: return type 'Handle(Transfer_SimpleBinderOfTransient)' is unknown
 //   // pub fn transient_result(&self, res: &HandleTransient) -> OwnedPtr<Handle<Transfer_SimpleBinderOfTransient>>;
 //
 
@@ -623,6 +870,27 @@ impl ActorOfTransientProcess {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfTransientProcess_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:54 - `Transfer_ActorOfProcessForTransient::Recognize()`
+    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::Transfer_ActorOfTransientProcess_inherited_Recognize(
+                self as *mut Self,
+                start,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
@@ -665,17 +933,82 @@ impl ActorOfTransientProcess {
     }
 }
 
+pub use crate::ffi::HandleTransferActorOfTransientProcess;
+
+unsafe impl crate::CppDeletable for HandleTransferActorOfTransientProcess {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTransferActorOfTransientProcess_destructor(ptr);
+    }
+}
+
+impl HandleTransferActorOfTransientProcess {
+    /// Dereference this Handle to access the underlying Transfer_ActorOfTransientProcess
+    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfTransientProcess {
+        unsafe { &*(crate::ffi::HandleTransferActorOfTransientProcess_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Transfer_ActorOfTransientProcess
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfTransientProcess {
+        unsafe {
+            &mut *(crate::ffi::HandleTransferActorOfTransientProcess_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<Transfer_ActorOfTransientProcess> to Handle<Transfer_ActorOfProcessForTransient>
+    pub fn to_handle_actor_of_process_for_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTransferActorOfTransientProcess_to_HandleTransferActorOfProcessForTransient(self as *const Self))
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfTransientProcess> to Handle<IGESToBRep_Actor>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESToBRep_Actor` (or subclass).
+    pub fn downcast_to_actor(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfTransientProcess_downcast_to_HandleIGESToBRepActor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Transfer_ActorOfTransientProcess> to Handle<STEPControl_ActorRead>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPControl_ActorRead` (or subclass).
+    pub fn downcast_to_actor_read(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlActorRead>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferActorOfTransientProcess_downcast_to_HandleSTEPControlActorRead(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ── Skipped symbols for ActorOfTransientProcess (8 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring`
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_ProcessForTransient)&'
 //   // pub fn transferring(&mut self, start: &HandleTransient, TP: &HandleProcessForTransient, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
 //
 // SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:45 - `Transfer_ActorOfTransientProcess::Transfer`
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
 //   // pub fn transfer(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
 //
 // SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:50 - `Transfer_ActorOfTransientProcess::TransferTransient`
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
 //   // pub fn transfer_transient(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Standard_Transient>>;
 //
 // SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters`
@@ -994,12 +1327,57 @@ impl Finder {
         }
     }
 
+    /// **Source:** `Transfer_Finder.hxx`:61 - `Transfer_Finder::SetAttribute()`
+    /// Adds an attribute with a given name (replaces the former one
+    /// with the same name if already exists)
+    pub fn set_attribute(&mut self, name: &str, val: &crate::ffi::HandleStandardTransient) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_set_attribute(self as *mut Self, c_name.as_ptr(), val)
+        }
+    }
+
     /// **Source:** `Transfer_Finder.hxx`:66 - `Transfer_Finder::RemoveAttribute()`
     /// Removes an attribute
     /// Returns True when done, False if this attribute did not exist
     pub fn remove_attribute(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { crate::ffi::Transfer_Finder_remove_attribute(self as *mut Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:72 - `Transfer_Finder::GetAttribute()`
+    /// Returns an attribute from its name, filtered by a type
+    /// If no attribute has this name, or if it is not kind of this
+    /// type, <val> is Null and returned value is False
+    /// Else, it is True
+    pub fn get_attribute(
+        &self,
+        name: &str,
+        type_: &crate::ffi::HandleStandardType,
+        val: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_get_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+                type_,
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_Finder.hxx`:78 - `Transfer_Finder::Attribute()`
+    /// Returns an attribute from its name. Null Handle if not recorded
+    /// (whatever Transient, Integer, Real ...)
+    pub fn attribute(&self, name: &str) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_Finder_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `Transfer_Finder.hxx`:83 - `Transfer_Finder::AttributeType()`
@@ -1177,26 +1555,7 @@ impl HandleTransferFinder {
     }
 }
 
-// ── Skipped symbols for Finder (6 total) ──
-// SKIPPED: **Source:** `Transfer_Finder.hxx`:61 - `Transfer_Finder::SetAttribute`
-//   method: Adds an attribute with a given name (replaces the former one
-//   method: with the same name if already exists)
-//   Reason: param 'val' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_attribute(&mut self, name: *const char, val: &HandleTransient);
-//
-// SKIPPED: **Source:** `Transfer_Finder.hxx`:72 - `Transfer_Finder::GetAttribute`
-//   method: Returns an attribute from its name, filtered by a type
-//   method: If no attribute has this name, or if it is not kind of this
-//   method: type, <val> is Null and returned value is False
-//   Reason: param 'val' uses unknown type 'Handle(Standard_Transient)&'
-//   // pub fn get_attribute(&self, name: *const char, type_: &HandleType, val: &mut HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `Transfer_Finder.hxx`:78 - `Transfer_Finder::Attribute`
-//   method: Returns an attribute from its name. Null Handle if not recorded
-//   method: (whatever Transient, Integer, Real ...)
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn attribute(&self, name: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
-//
+// ── Skipped symbols for Finder (3 total) ──
 // SKIPPED: **Source:** `Transfer_Finder.hxx`:92 - `Transfer_Finder::GetIntegerAttribute`
 //   method: Returns an attribute from its name, as integer
 //   method: If no attribute has this name, or not an integer,
@@ -1318,6 +1677,15 @@ impl FinderProcess {
             &mut *(crate::ffi::Transfer_FinderProcess_as_Transfer_ProcessForFinder_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Transfer_FinderProcess_to_handle(obj.into_raw()))
         }
     }
 
@@ -1489,10 +1857,83 @@ impl FinderProcess {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:215 - `Transfer_ProcessForFinder::BindTransient()`
+    pub fn bind_transient(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        res: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_BindTransient(
+                self as *mut Self,
+                start,
+                res,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:223 - `Transfer_ProcessForFinder::FindTransient()`
+    pub fn find_transient(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+    ) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::Transfer_FinderProcess_inherited_FindTransient(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:231 - `Transfer_ProcessForFinder::BindMultiple()`
     pub fn bind_multiple(&mut self, start: &crate::ffi::HandleTransferFinder) {
         unsafe {
             crate::ffi::Transfer_FinderProcess_inherited_BindMultiple(self as *mut Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:235 - `Transfer_ProcessForFinder::AddMultiple()`
+    pub fn add_multiple(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        res: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_AddMultiple(self as *mut Self, start, res)
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:249 - `Transfer_ProcessForFinder::FindTypedTransient()`
+    pub fn find_typed_transient(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+        atype: &crate::ffi::HandleStandardType,
+        val: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_FindTypedTransient(
+                self as *const Self,
+                start,
+                atype,
+                val,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:270 - `Transfer_ProcessForFinder::GetTypedTransient()`
+    pub fn get_typed_transient(
+        &self,
+        binder: &crate::ffi::HandleTransferBinder,
+        atype: &crate::ffi::HandleStandardType,
+        val: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Transfer_FinderProcess_inherited_GetTypedTransient(
+                self as *const Self,
+                binder,
+                atype,
+                val,
+            )
         }
     }
 
@@ -1712,12 +2153,45 @@ impl FinderProcess {
     }
 }
 
+pub use crate::ffi::HandleTransferFinderProcess;
+
+unsafe impl crate::CppDeletable for HandleTransferFinderProcess {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTransferFinderProcess_destructor(ptr);
+    }
+}
+
+impl HandleTransferFinderProcess {
+    /// Dereference this Handle to access the underlying Transfer_FinderProcess
+    pub fn get(&self) -> &crate::ffi::Transfer_FinderProcess {
+        unsafe { &*(crate::ffi::HandleTransferFinderProcess_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Transfer_FinderProcess
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_FinderProcess {
+        unsafe { &mut *(crate::ffi::HandleTransferFinderProcess_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Transfer_FinderProcess> to Handle<Transfer_ProcessForFinder>
+    pub fn to_handle_process_for_finder(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTransferFinderProcess_to_HandleTransferProcessForFinder(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ── Skipped symbols for FinderProcess (3 total) ──
 // SKIPPED: **Source:** `Transfer_FinderProcess.hxx`:67 - `Transfer_FinderProcess::TransientMapper`
 //   method: Returns a TransientMapper for a given Transient Object
 //   method: Either <obj> is already mapped, then its Mapper is returned
 //   method: Or it is not, then a new one is created then returned, BUT
-//   Reason: param 'obj' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: return type 'Handle(Transfer_TransientMapper)' is unknown
 //   // pub fn transient_mapper(&self, obj: &HandleTransient) -> OwnedPtr<Handle<Transfer_TransientMapper>>;
 //
 // SKIPPED: **Source:** `Transfer_FinderProcess.hxx`:71 - `Transfer_FinderProcess::PrintTrace`
@@ -2230,6 +2704,36 @@ impl ProcessForFinder {
         }
     }
 
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:215 - `Transfer_ProcessForFinder::BindTransient()`
+    /// Binds a starting object with a Transient Result.
+    /// Uses a SimpleBinderOfTransient to work. If there is already
+    /// one but with no Result set, sets its Result.
+    /// Considers a category number, by default 0
+    pub fn bind_transient(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        res: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_bind_transient(self as *mut Self, start, res)
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:223 - `Transfer_ProcessForFinder::FindTransient()`
+    /// Returns the Result of the Transfer of an object <start> as a
+    /// Transient Result.
+    /// Returns a Null Handle if there is no Transient Result
+    /// Considers a category number, by default 0
+    /// Warning : Supposes that Binding is done with a SimpleBinderOfTransient
+    pub fn find_transient(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+    ) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::Transfer_ProcessForFinder_find_transient(self as *const Self, start))
+        }
+    }
+
     /// **Source:** `Transfer_ProcessForFinder.hxx`:231 - `Transfer_ProcessForFinder::BindMultiple()`
     /// Prepares an object <start> to be bound with several results.
     /// If no Binder is yet attached to <obj>, a MultipleBinder
@@ -2238,6 +2742,69 @@ impl ProcessForFinder {
     /// Considers a category number, by default 0
     pub fn bind_multiple(&mut self, start: &crate::ffi::HandleTransferFinder) {
         unsafe { crate::ffi::Transfer_ProcessForFinder_bind_multiple(self as *mut Self, start) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:235 - `Transfer_ProcessForFinder::AddMultiple()`
+    /// Adds an item to a list of results bound to a starting object.
+    /// Considers a category number, by default 0, for all results
+    pub fn add_multiple(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        res: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe { crate::ffi::Transfer_ProcessForFinder_add_multiple(self as *mut Self, start, res) }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:249 - `Transfer_ProcessForFinder::FindTypedTransient()`
+    /// Searches for a transient result attached to a starting object,
+    /// according to its type, by criterium IsKind(atype)
+    ///
+    /// In case of multiple result, explores the list and gives in
+    /// <val> the first transient result IsKind(atype)
+    /// Returns True and fills <val> if found
+    /// Else, returns False (<val> is not touched, not even nullified)
+    ///
+    /// This syntactic form avoids to do DownCast : if a result is
+    /// found with the good type, it is loaded in <val> and can be
+    /// immediately used, well initialised
+    pub fn find_typed_transient(
+        &self,
+        start: &crate::ffi::HandleTransferFinder,
+        atype: &crate::ffi::HandleStandardType,
+        val: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_find_typed_transient(
+                self as *const Self,
+                start,
+                atype,
+                val,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ProcessForFinder.hxx`:270 - `Transfer_ProcessForFinder::GetTypedTransient()`
+    /// Searches for a transient result recorded in a Binder, whatever
+    /// this Binder is recorded or not in <me>
+    ///
+    /// This is strictly equivalent to the class method GetTypedResult
+    /// from class SimpleBinderOfTransient, but is just lighter to call
+    ///
+    /// Apart from this, works as FindTypedTransient
+    pub fn get_typed_transient(
+        &self,
+        binder: &crate::ffi::HandleTransferBinder,
+        atype: &crate::ffi::HandleStandardType,
+        val: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Transfer_ProcessForFinder_get_typed_transient(
+                self as *const Self,
+                binder,
+                atype,
+                val,
+            )
+        }
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:286 - `Transfer_ProcessForFinder::NbMapped()`
@@ -2561,41 +3128,27 @@ impl HandleTransferProcessForFinder {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ProcessForFinder {
         unsafe { &mut *(crate::ffi::HandleTransferProcessForFinder_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Transfer_ProcessForFinder> to Handle<Transfer_FinderProcess>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_FinderProcess` (or subclass).
+    pub fn downcast_to_finder_process(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTransferProcessForFinder_downcast_to_HandleTransferFinderProcess(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for ProcessForFinder (10 total) ──
-// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:215 - `Transfer_ProcessForFinder::BindTransient`
-//   method: Binds a starting object with a Transient Result.
-//   method: Uses a SimpleBinderOfTransient to work. If there is already
-//   method: one but with no Result set, sets its Result.
-//   Reason: param 'res' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn bind_transient(&mut self, start: &HandleFinder, res: &HandleTransient);
-//
-// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:223 - `Transfer_ProcessForFinder::FindTransient`
-//   method: Returns the Result of the Transfer of an object <start> as a
-//   method: Transient Result.
-//   method: Returns a Null Handle if there is no Transient Result
-//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
-//   // pub fn find_transient(&self, start: &HandleFinder) -> &HandleTransient;
-//
-// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:235 - `Transfer_ProcessForFinder::AddMultiple`
-//   method: Adds an item to a list of results bound to a starting object.
-//   method: Considers a category number, by default 0, for all results
-//   Reason: param 'res' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_multiple(&mut self, start: &HandleFinder, res: &HandleTransient);
-//
-// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:249 - `Transfer_ProcessForFinder::FindTypedTransient`
-//   method: Searches for a transient result attached to a starting object,
-//   method: according to its type, by criterium IsKind(atype)
-//   Reason: param 'val' uses unknown type 'Handle(Standard_Transient)&'
-//   // pub fn find_typed_transient(&self, start: &HandleFinder, atype: &HandleType, val: &mut HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:270 - `Transfer_ProcessForFinder::GetTypedTransient`
-//   method: Searches for a transient result recorded in a Binder, whatever
-//   method: this Binder is recorded or not in <me>
-//   Reason: param 'val' uses unknown type 'Handle(Standard_Transient)&'
-//   // pub fn get_typed_transient(&self, binder: &HandleBinder, atype: &HandleType, val: &mut HandleTransient) -> bool;
-//
+// ── Skipped symbols for ProcessForFinder (5 total) ──
 // SKIPPED: **Source:** `Transfer_ProcessForFinder.hxx`:376 - `Transfer_ProcessForFinder::PrintTrace`
 //   method: Prints a short information on a starting object. By default
 //   method: prints its Dynamic Type. Can be redefined

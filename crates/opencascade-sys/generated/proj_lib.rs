@@ -131,6 +131,9 @@ pub fn is_ana_surf(theAS: &crate::ffi::HandleAdaptor3dSurface) -> bool {
     unsafe { crate::ffi::ProjLib_is_ana_surf(theAS) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleAdaptor2dCurve2d, HandleAdaptor3dCurve};
+
 // ========================
 // From ProjLib_CompProjectedCurve.hxx
 // ========================
@@ -645,6 +648,17 @@ impl CompProjectedCurve {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleProjLibCompProjectedCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:83 - `Adaptor2d_Curve2d::IsClosed()`
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::ProjLib_CompProjectedCurve_inherited_IsClosed(self as *const Self) }
@@ -773,6 +787,37 @@ impl CompProjectedCurve {
             crate::OwnedPtr::from_raw(crate::ffi::ProjLib_CompProjectedCurve_inherited_BSpline(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleProjLibCompProjectedCurve;
+
+unsafe impl crate::CppDeletable for HandleProjLibCompProjectedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleProjLibCompProjectedCurve_destructor(ptr);
+    }
+}
+
+impl HandleProjLibCompProjectedCurve {
+    /// Dereference this Handle to access the underlying ProjLib_CompProjectedCurve
+    pub fn get(&self) -> &crate::ffi::ProjLib_CompProjectedCurve {
+        unsafe { &*(crate::ffi::HandleProjLibCompProjectedCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ProjLib_CompProjectedCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ProjLib_CompProjectedCurve {
+        unsafe { &mut *(crate::ffi::HandleProjLibCompProjectedCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ProjLib_CompProjectedCurve> to Handle<Adaptor2d_Curve2d>
+    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleProjLibCompProjectedCurve_to_HandleAdaptor2dCurve2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -2135,6 +2180,11 @@ impl ProjectOnPlane {
         unsafe { &*(crate::ffi::ProjLib_ProjectOnPlane_get_curve(self as *const Self)) }
     }
 
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:84 - `ProjLib_ProjectOnPlane::GetResult()`
+    pub fn get_result(&self) -> &crate::ffi::HandleGeomAdaptorCurve {
+        unsafe { &*(crate::ffi::ProjLib_ProjectOnPlane_get_result(self as *const Self)) }
+    }
+
     /// **Source:** `ProjLib_ProjectOnPlane.hxx`:86 - `ProjLib_ProjectOnPlane::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         unsafe { crate::ffi::ProjLib_ProjectOnPlane_first_parameter(self as *const Self) }
@@ -2404,6 +2454,15 @@ impl ProjectOnPlane {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleProjLibProjectOnPlane> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectOnPlane_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ProjLib_ProjectOnPlane_inherited_DynamicType(self as *const Self)) }
@@ -2419,11 +2478,36 @@ impl ProjectOnPlane {
     }
 }
 
-// ── Skipped symbols for ProjectOnPlane (1 total) ──
-// SKIPPED: **Source:** `ProjLib_ProjectOnPlane.hxx`:84 - `ProjLib_ProjectOnPlane::GetResult`
-//   Reason: return type 'const Handle(GeomAdaptor_Curve)&' is unknown
-//   // pub fn get_result(&self) -> &HandleCurve;
-//
+pub use crate::ffi::HandleProjLibProjectOnPlane;
+
+unsafe impl crate::CppDeletable for HandleProjLibProjectOnPlane {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleProjLibProjectOnPlane_destructor(ptr);
+    }
+}
+
+impl HandleProjLibProjectOnPlane {
+    /// Dereference this Handle to access the underlying ProjLib_ProjectOnPlane
+    pub fn get(&self) -> &crate::ffi::ProjLib_ProjectOnPlane {
+        unsafe { &*(crate::ffi::HandleProjLibProjectOnPlane_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ProjLib_ProjectOnPlane
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ProjLib_ProjectOnPlane {
+        unsafe { &mut *(crate::ffi::HandleProjLibProjectOnPlane_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ProjLib_ProjectOnPlane> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleProjLibProjectOnPlane_to_HandleAdaptor3dCurve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From ProjLib_ProjectOnSurface.hxx
@@ -2947,9 +3031,49 @@ impl ProjectedCurve {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleProjLibProjectedCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ProjLib_ProjectedCurve_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
         unsafe { crate::ffi::ProjLib_ProjectedCurve_inherited_NbSamples(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleProjLibProjectedCurve;
+
+unsafe impl crate::CppDeletable for HandleProjLibProjectedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleProjLibProjectedCurve_destructor(ptr);
+    }
+}
+
+impl HandleProjLibProjectedCurve {
+    /// Dereference this Handle to access the underlying ProjLib_ProjectedCurve
+    pub fn get(&self) -> &crate::ffi::ProjLib_ProjectedCurve {
+        unsafe { &*(crate::ffi::HandleProjLibProjectedCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ProjLib_ProjectedCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ProjLib_ProjectedCurve {
+        unsafe { &mut *(crate::ffi::HandleProjLibProjectedCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ProjLib_ProjectedCurve> to Handle<Adaptor2d_Curve2d>
+    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleProjLibProjectedCurve_to_HandleAdaptor2dCurve2d(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 

@@ -107,6 +107,16 @@ impl SubPartsIterator {
         unsafe { crate::ffi::IFGraph_SubPartsIterator_set_part_num(self as *mut Self, num) }
     }
 
+    /// **Source:** `IFGraph_SubPartsIterator.hxx`:90 - `IFGraph_SubPartsIterator::GetFromEntity()`
+    /// Adds an Entity : into load status if in Load mode, to the
+    /// current part if there is one. If shared is True, adds
+    /// also its shared ones (shared at all levels)
+    pub fn get_from_entity(&mut self, ent: &crate::ffi::HandleStandardTransient, shared: bool) {
+        unsafe {
+            crate::ffi::IFGraph_SubPartsIterator_get_from_entity(self as *mut Self, ent, shared)
+        }
+    }
+
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:99 - `IFGraph_SubPartsIterator::Reset()`
     /// Erases data (parts, entities) : "me" becomes empty and in
     /// load status
@@ -130,6 +140,26 @@ impl SubPartsIterator {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `IFGraph_SubPartsIterator.hxx`:114 - `IFGraph_SubPartsIterator::IsLoaded()`
+    /// Returns True if an Entity is loaded (either set into a
+    /// sub-part or not)
+    pub fn is_loaded(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_is_loaded(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IFGraph_SubPartsIterator.hxx`:117 - `IFGraph_SubPartsIterator::IsInPart()`
+    /// Returns True if an Entity is Present in a sub-part
+    pub fn is_in_part(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_is_in_part(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IFGraph_SubPartsIterator.hxx`:121 - `IFGraph_SubPartsIterator::EntityPartNum()`
+    /// Returns number of the sub-part in which an Entity has been set
+    /// if it is not in a sub-part (or not loaded at all), Returns 0
+    pub fn entity_part_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_entity_part_num(self as *const Self, ent) }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:124 - `IFGraph_SubPartsIterator::Start()`
@@ -158,16 +188,21 @@ impl SubPartsIterator {
     pub fn is_single(&self) -> bool {
         unsafe { crate::ffi::IFGraph_SubPartsIterator_is_single(self as *const Self) }
     }
+
+    /// **Source:** `IFGraph_SubPartsIterator.hxx`:141 - `IFGraph_SubPartsIterator::FirstEntity()`
+    /// Returns the first entity of current sub-part, that is for a
+    /// Single one, the only one it contains
+    /// Error : same as above (end of iteration)
+    pub fn first_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_first_entity(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for SubPartsIterator (8 total) ──
-// SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:90 - `IFGraph_SubPartsIterator::GetFromEntity`
-//   method: Adds an Entity : into load status if in Load mode, to the
-//   method: current part if there is one. If shared is True, adds
-//   method: also its shared ones (shared at all levels)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn get_from_entity(&mut self, ent: &HandleTransient, shared: bool);
-//
+// ── Skipped symbols for SubPartsIterator (3 total) ──
 // SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:95 - `IFGraph_SubPartsIterator::GetFromIter`
 //   method: Adds a list of Entities (into Load mode or to a Part),
 //   method: given as an Iterator
@@ -178,30 +213,6 @@ impl SubPartsIterator {
 //   method: Returns entities which where loaded (not set into a sub-part)
 //   Reason: return type 'Interface_GraphContent' is unknown
 //   // pub fn loaded(&self) -> OwnedPtr<Interface_GraphContent>;
-//
-// SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:114 - `IFGraph_SubPartsIterator::IsLoaded`
-//   method: Returns True if an Entity is loaded (either set into a
-//   method: sub-part or not)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn is_loaded(&self, ent: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:117 - `IFGraph_SubPartsIterator::IsInPart`
-//   method: Returns True if an Entity is Present in a sub-part
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn is_in_part(&self, ent: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:121 - `IFGraph_SubPartsIterator::EntityPartNum`
-//   method: Returns number of the sub-part in which an Entity has been set
-//   method: if it is not in a sub-part (or not loaded at all), Returns 0
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn entity_part_num(&self, ent: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:141 - `IFGraph_SubPartsIterator::FirstEntity`
-//   method: Returns the first entity of current sub-part, that is for a
-//   method: Single one, the only one it contains
-//   method: Error : same as above (end of iteration)
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn first_entity(&self) -> OwnedPtr<Handle<Standard_Transient>>;
 //
 // SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:146 - `IFGraph_SubPartsIterator::Entities`
 //   method: Returns current sub-part, not as a "Value", but as an Iterator

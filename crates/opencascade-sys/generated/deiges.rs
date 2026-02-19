@@ -6,6 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleDEConfigurationNode, HandleDEProvider, HandleDEShapeFixConfigurationNode,
+};
+
 // ========================
 // From DEIGES_ConfigurationNode.hxx
 // ========================
@@ -34,6 +39,19 @@ impl ConfigurationNode {
     /// Initializes all fields by default
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::DEIGES_ConfigurationNode_ctor()) }
+    }
+
+    /// **Source:** `DEIGES_ConfigurationNode.hxx`:40 - `DEIGES_ConfigurationNode::DEIGES_ConfigurationNode()`
+    /// Copies values of all fields
+    /// @param[in] theNode object to copy
+    pub fn new_handledeigesconfigurationnode(
+        theNode: &crate::ffi::HandleDEIGESConfigurationNode,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::DEIGES_ConfigurationNode_ctor_handledeigesconfigurationnode(theNode),
+            )
+        }
     }
 
     /// **Source:** `DEIGES_ConfigurationNode.hxx`:33 - `DEIGES_ConfigurationNode::DynamicType()`
@@ -178,6 +196,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEIGESConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DEIGES_ConfigurationNode_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
         unsafe {
@@ -222,13 +251,53 @@ impl ConfigurationNode {
     }
 }
 
-// ── Skipped symbols for ConfigurationNode (2 total) ──
-// SKIPPED: **Source:** `DEIGES_ConfigurationNode.hxx`:40 - `DEIGES_ConfigurationNode::DEIGES_ConfigurationNode`
-//   constructor: Copies values of all fields
-//   constructor: @param[in] theNode object to copy
-//   Reason: param 'theNode' uses unknown Handle type
-//   // pub fn new_handledeigesconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleDEIGESConfigurationNode;
+
+unsafe impl crate::CppDeletable for HandleDEIGESConfigurationNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEIGESConfigurationNode_destructor(ptr);
+    }
+}
+
+impl HandleDEIGESConfigurationNode {
+    /// Dereference this Handle to access the underlying DEIGES_ConfigurationNode
+    pub fn get(&self) -> &crate::ffi::DEIGES_ConfigurationNode {
+        unsafe { &*(crate::ffi::HandleDEIGESConfigurationNode_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DEIGES_ConfigurationNode
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DEIGES_ConfigurationNode {
+        unsafe { &mut *(crate::ffi::HandleDEIGESConfigurationNode_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<DEIGES_ConfigurationNode> to Handle<DE_ShapeFixConfigurationNode>
+    pub fn to_handle_shape_fix_configuration_node(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEShapeFixConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleDEIGESConfigurationNode_to_HandleDEShapeFixConfigurationNode(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<DEIGES_ConfigurationNode> to Handle<DE_ConfigurationNode>
+    pub fn to_handle_configuration_node(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleDEIGESConfigurationNode_to_HandleDEConfigurationNode(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ConfigurationNode (1 total) ──
 // SKIPPED: **Source:** `DEIGES_ConfigurationNode.hxx`:79 - `DEIGES_ConfigurationNode::GetExtensions`
 //   method: Gets list of supported file extensions
 //   method: @return list of extensions
@@ -326,20 +395,145 @@ impl Provider {
         unsafe { &*(crate::ffi::DEIGES_Provider_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `DEIGES_Provider.hxx`:50 - `DEIGES_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theDocument document to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEIGES_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DEIGES_Provider.hxx`:62 - `DEIGES_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theDocument document to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEIGES_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DEIGES_Provider.hxx`:73 - `DEIGES_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theDocument document to save result
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEIGES_Provider_read_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DEIGES_Provider.hxx`:83 - `DEIGES_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theDocument document to export
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEIGES_Provider_write_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DEIGES_Provider.hxx`:94 - `DEIGES_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theShape shape to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &mut crate::topo_ds::Shape,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEIGES_Provider_read_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DEIGES_Provider.hxx`:106 - `DEIGES_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theShape shape to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &crate::topo_ds::Shape,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEIGES_Provider_write_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
+        }
+    }
+
     /// **Source:** `DEIGES_Provider.hxx`:117 - `DEIGES_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theShape shape to save result
     /// @param[in] theProgress progress indicator
     /// @return true if Read operation has ended correctly
-    pub fn read(
+    pub fn read_asciistring_shape_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &mut crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
-            crate::ffi::DEIGES_Provider_read(self as *mut Self, thePath, theShape, theProgress)
+            crate::ffi::DEIGES_Provider_read_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
         }
     }
 
@@ -349,14 +543,19 @@ impl Provider {
     /// @param[out] theShape shape to export
     /// @param[in] theProgress progress indicator
     /// @return true if Write operation has ended correctly
-    pub fn write(
+    pub fn write_asciistring_shape_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
-            crate::ffi::DEIGES_Provider_write(self as *mut Self, thePath, theShape, theProgress)
+            crate::ffi::DEIGES_Provider_write_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
         }
     }
 
@@ -402,6 +601,13 @@ impl Provider {
         unsafe { &mut *(crate::ffi::DEIGES_Provider_as_DE_Provider_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEIGESProvider> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DEIGES_Provider_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
     pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
         unsafe {
@@ -417,46 +623,31 @@ impl Provider {
     }
 }
 
-// ── Skipped symbols for Provider (6 total) ──
-// SKIPPED: **Source:** `DEIGES_Provider.hxx`:50 - `DEIGES_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theDocument document to save result
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEIGES_Provider.hxx`:62 - `DEIGES_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theDocument document to export
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEIGES_Provider.hxx`:73 - `DEIGES_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theDocument document to save result
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEIGES_Provider.hxx`:83 - `DEIGES_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theDocument document to export
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEIGES_Provider.hxx`:94 - `DEIGES_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theShape shape to save result
-//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEIGES_Provider.hxx`:106 - `DEIGES_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theShape shape to export
-//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
+pub use crate::ffi::HandleDEIGESProvider;
+
+unsafe impl crate::CppDeletable for HandleDEIGESProvider {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEIGESProvider_destructor(ptr);
+    }
+}
+
+impl HandleDEIGESProvider {
+    /// Dereference this Handle to access the underlying DEIGES_Provider
+    pub fn get(&self) -> &crate::ffi::DEIGES_Provider {
+        unsafe { &*(crate::ffi::HandleDEIGESProvider_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DEIGES_Provider
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DEIGES_Provider {
+        unsafe { &mut *(crate::ffi::HandleDEIGESProvider_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<DEIGES_Provider> to Handle<DE_Provider>
+    pub fn to_handle_provider(&self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleDEIGESProvider_to_HandleDEProvider(
+                self as *const Self,
+            ))
+        }
+    }
+}

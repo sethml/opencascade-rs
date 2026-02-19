@@ -3234,6 +3234,19 @@ impl Surface {
         unsafe { &*(crate::ffi::ShapeAnalysis_Surface_surface(self as *const Self)) }
     }
 
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:81 - `ShapeAnalysis_Surface::Adaptor3d()`
+    /// Returns the Adaptor.
+    /// Creates it if not yet done.
+    pub fn adaptor3d(&mut self) -> &crate::ffi::HandleGeomAdaptorSurface {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_adaptor3d(self as *mut Self)) }
+    }
+
+    /// **Source:** `ShapeAnalysis_Surface.hxx`:84 - `ShapeAnalysis_Surface::TrueAdaptor3d()`
+    /// Returns the Adaptor (may be Null if method Adaptor() was not called)
+    pub fn true_adaptor3d(&self) -> &crate::ffi::HandleGeomAdaptorSurface {
+        unsafe { &*(crate::ffi::ShapeAnalysis_Surface_true_adaptor3d(self as *const Self)) }
+    }
+
     /// **Source:** `ShapeAnalysis_Surface.hxx`:93 - `ShapeAnalysis_Surface::Gap()`
     /// Returns 3D distance found by one of the following methods.
     /// IsDegenerated, DegeneratedValues, ProjectDegenerated
@@ -3687,19 +3700,6 @@ impl HandleShapeAnalysisSurface {
     }
 }
 
-// ── Skipped symbols for Surface (2 total) ──
-// SKIPPED: **Source:** `ShapeAnalysis_Surface.hxx`:81 - `ShapeAnalysis_Surface::Adaptor3d`
-//   method: Returns the Adaptor.
-//   method: Creates it if not yet done.
-//   Reason: return type 'const Handle(GeomAdaptor_Surface)&' is unknown
-//   // pub fn adaptor3d(&mut self) -> &HandleSurface;
-//
-// SKIPPED: **Source:** `ShapeAnalysis_Surface.hxx`:84 - `ShapeAnalysis_Surface::TrueAdaptor3d`
-//   method: Returns the Adaptor (may be Null if method Adaptor() was not called)
-//   Reason: return type 'const Handle(GeomAdaptor_Surface)&' is unknown
-//   // pub fn true_adaptor3d(&self) -> &HandleSurface;
-//
-
 // ========================
 // From ShapeAnalysis_TransferParameters.hxx
 // ========================
@@ -3871,6 +3871,22 @@ impl HandleShapeAnalysisTransferParameters {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_TransferParameters {
         unsafe {
             &mut *(crate::ffi::HandleShapeAnalysisTransferParameters_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Downcast Handle<ShapeAnalysis_TransferParameters> to Handle<ShapeAnalysis_TransferParametersProj>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeAnalysis_TransferParametersProj` (or subclass).
+    pub fn downcast_to_transfer_parameters_proj(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeAnalysisTransferParametersProj>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeAnalysisTransferParameters_downcast_to_HandleShapeAnalysisTransferParametersProj(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -4062,6 +4078,17 @@ impl TransferParametersProj {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisTransferParametersProj> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeAnalysis_TransferParametersProj_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeAnalysis_TransferParameters.hxx`:61 - `ShapeAnalysis_TransferParameters::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         unsafe {
@@ -4069,6 +4096,39 @@ impl TransferParametersProj {
                 self as *mut Self,
                 maxtol,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeAnalysisTransferParametersProj;
+
+unsafe impl crate::CppDeletable for HandleShapeAnalysisTransferParametersProj {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeAnalysisTransferParametersProj_destructor(ptr);
+    }
+}
+
+impl HandleShapeAnalysisTransferParametersProj {
+    /// Dereference this Handle to access the underlying ShapeAnalysis_TransferParametersProj
+    pub fn get(&self) -> &crate::ffi::ShapeAnalysis_TransferParametersProj {
+        unsafe {
+            &*(crate::ffi::HandleShapeAnalysisTransferParametersProj_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeAnalysis_TransferParametersProj
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeAnalysis_TransferParametersProj {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeAnalysisTransferParametersProj_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeAnalysis_TransferParametersProj> to Handle<ShapeAnalysis_TransferParameters>
+    pub fn to_handle_transfer_parameters(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeAnalysisTransferParametersProj_to_HandleShapeAnalysisTransferParameters(self as *const Self))
         }
     }
 }

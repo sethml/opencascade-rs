@@ -1079,6 +1079,14 @@ impl SpecificLib {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESData_SpecificLib_ctor()) }
     }
 
+    /// **Source:** `IGESData_SpecificLib.hxx`:56 - `IGESData_SpecificLib::AddProtocol()`
+    /// Adds a couple (Module-Protocol) to the Library, given the
+    /// class of a Protocol. Takes Resources into account.
+    /// (if <aprotocol> is not of type TheProtocol, it is not added)
+    pub fn add_protocol(&mut self, aprotocol: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::IGESData_SpecificLib_add_protocol(self as *mut Self, aprotocol) }
+    }
+
     /// **Source:** `IGESData_SpecificLib.hxx`:61 - `IGESData_SpecificLib::Clear()`
     /// Clears the list of Modules of a library (can be used to
     /// redefine the order of Modules before action : Clear then
@@ -1114,20 +1122,13 @@ impl SpecificLib {
     }
 }
 
-// ── Skipped symbols for SpecificLib (6 total) ──
+// ── Skipped symbols for SpecificLib (5 total) ──
 // SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:47 - `IGESData_SpecificLib::IGESData_SpecificLib`
 //   constructor: Creates a Library which complies with a Protocol, that is :
 //   constructor: Same class (criterium IsInstance)
 //   constructor: This creation gets the Modules from the global set, those
 //   Reason: param 'aprotocol' uses unknown Handle type
 //   // pub fn new_handleigesdataprotocol(aprotocol: &HandleProtocol) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:56 - `IGESData_SpecificLib::AddProtocol`
-//   method: Adds a couple (Module-Protocol) to the Library, given the
-//   method: class of a Protocol. Takes Resources into account.
-//   method: (if <aprotocol> is not of type TheProtocol, it is not added)
-//   Reason: param 'aprotocol' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_protocol(&mut self, aprotocol: &HandleTransient);
 //
 // SKIPPED: **Source:** `IGESData_SpecificLib.hxx`:73 - `IGESData_SpecificLib::Select`
 //   method: Selects a Module from the Library, given an Object.

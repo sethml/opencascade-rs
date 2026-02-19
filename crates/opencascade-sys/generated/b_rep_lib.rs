@@ -3995,6 +3995,18 @@ unsafe impl crate::CppDeletable for ValidateEdge {
 }
 
 impl ValidateEdge {
+    /// **Source:** `BRepLib_ValidateEdge.hxx`:30 - `BRepLib_ValidateEdge::BRepLib_ValidateEdge()`
+    /// Initialization constructor
+    pub fn new_handleadaptor3dcurve_handleadaptor3dcurveonsurface_bool(
+        theReferenceCurve: &crate::ffi::HandleAdaptor3dCurve,
+        theOtherCurve: &crate::ffi::HandleAdaptor3dCurveOnSurface,
+        theSameParameter: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepLib_ValidateEdge_ctor_handleadaptor3dcurve_handleadaptor3dcurveonsurface_bool(theReferenceCurve, theOtherCurve, theSameParameter))
+        }
+    }
+
     /// **Source:** `BRepLib_ValidateEdge.hxx`:39 - `BRepLib_ValidateEdge::SetExactMethod()`
     /// Sets method to calculate distance: Calculating in finite number of points (if theIsExact
     /// is false, faster, but possible not correct result) or exact calculating by using
@@ -4090,10 +4102,3 @@ impl ValidateEdge {
         }
     }
 }
-
-// ── Skipped symbols for ValidateEdge (1 total) ──
-// SKIPPED: **Source:** `BRepLib_ValidateEdge.hxx`:30 - `BRepLib_ValidateEdge::BRepLib_ValidateEdge`
-//   constructor: Initialization constructor
-//   Reason: param 'theOtherCurve' uses unknown Handle type
-//   // pub fn new_handleadaptor3dcurve_handleadaptor3dcurveonsurface_bool(theReferenceCurve: HandleCurve, theOtherCurve: HandleCurveOnSurface, theSameParameter: bool) -> OwnedPtr<Self>;
-//

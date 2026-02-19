@@ -67,6 +67,17 @@ impl GeometricItemSpecificUsage {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242GeometricItemSpecificUsage> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepAP242_GeometricItemSpecificUsage_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:41 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
     pub fn init(
         &mut self,
@@ -237,6 +248,39 @@ impl GeometricItemSpecificUsage {
                 num,
                 theItem,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepAP242GeometricItemSpecificUsage;
+
+unsafe impl crate::CppDeletable for HandleStepAP242GeometricItemSpecificUsage {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepAP242GeometricItemSpecificUsage_destructor(ptr);
+    }
+}
+
+impl HandleStepAP242GeometricItemSpecificUsage {
+    /// Dereference this Handle to access the underlying StepAP242_GeometricItemSpecificUsage
+    pub fn get(&self) -> &crate::ffi::StepAP242_GeometricItemSpecificUsage {
+        unsafe {
+            &*(crate::ffi::HandleStepAP242GeometricItemSpecificUsage_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepAP242_GeometricItemSpecificUsage
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP242_GeometricItemSpecificUsage {
+        unsafe {
+            &mut *(crate::ffi::HandleStepAP242GeometricItemSpecificUsage_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepAP242_GeometricItemSpecificUsage> to Handle<StepAP242_ItemIdentifiedRepresentationUsage>
+    pub fn to_handle_item_identified_representation_usage(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepAP242GeometricItemSpecificUsage_to_HandleStepAP242ItemIdentifiedRepresentationUsage(self as *const Self))
         }
     }
 }
@@ -511,6 +555,22 @@ impl HandleStepAP242ItemIdentifiedRepresentationUsage {
             ))
         }
     }
+
+    /// Downcast Handle<StepAP242_ItemIdentifiedRepresentationUsage> to Handle<StepAP242_GeometricItemSpecificUsage>
+    ///
+    /// Returns `None` if the handle does not point to a `StepAP242_GeometricItemSpecificUsage` (or subclass).
+    pub fn downcast_to_geometric_item_specific_usage(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP242GeometricItemSpecificUsage>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_downcast_to_HandleStepAP242GeometricItemSpecificUsage(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -533,6 +593,35 @@ impl ItemIdentifiedRepresentationUsageDefinition {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_ctor(),
+            )
+        }
+    }
+
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:71 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::CaseNum()`
+    /// Recognizes a ItemIdentifiedRepresentationUsageDefinition Kind Entity that is :
+    /// 1 -> AppliedApprovalAssignment
+    /// 2 -> AppliedDateAndTimeAssignment
+    /// 3 -> AppliedDateAssignment
+    /// 4 -> AppliedDocumentReference
+    /// 5 -> AppliedExternalIdentificationAssignment
+    /// 6 -> AppliedGroupAssignment
+    /// 7 -> AppliedOrganizationAssignment
+    /// 8 -> AppliedPersonAndOrganizationAssignment
+    /// 9 -> AppliedSecurityClassificationAssignment
+    /// 10 -> DimensionalSize
+    /// 11 -> GeneralProperty
+    /// 12 -> GeometricTolerance
+    /// 13 -> ProductDefinitionRelationship
+    /// 14 -> PropertyDefinition
+    /// 15 -> PropertyDefinitionRelationship
+    /// 16 -> ShapeAspect
+    /// 17 -> ShapeAspectRelationship
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_case_num(
+                self as *const Self,
+                ent,
             )
         }
     }
@@ -583,12 +672,41 @@ impl ItemIdentifiedRepresentationUsageDefinition {
         }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Matches(
+                self as *const Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_SetValue(
+                self as *mut Self,
+                ent,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         unsafe {
             crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Nullify(
                 self as *mut Self,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Value(
+                self as *const Self,
+            ))
         }
     }
 
@@ -717,14 +835,7 @@ impl ItemIdentifiedRepresentationUsageDefinition {
     }
 }
 
-// ── Skipped symbols for ItemIdentifiedRepresentationUsageDefinition (15 total) ──
-// SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:71 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::CaseNum`
-//   method: Recognizes a ItemIdentifiedRepresentationUsageDefinition Kind Entity that is :
-//   method: 1 -> AppliedApprovalAssignment
-//   method: 2 -> AppliedDateAndTimeAssignment
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
+// ── Skipped symbols for ItemIdentifiedRepresentationUsageDefinition (14 total) ──
 // SKIPPED: **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:74 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedApprovalAssignment`
 //   method: returns Value as a AppliedApprovalAssignment (Null if another type)
 //   Reason: return type 'Handle(StepAP214_AppliedApprovalAssignment)' is unknown

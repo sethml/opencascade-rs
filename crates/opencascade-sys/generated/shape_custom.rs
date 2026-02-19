@@ -6,6 +6,27 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `ShapeCustom.hxx`:55 - `ShapeCustom::ApplyModifier`
+/// Applies modifier to shape and checks sharing in the case assemblies.
+pub fn apply_modifier(
+    S: &crate::topo_ds::Shape,
+    M: &crate::ffi::HandleBRepToolsModification,
+    context: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+    MD: &mut crate::b_rep_tools::Modifier,
+    theProgress: &crate::message::ProgressRange,
+    aReShape: &crate::ffi::HandleShapeBuildReShape,
+) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_apply_modifier(
+            S,
+            M,
+            context,
+            MD,
+            theProgress,
+            aReShape,
+        ))
+    }
+}
 /// **Source:** `ShapeCustom.hxx`:64 - `ShapeCustom::DirectFaces`
 /// Returns a new shape without indirect surfaces.
 pub fn direct_faces(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
@@ -92,6 +113,9 @@ pub fn convert_to_b_spline(
         ))
     }
 }
+
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleBRepToolsModification, HandleBRepToolsTrsfModification};
 
 // ========================
 // From ShapeCustom_BSplineRestriction.hxx
@@ -635,6 +659,17 @@ impl BSplineRestriction {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomBSplineRestriction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_BSplineRestriction_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -717,6 +752,54 @@ impl BSplineRestriction {
                 E,
                 F,
                 P,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeCustomBSplineRestriction;
+
+unsafe impl crate::CppDeletable for HandleShapeCustomBSplineRestriction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeCustomBSplineRestriction_destructor(ptr);
+    }
+}
+
+impl HandleShapeCustomBSplineRestriction {
+    /// Dereference this Handle to access the underlying ShapeCustom_BSplineRestriction
+    pub fn get(&self) -> &crate::ffi::ShapeCustom_BSplineRestriction {
+        unsafe { &*(crate::ffi::HandleShapeCustomBSplineRestriction_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeCustom_BSplineRestriction
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_BSplineRestriction {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeCustomBSplineRestriction_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_BSplineRestriction> to Handle<ShapeCustom_Modification>
+    pub fn to_handle_shape_custom_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomBSplineRestriction_to_HandleShapeCustomModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_BSplineRestriction> to Handle<BRepTools_Modification>
+    pub fn to_handle_b_rep_tools_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomBSplineRestriction_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -981,6 +1064,17 @@ impl ConvertToBSpline {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToBSpline> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_ConvertToBSpline_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -1063,6 +1157,52 @@ impl ConvertToBSpline {
                 E,
                 F,
                 P,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeCustomConvertToBSpline;
+
+unsafe impl crate::CppDeletable for HandleShapeCustomConvertToBSpline {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeCustomConvertToBSpline_destructor(ptr);
+    }
+}
+
+impl HandleShapeCustomConvertToBSpline {
+    /// Dereference this Handle to access the underlying ShapeCustom_ConvertToBSpline
+    pub fn get(&self) -> &crate::ffi::ShapeCustom_ConvertToBSpline {
+        unsafe { &*(crate::ffi::HandleShapeCustomConvertToBSpline_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeCustom_ConvertToBSpline
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_ConvertToBSpline {
+        unsafe { &mut *(crate::ffi::HandleShapeCustomConvertToBSpline_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeCustom_ConvertToBSpline> to Handle<ShapeCustom_Modification>
+    pub fn to_handle_shape_custom_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomConvertToBSpline_to_HandleShapeCustomModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_ConvertToBSpline> to Handle<BRepTools_Modification>
+    pub fn to_handle_b_rep_tools_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomConvertToBSpline_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1299,6 +1439,17 @@ impl ConvertToRevolution {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToRevolution> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_ConvertToRevolution_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -1385,6 +1536,54 @@ impl ConvertToRevolution {
                 E,
                 F,
                 P,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeCustomConvertToRevolution;
+
+unsafe impl crate::CppDeletable for HandleShapeCustomConvertToRevolution {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeCustomConvertToRevolution_destructor(ptr);
+    }
+}
+
+impl HandleShapeCustomConvertToRevolution {
+    /// Dereference this Handle to access the underlying ShapeCustom_ConvertToRevolution
+    pub fn get(&self) -> &crate::ffi::ShapeCustom_ConvertToRevolution {
+        unsafe { &*(crate::ffi::HandleShapeCustomConvertToRevolution_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeCustom_ConvertToRevolution
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_ConvertToRevolution {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeCustomConvertToRevolution_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_ConvertToRevolution> to Handle<ShapeCustom_Modification>
+    pub fn to_handle_shape_custom_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomConvertToRevolution_to_HandleShapeCustomModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_ConvertToRevolution> to Handle<BRepTools_Modification>
+    pub fn to_handle_b_rep_tools_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomConvertToRevolution_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1741,6 +1940,17 @@ impl DirectModification {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomDirectModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_DirectModification_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -1823,6 +2033,54 @@ impl DirectModification {
                 E,
                 F,
                 P,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeCustomDirectModification;
+
+unsafe impl crate::CppDeletable for HandleShapeCustomDirectModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeCustomDirectModification_destructor(ptr);
+    }
+}
+
+impl HandleShapeCustomDirectModification {
+    /// Dereference this Handle to access the underlying ShapeCustom_DirectModification
+    pub fn get(&self) -> &crate::ffi::ShapeCustom_DirectModification {
+        unsafe { &*(crate::ffi::HandleShapeCustomDirectModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeCustom_DirectModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_DirectModification {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeCustomDirectModification_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_DirectModification> to Handle<ShapeCustom_Modification>
+    pub fn to_handle_shape_custom_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomDirectModification_to_HandleShapeCustomModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_DirectModification> to Handle<BRepTools_Modification>
+    pub fn to_handle_b_rep_tools_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomDirectModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2073,6 +2331,123 @@ impl Modification {
                 ),
             )
             .unwrap()
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeCustomModification;
+
+unsafe impl crate::CppDeletable for HandleShapeCustomModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeCustomModification_destructor(ptr);
+    }
+}
+
+impl HandleShapeCustomModification {
+    /// Dereference this Handle to access the underlying ShapeCustom_Modification
+    pub fn get(&self) -> &crate::ffi::ShapeCustom_Modification {
+        unsafe { &*(crate::ffi::HandleShapeCustomModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeCustom_Modification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_Modification {
+        unsafe { &mut *(crate::ffi::HandleShapeCustomModification_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeCustom_Modification> to Handle<BRepTools_Modification>
+    pub fn to_handle_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<ShapeCustom_Modification> to Handle<ShapeCustom_BSplineRestriction>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_BSplineRestriction` (or subclass).
+    pub fn downcast_to_b_spline_restriction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomBSplineRestriction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeCustomModification_downcast_to_HandleShapeCustomBSplineRestriction(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeCustom_Modification> to Handle<ShapeCustom_ConvertToBSpline>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_ConvertToBSpline` (or subclass).
+    pub fn downcast_to_convert_to_b_spline(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToBSpline>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeCustomModification_downcast_to_HandleShapeCustomConvertToBSpline(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeCustom_Modification> to Handle<ShapeCustom_ConvertToRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_ConvertToRevolution` (or subclass).
+    pub fn downcast_to_convert_to_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeCustomModification_downcast_to_HandleShapeCustomConvertToRevolution(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeCustom_Modification> to Handle<ShapeCustom_DirectModification>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_DirectModification` (or subclass).
+    pub fn downcast_to_direct_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomDirectModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeCustomModification_downcast_to_HandleShapeCustomDirectModification(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeCustom_Modification> to Handle<ShapeCustom_SweptToElementary>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_SweptToElementary` (or subclass).
+    pub fn downcast_to_swept_to_elementary(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomSweptToElementary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeCustomModification_downcast_to_HandleShapeCustomSweptToElementary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -2623,6 +2998,17 @@ impl SweptToElementary {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomSweptToElementary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_SweptToElementary_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -2705,6 +3091,52 @@ impl SweptToElementary {
                 E,
                 F,
                 P,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeCustomSweptToElementary;
+
+unsafe impl crate::CppDeletable for HandleShapeCustomSweptToElementary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeCustomSweptToElementary_destructor(ptr);
+    }
+}
+
+impl HandleShapeCustomSweptToElementary {
+    /// Dereference this Handle to access the underlying ShapeCustom_SweptToElementary
+    pub fn get(&self) -> &crate::ffi::ShapeCustom_SweptToElementary {
+        unsafe { &*(crate::ffi::HandleShapeCustomSweptToElementary_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeCustom_SweptToElementary
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_SweptToElementary {
+        unsafe { &mut *(crate::ffi::HandleShapeCustomSweptToElementary_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeCustom_SweptToElementary> to Handle<ShapeCustom_Modification>
+    pub fn to_handle_shape_custom_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomSweptToElementary_to_HandleShapeCustomModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_SweptToElementary> to Handle<BRepTools_Modification>
+    pub fn to_handle_b_rep_tools_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomSweptToElementary_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2889,6 +3321,17 @@ impl TrsfModification {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeCustomTrsfModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_TrsfModification_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:49 - `BRepTools_TrsfModification::Trsf()`
     pub fn trsf(&mut self) -> &mut crate::gp::Trsf {
         unsafe {
@@ -2973,9 +3416,48 @@ impl TrsfModification {
     }
 }
 
-// ── Skipped free functions (1 total) ──
-// SKIPPED: **Source:** `ShapeCustom.hxx`:55 - `ShapeCustom::ApplyModifier`
-//   function: Applies modifier to shape and checks sharing in the case assemblies.
-//   Reason: param 'aReShape' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn apply_modifier(S: &Shape, M: &HandleModification, context: &mut DataMapOfShapeShape, MD: &mut Modifier, theProgress: &ProgressRange, aReShape: &HandleReShape) -> OwnedPtr<TopoDS_Shape>;
-//
+pub use crate::ffi::HandleShapeCustomTrsfModification;
+
+unsafe impl crate::CppDeletable for HandleShapeCustomTrsfModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeCustomTrsfModification_destructor(ptr);
+    }
+}
+
+impl HandleShapeCustomTrsfModification {
+    /// Dereference this Handle to access the underlying ShapeCustom_TrsfModification
+    pub fn get(&self) -> &crate::ffi::ShapeCustom_TrsfModification {
+        unsafe { &*(crate::ffi::HandleShapeCustomTrsfModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeCustom_TrsfModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeCustom_TrsfModification {
+        unsafe { &mut *(crate::ffi::HandleShapeCustomTrsfModification_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeCustom_TrsfModification> to Handle<BRepTools_TrsfModification>
+    pub fn to_handle_trsf_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsTrsfModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomTrsfModification_to_HandleBRepToolsTrsfModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeCustom_TrsfModification> to Handle<BRepTools_Modification>
+    pub fn to_handle_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeCustomTrsfModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}

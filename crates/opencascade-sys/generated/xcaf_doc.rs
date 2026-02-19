@@ -170,6 +170,9 @@ impl TryFrom<i32> for ColorType {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleTDFAttribute, HandleTDataStdGenericEmpty, HandleTDataStdReal};
+
 // ========================
 // From XCAFDoc_Area.hxx
 // ========================
@@ -225,6 +228,15 @@ impl Area {
         unsafe { &*(crate::ffi::XCAFDoc_Area_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_Area.hxx`:48 - `XCAFDoc_Area::Set()`
+    /// Find, or create, an Area attribute and set its value
+    pub fn set_label_real(
+        label: &crate::tdf::Label,
+        area: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocArea> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Area_set_label_real(label, area)) }
+    }
+
     /// **Source:** `XCAFDoc_Area.hxx`:54 - `XCAFDoc_Area::Get()`
     /// Returns volume of area as argument and success status
     /// returns false if no such attribute at the <label>
@@ -264,6 +276,11 @@ impl Area {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Area_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocArea> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Area_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_Real.hxx`:78 - `TDataStd_Real::SetID()`
@@ -429,6 +446,55 @@ impl Area {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Area_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Area_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Area_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Area_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Area_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_References(self as *const Self, aDataSet) }
@@ -440,15 +506,48 @@ impl Area {
     }
 }
 
-// ── Skipped symbols for Area (2 total) ──
+pub use crate::ffi::HandleXCAFDocArea;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocArea {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocArea_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocArea {
+    /// Dereference this Handle to access the underlying XCAFDoc_Area
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Area {
+        unsafe { &*(crate::ffi::HandleXCAFDocArea_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Area
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Area {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocArea_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Area> to Handle<TDataStd_Real>
+    pub fn to_handle_real(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocArea_to_HandleTDataStdReal(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Area> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocArea_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Area (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Area.hxx`:56 - `XCAFDoc_Area::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_Area.hxx`:48 - `XCAFDoc_Area::Set`
-//   static_method: Find, or create, an Area attribute and set its value
-//   Reason: return type 'Handle(XCAFDoc_Area)' is unknown
-//   // pub fn set(label: &Label, area: f64) -> OwnedPtr<Handle<XCAFDoc_Area>>;
 //
 
 // ========================
@@ -465,6 +564,20 @@ unsafe impl crate::CppDeletable for AssemblyGraph {
 }
 
 impl AssemblyGraph {
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:83 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph()`
+    /// \brief Constructs graph from XCAF document.
+    /// Construction of a formal graph will be done immediately.
+    /// \param[in]  theDoc - document to iterate.
+    pub fn new_handletdocstddocument(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_ctor_handletdocstddocument(
+                theDoc,
+            ))
+        }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:90 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph()`
     /// \brief Constructs graph from XCAF label.
     /// Construction of a formal graph will be done immediately. The specified
@@ -473,6 +586,12 @@ impl AssemblyGraph {
     /// \param[in]  theLabel - starting position.
     pub fn new_label(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyGraph_ctor_label(theLabel)) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:93 - `XCAFDoc_AssemblyGraph::GetShapeTool()`
+    /// \return Document shape tool.
+    pub fn get_shape_tool(&self) -> &crate::ffi::HandleXCAFDocShapeTool {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_shape_tool(self as *const Self)) }
     }
 
     /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:97 - `XCAFDoc_AssemblyGraph::GetRoots()`
@@ -590,19 +709,7 @@ impl HandleXCAFDocAssemblyGraph {
     }
 }
 
-// ── Skipped symbols for AssemblyGraph (4 total) ──
-// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:83 - `XCAFDoc_AssemblyGraph::XCAFDoc_AssemblyGraph`
-//   constructor: \brief Constructs graph from XCAF document.
-//   constructor: Construction of a formal graph will be done immediately.
-//   constructor: \param[in]  theDoc - document to iterate.
-//   Reason: param 'theDoc' uses unknown Handle type
-//   // pub fn new_handletdocstddocument(theDoc: &HandleDocument) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:93 - `XCAFDoc_AssemblyGraph::GetShapeTool`
-//   method: \return Document shape tool.
-//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
-//   // pub fn get_shape_tool(&self) -> &HandleShapeTool;
-//
+// ── Skipped symbols for AssemblyGraph (2 total) ──
 // SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:135 - `XCAFDoc_AssemblyGraph::GetNodes`
 //   method: \brief Returns the unordered set of graph nodes.
 //   method: \return graph nodes.
@@ -977,6 +1084,72 @@ impl AssemblyItemRef {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyItemRef_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:39 - `XCAFDoc_AssemblyItemRef::Get()`
+    /// Finds a reference attribute on the given label and returns it, if it is found
+    pub fn get(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemRef_get(theLabel)) }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:48 - `XCAFDoc_AssemblyItemRef::Set()`
+    /// Create (if not exist) a reference to an assembly item.
+    /// \param[in]  theLabel  - label to add the attribute.
+    /// \param[in]  theItemId - assembly item ID.
+    /// \return A handle to the attribute instance.
+    pub fn set_label_assemblyitemid(
+        theLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemRef_set_label_assemblyitemid(
+                theLabel, theItemId,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:57 - `XCAFDoc_AssemblyItemRef::Set()`
+    /// Create (if not exist) a reference to an assembly item's label attribute.
+    /// \param[in]  theLabel  - label to add the attribute.
+    /// \param[in]  theItemId - assembly item ID.
+    /// \param[in]  theGUID   - assembly item's label attribute ID.
+    /// \return A handle to the attribute instance.
+    pub fn set_label_assemblyitemid_guid(
+        theLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
+        theGUID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyItemRef_set_label_assemblyitemid_guid(
+                    theLabel, theItemId, theGUID,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyItemRef.hxx`:67 - `XCAFDoc_AssemblyItemRef::Set()`
+    /// Create (if not exist) a reference to an assembly item's subshape.
+    /// \param[in]  theLabel      - label to add the attribute.
+    /// \param[in]  theItemId     - assembly item ID.
+    /// \param[in]  theShapeIndex - assembly item's subshape index.
+    /// \return A handle to the attribute instance.
+    pub fn set_label_assemblyitemid_int(
+        theLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
+        theShapeIndex: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyItemRef_set_label_assemblyitemid_int(
+                    theLabel,
+                    theItemId,
+                    theShapeIndex,
+                ),
+            )
+        }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::XCAFDoc_AssemblyItemRef_as_TDF_Attribute(self as *const Self)) }
@@ -986,6 +1159,15 @@ impl AssemblyItemRef {
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_AssemblyItemRef_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemRef_to_handle(obj.into_raw()))
         }
     }
 
@@ -1162,6 +1344,57 @@ impl AssemblyItemRef {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyItemRef_inherited_DeltaOnAddition(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemRef_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemRef_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyItemRef_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_AssemblyItemRef_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -1177,36 +1410,39 @@ impl AssemblyItemRef {
     }
 }
 
-// ── Skipped symbols for AssemblyItemRef (5 total) ──
+pub use crate::ffi::HandleXCAFDocAssemblyItemRef;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocAssemblyItemRef {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocAssemblyItemRef_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocAssemblyItemRef {
+    /// Dereference this Handle to access the underlying XCAFDoc_AssemblyItemRef
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_AssemblyItemRef {
+        unsafe { &*(crate::ffi::HandleXCAFDocAssemblyItemRef_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_AssemblyItemRef
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_AssemblyItemRef {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocAssemblyItemRef_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_AssemblyItemRef> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocAssemblyItemRef_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for AssemblyItemRef (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:146 - `XCAFDoc_AssemblyItemRef::Dump`
 //   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:39 - `XCAFDoc_AssemblyItemRef::Get`
-//   static_method: Finds a reference attribute on the given label and returns it, if it is found
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:48 - `XCAFDoc_AssemblyItemRef::Set`
-//   static_method: Create (if not exist) a reference to an assembly item.
-//   static_method: \param[in]  theLabel  - label to add the attribute.
-//   static_method: \param[in]  theItemId - assembly item ID.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn set(theLabel: &Label, theItemId: &AssemblyItemId) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:57 - `XCAFDoc_AssemblyItemRef::Set`
-//   static_method: Create (if not exist) a reference to an assembly item's label attribute.
-//   static_method: \param[in]  theLabel  - label to add the attribute.
-//   static_method: \param[in]  theItemId - assembly item ID.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn set(theLabel: &Label, theItemId: &AssemblyItemId, theGUID: &GUID) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_AssemblyItemRef.hxx`:67 - `XCAFDoc_AssemblyItemRef::Set`
-//   static_method: Create (if not exist) a reference to an assembly item's subshape.
-//   static_method: \param[in]  theLabel      - label to add the attribute.
-//   static_method: \param[in]  theItemId     - assembly item ID.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn set(theLabel: &Label, theItemId: &AssemblyItemId, theShapeIndex: i32) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
 //
 
 // ========================
@@ -1224,6 +1460,42 @@ unsafe impl crate::CppDeletable for AssemblyIterator {
 }
 
 impl AssemblyIterator {
+    /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:32 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator()`
+    /// Constructs iterator starting from assembly roots.
+    /// \param[in]       theDoc   - document to iterate.
+    /// \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
+    pub fn new_handletdocstddocument_int(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theLevel: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyIterator_ctor_handletdocstddocument_int(
+                    theDoc, theLevel,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:39 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator()`
+    /// Constructs iterator starting from the specified position in the assembly tree.
+    /// \param[in]       theDoc   - document to iterate.
+    /// \param[in]       theRoot  - assembly item to start iterating from.
+    /// \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
+    pub fn new_handletdocstddocument_assemblyitemid_int(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theRoot: &AssemblyItemId,
+        theLevel: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_AssemblyIterator_ctor_handletdocstddocument_assemblyitemid_int(
+                    theDoc, theRoot, theLevel,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyIterator.hxx`:44 - `XCAFDoc_AssemblyIterator::More()`
     /// \return true if there is still something to iterate, false -- otherwise.
     pub fn more(&self) -> bool {
@@ -1246,22 +1518,6 @@ impl AssemblyIterator {
         }
     }
 }
-
-// ── Skipped symbols for AssemblyIterator (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_AssemblyIterator.hxx`:32 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator`
-//   constructor: Constructs iterator starting from assembly roots.
-//   constructor: \param[in]       theDoc   - document to iterate.
-//   constructor: \param [in, opt] theLevel - max level of hierarchy to reach (INT_MAX is for no limit).
-//   Reason: param 'theDoc' uses unknown Handle type
-//   // pub fn new_handletdocstddocument_int(theDoc: &HandleDocument, theLevel: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XCAFDoc_AssemblyIterator.hxx`:39 - `XCAFDoc_AssemblyIterator::XCAFDoc_AssemblyIterator`
-//   constructor: Constructs iterator starting from the specified position in the assembly tree.
-//   constructor: \param[in]       theDoc   - document to iterate.
-//   constructor: \param[in]       theRoot  - assembly item to start iterating from.
-//   Reason: param 'theDoc' uses unknown Handle type
-//   // pub fn new_handletdocstddocument_assemblyitemid_int(theDoc: &HandleDocument, theRoot: &AssemblyItemId, theLevel: i32) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From XCAFDoc_Centroid.hxx
@@ -1331,6 +1587,18 @@ impl Centroid {
         unsafe { &*(crate::ffi::XCAFDoc_Centroid_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_Centroid.hxx`:47 - `XCAFDoc_Centroid::Set()`
+    /// Find, or create, a Location attribute and set it's value
+    /// the Location attribute is returned.
+    /// Location methods
+    /// ===============
+    pub fn set_label_pnt(
+        label: &crate::tdf::Label,
+        pnt: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocCentroid> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_set_label_pnt(label, pnt)) }
+    }
+
     /// **Source:** `XCAFDoc_Centroid.hxx`:55 - `XCAFDoc_Centroid::Get()`
     /// Returns point as argument
     /// returns false if no such attribute at the <label>
@@ -1360,6 +1628,13 @@ impl Centroid {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Centroid_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocCentroid> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -1518,6 +1793,55 @@ impl Centroid {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Centroid_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Centroid_inherited_References(self as *const Self, aDataSet) }
@@ -1529,17 +1853,39 @@ impl Centroid {
     }
 }
 
-// ── Skipped symbols for Centroid (2 total) ──
+pub use crate::ffi::HandleXCAFDocCentroid;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocCentroid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocCentroid_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocCentroid {
+    /// Dereference this Handle to access the underlying XCAFDoc_Centroid
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Centroid {
+        unsafe { &*(crate::ffi::HandleXCAFDocCentroid_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Centroid
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Centroid {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocCentroid_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Centroid> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocCentroid_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Centroid (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Centroid.hxx`:66 - `XCAFDoc_Centroid::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_Centroid.hxx`:47 - `XCAFDoc_Centroid::Set`
-//   static_method: Find, or create, a Location attribute and set it's value
-//   static_method: the Location attribute is returned.
-//   static_method: Location methods
-//   Reason: return type 'Handle(XCAFDoc_Centroid)' is unknown
-//   // pub fn set(label: &Label, pnt: &Pnt) -> OwnedPtr<Handle<XCAFDoc_Centroid>>;
 //
 
 // ========================
@@ -1792,6 +2138,14 @@ impl ClippingPlaneTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:37 - `XCAFDoc_ClippingPlaneTool::Set()`
+    /// Creates (if not exist) ClippingPlaneTool.
+    pub fn set(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocClippingPlaneTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ClippingPlaneTool_set(theLabel)) }
+    }
+
     /// **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:39 - `XCAFDoc_ClippingPlaneTool::GetID()`
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ClippingPlaneTool_get_id()) }
@@ -1836,6 +2190,17 @@ impl ClippingPlaneTool {
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_ClippingPlaneTool_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocClippingPlaneTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ClippingPlaneTool_to_handle(
+                obj.into_raw(),
+            ))
         }
     }
 
@@ -2033,6 +2398,59 @@ impl ClippingPlaneTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_DeltaOnForget(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_DeltaOnResume(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_DeltaOnRemoval(self as *const Self),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -2051,12 +2469,49 @@ impl ClippingPlaneTool {
     }
 }
 
-// ── Skipped symbols for ClippingPlaneTool (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_ClippingPlaneTool.hxx`:37 - `XCAFDoc_ClippingPlaneTool::Set`
-//   static_method: Creates (if not exist) ClippingPlaneTool.
-//   Reason: return type 'Handle(XCAFDoc_ClippingPlaneTool)' is unknown
-//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_ClippingPlaneTool>>;
-//
+pub use crate::ffi::HandleXCAFDocClippingPlaneTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocClippingPlaneTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocClippingPlaneTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocClippingPlaneTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_ClippingPlaneTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_ClippingPlaneTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocClippingPlaneTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_ClippingPlaneTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_ClippingPlaneTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocClippingPlaneTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_ClippingPlaneTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocClippingPlaneTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ClippingPlaneTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocClippingPlaneTool_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_Color.hxx
@@ -2164,6 +2619,54 @@ impl Color {
         unsafe { &*(crate::ffi::XCAFDoc_Color_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_Color.hxx`:41 - `XCAFDoc_Color::Set()`
+    pub fn set_label_color(
+        label: &crate::tdf::Label,
+        C: &crate::quantity::Color,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocColor> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_set_label_color(label, C)) }
+    }
+
+    /// **Source:** `XCAFDoc_Color.hxx`:43 - `XCAFDoc_Color::Set()`
+    pub fn set_label_colorrgba(
+        label: &crate::tdf::Label,
+        C: &crate::quantity::ColorRGBA,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocColor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_set_label_colorrgba(label, C))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_Color.hxx`:46 - `XCAFDoc_Color::Set()`
+    pub fn set_label_nameofcolor(
+        label: &crate::tdf::Label,
+        C: crate::quantity::NameOfColor,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocColor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_set_label_nameofcolor(
+                label,
+                C.into(),
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_Color.hxx`:51 - `XCAFDoc_Color::Set()`
+    /// Find, or create, a Color attribute and set it's value
+    /// the Color attribute is returned.
+    pub fn set_label_real4(
+        label: &crate::tdf::Label,
+        R: f64,
+        G: f64,
+        B: f64,
+        alpha: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocColor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_set_label_real4(
+                label, R, G, B, alpha,
+            ))
+        }
+    }
+
     /// **Source:** `XCAFDoc_Color.hxx`:91 - `XCAFDoc_Color::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2186,6 +2689,13 @@ impl Color {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Color_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocColor> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -2338,6 +2848,55 @@ impl Color {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Color_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Color_inherited_References(self as *const Self, aDataSet) }
@@ -2349,25 +2908,34 @@ impl Color {
     }
 }
 
-// ── Skipped symbols for Color (4 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Color.hxx`:41 - `XCAFDoc_Color::Set`
-//   Reason: return type 'Handle(XCAFDoc_Color)' is unknown
-//   // pub fn set(label: &Label, C: &Color) -> OwnedPtr<Handle<XCAFDoc_Color>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_Color.hxx`:43 - `XCAFDoc_Color::Set`
-//   Reason: return type 'Handle(XCAFDoc_Color)' is unknown
-//   // pub fn set(label: &Label, C: &ColorRGBA) -> OwnedPtr<Handle<XCAFDoc_Color>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_Color.hxx`:46 - `XCAFDoc_Color::Set`
-//   Reason: return type 'Handle(XCAFDoc_Color)' is unknown
-//   // pub fn set(label: &Label, C: NameOfColor) -> OwnedPtr<Handle<XCAFDoc_Color>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_Color.hxx`:51 - `XCAFDoc_Color::Set`
-//   static_method: Find, or create, a Color attribute and set it's value
-//   static_method: the Color attribute is returned.
-//   Reason: return type 'Handle(XCAFDoc_Color)' is unknown
-//   // pub fn set(label: &Label, R: f64, G: f64, B: f64, alpha: f64) -> OwnedPtr<Handle<XCAFDoc_Color>>;
-//
+pub use crate::ffi::HandleXCAFDocColor;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocColor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocColor_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocColor {
+    /// Dereference this Handle to access the underlying XCAFDoc_Color
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Color {
+        unsafe { &*(crate::ffi::HandleXCAFDocColor_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Color
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Color {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocColor_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Color> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocColor_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_ColorTool.hxx
@@ -2399,6 +2967,12 @@ impl ColorTool {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_base_label(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_ColorTool.hxx`:64 - `XCAFDoc_ColorTool::ShapeTool()`
+    /// Returns internal XCAFDoc_ShapeTool tool
+    pub fn shape_tool(&mut self) -> &crate::ffi::HandleXCAFDocShapeTool {
+        unsafe { &*(crate::ffi::XCAFDoc_ColorTool_shape_tool(self as *mut Self)) }
     }
 
     /// **Source:** `XCAFDoc_ColorTool.hxx`:68 - `XCAFDoc_ColorTool::IsColor()`
@@ -2921,6 +3495,12 @@ impl ColorTool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_set_auto_naming(theIsAutoNaming) }
     }
 
+    /// **Source:** `XCAFDoc_ColorTool.hxx`:56 - `XCAFDoc_ColorTool::Set()`
+    /// Creates (if not exist) ColorTool.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocColorTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_set(L)) }
+    }
+
     /// **Source:** `XCAFDoc_ColorTool.hxx`:58 - `XCAFDoc_ColorTool::GetID()`
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ColorTool_get_id()) }
@@ -3031,6 +3611,15 @@ impl ColorTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_ColorTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocColorTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -3211,6 +3800,55 @@ impl ColorTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ColorTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_References(self as *const Self, aDataSet) }
@@ -3222,17 +3860,47 @@ impl ColorTool {
     }
 }
 
-// ── Skipped symbols for ColorTool (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_ColorTool.hxx`:64 - `XCAFDoc_ColorTool::ShapeTool`
-//   method: Returns internal XCAFDoc_ShapeTool tool
-//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
-//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
-//
-// SKIPPED: **Source:** `XCAFDoc_ColorTool.hxx`:56 - `XCAFDoc_ColorTool::Set`
-//   static_method: Creates (if not exist) ColorTool.
-//   Reason: return type 'Handle(XCAFDoc_ColorTool)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_ColorTool>>;
-//
+pub use crate::ffi::HandleXCAFDocColorTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocColorTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocColorTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocColorTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_ColorTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_ColorTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocColorTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_ColorTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_ColorTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocColorTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_ColorTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocColorTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ColorTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocColorTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_Datum.hxx
@@ -3342,6 +4010,32 @@ impl Datum {
         unsafe { &*(crate::ffi::XCAFDoc_Datum_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_Datum.hxx`:46 - `XCAFDoc_Datum::Set()`
+    pub fn set_label_handletcollectionhasciistring3(
+        label: &crate::tdf::Label,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        anIdentification: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDatum> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_Datum_set_label_handletcollectionhasciistring3(
+                    label,
+                    aName,
+                    aDescription,
+                    anIdentification,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_Datum.hxx`:52 - `XCAFDoc_Datum::Set()`
+    pub fn set_label(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDatum> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_set_label(theLabel)) }
+    }
+
     /// **Source:** `XCAFDoc_Datum.hxx`:84 - `XCAFDoc_Datum::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3364,6 +4058,13 @@ impl Datum {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Datum_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDatum> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3516,6 +4217,55 @@ impl Datum {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Datum_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_References(self as *const Self, aDataSet) }
@@ -3527,15 +4277,34 @@ impl Datum {
     }
 }
 
-// ── Skipped symbols for Datum (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Datum.hxx`:46 - `XCAFDoc_Datum::Set`
-//   Reason: return type 'Handle(XCAFDoc_Datum)' is unknown
-//   // pub fn set(label: &Label, aName: &HandleHAsciiString, aDescription: &HandleHAsciiString, anIdentification: &HandleHAsciiString) -> OwnedPtr<Handle<XCAFDoc_Datum>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_Datum.hxx`:52 - `XCAFDoc_Datum::Set`
-//   Reason: return type 'Handle(XCAFDoc_Datum)' is unknown
-//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_Datum>>;
-//
+pub use crate::ffi::HandleXCAFDocDatum;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocDatum {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocDatum_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocDatum {
+    /// Dereference this Handle to access the underlying XCAFDoc_Datum
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Datum {
+        unsafe { &*(crate::ffi::HandleXCAFDocDatum_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Datum
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Datum {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocDatum_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Datum> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDatum_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_DimTol.hxx
@@ -3634,6 +4403,19 @@ impl DimTol {
         unsafe { &*(crate::ffi::XCAFDoc_DimTol_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_DimTol.hxx`:42 - `XCAFDoc_DimTol::Set()`
+    pub fn set_label_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(
+        label: &crate::tdf::Label,
+        kind: i32,
+        aVal: &crate::ffi::HandleTColStdHArray1OfReal,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_set_label_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(label, kind, aVal, aName, aDescription))
+        }
+    }
+
     /// **Source:** `XCAFDoc_DimTol.hxx`:75 - `XCAFDoc_DimTol::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3656,6 +4438,13 @@ impl DimTol {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_DimTol_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTol> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3808,6 +4597,55 @@ impl DimTol {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTol_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_DimTol_inherited_References(self as *const Self, aDataSet) }
@@ -3819,11 +4657,34 @@ impl DimTol {
     }
 }
 
-// ── Skipped symbols for DimTol (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_DimTol.hxx`:42 - `XCAFDoc_DimTol::Set`
-//   Reason: return type 'Handle(XCAFDoc_DimTol)' is unknown
-//   // pub fn set(label: &Label, kind: i32, aVal: &HandleHArray1OfReal, aName: &HandleHAsciiString, aDescription: &HandleHAsciiString) -> OwnedPtr<Handle<XCAFDoc_DimTol>>;
-//
+pub use crate::ffi::HandleXCAFDocDimTol;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocDimTol {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocDimTol_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocDimTol {
+    /// Dereference this Handle to access the underlying XCAFDoc_DimTol
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_DimTol {
+        unsafe { &*(crate::ffi::HandleXCAFDocDimTol_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_DimTol
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_DimTol {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocDimTol_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_DimTol> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDimTol_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_DimTolTool.hxx
@@ -3854,6 +4715,12 @@ impl DimTolTool {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:56 - `XCAFDoc_DimTolTool::ShapeTool()`
+    /// Returns internal XCAFDoc_ShapeTool tool
+    pub fn shape_tool(&mut self) -> &crate::ffi::HandleXCAFDocShapeTool {
+        unsafe { &*(crate::ffi::XCAFDoc_DimTolTool_shape_tool(self as *mut Self)) }
     }
 
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:60 - `XCAFDoc_DimTolTool::IsDimension()`
@@ -4313,6 +5180,12 @@ impl DimTolTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:47 - `XCAFDoc_DimTolTool::Set()`
+    /// Creates (if not exist) DimTolTool attribute.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTolTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_set(L)) }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:50 - `XCAFDoc_DimTolTool::GetID()`
     /// Returns the standard GD&T tool GUID.
     pub fn get_id() -> &'static crate::standard::GUID {
@@ -4392,6 +5265,15 @@ impl DimTolTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_DimTolTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTolTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -4572,6 +5454,55 @@ impl DimTolTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DimTolTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -4585,12 +5516,49 @@ impl DimTolTool {
     }
 }
 
-// ── Skipped symbols for DimTolTool (5 total) ──
-// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:56 - `XCAFDoc_DimTolTool::ShapeTool`
-//   method: Returns internal XCAFDoc_ShapeTool tool
-//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
-//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
-//
+pub use crate::ffi::HandleXCAFDocDimTolTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocDimTolTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocDimTolTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocDimTolTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_DimTolTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_DimTolTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocDimTolTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_DimTolTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_DimTolTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocDimTolTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_DimTolTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocDimTolTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_DimTolTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDimTolTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for DimTolTool (3 total) ──
 // SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:160 - `XCAFDoc_DimTolTool::GetDimTol`
 //   method: Returns dimension tolerance assigned to theDimTolL label.
 //   method: Returns False if no such dimension tolerance is assigned.
@@ -4608,11 +5576,6 @@ impl DimTolTool {
 //   method: If label is not in the theGDTLabelToPrsName map, the presentation name will be empty
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn set_gdt_presentations(&mut self, theGDTLabelToPrs: &mut i32);
-//
-// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:47 - `XCAFDoc_DimTolTool::Set`
-//   static_method: Creates (if not exist) DimTolTool attribute.
-//   Reason: return type 'Handle(XCAFDoc_DimTolTool)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_DimTolTool>>;
 //
 
 // ========================
@@ -4679,6 +5642,13 @@ impl Dimension {
         unsafe { &*(crate::ffi::XCAFDoc_Dimension_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_Dimension.hxx`:46 - `XCAFDoc_Dimension::Set()`
+    pub fn set(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDimension> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_set(theLabel)) }
+    }
+
     /// **Source:** `XCAFDoc_Dimension.hxx`:62 - `XCAFDoc_Dimension::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -4713,6 +5683,15 @@ impl Dimension {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Dimension_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDimension> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -4893,6 +5872,55 @@ impl Dimension {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Dimension_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Dimension_inherited_References(self as *const Self, aDataSet) }
@@ -4904,11 +5932,47 @@ impl Dimension {
     }
 }
 
-// ── Skipped symbols for Dimension (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Dimension.hxx`:46 - `XCAFDoc_Dimension::Set`
-//   Reason: return type 'Handle(XCAFDoc_Dimension)' is unknown
-//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_Dimension>>;
-//
+pub use crate::ffi::HandleXCAFDocDimension;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocDimension {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocDimension_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocDimension {
+    /// Dereference this Handle to access the underlying XCAFDoc_Dimension
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Dimension {
+        unsafe { &*(crate::ffi::HandleXCAFDocDimension_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Dimension
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Dimension {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocDimension_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Dimension> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocDimension_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Dimension> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDimension_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_DocumentTool.hxx
@@ -4966,6 +6030,26 @@ impl DocumentTool {
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:49 - `XCAFDoc_DocumentTool::GetID()`
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_DocumentTool_get_id()) }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:58 - `XCAFDoc_DocumentTool::Set()`
+    /// Create (if not exist) DocumentTool attribute
+    /// on 0.1 label if <IsAcces> is true, else
+    /// on <L> label.
+    /// This label will be returned by DocLabel();
+    /// If the attribute is already set it won't be reset on
+    /// <L> even if <IsAcces> is false.
+    /// ColorTool and ShapeTool attributes are also set by this method.
+    pub fn set(
+        L: &crate::tdf::Label,
+        IsAcces: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDocumentTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_set(L, IsAcces)) }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:62 - `XCAFDoc_DocumentTool::IsXCAFDocument()`
+    pub fn is_xcaf_document(Doc: &crate::ffi::HandleTDocStdDocument) -> bool {
+        unsafe { crate::ffi::XCAFDoc_DocumentTool_is_xcaf_document(Doc) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:66 - `XCAFDoc_DocumentTool::DocLabel()`
@@ -5035,11 +6119,27 @@ impl DocumentTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:96 - `XCAFDoc_DocumentTool::ShapeTool()`
+    /// Creates (if it does not exist) ShapeTool attribute on ShapesLabel().
+    pub fn shape_tool(
+        acces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_shape_tool(acces)) }
+    }
+
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:100 - `XCAFDoc_DocumentTool::CheckShapeTool()`
     /// Checks for the ShapeTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
     pub fn check_shape_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_shape_tool(theAcces) }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:103 - `XCAFDoc_DocumentTool::ColorTool()`
+    /// Creates (if it does not exist) ColorTool attribute on ColorsLabel().
+    pub fn color_tool(
+        acces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocColorTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_color_tool(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:107 - `XCAFDoc_DocumentTool::CheckColorTool()`
@@ -5049,11 +6149,30 @@ impl DocumentTool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_color_tool(theAcces) }
     }
 
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:111 - `XCAFDoc_DocumentTool::VisMaterialTool()`
+    /// Creates (if it does not exist) XCAFDoc_VisMaterialTool attribute on VisMaterialLabel().
+    /// Should not be confused with MaterialTool() defining physical/manufacturing materials.
+    pub fn vis_material_tool(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterialTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_vis_material_tool(theLabel))
+        }
+    }
+
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:115 - `XCAFDoc_DocumentTool::CheckVisMaterialTool()`
     /// Checks for the VisMaterialTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
     pub fn check_vis_material_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_vis_material_tool(theAcces) }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:118 - `XCAFDoc_DocumentTool::LayerTool()`
+    /// Creates (if it does not exist) LayerTool attribute on LayersLabel().
+    pub fn layer_tool(
+        acces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLayerTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_layer_tool(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:122 - `XCAFDoc_DocumentTool::CheckLayerTool()`
@@ -5063,11 +6182,27 @@ impl DocumentTool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_layer_tool(theAcces) }
     }
 
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:125 - `XCAFDoc_DocumentTool::DimTolTool()`
+    /// Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
+    pub fn dim_tol_tool(
+        acces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTolTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_dim_tol_tool(acces)) }
+    }
+
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:129 - `XCAFDoc_DocumentTool::CheckDimTolTool()`
     /// Checks for the DimTolTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
     pub fn check_dim_tol_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_dim_tol_tool(theAcces) }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:132 - `XCAFDoc_DocumentTool::MaterialTool()`
+    /// Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
+    pub fn material_tool(
+        acces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterialTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_material_tool(acces)) }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:136 - `XCAFDoc_DocumentTool::CheckMaterialTool()`
@@ -5077,11 +6212,29 @@ impl DocumentTool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_material_tool(theAcces) }
     }
 
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:139 - `XCAFDoc_DocumentTool::ViewTool()`
+    /// Creates (if it does not exist) ViewTool attribute on ViewsLabel().
+    pub fn view_tool(
+        acces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocViewTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_view_tool(acces)) }
+    }
+
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:143 - `XCAFDoc_DocumentTool::CheckViewTool()`
     /// Checks for the ViewTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
     pub fn check_view_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_view_tool(theAcces) }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:146 - `XCAFDoc_DocumentTool::ClippingPlaneTool()`
+    /// Creates (if it does not exist) ClippingPlaneTool attribute on ClippingPlanesLabel().
+    pub fn clipping_plane_tool(
+        acces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocClippingPlaneTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_clipping_plane_tool(acces))
+        }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:151 - `XCAFDoc_DocumentTool::CheckClippingPlaneTool()`
@@ -5091,11 +6244,80 @@ impl DocumentTool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_clipping_plane_tool(theAcces) }
     }
 
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:154 - `XCAFDoc_DocumentTool::NotesTool()`
+    /// Creates (if it does not exist) NotesTool attribute on NotesLabel().
+    pub fn notes_tool(
+        acces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNotesTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_notes_tool(acces)) }
+    }
+
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:158 - `XCAFDoc_DocumentTool::CheckNotesTool()`
     /// Checks for the NotesTool attribute on the label's document
     /// Returns TRUE if Tool exists, ELSE if it has not been created
     pub fn check_notes_tool(theAcces: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_check_notes_tool(theAcces) }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:162 - `XCAFDoc_DocumentTool::GetLengthUnit()`
+    /// Returns value of current internal unit for the document
+    /// converted to base unit type.
+    pub fn get_length_unit_handletdocstddocument_real_lengthunit(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theResut: &mut f64,
+        theBaseUnit: crate::units_methods::LengthUnit,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_get_length_unit_handletdocstddocument_real_lengthunit(
+                theDoc,
+                theResut,
+                theBaseUnit.into(),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:167 - `XCAFDoc_DocumentTool::GetLengthUnit()`
+    /// Returns value of current internal unit for the document in meter
+    pub fn get_length_unit_handletdocstddocument_real(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theResut: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_get_length_unit_handletdocstddocument_real(
+                theDoc, theResut,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:171 - `XCAFDoc_DocumentTool::SetLengthUnit()`
+    /// Sets value of current internal unit to the document in meter
+    pub fn set_length_unit_handletdocstddocument_real(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theUnitValue: f64,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_set_length_unit_handletdocstddocument_real(
+                theDoc,
+                theUnitValue,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_DocumentTool.hxx`:176 - `XCAFDoc_DocumentTool::SetLengthUnit()`
+    /// Sets value of current internal unit to the document
+    /// @param theUnitValue must be represented in the base unit type
+    pub fn set_length_unit_handletdocstddocument_real_lengthunit(
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theUnitValue: f64,
+        theBaseUnit: crate::units_methods::LengthUnit,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDoc_DocumentTool_set_length_unit_handletdocstddocument_real_lengthunit(
+                theDoc,
+                theUnitValue,
+                theBaseUnit.into(),
+            )
+        }
     }
 
     /// **Source:** `XCAFDoc_DocumentTool.hxx`:192 - `XCAFDoc_DocumentTool::get_type_name()`
@@ -5134,6 +6356,15 @@ impl DocumentTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_DocumentTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocDocumentTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -5309,6 +6540,57 @@ impl DocumentTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_DocumentTool_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_DocumentTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -5324,86 +6606,47 @@ impl DocumentTool {
     }
 }
 
-// ── Skipped symbols for DocumentTool (15 total) ──
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:58 - `XCAFDoc_DocumentTool::Set`
-//   static_method: Create (if not exist) DocumentTool attribute
-//   static_method: on 0.1 label if <IsAcces> is true, else
-//   static_method: on <L> label.
-//   Reason: return type 'Handle(XCAFDoc_DocumentTool)' is unknown
-//   // pub fn set(L: &Label, IsAcces: bool) -> OwnedPtr<Handle<XCAFDoc_DocumentTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:62 - `XCAFDoc_DocumentTool::IsXCAFDocument`
-//   Reason: param 'Doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn is_xcaf_document(Doc: &HandleDocument) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:96 - `XCAFDoc_DocumentTool::ShapeTool`
-//   static_method: Creates (if it does not exist) ShapeTool attribute on ShapesLabel().
-//   Reason: return type 'Handle(XCAFDoc_ShapeTool)' is unknown
-//   // pub fn shape_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_ShapeTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:103 - `XCAFDoc_DocumentTool::ColorTool`
-//   static_method: Creates (if it does not exist) ColorTool attribute on ColorsLabel().
-//   Reason: return type 'Handle(XCAFDoc_ColorTool)' is unknown
-//   // pub fn color_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_ColorTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:111 - `XCAFDoc_DocumentTool::VisMaterialTool`
-//   static_method: Creates (if it does not exist) XCAFDoc_VisMaterialTool attribute on VisMaterialLabel().
-//   static_method: Should not be confused with MaterialTool() defining physical/manufacturing materials.
-//   Reason: return type 'Handle(XCAFDoc_VisMaterialTool)' is unknown
-//   // pub fn vis_material_tool(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_VisMaterialTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:118 - `XCAFDoc_DocumentTool::LayerTool`
-//   static_method: Creates (if it does not exist) LayerTool attribute on LayersLabel().
-//   Reason: return type 'Handle(XCAFDoc_LayerTool)' is unknown
-//   // pub fn layer_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_LayerTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:125 - `XCAFDoc_DocumentTool::DimTolTool`
-//   static_method: Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
-//   Reason: return type 'Handle(XCAFDoc_DimTolTool)' is unknown
-//   // pub fn dim_tol_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_DimTolTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:132 - `XCAFDoc_DocumentTool::MaterialTool`
-//   static_method: Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
-//   Reason: return type 'Handle(XCAFDoc_MaterialTool)' is unknown
-//   // pub fn material_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_MaterialTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:139 - `XCAFDoc_DocumentTool::ViewTool`
-//   static_method: Creates (if it does not exist) ViewTool attribute on ViewsLabel().
-//   Reason: return type 'Handle(XCAFDoc_ViewTool)' is unknown
-//   // pub fn view_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_ViewTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:146 - `XCAFDoc_DocumentTool::ClippingPlaneTool`
-//   static_method: Creates (if it does not exist) ClippingPlaneTool attribute on ClippingPlanesLabel().
-//   Reason: return type 'Handle(XCAFDoc_ClippingPlaneTool)' is unknown
-//   // pub fn clipping_plane_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_ClippingPlaneTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:154 - `XCAFDoc_DocumentTool::NotesTool`
-//   static_method: Creates (if it does not exist) NotesTool attribute on NotesLabel().
-//   Reason: return type 'Handle(XCAFDoc_NotesTool)' is unknown
-//   // pub fn notes_tool(acces: &Label) -> OwnedPtr<Handle<XCAFDoc_NotesTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:162 - `XCAFDoc_DocumentTool::GetLengthUnit`
-//   static_method: Returns value of current internal unit for the document
-//   static_method: converted to base unit type.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn get_length_unit(theDoc: &HandleDocument, theResut: &mut f64, theBaseUnit: LengthUnit) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:167 - `XCAFDoc_DocumentTool::GetLengthUnit`
-//   static_method: Returns value of current internal unit for the document in meter
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn get_length_unit(theDoc: &HandleDocument, theResut: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:171 - `XCAFDoc_DocumentTool::SetLengthUnit`
-//   static_method: Sets value of current internal unit to the document in meter
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_length_unit(theDoc: &HandleDocument, theUnitValue: f64);
-//
-// SKIPPED: **Source:** `XCAFDoc_DocumentTool.hxx`:176 - `XCAFDoc_DocumentTool::SetLengthUnit`
-//   static_method: Sets value of current internal unit to the document
-//   static_method: @param theUnitValue must be represented in the base unit type
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_length_unit(theDoc: &HandleDocument, theUnitValue: f64, theBaseUnit: LengthUnit);
-//
+pub use crate::ffi::HandleXCAFDocDocumentTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocDocumentTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocDocumentTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocDocumentTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_DocumentTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_DocumentTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocDocumentTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_DocumentTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_DocumentTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocDocumentTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_DocumentTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocDocumentTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_DocumentTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocDocumentTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_Editor.hxx
@@ -5517,7 +6760,7 @@ impl Editor {
 //   static_method: Copies shapes label with keeping of shape structure (recursively)
 //   static_method: @param[in] theSrcLabel original label to copy from
 //   static_method: @param[in] theSrcShapeTool shape tool to get
-//   Reason: param 'theSrcShapeTool' uses unknown type 'const Handle(XCAFDoc_ShapeTool)&'
+//   Reason: param 'theMap' uses unknown type 'TDF_LabelDataMap&'
 //   // pub fn clone_shape_label(theSrcLabel: &Label, theSrcShapeTool: &HandleShapeTool, theDstShapeTool: &HandleShapeTool, theMap: &mut LabelDataMap) -> OwnedPtr<TDF_Label>;
 //
 // SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:97 - `XCAFDoc_Editor::CloneMetaData`
@@ -5545,7 +6788,7 @@ impl Editor {
 //   static_method: Filters original shape tree with keeping structure.
 //   static_method: The result will include the full label hierarchy lower then input labels.
 //   static_method: Any higher hierarchy labels will be filtered to keep only necessary labels.
-//   Reason: param 'theShapeTool' uses unknown type 'const Handle(XCAFDoc_ShapeTool)&'
+//   Reason: param 'theLabelsToKeep' uses unknown type 'const TDF_LabelMap&'
 //   // pub fn filter_shape_tree(theShapeTool: &HandleShapeTool, theLabelsToKeep: &LabelMap) -> bool;
 //
 
@@ -5567,6 +6810,17 @@ impl GeomTolerance {
     /// **Source:** `XCAFDoc_GeomTolerance.hxx`:40 - `XCAFDoc_GeomTolerance::XCAFDoc_GeomTolerance()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_ctor()) }
+    }
+
+    /// **Source:** `XCAFDoc_GeomTolerance.hxx`:42 - `XCAFDoc_GeomTolerance::XCAFDoc_GeomTolerance()`
+    pub fn new_handlexcafdocgeomtolerance(
+        theObj: &crate::ffi::HandleXCAFDocGeomTolerance,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_GeomTolerance_ctor_handlexcafdocgeomtolerance(theObj),
+            )
+        }
     }
 
     /// **Source:** `XCAFDoc_GeomTolerance.hxx`:50 - `XCAFDoc_GeomTolerance::SetObject()`
@@ -5617,6 +6871,13 @@ impl GeomTolerance {
         unsafe { &*(crate::ffi::XCAFDoc_GeomTolerance_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_GeomTolerance.hxx`:46 - `XCAFDoc_GeomTolerance::Set()`
+    pub fn set(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocGeomTolerance> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_set(theLabel)) }
+    }
+
     /// **Source:** `XCAFDoc_GeomTolerance.hxx`:62 - `XCAFDoc_GeomTolerance::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -5655,6 +6916,15 @@ impl GeomTolerance {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_GeomTolerance_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocGeomTolerance> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -5841,6 +7111,57 @@ impl GeomTolerance {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_GeomTolerance_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GeomTolerance_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -5856,15 +7177,47 @@ impl GeomTolerance {
     }
 }
 
-// ── Skipped symbols for GeomTolerance (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_GeomTolerance.hxx`:42 - `XCAFDoc_GeomTolerance::XCAFDoc_GeomTolerance`
-//   Reason: param 'theObj' uses unknown Handle type
-//   // pub fn new_handlexcafdocgeomtolerance(theObj: &HandleGeomTolerance) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XCAFDoc_GeomTolerance.hxx`:46 - `XCAFDoc_GeomTolerance::Set`
-//   Reason: return type 'Handle(XCAFDoc_GeomTolerance)' is unknown
-//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_GeomTolerance>>;
-//
+pub use crate::ffi::HandleXCAFDocGeomTolerance;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocGeomTolerance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocGeomTolerance_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocGeomTolerance {
+    /// Dereference this Handle to access the underlying XCAFDoc_GeomTolerance
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_GeomTolerance {
+        unsafe { &*(crate::ffi::HandleXCAFDocGeomTolerance_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_GeomTolerance
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_GeomTolerance {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocGeomTolerance_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_GeomTolerance> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocGeomTolerance_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_GeomTolerance> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocGeomTolerance_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_GraphNode.hxx
@@ -5894,18 +7247,98 @@ impl GraphNode {
         unsafe { crate::ffi::XCAFDoc_GraphNode_set_graph_id(self as *mut Self, explicitID) }
     }
 
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:73 - `XCAFDoc_GraphNode::SetFather()`
+    /// Set GraphNode <F> as father of me and returns index of <F>
+    /// in Sequence that containing Fathers GraphNodes.
+    /// return index of <F> from GraphNodeSequnece
+    pub fn set_father(&mut self, F: &crate::ffi::HandleXCAFDocGraphNode) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_set_father(self as *mut Self, F) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:78 - `XCAFDoc_GraphNode::SetChild()`
+    /// Set GraphNode <Ch> as child of me and returns index of <Ch>
+    /// in Sequence that containing Children GraphNodes.
+    /// return index of <Ch> from GraphNodeSequnece
+    pub fn set_child(&mut self, Ch: &crate::ffi::HandleXCAFDocGraphNode) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_set_child(self as *mut Self, Ch) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:82 - `XCAFDoc_GraphNode::UnSetFather()`
+    /// Remove <F> from Fathers GraphNodeSequence.
+    /// and remove link between father and child.
+    pub fn un_set_father_handlexcafdocgraphnode(&mut self, F: &crate::ffi::HandleXCAFDocGraphNode) {
+        unsafe {
+            crate::ffi::XCAFDoc_GraphNode_un_set_father_handlexcafdocgraphnode(self as *mut Self, F)
+        }
+    }
+
     /// **Source:** `XCAFDoc_GraphNode.hxx`:86 - `XCAFDoc_GraphNode::UnSetFather()`
     /// Remove Father GraphNode by index from Fathers GraphNodeSequence.
     /// and remove link between father and child.
-    pub fn un_set_father(&mut self, Findex: i32) {
-        unsafe { crate::ffi::XCAFDoc_GraphNode_un_set_father(self as *mut Self, Findex) }
+    pub fn un_set_father_int(&mut self, Findex: i32) {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_un_set_father_int(self as *mut Self, Findex) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:90 - `XCAFDoc_GraphNode::UnSetChild()`
+    /// Remove <Ch> from GraphNodeSequence.
+    /// and remove link between father and child.
+    pub fn un_set_child_handlexcafdocgraphnode(&mut self, Ch: &crate::ffi::HandleXCAFDocGraphNode) {
+        unsafe {
+            crate::ffi::XCAFDoc_GraphNode_un_set_child_handlexcafdocgraphnode(self as *mut Self, Ch)
+        }
     }
 
     /// **Source:** `XCAFDoc_GraphNode.hxx`:94 - `XCAFDoc_GraphNode::UnSetChild()`
     /// Remove Child GraphNode by index from Children GraphNodeSequence.
     /// and remove link between father and child.
-    pub fn un_set_child(&mut self, Chindex: i32) {
-        unsafe { crate::ffi::XCAFDoc_GraphNode_un_set_child(self as *mut Self, Chindex) }
+    pub fn un_set_child_int(&mut self, Chindex: i32) {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_un_set_child_int(self as *mut Self, Chindex) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:97 - `XCAFDoc_GraphNode::GetFather()`
+    /// Return GraphNode by index from GraphNodeSequence.
+    pub fn get_father(&self, Findex: i32) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocGraphNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_get_father(
+                self as *const Self,
+                Findex,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:100 - `XCAFDoc_GraphNode::GetChild()`
+    /// Return GraphNode by index from GraphNodeSequence.
+    pub fn get_child(&self, Chindex: i32) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocGraphNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_get_child(
+                self as *const Self,
+                Chindex,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:103 - `XCAFDoc_GraphNode::FatherIndex()`
+    /// Return index of <F>, or zero if there is no such Graphnode.
+    pub fn father_index(&self, F: &crate::ffi::HandleXCAFDocGraphNode) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_father_index(self as *const Self, F) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:106 - `XCAFDoc_GraphNode::ChildIndex()`
+    /// Return index of <Ch>, or zero if there is no such Graphnode.
+    pub fn child_index(&self, Ch: &crate::ffi::HandleXCAFDocGraphNode) -> i32 {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_child_index(self as *const Self, Ch) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:109 - `XCAFDoc_GraphNode::IsFather()`
+    /// returns TRUE if <me> is father of <Ch>.
+    pub fn is_father(&self, Ch: &crate::ffi::HandleXCAFDocGraphNode) -> bool {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_is_father(self as *const Self, Ch) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:112 - `XCAFDoc_GraphNode::IsChild()`
+    /// returns TRUE if <me> is child of <F>.
+    pub fn is_child(&self, F: &crate::ffi::HandleXCAFDocGraphNode) -> bool {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_is_child(self as *const Self, F) }
     }
 
     /// **Source:** `XCAFDoc_GraphNode.hxx`:115 - `XCAFDoc_GraphNode::NbFathers()`
@@ -5965,6 +7398,41 @@ impl GraphNode {
         unsafe { &*(crate::ffi::XCAFDoc_GraphNode_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:45 - `XCAFDoc_GraphNode::Find()`
+    /// class  methods working on the node
+    /// ===================================
+    /// Shortcut to search  a Graph node attribute with default
+    /// GraphID.  Returns true if found.
+    pub fn find(L: &crate::tdf::Label, G: &mut crate::ffi::HandleXCAFDocGraphNode) -> bool {
+        unsafe { crate::ffi::XCAFDoc_GraphNode_find(L, G) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:51 - `XCAFDoc_GraphNode::Set()`
+    /// Finds or Creates a GraphNode attribute on the label <L>
+    /// with  the  default Graph  ID,   returned by the method
+    /// <GetDefaultGraphID>.  Returns the created/found     GraphNode
+    /// attribute.
+    pub fn set_label(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocGraphNode> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_set_label(L)) }
+    }
+
+    /// **Source:** `XCAFDoc_GraphNode.hxx`:57 - `XCAFDoc_GraphNode::Set()`
+    /// Finds  or Creates a   GraphNode attribute on  the label
+    /// <L>, with an   explicit tree ID.  <ExplicitGraphID>  is
+    /// the  ID   returned by    <TDF_Attribute::ID>   method.
+    /// Returns the found/created GraphNode attribute.
+    pub fn set_label_guid(
+        L: &crate::tdf::Label,
+        ExplicitGraphID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocGraphNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_set_label_guid(
+                L,
+                ExplicitGraphID,
+            ))
+        }
+    }
+
     /// **Source:** `XCAFDoc_GraphNode.hxx`:64 - `XCAFDoc_GraphNode::GetDefaultGraphID()`
     /// returns a default  Graph ID.  this  ID is  used by the
     /// <Set> method without explicit tree ID.
@@ -5996,6 +7464,15 @@ impl GraphNode {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_GraphNode_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocGraphNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -6157,93 +7634,94 @@ impl GraphNode {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_GraphNode_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for GraphNode (14 total) ──
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:73 - `XCAFDoc_GraphNode::SetFather`
-//   method: Set GraphNode <F> as father of me and returns index of <F>
-//   method: in Sequence that containing Fathers GraphNodes.
-//   method: return index of <F> from GraphNodeSequnece
-//   Reason: param 'F' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn set_father(&mut self, F: &HandleGraphNode) -> i32;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:78 - `XCAFDoc_GraphNode::SetChild`
-//   method: Set GraphNode <Ch> as child of me and returns index of <Ch>
-//   method: in Sequence that containing Children GraphNodes.
-//   method: return index of <Ch> from GraphNodeSequnece
-//   Reason: param 'Ch' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn set_child(&mut self, Ch: &HandleGraphNode) -> i32;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:82 - `XCAFDoc_GraphNode::UnSetFather`
-//   method: Remove <F> from Fathers GraphNodeSequence.
-//   method: and remove link between father and child.
-//   Reason: param 'F' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn un_set_father(&mut self, F: &HandleGraphNode);
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:90 - `XCAFDoc_GraphNode::UnSetChild`
-//   method: Remove <Ch> from GraphNodeSequence.
-//   method: and remove link between father and child.
-//   Reason: param 'Ch' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn un_set_child(&mut self, Ch: &HandleGraphNode);
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:97 - `XCAFDoc_GraphNode::GetFather`
-//   method: Return GraphNode by index from GraphNodeSequence.
-//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
-//   // pub fn get_father(&self, Findex: i32) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:100 - `XCAFDoc_GraphNode::GetChild`
-//   method: Return GraphNode by index from GraphNodeSequence.
-//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
-//   // pub fn get_child(&self, Chindex: i32) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:103 - `XCAFDoc_GraphNode::FatherIndex`
-//   method: Return index of <F>, or zero if there is no such Graphnode.
-//   Reason: param 'F' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn father_index(&self, F: &HandleGraphNode) -> i32;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:106 - `XCAFDoc_GraphNode::ChildIndex`
-//   method: Return index of <Ch>, or zero if there is no such Graphnode.
-//   Reason: param 'Ch' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn child_index(&self, Ch: &HandleGraphNode) -> i32;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:109 - `XCAFDoc_GraphNode::IsFather`
-//   method: returns TRUE if <me> is father of <Ch>.
-//   Reason: param 'Ch' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn is_father(&self, Ch: &HandleGraphNode) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:112 - `XCAFDoc_GraphNode::IsChild`
-//   method: returns TRUE if <me> is child of <F>.
-//   Reason: param 'F' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn is_child(&self, F: &HandleGraphNode) -> bool;
-//
+pub use crate::ffi::HandleXCAFDocGraphNode;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocGraphNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocGraphNode_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocGraphNode {
+    /// Dereference this Handle to access the underlying XCAFDoc_GraphNode
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_GraphNode {
+        unsafe { &*(crate::ffi::HandleXCAFDocGraphNode_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_GraphNode
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_GraphNode {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocGraphNode_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_GraphNode> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocGraphNode_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for GraphNode (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:136 - `XCAFDoc_GraphNode::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:45 - `XCAFDoc_GraphNode::Find`
-//   static_method: class  methods working on the node
-//   static_method: ===================================
-//   static_method: Shortcut to search  a Graph node attribute with default
-//   Reason: param 'G' uses unknown type 'Handle(XCAFDoc_GraphNode)&'
-//   // pub fn find(L: &Label, G: &mut HandleGraphNode) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:51 - `XCAFDoc_GraphNode::Set`
-//   static_method: Finds or Creates a GraphNode attribute on the label <L>
-//   static_method: with  the  default Graph  ID,   returned by the method
-//   static_method: <GetDefaultGraphID>.  Returns the created/found     GraphNode
-//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_GraphNode.hxx`:57 - `XCAFDoc_GraphNode::Set`
-//   static_method: Finds  or Creates a   GraphNode attribute on  the label
-//   static_method: <L>, with an   explicit tree ID.  <ExplicitGraphID>  is
-//   static_method: the  ID   returned by    <TDF_Attribute::ID>   method.
-//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
-//   // pub fn set(L: &Label, ExplicitGraphID: &GUID) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
 //
 
 // ========================
@@ -6276,6 +7754,12 @@ impl LayerTool {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_base_label(self as *const Self))
         }
+    }
+
+    /// **Source:** `XCAFDoc_LayerTool.hxx`:54 - `XCAFDoc_LayerTool::ShapeTool()`
+    /// Returns internal XCAFDoc_ShapeTool tool
+    pub fn shape_tool(&mut self) -> &crate::ffi::HandleXCAFDocShapeTool {
+        unsafe { &*(crate::ffi::XCAFDoc_LayerTool_shape_tool(self as *mut Self)) }
     }
 
     /// **Source:** `XCAFDoc_LayerTool.hxx`:58 - `XCAFDoc_LayerTool::IsLayer()`
@@ -6721,6 +8205,12 @@ impl LayerTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_LayerTool.hxx`:46 - `XCAFDoc_LayerTool::Set()`
+    /// Creates (if not exist) LayerTool.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLayerTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_set(L)) }
+    }
+
     /// **Source:** `XCAFDoc_LayerTool.hxx`:48 - `XCAFDoc_LayerTool::GetID()`
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_LayerTool_get_id()) }
@@ -6769,6 +8259,15 @@ impl LayerTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_LayerTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLayerTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -6949,6 +8448,55 @@ impl LayerTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LayerTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_References(self as *const Self, aDataSet) }
@@ -6960,17 +8508,47 @@ impl LayerTool {
     }
 }
 
-// ── Skipped symbols for LayerTool (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_LayerTool.hxx`:54 - `XCAFDoc_LayerTool::ShapeTool`
-//   method: Returns internal XCAFDoc_ShapeTool tool
-//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
-//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
-//
-// SKIPPED: **Source:** `XCAFDoc_LayerTool.hxx`:46 - `XCAFDoc_LayerTool::Set`
-//   static_method: Creates (if not exist) LayerTool.
-//   Reason: return type 'Handle(XCAFDoc_LayerTool)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_LayerTool>>;
-//
+pub use crate::ffi::HandleXCAFDocLayerTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocLayerTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocLayerTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocLayerTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_LayerTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_LayerTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocLayerTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_LayerTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_LayerTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocLayerTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_LayerTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocLayerTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_LayerTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocLayerTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_LengthUnit.hxx
@@ -7054,6 +8632,64 @@ impl LengthUnit {
         unsafe { &*(crate::ffi::XCAFDoc_LengthUnit_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_LengthUnit.hxx`:44 - `XCAFDoc_LengthUnit::Set()`
+    /// Finds or creates a LengthUnit attribute
+    /// @param theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile
+    /// @param theUnitValue - length scale factor to meter
+    /// The LengthUnit attribute is returned.
+    pub fn set_label_asciistring_real(
+        theLabel: &crate::tdf::Label,
+        theUnitName: &crate::t_collection::AsciiString,
+        theUnitValue: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLengthUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_set_label_asciistring_real(
+                theLabel,
+                theUnitName,
+                theUnitValue,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_LengthUnit.hxx`:51 - `XCAFDoc_LengthUnit::Set()`
+    /// Finds or creates a LengthUnit attribute
+    /// @param theUnitValue - length scale factor to meter
+    /// The LengthUnit attribute is returned.
+    pub fn set_label_real(
+        theLabel: &crate::tdf::Label,
+        theUnitValue: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLengthUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_set_label_real(
+                theLabel,
+                theUnitValue,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_LengthUnit.hxx`:58 - `XCAFDoc_LengthUnit::Set()`
+    /// Finds, or creates, a LengthUnit attribute with explicit user defined GUID
+    /// @param theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile
+    /// @param theUnitValue - length scale factor to meter
+    /// The LengthUnit attribute is returned
+    pub fn set_label_guid_asciistring_real(
+        theLabel: &crate::tdf::Label,
+        theGUID: &crate::standard::GUID,
+        theUnitName: &crate::t_collection::AsciiString,
+        theUnitValue: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLengthUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_LengthUnit_set_label_guid_asciistring_real(
+                    theLabel,
+                    theGUID,
+                    theUnitName,
+                    theUnitValue,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_LengthUnit.hxx`:93 - `XCAFDoc_LengthUnit::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -7076,6 +8712,15 @@ impl LengthUnit {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_LengthUnit_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLengthUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -7242,6 +8887,55 @@ impl LengthUnit {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_LengthUnit_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -7255,31 +8949,39 @@ impl LengthUnit {
     }
 }
 
-// ── Skipped symbols for LengthUnit (4 total) ──
+pub use crate::ffi::HandleXCAFDocLengthUnit;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocLengthUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocLengthUnit_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocLengthUnit {
+    /// Dereference this Handle to access the underlying XCAFDoc_LengthUnit
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_LengthUnit {
+        unsafe { &*(crate::ffi::HandleXCAFDocLengthUnit_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_LengthUnit
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_LengthUnit {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocLengthUnit_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_LengthUnit> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocLengthUnit_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for LengthUnit (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:87 - `XCAFDoc_LengthUnit::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:44 - `XCAFDoc_LengthUnit::Set`
-//   static_method: Finds or creates a LengthUnit attribute
-//   static_method: @param theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile
-//   static_method: @param theUnitValue - length scale factor to meter
-//   Reason: return type 'Handle(XCAFDoc_LengthUnit)' is unknown
-//   // pub fn set(theLabel: &Label, theUnitName: &AsciiString, theUnitValue: f64) -> OwnedPtr<Handle<XCAFDoc_LengthUnit>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:51 - `XCAFDoc_LengthUnit::Set`
-//   static_method: Finds or creates a LengthUnit attribute
-//   static_method: @param theUnitValue - length scale factor to meter
-//   static_method: The LengthUnit attribute is returned.
-//   Reason: return type 'Handle(XCAFDoc_LengthUnit)' is unknown
-//   // pub fn set(theLabel: &Label, theUnitValue: f64) -> OwnedPtr<Handle<XCAFDoc_LengthUnit>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_LengthUnit.hxx`:58 - `XCAFDoc_LengthUnit::Set`
-//   static_method: Finds, or creates, a LengthUnit attribute with explicit user defined GUID
-//   static_method: @param theUnitName - name of the unit: mm, m, cm, km, micron, in, min, nin, ft, stat.mile
-//   static_method: @param theUnitValue - length scale factor to meter
-//   Reason: return type 'Handle(XCAFDoc_LengthUnit)' is unknown
-//   // pub fn set(theLabel: &Label, theGUID: &GUID, theUnitName: &AsciiString, theUnitValue: f64) -> OwnedPtr<Handle<XCAFDoc_LengthUnit>>;
 //
 
 // ========================
@@ -7351,6 +9053,20 @@ impl Location {
         unsafe { &*(crate::ffi::XCAFDoc_Location_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_Location.hxx`:45 - `XCAFDoc_Location::Set()`
+    /// Find, or create, a Location attribute and set it's value
+    /// the Location attribute is returned.
+    /// Location methods
+    /// ===============
+    pub fn set_label_location(
+        label: &crate::tdf::Label,
+        Loc: &crate::top_loc::Location,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLocation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_set_label_location(label, Loc))
+        }
+    }
+
     /// **Source:** `XCAFDoc_Location.hxx`:66 - `XCAFDoc_Location::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -7373,6 +9089,13 @@ impl Location {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Location_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocLocation> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -7531,6 +9254,55 @@ impl Location {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Location_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Location_inherited_References(self as *const Self, aDataSet) }
@@ -7542,14 +9314,34 @@ impl Location {
     }
 }
 
-// ── Skipped symbols for Location (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Location.hxx`:45 - `XCAFDoc_Location::Set`
-//   static_method: Find, or create, a Location attribute and set it's value
-//   static_method: the Location attribute is returned.
-//   static_method: Location methods
-//   Reason: return type 'Handle(XCAFDoc_Location)' is unknown
-//   // pub fn set(label: &Label, Loc: &Location) -> OwnedPtr<Handle<XCAFDoc_Location>>;
-//
+pub use crate::ffi::HandleXCAFDocLocation;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocLocation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocLocation_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocLocation {
+    /// Dereference this Handle to access the underlying XCAFDoc_Location
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Location {
+        unsafe { &*(crate::ffi::HandleXCAFDocLocation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Location
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Location {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocLocation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Location> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocLocation_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_Material.hxx
@@ -7667,6 +9459,20 @@ impl Material {
         unsafe { &*(crate::ffi::XCAFDoc_Material_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_Material.hxx`:41 - `XCAFDoc_Material::Set()`
+    pub fn set_label_handletcollectionhasciistring2_real_handletcollectionhasciistring2(
+        label: &crate::tdf::Label,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aDensity: f64,
+        aDensName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDensValType: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterial> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_set_label_handletcollectionhasciistring2_real_handletcollectionhasciistring2(label, aName, aDescription, aDensity, aDensName, aDensValType))
+        }
+    }
+
     /// **Source:** `XCAFDoc_Material.hxx`:78 - `XCAFDoc_Material::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -7689,6 +9495,13 @@ impl Material {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Material_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterial> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -7847,6 +9660,55 @@ impl Material {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Material_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Material_inherited_References(self as *const Self, aDataSet) }
@@ -7858,11 +9720,34 @@ impl Material {
     }
 }
 
-// ── Skipped symbols for Material (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Material.hxx`:41 - `XCAFDoc_Material::Set`
-//   Reason: return type 'Handle(XCAFDoc_Material)' is unknown
-//   // pub fn set(label: &Label, aName: &HandleHAsciiString, aDescription: &HandleHAsciiString, aDensity: f64, aDensName: &HandleHAsciiString, aDensValType: &HandleHAsciiString) -> OwnedPtr<Handle<XCAFDoc_Material>>;
-//
+pub use crate::ffi::HandleXCAFDocMaterial;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocMaterial {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocMaterial_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocMaterial {
+    /// Dereference this Handle to access the underlying XCAFDoc_Material
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Material {
+        unsafe { &*(crate::ffi::HandleXCAFDocMaterial_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Material
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Material {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocMaterial_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Material> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocMaterial_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_MaterialTool.hxx
@@ -7896,6 +9781,12 @@ impl MaterialTool {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `XCAFDoc_MaterialTool.hxx`:54 - `XCAFDoc_MaterialTool::ShapeTool()`
+    /// Returns internal XCAFDoc_ShapeTool tool
+    pub fn shape_tool(&mut self) -> &crate::ffi::HandleXCAFDocShapeTool {
+        unsafe { &*(crate::ffi::XCAFDoc_MaterialTool_shape_tool(self as *mut Self)) }
     }
 
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:58 - `XCAFDoc_MaterialTool::IsMaterial()`
@@ -7978,6 +9869,12 @@ impl MaterialTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_MaterialTool.hxx`:46 - `XCAFDoc_MaterialTool::Set()`
+    /// Creates (if not exist) MaterialTool.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterialTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_set(L)) }
+    }
+
     /// **Source:** `XCAFDoc_MaterialTool.hxx`:48 - `XCAFDoc_MaterialTool::GetID()`
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_MaterialTool_get_id()) }
@@ -8049,6 +9946,15 @@ impl MaterialTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_MaterialTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterialTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -8231,6 +10137,57 @@ impl MaterialTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_MaterialTool_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_MaterialTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -8246,17 +10203,47 @@ impl MaterialTool {
     }
 }
 
-// ── Skipped symbols for MaterialTool (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_MaterialTool.hxx`:54 - `XCAFDoc_MaterialTool::ShapeTool`
-//   method: Returns internal XCAFDoc_ShapeTool tool
-//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
-//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
-//
-// SKIPPED: **Source:** `XCAFDoc_MaterialTool.hxx`:46 - `XCAFDoc_MaterialTool::Set`
-//   static_method: Creates (if not exist) MaterialTool.
-//   Reason: return type 'Handle(XCAFDoc_MaterialTool)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_MaterialTool>>;
-//
+pub use crate::ffi::HandleXCAFDocMaterialTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocMaterialTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocMaterialTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocMaterialTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_MaterialTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_MaterialTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocMaterialTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_MaterialTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_MaterialTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocMaterialTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_MaterialTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocMaterialTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_MaterialTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocMaterialTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_Note.hxx
@@ -8357,6 +10344,12 @@ impl Note {
     /// Checks if the given label represents a note.
     pub fn is_mine(theLabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_Note_is_mine(theLabel) }
+    }
+
+    /// **Source:** `XCAFDoc_Note.hxx`:37 - `XCAFDoc_Note::Get()`
+    /// Finds a reference attribute on the given label and returns it, if it is found
+    pub fn get(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNote> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Note_get(theLabel)) }
     }
 
     /// Upcast to TDF_Attribute
@@ -8518,6 +10511,55 @@ impl Note {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Note_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Note_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Note_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Note_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Note_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:320 - `TDF_Attribute::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
@@ -8538,15 +10580,87 @@ impl Note {
     }
 }
 
-// ── Skipped symbols for Note (2 total) ──
+pub use crate::ffi::HandleXCAFDocNote;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocNote {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocNote_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocNote {
+    /// Dereference this Handle to access the underlying XCAFDoc_Note
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Note {
+        unsafe { &*(crate::ffi::HandleXCAFDocNote_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Note
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Note {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocNote_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Note> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNote_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<XCAFDoc_Note> to Handle<XCAFDoc_NoteBalloon>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NoteBalloon` (or subclass).
+    pub fn downcast_to_note_balloon(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBalloon>> {
+        let ptr = unsafe {
+            crate::ffi::HandleXCAFDocNote_downcast_to_HandleXCAFDocNoteBalloon(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<XCAFDoc_Note> to Handle<XCAFDoc_NoteBinData>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NoteBinData` (or subclass).
+    pub fn downcast_to_note_bin_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBinData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleXCAFDocNote_downcast_to_HandleXCAFDocNoteBinData(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<XCAFDoc_Note> to Handle<XCAFDoc_NoteComment>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NoteComment` (or subclass).
+    pub fn downcast_to_note_comment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteComment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleXCAFDocNote_downcast_to_HandleXCAFDocNoteComment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for Note (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Note.hxx`:66 - `XCAFDoc_Note::Dump`
 //   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_Note.hxx`:37 - `XCAFDoc_Note::Get`
-//   static_method: Finds a reference attribute on the given label and returns it, if it is found
-//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
-//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_Note>>;
 //
 
 // ========================
@@ -8610,6 +10724,36 @@ impl NoteBalloon {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_NoteBalloon.hxx`:30 - `XCAFDoc_NoteBalloon::Get()`
+    /// Finds a reference attribute on the given label and returns it, if it is found
+    pub fn get(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBalloon> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_get(theLabel)) }
+    }
+
+    /// **Source:** `XCAFDoc_NoteBalloon.hxx`:37 - `XCAFDoc_NoteBalloon::Set()`
+    /// Create (if not exist) a comment note on the given label.
+    /// \param[in]  theLabel     - note label.
+    /// \param[in]  theUserName  - the name of the user, who created the note.
+    /// \param[in]  theTimeStamp - creation timestamp of the note.
+    /// \param[in]  theComment   - comment text.
+    pub fn set(
+        theLabel: &crate::tdf::Label,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
+        theComment: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBalloon> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_set(
+                theLabel,
+                theUserName,
+                theTimeStamp,
+                theComment,
+            ))
+        }
+    }
+
     /// Upcast to XCAFDoc_NoteComment
     pub fn as_note_comment(&self) -> &NoteComment {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBalloon_as_XCAFDoc_NoteComment(self as *const Self)) }
@@ -8640,6 +10784,15 @@ impl NoteBalloon {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteBalloon_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBalloon> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `XCAFDoc_NoteComment.hxx`:50 - `XCAFDoc_NoteComment::Comment()`
@@ -8858,6 +11011,57 @@ impl NoteBalloon {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_NoteBalloon_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBalloon_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -8871,19 +11075,54 @@ impl NoteBalloon {
     }
 }
 
-// ── Skipped symbols for NoteBalloon (2 total) ──
-// SKIPPED: **Source:** `XCAFDoc_NoteBalloon.hxx`:30 - `XCAFDoc_NoteBalloon::Get`
-//   static_method: Finds a reference attribute on the given label and returns it, if it is found
-//   Reason: return type 'Handle(XCAFDoc_NoteBalloon)' is unknown
-//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_NoteBalloon>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NoteBalloon.hxx`:37 - `XCAFDoc_NoteBalloon::Set`
-//   static_method: Create (if not exist) a comment note on the given label.
-//   static_method: \param[in]  theLabel     - note label.
-//   static_method: \param[in]  theUserName  - the name of the user, who created the note.
-//   Reason: return type 'Handle(XCAFDoc_NoteBalloon)' is unknown
-//   // pub fn set(theLabel: &Label, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theComment: &ExtendedString) -> OwnedPtr<Handle<XCAFDoc_NoteBalloon>>;
-//
+pub use crate::ffi::HandleXCAFDocNoteBalloon;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocNoteBalloon {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocNoteBalloon_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocNoteBalloon {
+    /// Dereference this Handle to access the underlying XCAFDoc_NoteBalloon
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_NoteBalloon {
+        unsafe { &*(crate::ffi::HandleXCAFDocNoteBalloon_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_NoteBalloon
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_NoteBalloon {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocNoteBalloon_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteBalloon> to Handle<XCAFDoc_NoteComment>
+    pub fn to_handle_note_comment(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteComment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocNoteBalloon_to_HandleXCAFDocNoteComment(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteBalloon> to Handle<XCAFDoc_Note>
+    pub fn to_handle_note(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNote> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteBalloon_to_HandleXCAFDocNote(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteBalloon> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteBalloon_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_NoteBinData.hxx
@@ -9019,6 +11258,67 @@ impl NoteBinData {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_NoteBinData.hxx`:33 - `XCAFDoc_NoteBinData::Get()`
+    /// Finds a binary data attribute on the given label and returns it, if it is found
+    pub fn get(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBinData> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_get(theLabel)) }
+    }
+
+    /// **Source:** `XCAFDoc_NoteBinData.hxx`:46 - `XCAFDoc_NoteBinData::Set()`
+    /// Create (if not exist) a binary note with data loaded from a binary file.
+    /// \param[in]  theLabel     - label to add the attribute.
+    /// \param[in]  theUserName  - the name of the user, who created the note.
+    /// \param[in]  theTimeStamp - creation timestamp of the note.
+    /// \param[in]  theTitle     - file title.
+    /// \param[in]  theMIMEtype  - MIME type of the file.
+    /// \param[in]  theFile      - input binary file.
+    /// \return A handle to the attribute instance.
+    pub fn set_label_extendedstring3_asciistring_file(
+        theLabel: &crate::tdf::Label,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
+        theTitle: &crate::t_collection::ExtendedString,
+        theMIMEtype: &crate::t_collection::AsciiString,
+        theFile: &mut crate::osd::File,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBinData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_NoteBinData_set_label_extendedstring3_asciistring_file(
+                    theLabel,
+                    theUserName,
+                    theTimeStamp,
+                    theTitle,
+                    theMIMEtype,
+                    theFile,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NoteBinData.hxx`:62 - `XCAFDoc_NoteBinData::Set()`
+    /// Create (if not exist) a binary note byte data array.
+    /// \param[in]  theLabel     - label to add the attribute.
+    /// \param[in]  theUserName  - the name of the user, who created the note.
+    /// \param[in]  theTimeStamp - creation timestamp of the note.
+    /// \param[in]  theTitle     - data title.
+    /// \param[in]  theMIMEtype  - MIME type of data.
+    /// \param[in]  theData      - byte data array.
+    /// \return A handle to the attribute instance.
+    pub fn set_label_extendedstring3_asciistring_handletcolstdharray1ofbyte(
+        theLabel: &crate::tdf::Label,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
+        theTitle: &crate::t_collection::ExtendedString,
+        theMIMEtype: &crate::t_collection::AsciiString,
+        theData: &crate::ffi::HandleTColStdHArray1OfByte,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBinData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_set_label_extendedstring3_asciistring_handletcolstdharray1ofbyte(theLabel, theUserName, theTimeStamp, theTitle, theMIMEtype, theData))
+        }
+    }
+
     /// Upcast to XCAFDoc_Note
     pub fn as_note(&self) -> &Note {
         unsafe { &*(crate::ffi::XCAFDoc_NoteBinData_as_XCAFDoc_Note(self as *const Self)) }
@@ -9037,6 +11337,15 @@ impl NoteBinData {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteBinData_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBinData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
@@ -9234,6 +11543,57 @@ impl NoteBinData {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_NoteBinData_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteBinData_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -9247,29 +11607,48 @@ impl NoteBinData {
     }
 }
 
-// ── Skipped symbols for NoteBinData (4 total) ──
+pub use crate::ffi::HandleXCAFDocNoteBinData;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocNoteBinData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocNoteBinData_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocNoteBinData {
+    /// Dereference this Handle to access the underlying XCAFDoc_NoteBinData
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_NoteBinData {
+        unsafe { &*(crate::ffi::HandleXCAFDocNoteBinData_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_NoteBinData
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_NoteBinData {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocNoteBinData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteBinData> to Handle<XCAFDoc_Note>
+    pub fn to_handle_note(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNote> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteBinData_to_HandleXCAFDocNote(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteBinData> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteBinData_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NoteBinData (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:115 - `XCAFDoc_NoteBinData::Dump`
 //   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:33 - `XCAFDoc_NoteBinData::Get`
-//   static_method: Finds a binary data attribute on the given label and returns it, if it is found
-//   Reason: return type 'Handle(XCAFDoc_NoteBinData)' is unknown
-//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_NoteBinData>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:46 - `XCAFDoc_NoteBinData::Set`
-//   static_method: Create (if not exist) a binary note with data loaded from a binary file.
-//   static_method: \param[in]  theLabel     - label to add the attribute.
-//   static_method: \param[in]  theUserName  - the name of the user, who created the note.
-//   Reason: return type 'Handle(XCAFDoc_NoteBinData)' is unknown
-//   // pub fn set(theLabel: &Label, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theTitle: &ExtendedString, theMIMEtype: &AsciiString, theFile: &mut File) -> OwnedPtr<Handle<XCAFDoc_NoteBinData>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NoteBinData.hxx`:62 - `XCAFDoc_NoteBinData::Set`
-//   static_method: Create (if not exist) a binary note byte data array.
-//   static_method: \param[in]  theLabel     - label to add the attribute.
-//   static_method: \param[in]  theUserName  - the name of the user, who created the note.
-//   Reason: return type 'Handle(XCAFDoc_NoteBinData)' is unknown
-//   // pub fn set(theLabel: &Label, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theTitle: &ExtendedString, theMIMEtype: &AsciiString, theData: &HandleHArray1OfByte) -> OwnedPtr<Handle<XCAFDoc_NoteBinData>>;
 //
 
 // ========================
@@ -9359,6 +11738,36 @@ impl NoteComment {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_NoteComment.hxx`:30 - `XCAFDoc_NoteComment::Get()`
+    /// Finds a reference attribute on the given label and returns it, if it is found
+    pub fn get(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteComment> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_get(theLabel)) }
+    }
+
+    /// **Source:** `XCAFDoc_NoteComment.hxx`:37 - `XCAFDoc_NoteComment::Set()`
+    /// Create (if not exist) a comment note on the given label.
+    /// \param[in]  theLabel     - note label.
+    /// \param[in]  theUserName  - the name of the user, who created the note.
+    /// \param[in]  theTimeStamp - creation timestamp of the note.
+    /// \param[in]  theComment   - comment text.
+    pub fn set_label_extendedstring3(
+        theLabel: &crate::tdf::Label,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
+        theComment: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteComment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_set_label_extendedstring3(
+                theLabel,
+                theUserName,
+                theTimeStamp,
+                theComment,
+            ))
+        }
+    }
+
     /// Upcast to XCAFDoc_Note
     pub fn as_note(&self) -> &Note {
         unsafe { &*(crate::ffi::XCAFDoc_NoteComment_as_XCAFDoc_Note(self as *const Self)) }
@@ -9377,6 +11786,15 @@ impl NoteComment {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_NoteComment_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteComment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `XCAFDoc_Note.hxx`:47 - `XCAFDoc_Note::UserName()`
@@ -9574,6 +11992,57 @@ impl NoteComment {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_NoteComment_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NoteComment_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -9587,22 +12056,66 @@ impl NoteComment {
     }
 }
 
-// ── Skipped symbols for NoteComment (3 total) ──
+pub use crate::ffi::HandleXCAFDocNoteComment;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocNoteComment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocNoteComment_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocNoteComment {
+    /// Dereference this Handle to access the underlying XCAFDoc_NoteComment
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_NoteComment {
+        unsafe { &*(crate::ffi::HandleXCAFDocNoteComment_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_NoteComment
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_NoteComment {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocNoteComment_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteComment> to Handle<XCAFDoc_Note>
+    pub fn to_handle_note(&self) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNote> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteComment_to_HandleXCAFDocNote(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NoteComment> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNoteComment_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<XCAFDoc_NoteComment> to Handle<XCAFDoc_NoteBalloon>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NoteBalloon` (or subclass).
+    pub fn downcast_to_note_balloon(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBalloon>> {
+        let ptr = unsafe {
+            crate::ffi::HandleXCAFDocNoteComment_downcast_to_HandleXCAFDocNoteBalloon(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for NoteComment (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_NoteComment.hxx`:59 - `XCAFDoc_NoteComment::Dump`
 //   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_NoteComment.hxx`:30 - `XCAFDoc_NoteComment::Get`
-//   static_method: Finds a reference attribute on the given label and returns it, if it is found
-//   Reason: return type 'Handle(XCAFDoc_NoteComment)' is unknown
-//   // pub fn get(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_NoteComment>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NoteComment.hxx`:37 - `XCAFDoc_NoteComment::Set`
-//   static_method: Create (if not exist) a comment note on the given label.
-//   static_method: \param[in]  theLabel     - note label.
-//   static_method: \param[in]  theUserName  - the name of the user, who created the note.
-//   Reason: return type 'Handle(XCAFDoc_NoteComment)' is unknown
-//   // pub fn set(theLabel: &Label, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theComment: &ExtendedString) -> OwnedPtr<Handle<XCAFDoc_NoteComment>>;
 //
 
 // ========================
@@ -9875,6 +12388,109 @@ impl NotesTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:174 - `XCAFDoc_NotesTool::CreateComment()`
+    /// Create a new comment note.
+    /// Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
+    /// attribute (derived ftom \ref XCAFDoc_Note).
+    /// \param[in]  theUserName  - the user associated with the note.
+    /// \param[in]  theTimeStamp - timestamp of the note.
+    /// \param[in]  theComment   - textual comment.
+    /// \return a handle to the base note attribute.
+    pub fn create_comment(
+        &mut self,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
+        theComment: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNote> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_create_comment(
+                self as *mut Self,
+                theUserName,
+                theTimeStamp,
+                theComment,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:185 - `XCAFDoc_NotesTool::CreateBalloon()`
+    /// Create a new 'balloon' note.
+    /// Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteBalloon
+    /// attribute (derived ftom \ref XCAFDoc_Note).
+    /// \param[in]  theUserName  - the user associated with the note.
+    /// \param[in]  theTimeStamp - timestamp of the note.
+    /// \param[in]  theComment   - textual comment.
+    /// \return a handle to the base note attribute.
+    pub fn create_balloon(
+        &mut self,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
+        theComment: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNote> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_create_balloon(
+                self as *mut Self,
+                theUserName,
+                theTimeStamp,
+                theComment,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:198 - `XCAFDoc_NotesTool::CreateBinData()`
+    /// Create a new note with data loaded from a binary file.
+    /// Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
+    /// attribute (derived ftom \ref XCAFDoc_Note).
+    /// \param[in]  theUserName  - the user associated with the note.
+    /// \param[in]  theTimeStamp - timestamp of the note.
+    /// \param[in]  theTitle     - file title.
+    /// \param[in]  theMIMEtype  - MIME type of the file.
+    /// \param[in]  theFile      - input binary file.
+    /// \return a handle to the base note attribute.
+    pub fn create_bin_data_extendedstring3_asciistring_file(
+        &mut self,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
+        theTitle: &crate::t_collection::ExtendedString,
+        theMIMEtype: &crate::t_collection::AsciiString,
+        theFile: &mut crate::osd::File,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNote> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_NotesTool_create_bin_data_extendedstring3_asciistring_file(
+                    self as *mut Self,
+                    theUserName,
+                    theTimeStamp,
+                    theTitle,
+                    theMIMEtype,
+                    theFile,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:213 - `XCAFDoc_NotesTool::CreateBinData()`
+    /// Create a new note with data loaded from a byte data array.
+    /// Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
+    /// attribute (derived ftom \ref XCAFDoc_Note).
+    /// \param[in]  theUserName  - the user associated with the note.
+    /// \param[in]  theTimeStamp - timestamp of the note.
+    /// \param[in]  theTitle     - data title.
+    /// \param[in]  theMIMEtype  - MIME type of the file.
+    /// \param[in]  theData      - byte data array.
+    /// \return a handle to the base note attribute.
+    pub fn create_bin_data_extendedstring3_asciistring_handletcolstdharray1ofbyte(
+        &mut self,
+        theUserName: &crate::t_collection::ExtendedString,
+        theTimeStamp: &crate::t_collection::ExtendedString,
+        theTitle: &crate::t_collection::ExtendedString,
+        theMIMEtype: &crate::t_collection::AsciiString,
+        theData: &crate::ffi::HandleTColStdHArray1OfByte,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNote> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_create_bin_data_extendedstring3_asciistring_handletcolstdharray1ofbyte(self as *mut Self, theUserName, theTimeStamp, theTitle, theMIMEtype, theData))
+        }
+    }
+
     /// **Source:** `XCAFDoc_NotesTool.hxx`:230 - `XCAFDoc_NotesTool::GetNotes()`
     /// Gets all note labels of the assembly item.
     /// Notes linked to item's subshapes or attributes aren't
@@ -9985,6 +12601,138 @@ impl NotesTool {
                 theItemId,
                 theSubshapeIndex,
                 theNoteLabels,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:284 - `XCAFDoc_NotesTool::AddNote()`
+    /// Adds the given note to the assembly item.
+    /// \param[in]  theNoteLabel - note label.
+    /// \param[in]  theItemId    - assembly item ID.
+    /// \return a handle to the assembly reference attribute.
+    pub fn add_note_label_assemblyitemid(
+        &mut self,
+        theNoteLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_add_note_label_assemblyitemid(
+                self as *mut Self,
+                theNoteLabel,
+                theItemId,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:291 - `XCAFDoc_NotesTool::AddNote()`
+    /// Adds the given note to the labeled item.
+    /// \param[in]  theNoteLabel - note label.
+    /// \param[in]  theItemLabel - item label.
+    /// \return a handle to the assembly reference attribute.
+    pub fn add_note_label2(
+        &mut self,
+        theNoteLabel: &crate::tdf::Label,
+        theItemLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_add_note_label2(
+                self as *mut Self,
+                theNoteLabel,
+                theItemLabel,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:299 - `XCAFDoc_NotesTool::AddNoteToAttr()`
+    /// Adds the given note to the assembly item's attribute.
+    /// \param[in]  theNoteLabel - note label.
+    /// \param[in]  theItemId    - assembly item ID.
+    /// \param[in]  theGUID      - assembly item's attribute GUID.
+    /// \return a handle to the assembly reference attribute.
+    pub fn add_note_to_attr_label_assemblyitemid_guid(
+        &mut self,
+        theNoteLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
+        theGUID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_NotesTool_add_note_to_attr_label_assemblyitemid_guid(
+                    self as *mut Self,
+                    theNoteLabel,
+                    theItemId,
+                    theGUID,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:309 - `XCAFDoc_NotesTool::AddNoteToAttr()`
+    /// Adds the given note to the labeled item's attribute.
+    /// \param[in]  theNoteLabel - note label.
+    /// \param[in]  theItemLabel - item label.
+    /// \param[in]  theGUID      - assembly item's attribute GUID.
+    /// \return a handle to the assembly reference attribute.
+    pub fn add_note_to_attr_label2_guid(
+        &mut self,
+        theNoteLabel: &crate::tdf::Label,
+        theItemLabel: &crate::tdf::Label,
+        theGUID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_add_note_to_attr_label2_guid(
+                self as *mut Self,
+                theNoteLabel,
+                theItemLabel,
+                theGUID,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:318 - `XCAFDoc_NotesTool::AddNoteToSubshape()`
+    /// Adds the given note to the assembly item's subshape.
+    /// \param[in]  theNoteLabel     - note label.
+    /// \param[in]  theItemId        - assembly item ID.
+    /// \param[in]  theSubshapeIndex - assembly item's subshape index.
+    /// \return a handle to the assembly reference attribute.
+    pub fn add_note_to_subshape_label_assemblyitemid_int(
+        &mut self,
+        theNoteLabel: &crate::tdf::Label,
+        theItemId: &AssemblyItemId,
+        theSubshapeIndex: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_NotesTool_add_note_to_subshape_label_assemblyitemid_int(
+                    self as *mut Self,
+                    theNoteLabel,
+                    theItemId,
+                    theSubshapeIndex,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:328 - `XCAFDoc_NotesTool::AddNoteToSubshape()`
+    /// Adds the given note to the labeled item's subshape.
+    /// \param[in]  theNoteLabel     - note label.
+    /// \param[in]  theItemLabel     - item label.
+    /// \param[in]  theSubshapeIndex - assembly item's subshape index.
+    /// \return a handle to the assembly reference attribute.
+    pub fn add_note_to_subshape_label2_int(
+        &mut self,
+        theNoteLabel: &crate::tdf::Label,
+        theItemLabel: &crate::tdf::Label,
+        theSubshapeIndex: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_NotesTool_add_note_to_subshape_label2_int(
+                    self as *mut Self,
+                    theNoteLabel,
+                    theItemLabel,
+                    theSubshapeIndex,
+                ),
             )
         }
     }
@@ -10334,6 +13082,14 @@ impl NotesTool {
         unsafe { &*(crate::ffi::XCAFDoc_NotesTool_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_NotesTool.hxx`:84 - `XCAFDoc_NotesTool::Set()`
+    /// Create (if not exist) a notes tool from XCAFDoc on theLabel.
+    pub fn set(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNotesTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_set(theLabel)) }
+    }
+
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
         unsafe { &*(crate::ffi::XCAFDoc_NotesTool_as_TDataStd_GenericEmpty(self as *const Self)) }
@@ -10354,6 +13110,15 @@ impl NotesTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_NotesTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocNotesTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -10534,6 +13299,55 @@ impl NotesTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_NotesTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_References(self as *const Self, aDataSet) }
@@ -10545,85 +13359,52 @@ impl NotesTool {
     }
 }
 
-// ── Skipped symbols for NotesTool (12 total) ──
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:174 - `XCAFDoc_NotesTool::CreateComment`
-//   method: Create a new comment note.
-//   method: Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
-//   method: attribute (derived ftom \ref XCAFDoc_Note).
-//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
-//   // pub fn create_comment(&mut self, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theComment: &ExtendedString) -> OwnedPtr<Handle<XCAFDoc_Note>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:185 - `XCAFDoc_NotesTool::CreateBalloon`
-//   method: Create a new 'balloon' note.
-//   method: Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteBalloon
-//   method: attribute (derived ftom \ref XCAFDoc_Note).
-//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
-//   // pub fn create_balloon(&mut self, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theComment: &ExtendedString) -> OwnedPtr<Handle<XCAFDoc_Note>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:198 - `XCAFDoc_NotesTool::CreateBinData`
-//   method: Create a new note with data loaded from a binary file.
-//   method: Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
-//   method: attribute (derived ftom \ref XCAFDoc_Note).
-//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
-//   // pub fn create_bin_data(&mut self, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theTitle: &ExtendedString, theMIMEtype: &AsciiString, theFile: &mut File) -> OwnedPtr<Handle<XCAFDoc_Note>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:213 - `XCAFDoc_NotesTool::CreateBinData`
-//   method: Create a new note with data loaded from a byte data array.
-//   method: Creates a new label under the notes hive and attaches \ref XCAFDoc_NoteComment
-//   method: attribute (derived ftom \ref XCAFDoc_Note).
-//   Reason: return type 'Handle(XCAFDoc_Note)' is unknown
-//   // pub fn create_bin_data(&mut self, theUserName: &ExtendedString, theTimeStamp: &ExtendedString, theTitle: &ExtendedString, theMIMEtype: &AsciiString, theData: &HandleHArray1OfByte) -> OwnedPtr<Handle<XCAFDoc_Note>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:284 - `XCAFDoc_NotesTool::AddNote`
-//   method: Adds the given note to the assembly item.
-//   method: \param[in]  theNoteLabel - note label.
-//   method: \param[in]  theItemId    - assembly item ID.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn add_note(&mut self, theNoteLabel: &Label, theItemId: &AssemblyItemId) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:291 - `XCAFDoc_NotesTool::AddNote`
-//   method: Adds the given note to the labeled item.
-//   method: \param[in]  theNoteLabel - note label.
-//   method: \param[in]  theItemLabel - item label.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn add_note(&mut self, theNoteLabel: &Label, theItemLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:299 - `XCAFDoc_NotesTool::AddNoteToAttr`
-//   method: Adds the given note to the assembly item's attribute.
-//   method: \param[in]  theNoteLabel - note label.
-//   method: \param[in]  theItemId    - assembly item ID.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn add_note_to_attr(&mut self, theNoteLabel: &Label, theItemId: &AssemblyItemId, theGUID: &GUID) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:309 - `XCAFDoc_NotesTool::AddNoteToAttr`
-//   method: Adds the given note to the labeled item's attribute.
-//   method: \param[in]  theNoteLabel - note label.
-//   method: \param[in]  theItemLabel - item label.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn add_note_to_attr(&mut self, theNoteLabel: &Label, theItemLabel: &Label, theGUID: &GUID) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:318 - `XCAFDoc_NotesTool::AddNoteToSubshape`
-//   method: Adds the given note to the assembly item's subshape.
-//   method: \param[in]  theNoteLabel     - note label.
-//   method: \param[in]  theItemId        - assembly item ID.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn add_note_to_subshape(&mut self, theNoteLabel: &Label, theItemId: &AssemblyItemId, theSubshapeIndex: i32) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:328 - `XCAFDoc_NotesTool::AddNoteToSubshape`
-//   method: Adds the given note to the labeled item's subshape.
-//   method: \param[in]  theNoteLabel     - note label.
-//   method: \param[in]  theItemLabel     - item label.
-//   Reason: return type 'Handle(XCAFDoc_AssemblyItemRef)' is unknown
-//   // pub fn add_note_to_subshape(&mut self, theNoteLabel: &Label, theItemLabel: &Label, theSubshapeIndex: i32) -> OwnedPtr<Handle<XCAFDoc_AssemblyItemRef>>;
-//
+pub use crate::ffi::HandleXCAFDocNotesTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocNotesTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocNotesTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocNotesTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_NotesTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_NotesTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocNotesTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_NotesTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_NotesTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocNotesTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_NotesTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocNotesTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_NotesTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocNotesTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NotesTool (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:512 - `XCAFDoc_NotesTool::Dump`
 //   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, theOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_NotesTool.hxx`:84 - `XCAFDoc_NotesTool::Set`
-//   static_method: Create (if not exist) a notes tool from XCAFDoc on theLabel.
-//   Reason: return type 'Handle(XCAFDoc_NotesTool)' is unknown
-//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_NotesTool>>;
 //
 
 // ========================
@@ -10703,6 +13484,12 @@ impl ShapeMapTool {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeMapTool_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:40 - `XCAFDoc_ShapeMapTool::Set()`
+    /// Create (if not exist) ShapeTool from XCAFDoc on <L>.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeMapTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeMapTool_set(L)) }
+    }
+
     /// **Source:** `XCAFDoc_ShapeMapTool.hxx`:67 - `XCAFDoc_ShapeMapTool::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -10725,6 +13512,15 @@ impl ShapeMapTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_ShapeMapTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeMapTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeMapTool_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -10893,6 +13689,57 @@ impl ShapeMapTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeMapTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeMapTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeMapTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ShapeMapTool_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeMapTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -10908,12 +13755,34 @@ impl ShapeMapTool {
     }
 }
 
-// ── Skipped symbols for ShapeMapTool (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_ShapeMapTool.hxx`:40 - `XCAFDoc_ShapeMapTool::Set`
-//   static_method: Create (if not exist) ShapeTool from XCAFDoc on <L>.
-//   Reason: return type 'Handle(XCAFDoc_ShapeMapTool)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_ShapeMapTool>>;
-//
+pub use crate::ffi::HandleXCAFDocShapeMapTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocShapeMapTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocShapeMapTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocShapeMapTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_ShapeMapTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_ShapeMapTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocShapeMapTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_ShapeMapTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_ShapeMapTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocShapeMapTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_ShapeMapTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocShapeMapTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_ShapeTool.hxx
@@ -11378,6 +14247,19 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:397 - `XCAFDoc_ShapeTool::SetSHUO()`
+    /// Sets the SHUO structure between upper_usage and next_usage
+    /// create multy-level (if number of labels > 2) SHUO from first to last
+    /// Initialise out <MainSHUOAttr> by main upper_usage SHUO attribute.
+    /// Returns FALSE if some of labels in not component label
+    pub fn set_shuo(
+        &self,
+        Labels: &crate::ffi::TDF_LabelSequence,
+        MainSHUOAttr: &mut crate::ffi::HandleXCAFDocGraphNode,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_set_shuo(self as *const Self, Labels, MainSHUOAttr) }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:430 - `XCAFDoc_ShapeTool::RemoveSHUO()`
     /// Remove SHUO from component sublabel,
     /// remove all dependencies on other SHUO.
@@ -11400,6 +14282,54 @@ impl ShapeTool {
     ) -> bool {
         unsafe {
             crate::ffi::XCAFDoc_ShapeTool_find_component(self as *const Self, theShape, Labels)
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:442 - `XCAFDoc_ShapeTool::GetSHUOInstance()`
+    /// Search for the component shape that styled by shuo
+    /// Returns null shape if no any shape is found.
+    pub fn get_shuo_instance(
+        &self,
+        theSHUO: &crate::ffi::HandleXCAFDocGraphNode,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_get_shuo_instance(
+                self as *const Self,
+                theSHUO,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:447 - `XCAFDoc_ShapeTool::SetInstanceSHUO()`
+    /// Search for the component shape by labelks path
+    /// and set SHUO structure for founded label structure
+    /// Returns null attribute if no component in any assembly found.
+    pub fn set_instance_shuo(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocGraphNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_set_instance_shuo(
+                self as *const Self,
+                theShape,
+            ))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:452 - `XCAFDoc_ShapeTool::GetAllSHUOInstances()`
+    /// Searching for component shapes that styled by shuo
+    /// Returns empty sequence of shape if no any shape is found.
+    pub fn get_all_shuo_instances(
+        &self,
+        theSHUO: &crate::ffi::HandleXCAFDocGraphNode,
+        theSHUOShapeSeq: &mut crate::ffi::TopTools_SequenceOfShape,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_ShapeTool_get_all_shuo_instances(
+                self as *const Self,
+                theSHUO,
+                theSHUOShapeSeq,
+            )
         }
     }
 
@@ -11433,6 +14363,48 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_expand(self as *mut Self, Shape) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:479 - `XCAFDoc_ShapeTool::GetNamedProperties()`
+    /// Method to get NamedData attribute assigned to the given shape label.
+    /// @param[in] theLabel     the shape Label
+    /// @param[in] theToCreate  create and assign attribute if it doesn't exist
+    /// @return Handle to the NamedData attribute or Null if there is none
+    pub fn get_named_properties_label_bool(
+        &self,
+        theLabel: &crate::tdf::Label,
+        theToCreate: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdNamedData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ShapeTool_get_named_properties_label_bool(
+                    self as *const Self,
+                    theLabel,
+                    theToCreate,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:487 - `XCAFDoc_ShapeTool::GetNamedProperties()`
+    /// Method to get NamedData attribute assigned to a label of the given shape.
+    /// @param[in] theShape     input shape
+    /// @param[in] theToCreate  create and assign attribute if it doesn't exist
+    /// @return Handle to the NamedData attribute or Null if there is none
+    pub fn get_named_properties_shape_bool(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+        theToCreate: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdNamedData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_ShapeTool_get_named_properties_shape_bool(
+                    self as *const Self,
+                    theShape,
+                    theToCreate,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:495 - `XCAFDoc_ShapeTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_dynamic_type(self as *const Self)) }
@@ -11448,6 +14420,12 @@ impl ShapeTool {
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:106 - `XCAFDoc_ShapeTool::GetID()`
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ShapeTool_get_id()) }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:109 - `XCAFDoc_ShapeTool::Set()`
+    /// Create (if not exist) ShapeTool from XCAFDoc on <L>.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_set(L)) }
     }
 
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:124 - `XCAFDoc_ShapeTool::IsFree()`
@@ -11629,6 +14607,16 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_extern_refs(L, SHAS) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:402 - `XCAFDoc_ShapeTool::GetSHUO()`
+    /// Returns founded SHUO GraphNode attribute <aSHUOAttr>
+    /// Returns false in other case
+    pub fn get_shuo(
+        SHUOLabel: &crate::tdf::Label,
+        aSHUOAttr: &mut crate::ffi::HandleXCAFDocGraphNode,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_get_shuo(SHUOLabel, aSHUOAttr) }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:407 - `XCAFDoc_ShapeTool::GetAllComponentSHUO()`
     /// Returns founded SHUO GraphNodes of indicated component
     /// Returns false in other case
@@ -11665,6 +14653,17 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_get_shuo_next_usage(UpperUsageL, Labels) }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:458 - `XCAFDoc_ShapeTool::FindSHUO()`
+    /// Searches the SHUO by labels of components
+    /// from upper_usage component to next_usage
+    /// Returns null attribute if no SHUO found
+    pub fn find_shuo(
+        Labels: &crate::ffi::TDF_LabelSequence,
+        theSHUOAttr: &mut crate::ffi::HandleXCAFDocGraphNode,
+    ) -> bool {
+        unsafe { crate::ffi::XCAFDoc_ShapeTool_find_shuo(Labels, theSHUOAttr) }
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:495 - `XCAFDoc_ShapeTool::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -11699,6 +14698,15 @@ impl ShapeTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_ShapeTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -11879,6 +14887,55 @@ impl ShapeTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ShapeTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_References(self as *const Self, aDataSet) }
@@ -11890,7 +14947,49 @@ impl ShapeTool {
     }
 }
 
-// ── Skipped symbols for ShapeTool (12 total) ──
+pub use crate::ffi::HandleXCAFDocShapeTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocShapeTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocShapeTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocShapeTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_ShapeTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_ShapeTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocShapeTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_ShapeTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_ShapeTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocShapeTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_ShapeTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocShapeTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ShapeTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocShapeTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for ShapeTool (3 total) ──
 // SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:361 - `XCAFDoc_ShapeTool::Dump`
 //   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, theDumpLog: /* Standard_OStream& */, deep: bool) -> /* Standard_OStream& */;
@@ -11899,70 +14998,12 @@ impl ShapeTool {
 //   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, theDumpLog: /* Standard_OStream& */) -> /* Standard_OStream& */;
 //
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:397 - `XCAFDoc_ShapeTool::SetSHUO`
-//   method: Sets the SHUO structure between upper_usage and next_usage
-//   method: create multy-level (if number of labels > 2) SHUO from first to last
-//   method: Initialise out <MainSHUOAttr> by main upper_usage SHUO attribute.
-//   Reason: param 'MainSHUOAttr' uses unknown type 'Handle(XCAFDoc_GraphNode)&'
-//   // pub fn set_shuo(&self, Labels: &LabelSequence, MainSHUOAttr: &mut HandleGraphNode) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:442 - `XCAFDoc_ShapeTool::GetSHUOInstance`
-//   method: Search for the component shape that styled by shuo
-//   method: Returns null shape if no any shape is found.
-//   Reason: param 'theSHUO' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn get_shuo_instance(&self, theSHUO: &HandleGraphNode) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:447 - `XCAFDoc_ShapeTool::SetInstanceSHUO`
-//   method: Search for the component shape by labelks path
-//   method: and set SHUO structure for founded label structure
-//   method: Returns null attribute if no component in any assembly found.
-//   Reason: return type 'Handle(XCAFDoc_GraphNode)' is unknown
-//   // pub fn set_instance_shuo(&self, theShape: &Shape) -> OwnedPtr<Handle<XCAFDoc_GraphNode>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:452 - `XCAFDoc_ShapeTool::GetAllSHUOInstances`
-//   method: Searching for component shapes that styled by shuo
-//   method: Returns empty sequence of shape if no any shape is found.
-//   Reason: param 'theSHUO' uses unknown type 'const Handle(XCAFDoc_GraphNode)&'
-//   // pub fn get_all_shuo_instances(&self, theSHUO: &HandleGraphNode, theSHUOShapeSeq: &mut SequenceOfShape) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:479 - `XCAFDoc_ShapeTool::GetNamedProperties`
-//   method: Method to get NamedData attribute assigned to the given shape label.
-//   method: @param[in] theLabel     the shape Label
-//   method: @param[in] theToCreate  create and assign attribute if it doesn't exist
-//   Reason: return type 'Handle(TDataStd_NamedData)' is unknown
-//   // pub fn get_named_properties(&self, theLabel: &Label, theToCreate: bool) -> OwnedPtr<Handle<TDataStd_NamedData>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:487 - `XCAFDoc_ShapeTool::GetNamedProperties`
-//   method: Method to get NamedData attribute assigned to a label of the given shape.
-//   method: @param[in] theShape     input shape
-//   method: @param[in] theToCreate  create and assign attribute if it doesn't exist
-//   Reason: return type 'Handle(TDataStd_NamedData)' is unknown
-//   // pub fn get_named_properties(&self, theShape: &Shape, theToCreate: bool) -> OwnedPtr<Handle<TDataStd_NamedData>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:109 - `XCAFDoc_ShapeTool::Set`
-//   static_method: Create (if not exist) ShapeTool from XCAFDoc on <L>.
-//   Reason: return type 'Handle(XCAFDoc_ShapeTool)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_ShapeTool>>;
-//
 // SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:370 - `XCAFDoc_ShapeTool::DumpShape`
 //   static_method: Print to std::ostream <theDumpLog> type of shape found on <L> label
 //   static_method: and the entry of <L>, with <level> tabs before.
 //   static_method: If <deep>, print also TShape and Location addresses
 //   Reason: has unbindable types: param 'theDumpLog': stream type (Standard_OStream&)
 //   // pub fn dump_shape(theDumpLog: /* Standard_OStream& */, L: &Label, level: i32, deep: bool);
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:402 - `XCAFDoc_ShapeTool::GetSHUO`
-//   static_method: Returns founded SHUO GraphNode attribute <aSHUOAttr>
-//   static_method: Returns false in other case
-//   Reason: param 'aSHUOAttr' uses unknown type 'Handle(XCAFDoc_GraphNode)&'
-//   // pub fn get_shuo(SHUOLabel: &Label, aSHUOAttr: &mut HandleGraphNode) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:458 - `XCAFDoc_ShapeTool::FindSHUO`
-//   static_method: Searches the SHUO by labels of components
-//   static_method: from upper_usage component to next_usage
-//   static_method: Returns null attribute if no SHUO found
-//   Reason: param 'theSHUOAttr' uses unknown type 'Handle(XCAFDoc_GraphNode)&'
-//   // pub fn find_shuo(Labels: &LabelSequence, theSHUOAttr: &mut HandleGraphNode) -> bool;
 //
 
 // ========================
@@ -12007,6 +15048,11 @@ impl View {
         unsafe { &*(crate::ffi::XCAFDoc_View_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_View.hxx`:44 - `XCAFDoc_View::Set()`
+    pub fn set(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocView> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_set(theLabel)) }
+    }
+
     /// **Source:** `XCAFDoc_View.hxx`:55 - `XCAFDoc_View::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -12039,6 +15085,11 @@ impl View {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_View_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocView> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -12199,6 +15250,55 @@ impl View {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_View_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_View_inherited_References(self as *const Self, aDataSet) }
@@ -12210,7 +15310,47 @@ impl View {
     }
 }
 
-// ── Skipped symbols for View (3 total) ──
+pub use crate::ffi::HandleXCAFDocView;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocView {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocView_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocView {
+    /// Dereference this Handle to access the underlying XCAFDoc_View
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_View {
+        unsafe { &*(crate::ffi::HandleXCAFDocView_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_View
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_View {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocView_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_View> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocView_to_HandleTDataStdGenericEmpty(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_View> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocView_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for View (2 total) ──
 // SKIPPED: **Source:** `XCAFDoc_View.hxx`:50 - `XCAFDoc_View::SetObject`
 //   method: Updates parent's label and its sub-labels with data taken from theViewObject.
 //   method: Old data associated with the label will be lost.
@@ -12221,10 +15361,6 @@ impl View {
 //   method: Returns view object data taken from the paren's label and its sub-labels.
 //   Reason: return type 'Handle(XCAFView_Object)' is unknown
 //   // pub fn get_object(&self) -> OwnedPtr<Handle<XCAFView_Object>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_View.hxx`:44 - `XCAFDoc_View::Set`
-//   Reason: return type 'Handle(XCAFDoc_View)' is unknown
-//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_View>>;
 //
 
 // ========================
@@ -12566,6 +15702,12 @@ impl ViewTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_ViewTool.hxx`:46 - `XCAFDoc_ViewTool::Set()`
+    /// Creates (if not exist) ViewTool.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocViewTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_set(L)) }
+    }
+
     /// **Source:** `XCAFDoc_ViewTool.hxx`:48 - `XCAFDoc_ViewTool::GetID()`
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_ViewTool_get_id()) }
@@ -12605,6 +15747,13 @@ impl ViewTool {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_ViewTool_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocViewTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -12777,6 +15926,55 @@ impl ViewTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_ViewTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_References(self as *const Self, aDataSet) }
@@ -12788,12 +15986,47 @@ impl ViewTool {
     }
 }
 
-// ── Skipped symbols for ViewTool (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_ViewTool.hxx`:46 - `XCAFDoc_ViewTool::Set`
-//   static_method: Creates (if not exist) ViewTool.
-//   Reason: return type 'Handle(XCAFDoc_ViewTool)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_ViewTool>>;
-//
+pub use crate::ffi::HandleXCAFDocViewTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocViewTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocViewTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocViewTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_ViewTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_ViewTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocViewTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_ViewTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_ViewTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocViewTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_ViewTool> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocViewTool_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_ViewTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocViewTool_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_VisMaterial.hxx
@@ -12983,6 +16216,13 @@ impl VisMaterial {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_set_raw_name(self as *mut Self, theName) }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterial.hxx`:158 - `XCAFDoc_VisMaterial::IsEqual()`
+    /// Compare two materials.
+    /// Performs deep comparison by actual values - e.g. can be useful for merging materials.
+    pub fn is_equal(&self, theOther: &crate::ffi::HandleXCAFDocVisMaterial) -> bool {
+        unsafe { crate::ffi::XCAFDoc_VisMaterial_is_equal(self as *const Self, theOther) }
+    }
+
     /// **Source:** `XCAFDoc_VisMaterial.hxx`:170 - `XCAFDoc_VisMaterial::ConvertToCommonMaterial()`
     /// Return Common material or convert PBR into Common material.
     pub fn convert_to_common_material(&mut self) -> crate::OwnedPtr<VisMaterialCommon> {
@@ -13067,6 +16307,15 @@ impl VisMaterial {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_VisMaterial_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterial> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -13235,6 +16484,57 @@ impl VisMaterial {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_VisMaterial_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterial_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -13248,7 +16548,36 @@ impl VisMaterial {
     }
 }
 
-// ── Skipped symbols for VisMaterial (3 total) ──
+pub use crate::ffi::HandleXCAFDocVisMaterial;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocVisMaterial {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocVisMaterial_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocVisMaterial {
+    /// Dereference this Handle to access the underlying XCAFDoc_VisMaterial
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_VisMaterial {
+        unsafe { &*(crate::ffi::HandleXCAFDocVisMaterial_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_VisMaterial
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_VisMaterial {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocVisMaterial_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_VisMaterial> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocVisMaterial_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for VisMaterial (2 total) ──
 // SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:71 - `XCAFDoc_VisMaterial::FillMaterialAspect`
 //   method: Fill in material aspect.
 //   Reason: param 'theAspect' uses unknown type 'Graphic3d_MaterialAspect&'
@@ -13258,12 +16587,6 @@ impl VisMaterial {
 //   method: Fill in graphic aspects.
 //   Reason: param 'theAspect' uses unknown type 'const Handle(Graphic3d_Aspects)&'
 //   // pub fn fill_aspect(&self, theAspect: &HandleAspects);
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterial.hxx`:158 - `XCAFDoc_VisMaterial::IsEqual`
-//   method: Compare two materials.
-//   method: Performs deep comparison by actual values - e.g. can be useful for merging materials.
-//   Reason: param 'theOther' uses unknown type 'const Handle(XCAFDoc_VisMaterial)&'
-//   // pub fn is_equal(&self, theOther: &HandleVisMaterial) -> bool;
 //
 
 // ========================
@@ -13370,20 +16693,38 @@ impl VisMaterialTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:54 - `XCAFDoc_VisMaterialTool::ShapeTool()`
+    /// Returns internal XCAFDoc_ShapeTool tool
+    pub fn shape_tool(&mut self) -> &crate::ffi::HandleXCAFDocShapeTool {
+        unsafe { &*(crate::ffi::XCAFDoc_VisMaterialTool_shape_tool(self as *mut Self)) }
+    }
+
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:57 - `XCAFDoc_VisMaterialTool::IsMaterial()`
     /// Returns TRUE if Label belongs to a Material Table.
     pub fn is_material(&self, theLabel: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::XCAFDoc_VisMaterialTool_is_material(self as *const Self, theLabel) }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:66 - `XCAFDoc_VisMaterialTool::AddMaterial()`
+    /// Adds Material definition to a Material Table and returns its Label.
+    pub fn add_material_handlexcafdocvismaterial_asciistring(
+        &self,
+        theMat: &crate::ffi::HandleXCAFDocVisMaterial,
+        theName: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_add_material_handlexcafdocvismaterial_asciistring(self as *const Self, theMat, theName))
+        }
+    }
+
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:70 - `XCAFDoc_VisMaterialTool::AddMaterial()`
     /// Adds Material definition to a Material Table and returns its Label.
-    pub fn add_material(
+    pub fn add_material_asciistring(
         &self,
         theName: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_add_material(
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_add_material_asciistring(
                 self as *const Self,
                 theName,
             ))
@@ -13489,17 +16830,31 @@ impl VisMaterialTool {
     /// @param[in] theShape  shape
     /// @param[out] theMaterialLabel  material label
     /// @return FALSE if no material is assigned
-    pub fn get_shape_material(
+    pub fn get_shape_material_shape_label(
         &mut self,
         theShape: &crate::topo_ds::Shape,
         theMaterialLabel: &mut crate::tdf::Label,
     ) -> bool {
         unsafe {
-            crate::ffi::XCAFDoc_VisMaterialTool_get_shape_material(
+            crate::ffi::XCAFDoc_VisMaterialTool_get_shape_material_shape_label(
                 self as *mut Self,
                 theShape,
                 theMaterialLabel,
             )
+        }
+    }
+
+    /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:121 - `XCAFDoc_VisMaterialTool::GetShapeMaterial()`
+    /// Returns material assigned to shape or NULL if not assigned.
+    pub fn get_shape_material_shape(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterial> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_get_shape_material_shape(
+                self as *mut Self,
+                theShape,
+            ))
         }
     }
 
@@ -13549,9 +16904,25 @@ impl VisMaterialTool {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterialTool_get_type_descriptor()) }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:42 - `XCAFDoc_VisMaterialTool::Set()`
+    /// Creates (if not exist) ColorTool.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterialTool> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_set(L)) }
+    }
+
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:44 - `XCAFDoc_VisMaterialTool::GetID()`
     pub fn get_id() -> &'static crate::standard::GUID {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterialTool_get_id()) }
+    }
+
+    /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:63 - `XCAFDoc_VisMaterialTool::GetMaterial()`
+    /// Returns Material defined by specified Label, or NULL if the label is not in Material Table.
+    pub fn get_material(
+        theMatLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterial> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_get_material(theMatLabel))
+        }
     }
 
     /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:92 - `XCAFDoc_VisMaterialTool::GetShapeMaterial()`
@@ -13571,6 +16942,18 @@ impl VisMaterialTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_VisMaterialTool.hxx`:96 - `XCAFDoc_VisMaterialTool::GetShapeMaterial()`
+    /// Returns material assigned to the shape label.
+    pub fn get_shape_material_label(
+        theShapeLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterial> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_get_shape_material_label(
+                theShapeLabel,
+            ))
+        }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::XCAFDoc_VisMaterialTool_as_TDF_Attribute(self as *const Self)) }
@@ -13580,6 +16963,15 @@ impl VisMaterialTool {
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
             &mut *(crate::ffi::XCAFDoc_VisMaterialTool_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterialTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_to_handle(obj.into_raw()))
         }
     }
 
@@ -13756,6 +17148,57 @@ impl VisMaterialTool {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_VisMaterialTool_inherited_DeltaOnAddition(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XCAFDoc_VisMaterialTool_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_VisMaterialTool_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -13771,37 +17214,34 @@ impl VisMaterialTool {
     }
 }
 
-// ── Skipped symbols for VisMaterialTool (6 total) ──
-// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:54 - `XCAFDoc_VisMaterialTool::ShapeTool`
-//   method: Returns internal XCAFDoc_ShapeTool tool
-//   Reason: return type 'const Handle(XCAFDoc_ShapeTool)&' is unknown
-//   // pub fn shape_tool(&mut self) -> &HandleShapeTool;
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:66 - `XCAFDoc_VisMaterialTool::AddMaterial`
-//   method: Adds Material definition to a Material Table and returns its Label.
-//   Reason: param 'theMat' uses unknown type 'const Handle(XCAFDoc_VisMaterial)&'
-//   // pub fn add_material(&self, theMat: &HandleVisMaterial, theName: &AsciiString) -> OwnedPtr<TDF_Label>;
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:121 - `XCAFDoc_VisMaterialTool::GetShapeMaterial`
-//   method: Returns material assigned to shape or NULL if not assigned.
-//   Reason: return type 'Handle(XCAFDoc_VisMaterial)' is unknown
-//   // pub fn get_shape_material(&mut self, theShape: &Shape) -> OwnedPtr<Handle<XCAFDoc_VisMaterial>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:42 - `XCAFDoc_VisMaterialTool::Set`
-//   static_method: Creates (if not exist) ColorTool.
-//   Reason: return type 'Handle(XCAFDoc_VisMaterialTool)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<XCAFDoc_VisMaterialTool>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:63 - `XCAFDoc_VisMaterialTool::GetMaterial`
-//   static_method: Returns Material defined by specified Label, or NULL if the label is not in Material Table.
-//   Reason: return type 'Handle(XCAFDoc_VisMaterial)' is unknown
-//   // pub fn get_material(theMatLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_VisMaterial>>;
-//
-// SKIPPED: **Source:** `XCAFDoc_VisMaterialTool.hxx`:96 - `XCAFDoc_VisMaterialTool::GetShapeMaterial`
-//   static_method: Returns material assigned to the shape label.
-//   Reason: return type 'Handle(XCAFDoc_VisMaterial)' is unknown
-//   // pub fn get_shape_material(theShapeLabel: &Label) -> OwnedPtr<Handle<XCAFDoc_VisMaterial>>;
-//
+pub use crate::ffi::HandleXCAFDocVisMaterialTool;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocVisMaterialTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocVisMaterialTool_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocVisMaterialTool {
+    /// Dereference this Handle to access the underlying XCAFDoc_VisMaterialTool
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_VisMaterialTool {
+        unsafe { &*(crate::ffi::HandleXCAFDocVisMaterialTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_VisMaterialTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_VisMaterialTool {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocVisMaterialTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_VisMaterialTool> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleXCAFDocVisMaterialTool_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From XCAFDoc_Volume.hxx
@@ -13858,6 +17298,15 @@ impl Volume {
         unsafe { &*(crate::ffi::XCAFDoc_Volume_get_id()) }
     }
 
+    /// **Source:** `XCAFDoc_Volume.hxx`:47 - `XCAFDoc_Volume::Set()`
+    /// Find, or create, an Volume attribute and set its value
+    pub fn set_label_real(
+        label: &crate::tdf::Label,
+        vol: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVolume> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Volume_set_label_real(label, vol)) }
+    }
+
     /// **Source:** `XCAFDoc_Volume.hxx`:54 - `XCAFDoc_Volume::Get()`
     /// Returns volume as argument
     /// returns false if no such attribute at the <label>
@@ -13897,6 +17346,13 @@ impl Volume {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::XCAFDoc_Volume_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXCAFDocVolume> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Volume_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_Real.hxx`:78 - `TDataStd_Real::SetID()`
@@ -14068,6 +17524,55 @@ impl Volume {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Volume_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Volume_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Volume_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Volume_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFDoc_Volume_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_References(self as *const Self, aDataSet) }
@@ -14079,15 +17584,48 @@ impl Volume {
     }
 }
 
-// ── Skipped symbols for Volume (2 total) ──
+pub use crate::ffi::HandleXCAFDocVolume;
+
+unsafe impl crate::CppDeletable for HandleXCAFDocVolume {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXCAFDocVolume_destructor(ptr);
+    }
+}
+
+impl HandleXCAFDocVolume {
+    /// Dereference this Handle to access the underlying XCAFDoc_Volume
+    pub fn get(&self) -> &crate::ffi::XCAFDoc_Volume {
+        unsafe { &*(crate::ffi::HandleXCAFDocVolume_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XCAFDoc_Volume
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFDoc_Volume {
+        unsafe { &mut *(crate::ffi::HandleXCAFDocVolume_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XCAFDoc_Volume> to Handle<TDataStd_Real>
+    pub fn to_handle_real(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocVolume_to_HandleTDataStdReal(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XCAFDoc_Volume> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXCAFDocVolume_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Volume (1 total) ──
 // SKIPPED: **Source:** `XCAFDoc_Volume.hxx`:56 - `XCAFDoc_Volume::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `XCAFDoc_Volume.hxx`:47 - `XCAFDoc_Volume::Set`
-//   static_method: Find, or create, an Volume attribute and set its value
-//   Reason: return type 'Handle(XCAFDoc_Volume)' is unknown
-//   // pub fn set(label: &Label, vol: f64) -> OwnedPtr<Handle<XCAFDoc_Volume>>;
 //
 
 // ========================

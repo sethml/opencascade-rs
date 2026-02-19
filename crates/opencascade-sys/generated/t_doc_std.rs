@@ -104,6 +104,12 @@ impl TryFrom<i32> for FormatVersion {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleCDFApplication, HandleCDMApplication, HandleCDMDocument, HandleTDFAttribute,
+    HandleTDFDelta, HandleTObjApplication, HandleXCAFAppApplication,
+};
+
 // ========================
 // From TDocStd_Application.hxx
 // ========================
@@ -246,18 +252,58 @@ impl Application {
         unsafe { crate::ffi::TDocStd_Application_nb_documents(self as *const Self) }
     }
 
+    /// **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
+    /// Constructs the new document aDoc.
+    /// aDoc is identified by the index index which is
+    /// any integer between 1 and n where n is the
+    /// number of documents returned by NbDocument.
+    /// Example
+    /// Handle(TDocStd_Application)
+    /// anApp;
+    /// if (!CafTest::Find(A)) return 1;
+    /// Handle(TDocStd) aDoc;
+    /// Standard_Integer nbdoc = anApp->NbDocuments();
+    /// for (Standard_Integer i = 1; i <= nbdoc; i++) {
+    /// aApp->GetDocument(i,aDoc);
+    pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_get_document(self as *const Self, index, aDoc) }
+    }
+
     /// **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
     /// Constructs the empty new document aDoc.
     /// This document will have the format format.
     /// If InitDocument is redefined for a specific
     /// application, the new document is handled by the
     /// applicative session.
-    pub fn new_document(
+    pub fn new_document_extendedstring_handlecdmdocument(
         &mut self,
         format: &crate::t_collection::ExtendedString,
         aDoc: &mut crate::ffi::HandleCDMDocument,
     ) {
-        unsafe { crate::ffi::TDocStd_Application_new_document(self as *mut Self, format, aDoc) }
+        unsafe {
+            crate::ffi::TDocStd_Application_new_document_extendedstring_handlecdmdocument(
+                self as *mut Self,
+                format,
+                aDoc,
+            )
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:184 - `TDocStd_Application::NewDocument()`
+    /// A non-virtual method taking a TDocStd_Documment object as an input.
+    /// Internally it calls a virtual method NewDocument() with CDM_Document object.
+    pub fn new_document_extendedstring_handletdocstddocument(
+        &mut self,
+        format: &crate::t_collection::ExtendedString,
+        aDoc: &mut crate::ffi::HandleTDocStdDocument,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Application_new_document_extendedstring_handletdocstddocument(
+                self as *mut Self,
+                format,
+                aDoc,
+            )
+        }
     }
 
     /// **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument()`
@@ -270,6 +316,13 @@ impl Application {
     /// =======================
     pub fn init_document(&self, aDoc: &crate::ffi::HandleCDMDocument) {
         unsafe { crate::ffi::TDocStd_Application_init_document(self as *const Self, aDoc) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
+    /// Close the given document. the document is not any more
+    /// handled by the applicative session.
+    pub fn close(&mut self, aDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_close(self as *mut Self, aDoc) }
     }
 
     /// **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
@@ -295,6 +348,129 @@ impl Application {
     /// }
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         unsafe { crate::ffi::TDocStd_Application_is_in_session(self as *const Self, path) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open()`
+    /// Retrieves the document from specified file.
+    /// In order not to override a version of the document which is already in memory,
+    /// this method can be made to depend on the value returned by IsInSession.
+    /// @param[in]  thePath   file path to open
+    /// @param[out] theDoc    result document
+    /// @param[in]  theFilter optional filter to skip attributes or parts of the retrieved tree
+    /// @param[in]  theRange  optional progress indicator
+    /// @return reading status
+    pub fn open_extendedstring_handletdocstddocument_handlepcdmreaderfilter_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::ExtendedString,
+        theDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(crate::ffi::TDocStd_Application_open_extendedstring_handletdocstddocument_handlepcdmreaderfilter_progressrange(self as *mut Self, thePath, theDoc, theFilter, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:244 - `TDocStd_Application::Open()`
+    /// Retrieves the document from specified file.
+    /// In order not to override a version of the document which is already in memory,
+    /// this method can be made to depend on the value returned by IsInSession.
+    /// @param[in]  thePath  file path to open
+    /// @param[out] theDoc   result document
+    /// @param[in]  theRange optional progress indicator
+    /// @return reading status
+    pub fn open_extendedstring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::ExtendedString,
+        theDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::ReaderStatus {
+        unsafe {
+            crate::pcdm::ReaderStatus::try_from(crate::ffi::TDocStd_Application_open_extendedstring_handletdocstddocument_progressrange(self as *mut Self, thePath, theDoc, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs()`
+    /// Save the  active document  in the file  <name> in the
+    /// path <path> ; o verwrites  the file  if  it already exists.
+    pub fn save_as_handletdocstddocument_extendedstring_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        path: &crate::t_collection::ExtendedString,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(crate::ffi::TDocStd_Application_save_as_handletdocstddocument_extendedstring_progressrange(self as *mut Self, theDoc, path, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save()`
+    /// Save aDoc active document.
+    /// Exceptions:
+    /// Standard_NotImplemented if the document
+    /// was not retrieved in the applicative session by using Open.
+    pub fn save_handletdocstddocument_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(
+                crate::ffi::TDocStd_Application_save_handletdocstddocument_progressrange(
+                    self as *mut Self,
+                    theDoc,
+                    theRange,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:301 - `TDocStd_Application::SaveAs()`
+    /// Save the  active document  in the file  <name> in the
+    /// path <path>  .  overwrite  the file  if  it
+    /// already exist.
+    pub fn save_as_handletdocstddocument_extendedstring2_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        path: &crate::t_collection::ExtendedString,
+        theStatusMessage: &mut crate::t_collection::ExtendedString,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(crate::ffi::TDocStd_Application_save_as_handletdocstddocument_extendedstring2_progressrange(self as *mut Self, theDoc, path, theStatusMessage, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:316 - `TDocStd_Application::Save()`
+    /// Save the document overwriting the previous file
+    pub fn save_handletdocstddocument_extendedstring_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theStatusMessage: &mut crate::t_collection::ExtendedString,
+        theRange: &crate::message::ProgressRange,
+    ) -> crate::pcdm::StoreStatus {
+        unsafe {
+            crate::pcdm::StoreStatus::try_from(crate::ffi::TDocStd_Application_save_handletdocstddocument_extendedstring_progressrange(self as *mut Self, theDoc, theStatusMessage, theRange)).unwrap()
+        }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
+    /// Notification that is fired at each OpenTransaction event.
+    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_on_open_transaction(self as *mut Self, theDoc) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
+    /// Notification that is fired at each CommitTransaction event.
+    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_on_commit_transaction(self as *mut Self, theDoc) }
+    }
+
+    /// **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
+    /// Notification that is fired at each AbortTransaction event.
+    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Application_on_abort_transaction(self as *mut Self, theDoc) }
     }
 
     /// **Source:** `TDocStd_Application.hxx`:332 - `TDocStd_Application::DynamicType()`
@@ -334,6 +510,15 @@ impl Application {
     /// Upcast to CDM_Application (mutable)
     pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
         unsafe { &mut *(crate::ffi::TDocStd_Application_as_CDM_Application_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Application_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
@@ -476,45 +661,86 @@ impl Application {
     }
 }
 
-// ── Skipped symbols for Application (17 total) ──
+pub use crate::ffi::HandleTDocStdApplication;
+
+unsafe impl crate::CppDeletable for HandleTDocStdApplication {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdApplication_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdApplication {
+    /// Dereference this Handle to access the underlying TDocStd_Application
+    pub fn get(&self) -> &crate::ffi::TDocStd_Application {
+        unsafe { &*(crate::ffi::HandleTDocStdApplication_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_Application
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Application {
+        unsafe { &mut *(crate::ffi::HandleTDocStdApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDocStd_Application> to Handle<CDF_Application>
+    pub fn to_handle_cdf_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdApplication_to_HandleCDFApplication(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDocStd_Application> to Handle<CDM_Application>
+    pub fn to_handle_cdm_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdApplication_to_HandleCDMApplication(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TDocStd_Application> to Handle<TObj_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_Application` (or subclass).
+    pub fn downcast_to_t_obj_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDocStdApplication_downcast_to_HandleTObjApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDocStd_Application> to Handle<XCAFApp_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFApp_Application` (or subclass).
+    pub fn downcast_to_xcaf_app_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDocStdApplication_downcast_to_HandleXCAFAppApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for Application (5 total) ──
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:140 - `TDocStd_Application::DefineFormat`
 //   method: Sets up resources and registers read and storage drivers for
 //   method: the specified format.
 //   Reason: param 'theReader' uses unknown type 'const Handle(PCDM_RetrievalDriver)&'
 //   // pub fn define_format(&mut self, theFormat: &AsciiString, theDescription: &AsciiString, theExtension: &AsciiString, theReader: &HandleRetrievalDriver, theWriter: &HandleStorageDriver);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument`
-//   method: Constructs the new document aDoc.
-//   method: aDoc is identified by the index index which is
-//   method: any integer between 1 and n where n is the
-//   Reason: param 'aDoc' uses unknown type 'Handle(TDocStd_Document)&'
-//   // pub fn get_document(&self, index: i32, aDoc: &mut HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:184 - `TDocStd_Application::NewDocument`
-//   method: A non-virtual method taking a TDocStd_Documment object as an input.
-//   method: Internally it calls a virtual method NewDocument() with CDM_Document object.
-//   Reason: param 'aDoc' uses unknown type 'Handle(TDocStd_Document)&'
-//   // pub fn new_document(&mut self, format: &ExtendedString, aDoc: &mut HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close`
-//   method: Close the given document. the document is not any more
-//   method: handled by the applicative session.
-//   Reason: param 'aDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn close(&mut self, aDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open`
-//   method: Retrieves the document from specified file.
-//   method: In order not to override a version of the document which is already in memory,
-//   method: this method can be made to depend on the value returned by IsInSession.
-//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
-//   // pub fn open(&mut self, thePath: &ExtendedString, theDoc: &mut HandleDocument, theFilter: &HandleReaderFilter, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:244 - `TDocStd_Application::Open`
-//   method: Retrieves the document from specified file.
-//   method: In order not to override a version of the document which is already in memory,
-//   method: this method can be made to depend on the value returned by IsInSession.
-//   Reason: param 'theDoc' uses unknown type 'Handle(TDocStd_Document)&'
-//   // pub fn open(&mut self, thePath: &ExtendedString, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
 //
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:258 - `TDocStd_Application::Open`
 //   method: Retrieves document from standard stream.
@@ -530,57 +756,17 @@ impl Application {
 //   Reason: has unbindable types: param 'theIStream': stream type (Standard_IStream&)
 //   // pub fn open(&mut self, theIStream: /* Standard_IStream& */, theDoc: &mut HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_ReaderStatus>;
 //
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs`
-//   method: Save the  active document  in the file  <name> in the
-//   method: path <path> ; o verwrites  the file  if  it already exists.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn save_as(&mut self, theDoc: &HandleDocument, path: &ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:285 - `TDocStd_Application::SaveAs`
 //   method: Save theDoc to standard SEEKABLE stream theOStream.
 //   method: the stream should support SEEK functionality
 //   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
 //   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: /* Standard_OStream& */, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
 //
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save`
-//   method: Save aDoc active document.
-//   method: Exceptions:
-//   method: Standard_NotImplemented if the document
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn save(&mut self, theDoc: &HandleDocument, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:301 - `TDocStd_Application::SaveAs`
-//   method: Save the  active document  in the file  <name> in the
-//   method: path <path>  .  overwrite  the file  if  it
-//   method: already exist.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn save_as(&mut self, theDoc: &HandleDocument, path: &ExtendedString, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
 // SKIPPED: **Source:** `TDocStd_Application.hxx`:309 - `TDocStd_Application::SaveAs`
 //   method: Save theDoc TO standard SEEKABLE stream theOStream.
 //   method: the stream should support SEEK functionality
 //   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
 //   // pub fn save_as(&mut self, theDoc: &HandleDocument, theOStream: /* Standard_OStream& */, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:316 - `TDocStd_Application::Save`
-//   method: Save the document overwriting the previous file
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn save(&mut self, theDoc: &HandleDocument, theStatusMessage: &mut ExtendedString, theRange: &ProgressRange) -> OwnedPtr<PCDM_StoreStatus>;
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction`
-//   method: Notification that is fired at each OpenTransaction event.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn on_open_transaction(&mut self, theDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction`
-//   method: Notification that is fired at each CommitTransaction event.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn on_commit_transaction(&mut self, theDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction`
-//   method: Notification that is fired at each AbortTransaction event.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn on_abort_transaction(&mut self, theDoc: &HandleDocument);
 //
 
 // ========================
@@ -729,6 +915,15 @@ impl CompoundDelta {
         unsafe { &mut *(crate::ffi::TDocStd_CompoundDelta_as_TDF_Delta_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdCompoundDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_CompoundDelta_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Delta.hxx`:46 - `TDF_Delta::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_IsEmpty(self as *const Self) }
@@ -780,6 +975,35 @@ impl CompoundDelta {
     /// Inherited: **Source:** `TDF_Delta.hxx`:69 - `TDF_Delta::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
         unsafe { crate::ffi::TDocStd_CompoundDelta_inherited_SetName(self as *mut Self, theName) }
+    }
+}
+
+pub use crate::ffi::HandleTDocStdCompoundDelta;
+
+unsafe impl crate::CppDeletable for HandleTDocStdCompoundDelta {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdCompoundDelta_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdCompoundDelta {
+    /// Dereference this Handle to access the underlying TDocStd_CompoundDelta
+    pub fn get(&self) -> &crate::ffi::TDocStd_CompoundDelta {
+        unsafe { &*(crate::ffi::HandleTDocStdCompoundDelta_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_CompoundDelta
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_CompoundDelta {
+        unsafe { &mut *(crate::ffi::HandleTDocStdCompoundDelta_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDocStd_CompoundDelta> to Handle<TDF_Delta>
+    pub fn to_handle_delta(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdCompoundDelta_to_HandleTDFDelta(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1194,6 +1418,14 @@ impl Document {
         unsafe { &*(crate::ffi::TDocStd_Document_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TDocStd_Document.hxx`:54 - `TDocStd_Document::Get()`
+    /// Will Abort any execution, clear fields
+    /// returns the    document which contains <L>.  raises  an
+    /// exception if the document is not found.
+    pub fn get(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_get(L)) }
+    }
+
     /// **Source:** `TDocStd_Document.hxx`:254 - `TDocStd_Document::CurrentStorageFormatVersion()`
     /// Returns current storage format version of the document.
     pub fn current_storage_format_version() -> crate::t_doc_std::FormatVersion {
@@ -1227,6 +1459,13 @@ impl Document {
     /// Upcast to CDM_Document (mutable)
     pub fn as_cdm_document_mut(&mut self) -> &mut crate::cdm::Document {
         unsafe { &mut *(crate::ffi::TDocStd_Document_as_CDM_Document_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Document_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `CDM_Document.hxx`:95 - `CDM_Document::Extensions()`
@@ -1678,7 +1917,36 @@ impl Document {
     }
 }
 
-// ── Skipped symbols for Document (3 total) ──
+pub use crate::ffi::HandleTDocStdDocument;
+
+unsafe impl crate::CppDeletable for HandleTDocStdDocument {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdDocument_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdDocument {
+    /// Dereference this Handle to access the underlying TDocStd_Document
+    pub fn get(&self) -> &crate::ffi::TDocStd_Document {
+        unsafe { &*(crate::ffi::HandleTDocStdDocument_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_Document
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Document {
+        unsafe { &mut *(crate::ffi::HandleTDocStdDocument_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDocStd_Document> to Handle<CDM_Document>
+    pub fn to_handle_document(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdDocument_to_HandleCDMDocument(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Document (2 total) ──
 // SKIPPED: **Source:** `TDocStd_Document.hxx`:113 - `TDocStd_Document::GetModified`
 //   method: Returns the labels which have been modified in
 //   method: this document.
@@ -1691,13 +1959,6 @@ impl Document {
 //   method: The    document     should    be  recomputed     and
 //   Reason: has unbindable types: param 'aModifContext': void pointer (Standard_Address)
 //   // pub fn update(&mut self, aToDocument: &HandleDocument, aReferenceIdentifier: i32, aModifContext: /* Standard_Address */);
-//
-// SKIPPED: **Source:** `TDocStd_Document.hxx`:54 - `TDocStd_Document::Get`
-//   static_method: Will Abort any execution, clear fields
-//   static_method: returns the    document which contains <L>.  raises  an
-//   static_method: exception if the document is not found.
-//   Reason: return type 'Handle(TDocStd_Document)' is unknown
-//   // pub fn get(L: &Label) -> OwnedPtr<Handle<TDocStd_Document>>;
 //
 
 // ========================
@@ -1831,6 +2092,13 @@ impl Modified {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDocStd_Modified_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdModified> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -1989,6 +2257,55 @@ impl Modified {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Modified_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDocStd_Modified_inherited_References(self as *const Self, aDataSet) }
@@ -1997,6 +2314,35 @@ impl Modified {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDocStd_Modified_inherited_Forget(self as *mut Self, aTransaction) }
+    }
+}
+
+pub use crate::ffi::HandleTDocStdModified;
+
+unsafe impl crate::CppDeletable for HandleTDocStdModified {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdModified_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdModified {
+    /// Dereference this Handle to access the underlying TDocStd_Modified
+    pub fn get(&self) -> &crate::ffi::TDocStd_Modified {
+        unsafe { &*(crate::ffi::HandleTDocStdModified_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_Modified
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Modified {
+        unsafe { &mut *(crate::ffi::HandleTDocStdModified_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDocStd_Modified> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdModified_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -2152,6 +2498,23 @@ impl MultiTransactionManager {
         unsafe { crate::ffi::TDocStd_MultiTransactionManager_remove_last_undo(self as *mut Self) }
     }
 
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:110 - `TDocStd_MultiTransactionManager::AddDocument()`
+    /// Adds the document to the transaction manager and
+    /// checks if it has been already added
+    pub fn add_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_add_document(self as *mut Self, theDoc)
+        }
+    }
+
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:113 - `TDocStd_MultiTransactionManager::RemoveDocument()`
+    /// Removes the document from the transaction manager.
+    pub fn remove_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe {
+            crate::ffi::TDocStd_MultiTransactionManager_remove_document(self as *mut Self, theDoc)
+        }
+    }
+
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:116 - `TDocStd_MultiTransactionManager::Documents()`
     /// Returns the added documents to the transaction manager.
     pub fn documents(&self) -> &crate::ffi::TDocStd_SequenceOfDocument {
@@ -2267,22 +2630,11 @@ impl HandleTDocStdMultiTransactionManager {
     }
 }
 
-// ── Skipped symbols for MultiTransactionManager (3 total) ──
+// ── Skipped symbols for MultiTransactionManager (1 total) ──
 // SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:106 - `TDocStd_MultiTransactionManager::DumpTransaction`
 //   method: Dumps transactions in undos and redos
 //   Reason: has unbindable types: param 'theOS': stream type (Standard_OStream&)
 //   // pub fn dump_transaction(&self, theOS: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:110 - `TDocStd_MultiTransactionManager::AddDocument`
-//   method: Adds the document to the transaction manager and
-//   method: checks if it has been already added
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn add_document(&mut self, theDoc: &HandleDocument);
-//
-// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:113 - `TDocStd_MultiTransactionManager::RemoveDocument`
-//   method: Removes the document from the transaction manager.
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn remove_document(&mut self, theDoc: &HandleDocument);
 //
 
 // ========================
@@ -2306,6 +2658,18 @@ impl Owner {
     /// **Source:** `TDocStd_Owner.hxx`:54 - `TDocStd_Owner::TDocStd_Owner()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_ctor()) }
+    }
+
+    /// **Source:** `TDocStd_Owner.hxx`:56 - `TDocStd_Owner::SetDocument()`
+    pub fn set_document(&mut self, document: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_Owner_set_document(self as *mut Self, document) }
+    }
+
+    /// **Source:** `TDocStd_Owner.hxx`:60 - `TDocStd_Owner::GetDocument()`
+    pub fn get_document(&self) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_get_document(self as *const Self))
+        }
     }
 
     /// **Source:** `TDocStd_Owner.hxx`:62 - `TDocStd_Owner::ID()`
@@ -2346,6 +2710,27 @@ impl Owner {
         unsafe { &*(crate::ffi::TDocStd_Owner_get_id()) }
     }
 
+    /// **Source:** `TDocStd_Owner.hxx`:45 - `TDocStd_Owner::SetDocument()`
+    pub fn set_document_handletdfdata_handletdocstddocument(
+        indata: &crate::ffi::HandleTDFData,
+        doc: &crate::ffi::HandleTDocStdDocument,
+    ) {
+        unsafe {
+            crate::ffi::TDocStd_Owner_set_document_handletdfdata_handletdocstddocument(indata, doc)
+        }
+    }
+
+    /// **Source:** `TDocStd_Owner.hxx`:52 - `TDocStd_Owner::GetDocument()`
+    /// Owner methods
+    /// ===============
+    pub fn get_document_handletdfdata(
+        ofdata: &crate::ffi::HandleTDFData,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_get_document_handletdfdata(ofdata))
+        }
+    }
+
     /// **Source:** `TDocStd_Owner.hxx`:77 - `TDocStd_Owner::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2368,6 +2753,13 @@ impl Owner {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDocStd_Owner_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdOwner> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -2520,6 +2912,55 @@ impl Owner {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_Owner_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDocStd_Owner_inherited_References(self as *const Self, aDataSet) }
@@ -2531,36 +2972,47 @@ impl Owner {
     }
 }
 
-// ── Skipped symbols for Owner (7 total) ──
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:56 - `TDocStd_Owner::SetDocument`
-//   Reason: param 'document' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_document(&mut self, document: &HandleDocument);
-//
+pub use crate::ffi::HandleTDocStdOwner;
+
+unsafe impl crate::CppDeletable for HandleTDocStdOwner {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdOwner_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdOwner {
+    /// Dereference this Handle to access the underlying TDocStd_Owner
+    pub fn get(&self) -> &crate::ffi::TDocStd_Owner {
+        unsafe { &*(crate::ffi::HandleTDocStdOwner_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_Owner
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_Owner {
+        unsafe { &mut *(crate::ffi::HandleTDocStdOwner_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDocStd_Owner> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdOwner_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Owner (3 total) ──
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:58 - `TDocStd_Owner::SetDocument`
 //   Reason: has unbindable types: param 'document': raw pointer (TDocStd_Document*)
 //   // pub fn set_document(&mut self, document: /* TDocStd_Document* */);
-//
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:60 - `TDocStd_Owner::GetDocument`
-//   Reason: return type 'Handle(TDocStd_Document)' is unknown
-//   // pub fn get_document(&self) -> OwnedPtr<Handle<TDocStd_Document>>;
 //
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:71 - `TDocStd_Owner::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
 //
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:45 - `TDocStd_Owner::SetDocument`
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_document(indata: &HandleData, doc: &HandleDocument);
-//
 // SKIPPED: **Source:** `TDocStd_Owner.hxx`:48 - `TDocStd_Owner::SetDocument`
 //   Reason: has unbindable types: param 'doc': raw pointer (TDocStd_Document*)
 //   // pub fn set_document(indata: &HandleData, doc: /* TDocStd_Document* */);
-//
-// SKIPPED: **Source:** `TDocStd_Owner.hxx`:52 - `TDocStd_Owner::GetDocument`
-//   static_method: Owner methods
-//   static_method: ===============
-//   Reason: return type 'Handle(TDocStd_Document)' is unknown
-//   // pub fn get_document(ofdata: &HandleData) -> OwnedPtr<Handle<TDocStd_Document>>;
 //
 
 // ========================
@@ -2646,6 +3098,12 @@ impl XLink {
     /// Initializes fields.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_ctor()) }
+    }
+
+    /// **Source:** `TDocStd_XLink.hxx`:49 - `TDocStd_XLink::Update()`
+    /// Updates the data referenced in this external link attribute.
+    pub fn update(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTDFReference> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_update(self as *mut Self)) }
     }
 
     /// **Source:** `TDocStd_XLink.hxx`:52 - `TDocStd_XLink::ID()`
@@ -2764,6 +3222,12 @@ impl XLink {
         unsafe { &*(crate::ffi::TDocStd_XLink_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TDocStd_XLink.hxx`:43 - `TDocStd_XLink::Set()`
+    /// Sets an empty external reference, at the label aLabel.
+    pub fn set(atLabel: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLink> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_set(atLabel)) }
+    }
+
     /// **Source:** `TDocStd_XLink.hxx`:55 - `TDocStd_XLink::GetID()`
     /// Returns the GUID for external links.
     pub fn get_id() -> &'static crate::standard::GUID {
@@ -2792,6 +3256,13 @@ impl XLink {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDocStd_XLink_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLink> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -2903,6 +3374,55 @@ impl XLink {
         unsafe { crate::ffi::TDocStd_XLink_inherited_IsBackuped(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLink_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDocStd_XLink_inherited_References(self as *const Self, aDataSet) }
@@ -2914,21 +3434,40 @@ impl XLink {
     }
 }
 
-// ── Skipped symbols for XLink (3 total) ──
-// SKIPPED: **Source:** `TDocStd_XLink.hxx`:49 - `TDocStd_XLink::Update`
-//   method: Updates the data referenced in this external link attribute.
-//   Reason: return type 'Handle(TDF_Reference)' is unknown
-//   // pub fn update(&mut self) -> OwnedPtr<Handle<TDF_Reference>>;
-//
+pub use crate::ffi::HandleTDocStdXLink;
+
+unsafe impl crate::CppDeletable for HandleTDocStdXLink {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdXLink_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdXLink {
+    /// Dereference this Handle to access the underlying TDocStd_XLink
+    pub fn get(&self) -> &crate::ffi::TDocStd_XLink {
+        unsafe { &*(crate::ffi::HandleTDocStdXLink_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_XLink
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_XLink {
+        unsafe { &mut *(crate::ffi::HandleTDocStdXLink_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDocStd_XLink> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdXLink_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for XLink (1 total) ──
 // SKIPPED: **Source:** `TDocStd_XLink.hxx`:110 - `TDocStd_XLink::Dump`
 //   method: Dumps the attribute on <aStream>.
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDocStd_XLink.hxx`:43 - `TDocStd_XLink::Set`
-//   static_method: Sets an empty external reference, at the label aLabel.
-//   Reason: return type 'Handle(TDocStd_XLink)' is unknown
-//   // pub fn set(atLabel: &Label) -> OwnedPtr<Handle<TDocStd_XLink>>;
 //
 
 // ========================
@@ -2954,6 +3493,24 @@ impl XLinkIterator {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkIterator_ctor()) }
     }
 
+    /// **Source:** `TDocStd_XLinkIterator.hxx`:39 - `TDocStd_XLinkIterator::TDocStd_XLinkIterator()`
+    /// Creates an iterator on Reference of <D>.
+    pub fn new_handletdocstddocument(
+        D: &crate::ffi::HandleTDocStdDocument,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkIterator_ctor_handletdocstddocument(
+                D,
+            ))
+        }
+    }
+
+    /// **Source:** `TDocStd_XLinkIterator.hxx`:42 - `TDocStd_XLinkIterator::Initialize()`
+    /// Restarts an iteration with <D>.
+    pub fn initialize(&mut self, D: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::TDocStd_XLinkIterator_initialize(self as *mut Self, D) }
+    }
+
     /// **Source:** `TDocStd_XLinkIterator.hxx`:46 - `TDocStd_XLinkIterator::More()`
     /// Returns True if there is a current Item in the
     /// iteration.
@@ -2968,17 +3525,7 @@ impl XLinkIterator {
     }
 }
 
-// ── Skipped symbols for XLinkIterator (3 total) ──
-// SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:39 - `TDocStd_XLinkIterator::TDocStd_XLinkIterator`
-//   constructor: Creates an iterator on Reference of <D>.
-//   Reason: param 'D' uses unknown Handle type
-//   // pub fn new_handletdocstddocument(D: &HandleDocument) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:42 - `TDocStd_XLinkIterator::Initialize`
-//   method: Restarts an iteration with <D>.
-//   Reason: param 'D' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn initialize(&mut self, D: &HandleDocument);
-//
+// ── Skipped symbols for XLinkIterator (1 total) ──
 // SKIPPED: **Source:** `TDocStd_XLinkIterator.hxx`:52 - `TDocStd_XLinkIterator::Value`
 //   method: Returns the current item; a null handle if there is none.
 //   Reason: return type 'TDocStd_XLinkPtr' is unknown
@@ -3061,6 +3608,15 @@ impl XLinkRoot {
         unsafe { &*(crate::ffi::TDocStd_XLinkRoot_get_id()) }
     }
 
+    /// **Source:** `TDocStd_XLinkRoot.hxx`:46 - `TDocStd_XLinkRoot::Set()`
+    /// Sets an empty XLinkRoot to Root or gets the
+    /// existing one. Only one attribute per TDF_Data.
+    pub fn set(
+        aDF: &crate::ffi::HandleTDFData,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLinkRoot> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_set(aDF)) }
+    }
+
     /// **Source:** `TDocStd_XLinkRoot.hxx`:76 - `TDocStd_XLinkRoot::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3083,6 +3639,15 @@ impl XLinkRoot {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDocStd_XLinkRoot_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdXLinkRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3240,6 +3805,55 @@ impl XLinkRoot {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_IsBackuped(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDocStd_XLinkRoot_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDocStd_XLinkRoot_inherited_References(self as *const Self, aDataSet) }
@@ -3251,17 +3865,40 @@ impl XLinkRoot {
     }
 }
 
-// ── Skipped symbols for XLinkRoot (4 total) ──
+pub use crate::ffi::HandleTDocStdXLinkRoot;
+
+unsafe impl crate::CppDeletable for HandleTDocStdXLinkRoot {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDocStdXLinkRoot_destructor(ptr);
+    }
+}
+
+impl HandleTDocStdXLinkRoot {
+    /// Dereference this Handle to access the underlying TDocStd_XLinkRoot
+    pub fn get(&self) -> &crate::ffi::TDocStd_XLinkRoot {
+        unsafe { &*(crate::ffi::HandleTDocStdXLinkRoot_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDocStd_XLinkRoot
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDocStd_XLinkRoot {
+        unsafe { &mut *(crate::ffi::HandleTDocStdXLinkRoot_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDocStd_XLinkRoot> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDocStdXLinkRoot_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for XLinkRoot (3 total) ──
 // SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:72 - `TDocStd_XLinkRoot::Dump`
 //   method: Dumps the attribute on <aStream>.
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:46 - `TDocStd_XLinkRoot::Set`
-//   static_method: Sets an empty XLinkRoot to Root or gets the
-//   static_method: existing one. Only one attribute per TDF_Data.
-//   Reason: return type 'Handle(TDocStd_XLinkRoot)' is unknown
-//   // pub fn set(aDF: &HandleData) -> OwnedPtr<Handle<TDocStd_XLinkRoot>>;
 //
 // SKIPPED: **Source:** `TDocStd_XLinkRoot.hxx`:49 - `TDocStd_XLinkRoot::Insert`
 //   static_method: Inserts <anXLinkPtr> at the beginning of the XLink chain.

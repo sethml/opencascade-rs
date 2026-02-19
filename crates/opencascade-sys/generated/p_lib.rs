@@ -567,6 +567,38 @@ impl HandlePLibBase {
     pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_Base {
         unsafe { &mut *(crate::ffi::HandlePLibBase_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<PLib_Base> to Handle<PLib_HermitJacobi>
+    ///
+    /// Returns `None` if the handle does not point to a `PLib_HermitJacobi` (or subclass).
+    pub fn downcast_to_hermit_jacobi(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePLibHermitJacobi>> {
+        let ptr = unsafe {
+            crate::ffi::HandlePLibBase_downcast_to_HandlePLibHermitJacobi(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<PLib_Base> to Handle<PLib_JacobiPolynomial>
+    ///
+    /// Returns `None` if the handle does not point to a `PLib_JacobiPolynomial` (or subclass).
+    pub fn downcast_to_jacobi_polynomial(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial>> {
+        let ptr = unsafe {
+            crate::ffi::HandlePLibBase_downcast_to_HandlePLibJacobiPolynomial(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Base (1 total) ──
@@ -595,6 +627,20 @@ impl DoubleJacobiPolynomial {
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:33 - `PLib_DoubleJacobiPolynomial::PLib_DoubleJacobiPolynomial()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::PLib_DoubleJacobiPolynomial_ctor()) }
+    }
+
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:35 - `PLib_DoubleJacobiPolynomial::PLib_DoubleJacobiPolynomial()`
+    pub fn new_handleplibjacobipolynomial2(
+        JacPolU: &crate::ffi::HandlePLibJacobiPolynomial,
+        JacPolV: &crate::ffi::HandlePLibJacobiPolynomial,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::PLib_DoubleJacobiPolynomial_ctor_handleplibjacobipolynomial2(
+                    JacPolU, JacPolV,
+                ),
+            )
+        }
     }
 
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:38 - `PLib_DoubleJacobiPolynomial::MaxErrorU()`
@@ -708,6 +754,26 @@ impl DoubleJacobiPolynomial {
         }
     }
 
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:84 - `PLib_DoubleJacobiPolynomial::U()`
+    /// returns myJacPolU;
+    pub fn u(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::PLib_DoubleJacobiPolynomial_u(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:87 - `PLib_DoubleJacobiPolynomial::V()`
+    /// returns myJacPolV;
+    pub fn v(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::PLib_DoubleJacobiPolynomial_v(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:90 - `PLib_DoubleJacobiPolynomial::TabMaxU()`
     /// returns myTabMaxU;
     pub fn tab_max_u(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
@@ -729,24 +795,10 @@ impl DoubleJacobiPolynomial {
     }
 }
 
-// ── Skipped symbols for DoubleJacobiPolynomial (4 total) ──
-// SKIPPED: **Source:** `PLib_DoubleJacobiPolynomial.hxx`:35 - `PLib_DoubleJacobiPolynomial::PLib_DoubleJacobiPolynomial`
-//   Reason: param 'JacPolU' uses unknown Handle type
-//   // pub fn new_handleplibjacobipolynomial2(JacPolU: &HandleJacobiPolynomial, JacPolV: &HandleJacobiPolynomial) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for DoubleJacobiPolynomial (1 total) ──
 // SKIPPED: **Source:** `PLib_DoubleJacobiPolynomial.hxx`:59 - `PLib_DoubleJacobiPolynomial::ReduceDegree`
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn reduce_degree(&self, Dimension: i32, MinDegreeU: i32, MaxDegreeU: i32, MinDegreeV: i32, MaxDegreeV: i32, dJacCoeff: i32, JacCoeff: &Array1OfReal, EpmsCut: f64, MaxError: &mut f64, NewDegreeU: &mut i32, NewDegreeV: &mut i32);
-//
-// SKIPPED: **Source:** `PLib_DoubleJacobiPolynomial.hxx`:84 - `PLib_DoubleJacobiPolynomial::U`
-//   method: returns myJacPolU;
-//   Reason: return type 'Handle(PLib_JacobiPolynomial)' is unknown
-//   // pub fn u(&self) -> OwnedPtr<Handle<PLib_JacobiPolynomial>>;
-//
-// SKIPPED: **Source:** `PLib_DoubleJacobiPolynomial.hxx`:87 - `PLib_DoubleJacobiPolynomial::V`
-//   method: returns myJacPolV;
-//   Reason: return type 'Handle(PLib_JacobiPolynomial)' is unknown
-//   // pub fn v(&self) -> OwnedPtr<Handle<PLib_JacobiPolynomial>>;
 //
 
 // ========================
@@ -954,6 +1006,44 @@ impl HermitJacobi {
     /// Upcast to PLib_Base (mutable)
     pub fn as_base_mut(&mut self) -> &mut Base {
         unsafe { &mut *(crate::ffi::PLib_HermitJacobi_as_PLib_Base_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePLibHermitJacobi> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::PLib_HermitJacobi_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandlePLibHermitJacobi;
+
+unsafe impl crate::CppDeletable for HandlePLibHermitJacobi {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandlePLibHermitJacobi_destructor(ptr);
+    }
+}
+
+impl HandlePLibHermitJacobi {
+    /// Dereference this Handle to access the underlying PLib_HermitJacobi
+    pub fn get(&self) -> &crate::ffi::PLib_HermitJacobi {
+        unsafe { &*(crate::ffi::HandlePLibHermitJacobi_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying PLib_HermitJacobi
+    pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_HermitJacobi {
+        unsafe { &mut *(crate::ffi::HandlePLibHermitJacobi_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<PLib_HermitJacobi> to Handle<PLib_Base>
+    pub fn to_handle_base(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibBase> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandlePLibHermitJacobi_to_HandlePLibBase(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1211,6 +1301,44 @@ impl JacobiPolynomial {
     /// Upcast to PLib_Base (mutable)
     pub fn as_base_mut(&mut self) -> &mut Base {
         unsafe { &mut *(crate::ffi::PLib_JacobiPolynomial_as_PLib_Base_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::PLib_JacobiPolynomial_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandlePLibJacobiPolynomial;
+
+unsafe impl crate::CppDeletable for HandlePLibJacobiPolynomial {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandlePLibJacobiPolynomial_destructor(ptr);
+    }
+}
+
+impl HandlePLibJacobiPolynomial {
+    /// Dereference this Handle to access the underlying PLib_JacobiPolynomial
+    pub fn get(&self) -> &crate::ffi::PLib_JacobiPolynomial {
+        unsafe { &*(crate::ffi::HandlePLibJacobiPolynomial_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying PLib_JacobiPolynomial
+    pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_JacobiPolynomial {
+        unsafe { &mut *(crate::ffi::HandlePLibJacobiPolynomial_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<PLib_JacobiPolynomial> to Handle<PLib_Base>
+    pub fn to_handle_base(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibBase> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandlePLibJacobiPolynomial_to_HandlePLibBase(
+                self as *const Self,
+            ))
+        }
     }
 }
 

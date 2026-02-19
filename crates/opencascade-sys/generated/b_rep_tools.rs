@@ -405,6 +405,15 @@ pub fn check_locations(
     unsafe { crate::ffi::BRepTools_check_locations(theS, theProblemShapes) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleBRepOffsetSimpleOffset, HandleDraftModification, HandleShapeBuildReShape,
+    HandleShapeCustomBSplineRestriction, HandleShapeCustomConvertToBSpline,
+    HandleShapeCustomConvertToRevolution, HandleShapeCustomDirectModification,
+    HandleShapeCustomModification, HandleShapeCustomSweptToElementary,
+    HandleShapeCustomTrsfModification,
+};
+
 // ========================
 // From BRepTools_CopyModification.hxx
 // ========================
@@ -697,6 +706,66 @@ impl CopyModification {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsCopyModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_CopyModification_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepToolsCopyModification;
+
+unsafe impl crate::CppDeletable for HandleBRepToolsCopyModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepToolsCopyModification_destructor(ptr);
+    }
+}
+
+impl HandleBRepToolsCopyModification {
+    /// Dereference this Handle to access the underlying BRepTools_CopyModification
+    pub fn get(&self) -> &crate::ffi::BRepTools_CopyModification {
+        unsafe { &*(crate::ffi::HandleBRepToolsCopyModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepTools_CopyModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_CopyModification {
+        unsafe { &mut *(crate::ffi::HandleBRepToolsCopyModification_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepTools_CopyModification> to Handle<BRepTools_Modification>
+    pub fn to_handle_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepToolsCopyModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRepTools_CopyModification> to Handle<BRepTools_NurbsConvertModification>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTools_NurbsConvertModification` (or subclass).
+    pub fn downcast_to_nurbs_convert_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsNurbsConvertModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsCopyModification_downcast_to_HandleBRepToolsNurbsConvertModification(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -958,6 +1027,50 @@ impl GTrsfModification {
             &mut *(crate::ffi::BRepTools_GTrsfModification_as_BRepTools_Modification_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsGTrsfModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_GTrsfModification_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepToolsGTrsfModification;
+
+unsafe impl crate::CppDeletable for HandleBRepToolsGTrsfModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepToolsGTrsfModification_destructor(ptr);
+    }
+}
+
+impl HandleBRepToolsGTrsfModification {
+    /// Dereference this Handle to access the underlying BRepTools_GTrsfModification
+    pub fn get(&self) -> &crate::ffi::BRepTools_GTrsfModification {
+        unsafe { &*(crate::ffi::HandleBRepToolsGTrsfModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepTools_GTrsfModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_GTrsfModification {
+        unsafe { &mut *(crate::ffi::HandleBRepToolsGTrsfModification_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepTools_GTrsfModification> to Handle<BRepTools_Modification>
+    pub fn to_handle_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepToolsGTrsfModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1491,6 +1604,238 @@ impl HandleBRepToolsModification {
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_Modification {
         unsafe { &mut *(crate::ffi::HandleBRepToolsModification_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<BRepOffset_SimpleOffset>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepOffset_SimpleOffset` (or subclass).
+    pub fn downcast_to_simple_offset(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepOffsetSimpleOffset>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepOffsetSimpleOffset(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<BRepTools_CopyModification>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTools_CopyModification` (or subclass).
+    pub fn downcast_to_copy_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsCopyModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepToolsCopyModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<BRepTools_GTrsfModification>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTools_GTrsfModification` (or subclass).
+    pub fn downcast_to_g_trsf_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsGTrsfModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepToolsGTrsfModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<BRepTools_NurbsConvertModification>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTools_NurbsConvertModification` (or subclass).
+    pub fn downcast_to_nurbs_convert_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsNurbsConvertModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepToolsNurbsConvertModification(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<BRepTools_TrsfModification>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepTools_TrsfModification` (or subclass).
+    pub fn downcast_to_b_rep_tools_trsf_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepToolsTrsfModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleBRepToolsTrsfModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<Draft_Modification>
+    ///
+    /// Returns `None` if the handle does not point to a `Draft_Modification` (or subclass).
+    pub fn downcast_to_draft_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDraftModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleDraftModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<ShapeCustom_BSplineRestriction>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_BSplineRestriction` (or subclass).
+    pub fn downcast_to_b_spline_restriction(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomBSplineRestriction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomBSplineRestriction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<ShapeCustom_ConvertToBSpline>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_ConvertToBSpline` (or subclass).
+    pub fn downcast_to_convert_to_b_spline(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToBSpline>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomConvertToBSpline(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<ShapeCustom_ConvertToRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_ConvertToRevolution` (or subclass).
+    pub fn downcast_to_convert_to_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomConvertToRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomConvertToRevolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<ShapeCustom_DirectModification>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_DirectModification` (or subclass).
+    pub fn downcast_to_direct_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomDirectModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomDirectModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<ShapeCustom_Modification>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_Modification` (or subclass).
+    pub fn downcast_to_shape_custom_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<ShapeCustom_SweptToElementary>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_SweptToElementary` (or subclass).
+    pub fn downcast_to_swept_to_elementary(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomSweptToElementary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomSweptToElementary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepTools_Modification> to Handle<ShapeCustom_TrsfModification>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_TrsfModification` (or subclass).
+    pub fn downcast_to_shape_custom_trsf_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomTrsfModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsModification_downcast_to_HandleShapeCustomTrsfModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1892,6 +2237,61 @@ impl NurbsConvertModification {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsNurbsConvertModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_NurbsConvertModification_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepToolsNurbsConvertModification;
+
+unsafe impl crate::CppDeletable for HandleBRepToolsNurbsConvertModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepToolsNurbsConvertModification_destructor(ptr);
+    }
+}
+
+impl HandleBRepToolsNurbsConvertModification {
+    /// Dereference this Handle to access the underlying BRepTools_NurbsConvertModification
+    pub fn get(&self) -> &crate::ffi::BRepTools_NurbsConvertModification {
+        unsafe { &*(crate::ffi::HandleBRepToolsNurbsConvertModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepTools_NurbsConvertModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_NurbsConvertModification {
+        unsafe {
+            &mut *(crate::ffi::HandleBRepToolsNurbsConvertModification_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BRepTools_NurbsConvertModification> to Handle<BRepTools_CopyModification>
+    pub fn to_handle_copy_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsCopyModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepToolsNurbsConvertModification_to_HandleBRepToolsCopyModification(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BRepTools_NurbsConvertModification> to Handle<BRepTools_Modification>
+    pub fn to_handle_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepToolsNurbsConvertModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
 }
 
 // ========================
@@ -2255,6 +2655,24 @@ impl HandleBRepToolsReShape {
     /// Dereference this Handle to mutably access the underlying BRepTools_ReShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_ReShape {
         unsafe { &mut *(crate::ffi::HandleBRepToolsReShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<BRepTools_ReShape> to Handle<ShapeBuild_ReShape>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeBuild_ReShape` (or subclass).
+    pub fn downcast_to_re_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsReShape_downcast_to_HandleShapeBuildReShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -2878,6 +3296,66 @@ impl TrsfModification {
             &mut *(crate::ffi::BRepTools_TrsfModification_as_BRepTools_Modification_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsTrsfModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepTools_TrsfModification_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepToolsTrsfModification;
+
+unsafe impl crate::CppDeletable for HandleBRepToolsTrsfModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepToolsTrsfModification_destructor(ptr);
+    }
+}
+
+impl HandleBRepToolsTrsfModification {
+    /// Dereference this Handle to access the underlying BRepTools_TrsfModification
+    pub fn get(&self) -> &crate::ffi::BRepTools_TrsfModification {
+        unsafe { &*(crate::ffi::HandleBRepToolsTrsfModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepTools_TrsfModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTools_TrsfModification {
+        unsafe { &mut *(crate::ffi::HandleBRepToolsTrsfModification_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepTools_TrsfModification> to Handle<BRepTools_Modification>
+    pub fn to_handle_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepToolsTrsfModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRepTools_TrsfModification> to Handle<ShapeCustom_TrsfModification>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeCustom_TrsfModification` (or subclass).
+    pub fn downcast_to_trsf_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeCustomTrsfModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepToolsTrsfModification_downcast_to_HandleShapeCustomTrsfModification(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

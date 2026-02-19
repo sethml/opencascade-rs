@@ -66,6 +66,18 @@ impl DocumentExplorer {
         unsafe { crate::ffi::XCAFPrs_DocumentExplorer_next(self as *mut Self) }
     }
 
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:155 - `XCAFPrs_DocumentExplorer::ColorTool()`
+    /// Return color tool.
+    pub fn color_tool(&self) -> &crate::ffi::HandleXCAFDocColorTool {
+        unsafe { &*(crate::ffi::XCAFPrs_DocumentExplorer_color_tool(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:158 - `XCAFPrs_DocumentExplorer::VisMaterialTool()`
+    /// Return material tool.
+    pub fn vis_material_tool(&self) -> &crate::ffi::HandleXCAFDocVisMaterialTool {
+        unsafe { &*(crate::ffi::XCAFPrs_DocumentExplorer_vis_material_tool(self as *const Self)) }
+    }
+
     /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:52 - `XCAFPrs_DocumentExplorer::DefineChildId()`
     /// @name string identification tools
     /// Construct a unique string identifier for the given label.
@@ -89,67 +101,81 @@ impl DocumentExplorer {
             ))
         }
     }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:59 - `XCAFPrs_DocumentExplorer::FindLabelFromPathId()`
+    /// Find a shape entity based on a text identifier constructed from OCAF labels defining full
+    /// path.
+    /// @sa DefineChildId()
+    pub fn find_label_from_path_id_handletdocstddocument_asciistring_location2(
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theId: &crate::t_collection::AsciiString,
+        theParentLocation: &mut crate::top_loc::Location,
+        theLocation: &mut crate::top_loc::Location,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_find_label_from_path_id_handletdocstddocument_asciistring_location2(theDocument, theId, theParentLocation, theLocation))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:67 - `XCAFPrs_DocumentExplorer::FindLabelFromPathId()`
+    /// Find a shape entity based on a text identifier constructed from OCAF labels defining full
+    /// path.
+    /// @sa DefineChildId()
+    pub fn find_label_from_path_id_handletdocstddocument_asciistring_location(
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theId: &crate::t_collection::AsciiString,
+        theLocation: &mut crate::top_loc::Location,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_find_label_from_path_id_handletdocstddocument_asciistring_location(theDocument, theId, theLocation))
+        }
+    }
+
+    /// **Source:** `XCAFPrs_DocumentExplorer.hxx`:78 - `XCAFPrs_DocumentExplorer::FindShapeFromPathId()`
+    /// Find a shape entity based on a text identifier constructed from OCAF labels defining full
+    /// path.
+    /// @sa DefineChildId()
+    pub fn find_shape_from_path_id(
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theId: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XCAFPrs_DocumentExplorer_find_shape_from_path_id(
+                theDocument,
+                theId,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for DocumentExplorer (9 total) ──
+// ── Skipped symbols for DocumentExplorer (4 total) ──
 // SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:90 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer`
 //   constructor: Constructor for exploring the whole document.
 //   constructor: @param theDocument document to explore
 //   constructor: @param theFlags    iteration flags
-//   Reason: param 'theDocument' uses unknown Handle type
+//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
 //   // pub fn new_handletdocstddocument_documentexplorerflags_style(theDocument: &HandleDocument, theFlags: DocumentExplorerFlags, theDefStyle: &Style) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:99 - `XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer`
 //   constructor: Constructor for exploring specified list of root shapes in the document.
 //   constructor: @param theDocument  document to explore
 //   constructor: @param theRoots     root labels to explore within specified document
-//   Reason: param 'theDocument' uses unknown Handle type
+//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
 //   // pub fn new_handletdocstddocument_labelsequence_documentexplorerflags_style(theDocument: &HandleDocument, theRoots: &LabelSequence, theFlags: DocumentExplorerFlags, theDefStyle: &Style) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:109 - `XCAFPrs_DocumentExplorer::Init`
 //   method: Initialize the iterator from a single root shape in the document.
 //   method: @param theDocument  document to explore
 //   method: @param theRoot      single root label to explore within specified document
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
 //   // pub fn init(&mut self, theDocument: &HandleDocument, theRoot: &Label, theFlags: DocumentExplorerFlags, theDefStyle: &Style);
 //
 // SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:119 - `XCAFPrs_DocumentExplorer::Init`
 //   method: Initialize the iterator from the list of root shapes in the document.
 //   method: @param theDocument  document to explore
 //   method: @param theRoots     root labels to explore within specified document
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
+//   Reason: param 'theFlags' uses unknown type 'XCAFPrs_DocumentExplorerFlags'
 //   // pub fn init(&mut self, theDocument: &HandleDocument, theRoots: &LabelSequence, theFlags: DocumentExplorerFlags, theDefStyle: &Style);
-//
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:155 - `XCAFPrs_DocumentExplorer::ColorTool`
-//   method: Return color tool.
-//   Reason: return type 'const Handle(XCAFDoc_ColorTool)&' is unknown
-//   // pub fn color_tool(&self) -> &HandleColorTool;
-//
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:158 - `XCAFPrs_DocumentExplorer::VisMaterialTool`
-//   method: Return material tool.
-//   Reason: return type 'const Handle(XCAFDoc_VisMaterialTool)&' is unknown
-//   // pub fn vis_material_tool(&self) -> &HandleVisMaterialTool;
-//
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:59 - `XCAFPrs_DocumentExplorer::FindLabelFromPathId`
-//   static_method: Find a shape entity based on a text identifier constructed from OCAF labels defining full
-//   static_method: path.
-//   static_method: @sa DefineChildId()
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn find_label_from_path_id(theDocument: &HandleDocument, theId: &AsciiString, theParentLocation: &mut Location, theLocation: &mut Location) -> OwnedPtr<TDF_Label>;
-//
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:67 - `XCAFPrs_DocumentExplorer::FindLabelFromPathId`
-//   static_method: Find a shape entity based on a text identifier constructed from OCAF labels defining full
-//   static_method: path.
-//   static_method: @sa DefineChildId()
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn find_label_from_path_id(theDocument: &HandleDocument, theId: &AsciiString, theLocation: &mut Location) -> OwnedPtr<TDF_Label>;
-//
-// SKIPPED: **Source:** `XCAFPrs_DocumentExplorer.hxx`:78 - `XCAFPrs_DocumentExplorer::FindShapeFromPathId`
-//   static_method: Find a shape entity based on a text identifier constructed from OCAF labels defining full
-//   static_method: path.
-//   static_method: @sa DefineChildId()
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn find_shape_from_path_id(theDocument: &HandleDocument, theId: &AsciiString) -> OwnedPtr<TopoDS_Shape>;
 //
 
 // ========================
@@ -198,6 +224,18 @@ impl Style {
     /// Return TRUE if style is empty - does not override any properties.
     pub fn is_empty(&self) -> bool {
         unsafe { crate::ffi::XCAFPrs_Style_is_empty(self as *const Self) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:41 - `XCAFPrs_Style::Material()`
+    /// Return material.
+    pub fn material(&self) -> &crate::ffi::HandleXCAFDocVisMaterial {
+        unsafe { &*(crate::ffi::XCAFPrs_Style_material(self as *const Self)) }
+    }
+
+    /// **Source:** `XCAFPrs_Style.hxx`:44 - `XCAFPrs_Style::SetMaterial()`
+    /// Set material.
+    pub fn set_material(&mut self, theMaterial: &crate::ffi::HandleXCAFDocVisMaterial) {
+        unsafe { crate::ffi::XCAFPrs_Style_set_material(self as *mut Self, theMaterial) }
     }
 
     /// **Source:** `XCAFPrs_Style.hxx`:47 - `XCAFPrs_Style::IsSetColorSurf()`
@@ -285,18 +323,6 @@ impl Style {
         unsafe { crate::ffi::XCAFPrs_Style_is_equal(self as *const Self, theOther) }
     }
 }
-
-// ── Skipped symbols for Style (2 total) ──
-// SKIPPED: **Source:** `XCAFPrs_Style.hxx`:41 - `XCAFPrs_Style::Material`
-//   method: Return material.
-//   Reason: return type 'const Handle(XCAFDoc_VisMaterial)&' is unknown
-//   // pub fn material(&self) -> &HandleVisMaterial;
-//
-// SKIPPED: **Source:** `XCAFPrs_Style.hxx`:44 - `XCAFPrs_Style::SetMaterial`
-//   method: Set material.
-//   Reason: param 'theMaterial' uses unknown type 'const Handle(XCAFDoc_VisMaterial)&'
-//   // pub fn set_material(&mut self, theMaterial: &HandleVisMaterial);
-//
 
 // ========================
 // Additional type re-exports

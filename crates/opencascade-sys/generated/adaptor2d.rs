@@ -6,6 +6,12 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleBRepAdaptorCurve2d, HandleGeom2dAdaptorCurve, HandleProjLibCompProjectedCurve,
+    HandleProjLibProjectedCurve,
+};
+
 // ========================
 // From Adaptor2d_Curve2d.hxx
 // ========================
@@ -328,6 +334,112 @@ impl HandleAdaptor2dCurve2d {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor2d_Curve2d {
         unsafe { &mut *(crate::ffi::HandleAdaptor2dCurve2d_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Adaptor2d_Curve2d> to Handle<Adaptor2d_Line2d>
+    ///
+    /// Returns `None` if the handle does not point to a `Adaptor2d_Line2d` (or subclass).
+    pub fn downcast_to_line2d(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor2dLine2d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleAdaptor2dLine2d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor2d_Curve2d> to Handle<Adaptor2d_OffsetCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Adaptor2d_OffsetCurve` (or subclass).
+    pub fn downcast_to_offset_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor2dOffsetCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleAdaptor2dOffsetCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor2d_Curve2d> to Handle<BRepAdaptor_Curve2d>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepAdaptor_Curve2d` (or subclass).
+    pub fn downcast_to_curve2d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve2d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleBRepAdaptorCurve2d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor2d_Curve2d> to Handle<Geom2dAdaptor_Curve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2dAdaptor_Curve` (or subclass).
+    pub fn downcast_to_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dAdaptorCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleGeom2dAdaptorCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor2d_Curve2d> to Handle<ProjLib_CompProjectedCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `ProjLib_CompProjectedCurve` (or subclass).
+    pub fn downcast_to_comp_projected_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleProjLibCompProjectedCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleProjLibCompProjectedCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor2d_Curve2d> to Handle<ProjLib_ProjectedCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `ProjLib_ProjectedCurve` (or subclass).
+    pub fn downcast_to_projected_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleProjLibProjectedCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleProjLibProjectedCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -618,9 +730,45 @@ impl Line2d {
         unsafe { &mut *(crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dLine2d> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_Line2d_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
         unsafe { crate::ffi::Adaptor2d_Line2d_inherited_NbSamples(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleAdaptor2dLine2d;
+
+unsafe impl crate::CppDeletable for HandleAdaptor2dLine2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleAdaptor2dLine2d_destructor(ptr);
+    }
+}
+
+impl HandleAdaptor2dLine2d {
+    /// Dereference this Handle to access the underlying Adaptor2d_Line2d
+    pub fn get(&self) -> &crate::ffi::Adaptor2d_Line2d {
+        unsafe { &*(crate::ffi::HandleAdaptor2dLine2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor2d_Line2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor2d_Line2d {
+        unsafe { &mut *(crate::ffi::HandleAdaptor2dLine2d_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Adaptor2d_Line2d> to Handle<Adaptor2d_Curve2d>
+    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleAdaptor2dLine2d_to_HandleAdaptor2dCurve2d(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1008,6 +1156,46 @@ impl OffsetCurve {
     pub fn as_curve2d_mut(&mut self) -> &mut Curve2d {
         unsafe {
             &mut *(crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dOffsetCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor2d_OffsetCurve_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleAdaptor2dOffsetCurve;
+
+unsafe impl crate::CppDeletable for HandleAdaptor2dOffsetCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleAdaptor2dOffsetCurve_destructor(ptr);
+    }
+}
+
+impl HandleAdaptor2dOffsetCurve {
+    /// Dereference this Handle to access the underlying Adaptor2d_OffsetCurve
+    pub fn get(&self) -> &crate::ffi::Adaptor2d_OffsetCurve {
+        unsafe { &*(crate::ffi::HandleAdaptor2dOffsetCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor2d_OffsetCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor2d_OffsetCurve {
+        unsafe { &mut *(crate::ffi::HandleAdaptor2dOffsetCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Adaptor2d_OffsetCurve> to Handle<Adaptor2d_Curve2d>
+    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleAdaptor2dOffsetCurve_to_HandleAdaptor2dCurve2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

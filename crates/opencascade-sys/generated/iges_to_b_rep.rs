@@ -86,6 +86,12 @@ pub fn transfer_p_curve(
     unsafe { crate::ffi::IGESToBRep_transfer_p_curve(fromedge, toedge, face) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleIGESControlAlgoContainer, HandleIGESControlIGESBoundary, HandleIGESControlToolContainer,
+    HandleTransferActorOfProcessForTransient, HandleTransferActorOfTransientProcess,
+};
+
 // ========================
 // From IGESToBRep_Actor.hxx
 // ========================
@@ -127,6 +133,11 @@ impl Actor {
     /// Return "thecontinuity"
     pub fn get_continuity(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_Actor_get_continuity(self as *const Self) }
+    }
+
+    /// **Source:** `IGESToBRep_Actor.hxx`:56 - `IGESToBRep_Actor::Recognize()`
+    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESToBRep_Actor_recognize(self as *mut Self, start) }
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:66 - `IGESToBRep_Actor::UsedTolerance()`
@@ -199,6 +210,13 @@ impl Actor {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -240,13 +258,55 @@ impl Actor {
     }
 }
 
-// ── Skipped symbols for Actor (2 total) ──
-// SKIPPED: **Source:** `IGESToBRep_Actor.hxx`:56 - `IGESToBRep_Actor::Recognize`
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn recognize(&mut self, start: &HandleTransient) -> bool;
-//
+pub use crate::ffi::HandleIGESToBRepActor;
+
+unsafe impl crate::CppDeletable for HandleIGESToBRepActor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESToBRepActor_destructor(ptr);
+    }
+}
+
+impl HandleIGESToBRepActor {
+    /// Dereference this Handle to access the underlying IGESToBRep_Actor
+    pub fn get(&self) -> &crate::ffi::IGESToBRep_Actor {
+        unsafe { &*(crate::ffi::HandleIGESToBRepActor_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESToBRep_Actor
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_Actor {
+        unsafe { &mut *(crate::ffi::HandleIGESToBRepActor_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESToBRep_Actor> to Handle<Transfer_ActorOfTransientProcess>
+    pub fn to_handle_actor_of_transient_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESToBRepActor_to_HandleTransferActorOfTransientProcess(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESToBRep_Actor> to Handle<Transfer_ActorOfProcessForTransient>
+    pub fn to_handle_actor_of_process_for_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESToBRepActor_to_HandleTransferActorOfProcessForTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for Actor (1 total) ──
 // SKIPPED: **Source:** `IGESToBRep_Actor.hxx`:59 - `IGESToBRep_Actor::Transfer`
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
 //   // pub fn transfer(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
 //
 
@@ -334,6 +394,24 @@ impl HandleIGESToBRepAlgoContainer {
     /// Dereference this Handle to mutably access the underlying IGESToBRep_AlgoContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_AlgoContainer {
         unsafe { &mut *(crate::ffi::HandleIGESToBRepAlgoContainer_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<IGESToBRep_AlgoContainer> to Handle<IGESControl_AlgoContainer>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESControl_AlgoContainer` (or subclass).
+    pub fn downcast_to_algo_container(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlAlgoContainer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESToBRepAlgoContainer_downcast_to_HandleIGESControlAlgoContainer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -2172,6 +2250,24 @@ impl HandleIGESToBRepIGESBoundary {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_IGESBoundary {
         unsafe { &mut *(crate::ffi::HandleIGESToBRepIGESBoundary_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IGESToBRep_IGESBoundary> to Handle<IGESControl_IGESBoundary>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESControl_IGESBoundary` (or subclass).
+    pub fn downcast_to_iges_boundary(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlIGESBoundary>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESToBRepIGESBoundary_downcast_to_HandleIGESControlIGESBoundary(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -2203,6 +2299,14 @@ impl Reader {
     pub fn load_file(&mut self, filename: &str) -> i32 {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         unsafe { crate::ffi::IGESToBRep_Reader_load_file(self as *mut Self, c_filename.as_ptr()) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:67 - `IGESToBRep_Reader::Actor()`
+    /// Returns "theActor"
+    pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_actor(self as *const Self))
+        }
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:70 - `IGESToBRep_Reader::Clear()`
@@ -2288,7 +2392,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (11 total) ──
+// ── Skipped symbols for Reader (10 total) ──
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:54 - `IGESToBRep_Reader::SetModel`
 //   method: Specifies a Model to work on
 //   method: Also clears the result and Done status, sets TransientProcess
@@ -2310,11 +2414,6 @@ impl Reader {
 //   method: Returns the TransientProcess
 //   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
 //   // pub fn transient_process(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:67 - `IGESToBRep_Reader::Actor`
-//   method: Returns "theActor"
-//   Reason: return type 'Handle(IGESToBRep_Actor)' is unknown
-//   // pub fn actor(&self) -> OwnedPtr<Handle<IGESToBRep_Actor>>;
 //
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:116 - `IGESToBRep_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
@@ -2433,6 +2532,24 @@ impl HandleIGESToBRepToolContainer {
     /// Dereference this Handle to mutably access the underlying IGESToBRep_ToolContainer
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_ToolContainer {
         unsafe { &mut *(crate::ffi::HandleIGESToBRepToolContainer_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<IGESToBRep_ToolContainer> to Handle<IGESControl_ToolContainer>
+    ///
+    /// Returns `None` if the handle does not point to a `IGESControl_ToolContainer` (or subclass).
+    pub fn downcast_to_tool_container(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlToolContainer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIGESToBRepToolContainer_downcast_to_HandleIGESControlToolContainer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 

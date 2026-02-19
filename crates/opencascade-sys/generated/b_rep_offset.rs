@@ -187,6 +187,9 @@ impl TryFrom<i32> for Status {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleBRepToolsModification;
+
 // ========================
 // From BRepOffset_Analyse.hxx
 // ========================
@@ -1745,6 +1748,15 @@ impl SimpleOffset {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepOffsetSimpleOffset> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepOffset_SimpleOffset_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
@@ -1778,6 +1790,39 @@ impl SimpleOffset {
                 E,
                 F,
                 P,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepOffsetSimpleOffset;
+
+unsafe impl crate::CppDeletable for HandleBRepOffsetSimpleOffset {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepOffsetSimpleOffset_destructor(ptr);
+    }
+}
+
+impl HandleBRepOffsetSimpleOffset {
+    /// Dereference this Handle to access the underlying BRepOffset_SimpleOffset
+    pub fn get(&self) -> &crate::ffi::BRepOffset_SimpleOffset {
+        unsafe { &*(crate::ffi::HandleBRepOffsetSimpleOffset_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepOffset_SimpleOffset
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepOffset_SimpleOffset {
+        unsafe { &mut *(crate::ffi::HandleBRepOffsetSimpleOffset_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepOffset_SimpleOffset> to Handle<BRepTools_Modification>
+    pub fn to_handle_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepOffsetSimpleOffset_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
             )
         }
     }

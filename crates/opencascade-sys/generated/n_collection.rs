@@ -111,6 +111,50 @@ impl AccAllocator {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionAccAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_AccAllocator_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleNCollectionAccAllocator;
+
+unsafe impl crate::CppDeletable for HandleNCollectionAccAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNCollectionAccAllocator_destructor(ptr);
+    }
+}
+
+impl HandleNCollectionAccAllocator {
+    /// Dereference this Handle to access the underlying NCollection_AccAllocator
+    pub fn get(&self) -> &crate::ffi::NCollection_AccAllocator {
+        unsafe { &*(crate::ffi::HandleNCollectionAccAllocator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NCollection_AccAllocator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_AccAllocator {
+        unsafe { &mut *(crate::ffi::HandleNCollectionAccAllocator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NCollection_AccAllocator> to Handle<NCollection_BaseAllocator>
+    pub fn to_handle_base_allocator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionAccAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
 }
 
 // ── Skipped symbols for AccAllocator (3 total) ──
@@ -192,6 +236,50 @@ impl AlignedAllocator {
             &mut *(crate::ffi::NCollection_AlignedAllocator_as_NCollection_BaseAllocator_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionAlignedAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_AlignedAllocator_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleNCollectionAlignedAllocator;
+
+unsafe impl crate::CppDeletable for HandleNCollectionAlignedAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNCollectionAlignedAllocator_destructor(ptr);
+    }
+}
+
+impl HandleNCollectionAlignedAllocator {
+    /// Dereference this Handle to access the underlying NCollection_AlignedAllocator
+    pub fn get(&self) -> &crate::ffi::NCollection_AlignedAllocator {
+        unsafe { &*(crate::ffi::HandleNCollectionAlignedAllocator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NCollection_AlignedAllocator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_AlignedAllocator {
+        unsafe { &mut *(crate::ffi::HandleNCollectionAlignedAllocator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NCollection_AlignedAllocator> to Handle<NCollection_BaseAllocator>
+    pub fn to_handle_base_allocator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionAlignedAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -295,6 +383,96 @@ impl HandleNCollectionBaseAllocator {
     /// Dereference this Handle to mutably access the underlying NCollection_BaseAllocator
     pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_BaseAllocator {
         unsafe { &mut *(crate::ffi::HandleNCollectionBaseAllocator_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<NCollection_BaseAllocator> to Handle<NCollection_AccAllocator>
+    ///
+    /// Returns `None` if the handle does not point to a `NCollection_AccAllocator` (or subclass).
+    pub fn downcast_to_acc_allocator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionAccAllocator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionAccAllocator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_BaseAllocator> to Handle<NCollection_AlignedAllocator>
+    ///
+    /// Returns `None` if the handle does not point to a `NCollection_AlignedAllocator` (or subclass).
+    pub fn downcast_to_aligned_allocator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionAlignedAllocator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionAlignedAllocator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_BaseAllocator> to Handle<NCollection_HeapAllocator>
+    ///
+    /// Returns `None` if the handle does not point to a `NCollection_HeapAllocator` (or subclass).
+    pub fn downcast_to_heap_allocator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionHeapAllocator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionHeapAllocator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_BaseAllocator> to Handle<NCollection_IncAllocator>
+    ///
+    /// Returns `None` if the handle does not point to a `NCollection_IncAllocator` (or subclass).
+    pub fn downcast_to_inc_allocator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionIncAllocator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionIncAllocator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NCollection_BaseAllocator> to Handle<NCollection_WinHeapAllocator>
+    ///
+    /// Returns `None` if the handle does not point to a `NCollection_WinHeapAllocator` (or subclass).
+    pub fn downcast_to_win_heap_allocator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionWinHeapAllocator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionWinHeapAllocator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -812,6 +990,11 @@ impl HeapAllocator {
         unsafe { &*(crate::ffi::NCollection_HeapAllocator_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `NCollection_HeapAllocator.hxx`:35 - `NCollection_HeapAllocator::GlobalHeapAllocator()`
+    pub fn global_heap_allocator() -> &'static crate::ffi::HandleNCollectionHeapAllocator {
+        unsafe { &*(crate::ffi::NCollection_HeapAllocator_global_heap_allocator()) }
+    }
+
     /// **Source:** `NCollection_HeapAllocator.hxx`:47 - `NCollection_HeapAllocator::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -843,9 +1026,53 @@ impl HeapAllocator {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionHeapAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_HeapAllocator_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for HeapAllocator (4 total) ──
+pub use crate::ffi::HandleNCollectionHeapAllocator;
+
+unsafe impl crate::CppDeletable for HandleNCollectionHeapAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNCollectionHeapAllocator_destructor(ptr);
+    }
+}
+
+impl HandleNCollectionHeapAllocator {
+    /// Dereference this Handle to access the underlying NCollection_HeapAllocator
+    pub fn get(&self) -> &crate::ffi::NCollection_HeapAllocator {
+        unsafe { &*(crate::ffi::HandleNCollectionHeapAllocator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NCollection_HeapAllocator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_HeapAllocator {
+        unsafe { &mut *(crate::ffi::HandleNCollectionHeapAllocator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NCollection_HeapAllocator> to Handle<NCollection_BaseAllocator>
+    pub fn to_handle_base_allocator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionHeapAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for HeapAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:29 - `NCollection_HeapAllocator::Allocate`
 //   Reason: has unbindable types: return: raw pointer (void*)
 //   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
@@ -857,10 +1084,6 @@ impl HeapAllocator {
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:33 - `NCollection_HeapAllocator::Free`
 //   Reason: has unbindable types: param 'anAddress': raw pointer (void*)
 //   // pub fn free(&mut self, anAddress: /* void* */);
-//
-// SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:35 - `NCollection_HeapAllocator::GlobalHeapAllocator`
-//   Reason: return type 'const Handle(NCollection_HeapAllocator)&' is unknown
-//   // pub fn global_heap_allocator() -> &HandleHeapAllocator;
 //
 
 // ========================
@@ -970,6 +1193,50 @@ impl IncAllocator {
             &mut *(crate::ffi::NCollection_IncAllocator_as_NCollection_BaseAllocator_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionIncAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_IncAllocator_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleNCollectionIncAllocator;
+
+unsafe impl crate::CppDeletable for HandleNCollectionIncAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNCollectionIncAllocator_destructor(ptr);
+    }
+}
+
+impl HandleNCollectionIncAllocator {
+    /// Dereference this Handle to access the underlying NCollection_IncAllocator
+    pub fn get(&self) -> &crate::ffi::NCollection_IncAllocator {
+        unsafe { &*(crate::ffi::HandleNCollectionIncAllocator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NCollection_IncAllocator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_IncAllocator {
+        unsafe { &mut *(crate::ffi::HandleNCollectionIncAllocator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NCollection_IncAllocator> to Handle<NCollection_BaseAllocator>
+    pub fn to_handle_base_allocator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionIncAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1154,6 +1421,50 @@ impl WinHeapAllocator {
             &mut *(crate::ffi::NCollection_WinHeapAllocator_as_NCollection_BaseAllocator_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionWinHeapAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NCollection_WinHeapAllocator_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleNCollectionWinHeapAllocator;
+
+unsafe impl crate::CppDeletable for HandleNCollectionWinHeapAllocator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNCollectionWinHeapAllocator_destructor(ptr);
+    }
+}
+
+impl HandleNCollectionWinHeapAllocator {
+    /// Dereference this Handle to access the underlying NCollection_WinHeapAllocator
+    pub fn get(&self) -> &crate::ffi::NCollection_WinHeapAllocator {
+        unsafe { &*(crate::ffi::HandleNCollectionWinHeapAllocator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NCollection_WinHeapAllocator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_WinHeapAllocator {
+        unsafe { &mut *(crate::ffi::HandleNCollectionWinHeapAllocator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NCollection_WinHeapAllocator> to Handle<NCollection_BaseAllocator>
+    pub fn to_handle_base_allocator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNCollectionWinHeapAllocator_to_HandleNCollectionBaseAllocator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

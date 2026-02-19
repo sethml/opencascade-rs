@@ -106,6 +106,11 @@ impl BCirc {
         unsafe { &mut *(crate::ffi::GccInt_BCirc_as_GccInt_Bisec_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleGccIntBCirc> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -142,6 +147,35 @@ impl BCirc {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BCirc_inherited_Ellipse(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGccIntBCirc;
+
+unsafe impl crate::CppDeletable for HandleGccIntBCirc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGccIntBCirc_destructor(ptr);
+    }
+}
+
+impl HandleGccIntBCirc {
+    /// Dereference this Handle to access the underlying GccInt_BCirc
+    pub fn get(&self) -> &crate::ffi::GccInt_BCirc {
+        unsafe { &*(crate::ffi::HandleGccIntBCirc_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GccInt_BCirc
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BCirc {
+        unsafe { &mut *(crate::ffi::HandleGccIntBCirc_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GccInt_BCirc> to Handle<GccInt_Bisec>
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBCirc_to_HandleGccIntBisec(
                 self as *const Self,
             ))
         }
@@ -214,6 +248,13 @@ impl BElips {
         unsafe { &mut *(crate::ffi::GccInt_BElips_as_GccInt_Bisec_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGccIntBElips> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -252,6 +293,35 @@ impl BElips {
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BElips_inherited_Parabola(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGccIntBElips;
+
+unsafe impl crate::CppDeletable for HandleGccIntBElips {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGccIntBElips_destructor(ptr);
+    }
+}
+
+impl HandleGccIntBElips {
+    /// Dereference this Handle to access the underlying GccInt_BElips
+    pub fn get(&self) -> &crate::ffi::GccInt_BElips {
+        unsafe { &*(crate::ffi::HandleGccIntBElips_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GccInt_BElips
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BElips {
+        unsafe { &mut *(crate::ffi::HandleGccIntBElips_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GccInt_BElips> to Handle<GccInt_Bisec>
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBElips_to_HandleGccIntBisec(
                 self as *const Self,
             ))
         }
@@ -326,6 +396,13 @@ impl BHyper {
         unsafe { &mut *(crate::ffi::GccInt_BHyper_as_GccInt_Bisec_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGccIntBHyper> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -364,6 +441,35 @@ impl BHyper {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BHyper_inherited_Ellipse(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGccIntBHyper;
+
+unsafe impl crate::CppDeletable for HandleGccIntBHyper {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGccIntBHyper_destructor(ptr);
+    }
+}
+
+impl HandleGccIntBHyper {
+    /// Dereference this Handle to access the underlying GccInt_BHyper
+    pub fn get(&self) -> &crate::ffi::GccInt_BHyper {
+        unsafe { &*(crate::ffi::HandleGccIntBHyper_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GccInt_BHyper
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BHyper {
+        unsafe { &mut *(crate::ffi::HandleGccIntBHyper_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GccInt_BHyper> to Handle<GccInt_Bisec>
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBHyper_to_HandleGccIntBisec(
                 self as *const Self,
             ))
         }
@@ -436,6 +542,11 @@ impl BLine {
         unsafe { &mut *(crate::ffi::GccInt_BLine_as_GccInt_Bisec_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleGccIntBLine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -474,6 +585,35 @@ impl BLine {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BLine_inherited_Ellipse(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGccIntBLine;
+
+unsafe impl crate::CppDeletable for HandleGccIntBLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGccIntBLine_destructor(ptr);
+    }
+}
+
+impl HandleGccIntBLine {
+    /// Dereference this Handle to access the underlying GccInt_BLine
+    pub fn get(&self) -> &crate::ffi::GccInt_BLine {
+        unsafe { &*(crate::ffi::HandleGccIntBLine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GccInt_BLine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BLine {
+        unsafe { &mut *(crate::ffi::HandleGccIntBLine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GccInt_BLine> to Handle<GccInt_Bisec>
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBLine_to_HandleGccIntBisec(
                 self as *const Self,
             ))
         }
@@ -548,6 +688,13 @@ impl BParab {
         unsafe { &mut *(crate::ffi::GccInt_BParab_as_GccInt_Bisec_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGccIntBParab> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -586,6 +733,35 @@ impl BParab {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BParab_inherited_Ellipse(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGccIntBParab;
+
+unsafe impl crate::CppDeletable for HandleGccIntBParab {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGccIntBParab_destructor(ptr);
+    }
+}
+
+impl HandleGccIntBParab {
+    /// Dereference this Handle to access the underlying GccInt_BParab
+    pub fn get(&self) -> &crate::ffi::GccInt_BParab {
+        unsafe { &*(crate::ffi::HandleGccIntBParab_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GccInt_BParab
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BParab {
+        unsafe { &mut *(crate::ffi::HandleGccIntBParab_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GccInt_BParab> to Handle<GccInt_Bisec>
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBParab_to_HandleGccIntBisec(
                 self as *const Self,
             ))
         }
@@ -657,6 +833,13 @@ impl BPoint {
         unsafe { &mut *(crate::ffi::GccInt_BPoint_as_GccInt_Bisec_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGccIntBPoint> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
@@ -695,6 +878,35 @@ impl BPoint {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GccInt_BPoint_inherited_Ellipse(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGccIntBPoint;
+
+unsafe impl crate::CppDeletable for HandleGccIntBPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGccIntBPoint_destructor(ptr);
+    }
+}
+
+impl HandleGccIntBPoint {
+    /// Dereference this Handle to access the underlying GccInt_BPoint
+    pub fn get(&self) -> &crate::ffi::GccInt_BPoint {
+        unsafe { &*(crate::ffi::HandleGccIntBPoint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GccInt_BPoint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_BPoint {
+        unsafe { &mut *(crate::ffi::HandleGccIntBPoint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GccInt_BPoint> to Handle<GccInt_Bisec>
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGccIntBPoint_to_HandleGccIntBisec(
                 self as *const Self,
             ))
         }
@@ -825,5 +1037,89 @@ impl HandleGccIntBisec {
     /// Dereference this Handle to mutably access the underlying GccInt_Bisec
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccInt_Bisec {
         unsafe { &mut *(crate::ffi::HandleGccIntBisec_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<GccInt_Bisec> to Handle<GccInt_BCirc>
+    ///
+    /// Returns `None` if the handle does not point to a `GccInt_BCirc` (or subclass).
+    pub fn downcast_to_b_circ(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGccIntBCirc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBCirc(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GccInt_Bisec> to Handle<GccInt_BElips>
+    ///
+    /// Returns `None` if the handle does not point to a `GccInt_BElips` (or subclass).
+    pub fn downcast_to_b_elips(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGccIntBElips>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBElips(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GccInt_Bisec> to Handle<GccInt_BHyper>
+    ///
+    /// Returns `None` if the handle does not point to a `GccInt_BHyper` (or subclass).
+    pub fn downcast_to_b_hyper(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGccIntBHyper>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBHyper(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GccInt_Bisec> to Handle<GccInt_BLine>
+    ///
+    /// Returns `None` if the handle does not point to a `GccInt_BLine` (or subclass).
+    pub fn downcast_to_b_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGccIntBLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GccInt_Bisec> to Handle<GccInt_BParab>
+    ///
+    /// Returns `None` if the handle does not point to a `GccInt_BParab` (or subclass).
+    pub fn downcast_to_b_parab(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGccIntBParab>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBParab(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GccInt_Bisec> to Handle<GccInt_BPoint>
+    ///
+    /// Returns `None` if the handle does not point to a `GccInt_BPoint` (or subclass).
+    pub fn downcast_to_b_point(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGccIntBPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGccIntBisec_downcast_to_HandleGccIntBPoint(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }

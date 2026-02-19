@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleStepReprPropertyDefinitionRepresentation;
+
 // ========================
 // From StepShape_LimitsAndFits.hxx
 // ========================
@@ -220,6 +223,17 @@ impl ShapeDefinitionRepresentation {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeShapeDefinitionRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepShape_ShapeDefinitionRepresentation_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_PropertyDefinitionRepresentation.hxx`:37 - `StepRepr_PropertyDefinitionRepresentation::Init()`
     pub fn init(
         &mut self,
@@ -277,6 +291,41 @@ impl ShapeDefinitionRepresentation {
                 self as *mut Self,
                 UsedRepresentation,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepShapeShapeDefinitionRepresentation;
+
+unsafe impl crate::CppDeletable for HandleStepShapeShapeDefinitionRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepShapeShapeDefinitionRepresentation_destructor(ptr);
+    }
+}
+
+impl HandleStepShapeShapeDefinitionRepresentation {
+    /// Dereference this Handle to access the underlying StepShape_ShapeDefinitionRepresentation
+    pub fn get(&self) -> &crate::ffi::StepShape_ShapeDefinitionRepresentation {
+        unsafe {
+            &*(crate::ffi::HandleStepShapeShapeDefinitionRepresentation_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepShape_ShapeDefinitionRepresentation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepShape_ShapeDefinitionRepresentation {
+        unsafe {
+            &mut *(crate::ffi::HandleStepShapeShapeDefinitionRepresentation_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepShape_ShapeDefinitionRepresentation> to Handle<StepRepr_PropertyDefinitionRepresentation>
+    pub fn to_handle_property_definition_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprPropertyDefinitionRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepShapeShapeDefinitionRepresentation_to_HandleStepReprPropertyDefinitionRepresentation(self as *const Self))
         }
     }
 }

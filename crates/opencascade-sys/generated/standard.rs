@@ -835,6 +835,24 @@ impl Dump {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_get_pointer_prefix()) }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:391 - `Standard_Dump::GetPointerInfo()`
+    /// Convert handle pointer to address of the pointer. If the handle is NULL, the result is an
+    /// empty string.
+    /// @param thePointer a pointer
+    /// @param isShortInfo if true, all '0' symbols in the beginning of the pointer are skipped
+    /// @return the string value
+    pub fn get_pointer_info(
+        thePointer: &crate::ffi::HandleStandardTransient,
+        isShortInfo: bool,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Dump_get_pointer_info(
+                thePointer,
+                isShortInfo,
+            ))
+        }
+    }
+
     /// **Source:** `Standard_Dump.hxx`:460 - `Standard_Dump::DumpFieldToName()`
     /// Convert field name into dump text value, removes "&" and "my" prefixes
     /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
@@ -846,7 +864,7 @@ impl Dump {
     }
 }
 
-// ── Skipped symbols for Dump (14 total) ──
+// ── Skipped symbols for Dump (13 total) ──
 // SKIPPED: **Source:** `Standard_Dump.hxx`:333 - `Standard_Dump::Text`
 //   static_method: Converts stream value to string value. The result is original stream value.
 //   static_method: @param theStream source value
@@ -876,13 +894,6 @@ impl Dump {
 //   static_method: @param theOStream source value
 //   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
 //   // pub fn add_values_separator(theOStream: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:391 - `Standard_Dump::GetPointerInfo`
-//   static_method: Convert handle pointer to address of the pointer. If the handle is NULL, the result is an
-//   static_method: empty string.
-//   static_method: @param thePointer a pointer
-//   Reason: param 'thePointer' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn get_pointer_info(thePointer: &HandleTransient, isShortInfo: bool) -> OwnedPtr<TCollection_AsciiString>;
 //
 // SKIPPED: **Source:** `Standard_Dump.hxx`:400 - `Standard_Dump::GetPointerInfo`
 //   static_method: Convert pointer to address of the pointer. If the handle is NULL, the result is an empty
@@ -3377,6 +3388,35 @@ impl Transient {
     /// Returns type descriptor of Standard_Transient class
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Standard_Transient_get_type_descriptor()) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Standard_Transient_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStandardTransient;
+
+unsafe impl crate::CppDeletable for HandleStandardTransient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStandardTransient_destructor(ptr);
+    }
+}
+
+impl HandleStandardTransient {
+    /// Dereference this Handle to access the underlying Standard_Transient
+    pub fn get(&self) -> &crate::ffi::Standard_Transient {
+        unsafe { &*(crate::ffi::HandleStandardTransient_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Standard_Transient
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Standard_Transient {
+        unsafe { &mut *(crate::ffi::HandleStandardTransient_get_mut(self as *mut Self)) }
     }
 }
 

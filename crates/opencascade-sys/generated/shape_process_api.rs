@@ -35,6 +35,13 @@ impl ApplySequence {
         }
     }
 
+    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:46 - `ShapeProcessAPI_ApplySequence::Context()`
+    /// Returns object for managing resource file and sequence of
+    /// operators.
+    pub fn context(&mut self) -> &mut crate::ffi::HandleShapeProcessShapeContext {
+        unsafe { &mut *(crate::ffi::ShapeProcessAPI_ApplySequence_context(self as *mut Self)) }
+    }
+
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:53 - `ShapeProcessAPI_ApplySequence::PrepareShape()`
     /// Performs sequence of operators stored in myRsc.
     /// If <fillmap> is True adds history "shape-shape" into myMap
@@ -80,11 +87,3 @@ impl ApplySequence {
         }
     }
 }
-
-// ── Skipped symbols for ApplySequence (1 total) ──
-// SKIPPED: **Source:** `ShapeProcessAPI_ApplySequence.hxx`:46 - `ShapeProcessAPI_ApplySequence::Context`
-//   method: Returns object for managing resource file and sequence of
-//   method: operators.
-//   Reason: return type 'Handle(ShapeProcess_ShapeContext)&' is unknown
-//   // pub fn context(&mut self) -> &mut HandleShapeContext;
-//

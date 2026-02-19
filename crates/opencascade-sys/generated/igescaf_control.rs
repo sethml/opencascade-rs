@@ -58,6 +58,77 @@ impl Reader {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_Reader_ctor()) }
     }
 
+    /// **Source:** `IGESCAFControl_Reader.hxx`:62 - `IGESCAFControl_Reader::IGESCAFControl_Reader()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for IGES
+    pub fn new_handlexscontrolworksession_bool(
+        theWS: &crate::ffi::HandleXSControlWorkSession,
+        FromScratch: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESCAFControl_Reader_ctor_handlexscontrolworksession_bool(
+                    theWS,
+                    FromScratch,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESCAFControl_Reader.hxx`:62 - `IGESCAFControl_Reader::IGESCAFControl_Reader()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for IGES
+    pub fn new_handlexscontrolworksession(
+        theWS: &crate::ffi::HandleXSControlWorkSession,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlexscontrolworksession_bool(theWS, true)
+    }
+
+    /// **Source:** `IGESCAFControl_Reader.hxx`:74 - `IGESCAFControl_Reader::Transfer()`
+    /// Translates currently loaded IGES file into the document
+    /// Returns True if succeeded, and False in case of fail
+    pub fn transfer(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESCAFControl_Reader_transfer(self as *mut Self, theDoc, theProgress)
+        }
+    }
+
+    /// **Source:** `IGESCAFControl_Reader.hxx`:77 - `IGESCAFControl_Reader::Perform()`
+    pub fn perform_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        theFileName: &crate::t_collection::AsciiString,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, theFileName, theDoc, theProgress)
+        }
+    }
+
+    /// **Source:** `IGESCAFControl_Reader.hxx`:87 - `IGESCAFControl_Reader::Perform()`
+    /// Translate IGES file given by filename into the document
+    /// Return True if succeeded, and False in case of fail
+    pub fn perform_charptr_handletdocstddocument_progressrange(
+        &mut self,
+        theFileName: &str,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::IGESCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(
+                self as *mut Self,
+                c_theFileName.as_ptr(),
+                theDoc,
+                theProgress,
+            )
+        }
+    }
+
     /// **Source:** `IGESCAFControl_Reader.hxx`:92 - `IGESCAFControl_Reader::SetColorMode()`
     /// Set ColorMode for indicate read Colors or not.
     pub fn set_color_mode(&mut self, theMode: bool) {
@@ -147,11 +218,38 @@ impl Reader {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
+    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+        unsafe { crate::ffi::IGESCAFControl_Reader_inherited_SetWS(self as *mut Self, WS, scratch) }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:103 - `XSControl_Reader::WS()`
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_Reader_inherited_WS(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_Reader_inherited_Model(
                 self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:163 - `XSControl_Reader::RootForTransfer()`
+    pub fn root_for_transfer(
+        &mut self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_Reader_inherited_RootForTransfer(
+                self as *mut Self,
+                num,
             ))
         }
     }
@@ -177,6 +275,21 @@ impl Reader {
             crate::ffi::IGESCAFControl_Reader_inherited_TransferOne(
                 self as *mut Self,
                 num,
+                theProgress,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:182 - `XSControl_Reader::TransferEntity()`
+    pub fn transfer_entity(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_TransferEntity(
+                self as *mut Self,
+                start,
                 theProgress,
             )
         }
@@ -279,30 +392,6 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (4 total) ──
-// SKIPPED: **Source:** `IGESCAFControl_Reader.hxx`:62 - `IGESCAFControl_Reader::IGESCAFControl_Reader`
-//   constructor: Creates a reader tool and attaches it to an already existing Session
-//   constructor: Clears the session if it was not yet set for IGES
-//   Reason: param 'theWS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession_bool(theWS: &HandleWorkSession, FromScratch: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IGESCAFControl_Reader.hxx`:74 - `IGESCAFControl_Reader::Transfer`
-//   method: Translates currently loaded IGES file into the document
-//   method: Returns True if succeeded, and False in case of fail
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer(&mut self, theDoc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `IGESCAFControl_Reader.hxx`:77 - `IGESCAFControl_Reader::Perform`
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theFileName: &AsciiString, theDoc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `IGESCAFControl_Reader.hxx`:87 - `IGESCAFControl_Reader::Perform`
-//   method: Translate IGES file given by filename into the document
-//   method: Return True if succeeded, and False in case of fail
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theFileName: *const char, theDoc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-
 // ========================
 // From IGESCAFControl_Writer.hxx
 // ========================
@@ -343,6 +432,65 @@ impl Writer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESCAFControl_Writer_ctor()) }
     }
 
+    /// **Source:** `IGESCAFControl_Writer.hxx`:66 - `IGESCAFControl_Writer::IGESCAFControl_Writer()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for IGES
+    pub fn new_handlexscontrolworksession_bool(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+        scratch: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESCAFControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch),
+            )
+        }
+    }
+
+    /// **Source:** `IGESCAFControl_Writer.hxx`:72 - `IGESCAFControl_Writer::IGESCAFControl_Writer()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for IGES
+    /// Sets target Unit for the writing process.
+    pub fn new_handlexscontrolworksession_charptr(
+        theWS: &crate::ffi::HandleXSControlWorkSession,
+        theUnit: &str,
+    ) -> crate::OwnedPtr<Self> {
+        let c_theUnit = std::ffi::CString::new(theUnit).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESCAFControl_Writer_ctor_handlexscontrolworksession_charptr(
+                    theWS,
+                    c_theUnit.as_ptr(),
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IGESCAFControl_Writer.hxx`:66 - `IGESCAFControl_Writer::IGESCAFControl_Writer()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for IGES
+    pub fn new_handlexscontrolworksession(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlexscontrolworksession_bool(WS, true)
+    }
+
+    /// **Source:** `IGESCAFControl_Writer.hxx`:78 - `IGESCAFControl_Writer::Transfer()`
+    /// Transfers a document to a IGES model
+    /// Returns True if translation is OK
+    pub fn transfer_handletdocstddocument_progressrange(
+        &mut self,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESCAFControl_Writer_transfer_handletdocstddocument_progressrange(
+                self as *mut Self,
+                doc,
+                theProgress,
+            )
+        }
+    }
+
     /// **Source:** `IGESCAFControl_Writer.hxx`:84 - `IGESCAFControl_Writer::Transfer()`
     /// Transfers labels to a IGES model
     /// Returns True if translation is OK
@@ -372,6 +520,38 @@ impl Writer {
             crate::ffi::IGESCAFControl_Writer_transfer_label_progressrange(
                 self as *mut Self,
                 label,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `IGESCAFControl_Writer.hxx`:94 - `IGESCAFControl_Writer::Perform()`
+    pub fn perform_handletdocstddocument_asciistring_progressrange(
+        &mut self,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        filename: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, doc, filename, theProgress)
+        }
+    }
+
+    /// **Source:** `IGESCAFControl_Writer.hxx`:101 - `IGESCAFControl_Writer::Perform()`
+    /// Transfers a document and writes it to a IGES file
+    /// Returns True if translation is OK
+    pub fn perform_handletdocstddocument_charptr_progressrange(
+        &mut self,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        filename: &str,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::ffi::IGESCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(
+                self as *mut Self,
+                doc,
+                c_filename.as_ptr(),
                 theProgress,
             )
         }
@@ -422,6 +602,20 @@ impl Writer {
         }
     }
 
+    /// Inherited: **Source:** `IGESControl_Writer.hxx`:81 - `IGESControl_Writer::TransferProcess()`
+    pub fn transfer_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
+        unsafe {
+            &*(crate::ffi::IGESCAFControl_Writer_inherited_TransferProcess(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IGESControl_Writer.hxx`:85 - `IGESControl_Writer::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+        unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:90 - `IGESControl_Writer::AddShape()`
     pub fn add_shape(
         &mut self,
@@ -431,6 +625,11 @@ impl Writer {
         unsafe {
             crate::ffi::IGESCAFControl_Writer_inherited_AddShape(self as *mut Self, sh, theProgress)
         }
+    }
+
+    /// Inherited: **Source:** `IGESControl_Writer.hxx`:97 - `IGESControl_Writer::AddGeom()`
+    pub fn add_geom(&mut self, geom: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESCAFControl_Writer_inherited_AddGeom(self as *mut Self, geom) }
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:100 - `IGESControl_Writer::AddEntity()`
@@ -443,34 +642,3 @@ impl Writer {
         unsafe { crate::ffi::IGESCAFControl_Writer_inherited_ComputeModel(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for Writer (5 total) ──
-// SKIPPED: **Source:** `IGESCAFControl_Writer.hxx`:66 - `IGESCAFControl_Writer::IGESCAFControl_Writer`
-//   constructor: Creates a reader tool and attaches it to an already existing Session
-//   constructor: Clears the session if it was not yet set for IGES
-//   Reason: param 'WS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IGESCAFControl_Writer.hxx`:72 - `IGESCAFControl_Writer::IGESCAFControl_Writer`
-//   constructor: Creates a reader tool and attaches it to an already existing Session
-//   constructor: Clears the session if it was not yet set for IGES
-//   constructor: Sets target Unit for the writing process.
-//   Reason: param 'theWS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession_charptr(theWS: &HandleWorkSession, theUnit: *const char) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IGESCAFControl_Writer.hxx`:78 - `IGESCAFControl_Writer::Transfer`
-//   method: Transfers a document to a IGES model
-//   method: Returns True if translation is OK
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer(&mut self, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `IGESCAFControl_Writer.hxx`:94 - `IGESCAFControl_Writer::Perform`
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, doc: &HandleDocument, filename: &AsciiString, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `IGESCAFControl_Writer.hxx`:101 - `IGESCAFControl_Writer::Perform`
-//   method: Transfers a document and writes it to a IGES file
-//   method: Returns True if translation is OK
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, doc: &HandleDocument, filename: *const char, theProgress: &ProgressRange) -> bool;
-//

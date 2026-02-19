@@ -31,6 +31,14 @@ impl AP203Context {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_AP203Context_ctor()) }
     }
 
+    /// **Source:** `STEPConstruct_AP203Context.hxx`:107 - `STEPConstruct_AP203Context::Init()`
+    /// Takes SDR (part) which brings all standard data around part
+    /// (common for AP203 and AP214) and creates all the additional
+    /// entities required for AP203
+    pub fn init(&mut self, sdr: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation) {
+        unsafe { crate::ffi::STEPConstruct_AP203Context_init(self as *mut Self, sdr) }
+    }
+
     /// **Source:** `STEPConstruct_AP203Context.hxx`:162 - `STEPConstruct_AP203Context::Clear()`
     /// Clears all fields describing entities specific to each part
     pub fn clear(&mut self) {
@@ -62,7 +70,7 @@ impl AP203Context {
     }
 }
 
-// ── Skipped symbols for AP203Context (30 total) ──
+// ── Skipped symbols for AP203Context (29 total) ──
 // SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:57 - `STEPConstruct_AP203Context::DefaultApproval`
 //   method: Returns default approval entity which
 //   method: is used when no other data are available
@@ -137,13 +145,6 @@ impl AP203Context {
 //   method: 'classification officer', 'creation date', 'classification date',
 //   Reason: return type 'Handle(StepBasic_ApprovalRole)' is unknown
 //   // pub fn role_approver(&self) -> OwnedPtr<Handle<StepBasic_ApprovalRole>>;
-//
-// SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:107 - `STEPConstruct_AP203Context::Init`
-//   method: Takes SDR (part) which brings all standard data around part
-//   method: (common for AP203 and AP214) and creates all the additional
-//   method: entities required for AP203
-//   Reason: param 'sdr' uses unknown type 'const Handle(StepShape_ShapeDefinitionRepresentation)&'
-//   // pub fn init(&mut self, sdr: &HandleShapeDefinitionRepresentation);
 //
 // SKIPPED: **Source:** `STEPConstruct_AP203Context.hxx`:119 - `STEPConstruct_AP203Context::Init`
 //   method: Takes tool which describes standard data around part
@@ -234,6 +235,24 @@ impl ContextTool {
     /// **Source:** `STEPConstruct_ContextTool.hxx`:48 - `STEPConstruct_ContextTool::STEPConstruct_ContextTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_ContextTool_ctor()) }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:50 - `STEPConstruct_ContextTool::STEPConstruct_ContextTool()`
+    pub fn new_handlestepdatastepmodel(
+        aStepModel: &crate::ffi::HandleStepDataStepModel,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPConstruct_ContextTool_ctor_handlestepdatastepmodel(aStepModel),
+            )
+        }
+    }
+
+    /// **Source:** `STEPConstruct_ContextTool.hxx`:54 - `STEPConstruct_ContextTool::SetModel()`
+    /// Initialize ApplicationProtocolDefinition by the first
+    /// entity of that type found in the model
+    pub fn set_model(&mut self, aStepModel: &crate::ffi::HandleStepDataStepModel) {
+        unsafe { crate::ffi::STEPConstruct_ContextTool_set_model(self as *mut Self, aStepModel) }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:56 - `STEPConstruct_ContextTool::SetGlobalFactor()`
@@ -387,17 +406,7 @@ impl ContextTool {
     }
 }
 
-// ── Skipped symbols for ContextTool (6 total) ──
-// SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:50 - `STEPConstruct_ContextTool::STEPConstruct_ContextTool`
-//   Reason: param 'aStepModel' uses unknown Handle type
-//   // pub fn new_handlestepdatastepmodel(aStepModel: &HandleStepModel) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:54 - `STEPConstruct_ContextTool::SetModel`
-//   method: Initialize ApplicationProtocolDefinition by the first
-//   method: entity of that type found in the model
-//   Reason: param 'aStepModel' uses unknown type 'const Handle(StepData_StepModel)&'
-//   // pub fn set_model(&mut self, aStepModel: &HandleStepModel);
-//
+// ── Skipped symbols for ContextTool (4 total) ──
 // SKIPPED: **Source:** `STEPConstruct_ContextTool.hxx`:58 - `STEPConstruct_ContextTool::GetAPD`
 //   Reason: return type 'Handle(StepBasic_ApplicationProtocolDefinition)' is unknown
 //   // pub fn get_apd(&mut self) -> OwnedPtr<Handle<StepBasic_ApplicationProtocolDefinition>>;
@@ -450,6 +459,24 @@ impl Tool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPConstruct_Tool_ctor()) }
     }
 
+    /// **Source:** `STEPConstruct_Tool.hxx`:50 - `STEPConstruct_Tool::STEPConstruct_Tool()`
+    /// Creates a tool and loads it with worksession
+    pub fn new_handlexscontrolworksession(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPConstruct_Tool_ctor_handlexscontrolworksession(WS),
+            )
+        }
+    }
+
+    /// **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
+    /// Returns currently loaded WorkSession
+    pub fn ws(&self) -> &crate::ffi::HandleXSControlWorkSession {
+        unsafe { &*(crate::ffi::STEPConstruct_Tool_ws(self as *const Self)) }
+    }
+
     /// **Source:** `STEPConstruct_Tool.hxx`:56 - `STEPConstruct_Tool::Model()`
     /// Returns current model (Null if not loaded)
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
@@ -463,28 +490,19 @@ impl Tool {
     pub fn graph(&self, recompute: bool) -> &crate::interface::Graph {
         unsafe { &*(crate::ffi::STEPConstruct_Tool_graph(self as *const Self, recompute)) }
     }
+
+    /// **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess()`
+    /// Returns FinderProcess (writing; Null if not loaded)
+    pub fn finder_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
+        unsafe { &*(crate::ffi::STEPConstruct_Tool_finder_process(self as *const Self)) }
+    }
 }
 
-// ── Skipped symbols for Tool (4 total) ──
-// SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:50 - `STEPConstruct_Tool::STEPConstruct_Tool`
-//   constructor: Creates a tool and loads it with worksession
-//   Reason: param 'WS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession(WS: &HandleWorkSession) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS`
-//   method: Returns currently loaded WorkSession
-//   Reason: return type 'const Handle(XSControl_WorkSession)&' is unknown
-//   // pub fn ws(&self) -> &HandleWorkSession;
-//
+// ── Skipped symbols for Tool (1 total) ──
 // SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess`
 //   method: Returns TransientProcess (reading; Null if not loaded)
 //   Reason: return type 'const Handle(Transfer_TransientProcess)&' is unknown
 //   // pub fn transient_process(&self) -> &HandleTransientProcess;
-//
-// SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess`
-//   method: Returns FinderProcess (writing; Null if not loaded)
-//   Reason: return type 'const Handle(Transfer_FinderProcess)&' is unknown
-//   // pub fn finder_process(&self) -> &HandleFinderProcess;
 //
 
 // ========================

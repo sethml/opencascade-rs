@@ -42,6 +42,40 @@ pub fn prog_id_from_guid(
     unsafe { crate::ffi::TDF_prog_id_from_guid(ID, ProgID) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleTDataStdAsciiString, HandleTDataStdBooleanArray, HandleTDataStdBooleanList,
+    HandleTDataStdByteArray, HandleTDataStdComment, HandleTDataStdCurrent,
+    HandleTDataStdDeltaOnModificationOfByteArray,
+    HandleTDataStdDeltaOnModificationOfExtStringArray, HandleTDataStdDeltaOnModificationOfIntArray,
+    HandleTDataStdDeltaOnModificationOfIntPackedMap, HandleTDataStdDeltaOnModificationOfRealArray,
+    HandleTDataStdDirectory, HandleTDataStdExpression, HandleTDataStdExtStringArray,
+    HandleTDataStdExtStringList, HandleTDataStdGenericEmpty, HandleTDataStdGenericExtString,
+    HandleTDataStdIntPackedMap, HandleTDataStdInteger, HandleTDataStdIntegerArray,
+    HandleTDataStdIntegerList, HandleTDataStdName, HandleTDataStdNamedData, HandleTDataStdNoteBook,
+    HandleTDataStdReal, HandleTDataStdRealArray, HandleTDataStdRealList,
+    HandleTDataStdReferenceArray, HandleTDataStdReferenceList, HandleTDataStdRelation,
+    HandleTDataStdTick, HandleTDataStdTreeNode, HandleTDataStdUAttribute, HandleTDataStdVariable,
+    HandleTDataXtdAxis, HandleTDataXtdConstraint, HandleTDataXtdGeometry, HandleTDataXtdPatternStd,
+    HandleTDataXtdPlacement, HandleTDataXtdPlane, HandleTDataXtdPoint, HandleTDataXtdPosition,
+    HandleTDataXtdPresentation, HandleTDataXtdShape, HandleTDataXtdTriangulation,
+    HandleTDocStdCompoundDelta, HandleTDocStdModified, HandleTDocStdOwner, HandleTDocStdXLink,
+    HandleTDocStdXLinkRoot, HandleTFunctionFunction, HandleTFunctionGraphNode,
+    HandleTFunctionLogbook, HandleTFunctionScope, HandleTNamingDeltaOnModification,
+    HandleTNamingDeltaOnRemoval, HandleTNamingNamedShape, HandleTNamingNaming,
+    HandleTNamingUsedShapes, HandleTObjTIntSparseArray, HandleTObjTModel, HandleTObjTNameContainer,
+    HandleTObjTObject, HandleTObjTReference, HandleTObjTXYZ, HandleXCAFDocArea,
+    HandleXCAFDocAssemblyItemRef, HandleXCAFDocCentroid, HandleXCAFDocClippingPlaneTool,
+    HandleXCAFDocColor, HandleXCAFDocColorTool, HandleXCAFDocDatum, HandleXCAFDocDimTol,
+    HandleXCAFDocDimTolTool, HandleXCAFDocDimension, HandleXCAFDocDocumentTool,
+    HandleXCAFDocGeomTolerance, HandleXCAFDocGraphNode, HandleXCAFDocLayerTool,
+    HandleXCAFDocLengthUnit, HandleXCAFDocLocation, HandleXCAFDocMaterial,
+    HandleXCAFDocMaterialTool, HandleXCAFDocNote, HandleXCAFDocNoteBalloon,
+    HandleXCAFDocNoteBinData, HandleXCAFDocNoteComment, HandleXCAFDocNotesTool,
+    HandleXCAFDocShapeMapTool, HandleXCAFDocShapeTool, HandleXCAFDocView, HandleXCAFDocViewTool,
+    HandleXCAFDocVisMaterial, HandleXCAFDocVisMaterialTool, HandleXCAFDocVolume,
+};
+
 // ========================
 // From TDF_Attribute.hxx
 // ========================
@@ -382,6 +416,82 @@ impl Attribute {
         unsafe { crate::ffi::TDF_Attribute_restore(self as *mut Self, anAttribute) }
     }
 
+    /// **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    /// Makes an AttributeDelta because <me>
+    /// appeared. The only known use of a redefinition of
+    /// this method is to return a null handle (no delta).
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Attribute_delta_on_addition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    /// Makes an AttributeDelta because <me> has been
+    /// forgotten.
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Attribute_delta_on_forget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    /// Makes an AttributeDelta because <me> has been
+    /// resumed.
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Attribute_delta_on_resume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    /// Makes a DeltaOnModification between <me> and
+    /// <anOldAttribute.
+    pub fn delta_on_modification_handletdfattribute(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDF_Attribute_delta_on_modification_handletdfattribute(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TDF_Attribute.hxx`:312 - `TDF_Attribute::DeltaOnModification()`
+    /// Applies a DeltaOnModification to <me>.
+    pub fn delta_on_modification_handletdfdeltaonmodification(
+        &mut self,
+        aDelta: &crate::ffi::HandleTDFDeltaOnModification,
+    ) {
+        unsafe {
+            crate::ffi::TDF_Attribute_delta_on_modification_handletdfdeltaonmodification(
+                self as *mut Self,
+                aDelta,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    /// Makes a DeltaOnRemoval on <me> because <me> has
+    /// disappeared from the DS.
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Attribute_delta_on_removal(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `TDF_Attribute.hxx`:320 - `TDF_Attribute::NewEmpty()`
     /// Returns an new empty attribute from the good end
     /// type. It is used by the copy algorithm.
@@ -482,45 +592,1433 @@ impl HandleTDFAttribute {
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_Attribute {
         unsafe { &mut *(crate::ffi::HandleTDFAttribute_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDF_Reference>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_Reference` (or subclass).
+    pub fn downcast_to_reference(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDFReference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDF_TagSource>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_TagSource` (or subclass).
+    pub fn downcast_to_tag_source(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFTagSource>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDFTagSource(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_AsciiString>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_AsciiString` (or subclass).
+    pub fn downcast_to_ascii_string(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdAsciiString>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdAsciiString(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_BooleanArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_BooleanArray` (or subclass).
+    pub fn downcast_to_boolean_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdBooleanArray(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_BooleanList>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_BooleanList` (or subclass).
+    pub fn downcast_to_boolean_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdBooleanList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_ByteArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_ByteArray` (or subclass).
+    pub fn downcast_to_byte_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdByteArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdByteArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Comment>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Comment` (or subclass).
+    pub fn downcast_to_comment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdComment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdComment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Current>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Current` (or subclass).
+    pub fn downcast_to_current(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdCurrent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdCurrent(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Directory>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Directory` (or subclass).
+    pub fn downcast_to_directory(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDirectory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdDirectory(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Expression>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Expression` (or subclass).
+    pub fn downcast_to_expression(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdExpression>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdExpression(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_ExtStringArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_ExtStringArray` (or subclass).
+    pub fn downcast_to_ext_string_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdExtStringArray(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_ExtStringList>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_ExtStringList` (or subclass).
+    pub fn downcast_to_ext_string_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdExtStringList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_GenericEmpty>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_GenericEmpty` (or subclass).
+    pub fn downcast_to_generic_empty(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdGenericEmpty(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_GenericExtString>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_GenericExtString` (or subclass).
+    pub fn downcast_to_generic_ext_string(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdGenericExtString>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdGenericExtString(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_IntPackedMap>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_IntPackedMap` (or subclass).
+    pub fn downcast_to_int_packed_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdIntPackedMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdIntPackedMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Integer>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Integer` (or subclass).
+    pub fn downcast_to_integer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdInteger>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdInteger(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_IntegerArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_IntegerArray` (or subclass).
+    pub fn downcast_to_integer_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdIntegerArray(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_IntegerList>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_IntegerList` (or subclass).
+    pub fn downcast_to_integer_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdIntegerList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Name>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Name` (or subclass).
+    pub fn downcast_to_name(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdName(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_NamedData>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_NamedData` (or subclass).
+    pub fn downcast_to_named_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdNamedData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdNamedData(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_NoteBook>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_NoteBook` (or subclass).
+    pub fn downcast_to_note_book(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdNoteBook>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdNoteBook(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Real>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Real` (or subclass).
+    pub fn downcast_to_real(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdReal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdReal(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_RealArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_RealArray` (or subclass).
+    pub fn downcast_to_real_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdRealArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdRealArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_RealList>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_RealList` (or subclass).
+    pub fn downcast_to_real_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdRealList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdRealList(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_ReferenceArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_ReferenceArray` (or subclass).
+    pub fn downcast_to_reference_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdReferenceArray(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_ReferenceList>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_ReferenceList` (or subclass).
+    pub fn downcast_to_reference_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdReferenceList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Relation>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Relation` (or subclass).
+    pub fn downcast_to_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdRelation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Tick>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Tick` (or subclass).
+    pub fn downcast_to_tick(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdTick>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdTick(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_TreeNode>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_TreeNode` (or subclass).
+    pub fn downcast_to_tree_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdTreeNode(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_UAttribute>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_UAttribute` (or subclass).
+    pub fn downcast_to_u_attribute(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdUAttribute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdUAttribute(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataStd_Variable>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Variable` (or subclass).
+    pub fn downcast_to_variable(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdVariable>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdVariable(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Axis>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Axis` (or subclass).
+    pub fn downcast_to_axis(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdAxis(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Constraint` (or subclass).
+    pub fn downcast_to_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdConstraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdConstraint(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Geometry>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Geometry` (or subclass).
+    pub fn downcast_to_geometry(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdGeometry>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdGeometry(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_PatternStd>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_PatternStd` (or subclass).
+    pub fn downcast_to_pattern_std(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPatternStd>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPatternStd(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Placement>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Placement` (or subclass).
+    pub fn downcast_to_placement(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPlacement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPlacement(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Plane>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Plane` (or subclass).
+    pub fn downcast_to_plane(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPlane(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Point>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Point` (or subclass).
+    pub fn downcast_to_point(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPoint(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Position>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Position` (or subclass).
+    pub fn downcast_to_position(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPosition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPosition(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Presentation>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Presentation` (or subclass).
+    pub fn downcast_to_presentation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPresentation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Shape>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Shape` (or subclass).
+    pub fn downcast_to_shape(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdShape(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDataXtd_Triangulation>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Triangulation` (or subclass).
+    pub fn downcast_to_triangulation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdTriangulation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdTriangulation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDocStd_Modified>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_Modified` (or subclass).
+    pub fn downcast_to_modified(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdModified>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDocStdModified(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDocStd_Owner>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_Owner` (or subclass).
+    pub fn downcast_to_owner(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdOwner>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDocStdOwner(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDocStd_XLink>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_XLink` (or subclass).
+    pub fn downcast_to_x_link(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdXLink>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDocStdXLink(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TDocStd_XLinkRoot>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_XLinkRoot` (or subclass).
+    pub fn downcast_to_x_link_root(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdXLinkRoot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTDocStdXLinkRoot(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TFunction_Function>
+    ///
+    /// Returns `None` if the handle does not point to a `TFunction_Function` (or subclass).
+    pub fn downcast_to_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTFunctionFunction(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TFunction_GraphNode>
+    ///
+    /// Returns `None` if the handle does not point to a `TFunction_GraphNode` (or subclass).
+    pub fn downcast_to_t_function_graph_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionGraphNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTFunctionGraphNode(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TFunction_Logbook>
+    ///
+    /// Returns `None` if the handle does not point to a `TFunction_Logbook` (or subclass).
+    pub fn downcast_to_logbook(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTFunctionLogbook(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TFunction_Scope>
+    ///
+    /// Returns `None` if the handle does not point to a `TFunction_Scope` (or subclass).
+    pub fn downcast_to_scope(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionScope>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTFunctionScope(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TNaming_NamedShape>
+    ///
+    /// Returns `None` if the handle does not point to a `TNaming_NamedShape` (or subclass).
+    pub fn downcast_to_named_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTNamingNamedShape(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TNaming_Naming>
+    ///
+    /// Returns `None` if the handle does not point to a `TNaming_Naming` (or subclass).
+    pub fn downcast_to_naming(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingNaming>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTNamingNaming(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TNaming_UsedShapes>
+    ///
+    /// Returns `None` if the handle does not point to a `TNaming_UsedShapes` (or subclass).
+    pub fn downcast_to_used_shapes(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingUsedShapes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTNamingUsedShapes(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TObj_TIntSparseArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_TIntSparseArray` (or subclass).
+    pub fn downcast_to_t_int_sparse_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTIntSparseArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTIntSparseArray(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TObj_TModel>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_TModel` (or subclass).
+    pub fn downcast_to_t_model(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTModel(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TObj_TNameContainer>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_TNameContainer` (or subclass).
+    pub fn downcast_to_t_name_container(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTNameContainer(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TObj_TObject>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_TObject` (or subclass).
+    pub fn downcast_to_t_object(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTObject(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TObj_TReference>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_TReference` (or subclass).
+    pub fn downcast_to_t_reference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTReference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTReference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<TObj_TXYZ>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_TXYZ` (or subclass).
+    pub fn downcast_to_txyz(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTXYZ>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTXYZ(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Area>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Area` (or subclass).
+    pub fn downcast_to_area(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocArea(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_AssemblyItemRef>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_AssemblyItemRef` (or subclass).
+    pub fn downcast_to_assembly_item_ref(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocAssemblyItemRef(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Centroid>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Centroid` (or subclass).
+    pub fn downcast_to_centroid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocCentroid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocCentroid(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_ClippingPlaneTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ClippingPlaneTool` (or subclass).
+    pub fn downcast_to_clipping_plane_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocClippingPlaneTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocClippingPlaneTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Color>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Color` (or subclass).
+    pub fn downcast_to_color(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocColor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocColor(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_ColorTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ColorTool` (or subclass).
+    pub fn downcast_to_color_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocColorTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocColorTool(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Datum>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Datum` (or subclass).
+    pub fn downcast_to_datum(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDatum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDatum(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_DimTol>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_DimTol` (or subclass).
+    pub fn downcast_to_dim_tol(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTol>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDimTol(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_DimTolTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_DimTolTool` (or subclass).
+    pub fn downcast_to_dim_tol_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTolTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDimTolTool(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Dimension>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Dimension` (or subclass).
+    pub fn downcast_to_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDimension(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_DocumentTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_DocumentTool` (or subclass).
+    pub fn downcast_to_document_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDocumentTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDocumentTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_GeomTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_GeomTolerance` (or subclass).
+    pub fn downcast_to_geom_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocGeomTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocGeomTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_GraphNode>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_GraphNode` (or subclass).
+    pub fn downcast_to_xcaf_doc_graph_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocGraphNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocGraphNode(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_LayerTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_LayerTool` (or subclass).
+    pub fn downcast_to_layer_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocLayerTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocLayerTool(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_LengthUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_LengthUnit` (or subclass).
+    pub fn downcast_to_length_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocLengthUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocLengthUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Location>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Location` (or subclass).
+    pub fn downcast_to_location(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocLocation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocLocation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Material>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Material` (or subclass).
+    pub fn downcast_to_material(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterial>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocMaterial(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_MaterialTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_MaterialTool` (or subclass).
+    pub fn downcast_to_material_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterialTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocMaterialTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Note>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Note` (or subclass).
+    pub fn downcast_to_note(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNote>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNote(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_NoteBalloon>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NoteBalloon` (or subclass).
+    pub fn downcast_to_note_balloon(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBalloon>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNoteBalloon(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_NoteBinData>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NoteBinData` (or subclass).
+    pub fn downcast_to_note_bin_data(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBinData>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNoteBinData(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_NoteComment>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NoteComment` (or subclass).
+    pub fn downcast_to_note_comment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteComment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNoteComment(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_NotesTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NotesTool` (or subclass).
+    pub fn downcast_to_notes_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNotesTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNotesTool(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_ShapeMapTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ShapeMapTool` (or subclass).
+    pub fn downcast_to_shape_map_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeMapTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocShapeMapTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_ShapeTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ShapeTool` (or subclass).
+    pub fn downcast_to_shape_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocShapeTool(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_View>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_View` (or subclass).
+    pub fn downcast_to_view(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocView(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_ViewTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ViewTool` (or subclass).
+    pub fn downcast_to_view_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocViewTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocViewTool(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_VisMaterial>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_VisMaterial` (or subclass).
+    pub fn downcast_to_vis_material(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterial>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocVisMaterial(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_VisMaterialTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_VisMaterialTool` (or subclass).
+    pub fn downcast_to_vis_material_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterialTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocVisMaterialTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_Attribute> to Handle<XCAFDoc_Volume>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Volume` (or subclass).
+    pub fn downcast_to_volume(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocVolume>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocVolume(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for Attribute (8 total) ──
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition`
-//   method: Makes an AttributeDelta because <me>
-//   method: appeared. The only known use of a redefinition of
-//   method: this method is to return a null handle (no delta).
-//   Reason: return type 'Handle(TDF_DeltaOnAddition)' is unknown
-//   // pub fn delta_on_addition(&self) -> OwnedPtr<Handle<TDF_DeltaOnAddition>>;
-//
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget`
-//   method: Makes an AttributeDelta because <me> has been
-//   method: forgotten.
-//   Reason: return type 'Handle(TDF_DeltaOnForget)' is unknown
-//   // pub fn delta_on_forget(&self) -> OwnedPtr<Handle<TDF_DeltaOnForget>>;
-//
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume`
-//   method: Makes an AttributeDelta because <me> has been
-//   method: resumed.
-//   Reason: return type 'Handle(TDF_DeltaOnResume)' is unknown
-//   // pub fn delta_on_resume(&self) -> OwnedPtr<Handle<TDF_DeltaOnResume>>;
-//
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification`
-//   method: Makes a DeltaOnModification between <me> and
-//   method: <anOldAttribute.
-//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
-//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
-//
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:312 - `TDF_Attribute::DeltaOnModification`
-//   method: Applies a DeltaOnModification to <me>.
-//   Reason: param 'aDelta' uses unknown type 'const Handle(TDF_DeltaOnModification)&'
-//   // pub fn delta_on_modification(&mut self, aDelta: &HandleDeltaOnModification);
-//
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval`
-//   method: Makes a DeltaOnRemoval on <me> because <me> has
-//   method: disappeared from the DS.
-//   Reason: return type 'Handle(TDF_DeltaOnRemoval)' is unknown
-//   // pub fn delta_on_removal(&self) -> OwnedPtr<Handle<TDF_DeltaOnRemoval>>;
-//
+// ── Skipped symbols for Attribute (2 total) ──
 // SKIPPED: **Source:** `TDF_Attribute.hxx`:349 - `TDF_Attribute::Dump`
 //   method: Dumps the minimum information about <me> on
 //   method: <aStream>.
@@ -626,6 +2124,249 @@ impl HandleTDFAttributeDelta {
     /// Dereference this Handle to mutably access the underlying TDF_AttributeDelta
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_AttributeDelta {
         unsafe { &mut *(crate::ffi::HandleTDFAttributeDelta_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDF_DefaultDeltaOnModification>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DefaultDeltaOnModification` (or subclass).
+    pub fn downcast_to_default_delta_on_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDefaultDeltaOnModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDF_DefaultDeltaOnRemoval>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DefaultDeltaOnRemoval` (or subclass).
+    pub fn downcast_to_default_delta_on_removal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnRemoval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDefaultDeltaOnRemoval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDF_DeltaOnAddition>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DeltaOnAddition` (or subclass).
+    pub fn downcast_to_delta_on_addition(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnAddition(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDF_DeltaOnForget>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DeltaOnForget` (or subclass).
+    pub fn downcast_to_delta_on_forget(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnForget(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDF_DeltaOnModification>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DeltaOnModification` (or subclass).
+    pub fn downcast_to_tdf_delta_on_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDF_DeltaOnRemoval>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DeltaOnRemoval` (or subclass).
+    pub fn downcast_to_tdf_delta_on_removal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnRemoval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDF_DeltaOnResume>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DeltaOnResume` (or subclass).
+    pub fn downcast_to_delta_on_resume(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnResume(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDataStd_DeltaOnModificationOfByteArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfByteArray` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_byte_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfByteArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDataStd_DeltaOnModificationOfExtStringArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfExtStringArray` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_ext_string_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfExtStringArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDataStd_DeltaOnModificationOfIntArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfIntArray` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_int_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfIntArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDataStd_DeltaOnModificationOfIntPackedMap>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfIntPackedMap` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_int_packed_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfIntPackedMap(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TDataStd_DeltaOnModificationOfRealArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfRealArray` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_real_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfRealArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TNaming_DeltaOnModification>
+    ///
+    /// Returns `None` if the handle does not point to a `TNaming_DeltaOnModification` (or subclass).
+    pub fn downcast_to_t_naming_delta_on_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTNamingDeltaOnModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_AttributeDelta> to Handle<TNaming_DeltaOnRemoval>
+    ///
+    /// Returns `None` if the handle does not point to a `TNaming_DeltaOnRemoval` (or subclass).
+    pub fn downcast_to_t_naming_delta_on_removal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnRemoval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTNamingDeltaOnRemoval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -1806,6 +3547,17 @@ impl DefaultDeltaOnModification {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_DefaultDeltaOnModification_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
@@ -1830,6 +3582,54 @@ impl DefaultDeltaOnModification {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DefaultDeltaOnModification_inherited_ID(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDFDefaultDeltaOnModification;
+
+unsafe impl crate::CppDeletable for HandleTDFDefaultDeltaOnModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFDefaultDeltaOnModification_destructor(ptr);
+    }
+}
+
+impl HandleTDFDefaultDeltaOnModification {
+    /// Dereference this Handle to access the underlying TDF_DefaultDeltaOnModification
+    pub fn get(&self) -> &crate::ffi::TDF_DefaultDeltaOnModification {
+        unsafe { &*(crate::ffi::HandleTDFDefaultDeltaOnModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_DefaultDeltaOnModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DefaultDeltaOnModification {
+        unsafe {
+            &mut *(crate::ffi::HandleTDFDefaultDeltaOnModification_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<TDF_DefaultDeltaOnModification> to Handle<TDF_DeltaOnModification>
+    pub fn to_handle_delta_on_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDefaultDeltaOnModification_to_HandleTDFDeltaOnModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDF_DefaultDeltaOnModification> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDefaultDeltaOnModification_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1919,6 +3719,17 @@ impl DefaultDeltaOnRemoval {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_DefaultDeltaOnRemoval_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
@@ -1943,6 +3754,52 @@ impl DefaultDeltaOnRemoval {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_ID(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDFDefaultDeltaOnRemoval;
+
+unsafe impl crate::CppDeletable for HandleTDFDefaultDeltaOnRemoval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFDefaultDeltaOnRemoval_destructor(ptr);
+    }
+}
+
+impl HandleTDFDefaultDeltaOnRemoval {
+    /// Dereference this Handle to access the underlying TDF_DefaultDeltaOnRemoval
+    pub fn get(&self) -> &crate::ffi::TDF_DefaultDeltaOnRemoval {
+        unsafe { &*(crate::ffi::HandleTDFDefaultDeltaOnRemoval_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_DefaultDeltaOnRemoval
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DefaultDeltaOnRemoval {
+        unsafe { &mut *(crate::ffi::HandleTDFDefaultDeltaOnRemoval_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDF_DefaultDeltaOnRemoval> to Handle<TDF_DeltaOnRemoval>
+    pub fn to_handle_delta_on_removal(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDefaultDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDF_DefaultDeltaOnRemoval> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDefaultDeltaOnRemoval_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -2065,6 +3922,22 @@ impl HandleTDFDelta {
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_Delta {
         unsafe { &mut *(crate::ffi::HandleTDFDelta_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<TDF_Delta> to Handle<TDocStd_CompoundDelta>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_CompoundDelta` (or subclass).
+    pub fn downcast_to_compound_delta(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdCompoundDelta>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDelta_downcast_to_HandleTDocStdCompoundDelta(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Delta (1 total) ──
@@ -2139,6 +4012,15 @@ impl DeltaOnAddition {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnAddition_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
@@ -2163,6 +4045,39 @@ impl DeltaOnAddition {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnAddition_inherited_ID(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDFDeltaOnAddition;
+
+unsafe impl crate::CppDeletable for HandleTDFDeltaOnAddition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFDeltaOnAddition_destructor(ptr);
+    }
+}
+
+impl HandleTDFDeltaOnAddition {
+    /// Dereference this Handle to access the underlying TDF_DeltaOnAddition
+    pub fn get(&self) -> &crate::ffi::TDF_DeltaOnAddition {
+        unsafe { &*(crate::ffi::HandleTDFDeltaOnAddition_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_DeltaOnAddition
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnAddition {
+        unsafe { &mut *(crate::ffi::HandleTDFDeltaOnAddition_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDF_DeltaOnAddition> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDeltaOnAddition_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -2231,6 +4146,15 @@ impl DeltaOnForget {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnForget_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
@@ -2255,6 +4179,37 @@ impl DeltaOnForget {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnForget_inherited_ID(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDFDeltaOnForget;
+
+unsafe impl crate::CppDeletable for HandleTDFDeltaOnForget {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFDeltaOnForget_destructor(ptr);
+    }
+}
+
+impl HandleTDFDeltaOnForget {
+    /// Dereference this Handle to access the underlying TDF_DeltaOnForget
+    pub fn get(&self) -> &crate::ffi::TDF_DeltaOnForget {
+        unsafe { &*(crate::ffi::HandleTDFDeltaOnForget_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_DeltaOnForget
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnForget {
+        unsafe { &mut *(crate::ffi::HandleTDFDeltaOnForget_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDF_DeltaOnForget> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDeltaOnForget_to_HandleTDFAttributeDelta(self as *const Self),
+            )
         }
     }
 }
@@ -2317,6 +4272,15 @@ impl DeltaOnModification {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnModification_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
@@ -2341,6 +4305,156 @@ impl DeltaOnModification {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnModification_inherited_ID(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDFDeltaOnModification;
+
+unsafe impl crate::CppDeletable for HandleTDFDeltaOnModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFDeltaOnModification_destructor(ptr);
+    }
+}
+
+impl HandleTDFDeltaOnModification {
+    /// Dereference this Handle to access the underlying TDF_DeltaOnModification
+    pub fn get(&self) -> &crate::ffi::TDF_DeltaOnModification {
+        unsafe { &*(crate::ffi::HandleTDFDeltaOnModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_DeltaOnModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnModification {
+        unsafe { &mut *(crate::ffi::HandleTDFDeltaOnModification_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDF_DeltaOnModification> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDeltaOnModification_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnModification> to Handle<TDF_DefaultDeltaOnModification>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DefaultDeltaOnModification` (or subclass).
+    pub fn downcast_to_default_delta_on_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDFDefaultDeltaOnModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnModification> to Handle<TDataStd_DeltaOnModificationOfByteArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfByteArray` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_byte_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfByteArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnModification> to Handle<TDataStd_DeltaOnModificationOfExtStringArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfExtStringArray` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_ext_string_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfExtStringArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnModification> to Handle<TDataStd_DeltaOnModificationOfIntArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfIntArray` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_int_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfIntArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnModification> to Handle<TDataStd_DeltaOnModificationOfIntPackedMap>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfIntPackedMap` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_int_packed_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfIntPackedMap(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnModification> to Handle<TDataStd_DeltaOnModificationOfRealArray>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_DeltaOnModificationOfRealArray` (or subclass).
+    pub fn downcast_to_delta_on_modification_of_real_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfRealArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnModification> to Handle<TNaming_DeltaOnModification>
+    ///
+    /// Returns `None` if the handle does not point to a `TNaming_DeltaOnModification` (or subclass).
+    pub fn downcast_to_delta_on_modification(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnModification>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTNamingDeltaOnModification(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -2428,6 +4542,73 @@ impl DeltaOnRemoval {
     }
 }
 
+pub use crate::ffi::HandleTDFDeltaOnRemoval;
+
+unsafe impl crate::CppDeletable for HandleTDFDeltaOnRemoval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFDeltaOnRemoval_destructor(ptr);
+    }
+}
+
+impl HandleTDFDeltaOnRemoval {
+    /// Dereference this Handle to access the underlying TDF_DeltaOnRemoval
+    pub fn get(&self) -> &crate::ffi::TDF_DeltaOnRemoval {
+        unsafe { &*(crate::ffi::HandleTDFDeltaOnRemoval_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_DeltaOnRemoval
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnRemoval {
+        unsafe { &mut *(crate::ffi::HandleTDFDeltaOnRemoval_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDF_DeltaOnRemoval> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDeltaOnRemoval_to_HandleTDFAttributeDelta(self as *const Self),
+            )
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnRemoval> to Handle<TDF_DefaultDeltaOnRemoval>
+    ///
+    /// Returns `None` if the handle does not point to a `TDF_DefaultDeltaOnRemoval` (or subclass).
+    pub fn downcast_to_default_delta_on_removal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnRemoval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnRemoval_downcast_to_HandleTDFDefaultDeltaOnRemoval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDF_DeltaOnRemoval> to Handle<TNaming_DeltaOnRemoval>
+    ///
+    /// Returns `None` if the handle does not point to a `TNaming_DeltaOnRemoval` (or subclass).
+    pub fn downcast_to_delta_on_removal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnRemoval>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDFDeltaOnRemoval_downcast_to_HandleTNamingDeltaOnRemoval(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From TDF_DeltaOnResume.hxx
 // ========================
@@ -2492,6 +4673,15 @@ impl DeltaOnResume {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnResume_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<Label> {
         unsafe {
@@ -2516,6 +4706,37 @@ impl DeltaOnResume {
             crate::OwnedPtr::from_raw(crate::ffi::TDF_DeltaOnResume_inherited_ID(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDFDeltaOnResume;
+
+unsafe impl crate::CppDeletable for HandleTDFDeltaOnResume {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFDeltaOnResume_destructor(ptr);
+    }
+}
+
+impl HandleTDFDeltaOnResume {
+    /// Dereference this Handle to access the underlying TDF_DeltaOnResume
+    pub fn get(&self) -> &crate::ffi::TDF_DeltaOnResume {
+        unsafe { &*(crate::ffi::HandleTDFDeltaOnResume_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_DeltaOnResume
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnResume {
+        unsafe { &mut *(crate::ffi::HandleTDFDeltaOnResume_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDF_DeltaOnResume> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDFDeltaOnResume_to_HandleTDFAttributeDelta(self as *const Self),
+            )
         }
     }
 }
@@ -3264,6 +5485,14 @@ impl Reference {
         unsafe { &*(crate::ffi::TDF_Reference_get_id()) }
     }
 
+    /// **Source:** `TDF_Reference.hxx`:39 - `TDF_Reference::Set()`
+    pub fn set_label2(
+        I: &Label,
+        Origin: &Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFReference> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_set_label2(I, Origin)) }
+    }
+
     /// **Source:** `TDF_Reference.hxx`:64 - `TDF_Reference::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3286,6 +5515,13 @@ impl Reference {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_attribute_mut(&mut self) -> &mut Attribute {
         unsafe { &mut *(crate::ffi::TDF_Reference_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFReference> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3438,20 +5674,94 @@ impl Reference {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_Reference_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDF_Reference_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for Reference (2 total) ──
+pub use crate::ffi::HandleTDFReference;
+
+unsafe impl crate::CppDeletable for HandleTDFReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFReference_destructor(ptr);
+    }
+}
+
+impl HandleTDFReference {
+    /// Dereference this Handle to access the underlying TDF_Reference
+    pub fn get(&self) -> &crate::ffi::TDF_Reference {
+        unsafe { &*(crate::ffi::HandleTDFReference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_Reference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_Reference {
+        unsafe { &mut *(crate::ffi::HandleTDFReference_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDF_Reference> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDFReference_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Reference (1 total) ──
 // SKIPPED: **Source:** `TDF_Reference.hxx`:56 - `TDF_Reference::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDF_Reference.hxx`:39 - `TDF_Reference::Set`
-//   Reason: return type 'Handle(TDF_Reference)' is unknown
-//   // pub fn set(I: &Label, Origin: &Label) -> OwnedPtr<Handle<TDF_Reference>>;
 //
 
 // ========================
@@ -3606,6 +5916,43 @@ impl RelocationTable {
         }
     }
 
+    /// **Source:** `TDF_RelocationTable.hxx`:116 - `TDF_RelocationTable::SetTransientRelocation()`
+    /// Sets the relocation value of <aSourceTransient> to
+    /// <aTargetTransient>.
+    pub fn set_transient_relocation(
+        &mut self,
+        aSourceTransient: &crate::ffi::HandleStandardTransient,
+        aTargetTransient: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_set_transient_relocation(
+                self as *mut Self,
+                aSourceTransient,
+                aTargetTransient,
+            )
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:125 - `TDF_RelocationTable::HasTransientRelocation()`
+    /// Finds the relocation value of <aSourceTransient>
+    /// and returns it into <aTargetTransient>.
+    ///
+    /// (See above SelfRelocate method for more
+    /// explanation about the method behavior)
+    pub fn has_transient_relocation(
+        &self,
+        aSourceTransient: &crate::ffi::HandleStandardTransient,
+        aTargetTransient: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::TDF_RelocationTable_has_transient_relocation(
+                self as *const Self,
+                aSourceTransient,
+                aTargetTransient,
+            )
+        }
+    }
+
     /// **Source:** `TDF_RelocationTable.hxx`:130 - `TDF_RelocationTable::Clear()`
     /// Clears the relocation dictionary, but lets the
     /// self relocation flag to its current value.
@@ -3670,19 +6017,7 @@ impl HandleTDFRelocationTable {
     }
 }
 
-// ── Skipped symbols for RelocationTable (7 total) ──
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:116 - `TDF_RelocationTable::SetTransientRelocation`
-//   method: Sets the relocation value of <aSourceTransient> to
-//   method: <aTargetTransient>.
-//   Reason: param 'aSourceTransient' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_transient_relocation(&mut self, aSourceTransient: &HandleTransient, aTargetTransient: &HandleTransient);
-//
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:125 - `TDF_RelocationTable::HasTransientRelocation`
-//   method: Finds the relocation value of <aSourceTransient>
-//   method: and returns it into <aTargetTransient>.
-//   Reason: param 'aSourceTransient' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn has_transient_relocation(&self, aSourceTransient: &HandleTransient, aTargetTransient: &mut HandleTransient) -> bool;
-//
+// ── Skipped symbols for RelocationTable (5 total) ──
 // SKIPPED: **Source:** `TDF_RelocationTable.hxx`:134 - `TDF_RelocationTable::TargetLabelMap`
 //   method: Fills <aLabelMap> with target relocation
 //   method: labels. <aLabelMap> is not cleared before use.
@@ -3793,6 +6128,13 @@ impl TagSource {
         unsafe { &*(crate::ffi::TDF_TagSource_get_id()) }
     }
 
+    /// **Source:** `TDF_TagSource.hxx`:44 - `TDF_TagSource::Set()`
+    /// Find, or create, a  TagSource attribute. the TagSource
+    /// attribute is returned.
+    pub fn set_label(label: &Label) -> crate::OwnedPtr<crate::ffi::HandleTDFTagSource> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_set_label(label)) }
+    }
+
     /// **Source:** `TDF_TagSource.hxx`:50 - `TDF_TagSource::NewChild()`
     /// Find (or create) a  tagSource attribute located at <L>
     /// and make a new child label.
@@ -3824,6 +6166,13 @@ impl TagSource {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_attribute_mut(&mut self) -> &mut Attribute {
         unsafe { &mut *(crate::ffi::TDF_TagSource_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFTagSource> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3976,6 +6325,55 @@ impl TagSource {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDF_TagSource_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDF_TagSource_inherited_References(self as *const Self, aDataSet) }
@@ -3987,13 +6385,34 @@ impl TagSource {
     }
 }
 
-// ── Skipped symbols for TagSource (1 total) ──
-// SKIPPED: **Source:** `TDF_TagSource.hxx`:44 - `TDF_TagSource::Set`
-//   static_method: Find, or create, a  TagSource attribute. the TagSource
-//   static_method: attribute is returned.
-//   Reason: return type 'Handle(TDF_TagSource)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDF_TagSource>>;
-//
+pub use crate::ffi::HandleTDFTagSource;
+
+unsafe impl crate::CppDeletable for HandleTDFTagSource {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDFTagSource_destructor(ptr);
+    }
+}
+
+impl HandleTDFTagSource {
+    /// Dereference this Handle to access the underlying TDF_TagSource
+    pub fn get(&self) -> &crate::ffi::TDF_TagSource {
+        unsafe { &*(crate::ffi::HandleTDFTagSource_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDF_TagSource
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_TagSource {
+        unsafe { &mut *(crate::ffi::HandleTDFTagSource_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDF_TagSource> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDFTagSource_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From TDF_Tool.hxx

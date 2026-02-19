@@ -472,6 +472,13 @@ impl Edge {
         unsafe { &mut *(crate::ffi::BRepCheck_Edge_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckEdge> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Edge_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepCheck_Edge_inherited_Init(self as *mut Self, S) }
@@ -533,6 +540,35 @@ impl Edge {
     pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepCheck_Edge_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCheckEdge;
+
+unsafe impl crate::CppDeletable for HandleBRepCheckEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCheckEdge_destructor(ptr);
+    }
+}
+
+impl HandleBRepCheckEdge {
+    /// Dereference this Handle to access the underlying BRepCheck_Edge
+    pub fn get(&self) -> &crate::ffi::BRepCheck_Edge {
+        unsafe { &*(crate::ffi::HandleBRepCheckEdge_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepCheck_Edge
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Edge {
+        unsafe { &mut *(crate::ffi::HandleBRepCheckEdge_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepCheck_Edge> to Handle<BRepCheck_Result>
+    pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckEdge_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -659,6 +695,13 @@ impl Face {
         unsafe { &mut *(crate::ffi::BRepCheck_Face_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckFace> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Face_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepCheck_Face_inherited_Init(self as *mut Self, S) }
@@ -720,6 +763,35 @@ impl Face {
     pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepCheck_Face_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCheckFace;
+
+unsafe impl crate::CppDeletable for HandleBRepCheckFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCheckFace_destructor(ptr);
+    }
+}
+
+impl HandleBRepCheckFace {
+    /// Dereference this Handle to access the underlying BRepCheck_Face
+    pub fn get(&self) -> &crate::ffi::BRepCheck_Face {
+        unsafe { &*(crate::ffi::HandleBRepCheckFace_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepCheck_Face
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Face {
+        unsafe { &mut *(crate::ffi::HandleBRepCheckFace_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepCheck_Face> to Handle<BRepCheck_Result>
+    pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckFace_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -861,6 +933,90 @@ impl HandleBRepCheckResult {
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Result {
         unsafe { &mut *(crate::ffi::HandleBRepCheckResult_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Edge>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepCheck_Edge` (or subclass).
+    pub fn downcast_to_edge(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckEdge(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Face>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepCheck_Face` (or subclass).
+    pub fn downcast_to_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Shell>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepCheck_Shell` (or subclass).
+    pub fn downcast_to_shell(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckShell(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Solid>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepCheck_Solid` (or subclass).
+    pub fn downcast_to_solid(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckSolid(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Vertex>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepCheck_Vertex` (or subclass).
+    pub fn downcast_to_vertex(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckVertex(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Wire>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepCheck_Wire` (or subclass).
+    pub fn downcast_to_wire(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckWire>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckWire(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -971,6 +1127,13 @@ impl Shell {
         unsafe { &mut *(crate::ffi::BRepCheck_Shell_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckShell> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Shell_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepCheck_Shell_inherited_Init(self as *mut Self, S) }
@@ -1032,6 +1195,35 @@ impl Shell {
     pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepCheck_Shell_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCheckShell;
+
+unsafe impl crate::CppDeletable for HandleBRepCheckShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCheckShell_destructor(ptr);
+    }
+}
+
+impl HandleBRepCheckShell {
+    /// Dereference this Handle to access the underlying BRepCheck_Shell
+    pub fn get(&self) -> &crate::ffi::BRepCheck_Shell {
+        unsafe { &*(crate::ffi::HandleBRepCheckShell_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepCheck_Shell
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Shell {
+        unsafe { &mut *(crate::ffi::HandleBRepCheckShell_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepCheck_Shell> to Handle<BRepCheck_Result>
+    pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckShell_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -1123,6 +1315,13 @@ impl Solid {
         unsafe { &mut *(crate::ffi::BRepCheck_Solid_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckSolid> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Solid_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepCheck_Solid_inherited_Init(self as *mut Self, S) }
@@ -1184,6 +1383,35 @@ impl Solid {
     pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepCheck_Solid_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCheckSolid;
+
+unsafe impl crate::CppDeletable for HandleBRepCheckSolid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCheckSolid_destructor(ptr);
+    }
+}
+
+impl HandleBRepCheckSolid {
+    /// Dereference this Handle to access the underlying BRepCheck_Solid
+    pub fn get(&self) -> &crate::ffi::BRepCheck_Solid {
+        unsafe { &*(crate::ffi::HandleBRepCheckSolid_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepCheck_Solid
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Solid {
+        unsafe { &mut *(crate::ffi::HandleBRepCheckSolid_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepCheck_Solid> to Handle<BRepCheck_Result>
+    pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckSolid_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -1256,6 +1484,13 @@ impl Vertex {
         unsafe { &mut *(crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckVertex> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Vertex_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepCheck_Vertex_inherited_Init(self as *mut Self, S) }
@@ -1317,6 +1552,35 @@ impl Vertex {
     pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepCheck_Vertex_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCheckVertex;
+
+unsafe impl crate::CppDeletable for HandleBRepCheckVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCheckVertex_destructor(ptr);
+    }
+}
+
+impl HandleBRepCheckVertex {
+    /// Dereference this Handle to access the underlying BRepCheck_Vertex
+    pub fn get(&self) -> &crate::ffi::BRepCheck_Vertex {
+        unsafe { &*(crate::ffi::HandleBRepCheckVertex_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepCheck_Vertex
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Vertex {
+        unsafe { &mut *(crate::ffi::HandleBRepCheckVertex_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepCheck_Vertex> to Handle<BRepCheck_Result>
+    pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckVertex_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -1511,6 +1775,13 @@ impl Wire {
         unsafe { &mut *(crate::ffi::BRepCheck_Wire_as_BRepCheck_Result_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckWire> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepCheck_Wire_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepCheck_Wire_inherited_Init(self as *mut Self, S) }
@@ -1572,6 +1843,35 @@ impl Wire {
     pub fn is_status_on_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepCheck_Wire_inherited_IsStatusOnShape(self as *const Self, theShape)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCheckWire;
+
+unsafe impl crate::CppDeletable for HandleBRepCheckWire {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCheckWire_destructor(ptr);
+    }
+}
+
+impl HandleBRepCheckWire {
+    /// Dereference this Handle to access the underlying BRepCheck_Wire
+    pub fn get(&self) -> &crate::ffi::BRepCheck_Wire {
+        unsafe { &*(crate::ffi::HandleBRepCheckWire_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepCheck_Wire
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Wire {
+        unsafe { &mut *(crate::ffi::HandleBRepCheckWire_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepCheck_Wire> to Handle<BRepCheck_Result>
+    pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCheckWire_to_HandleBRepCheckResult(
+                self as *const Self,
+            ))
         }
     }
 }

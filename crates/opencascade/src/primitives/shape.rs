@@ -612,7 +612,7 @@ impl Shape {
             angle_deflection,
             in_parallel,
         );
-        mesher.perform(&progress);
+        mesher.perform_progressrange(&progress);
 
         let mut writer = stl_api::Writer::new();
         let path_str = path.as_ref().to_string_lossy();

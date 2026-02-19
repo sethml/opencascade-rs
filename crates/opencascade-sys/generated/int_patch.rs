@@ -518,6 +518,20 @@ impl HandleIntPatchLine {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IntPatch_Line {
         unsafe { &mut *(crate::ffi::HandleIntPatchLine_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IntPatch_Line> to Handle<IntPatch_WLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_WLine` (or subclass).
+    pub fn downcast_to_w_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchWLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIntPatchLine_downcast_to_HandleIntPatchWLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1043,6 +1057,49 @@ impl PointLine {
     }
 }
 
+pub use crate::ffi::HandleIntPatchPointLine;
+
+unsafe impl crate::CppDeletable for HandleIntPatchPointLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntPatchPointLine_destructor(ptr);
+    }
+}
+
+impl HandleIntPatchPointLine {
+    /// Dereference this Handle to access the underlying IntPatch_PointLine
+    pub fn get(&self) -> &crate::ffi::IntPatch_PointLine {
+        unsafe { &*(crate::ffi::HandleIntPatchPointLine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntPatch_PointLine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntPatch_PointLine {
+        unsafe { &mut *(crate::ffi::HandleIntPatchPointLine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IntPatch_PointLine> to Handle<IntPatch_Line>
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi::HandleIntPatchLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchPointLine_to_HandleIntPatchLine(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<IntPatch_PointLine> to Handle<IntPatch_WLine>
+    ///
+    /// Returns `None` if the handle does not point to a `IntPatch_WLine` (or subclass).
+    pub fn downcast_to_w_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIntPatchWLine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIntPatchPointLine_downcast_to_HandleIntPatchWLine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From IntPatch_WLine.hxx
 // ========================
@@ -1389,6 +1446,13 @@ impl WLine {
         unsafe { &mut *(crate::ffi::IntPatch_WLine_as_IntPatch_Line_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntPatchWLine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntPatch_WLine_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `IntPatch_Line.hxx`:44 - `IntPatch_Line::SetValue()`
     pub fn set_value(&mut self, Uiso1: bool, Viso1: bool, Uiso2: bool, Viso2: bool) {
         unsafe {
@@ -1475,6 +1539,44 @@ impl WLine {
     /// Inherited: **Source:** `IntPatch_Line.hxx`:109 - `IntPatch_Line::IsVIsoOnS2()`
     pub fn is_v_iso_on_s2(&self) -> bool {
         unsafe { crate::ffi::IntPatch_WLine_inherited_IsVIsoOnS2(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIntPatchWLine;
+
+unsafe impl crate::CppDeletable for HandleIntPatchWLine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntPatchWLine_destructor(ptr);
+    }
+}
+
+impl HandleIntPatchWLine {
+    /// Dereference this Handle to access the underlying IntPatch_WLine
+    pub fn get(&self) -> &crate::ffi::IntPatch_WLine {
+        unsafe { &*(crate::ffi::HandleIntPatchWLine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntPatch_WLine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntPatch_WLine {
+        unsafe { &mut *(crate::ffi::HandleIntPatchWLine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IntPatch_WLine> to Handle<IntPatch_PointLine>
+    pub fn to_handle_point_line(&self) -> crate::OwnedPtr<crate::ffi::HandleIntPatchPointLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchWLine_to_HandleIntPatchPointLine(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<IntPatch_WLine> to Handle<IntPatch_Line>
+    pub fn to_handle_line(&self) -> crate::OwnedPtr<crate::ffi::HandleIntPatchLine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIntPatchWLine_to_HandleIntPatchLine(
+                self as *const Self,
+            ))
+        }
     }
 }
 

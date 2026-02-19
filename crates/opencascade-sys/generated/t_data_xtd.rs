@@ -122,6 +122,9 @@ impl TryFrom<i32> for GeometryEnum {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleTDFAttribute, HandleTDataStdGenericEmpty};
+
 // ========================
 // From TDataXtd_Axis.hxx
 // ========================
@@ -170,6 +173,29 @@ impl Axis {
         unsafe { &*(crate::ffi::TDataXtd_Axis_get_id()) }
     }
 
+    /// **Source:** `TDataXtd_Axis.hxx`:45 - `TDataXtd_Axis::Set()`
+    /// Finds or creates an axis attribute defined by the  label.
+    /// In the case of a creation of an axis, a compatible
+    /// named shape should already be associated with label.
+    /// Exceptions
+    /// Standard_NullObject if no compatible named
+    /// shape is associated with the label.
+    pub fn set_label(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_set_label(label)) }
+    }
+
+    /// **Source:** `TDataXtd_Axis.hxx`:51 - `TDataXtd_Axis::Set()`
+    /// Find,  or create,  an Axis  attribute  and set <P>  as
+    /// generated in the associated NamedShape.
+    /// Axis methods
+    /// ============
+    pub fn set_label_lin(
+        label: &crate::tdf::Label,
+        L: &crate::gp::Lin,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_set_label_lin(label, L)) }
+    }
+
     /// **Source:** `TDataXtd_Axis.hxx`:59 - `TDataXtd_Axis::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -202,6 +228,13 @@ impl Axis {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Axis_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -368,6 +401,55 @@ impl Axis {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Axis_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataXtd_Axis_inherited_References(self as *const Self, aDataSet) }
@@ -379,24 +461,50 @@ impl Axis {
     }
 }
 
-// ── Skipped symbols for Axis (3 total) ──
+pub use crate::ffi::HandleTDataXtdAxis;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdAxis {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdAxis_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdAxis {
+    /// Dereference this Handle to access the underlying TDataXtd_Axis
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Axis {
+        unsafe { &*(crate::ffi::HandleTDataXtdAxis_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Axis
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Axis {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdAxis_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Axis> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdAxis_to_HandleTDataStdGenericEmpty(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDataXtd_Axis> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdAxis_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Axis (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_Axis.hxx`:45 - `TDataXtd_Axis::Set`
-//   static_method: Finds or creates an axis attribute defined by the  label.
-//   static_method: In the case of a creation of an axis, a compatible
-//   static_method: named shape should already be associated with label.
-//   Reason: return type 'Handle(TDataXtd_Axis)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Axis>>;
-//
-// SKIPPED: **Source:** `TDataXtd_Axis.hxx`:51 - `TDataXtd_Axis::Set`
-//   static_method: Find,  or create,  an Axis  attribute  and set <P>  as
-//   static_method: generated in the associated NamedShape.
-//   static_method: Axis methods
-//   Reason: return type 'Handle(TDataXtd_Axis)' is unknown
-//   // pub fn set(label: &Label, L: &Lin) -> OwnedPtr<Handle<TDataXtd_Axis>>;
 //
 
 // ========================
@@ -426,6 +534,91 @@ impl Constraint {
     /// **Source:** `TDataXtd_Constraint.hxx`:62 - `TDataXtd_Constraint::TDataXtd_Constraint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_ctor()) }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:66 - `TDataXtd_Constraint::Set()`
+    /// Finds or creates the constraint attribute defined
+    /// by the topological attribute G1 and the constraint type type.
+    pub fn set_constraintenum_handletnamingnamedshape(
+        &mut self,
+        type_: crate::t_data_xtd::ConstraintEnum,
+        G1: &crate::ffi::HandleTNamingNamedShape,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape(
+                self as *mut Self,
+                type_.into(),
+                G1,
+            )
+        }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:72 - `TDataXtd_Constraint::Set()`
+    /// Finds or creates the constraint attribute defined
+    /// by the topological attributes G1 and G2, and by
+    /// the constraint type type.
+    pub fn set_constraintenum_handletnamingnamedshape2(
+        &mut self,
+        type_: crate::t_data_xtd::ConstraintEnum,
+        G1: &crate::ffi::HandleTNamingNamedShape,
+        G2: &crate::ffi::HandleTNamingNamedShape,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape2(
+                self as *mut Self,
+                type_.into(),
+                G1,
+                G2,
+            )
+        }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:79 - `TDataXtd_Constraint::Set()`
+    /// Finds or creates the constraint attribute defined
+    /// by the topological attributes G1, G2 and G3, and
+    /// by the constraint type type.
+    pub fn set_constraintenum_handletnamingnamedshape3(
+        &mut self,
+        type_: crate::t_data_xtd::ConstraintEnum,
+        G1: &crate::ffi::HandleTNamingNamedShape,
+        G2: &crate::ffi::HandleTNamingNamedShape,
+        G3: &crate::ffi::HandleTNamingNamedShape,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape3(
+                self as *mut Self,
+                type_.into(),
+                G1,
+                G2,
+                G3,
+            )
+        }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:89 - `TDataXtd_Constraint::Set()`
+    /// Finds or creates the constraint attribute defined
+    /// by the topological attributes G1, G2, G3 and G4,
+    /// and by the constraint type type.
+    /// methods to read constraint fields
+    /// =================================
+    pub fn set_constraintenum_handletnamingnamedshape4(
+        &mut self,
+        type_: crate::t_data_xtd::ConstraintEnum,
+        G1: &crate::ffi::HandleTNamingNamedShape,
+        G2: &crate::ffi::HandleTNamingNamedShape,
+        G3: &crate::ffi::HandleTNamingNamedShape,
+        G4: &crate::ffi::HandleTNamingNamedShape,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape4(
+                self as *mut Self,
+                type_.into(),
+                G1,
+                G2,
+                G3,
+                G4,
+            )
+        }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:100 - `TDataXtd_Constraint::Verified()`
@@ -458,6 +651,16 @@ impl Constraint {
         unsafe { crate::ffi::TDataXtd_Constraint_is_planar(self as *const Self) }
     }
 
+    /// **Source:** `TDataXtd_Constraint.hxx`:116 - `TDataXtd_Constraint::GetPlane()`
+    /// Returns the topological attribute of the plane
+    /// used for planar - i.e., 2D - constraints.
+    /// This plane is attached to another label.
+    /// If the constraint is not planar, in other words, 3D,
+    /// this function will return a null handle.
+    pub fn get_plane(&self) -> &crate::ffi::HandleTNamingNamedShape {
+        unsafe { &*(crate::ffi::TDataXtd_Constraint_get_plane(self as *const Self)) }
+    }
+
     /// **Source:** `TDataXtd_Constraint.hxx`:120 - `TDataXtd_Constraint::IsDimension()`
     /// Returns true if this constraint attribute is a
     /// dimension, and therefore has a value.
@@ -465,11 +668,35 @@ impl Constraint {
         unsafe { crate::ffi::TDataXtd_Constraint_is_dimension(self as *const Self) }
     }
 
+    /// **Source:** `TDataXtd_Constraint.hxx`:126 - `TDataXtd_Constraint::GetValue()`
+    /// Returns the value of a dimension.
+    /// This value is a reference to a TDataStd_Real attribute.
+    /// If the attribute is not a dimension, this value will
+    /// be 0. Use IsDimension to test this condition.
+    pub fn get_value(&self) -> &crate::ffi::HandleTDataStdReal {
+        unsafe { &*(crate::ffi::TDataXtd_Constraint_get_value(self as *const Self)) }
+    }
+
     /// **Source:** `TDataXtd_Constraint.hxx`:130 - `TDataXtd_Constraint::NbGeometries()`
     /// Returns the number of geometry attributes in this constraint attribute.
     /// This number will be between 1 and 4.
     pub fn nb_geometries(&self) -> i32 {
         unsafe { crate::ffi::TDataXtd_Constraint_nb_geometries(self as *const Self) }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:137 - `TDataXtd_Constraint::GetGeometry()`
+    /// Returns the integer index Index used to access
+    /// the array of the constraint or stored geometries of a dimension
+    /// Index has a value between 1 and 4.
+    /// methods to write constraint fields (use builder)
+    /// ==================================
+    pub fn get_geometry(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_get_geometry(
+                self as *const Self,
+                Index,
+            ))
+        }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:142 - `TDataXtd_Constraint::ClearGeometries()`
@@ -484,6 +711,27 @@ impl Constraint {
     /// Finds or creates the type of constraint CTR.
     pub fn set_type(&mut self, CTR: crate::t_data_xtd::ConstraintEnum) {
         unsafe { crate::ffi::TDataXtd_Constraint_set_type(self as *mut Self, CTR.into()) }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:149 - `TDataXtd_Constraint::SetPlane()`
+    /// Finds or creates the plane of the 2D constraint
+    /// attribute, defined by the planar topological attribute plane.
+    pub fn set_plane(&mut self, plane: &crate::ffi::HandleTNamingNamedShape) {
+        unsafe { crate::ffi::TDataXtd_Constraint_set_plane(self as *mut Self, plane) }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:152 - `TDataXtd_Constraint::SetValue()`
+    /// Finds or creates the real number value V of the dimension constraint attribute.
+    pub fn set_value(&mut self, V: &crate::ffi::HandleTDataStdReal) {
+        unsafe { crate::ffi::TDataXtd_Constraint_set_value(self as *mut Self, V) }
+    }
+
+    /// **Source:** `TDataXtd_Constraint.hxx`:157 - `TDataXtd_Constraint::SetGeometry()`
+    /// Finds or creates the underlying geometry of the
+    /// constraint defined by the topological attribute G
+    /// and the integer index Index.
+    pub fn set_geometry(&mut self, Index: i32, G: &crate::ffi::HandleTNamingNamedShape) {
+        unsafe { crate::ffi::TDataXtd_Constraint_set_geometry(self as *mut Self, Index, G) }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:166 - `TDataXtd_Constraint::Verified()`
@@ -561,6 +809,16 @@ impl Constraint {
         unsafe { &*(crate::ffi::TDataXtd_Constraint_get_id()) }
     }
 
+    /// **Source:** `TDataXtd_Constraint.hxx`:60 - `TDataXtd_Constraint::Set()`
+    /// Finds or creates the 2D constraint attribute
+    /// defined by the planar topological attribute plane
+    /// and the label label.
+    /// Constraint methods
+    /// ==================
+    pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdConstraint> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_set(label)) }
+    }
+
     /// **Source:** `TDataXtd_Constraint.hxx`:177 - `TDataXtd_Constraint::CollectChildConstraints()`
     /// collects constraints on Childs for label <aLabel>
     pub fn collect_child_constraints(
@@ -592,6 +850,15 @@ impl Constraint {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Constraint_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -760,89 +1027,96 @@ impl Constraint {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataXtd_Constraint_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Constraint_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Constraint_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for Constraint (12 total) ──
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:66 - `TDataXtd_Constraint::Set`
-//   method: Finds or creates the constraint attribute defined
-//   method: by the topological attribute G1 and the constraint type type.
-//   Reason: param 'G1' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn set(&mut self, type_: ConstraintEnum, G1: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:72 - `TDataXtd_Constraint::Set`
-//   method: Finds or creates the constraint attribute defined
-//   method: by the topological attributes G1 and G2, and by
-//   method: the constraint type type.
-//   Reason: param 'G1' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn set(&mut self, type_: ConstraintEnum, G1: &HandleNamedShape, G2: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:79 - `TDataXtd_Constraint::Set`
-//   method: Finds or creates the constraint attribute defined
-//   method: by the topological attributes G1, G2 and G3, and
-//   method: by the constraint type type.
-//   Reason: param 'G1' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn set(&mut self, type_: ConstraintEnum, G1: &HandleNamedShape, G2: &HandleNamedShape, G3: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:89 - `TDataXtd_Constraint::Set`
-//   method: Finds or creates the constraint attribute defined
-//   method: by the topological attributes G1, G2, G3 and G4,
-//   method: and by the constraint type type.
-//   Reason: param 'G1' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn set(&mut self, type_: ConstraintEnum, G1: &HandleNamedShape, G2: &HandleNamedShape, G3: &HandleNamedShape, G4: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:116 - `TDataXtd_Constraint::GetPlane`
-//   method: Returns the topological attribute of the plane
-//   method: used for planar - i.e., 2D - constraints.
-//   method: This plane is attached to another label.
-//   Reason: return type 'const Handle(TNaming_NamedShape)&' is unknown
-//   // pub fn get_plane(&self) -> &HandleNamedShape;
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:126 - `TDataXtd_Constraint::GetValue`
-//   method: Returns the value of a dimension.
-//   method: This value is a reference to a TDataStd_Real attribute.
-//   method: If the attribute is not a dimension, this value will
-//   Reason: return type 'const Handle(TDataStd_Real)&' is unknown
-//   // pub fn get_value(&self) -> &HandleReal;
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:137 - `TDataXtd_Constraint::GetGeometry`
-//   method: Returns the integer index Index used to access
-//   method: the array of the constraint or stored geometries of a dimension
-//   method: Index has a value between 1 and 4.
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn get_geometry(&self, Index: i32) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:149 - `TDataXtd_Constraint::SetPlane`
-//   method: Finds or creates the plane of the 2D constraint
-//   method: attribute, defined by the planar topological attribute plane.
-//   Reason: param 'plane' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn set_plane(&mut self, plane: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:152 - `TDataXtd_Constraint::SetValue`
-//   method: Finds or creates the real number value V of the dimension constraint attribute.
-//   Reason: param 'V' uses unknown type 'const Handle(TDataStd_Real)&'
-//   // pub fn set_value(&mut self, V: &HandleReal);
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:157 - `TDataXtd_Constraint::SetGeometry`
-//   method: Finds or creates the underlying geometry of the
-//   method: constraint defined by the topological attribute G
-//   method: and the integer index Index.
-//   Reason: param 'G' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn set_geometry(&mut self, Index: i32, G: &HandleNamedShape);
-//
+pub use crate::ffi::HandleTDataXtdConstraint;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdConstraint_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdConstraint {
+    /// Dereference this Handle to access the underlying TDataXtd_Constraint
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Constraint {
+        unsafe { &*(crate::ffi::HandleTDataXtdConstraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Constraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Constraint {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdConstraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Constraint> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdConstraint_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Constraint (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:189 - `TDataXtd_Constraint::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_Constraint.hxx`:60 - `TDataXtd_Constraint::Set`
-//   static_method: Finds or creates the 2D constraint attribute
-//   static_method: defined by the planar topological attribute plane
-//   static_method: and the label label.
-//   Reason: return type 'Handle(TDataXtd_Constraint)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Constraint>>;
 //
 
 // ========================
@@ -923,56 +1197,148 @@ impl Geometry {
         unsafe { &*(crate::ffi::TDataXtd_Geometry_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TDataXtd_Geometry.hxx`:58 - `TDataXtd_Geometry::Set()`
+    /// API class methods
+    /// =================
+    /// Finds, or  creates, a Geometry attribute  defined by the label label.
+    /// The default type of geometry is the value
+    /// ANY_GEOM of the enumeration TDataXtd_GeometryEnum.
+    /// To specify another value of this enumeration, use
+    /// the function SetType.
+    pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdGeometry> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Geometry_set(label)) }
+    }
+
     /// **Source:** `TDataXtd_Geometry.hxx`:62 - `TDataXtd_Geometry::Type()`
     /// Returns the label L used to define the type of
     /// geometric construction for the geometry attribute.
-    pub fn type_(L: &crate::tdf::Label) -> crate::t_data_xtd::GeometryEnum {
+    pub fn type_label(L: &crate::tdf::Label) -> crate::t_data_xtd::GeometryEnum {
         unsafe {
-            crate::t_data_xtd::GeometryEnum::try_from(crate::ffi::TDataXtd_Geometry_type_(L))
+            crate::t_data_xtd::GeometryEnum::try_from(crate::ffi::TDataXtd_Geometry_type_label(L))
                 .unwrap()
+        }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:66 - `TDataXtd_Geometry::Type()`
+    /// Returns the topological attribute S used to define
+    /// the type of geometric construction for the geometry attribute.
+    pub fn type_handletnamingnamedshape(
+        S: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::t_data_xtd::GeometryEnum {
+        unsafe {
+            crate::t_data_xtd::GeometryEnum::try_from(
+                crate::ffi::TDataXtd_Geometry_type_handletnamingnamedshape(S),
+            )
+            .unwrap()
         }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:69 - `TDataXtd_Geometry::Point()`
     /// Returns the point attribute defined by the label L and the point G.
-    pub fn point(L: &crate::tdf::Label, G: &mut crate::gp::Pnt) -> bool {
-        unsafe { crate::ffi::TDataXtd_Geometry_point(L, G) }
+    pub fn point_label_pnt(L: &crate::tdf::Label, G: &mut crate::gp::Pnt) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_point_label_pnt(L, G) }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:72 - `TDataXtd_Geometry::Point()`
+    /// Returns the point attribute defined by the topological attribute S and the point G.
+    pub fn point_handletnamingnamedshape_pnt(
+        S: &crate::ffi::HandleTNamingNamedShape,
+        G: &mut crate::gp::Pnt,
+    ) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_point_handletnamingnamedshape_pnt(S, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:75 - `TDataXtd_Geometry::Axis()`
     /// Returns the axis attribute defined by the label L and the axis G.
-    pub fn axis(L: &crate::tdf::Label, G: &mut crate::gp::Ax1) -> bool {
-        unsafe { crate::ffi::TDataXtd_Geometry_axis(L, G) }
+    pub fn axis_label_ax1(L: &crate::tdf::Label, G: &mut crate::gp::Ax1) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_axis_label_ax1(L, G) }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:78 - `TDataXtd_Geometry::Axis()`
+    /// Returns the axis attribute defined by the topological attribute S and the axis G.
+    pub fn axis_handletnamingnamedshape_ax1(
+        S: &crate::ffi::HandleTNamingNamedShape,
+        G: &mut crate::gp::Ax1,
+    ) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_axis_handletnamingnamedshape_ax1(S, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:81 - `TDataXtd_Geometry::Line()`
     /// Returns the line attribute defined by the label L and the line G.
-    pub fn line(L: &crate::tdf::Label, G: &mut crate::gp::Lin) -> bool {
-        unsafe { crate::ffi::TDataXtd_Geometry_line(L, G) }
+    pub fn line_label_lin(L: &crate::tdf::Label, G: &mut crate::gp::Lin) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_line_label_lin(L, G) }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:84 - `TDataXtd_Geometry::Line()`
+    /// Returns the line attribute defined by the topological attribute S and the line G.
+    pub fn line_handletnamingnamedshape_lin(
+        S: &crate::ffi::HandleTNamingNamedShape,
+        G: &mut crate::gp::Lin,
+    ) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_line_handletnamingnamedshape_lin(S, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:87 - `TDataXtd_Geometry::Circle()`
     /// Returns the circle attribute defined by the label L and the circle G.
-    pub fn circle(L: &crate::tdf::Label, G: &mut crate::gp::Circ) -> bool {
-        unsafe { crate::ffi::TDataXtd_Geometry_circle(L, G) }
+    pub fn circle_label_circ(L: &crate::tdf::Label, G: &mut crate::gp::Circ) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_circle_label_circ(L, G) }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:90 - `TDataXtd_Geometry::Circle()`
+    /// Returns the circle attribute defined by the topological attribute S and the circle G.
+    pub fn circle_handletnamingnamedshape_circ(
+        S: &crate::ffi::HandleTNamingNamedShape,
+        G: &mut crate::gp::Circ,
+    ) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_circle_handletnamingnamedshape_circ(S, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:93 - `TDataXtd_Geometry::Ellipse()`
     /// Returns the ellipse attribute defined by the label L and the ellipse G.
-    pub fn ellipse(L: &crate::tdf::Label, G: &mut crate::gp::Elips) -> bool {
-        unsafe { crate::ffi::TDataXtd_Geometry_ellipse(L, G) }
+    pub fn ellipse_label_elips(L: &crate::tdf::Label, G: &mut crate::gp::Elips) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_ellipse_label_elips(L, G) }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:97 - `TDataXtd_Geometry::Ellipse()`
+    /// Returns the ellipse attribute defined by the
+    /// topological attribute S and the ellipse G.
+    pub fn ellipse_handletnamingnamedshape_elips(
+        S: &crate::ffi::HandleTNamingNamedShape,
+        G: &mut crate::gp::Elips,
+    ) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_ellipse_handletnamingnamedshape_elips(S, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:100 - `TDataXtd_Geometry::Plane()`
     /// Returns the plane attribute defined by the label L and the plane G.
-    pub fn plane(L: &crate::tdf::Label, G: &mut crate::gp::Pln) -> bool {
-        unsafe { crate::ffi::TDataXtd_Geometry_plane(L, G) }
+    pub fn plane_label_pln(L: &crate::tdf::Label, G: &mut crate::gp::Pln) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_plane_label_pln(L, G) }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:104 - `TDataXtd_Geometry::Plane()`
+    /// Returns the plane attribute defined by the
+    /// topological attribute S and the plane G.
+    pub fn plane_handletnamingnamedshape_pln(
+        S: &crate::ffi::HandleTNamingNamedShape,
+        G: &mut crate::gp::Pln,
+    ) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_plane_handletnamingnamedshape_pln(S, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:107 - `TDataXtd_Geometry::Cylinder()`
     /// Returns the cylinder attribute defined by the label L and the cylinder G.
-    pub fn cylinder(L: &crate::tdf::Label, G: &mut crate::gp::Cylinder) -> bool {
-        unsafe { crate::ffi::TDataXtd_Geometry_cylinder(L, G) }
+    pub fn cylinder_label_cylinder(L: &crate::tdf::Label, G: &mut crate::gp::Cylinder) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_cylinder_label_cylinder(L, G) }
+    }
+
+    /// **Source:** `TDataXtd_Geometry.hxx`:111 - `TDataXtd_Geometry::Cylinder()`
+    /// Returns the cylinder attribute defined by the
+    /// topological attribute S and the cylinder G.
+    pub fn cylinder_handletnamingnamedshape_cylinder(
+        S: &crate::ffi::HandleTNamingNamedShape,
+        G: &mut crate::gp::Cylinder,
+    ) -> bool {
+        unsafe { crate::ffi::TDataXtd_Geometry_cylinder_handletnamingnamedshape_cylinder(S, G) }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:115 - `TDataXtd_Geometry::GetID()`
@@ -1003,6 +1369,15 @@ impl Geometry {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Geometry_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdGeometry> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Geometry_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -1169,6 +1544,55 @@ impl Geometry {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Geometry_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Geometry_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Geometry_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Geometry_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Geometry_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataXtd_Geometry_inherited_References(self as *const Self, aDataSet) }
@@ -1180,61 +1604,39 @@ impl Geometry {
     }
 }
 
-// ── Skipped symbols for Geometry (10 total) ──
+pub use crate::ffi::HandleTDataXtdGeometry;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdGeometry {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdGeometry_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdGeometry {
+    /// Dereference this Handle to access the underlying TDataXtd_Geometry
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Geometry {
+        unsafe { &*(crate::ffi::HandleTDataXtdGeometry_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Geometry
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Geometry {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdGeometry_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Geometry> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdGeometry_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Geometry (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:138 - `TDataXtd_Geometry::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:58 - `TDataXtd_Geometry::Set`
-//   static_method: API class methods
-//   static_method: =================
-//   static_method: Finds, or  creates, a Geometry attribute  defined by the label label.
-//   Reason: return type 'Handle(TDataXtd_Geometry)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Geometry>>;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:66 - `TDataXtd_Geometry::Type`
-//   static_method: Returns the topological attribute S used to define
-//   static_method: the type of geometric construction for the geometry attribute.
-//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn type_(S: &HandleNamedShape) -> OwnedPtr<TDataXtd_GeometryEnum>;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:72 - `TDataXtd_Geometry::Point`
-//   static_method: Returns the point attribute defined by the topological attribute S and the point G.
-//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn point(S: &HandleNamedShape, G: &mut Pnt) -> bool;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:78 - `TDataXtd_Geometry::Axis`
-//   static_method: Returns the axis attribute defined by the topological attribute S and the axis G.
-//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn axis(S: &HandleNamedShape, G: &mut Ax1) -> bool;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:84 - `TDataXtd_Geometry::Line`
-//   static_method: Returns the line attribute defined by the topological attribute S and the line G.
-//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn line(S: &HandleNamedShape, G: &mut Lin) -> bool;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:90 - `TDataXtd_Geometry::Circle`
-//   static_method: Returns the circle attribute defined by the topological attribute S and the circle G.
-//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn circle(S: &HandleNamedShape, G: &mut Circ) -> bool;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:97 - `TDataXtd_Geometry::Ellipse`
-//   static_method: Returns the ellipse attribute defined by the
-//   static_method: topological attribute S and the ellipse G.
-//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn ellipse(S: &HandleNamedShape, G: &mut Elips) -> bool;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:104 - `TDataXtd_Geometry::Plane`
-//   static_method: Returns the plane attribute defined by the
-//   static_method: topological attribute S and the plane G.
-//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn plane(S: &HandleNamedShape, G: &mut Pln) -> bool;
-//
-// SKIPPED: **Source:** `TDataXtd_Geometry.hxx`:111 - `TDataXtd_Geometry::Cylinder`
-//   static_method: Returns the cylinder attribute defined by the
-//   static_method: topological attribute S and the cylinder G.
-//   Reason: param 'S' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn cylinder(S: &HandleNamedShape, G: &mut Cylinder) -> bool;
 //
 
 // ========================
@@ -1567,6 +1969,55 @@ impl Pattern {
         unsafe { crate::ffi::TDataXtd_Pattern_inherited_Restore(self as *mut Self, anAttribute) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Pattern_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Pattern_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Pattern_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Pattern_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Pattern_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:320 - `TDF_Attribute::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
@@ -1602,6 +2053,53 @@ impl Pattern {
     }
 }
 
+pub use crate::ffi::HandleTDataXtdPattern;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdPattern {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdPattern_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdPattern {
+    /// Dereference this Handle to access the underlying TDataXtd_Pattern
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Pattern {
+        unsafe { &*(crate::ffi::HandleTDataXtdPattern_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Pattern
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Pattern {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdPattern_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Pattern> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdPattern_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TDataXtd_Pattern> to Handle<TDataXtd_PatternStd>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_PatternStd` (or subclass).
+    pub fn downcast_to_pattern_std(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPatternStd>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataXtdPattern_downcast_to_HandleTDataXtdPatternStd(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From TDataXtd_PatternStd.hxx
 // ========================
@@ -1629,6 +2127,20 @@ impl PatternStd {
         unsafe { crate::ffi::TDataXtd_PatternStd_signature_int(self as *mut Self, signature) }
     }
 
+    /// **Source:** `TDataXtd_PatternStd.hxx`:54 - `TDataXtd_PatternStd::Axis1()`
+    pub fn axis1_handletnamingnamedshape(&mut self, Axis1: &crate::ffi::HandleTNamingNamedShape) {
+        unsafe {
+            crate::ffi::TDataXtd_PatternStd_axis1_handletnamingnamedshape(self as *mut Self, Axis1)
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:56 - `TDataXtd_PatternStd::Axis2()`
+    pub fn axis2_handletnamingnamedshape(&mut self, Axis2: &crate::ffi::HandleTNamingNamedShape) {
+        unsafe {
+            crate::ffi::TDataXtd_PatternStd_axis2_handletnamingnamedshape(self as *mut Self, Axis2)
+        }
+    }
+
     /// **Source:** `TDataXtd_PatternStd.hxx`:58 - `TDataXtd_PatternStd::Axis1Reversed()`
     pub fn axis1_reversed_bool(&mut self, Axis1Reversed: bool) {
         unsafe {
@@ -1643,9 +2155,70 @@ impl PatternStd {
         }
     }
 
+    /// **Source:** `TDataXtd_PatternStd.hxx`:62 - `TDataXtd_PatternStd::Value1()`
+    pub fn value1_handletdatastdreal(&mut self, value: &crate::ffi::HandleTDataStdReal) {
+        unsafe {
+            crate::ffi::TDataXtd_PatternStd_value1_handletdatastdreal(self as *mut Self, value)
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:64 - `TDataXtd_PatternStd::Value2()`
+    pub fn value2_handletdatastdreal(&mut self, value: &crate::ffi::HandleTDataStdReal) {
+        unsafe {
+            crate::ffi::TDataXtd_PatternStd_value2_handletdatastdreal(self as *mut Self, value)
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:66 - `TDataXtd_PatternStd::NbInstances1()`
+    pub fn nb_instances1_handletdatastdinteger(
+        &mut self,
+        NbInstances1: &crate::ffi::HandleTDataStdInteger,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_PatternStd_nb_instances1_handletdatastdinteger(
+                self as *mut Self,
+                NbInstances1,
+            )
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:68 - `TDataXtd_PatternStd::NbInstances2()`
+    pub fn nb_instances2_handletdatastdinteger(
+        &mut self,
+        NbInstances2: &crate::ffi::HandleTDataStdInteger,
+    ) {
+        unsafe {
+            crate::ffi::TDataXtd_PatternStd_nb_instances2_handletdatastdinteger(
+                self as *mut Self,
+                NbInstances2,
+            )
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:70 - `TDataXtd_PatternStd::Mirror()`
+    pub fn mirror_handletnamingnamedshape(&mut self, plane: &crate::ffi::HandleTNamingNamedShape) {
+        unsafe {
+            crate::ffi::TDataXtd_PatternStd_mirror_handletnamingnamedshape(self as *mut Self, plane)
+        }
+    }
+
     /// **Source:** `TDataXtd_PatternStd.hxx`:72 - `TDataXtd_PatternStd::Signature()`
     pub fn signature(&self) -> i32 {
         unsafe { crate::ffi::TDataXtd_PatternStd_signature(self as *const Self) }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:74 - `TDataXtd_PatternStd::Axis1()`
+    pub fn axis1(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_axis1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:76 - `TDataXtd_PatternStd::Axis2()`
+    pub fn axis2(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_axis2(self as *const Self))
+        }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:78 - `TDataXtd_PatternStd::Axis1Reversed()`
@@ -1656,6 +2229,45 @@ impl PatternStd {
     /// **Source:** `TDataXtd_PatternStd.hxx`:80 - `TDataXtd_PatternStd::Axis2Reversed()`
     pub fn axis2_reversed(&self) -> bool {
         unsafe { crate::ffi::TDataXtd_PatternStd_axis2_reversed(self as *const Self) }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:82 - `TDataXtd_PatternStd::Value1()`
+    pub fn value1(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_value1(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:84 - `TDataXtd_PatternStd::Value2()`
+    pub fn value2(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_value2(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:86 - `TDataXtd_PatternStd::NbInstances1()`
+    pub fn nb_instances1(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_nb_instances1(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:88 - `TDataXtd_PatternStd::NbInstances2()`
+    pub fn nb_instances2(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_nb_instances2(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataXtd_PatternStd.hxx`:90 - `TDataXtd_PatternStd::Mirror()`
+    pub fn mirror(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_mirror(self as *const Self))
+        }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:92 - `TDataXtd_PatternStd::NbTrsfs()`
@@ -1711,6 +2323,12 @@ impl PatternStd {
         unsafe { &*(crate::ffi::TDataXtd_PatternStd_get_pattern_id()) }
     }
 
+    /// **Source:** `TDataXtd_PatternStd.hxx`:48 - `TDataXtd_PatternStd::Set()`
+    /// Find, or  create,  a PatternStd  attribute
+    pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPatternStd> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_set(label)) }
+    }
+
     /// **Source:** `TDataXtd_PatternStd.hxx`:110 - `TDataXtd_PatternStd::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1745,6 +2363,15 @@ impl PatternStd {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_PatternStd_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPatternStd> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataXtd_Pattern.hxx`:38 - `TDataXtd_Pattern::ID()`
@@ -1918,77 +2545,105 @@ impl PatternStd {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_PatternStd_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for PatternStd (16 total) ──
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:54 - `TDataXtd_PatternStd::Axis1`
-//   Reason: param 'Axis1' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn axis1(&mut self, Axis1: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:56 - `TDataXtd_PatternStd::Axis2`
-//   Reason: param 'Axis2' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn axis2(&mut self, Axis2: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:62 - `TDataXtd_PatternStd::Value1`
-//   Reason: param 'value' uses unknown type 'const Handle(TDataStd_Real)&'
-//   // pub fn value1(&mut self, value: &HandleReal);
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:64 - `TDataXtd_PatternStd::Value2`
-//   Reason: param 'value' uses unknown type 'const Handle(TDataStd_Real)&'
-//   // pub fn value2(&mut self, value: &HandleReal);
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:66 - `TDataXtd_PatternStd::NbInstances1`
-//   Reason: param 'NbInstances1' uses unknown type 'const Handle(TDataStd_Integer)&'
-//   // pub fn nb_instances1(&mut self, NbInstances1: &HandleInteger);
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:68 - `TDataXtd_PatternStd::NbInstances2`
-//   Reason: param 'NbInstances2' uses unknown type 'const Handle(TDataStd_Integer)&'
-//   // pub fn nb_instances2(&mut self, NbInstances2: &HandleInteger);
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:70 - `TDataXtd_PatternStd::Mirror`
-//   Reason: param 'plane' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn mirror(&mut self, plane: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:74 - `TDataXtd_PatternStd::Axis1`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn axis1(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:76 - `TDataXtd_PatternStd::Axis2`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn axis2(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:82 - `TDataXtd_PatternStd::Value1`
-//   Reason: return type 'Handle(TDataStd_Real)' is unknown
-//   // pub fn value1(&self) -> OwnedPtr<Handle<TDataStd_Real>>;
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:84 - `TDataXtd_PatternStd::Value2`
-//   Reason: return type 'Handle(TDataStd_Real)' is unknown
-//   // pub fn value2(&self) -> OwnedPtr<Handle<TDataStd_Real>>;
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:86 - `TDataXtd_PatternStd::NbInstances1`
-//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
-//   // pub fn nb_instances1(&self) -> OwnedPtr<Handle<TDataStd_Integer>>;
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:88 - `TDataXtd_PatternStd::NbInstances2`
-//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
-//   // pub fn nb_instances2(&self) -> OwnedPtr<Handle<TDataStd_Integer>>;
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:90 - `TDataXtd_PatternStd::Mirror`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn mirror(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
+pub use crate::ffi::HandleTDataXtdPatternStd;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdPatternStd {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdPatternStd_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdPatternStd {
+    /// Dereference this Handle to access the underlying TDataXtd_PatternStd
+    pub fn get(&self) -> &crate::ffi::TDataXtd_PatternStd {
+        unsafe { &*(crate::ffi::HandleTDataXtdPatternStd_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_PatternStd
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_PatternStd {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdPatternStd_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_PatternStd> to Handle<TDataXtd_Pattern>
+    pub fn to_handle_pattern(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPattern> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataXtdPatternStd_to_HandleTDataXtdPattern(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataXtd_PatternStd> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdPatternStd_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for PatternStd (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:108 - `TDataXtd_PatternStd::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_PatternStd.hxx`:48 - `TDataXtd_PatternStd::Set`
-//   static_method: Find, or  create,  a PatternStd  attribute
-//   Reason: return type 'Handle(TDataXtd_PatternStd)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_PatternStd>>;
 //
 
 // ========================
@@ -2034,6 +2689,15 @@ impl Placement {
         unsafe { &*(crate::ffi::TDataXtd_Placement_get_id()) }
     }
 
+    /// **Source:** `TDataXtd_Placement.hxx`:37 - `TDataXtd_Placement::Set()`
+    /// Find, or    create,   an Placement  attribute.     the
+    /// Placement attribute is returned.
+    /// Placement methods
+    /// =================
+    pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlacement> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Placement_set(label)) }
+    }
+
     /// **Source:** `TDataXtd_Placement.hxx`:45 - `TDataXtd_Placement::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2068,6 +2732,15 @@ impl Placement {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Placement_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlacement> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Placement_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -2248,6 +2921,55 @@ impl Placement {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Placement_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Placement_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Placement_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Placement_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Placement_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -2261,17 +2983,52 @@ impl Placement {
     }
 }
 
-// ── Skipped symbols for Placement (2 total) ──
+pub use crate::ffi::HandleTDataXtdPlacement;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdPlacement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdPlacement_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdPlacement {
+    /// Dereference this Handle to access the underlying TDataXtd_Placement
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Placement {
+        unsafe { &*(crate::ffi::HandleTDataXtdPlacement_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Placement
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Placement {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdPlacement_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Placement> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataXtdPlacement_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataXtd_Placement> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdPlacement_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Placement (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_Placement.hxx`:43 - `TDataXtd_Placement::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_Placement.hxx`:37 - `TDataXtd_Placement::Set`
-//   static_method: Find, or    create,   an Placement  attribute.     the
-//   static_method: Placement attribute is returned.
-//   static_method: Placement methods
-//   Reason: return type 'Handle(TDataXtd_Placement)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Placement>>;
 //
 
 // ========================
@@ -2322,6 +3079,30 @@ impl Plane {
         unsafe { &*(crate::ffi::TDataXtd_Plane_get_id()) }
     }
 
+    /// **Source:** `TDataXtd_Plane.hxx`:44 - `TDataXtd_Plane::Set()`
+    /// Finds or creates the plane attribute defined by
+    /// the label label.
+    /// Warning
+    /// If you are creating the attribute with this syntax, a
+    /// planar face should already be associated with label.
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_set_label(label)) }
+    }
+
+    /// **Source:** `TDataXtd_Plane.hxx`:50 - `TDataXtd_Plane::Set()`
+    /// Finds,  or creates,  a Plane  attribute  and sets <P>  as
+    /// generated the associated NamedShape.
+    /// Plane methods
+    /// =============
+    pub fn set_label_pln(
+        label: &crate::tdf::Label,
+        P: &crate::gp::Pln,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_set_label_pln(label, P)) }
+    }
+
     /// **Source:** `TDataXtd_Plane.hxx`:58 - `TDataXtd_Plane::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2356,6 +3137,13 @@ impl Plane {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Plane_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -2522,6 +3310,55 @@ impl Plane {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Plane_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataXtd_Plane_inherited_References(self as *const Self, aDataSet) }
@@ -2533,24 +3370,50 @@ impl Plane {
     }
 }
 
-// ── Skipped symbols for Plane (3 total) ──
+pub use crate::ffi::HandleTDataXtdPlane;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdPlane {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdPlane_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdPlane {
+    /// Dereference this Handle to access the underlying TDataXtd_Plane
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Plane {
+        unsafe { &*(crate::ffi::HandleTDataXtdPlane_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Plane
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Plane {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdPlane_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Plane> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataXtdPlane_to_HandleTDataStdGenericEmpty(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataXtd_Plane> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdPlane_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Plane (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_Plane.hxx`:56 - `TDataXtd_Plane::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_Plane.hxx`:44 - `TDataXtd_Plane::Set`
-//   static_method: Finds or creates the plane attribute defined by
-//   static_method: the label label.
-//   static_method: Warning
-//   Reason: return type 'Handle(TDataXtd_Plane)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Plane>>;
-//
-// SKIPPED: **Source:** `TDataXtd_Plane.hxx`:50 - `TDataXtd_Plane::Set`
-//   static_method: Finds,  or creates,  a Plane  attribute  and sets <P>  as
-//   static_method: generated the associated NamedShape.
-//   static_method: Plane methods
-//   Reason: return type 'Handle(TDataXtd_Plane)' is unknown
-//   // pub fn set(label: &Label, P: &Pln) -> OwnedPtr<Handle<TDataXtd_Plane>>;
 //
 
 // ========================
@@ -2604,6 +3467,27 @@ impl Point {
         unsafe { &*(crate::ffi::TDataXtd_Point_get_id()) }
     }
 
+    /// **Source:** `TDataXtd_Point.hxx`:44 - `TDataXtd_Point::Set()`
+    /// Sets the label Label as a point attribute.
+    /// If no object is found, a point attribute is created.
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_set_label(label)) }
+    }
+
+    /// **Source:** `TDataXtd_Point.hxx`:50 - `TDataXtd_Point::Set()`
+    /// Sets the label Label as a point attribute containing the point P.
+    /// If no object is found, a point attribute is created.
+    /// Point methods
+    /// =============
+    pub fn set_label_pnt(
+        label: &crate::tdf::Label,
+        P: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_set_label_pnt(label, P)) }
+    }
+
     /// **Source:** `TDataXtd_Point.hxx`:58 - `TDataXtd_Point::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2638,6 +3522,13 @@ impl Point {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Point_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -2804,6 +3695,55 @@ impl Point {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Point_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataXtd_Point_inherited_References(self as *const Self, aDataSet) }
@@ -2815,23 +3755,50 @@ impl Point {
     }
 }
 
-// ── Skipped symbols for Point (3 total) ──
+pub use crate::ffi::HandleTDataXtdPoint;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdPoint_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdPoint {
+    /// Dereference this Handle to access the underlying TDataXtd_Point
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Point {
+        unsafe { &*(crate::ffi::HandleTDataXtdPoint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Point
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Point {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdPoint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Point> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataXtdPoint_to_HandleTDataStdGenericEmpty(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataXtd_Point> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdPoint_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Point (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_Point.hxx`:56 - `TDataXtd_Point::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_Point.hxx`:44 - `TDataXtd_Point::Set`
-//   static_method: Sets the label Label as a point attribute.
-//   static_method: If no object is found, a point attribute is created.
-//   Reason: return type 'Handle(TDataXtd_Point)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataXtd_Point>>;
-//
-// SKIPPED: **Source:** `TDataXtd_Point.hxx`:50 - `TDataXtd_Point::Set`
-//   static_method: Sets the label Label as a point attribute containing the point P.
-//   static_method: If no object is found, a point attribute is created.
-//   static_method: Point methods
-//   Reason: return type 'Handle(TDataXtd_Point)' is unknown
-//   // pub fn set(label: &Label, P: &Pnt) -> OwnedPtr<Handle<TDataXtd_Point>>;
 //
 
 // ========================
@@ -2915,8 +3882,17 @@ impl Position {
 
     /// **Source:** `TDataXtd_Position.hxx`:37 - `TDataXtd_Position::Set()`
     /// Create if not found the TDataXtd_Position attribute set its position to <aPos>
-    pub fn set(aLabel: &crate::tdf::Label, aPos: &crate::gp::Pnt) {
-        unsafe { crate::ffi::TDataXtd_Position_set(aLabel, aPos) }
+    pub fn set_label_pnt(aLabel: &crate::tdf::Label, aPos: &crate::gp::Pnt) {
+        unsafe { crate::ffi::TDataXtd_Position_set_label_pnt(aLabel, aPos) }
+    }
+
+    /// **Source:** `TDataXtd_Position.hxx`:41 - `TDataXtd_Position::Set()`
+    /// Find an existing, or create an empty, Position.
+    /// the Position attribute is returned.
+    pub fn set_label(
+        aLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPosition> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_set_label(aLabel)) }
     }
 
     /// **Source:** `TDataXtd_Position.hxx`:45 - `TDataXtd_Position::Get()`
@@ -2954,6 +3930,15 @@ impl Position {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Position_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPosition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3120,6 +4105,55 @@ impl Position {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Position_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataXtd_Position_inherited_References(self as *const Self, aDataSet) }
@@ -3131,13 +4165,34 @@ impl Position {
     }
 }
 
-// ── Skipped symbols for Position (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Position.hxx`:41 - `TDataXtd_Position::Set`
-//   static_method: Find an existing, or create an empty, Position.
-//   static_method: the Position attribute is returned.
-//   Reason: return type 'Handle(TDataXtd_Position)' is unknown
-//   // pub fn set(aLabel: &Label) -> OwnedPtr<Handle<TDataXtd_Position>>;
-//
+pub use crate::ffi::HandleTDataXtdPosition;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdPosition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdPosition_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdPosition {
+    /// Dereference this Handle to access the underlying TDataXtd_Position
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Position {
+        unsafe { &*(crate::ffi::HandleTDataXtdPosition_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Position
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Position {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdPosition_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Position> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdPosition_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From TDataXtd_Presentation.hxx
@@ -3409,6 +4464,17 @@ impl Presentation {
         unsafe { crate::ffi::TDataXtd_Presentation_unset_selection_mode(self as *mut Self) }
     }
 
+    /// **Source:** `TDataXtd_Presentation.hxx`:45 - `TDataXtd_Presentation::Set()`
+    /// Create if not found the TDataXtd_Presentation attribute and set its driver GUID
+    pub fn set(
+        theLabel: &crate::tdf::Label,
+        theDriverId: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_set(theLabel, theDriverId))
+        }
+    }
+
     /// **Source:** `TDataXtd_Presentation.hxx`:49 - `TDataXtd_Presentation::Unset()`
     /// Remove attribute of this type from the label
     pub fn unset(theLabel: &crate::tdf::Label) {
@@ -3462,6 +4528,15 @@ impl Presentation {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Presentation_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3623,6 +4698,57 @@ impl Presentation {
         unsafe { crate::ffi::TDataXtd_Presentation_inherited_IsBackuped(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataXtd_Presentation_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Presentation_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -3638,12 +4764,34 @@ impl Presentation {
     }
 }
 
-// ── Skipped symbols for Presentation (1 total) ──
-// SKIPPED: **Source:** `TDataXtd_Presentation.hxx`:45 - `TDataXtd_Presentation::Set`
-//   static_method: Create if not found the TDataXtd_Presentation attribute and set its driver GUID
-//   Reason: return type 'Handle(TDataXtd_Presentation)' is unknown
-//   // pub fn set(theLabel: &Label, theDriverId: &GUID) -> OwnedPtr<Handle<TDataXtd_Presentation>>;
-//
+pub use crate::ffi::HandleTDataXtdPresentation;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdPresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdPresentation_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdPresentation {
+    /// Dereference this Handle to access the underlying TDataXtd_Presentation
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Presentation {
+        unsafe { &*(crate::ffi::HandleTDataXtdPresentation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Presentation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Presentation {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdPresentation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Presentation> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdPresentation_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From TDataXtd_Shape.hxx
@@ -3686,6 +4834,35 @@ impl Shape {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataXtd_Shape.hxx`:37 - `TDataXtd_Shape::Find()`
+    /// class methods
+    /// =============
+    /// try to retrieve a Shape attribute at <current> label
+    /// or in  fathers  label of  <current>. Returns True  if
+    /// found and set <S>.
+    pub fn find(current: &crate::tdf::Label, S: &mut crate::ffi::HandleTDataXtdShape) -> bool {
+        unsafe { crate::ffi::TDataXtd_Shape_find(current, S) }
+    }
+
+    /// **Source:** `TDataXtd_Shape.hxx`:41 - `TDataXtd_Shape::New()`
+    /// Find, or create, a Shape attribute.  the Shape attribute
+    /// is returned. Raises if <label> has attribute.
+    pub fn new_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdShape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_new(label)) }
+    }
+
+    /// **Source:** `TDataXtd_Shape.hxx`:45 - `TDataXtd_Shape::Set()`
+    /// Create or update associated NamedShape attribute.  the
+    /// Shape attribute is returned.
+    pub fn set(
+        label: &crate::tdf::Label,
+        shape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdShape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_set(label, shape)) }
     }
 
     /// **Source:** `TDataXtd_Shape.hxx`:50 - `TDataXtd_Shape::Get()`
@@ -3736,6 +4913,13 @@ impl Shape {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataXtd_Shape_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdShape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -3902,35 +5086,105 @@ impl Shape {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Shape_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataXtd_Shape_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for Shape (4 total) ──
+pub use crate::ffi::HandleTDataXtdShape;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdShape_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdShape {
+    /// Dereference this Handle to access the underlying TDataXtd_Shape
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Shape {
+        unsafe { &*(crate::ffi::HandleTDataXtdShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Shape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Shape {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Shape> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataXtdShape_to_HandleTDataStdGenericEmpty(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataXtd_Shape> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataXtdShape_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Shape (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_Shape.hxx`:62 - `TDataXtd_Shape::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_Shape.hxx`:37 - `TDataXtd_Shape::Find`
-//   static_method: class methods
-//   static_method: =============
-//   static_method: try to retrieve a Shape attribute at <current> label
-//   Reason: param 'S' uses unknown type 'Handle(TDataXtd_Shape)&'
-//   // pub fn find(current: &Label, S: &mut HandleShape) -> bool;
-//
-// SKIPPED: **Source:** `TDataXtd_Shape.hxx`:41 - `TDataXtd_Shape::New`
-//   static_method: Find, or create, a Shape attribute.  the Shape attribute
-//   static_method: is returned. Raises if <label> has attribute.
-//   Reason: return type 'Handle(TDataXtd_Shape)' is unknown
-//   // pub fn new(label: &Label) -> OwnedPtr<Handle<TDataXtd_Shape>>;
-//
-// SKIPPED: **Source:** `TDataXtd_Shape.hxx`:45 - `TDataXtd_Shape::Set`
-//   static_method: Create or update associated NamedShape attribute.  the
-//   static_method: Shape attribute is returned.
-//   Reason: return type 'Handle(TDataXtd_Shape)' is unknown
-//   // pub fn set(label: &Label, shape: &Shape) -> OwnedPtr<Handle<TDataXtd_Shape>>;
 //
 
 // ========================
@@ -4147,6 +5401,31 @@ impl Triangulation {
         unsafe { &*(crate::ffi::TDataXtd_Triangulation_get_id()) }
     }
 
+    /// **Source:** `TDataXtd_Triangulation.hxx`:47 - `TDataXtd_Triangulation::Set()`
+    /// Finds or creates a triangulation attribute.
+    pub fn set_label(
+        theLabel: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdTriangulation> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_set_label(theLabel)) }
+    }
+
+    /// **Source:** `TDataXtd_Triangulation.hxx`:51 - `TDataXtd_Triangulation::Set()`
+    /// Finds or creates a triangulation attribute.
+    /// Initializes the attribute by a Poly_Triangulation object.
+    pub fn set_label_handlepolytriangulation(
+        theLabel: &crate::tdf::Label,
+        theTriangulation: &crate::ffi::HandlePolyTriangulation,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataXtd_Triangulation_set_label_handlepolytriangulation(
+                    theLabel,
+                    theTriangulation,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `TDataXtd_Triangulation.hxx`:149 - `TDataXtd_Triangulation::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -4170,6 +5449,15 @@ impl Triangulation {
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
             &mut *(crate::ffi::TDataXtd_Triangulation_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_to_handle(obj.into_raw()))
         }
     }
 
@@ -4343,6 +5631,57 @@ impl Triangulation {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -4358,21 +5697,39 @@ impl Triangulation {
     }
 }
 
-// ── Skipped symbols for Triangulation (3 total) ──
+pub use crate::ffi::HandleTDataXtdTriangulation;
+
+unsafe impl crate::CppDeletable for HandleTDataXtdTriangulation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataXtdTriangulation_destructor(ptr);
+    }
+}
+
+impl HandleTDataXtdTriangulation {
+    /// Dereference this Handle to access the underlying TDataXtd_Triangulation
+    pub fn get(&self) -> &crate::ffi::TDataXtd_Triangulation {
+        unsafe { &*(crate::ffi::HandleTDataXtdTriangulation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataXtd_Triangulation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Triangulation {
+        unsafe { &mut *(crate::ffi::HandleTDataXtdTriangulation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataXtd_Triangulation> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataXtdTriangulation_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for Triangulation (1 total) ──
 // SKIPPED: **Source:** `TDataXtd_Triangulation.hxx`:147 - `TDataXtd_Triangulation::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataXtd_Triangulation.hxx`:47 - `TDataXtd_Triangulation::Set`
-//   static_method: Finds or creates a triangulation attribute.
-//   Reason: return type 'Handle(TDataXtd_Triangulation)' is unknown
-//   // pub fn set(theLabel: &Label) -> OwnedPtr<Handle<TDataXtd_Triangulation>>;
-//
-// SKIPPED: **Source:** `TDataXtd_Triangulation.hxx`:51 - `TDataXtd_Triangulation::Set`
-//   static_method: Finds or creates a triangulation attribute.
-//   static_method: Initializes the attribute by a Poly_Triangulation object.
-//   Reason: return type 'Handle(TDataXtd_Triangulation)' is unknown
-//   // pub fn set(theLabel: &Label, theTriangulation: &HandleTriangulation) -> OwnedPtr<Handle<TDataXtd_Triangulation>>;
 //
 
 // ========================

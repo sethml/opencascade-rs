@@ -135,6 +135,7 @@ pub fn generate_ffi(
     symbol_table: &crate::resolver::SymbolTable,
     all_bindings: &[super::bindings::ClassBindings],
     function_bindings: &[super::bindings::FunctionBinding],
+    handle_able_classes: &HashSet<String>,
 ) -> (String, Vec<NestedTypeInfo>) {
     // Get all classes with protected destructors
     let protected_destructor_class_names = symbol_table.protected_destructor_class_names();
@@ -159,7 +160,7 @@ pub fn generate_ffi(
     let function_items = generate_functions_from_bindings(function_bindings);
 
     // Generate Handle type declarations
-    let handle_decls = generate_handle_declarations(all_classes, &symbol_table.handle_able_classes);
+    let handle_decls = generate_handle_declarations(all_classes, handle_able_classes, &symbol_table.handle_able_classes);
 
     // Collect opaque type declarations (types referenced but not defined)
     let collected_types = collect_referenced_types(all_classes);
@@ -392,15 +393,17 @@ fn generate_functions_from_bindings(
 }
 
 /// Generate Handle type declarations
-fn generate_handle_declarations(classes: &[&ParsedClass], extra_handle_able: &HashSet<String>) -> String {
+fn generate_handle_declarations(
+    classes: &[&ParsedClass],
+    handle_able_classes: &HashSet<String>,
+    extra_handle_able: &HashSet<String>,
+) -> String {
     let mut handles = BTreeSet::new();
 
-    // Classes parsed from non-excluded headers
-    // Include handle types even with protected destructors since Handle<T>
-    // manages lifetime via reference counting, not direct delete.
+    // Classes that are handle-able (transitively inherit from Standard_Transient)
     let mut defined_handles = BTreeSet::new();
     for class in classes {
-        if class.is_handle_type {
+        if handle_able_classes.contains(&class.name) {
             handles.insert(class.name.clone());
             defined_handles.insert(class.name.clone());
         }

@@ -56,6 +56,14 @@ impl TryFrom<i32> for StepModelType {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleSTEPCAFControlActorWrite, HandleSTEPCAFControlController,
+    HandleTransferActorOfFinderProcess, HandleTransferActorOfProcessForFinder,
+    HandleTransferActorOfProcessForTransient, HandleTransferActorOfTransientProcess,
+    HandleXSControlController,
+};
+
 // ========================
 // From STEPControl_ActorRead.hxx
 // ========================
@@ -82,6 +90,28 @@ impl ActorRead {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(theModel),
+            )
+        }
+    }
+
+    /// **Source:** `STEPControl_ActorRead.hxx`:68 - `STEPControl_ActorRead::Recognize()`
+    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::STEPControl_ActorRead_recognize(self as *mut Self, start) }
+    }
+
+    /// **Source:** `STEPControl_ActorRead.hxx`:93 - `STEPControl_ActorRead::ResetUnits()`
+    /// reset units and tolerances context to default
+    /// (mm, radians, read.precision.val, etc.)
+    pub fn reset_units(
+        &mut self,
+        theModel: &mut crate::ffi::HandleStepDataStepModel,
+        theLocalFactors: &mut crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::STEPControl_ActorRead_reset_units(
+                self as *mut Self,
+                theModel,
+                theLocalFactors,
             )
         }
     }
@@ -155,6 +185,15 @@ impl ActorRead {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlActorRead> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -196,31 +235,67 @@ impl ActorRead {
     }
 }
 
-// ── Skipped symbols for ActorRead (7 total) ──
-// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:68 - `STEPControl_ActorRead::Recognize`
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn recognize(&mut self, start: &HandleTransient) -> bool;
-//
+pub use crate::ffi::HandleSTEPControlActorRead;
+
+unsafe impl crate::CppDeletable for HandleSTEPControlActorRead {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleSTEPControlActorRead_destructor(ptr);
+    }
+}
+
+impl HandleSTEPControlActorRead {
+    /// Dereference this Handle to access the underlying STEPControl_ActorRead
+    pub fn get(&self) -> &crate::ffi::STEPControl_ActorRead {
+        unsafe { &*(crate::ffi::HandleSTEPControlActorRead_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying STEPControl_ActorRead
+    pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_ActorRead {
+        unsafe { &mut *(crate::ffi::HandleSTEPControlActorRead_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<STEPControl_ActorRead> to Handle<Transfer_ActorOfTransientProcess>
+    pub fn to_handle_actor_of_transient_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfTransientProcess(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<STEPControl_ActorRead> to Handle<Transfer_ActorOfProcessForTransient>
+    pub fn to_handle_actor_of_process_for_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfProcessForTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ActorRead (5 total) ──
 // SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:71 - `STEPControl_ActorRead::Transfer`
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
 //   // pub fn transfer(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
 //
 // SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:78 - `STEPControl_ActorRead::TransferShape`
 //   method: theUseTrsf - special flag for using Axis2Placement from ShapeRepresentation for transform root
 //   method: shape
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
 //   // pub fn transfer_shape(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theLocalFactors: &Factors, isManifold: bool, theUseTrsf: bool, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
 //
 // SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:87 - `STEPControl_ActorRead::PrepareUnits`
 //   method: set units and tolerances context by given ShapeRepresentation
 //   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
 //   // pub fn prepare_units(&mut self, rep: &HandleRepresentation, TP: &HandleTransientProcess, theLocalFactors: &mut Factors);
-//
-// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:93 - `STEPControl_ActorRead::ResetUnits`
-//   method: reset units and tolerances context to default
-//   method: (mm, radians, read.precision.val, etc.)
-//   Reason: param 'theModel' uses unknown type 'Handle(StepData_StepModel)&'
-//   // pub fn reset_units(&mut self, theModel: &mut HandleStepModel, theLocalFactors: &mut Factors);
 //
 // SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:104 - `STEPControl_ActorRead::ComputeTransformation`
 //   method: Computes transformation defined by two axis placements (in MAPPED_ITEM
@@ -262,6 +337,69 @@ impl ActorWrite {
         unsafe { crate::ffi::STEPControl_ActorWrite_recognize(self as *mut Self, start) }
     }
 
+    /// **Source:** `STEPControl_ActorWrite.hxx`:50 - `STEPControl_ActorWrite::Transfer()`
+    pub fn transfer(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_transfer(
+                self as *mut Self,
+                start,
+                FP,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPControl_ActorWrite.hxx`:65 - `STEPControl_ActorWrite::TransferShape()`
+    pub fn transfer_shape(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        SDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        shapeGroup: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        isManifold: bool,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_transfer_shape(
+                self as *mut Self,
+                start,
+                SDR,
+                FP,
+                theLocalFactors,
+                shapeGroup,
+                isManifold,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPControl_ActorWrite.hxx`:74 - `STEPControl_ActorWrite::TransferCompound()`
+    pub fn transfer_compound(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        SDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_transfer_compound(
+                self as *mut Self,
+                start,
+                SDR,
+                FP,
+                theLocalFactors,
+                theProgress,
+            ))
+        }
+    }
+
     /// **Source:** `STEPControl_ActorWrite.hxx`:81 - `STEPControl_ActorWrite::SetMode()`
     pub fn set_mode(&mut self, M: crate::step_control::StepModelType) {
         unsafe { crate::ffi::STEPControl_ActorWrite_set_mode(self as *mut Self, M.into()) }
@@ -290,6 +428,20 @@ impl ActorWrite {
     /// **Source:** `STEPControl_ActorWrite.hxx`:89 - `STEPControl_ActorWrite::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
         unsafe { crate::ffi::STEPControl_ActorWrite_set_tolerance(self as *mut Self, Tol) }
+    }
+
+    /// **Source:** `STEPControl_ActorWrite.hxx`:96 - `STEPControl_ActorWrite::IsAssembly()`
+    /// Customizable method to check whether shape S should
+    /// be written as assembly or not
+    /// Default implementation uses flag GroupMode and analyses
+    /// the shape itself
+    /// NOTE: this method can modify shape
+    pub fn is_assembly(
+        &self,
+        theModel: &crate::ffi::HandleStepDataStepModel,
+        S: &mut crate::topo_ds::Shape,
+    ) -> bool {
+        unsafe { crate::ffi::STEPControl_ActorWrite_is_assembly(self as *const Self, theModel, S) }
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:99 - `STEPControl_ActorWrite::DynamicType()`
@@ -353,6 +505,15 @@ impl ActorWrite {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
     pub fn transferring(
         &mut self,
@@ -367,6 +528,25 @@ impl ActorWrite {
                 TP,
                 theProgress,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:57 - `Transfer_ActorOfFinderProcess::TransferTransient()`
+    pub fn transfer_transient(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferFinderProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPControl_ActorWrite_inherited_TransferTransient(
+                    self as *mut Self,
+                    start,
+                    TP,
+                    theProgress,
+                ),
+            )
         }
     }
 
@@ -413,29 +593,74 @@ impl ActorWrite {
     }
 }
 
-// ── Skipped symbols for ActorWrite (5 total) ──
-// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:50 - `STEPControl_ActorWrite::Transfer`
-//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
-//   // pub fn transfer(&mut self, start: &HandleFinder, FP: &HandleFinderProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
+pub use crate::ffi::HandleSTEPControlActorWrite;
+
+unsafe impl crate::CppDeletable for HandleSTEPControlActorWrite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleSTEPControlActorWrite_destructor(ptr);
+    }
+}
+
+impl HandleSTEPControlActorWrite {
+    /// Dereference this Handle to access the underlying STEPControl_ActorWrite
+    pub fn get(&self) -> &crate::ffi::STEPControl_ActorWrite {
+        unsafe { &*(crate::ffi::HandleSTEPControlActorWrite_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying STEPControl_ActorWrite
+    pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_ActorWrite {
+        unsafe { &mut *(crate::ffi::HandleSTEPControlActorWrite_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<STEPControl_ActorWrite> to Handle<Transfer_ActorOfFinderProcess>
+    pub fn to_handle_actor_of_finder_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfFinderProcess(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<STEPControl_ActorWrite> to Handle<Transfer_ActorOfProcessForFinder>
+    pub fn to_handle_actor_of_process_for_finder(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfProcessForFinder(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<STEPControl_ActorWrite> to Handle<STEPCAFControl_ActorWrite>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPCAFControl_ActorWrite` (or subclass).
+    pub fn downcast_to_actor_write(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleSTEPControlActorWrite_downcast_to_HandleSTEPCAFControlActorWrite(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for ActorWrite (1 total) ──
 // SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:55 - `STEPControl_ActorWrite::TransferSubShape`
-//   Reason: param 'SDR' uses unknown type 'const Handle(StepShape_ShapeDefinitionRepresentation)&'
+//   Reason: param 'AX1' uses unknown type 'Handle(StepGeom_Axis2Placement3d)&'
 //   // pub fn transfer_sub_shape(&mut self, start: &HandleFinder, SDR: &HandleShapeDefinitionRepresentation, AX1: &mut HandleAxis2Placement3d, FP: &HandleFinderProcess, theLocalFactors: &Factors, shapeGroup: &HandleHSequenceOfShape, isManifold: bool, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
-// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:65 - `STEPControl_ActorWrite::TransferShape`
-//   Reason: param 'SDR' uses unknown type 'const Handle(StepShape_ShapeDefinitionRepresentation)&'
-//   // pub fn transfer_shape(&mut self, start: &HandleFinder, SDR: &HandleShapeDefinitionRepresentation, FP: &HandleFinderProcess, theLocalFactors: &Factors, shapeGroup: &HandleHSequenceOfShape, isManifold: bool, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
-// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:74 - `STEPControl_ActorWrite::TransferCompound`
-//   Reason: param 'SDR' uses unknown type 'const Handle(StepShape_ShapeDefinitionRepresentation)&'
-//   // pub fn transfer_compound(&mut self, start: &HandleFinder, SDR: &HandleShapeDefinitionRepresentation, FP: &HandleFinderProcess, theLocalFactors: &Factors, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
-// SKIPPED: **Source:** `STEPControl_ActorWrite.hxx`:96 - `STEPControl_ActorWrite::IsAssembly`
-//   method: Customizable method to check whether shape S should
-//   method: be written as assembly or not
-//   method: Default implementation uses flag GroupMode and analyses
-//   Reason: param 'theModel' uses unknown type 'const Handle(StepData_StepModel)&'
-//   // pub fn is_assembly(&self, theModel: &HandleStepModel, S: &mut Shape) -> bool;
 //
 
 // ========================
@@ -468,6 +693,55 @@ impl Controller {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Controller_new_model(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// **Source:** `STEPControl_Controller.hxx`:48 - `STEPControl_Controller::ActorRead()`
+    /// Returns the Actor for Read attached to the pair (norm,appli)
+    pub fn actor_read(
+        &self,
+        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Controller_actor_read(
+                self as *const Self,
+                theModel,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPControl_Controller.hxx`:51 - `STEPControl_Controller::Customise()`
+    pub fn customise(&mut self, WS: &mut crate::ffi::HandleXSControlWorkSession) {
+        unsafe { crate::ffi::STEPControl_Controller_customise(self as *mut Self, WS) }
+    }
+
+    /// **Source:** `STEPControl_Controller.hxx`:59 - `STEPControl_Controller::TransferWriteShape()`
+    /// Takes one Shape and transfers it to the InterfaceModel
+    /// (already created by NewModel for instance)
+    /// <modeshape> is to be interpreted by each kind of XstepAdaptor
+    /// Returns a status : 0 OK  1 No result  2 Fail  -1 bad modeshape
+    /// -2 bad model (requires a StepModel)
+    /// modeshape : 1 Facetted BRep, 2 Shell, 3 Manifold Solid
+    pub fn transfer_write_shape(
+        &self,
+        shape: &crate::topo_ds::Shape,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        modetrans: i32,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPControl_Controller_transfer_write_shape(
+                    self as *const Self,
+                    shape,
+                    FP,
+                    model,
+                    modetrans,
+                    theProgress,
+                ),
+            )
+            .unwrap()
         }
     }
 
@@ -514,6 +788,15 @@ impl Controller {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlController> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Controller_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     pub fn auto_record(&self) {
         unsafe { crate::ffi::STEPControl_Controller_inherited_AutoRecord(self as *const Self) }
@@ -522,6 +805,15 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
         unsafe { &*(crate::ffi::STEPControl_Controller_inherited_WorkLibrary(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:116 - `XSControl_Controller::ActorWrite()`
+    pub fn actor_write(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Controller_inherited_ActorWrite(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
@@ -547,6 +839,45 @@ impl Controller {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:154 - `XSControl_Controller::RecognizeWriteTransient()`
+    pub fn recognize_write_transient(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        modetrans: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_RecognizeWriteTransient(
+                self as *const Self,
+                obj,
+                modetrans,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:168 - `XSControl_Controller::TransferWriteTransient()`
+    pub fn transfer_write_transient(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        modetrans: i32,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPControl_Controller_inherited_TransferWriteTransient(
+                    self as *const Self,
+                    obj,
+                    FP,
+                    model,
+                    modetrans,
+                    theProgress,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
     pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         unsafe {
@@ -559,23 +890,54 @@ impl Controller {
     }
 }
 
-// ── Skipped symbols for Controller (3 total) ──
-// SKIPPED: **Source:** `STEPControl_Controller.hxx`:48 - `STEPControl_Controller::ActorRead`
-//   method: Returns the Actor for Read attached to the pair (norm,appli)
-//   Reason: return type 'Handle(Transfer_ActorOfTransientProcess)' is unknown
-//   // pub fn actor_read(&self, theModel: &HandleInterfaceModel) -> OwnedPtr<Handle<Transfer_ActorOfTransientProcess>>;
-//
-// SKIPPED: **Source:** `STEPControl_Controller.hxx`:51 - `STEPControl_Controller::Customise`
-//   Reason: param 'WS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn customise(&mut self, WS: &mut HandleWorkSession);
-//
-// SKIPPED: **Source:** `STEPControl_Controller.hxx`:59 - `STEPControl_Controller::TransferWriteShape`
-//   method: Takes one Shape and transfers it to the InterfaceModel
-//   method: (already created by NewModel for instance)
-//   method: <modeshape> is to be interpreted by each kind of XstepAdaptor
-//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
-//   // pub fn transfer_write_shape(&self, shape: &Shape, FP: &HandleFinderProcess, model: &HandleInterfaceModel, modetrans: i32, theProgress: &ProgressRange) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+pub use crate::ffi::HandleSTEPControlController;
+
+unsafe impl crate::CppDeletable for HandleSTEPControlController {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleSTEPControlController_destructor(ptr);
+    }
+}
+
+impl HandleSTEPControlController {
+    /// Dereference this Handle to access the underlying STEPControl_Controller
+    pub fn get(&self) -> &crate::ffi::STEPControl_Controller {
+        unsafe { &*(crate::ffi::HandleSTEPControlController_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying STEPControl_Controller
+    pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_Controller {
+        unsafe { &mut *(crate::ffi::HandleSTEPControlController_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<STEPControl_Controller> to Handle<XSControl_Controller>
+    pub fn to_handle_controller(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPControlController_to_HandleXSControlController(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<STEPControl_Controller> to Handle<STEPCAFControl_Controller>
+    ///
+    /// Returns `None` if the handle does not point to a `STEPCAFControl_Controller` (or subclass).
+    pub fn downcast_to_controller(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlController>> {
+        let ptr = unsafe {
+            crate::ffi::HandleSTEPControlController_downcast_to_HandleSTEPCAFControlController(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From STEPControl_Reader.hxx
@@ -630,6 +992,40 @@ impl Reader {
     /// Creates a reader object with an empty STEP model.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_ctor()) }
+    }
+
+    /// **Source:** `STEPControl_Reader.hxx`:79 - `STEPControl_Reader::STEPControl_Reader()`
+    /// Creates a Reader for STEP from an already existing Session
+    /// Clears the session if it was not yet set for STEP
+    pub fn new_handlexscontrolworksession_bool(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+        scratch: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch),
+            )
+        }
+    }
+
+    /// **Source:** `STEPControl_Reader.hxx`:79 - `STEPControl_Reader::STEPControl_Reader()`
+    /// Creates a Reader for STEP from an already existing Session
+    /// Clears the session if it was not yet set for STEP
+    pub fn new_handlexscontrolworksession(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlexscontrolworksession_bool(WS, true)
+    }
+
+    /// **Source:** `STEPControl_Reader.hxx`:84 - `STEPControl_Reader::StepModel()`
+    /// Returns the model as a StepModel.
+    /// It can then be consulted (header, product)
+    pub fn step_model(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_step_model(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `STEPControl_Reader.hxx`:88 - `STEPControl_Reader::ReadFile()`
@@ -730,11 +1126,38 @@ impl Reader {
         unsafe { &mut *(crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
+    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+        unsafe { crate::ffi::STEPControl_Reader_inherited_SetWS(self as *mut Self, WS, scratch) }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:103 - `XSControl_Reader::WS()`
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_WS(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_Model(
                 self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:163 - `XSControl_Reader::RootForTransfer()`
+    pub fn root_for_transfer(
+        &mut self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Reader_inherited_RootForTransfer(
+                self as *mut Self,
+                num,
             ))
         }
     }
@@ -760,6 +1183,21 @@ impl Reader {
             crate::ffi::STEPControl_Reader_inherited_TransferOne(
                 self as *mut Self,
                 num,
+                theProgress,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:182 - `XSControl_Reader::TransferEntity()`
+    pub fn transfer_entity(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_TransferEntity(
+                self as *mut Self,
+                start,
                 theProgress,
             )
         }
@@ -857,19 +1295,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (4 total) ──
-// SKIPPED: **Source:** `STEPControl_Reader.hxx`:79 - `STEPControl_Reader::STEPControl_Reader`
-//   constructor: Creates a Reader for STEP from an already existing Session
-//   constructor: Clears the session if it was not yet set for STEP
-//   Reason: param 'WS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `STEPControl_Reader.hxx`:84 - `STEPControl_Reader::StepModel`
-//   method: Returns the model as a StepModel.
-//   method: It can then be consulted (header, product)
-//   Reason: return type 'Handle(StepData_StepModel)' is unknown
-//   // pub fn step_model(&self) -> OwnedPtr<Handle<StepData_StepModel>>;
-//
+// ── Skipped symbols for Reader (2 total) ──
 // SKIPPED: **Source:** `STEPControl_Reader.hxx`:92 - `STEPControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status
 //   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
@@ -906,6 +1332,29 @@ impl Writer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Writer_ctor()) }
     }
 
+    /// **Source:** `STEPControl_Writer.hxx`:55 - `STEPControl_Writer::STEPControl_Writer()`
+    /// Creates a Writer from an already existing Session
+    /// If <scratch> is True (D), clears already recorded data
+    pub fn new_handlexscontrolworksession_bool(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+        scratch: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch),
+            )
+        }
+    }
+
+    /// **Source:** `STEPControl_Writer.hxx`:55 - `STEPControl_Writer::STEPControl_Writer()`
+    /// Creates a Writer from an already existing Session
+    /// If <scratch> is True (D), clears already recorded data
+    pub fn new_handlexscontrolworksession(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlexscontrolworksession_bool(WS, true)
+    }
+
     /// **Source:** `STEPControl_Writer.hxx`:61 - `STEPControl_Writer::SetTolerance()`
     /// Sets a length-measure value that
     /// will be written to uncertainty-measure-with-unit
@@ -918,6 +1367,32 @@ impl Writer {
     /// Unsets the tolerance formerly forced by SetTolerance
     pub fn unset_tolerance(&mut self) {
         unsafe { crate::ffi::STEPControl_Writer_unset_tolerance(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPControl_Writer.hxx`:67 - `STEPControl_Writer::SetWS()`
+    /// Sets a specific session to <me>
+    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+        unsafe { crate::ffi::STEPControl_Writer_set_ws(self as *mut Self, WS, scratch) }
+    }
+
+    /// **Source:** `STEPControl_Writer.hxx`:71 - `STEPControl_Writer::WS()`
+    /// Returns the session used in <me>
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Writer_ws(self as *const Self)) }
+    }
+
+    /// **Source:** `STEPControl_Writer.hxx`:77 - `STEPControl_Writer::Model()`
+    /// Returns the produced model. Produces a new one if not yet done
+    /// or if <newone> is True
+    /// This method allows for instance to edit product or header
+    /// data before writing.
+    pub fn model(&mut self, newone: bool) -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_Writer_model(
+                self as *mut Self,
+                newone,
+            ))
+        }
     }
 
     /// **Source:** `STEPControl_Writer.hxx`:92 - `STEPControl_Writer::Transfer()`
@@ -1018,30 +1493,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (10 total) ──
-// SKIPPED: **Source:** `STEPControl_Writer.hxx`:55 - `STEPControl_Writer::STEPControl_Writer`
-//   constructor: Creates a Writer from an already existing Session
-//   constructor: If <scratch> is True (D), clears already recorded data
-//   Reason: param 'WS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `STEPControl_Writer.hxx`:67 - `STEPControl_Writer::SetWS`
-//   method: Sets a specific session to <me>
-//   Reason: param 'WS' uses unknown type 'const Handle(XSControl_WorkSession)&'
-//   // pub fn set_ws(&mut self, WS: &HandleWorkSession, scratch: bool);
-//
-// SKIPPED: **Source:** `STEPControl_Writer.hxx`:71 - `STEPControl_Writer::WS`
-//   method: Returns the session used in <me>
-//   Reason: return type 'Handle(XSControl_WorkSession)' is unknown
-//   // pub fn ws(&self) -> OwnedPtr<Handle<XSControl_WorkSession>>;
-//
-// SKIPPED: **Source:** `STEPControl_Writer.hxx`:77 - `STEPControl_Writer::Model`
-//   method: Returns the produced model. Produces a new one if not yet done
-//   method: or if <newone> is True
-//   method: This method allows for instance to edit product or header
-//   Reason: return type 'Handle(StepData_StepModel)' is unknown
-//   // pub fn model(&mut self, newone: bool) -> OwnedPtr<Handle<StepData_StepModel>>;
-//
+// ── Skipped symbols for Writer (6 total) ──
 // SKIPPED: **Source:** `STEPControl_Writer.hxx`:109 - `STEPControl_Writer::WriteStream`
 //   method: Writes a STEP model in the std::ostream.
 //   Reason: has unbindable types: param 'theOStream': stream type (std::ostream&)

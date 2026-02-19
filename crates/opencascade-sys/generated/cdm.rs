@@ -38,6 +38,12 @@ impl TryFrom<i32> for CanCloseStatus {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleCDFApplication, HandleTDocStdApplication, HandleTDocStdDocument, HandleTObjApplication,
+    HandleXCAFAppApplication,
+};
+
 // ========================
 // From CDM_Application.hxx
 // ========================
@@ -146,6 +152,74 @@ impl HandleCDMApplication {
     /// Dereference this Handle to mutably access the underlying CDM_Application
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Application {
         unsafe { &mut *(crate::ffi::HandleCDMApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<CDM_Application> to Handle<CDF_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `CDF_Application` (or subclass).
+    pub fn downcast_to_cdf_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDFApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleCDMApplication_downcast_to_HandleCDFApplication(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<CDM_Application> to Handle<TDocStd_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_Application` (or subclass).
+    pub fn downcast_to_t_doc_std_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleCDMApplication_downcast_to_HandleTDocStdApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<CDM_Application> to Handle<TObj_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_Application` (or subclass).
+    pub fn downcast_to_t_obj_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleCDMApplication_downcast_to_HandleTObjApplication(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<CDM_Application> to Handle<XCAFApp_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFApp_Application` (or subclass).
+    pub fn downcast_to_xcaf_app_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleCDMApplication_downcast_to_HandleXCAFAppApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -754,6 +828,22 @@ impl HandleCDMDocument {
     /// Dereference this Handle to mutably access the underlying CDM_Document
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Document {
         unsafe { &mut *(crate::ffi::HandleCDMDocument_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<CDM_Document> to Handle<TDocStd_Document>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_Document` (or subclass).
+    pub fn downcast_to_document(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdDocument>> {
+        let ptr = unsafe {
+            crate::ffi::HandleCDMDocument_downcast_to_HandleTDocStdDocument(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 

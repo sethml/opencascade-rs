@@ -6,6 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleTopoDSTEdge, HandleTopoDSTFace, HandleTopoDSTShape, HandleTopoDSTVertex,
+};
+
 // ========================
 // From BRep_Builder.hxx
 // ========================
@@ -1009,6 +1014,11 @@ impl Curve3D {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleBRepCurve3D> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Curve3D_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `BRep_GCurve.hxx`:37 - `BRep_GCurve::SetRange()`
     pub fn set_range(&mut self, First: f64, Last: f64) {
         unsafe { crate::ffi::BRep_Curve3D_inherited_SetRange(self as *mut Self, First, Last) }
@@ -1147,6 +1157,46 @@ impl Curve3D {
                 self as *const Self,
             ))
             .unwrap()
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCurve3D;
+
+unsafe impl crate::CppDeletable for HandleBRepCurve3D {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCurve3D_destructor(ptr);
+    }
+}
+
+impl HandleBRepCurve3D {
+    /// Dereference this Handle to access the underlying BRep_Curve3D
+    pub fn get(&self) -> &crate::ffi::BRep_Curve3D {
+        unsafe { &*(crate::ffi::HandleBRepCurve3D_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_Curve3D
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_Curve3D {
+        unsafe { &mut *(crate::ffi::HandleBRepCurve3D_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_Curve3D> to Handle<BRep_GCurve>
+    pub fn to_handle_g_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepGCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCurve3D_to_HandleBRepGCurve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRep_Curve3D> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurve3D_to_HandleBRepCurveRepresentation(self as *const Self),
+            )
         }
     }
 }
@@ -1292,6 +1342,15 @@ impl CurveOn2Surfaces {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveOn2Surfaces> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_CurveOn2Surfaces_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRep_CurveRepresentation.hxx`:43 - `BRep_CurveRepresentation::IsCurve3D()`
     pub fn is_curve3_d(&self) -> bool {
         unsafe { crate::ffi::BRep_CurveOn2Surfaces_inherited_IsCurve3D(self as *const Self) }
@@ -1405,6 +1464,39 @@ impl CurveOn2Surfaces {
             &*(crate::ffi::BRep_CurveOn2Surfaces_inherited_PolygonOnTriangulation2(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCurveOn2Surfaces;
+
+unsafe impl crate::CppDeletable for HandleBRepCurveOn2Surfaces {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCurveOn2Surfaces_destructor(ptr);
+    }
+}
+
+impl HandleBRepCurveOn2Surfaces {
+    /// Dereference this Handle to access the underlying BRep_CurveOn2Surfaces
+    pub fn get(&self) -> &crate::ffi::BRep_CurveOn2Surfaces {
+        unsafe { &*(crate::ffi::HandleBRepCurveOn2Surfaces_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_CurveOn2Surfaces
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_CurveOn2Surfaces {
+        unsafe { &mut *(crate::ffi::HandleBRepCurveOn2Surfaces_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_CurveOn2Surfaces> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveOn2Surfaces_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1605,6 +1697,17 @@ impl CurveOnClosedSurface {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveOnClosedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_CurveOnClosedSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRep_CurveOnSurface.hxx`:44 - `BRep_CurveOnSurface::SetUVPoints()`
     pub fn set_uv_points(&mut self, P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) {
         unsafe {
@@ -1762,6 +1865,61 @@ impl CurveOnClosedSurface {
     }
 }
 
+pub use crate::ffi::HandleBRepCurveOnClosedSurface;
+
+unsafe impl crate::CppDeletable for HandleBRepCurveOnClosedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCurveOnClosedSurface_destructor(ptr);
+    }
+}
+
+impl HandleBRepCurveOnClosedSurface {
+    /// Dereference this Handle to access the underlying BRep_CurveOnClosedSurface
+    pub fn get(&self) -> &crate::ffi::BRep_CurveOnClosedSurface {
+        unsafe { &*(crate::ffi::HandleBRepCurveOnClosedSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_CurveOnClosedSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_CurveOnClosedSurface {
+        unsafe { &mut *(crate::ffi::HandleBRepCurveOnClosedSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_CurveOnClosedSurface> to Handle<BRep_CurveOnSurface>
+    pub fn to_handle_curve_on_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveOnClosedSurface_to_HandleBRepCurveOnSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_CurveOnClosedSurface> to Handle<BRep_GCurve>
+    pub fn to_handle_g_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepGCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveOnClosedSurface_to_HandleBRepGCurve(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_CurveOnClosedSurface> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveOnClosedSurface_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From BRep_CurveOnSurface.hxx
 // ========================
@@ -1903,6 +2061,15 @@ impl CurveOnSurface {
             &mut *(crate::ffi::BRep_CurveOnSurface_as_BRep_CurveRepresentation_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_CurveOnSurface_to_handle(obj.into_raw()))
         }
     }
 
@@ -2048,6 +2215,66 @@ impl CurveOnSurface {
                 self as *const Self,
             ))
             .unwrap()
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepCurveOnSurface;
+
+unsafe impl crate::CppDeletable for HandleBRepCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleBRepCurveOnSurface {
+    /// Dereference this Handle to access the underlying BRep_CurveOnSurface
+    pub fn get(&self) -> &crate::ffi::BRep_CurveOnSurface {
+        unsafe { &*(crate::ffi::HandleBRepCurveOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_CurveOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_CurveOnSurface {
+        unsafe { &mut *(crate::ffi::HandleBRepCurveOnSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_CurveOnSurface> to Handle<BRep_GCurve>
+    pub fn to_handle_g_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepGCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepCurveOnSurface_to_HandleBRepGCurve(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRep_CurveOnSurface> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepCurveOnSurface_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveOnSurface> to Handle<BRep_CurveOnClosedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_CurveOnClosedSurface` (or subclass).
+    pub fn downcast_to_curve_on_closed_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCurveOnClosedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveOnSurface_downcast_to_HandleBRepCurveOnClosedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -2408,6 +2635,164 @@ impl HandleBRepCurveRepresentation {
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_CurveRepresentation {
         unsafe { &mut *(crate::ffi::HandleBRepCurveRepresentation_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_Curve3D>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_Curve3D` (or subclass).
+    pub fn downcast_to_curve3_d(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCurve3D>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepCurve3D(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_CurveOn2Surfaces>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_CurveOn2Surfaces` (or subclass).
+    pub fn downcast_to_curve_on2_surfaces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCurveOn2Surfaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepCurveOn2Surfaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_CurveOnClosedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_CurveOnClosedSurface` (or subclass).
+    pub fn downcast_to_curve_on_closed_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCurveOnClosedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepCurveOnClosedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_CurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_CurveOnSurface` (or subclass).
+    pub fn downcast_to_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepCurveOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_Polygon3D>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_Polygon3D` (or subclass).
+    pub fn downcast_to_polygon3_d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPolygon3D>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygon3D(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_PolygonOnClosedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PolygonOnClosedSurface` (or subclass).
+    pub fn downcast_to_polygon_on_closed_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnClosedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygonOnClosedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_PolygonOnClosedTriangulation>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PolygonOnClosedTriangulation` (or subclass).
+    pub fn downcast_to_polygon_on_closed_triangulation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnClosedTriangulation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygonOnClosedTriangulation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_PolygonOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PolygonOnSurface` (or subclass).
+    pub fn downcast_to_polygon_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygonOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_CurveRepresentation> to Handle<BRep_PolygonOnTriangulation>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PolygonOnTriangulation` (or subclass).
+    pub fn downcast_to_polygon_on_triangulation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnTriangulation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygonOnTriangulation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -2633,6 +3018,85 @@ impl GCurve {
     }
 }
 
+pub use crate::ffi::HandleBRepGCurve;
+
+unsafe impl crate::CppDeletable for HandleBRepGCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepGCurve_destructor(ptr);
+    }
+}
+
+impl HandleBRepGCurve {
+    /// Dereference this Handle to access the underlying BRep_GCurve
+    pub fn get(&self) -> &crate::ffi::BRep_GCurve {
+        unsafe { &*(crate::ffi::HandleBRepGCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_GCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_GCurve {
+        unsafe { &mut *(crate::ffi::HandleBRepGCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_GCurve> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepGCurve_to_HandleBRepCurveRepresentation(self as *const Self),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRep_GCurve> to Handle<BRep_Curve3D>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_Curve3D` (or subclass).
+    pub fn downcast_to_curve3_d(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCurve3D>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepGCurve_downcast_to_HandleBRepCurve3D(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_GCurve> to Handle<BRep_CurveOnClosedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_CurveOnClosedSurface` (or subclass).
+    pub fn downcast_to_curve_on_closed_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCurveOnClosedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepGCurve_downcast_to_HandleBRepCurveOnClosedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_GCurve> to Handle<BRep_CurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_CurveOnSurface` (or subclass).
+    pub fn downcast_to_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepGCurve_downcast_to_HandleBRepCurveOnSurface(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From BRep_PointOnCurve.hxx
 // ========================
@@ -2725,6 +3189,15 @@ impl PointOnCurve {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointOnCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_PointOnCurve_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRep_PointRepresentation.hxx`:42 - `BRep_PointRepresentation::IsPointOnCurveOnSurface()`
     pub fn is_point_on_curve_on_surface(&self) -> bool {
         unsafe {
@@ -2760,6 +3233,39 @@ impl PointOnCurve {
     /// Inherited: **Source:** `BRep_PointRepresentation.hxx`:80 - `BRep_PointRepresentation::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_PointOnCurve_inherited_Surface(self as *const Self)) }
+    }
+}
+
+pub use crate::ffi::HandleBRepPointOnCurve;
+
+unsafe impl crate::CppDeletable for HandleBRepPointOnCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPointOnCurve_destructor(ptr);
+    }
+}
+
+impl HandleBRepPointOnCurve {
+    /// Dereference this Handle to access the underlying BRep_PointOnCurve
+    pub fn get(&self) -> &crate::ffi::BRep_PointOnCurve {
+        unsafe { &*(crate::ffi::HandleBRepPointOnCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PointOnCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PointOnCurve {
+        unsafe { &mut *(crate::ffi::HandleBRepPointOnCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_PointOnCurve> to Handle<BRep_PointRepresentation>
+    pub fn to_handle_point_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointOnCurve_to_HandleBRepPointRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2876,6 +3382,17 @@ impl PointOnCurveOnSurface {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointOnCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_PointOnCurveOnSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRep_PointsOnSurface.hxx`:35 - `BRep_PointsOnSurface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_PointOnCurveOnSurface_inherited_Surface(self as *const Self)) }
@@ -2915,6 +3432,52 @@ impl PointOnCurveOnSurface {
     /// Inherited: **Source:** `BRep_PointRepresentation.hxx`:72 - `BRep_PointRepresentation::Curve()`
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
         unsafe { &*(crate::ffi::BRep_PointOnCurveOnSurface_inherited_Curve(self as *const Self)) }
+    }
+}
+
+pub use crate::ffi::HandleBRepPointOnCurveOnSurface;
+
+unsafe impl crate::CppDeletable for HandleBRepPointOnCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPointOnCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleBRepPointOnCurveOnSurface {
+    /// Dereference this Handle to access the underlying BRep_PointOnCurveOnSurface
+    pub fn get(&self) -> &crate::ffi::BRep_PointOnCurveOnSurface {
+        unsafe { &*(crate::ffi::HandleBRepPointOnCurveOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PointOnCurveOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PointOnCurveOnSurface {
+        unsafe { &mut *(crate::ffi::HandleBRepPointOnCurveOnSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_PointOnCurveOnSurface> to Handle<BRep_PointsOnSurface>
+    pub fn to_handle_points_on_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointsOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointOnCurveOnSurface_to_HandleBRepPointsOnSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PointOnCurveOnSurface> to Handle<BRep_PointRepresentation>
+    pub fn to_handle_point_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointOnCurveOnSurface_to_HandleBRepPointRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -3024,6 +3587,15 @@ impl PointOnSurface {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_PointOnSurface_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRep_PointsOnSurface.hxx`:35 - `BRep_PointsOnSurface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe { &*(crate::ffi::BRep_PointOnSurface_inherited_Surface(self as *const Self)) }
@@ -3059,6 +3631,52 @@ impl PointOnSurface {
     /// Inherited: **Source:** `BRep_PointRepresentation.hxx`:76 - `BRep_PointRepresentation::PCurve()`
     pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_PointOnSurface_inherited_PCurve(self as *const Self)) }
+    }
+}
+
+pub use crate::ffi::HandleBRepPointOnSurface;
+
+unsafe impl crate::CppDeletable for HandleBRepPointOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPointOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleBRepPointOnSurface {
+    /// Dereference this Handle to access the underlying BRep_PointOnSurface
+    pub fn get(&self) -> &crate::ffi::BRep_PointOnSurface {
+        unsafe { &*(crate::ffi::HandleBRepPointOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PointOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PointOnSurface {
+        unsafe { &mut *(crate::ffi::HandleBRepPointOnSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_PointOnSurface> to Handle<BRep_PointsOnSurface>
+    pub fn to_handle_points_on_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointsOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointOnSurface_to_HandleBRepPointsOnSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PointOnSurface> to Handle<BRep_PointRepresentation>
+    pub fn to_handle_point_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointOnSurface_to_HandleBRepPointRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -3256,6 +3874,78 @@ impl HandleBRepPointRepresentation {
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PointRepresentation {
         unsafe { &mut *(crate::ffi::HandleBRepPointRepresentation_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<BRep_PointRepresentation> to Handle<BRep_PointOnCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PointOnCurve` (or subclass).
+    pub fn downcast_to_point_on_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointOnCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepPointRepresentation_downcast_to_HandleBRepPointOnCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_PointRepresentation> to Handle<BRep_PointOnCurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PointOnCurveOnSurface` (or subclass).
+    pub fn downcast_to_point_on_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointOnCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepPointRepresentation_downcast_to_HandleBRepPointOnCurveOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_PointRepresentation> to Handle<BRep_PointOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PointOnSurface` (or subclass).
+    pub fn downcast_to_point_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepPointRepresentation_downcast_to_HandleBRepPointOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_PointRepresentation> to Handle<BRep_PointsOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PointsOnSurface` (or subclass).
+    pub fn downcast_to_points_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointsOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepPointRepresentation_downcast_to_HandleBRepPointsOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -3318,6 +4008,15 @@ impl PointsOnSurface {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointsOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_PointsOnSurface_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRep_PointRepresentation.hxx`:39 - `BRep_PointRepresentation::IsPointOnCurve()`
     pub fn is_point_on_curve(&self) -> bool {
         unsafe { crate::ffi::BRep_PointsOnSurface_inherited_IsPointOnCurve(self as *const Self) }
@@ -3358,6 +4057,75 @@ impl PointsOnSurface {
     /// Inherited: **Source:** `BRep_PointRepresentation.hxx`:76 - `BRep_PointRepresentation::PCurve()`
     pub fn p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         unsafe { &*(crate::ffi::BRep_PointsOnSurface_inherited_PCurve(self as *const Self)) }
+    }
+}
+
+pub use crate::ffi::HandleBRepPointsOnSurface;
+
+unsafe impl crate::CppDeletable for HandleBRepPointsOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPointsOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleBRepPointsOnSurface {
+    /// Dereference this Handle to access the underlying BRep_PointsOnSurface
+    pub fn get(&self) -> &crate::ffi::BRep_PointsOnSurface {
+        unsafe { &*(crate::ffi::HandleBRepPointsOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PointsOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PointsOnSurface {
+        unsafe { &mut *(crate::ffi::HandleBRepPointsOnSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_PointsOnSurface> to Handle<BRep_PointRepresentation>
+    pub fn to_handle_point_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPointRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPointsOnSurface_to_HandleBRepPointRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRep_PointsOnSurface> to Handle<BRep_PointOnCurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PointOnCurveOnSurface` (or subclass).
+    pub fn downcast_to_point_on_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointOnCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepPointsOnSurface_downcast_to_HandleBRepPointOnCurveOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRep_PointsOnSurface> to Handle<BRep_PointOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PointOnSurface` (or subclass).
+    pub fn downcast_to_point_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPointOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepPointsOnSurface_downcast_to_HandleBRepPointOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -3439,6 +4207,13 @@ impl Polygon3D {
         unsafe {
             &mut *(crate::ffi::BRep_Polygon3D_as_BRep_CurveRepresentation_mut(self as *mut Self))
         }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPolygon3D> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_Polygon3D_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `BRep_CurveRepresentation.hxx`:43 - `BRep_CurveRepresentation::IsCurve3D()`
@@ -3562,6 +4337,39 @@ impl Polygon3D {
     }
 }
 
+pub use crate::ffi::HandleBRepPolygon3D;
+
+unsafe impl crate::CppDeletable for HandleBRepPolygon3D {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPolygon3D_destructor(ptr);
+    }
+}
+
+impl HandleBRepPolygon3D {
+    /// Dereference this Handle to access the underlying BRep_Polygon3D
+    pub fn get(&self) -> &crate::ffi::BRep_Polygon3D {
+        unsafe { &*(crate::ffi::HandleBRepPolygon3D_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_Polygon3D
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_Polygon3D {
+        unsafe { &mut *(crate::ffi::HandleBRepPolygon3D_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_Polygon3D> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygon3D_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From BRep_PolygonOnClosedSurface.hxx
 // ========================
@@ -3676,6 +4484,17 @@ impl PolygonOnClosedSurface {
         unsafe {
             &mut *(crate::ffi::BRep_PolygonOnClosedSurface_as_BRep_CurveRepresentation_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnClosedSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_PolygonOnClosedSurface_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -3839,6 +4658,52 @@ impl PolygonOnClosedSurface {
     }
 }
 
+pub use crate::ffi::HandleBRepPolygonOnClosedSurface;
+
+unsafe impl crate::CppDeletable for HandleBRepPolygonOnClosedSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPolygonOnClosedSurface_destructor(ptr);
+    }
+}
+
+impl HandleBRepPolygonOnClosedSurface {
+    /// Dereference this Handle to access the underlying BRep_PolygonOnClosedSurface
+    pub fn get(&self) -> &crate::ffi::BRep_PolygonOnClosedSurface {
+        unsafe { &*(crate::ffi::HandleBRepPolygonOnClosedSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PolygonOnClosedSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PolygonOnClosedSurface {
+        unsafe { &mut *(crate::ffi::HandleBRepPolygonOnClosedSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnClosedSurface> to Handle<BRep_PolygonOnSurface>
+    pub fn to_handle_polygon_on_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnClosedSurface_to_HandleBRepPolygonOnSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnClosedSurface> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnClosedSurface_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From BRep_PolygonOnClosedTriangulation.hxx
 // ========================
@@ -3959,6 +4824,17 @@ impl PolygonOnClosedTriangulation {
         unsafe {
             &mut *(crate::ffi::BRep_PolygonOnClosedTriangulation_as_BRep_CurveRepresentation_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnClosedTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_PolygonOnClosedTriangulation_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -4143,6 +5019,50 @@ impl PolygonOnClosedTriangulation {
     }
 }
 
+pub use crate::ffi::HandleBRepPolygonOnClosedTriangulation;
+
+unsafe impl crate::CppDeletable for HandleBRepPolygonOnClosedTriangulation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPolygonOnClosedTriangulation_destructor(ptr);
+    }
+}
+
+impl HandleBRepPolygonOnClosedTriangulation {
+    /// Dereference this Handle to access the underlying BRep_PolygonOnClosedTriangulation
+    pub fn get(&self) -> &crate::ffi::BRep_PolygonOnClosedTriangulation {
+        unsafe { &*(crate::ffi::HandleBRepPolygonOnClosedTriangulation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PolygonOnClosedTriangulation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PolygonOnClosedTriangulation {
+        unsafe {
+            &mut *(crate::ffi::HandleBRepPolygonOnClosedTriangulation_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnClosedTriangulation> to Handle<BRep_PolygonOnTriangulation>
+    pub fn to_handle_polygon_on_triangulation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepPolygonOnClosedTriangulation_to_HandleBRepPolygonOnTriangulation(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnClosedTriangulation> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnClosedTriangulation_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From BRep_PolygonOnSurface.hxx
 // ========================
@@ -4251,6 +5171,15 @@ impl PolygonOnSurface {
             &mut *(crate::ffi::BRep_PolygonOnSurface_as_BRep_CurveRepresentation_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_PolygonOnSurface_to_handle(obj.into_raw()))
         }
     }
 
@@ -4384,6 +5313,57 @@ impl PolygonOnSurface {
     }
 }
 
+pub use crate::ffi::HandleBRepPolygonOnSurface;
+
+unsafe impl crate::CppDeletable for HandleBRepPolygonOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPolygonOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleBRepPolygonOnSurface {
+    /// Dereference this Handle to access the underlying BRep_PolygonOnSurface
+    pub fn get(&self) -> &crate::ffi::BRep_PolygonOnSurface {
+        unsafe { &*(crate::ffi::HandleBRepPolygonOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PolygonOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PolygonOnSurface {
+        unsafe { &mut *(crate::ffi::HandleBRepPolygonOnSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnSurface> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnSurface_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRep_PolygonOnSurface> to Handle<BRep_PolygonOnClosedSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PolygonOnClosedSurface` (or subclass).
+    pub fn downcast_to_polygon_on_closed_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnClosedSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepPolygonOnSurface_downcast_to_HandleBRepPolygonOnClosedSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From BRep_PolygonOnTriangulation.hxx
 // ========================
@@ -4500,6 +5480,17 @@ impl PolygonOnTriangulation {
         unsafe {
             &mut *(crate::ffi::BRep_PolygonOnTriangulation_as_BRep_CurveRepresentation_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRep_PolygonOnTriangulation_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -4654,6 +5645,55 @@ impl PolygonOnTriangulation {
     }
 }
 
+pub use crate::ffi::HandleBRepPolygonOnTriangulation;
+
+unsafe impl crate::CppDeletable for HandleBRepPolygonOnTriangulation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepPolygonOnTriangulation_destructor(ptr);
+    }
+}
+
+impl HandleBRepPolygonOnTriangulation {
+    /// Dereference this Handle to access the underlying BRep_PolygonOnTriangulation
+    pub fn get(&self) -> &crate::ffi::BRep_PolygonOnTriangulation {
+        unsafe { &*(crate::ffi::HandleBRepPolygonOnTriangulation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_PolygonOnTriangulation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_PolygonOnTriangulation {
+        unsafe { &mut *(crate::ffi::HandleBRepPolygonOnTriangulation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_PolygonOnTriangulation> to Handle<BRep_CurveRepresentation>
+    pub fn to_handle_curve_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepPolygonOnTriangulation_to_HandleBRepCurveRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRep_PolygonOnTriangulation> to Handle<BRep_PolygonOnClosedTriangulation>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_PolygonOnClosedTriangulation` (or subclass).
+    pub fn downcast_to_polygon_on_closed_triangulation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepPolygonOnClosedTriangulation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepPolygonOnTriangulation_downcast_to_HandleBRepPolygonOnClosedTriangulation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From BRep_TEdge.hxx
 // ========================
@@ -4790,6 +5830,11 @@ impl TEdge {
         unsafe { &mut *(crate::ffi::BRep_TEdge_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleBRepTEdge> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TEdge_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TEdge.hxx`:34 - `TopoDS_TEdge::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -4843,6 +5888,44 @@ impl TEdge {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::BRep_TEdge_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepTEdge;
+
+unsafe impl crate::CppDeletable for HandleBRepTEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepTEdge_destructor(ptr);
+    }
+}
+
+impl HandleBRepTEdge {
+    /// Dereference this Handle to access the underlying BRep_TEdge
+    pub fn get(&self) -> &crate::ffi::BRep_TEdge {
+        unsafe { &*(crate::ffi::HandleBRepTEdge_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_TEdge
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_TEdge {
+        unsafe { &mut *(crate::ffi::HandleBRepTEdge_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_TEdge> to Handle<TopoDS_TEdge>
+    pub fn to_handle_t_edge(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTEdge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTEdge_to_HandleTopoDSTEdge(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRep_TEdge> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTEdge_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -5058,6 +6141,11 @@ impl TFace {
         unsafe { &mut *(crate::ffi::BRep_TFace_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleBRepTFace> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TFace_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TFace.hxx`:41 - `TopoDS_TFace::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -5111,6 +6199,44 @@ impl TFace {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::BRep_TFace_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepTFace;
+
+unsafe impl crate::CppDeletable for HandleBRepTFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepTFace_destructor(ptr);
+    }
+}
+
+impl HandleBRepTFace {
+    /// Dereference this Handle to access the underlying BRep_TFace
+    pub fn get(&self) -> &crate::ffi::BRep_TFace {
+        unsafe { &*(crate::ffi::HandleBRepTFace_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_TFace
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_TFace {
+        unsafe { &mut *(crate::ffi::HandleBRepTFace_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_TFace> to Handle<TopoDS_TFace>
+    pub fn to_handle_t_face(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTFace> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTFace_to_HandleTopoDSTFace(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRep_TFace> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTFace_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -5221,6 +6347,11 @@ impl TVertex {
         unsafe { &mut *(crate::ffi::BRep_TVertex_as_TopoDS_TShape_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleBRepTVertex> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRep_TVertex_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TVertex.hxx`:38 - `TopoDS_TVertex::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         unsafe {
@@ -5274,6 +6405,44 @@ impl TVertex {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::BRep_TVertex_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleBRepTVertex;
+
+unsafe impl crate::CppDeletable for HandleBRepTVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepTVertex_destructor(ptr);
+    }
+}
+
+impl HandleBRepTVertex {
+    /// Dereference this Handle to access the underlying BRep_TVertex
+    pub fn get(&self) -> &crate::ffi::BRep_TVertex {
+        unsafe { &*(crate::ffi::HandleBRepTVertex_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRep_TVertex
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRep_TVertex {
+        unsafe { &mut *(crate::ffi::HandleBRepTVertex_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRep_TVertex> to Handle<TopoDS_TVertex>
+    pub fn to_handle_t_vertex(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTVertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTVertex_to_HandleTopoDSTVertex(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BRep_TVertex> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepTVertex_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 

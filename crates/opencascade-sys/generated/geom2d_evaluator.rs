@@ -129,6 +129,24 @@ impl HandleGeom2dEvaluatorCurve {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dEvaluator_Curve {
         unsafe { &mut *(crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Geom2dEvaluator_Curve> to Handle<Geom2dEvaluator_OffsetCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Geom2dEvaluator_OffsetCurve` (or subclass).
+    pub fn downcast_to_offset_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorOffsetCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeom2dEvaluatorCurve_downcast_to_HandleGeom2dEvaluatorOffsetCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Curve (1 total) ──
@@ -161,6 +179,21 @@ impl OffsetCurve {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dcurve_real(
+                    theBase, theOffset,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:29 - `Geom2dEvaluator_OffsetCurve::Geom2dEvaluator_OffsetCurve()`
+    /// Initialize evaluator by curve adaptor
+    pub fn new_handlegeom2dadaptorcurve_real(
+        theBase: &crate::ffi::HandleGeom2dAdaptorCurve,
+        theOffset: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dadaptorcurve_real(
                     theBase, theOffset,
                 ),
             )
@@ -288,11 +321,46 @@ impl OffsetCurve {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorOffsetCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Geom2dEvaluator_OffsetCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for OffsetCurve (1 total) ──
-// SKIPPED: **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:29 - `Geom2dEvaluator_OffsetCurve::Geom2dEvaluator_OffsetCurve`
-//   constructor: Initialize evaluator by curve adaptor
-//   Reason: param 'theBase' uses unknown Handle type
-//   // pub fn new_handlegeom2dadaptorcurve_real(theBase: &HandleCurve, theOffset: f64) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleGeom2dEvaluatorOffsetCurve;
+
+unsafe impl crate::CppDeletable for HandleGeom2dEvaluatorOffsetCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeom2dEvaluatorOffsetCurve_destructor(ptr);
+    }
+}
+
+impl HandleGeom2dEvaluatorOffsetCurve {
+    /// Dereference this Handle to access the underlying Geom2dEvaluator_OffsetCurve
+    pub fn get(&self) -> &crate::ffi::Geom2dEvaluator_OffsetCurve {
+        unsafe { &*(crate::ffi::HandleGeom2dEvaluatorOffsetCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Geom2dEvaluator_OffsetCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dEvaluator_OffsetCurve {
+        unsafe { &mut *(crate::ffi::HandleGeom2dEvaluatorOffsetCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Geom2dEvaluator_OffsetCurve> to Handle<Geom2dEvaluator_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeom2dEvaluatorOffsetCurve_to_HandleGeom2dEvaluatorCurve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}

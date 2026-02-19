@@ -135,6 +135,24 @@ pub fn compound_mut(theShape: &mut Shape) -> &mut Compound {
     unsafe { &mut *(crate::ffi::TopoDS_compound_mut(theShape)) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleBOPAlgoAlertAcquiredSelfIntersection, HandleBOPAlgoAlertBadPositioning,
+    HandleBOPAlgoAlertBuildingPCurveFailed, HandleBOPAlgoAlertEmptyShape,
+    HandleBOPAlgoAlertFaceBuilderUnusedEdges, HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
+    HandleBOPAlgoAlertNotSplittableEdge, HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
+    HandleBOPAlgoAlertRemovalOfIBForFacesFailed, HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
+    HandleBOPAlgoAlertRemovalOfIBForSolidsFailed, HandleBOPAlgoAlertSelfInterferingShape,
+    HandleBOPAlgoAlertShapeIsNotPeriodic, HandleBOPAlgoAlertShellSplitterFailed,
+    HandleBOPAlgoAlertSolidBuilderUnusedFaces, HandleBOPAlgoAlertTooSmallEdge,
+    HandleBOPAlgoAlertUnableToGlue, HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
+    HandleBOPAlgoAlertUnableToMakeIdentical, HandleBOPAlgoAlertUnableToMakePeriodic,
+    HandleBOPAlgoAlertUnableToOrientTheShape, HandleBOPAlgoAlertUnableToRemoveTheFeature,
+    HandleBOPAlgoAlertUnableToRepeat, HandleBOPAlgoAlertUnableToTrim,
+    HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBRepTEdge,
+    HandleBRepTFace, HandleBRepTVertex, HandleMessageAlert,
+};
+
 // ========================
 // From TopoDS_AlertWithShape.hxx
 // ========================
@@ -215,6 +233,483 @@ impl AlertWithShape {
             crate::OwnedPtr::from_raw(crate::ffi::TopoDS_AlertWithShape_to_owned(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_AlertWithShape_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleTopoDSAlertWithShape;
+
+unsafe impl crate::CppDeletable for HandleTopoDSAlertWithShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSAlertWithShape_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSAlertWithShape {
+    /// Dereference this Handle to access the underlying TopoDS_AlertWithShape
+    pub fn get(&self) -> &crate::ffi::TopoDS_AlertWithShape {
+        unsafe { &*(crate::ffi::HandleTopoDSAlertWithShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_AlertWithShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_AlertWithShape {
+        unsafe { &mut *(crate::ffi::HandleTopoDSAlertWithShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_AlertWithShape> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSAlertWithShape_to_HandleMessageAlert(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertAcquiredSelfIntersection>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertAcquiredSelfIntersection` (or subclass).
+    pub fn downcast_to_alert_acquired_self_intersection(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertAcquiredSelfIntersection(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertBadPositioning>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBadPositioning` (or subclass).
+    pub fn downcast_to_alert_bad_positioning(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBadPositioning>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertBadPositioning(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertBuildingPCurveFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBuildingPCurveFailed` (or subclass).
+    pub fn downcast_to_alert_building_p_curve_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertBuildingPCurveFailed(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertEmptyShape>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertEmptyShape` (or subclass).
+    pub fn downcast_to_alert_empty_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertEmptyShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertEmptyShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertFaceBuilderUnusedEdges>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertFaceBuilderUnusedEdges` (or subclass).
+    pub fn downcast_to_alert_face_builder_unused_edges(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertFaceBuilderUnusedEdges(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertIntersectionOfPairOfShapesFailed` (or subclass).
+    pub fn downcast_to_alert_intersection_of_pair_of_shapes_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertNotSplittableEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNotSplittableEdge` (or subclass).
+    pub fn downcast_to_alert_not_splittable_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNotSplittableEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertNotSplittableEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForEdgesFailed` (or subclass).
+    pub fn downcast_to_alert_removal_of_ib_for_edges_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForFacesFailed` (or subclass).
+    pub fn downcast_to_alert_removal_of_ib_for_faces_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForFacesFailed(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForMDimShapes` (or subclass).
+    pub fn downcast_to_alert_removal_of_ib_for_m_dim_shapes(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForMDimShapes(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForSolidsFailed` (or subclass).
+    pub fn downcast_to_alert_removal_of_ib_for_solids_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertSelfInterferingShape>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSelfInterferingShape` (or subclass).
+    pub fn downcast_to_alert_self_interfering_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSelfInterferingShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertSelfInterferingShape(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertShapeIsNotPeriodic>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertShapeIsNotPeriodic` (or subclass).
+    pub fn downcast_to_alert_shape_is_not_periodic(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertShapeIsNotPeriodic(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertShellSplitterFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertShellSplitterFailed` (or subclass).
+    pub fn downcast_to_alert_shell_splitter_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertShellSplitterFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertShellSplitterFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertSolidBuilderUnusedFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSolidBuilderUnusedFaces` (or subclass).
+    pub fn downcast_to_alert_solid_builder_unused_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertSolidBuilderUnusedFaces(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertTooSmallEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertTooSmallEdge` (or subclass).
+    pub fn downcast_to_alert_too_small_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertTooSmallEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertTooSmallEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnableToGlue>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToGlue` (or subclass).
+    pub fn downcast_to_alert_unable_to_glue(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToGlue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToGlue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace` (or subclass).
+    pub fn downcast_to_alert_unable_to_make_closed_edge_on_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnableToMakeIdentical>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakeIdentical` (or subclass).
+    pub fn downcast_to_alert_unable_to_make_identical(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakeIdentical(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnableToMakePeriodic>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakePeriodic` (or subclass).
+    pub fn downcast_to_alert_unable_to_make_periodic(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakePeriodic(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnableToOrientTheShape>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToOrientTheShape` (or subclass).
+    pub fn downcast_to_alert_unable_to_orient_the_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToOrientTheShape(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnableToRemoveTheFeature>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToRemoveTheFeature` (or subclass).
+    pub fn downcast_to_alert_unable_to_remove_the_feature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToRemoveTheFeature(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnableToRepeat>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToRepeat` (or subclass).
+    pub fn downcast_to_alert_unable_to_repeat(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToRepeat>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToRepeat(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnableToTrim>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToTrim` (or subclass).
+    pub fn downcast_to_alert_unable_to_trim(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToTrim>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToTrim(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnknownShape>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnknownShape` (or subclass).
+    pub fn downcast_to_alert_unknown_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnknownShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnknownShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertUnsupportedType>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnsupportedType` (or subclass).
+    pub fn downcast_to_alert_unsupported_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnsupportedType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnsupportedType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -2703,6 +3198,15 @@ impl TCompSolid {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTCompSolid> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TCompSolid_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Free(self as *const Self) }
@@ -2746,6 +3250,35 @@ impl TCompSolid {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TCompSolid_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopoDSTCompSolid;
+
+unsafe impl crate::CppDeletable for HandleTopoDSTCompSolid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSTCompSolid_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSTCompSolid {
+    /// Dereference this Handle to access the underlying TopoDS_TCompSolid
+    pub fn get(&self) -> &crate::ffi::TopoDS_TCompSolid {
+        unsafe { &*(crate::ffi::HandleTopoDSTCompSolid_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TCompSolid
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TCompSolid {
+        unsafe { &mut *(crate::ffi::HandleTopoDSTCompSolid_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TCompSolid> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTCompSolid_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -2825,6 +3358,13 @@ impl TCompound {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTCompound> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TCompound_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TCompound_inherited_Free(self as *const Self) }
@@ -2868,6 +3408,35 @@ impl TCompound {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TCompound_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopoDSTCompound;
+
+unsafe impl crate::CppDeletable for HandleTopoDSTCompound {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSTCompound_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSTCompound {
+    /// Dereference this Handle to access the underlying TopoDS_TCompound
+    pub fn get(&self) -> &crate::ffi::TopoDS_TCompound {
+        unsafe { &*(crate::ffi::HandleTopoDSTCompound_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TCompound
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TCompound {
+        unsafe { &mut *(crate::ffi::HandleTopoDSTCompound_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TCompound> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTCompound_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -2982,6 +3551,49 @@ impl TEdge {
     }
 }
 
+pub use crate::ffi::HandleTopoDSTEdge;
+
+unsafe impl crate::CppDeletable for HandleTopoDSTEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSTEdge_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSTEdge {
+    /// Dereference this Handle to access the underlying TopoDS_TEdge
+    pub fn get(&self) -> &crate::ffi::TopoDS_TEdge {
+        unsafe { &*(crate::ffi::HandleTopoDSTEdge_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TEdge
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TEdge {
+        unsafe { &mut *(crate::ffi::HandleTopoDSTEdge_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TEdge> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTEdge_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TEdge> to Handle<BRep_TEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_TEdge` (or subclass).
+    pub fn downcast_to_t_edge(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTEdge_downcast_to_HandleBRepTEdge(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From TopoDS_TFace.hxx
 // ========================
@@ -3058,6 +3670,11 @@ impl TFace {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TFace_to_owned(self as *const Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTFace> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TFace_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TFace_inherited_Free(self as *const Self) }
@@ -3101,6 +3718,49 @@ impl TFace {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TFace_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopoDSTFace;
+
+unsafe impl crate::CppDeletable for HandleTopoDSTFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSTFace_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSTFace {
+    /// Dereference this Handle to access the underlying TopoDS_TFace
+    pub fn get(&self) -> &crate::ffi::TopoDS_TFace {
+        unsafe { &*(crate::ffi::HandleTopoDSTFace_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TFace
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TFace {
+        unsafe { &mut *(crate::ffi::HandleTopoDSTFace_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TFace> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTFace_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TFace> to Handle<BRep_TFace>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_TFace` (or subclass).
+    pub fn downcast_to_t_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTFace_downcast_to_HandleBRepTFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -3304,6 +3964,172 @@ impl HandleTopoDSTShape {
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TShape {
         unsafe { &mut *(crate::ffi::HandleTopoDSTShape_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<BRep_TEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_TEdge` (or subclass).
+    pub fn downcast_to_b_rep_t_edge(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleBRepTEdge(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<BRep_TFace>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_TFace` (or subclass).
+    pub fn downcast_to_b_rep_t_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleBRepTFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<BRep_TVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_TVertex` (or subclass).
+    pub fn downcast_to_b_rep_t_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleBRepTVertex(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<TopoDS_TCompSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_TCompSolid` (or subclass).
+    pub fn downcast_to_t_comp_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTCompSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTCompSolid(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<TopoDS_TCompound>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_TCompound` (or subclass).
+    pub fn downcast_to_t_compound(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTCompound>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTCompound(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<TopoDS_TEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_TEdge` (or subclass).
+    pub fn downcast_to_topo_ds_t_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTEdge(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<TopoDS_TFace>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_TFace` (or subclass).
+    pub fn downcast_to_topo_ds_t_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<TopoDS_TShell>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_TShell` (or subclass).
+    pub fn downcast_to_t_shell(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTShell(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<TopoDS_TSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_TSolid` (or subclass).
+    pub fn downcast_to_t_solid(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTSolid(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<TopoDS_TVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_TVertex` (or subclass).
+    pub fn downcast_to_topo_ds_t_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTVertex(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TShape> to Handle<TopoDS_TWire>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_TWire` (or subclass).
+    pub fn downcast_to_t_wire(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTWire>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTWire(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -3382,6 +4208,13 @@ impl TShell {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShell> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TShell_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TShell_inherited_Free(self as *const Self) }
@@ -3425,6 +4258,35 @@ impl TShell {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TShell_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopoDSTShell;
+
+unsafe impl crate::CppDeletable for HandleTopoDSTShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSTShell_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSTShell {
+    /// Dereference this Handle to access the underlying TopoDS_TShell
+    pub fn get(&self) -> &crate::ffi::TopoDS_TShell {
+        unsafe { &*(crate::ffi::HandleTopoDSTShell_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TShell
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TShell {
+        unsafe { &mut *(crate::ffi::HandleTopoDSTShell_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TShell> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTShell_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -3505,6 +4367,13 @@ impl TSolid {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTSolid> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TSolid_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TSolid_inherited_Free(self as *const Self) }
@@ -3548,6 +4417,35 @@ impl TSolid {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TSolid_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopoDSTSolid;
+
+unsafe impl crate::CppDeletable for HandleTopoDSTSolid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSTSolid_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSTSolid {
+    /// Dereference this Handle to access the underlying TopoDS_TSolid
+    pub fn get(&self) -> &crate::ffi::TopoDS_TSolid {
+        unsafe { &*(crate::ffi::HandleTopoDSTSolid_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TSolid
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TSolid {
+        unsafe { &mut *(crate::ffi::HandleTopoDSTSolid_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TSolid> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTSolid_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -3662,6 +4560,49 @@ impl TVertex {
     }
 }
 
+pub use crate::ffi::HandleTopoDSTVertex;
+
+unsafe impl crate::CppDeletable for HandleTopoDSTVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSTVertex_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSTVertex {
+    /// Dereference this Handle to access the underlying TopoDS_TVertex
+    pub fn get(&self) -> &crate::ffi::TopoDS_TVertex {
+        unsafe { &*(crate::ffi::HandleTopoDSTVertex_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TVertex
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TVertex {
+        unsafe { &mut *(crate::ffi::HandleTopoDSTVertex_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TVertex> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTVertex_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TopoDS_TVertex> to Handle<BRep_TVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `BRep_TVertex` (or subclass).
+    pub fn downcast_to_t_vertex(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopoDSTVertex_downcast_to_HandleBRepTVertex(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From TopoDS_TWire.hxx
 // ========================
@@ -3736,6 +4677,11 @@ impl TWire {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TWire_to_owned(self as *const Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTWire> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopoDS_TWire_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         unsafe { crate::ffi::TopoDS_TWire_inherited_Free(self as *const Self) }
@@ -3779,6 +4725,35 @@ impl TWire {
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         unsafe { crate::ffi::TopoDS_TWire_inherited_NbChildren(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopoDSTWire;
+
+unsafe impl crate::CppDeletable for HandleTopoDSTWire {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSTWire_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSTWire {
+    /// Dereference this Handle to access the underlying TopoDS_TWire
+    pub fn get(&self) -> &crate::ffi::TopoDS_TWire {
+        unsafe { &*(crate::ffi::HandleTopoDSTWire_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_TWire
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TWire {
+        unsafe { &mut *(crate::ffi::HandleTopoDSTWire_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_TWire> to Handle<TopoDS_TShape>
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopoDSTWire_to_HandleTopoDSTShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 

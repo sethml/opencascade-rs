@@ -51,6 +51,17 @@ pub fn change_shapes(label: &crate::tdf::Label, M: &mut crate::ffi::TopTools_Dat
 pub fn transform(label: &crate::tdf::Label, aTransformation: &crate::gp::Trsf) {
     unsafe { crate::ffi::TNaming_transform(label, aTransformation) }
 }
+/// **Source:** `TNaming.hxx`:138 - `TNaming::Replicate`
+/// Replicates the named shape with the transformation <T>
+/// on the label <L> (and sub-labels if necessary)
+/// (TNaming_GENERATED is set)
+pub fn replicate_handletnamingnamedshape_trsf_label(
+    NS: &crate::ffi::HandleTNamingNamedShape,
+    T: &crate::gp::Trsf,
+    L: &crate::tdf::Label,
+) {
+    unsafe { crate::ffi::TNaming_replicate_handletnamingnamedshape_trsf_label(NS, T, L) }
+}
 /// **Source:** `TNaming.hxx`:145 - `TNaming::Replicate`
 /// Replicates the shape with the transformation <T>
 /// on the label <L> (and sub-labels if necessary)
@@ -229,6 +240,12 @@ impl TryFrom<i32> for NameType {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleTDFAttribute, HandleTDFAttributeDelta, HandleTDFDeltaOnModification,
+    HandleTDFDeltaOnRemoval,
+};
+
 // ========================
 // From TNaming_Builder.hxx
 // ========================
@@ -304,14 +321,15 @@ impl Builder {
     pub fn select(&mut self, aShape: &crate::topo_ds::Shape, inShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_Builder_select(self as *mut Self, aShape, inShape) }
     }
-}
 
-// ── Skipped symbols for Builder (1 total) ──
-// SKIPPED: **Source:** `TNaming_Builder.hxx`:74 - `TNaming_Builder::NamedShape`
-//   method: Returns the NamedShape which has been built or is under construction.
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
+    /// **Source:** `TNaming_Builder.hxx`:74 - `TNaming_Builder::NamedShape()`
+    /// Returns the NamedShape which has been built or is under construction.
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Builder_named_shape(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From TNaming_CopyShape.hxx
@@ -392,6 +410,18 @@ unsafe impl crate::CppDeletable for DeltaOnModification {
 }
 
 impl DeltaOnModification {
+    /// **Source:** `TNaming_DeltaOnModification.hxx`:40 - `TNaming_DeltaOnModification::TNaming_DeltaOnModification()`
+    /// Initializes a TDF_DeltaOnModification.
+    pub fn new_handletnamingnamedshape(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_DeltaOnModification_ctor_handletnamingnamedshape(NS),
+            )
+        }
+    }
+
     /// **Source:** `TNaming_DeltaOnModification.hxx`:43 - `TNaming_DeltaOnModification::Apply()`
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
@@ -451,6 +481,17 @@ impl DeltaOnModification {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_DeltaOnModification_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
@@ -479,12 +520,51 @@ impl DeltaOnModification {
     }
 }
 
-// ── Skipped symbols for DeltaOnModification (1 total) ──
-// SKIPPED: **Source:** `TNaming_DeltaOnModification.hxx`:40 - `TNaming_DeltaOnModification::TNaming_DeltaOnModification`
-//   constructor: Initializes a TDF_DeltaOnModification.
-//   Reason: param 'NS' uses unknown Handle type
-//   // pub fn new_handletnamingnamedshape(NS: &HandleNamedShape) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleTNamingDeltaOnModification;
+
+unsafe impl crate::CppDeletable for HandleTNamingDeltaOnModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTNamingDeltaOnModification_destructor(ptr);
+    }
+}
+
+impl HandleTNamingDeltaOnModification {
+    /// Dereference this Handle to access the underlying TNaming_DeltaOnModification
+    pub fn get(&self) -> &crate::ffi::TNaming_DeltaOnModification {
+        unsafe { &*(crate::ffi::HandleTNamingDeltaOnModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TNaming_DeltaOnModification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_DeltaOnModification {
+        unsafe { &mut *(crate::ffi::HandleTNamingDeltaOnModification_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TNaming_DeltaOnModification> to Handle<TDF_DeltaOnModification>
+    pub fn to_handle_delta_on_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTNamingDeltaOnModification_to_HandleTDFDeltaOnModification(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TNaming_DeltaOnModification> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTNamingDeltaOnModification_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From TNaming_DeltaOnRemoval.hxx
@@ -500,6 +580,18 @@ unsafe impl crate::CppDeletable for DeltaOnRemoval {
 }
 
 impl DeltaOnRemoval {
+    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:35 - `TNaming_DeltaOnRemoval::TNaming_DeltaOnRemoval()`
+    /// Initializes a TDF_DeltaOnModification.
+    pub fn new_handletnamingnamedshape(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_DeltaOnRemoval_ctor_handletnamingnamedshape(NS),
+            )
+        }
+    }
+
     /// **Source:** `TNaming_DeltaOnRemoval.hxx`:38 - `TNaming_DeltaOnRemoval::Apply()`
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
@@ -549,6 +641,15 @@ impl DeltaOnRemoval {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_DeltaOnRemoval_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
@@ -577,12 +678,51 @@ impl DeltaOnRemoval {
     }
 }
 
-// ── Skipped symbols for DeltaOnRemoval (1 total) ──
-// SKIPPED: **Source:** `TNaming_DeltaOnRemoval.hxx`:35 - `TNaming_DeltaOnRemoval::TNaming_DeltaOnRemoval`
-//   constructor: Initializes a TDF_DeltaOnModification.
-//   Reason: param 'NS' uses unknown Handle type
-//   // pub fn new_handletnamingnamedshape(NS: &HandleNamedShape) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleTNamingDeltaOnRemoval;
+
+unsafe impl crate::CppDeletable for HandleTNamingDeltaOnRemoval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTNamingDeltaOnRemoval_destructor(ptr);
+    }
+}
+
+impl HandleTNamingDeltaOnRemoval {
+    /// Dereference this Handle to access the underlying TNaming_DeltaOnRemoval
+    pub fn get(&self) -> &crate::ffi::TNaming_DeltaOnRemoval {
+        unsafe { &*(crate::ffi::HandleTNamingDeltaOnRemoval_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TNaming_DeltaOnRemoval
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_DeltaOnRemoval {
+        unsafe { &mut *(crate::ffi::HandleTNamingDeltaOnRemoval_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<TDF_DeltaOnRemoval>
+    pub fn to_handle_delta_on_removal(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From TNaming_Identifier.hxx
@@ -612,6 +752,22 @@ impl Identifier {
         }
     }
 
+    /// **Source:** `TNaming_Identifier.hxx`:41 - `TNaming_Identifier::TNaming_Identifier()`
+    pub fn new_label_shape_handletnamingnamedshape_bool(
+        Lab: &crate::tdf::Label,
+        S: &crate::topo_ds::Shape,
+        ContextNS: &crate::ffi::HandleTNamingNamedShape,
+        Geom: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_Identifier_ctor_label_shape_handletnamingnamedshape_bool(
+                    Lab, S, ContextNS, Geom,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `TNaming_Identifier.hxx`:46 - `TNaming_Identifier::IsDone()`
     pub fn is_done(&self) -> bool {
         unsafe { crate::ffi::TNaming_Identifier_is_done(self as *const Self) }
@@ -630,6 +786,13 @@ impl Identifier {
     /// **Source:** `TNaming_Identifier.hxx`:50 - `TNaming_Identifier::IsFeature()`
     pub fn is_feature(&mut self) -> bool {
         unsafe { crate::ffi::TNaming_Identifier_is_feature(self as *mut Self) }
+    }
+
+    /// **Source:** `TNaming_Identifier.hxx`:52 - `TNaming_Identifier::Feature()`
+    pub fn feature(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Identifier_feature(self as *const Self))
+        }
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:54 - `TNaming_Identifier::InitArgs()`
@@ -652,6 +815,13 @@ impl Identifier {
         unsafe { crate::ffi::TNaming_Identifier_arg_is_feature(self as *const Self) }
     }
 
+    /// **Source:** `TNaming_Identifier.hxx`:62 - `TNaming_Identifier::FeatureArg()`
+    pub fn feature_arg(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Identifier_feature_arg(self as *mut Self))
+        }
+    }
+
     /// **Source:** `TNaming_Identifier.hxx`:64 - `TNaming_Identifier::ShapeArg()`
     pub fn shape_arg(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
@@ -663,6 +833,17 @@ impl Identifier {
     pub fn shape_context(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_Identifier_shape_context(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TNaming_Identifier.hxx`:68 - `TNaming_Identifier::NamedShapeOfGeneration()`
+    pub fn named_shape_of_generation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Identifier_named_shape_of_generation(
                 self as *const Self,
             ))
         }
@@ -682,37 +863,46 @@ impl Identifier {
             )
         }
     }
-}
 
-// ── Skipped symbols for Identifier (7 total) ──
-// SKIPPED: **Source:** `TNaming_Identifier.hxx`:41 - `TNaming_Identifier::TNaming_Identifier`
-//   Reason: param 'ContextNS' uses unknown Handle type
-//   // pub fn new_label_shape_handletnamingnamedshape_bool(Lab: &Label, S: &Shape, ContextNS: &HandleNamedShape, Geom: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TNaming_Identifier.hxx`:52 - `TNaming_Identifier::Feature`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn feature(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TNaming_Identifier.hxx`:62 - `TNaming_Identifier::FeatureArg`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn feature_arg(&mut self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TNaming_Identifier.hxx`:68 - `TNaming_Identifier::NamedShapeOfGeneration`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn named_shape_of_generation(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TNaming_Identifier.hxx`:73 - `TNaming_Identifier::PrimitiveIdentification`
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn primitive_identification(&mut self, Localizer: &mut Localizer, NS: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TNaming_Identifier.hxx`:76 - `TNaming_Identifier::GeneratedIdentification`
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn generated_identification(&mut self, Localizer: &mut Localizer, NS: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TNaming_Identifier.hxx`:79 - `TNaming_Identifier::Identification`
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn identification(&mut self, Localizer: &mut Localizer, NS: &HandleNamedShape);
-//
+    /// **Source:** `TNaming_Identifier.hxx`:73 - `TNaming_Identifier::PrimitiveIdentification()`
+    pub fn primitive_identification(
+        &mut self,
+        Localizer: &mut Localizer,
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_Identifier_primitive_identification(
+                self as *mut Self,
+                Localizer,
+                NS,
+            )
+        }
+    }
+
+    /// **Source:** `TNaming_Identifier.hxx`:76 - `TNaming_Identifier::GeneratedIdentification()`
+    pub fn generated_identification(
+        &mut self,
+        Localizer: &mut Localizer,
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_Identifier_generated_identification(
+                self as *mut Self,
+                Localizer,
+                NS,
+            )
+        }
+    }
+
+    /// **Source:** `TNaming_Identifier.hxx`:79 - `TNaming_Identifier::Identification()`
+    pub fn identification(
+        &mut self,
+        Localizer: &mut Localizer,
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) {
+        unsafe { crate::ffi::TNaming_Identifier_identification(self as *mut Self, Localizer, NS) }
+    }
+}
 
 // ========================
 // From TNaming_Iterator.hxx
@@ -737,6 +927,19 @@ unsafe impl crate::CppDeletable for Iterator {
 }
 
 impl Iterator {
+    /// **Source:** `TNaming_Iterator.hxx`:51 - `TNaming_Iterator::TNaming_Iterator()`
+    /// Iterates on all  the history records in
+    /// <anAtt>.
+    pub fn new_handletnamingnamedshape(
+        anAtt: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Iterator_ctor_handletnamingnamedshape(
+                anAtt,
+            ))
+        }
+    }
+
     /// **Source:** `TNaming_Iterator.hxx`:55 - `TNaming_Iterator::TNaming_Iterator()`
     /// Iterates on all  the history records in
     /// the current transaction
@@ -796,14 +999,6 @@ impl Iterator {
         }
     }
 }
-
-// ── Skipped symbols for Iterator (1 total) ──
-// SKIPPED: **Source:** `TNaming_Iterator.hxx`:51 - `TNaming_Iterator::TNaming_Iterator`
-//   constructor: Iterates on all  the history records in
-//   constructor: <anAtt>.
-//   Reason: param 'anAtt' uses unknown Handle type
-//   // pub fn new_handletnamingnamedshape(anAtt: &HandleNamedShape) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From TNaming_IteratorOnShapesSet.hxx
@@ -875,6 +1070,11 @@ impl Localizer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Localizer_ctor()) }
     }
 
+    /// **Source:** `TNaming_Localizer.hxx`:46 - `TNaming_Localizer::Init()`
+    pub fn init(&mut self, US: &crate::ffi::HandleTNamingUsedShapes, CurTrans: i32) {
+        unsafe { crate::ffi::TNaming_Localizer_init(self as *mut Self, US, CurTrans) }
+    }
+
     /// **Source:** `TNaming_Localizer.hxx`:48 - `TNaming_Localizer::SubShapes()`
     pub fn sub_shapes(
         &mut self,
@@ -942,29 +1142,36 @@ impl Localizer {
             crate::ffi::TNaming_Localizer_find_neighbourg(self as *mut Self, Cont, S, Neighbourg)
         }
     }
+
+    /// **Source:** `TNaming_Localizer.hxx`:74 - `TNaming_Localizer::IsNew()`
+    pub fn is_new(S: &crate::topo_ds::Shape, NS: &crate::ffi::HandleTNamingNamedShape) -> bool {
+        unsafe { crate::ffi::TNaming_Localizer_is_new(S, NS) }
+    }
+
+    /// **Source:** `TNaming_Localizer.hxx`:77 - `TNaming_Localizer::FindGenerator()`
+    pub fn find_generator(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+        S: &crate::topo_ds::Shape,
+        theListOfGenerators: &mut crate::ffi::TopTools_ListOfShape,
+    ) {
+        unsafe { crate::ffi::TNaming_Localizer_find_generator(NS, S, theListOfGenerators) }
+    }
+
+    /// **Source:** `TNaming_Localizer.hxx`:82 - `TNaming_Localizer::FindShapeContext()`
+    /// Finds context of the shape <S>.
+    pub fn find_shape_context(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+        theS: &crate::topo_ds::Shape,
+        theSC: &mut crate::topo_ds::Shape,
+    ) {
+        unsafe { crate::ffi::TNaming_Localizer_find_shape_context(NS, theS, theSC) }
+    }
 }
 
-// ── Skipped symbols for Localizer (5 total) ──
-// SKIPPED: **Source:** `TNaming_Localizer.hxx`:46 - `TNaming_Localizer::Init`
-//   Reason: param 'US' uses unknown type 'const Handle(TNaming_UsedShapes)&'
-//   // pub fn init(&mut self, US: &HandleUsedShapes, CurTrans: i32);
-//
+// ── Skipped symbols for Localizer (1 total) ──
 // SKIPPED: **Source:** `TNaming_Localizer.hxx`:65 - `TNaming_Localizer::Backward`
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   Reason: param 'Primitives' uses unknown type 'TNaming_MapOfNamedShape&'
 //   // pub fn backward(&mut self, NS: &HandleNamedShape, S: &Shape, Primitives: &mut MapOfNamedShape, ValidShapes: &mut MapOfShape);
-//
-// SKIPPED: **Source:** `TNaming_Localizer.hxx`:74 - `TNaming_Localizer::IsNew`
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn is_new(S: &Shape, NS: &HandleNamedShape) -> bool;
-//
-// SKIPPED: **Source:** `TNaming_Localizer.hxx`:77 - `TNaming_Localizer::FindGenerator`
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn find_generator(NS: &HandleNamedShape, S: &Shape, theListOfGenerators: &mut ListOfShape);
-//
-// SKIPPED: **Source:** `TNaming_Localizer.hxx`:82 - `TNaming_Localizer::FindShapeContext`
-//   static_method: Finds context of the shape <S>.
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn find_shape_context(NS: &HandleNamedShape, theS: &Shape, theSC: &mut Shape);
 //
 
 // ========================
@@ -1000,6 +1207,24 @@ impl Name {
     /// **Source:** `TNaming_Name.hxx`:47 - `TNaming_Name::Shape()`
     pub fn shape_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::TNaming_Name_shape_shape(self as *mut Self, theShape) }
+    }
+
+    /// **Source:** `TNaming_Name.hxx`:49 - `TNaming_Name::Append()`
+    pub fn append(&mut self, arg: &crate::ffi::HandleTNamingNamedShape) {
+        unsafe { crate::ffi::TNaming_Name_append(self as *mut Self, arg) }
+    }
+
+    /// **Source:** `TNaming_Name.hxx`:51 - `TNaming_Name::StopNamedShape()`
+    pub fn stop_named_shape_handletnamingnamedshape(
+        &mut self,
+        arg: &crate::ffi::HandleTNamingNamedShape,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_Name_stop_named_shape_handletnamingnamedshape(
+                self as *mut Self,
+                arg,
+            )
+        }
     }
 
     /// **Source:** `TNaming_Name.hxx`:53 - `TNaming_Name::Index()`
@@ -1050,6 +1275,15 @@ impl Name {
         unsafe { &*(crate::ffi::TNaming_Name_arguments(self as *const Self)) }
     }
 
+    /// **Source:** `TNaming_Name.hxx`:67 - `TNaming_Name::StopNamedShape()`
+    pub fn stop_named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Name_stop_named_shape(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `TNaming_Name.hxx`:69 - `TNaming_Name::Index()`
     pub fn index(&self) -> i32 {
         unsafe { crate::ffi::TNaming_Name_index(self as *const Self) }
@@ -1076,19 +1310,7 @@ impl Name {
     }
 }
 
-// ── Skipped symbols for Name (4 total) ──
-// SKIPPED: **Source:** `TNaming_Name.hxx`:49 - `TNaming_Name::Append`
-//   Reason: param 'arg' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn append(&mut self, arg: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TNaming_Name.hxx`:51 - `TNaming_Name::StopNamedShape`
-//   Reason: param 'arg' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn stop_named_shape(&mut self, arg: &HandleNamedShape);
-//
-// SKIPPED: **Source:** `TNaming_Name.hxx`:67 - `TNaming_Name::StopNamedShape`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn stop_named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
+// ── Skipped symbols for Name (1 total) ──
 // SKIPPED: **Source:** `TNaming_Name.hxx`:75 - `TNaming_Name::Solve`
 //   Reason: param 'Valid' uses unknown type 'const TDF_LabelMap&'
 //   // pub fn solve(&self, aLab: &Label, Valid: &LabelMap) -> bool;
@@ -1185,6 +1407,48 @@ impl NamedShape {
     /// one. It is used when aborting a transaction.
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         unsafe { crate::ffi::TNaming_NamedShape_restore(self as *mut Self, anAttribute) }
+    }
+
+    /// **Source:** `TNaming_NamedShape.hxx`:90 - `TNaming_NamedShape::DeltaOnModification()`
+    /// Makes a DeltaOnModification between <me> and
+    /// <anOldAttribute.
+    pub fn delta_on_modification_handletdfattribute(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TNaming_NamedShape_delta_on_modification_handletdfattribute(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TNaming_NamedShape.hxx`:94 - `TNaming_NamedShape::DeltaOnModification()`
+    /// Applies a DeltaOnModification to <me>.
+    pub fn delta_on_modification_handletdfdeltaonmodification(
+        &mut self,
+        aDelta: &crate::ffi::HandleTDFDeltaOnModification,
+    ) {
+        unsafe {
+            crate::ffi::TNaming_NamedShape_delta_on_modification_handletdfdeltaonmodification(
+                self as *mut Self,
+                aDelta,
+            )
+        }
+    }
+
+    /// **Source:** `TNaming_NamedShape.hxx`:99 - `TNaming_NamedShape::DeltaOnRemoval()`
+    /// Makes a DeltaOnRemoval on <me> because <me> has
+    /// disappeared from the DS.
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamedShape_delta_on_removal(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:103 - `TNaming_NamedShape::NewEmpty()`
@@ -1288,6 +1552,15 @@ impl NamedShape {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TNaming_NamedShape_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamedShape_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -1410,30 +1683,69 @@ impl NamedShape {
         unsafe { crate::ffi::TNaming_NamedShape_inherited_IsBackuped(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamedShape_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamedShape_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_NamedShape_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TNaming_NamedShape_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for NamedShape (4 total) ──
-// SKIPPED: **Source:** `TNaming_NamedShape.hxx`:90 - `TNaming_NamedShape::DeltaOnModification`
-//   method: Makes a DeltaOnModification between <me> and
-//   method: <anOldAttribute.
-//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
-//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
-//
-// SKIPPED: **Source:** `TNaming_NamedShape.hxx`:94 - `TNaming_NamedShape::DeltaOnModification`
-//   method: Applies a DeltaOnModification to <me>.
-//   Reason: param 'aDelta' uses unknown type 'const Handle(TDF_DeltaOnModification)&'
-//   // pub fn delta_on_modification(&mut self, aDelta: &HandleDeltaOnModification);
-//
-// SKIPPED: **Source:** `TNaming_NamedShape.hxx`:99 - `TNaming_NamedShape::DeltaOnRemoval`
-//   method: Makes a DeltaOnRemoval on <me> because <me> has
-//   method: disappeared from the DS.
-//   Reason: return type 'Handle(TDF_DeltaOnRemoval)' is unknown
-//   // pub fn delta_on_removal(&self) -> OwnedPtr<Handle<TDF_DeltaOnRemoval>>;
-//
+pub use crate::ffi::HandleTNamingNamedShape;
+
+unsafe impl crate::CppDeletable for HandleTNamingNamedShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTNamingNamedShape_destructor(ptr);
+    }
+}
+
+impl HandleTNamingNamedShape {
+    /// Dereference this Handle to access the underlying TNaming_NamedShape
+    pub fn get(&self) -> &crate::ffi::TNaming_NamedShape {
+        unsafe { &*(crate::ffi::HandleTNamingNamedShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TNaming_NamedShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_NamedShape {
+        unsafe { &mut *(crate::ffi::HandleTNamingNamedShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TNaming_NamedShape> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTNamingNamedShape_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NamedShape (1 total) ──
 // SKIPPED: **Source:** `TNaming_NamedShape.hxx`:135 - `TNaming_NamedShape::Dump`
 //   method: Dumps the attribute on <aStream>.
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
@@ -1524,6 +1836,43 @@ impl Naming {
         unsafe { &*(crate::ffi::TNaming_Naming_get_id()) }
     }
 
+    /// **Source:** `TNaming_Naming.hxx`:52 - `TNaming_Naming::Insert()`
+    pub fn insert(under: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTNamingNaming> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_insert(under)) }
+    }
+
+    /// **Source:** `TNaming_Naming.hxx`:65 - `TNaming_Naming::Name()`
+    /// Creates  a   Namimg  attribute  at  label <where>   to
+    /// identify  the   shape   <Selection>.    Geometry is
+    /// Standard_True  if   we  are  only  interested  by  the
+    /// underlying   geometry     (e.g.     setting   a
+    /// constraint). <Context> is  used to find neighbours  of
+    /// <S> when required by the naming.
+    /// If KeepOrientation is True the Selection orientation is taken
+    /// into  account. BNproblem == True points out that Context sub-shapes
+    /// in  DF have orientation differences with Context shape itself.
+    /// instance method
+    /// ===============
+    pub fn name(
+        where_: &crate::tdf::Label,
+        Selection: &crate::topo_ds::Shape,
+        Context: &crate::topo_ds::Shape,
+        Geometry: bool,
+        KeepOrientation: bool,
+        BNproblem: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_name(
+                where_,
+                Selection,
+                Context,
+                Geometry,
+                KeepOrientation,
+                BNproblem,
+            ))
+        }
+    }
+
     /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1546,6 +1895,13 @@ impl Naming {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TNaming_Naming_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNaming> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -1698,13 +2054,91 @@ impl Naming {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Naming_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TNaming_Naming_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for Naming (6 total) ──
+pub use crate::ffi::HandleTNamingNaming;
+
+unsafe impl crate::CppDeletable for HandleTNamingNaming {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTNamingNaming_destructor(ptr);
+    }
+}
+
+impl HandleTNamingNaming {
+    /// Dereference this Handle to access the underlying TNaming_Naming
+    pub fn get(&self) -> &crate::ffi::TNaming_Naming {
+        unsafe { &*(crate::ffi::HandleTNamingNaming_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TNaming_Naming
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_Naming {
+        unsafe { &mut *(crate::ffi::HandleTNamingNaming_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TNaming_Naming> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTNamingNaming_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Naming (4 total) ──
 // SKIPPED: **Source:** `TNaming_Naming.hxx`:82 - `TNaming_Naming::Regenerate`
 //   method: regenerate only the Name associated to me
 //   Reason: param 'scope' uses unknown type 'TDF_LabelMap&'
@@ -1724,17 +2158,6 @@ impl Naming {
 // SKIPPED: **Source:** `TNaming_Naming.hxx`:105 - `TNaming_Naming::ExtendedDump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&)
 //   // pub fn extended_dump(&self, anOS: /* Standard_OStream& */, aFilter: &IDFilter, aMap: &mut AttributeIndexedMap);
-//
-// SKIPPED: **Source:** `TNaming_Naming.hxx`:52 - `TNaming_Naming::Insert`
-//   Reason: return type 'Handle(TNaming_Naming)' is unknown
-//   // pub fn insert(under: &Label) -> OwnedPtr<Handle<TNaming_Naming>>;
-//
-// SKIPPED: **Source:** `TNaming_Naming.hxx`:65 - `TNaming_Naming::Name`
-//   static_method: Creates  a   Namimg  attribute  at  label <where>   to
-//   static_method: identify  the   shape   <Selection>.    Geometry is
-//   static_method: Standard_True  if   we  are  only  interested  by  the
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn name(where_: &Label, Selection: &Shape, Context: &Shape, Geometry: bool, KeepOrientation: bool, BNproblem: bool) -> OwnedPtr<Handle<TNaming_NamedShape>>;
 //
 
 // ========================
@@ -1768,7 +2191,7 @@ impl NamingTool {
 //   // pub fn current_shape_from_shape(Valid: &LabelMap, Forbiden: &LabelMap, Acces: &Label, S: &Shape, MS: &mut IndexedMapOfShape);
 //
 // SKIPPED: **Source:** `TNaming_NamingTool.hxx`:45 - `TNaming_NamingTool::BuildDescendants`
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   Reason: param 'Labels' uses unknown type 'TDF_LabelMap&'
 //   // pub fn build_descendants(NS: &HandleNamedShape, Labels: &mut LabelMap);
 //
 
@@ -1853,6 +2276,15 @@ impl NewShapeIterator {
         }
     }
 
+    /// **Source:** `TNaming_NewShapeIterator.hxx`:61 - `TNaming_NewShapeIterator::NamedShape()`
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_NewShapeIterator_named_shape(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `TNaming_NewShapeIterator.hxx`:64 - `TNaming_NewShapeIterator::Shape()`
     /// Warning! Can be a Null Shape if a descendant is deleted.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
@@ -1866,12 +2298,6 @@ impl NewShapeIterator {
         unsafe { crate::ffi::TNaming_NewShapeIterator_is_modification(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for NewShapeIterator (1 total) ──
-// SKIPPED: **Source:** `TNaming_NewShapeIterator.hxx`:61 - `TNaming_NewShapeIterator::NamedShape`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
 
 // ========================
 // From TNaming_OldShapeIterator.hxx
@@ -1954,6 +2380,15 @@ impl OldShapeIterator {
         }
     }
 
+    /// **Source:** `TNaming_OldShapeIterator.hxx`:61 - `TNaming_OldShapeIterator::NamedShape()`
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_OldShapeIterator_named_shape(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `TNaming_OldShapeIterator.hxx`:63 - `TNaming_OldShapeIterator::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::TNaming_OldShapeIterator_shape(self as *const Self)) }
@@ -1966,12 +2401,6 @@ impl OldShapeIterator {
         unsafe { crate::ffi::TNaming_OldShapeIterator_is_modification(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for OldShapeIterator (1 total) ──
-// SKIPPED: **Source:** `TNaming_OldShapeIterator.hxx`:61 - `TNaming_OldShapeIterator::NamedShape`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
 
 // ========================
 // From TNaming_RefShape.hxx
@@ -2013,9 +2442,16 @@ impl RefShape {
             crate::OwnedPtr::from_raw(crate::ffi::TNaming_RefShape_label(self as *const Self))
         }
     }
+
+    /// **Source:** `TNaming_RefShape.hxx`:49 - `TNaming_RefShape::NamedShape()`
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_RefShape_named_shape(self as *const Self))
+        }
+    }
 }
 
-// ── Skipped symbols for RefShape (3 total) ──
+// ── Skipped symbols for RefShape (2 total) ──
 // SKIPPED: **Source:** `TNaming_RefShape.hxx`:41 - `TNaming_RefShape::FirstUse`
 //   Reason: param 'aPtr' uses unknown type 'const TNaming_PtrNode&'
 //   // pub fn first_use(&mut self, aPtr: &PtrNode);
@@ -2023,10 +2459,6 @@ impl RefShape {
 // SKIPPED: **Source:** `TNaming_RefShape.hxx`:43 - `TNaming_RefShape::FirstUse`
 //   Reason: return type 'TNaming_PtrNode' is unknown
 //   // pub fn first_use(&self) -> OwnedPtr<TNaming_PtrNode>;
-//
-// SKIPPED: **Source:** `TNaming_RefShape.hxx`:49 - `TNaming_RefShape::NamedShape`
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
 //
 
 // ========================
@@ -2145,9 +2577,24 @@ impl Scope {
     pub fn is_valid(&self, L: &crate::tdf::Label) -> bool {
         unsafe { crate::ffi::TNaming_Scope_is_valid(self as *const Self, L) }
     }
+
+    /// **Source:** `TNaming_Scope.hxx`:70 - `TNaming_Scope::CurrentShape()`
+    /// Returns  the current  value of  <NS> according to the
+    /// Valid Scope.
+    pub fn current_shape(
+        &self,
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Scope_current_shape(
+                self as *const Self,
+                NS,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for Scope (4 total) ──
+// ── Skipped symbols for Scope (3 total) ──
 // SKIPPED: **Source:** `TNaming_Scope.hxx`:44 - `TNaming_Scope::TNaming_Scope`
 //   constructor: create a scope with a map. WithValid = TRUE.
 //   Reason: param 'valid' uses unknown type 'TDF_LabelMap&'
@@ -2160,12 +2607,6 @@ impl Scope {
 // SKIPPED: **Source:** `TNaming_Scope.hxx`:66 - `TNaming_Scope::ChangeValid`
 //   Reason: return type 'TDF_LabelMap&' is unknown
 //   // pub fn change_valid(&mut self) -> &mut LabelMap;
-//
-// SKIPPED: **Source:** `TNaming_Scope.hxx`:70 - `TNaming_Scope::CurrentShape`
-//   method: Returns  the current  value of  <NS> according to the
-//   method: Valid Scope.
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn current_shape(&self, NS: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
 //
 
 // ========================
@@ -2273,9 +2714,39 @@ impl Selector {
             )
         }
     }
+
+    /// **Source:** `TNaming_Selector.hxx`:129 - `TNaming_Selector::NamedShape()`
+    /// Returns the NamedShape build or under construction,
+    /// which contains the topological naming..
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Selector_named_shape(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TNaming_Selector.hxx`:79 - `TNaming_Selector::IsIdentified()`
+    /// To know if a shape is already identified (not selected)
+    /// =======================================================
+    ///
+    /// The label access defines the point of access to the data framework.
+    /// selection is the shape for which we want to know
+    /// whether it is identified or not.
+    /// If true, NS is returned as the identity of selection.
+    /// If Geometry is true, NS will be the named shape
+    /// containing the first appearance of selection and
+    /// not any other shape. In other words, selection
+    /// must be the only shape stored in NS.
+    pub fn is_identified(
+        access: &crate::tdf::Label,
+        selection: &crate::topo_ds::Shape,
+        NS: &mut crate::ffi::HandleTNamingNamedShape,
+        Geometry: bool,
+    ) -> bool {
+        unsafe { crate::ffi::TNaming_Selector_is_identified(access, selection, NS, Geometry) }
+    }
 }
 
-// ── Skipped symbols for Selector (4 total) ──
+// ── Skipped symbols for Selector (2 total) ──
 // SKIPPED: **Source:** `TNaming_Selector.hxx`:121 - `TNaming_Selector::Solve`
 //   method: Updates the topological naming on the label
 //   method: aLabel given as an argument at construction time.
@@ -2288,18 +2759,6 @@ impl Selector {
 //   method: This list contains the named shape on which the topological naming was built.
 //   Reason: param 'args' uses unknown type 'TDF_AttributeMap&'
 //   // pub fn arguments(&self, args: &mut AttributeMap);
-//
-// SKIPPED: **Source:** `TNaming_Selector.hxx`:129 - `TNaming_Selector::NamedShape`
-//   method: Returns the NamedShape build or under construction,
-//   method: which contains the topological naming..
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn named_shape(&self) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TNaming_Selector.hxx`:79 - `TNaming_Selector::IsIdentified`
-//   static_method: To know if a shape is already identified (not selected)
-//   static_method: =======================================================
-//   Reason: param 'NS' uses unknown type 'Handle(TNaming_NamedShape)&'
-//   // pub fn is_identified(access: &Label, selection: &Shape, NS: &mut HandleNamedShape, Geometry: bool) -> bool;
 //
 
 // ========================
@@ -2423,6 +2882,106 @@ impl Tool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_ctor()) }
     }
 
+    /// **Source:** `TNaming_Tool.hxx`:51 - `TNaming_Tool::CurrentShape()`
+    /// Returns the last Modification of <NS>.
+    /// Returns the shape CurrentShape contained in
+    /// the named shape attribute NS.
+    /// CurrentShape is the current state of the entities
+    /// if they have been modified in other attributes of the same data structure.
+    /// Each call to this function creates a new compound.
+    pub fn current_shape(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_current_shape(NS)) }
+    }
+
+    /// **Source:** `TNaming_Tool.hxx`:71 - `TNaming_Tool::CurrentNamedShape()`
+    /// Returns NamedShape the last Modification of <NS>.
+    pub fn current_named_shape(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_current_named_shape(NS)) }
+    }
+
+    /// **Source:** `TNaming_Tool.hxx`:112 - `TNaming_Tool::NamedShape()`
+    /// Returns the named shape attribute defined by
+    /// the shape aShape and the label anAccess.
+    /// This attribute is returned as a new shape.
+    /// You call this function, if you need to create a
+    /// topological attribute for existing data.
+    /// Example
+    /// class MyPkg_MyClass
+    /// {
+    /// public: Standard_Boolean
+    /// SameEdge(const
+    /// Handle(OCafTest_Line)& , const
+    /// Handle(CafTest_Line)& );
+    /// };
+    ///
+    /// Standard_Boolean
+    /// MyPkg_MyClass::SameEdge
+    /// (const Handle(OCafTest_Line)& L1
+    /// const Handle(OCafTest_Line)& L2)
+    /// { Handle(TNaming_NamedShape)
+    /// NS1 = L1->NamedShape();
+    /// Handle(TNaming_NamedShape)
+    /// NS2 = L2->NamedShape();
+    ///
+    /// return
+    /// BRepTools::Compare(NS1->Get(),NS2->Get());
+    /// }
+    /// In the example above, the function SameEdge is
+    /// created to compare the edges having two lines
+    /// for geometric supports. If these edges are found
+    /// by BRepTools::Compare to be within the same
+    /// tolerance, they are considered to be the same.
+    /// Warning
+    /// To avoid sharing of names, a SELECTED
+    /// attribute will not be returned. Sharing of names
+    /// makes it harder to manage the data structure.
+    /// When the user of the name is removed, for
+    /// example, it is difficult to know whether the name
+    /// should be destroyed.
+    pub fn named_shape(
+        aShape: &crate::topo_ds::Shape,
+        anAcces: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_named_shape(aShape, anAcces)) }
+    }
+
+    /// **Source:** `TNaming_Tool.hxx`:120 - `TNaming_Tool::GetShape()`
+    /// Returns the entities stored in the named shape attribute NS.
+    /// If there is only one old-new pair, the new shape
+    /// is returned. Otherwise, a Compound is returned.
+    /// This compound is made out of all the new shapes found.
+    /// Each call to this function creates a new compound.
+    pub fn get_shape(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_get_shape(NS)) }
+    }
+
+    /// **Source:** `TNaming_Tool.hxx`:123 - `TNaming_Tool::OriginalShape()`
+    /// Returns the shape contained as OldShape in <NS>
+    pub fn original_shape(
+        NS: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_original_shape(NS)) }
+    }
+
+    /// **Source:** `TNaming_Tool.hxx`:128 - `TNaming_Tool::GeneratedShape()`
+    /// Returns the shape generated from S or by a
+    /// modification of S and contained in the named
+    /// shape Generation.
+    pub fn generated_shape(
+        S: &crate::topo_ds::Shape,
+        Generation: &crate::ffi::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_generated_shape(S, Generation))
+        }
+    }
+
     /// **Source:** `TNaming_Tool.hxx`:136 - `TNaming_Tool::HasLabel()`
     /// Returns True if <aShape> appears under a label.(DP)
     pub fn has_label(access: &crate::tdf::Label, aShape: &crate::topo_ds::Shape) -> bool {
@@ -2452,60 +3011,22 @@ impl Tool {
     }
 }
 
-// ── Skipped symbols for Tool (11 total) ──
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:51 - `TNaming_Tool::CurrentShape`
-//   static_method: Returns the last Modification of <NS>.
-//   static_method: Returns the shape CurrentShape contained in
-//   static_method: the named shape attribute NS.
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn current_shape(NS: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
-//
+// ── Skipped symbols for Tool (5 total) ──
 // SKIPPED: **Source:** `TNaming_Tool.hxx`:61 - `TNaming_Tool::CurrentShape`
 //   static_method: Returns the shape CurrentShape contained in
 //   static_method: the named shape attribute NS, and present in
 //   static_method: the updated attribute map Updated.
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   Reason: param 'Updated' uses unknown type 'const TDF_LabelMap&'
 //   // pub fn current_shape(NS: &HandleNamedShape, Updated: &LabelMap) -> OwnedPtr<TopoDS_Shape>;
 //
 // SKIPPED: **Source:** `TNaming_Tool.hxx`:66 - `TNaming_Tool::CurrentNamedShape`
 //   static_method: Returns the NamedShape of the last Modification of <NS>.
 //   static_method: This shape is identified by a label.
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   Reason: param 'Updated' uses unknown type 'const TDF_LabelMap&'
 //   // pub fn current_named_shape(NS: &HandleNamedShape, Updated: &LabelMap) -> OwnedPtr<Handle<TNaming_NamedShape>>;
 //
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:71 - `TNaming_Tool::CurrentNamedShape`
-//   static_method: Returns NamedShape the last Modification of <NS>.
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn current_named_shape(NS: &HandleNamedShape) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:112 - `TNaming_Tool::NamedShape`
-//   static_method: Returns the named shape attribute defined by
-//   static_method: the shape aShape and the label anAccess.
-//   static_method: This attribute is returned as a new shape.
-//   Reason: return type 'Handle(TNaming_NamedShape)' is unknown
-//   // pub fn named_shape(aShape: &Shape, anAcces: &Label) -> OwnedPtr<Handle<TNaming_NamedShape>>;
-//
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:120 - `TNaming_Tool::GetShape`
-//   static_method: Returns the entities stored in the named shape attribute NS.
-//   static_method: If there is only one old-new pair, the new shape
-//   static_method: is returned. Otherwise, a Compound is returned.
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn get_shape(NS: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:123 - `TNaming_Tool::OriginalShape`
-//   static_method: Returns the shape contained as OldShape in <NS>
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn original_shape(NS: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:128 - `TNaming_Tool::GeneratedShape`
-//   static_method: Returns the shape generated from S or by a
-//   static_method: modification of S and contained in the named
-//   static_method: shape Generation.
-//   Reason: param 'Generation' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn generated_shape(S: &Shape, Generation: &HandleNamedShape) -> OwnedPtr<TopoDS_Shape>;
-//
 // SKIPPED: **Source:** `TNaming_Tool.hxx`:131 - `TNaming_Tool::Collect`
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
+//   Reason: param 'Labels' uses unknown type 'TNaming_MapOfNamedShape&'
 //   // pub fn collect(NS: &HandleNamedShape, Labels: &mut MapOfNamedShape, OnlyModif: bool);
 //
 // SKIPPED: **Source:** `TNaming_Tool.hxx`:142 - `TNaming_Tool::Label`
@@ -2806,6 +3327,26 @@ impl UsedShapes {
         unsafe { crate::ffi::TNaming_UsedShapes_after_undo(self as *mut Self, anAttDelta, forceIt) }
     }
 
+    /// **Source:** `TNaming_UsedShapes.hxx`:74 - `TNaming_UsedShapes::DeltaOnAddition()`
+    /// this method returns a null handle (no delta).
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_UsedShapes_delta_on_addition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TNaming_UsedShapes.hxx`:77 - `TNaming_UsedShapes::DeltaOnRemoval()`
+    /// this method returns a null handle (no delta).
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_UsedShapes_delta_on_removal(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `TNaming_UsedShapes.hxx`:81 - `TNaming_UsedShapes::NewEmpty()`
     /// Returns an new empty attribute from the good end
     /// type. It is used by the copy algorithm.
@@ -2882,6 +3423,15 @@ impl UsedShapes {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TNaming_UsedShapes_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingUsedShapes> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_UsedShapes_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3019,23 +3569,73 @@ impl UsedShapes {
         unsafe { crate::ffi::TNaming_UsedShapes_inherited_IsBackuped(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_UsedShapes_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_UsedShapes_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_UsedShapes_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TNaming_UsedShapes_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for UsedShapes (3 total) ──
-// SKIPPED: **Source:** `TNaming_UsedShapes.hxx`:74 - `TNaming_UsedShapes::DeltaOnAddition`
-//   method: this method returns a null handle (no delta).
-//   Reason: return type 'Handle(TDF_DeltaOnAddition)' is unknown
-//   // pub fn delta_on_addition(&self) -> OwnedPtr<Handle<TDF_DeltaOnAddition>>;
-//
-// SKIPPED: **Source:** `TNaming_UsedShapes.hxx`:77 - `TNaming_UsedShapes::DeltaOnRemoval`
-//   method: this method returns a null handle (no delta).
-//   Reason: return type 'Handle(TDF_DeltaOnRemoval)' is unknown
-//   // pub fn delta_on_removal(&self) -> OwnedPtr<Handle<TDF_DeltaOnRemoval>>;
-//
+pub use crate::ffi::HandleTNamingUsedShapes;
+
+unsafe impl crate::CppDeletable for HandleTNamingUsedShapes {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTNamingUsedShapes_destructor(ptr);
+    }
+}
+
+impl HandleTNamingUsedShapes {
+    /// Dereference this Handle to access the underlying TNaming_UsedShapes
+    pub fn get(&self) -> &crate::ffi::TNaming_UsedShapes {
+        unsafe { &*(crate::ffi::HandleTNamingUsedShapes_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TNaming_UsedShapes
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_UsedShapes {
+        unsafe { &mut *(crate::ffi::HandleTNamingUsedShapes_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TNaming_UsedShapes> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTNamingUsedShapes_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for UsedShapes (1 total) ──
 // SKIPPED: **Source:** `TNaming_UsedShapes.hxx`:105 - `TNaming_UsedShapes::Dump`
 //   method: Dumps the attribute on <aStream>.
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
@@ -3051,12 +3651,3 @@ pub use crate::ffi::{
     TNaming_ListOfNamedShape as ListOfNamedShape, TNaming_MapOfNamedShape as MapOfNamedShape,
     TNaming_PtrNode as PtrNode,
 };
-
-// ── Skipped free functions (1 total) ──
-// SKIPPED: **Source:** `TNaming.hxx`:138 - `TNaming::Replicate`
-//   function: Replicates the named shape with the transformation <T>
-//   function: on the label <L> (and sub-labels if necessary)
-//   function: (TNaming_GENERATED is set)
-//   Reason: param 'NS' uses unknown type 'const Handle(TNaming_NamedShape)&'
-//   // pub fn replicate(NS: &HandleNamedShape, T: &Trsf, L: &Label);
-//

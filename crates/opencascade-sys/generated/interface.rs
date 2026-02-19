@@ -125,6 +125,13 @@ impl TryFrom<i32> for CheckStatus {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleIFSelectSignAncestor, HandleIFSelectSignCategory, HandleIFSelectSignMultiple,
+    HandleIFSelectSignType, HandleIFSelectSignValidity, HandleIFSelectSignature,
+    HandleMoniToolSignText, HandleStepDataStepModel, HandleXSControlSignTransferStatus,
+};
+
 // ========================
 // From Interface_BitMap.hxx
 // ========================
@@ -379,6 +386,18 @@ impl Check {
     /// of an InterfaceModel (which stores global messages for file)
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_Check_ctor()) }
+    }
+
+    /// **Source:** `Interface_Check.hxx`:57 - `Interface_Check::Interface_Check()`
+    /// Defines a Check on an Entity
+    pub fn new_handlestandardtransient(
+        anentity: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Check_ctor_handlestandardtransient(
+                anentity,
+            ))
+        }
     }
 
     /// **Source:** `Interface_Check.hxx`:60 - `Interface_Check::SendFail()`
@@ -698,6 +717,12 @@ impl Check {
         unsafe { crate::ffi::Interface_Check_has_entity(self as *const Self) }
     }
 
+    /// **Source:** `Interface_Check.hxx`:187 - `Interface_Check::Entity()`
+    /// Returns the entity on which the Check has been defined
+    pub fn entity(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::Interface_Check_entity(self as *const Self)) }
+    }
+
     /// **Source:** `Interface_Check.hxx`:191 - `Interface_Check::Clear()`
     /// Clears a check, in order to receive information from transfer
     /// (Messages and Entity)
@@ -756,6 +781,19 @@ impl Check {
     pub fn mend(&mut self, pref: &str, num: i32) -> bool {
         let c_pref = std::ffi::CString::new(pref).unwrap();
         unsafe { crate::ffi::Interface_Check_mend(self as *mut Self, c_pref.as_ptr(), num) }
+    }
+
+    /// **Source:** `Interface_Check.hxx`:229 - `Interface_Check::SetEntity()`
+    /// Receives an entity result of a Transfer
+    pub fn set_entity(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::Interface_Check_set_entity(self as *mut Self, anentity) }
+    }
+
+    /// **Source:** `Interface_Check.hxx`:233 - `Interface_Check::GetEntity()`
+    /// same as SetEntity (old form kept for compatibility)
+    /// Warning : Does nothing if Entity field is not yet clear
+    pub fn get_entity(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::Interface_Check_get_entity(self as *mut Self, anentity) }
     }
 
     /// **Source:** `Interface_Check.hxx`:237 - `Interface_Check::GetMessages()`
@@ -829,28 +867,7 @@ impl HandleInterfaceCheck {
     }
 }
 
-// ── Skipped symbols for Check (5 total) ──
-// SKIPPED: **Source:** `Interface_Check.hxx`:57 - `Interface_Check::Interface_Check`
-//   constructor: Defines a Check on an Entity
-//   Reason: param 'anentity' uses unknown Handle type
-//   // pub fn new_handlestandardtransient(anentity: &HandleTransient) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Interface_Check.hxx`:187 - `Interface_Check::Entity`
-//   method: Returns the entity on which the Check has been defined
-//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
-//   // pub fn entity(&self) -> &HandleTransient;
-//
-// SKIPPED: **Source:** `Interface_Check.hxx`:229 - `Interface_Check::SetEntity`
-//   method: Receives an entity result of a Transfer
-//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_entity(&mut self, anentity: &HandleTransient);
-//
-// SKIPPED: **Source:** `Interface_Check.hxx`:233 - `Interface_Check::GetEntity`
-//   method: same as SetEntity (old form kept for compatibility)
-//   method: Warning : Does nothing if Entity field is not yet clear
-//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn get_entity(&mut self, anentity: &HandleTransient);
-//
+// ── Skipped symbols for Check (1 total) ──
 // SKIPPED: **Source:** `Interface_Check.hxx`:253 - `Interface_Check::Print`
 //   method: Prints the messages of the check to an Messenger
 //   method: <level> = 1 : only fails
@@ -955,8 +972,25 @@ impl CheckIterator {
     /// If no Check was recorded for this Number, returns an empty
     /// Check.
     /// Remark : Works apart from the iteration methods (no interference)
-    pub fn check(&self, num: i32) -> &crate::ffi::HandleInterfaceCheck {
-        unsafe { &*(crate::ffi::Interface_CheckIterator_check(self as *const Self, num)) }
+    pub fn check_int(&self, num: i32) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe { &*(crate::ffi::Interface_CheckIterator_check_int(self as *const Self, num)) }
+    }
+
+    /// **Source:** `Interface_CheckIterator.hxx`:92 - `Interface_CheckIterator::Check()`
+    /// Returns the Check attached to an Entity
+    /// If no Check was recorded for this Entity, returns an empty
+    /// Check.
+    /// Remark : Works apart from the iteration methods (no interference)
+    pub fn check_handlestandardtransient(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> &crate::ffi::HandleInterfaceCheck {
+        unsafe {
+            &*(crate::ffi::Interface_CheckIterator_check_handlestandardtransient(
+                self as *const Self,
+                ent,
+            ))
+        }
     }
 
     /// **Source:** `Interface_CheckIterator.hxx`:98 - `Interface_CheckIterator::CCheck()`
@@ -1122,14 +1156,7 @@ impl CheckIterator {
     }
 }
 
-// ── Skipped symbols for CheckIterator (4 total) ──
-// SKIPPED: **Source:** `Interface_CheckIterator.hxx`:92 - `Interface_CheckIterator::Check`
-//   method: Returns the Check attached to an Entity
-//   method: If no Check was recorded for this Entity, returns an empty
-//   method: Check.
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn check(&self, ent: &HandleTransient) -> &HandleCheck;
-//
+// ── Skipped symbols for CheckIterator (3 total) ──
 // SKIPPED: **Source:** `Interface_CheckIterator.hxx`:104 - `Interface_CheckIterator::CCheck`
 //   method: Returns the Check bound to an Entity, in order to be consulted
 //   method: or completed on the spot
@@ -1195,10 +1222,32 @@ impl EntityList {
         unsafe { crate::ffi::Interface_EntityList_clear(self as *mut Self) }
     }
 
+    /// **Source:** `Interface_EntityList.hxx`:58 - `Interface_EntityList::Append()`
+    /// Appends an Entity, that is to the END of the list
+    /// (keeps order, but works slowerly than Add, see below)
+    pub fn append(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::Interface_EntityList_append(self as *mut Self, ent) }
+    }
+
+    /// **Source:** `Interface_EntityList.hxx`:62 - `Interface_EntityList::Add()`
+    /// Adds an Entity to the list, that is, with NO REGARD about the
+    /// order (faster than Append if count becomes greater than 10)
+    pub fn add(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::Interface_EntityList_add(self as *mut Self, ent) }
+    }
+
+    /// **Source:** `Interface_EntityList.hxx`:65 - `Interface_EntityList::Remove()`
+    /// Removes an Entity from the list, if it is there
+    pub fn remove_handlestandardtransient(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::Interface_EntityList_remove_handlestandardtransient(self as *mut Self, ent)
+        }
+    }
+
     /// **Source:** `Interface_EntityList.hxx`:68 - `Interface_EntityList::Remove()`
     /// Removes an Entity from the list, given its rank
-    pub fn remove(&mut self, num: i32) {
-        unsafe { crate::ffi::Interface_EntityList_remove(self as *mut Self, num) }
+    pub fn remove_int(&mut self, num: i32) {
+        unsafe { crate::ffi::Interface_EntityList_remove_int(self as *mut Self, num) }
     }
 
     /// **Source:** `Interface_EntityList.hxx`:71 - `Interface_EntityList::IsEmpty()`
@@ -1213,55 +1262,51 @@ impl EntityList {
         unsafe { crate::ffi::Interface_EntityList_nb_entities(self as *const Self) }
     }
 
+    /// **Source:** `Interface_EntityList.hxx`:78 - `Interface_EntityList::Value()`
+    /// Returns an Item given its number. Beware about the way the
+    /// list was filled (see above, Add and Append)
+    pub fn value(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::Interface_EntityList_value(self as *const Self, num)) }
+    }
+
+    /// **Source:** `Interface_EntityList.hxx`:82 - `Interface_EntityList::SetValue()`
+    /// Returns an Item given its number. Beware about the way the
+    /// list was filled (see above, Add and Append)
+    pub fn set_value(&mut self, num: i32, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::Interface_EntityList_set_value(self as *mut Self, num, ent) }
+    }
+
     /// **Source:** `Interface_EntityList.hxx`:89 - `Interface_EntityList::NbTypedEntities()`
     /// Returns count of Entities of a given Type (0 : none)
     pub fn nb_typed_entities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
         unsafe { crate::ffi::Interface_EntityList_nb_typed_entities(self as *const Self, atype) }
     }
+
+    /// **Source:** `Interface_EntityList.hxx`:94 - `Interface_EntityList::TypedEntity()`
+    /// Returns the Entity which is of a given type.
+    /// If num = 0 (D), there must be ONE AND ONLY ONE
+    /// If num > 0, returns the num-th entity of this type
+    pub fn typed_entity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_EntityList_typed_entity(
+                self as *const Self,
+                atype,
+                num,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for EntityList (7 total) ──
-// SKIPPED: **Source:** `Interface_EntityList.hxx`:58 - `Interface_EntityList::Append`
-//   method: Appends an Entity, that is to the END of the list
-//   method: (keeps order, but works slowerly than Add, see below)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn append(&mut self, ent: &HandleTransient);
-//
-// SKIPPED: **Source:** `Interface_EntityList.hxx`:62 - `Interface_EntityList::Add`
-//   method: Adds an Entity to the list, that is, with NO REGARD about the
-//   method: order (faster than Append if count becomes greater than 10)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add(&mut self, ent: &HandleTransient);
-//
-// SKIPPED: **Source:** `Interface_EntityList.hxx`:65 - `Interface_EntityList::Remove`
-//   method: Removes an Entity from the list, if it is there
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn remove(&mut self, ent: &HandleTransient);
-//
-// SKIPPED: **Source:** `Interface_EntityList.hxx`:78 - `Interface_EntityList::Value`
-//   method: Returns an Item given its number. Beware about the way the
-//   method: list was filled (see above, Add and Append)
-//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
-//   // pub fn value(&self, num: i32) -> &HandleTransient;
-//
-// SKIPPED: **Source:** `Interface_EntityList.hxx`:82 - `Interface_EntityList::SetValue`
-//   method: Returns an Item given its number. Beware about the way the
-//   method: list was filled (see above, Add and Append)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_value(&mut self, num: i32, ent: &HandleTransient);
-//
+// ── Skipped symbols for EntityList (1 total) ──
 // SKIPPED: **Source:** `Interface_EntityList.hxx`:86 - `Interface_EntityList::FillIterator`
 //   method: fills an Iterator with the content of the list
 //   method: (normal way to consult a list which has been filled with Add)
 //   Reason: param 'iter' uses unknown type 'Interface_EntityIterator&'
 //   // pub fn fill_iterator(&self, iter: &mut EntityIterator);
-//
-// SKIPPED: **Source:** `Interface_EntityList.hxx`:94 - `Interface_EntityList::TypedEntity`
-//   method: Returns the Entity which is of a given type.
-//   method: If num = 0 (D), there must be ONE AND ONLY ONE
-//   method: If num > 0, returns the num-th entity of this type
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn typed_entity(&self, atype: &HandleType, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
 //
 
 // ========================
@@ -1283,6 +1328,14 @@ impl GeneralLib {
     /// AddProtocol
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Interface_GeneralLib_ctor()) }
+    }
+
+    /// **Source:** `Interface_GeneralLib.hxx`:55 - `Interface_GeneralLib::AddProtocol()`
+    /// Adds a couple (Module-Protocol) to the Library, given the
+    /// class of a Protocol. Takes Resources into account.
+    /// (if <aprotocol> is not of type TheProtocol, it is not added)
+    pub fn add_protocol(&mut self, aprotocol: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::Interface_GeneralLib_add_protocol(self as *mut Self, aprotocol) }
     }
 
     /// **Source:** `Interface_GeneralLib.hxx`:60 - `Interface_GeneralLib::Clear()`
@@ -1320,7 +1373,7 @@ impl GeneralLib {
     }
 }
 
-// ── Skipped symbols for GeneralLib (6 total) ──
+// ── Skipped symbols for GeneralLib (5 total) ──
 // SKIPPED: **Source:** `Interface_GeneralLib.hxx`:46 - `Interface_GeneralLib::Interface_GeneralLib`
 //   constructor: Creates a Library which complies with a Protocol, that is :
 //   constructor: Same class (criterium IsInstance)
@@ -1328,18 +1381,11 @@ impl GeneralLib {
 //   Reason: param 'aprotocol' uses unknown Handle type
 //   // pub fn new_handleinterfaceprotocol(aprotocol: &HandleProtocol) -> OwnedPtr<Self>;
 //
-// SKIPPED: **Source:** `Interface_GeneralLib.hxx`:55 - `Interface_GeneralLib::AddProtocol`
-//   method: Adds a couple (Module-Protocol) to the Library, given the
-//   method: class of a Protocol. Takes Resources into account.
-//   method: (if <aprotocol> is not of type TheProtocol, it is not added)
-//   Reason: param 'aprotocol' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_protocol(&mut self, aprotocol: &HandleTransient);
-//
 // SKIPPED: **Source:** `Interface_GeneralLib.hxx`:72 - `Interface_GeneralLib::Select`
 //   method: Selects a Module from the Library, given an Object.
 //   method: Returns True if Select has succeeded, False else.
 //   method: Also Returns (as arguments) the selected Module and the Case
-//   Reason: param 'obj' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'module' uses unknown type 'Handle(Interface_GeneralModule)&'
 //   // pub fn select(&self, obj: &HandleTransient, module: &mut HandleGeneralModule, CN: &mut i32) -> bool;
 //
 // SKIPPED: **Source:** `Interface_GeneralLib.hxx`:87 - `Interface_GeneralLib::Module`
@@ -1495,12 +1541,40 @@ impl Graph {
         unsafe { crate::ffi::Interface_Graph_nb_statuses(self as *const Self) }
     }
 
+    /// **Source:** `Interface_Graph.hxx`:117 - `Interface_Graph::EntityNumber()`
+    /// Returns the Number of the entity in the Map, computed at
+    /// creation time (Entities loaded from the Model)
+    /// Returns 0 if <ent> not contained by Model used to create <me>
+    /// (that is, <ent> is unknown from <me>)
+    pub fn entity_number(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::Interface_Graph_entity_number(self as *const Self, ent) }
+    }
+
     /// **Source:** `Interface_Graph.hxx`:122 - `Interface_Graph::IsPresent()`
     /// Returns True if an Entity is noted as present in the graph
     /// (See methods Get... which determine this status)
     /// Returns False if <num> is out of range too
-    pub fn is_present(&self, num: i32) -> bool {
-        unsafe { crate::ffi::Interface_Graph_is_present(self as *const Self, num) }
+    pub fn is_present_int(&self, num: i32) -> bool {
+        unsafe { crate::ffi::Interface_Graph_is_present_int(self as *const Self, num) }
+    }
+
+    /// **Source:** `Interface_Graph.hxx`:127 - `Interface_Graph::IsPresent()`
+    /// Same as above but directly on an Entity <ent> : if it is not
+    /// contained in the Model, returns False. Else calls
+    /// IsPresent(num)  with <num> given by EntityNumber
+    pub fn is_present_handlestandardtransient(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Interface_Graph_is_present_handlestandardtransient(self as *const Self, ent)
+        }
+    }
+
+    /// **Source:** `Interface_Graph.hxx`:130 - `Interface_Graph::Entity()`
+    /// Returns mapped Entity given its no (if it is present)
+    pub fn entity(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::Interface_Graph_entity(self as *const Self, num)) }
     }
 
     /// **Source:** `Interface_Graph.hxx`:133 - `Interface_Graph::Status()`
@@ -1557,6 +1631,56 @@ impl Graph {
         unsafe { crate::ffi::Interface_Graph_get_from_model(self as *mut Self) }
     }
 
+    /// **Source:** `Interface_Graph.hxx`:164 - `Interface_Graph::GetFromEntity()`
+    /// Gets an Entity, plus its shared ones (at every level) if
+    /// "shared" is True. New items are set to status "newstat"
+    /// Items already present in graph remain unchanged
+    /// Of course, redefinitions of Shared lists are taken into
+    /// account if there are some
+    pub fn get_from_entity_handlestandardtransient_bool_int(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        shared: bool,
+        newstat: i32,
+    ) {
+        unsafe {
+            crate::ffi::Interface_Graph_get_from_entity_handlestandardtransient_bool_int(
+                self as *mut Self,
+                ent,
+                shared,
+                newstat,
+            )
+        }
+    }
+
+    /// **Source:** `Interface_Graph.hxx`:175 - `Interface_Graph::GetFromEntity()`
+    /// Gets an Entity, plus its shared ones (at every level) if
+    /// "shared" is True. New items are set to status "newstat".
+    /// Items already present in graph are processed as follows :
+    /// - if they already have status "newstat", they remain unchanged
+    /// - if they have another status, this one is modified :
+    /// if cumul is True,  to former status + overlapstat (cumul)
+    /// if cumul is False, to overlapstat (enforce)
+    pub fn get_from_entity_handlestandardtransient_bool_int2_bool(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        shared: bool,
+        newstat: i32,
+        overlapstat: i32,
+        cumul: bool,
+    ) {
+        unsafe {
+            crate::ffi::Interface_Graph_get_from_entity_handlestandardtransient_bool_int2_bool(
+                self as *mut Self,
+                ent,
+                shared,
+                newstat,
+                overlapstat,
+                cumul,
+            )
+        }
+    }
+
     /// **Source:** `Interface_Graph.hxx`:203 - `Interface_Graph::GetFromGraph()`
     /// Gets all present items from another graph
     pub fn get_from_graph_graph(&mut self, agraph: &Graph) {
@@ -1568,6 +1692,57 @@ impl Graph {
     pub fn get_from_graph_graph_int(&mut self, agraph: &Graph, stat: i32) {
         unsafe {
             crate::ffi::Interface_Graph_get_from_graph_graph_int(self as *mut Self, agraph, stat)
+        }
+    }
+
+    /// **Source:** `Interface_Graph.hxx`:212 - `Interface_Graph::HasShareErrors()`
+    /// Returns True if <ent> or the list of entities shared by <ent>
+    /// (not redefined) contains items unknown from this Graph
+    /// Remark : apart from the status HasShareError, these items
+    /// are ignored
+    pub fn has_share_errors(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::Interface_Graph_has_share_errors(self as *const Self, ent) }
+    }
+
+    /// **Source:** `Interface_Graph.hxx`:215 - `Interface_Graph::GetShareds()`
+    /// Returns the sequence of Entities Shared by an Entity
+    pub fn get_shareds(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_get_shareds(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `Interface_Graph.hxx`:228 - `Interface_Graph::GetSharings()`
+    /// Returns the sequence of Entities Sharings by an Entity
+    pub fn get_sharings(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_get_sharings(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `Interface_Graph.hxx`:245 - `Interface_Graph::Name()`
+    /// Determines the name attached to an entity, by using the
+    /// general service Name in GeneralModule
+    /// Returns a null handle if no name could be computed or if
+    /// the entity is not in the model
+    pub fn name(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_Graph_name(self as *const Self, ent))
         }
     }
 
@@ -1585,7 +1760,7 @@ impl Graph {
     }
 }
 
-// ── Skipped symbols for Graph (17 total) ──
+// ── Skipped symbols for Graph (8 total) ──
 // SKIPPED: **Source:** `Interface_Graph.hxx`:77 - `Interface_Graph::Interface_Graph`
 //   constructor: Same as above, but the Library is defined through a Protocol
 //   Reason: param 'protocol' uses unknown Handle type
@@ -1595,39 +1770,6 @@ impl Graph {
 //   constructor: Same as above, but the Library is defined through a Protocol
 //   Reason: param 'gtool' uses unknown Handle type
 //   // pub fn new_handleinterfaceinterfacemodel_handleinterfacegtool_bool(amodel: &HandleInterfaceModel, gtool: &HandleGTool, theModeStats: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Interface_Graph.hxx`:117 - `Interface_Graph::EntityNumber`
-//   method: Returns the Number of the entity in the Map, computed at
-//   method: creation time (Entities loaded from the Model)
-//   method: Returns 0 if <ent> not contained by Model used to create <me>
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn entity_number(&self, ent: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `Interface_Graph.hxx`:127 - `Interface_Graph::IsPresent`
-//   method: Same as above but directly on an Entity <ent> : if it is not
-//   method: contained in the Model, returns False. Else calls
-//   method: IsPresent(num)  with <num> given by EntityNumber
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn is_present(&self, ent: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `Interface_Graph.hxx`:130 - `Interface_Graph::Entity`
-//   method: Returns mapped Entity given its no (if it is present)
-//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
-//   // pub fn entity(&self, num: i32) -> &HandleTransient;
-//
-// SKIPPED: **Source:** `Interface_Graph.hxx`:164 - `Interface_Graph::GetFromEntity`
-//   method: Gets an Entity, plus its shared ones (at every level) if
-//   method: "shared" is True. New items are set to status "newstat"
-//   method: Items already present in graph remain unchanged
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn get_from_entity(&mut self, ent: &HandleTransient, shared: bool, newstat: i32);
-//
-// SKIPPED: **Source:** `Interface_Graph.hxx`:175 - `Interface_Graph::GetFromEntity`
-//   method: Gets an Entity, plus its shared ones (at every level) if
-//   method: "shared" is True. New items are set to status "newstat".
-//   method: Items already present in graph are processed as follows :
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn get_from_entity(&mut self, ent: &HandleTransient, shared: bool, newstat: i32, overlapstat: i32, cumul: bool);
 //
 // SKIPPED: **Source:** `Interface_Graph.hxx`:184 - `Interface_Graph::GetFromIter`
 //   method: Gets Entities given by an EntityIterator. Entities which were
@@ -1643,41 +1785,24 @@ impl Graph {
 //   Reason: param 'iter' uses unknown type 'const Interface_EntityIterator&'
 //   // pub fn get_from_iter(&mut self, iter: &EntityIterator, newstat: i32, overlapstat: i32, cumul: bool);
 //
-// SKIPPED: **Source:** `Interface_Graph.hxx`:212 - `Interface_Graph::HasShareErrors`
-//   method: Returns True if <ent> or the list of entities shared by <ent>
-//   method: (not redefined) contains items unknown from this Graph
-//   method: Remark : apart from the status HasShareError, these items
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn has_share_errors(&self, ent: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `Interface_Graph.hxx`:215 - `Interface_Graph::GetShareds`
-//   method: Returns the sequence of Entities Shared by an Entity
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn get_shareds(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
-//
 // SKIPPED: **Source:** `Interface_Graph.hxx`:221 - `Interface_Graph::Shareds`
 //   method: Returns the list of Entities Shared by an Entity, as recorded
 //   method: by the Graph. That is, by default Basic Shared List, else it
 //   method: can be redefined by methods SetShare, SetNoShare ... see below
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn shareds(&self, ent: &HandleTransient) -> OwnedPtr<Interface_EntityIterator>;
 //
 // SKIPPED: **Source:** `Interface_Graph.hxx`:225 - `Interface_Graph::Sharings`
 //   method: Returns the list of Entities which Share an Entity, computed
 //   method: from the Basic or Redefined Shared Lists
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn sharings(&self, ent: &HandleTransient) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `Interface_Graph.hxx`:228 - `Interface_Graph::GetSharings`
-//   method: Returns the sequence of Entities Sharings by an Entity
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn get_sharings(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
 //
 // SKIPPED: **Source:** `Interface_Graph.hxx`:234 - `Interface_Graph::TypedSharings`
 //   method: Returns the list of sharings entities, AT ANY LEVEL, which are
 //   method: kind of a given type. A sharing entity kind of this type
 //   method: ends the exploration of its branch
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn typed_sharings(&self, ent: &HandleTransient, type_: &HandleType) -> OwnedPtr<Interface_EntityIterator>;
 //
 // SKIPPED: **Source:** `Interface_Graph.hxx`:239 - `Interface_Graph::RootEntities`
@@ -1685,13 +1810,6 @@ impl Graph {
 //   method: is empty) in the Model
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn root_entities(&self) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `Interface_Graph.hxx`:245 - `Interface_Graph::Name`
-//   method: Determines the name attached to an entity, by using the
-//   method: general service Name in GeneralModule
-//   method: Returns a null handle if no name could be computed or if
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn name(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
 //
 
 // ========================
@@ -2170,6 +2288,78 @@ impl InterfaceModel {
         unsafe { crate::ffi::Interface_InterfaceModel_nb_entities(self as *const Self) }
     }
 
+    /// **Source:** `Interface_InterfaceModel.hxx`:117 - `Interface_InterfaceModel::Contains()`
+    /// Returns True if a Model contains an Entity (for a ReportEntity,
+    /// looks for the ReportEntity itself AND its Concerned Entity)
+    pub fn contains(&self, anentity: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::Interface_InterfaceModel_contains(self as *const Self, anentity) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:124 - `Interface_InterfaceModel::Number()`
+    /// Returns the Number of an Entity in the Model if it contains it.
+    /// Else returns 0. For a ReportEntity, looks at Concerned Entity.
+    /// Returns the Directory entry   Number of  an Entity in
+    /// the  Model if it contains it.   Else returns  0.  For a
+    /// ReportEntity, looks at Concerned Entity.
+    pub fn number(&self, anentity: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::Interface_InterfaceModel_number(self as *const Self, anentity) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:133 - `Interface_InterfaceModel::Value()`
+    /// Returns an Entity identified by its number in the Model
+    /// Each sub-class of InterfaceModel can define its own method
+    /// Entity to return its specific class of Entity (e.g. for VDA,
+    /// VDAModel returns a VDAEntity), working by calling Value
+    /// Remark : For a Reported Entity, (Erroneous, Corrected, Unknown), this
+    /// method returns this Reported Entity.
+    /// See ReportEntity for other questions.
+    pub fn value(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::Interface_InterfaceModel_value(self as *const Self, num)) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:138 - `Interface_InterfaceModel::NbTypes()`
+    /// Returns the count of DISTINCT types under which an entity may
+    /// be processed. Defined by the Protocol, which gives default as
+    /// 1 (dynamic Type).
+    pub fn nb_types(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::Interface_InterfaceModel_nb_types(self as *const Self, ent) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:142 - `Interface_InterfaceModel::Type()`
+    /// Returns a type, given its rank : defined by the Protocol
+    /// (by default, the first one)
+    pub fn type_(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceModel_type_(
+                self as *const Self,
+                ent,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:150 - `Interface_InterfaceModel::TypeName()`
+    /// Returns the type name of an entity, from the list of types
+    /// (one or more ...)
+    /// <complete> True (D) gives the complete type, else packages are
+    /// removed
+    /// WARNING : buffered, to be immediately copied or printed
+    pub fn type_name(&self, ent: &crate::ffi::HandleStandardTransient, complete: bool) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_InterfaceModel_type_name(
+                self as *const Self,
+                ent,
+                complete,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
     /// **Source:** `Interface_InterfaceModel.hxx`:158 - `Interface_InterfaceModel::EntityState()`
     /// Returns the State of an entity, given its number
     pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
@@ -2279,6 +2469,58 @@ impl InterfaceModel {
         unsafe { crate::ffi::Interface_InterfaceModel_reservate(self as *mut Self, nbent) }
     }
 
+    /// **Source:** `Interface_InterfaceModel.hxx`:249 - `Interface_InterfaceModel::AddEntity()`
+    /// Internal method for adding an Entity. Used by file reading
+    /// (defined by each Interface) and Transfer tools. It adds the
+    /// entity required to be added, not its refs : see AddWithRefs.
+    /// If <anentity> is a ReportEntity, it is added to the list of
+    /// Reports, its Concerned Entity (Erroneous or Corrected, else
+    /// Unknown) is added to the list of Entities.
+    /// That is, the ReportEntity must be created before Adding
+    pub fn add_entity(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::Interface_InterfaceModel_add_entity(self as *mut Self, anentity) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:268 - `Interface_InterfaceModel::AddWithRefs()`
+    /// Same as above, but works with the Protocol of the Model
+    pub fn add_with_refs_handlestandardtransient_int_bool(
+        &mut self,
+        anent: &crate::ffi::HandleStandardTransient,
+        level: i32,
+        listall: bool,
+    ) {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_add_with_refs_handlestandardtransient_int_bool(
+                self as *mut Self,
+                anent,
+                level,
+                listall,
+            )
+        }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:273 - `Interface_InterfaceModel::AddWithRefs()`
+    /// Same as above, but works with an already created GeneralLib
+    pub fn add_with_refs_handlestandardtransient_generallib_int_bool(
+        &mut self,
+        anent: &crate::ffi::HandleStandardTransient,
+        lib: &GeneralLib,
+        level: i32,
+        listall: bool,
+    ) {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_add_with_refs_handlestandardtransient_generallib_int_bool(self as *mut Self, anent, lib, level, listall)
+        }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:279 - `Interface_InterfaceModel::ReplaceEntity()`
+    /// Replace Entity with Number=nument on other entity - "anent"
+    pub fn replace_entity(&mut self, nument: i32, anent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::Interface_InterfaceModel_replace_entity(self as *mut Self, nument, anent)
+        }
+    }
+
     /// **Source:** `Interface_InterfaceModel.hxx`:287 - `Interface_InterfaceModel::ReverseOrders()`
     /// Reverses the Numbers of the Entities, between <after> and the
     /// total count of Entities. Thus, the entities :
@@ -2365,6 +2607,22 @@ impl InterfaceModel {
     /// Default does nothing, can be redefined
     pub fn verify_check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
         unsafe { crate::ffi::Interface_InterfaceModel_verify_check(self as *const Self, ach) }
+    }
+
+    /// **Source:** `Interface_InterfaceModel.hxx`:389 - `Interface_InterfaceModel::StringLabel()`
+    /// Returns a string with the label attached to a given entity.
+    /// Warning : While this string may be edited on the spot, if it is a read
+    /// field, the returned value must be copied before.
+    pub fn string_label(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_InterfaceModel_string_label(
+                self as *const Self,
+                ent,
+            ))
+        }
     }
 
     /// **Source:** `Interface_InterfaceModel.hxx`:402 - `Interface_InterfaceModel::NextNumberForLabel()`
@@ -2476,9 +2734,27 @@ impl HandleInterfaceInterfaceModel {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Interface_InterfaceModel {
         unsafe { &mut *(crate::ffi::HandleInterfaceInterfaceModel_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Interface_InterfaceModel> to Handle<StepData_StepModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_StepModel` (or subclass).
+    pub fn downcast_to_step_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataStepModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceInterfaceModel_downcast_to_HandleStepDataStepModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for InterfaceModel (28 total) ──
+// ── Skipped symbols for InterfaceModel (17 total) ──
 // SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:78 - `Interface_InterfaceModel::SetProtocol`
 //   method: Sets a Protocol for this Model
 //   method: It is also set by a call to AddWithRefs with Protocol
@@ -2502,46 +2778,6 @@ impl HandleInterfaceInterfaceModel {
 //   Reason: return type 'Handle(Interface_GTool)' is unknown
 //   // pub fn g_tool(&self) -> OwnedPtr<Handle<Interface_GTool>>;
 //
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:117 - `Interface_InterfaceModel::Contains`
-//   method: Returns True if a Model contains an Entity (for a ReportEntity,
-//   method: looks for the ReportEntity itself AND its Concerned Entity)
-//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn contains(&self, anentity: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:124 - `Interface_InterfaceModel::Number`
-//   method: Returns the Number of an Entity in the Model if it contains it.
-//   method: Else returns 0. For a ReportEntity, looks at Concerned Entity.
-//   method: Returns the Directory entry   Number of  an Entity in
-//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn number(&self, anentity: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:133 - `Interface_InterfaceModel::Value`
-//   method: Returns an Entity identified by its number in the Model
-//   method: Each sub-class of InterfaceModel can define its own method
-//   method: Entity to return its specific class of Entity (e.g. for VDA,
-//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
-//   // pub fn value(&self, num: i32) -> &HandleTransient;
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:138 - `Interface_InterfaceModel::NbTypes`
-//   method: Returns the count of DISTINCT types under which an entity may
-//   method: be processed. Defined by the Protocol, which gives default as
-//   method: 1 (dynamic Type).
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn nb_types(&self, ent: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:142 - `Interface_InterfaceModel::Type`
-//   method: Returns a type, given its rank : defined by the Protocol
-//   method: (by default, the first one)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn type_(&self, ent: &HandleTransient, num: i32) -> OwnedPtr<Handle<Standard_Type>>;
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:150 - `Interface_InterfaceModel::TypeName`
-//   method: Returns the type name of an entity, from the list of types
-//   method: (one or more ...)
-//   method: <complete> True (D) gives the complete type, else packages are
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn type_name(&self, ent: &HandleTransient, complete: bool) -> *const char;
-//
 // SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:178 - `Interface_InterfaceModel::ReportEntity`
 //   method: Returns a ReportEntity identified by its number in the Model,
 //   method: or a Null Handle If <num> does not identify a ReportEntity.
@@ -2562,34 +2798,12 @@ impl HandleInterfaceInterfaceModel {
 //   Reason: param 'rep' uses unknown type 'const Handle(Interface_ReportEntity)&'
 //   // pub fn add_report_entity(&mut self, rep: &HandleReportEntity, semantic: bool) -> bool;
 //
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:249 - `Interface_InterfaceModel::AddEntity`
-//   method: Internal method for adding an Entity. Used by file reading
-//   method: (defined by each Interface) and Transfer tools. It adds the
-//   method: entity required to be added, not its refs : see AddWithRefs.
-//   Reason: param 'anentity' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_entity(&mut self, anentity: &HandleTransient);
-//
 // SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:262 - `Interface_InterfaceModel::AddWithRefs`
 //   method: Adds to the Model, an Entity with all its References, as they
 //   method: are defined by General Services FillShared and ListImplied.
 //   method: Process is recursive (any sub-levels) if <level> = 0 (Default)
-//   Reason: param 'anent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'proto' uses unknown type 'const Handle(Interface_Protocol)&'
 //   // pub fn add_with_refs(&mut self, anent: &HandleTransient, proto: &HandleProtocol, level: i32, listall: bool);
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:268 - `Interface_InterfaceModel::AddWithRefs`
-//   method: Same as above, but works with the Protocol of the Model
-//   Reason: param 'anent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_with_refs(&mut self, anent: &HandleTransient, level: i32, listall: bool);
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:273 - `Interface_InterfaceModel::AddWithRefs`
-//   method: Same as above, but works with an already created GeneralLib
-//   Reason: param 'anent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_with_refs(&mut self, anent: &HandleTransient, lib: &GeneralLib, level: i32, listall: bool);
-//
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:279 - `Interface_InterfaceModel::ReplaceEntity`
-//   method: Replace Entity with Number=nument on other entity - "anent"
-//   Reason: param 'anent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn replace_entity(&mut self, nument: i32, anent: &HandleTransient);
 //
 // SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:300 - `Interface_InterfaceModel::GetFromTransfer`
 //   method: Gets contents from an EntityIterator, prepared by a
@@ -2650,13 +2864,6 @@ impl HandleInterfaceInterfaceModel {
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_to_log(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
 //
-// SKIPPED: **Source:** `Interface_InterfaceModel.hxx`:389 - `Interface_InterfaceModel::StringLabel`
-//   method: Returns a string with the label attached to a given entity.
-//   method: Warning : While this string may be edited on the spot, if it is a read
-//   method: field, the returned value must be copied before.
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn string_label(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
-//
 
 // ========================
 // From Interface_SignType.hxx
@@ -2675,6 +2882,45 @@ unsafe impl crate::CppDeletable for SignType {
 }
 
 impl SignType {
+    /// **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    /// Returns an identification of the Signature (a word), given at
+    /// initialization time
+    /// Specialised to consider context as an InterfaceModel
+    pub fn text(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        context: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_SignType_text(
+                self as *const Self,
+                ent,
+                context,
+            ))
+        }
+    }
+
+    /// **Source:** `Interface_SignType.hxx`:49 - `Interface_SignType::Value()`
+    /// Returns the Signature for a Transient object. It is specific
+    /// of each sub-class of Signature. For a Null Handle, it should
+    /// provide ""
+    /// It can work with the model which contains the entity
+    pub fn value(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::Interface_SignType_value(
+                self as *const Self,
+                ent,
+                model,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
     /// **Source:** `Interface_SignType.hxx`:57 - `Interface_SignType::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Interface_SignType_dynamic_type(self as *const Self)) }
@@ -2717,23 +2963,175 @@ impl SignType {
             &mut *(crate::ffi::Interface_SignType_as_MoniTool_SignText_mut(self as *mut Self))
         }
     }
+
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    pub fn text_alone(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_SignType_inherited_TextAlone(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for SignType (2 total) ──
-// SKIPPED: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text`
-//   method: Returns an identification of the Signature (a word), given at
-//   method: initialization time
-//   method: Specialised to consider context as an InterfaceModel
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn text(&self, ent: &HandleTransient, context: &HandleTransient) -> OwnedPtr<TCollection_AsciiString>;
-//
-// SKIPPED: **Source:** `Interface_SignType.hxx`:49 - `Interface_SignType::Value`
-//   method: Returns the Signature for a Transient object. It is specific
-//   method: of each sub-class of Signature. For a Null Handle, it should
-//   method: provide ""
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
-//
+pub use crate::ffi::HandleInterfaceSignType;
+
+unsafe impl crate::CppDeletable for HandleInterfaceSignType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleInterfaceSignType_destructor(ptr);
+    }
+}
+
+impl HandleInterfaceSignType {
+    /// Dereference this Handle to access the underlying Interface_SignType
+    pub fn get(&self) -> &crate::ffi::Interface_SignType {
+        unsafe { &*(crate::ffi::HandleInterfaceSignType_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Interface_SignType
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Interface_SignType {
+        unsafe { &mut *(crate::ffi::HandleInterfaceSignType_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Interface_SignType> to Handle<MoniTool_SignText>
+    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleInterfaceSignType_to_HandleMoniToolSignText(self as *const Self),
+            )
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IFSelect_SignAncestor>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignAncestor` (or subclass).
+    pub fn downcast_to_sign_ancestor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignAncestor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIFSelectSignAncestor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IFSelect_SignCategory>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignCategory` (or subclass).
+    pub fn downcast_to_sign_category(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignCategory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIFSelectSignCategory(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IFSelect_SignMultiple>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignMultiple` (or subclass).
+    pub fn downcast_to_sign_multiple(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignMultiple>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIFSelectSignMultiple(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IFSelect_SignType>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignType` (or subclass).
+    pub fn downcast_to_sign_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIFSelectSignType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IFSelect_SignValidity>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignValidity` (or subclass).
+    pub fn downcast_to_sign_validity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignValidity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIFSelectSignValidity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<IFSelect_Signature>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_Signature` (or subclass).
+    pub fn downcast_to_signature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleIFSelectSignature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Interface_SignType> to Handle<XSControl_SignTransferStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_SignTransferStatus` (or subclass).
+    pub fn downcast_to_sign_transfer_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSignTransferStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleInterfaceSignType_downcast_to_HandleXSControlSignTransferStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // Additional type re-exports

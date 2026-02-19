@@ -577,6 +577,7 @@ fn generate_output(
     let collection_type_names: std::collections::HashSet<String> =
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
     let extra_typedef_names = parser::get_collected_typedef_names();
+    let handle_able_classes = codegen::bindings::compute_handle_able_classes(all_classes);
     let all_bindings =
         codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods);
 
@@ -597,6 +598,7 @@ fn generate_output(
         symbol_table,
         &all_bindings,
         &all_function_bindings,
+        &handle_able_classes,
     );
     let ffi_path = args.output.join("ffi.rs");
     std::fs::write(&ffi_path, ffi_code)?;
@@ -614,6 +616,7 @@ fn generate_output(
         &all_bindings,
         &all_function_bindings,
         &nested_types,
+        &handle_able_classes,
     );
     let cpp_path = args.output.join("wrappers.cpp");
     std::fs::write(&cpp_path, &cpp_code)?;
@@ -677,7 +680,7 @@ fn generate_output(
     // A. Handle types for all transient classes
     let mut all_ffi_types: Vec<(String, String)> = Vec::new(); // (ffi_name, module_prefix)
     for class in all_classes {
-        if class.is_handle_type {
+        if handle_able_classes.contains(&class.name) {
             let handle_name = format!("Handle{}", class.name.replace('_', ""));
             if !already_reexported.contains(&handle_name) {
                 // Use the class's actual module (not derived from handle name)

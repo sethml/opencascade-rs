@@ -4411,6 +4411,64 @@ impl ExtPExtS {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPExtS_ctor()) }
     }
 
+    /// **Source:** `Extrema_ExtPExtS.hxx`:40 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
+    /// It calculates all the distances between a point
+    /// from gp and a Surface.
+    pub fn new_pnt_handlegeomadaptorsurfaceoflinearextrusion_real6(
+        P: &crate::gp::Pnt,
+        S: &crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        TolU: f64,
+        TolV: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPExtS_ctor_pnt_handlegeomadaptorsurfaceoflinearextrusion_real6(P, S, Umin, Usup, Vmin, Vsup, TolU, TolV))
+        }
+    }
+
+    /// **Source:** `Extrema_ExtPExtS.hxx`:51 - `Extrema_ExtPExtS::Extrema_ExtPExtS()`
+    /// It calculates all the distances between a point
+    /// from gp and a Surface.
+    pub fn new_pnt_handlegeomadaptorsurfaceoflinearextrusion_real2(
+        P: &crate::gp::Pnt,
+        S: &crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion,
+        TolU: f64,
+        TolV: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPExtS_ctor_pnt_handlegeomadaptorsurfaceoflinearextrusion_real2(P, S, TolU, TolV))
+        }
+    }
+
+    /// **Source:** `Extrema_ExtPExtS.hxx`:57 - `Extrema_ExtPExtS::Initialize()`
+    /// Initializes the fields of the algorithm.
+    pub fn initialize(
+        &mut self,
+        S: &crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion,
+        Uinf: f64,
+        Usup: f64,
+        Vinf: f64,
+        Vsup: f64,
+        TolU: f64,
+        TolV: f64,
+    ) {
+        unsafe {
+            crate::ffi::Extrema_ExtPExtS_initialize(
+                self as *mut Self,
+                S,
+                Uinf,
+                Usup,
+                Vinf,
+                Vsup,
+                TolU,
+                TolV,
+            )
+        }
+    }
+
     /// **Source:** `Extrema_ExtPExtS.hxx`:65 - `Extrema_ExtPExtS::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         unsafe { crate::ffi::Extrema_ExtPExtS_perform(self as *mut Self, P) }
@@ -4487,25 +4545,6 @@ impl HandleExtremaExtPExtS {
     }
 }
 
-// ── Skipped symbols for ExtPExtS (3 total) ──
-// SKIPPED: **Source:** `Extrema_ExtPExtS.hxx`:40 - `Extrema_ExtPExtS::Extrema_ExtPExtS`
-//   constructor: It calculates all the distances between a point
-//   constructor: from gp and a Surface.
-//   Reason: param 'S' uses unknown Handle type
-//   // pub fn new_pnt_handlegeomadaptorsurfaceoflinearextrusion_real6(P: &Pnt, S: &HandleSurfaceOfLinearExtrusion, Umin: f64, Usup: f64, Vmin: f64, Vsup: f64, TolU: f64, TolV: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_ExtPExtS.hxx`:51 - `Extrema_ExtPExtS::Extrema_ExtPExtS`
-//   constructor: It calculates all the distances between a point
-//   constructor: from gp and a Surface.
-//   Reason: param 'S' uses unknown Handle type
-//   // pub fn new_pnt_handlegeomadaptorsurfaceoflinearextrusion_real2(P: &Pnt, S: &HandleSurfaceOfLinearExtrusion, TolU: f64, TolV: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_ExtPExtS.hxx`:57 - `Extrema_ExtPExtS::Initialize`
-//   method: Initializes the fields of the algorithm.
-//   Reason: param 'S' uses unknown type 'const Handle(GeomAdaptor_SurfaceOfLinearExtrusion)&'
-//   // pub fn initialize(&mut self, S: &HandleSurfaceOfLinearExtrusion, Uinf: f64, Usup: f64, Vinf: f64, Vsup: f64, TolU: f64, TolV: f64);
-//
-
 // ========================
 // From Extrema_ExtPRevS.hxx
 // ========================
@@ -4526,6 +4565,71 @@ impl ExtPRevS {
     /// **Source:** `Extrema_ExtPRevS.hxx`:34 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Extrema_ExtPRevS_ctor()) }
+    }
+
+    /// **Source:** `Extrema_ExtPRevS.hxx`:38 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
+    /// It calculates all the distances between a point
+    /// from gp and a SurfacePtr from Adaptor3d.
+    pub fn new_pnt_handlegeomadaptorsurfaceofrevolution_real6(
+        P: &crate::gp::Pnt,
+        S: &crate::ffi::HandleGeomAdaptorSurfaceOfRevolution,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        TolU: f64,
+        TolV: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Extrema_ExtPRevS_ctor_pnt_handlegeomadaptorsurfaceofrevolution_real6(
+                    P, S, Umin, Usup, Vmin, Vsup, TolU, TolV,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Extrema_ExtPRevS.hxx`:49 - `Extrema_ExtPRevS::Extrema_ExtPRevS()`
+    /// It calculates all the distances between a point
+    /// from gp and a SurfacePtr from Adaptor3d.
+    pub fn new_pnt_handlegeomadaptorsurfaceofrevolution_real2(
+        P: &crate::gp::Pnt,
+        S: &crate::ffi::HandleGeomAdaptorSurfaceOfRevolution,
+        TolU: f64,
+        TolV: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Extrema_ExtPRevS_ctor_pnt_handlegeomadaptorsurfaceofrevolution_real2(
+                    P, S, TolU, TolV,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Extrema_ExtPRevS.hxx`:54 - `Extrema_ExtPRevS::Initialize()`
+    pub fn initialize(
+        &mut self,
+        S: &crate::ffi::HandleGeomAdaptorSurfaceOfRevolution,
+        Umin: f64,
+        Usup: f64,
+        Vmin: f64,
+        Vsup: f64,
+        TolU: f64,
+        TolV: f64,
+    ) {
+        unsafe {
+            crate::ffi::Extrema_ExtPRevS_initialize(
+                self as *mut Self,
+                S,
+                Umin,
+                Usup,
+                Vmin,
+                Vsup,
+                TolU,
+                TolV,
+            )
+        }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:62 - `Extrema_ExtPRevS::Perform()`
@@ -4603,24 +4707,6 @@ impl HandleExtremaExtPRevS {
         unsafe { &mut *(crate::ffi::HandleExtremaExtPRevS_get_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for ExtPRevS (3 total) ──
-// SKIPPED: **Source:** `Extrema_ExtPRevS.hxx`:38 - `Extrema_ExtPRevS::Extrema_ExtPRevS`
-//   constructor: It calculates all the distances between a point
-//   constructor: from gp and a SurfacePtr from Adaptor3d.
-//   Reason: param 'S' uses unknown Handle type
-//   // pub fn new_pnt_handlegeomadaptorsurfaceofrevolution_real6(P: &Pnt, S: &HandleSurfaceOfRevolution, Umin: f64, Usup: f64, Vmin: f64, Vsup: f64, TolU: f64, TolV: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_ExtPRevS.hxx`:49 - `Extrema_ExtPRevS::Extrema_ExtPRevS`
-//   constructor: It calculates all the distances between a point
-//   constructor: from gp and a SurfacePtr from Adaptor3d.
-//   Reason: param 'S' uses unknown Handle type
-//   // pub fn new_pnt_handlegeomadaptorsurfaceofrevolution_real2(P: &Pnt, S: &HandleSurfaceOfRevolution, TolU: f64, TolV: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Extrema_ExtPRevS.hxx`:54 - `Extrema_ExtPRevS::Initialize`
-//   Reason: param 'S' uses unknown type 'const Handle(GeomAdaptor_SurfaceOfRevolution)&'
-//   // pub fn initialize(&mut self, S: &HandleSurfaceOfRevolution, Umin: f64, Usup: f64, Vmin: f64, Vsup: f64, TolU: f64, TolV: f64);
-//
 
 // ========================
 // From Extrema_ExtPS.hxx

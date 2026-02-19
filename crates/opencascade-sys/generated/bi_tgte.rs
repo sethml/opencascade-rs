@@ -40,6 +40,9 @@ impl TryFrom<i32> for ContactType {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleAdaptor3dCurve;
+
 // ========================
 // From BiTgte_Blend.hxx
 // ========================
@@ -608,10 +611,48 @@ impl CurveOnEdge {
         unsafe { &mut *(crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnEdge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnEdge_inherited_OffsetCurve(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBiTgteCurveOnEdge;
+
+unsafe impl crate::CppDeletable for HandleBiTgteCurveOnEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBiTgteCurveOnEdge_destructor(ptr);
+    }
+}
+
+impl HandleBiTgteCurveOnEdge {
+    /// Dereference this Handle to access the underlying BiTgte_CurveOnEdge
+    pub fn get(&self) -> &crate::ffi::BiTgte_CurveOnEdge {
+        unsafe { &*(crate::ffi::HandleBiTgteCurveOnEdge_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BiTgte_CurveOnEdge
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BiTgte_CurveOnEdge {
+        unsafe { &mut *(crate::ffi::HandleBiTgteCurveOnEdge_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBiTgteCurveOnEdge_to_HandleAdaptor3dCurve(
                 self as *const Self,
             ))
         }
@@ -926,6 +967,15 @@ impl CurveOnVertex {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnVertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:57 - `Adaptor3d_Curve::ShallowCopy()`
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
         unsafe {
@@ -941,6 +991,35 @@ impl CurveOnVertex {
             crate::OwnedPtr::from_raw(crate::ffi::BiTgte_CurveOnVertex_inherited_OffsetCurve(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBiTgteCurveOnVertex;
+
+unsafe impl crate::CppDeletable for HandleBiTgteCurveOnVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBiTgteCurveOnVertex_destructor(ptr);
+    }
+}
+
+impl HandleBiTgteCurveOnVertex {
+    /// Dereference this Handle to access the underlying BiTgte_CurveOnVertex
+    pub fn get(&self) -> &crate::ffi::BiTgte_CurveOnVertex {
+        unsafe { &*(crate::ffi::HandleBiTgteCurveOnVertex_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BiTgte_CurveOnVertex
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BiTgte_CurveOnVertex {
+        unsafe { &mut *(crate::ffi::HandleBiTgteCurveOnVertex_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBiTgteCurveOnVertex_to_HandleAdaptor3dCurve(self as *const Self),
+            )
         }
     }
 }

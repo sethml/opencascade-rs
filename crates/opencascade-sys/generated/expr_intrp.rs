@@ -104,25 +104,47 @@ impl Analysis {
     pub fn reset_all(&mut self) {
         unsafe { crate::ffi::ExprIntrp_Analysis_reset_all(self as *mut Self) }
     }
-}
 
-// ── Skipped symbols for Analysis (4 total) ──
-// SKIPPED: **Source:** `ExprIntrp_Analysis.hxx`:75 - `ExprIntrp_Analysis::Use`
-//   Reason: param 'func' uses unknown type 'const Handle(Expr_NamedFunction)&'
-//   // pub fn use_(&mut self, func: &HandleNamedFunction);
-//
-// SKIPPED: **Source:** `ExprIntrp_Analysis.hxx`:77 - `ExprIntrp_Analysis::Use`
-//   Reason: param 'named' uses unknown type 'const Handle(Expr_NamedExpression)&'
-//   // pub fn use_(&mut self, named: &HandleNamedExpression);
-//
-// SKIPPED: **Source:** `ExprIntrp_Analysis.hxx`:79 - `ExprIntrp_Analysis::GetNamed`
-//   Reason: return type 'Handle(Expr_NamedExpression)' is unknown
-//   // pub fn get_named(&mut self, name: &AsciiString) -> OwnedPtr<Handle<Expr_NamedExpression>>;
-//
-// SKIPPED: **Source:** `ExprIntrp_Analysis.hxx`:81 - `ExprIntrp_Analysis::GetFunction`
-//   Reason: return type 'Handle(Expr_NamedFunction)' is unknown
-//   // pub fn get_function(&mut self, name: &AsciiString) -> OwnedPtr<Handle<Expr_NamedFunction>>;
-//
+    /// **Source:** `ExprIntrp_Analysis.hxx`:75 - `ExprIntrp_Analysis::Use()`
+    pub fn use_handleexprnamedfunction(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+        unsafe {
+            crate::ffi::ExprIntrp_Analysis_use_handleexprnamedfunction(self as *mut Self, func)
+        }
+    }
+
+    /// **Source:** `ExprIntrp_Analysis.hxx`:77 - `ExprIntrp_Analysis::Use()`
+    pub fn use_handleexprnamedexpression(&mut self, named: &crate::ffi::HandleExprNamedExpression) {
+        unsafe {
+            crate::ffi::ExprIntrp_Analysis_use_handleexprnamedexpression(self as *mut Self, named)
+        }
+    }
+
+    /// **Source:** `ExprIntrp_Analysis.hxx`:79 - `ExprIntrp_Analysis::GetNamed()`
+    pub fn get_named(
+        &mut self,
+        name: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_Analysis_get_named(
+                self as *mut Self,
+                name,
+            ))
+        }
+    }
+
+    /// **Source:** `ExprIntrp_Analysis.hxx`:81 - `ExprIntrp_Analysis::GetFunction()`
+    pub fn get_function(
+        &mut self,
+        name: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_Analysis_get_function(
+                self as *mut Self,
+                name,
+            ))
+        }
+    }
+}
 
 // ========================
 // From ExprIntrp_GenExp.hxx
@@ -169,6 +191,11 @@ impl GenExp {
         unsafe { &*(crate::ffi::ExprIntrp_GenExp_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ExprIntrp_GenExp.hxx`:38 - `ExprIntrp_GenExp::Create()`
+    pub fn create() -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenExp> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenExp_create()) }
+    }
+
     /// **Source:** `ExprIntrp_GenExp.hxx`:51 - `ExprIntrp_GenExp::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -195,6 +222,18 @@ impl GenExp {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenExp> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenExp_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
+    pub fn use_(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+        unsafe { crate::ffi::ExprIntrp_GenExp_inherited_Use(self as *mut Self, func) }
+    }
+
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
     pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
         unsafe { &*(crate::ffi::ExprIntrp_GenExp_inherited_GetNamed(self as *const Self)) }
@@ -204,13 +243,49 @@ impl GenExp {
     pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
         unsafe { &*(crate::ffi::ExprIntrp_GenExp_inherited_GetFunctions(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction()`
+    pub fn get_function(
+        &self,
+        name: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenExp_inherited_GetFunction(
+                self as *const Self,
+                name,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for GenExp (1 total) ──
-// SKIPPED: **Source:** `ExprIntrp_GenExp.hxx`:38 - `ExprIntrp_GenExp::Create`
-//   Reason: return type 'Handle(ExprIntrp_GenExp)' is unknown
-//   // pub fn create() -> OwnedPtr<Handle<ExprIntrp_GenExp>>;
-//
+pub use crate::ffi::HandleExprIntrpGenExp;
+
+unsafe impl crate::CppDeletable for HandleExprIntrpGenExp {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprIntrpGenExp_destructor(ptr);
+    }
+}
+
+impl HandleExprIntrpGenExp {
+    /// Dereference this Handle to access the underlying ExprIntrp_GenExp
+    pub fn get(&self) -> &crate::ffi::ExprIntrp_GenExp {
+        unsafe { &*(crate::ffi::HandleExprIntrpGenExp_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ExprIntrp_GenExp
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_GenExp {
+        unsafe { &mut *(crate::ffi::HandleExprIntrpGenExp_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ExprIntrp_GenExp> to Handle<ExprIntrp_Generator>
+    pub fn to_handle_generator(&self) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenerator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprIntrpGenExp_to_HandleExprIntrpGenerator(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From ExprIntrp_GenFct.hxx
@@ -244,6 +319,11 @@ impl GenFct {
         unsafe { &*(crate::ffi::ExprIntrp_GenFct_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ExprIntrp_GenFct.hxx`:35 - `ExprIntrp_GenFct::Create()`
+    pub fn create() -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenFct> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenFct_create()) }
+    }
+
     /// **Source:** `ExprIntrp_GenFct.hxx`:41 - `ExprIntrp_GenFct::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -270,6 +350,18 @@ impl GenFct {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenFct> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenFct_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
+    pub fn use_(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+        unsafe { crate::ffi::ExprIntrp_GenFct_inherited_Use(self as *mut Self, func) }
+    }
+
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
     pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
         unsafe { &*(crate::ffi::ExprIntrp_GenFct_inherited_GetNamed(self as *const Self)) }
@@ -279,13 +371,49 @@ impl GenFct {
     pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
         unsafe { &*(crate::ffi::ExprIntrp_GenFct_inherited_GetFunctions(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction()`
+    pub fn get_function(
+        &self,
+        name: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenFct_inherited_GetFunction(
+                self as *const Self,
+                name,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for GenFct (1 total) ──
-// SKIPPED: **Source:** `ExprIntrp_GenFct.hxx`:35 - `ExprIntrp_GenFct::Create`
-//   Reason: return type 'Handle(ExprIntrp_GenFct)' is unknown
-//   // pub fn create() -> OwnedPtr<Handle<ExprIntrp_GenFct>>;
-//
+pub use crate::ffi::HandleExprIntrpGenFct;
+
+unsafe impl crate::CppDeletable for HandleExprIntrpGenFct {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprIntrpGenFct_destructor(ptr);
+    }
+}
+
+impl HandleExprIntrpGenFct {
+    /// Dereference this Handle to access the underlying ExprIntrp_GenFct
+    pub fn get(&self) -> &crate::ffi::ExprIntrp_GenFct {
+        unsafe { &*(crate::ffi::HandleExprIntrpGenFct_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ExprIntrp_GenFct
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_GenFct {
+        unsafe { &mut *(crate::ffi::HandleExprIntrpGenFct_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ExprIntrp_GenFct> to Handle<ExprIntrp_Generator>
+    pub fn to_handle_generator(&self) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenerator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprIntrpGenFct_to_HandleExprIntrpGenerator(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From ExprIntrp_GenRel.hxx
@@ -330,6 +458,11 @@ impl GenRel {
         unsafe { &*(crate::ffi::ExprIntrp_GenRel_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `ExprIntrp_GenRel.hxx`:36 - `ExprIntrp_GenRel::Create()`
+    pub fn create() -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenRel> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenRel_create()) }
+    }
+
     /// **Source:** `ExprIntrp_GenRel.hxx`:49 - `ExprIntrp_GenRel::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -356,6 +489,18 @@ impl GenRel {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenRel> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenRel_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
+    pub fn use_(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+        unsafe { crate::ffi::ExprIntrp_GenRel_inherited_Use(self as *mut Self, func) }
+    }
+
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
     pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
         unsafe { &*(crate::ffi::ExprIntrp_GenRel_inherited_GetNamed(self as *const Self)) }
@@ -365,13 +510,49 @@ impl GenRel {
     pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
         unsafe { &*(crate::ffi::ExprIntrp_GenRel_inherited_GetFunctions(self as *const Self)) }
     }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction()`
+    pub fn get_function(
+        &self,
+        name: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_GenRel_inherited_GetFunction(
+                self as *const Self,
+                name,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for GenRel (1 total) ──
-// SKIPPED: **Source:** `ExprIntrp_GenRel.hxx`:36 - `ExprIntrp_GenRel::Create`
-//   Reason: return type 'Handle(ExprIntrp_GenRel)' is unknown
-//   // pub fn create() -> OwnedPtr<Handle<ExprIntrp_GenRel>>;
-//
+pub use crate::ffi::HandleExprIntrpGenRel;
+
+unsafe impl crate::CppDeletable for HandleExprIntrpGenRel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprIntrpGenRel_destructor(ptr);
+    }
+}
+
+impl HandleExprIntrpGenRel {
+    /// Dereference this Handle to access the underlying ExprIntrp_GenRel
+    pub fn get(&self) -> &crate::ffi::ExprIntrp_GenRel {
+        unsafe { &*(crate::ffi::HandleExprIntrpGenRel_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ExprIntrp_GenRel
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_GenRel {
+        unsafe { &mut *(crate::ffi::HandleExprIntrpGenRel_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ExprIntrp_GenRel> to Handle<ExprIntrp_Generator>
+    pub fn to_handle_generator(&self) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenerator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprIntrpGenRel_to_HandleExprIntrpGenerator(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From ExprIntrp_Generator.hxx
@@ -389,6 +570,20 @@ unsafe impl crate::CppDeletable for Generator {
 }
 
 impl Generator {
+    /// **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
+    pub fn use_handleexprnamedfunction(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+        unsafe {
+            crate::ffi::ExprIntrp_Generator_use_handleexprnamedfunction(self as *mut Self, func)
+        }
+    }
+
+    /// **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::Use()`
+    pub fn use_handleexprnamedexpression(&mut self, named: &crate::ffi::HandleExprNamedExpression) {
+        unsafe {
+            crate::ffi::ExprIntrp_Generator_use_handleexprnamedexpression(self as *mut Self, named)
+        }
+    }
+
     /// **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
     pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
         unsafe { &*(crate::ffi::ExprIntrp_Generator_get_named(self as *const Self)) }
@@ -397,6 +592,38 @@ impl Generator {
     /// **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
     pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
         unsafe { &*(crate::ffi::ExprIntrp_Generator_get_functions(self as *const Self)) }
+    }
+
+    /// **Source:** `ExprIntrp_Generator.hxx`:49 - `ExprIntrp_Generator::GetNamed()`
+    /// Returns NamedExpression with name <name> already
+    /// interpreted if it exists. Returns a null handle if
+    /// not.
+    pub fn get_named_asciistring(
+        &self,
+        name: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_Generator_get_named_asciistring(
+                self as *const Self,
+                name,
+            ))
+        }
+    }
+
+    /// **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction()`
+    /// Returns NamedFunction with name <name> already
+    /// interpreted if it exists. Returns a null handle if
+    /// not.
+    pub fn get_function(
+        &self,
+        name: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ExprIntrp_Generator_get_function(
+                self as *const Self,
+                name,
+            ))
+        }
     }
 
     /// **Source:** `ExprIntrp_Generator.hxx`:56 - `ExprIntrp_Generator::DynamicType()`
@@ -446,31 +673,61 @@ impl HandleExprIntrpGenerator {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_Generator {
         unsafe { &mut *(crate::ffi::HandleExprIntrpGenerator_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for Generator (4 total) ──
-// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use`
-//   Reason: param 'func' uses unknown type 'const Handle(Expr_NamedFunction)&'
-//   // pub fn use_(&mut self, func: &HandleNamedFunction);
-//
-// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::Use`
-//   Reason: param 'named' uses unknown type 'const Handle(Expr_NamedExpression)&'
-//   // pub fn use_(&mut self, named: &HandleNamedExpression);
-//
-// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:49 - `ExprIntrp_Generator::GetNamed`
-//   method: Returns NamedExpression with name <name> already
-//   method: interpreted if it exists. Returns a null handle if
-//   method: not.
-//   Reason: return type 'Handle(Expr_NamedExpression)' is unknown
-//   // pub fn get_named(&self, name: &AsciiString) -> OwnedPtr<Handle<Expr_NamedExpression>>;
-//
-// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction`
-//   method: Returns NamedFunction with name <name> already
-//   method: interpreted if it exists. Returns a null handle if
-//   method: not.
-//   Reason: return type 'Handle(Expr_NamedFunction)' is unknown
-//   // pub fn get_function(&self, name: &AsciiString) -> OwnedPtr<Handle<Expr_NamedFunction>>;
-//
+    /// Downcast Handle<ExprIntrp_Generator> to Handle<ExprIntrp_GenExp>
+    ///
+    /// Returns `None` if the handle does not point to a `ExprIntrp_GenExp` (or subclass).
+    pub fn downcast_to_gen_exp(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprIntrpGenExp>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenExp(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ExprIntrp_Generator> to Handle<ExprIntrp_GenFct>
+    ///
+    /// Returns `None` if the handle does not point to a `ExprIntrp_GenFct` (or subclass).
+    pub fn downcast_to_gen_fct(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprIntrpGenFct>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenFct(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ExprIntrp_Generator> to Handle<ExprIntrp_GenRel>
+    ///
+    /// Returns `None` if the handle does not point to a `ExprIntrp_GenRel` (or subclass).
+    pub fn downcast_to_gen_rel(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprIntrpGenRel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenRel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From ExprIntrp_SyntaxError.hxx

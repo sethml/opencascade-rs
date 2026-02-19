@@ -850,43 +850,43 @@ impl ChBuilder {
 
 // ── Skipped symbols for ChBuilder (7 total) ──
 // SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:143 - `ChFi3d_ChBuilder::SimulSurf`
-//   Reason: param 'Guide' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
 //   // pub fn simul_surf(&mut self, Data: &mut HandleSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, S2: &HandleSurface, I2: &HandleTopolTool, Or2: Orientation, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
 //
 // SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:168 - `ChFi3d_ChBuilder::SimulSurf`
-//   Reason: param 'Guide' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
 //   // pub fn simul_surf(&mut self, Data: &mut HandleSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
 //
 // SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:193 - `ChFi3d_ChBuilder::SimulSurf`
-//   Reason: param 'Guide' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
 //   // pub fn simul_surf(&mut self, Data: &mut HandleSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, Or2: Orientation, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP1: bool, RecRst1: bool, RecP2: bool, RecRst2: bool, Soldep: &Vector);
 //
 // SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:227 - `ChFi3d_ChBuilder::PerformSurf`
 //   method: Methode, implemented in inheritants, calculates
 //   method: the elements of construction of  the surface (fillet
 //   method: or chamfer).
-//   Reason: param 'Guide' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
 //   // pub fn perform_surf(&mut self, Data: &mut SequenceOfSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, S2: &HandleSurface, I2: &HandleTopolTool, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecOnS1: bool, RecOnS2: bool, Soldep: &Vector, Intf: &mut i32, Intl: &mut i32) -> bool;
 //
 // SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:252 - `ChFi3d_ChBuilder::PerformSurf`
 //   method: Method, implemented in  the inheritants, calculates
 //   method: the elements of construction of  the surface (fillet
 //   method: or chamfer) contact edge/face.
-//   Reason: param 'Guide' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
 //   // pub fn perform_surf(&mut self, Data: &mut SequenceOfSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, S2: &HandleSurface, I2: &HandleTopolTool, Or2: Orientation, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
 //
 // SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:281 - `ChFi3d_ChBuilder::PerformSurf`
 //   method: Method, implemented in inheritants, calculates
 //   method: the elements of construction of  the surface (fillet
 //   method: or chamfer) contact edge/face.
-//   Reason: param 'Guide' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
 //   // pub fn perform_surf(&mut self, Data: &mut SequenceOfSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
 //
 // SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:310 - `ChFi3d_ChBuilder::PerformSurf`
 //   method: Method, implemented in  inheritants, calculates
 //   method: the elements of construction of  the surface (fillet
 //   method: or chamfer) contact edge/edge.
-//   Reason: param 'Guide' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
+//   Reason: param 'Soldep' uses unknown type 'const math_Vector&'
 //   // pub fn perform_surf(&mut self, Data: &mut SequenceOfSurfData, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, Or2: Orientation, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP1: bool, RecRst1: bool, RecP2: bool, RecRst2: bool, Soldep: &Vector);
 //
 

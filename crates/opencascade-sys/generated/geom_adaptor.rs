@@ -27,6 +27,9 @@ pub fn make_surface(
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_make_surface(theS, theTrimFlag)) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleAdaptor3dCurve, HandleAdaptor3dSurface};
+
 // ========================
 // From GeomAdaptor_Curve.hxx
 // ========================
@@ -413,6 +416,44 @@ impl Curve {
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
         unsafe { &mut *(crate::ffi::GeomAdaptor_Curve_as_Adaptor3d_Curve_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Curve_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomAdaptorCurve;
+
+unsafe impl crate::CppDeletable for HandleGeomAdaptorCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomAdaptorCurve_destructor(ptr);
+    }
+}
+
+impl HandleGeomAdaptorCurve {
+    /// Dereference this Handle to access the underlying GeomAdaptor_Curve
+    pub fn get(&self) -> &crate::ffi::GeomAdaptor_Curve {
+        unsafe { &*(crate::ffi::HandleGeomAdaptorCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomAdaptor_Curve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomAdaptor_Curve {
+        unsafe { &mut *(crate::ffi::HandleGeomAdaptorCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomAdaptor_Curve> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleGeomAdaptorCurve_to_HandleAdaptor3dCurve(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1020,6 +1061,78 @@ impl Surface {
             &mut *(crate::ffi::GeomAdaptor_Surface_as_Adaptor3d_Surface_mut(self as *mut Self))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_Surface_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomAdaptorSurface;
+
+unsafe impl crate::CppDeletable for HandleGeomAdaptorSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomAdaptorSurface_destructor(ptr);
+    }
+}
+
+impl HandleGeomAdaptorSurface {
+    /// Dereference this Handle to access the underlying GeomAdaptor_Surface
+    pub fn get(&self) -> &crate::ffi::GeomAdaptor_Surface {
+        unsafe { &*(crate::ffi::HandleGeomAdaptorSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomAdaptor_Surface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomAdaptor_Surface {
+        unsafe { &mut *(crate::ffi::HandleGeomAdaptorSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomAdaptor_Surface> to Handle<Adaptor3d_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorSurface_to_HandleAdaptor3dSurface(self as *const Self),
+            )
+        }
+    }
+
+    /// Downcast Handle<GeomAdaptor_Surface> to Handle<GeomAdaptor_SurfaceOfLinearExtrusion>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomAdaptor_SurfaceOfLinearExtrusion` (or subclass).
+    pub fn downcast_to_surface_of_linear_extrusion(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomAdaptorSurface_downcast_to_HandleGeomAdaptorSurfaceOfLinearExtrusion(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomAdaptor_Surface> to Handle<GeomAdaptor_SurfaceOfRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomAdaptor_SurfaceOfRevolution` (or subclass).
+    pub fn downcast_to_surface_of_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomAdaptorSurface_downcast_to_HandleGeomAdaptorSurfaceOfRevolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1485,6 +1598,17 @@ impl SurfaceOfLinearExtrusion {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe {
@@ -1661,6 +1785,56 @@ impl SurfaceOfLinearExtrusion {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_OffsetValue(
                 self as *const Self,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion;
+
+unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_destructor(ptr);
+    }
+}
+
+impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
+    /// Dereference this Handle to access the underlying GeomAdaptor_SurfaceOfLinearExtrusion
+    pub fn get(&self) -> &crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion {
+        unsafe {
+            &*(crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomAdaptor_SurfaceOfLinearExtrusion
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<GeomAdaptor_Surface>
+    pub fn to_handle_geom_adaptor_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleGeomAdaptorSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<Adaptor3d_Surface>
+    pub fn to_handle_adaptor3d_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleAdaptor3dSurface(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2119,6 +2293,17 @@ impl SurfaceOfRevolution {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfRevolution> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomAdaptor_SurfaceOfRevolution_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         unsafe {
@@ -2287,6 +2472,54 @@ impl SurfaceOfRevolution {
     pub fn offset_value(&self) -> f64 {
         unsafe {
             crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_OffsetValue(self as *const Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomAdaptorSurfaceOfRevolution;
+
+unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfRevolution {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_destructor(ptr);
+    }
+}
+
+impl HandleGeomAdaptorSurfaceOfRevolution {
+    /// Dereference this Handle to access the underlying GeomAdaptor_SurfaceOfRevolution
+    pub fn get(&self) -> &crate::ffi::GeomAdaptor_SurfaceOfRevolution {
+        unsafe { &*(crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomAdaptor_SurfaceOfRevolution
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomAdaptor_SurfaceOfRevolution {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<GeomAdaptor_Surface>
+    pub fn to_handle_geom_adaptor_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleGeomAdaptorSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<Adaptor3d_Surface>
+    pub fn to_handle_adaptor3d_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleAdaptor3dSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

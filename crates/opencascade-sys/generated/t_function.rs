@@ -38,6 +38,9 @@ impl TryFrom<i32> for ExecutionStatus {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleTDFAttribute;
+
 // ========================
 // From TFunction_Driver.hxx
 // ========================
@@ -75,6 +78,35 @@ impl Driver {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_Driver_label(self as *const Self))
         }
+    }
+
+    /// **Source:** `TFunction_Driver.hxx`:59 - `TFunction_Driver::Validate()`
+    /// Validates labels of a function  in <log>.
+    /// This function is the one initialized in this function driver.
+    /// Warning
+    /// In regeneration mode, the solver must call this
+    /// method even if the function is not executed.
+    /// execution of function
+    /// =====================
+    pub fn validate(&self, log: &mut crate::ffi::HandleTFunctionLogbook) {
+        unsafe { crate::ffi::TFunction_Driver_validate(self as *const Self, log) }
+    }
+
+    /// **Source:** `TFunction_Driver.hxx`:64 - `TFunction_Driver::MustExecute()`
+    /// Analyzes the labels in the logbook log.
+    /// Returns true if attributes have been modified.
+    /// If the function label itself has been modified, the function must be executed.
+    pub fn must_execute(&self, log: &crate::ffi::HandleTFunctionLogbook) -> bool {
+        unsafe { crate::ffi::TFunction_Driver_must_execute(self as *const Self, log) }
+    }
+
+    /// **Source:** `TFunction_Driver.hxx`:70 - `TFunction_Driver::Execute()`
+    /// Executes the function in this function driver and
+    /// puts the impacted labels in the logbook log.
+    /// arguments & results of functions
+    /// ================================
+    pub fn execute(&self, log: &mut crate::ffi::HandleTFunctionLogbook) -> i32 {
+        unsafe { crate::ffi::TFunction_Driver_execute(self as *const Self, log) }
     }
 
     /// **Source:** `TFunction_Driver.hxx`:74 - `TFunction_Driver::Arguments()`
@@ -130,29 +162,6 @@ impl HandleTFunctionDriver {
         unsafe { &mut *(crate::ffi::HandleTFunctionDriver_get_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for Driver (3 total) ──
-// SKIPPED: **Source:** `TFunction_Driver.hxx`:59 - `TFunction_Driver::Validate`
-//   method: Validates labels of a function  in <log>.
-//   method: This function is the one initialized in this function driver.
-//   method: Warning
-//   Reason: param 'log' uses unknown type 'Handle(TFunction_Logbook)&'
-//   // pub fn validate(&self, log: &mut HandleLogbook);
-//
-// SKIPPED: **Source:** `TFunction_Driver.hxx`:64 - `TFunction_Driver::MustExecute`
-//   method: Analyzes the labels in the logbook log.
-//   method: Returns true if attributes have been modified.
-//   method: If the function label itself has been modified, the function must be executed.
-//   Reason: param 'log' uses unknown type 'const Handle(TFunction_Logbook)&'
-//   // pub fn must_execute(&self, log: &HandleLogbook) -> bool;
-//
-// SKIPPED: **Source:** `TFunction_Driver.hxx`:70 - `TFunction_Driver::Execute`
-//   method: Executes the function in this function driver and
-//   method: puts the impacted labels in the logbook log.
-//   method: arguments & results of functions
-//   Reason: param 'log' uses unknown type 'Handle(TFunction_Logbook)&'
-//   // pub fn execute(&self, log: &mut HandleLogbook) -> i32;
-//
 
 // ========================
 // From TFunction_DriverTable.hxx
@@ -376,6 +385,30 @@ impl Function {
         unsafe { &*(crate::ffi::TFunction_Function_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TFunction_Function.hxx`:46 - `TFunction_Function::Set()`
+    /// Static methods:
+    /// ==============
+    /// Finds or Creates a function attribute on the label <L>.
+    /// Returns the function attribute.
+    pub fn set_label(
+        L: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionFunction> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_set_label(L)) }
+    }
+
+    /// **Source:** `TFunction_Function.hxx`:51 - `TFunction_Function::Set()`
+    /// Finds or Creates a function attribute on the label <L>.
+    /// Sets a driver ID to the function.
+    /// Returns the function attribute.
+    pub fn set_label_guid(
+        L: &crate::tdf::Label,
+        DriverID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_set_label_guid(L, DriverID))
+        }
+    }
+
     /// **Source:** `TFunction_Function.hxx`:58 - `TFunction_Function::GetID()`
     /// Returns the GUID for functions.
     /// Returns a function found on the label.
@@ -407,6 +440,15 @@ impl Function {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TFunction_Function_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -573,30 +615,94 @@ impl Function {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Function_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TFunction_Function_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for Function (3 total) ──
+pub use crate::ffi::HandleTFunctionFunction;
+
+unsafe impl crate::CppDeletable for HandleTFunctionFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTFunctionFunction_destructor(ptr);
+    }
+}
+
+impl HandleTFunctionFunction {
+    /// Dereference this Handle to access the underlying TFunction_Function
+    pub fn get(&self) -> &crate::ffi::TFunction_Function {
+        unsafe { &*(crate::ffi::HandleTFunctionFunction_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TFunction_Function
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_Function {
+        unsafe { &mut *(crate::ffi::HandleTFunctionFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TFunction_Function> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTFunctionFunction_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Function (1 total) ──
 // SKIPPED: **Source:** `TFunction_Function.hxx`:93 - `TFunction_Function::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TFunction_Function.hxx`:46 - `TFunction_Function::Set`
-//   static_method: Static methods:
-//   static_method: ==============
-//   static_method: Finds or Creates a function attribute on the label <L>.
-//   Reason: return type 'Handle(TFunction_Function)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<TFunction_Function>>;
-//
-// SKIPPED: **Source:** `TFunction_Function.hxx`:51 - `TFunction_Function::Set`
-//   static_method: Finds or Creates a function attribute on the label <L>.
-//   static_method: Sets a driver ID to the function.
-//   static_method: Returns the function attribute.
-//   Reason: return type 'Handle(TFunction_Function)' is unknown
-//   // pub fn set(L: &Label, DriverID: &GUID) -> OwnedPtr<Handle<TFunction_Function>>;
 //
 
 // ========================
@@ -748,6 +854,15 @@ impl GraphNode {
         unsafe { &*(crate::ffi::TFunction_GraphNode_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TFunction_GraphNode.hxx`:44 - `TFunction_GraphNode::Set()`
+    /// Static methods
+    /// ==============
+    /// Finds or Creates a graph node attribute at the label <L>.
+    /// Returns the attribute.
+    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTFunctionGraphNode> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TFunction_GraphNode_set(L)) }
+    }
+
     /// **Source:** `TFunction_GraphNode.hxx`:50 - `TFunction_GraphNode::GetID()`
     /// Returns the GUID for GraphNode attribute.
     /// Instant methods
@@ -779,6 +894,15 @@ impl GraphNode {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TFunction_GraphNode_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionGraphNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_GraphNode_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -947,23 +1071,96 @@ impl GraphNode {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_GraphNode_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_GraphNode_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_GraphNode_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TFunction_GraphNode_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_GraphNode_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TFunction_GraphNode_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for GraphNode (2 total) ──
+pub use crate::ffi::HandleTFunctionGraphNode;
+
+unsafe impl crate::CppDeletable for HandleTFunctionGraphNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTFunctionGraphNode_destructor(ptr);
+    }
+}
+
+impl HandleTFunctionGraphNode {
+    /// Dereference this Handle to access the underlying TFunction_GraphNode
+    pub fn get(&self) -> &crate::ffi::TFunction_GraphNode {
+        unsafe { &*(crate::ffi::HandleTFunctionGraphNode_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TFunction_GraphNode
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_GraphNode {
+        unsafe { &mut *(crate::ffi::HandleTFunctionGraphNode_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TFunction_GraphNode> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTFunctionGraphNode_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for GraphNode (1 total) ──
 // SKIPPED: **Source:** `TFunction_GraphNode.hxx`:110 - `TFunction_GraphNode::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TFunction_GraphNode.hxx`:44 - `TFunction_GraphNode::Set`
-//   static_method: Static methods
-//   static_method: ==============
-//   static_method: Finds or Creates a graph node attribute at the label <L>.
-//   Reason: return type 'Handle(TFunction_GraphNode)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<TFunction_GraphNode>>;
 //
 
 // ========================
@@ -1205,6 +1402,16 @@ impl IFunction {
         unsafe { crate::ffi::TFunction_IFunction_set_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `TFunction_IFunction.hxx`:95 - `TFunction_IFunction::GetLogbook()`
+    /// Returns the Logbook - keeper of modifications.
+    pub fn get_logbook(&self) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_IFunction_get_logbook(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `TFunction_IFunction.hxx`:98 - `TFunction_IFunction::GetDriver()`
     /// Returns a driver of the function.
     pub fn get_driver(&self, thread: i32) -> crate::OwnedPtr<crate::ffi::HandleTFunctionDriver> {
@@ -1212,6 +1419,16 @@ impl IFunction {
             crate::OwnedPtr::from_raw(crate::ffi::TFunction_IFunction_get_driver(
                 self as *const Self,
                 thread,
+            ))
+        }
+    }
+
+    /// **Source:** `TFunction_IFunction.hxx`:101 - `TFunction_IFunction::GetGraphNode()`
+    /// Returns a graph node of the function.
+    pub fn get_graph_node(&self) -> crate::OwnedPtr<crate::ffi::HandleTFunctionGraphNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_IFunction_get_graph_node(
+                self as *const Self,
             ))
         }
     }
@@ -1243,21 +1460,11 @@ impl IFunction {
     }
 }
 
-// ── Skipped symbols for IFunction (3 total) ──
+// ── Skipped symbols for IFunction (1 total) ──
 // SKIPPED: **Source:** `TFunction_IFunction.hxx`:92 - `TFunction_IFunction::GetAllFunctions`
 //   method: Returns the scope of all functions.
 //   Reason: return type 'const TFunction_DoubleMapOfIntegerLabel&' is unknown
 //   // pub fn get_all_functions(&self) -> &DoubleMapOfIntegerLabel;
-//
-// SKIPPED: **Source:** `TFunction_IFunction.hxx`:95 - `TFunction_IFunction::GetLogbook`
-//   method: Returns the Logbook - keeper of modifications.
-//   Reason: return type 'Handle(TFunction_Logbook)' is unknown
-//   // pub fn get_logbook(&self) -> OwnedPtr<Handle<TFunction_Logbook>>;
-//
-// SKIPPED: **Source:** `TFunction_IFunction.hxx`:101 - `TFunction_IFunction::GetGraphNode`
-//   method: Returns a graph node of the function.
-//   Reason: return type 'Handle(TFunction_GraphNode)' is unknown
-//   // pub fn get_graph_node(&self) -> OwnedPtr<Handle<TFunction_GraphNode>>;
 //
 
 // ========================
@@ -1480,6 +1687,13 @@ impl Logbook {
         }
     }
 
+    /// **Source:** `TFunction_Logbook.hxx`:46 - `TFunction_Logbook::Set()`
+    /// Finds or Creates a TFunction_Logbook attribute at the root label accessed by <Access>.
+    /// Returns the attribute.
+    pub fn set(Access: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_set(Access)) }
+    }
+
     /// **Source:** `TFunction_Logbook.hxx`:49 - `TFunction_Logbook::GetID()`
     /// Returns the GUID for logbook attribute.
     pub fn get_id() -> &'static crate::standard::GUID {
@@ -1494,6 +1708,15 @@ impl Logbook {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TFunction_Logbook_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -1660,6 +1883,55 @@ impl Logbook {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Logbook_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TFunction_Logbook_inherited_References(self as *const Self, aDataSet) }
@@ -1676,7 +1948,36 @@ impl Logbook {
     }
 }
 
-// ── Skipped symbols for Logbook (7 total) ──
+pub use crate::ffi::HandleTFunctionLogbook;
+
+unsafe impl crate::CppDeletable for HandleTFunctionLogbook {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTFunctionLogbook_destructor(ptr);
+    }
+}
+
+impl HandleTFunctionLogbook {
+    /// Dereference this Handle to access the underlying TFunction_Logbook
+    pub fn get(&self) -> &crate::ffi::TFunction_Logbook {
+        unsafe { &*(crate::ffi::HandleTFunctionLogbook_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TFunction_Logbook
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_Logbook {
+        unsafe { &mut *(crate::ffi::HandleTFunctionLogbook_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TFunction_Logbook> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTFunctionLogbook_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Logbook (6 total) ──
 // SKIPPED: **Source:** `TFunction_Logbook.hxx`:74 - `TFunction_Logbook::SetValid`
 //   Reason: param 'Ls' uses unknown type 'const TDF_LabelMap&'
 //   // pub fn set_valid(&mut self, Ls: &LabelMap);
@@ -1705,12 +2006,6 @@ impl Logbook {
 //   method: Prints th data of the attributes (touched, impacted and valid labels).
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TFunction_Logbook.hxx`:46 - `TFunction_Logbook::Set`
-//   static_method: Finds or Creates a TFunction_Logbook attribute at the root label accessed by <Access>.
-//   static_method: Returns the attribute.
-//   Reason: return type 'Handle(TFunction_Logbook)' is unknown
-//   // pub fn set(Access: &Label) -> OwnedPtr<Handle<TFunction_Logbook>>;
 //
 
 // ========================
@@ -1781,6 +2076,16 @@ impl Scope {
         unsafe { &*(crate::ffi::TFunction_Scope_get_function_int(self as *const Self, ID)) }
     }
 
+    /// **Source:** `TFunction_Scope.hxx`:81 - `TFunction_Scope::GetLogbook()`
+    /// Returns the Logbook used in TFunction_Driver methods.
+    /// Implementation of Attribute methods
+    /// ===================================
+    pub fn get_logbook(&self) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_get_logbook(self as *const Self))
+        }
+    }
+
     /// **Source:** `TFunction_Scope.hxx`:83 - `TFunction_Scope::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TFunction_Scope_id(self as *const Self)) }
@@ -1822,6 +2127,15 @@ impl Scope {
         unsafe { &*(crate::ffi::TFunction_Scope_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TFunction_Scope.hxx`:44 - `TFunction_Scope::Set()`
+    /// Static methods
+    /// ==============
+    /// Finds or Creates a TFunction_Scope attribute at the root label accessed by <Access>.
+    /// Returns the attribute.
+    pub fn set(Access: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTFunctionScope> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_set(Access)) }
+    }
+
     /// **Source:** `TFunction_Scope.hxx`:50 - `TFunction_Scope::GetID()`
     /// Returns the GUID for Scope attribute.
     /// Instant methods
@@ -1853,6 +2167,13 @@ impl Scope {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TFunction_Scope_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionScope> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -2005,6 +2326,55 @@ impl Scope {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TFunction_Scope_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TFunction_Scope_inherited_References(self as *const Self, aDataSet) }
@@ -2016,14 +2386,36 @@ impl Scope {
     }
 }
 
-// ── Skipped symbols for Scope (5 total) ──
-// SKIPPED: **Source:** `TFunction_Scope.hxx`:81 - `TFunction_Scope::GetLogbook`
-//   method: Returns the Logbook used in TFunction_Driver methods.
-//   method: Implementation of Attribute methods
-//   method: ===================================
-//   Reason: return type 'Handle(TFunction_Logbook)' is unknown
-//   // pub fn get_logbook(&self) -> OwnedPtr<Handle<TFunction_Logbook>>;
-//
+pub use crate::ffi::HandleTFunctionScope;
+
+unsafe impl crate::CppDeletable for HandleTFunctionScope {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTFunctionScope_destructor(ptr);
+    }
+}
+
+impl HandleTFunctionScope {
+    /// Dereference this Handle to access the underlying TFunction_Scope
+    pub fn get(&self) -> &crate::ffi::TFunction_Scope {
+        unsafe { &*(crate::ffi::HandleTFunctionScope_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TFunction_Scope
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_Scope {
+        unsafe { &mut *(crate::ffi::HandleTFunctionScope_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TFunction_Scope> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTFunctionScope_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Scope (3 total) ──
 // SKIPPED: **Source:** `TFunction_Scope.hxx`:92 - `TFunction_Scope::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
@@ -2038,13 +2430,6 @@ impl Scope {
 //   method: Warning: Don't use this method if You are not sure what You do!
 //   Reason: return type 'TFunction_DoubleMapOfIntegerLabel&' is unknown
 //   // pub fn change_functions(&mut self) -> &mut DoubleMapOfIntegerLabel;
-//
-// SKIPPED: **Source:** `TFunction_Scope.hxx`:44 - `TFunction_Scope::Set`
-//   static_method: Static methods
-//   static_method: ==============
-//   static_method: Finds or Creates a TFunction_Scope attribute at the root label accessed by <Access>.
-//   Reason: return type 'Handle(TFunction_Scope)' is unknown
-//   // pub fn set(Access: &Label) -> OwnedPtr<Handle<TFunction_Scope>>;
 //
 
 // ========================

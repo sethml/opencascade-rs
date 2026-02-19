@@ -152,6 +152,9 @@ impl TryFrom<i32> for Operation {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleMessageAlert, HandleTopoDSAlertWithShape};
+
 // ========================
 // From BOPAlgo_Alerts.hxx
 // ========================
@@ -204,6 +207,15 @@ impl AlertUserBreak {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUserBreak> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUserBreak_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertUserBreak_inherited_SupportsMerge(self as *const Self) }
@@ -212,6 +224,35 @@ impl AlertUserBreak {
     /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertUserBreak_inherited_Merge(self as *mut Self, theTarget) }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUserBreak;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUserBreak {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUserBreak_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUserBreak {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUserBreak
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUserBreak {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUserBreak_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUserBreak
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUserBreak {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertUserBreak_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUserBreak> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUserBreak_to_HandleMessageAlert(self as *const Self),
+            )
+        }
     }
 }
 
@@ -263,6 +304,17 @@ impl AlertBOPNotAllowed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBOPNotAllowed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertBOPNotAllowed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -274,6 +326,37 @@ impl AlertBOPNotAllowed {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertBOPNotAllowed_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertBOPNotAllowed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBOPNotAllowed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertBOPNotAllowed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertBOPNotAllowed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertBOPNotAllowed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertBOPNotAllowed {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertBOPNotAllowed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertBOPNotAllowed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertBOPNotAllowed {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertBOPNotAllowed_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBOPNotAllowed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBOPNotAllowed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -326,6 +409,15 @@ impl AlertBOPNotSet {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBOPNotSet> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertBOPNotSet_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_SupportsMerge(self as *const Self) }
@@ -334,6 +426,35 @@ impl AlertBOPNotSet {
     /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertBOPNotSet_inherited_Merge(self as *mut Self, theTarget) }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertBOPNotSet;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBOPNotSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertBOPNotSet_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertBOPNotSet {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertBOPNotSet
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertBOPNotSet {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertBOPNotSet_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertBOPNotSet
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertBOPNotSet {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertBOPNotSet_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBOPNotSet> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBOPNotSet_to_HandleMessageAlert(self as *const Self),
+            )
+        }
     }
 }
 
@@ -385,6 +506,17 @@ impl AlertBuilderFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBuilderFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertBuilderFailed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -396,6 +528,37 @@ impl AlertBuilderFailed {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertBuilderFailed_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertBuilderFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBuilderFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertBuilderFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertBuilderFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertBuilderFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertBuilderFailed {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertBuilderFailed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertBuilderFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertBuilderFailed {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertBuilderFailed_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBuilderFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBuilderFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -452,6 +615,17 @@ impl AlertIntersectionFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertIntersectionFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertIntersectionFailed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -465,6 +639,39 @@ impl AlertIntersectionFailed {
             crate::ffi::BOPAlgo_AlertIntersectionFailed_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertIntersectionFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertIntersectionFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertIntersectionFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertIntersectionFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertIntersectionFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertIntersectionFailed {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertIntersectionFailed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertIntersectionFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertIntersectionFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertIntersectionFailed_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertIntersectionFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertIntersectionFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -522,6 +729,17 @@ impl AlertMultipleArguments {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertMultipleArguments> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertMultipleArguments_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -533,6 +751,39 @@ impl AlertMultipleArguments {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertMultipleArguments_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertMultipleArguments;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertMultipleArguments {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertMultipleArguments_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertMultipleArguments {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertMultipleArguments
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertMultipleArguments {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertMultipleArguments_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertMultipleArguments
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertMultipleArguments {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertMultipleArguments_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertMultipleArguments> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertMultipleArguments_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -583,6 +834,15 @@ impl AlertNoFiller {
         unsafe { &mut *(crate::ffi::BOPAlgo_AlertNoFiller_as_Message_Alert_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNoFiller> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertNoFiller_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertNoFiller_inherited_SupportsMerge(self as *const Self) }
@@ -591,6 +851,35 @@ impl AlertNoFiller {
     /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertNoFiller_inherited_Merge(self as *mut Self, theTarget) }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertNoFiller;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoFiller {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertNoFiller_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertNoFiller {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertNoFiller
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertNoFiller {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertNoFiller_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertNoFiller
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertNoFiller {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertNoFiller_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNoFiller> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertNoFiller_to_HandleMessageAlert(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -644,6 +933,17 @@ impl AlertNullInputShapes {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNullInputShapes> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertNullInputShapes_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -655,6 +955,37 @@ impl AlertNullInputShapes {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertNullInputShapes_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertNullInputShapes;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNullInputShapes {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertNullInputShapes_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertNullInputShapes {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertNullInputShapes
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertNullInputShapes {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertNullInputShapes_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertNullInputShapes
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertNullInputShapes {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertNullInputShapes_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNullInputShapes> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNullInputShapes_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -707,6 +1038,17 @@ impl AlertPostTreatFF {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertPostTreatFF> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertPostTreatFF_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_SupportsMerge(self as *const Self) }
@@ -716,6 +1058,37 @@ impl AlertPostTreatFF {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertPostTreatFF_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertPostTreatFF;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertPostTreatFF {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertPostTreatFF_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertPostTreatFF {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertPostTreatFF
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertPostTreatFF {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertPostTreatFF_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertPostTreatFF
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertPostTreatFF {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertPostTreatFF_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertPostTreatFF> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertPostTreatFF_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -772,6 +1145,17 @@ impl AlertSolidBuilderFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertSolidBuilderFailed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -785,6 +1169,39 @@ impl AlertSolidBuilderFailed {
             crate::ffi::BOPAlgo_AlertSolidBuilderFailed_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSolidBuilderFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertSolidBuilderFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertSolidBuilderFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertSolidBuilderFailed {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertSolidBuilderFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertSolidBuilderFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertSolidBuilderFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -840,6 +1257,17 @@ impl AlertTooFewArguments {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertTooFewArguments> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertTooFewArguments_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -851,6 +1279,37 @@ impl AlertTooFewArguments {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertTooFewArguments_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertTooFewArguments;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertTooFewArguments {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertTooFewArguments_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertTooFewArguments {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertTooFewArguments
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertTooFewArguments {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertTooFewArguments_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertTooFewArguments
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertTooFewArguments {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertTooFewArguments_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertTooFewArguments> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertTooFewArguments_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -923,6 +1382,17 @@ impl AlertBadPositioning {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBadPositioning> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertBadPositioning_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -948,6 +1418,50 @@ impl AlertBadPositioning {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertBadPositioning_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertBadPositioning;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBadPositioning {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertBadPositioning_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertBadPositioning {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertBadPositioning
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertBadPositioning {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertBadPositioning_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertBadPositioning
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertBadPositioning {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertBadPositioning_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBadPositioning_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBadPositioning_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1018,6 +1532,15 @@ impl AlertEmptyShape {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertEmptyShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertEmptyShape_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertEmptyShape_inherited_GetShape(self as *const Self)) }
@@ -1038,6 +1561,48 @@ impl AlertEmptyShape {
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe { crate::ffi::BOPAlgo_AlertEmptyShape_inherited_Merge(self as *mut Self, theTarget) }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertEmptyShape;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertEmptyShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertEmptyShape_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertEmptyShape {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertEmptyShape
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertEmptyShape {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertEmptyShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertEmptyShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertEmptyShape {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertEmptyShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertEmptyShape_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertEmptyShape_to_HandleMessageAlert(self as *const Self),
+            )
+        }
     }
 }
 
@@ -1115,6 +1680,17 @@ impl AlertNotSplittableEdge {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNotSplittableEdge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertNotSplittableEdge_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1143,6 +1719,52 @@ impl AlertNotSplittableEdge {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertNotSplittableEdge_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertNotSplittableEdge;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNotSplittableEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertNotSplittableEdge_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertNotSplittableEdge {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertNotSplittableEdge
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertNotSplittableEdge {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertNotSplittableEdge_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertNotSplittableEdge
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertNotSplittableEdge {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertNotSplittableEdge_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNotSplittableEdge_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNotSplittableEdge_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1227,6 +1849,17 @@ impl AlertRemovalOfIBForEdgesFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1261,6 +1894,52 @@ impl AlertRemovalOfIBForEdgesFailed {
             crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForEdgesFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertRemovalOfIBForEdgesFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertRemovalOfIBForEdgesFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleTopoDSAlertWithShape(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1346,6 +2025,17 @@ impl AlertRemovalOfIBForFacesFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1380,6 +2070,52 @@ impl AlertRemovalOfIBForFacesFailed {
             crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForFacesFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertRemovalOfIBForFacesFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertRemovalOfIBForFacesFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleTopoDSAlertWithShape(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1465,6 +2201,17 @@ impl AlertRemovalOfIBForMDimShapes {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1499,6 +2246,52 @@ impl AlertRemovalOfIBForMDimShapes {
             crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForMDimShapes
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertRemovalOfIBForMDimShapes
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertRemovalOfIBForMDimShapes {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleTopoDSAlertWithShape(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1586,6 +2379,17 @@ impl AlertRemovalOfIBForSolidsFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1620,6 +2424,52 @@ impl AlertRemovalOfIBForSolidsFailed {
             crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertRemovalOfIBForSolidsFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertRemovalOfIBForSolidsFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertRemovalOfIBForSolidsFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleTopoDSAlertWithShape(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1701,6 +2551,17 @@ impl AlertSelfInterferingShape {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSelfInterferingShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertSelfInterferingShape_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1735,6 +2596,52 @@ impl AlertSelfInterferingShape {
             crate::ffi::BOPAlgo_AlertSelfInterferingShape_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertSelfInterferingShape;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSelfInterferingShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertSelfInterferingShape_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertSelfInterferingShape {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertSelfInterferingShape
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertSelfInterferingShape {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertSelfInterferingShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertSelfInterferingShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertSelfInterferingShape {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertSelfInterferingShape_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertSelfInterferingShape_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertSelfInterferingShape_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1816,6 +2723,17 @@ impl AlertShellSplitterFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertShellSplitterFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertShellSplitterFailed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1848,6 +2766,52 @@ impl AlertShellSplitterFailed {
             crate::ffi::BOPAlgo_AlertShellSplitterFailed_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertShellSplitterFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertShellSplitterFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertShellSplitterFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertShellSplitterFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertShellSplitterFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertShellSplitterFailed {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertShellSplitterFailed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertShellSplitterFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertShellSplitterFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertShellSplitterFailed_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertShellSplitterFailed_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertShellSplitterFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1919,6 +2883,17 @@ impl AlertTooSmallEdge {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertTooSmallEdge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertTooSmallEdge_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_GetShape(self as *const Self)) }
@@ -1942,6 +2917,50 @@ impl AlertTooSmallEdge {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertTooSmallEdge_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertTooSmallEdge;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertTooSmallEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertTooSmallEdge_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertTooSmallEdge {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertTooSmallEdge
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertTooSmallEdge {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertTooSmallEdge_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertTooSmallEdge
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertTooSmallEdge {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertTooSmallEdge_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertTooSmallEdge_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertTooSmallEdge_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -2028,6 +3047,17 @@ impl AlertIntersectionOfPairOfShapesFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2063,6 +3093,50 @@ impl AlertIntersectionOfPairOfShapesFailed {
                 self as *mut Self,
                 theTarget,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertIntersectionOfPairOfShapesFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertIntersectionOfPairOfShapesFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertIntersectionOfPairOfShapesFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleTopoDSAlertWithShape(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleMessageAlert(self as *const Self))
         }
     }
 }
@@ -2143,6 +3217,17 @@ impl AlertBuildingPCurveFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2177,6 +3262,52 @@ impl AlertBuildingPCurveFailed {
             crate::ffi::BOPAlgo_AlertBuildingPCurveFailed_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBuildingPCurveFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertBuildingPCurveFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertBuildingPCurveFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertBuildingPCurveFailed {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertBuildingPCurveFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertBuildingPCurveFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2264,6 +3395,17 @@ impl AlertAcquiredSelfIntersection {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2298,6 +3440,52 @@ impl AlertAcquiredSelfIntersection {
             crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertAcquiredSelfIntersection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertAcquiredSelfIntersection {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertAcquiredSelfIntersection
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertAcquiredSelfIntersection
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertAcquiredSelfIntersection {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleTopoDSAlertWithShape(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2373,6 +3561,17 @@ impl AlertUnsupportedType {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnsupportedType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnsupportedType_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2398,6 +3597,50 @@ impl AlertUnsupportedType {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnsupportedType_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnsupportedType;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnsupportedType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnsupportedType_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnsupportedType {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnsupportedType
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnsupportedType {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUnsupportedType_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnsupportedType
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnsupportedType {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertUnsupportedType_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnsupportedType_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnsupportedType_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -2452,6 +3695,17 @@ impl AlertNoFacesToRemove {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNoFacesToRemove> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertNoFacesToRemove_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -2463,6 +3717,37 @@ impl AlertNoFacesToRemove {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertNoFacesToRemove_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertNoFacesToRemove;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoFacesToRemove {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertNoFacesToRemove_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertNoFacesToRemove {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertNoFacesToRemove
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertNoFacesToRemove {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertNoFacesToRemove_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertNoFacesToRemove
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertNoFacesToRemove {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertNoFacesToRemove_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNoFacesToRemove> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNoFacesToRemove_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -2547,6 +3832,17 @@ impl AlertUnableToRemoveTheFeature {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2581,6 +3877,52 @@ impl AlertUnableToRemoveTheFeature {
             crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToRemoveTheFeature {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnableToRemoveTheFeature {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToRemoveTheFeature
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnableToRemoveTheFeature
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnableToRemoveTheFeature {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleTopoDSAlertWithShape(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2640,6 +3982,17 @@ impl AlertRemoveFeaturesFailed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -2655,6 +4008,39 @@ impl AlertRemoveFeaturesFailed {
             crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemoveFeaturesFailed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertRemoveFeaturesFailed {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertRemoveFeaturesFailed
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertRemoveFeaturesFailed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertRemoveFeaturesFailed {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertRemoveFeaturesFailed> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2742,6 +4128,17 @@ impl AlertSolidBuilderUnusedFaces {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2776,6 +4173,54 @@ impl AlertSolidBuilderUnusedFaces {
             crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSolidBuilderUnusedFaces {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertSolidBuilderUnusedFaces {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertSolidBuilderUnusedFaces
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertSolidBuilderUnusedFaces
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertSolidBuilderUnusedFaces {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2859,6 +4304,17 @@ impl AlertFaceBuilderUnusedEdges {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2893,6 +4349,52 @@ impl AlertFaceBuilderUnusedEdges {
             crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertFaceBuilderUnusedEdges {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertFaceBuilderUnusedEdges {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertFaceBuilderUnusedEdges
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertFaceBuilderUnusedEdges
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertFaceBuilderUnusedEdges {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2974,6 +4476,17 @@ impl AlertUnableToOrientTheShape {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -3008,6 +4521,52 @@ impl AlertUnableToOrientTheShape {
             crate::ffi::BOPAlgo_AlertUnableToOrientTheShape_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToOrientTheShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnableToOrientTheShape {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToOrientTheShape
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnableToOrientTheShape {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnableToOrientTheShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnableToOrientTheShape {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3079,6 +4638,17 @@ impl AlertUnknownShape {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnknownShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnknownShape_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertUnknownShape_inherited_GetShape(self as *const Self)) }
@@ -3102,6 +4672,50 @@ impl AlertUnknownShape {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnknownShape_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnknownShape;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnknownShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnknownShape_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnknownShape {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnknownShape
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnknownShape {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUnknownShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnknownShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnknownShape {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertUnknownShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnknownShape_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnknownShape_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -3160,6 +4774,17 @@ impl AlertNoPeriodicityRequired {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -3175,6 +4800,39 @@ impl AlertNoPeriodicityRequired {
             crate::ffi::BOPAlgo_AlertNoPeriodicityRequired_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoPeriodicityRequired {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertNoPeriodicityRequired {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertNoPeriodicityRequired
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertNoPeriodicityRequired {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertNoPeriodicityRequired
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertNoPeriodicityRequired {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertNoPeriodicityRequired> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3246,6 +4904,17 @@ impl AlertUnableToTrim {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToTrim> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToTrim_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_GetShape(self as *const Self)) }
@@ -3269,6 +4938,50 @@ impl AlertUnableToTrim {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToTrim_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnableToTrim;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToTrim {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnableToTrim_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnableToTrim {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToTrim
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnableToTrim {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUnableToTrim_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnableToTrim
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnableToTrim {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertUnableToTrim_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToTrim_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToTrim_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -3349,6 +5062,17 @@ impl AlertUnableToMakeIdentical {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -3383,6 +5107,52 @@ impl AlertUnableToMakeIdentical {
             crate::ffi::BOPAlgo_AlertUnableToMakeIdentical_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakeIdentical {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnableToMakeIdentical {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToMakeIdentical
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnableToMakeIdentical {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnableToMakeIdentical
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnableToMakeIdentical {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3456,6 +5226,17 @@ impl AlertUnableToRepeat {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToRepeat> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToRepeat_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -3481,6 +5262,50 @@ impl AlertUnableToRepeat {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToRepeat_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnableToRepeat;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToRepeat {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnableToRepeat_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnableToRepeat {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToRepeat
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnableToRepeat {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUnableToRepeat_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnableToRepeat
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnableToRepeat {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertUnableToRepeat_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToRepeat_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToRepeat_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -3545,6 +5370,17 @@ impl AlertMultiDimensionalArguments {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         unsafe {
@@ -3560,6 +5396,43 @@ impl AlertMultiDimensionalArguments {
             crate::ffi::BOPAlgo_AlertMultiDimensionalArguments_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertMultiDimensionalArguments {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertMultiDimensionalArguments {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertMultiDimensionalArguments
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertMultiDimensionalArguments {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertMultiDimensionalArguments
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertMultiDimensionalArguments {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertMultiDimensionalArguments> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3641,6 +5514,17 @@ impl AlertUnableToMakePeriodic {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -3675,6 +5559,52 @@ impl AlertUnableToMakePeriodic {
             crate::ffi::BOPAlgo_AlertUnableToMakePeriodic_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakePeriodic {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnableToMakePeriodic {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToMakePeriodic
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnableToMakePeriodic {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnableToMakePeriodic
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnableToMakePeriodic {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3746,6 +5676,17 @@ impl AlertUnableToGlue {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToGlue> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertUnableToGlue_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_GetShape(self as *const Self)) }
@@ -3769,6 +5710,50 @@ impl AlertUnableToGlue {
     pub fn merge(&mut self, theTarget: &crate::ffi::HandleMessageAlert) -> bool {
         unsafe {
             crate::ffi::BOPAlgo_AlertUnableToGlue_inherited_Merge(self as *mut Self, theTarget)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnableToGlue;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToGlue {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnableToGlue_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnableToGlue {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToGlue
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnableToGlue {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertUnableToGlue_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnableToGlue
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnableToGlue {
+        unsafe { &mut *(crate::ffi::HandleBOPAlgoAlertUnableToGlue_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToGlue_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToGlue_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -3847,6 +5832,17 @@ impl AlertShapeIsNotPeriodic {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -3877,6 +5873,52 @@ impl AlertShapeIsNotPeriodic {
             crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertShapeIsNotPeriodic {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertShapeIsNotPeriodic {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertShapeIsNotPeriodic
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic {
+        unsafe { &*(crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertShapeIsNotPeriodic
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertShapeIsNotPeriodic {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleTopoDSAlertWithShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3962,6 +6004,17 @@ impl AlertUnableToMakeClosedEdgeOnFace {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:30 - `TopoDS_AlertWithShape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -3996,6 +6049,52 @@ impl AlertUnableToMakeClosedEdgeOnFace {
             crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_Merge(
                 self as *mut Self,
                 theTarget,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace;
+
+unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_destructor(ptr);
+    }
+}
+
+impl HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
+    /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToMakeClosedEdgeOnFace
+    pub fn get(&self) -> &crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace {
+        unsafe {
+            &*(crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUnableToMakeClosedEdgeOnFace
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace {
+        unsafe {
+            &mut *(crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<TopoDS_AlertWithShape>
+    pub fn to_handle_alert_with_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleTopoDSAlertWithShape(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleMessageAlert(
+                    self as *const Self,
+                ),
             )
         }
     }

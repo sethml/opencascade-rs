@@ -129,6 +129,24 @@ impl HandleGeomEvaluatorCurve {
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_Curve {
         unsafe { &mut *(crate::ffi::HandleGeomEvaluatorCurve_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<GeomEvaluator_Curve> to Handle<GeomEvaluator_OffsetCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomEvaluator_OffsetCurve` (or subclass).
+    pub fn downcast_to_offset_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorOffsetCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomEvaluatorCurve_downcast_to_HandleGeomEvaluatorOffsetCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Curve (1 total) ──
@@ -162,6 +180,24 @@ impl OffsetCurve {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::GeomEvaluator_OffsetCurve_ctor_handlegeomcurve_real_dir(
+                    theBase,
+                    theOffset,
+                    theDirection,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:31 - `GeomEvaluator_OffsetCurve::GeomEvaluator_OffsetCurve()`
+    /// Initialize evaluator by curve adaptor
+    pub fn new_handlegeomadaptorcurve_real_dir(
+        theBase: &crate::ffi::HandleGeomAdaptorCurve,
+        theOffset: f64,
+        theDirection: &crate::gp::Dir,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomEvaluator_OffsetCurve_ctor_handlegeomadaptorcurve_real_dir(
                     theBase,
                     theOffset,
                     theDirection,
@@ -299,14 +335,49 @@ impl OffsetCurve {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorOffsetCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_OffsetCurve_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for OffsetCurve (1 total) ──
-// SKIPPED: **Source:** `GeomEvaluator_OffsetCurve.hxx`:31 - `GeomEvaluator_OffsetCurve::GeomEvaluator_OffsetCurve`
-//   constructor: Initialize evaluator by curve adaptor
-//   Reason: param 'theBase' uses unknown Handle type
-//   // pub fn new_handlegeomadaptorcurve_real_dir(theBase: &HandleCurve, theOffset: f64, theDirection: &Dir) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleGeomEvaluatorOffsetCurve;
+
+unsafe impl crate::CppDeletable for HandleGeomEvaluatorOffsetCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomEvaluatorOffsetCurve_destructor(ptr);
+    }
+}
+
+impl HandleGeomEvaluatorOffsetCurve {
+    /// Dereference this Handle to access the underlying GeomEvaluator_OffsetCurve
+    pub fn get(&self) -> &crate::ffi::GeomEvaluator_OffsetCurve {
+        unsafe { &*(crate::ffi::HandleGeomEvaluatorOffsetCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomEvaluator_OffsetCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_OffsetCurve {
+        unsafe { &mut *(crate::ffi::HandleGeomEvaluatorOffsetCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomEvaluator_OffsetCurve> to Handle<GeomEvaluator_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomEvaluatorOffsetCurve_to_HandleGeomEvaluatorCurve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From GeomEvaluator_OffsetSurface.hxx
@@ -332,6 +403,18 @@ impl OffsetSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_OffsetSurface_ctor_handlegeomsurface_real_handlegeomosculatingsurface(theBase, theOffset, theOscSurf))
+        }
+    }
+
+    /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:33 - `GeomEvaluator_OffsetSurface::GeomEvaluator_OffsetSurface()`
+    /// Initialize evaluator by surface adaptor
+    pub fn new_handlegeomadaptorsurface_real_handlegeomosculatingsurface(
+        theBase: &crate::ffi::HandleGeomAdaptorSurface,
+        theOffset: f64,
+        theOscSurf: &crate::ffi::HandleGeomOsculatingSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_OffsetSurface_ctor_handlegeomadaptorsurface_real_handlegeomosculatingsurface(theBase, theOffset, theOscSurf))
         }
     }
 
@@ -504,14 +587,49 @@ impl OffsetSurface {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorOffsetSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_OffsetSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for OffsetSurface (1 total) ──
-// SKIPPED: **Source:** `GeomEvaluator_OffsetSurface.hxx`:33 - `GeomEvaluator_OffsetSurface::GeomEvaluator_OffsetSurface`
-//   constructor: Initialize evaluator by surface adaptor
-//   Reason: param 'theBase' uses unknown Handle type
-//   // pub fn new_handlegeomadaptorsurface_real_handlegeomosculatingsurface(theBase: &HandleSurface, theOffset: f64, theOscSurf: &HandleOsculatingSurface) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleGeomEvaluatorOffsetSurface;
+
+unsafe impl crate::CppDeletable for HandleGeomEvaluatorOffsetSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomEvaluatorOffsetSurface_destructor(ptr);
+    }
+}
+
+impl HandleGeomEvaluatorOffsetSurface {
+    /// Dereference this Handle to access the underlying GeomEvaluator_OffsetSurface
+    pub fn get(&self) -> &crate::ffi::GeomEvaluator_OffsetSurface {
+        unsafe { &*(crate::ffi::HandleGeomEvaluatorOffsetSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomEvaluator_OffsetSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_OffsetSurface {
+        unsafe { &mut *(crate::ffi::HandleGeomEvaluatorOffsetSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<GeomEvaluator_OffsetSurface> to Handle<GeomEvaluator_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomEvaluatorOffsetSurface_to_HandleGeomEvaluatorSurface(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From GeomEvaluator_Surface.hxx
@@ -689,6 +807,58 @@ impl HandleGeomEvaluatorSurface {
     /// Dereference this Handle to mutably access the underlying GeomEvaluator_Surface
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_Surface {
         unsafe { &mut *(crate::ffi::HandleGeomEvaluatorSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<GeomEvaluator_Surface> to Handle<GeomEvaluator_OffsetSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomEvaluator_OffsetSurface` (or subclass).
+    pub fn downcast_to_offset_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorOffsetSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorOffsetSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomEvaluator_Surface> to Handle<GeomEvaluator_SurfaceOfExtrusion>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomEvaluator_SurfaceOfExtrusion` (or subclass).
+    pub fn downcast_to_surface_of_extrusion(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorSurfaceOfExtrusion(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<GeomEvaluator_Surface> to Handle<GeomEvaluator_SurfaceOfRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomEvaluator_SurfaceOfRevolution` (or subclass).
+    pub fn downcast_to_surface_of_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorSurfaceOfRevolution(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -922,6 +1092,50 @@ impl SurfaceOfExtrusion {
             &mut *(crate::ffi::GeomEvaluator_SurfaceOfExtrusion_as_GeomEvaluator_Surface_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_SurfaceOfExtrusion_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion;
+
+unsafe impl crate::CppDeletable for HandleGeomEvaluatorSurfaceOfExtrusion {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_destructor(ptr);
+    }
+}
+
+impl HandleGeomEvaluatorSurfaceOfExtrusion {
+    /// Dereference this Handle to access the underlying GeomEvaluator_SurfaceOfExtrusion
+    pub fn get(&self) -> &crate::ffi::GeomEvaluator_SurfaceOfExtrusion {
+        unsafe { &*(crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomEvaluator_SurfaceOfExtrusion
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_SurfaceOfExtrusion {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<GeomEvaluator_SurfaceOfExtrusion> to Handle<GeomEvaluator_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_to_HandleGeomEvaluatorSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1173,6 +1387,50 @@ impl SurfaceOfRevolution {
             &mut *(crate::ffi::GeomEvaluator_SurfaceOfRevolution_as_GeomEvaluator_Surface_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomEvaluator_SurfaceOfRevolution_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution;
+
+unsafe impl crate::CppDeletable for HandleGeomEvaluatorSurfaceOfRevolution {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_destructor(ptr);
+    }
+}
+
+impl HandleGeomEvaluatorSurfaceOfRevolution {
+    /// Dereference this Handle to access the underlying GeomEvaluator_SurfaceOfRevolution
+    pub fn get(&self) -> &crate::ffi::GeomEvaluator_SurfaceOfRevolution {
+        unsafe { &*(crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying GeomEvaluator_SurfaceOfRevolution
+    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_SurfaceOfRevolution {
+        unsafe {
+            &mut *(crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<GeomEvaluator_SurfaceOfRevolution> to Handle<GeomEvaluator_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_to_HandleGeomEvaluatorSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

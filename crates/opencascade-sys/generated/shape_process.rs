@@ -281,6 +281,24 @@ impl HandleShapeProcessContext {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_Context {
         unsafe { &mut *(crate::ffi::HandleShapeProcessContext_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<ShapeProcess_Context> to Handle<ShapeProcess_ShapeContext>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeProcess_ShapeContext` (or subclass).
+    pub fn downcast_to_shape_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeProcessShapeContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeProcessContext_downcast_to_HandleShapeProcessShapeContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Context (1 total) ──
@@ -332,16 +350,32 @@ impl OperLibrary {
     pub fn init() {
         unsafe { crate::ffi::ShapeProcess_OperLibrary_init() }
     }
-}
 
-// ── Skipped symbols for OperLibrary (1 total) ──
-// SKIPPED: **Source:** `ShapeProcess_OperLibrary.hxx`:59 - `ShapeProcess_OperLibrary::ApplyModifier`
-//   static_method: Applies BRepTools_Modification to a shape,
-//   static_method: taking into account sharing of components of compounds.
-//   static_method: if theMutableInput vat is set to true then input shape S
-//   Reason: param 'context' uses unknown type 'const Handle(ShapeProcess_ShapeContext)&'
-//   // pub fn apply_modifier(S: &Shape, context: &HandleShapeContext, M: &HandleModification, map: &mut DataMapOfShapeShape, msg: &HandleMsgRegistrator, theMutableInput: bool) -> OwnedPtr<TopoDS_Shape>;
-//
+    /// **Source:** `ShapeProcess_OperLibrary.hxx`:59 - `ShapeProcess_OperLibrary::ApplyModifier()`
+    /// Applies BRepTools_Modification to a shape,
+    /// taking into account sharing of components of compounds.
+    /// if theMutableInput vat is set to true then input shape S
+    /// can be modified during the modification process.
+    pub fn apply_modifier(
+        S: &crate::topo_ds::Shape,
+        context: &crate::ffi::HandleShapeProcessShapeContext,
+        M: &crate::ffi::HandleBRepToolsModification,
+        map: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+        msg: &crate::ffi::HandleShapeExtendMsgRegistrator,
+        theMutableInput: bool,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_OperLibrary_apply_modifier(
+                S,
+                context,
+                M,
+                map,
+                msg,
+                theMutableInput,
+            ))
+        }
+    }
+}
 
 // ========================
 // From ShapeProcess_Operator.hxx
@@ -409,6 +443,24 @@ impl HandleShapeProcessOperator {
     /// Dereference this Handle to mutably access the underlying ShapeProcess_Operator
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_Operator {
         unsafe { &mut *(crate::ffi::HandleShapeProcessOperator_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<ShapeProcess_Operator> to Handle<ShapeProcess_UOperator>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeProcess_UOperator` (or subclass).
+    pub fn downcast_to_u_operator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeProcessUOperator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeProcessOperator_downcast_to_HandleShapeProcessUOperator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -485,6 +537,19 @@ impl ShapeContext {
         unsafe { &*(crate::ffi::ShapeProcess_ShapeContext_map(self as *const Self)) }
     }
 
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:65 - `ShapeProcess_ShapeContext::Messages()`
+    pub fn messages(&self) -> &crate::ffi::HandleShapeExtendMsgRegistrator {
+        unsafe { &*(crate::ffi::ShapeProcess_ShapeContext_messages(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:70 - `ShapeProcess_ShapeContext::Messages()`
+    /// Returns messages recorded during shape processing
+    /// It can be nullified before processing in order to
+    /// avoid recording messages
+    pub fn messages_mut(&mut self) -> &mut crate::ffi::HandleShapeExtendMsgRegistrator {
+        unsafe { &mut *(crate::ffi::ShapeProcess_ShapeContext_messages_mut(self as *mut Self)) }
+    }
+
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:72 - `ShapeProcess_ShapeContext::SetDetalisation()`
     pub fn set_detalisation(&mut self, level: crate::top_abs::ShapeEnum) {
         unsafe {
@@ -517,6 +582,63 @@ impl ShapeContext {
     /// result to a new one
     pub fn set_result(&mut self, S: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::ShapeProcess_ShapeContext_set_result(self as *mut Self, S) }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:90 - `ShapeProcess_ShapeContext::RecordModification()`
+    pub fn record_modification_datamapofshapeshape_handleshapeextendmsgregistrator(
+        &mut self,
+        repl: &crate::ffi::TopTools_DataMapOfShapeShape,
+        msg: &crate::ffi::HandleShapeExtendMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_record_modification_datamapofshapeshape_handleshapeextendmsgregistrator(self as *mut Self, repl, msg)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:93 - `ShapeProcess_ShapeContext::RecordModification()`
+    pub fn record_modification_handleshapebuildreshape_handleshapeextendmsgregistrator(
+        &mut self,
+        repl: &crate::ffi::HandleShapeBuildReShape,
+        msg: &crate::ffi::HandleShapeExtendMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_record_modification_handleshapebuildreshape_handleshapeextendmsgregistrator(self as *mut Self, repl, msg)
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:96 - `ShapeProcess_ShapeContext::RecordModification()`
+    pub fn record_modification_handleshapebuildreshape(
+        &mut self,
+        repl: &crate::ffi::HandleShapeBuildReShape,
+    ) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_record_modification_handleshapebuildreshape(
+                self as *mut Self,
+                repl,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeProcess_ShapeContext.hxx`:108 - `ShapeProcess_ShapeContext::RecordModification()`
+    /// Records modifications and resets result accordingly
+    /// NOTE: modification of resulting shape should be explicitly
+    /// defined in the maps along with modifications of subshapes
+    ///
+    /// In the last function, sh is the shape on which Modifier
+    /// was run. It can be different from the whole shape,
+    /// but in that case result as a whole should be reset later
+    /// either by call to SetResult(), or by another call to
+    /// RecordModification() which contains mapping of current
+    /// result to a new one explicitly
+    pub fn record_modification_shape_modifier_handleshapeextendmsgregistrator(
+        &mut self,
+        sh: &crate::topo_ds::Shape,
+        repl: &crate::b_rep_tools::Modifier,
+        msg: &crate::ffi::HandleShapeExtendMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::ShapeProcess_ShapeContext_record_modification_shape_modifier_handleshapeextendmsgregistrator(self as *mut Self, sh, repl, msg)
+        }
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:116 - `ShapeProcess_ShapeContext::AddMessage()`
@@ -635,6 +757,17 @@ impl ShapeContext {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessShapeContext> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_ShapeContext_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeProcess_Context.hxx`:63 - `ShapeProcess_Context::ResourceManager()`
     pub fn resource_manager(&self) -> &crate::ffi::HandleResourceManager {
         unsafe {
@@ -682,37 +815,36 @@ impl ShapeContext {
     }
 }
 
-// ── Skipped symbols for ShapeContext (6 total) ──
-// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:65 - `ShapeProcess_ShapeContext::Messages`
-//   Reason: return type 'const Handle(ShapeExtend_MsgRegistrator)&' is unknown
-//   // pub fn messages(&self) -> &HandleMsgRegistrator;
-//
-// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:70 - `ShapeProcess_ShapeContext::Messages`
-//   method: Returns messages recorded during shape processing
-//   method: It can be nullified before processing in order to
-//   method: avoid recording messages
-//   Reason: return type 'Handle(ShapeExtend_MsgRegistrator)&' is unknown
-//   // pub fn messages(&mut self) -> &mut HandleMsgRegistrator;
-//
-// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:90 - `ShapeProcess_ShapeContext::RecordModification`
-//   Reason: param 'msg' uses unknown type 'const Handle(ShapeExtend_MsgRegistrator)&'
-//   // pub fn record_modification(&mut self, repl: &DataMapOfShapeShape, msg: &HandleMsgRegistrator);
-//
-// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:93 - `ShapeProcess_ShapeContext::RecordModification`
-//   Reason: param 'repl' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn record_modification(&mut self, repl: &HandleReShape, msg: &HandleMsgRegistrator);
-//
-// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:96 - `ShapeProcess_ShapeContext::RecordModification`
-//   Reason: param 'repl' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn record_modification(&mut self, repl: &HandleReShape);
-//
-// SKIPPED: **Source:** `ShapeProcess_ShapeContext.hxx`:108 - `ShapeProcess_ShapeContext::RecordModification`
-//   method: Records modifications and resets result accordingly
-//   method: NOTE: modification of resulting shape should be explicitly
-//   method: defined in the maps along with modifications of subshapes
-//   Reason: param 'msg' uses unknown type 'const Handle(ShapeExtend_MsgRegistrator)&'
-//   // pub fn record_modification(&mut self, sh: &Shape, repl: &Modifier, msg: &HandleMsgRegistrator);
-//
+pub use crate::ffi::HandleShapeProcessShapeContext;
+
+unsafe impl crate::CppDeletable for HandleShapeProcessShapeContext {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeProcessShapeContext_destructor(ptr);
+    }
+}
+
+impl HandleShapeProcessShapeContext {
+    /// Dereference this Handle to access the underlying ShapeProcess_ShapeContext
+    pub fn get(&self) -> &crate::ffi::ShapeProcess_ShapeContext {
+        unsafe { &*(crate::ffi::HandleShapeProcessShapeContext_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeProcess_ShapeContext
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_ShapeContext {
+        unsafe { &mut *(crate::ffi::HandleShapeProcessShapeContext_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeProcess_ShapeContext> to Handle<ShapeProcess_Context>
+    pub fn to_handle_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessContext> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeProcessShapeContext_to_HandleShapeProcessContext(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From ShapeProcess_UOperator.hxx
@@ -782,6 +914,46 @@ impl UOperator {
             &mut *(crate::ffi::ShapeProcess_UOperator_as_ShapeProcess_Operator_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessUOperator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeProcess_UOperator_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeProcessUOperator;
+
+unsafe impl crate::CppDeletable for HandleShapeProcessUOperator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeProcessUOperator_destructor(ptr);
+    }
+}
+
+impl HandleShapeProcessUOperator {
+    /// Dereference this Handle to access the underlying ShapeProcess_UOperator
+    pub fn get(&self) -> &crate::ffi::ShapeProcess_UOperator {
+        unsafe { &*(crate::ffi::HandleShapeProcessUOperator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeProcess_UOperator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_UOperator {
+        unsafe { &mut *(crate::ffi::HandleShapeProcessUOperator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeProcess_UOperator> to Handle<ShapeProcess_Operator>
+    pub fn to_handle_operator(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessOperator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeProcessUOperator_to_HandleShapeProcessOperator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }

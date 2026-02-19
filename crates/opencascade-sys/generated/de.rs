@@ -6,6 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleDEBREPConfigurationNode, HandleDEBREPProvider, HandleDEGLTFConfigurationNode,
+    HandleDEGLTFProvider, HandleDEIGESConfigurationNode, HandleDEIGESProvider,
+    HandleDEOBJConfigurationNode, HandleDEOBJProvider, HandleDEPLYConfigurationNode,
+    HandleDEPLYProvider, HandleDESTEPConfigurationNode, HandleDESTEPProvider,
+    HandleDESTLConfigurationNode, HandleDESTLProvider, HandleDEVRMLConfigurationNode,
+    HandleDEVRMLProvider, HandleDEXCAFConfigurationNode, HandleDEXCAFProvider,
+};
+
 // ========================
 // From DE_ConfigurationContext.hxx
 // ========================
@@ -552,6 +562,186 @@ impl HandleDEConfigurationNode {
     pub fn get_mut(&mut self) -> &mut crate::ffi::DE_ConfigurationNode {
         unsafe { &mut *(crate::ffi::HandleDEConfigurationNode_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEBREP_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DEBREP_ConfigurationNode` (or subclass).
+    pub fn downcast_to_debrep_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEBREPConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEBREPConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEGLTF_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DEGLTF_ConfigurationNode` (or subclass).
+    pub fn downcast_to_degltf_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEGLTFConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEGLTFConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEIGES_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DEIGES_ConfigurationNode` (or subclass).
+    pub fn downcast_to_deiges_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEIGESConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEIGESConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEOBJ_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DEOBJ_ConfigurationNode` (or subclass).
+    pub fn downcast_to_deobj_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEOBJConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEOBJConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEPLY_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DEPLY_ConfigurationNode` (or subclass).
+    pub fn downcast_to_deply_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEPLYConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEPLYConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DESTEP_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DESTEP_ConfigurationNode` (or subclass).
+    pub fn downcast_to_destep_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTEPConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDESTEPConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DESTL_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DESTL_ConfigurationNode` (or subclass).
+    pub fn downcast_to_destl_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTLConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDESTLConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEVRML_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DEVRML_ConfigurationNode` (or subclass).
+    pub fn downcast_to_devrml_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEVRMLConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEVRMLConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEXCAF_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DEXCAF_ConfigurationNode` (or subclass).
+    pub fn downcast_to_dexcaf_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEXCAFConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEXCAFConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ConfigurationNode> to Handle<DE_ShapeFixConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DE_ShapeFixConfigurationNode` (or subclass).
+    pub fn downcast_to_shape_fix_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEShapeFixConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEConfigurationNode_downcast_to_HandleDEShapeFixConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for ConfigurationNode (3 total) ──
@@ -618,19 +808,158 @@ impl Provider {
         unsafe { &*(crate::ffi::DE_Provider_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theDocument document to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return True if Read was successful
+    pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:74 - `DE_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theDocument document to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return True if Write was successful
+    pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:85 - `DE_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theDocument document to save result
+    /// @param[in] theProgress progress indicator
+    /// @return True if Read was successful
+    pub fn read_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Provider_read_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:95 - `DE_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theDocument document to export
+    /// @param[in] theProgress progress indicator
+    /// @return True if Write was successful
+    pub fn write_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Provider_write_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:106 - `DE_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theShape shape to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return True if Read was successful
+    pub fn read_asciistring_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &mut crate::topo_ds::Shape,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Provider_read_asciistring_shape_handlexscontrolworksession_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theWS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Provider.hxx`:118 - `DE_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theShape shape to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return True if Write was successful
+    pub fn write_asciistring_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &crate::topo_ds::Shape,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Provider_write_asciistring_shape_handlexscontrolworksession_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theWS,
+                theProgress,
+            )
+        }
+    }
+
     /// **Source:** `DE_Provider.hxx`:129 - `DE_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theShape shape to save result
     /// @param[in] theProgress progress indicator
     /// @return True if Read was successful
-    pub fn read(
+    pub fn read_asciistring_shape_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &mut crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::DE_Provider_read(self as *mut Self, thePath, theShape, theProgress) }
+        unsafe {
+            crate::ffi::DE_Provider_read_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
+        }
     }
 
     /// **Source:** `DE_Provider.hxx`:139 - `DE_Provider::Write()`
@@ -639,13 +968,20 @@ impl Provider {
     /// @param[out] theShape shape to export
     /// @param[in] theProgress progress indicator
     /// @return True if Write was successful
-    pub fn write(
+    pub fn write_asciistring_shape_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::DE_Provider_write(self as *mut Self, thePath, theShape, theProgress) }
+        unsafe {
+            crate::ffi::DE_Provider_write_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
+        }
     }
 
     /// **Source:** `DE_Provider.hxx`:147 - `DE_Provider::GetFormat()`
@@ -713,9 +1049,153 @@ impl HandleDEProvider {
     pub fn get_mut(&mut self) -> &mut crate::ffi::DE_Provider {
         unsafe { &mut *(crate::ffi::HandleDEProvider_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<DE_Provider> to Handle<DEBREP_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DEBREP_Provider` (or subclass).
+    pub fn downcast_to_debrep_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEBREPProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDEBREPProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_Provider> to Handle<DEGLTF_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DEGLTF_Provider` (or subclass).
+    pub fn downcast_to_degltf_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEGLTFProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDEGLTFProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_Provider> to Handle<DEIGES_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DEIGES_Provider` (or subclass).
+    pub fn downcast_to_deiges_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEIGESProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDEIGESProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_Provider> to Handle<DEOBJ_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DEOBJ_Provider` (or subclass).
+    pub fn downcast_to_deobj_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEOBJProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDEOBJProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_Provider> to Handle<DEPLY_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DEPLY_Provider` (or subclass).
+    pub fn downcast_to_deply_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEPLYProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDEPLYProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_Provider> to Handle<DESTEP_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DESTEP_Provider` (or subclass).
+    pub fn downcast_to_destep_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTEPProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDESTEPProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_Provider> to Handle<DESTL_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DESTL_Provider` (or subclass).
+    pub fn downcast_to_destl_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTLProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDESTLProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_Provider> to Handle<DEVRML_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DEVRML_Provider` (or subclass).
+    pub fn downcast_to_devrml_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEVRMLProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDEVRMLProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_Provider> to Handle<DEXCAF_Provider>
+    ///
+    /// Returns `None` if the handle does not point to a `DEXCAF_Provider` (or subclass).
+    pub fn downcast_to_dexcaf_provider(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEXCAFProvider>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEProvider_downcast_to_HandleDEXCAFProvider(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for Provider (8 total) ──
+// ── Skipped symbols for Provider (2 total) ──
 // SKIPPED: **Source:** `DE_Provider.hxx`:49 - `DE_Provider::DE_Provider`
 //   constructor: Default constructor
 //   constructor: Configure translation process with global configuration
@@ -727,48 +1207,6 @@ impl HandleDEProvider {
 //   constructor: @param[in] theNode object to copy
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_handledeconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theDocument document to save result
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Provider.hxx`:74 - `DE_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theDocument document to export
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Provider.hxx`:85 - `DE_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theDocument document to save result
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Provider.hxx`:95 - `DE_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theDocument document to export
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Provider.hxx`:106 - `DE_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theShape shape to save result
-//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Provider.hxx`:118 - `DE_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theShape shape to export
-//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
 //
 
 // ========================
@@ -953,6 +1391,75 @@ impl ShapeFixConfigurationNode {
     }
 }
 
+pub use crate::ffi::HandleDEShapeFixConfigurationNode;
+
+unsafe impl crate::CppDeletable for HandleDEShapeFixConfigurationNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEShapeFixConfigurationNode_destructor(ptr);
+    }
+}
+
+impl HandleDEShapeFixConfigurationNode {
+    /// Dereference this Handle to access the underlying DE_ShapeFixConfigurationNode
+    pub fn get(&self) -> &crate::ffi::DE_ShapeFixConfigurationNode {
+        unsafe { &*(crate::ffi::HandleDEShapeFixConfigurationNode_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DE_ShapeFixConfigurationNode
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DE_ShapeFixConfigurationNode {
+        unsafe { &mut *(crate::ffi::HandleDEShapeFixConfigurationNode_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<DE_ShapeFixConfigurationNode> to Handle<DE_ConfigurationNode>
+    pub fn to_handle_configuration_node(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleDEShapeFixConfigurationNode_to_HandleDEConfigurationNode(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<DE_ShapeFixConfigurationNode> to Handle<DEIGES_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DEIGES_ConfigurationNode` (or subclass).
+    pub fn downcast_to_deiges_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDEIGESConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEShapeFixConfigurationNode_downcast_to_HandleDEIGESConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<DE_ShapeFixConfigurationNode> to Handle<DESTEP_ConfigurationNode>
+    ///
+    /// Returns `None` if the handle does not point to a `DESTEP_ConfigurationNode` (or subclass).
+    pub fn downcast_to_destep_configuration_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleDESTEPConfigurationNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleDEShapeFixConfigurationNode_downcast_to_HandleDESTEPConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ── Skipped symbols for ShapeFixConfigurationNode (2 total) ──
 // SKIPPED: **Source:** `DE_ShapeFixConfigurationNode.hxx`:29 - `DE_ShapeFixConfigurationNode::DE_ShapeFixConfigurationNode`
 //   constructor: Initializes all field by default
@@ -1043,19 +1550,158 @@ impl Wrapper {
         unsafe { &*(crate::ffi::DE_Wrapper_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `DE_Wrapper.hxx`:85 - `DE_Wrapper::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theDocument document to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:97 - `DE_Wrapper::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theDocument document to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:108 - `DE_Wrapper::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theDocument document to save result
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_read_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:118 - `DE_Wrapper::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theDocument document to export
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_write_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:129 - `DE_Wrapper::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theShape shape to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &mut crate::topo_ds::Shape,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_read_asciistring_shape_handlexscontrolworksession_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theWS,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:141 - `DE_Wrapper::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theShape shape to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &crate::topo_ds::Shape,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_Wrapper_write_asciistring_shape_handlexscontrolworksession_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theWS,
+                theProgress,
+            )
+        }
+    }
+
     /// **Source:** `DE_Wrapper.hxx`:152 - `DE_Wrapper::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theShape shape to save result
     /// @param[in] theProgress progress indicator
     /// @return true if Read operation has ended correctly
-    pub fn read(
+    pub fn read_asciistring_shape_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &mut crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::DE_Wrapper_read(self as *mut Self, thePath, theShape, theProgress) }
+        unsafe {
+            crate::ffi::DE_Wrapper_read_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
+        }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:162 - `DE_Wrapper::Write()`
@@ -1064,13 +1710,20 @@ impl Wrapper {
     /// @param[out] theShape shape to export
     /// @param[in] theProgress progress indicator
     /// @return true if Write operation has ended correctly
-    pub fn write(
+    pub fn write_asciistring_shape_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
-        unsafe { crate::ffi::DE_Wrapper_write(self as *mut Self, thePath, theShape, theProgress) }
+        unsafe {
+            crate::ffi::DE_Wrapper_write_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
+        }
     }
 
     /// **Source:** `DE_Wrapper.hxx`:171 - `DE_Wrapper::Load()`
@@ -1338,49 +1991,7 @@ impl HandleDEWrapper {
     }
 }
 
-// ── Skipped symbols for Wrapper (7 total) ──
-// SKIPPED: **Source:** `DE_Wrapper.hxx`:85 - `DE_Wrapper::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theDocument document to save result
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Wrapper.hxx`:97 - `DE_Wrapper::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theDocument document to export
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Wrapper.hxx`:108 - `DE_Wrapper::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theDocument document to save result
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Wrapper.hxx`:118 - `DE_Wrapper::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theDocument document to export
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Wrapper.hxx`:129 - `DE_Wrapper::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theShape shape to save result
-//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DE_Wrapper.hxx`:141 - `DE_Wrapper::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theShape shape to export
-//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
+// ── Skipped symbols for Wrapper (1 total) ──
 // SKIPPED: **Source:** `DE_Wrapper.hxx`:259 - `DE_Wrapper::Nodes`
 //   method: Gets format map, contains vendor map with nodes
 //   method: @return internal map of formats

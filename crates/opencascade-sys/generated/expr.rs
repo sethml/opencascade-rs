@@ -85,6 +85,17 @@ impl Absolute {
         unsafe { crate::ffi::Expr_Absolute_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Absolute.hxx`:55 - `Expr_Absolute::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Absolute_derivative(self as *const Self, X))
+        }
+    }
+
     /// **Source:** `Expr_Absolute.hxx`:62 - `Expr_Absolute::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -145,6 +156,13 @@ impl Absolute {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprAbsolute> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Absolute_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Absolute_inherited_Operand(self as *const Self)) }
@@ -175,6 +193,15 @@ impl Absolute {
         unsafe { crate::ffi::Expr_Absolute_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Absolute_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -189,18 +216,68 @@ impl Absolute {
         unsafe { crate::ffi::Expr_Absolute_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Absolute_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Absolute_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Absolute (1 total) ──
-// SKIPPED: **Source:** `Expr_Absolute.hxx`:55 - `Expr_Absolute::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprAbsolute;
+
+unsafe impl crate::CppDeletable for HandleExprAbsolute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprAbsolute_destructor(ptr);
+    }
+}
+
+impl HandleExprAbsolute {
+    /// Dereference this Handle to access the underlying Expr_Absolute
+    pub fn get(&self) -> &crate::ffi::Expr_Absolute {
+        unsafe { &*(crate::ffi::HandleExprAbsolute_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Absolute
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Absolute {
+        unsafe { &mut *(crate::ffi::HandleExprAbsolute_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Absolute> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprAbsolute_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Absolute> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprAbsolute_to_HandleExprGeneralExpression(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_ArcCosine.hxx
@@ -256,6 +333,17 @@ impl ArcCosine {
     /// **Source:** `Expr_ArcCosine.hxx`:52 - `Expr_ArcCosine::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArcCosine_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArcCosine.hxx`:55 - `Expr_ArcCosine::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcCosine_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_ArcCosine.hxx`:62 - `Expr_ArcCosine::Evaluate()`
@@ -318,6 +406,13 @@ impl ArcCosine {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprArcCosine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcCosine_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_ArcCosine_inherited_Operand(self as *const Self)) }
@@ -348,6 +443,15 @@ impl ArcCosine {
         unsafe { crate::ffi::Expr_ArcCosine_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_ArcCosine_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -362,18 +466,68 @@ impl ArcCosine {
         unsafe { crate::ffi::Expr_ArcCosine_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcCosine_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_ArcCosine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for ArcCosine (1 total) ──
-// SKIPPED: **Source:** `Expr_ArcCosine.hxx`:55 - `Expr_ArcCosine::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprArcCosine;
+
+unsafe impl crate::CppDeletable for HandleExprArcCosine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprArcCosine_destructor(ptr);
+    }
+}
+
+impl HandleExprArcCosine {
+    /// Dereference this Handle to access the underlying Expr_ArcCosine
+    pub fn get(&self) -> &crate::ffi::Expr_ArcCosine {
+        unsafe { &*(crate::ffi::HandleExprArcCosine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_ArcCosine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_ArcCosine {
+        unsafe { &mut *(crate::ffi::HandleExprArcCosine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_ArcCosine> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArcCosine_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_ArcCosine> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprArcCosine_to_HandleExprGeneralExpression(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_ArcSine.hxx
@@ -429,6 +583,17 @@ impl ArcSine {
     /// **Source:** `Expr_ArcSine.hxx`:52 - `Expr_ArcSine::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArcSine_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArcSine.hxx`:55 - `Expr_ArcSine::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcSine_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_ArcSine.hxx`:62 - `Expr_ArcSine::Evaluate()`
@@ -489,6 +654,11 @@ impl ArcSine {
         unsafe { &mut *(crate::ffi::Expr_ArcSine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprArcSine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcSine_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_ArcSine_inherited_Operand(self as *const Self)) }
@@ -519,6 +689,15 @@ impl ArcSine {
         unsafe { crate::ffi::Expr_ArcSine_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_ArcSine_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -533,18 +712,68 @@ impl ArcSine {
         unsafe { crate::ffi::Expr_ArcSine_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcSine_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_ArcSine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for ArcSine (1 total) ──
-// SKIPPED: **Source:** `Expr_ArcSine.hxx`:55 - `Expr_ArcSine::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprArcSine;
+
+unsafe impl crate::CppDeletable for HandleExprArcSine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprArcSine_destructor(ptr);
+    }
+}
+
+impl HandleExprArcSine {
+    /// Dereference this Handle to access the underlying Expr_ArcSine
+    pub fn get(&self) -> &crate::ffi::Expr_ArcSine {
+        unsafe { &*(crate::ffi::HandleExprArcSine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_ArcSine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_ArcSine {
+        unsafe { &mut *(crate::ffi::HandleExprArcSine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_ArcSine> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArcSine_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_ArcSine> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArcSine_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_ArcTangent.hxx
@@ -600,6 +829,20 @@ impl ArcTangent {
     /// **Source:** `Expr_ArcTangent.hxx`:52 - `Expr_ArcTangent::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArcTangent_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArcTangent.hxx`:55 - `Expr_ArcTangent::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcTangent_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
     }
 
     /// **Source:** `Expr_ArcTangent.hxx`:62 - `Expr_ArcTangent::Evaluate()`
@@ -666,6 +909,13 @@ impl ArcTangent {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprArcTangent> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcTangent_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_ArcTangent_inherited_Operand(self as *const Self)) }
@@ -696,6 +946,15 @@ impl ArcTangent {
         unsafe { crate::ffi::Expr_ArcTangent_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_ArcTangent_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -710,18 +969,70 @@ impl ArcTangent {
         unsafe { crate::ffi::Expr_ArcTangent_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArcTangent_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_ArcTangent_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for ArcTangent (1 total) ──
-// SKIPPED: **Source:** `Expr_ArcTangent.hxx`:55 - `Expr_ArcTangent::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprArcTangent;
+
+unsafe impl crate::CppDeletable for HandleExprArcTangent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprArcTangent_destructor(ptr);
+    }
+}
+
+impl HandleExprArcTangent {
+    /// Dereference this Handle to access the underlying Expr_ArcTangent
+    pub fn get(&self) -> &crate::ffi::Expr_ArcTangent {
+        unsafe { &*(crate::ffi::HandleExprArcTangent_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_ArcTangent
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_ArcTangent {
+        unsafe { &mut *(crate::ffi::HandleExprArcTangent_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_ArcTangent> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprArcTangent_to_HandleExprUnaryExpression(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_ArcTangent> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprArcTangent_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_ArgCosh.hxx
@@ -777,6 +1088,17 @@ impl ArgCosh {
     /// **Source:** `Expr_ArgCosh.hxx`:52 - `Expr_ArgCosh::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArgCosh_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArgCosh.hxx`:55 - `Expr_ArgCosh::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgCosh_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_ArgCosh.hxx`:62 - `Expr_ArgCosh::Evaluate()`
@@ -837,6 +1159,11 @@ impl ArgCosh {
         unsafe { &mut *(crate::ffi::Expr_ArgCosh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprArgCosh> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgCosh_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_ArgCosh_inherited_Operand(self as *const Self)) }
@@ -867,6 +1194,15 @@ impl ArgCosh {
         unsafe { crate::ffi::Expr_ArgCosh_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_ArgCosh_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -881,18 +1217,68 @@ impl ArgCosh {
         unsafe { crate::ffi::Expr_ArgCosh_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgCosh_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_ArgCosh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for ArgCosh (1 total) ──
-// SKIPPED: **Source:** `Expr_ArgCosh.hxx`:55 - `Expr_ArgCosh::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprArgCosh;
+
+unsafe impl crate::CppDeletable for HandleExprArgCosh {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprArgCosh_destructor(ptr);
+    }
+}
+
+impl HandleExprArgCosh {
+    /// Dereference this Handle to access the underlying Expr_ArgCosh
+    pub fn get(&self) -> &crate::ffi::Expr_ArgCosh {
+        unsafe { &*(crate::ffi::HandleExprArgCosh_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_ArgCosh
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_ArgCosh {
+        unsafe { &mut *(crate::ffi::HandleExprArgCosh_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_ArgCosh> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArgCosh_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_ArgCosh> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArgCosh_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_ArgSinh.hxx
@@ -948,6 +1334,17 @@ impl ArgSinh {
     /// **Source:** `Expr_ArgSinh.hxx`:52 - `Expr_ArgSinh::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArgSinh_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArgSinh.hxx`:55 - `Expr_ArgSinh::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgSinh_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_ArgSinh.hxx`:62 - `Expr_ArgSinh::Evaluate()`
@@ -1008,6 +1405,11 @@ impl ArgSinh {
         unsafe { &mut *(crate::ffi::Expr_ArgSinh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprArgSinh> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgSinh_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_ArgSinh_inherited_Operand(self as *const Self)) }
@@ -1038,6 +1440,15 @@ impl ArgSinh {
         unsafe { crate::ffi::Expr_ArgSinh_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_ArgSinh_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -1052,18 +1463,68 @@ impl ArgSinh {
         unsafe { crate::ffi::Expr_ArgSinh_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgSinh_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_ArgSinh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for ArgSinh (1 total) ──
-// SKIPPED: **Source:** `Expr_ArgSinh.hxx`:55 - `Expr_ArgSinh::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprArgSinh;
+
+unsafe impl crate::CppDeletable for HandleExprArgSinh {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprArgSinh_destructor(ptr);
+    }
+}
+
+impl HandleExprArgSinh {
+    /// Dereference this Handle to access the underlying Expr_ArgSinh
+    pub fn get(&self) -> &crate::ffi::Expr_ArgSinh {
+        unsafe { &*(crate::ffi::HandleExprArgSinh_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_ArgSinh
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_ArgSinh {
+        unsafe { &mut *(crate::ffi::HandleExprArgSinh_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_ArgSinh> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArgSinh_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_ArgSinh> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArgSinh_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_ArgTanh.hxx
@@ -1119,6 +1580,17 @@ impl ArgTanh {
     /// **Source:** `Expr_ArgTanh.hxx`:52 - `Expr_ArgTanh::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_ArgTanh_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_ArgTanh.hxx`:55 - `Expr_ArgTanh::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgTanh_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_ArgTanh.hxx`:62 - `Expr_ArgTanh::Evaluate()`
@@ -1179,6 +1651,11 @@ impl ArgTanh {
         unsafe { &mut *(crate::ffi::Expr_ArgTanh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprArgTanh> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgTanh_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_ArgTanh_inherited_Operand(self as *const Self)) }
@@ -1209,6 +1686,15 @@ impl ArgTanh {
         unsafe { crate::ffi::Expr_ArgTanh_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_ArgTanh_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -1223,18 +1709,68 @@ impl ArgTanh {
         unsafe { crate::ffi::Expr_ArgTanh_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_ArgTanh_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_ArgTanh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for ArgTanh (1 total) ──
-// SKIPPED: **Source:** `Expr_ArgTanh.hxx`:55 - `Expr_ArgTanh::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprArgTanh;
+
+unsafe impl crate::CppDeletable for HandleExprArgTanh {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprArgTanh_destructor(ptr);
+    }
+}
+
+impl HandleExprArgTanh {
+    /// Dereference this Handle to access the underlying Expr_ArgTanh
+    pub fn get(&self) -> &crate::ffi::Expr_ArgTanh {
+        unsafe { &*(crate::ffi::HandleExprArgTanh_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_ArgTanh
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_ArgTanh {
+        unsafe { &mut *(crate::ffi::HandleExprArgTanh_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_ArgTanh> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArgTanh_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_ArgTanh> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprArgTanh_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_BinaryExpression.hxx
@@ -1300,6 +1836,17 @@ impl BinaryExpression {
     /// Tests if <me> contains <exp>.
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_BinaryExpression_contains(self as *const Self, exp) }
+    }
+
+    /// **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>.
+    /// Raises InvalidOperand if <with> contains <me>.
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_BinaryExpression_replace(self as *mut Self, var, with) }
     }
 
     /// **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
@@ -1384,6 +1931,34 @@ impl BinaryExpression {
         }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_BinaryExpression_inherited_Derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_BinaryExpression_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
     pub fn evaluate(
         &self,
@@ -1410,13 +1985,108 @@ impl BinaryExpression {
     }
 }
 
-// ── Skipped symbols for BinaryExpression (1 total) ──
-// SKIPPED: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>.
-//   method: Raises InvalidOperand if <with> contains <me>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+pub use crate::ffi::HandleExprBinaryExpression;
+
+unsafe impl crate::CppDeletable for HandleExprBinaryExpression {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprBinaryExpression_destructor(ptr);
+    }
+}
+
+impl HandleExprBinaryExpression {
+    /// Dereference this Handle to access the underlying Expr_BinaryExpression
+    pub fn get(&self) -> &crate::ffi::Expr_BinaryExpression {
+        unsafe { &*(crate::ffi::HandleExprBinaryExpression_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_BinaryExpression
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_BinaryExpression {
+        unsafe { &mut *(crate::ffi::HandleExprBinaryExpression_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_BinaryExpression> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprBinaryExpression_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<Expr_BinaryExpression> to Handle<Expr_BinaryFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_BinaryFunction` (or subclass).
+    pub fn downcast_to_binary_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprBinaryFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprBinaryExpression_downcast_to_HandleExprBinaryFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_BinaryExpression> to Handle<Expr_Difference>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Difference` (or subclass).
+    pub fn downcast_to_difference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprDifference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprBinaryExpression_downcast_to_HandleExprDifference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_BinaryExpression> to Handle<Expr_Division>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Division` (or subclass).
+    pub fn downcast_to_division(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprDivision>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprBinaryExpression_downcast_to_HandleExprDivision(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_BinaryExpression> to Handle<Expr_Exponentiate>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Exponentiate` (or subclass).
+    pub fn downcast_to_exponentiate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprExponentiate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprBinaryExpression_downcast_to_HandleExprExponentiate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From Expr_BinaryFunction.hxx
@@ -1487,6 +2157,20 @@ impl BinaryFunction {
         unsafe { crate::ffi::Expr_BinaryFunction_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_BinaryFunction.hxx`:65 - `Expr_BinaryFunction::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_BinaryFunction_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
     /// **Source:** `Expr_BinaryFunction.hxx`:72 - `Expr_BinaryFunction::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -1553,6 +2237,15 @@ impl BinaryFunction {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprBinaryFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_BinaryFunction_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
     pub fn first_operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_BinaryFunction_inherited_FirstOperand(self as *const Self)) }
@@ -1597,6 +2290,15 @@ impl BinaryFunction {
         unsafe { crate::ffi::Expr_BinaryFunction_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_BinaryFunction_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -1611,18 +2313,72 @@ impl BinaryFunction {
         unsafe { crate::ffi::Expr_BinaryFunction_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_BinaryFunction_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_BinaryFunction_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for BinaryFunction (1 total) ──
-// SKIPPED: **Source:** `Expr_BinaryFunction.hxx`:65 - `Expr_BinaryFunction::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprBinaryFunction;
+
+unsafe impl crate::CppDeletable for HandleExprBinaryFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprBinaryFunction_destructor(ptr);
+    }
+}
+
+impl HandleExprBinaryFunction {
+    /// Dereference this Handle to access the underlying Expr_BinaryFunction
+    pub fn get(&self) -> &crate::ffi::Expr_BinaryFunction {
+        unsafe { &*(crate::ffi::HandleExprBinaryFunction_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_BinaryFunction
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_BinaryFunction {
+        unsafe { &mut *(crate::ffi::HandleExprBinaryFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_BinaryFunction> to Handle<Expr_BinaryExpression>
+    pub fn to_handle_binary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprBinaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprBinaryFunction_to_HandleExprBinaryExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_BinaryFunction> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprBinaryFunction_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_Cosh.hxx
@@ -1674,6 +2430,17 @@ impl Cosh {
     /// **Source:** `Expr_Cosh.hxx`:53 - `Expr_Cosh::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Cosh_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Cosh.hxx`:56 - `Expr_Cosh::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosh_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Cosh.hxx`:63 - `Expr_Cosh::Evaluate()`
@@ -1734,6 +2501,11 @@ impl Cosh {
         unsafe { &mut *(crate::ffi::Expr_Cosh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprCosh> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosh_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Cosh_inherited_Operand(self as *const Self)) }
@@ -1764,6 +2536,15 @@ impl Cosh {
         unsafe { crate::ffi::Expr_Cosh_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Cosh_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -1778,18 +2559,68 @@ impl Cosh {
         unsafe { crate::ffi::Expr_Cosh_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosh_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Cosh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Cosh (1 total) ──
-// SKIPPED: **Source:** `Expr_Cosh.hxx`:56 - `Expr_Cosh::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprCosh;
+
+unsafe impl crate::CppDeletable for HandleExprCosh {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprCosh_destructor(ptr);
+    }
+}
+
+impl HandleExprCosh {
+    /// Dereference this Handle to access the underlying Expr_Cosh
+    pub fn get(&self) -> &crate::ffi::Expr_Cosh {
+        unsafe { &*(crate::ffi::HandleExprCosh_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Cosh
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Cosh {
+        unsafe { &mut *(crate::ffi::HandleExprCosh_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Cosh> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprCosh_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Cosh> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprCosh_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_Cosine.hxx
@@ -1843,6 +2674,17 @@ impl Cosine {
     /// **Source:** `Expr_Cosine.hxx`:53 - `Expr_Cosine::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Cosine_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Cosine.hxx`:56 - `Expr_Cosine::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosine_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Cosine.hxx`:63 - `Expr_Cosine::Evaluate()`
@@ -1903,6 +2745,11 @@ impl Cosine {
         unsafe { &mut *(crate::ffi::Expr_Cosine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprCosine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosine_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Cosine_inherited_Operand(self as *const Self)) }
@@ -1933,6 +2780,15 @@ impl Cosine {
         unsafe { crate::ffi::Expr_Cosine_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Cosine_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -1947,18 +2803,68 @@ impl Cosine {
         unsafe { crate::ffi::Expr_Cosine_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Cosine_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Cosine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Cosine (1 total) ──
-// SKIPPED: **Source:** `Expr_Cosine.hxx`:56 - `Expr_Cosine::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprCosine;
+
+unsafe impl crate::CppDeletable for HandleExprCosine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprCosine_destructor(ptr);
+    }
+}
+
+impl HandleExprCosine {
+    /// Dereference this Handle to access the underlying Expr_Cosine
+    pub fn get(&self) -> &crate::ffi::Expr_Cosine {
+        unsafe { &*(crate::ffi::HandleExprCosine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Cosine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Cosine {
+        unsafe { &mut *(crate::ffi::HandleExprCosine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Cosine> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprCosine_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Cosine> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprCosine_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_Difference.hxx
@@ -2015,6 +2921,37 @@ impl Difference {
     /// **Source:** `Expr_Difference.hxx`:54 - `Expr_Difference::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Difference_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Difference.hxx`:57 - `Expr_Difference::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Difference_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_Difference.hxx`:62 - `Expr_Difference::NDerivative()`
+    /// Returns the <N>-th derivative on <X> unknown of <me>.
+    /// Raises OutOfRange if <N> <= 0
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Difference_n_derivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
     }
 
     /// **Source:** `Expr_Difference.hxx`:70 - `Expr_Difference::Evaluate()`
@@ -2081,6 +3018,13 @@ impl Difference {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprDifference> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Difference_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
     pub fn first_operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Difference_inherited_FirstOperand(self as *const Self)) }
@@ -2121,6 +3065,15 @@ impl Difference {
         unsafe { crate::ffi::Expr_Difference_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Difference_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -2141,18 +3094,49 @@ impl Difference {
     }
 }
 
-// ── Skipped symbols for Difference (2 total) ──
-// SKIPPED: **Source:** `Expr_Difference.hxx`:57 - `Expr_Difference::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_Difference.hxx`:62 - `Expr_Difference::NDerivative`
-//   method: Returns the <N>-th derivative on <X> unknown of <me>.
-//   method: Raises OutOfRange if <N> <= 0
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprDifference;
+
+unsafe impl crate::CppDeletable for HandleExprDifference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprDifference_destructor(ptr);
+    }
+}
+
+impl HandleExprDifference {
+    /// Dereference this Handle to access the underlying Expr_Difference
+    pub fn get(&self) -> &crate::ffi::Expr_Difference {
+        unsafe { &*(crate::ffi::HandleExprDifference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Difference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Difference {
+        unsafe { &mut *(crate::ffi::HandleExprDifference_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Difference> to Handle<Expr_BinaryExpression>
+    pub fn to_handle_binary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprBinaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprDifference_to_HandleExprBinaryExpression(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_Difference> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprDifference_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_Different.hxx
@@ -2255,6 +3239,13 @@ impl Different {
         unsafe { &mut *(crate::ffi::Expr_Different_as_Expr_GeneralRelation_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprDifferent> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Different_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
     pub fn set_first_member(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Different_inherited_SetFirstMember(self as *mut Self, exp) }
@@ -2315,6 +3306,57 @@ impl Different {
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_Different_inherited_Contains(self as *const Self, exp) }
     }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Different_inherited_Replace(self as *mut Self, var, with) }
+    }
+}
+
+pub use crate::ffi::HandleExprDifferent;
+
+unsafe impl crate::CppDeletable for HandleExprDifferent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprDifferent_destructor(ptr);
+    }
+}
+
+impl HandleExprDifferent {
+    /// Dereference this Handle to access the underlying Expr_Different
+    pub fn get(&self) -> &crate::ffi::Expr_Different {
+        unsafe { &*(crate::ffi::HandleExprDifferent_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Different
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Different {
+        unsafe { &mut *(crate::ffi::HandleExprDifferent_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Different> to Handle<Expr_SingleRelation>
+    pub fn to_handle_single_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprSingleRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprDifferent_to_HandleExprSingleRelation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Different> to Handle<Expr_GeneralRelation>
+    pub fn to_handle_general_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprDifferent_to_HandleExprGeneralRelation(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -2372,6 +3414,17 @@ impl Division {
     /// **Source:** `Expr_Division.hxx`:54 - `Expr_Division::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Division_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Division.hxx`:57 - `Expr_Division::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Division_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Division.hxx`:64 - `Expr_Division::Evaluate()`
@@ -2434,6 +3487,13 @@ impl Division {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprDivision> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Division_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
     pub fn first_operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Division_inherited_FirstOperand(self as *const Self)) }
@@ -2474,6 +3534,15 @@ impl Division {
         unsafe { crate::ffi::Expr_Division_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Division_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -2488,18 +3557,68 @@ impl Division {
         unsafe { crate::ffi::Expr_Division_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Division_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Division_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Division (1 total) ──
-// SKIPPED: **Source:** `Expr_Division.hxx`:57 - `Expr_Division::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprDivision;
+
+unsafe impl crate::CppDeletable for HandleExprDivision {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprDivision_destructor(ptr);
+    }
+}
+
+impl HandleExprDivision {
+    /// Dereference this Handle to access the underlying Expr_Division
+    pub fn get(&self) -> &crate::ffi::Expr_Division {
+        unsafe { &*(crate::ffi::HandleExprDivision_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Division
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Division {
+        unsafe { &mut *(crate::ffi::HandleExprDivision_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Division> to Handle<Expr_BinaryExpression>
+    pub fn to_handle_binary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprBinaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprDivision_to_HandleExprBinaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Division> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprDivision_to_HandleExprGeneralExpression(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_Equal.hxx
@@ -2599,6 +3718,11 @@ impl Equal {
         unsafe { &mut *(crate::ffi::Expr_Equal_as_Expr_GeneralRelation_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprEqual> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Equal_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
     pub fn set_first_member(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_Equal_inherited_SetFirstMember(self as *mut Self, exp) }
@@ -2659,6 +3783,57 @@ impl Equal {
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_Equal_inherited_Contains(self as *const Self, exp) }
     }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Equal_inherited_Replace(self as *mut Self, var, with) }
+    }
+}
+
+pub use crate::ffi::HandleExprEqual;
+
+unsafe impl crate::CppDeletable for HandleExprEqual {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprEqual_destructor(ptr);
+    }
+}
+
+impl HandleExprEqual {
+    /// Dereference this Handle to access the underlying Expr_Equal
+    pub fn get(&self) -> &crate::ffi::Expr_Equal {
+        unsafe { &*(crate::ffi::HandleExprEqual_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Equal
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Equal {
+        unsafe { &mut *(crate::ffi::HandleExprEqual_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Equal> to Handle<Expr_SingleRelation>
+    pub fn to_handle_single_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprSingleRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprEqual_to_HandleExprSingleRelation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Equal> to Handle<Expr_GeneralRelation>
+    pub fn to_handle_general_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprEqual_to_HandleExprGeneralRelation(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -2715,6 +3890,20 @@ impl Exponential {
     /// **Source:** `Expr_Exponential.hxx`:52 - `Expr_Exponential::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Exponential_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Exponential.hxx`:55 - `Expr_Exponential::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponential_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
     }
 
     /// **Source:** `Expr_Exponential.hxx`:62 - `Expr_Exponential::Evaluate()`
@@ -2781,6 +3970,13 @@ impl Exponential {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprExponential> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponential_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Exponential_inherited_Operand(self as *const Self)) }
@@ -2811,6 +4007,15 @@ impl Exponential {
         unsafe { crate::ffi::Expr_Exponential_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Exponential_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -2825,18 +4030,70 @@ impl Exponential {
         unsafe { crate::ffi::Expr_Exponential_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponential_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Exponential_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Exponential (1 total) ──
-// SKIPPED: **Source:** `Expr_Exponential.hxx`:55 - `Expr_Exponential::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprExponential;
+
+unsafe impl crate::CppDeletable for HandleExprExponential {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprExponential_destructor(ptr);
+    }
+}
+
+impl HandleExprExponential {
+    /// Dereference this Handle to access the underlying Expr_Exponential
+    pub fn get(&self) -> &crate::ffi::Expr_Exponential {
+        unsafe { &*(crate::ffi::HandleExprExponential_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Exponential
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Exponential {
+        unsafe { &mut *(crate::ffi::HandleExprExponential_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Exponential> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprExponential_to_HandleExprUnaryExpression(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_Exponential> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprExponential_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_Exponentiate.hxx
@@ -2895,6 +4152,20 @@ impl Exponentiate {
     /// **Source:** `Expr_Exponentiate.hxx`:54 - `Expr_Exponentiate::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Exponentiate_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Exponentiate.hxx`:57 - `Expr_Exponentiate::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponentiate_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
     }
 
     /// **Source:** `Expr_Exponentiate.hxx`:64 - `Expr_Exponentiate::Evaluate()`
@@ -2961,6 +4232,15 @@ impl Exponentiate {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprExponentiate> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponentiate_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
     pub fn first_operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Exponentiate_inherited_FirstOperand(self as *const Self)) }
@@ -3001,6 +4281,15 @@ impl Exponentiate {
         unsafe { crate::ffi::Expr_Exponentiate_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Exponentiate_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -3015,18 +4304,72 @@ impl Exponentiate {
         unsafe { crate::ffi::Expr_Exponentiate_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Exponentiate_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Exponentiate_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Exponentiate (1 total) ──
-// SKIPPED: **Source:** `Expr_Exponentiate.hxx`:57 - `Expr_Exponentiate::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprExponentiate;
+
+unsafe impl crate::CppDeletable for HandleExprExponentiate {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprExponentiate_destructor(ptr);
+    }
+}
+
+impl HandleExprExponentiate {
+    /// Dereference this Handle to access the underlying Expr_Exponentiate
+    pub fn get(&self) -> &crate::ffi::Expr_Exponentiate {
+        unsafe { &*(crate::ffi::HandleExprExponentiate_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Exponentiate
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Exponentiate {
+        unsafe { &mut *(crate::ffi::HandleExprExponentiate_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Exponentiate> to Handle<Expr_BinaryExpression>
+    pub fn to_handle_binary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprBinaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprExponentiate_to_HandleExprBinaryExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_Exponentiate> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprExponentiate_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_ExprFailure.hxx
@@ -3123,10 +4466,37 @@ unsafe impl crate::CppDeletable for FunctionDerivative {
 }
 
 impl FunctionDerivative {
+    /// **Source:** `Expr_FunctionDerivative.hxx`:42 - `Expr_FunctionDerivative::Expr_FunctionDerivative()`
+    /// Creates a FunctionDerivative of degree <deg> relative
+    /// to the <withX> variable.
+    /// Raises OutOfRange if <deg> lower or equal to zero.
+    pub fn new_handleexprgeneralfunction_handleexprnamedunknown_int(
+        func: &crate::ffi::HandleExprGeneralFunction,
+        withX: &crate::ffi::HandleExprNamedUnknown,
+        deg: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_FunctionDerivative_ctor_handleexprgeneralfunction_handleexprnamedunknown_int(func, withX, deg))
+        }
+    }
+
     /// **Source:** `Expr_FunctionDerivative.hxx`:47 - `Expr_FunctionDerivative::NbOfVariables()`
     /// Returns the number of variables of <me>.
     pub fn nb_of_variables(&self) -> i32 {
         unsafe { crate::ffi::Expr_FunctionDerivative_nb_of_variables(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_FunctionDerivative.hxx`:52 - `Expr_FunctionDerivative::Variable()`
+    /// Returns the variable denoted by <index> in <me>.
+    /// Raises OutOfRange if <index> greater than
+    /// NbOfVariables of <me>.
+    pub fn variable(&self, index: i32) -> crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_FunctionDerivative_variable(
+                self as *const Self,
+                index,
+            ))
+        }
     }
 
     /// **Source:** `Expr_FunctionDerivative.hxx`:59 - `Expr_FunctionDerivative::Evaluate()`
@@ -3146,6 +4516,41 @@ impl FunctionDerivative {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_FunctionDerivative_copy(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Expr_FunctionDerivative.hxx`:66 - `Expr_FunctionDerivative::Derivative()`
+    /// Returns Derivative of <me> for variable <var>.
+    pub fn derivative_handleexprnamedunknown(
+        &self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Expr_FunctionDerivative_derivative_handleexprnamedunknown(
+                    self as *const Self,
+                    var,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Expr_FunctionDerivative.hxx`:71 - `Expr_FunctionDerivative::Derivative()`
+    /// Returns Derivative of <me> for variable <var> with
+    /// degree <deg>.
+    pub fn derivative_handleexprnamedunknown_int(
+        &self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        deg: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Expr_FunctionDerivative_derivative_handleexprnamedunknown_int(
+                    self as *const Self,
+                    var,
+                    deg,
+                ),
+            )
         }
     }
 
@@ -3178,6 +4583,16 @@ impl FunctionDerivative {
     /// Returns the degree of derivation of <me>.
     pub fn degree(&self) -> i32 {
         unsafe { crate::ffi::Expr_FunctionDerivative_degree(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_FunctionDerivative.hxx`:91 - `Expr_FunctionDerivative::DerivVariable()`
+    /// Returns the derivation variable of <me>.
+    pub fn deriv_variable(&self) -> crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_FunctionDerivative_deriv_variable(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `Expr_FunctionDerivative.hxx`:93 - `Expr_FunctionDerivative::GetStringName()`
@@ -3237,39 +4652,49 @@ impl FunctionDerivative {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprFunctionDerivative> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_FunctionDerivative_to_handle(obj.into_raw()))
+        }
+    }
 }
 
-// ── Skipped symbols for FunctionDerivative (5 total) ──
-// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:42 - `Expr_FunctionDerivative::Expr_FunctionDerivative`
-//   constructor: Creates a FunctionDerivative of degree <deg> relative
-//   constructor: to the <withX> variable.
-//   constructor: Raises OutOfRange if <deg> lower or equal to zero.
-//   Reason: param 'withX' uses unknown Handle type
-//   // pub fn new_handleexprgeneralfunction_handleexprnamedunknown_int(func: &HandleGeneralFunction, withX: &HandleNamedUnknown, deg: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:52 - `Expr_FunctionDerivative::Variable`
-//   method: Returns the variable denoted by <index> in <me>.
-//   method: Raises OutOfRange if <index> greater than
-//   method: NbOfVariables of <me>.
-//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
-//   // pub fn variable(&self, index: i32) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
-//
-// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:66 - `Expr_FunctionDerivative::Derivative`
-//   method: Returns Derivative of <me> for variable <var>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, var: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
-//
-// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:71 - `Expr_FunctionDerivative::Derivative`
-//   method: Returns Derivative of <me> for variable <var> with
-//   method: degree <deg>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, var: &HandleNamedUnknown, deg: i32) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
-//
-// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:91 - `Expr_FunctionDerivative::DerivVariable`
-//   method: Returns the derivation variable of <me>.
-//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
-//   // pub fn deriv_variable(&self) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
-//
+pub use crate::ffi::HandleExprFunctionDerivative;
+
+unsafe impl crate::CppDeletable for HandleExprFunctionDerivative {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprFunctionDerivative_destructor(ptr);
+    }
+}
+
+impl HandleExprFunctionDerivative {
+    /// Dereference this Handle to access the underlying Expr_FunctionDerivative
+    pub fn get(&self) -> &crate::ffi::Expr_FunctionDerivative {
+        unsafe { &*(crate::ffi::HandleExprFunctionDerivative_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_FunctionDerivative
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_FunctionDerivative {
+        unsafe { &mut *(crate::ffi::HandleExprFunctionDerivative_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_FunctionDerivative> to Handle<Expr_GeneralFunction>
+    pub fn to_handle_general_function(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprFunctionDerivative_to_HandleExprGeneralFunction(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_GeneralExpression.hxx
@@ -3369,6 +4794,49 @@ impl GeneralExpression {
         unsafe { crate::ffi::Expr_GeneralExpression_is_identical(self as *const Self, Other) }
     }
 
+    /// **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_GeneralExpression_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Returns the <N>-th derivative on <X> unknown of <me>.
+    /// Raise OutOfRange if N <= 0
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_GeneralExpression_n_derivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_GeneralExpression.hxx`:98 - `Expr_GeneralExpression::Replace()`
+    /// Replaces all occurrences of <var> with copies of <with>
+    /// in <me>. Copies of <with> are made with the Copy() method.
+    /// Raises InvalidOperand if <with> contains <me>.
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_GeneralExpression_replace(self as *mut Self, var, with) }
+    }
+
     /// **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -3439,27 +4907,589 @@ impl HandleExprGeneralExpression {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_GeneralExpression {
         unsafe { &mut *(crate::ffi::HandleExprGeneralExpression_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for GeneralExpression (3 total) ──
-// SKIPPED: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative`
-//   method: Returns the <N>-th derivative on <X> unknown of <me>.
-//   method: Raise OutOfRange if N <= 0
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_GeneralExpression.hxx`:98 - `Expr_GeneralExpression::Replace`
-//   method: Replaces all occurrences of <var> with copies of <with>
-//   method: in <me>. Copies of <with> are made with the Copy() method.
-//   method: Raises InvalidOperand if <with> contains <me>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Absolute>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Absolute` (or subclass).
+    pub fn downcast_to_absolute(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprAbsolute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprAbsolute(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArcCosine>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArcCosine` (or subclass).
+    pub fn downcast_to_arc_cosine(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArcCosine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprArcCosine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArcSine>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArcSine` (or subclass).
+    pub fn downcast_to_arc_sine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArcSine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprArcSine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArcTangent>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArcTangent` (or subclass).
+    pub fn downcast_to_arc_tangent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArcTangent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprArcTangent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArgCosh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArgCosh` (or subclass).
+    pub fn downcast_to_arg_cosh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArgCosh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprArgCosh(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArgSinh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArgSinh` (or subclass).
+    pub fn downcast_to_arg_sinh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArgSinh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprArgSinh(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArgTanh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArgTanh` (or subclass).
+    pub fn downcast_to_arg_tanh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArgTanh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprArgTanh(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_BinaryExpression>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_BinaryExpression` (or subclass).
+    pub fn downcast_to_binary_expression(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprBinaryExpression>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprBinaryExpression(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_BinaryFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_BinaryFunction` (or subclass).
+    pub fn downcast_to_binary_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprBinaryFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprBinaryFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Cosh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Cosh` (or subclass).
+    pub fn downcast_to_cosh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprCosh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprCosh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Cosine>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Cosine` (or subclass).
+    pub fn downcast_to_cosine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprCosine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprCosine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Difference>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Difference` (or subclass).
+    pub fn downcast_to_difference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprDifference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprDifference(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Division>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Division` (or subclass).
+    pub fn downcast_to_division(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprDivision>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprDivision(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Exponential>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Exponential` (or subclass).
+    pub fn downcast_to_exponential(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprExponential>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprExponential(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Exponentiate>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Exponentiate` (or subclass).
+    pub fn downcast_to_exponentiate(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprExponentiate>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprExponentiate(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_LogOf10>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_LogOf10` (or subclass).
+    pub fn downcast_to_log_of10(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprLogOf10>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprLogOf10(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_LogOfe>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_LogOfe` (or subclass).
+    pub fn downcast_to_log_ofe(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprLogOfe>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprLogOfe(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_NamedConstant>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_NamedConstant` (or subclass).
+    pub fn downcast_to_named_constant(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprNamedConstant>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprNamedConstant(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_NamedExpression>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_NamedExpression` (or subclass).
+    pub fn downcast_to_named_expression(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprNamedExpression>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprNamedExpression(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_NamedUnknown>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_NamedUnknown` (or subclass).
+    pub fn downcast_to_named_unknown(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprNamedUnknown(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_NumericValue>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_NumericValue` (or subclass).
+    pub fn downcast_to_numeric_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprNumericValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprNumericValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_PolyExpression>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_PolyExpression` (or subclass).
+    pub fn downcast_to_poly_expression(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprPolyExpression>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprPolyExpression(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_PolyFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_PolyFunction` (or subclass).
+    pub fn downcast_to_poly_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprPolyFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprPolyFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Product>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Product` (or subclass).
+    pub fn downcast_to_product(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprProduct>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprProduct(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Sign>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Sign` (or subclass).
+    pub fn downcast_to_sign(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSign>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprSign(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Sine>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Sine` (or subclass).
+    pub fn downcast_to_sine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprSine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Sinh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Sinh` (or subclass).
+    pub fn downcast_to_sinh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSinh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprSinh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Square>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Square` (or subclass).
+    pub fn downcast_to_square(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSquare>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprSquare(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_SquareRoot>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_SquareRoot` (or subclass).
+    pub fn downcast_to_square_root(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSquareRoot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprSquareRoot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Sum>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Sum` (or subclass).
+    pub fn downcast_to_sum(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprSum(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Tangent>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Tangent` (or subclass).
+    pub fn downcast_to_tangent(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprTangent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprTangent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Tanh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Tanh` (or subclass).
+    pub fn downcast_to_tanh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprTanh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprTanh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_UnaryExpression>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_UnaryExpression` (or subclass).
+    pub fn downcast_to_unary_expression(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprUnaryExpression(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_UnaryFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_UnaryFunction` (or subclass).
+    pub fn downcast_to_unary_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprUnaryFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprUnaryFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_UnaryMinus>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_UnaryMinus` (or subclass).
+    pub fn downcast_to_unary_minus(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprUnaryMinus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralExpression_downcast_to_HandleExprUnaryMinus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From Expr_GeneralFunction.hxx
@@ -3482,11 +5512,58 @@ impl GeneralFunction {
         unsafe { crate::ffi::Expr_GeneralFunction_nb_of_variables(self as *const Self) }
     }
 
+    /// **Source:** `Expr_GeneralFunction.hxx`:44 - `Expr_GeneralFunction::Variable()`
+    /// Returns the variable denoted by <index> in <me>.
+    /// Raises OutOfRange if index > NbOfVariables.
+    pub fn variable(&self, index: i32) -> crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_GeneralFunction_variable(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
     /// **Source:** `Expr_GeneralFunction.hxx`:48 - `Expr_GeneralFunction::Copy()`
     /// Returns a copy of <me> with the same form.
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_GeneralFunction_copy(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Expr_GeneralFunction.hxx`:51 - `Expr_GeneralFunction::Derivative()`
+    /// Returns Derivative of <me> for variable <var>.
+    pub fn derivative_handleexprnamedunknown(
+        &self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Expr_GeneralFunction_derivative_handleexprnamedunknown(
+                    self as *const Self,
+                    var,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Expr_GeneralFunction.hxx`:56 - `Expr_GeneralFunction::Derivative()`
+    /// Returns Derivative of <me> for variable <var> with
+    /// degree <deg>.
+    pub fn derivative_handleexprnamedunknown_int(
+        &self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        deg: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Expr_GeneralFunction_derivative_handleexprnamedunknown_int(
+                    self as *const Self,
+                    var,
+                    deg,
+                ),
+            )
         }
     }
 
@@ -3564,26 +5641,43 @@ impl HandleExprGeneralFunction {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_GeneralFunction {
         unsafe { &mut *(crate::ffi::HandleExprGeneralFunction_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for GeneralFunction (3 total) ──
-// SKIPPED: **Source:** `Expr_GeneralFunction.hxx`:44 - `Expr_GeneralFunction::Variable`
-//   method: Returns the variable denoted by <index> in <me>.
-//   method: Raises OutOfRange if index > NbOfVariables.
-//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
-//   // pub fn variable(&self, index: i32) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
-//
-// SKIPPED: **Source:** `Expr_GeneralFunction.hxx`:51 - `Expr_GeneralFunction::Derivative`
-//   method: Returns Derivative of <me> for variable <var>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, var: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
-//
-// SKIPPED: **Source:** `Expr_GeneralFunction.hxx`:56 - `Expr_GeneralFunction::Derivative`
-//   method: Returns Derivative of <me> for variable <var> with
-//   method: degree <deg>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, var: &HandleNamedUnknown, deg: i32) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
-//
+    /// Downcast Handle<Expr_GeneralFunction> to Handle<Expr_FunctionDerivative>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_FunctionDerivative` (or subclass).
+    pub fn downcast_to_function_derivative(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprFunctionDerivative>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralFunction_downcast_to_HandleExprFunctionDerivative(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralFunction> to Handle<Expr_NamedFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_NamedFunction` (or subclass).
+    pub fn downcast_to_named_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprNamedFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralFunction_downcast_to_HandleExprNamedFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From Expr_GeneralRelation.hxx
@@ -3675,6 +5769,16 @@ impl GeneralRelation {
         unsafe { crate::ffi::Expr_GeneralRelation_contains(self as *const Self, exp) }
     }
 
+    /// **Source:** `Expr_GeneralRelation.hxx`:74 - `Expr_GeneralRelation::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>.
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_GeneralRelation_replace(self as *mut Self, var, with) }
+    }
+
     /// **Source:** `Expr_GeneralRelation.hxx`:78 - `Expr_GeneralRelation::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -3721,14 +5825,145 @@ impl HandleExprGeneralRelation {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_GeneralRelation {
         unsafe { &mut *(crate::ffi::HandleExprGeneralRelation_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for GeneralRelation (1 total) ──
-// SKIPPED: **Source:** `Expr_GeneralRelation.hxx`:74 - `Expr_GeneralRelation::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+    /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_Different>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Different` (or subclass).
+    pub fn downcast_to_different(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprDifferent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralRelation_downcast_to_HandleExprDifferent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_Equal>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Equal` (or subclass).
+    pub fn downcast_to_equal(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprEqual>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralRelation_downcast_to_HandleExprEqual(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_GreaterThan>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_GreaterThan` (or subclass).
+    pub fn downcast_to_greater_than(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprGreaterThan>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralRelation_downcast_to_HandleExprGreaterThan(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_GreaterThanOrEqual>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_GreaterThanOrEqual` (or subclass).
+    pub fn downcast_to_greater_than_or_equal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprGreaterThanOrEqual>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralRelation_downcast_to_HandleExprGreaterThanOrEqual(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_LessThan>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_LessThan` (or subclass).
+    pub fn downcast_to_less_than(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprLessThan>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralRelation_downcast_to_HandleExprLessThan(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_LessThanOrEqual>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_LessThanOrEqual` (or subclass).
+    pub fn downcast_to_less_than_or_equal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprLessThanOrEqual>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralRelation_downcast_to_HandleExprLessThanOrEqual(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_SingleRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_SingleRelation` (or subclass).
+    pub fn downcast_to_single_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSingleRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralRelation_downcast_to_HandleExprSingleRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_SystemRelation>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_SystemRelation` (or subclass).
+    pub fn downcast_to_system_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSystemRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprGeneralRelation_downcast_to_HandleExprSystemRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From Expr_GreaterThan.hxx
@@ -3836,6 +6071,13 @@ impl GreaterThan {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGreaterThan> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_GreaterThan_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
     pub fn set_first_member(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_GreaterThan_inherited_SetFirstMember(self as *mut Self, exp) }
@@ -3895,6 +6137,57 @@ impl GreaterThan {
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_GreaterThan_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_GreaterThan_inherited_Replace(self as *mut Self, var, with) }
+    }
+}
+
+pub use crate::ffi::HandleExprGreaterThan;
+
+unsafe impl crate::CppDeletable for HandleExprGreaterThan {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprGreaterThan_destructor(ptr);
+    }
+}
+
+impl HandleExprGreaterThan {
+    /// Dereference this Handle to access the underlying Expr_GreaterThan
+    pub fn get(&self) -> &crate::ffi::Expr_GreaterThan {
+        unsafe { &*(crate::ffi::HandleExprGreaterThan_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_GreaterThan
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_GreaterThan {
+        unsafe { &mut *(crate::ffi::HandleExprGreaterThan_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_GreaterThan> to Handle<Expr_SingleRelation>
+    pub fn to_handle_single_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprSingleRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprGreaterThan_to_HandleExprSingleRelation(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_GreaterThan> to Handle<Expr_GeneralRelation>
+    pub fn to_handle_general_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprGreaterThan_to_HandleExprGeneralRelation(self as *const Self),
+            )
+        }
     }
 }
 
@@ -4018,6 +6311,15 @@ impl GreaterThanOrEqual {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGreaterThanOrEqual> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_GreaterThanOrEqual_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
     pub fn set_first_member(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe {
@@ -4085,6 +6387,63 @@ impl GreaterThanOrEqual {
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_GreaterThanOrEqual_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe {
+            crate::ffi::Expr_GreaterThanOrEqual_inherited_Replace(self as *mut Self, var, with)
+        }
+    }
+}
+
+pub use crate::ffi::HandleExprGreaterThanOrEqual;
+
+unsafe impl crate::CppDeletable for HandleExprGreaterThanOrEqual {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprGreaterThanOrEqual_destructor(ptr);
+    }
+}
+
+impl HandleExprGreaterThanOrEqual {
+    /// Dereference this Handle to access the underlying Expr_GreaterThanOrEqual
+    pub fn get(&self) -> &crate::ffi::Expr_GreaterThanOrEqual {
+        unsafe { &*(crate::ffi::HandleExprGreaterThanOrEqual_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_GreaterThanOrEqual
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_GreaterThanOrEqual {
+        unsafe { &mut *(crate::ffi::HandleExprGreaterThanOrEqual_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_GreaterThanOrEqual> to Handle<Expr_SingleRelation>
+    pub fn to_handle_single_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprSingleRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprGreaterThanOrEqual_to_HandleExprSingleRelation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_GreaterThanOrEqual> to Handle<Expr_GeneralRelation>
+    pub fn to_handle_general_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprGreaterThanOrEqual_to_HandleExprGeneralRelation(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -4467,6 +6826,13 @@ impl LessThan {
         unsafe { &mut *(crate::ffi::Expr_LessThan_as_Expr_GeneralRelation_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprLessThan> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_LessThan_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
     pub fn set_first_member(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_LessThan_inherited_SetFirstMember(self as *mut Self, exp) }
@@ -4526,6 +6892,57 @@ impl LessThan {
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_LessThan_inherited_Contains(self as *const Self, exp) }
+    }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_LessThan_inherited_Replace(self as *mut Self, var, with) }
+    }
+}
+
+pub use crate::ffi::HandleExprLessThan;
+
+unsafe impl crate::CppDeletable for HandleExprLessThan {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprLessThan_destructor(ptr);
+    }
+}
+
+impl HandleExprLessThan {
+    /// Dereference this Handle to access the underlying Expr_LessThan
+    pub fn get(&self) -> &crate::ffi::Expr_LessThan {
+        unsafe { &*(crate::ffi::HandleExprLessThan_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_LessThan
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_LessThan {
+        unsafe { &mut *(crate::ffi::HandleExprLessThan_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_LessThan> to Handle<Expr_SingleRelation>
+    pub fn to_handle_single_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprSingleRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprLessThan_to_HandleExprSingleRelation(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_LessThan> to Handle<Expr_GeneralRelation>
+    pub fn to_handle_general_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprLessThan_to_HandleExprGeneralRelation(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -4639,6 +7056,15 @@ impl LessThanOrEqual {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprLessThanOrEqual> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LessThanOrEqual_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
     pub fn set_first_member(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
         unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_SetFirstMember(self as *mut Self, exp) }
@@ -4703,6 +7129,61 @@ impl LessThanOrEqual {
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_Contains(self as *const Self, exp) }
     }
+
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_LessThanOrEqual_inherited_Replace(self as *mut Self, var, with) }
+    }
+}
+
+pub use crate::ffi::HandleExprLessThanOrEqual;
+
+unsafe impl crate::CppDeletable for HandleExprLessThanOrEqual {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprLessThanOrEqual_destructor(ptr);
+    }
+}
+
+impl HandleExprLessThanOrEqual {
+    /// Dereference this Handle to access the underlying Expr_LessThanOrEqual
+    pub fn get(&self) -> &crate::ffi::Expr_LessThanOrEqual {
+        unsafe { &*(crate::ffi::HandleExprLessThanOrEqual_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_LessThanOrEqual
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_LessThanOrEqual {
+        unsafe { &mut *(crate::ffi::HandleExprLessThanOrEqual_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_LessThanOrEqual> to Handle<Expr_SingleRelation>
+    pub fn to_handle_single_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprSingleRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprLessThanOrEqual_to_HandleExprSingleRelation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_LessThanOrEqual> to Handle<Expr_GeneralRelation>
+    pub fn to_handle_general_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprLessThanOrEqual_to_HandleExprGeneralRelation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
 }
 
 // ========================
@@ -4759,6 +7240,17 @@ impl LogOf10 {
     /// **Source:** `Expr_LogOf10.hxx`:53 - `Expr_LogOf10::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_LogOf10_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_LogOf10.hxx`:56 - `Expr_LogOf10::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOf10_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_LogOf10.hxx`:63 - `Expr_LogOf10::Evaluate()`
@@ -4819,6 +7311,11 @@ impl LogOf10 {
         unsafe { &mut *(crate::ffi::Expr_LogOf10_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprLogOf10> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOf10_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_LogOf10_inherited_Operand(self as *const Self)) }
@@ -4849,6 +7346,15 @@ impl LogOf10 {
         unsafe { crate::ffi::Expr_LogOf10_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_LogOf10_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -4863,18 +7369,68 @@ impl LogOf10 {
         unsafe { crate::ffi::Expr_LogOf10_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOf10_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_LogOf10_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for LogOf10 (1 total) ──
-// SKIPPED: **Source:** `Expr_LogOf10.hxx`:56 - `Expr_LogOf10::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprLogOf10;
+
+unsafe impl crate::CppDeletable for HandleExprLogOf10 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprLogOf10_destructor(ptr);
+    }
+}
+
+impl HandleExprLogOf10 {
+    /// Dereference this Handle to access the underlying Expr_LogOf10
+    pub fn get(&self) -> &crate::ffi::Expr_LogOf10 {
+        unsafe { &*(crate::ffi::HandleExprLogOf10_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_LogOf10
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_LogOf10 {
+        unsafe { &mut *(crate::ffi::HandleExprLogOf10_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_LogOf10> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprLogOf10_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_LogOf10> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprLogOf10_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_LogOfe.hxx
@@ -4928,6 +7484,17 @@ impl LogOfe {
     /// **Source:** `Expr_LogOfe.hxx`:53 - `Expr_LogOfe::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_LogOfe_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_LogOfe.hxx`:56 - `Expr_LogOfe::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOfe_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_LogOfe.hxx`:63 - `Expr_LogOfe::Evaluate()`
@@ -4988,6 +7555,11 @@ impl LogOfe {
         unsafe { &mut *(crate::ffi::Expr_LogOfe_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprLogOfe> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOfe_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_LogOfe_inherited_Operand(self as *const Self)) }
@@ -5018,6 +7590,15 @@ impl LogOfe {
         unsafe { crate::ffi::Expr_LogOfe_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_LogOfe_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -5032,18 +7613,68 @@ impl LogOfe {
         unsafe { crate::ffi::Expr_LogOfe_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_LogOfe_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_LogOfe_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for LogOfe (1 total) ──
-// SKIPPED: **Source:** `Expr_LogOfe.hxx`:56 - `Expr_LogOfe::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprLogOfe;
+
+unsafe impl crate::CppDeletable for HandleExprLogOfe {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprLogOfe_destructor(ptr);
+    }
+}
+
+impl HandleExprLogOfe {
+    /// Dereference this Handle to access the underlying Expr_LogOfe
+    pub fn get(&self) -> &crate::ffi::Expr_LogOfe {
+        unsafe { &*(crate::ffi::HandleExprLogOfe_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_LogOfe
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_LogOfe {
+        unsafe { &mut *(crate::ffi::HandleExprLogOfe_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_LogOfe> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprLogOfe_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_LogOfe> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprLogOfe_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_NamedConstant.hxx
@@ -5142,6 +7773,47 @@ impl NamedConstant {
         unsafe { crate::ffi::Expr_NamedConstant_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_NamedConstant.hxx`:78 - `Expr_NamedConstant::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedConstant_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_NamedConstant.hxx`:83 - `Expr_NamedConstant::NDerivative()`
+    /// Returns the <N>-th derivative on <X> unknown of <me>.
+    /// Raises OutOfRange if <N> <= 0
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedConstant_n_derivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_NamedConstant.hxx`:88 - `Expr_NamedConstant::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_NamedConstant_replace(self as *mut Self, var, with) }
+    }
+
     /// **Source:** `Expr_NamedConstant.hxx`:93 - `Expr_NamedConstant::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -5196,6 +7868,15 @@ impl NamedConstant {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedConstant> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedConstant_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:36 - `Expr_NamedExpression::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Expr_NamedConstant_inherited_GetName(self as *const Self)) }
@@ -5231,23 +7912,51 @@ impl NamedConstant {
     }
 }
 
-// ── Skipped symbols for NamedConstant (3 total) ──
-// SKIPPED: **Source:** `Expr_NamedConstant.hxx`:78 - `Expr_NamedConstant::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_NamedConstant.hxx`:83 - `Expr_NamedConstant::NDerivative`
-//   method: Returns the <N>-th derivative on <X> unknown of <me>.
-//   method: Raises OutOfRange if <N> <= 0
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_NamedConstant.hxx`:88 - `Expr_NamedConstant::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+pub use crate::ffi::HandleExprNamedConstant;
+
+unsafe impl crate::CppDeletable for HandleExprNamedConstant {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprNamedConstant_destructor(ptr);
+    }
+}
+
+impl HandleExprNamedConstant {
+    /// Dereference this Handle to access the underlying Expr_NamedConstant
+    pub fn get(&self) -> &crate::ffi::Expr_NamedConstant {
+        unsafe { &*(crate::ffi::HandleExprNamedConstant_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_NamedConstant
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_NamedConstant {
+        unsafe { &mut *(crate::ffi::HandleExprNamedConstant_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_NamedConstant> to Handle<Expr_NamedExpression>
+    pub fn to_handle_named_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprNamedConstant_to_HandleExprNamedExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_NamedConstant> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprNamedConstant_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_NamedExpression.hxx
@@ -5390,6 +8099,43 @@ impl NamedExpression {
         unsafe { crate::ffi::Expr_NamedExpression_inherited_IsLinear(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedExpression_inherited_Derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedExpression_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:98 - `Expr_GeneralExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_NamedExpression_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
     pub fn evaluate(
         &self,
@@ -5404,6 +8150,75 @@ impl NamedExpression {
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_NamedExpression_inherited_EvaluateNumeric(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleExprNamedExpression;
+
+unsafe impl crate::CppDeletable for HandleExprNamedExpression {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprNamedExpression_destructor(ptr);
+    }
+}
+
+impl HandleExprNamedExpression {
+    /// Dereference this Handle to access the underlying Expr_NamedExpression
+    pub fn get(&self) -> &crate::ffi::Expr_NamedExpression {
+        unsafe { &*(crate::ffi::HandleExprNamedExpression_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_NamedExpression
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_NamedExpression {
+        unsafe { &mut *(crate::ffi::HandleExprNamedExpression_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_NamedExpression> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprNamedExpression_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<Expr_NamedExpression> to Handle<Expr_NamedConstant>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_NamedConstant` (or subclass).
+    pub fn downcast_to_named_constant(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprNamedConstant>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprNamedExpression_downcast_to_HandleExprNamedConstant(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_NamedExpression> to Handle<Expr_NamedUnknown>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_NamedUnknown` (or subclass).
+    pub fn downcast_to_named_unknown(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprNamedExpression_downcast_to_HandleExprNamedUnknown(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -5454,6 +8269,19 @@ impl NamedFunction {
         unsafe { crate::ffi::Expr_NamedFunction_nb_of_variables(self as *const Self) }
     }
 
+    /// **Source:** `Expr_NamedFunction.hxx`:56 - `Expr_NamedFunction::Variable()`
+    /// Returns the variable denoted by <index> in <me>.
+    /// Raises OutOfRange if <index> is greater than
+    /// NbOfVariables of <me>, or less than or equal to zero.
+    pub fn variable(&self, index: i32) -> crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedFunction_variable(
+                self as *const Self,
+                index,
+            ))
+        }
+    }
+
     /// **Source:** `Expr_NamedFunction.hxx`:63 - `Expr_NamedFunction::Evaluate()`
     /// Computes the value of <me> with the given variables.
     /// Raises DimensionMismatch if Length(vars) is different from
@@ -5471,6 +8299,41 @@ impl NamedFunction {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedFunction_copy(self as *const Self))
+        }
+    }
+
+    /// **Source:** `Expr_NamedFunction.hxx`:70 - `Expr_NamedFunction::Derivative()`
+    /// Returns Derivative of <me> for variable <var>.
+    pub fn derivative_handleexprnamedunknown(
+        &self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Expr_NamedFunction_derivative_handleexprnamedunknown(
+                    self as *const Self,
+                    var,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Expr_NamedFunction.hxx`:75 - `Expr_NamedFunction::Derivative()`
+    /// Returns Derivative of <me> for variable <var> with
+    /// degree <deg>.
+    pub fn derivative_handleexprnamedunknown_int(
+        &self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        deg: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Expr_NamedFunction_derivative_handleexprnamedunknown_int(
+                    self as *const Self,
+                    var,
+                    deg,
+                ),
+            )
         }
     }
 
@@ -5543,27 +8406,49 @@ impl NamedFunction {
             &mut *(crate::ffi::Expr_NamedFunction_as_Expr_GeneralFunction_mut(self as *mut Self))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedFunction_to_handle(obj.into_raw()))
+        }
+    }
 }
 
-// ── Skipped symbols for NamedFunction (3 total) ──
-// SKIPPED: **Source:** `Expr_NamedFunction.hxx`:56 - `Expr_NamedFunction::Variable`
-//   method: Returns the variable denoted by <index> in <me>.
-//   method: Raises OutOfRange if <index> is greater than
-//   method: NbOfVariables of <me>, or less than or equal to zero.
-//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
-//   // pub fn variable(&self, index: i32) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
-//
-// SKIPPED: **Source:** `Expr_NamedFunction.hxx`:70 - `Expr_NamedFunction::Derivative`
-//   method: Returns Derivative of <me> for variable <var>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, var: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
-//
-// SKIPPED: **Source:** `Expr_NamedFunction.hxx`:75 - `Expr_NamedFunction::Derivative`
-//   method: Returns Derivative of <me> for variable <var> with
-//   method: degree <deg>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, var: &HandleNamedUnknown, deg: i32) -> OwnedPtr<Handle<Expr_GeneralFunction>>;
-//
+pub use crate::ffi::HandleExprNamedFunction;
+
+unsafe impl crate::CppDeletable for HandleExprNamedFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprNamedFunction_destructor(ptr);
+    }
+}
+
+impl HandleExprNamedFunction {
+    /// Dereference this Handle to access the underlying Expr_NamedFunction
+    pub fn get(&self) -> &crate::ffi::Expr_NamedFunction {
+        unsafe { &*(crate::ffi::HandleExprNamedFunction_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_NamedFunction
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_NamedFunction {
+        unsafe { &mut *(crate::ffi::HandleExprNamedFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_NamedFunction> to Handle<Expr_GeneralFunction>
+    pub fn to_handle_general_function(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprNamedFunction_to_HandleExprGeneralFunction(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_NamedUnknown.hxx
@@ -5672,6 +8557,31 @@ impl NamedUnknown {
         unsafe { crate::ffi::Expr_NamedUnknown_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_NamedUnknown.hxx`:86 - `Expr_NamedUnknown::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedUnknown_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_NamedUnknown.hxx`:91 - `Expr_NamedUnknown::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>
+    /// Raises InvalidOperand if <with> contains <me>.
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_NamedUnknown_replace(self as *mut Self, var, with) }
+    }
+
     /// **Source:** `Expr_NamedUnknown.hxx`:98 - `Expr_NamedUnknown::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -5728,6 +8638,15 @@ impl NamedUnknown {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedUnknown_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_NamedExpression.hxx`:36 - `Expr_NamedExpression::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Expr_NamedUnknown_inherited_GetName(self as *const Self)) }
@@ -5757,24 +8676,72 @@ impl NamedUnknown {
         }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NamedUnknown_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_NamedUnknown_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for NamedUnknown (2 total) ──
-// SKIPPED: **Source:** `Expr_NamedUnknown.hxx`:86 - `Expr_NamedUnknown::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_NamedUnknown.hxx`:91 - `Expr_NamedUnknown::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>
-//   method: Raises InvalidOperand if <with> contains <me>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+pub use crate::ffi::HandleExprNamedUnknown;
+
+unsafe impl crate::CppDeletable for HandleExprNamedUnknown {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprNamedUnknown_destructor(ptr);
+    }
+}
+
+impl HandleExprNamedUnknown {
+    /// Dereference this Handle to access the underlying Expr_NamedUnknown
+    pub fn get(&self) -> &crate::ffi::Expr_NamedUnknown {
+        unsafe { &*(crate::ffi::HandleExprNamedUnknown_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_NamedUnknown
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_NamedUnknown {
+        unsafe { &mut *(crate::ffi::HandleExprNamedUnknown_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_NamedUnknown> to Handle<Expr_NamedExpression>
+    pub fn to_handle_named_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprNamedUnknown_to_HandleExprNamedExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_NamedUnknown> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprNamedUnknown_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_NotAssigned.hxx
@@ -6057,6 +9024,47 @@ impl NumericValue {
         unsafe { crate::ffi::Expr_NumericValue_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_NumericValue.hxx`:82 - `Expr_NumericValue::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NumericValue_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_NumericValue.hxx`:87 - `Expr_NumericValue::NDerivative()`
+    /// Returns the <N>-th derivative on <X> unknown of <me>.
+    /// Raises OutOfRange if <N> <= 0
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NumericValue_n_derivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_NumericValue.hxx`:92 - `Expr_NumericValue::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_NumericValue_replace(self as *mut Self, var, with) }
+    }
+
     /// **Source:** `Expr_NumericValue.hxx`:97 - `Expr_NumericValue::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -6107,6 +9115,15 @@ impl NumericValue {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprNumericValue> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_NumericValue_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
     pub fn is_shareable(&self) -> bool {
         unsafe { crate::ffi::Expr_NumericValue_inherited_IsShareable(self as *const Self) }
@@ -6118,23 +9135,38 @@ impl NumericValue {
     }
 }
 
-// ── Skipped symbols for NumericValue (3 total) ──
-// SKIPPED: **Source:** `Expr_NumericValue.hxx`:82 - `Expr_NumericValue::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_NumericValue.hxx`:87 - `Expr_NumericValue::NDerivative`
-//   method: Returns the <N>-th derivative on <X> unknown of <me>.
-//   method: Raises OutOfRange if <N> <= 0
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_NumericValue.hxx`:92 - `Expr_NumericValue::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+pub use crate::ffi::HandleExprNumericValue;
+
+unsafe impl crate::CppDeletable for HandleExprNumericValue {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprNumericValue_destructor(ptr);
+    }
+}
+
+impl HandleExprNumericValue {
+    /// Dereference this Handle to access the underlying Expr_NumericValue
+    pub fn get(&self) -> &crate::ffi::Expr_NumericValue {
+        unsafe { &*(crate::ffi::HandleExprNumericValue_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_NumericValue
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_NumericValue {
+        unsafe { &mut *(crate::ffi::HandleExprNumericValue_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_NumericValue> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprNumericValue_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_PolyExpression.hxx
@@ -6195,6 +9227,17 @@ impl PolyExpression {
     /// Tests if <exp> is contained in <me>.
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_PolyExpression_contains(self as *const Self, exp) }
+    }
+
+    /// **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>
+    /// Raises InvalidOperand if <with> contains <me>.
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_PolyExpression_replace(self as *mut Self, var, with) }
     }
 
     /// **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
@@ -6275,6 +9318,34 @@ impl PolyExpression {
         unsafe { crate::ffi::Expr_PolyExpression_inherited_IsIdentical(self as *const Self, Other) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyExpression_inherited_Derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyExpression_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
     pub fn evaluate(
         &self,
@@ -6301,13 +9372,84 @@ impl PolyExpression {
     }
 }
 
-// ── Skipped symbols for PolyExpression (1 total) ──
-// SKIPPED: **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>
-//   method: Raises InvalidOperand if <with> contains <me>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+pub use crate::ffi::HandleExprPolyExpression;
+
+unsafe impl crate::CppDeletable for HandleExprPolyExpression {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprPolyExpression_destructor(ptr);
+    }
+}
+
+impl HandleExprPolyExpression {
+    /// Dereference this Handle to access the underlying Expr_PolyExpression
+    pub fn get(&self) -> &crate::ffi::Expr_PolyExpression {
+        unsafe { &*(crate::ffi::HandleExprPolyExpression_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_PolyExpression
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_PolyExpression {
+        unsafe { &mut *(crate::ffi::HandleExprPolyExpression_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_PolyExpression> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprPolyExpression_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<Expr_PolyExpression> to Handle<Expr_PolyFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_PolyFunction` (or subclass).
+    pub fn downcast_to_poly_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprPolyFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprPolyExpression_downcast_to_HandleExprPolyFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_PolyExpression> to Handle<Expr_Product>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Product` (or subclass).
+    pub fn downcast_to_product(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprProduct>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprPolyExpression_downcast_to_HandleExprProduct(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_PolyExpression> to Handle<Expr_Sum>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Sum` (or subclass).
+    pub fn downcast_to_sum(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprPolyExpression_downcast_to_HandleExprSum(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From Expr_PolyFunction.hxx
@@ -6376,6 +9518,20 @@ impl PolyFunction {
         unsafe { crate::ffi::Expr_PolyFunction_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_PolyFunction.hxx`:64 - `Expr_PolyFunction::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyFunction_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
     /// **Source:** `Expr_PolyFunction.hxx`:71 - `Expr_PolyFunction::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -6440,6 +9596,15 @@ impl PolyFunction {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprPolyFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyFunction_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
     pub fn nb_operands(&self) -> i32 {
         unsafe { crate::ffi::Expr_PolyFunction_inherited_NbOperands(self as *const Self) }
@@ -6475,6 +9640,15 @@ impl PolyFunction {
         unsafe { crate::ffi::Expr_PolyFunction_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_PolyFunction_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -6489,18 +9663,70 @@ impl PolyFunction {
         unsafe { crate::ffi::Expr_PolyFunction_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_PolyFunction_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_PolyFunction_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for PolyFunction (1 total) ──
-// SKIPPED: **Source:** `Expr_PolyFunction.hxx`:64 - `Expr_PolyFunction::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprPolyFunction;
+
+unsafe impl crate::CppDeletable for HandleExprPolyFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprPolyFunction_destructor(ptr);
+    }
+}
+
+impl HandleExprPolyFunction {
+    /// Dereference this Handle to access the underlying Expr_PolyFunction
+    pub fn get(&self) -> &crate::ffi::Expr_PolyFunction {
+        unsafe { &*(crate::ffi::HandleExprPolyFunction_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_PolyFunction
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_PolyFunction {
+        unsafe { &mut *(crate::ffi::HandleExprPolyFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_PolyFunction> to Handle<Expr_PolyExpression>
+    pub fn to_handle_poly_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprPolyExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprPolyFunction_to_HandleExprPolyExpression(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_PolyFunction> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprPolyFunction_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_Product.hxx
@@ -6571,6 +9797,17 @@ impl Product {
         unsafe { crate::ffi::Expr_Product_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Product.hxx`:61 - `Expr_Product::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Product_derivative(self as *const Self, X))
+        }
+    }
+
     /// **Source:** `Expr_Product.hxx`:68 - `Expr_Product::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -6629,6 +9866,11 @@ impl Product {
         unsafe { &mut *(crate::ffi::Expr_Product_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprProduct> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Product_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
     pub fn nb_operands(&self) -> i32 {
         unsafe { crate::ffi::Expr_Product_inherited_NbOperands(self as *const Self) }
@@ -6664,6 +9906,15 @@ impl Product {
         unsafe { crate::ffi::Expr_Product_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Product_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -6678,18 +9929,68 @@ impl Product {
         unsafe { crate::ffi::Expr_Product_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Product_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Product_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Product (1 total) ──
-// SKIPPED: **Source:** `Expr_Product.hxx`:61 - `Expr_Product::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprProduct;
+
+unsafe impl crate::CppDeletable for HandleExprProduct {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprProduct_destructor(ptr);
+    }
+}
+
+impl HandleExprProduct {
+    /// Dereference this Handle to access the underlying Expr_Product
+    pub fn get(&self) -> &crate::ffi::Expr_Product {
+        unsafe { &*(crate::ffi::HandleExprProduct_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Product
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Product {
+        unsafe { &mut *(crate::ffi::HandleExprProduct_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Product> to Handle<Expr_PolyExpression>
+    pub fn to_handle_poly_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprPolyExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprProduct_to_HandleExprPolyExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Product> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprProduct_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_RUIterator.hxx
@@ -6729,15 +10030,14 @@ impl RUIterator {
     pub fn next(&mut self) {
         unsafe { crate::ffi::Expr_RUIterator_next(self as *mut Self) }
     }
-}
 
-// ── Skipped symbols for RUIterator (1 total) ──
-// SKIPPED: **Source:** `Expr_RUIterator.hxx`:46 - `Expr_RUIterator::Value`
-//   method: Returns current NamedUnknown.
-//   method: Raises exception if no more unknowns remain.
-//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
-//   // pub fn value(&self) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
-//
+    /// **Source:** `Expr_RUIterator.hxx`:46 - `Expr_RUIterator::Value()`
+    /// Returns current NamedUnknown.
+    /// Raises exception if no more unknowns remain.
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_RUIterator_value(self as *const Self)) }
+    }
+}
 
 // ========================
 // From Expr_RelationIterator.hxx
@@ -6776,15 +10076,16 @@ impl RelationIterator {
     pub fn next(&mut self) {
         unsafe { crate::ffi::Expr_RelationIterator_next(self as *mut Self) }
     }
-}
 
-// ── Skipped symbols for RelationIterator (1 total) ──
-// SKIPPED: **Source:** `Expr_RelationIterator.hxx`:46 - `Expr_RelationIterator::Value`
-//   method: Returns current basic relation.
-//   method: Exception is raised if no more relation remains.
-//   Reason: return type 'Handle(Expr_SingleRelation)' is unknown
-//   // pub fn value(&self) -> OwnedPtr<Handle<Expr_SingleRelation>>;
-//
+    /// **Source:** `Expr_RelationIterator.hxx`:46 - `Expr_RelationIterator::Value()`
+    /// Returns current basic relation.
+    /// Exception is raised if no more relation remains.
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleExprSingleRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_RelationIterator_value(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From Expr_Sign.hxx
@@ -6836,6 +10137,17 @@ impl Sign {
     /// **Source:** `Expr_Sign.hxx`:53 - `Expr_Sign::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Sign_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Sign.hxx`:56 - `Expr_Sign::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sign_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Sign.hxx`:63 - `Expr_Sign::Evaluate()`
@@ -6896,6 +10208,11 @@ impl Sign {
         unsafe { &mut *(crate::ffi::Expr_Sign_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprSign> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Sign_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Sign_inherited_Operand(self as *const Self)) }
@@ -6926,6 +10243,15 @@ impl Sign {
         unsafe { crate::ffi::Expr_Sign_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Sign_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -6940,18 +10266,68 @@ impl Sign {
         unsafe { crate::ffi::Expr_Sign_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sign_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Sign_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Sign (1 total) ──
-// SKIPPED: **Source:** `Expr_Sign.hxx`:56 - `Expr_Sign::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprSign;
+
+unsafe impl crate::CppDeletable for HandleExprSign {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprSign_destructor(ptr);
+    }
+}
+
+impl HandleExprSign {
+    /// Dereference this Handle to access the underlying Expr_Sign
+    pub fn get(&self) -> &crate::ffi::Expr_Sign {
+        unsafe { &*(crate::ffi::HandleExprSign_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Sign
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Sign {
+        unsafe { &mut *(crate::ffi::HandleExprSign_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Sign> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSign_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Sign> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSign_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_Sine.hxx
@@ -7003,6 +10379,17 @@ impl Sine {
     /// **Source:** `Expr_Sine.hxx`:53 - `Expr_Sine::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Sine_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Sine.hxx`:56 - `Expr_Sine::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sine_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Sine.hxx`:63 - `Expr_Sine::Evaluate()`
@@ -7063,6 +10450,11 @@ impl Sine {
         unsafe { &mut *(crate::ffi::Expr_Sine_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprSine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Sine_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Sine_inherited_Operand(self as *const Self)) }
@@ -7093,6 +10485,15 @@ impl Sine {
         unsafe { crate::ffi::Expr_Sine_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Sine_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -7107,18 +10508,68 @@ impl Sine {
         unsafe { crate::ffi::Expr_Sine_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sine_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Sine_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Sine (1 total) ──
-// SKIPPED: **Source:** `Expr_Sine.hxx`:56 - `Expr_Sine::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprSine;
+
+unsafe impl crate::CppDeletable for HandleExprSine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprSine_destructor(ptr);
+    }
+}
+
+impl HandleExprSine {
+    /// Dereference this Handle to access the underlying Expr_Sine
+    pub fn get(&self) -> &crate::ffi::Expr_Sine {
+        unsafe { &*(crate::ffi::HandleExprSine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Sine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Sine {
+        unsafe { &mut *(crate::ffi::HandleExprSine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Sine> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSine_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Sine> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSine_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_SingleRelation.hxx
@@ -7206,6 +10657,16 @@ impl SingleRelation {
         unsafe { crate::ffi::Expr_SingleRelation_contains(self as *const Self, exp) }
     }
 
+    /// **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>.
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_SingleRelation_replace(self as *mut Self, var, with) }
+    }
+
     /// **Source:** `Expr_SingleRelation.hxx`:70 - `Expr_SingleRelation::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Expr_SingleRelation_dynamic_type(self as *const Self)) }
@@ -7275,12 +10736,138 @@ impl SingleRelation {
     }
 }
 
-// ── Skipped symbols for SingleRelation (1 total) ──
-// SKIPPED: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+pub use crate::ffi::HandleExprSingleRelation;
+
+unsafe impl crate::CppDeletable for HandleExprSingleRelation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprSingleRelation_destructor(ptr);
+    }
+}
+
+impl HandleExprSingleRelation {
+    /// Dereference this Handle to access the underlying Expr_SingleRelation
+    pub fn get(&self) -> &crate::ffi::Expr_SingleRelation {
+        unsafe { &*(crate::ffi::HandleExprSingleRelation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_SingleRelation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_SingleRelation {
+        unsafe { &mut *(crate::ffi::HandleExprSingleRelation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_SingleRelation> to Handle<Expr_GeneralRelation>
+    pub fn to_handle_general_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprSingleRelation_to_HandleExprGeneralRelation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_Different>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Different` (or subclass).
+    pub fn downcast_to_different(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprDifferent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprSingleRelation_downcast_to_HandleExprDifferent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_Equal>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Equal` (or subclass).
+    pub fn downcast_to_equal(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprEqual>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprSingleRelation_downcast_to_HandleExprEqual(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_GreaterThan>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_GreaterThan` (or subclass).
+    pub fn downcast_to_greater_than(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprGreaterThan>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprSingleRelation_downcast_to_HandleExprGreaterThan(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_GreaterThanOrEqual>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_GreaterThanOrEqual` (or subclass).
+    pub fn downcast_to_greater_than_or_equal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprGreaterThanOrEqual>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprSingleRelation_downcast_to_HandleExprGreaterThanOrEqual(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_LessThan>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_LessThan` (or subclass).
+    pub fn downcast_to_less_than(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprLessThan>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprSingleRelation_downcast_to_HandleExprLessThan(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_LessThanOrEqual>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_LessThanOrEqual` (or subclass).
+    pub fn downcast_to_less_than_or_equal(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprLessThanOrEqual>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprSingleRelation_downcast_to_HandleExprLessThanOrEqual(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From Expr_Sinh.hxx
@@ -7332,6 +10919,17 @@ impl Sinh {
     /// **Source:** `Expr_Sinh.hxx`:53 - `Expr_Sinh::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Sinh_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Sinh.hxx`:56 - `Expr_Sinh::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sinh_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Sinh.hxx`:63 - `Expr_Sinh::Evaluate()`
@@ -7392,6 +10990,11 @@ impl Sinh {
         unsafe { &mut *(crate::ffi::Expr_Sinh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprSinh> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Sinh_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Sinh_inherited_Operand(self as *const Self)) }
@@ -7422,6 +11025,15 @@ impl Sinh {
         unsafe { crate::ffi::Expr_Sinh_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Sinh_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -7436,18 +11048,68 @@ impl Sinh {
         unsafe { crate::ffi::Expr_Sinh_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sinh_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Sinh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Sinh (1 total) ──
-// SKIPPED: **Source:** `Expr_Sinh.hxx`:56 - `Expr_Sinh::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprSinh;
+
+unsafe impl crate::CppDeletable for HandleExprSinh {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprSinh_destructor(ptr);
+    }
+}
+
+impl HandleExprSinh {
+    /// Dereference this Handle to access the underlying Expr_Sinh
+    pub fn get(&self) -> &crate::ffi::Expr_Sinh {
+        unsafe { &*(crate::ffi::HandleExprSinh_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Sinh
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Sinh {
+        unsafe { &mut *(crate::ffi::HandleExprSinh_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Sinh> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSinh_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Sinh> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSinh_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_Square.hxx
@@ -7501,6 +11163,17 @@ impl Square {
     /// **Source:** `Expr_Square.hxx`:53 - `Expr_Square::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Square_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Square.hxx`:56 - `Expr_Square::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Square_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Square.hxx`:63 - `Expr_Square::Evaluate()`
@@ -7561,6 +11234,11 @@ impl Square {
         unsafe { &mut *(crate::ffi::Expr_Square_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprSquare> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Square_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Square_inherited_Operand(self as *const Self)) }
@@ -7591,6 +11269,15 @@ impl Square {
         unsafe { crate::ffi::Expr_Square_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Square_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -7605,18 +11292,68 @@ impl Square {
         unsafe { crate::ffi::Expr_Square_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Square_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Square_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Square (1 total) ──
-// SKIPPED: **Source:** `Expr_Square.hxx`:56 - `Expr_Square::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprSquare;
+
+unsafe impl crate::CppDeletable for HandleExprSquare {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprSquare_destructor(ptr);
+    }
+}
+
+impl HandleExprSquare {
+    /// Dereference this Handle to access the underlying Expr_Square
+    pub fn get(&self) -> &crate::ffi::Expr_Square {
+        unsafe { &*(crate::ffi::HandleExprSquare_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Square
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Square {
+        unsafe { &mut *(crate::ffi::HandleExprSquare_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Square> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSquare_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Square> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSquare_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_SquareRoot.hxx
@@ -7672,6 +11409,20 @@ impl SquareRoot {
     /// **Source:** `Expr_SquareRoot.hxx`:53 - `Expr_SquareRoot::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_SquareRoot_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_SquareRoot.hxx`:56 - `Expr_SquareRoot::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_SquareRoot_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
     }
 
     /// **Source:** `Expr_SquareRoot.hxx`:63 - `Expr_SquareRoot::Evaluate()`
@@ -7738,6 +11489,13 @@ impl SquareRoot {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprSquareRoot> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_SquareRoot_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_SquareRoot_inherited_Operand(self as *const Self)) }
@@ -7768,6 +11526,15 @@ impl SquareRoot {
         unsafe { crate::ffi::Expr_SquareRoot_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_SquareRoot_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -7782,18 +11549,70 @@ impl SquareRoot {
         unsafe { crate::ffi::Expr_SquareRoot_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_SquareRoot_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_SquareRoot_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for SquareRoot (1 total) ──
-// SKIPPED: **Source:** `Expr_SquareRoot.hxx`:56 - `Expr_SquareRoot::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprSquareRoot;
+
+unsafe impl crate::CppDeletable for HandleExprSquareRoot {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprSquareRoot_destructor(ptr);
+    }
+}
+
+impl HandleExprSquareRoot {
+    /// Dereference this Handle to access the underlying Expr_SquareRoot
+    pub fn get(&self) -> &crate::ffi::Expr_SquareRoot {
+        unsafe { &*(crate::ffi::HandleExprSquareRoot_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_SquareRoot
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_SquareRoot {
+        unsafe { &mut *(crate::ffi::HandleExprSquareRoot_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_SquareRoot> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprSquareRoot_to_HandleExprUnaryExpression(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_SquareRoot> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprSquareRoot_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_Sum.hxx
@@ -7860,6 +11679,30 @@ impl Sum {
         unsafe { crate::ffi::Expr_Sum_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_Sum.hxx`:62 - `Expr_Sum::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sum_derivative(self as *const Self, X))
+        }
+    }
+
+    /// **Source:** `Expr_Sum.hxx`:67 - `Expr_Sum::NDerivative()`
+    /// Returns the <N>-th derivative on <X> unknown of <me>.
+    /// Raises OutOfRange if <N> <= 0
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Sum_n_derivative(self as *const Self, X, N))
+        }
+    }
+
     /// **Source:** `Expr_Sum.hxx`:75 - `Expr_Sum::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -7918,6 +11761,11 @@ impl Sum {
         unsafe { &mut *(crate::ffi::Expr_Sum_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprSum> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Sum_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
     pub fn nb_operands(&self) -> i32 {
         unsafe { crate::ffi::Expr_Sum_inherited_NbOperands(self as *const Self) }
@@ -7953,6 +11801,15 @@ impl Sum {
         unsafe { crate::ffi::Expr_Sum_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Sum_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -7973,18 +11830,47 @@ impl Sum {
     }
 }
 
-// ── Skipped symbols for Sum (2 total) ──
-// SKIPPED: **Source:** `Expr_Sum.hxx`:62 - `Expr_Sum::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_Sum.hxx`:67 - `Expr_Sum::NDerivative`
-//   method: Returns the <N>-th derivative on <X> unknown of <me>.
-//   method: Raises OutOfRange if <N> <= 0
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprSum;
+
+unsafe impl crate::CppDeletable for HandleExprSum {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprSum_destructor(ptr);
+    }
+}
+
+impl HandleExprSum {
+    /// Dereference this Handle to access the underlying Expr_Sum
+    pub fn get(&self) -> &crate::ffi::Expr_Sum {
+        unsafe { &*(crate::ffi::HandleExprSum_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Sum
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Sum {
+        unsafe { &mut *(crate::ffi::HandleExprSum_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Sum> to Handle<Expr_PolyExpression>
+    pub fn to_handle_poly_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprPolyExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSum_to_HandleExprPolyExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Sum> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprSum_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_SystemRelation.hxx
@@ -8095,6 +11981,16 @@ impl SystemRelation {
         unsafe { crate::ffi::Expr_SystemRelation_contains(self as *const Self, exp) }
     }
 
+    /// **Source:** `Expr_SystemRelation.hxx`:79 - `Expr_SystemRelation::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>.
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_SystemRelation_replace(self as *mut Self, var, with) }
+    }
+
     /// **Source:** `Expr_SystemRelation.hxx`:83 - `Expr_SystemRelation::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -8133,14 +12029,49 @@ impl SystemRelation {
             &mut *(crate::ffi::Expr_SystemRelation_as_Expr_GeneralRelation_mut(self as *mut Self))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprSystemRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_SystemRelation_to_handle(obj.into_raw()))
+        }
+    }
 }
 
-// ── Skipped symbols for SystemRelation (1 total) ──
-// SKIPPED: **Source:** `Expr_SystemRelation.hxx`:79 - `Expr_SystemRelation::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+pub use crate::ffi::HandleExprSystemRelation;
+
+unsafe impl crate::CppDeletable for HandleExprSystemRelation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprSystemRelation_destructor(ptr);
+    }
+}
+
+impl HandleExprSystemRelation {
+    /// Dereference this Handle to access the underlying Expr_SystemRelation
+    pub fn get(&self) -> &crate::ffi::Expr_SystemRelation {
+        unsafe { &*(crate::ffi::HandleExprSystemRelation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_SystemRelation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_SystemRelation {
+        unsafe { &mut *(crate::ffi::HandleExprSystemRelation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_SystemRelation> to Handle<Expr_GeneralRelation>
+    pub fn to_handle_general_relation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprSystemRelation_to_HandleExprGeneralRelation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_Tangent.hxx
@@ -8196,6 +12127,17 @@ impl Tangent {
     /// **Source:** `Expr_Tangent.hxx`:53 - `Expr_Tangent::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Tangent_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Tangent.hxx`:56 - `Expr_Tangent::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Tangent_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Tangent.hxx`:63 - `Expr_Tangent::Evaluate()`
@@ -8256,6 +12198,11 @@ impl Tangent {
         unsafe { &mut *(crate::ffi::Expr_Tangent_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprTangent> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Tangent_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Tangent_inherited_Operand(self as *const Self)) }
@@ -8286,6 +12233,15 @@ impl Tangent {
         unsafe { crate::ffi::Expr_Tangent_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Tangent_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -8300,18 +12256,68 @@ impl Tangent {
         unsafe { crate::ffi::Expr_Tangent_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Tangent_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Tangent_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Tangent (1 total) ──
-// SKIPPED: **Source:** `Expr_Tangent.hxx`:56 - `Expr_Tangent::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprTangent;
+
+unsafe impl crate::CppDeletable for HandleExprTangent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprTangent_destructor(ptr);
+    }
+}
+
+impl HandleExprTangent {
+    /// Dereference this Handle to access the underlying Expr_Tangent
+    pub fn get(&self) -> &crate::ffi::Expr_Tangent {
+        unsafe { &*(crate::ffi::HandleExprTangent_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Tangent
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Tangent {
+        unsafe { &mut *(crate::ffi::HandleExprTangent_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Tangent> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprTangent_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Tangent> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprTangent_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_Tanh.hxx
@@ -8363,6 +12369,17 @@ impl Tanh {
     /// **Source:** `Expr_Tanh.hxx`:53 - `Expr_Tanh::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_Tanh_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_Tanh.hxx`:56 - `Expr_Tanh::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Tanh_derivative(self as *const Self, X))
+        }
     }
 
     /// **Source:** `Expr_Tanh.hxx`:63 - `Expr_Tanh::Evaluate()`
@@ -8423,6 +12440,11 @@ impl Tanh {
         unsafe { &mut *(crate::ffi::Expr_Tanh_as_Expr_GeneralExpression_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleExprTanh> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_Tanh_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_Tanh_inherited_Operand(self as *const Self)) }
@@ -8453,6 +12475,15 @@ impl Tanh {
         unsafe { crate::ffi::Expr_Tanh_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_Tanh_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -8467,18 +12498,68 @@ impl Tanh {
         unsafe { crate::ffi::Expr_Tanh_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_Tanh_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_Tanh_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for Tanh (1 total) ──
-// SKIPPED: **Source:** `Expr_Tanh.hxx`:56 - `Expr_Tanh::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprTanh;
+
+unsafe impl crate::CppDeletable for HandleExprTanh {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprTanh_destructor(ptr);
+    }
+}
+
+impl HandleExprTanh {
+    /// Dereference this Handle to access the underlying Expr_Tanh
+    pub fn get(&self) -> &crate::ffi::Expr_Tanh {
+        unsafe { &*(crate::ffi::HandleExprTanh_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_Tanh
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_Tanh {
+        unsafe { &mut *(crate::ffi::HandleExprTanh_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_Tanh> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprTanh_to_HandleExprUnaryExpression(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<Expr_Tanh> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleExprTanh_to_HandleExprGeneralExpression(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From Expr_UnaryExpression.hxx
@@ -8531,6 +12612,17 @@ impl UnaryExpression {
     /// Tests if <exp> is contained in <me>.
     pub fn contains(&self, exp: &crate::ffi::HandleExprGeneralExpression) -> bool {
         unsafe { crate::ffi::Expr_UnaryExpression_contains(self as *const Self, exp) }
+    }
+
+    /// **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Replaces all occurrences of <var> with <with> in <me>
+    /// Raises InvalidOperand if <with> contains <me>.
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_UnaryExpression_replace(self as *mut Self, var, with) }
     }
 
     /// **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
@@ -8615,6 +12707,34 @@ impl UnaryExpression {
         }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryExpression_inherited_Derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryExpression_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
     pub fn evaluate(
         &self,
@@ -8641,13 +12761,358 @@ impl UnaryExpression {
     }
 }
 
-// ── Skipped symbols for UnaryExpression (1 total) ──
-// SKIPPED: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace`
-//   method: Replaces all occurrences of <var> with <with> in <me>
-//   method: Raises InvalidOperand if <with> contains <me>.
-//   Reason: param 'var' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn replace(&mut self, var: &HandleNamedUnknown, with: &HandleGeneralExpression);
-//
+pub use crate::ffi::HandleExprUnaryExpression;
+
+unsafe impl crate::CppDeletable for HandleExprUnaryExpression {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprUnaryExpression_destructor(ptr);
+    }
+}
+
+impl HandleExprUnaryExpression {
+    /// Dereference this Handle to access the underlying Expr_UnaryExpression
+    pub fn get(&self) -> &crate::ffi::Expr_UnaryExpression {
+        unsafe { &*(crate::ffi::HandleExprUnaryExpression_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_UnaryExpression
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_UnaryExpression {
+        unsafe { &mut *(crate::ffi::HandleExprUnaryExpression_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_UnaryExpression> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprUnaryExpression_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Absolute>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Absolute` (or subclass).
+    pub fn downcast_to_absolute(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprAbsolute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprAbsolute(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArcCosine>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArcCosine` (or subclass).
+    pub fn downcast_to_arc_cosine(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArcCosine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprArcCosine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArcSine>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArcSine` (or subclass).
+    pub fn downcast_to_arc_sine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArcSine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprArcSine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArcTangent>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArcTangent` (or subclass).
+    pub fn downcast_to_arc_tangent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArcTangent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprArcTangent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArgCosh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArgCosh` (or subclass).
+    pub fn downcast_to_arg_cosh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArgCosh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprArgCosh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArgSinh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArgSinh` (or subclass).
+    pub fn downcast_to_arg_sinh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArgSinh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprArgSinh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArgTanh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_ArgTanh` (or subclass).
+    pub fn downcast_to_arg_tanh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprArgTanh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprArgTanh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Cosh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Cosh` (or subclass).
+    pub fn downcast_to_cosh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprCosh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprCosh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Cosine>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Cosine` (or subclass).
+    pub fn downcast_to_cosine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprCosine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprCosine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Exponential>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Exponential` (or subclass).
+    pub fn downcast_to_exponential(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprExponential>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprExponential(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_LogOf10>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_LogOf10` (or subclass).
+    pub fn downcast_to_log_of10(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprLogOf10>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprLogOf10(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_LogOfe>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_LogOfe` (or subclass).
+    pub fn downcast_to_log_ofe(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprLogOfe>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprLogOfe(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Sign>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Sign` (or subclass).
+    pub fn downcast_to_sign(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSign>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprSign(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Sine>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Sine` (or subclass).
+    pub fn downcast_to_sine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprSine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Sinh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Sinh` (or subclass).
+    pub fn downcast_to_sinh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSinh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprSinh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Square>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Square` (or subclass).
+    pub fn downcast_to_square(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSquare>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprSquare(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_SquareRoot>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_SquareRoot` (or subclass).
+    pub fn downcast_to_square_root(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprSquareRoot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprSquareRoot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Tangent>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Tangent` (or subclass).
+    pub fn downcast_to_tangent(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprTangent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprTangent(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Tanh>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_Tanh` (or subclass).
+    pub fn downcast_to_tanh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleExprTanh>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprTanh(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_UnaryFunction>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_UnaryFunction` (or subclass).
+    pub fn downcast_to_unary_function(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprUnaryFunction>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprUnaryFunction(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_UnaryMinus>
+    ///
+    /// Returns `None` if the handle does not point to a `Expr_UnaryMinus` (or subclass).
+    pub fn downcast_to_unary_minus(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprUnaryMinus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleExprUnaryExpression_downcast_to_HandleExprUnaryMinus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From Expr_UnaryFunction.hxx
@@ -8717,6 +13182,20 @@ impl UnaryFunction {
         unsafe { crate::ffi::Expr_UnaryFunction_is_linear(self as *const Self) }
     }
 
+    /// **Source:** `Expr_UnaryFunction.hxx`:64 - `Expr_UnaryFunction::Derivative()`
+    /// returns the derivative on <X> unknown of <me>.
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryFunction_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
     /// **Source:** `Expr_UnaryFunction.hxx`:71 - `Expr_UnaryFunction::Evaluate()`
     /// Returns the value of <me> (as a Real) by
     /// replacement of <vars> by <vals>.
@@ -8781,6 +13260,15 @@ impl UnaryFunction {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryFunction> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryFunction_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_UnaryFunction_inherited_Operand(self as *const Self)) }
@@ -8813,6 +13301,15 @@ impl UnaryFunction {
         unsafe { crate::ffi::Expr_UnaryFunction_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_UnaryFunction_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -8827,18 +13324,72 @@ impl UnaryFunction {
         unsafe { crate::ffi::Expr_UnaryFunction_inherited_IsShareable(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryFunction_inherited_NDerivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         unsafe { crate::ffi::Expr_UnaryFunction_inherited_EvaluateNumeric(self as *const Self) }
     }
 }
 
-// ── Skipped symbols for UnaryFunction (1 total) ──
-// SKIPPED: **Source:** `Expr_UnaryFunction.hxx`:64 - `Expr_UnaryFunction::Derivative`
-//   method: returns the derivative on <X> unknown of <me>.
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprUnaryFunction;
+
+unsafe impl crate::CppDeletable for HandleExprUnaryFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprUnaryFunction_destructor(ptr);
+    }
+}
+
+impl HandleExprUnaryFunction {
+    /// Dereference this Handle to access the underlying Expr_UnaryFunction
+    pub fn get(&self) -> &crate::ffi::Expr_UnaryFunction {
+        unsafe { &*(crate::ffi::HandleExprUnaryFunction_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_UnaryFunction
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_UnaryFunction {
+        unsafe { &mut *(crate::ffi::HandleExprUnaryFunction_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_UnaryFunction> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprUnaryFunction_to_HandleExprUnaryExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_UnaryFunction> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprUnaryFunction_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_UnaryMinus.hxx
@@ -8894,6 +13445,37 @@ impl UnaryMinus {
     /// **Source:** `Expr_UnaryMinus.hxx`:54 - `Expr_UnaryMinus::IsLinear()`
     pub fn is_linear(&self) -> bool {
         unsafe { crate::ffi::Expr_UnaryMinus_is_linear(self as *const Self) }
+    }
+
+    /// **Source:** `Expr_UnaryMinus.hxx`:57 - `Expr_UnaryMinus::Derivative()`
+    /// Returns the derivative on <X> unknown of <me>
+    pub fn derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryMinus_derivative(
+                self as *const Self,
+                X,
+            ))
+        }
+    }
+
+    /// **Source:** `Expr_UnaryMinus.hxx`:62 - `Expr_UnaryMinus::NDerivative()`
+    /// Returns the <N>-th derivative on <X> unknown of <me>.
+    /// Raises OutOfRange if <N> <= 0
+    pub fn n_derivative(
+        &self,
+        X: &crate::ffi::HandleExprNamedUnknown,
+        N: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryMinus_n_derivative(
+                self as *const Self,
+                X,
+                N,
+            ))
+        }
     }
 
     /// **Source:** `Expr_UnaryMinus.hxx`:70 - `Expr_UnaryMinus::Evaluate()`
@@ -8960,6 +13542,13 @@ impl UnaryMinus {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryMinus> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::Expr_UnaryMinus_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
     pub fn operand(&self) -> &crate::ffi::HandleExprGeneralExpression {
         unsafe { &*(crate::ffi::Expr_UnaryMinus_inherited_Operand(self as *const Self)) }
@@ -8990,6 +13579,15 @@ impl UnaryMinus {
         unsafe { crate::ffi::Expr_UnaryMinus_inherited_Contains(self as *const Self, exp) }
     }
 
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    pub fn replace(
+        &mut self,
+        var: &crate::ffi::HandleExprNamedUnknown,
+        with: &crate::ffi::HandleExprGeneralExpression,
+    ) {
+        unsafe { crate::ffi::Expr_UnaryMinus_inherited_Replace(self as *mut Self, var, with) }
+    }
+
     /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
     pub fn simplified(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
         unsafe {
@@ -9010,18 +13608,49 @@ impl UnaryMinus {
     }
 }
 
-// ── Skipped symbols for UnaryMinus (2 total) ──
-// SKIPPED: **Source:** `Expr_UnaryMinus.hxx`:57 - `Expr_UnaryMinus::Derivative`
-//   method: Returns the derivative on <X> unknown of <me>
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn derivative(&self, X: &HandleNamedUnknown) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
-// SKIPPED: **Source:** `Expr_UnaryMinus.hxx`:62 - `Expr_UnaryMinus::NDerivative`
-//   method: Returns the <N>-th derivative on <X> unknown of <me>.
-//   method: Raises OutOfRange if <N> <= 0
-//   Reason: param 'X' uses unknown type 'const Handle(Expr_NamedUnknown)&'
-//   // pub fn n_derivative(&self, X: &HandleNamedUnknown, N: i32) -> OwnedPtr<Handle<Expr_GeneralExpression>>;
-//
+pub use crate::ffi::HandleExprUnaryMinus;
+
+unsafe impl crate::CppDeletable for HandleExprUnaryMinus {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleExprUnaryMinus_destructor(ptr);
+    }
+}
+
+impl HandleExprUnaryMinus {
+    /// Dereference this Handle to access the underlying Expr_UnaryMinus
+    pub fn get(&self) -> &crate::ffi::Expr_UnaryMinus {
+        unsafe { &*(crate::ffi::HandleExprUnaryMinus_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Expr_UnaryMinus
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Expr_UnaryMinus {
+        unsafe { &mut *(crate::ffi::HandleExprUnaryMinus_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Expr_UnaryMinus> to Handle<Expr_UnaryExpression>
+    pub fn to_handle_unary_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprUnaryExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprUnaryMinus_to_HandleExprUnaryExpression(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<Expr_UnaryMinus> to Handle<Expr_GeneralExpression>
+    pub fn to_handle_general_expression(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleExprUnaryMinus_to_HandleExprGeneralExpression(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Expr_UnknownIterator.hxx
@@ -9059,13 +13688,14 @@ impl UnknownIterator {
     pub fn next(&mut self) {
         unsafe { crate::ffi::Expr_UnknownIterator_next(self as *mut Self) }
     }
-}
 
-// ── Skipped symbols for UnknownIterator (1 total) ──
-// SKIPPED: **Source:** `Expr_UnknownIterator.hxx`:42 - `Expr_UnknownIterator::Value`
-//   Reason: return type 'Handle(Expr_NamedUnknown)' is unknown
-//   // pub fn value(&self) -> OwnedPtr<Handle<Expr_NamedUnknown>>;
-//
+    /// **Source:** `Expr_UnknownIterator.hxx`:42 - `Expr_UnknownIterator::Value()`
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleExprNamedUnknown> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Expr_UnknownIterator_value(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // Additional type re-exports

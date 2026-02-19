@@ -63,6 +63,17 @@ impl LengthMeasureWithUnit {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepBasic_LengthMeasureWithUnit_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepBasic_MeasureWithUnit.hxx`:40 - `StepBasic_MeasureWithUnit::SetValueComponent()`
     pub fn set_value_component(&mut self, aValueComponent: f64) {
         unsafe {
@@ -97,6 +108,41 @@ impl LengthMeasureWithUnit {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepBasic_LengthMeasureWithUnit_inherited_UnitComponent(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepBasicLengthMeasureWithUnit;
+
+unsafe impl crate::CppDeletable for HandleStepBasicLengthMeasureWithUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepBasicLengthMeasureWithUnit_destructor(ptr);
+    }
+}
+
+impl HandleStepBasicLengthMeasureWithUnit {
+    /// Dereference this Handle to access the underlying StepBasic_LengthMeasureWithUnit
+    pub fn get(&self) -> &crate::ffi::StepBasic_LengthMeasureWithUnit {
+        unsafe { &*(crate::ffi::HandleStepBasicLengthMeasureWithUnit_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepBasic_LengthMeasureWithUnit
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepBasic_LengthMeasureWithUnit {
+        unsafe {
+            &mut *(crate::ffi::HandleStepBasicLengthMeasureWithUnit_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepBasic_LengthMeasureWithUnit> to Handle<StepBasic_MeasureWithUnit>
+    pub fn to_handle_measure_with_unit(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepBasicLengthMeasureWithUnit_to_HandleStepBasicMeasureWithUnit(
                     self as *const Self,
                 ),
             )
@@ -206,6 +252,22 @@ impl HandleStepBasicMeasureWithUnit {
     /// Dereference this Handle to mutably access the underlying StepBasic_MeasureWithUnit
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepBasic_MeasureWithUnit {
         unsafe { &mut *(crate::ffi::HandleStepBasicMeasureWithUnit_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<StepBasic_MeasureWithUnit> to Handle<StepBasic_LengthMeasureWithUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `StepBasic_LengthMeasureWithUnit` (or subclass).
+    pub fn downcast_to_length_measure_with_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepBasicMeasureWithUnit_downcast_to_HandleStepBasicLengthMeasureWithUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -367,6 +429,14 @@ impl Unit {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepBasic_Unit_ctor()) }
     }
 
+    /// **Source:** `StepBasic_Unit.hxx`:42 - `StepBasic_Unit::CaseNum()`
+    /// Recognizes a type of Unit Entity
+    /// 1 -> NamedUnit
+    /// 2 -> DerivedUnit
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepBasic_Unit_case_num(self as *const Self, ent) }
+    }
+
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
         unsafe { &*(crate::ffi::StepBasic_Unit_as_StepData_SelectType(self as *const Self)) }
@@ -377,9 +447,24 @@ impl Unit {
         unsafe { &mut *(crate::ffi::StepBasic_Unit_as_StepData_SelectType_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_Matches(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::StepBasic_Unit_inherited_SetValue(self as *mut Self, ent) }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         unsafe { crate::ffi::StepBasic_Unit_inherited_Nullify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::StepBasic_Unit_inherited_Value(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
@@ -465,14 +550,7 @@ impl Unit {
     }
 }
 
-// ── Skipped symbols for Unit (3 total) ──
-// SKIPPED: **Source:** `StepBasic_Unit.hxx`:42 - `StepBasic_Unit::CaseNum`
-//   method: Recognizes a type of Unit Entity
-//   method: 1 -> NamedUnit
-//   method: 2 -> DerivedUnit
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
+// ── Skipped symbols for Unit (2 total) ──
 // SKIPPED: **Source:** `StepBasic_Unit.hxx`:45 - `StepBasic_Unit::NamedUnit`
 //   method: returns Value as a NamedUnit (Null if another type)
 //   Reason: return type 'Handle(StepBasic_NamedUnit)' is unknown

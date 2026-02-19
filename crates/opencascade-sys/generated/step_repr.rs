@@ -6,6 +6,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleStepDimTolDatum, HandleStepGeomGeometricRepresentationItem,
+    HandleStepShapeShapeDefinitionRepresentation, HandleStepVisualDraughtingModel,
+    HandleStepVisualTessellatedGeometricSet, HandleStepVisualTessellatedItem,
+};
+
 // ========================
 // From StepRepr_CharacterizedDefinition.hxx
 // ========================
@@ -27,6 +34,20 @@ impl CharacterizedDefinition {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepRepr_CharacterizedDefinition_ctor()) }
     }
 
+    /// **Source:** `StepRepr_CharacterizedDefinition.hxx`:52 - `StepRepr_CharacterizedDefinition::CaseNum()`
+    /// Recognizes a kind of CharacterizedDefinition select type
+    /// 1 -> CharacterizedObject from StepBasic
+    /// 2 -> ProductDefinition from StepBasic
+    /// 3 -> ProductDefinitionRelationship from StepBasic
+    /// 4 -> ProductDefinitionShape from StepRepr
+    /// 5 -> ShapeAspect from StepRepr
+    /// 6 -> ShapeAspectRelationship from StepRepr
+    /// 7 -> DocumentFile from StepBasic
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepRepr_CharacterizedDefinition_case_num(self as *const Self, ent) }
+    }
+
     /// **Source:** `StepRepr_CharacterizedDefinition.hxx`:58 - `StepRepr_CharacterizedDefinition::ProductDefinition()`
     /// Returns Value as ProductDefinition (or Null if another type)
     pub fn product_definition(
@@ -35,6 +56,20 @@ impl CharacterizedDefinition {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepRepr_CharacterizedDefinition_product_definition(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepRepr_CharacterizedDefinition.hxx`:65 - `StepRepr_CharacterizedDefinition::ProductDefinitionShape()`
+    /// Returns Value as ProductDefinitionShape (or Null if another type)
+    pub fn product_definition_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_CharacterizedDefinition_product_definition_shape(
                     self as *const Self,
                 ),
             )
@@ -69,9 +104,30 @@ impl CharacterizedDefinition {
         }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepRepr_CharacterizedDefinition_inherited_Matches(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepRepr_CharacterizedDefinition_inherited_SetValue(self as *mut Self, ent)
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         unsafe { crate::ffi::StepRepr_CharacterizedDefinition_inherited_Nullify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepRepr_CharacterizedDefinition_inherited_Value(self as *const Self))
+        }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
@@ -173,14 +229,7 @@ impl CharacterizedDefinition {
     }
 }
 
-// ── Skipped symbols for CharacterizedDefinition (6 total) ──
-// SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:52 - `StepRepr_CharacterizedDefinition::CaseNum`
-//   method: Recognizes a kind of CharacterizedDefinition select type
-//   method: 1 -> CharacterizedObject from StepBasic
-//   method: 2 -> ProductDefinition from StepBasic
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
+// ── Skipped symbols for CharacterizedDefinition (4 total) ──
 // SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:55 - `StepRepr_CharacterizedDefinition::CharacterizedObject`
 //   method: Returns Value as CharacterizedObject (or Null if another type)
 //   Reason: return type 'Handle(StepBasic_CharacterizedObject)' is unknown
@@ -190,11 +239,6 @@ impl CharacterizedDefinition {
 //   method: Returns Value as ProductDefinitionRelationship (or Null if another type)
 //   Reason: return type 'Handle(StepBasic_ProductDefinitionRelationship)' is unknown
 //   // pub fn product_definition_relationship(&self) -> OwnedPtr<Handle<StepBasic_ProductDefinitionRelationship>>;
-//
-// SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:65 - `StepRepr_CharacterizedDefinition::ProductDefinitionShape`
-//   method: Returns Value as ProductDefinitionShape (or Null if another type)
-//   Reason: return type 'Handle(StepRepr_ProductDefinitionShape)' is unknown
-//   // pub fn product_definition_shape(&self) -> OwnedPtr<Handle<StepRepr_ProductDefinitionShape>>;
 //
 // SKIPPED: **Source:** `StepRepr_CharacterizedDefinition.hxx`:71 - `StepRepr_CharacterizedDefinition::ShapeAspectRelationship`
 //   method: Returns Value as ShapeAspectRelationship (or Null if another type)
@@ -338,6 +382,17 @@ impl CompoundRepresentationItem {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprCompoundRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_CompoundRepresentationItem_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:38 - `StepRepr_RepresentationItem::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe {
@@ -354,6 +409,37 @@ impl CompoundRepresentationItem {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepRepr_CompoundRepresentationItem_inherited_Name(self as *const Self),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepReprCompoundRepresentationItem;
+
+unsafe impl crate::CppDeletable for HandleStepReprCompoundRepresentationItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepReprCompoundRepresentationItem_destructor(ptr);
+    }
+}
+
+impl HandleStepReprCompoundRepresentationItem {
+    /// Dereference this Handle to access the underlying StepRepr_CompoundRepresentationItem
+    pub fn get(&self) -> &crate::ffi::StepRepr_CompoundRepresentationItem {
+        unsafe { &*(crate::ffi::HandleStepReprCompoundRepresentationItem_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepRepr_CompoundRepresentationItem
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepRepr_CompoundRepresentationItem {
+        unsafe {
+            &mut *(crate::ffi::HandleStepReprCompoundRepresentationItem_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepRepr_CompoundRepresentationItem> to Handle<StepRepr_RepresentationItem>
+    pub fn to_handle_representation_item(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepReprCompoundRepresentationItem_to_HandleStepReprRepresentationItem(self as *const Self))
         }
     }
 }
@@ -532,6 +618,17 @@ impl ProductDefinitionShape {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_ProductDefinitionShape_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_PropertyDefinition.hxx`:38 - `StepRepr_PropertyDefinition::Init()`
     pub fn init(
         &mut self,
@@ -615,6 +712,37 @@ impl ProductDefinitionShape {
                 self as *mut Self,
                 Definition,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepReprProductDefinitionShape;
+
+unsafe impl crate::CppDeletable for HandleStepReprProductDefinitionShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepReprProductDefinitionShape_destructor(ptr);
+    }
+}
+
+impl HandleStepReprProductDefinitionShape {
+    /// Dereference this Handle to access the underlying StepRepr_ProductDefinitionShape
+    pub fn get(&self) -> &crate::ffi::StepRepr_ProductDefinitionShape {
+        unsafe { &*(crate::ffi::HandleStepReprProductDefinitionShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepRepr_ProductDefinitionShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepRepr_ProductDefinitionShape {
+        unsafe {
+            &mut *(crate::ffi::HandleStepReprProductDefinitionShape_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepRepr_ProductDefinitionShape> to Handle<StepRepr_PropertyDefinition>
+    pub fn to_handle_property_definition(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprPropertyDefinition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepReprProductDefinitionShape_to_HandleStepReprPropertyDefinition(self as *const Self))
         }
     }
 }
@@ -767,6 +895,22 @@ impl HandleStepReprPropertyDefinition {
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepRepr_PropertyDefinition {
         unsafe { &mut *(crate::ffi::HandleStepReprPropertyDefinition_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<StepRepr_PropertyDefinition> to Handle<StepRepr_ProductDefinitionShape>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_ProductDefinitionShape` (or subclass).
+    pub fn downcast_to_product_definition_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepReprPropertyDefinition_downcast_to_HandleStepReprProductDefinitionShape(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -918,6 +1062,22 @@ impl HandleStepReprPropertyDefinitionRepresentation {
             ))
         }
     }
+
+    /// Downcast Handle<StepRepr_PropertyDefinitionRepresentation> to Handle<StepShape_ShapeDefinitionRepresentation>
+    ///
+    /// Returns `None` if the handle does not point to a `StepShape_ShapeDefinitionRepresentation` (or subclass).
+    pub fn downcast_to_shape_definition_representation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepShapeShapeDefinitionRepresentation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepReprPropertyDefinitionRepresentation_downcast_to_HandleStepShapeShapeDefinitionRepresentation(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1031,6 +1191,24 @@ impl HandleStepReprRepresentation {
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepRepr_Representation {
         unsafe { &mut *(crate::ffi::HandleStepReprRepresentation_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<StepRepr_Representation> to Handle<StepVisual_DraughtingModel>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_DraughtingModel` (or subclass).
+    pub fn downcast_to_draughting_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualDraughtingModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepReprRepresentation_downcast_to_HandleStepVisualDraughtingModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Representation (3 total) ──
@@ -1135,6 +1313,72 @@ impl HandleStepReprRepresentationItem {
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepRepr_RepresentationItem {
         unsafe { &mut *(crate::ffi::HandleStepReprRepresentationItem_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<StepRepr_RepresentationItem> to Handle<StepGeom_GeometricRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepGeom_GeometricRepresentationItem` (or subclass).
+    pub fn downcast_to_geometric_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomGeometricRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepReprRepresentationItem_downcast_to_HandleStepGeomGeometricRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepRepr_RepresentationItem> to Handle<StepRepr_CompoundRepresentationItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepRepr_CompoundRepresentationItem` (or subclass).
+    pub fn downcast_to_compound_representation_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepReprCompoundRepresentationItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepReprRepresentationItem_downcast_to_HandleStepReprCompoundRepresentationItem(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepRepr_RepresentationItem> to Handle<StepVisual_TessellatedGeometricSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedGeometricSet` (or subclass).
+    pub fn downcast_to_tessellated_geometric_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedGeometricSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepReprRepresentationItem_downcast_to_HandleStepVisualTessellatedGeometricSet(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepRepr_RepresentationItem> to Handle<StepVisual_TessellatedItem>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedItem` (or subclass).
+    pub fn downcast_to_tessellated_item(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedItem>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepReprRepresentationItem_downcast_to_HandleStepVisualTessellatedItem(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1156,6 +1400,18 @@ impl RepresentedDefinition {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepRepr_RepresentedDefinition_ctor()) }
+    }
+
+    /// **Source:** `StepRepr_RepresentedDefinition.hxx`:48 - `StepRepr_RepresentedDefinition::CaseNum()`
+    /// Recognizes a kind of RepresentedDefinition select type
+    /// 1 -> GeneralProperty from StepBasic
+    /// 2 -> PropertyDefinition from StepRepr
+    /// 3 -> PropertyDefinitionRelationship from StepRepr
+    /// 4 -> ShapeAspect from StepRepr
+    /// 5 -> ShapeAspectRelationship from StepRepr
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepRepr_RepresentedDefinition_case_num(self as *const Self, ent) }
     }
 
     /// **Source:** `StepRepr_RepresentedDefinition.hxx`:54 - `StepRepr_RepresentedDefinition::PropertyDefinition()`
@@ -1198,9 +1454,30 @@ impl RepresentedDefinition {
         }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepRepr_RepresentedDefinition_inherited_Matches(self as *const Self, ent)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepRepr_RepresentedDefinition_inherited_SetValue(self as *mut Self, ent)
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         unsafe { crate::ffi::StepRepr_RepresentedDefinition_inherited_Nullify(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepRepr_RepresentedDefinition_inherited_Value(self as *const Self))
+        }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
@@ -1294,14 +1571,7 @@ impl RepresentedDefinition {
     }
 }
 
-// ── Skipped symbols for RepresentedDefinition (4 total) ──
-// SKIPPED: **Source:** `StepRepr_RepresentedDefinition.hxx`:48 - `StepRepr_RepresentedDefinition::CaseNum`
-//   method: Recognizes a kind of RepresentedDefinition select type
-//   method: 1 -> GeneralProperty from StepBasic
-//   method: 2 -> PropertyDefinition from StepRepr
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
+// ── Skipped symbols for RepresentedDefinition (3 total) ──
 // SKIPPED: **Source:** `StepRepr_RepresentedDefinition.hxx`:51 - `StepRepr_RepresentedDefinition::GeneralProperty`
 //   method: Returns Value as GeneralProperty (or Null if another type)
 //   Reason: return type 'Handle(StepBasic_GeneralProperty)' is unknown
@@ -1338,6 +1608,25 @@ impl ShapeAspect {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepRepr_ShapeAspect_ctor()) }
     }
 
+    /// **Source:** `StepRepr_ShapeAspect.hxx`:38 - `StepRepr_ShapeAspect::Init()`
+    pub fn init(
+        &mut self,
+        aName: &crate::ffi::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi::HandleTCollectionHAsciiString,
+        aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        aProductDefinitional: crate::step_data::Logical,
+    ) {
+        unsafe {
+            crate::ffi::StepRepr_ShapeAspect_init(
+                self as *mut Self,
+                aName,
+                aDescription,
+                aOfShape,
+                aProductDefinitional.into(),
+            )
+        }
+    }
+
     /// **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::StepRepr_ShapeAspect_set_name(self as *mut Self, aName) }
@@ -1359,6 +1648,20 @@ impl ShapeAspect {
     pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::StepRepr_ShapeAspect_description(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe { crate::ffi::StepRepr_ShapeAspect_set_of_shape(self as *mut Self, aOfShape) }
+    }
+
+    /// **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepRepr_ShapeAspect_of_shape(
                 self as *const Self,
             ))
         }
@@ -1431,21 +1734,23 @@ impl HandleStepReprShapeAspect {
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepRepr_ShapeAspect {
         unsafe { &mut *(crate::ffi::HandleStepReprShapeAspect_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for ShapeAspect (3 total) ──
-// SKIPPED: **Source:** `StepRepr_ShapeAspect.hxx`:38 - `StepRepr_ShapeAspect::Init`
-//   Reason: param 'aOfShape' uses unknown type 'const Handle(StepRepr_ProductDefinitionShape)&'
-//   // pub fn init(&mut self, aName: &HandleHAsciiString, aDescription: &HandleHAsciiString, aOfShape: &HandleProductDefinitionShape, aProductDefinitional: Logical);
-//
-// SKIPPED: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape`
-//   Reason: param 'aOfShape' uses unknown type 'const Handle(StepRepr_ProductDefinitionShape)&'
-//   // pub fn set_of_shape(&mut self, aOfShape: &HandleProductDefinitionShape);
-//
-// SKIPPED: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape`
-//   Reason: return type 'Handle(StepRepr_ProductDefinitionShape)' is unknown
-//   // pub fn of_shape(&self) -> OwnedPtr<Handle<StepRepr_ProductDefinitionShape>>;
-//
+    /// Downcast Handle<StepRepr_ShapeAspect> to Handle<StepDimTol_Datum>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_Datum` (or subclass).
+    pub fn downcast_to_datum(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolDatum>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepReprShapeAspect_downcast_to_HandleStepDimTolDatum(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // Additional type re-exports

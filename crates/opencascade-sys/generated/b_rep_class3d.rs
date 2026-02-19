@@ -798,13 +798,13 @@ impl SolidExplorer {
 //   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32) -> bool;
 //
 // SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:93 - `BRepClass3d_SolidExplorer::PointInTheFace`
-//   Reason: param 'surf' uses unknown type 'const Handle(BRepAdaptor_Surface)&'
+//   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32, surf: &HandleSurface, u1: f64, v1: f64, u2: f64, v2: f64) -> bool;
 //
 // SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:107 - `BRepClass3d_SolidExplorer::PointInTheFace`
 //   method: <Index> gives point index  to  search from and returns
 //   method: point index of succeseful search
-//   Reason: param 'surf' uses unknown type 'const Handle(BRepAdaptor_Surface)&'
+//   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32, surf: &HandleSurface, u1: f64, v1: f64, u2: f64, v2: f64, theVecD1U: &mut Vec, theVecD1V: &mut Vec) -> bool;
 //
 // SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::Intersector`

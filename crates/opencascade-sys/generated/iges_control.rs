@@ -6,6 +6,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleIGESToBRepAlgoContainer, HandleIGESToBRepIGESBoundary, HandleIGESToBRepToolContainer,
+    HandleTransferActorOfFinderProcess, HandleTransferActorOfProcessForFinder,
+    HandleXSControlController,
+};
+
 // ========================
 // From IGESControl_ActorWrite.hxx
 // ========================
@@ -30,6 +37,27 @@ impl ActorWrite {
     /// Recognizes a ShapeMapper
     pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
         unsafe { crate::ffi::IGESControl_ActorWrite_recognize(self as *mut Self, start) }
+    }
+
+    /// **Source:** `IGESControl_ActorWrite.hxx`:46 - `IGESControl_ActorWrite::Transfer()`
+    /// Transfers Shape to IGES Entities
+    ///
+    /// ModeTrans may be : 0 -> groups of Faces
+    /// or 1 -> BRep
+    pub fn transfer(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_transfer(
+                self as *mut Self,
+                start,
+                FP,
+                theProgress,
+            ))
+        }
     }
 
     /// **Source:** `IGESControl_ActorWrite.hxx`:51 - `IGESControl_ActorWrite::DynamicType()`
@@ -93,6 +121,15 @@ impl ActorWrite {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESControlActorWrite> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
     pub fn transferring(
         &mut self,
@@ -107,6 +144,25 @@ impl ActorWrite {
                 TP,
                 theProgress,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:57 - `Transfer_ActorOfFinderProcess::TransferTransient()`
+    pub fn transfer_transient(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferFinderProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESControl_ActorWrite_inherited_TransferTransient(
+                    self as *mut Self,
+                    start,
+                    TP,
+                    theProgress,
+                ),
+            )
         }
     }
 
@@ -153,13 +209,51 @@ impl ActorWrite {
     }
 }
 
-// ── Skipped symbols for ActorWrite (1 total) ──
-// SKIPPED: **Source:** `IGESControl_ActorWrite.hxx`:46 - `IGESControl_ActorWrite::Transfer`
-//   method: Transfers Shape to IGES Entities
-//   method: ModeTrans may be : 0 -> groups of Faces
-//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
-//   // pub fn transfer(&mut self, start: &HandleFinder, FP: &HandleFinderProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
+pub use crate::ffi::HandleIGESControlActorWrite;
+
+unsafe impl crate::CppDeletable for HandleIGESControlActorWrite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESControlActorWrite_destructor(ptr);
+    }
+}
+
+impl HandleIGESControlActorWrite {
+    /// Dereference this Handle to access the underlying IGESControl_ActorWrite
+    pub fn get(&self) -> &crate::ffi::IGESControl_ActorWrite {
+        unsafe { &*(crate::ffi::HandleIGESControlActorWrite_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESControl_ActorWrite
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESControl_ActorWrite {
+        unsafe { &mut *(crate::ffi::HandleIGESControlActorWrite_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESControl_ActorWrite> to Handle<Transfer_ActorOfFinderProcess>
+    pub fn to_handle_actor_of_finder_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESControlActorWrite_to_HandleTransferActorOfFinderProcess(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IGESControl_ActorWrite> to Handle<Transfer_ActorOfProcessForFinder>
+    pub fn to_handle_actor_of_process_for_finder(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESControlActorWrite_to_HandleTransferActorOfProcessForFinder(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESControl_AlgoContainer.hxx
@@ -220,6 +314,17 @@ impl AlgoContainer {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESControlAlgoContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_AlgoContainer_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IGESToBRep_AlgoContainer.hxx`:36 - `IGESToBRep_AlgoContainer::SetToolContainer()`
     pub fn set_tool_container(&mut self, TC: &crate::ffi::HandleIGESToBRepToolContainer) {
         unsafe {
@@ -232,6 +337,39 @@ impl AlgoContainer {
         unsafe {
             crate::OwnedPtr::from_raw(
                 crate::ffi::IGESControl_AlgoContainer_inherited_ToolContainer(self as *const Self),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleIGESControlAlgoContainer;
+
+unsafe impl crate::CppDeletable for HandleIGESControlAlgoContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESControlAlgoContainer_destructor(ptr);
+    }
+}
+
+impl HandleIGESControlAlgoContainer {
+    /// Dereference this Handle to access the underlying IGESControl_AlgoContainer
+    pub fn get(&self) -> &crate::ffi::IGESControl_AlgoContainer {
+        unsafe { &*(crate::ffi::HandleIGESControlAlgoContainer_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESControl_AlgoContainer
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESControl_AlgoContainer {
+        unsafe { &mut *(crate::ffi::HandleIGESControlAlgoContainer_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESControl_AlgoContainer> to Handle<IGESToBRep_AlgoContainer>
+    pub fn to_handle_algo_container(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepAlgoContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESControlAlgoContainer_to_HandleIGESToBRepAlgoContainer(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -279,6 +417,58 @@ impl Controller {
         }
     }
 
+    /// **Source:** `IGESControl_Controller.hxx`:52 - `IGESControl_Controller::ActorRead()`
+    /// Returns the Actor for Read attached to the pair (norm,appli)
+    /// It is an Actor from IGESToBRep, adapted from an IGESModel :
+    /// Unit, tolerances
+    pub fn actor_read(
+        &self,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Controller_actor_read(
+                self as *const Self,
+                model,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESControl_Controller.hxx`:62 - `IGESControl_Controller::TransferWriteShape()`
+    /// Takes one Shape and transfers it to the InterfaceModel
+    /// (already created by NewModel for instance)
+    /// <modetrans> is to be interpreted by each kind of XstepAdaptor
+    /// Returns a status : 0 OK  1 No result  2 Fail  -1 bad modeshape
+    /// -2 bad model (requires an IGESModel)
+    /// modeshape : 0 group of face (version < 5.1)
+    /// 1  BREP-version 5.1 of IGES
+    pub fn transfer_write_shape(
+        &self,
+        shape: &crate::topo_ds::Shape,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        modetrans: i32,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::IGESControl_Controller_transfer_write_shape(
+                    self as *const Self,
+                    shape,
+                    FP,
+                    model,
+                    modetrans,
+                    theProgress,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IGESControl_Controller.hxx`:75 - `IGESControl_Controller::Customise()`
+    pub fn customise(&mut self, WS: &mut crate::ffi::HandleXSControlWorkSession) {
+        unsafe { crate::ffi::IGESControl_Controller_customise(self as *mut Self, WS) }
+    }
+
     /// **Source:** `IGESControl_Controller.hxx`:77 - `IGESControl_Controller::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IGESControl_Controller_dynamic_type(self as *const Self)) }
@@ -323,6 +513,15 @@ impl Controller {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESControlController> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Controller_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     pub fn auto_record(&self) {
         unsafe { crate::ffi::IGESControl_Controller_inherited_AutoRecord(self as *const Self) }
@@ -331,6 +530,15 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
         unsafe { &*(crate::ffi::IGESControl_Controller_inherited_WorkLibrary(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:116 - `XSControl_Controller::ActorWrite()`
+    pub fn actor_write(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Controller_inherited_ActorWrite(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
@@ -356,6 +564,45 @@ impl Controller {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:154 - `XSControl_Controller::RecognizeWriteTransient()`
+    pub fn recognize_write_transient(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        modetrans: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESControl_Controller_inherited_RecognizeWriteTransient(
+                self as *const Self,
+                obj,
+                modetrans,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:168 - `XSControl_Controller::TransferWriteTransient()`
+    pub fn transfer_write_transient(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        modetrans: i32,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::IGESControl_Controller_inherited_TransferWriteTransient(
+                    self as *const Self,
+                    obj,
+                    FP,
+                    model,
+                    modetrans,
+                    theProgress,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
     pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         unsafe {
@@ -368,25 +615,36 @@ impl Controller {
     }
 }
 
-// ── Skipped symbols for Controller (3 total) ──
-// SKIPPED: **Source:** `IGESControl_Controller.hxx`:52 - `IGESControl_Controller::ActorRead`
-//   method: Returns the Actor for Read attached to the pair (norm,appli)
-//   method: It is an Actor from IGESToBRep, adapted from an IGESModel :
-//   method: Unit, tolerances
-//   Reason: return type 'Handle(Transfer_ActorOfTransientProcess)' is unknown
-//   // pub fn actor_read(&self, model: &HandleInterfaceModel) -> OwnedPtr<Handle<Transfer_ActorOfTransientProcess>>;
-//
-// SKIPPED: **Source:** `IGESControl_Controller.hxx`:62 - `IGESControl_Controller::TransferWriteShape`
-//   method: Takes one Shape and transfers it to the InterfaceModel
-//   method: (already created by NewModel for instance)
-//   method: <modetrans> is to be interpreted by each kind of XstepAdaptor
-//   Reason: param 'FP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
-//   // pub fn transfer_write_shape(&self, shape: &Shape, FP: &HandleFinderProcess, model: &HandleInterfaceModel, modetrans: i32, theProgress: &ProgressRange) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `IGESControl_Controller.hxx`:75 - `IGESControl_Controller::Customise`
-//   Reason: param 'WS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn customise(&mut self, WS: &mut HandleWorkSession);
-//
+pub use crate::ffi::HandleIGESControlController;
+
+unsafe impl crate::CppDeletable for HandleIGESControlController {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESControlController_destructor(ptr);
+    }
+}
+
+impl HandleIGESControlController {
+    /// Dereference this Handle to access the underlying IGESControl_Controller
+    pub fn get(&self) -> &crate::ffi::IGESControl_Controller {
+        unsafe { &*(crate::ffi::HandleIGESControlController_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESControl_Controller
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESControl_Controller {
+        unsafe { &mut *(crate::ffi::HandleIGESControlController_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESControl_Controller> to Handle<XSControl_Controller>
+    pub fn to_handle_controller(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESControlController_to_HandleXSControlController(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IGESControl_IGESBoundary.hxx
@@ -479,6 +737,17 @@ impl IGESBoundary {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESControlIGESBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_IGESBoundary_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IGESToBRep_IGESBoundary.hxx`:58 - `IGESToBRep_IGESBoundary::Init()`
     pub fn init(
         &mut self,
@@ -526,6 +795,39 @@ impl IGESBoundary {
             crate::OwnedPtr::from_raw(crate::ffi::IGESControl_IGESBoundary_inherited_WireData2d(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIGESControlIGESBoundary;
+
+unsafe impl crate::CppDeletable for HandleIGESControlIGESBoundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESControlIGESBoundary_destructor(ptr);
+    }
+}
+
+impl HandleIGESControlIGESBoundary {
+    /// Dereference this Handle to access the underlying IGESControl_IGESBoundary
+    pub fn get(&self) -> &crate::ffi::IGESControl_IGESBoundary {
+        unsafe { &*(crate::ffi::HandleIGESControlIGESBoundary_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESControl_IGESBoundary
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESControl_IGESBoundary {
+        unsafe { &mut *(crate::ffi::HandleIGESControlIGESBoundary_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESControl_IGESBoundary> to Handle<IGESToBRep_IGESBoundary>
+    pub fn to_handle_iges_boundary(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESControlIGESBoundary_to_HandleIGESToBRepIGESBoundary(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -585,6 +887,27 @@ impl Reader {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_ctor()) }
     }
 
+    /// **Source:** `IGESControl_Reader.hxx`:74 - `IGESControl_Reader::IGESControl_Reader()`
+    /// Creates a Reader from an already existing Session
+    pub fn new_handlexscontrolworksession_bool(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+        scratch: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch),
+            )
+        }
+    }
+
+    /// **Source:** `IGESControl_Reader.hxx`:74 - `IGESControl_Reader::IGESControl_Reader()`
+    /// Creates a Reader from an already existing Session
+    pub fn new_handlexscontrolworksession(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlexscontrolworksession_bool(WS, true)
+    }
+
     /// **Source:** `IGESControl_Reader.hxx`:79 - `IGESControl_Reader::SetReadVisible()`
     /// Set the transion of ALL Roots (if theReadOnlyVisible is False)
     /// or of Visible Roots (if theReadOnlyVisible is True)
@@ -631,11 +954,38 @@ impl Reader {
         unsafe { &mut *(crate::ffi::IGESControl_Reader_as_XSControl_Reader_mut(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
+    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+        unsafe { crate::ffi::IGESControl_Reader_inherited_SetWS(self as *mut Self, WS, scratch) }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:103 - `XSControl_Reader::WS()`
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_inherited_WS(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_inherited_Model(
                 self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:163 - `XSControl_Reader::RootForTransfer()`
+    pub fn root_for_transfer(
+        &mut self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_Reader_inherited_RootForTransfer(
+                self as *mut Self,
+                num,
             ))
         }
     }
@@ -661,6 +1011,21 @@ impl Reader {
             crate::ffi::IGESControl_Reader_inherited_TransferOne(
                 self as *mut Self,
                 num,
+                theProgress,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:182 - `XSControl_Reader::TransferEntity()`
+    pub fn transfer_entity(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_TransferEntity(
+                self as *mut Self,
+                start,
                 theProgress,
             )
         }
@@ -758,12 +1123,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (2 total) ──
-// SKIPPED: **Source:** `IGESControl_Reader.hxx`:74 - `IGESControl_Reader::IGESControl_Reader`
-//   constructor: Creates a Reader from an already existing Session
-//   Reason: param 'WS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for Reader (1 total) ──
 // SKIPPED: **Source:** `IGESControl_Reader.hxx`:85 - `IGESControl_Reader::IGESModel`
 //   method: Returns the model as a IGESModel.
 //   method: It can then be consulted (header, product)
@@ -839,6 +1199,50 @@ impl ToolContainer {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESControlToolContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ToolContainer_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIGESControlToolContainer;
+
+unsafe impl crate::CppDeletable for HandleIGESControlToolContainer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIGESControlToolContainer_destructor(ptr);
+    }
+}
+
+impl HandleIGESControlToolContainer {
+    /// Dereference this Handle to access the underlying IGESControl_ToolContainer
+    pub fn get(&self) -> &crate::ffi::IGESControl_ToolContainer {
+        unsafe { &*(crate::ffi::HandleIGESControlToolContainer_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IGESControl_ToolContainer
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESControl_ToolContainer {
+        unsafe { &mut *(crate::ffi::HandleIGESControlToolContainer_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IGESControl_ToolContainer> to Handle<IGESToBRep_ToolContainer>
+    pub fn to_handle_tool_container(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIGESControlToolContainer_to_HandleIGESToBRepToolContainer(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
 }
 
 // ========================
@@ -904,6 +1308,18 @@ impl Writer {
         Self::new_charptr_int(theUnit, 0)
     }
 
+    /// **Source:** `IGESControl_Writer.hxx`:81 - `IGESControl_Writer::TransferProcess()`
+    pub fn transfer_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
+        unsafe { &*(crate::ffi::IGESControl_Writer_transfer_process(self as *const Self)) }
+    }
+
+    /// **Source:** `IGESControl_Writer.hxx`:85 - `IGESControl_Writer::SetTransferProcess()`
+    /// Returns/Sets the TransferProcess : it contains final results
+    /// and if some, check messages
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+        unsafe { crate::ffi::IGESControl_Writer_set_transfer_process(self as *mut Self, TP) }
+    }
+
     /// **Source:** `IGESControl_Writer.hxx`:90 - `IGESControl_Writer::AddShape()`
     /// Translates a Shape to IGES Entities and adds them to the model
     /// Returns True if done, False if Shape not suitable for IGES or null
@@ -913,6 +1329,15 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe { crate::ffi::IGESControl_Writer_add_shape(self as *mut Self, sh, theProgress) }
+    }
+
+    /// **Source:** `IGESControl_Writer.hxx`:97 - `IGESControl_Writer::AddGeom()`
+    /// Translates a Geometry (Surface or Curve) to IGES Entities and
+    /// adds them to the model
+    /// Returns True if done, False if geom is neither a Surface or
+    /// a Curve suitable for IGES or is null
+    pub fn add_geom(&mut self, geom: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IGESControl_Writer_add_geom(self as *mut Self, geom) }
     }
 
     /// **Source:** `IGESControl_Writer.hxx`:100 - `IGESControl_Writer::AddEntity()`
@@ -941,7 +1366,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (12 total) ──
+// ── Skipped symbols for Writer (9 total) ──
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:75 - `IGESControl_Writer::IGESControl_Writer`
 //   constructor: Creates a writer object with the
 //   constructor: prepared IGES model theModel in write mode.
@@ -953,23 +1378,6 @@ impl Writer {
 //   method: Returns the IGES model to be written in output.
 //   Reason: return type 'const Handle(IGESData_IGESModel)&' is unknown
 //   // pub fn model(&self) -> &HandleIGESModel;
-//
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:81 - `IGESControl_Writer::TransferProcess`
-//   Reason: return type 'const Handle(Transfer_FinderProcess)&' is unknown
-//   // pub fn transfer_process(&self) -> &HandleFinderProcess;
-//
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:85 - `IGESControl_Writer::SetTransferProcess`
-//   method: Returns/Sets the TransferProcess : it contains final results
-//   method: and if some, check messages
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
-//   // pub fn set_transfer_process(&mut self, TP: &HandleFinderProcess);
-//
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:97 - `IGESControl_Writer::AddGeom`
-//   method: Translates a Geometry (Surface or Curve) to IGES Entities and
-//   method: adds them to the model
-//   method: Returns True if done, False if geom is neither a Surface or
-//   Reason: param 'geom' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_geom(&mut self, geom: &HandleTransient) -> bool;
 //
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:109 - `IGESControl_Writer::Write`
 //   method: Computes then writes the model to an OStream

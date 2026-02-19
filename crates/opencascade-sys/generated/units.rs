@@ -705,6 +705,22 @@ impl HandleUnitsLexicon {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Lexicon {
         unsafe { &mut *(crate::ffi::HandleUnitsLexicon_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Units_Lexicon> to Handle<Units_UnitsLexicon>
+    ///
+    /// Returns `None` if the handle does not point to a `Units_UnitsLexicon` (or subclass).
+    pub fn downcast_to_units_lexicon(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleUnitsUnitsLexicon>> {
+        let ptr = unsafe {
+            crate::ffi::HandleUnitsLexicon_downcast_to_HandleUnitsUnitsLexicon(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1553,6 +1569,15 @@ impl ShiftedToken {
         unsafe { &mut *(crate::ffi::Units_ShiftedToken_as_Units_Token_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsShiftedToken> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedToken_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Units_Token.hxx`:75 - `Units_Token::Length()`
     pub fn length(&self) -> i32 {
         unsafe { crate::ffi::Units_ShiftedToken_inherited_Length(self as *const Self) }
@@ -1656,6 +1681,35 @@ impl ShiftedToken {
     pub fn is_greater_or_equal(&self, atoken: &crate::ffi::HandleUnitsToken) -> bool {
         unsafe {
             crate::ffi::Units_ShiftedToken_inherited_IsGreaterOrEqual(self as *const Self, atoken)
+        }
+    }
+}
+
+pub use crate::ffi::HandleUnitsShiftedToken;
+
+unsafe impl crate::CppDeletable for HandleUnitsShiftedToken {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleUnitsShiftedToken_destructor(ptr);
+    }
+}
+
+impl HandleUnitsShiftedToken {
+    /// Dereference this Handle to access the underlying Units_ShiftedToken
+    pub fn get(&self) -> &crate::ffi::Units_ShiftedToken {
+        unsafe { &*(crate::ffi::HandleUnitsShiftedToken_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Units_ShiftedToken
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Units_ShiftedToken {
+        unsafe { &mut *(crate::ffi::HandleUnitsShiftedToken_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_ShiftedToken> to Handle<Units_Token>
+    pub fn to_handle_token(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsToken> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsShiftedToken_to_HandleUnitsToken(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -1790,6 +1844,15 @@ impl ShiftedUnit {
         unsafe { &mut *(crate::ffi::Units_ShiftedUnit_as_Units_Unit_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsShiftedUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Units_Unit.hxx`:59 - `Units_Unit::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -1819,6 +1882,35 @@ impl ShiftedUnit {
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_ShiftedUnit_inherited_SymbolsSequence(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleUnitsShiftedUnit;
+
+unsafe impl crate::CppDeletable for HandleUnitsShiftedUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleUnitsShiftedUnit_destructor(ptr);
+    }
+}
+
+impl HandleUnitsShiftedUnit {
+    /// Dereference this Handle to access the underlying Units_ShiftedUnit
+    pub fn get(&self) -> &crate::ffi::Units_ShiftedUnit {
+        unsafe { &*(crate::ffi::HandleUnitsShiftedUnit_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Units_ShiftedUnit
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Units_ShiftedUnit {
+        unsafe { &mut *(crate::ffi::HandleUnitsShiftedUnit_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_ShiftedUnit> to Handle<Units_Unit>
+    pub fn to_handle_unit(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsShiftedUnit_to_HandleUnitsUnit(
                 self as *const Self,
             ))
         }
@@ -2228,6 +2320,22 @@ impl HandleUnitsToken {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Token {
         unsafe { &mut *(crate::ffi::HandleUnitsToken_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Units_Token> to Handle<Units_ShiftedToken>
+    ///
+    /// Returns `None` if the handle does not point to a `Units_ShiftedToken` (or subclass).
+    pub fn downcast_to_shifted_token(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleUnitsShiftedToken>> {
+        let ptr = unsafe {
+            crate::ffi::HandleUnitsToken_downcast_to_HandleUnitsShiftedToken(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -2501,6 +2609,22 @@ impl HandleUnitsUnit {
     /// Dereference this Handle to mutably access the underlying Units_Unit
     pub fn get_mut(&mut self) -> &mut crate::ffi::Units_Unit {
         unsafe { &mut *(crate::ffi::HandleUnitsUnit_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Units_Unit> to Handle<Units_ShiftedUnit>
+    ///
+    /// Returns `None` if the handle does not point to a `Units_ShiftedUnit` (or subclass).
+    pub fn downcast_to_shifted_unit(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleUnitsShiftedUnit>> {
+        let ptr = unsafe {
+            crate::ffi::HandleUnitsUnit_downcast_to_HandleUnitsShiftedUnit(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -2808,10 +2932,48 @@ impl UnitsLexicon {
         unsafe { &mut *(crate::ffi::Units_UnitsLexicon_as_Units_Lexicon_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleUnitsUnitsLexicon> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsLexicon_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Units_Lexicon.hxx`:49 - `Units_Lexicon::Sequence()`
     pub fn sequence(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsTokensSequence> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Units_UnitsLexicon_inherited_Sequence(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleUnitsUnitsLexicon;
+
+unsafe impl crate::CppDeletable for HandleUnitsUnitsLexicon {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleUnitsUnitsLexicon_destructor(ptr);
+    }
+}
+
+impl HandleUnitsUnitsLexicon {
+    /// Dereference this Handle to access the underlying Units_UnitsLexicon
+    pub fn get(&self) -> &crate::ffi::Units_UnitsLexicon {
+        unsafe { &*(crate::ffi::HandleUnitsUnitsLexicon_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Units_UnitsLexicon
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Units_UnitsLexicon {
+        unsafe { &mut *(crate::ffi::HandleUnitsUnitsLexicon_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Units_UnitsLexicon> to Handle<Units_Lexicon>
+    pub fn to_handle_lexicon(&self) -> crate::OwnedPtr<crate::ffi::HandleUnitsLexicon> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleUnitsUnitsLexicon_to_HandleUnitsLexicon(
                 self as *const Self,
             ))
         }

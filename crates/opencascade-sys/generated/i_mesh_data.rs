@@ -58,6 +58,9 @@ impl TryFrom<i32> for Status {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleBRepMeshContext, HandleIMeshToolsContext};
+
 // ========================
 // From IMeshData_Curve.hxx
 // ========================
@@ -158,6 +161,39 @@ impl Curve {
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:36 - `IMeshData_ParametersList::Clear()`
     pub fn clear(&mut self, isKeepEndPoints: bool) {
         unsafe { crate::ffi::IMeshData_Curve_inherited_Clear(self as *mut Self, isKeepEndPoints) }
+    }
+}
+
+pub use crate::ffi::HandleIMeshDataCurve;
+
+unsafe impl crate::CppDeletable for HandleIMeshDataCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshDataCurve_destructor(ptr);
+    }
+}
+
+impl HandleIMeshDataCurve {
+    /// Dereference this Handle to access the underlying IMeshData_Curve
+    pub fn get(&self) -> &crate::ffi::IMeshData_Curve {
+        unsafe { &*(crate::ffi::HandleIMeshDataCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshData_Curve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Curve {
+        unsafe { &mut *(crate::ffi::HandleIMeshDataCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_Curve> to Handle<IMeshData_ParametersList>
+    pub fn to_handle_parameters_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataParametersList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshDataCurve_to_HandleIMeshDataParametersList(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -350,6 +386,48 @@ impl Edge {
     }
 }
 
+pub use crate::ffi::HandleIMeshDataEdge;
+
+unsafe impl crate::CppDeletable for HandleIMeshDataEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshDataEdge_destructor(ptr);
+    }
+}
+
+impl HandleIMeshDataEdge {
+    /// Dereference this Handle to access the underlying IMeshData_Edge
+    pub fn get(&self) -> &crate::ffi::IMeshData_Edge {
+        unsafe { &*(crate::ffi::HandleIMeshDataEdge_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshData_Edge
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Edge {
+        unsafe { &mut *(crate::ffi::HandleIMeshDataEdge_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_Edge> to Handle<IMeshData_TessellatedShape>
+    pub fn to_handle_tessellated_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshDataEdge_to_HandleIMeshDataTessellatedShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IMeshData_Edge> to Handle<IMeshData_Shape>
+    pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataEdge_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
 // ── Skipped symbols for Edge (5 total) ──
 // SKIPPED: **Source:** `IMeshData_Edge.hxx`:39 - `IMeshData_Edge::AddPCurve`
 //   method: Adds discrete pcurve for the specified discrete face.
@@ -398,6 +476,12 @@ impl Face {
     /// Returns number of wires.
     pub fn wires_nb(&self) -> i32 {
         unsafe { crate::ffi::IMeshData_Face_wires_nb(self as *const Self) }
+    }
+
+    /// **Source:** `IMeshData_Face.hxx`:51 - `IMeshData_Face::GetSurface()`
+    /// Returns face's surface.
+    pub fn get_surface(&self) -> &crate::ffi::HandleBRepAdaptorSurface {
+        unsafe { &*(crate::ffi::IMeshData_Face_get_surface(self as *const Self)) }
     }
 
     /// **Source:** `IMeshData_Face.hxx`:54 - `IMeshData_Face::GetFace()`
@@ -511,7 +595,49 @@ impl Face {
     }
 }
 
-// ── Skipped symbols for Face (3 total) ──
+pub use crate::ffi::HandleIMeshDataFace;
+
+unsafe impl crate::CppDeletable for HandleIMeshDataFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshDataFace_destructor(ptr);
+    }
+}
+
+impl HandleIMeshDataFace {
+    /// Dereference this Handle to access the underlying IMeshData_Face
+    pub fn get(&self) -> &crate::ffi::IMeshData_Face {
+        unsafe { &*(crate::ffi::HandleIMeshDataFace_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshData_Face
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Face {
+        unsafe { &mut *(crate::ffi::HandleIMeshDataFace_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_Face> to Handle<IMeshData_TessellatedShape>
+    pub fn to_handle_tessellated_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshDataFace_to_HandleIMeshDataTessellatedShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IMeshData_Face> to Handle<IMeshData_Shape>
+    pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataFace_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Face (2 total) ──
 // SKIPPED: **Source:** `IMeshData_Face.hxx`:42 - `IMeshData_Face::AddWire`
 //   method: Adds wire to discrete model of face.
 //   Reason: return type 'const IMeshData::IWireHandle&' is unknown
@@ -521,11 +647,6 @@ impl Face {
 //   method: Returns discrete edge with the given index.
 //   Reason: return type 'const IMeshData::IWireHandle&' is unknown
 //   // pub fn get_wire(&self, theIndex: i32) -> &IWireHandle;
-//
-// SKIPPED: **Source:** `IMeshData_Face.hxx`:51 - `IMeshData_Face::GetSurface`
-//   method: Returns face's surface.
-//   Reason: return type 'const Handle(BRepAdaptor_Surface)&' is unknown
-//   // pub fn get_surface(&self) -> &HandleSurface;
 //
 
 // ========================
@@ -600,6 +721,35 @@ impl Model {
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Model_inherited_GetShape(self as *const Self)) }
+    }
+}
+
+pub use crate::ffi::HandleIMeshDataModel;
+
+unsafe impl crate::CppDeletable for HandleIMeshDataModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshDataModel_destructor(ptr);
+    }
+}
+
+impl HandleIMeshDataModel {
+    /// Dereference this Handle to access the underlying IMeshData_Model
+    pub fn get(&self) -> &crate::ffi::IMeshData_Model {
+        unsafe { &*(crate::ffi::HandleIMeshDataModel_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshData_Model
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Model {
+        unsafe { &mut *(crate::ffi::HandleIMeshDataModel_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_Model> to Handle<IMeshData_Shape>
+    pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataModel_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -748,6 +898,39 @@ impl PCurve {
     /// Inherited: **Source:** `IMeshData_ParametersList.hxx`:36 - `IMeshData_ParametersList::Clear()`
     pub fn clear(&mut self, isKeepEndPoints: bool) {
         unsafe { crate::ffi::IMeshData_PCurve_inherited_Clear(self as *mut Self, isKeepEndPoints) }
+    }
+}
+
+pub use crate::ffi::HandleIMeshDataPCurve;
+
+unsafe impl crate::CppDeletable for HandleIMeshDataPCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshDataPCurve_destructor(ptr);
+    }
+}
+
+impl HandleIMeshDataPCurve {
+    /// Dereference this Handle to access the underlying IMeshData_PCurve
+    pub fn get(&self) -> &crate::ffi::IMeshData_PCurve {
+        unsafe { &*(crate::ffi::HandleIMeshDataPCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshData_PCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_PCurve {
+        unsafe { &mut *(crate::ffi::HandleIMeshDataPCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_PCurve> to Handle<IMeshData_ParametersList>
+    pub fn to_handle_parameters_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataParametersList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshDataPCurve_to_HandleIMeshDataParametersList(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -912,6 +1095,58 @@ impl HandleIMeshDataShape {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Shape {
         unsafe { &mut *(crate::ffi::HandleIMeshDataShape_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IMeshData_Shape> to Handle<BRepMesh_Context>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_Context` (or subclass).
+    pub fn downcast_to_b_rep_mesh_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshDataShape_downcast_to_HandleBRepMeshContext(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshData_Shape> to Handle<IMeshData_TessellatedShape>
+    ///
+    /// Returns `None` if the handle does not point to a `IMeshData_TessellatedShape` (or subclass).
+    pub fn downcast_to_tessellated_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshDataShape_downcast_to_HandleIMeshDataTessellatedShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshData_Shape> to Handle<IMeshTools_Context>
+    ///
+    /// Returns `None` if the handle does not point to a `IMeshTools_Context` (or subclass).
+    pub fn downcast_to_i_mesh_tools_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIMeshToolsContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshDataShape_downcast_to_HandleIMeshToolsContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1022,6 +1257,17 @@ impl TessellatedShape {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IMeshData_TessellatedShape_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe {
@@ -1033,6 +1279,37 @@ impl TessellatedShape {
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::ffi::IMeshData_TessellatedShape_inherited_GetShape(self as *const Self))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIMeshDataTessellatedShape;
+
+unsafe impl crate::CppDeletable for HandleIMeshDataTessellatedShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshDataTessellatedShape_destructor(ptr);
+    }
+}
+
+impl HandleIMeshDataTessellatedShape {
+    /// Dereference this Handle to access the underlying IMeshData_TessellatedShape
+    pub fn get(&self) -> &crate::ffi::IMeshData_TessellatedShape {
+        unsafe { &*(crate::ffi::HandleIMeshDataTessellatedShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshData_TessellatedShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_TessellatedShape {
+        unsafe { &mut *(crate::ffi::HandleIMeshDataTessellatedShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_TessellatedShape> to Handle<IMeshData_Shape>
+    pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshDataTessellatedShape_to_HandleIMeshDataShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1173,6 +1450,48 @@ impl Wire {
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe { &*(crate::ffi::IMeshData_Wire_inherited_GetShape(self as *const Self)) }
+    }
+}
+
+pub use crate::ffi::HandleIMeshDataWire;
+
+unsafe impl crate::CppDeletable for HandleIMeshDataWire {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshDataWire_destructor(ptr);
+    }
+}
+
+impl HandleIMeshDataWire {
+    /// Dereference this Handle to access the underlying IMeshData_Wire
+    pub fn get(&self) -> &crate::ffi::IMeshData_Wire {
+        unsafe { &*(crate::ffi::HandleIMeshDataWire_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshData_Wire
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshData_Wire {
+        unsafe { &mut *(crate::ffi::HandleIMeshDataWire_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshData_Wire> to Handle<IMeshData_TessellatedShape>
+    pub fn to_handle_tessellated_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataTessellatedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshDataWire_to_HandleIMeshDataTessellatedShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IMeshData_Wire> to Handle<IMeshData_Shape>
+    pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshDataWire_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
     }
 }
 

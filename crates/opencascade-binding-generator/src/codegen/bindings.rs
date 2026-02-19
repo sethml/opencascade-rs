@@ -1911,8 +1911,12 @@ pub fn compute_class_bindings(
         .map(|m| safe_method_name(&m.name))
         .collect();
 
-    // Build all_instance_method_names (direct + wrapper impl names)
+    // Build all_instance_method_names (direct + wrapper impl names + constructor names)
     let mut all_instance_method_names: HashSet<String> = cxx_method_names.clone();
+    // Include constructor impl_method_names so static methods don't collide with them
+    for ctor in &constructors {
+        all_instance_method_names.insert(ctor.impl_method_name.clone());
+    }
 
     let wrapper_methods: Vec<WrapperMethodBinding> = wrapper_methods_raw
         .iter()
@@ -2069,12 +2073,13 @@ pub fn compute_class_bindings(
     // Handle<T> manages lifetime via reference counting, not direct delete.
     // However, to_handle requires constructability (it takes ownership of a raw pointer),
     // so skip for abstract classes and classes with protected destructors.
+    let is_handle_type = handle_able_classes.contains(&class.name);
     let has_to_handle =
-        class.is_handle_type && !class.has_protected_destructor && !effectively_abstract;
+        is_handle_type && !class.has_protected_destructor && !effectively_abstract;
 
     // ── Handle get/get_mut (works for abstract classes too) ─────────────
     // Also works for protected-destructor classes since we're just dereferencing the Handle.
-    let has_handle_get = class.is_handle_type;
+    let has_handle_get = is_handle_type;
 
     // ── Handle upcasts ──────────────────────────────────────────────────
     let handle_upcasts = if has_handle_get {
@@ -2137,7 +2142,7 @@ pub fn compute_class_bindings(
         short_name: crate::type_mapping::safe_short_name(&crate::type_mapping::short_name_for_module(cpp_name, &class.module)),
         module: class.module.clone(),
         is_abstract: effectively_abstract,
-        is_handle_type: class.is_handle_type,
+        is_handle_type,
         has_protected_destructor: class.has_protected_destructor,
         doc_comment: class.comment.clone(),
         source_header: class.source_header.clone(),
@@ -2630,14 +2635,7 @@ fn compute_handle_upcast_bindings(
     all_ancestors
         .iter()
         .filter(|base| {
-            if !handle_able_classes.contains(*base) {
-                return false;
-            }
-            if let Some(base_class) = symbol_table.class_by_name(base) {
-                base_class.is_handle_type
-            } else {
-                false
-            }
+            handle_able_classes.contains(*base)
         })
         .map(|base_class| {
             let base_handle_name = format!("Handle{}", base_class.replace("_", ""));
@@ -2675,8 +2673,7 @@ fn compute_handle_downcast_bindings(
             }
             if let Some(desc_class) = symbol_table.class_by_name(desc) {
                 // Only generate downcasts to concrete (non-abstract) descendants
-                // that are handle types
-                desc_class.is_handle_type && !desc_class.is_abstract
+                !desc_class.is_abstract
             } else {
                 false
             }
@@ -3000,6 +2997,48 @@ fn compute_inherited_method_bindings(
     result
 }
 
+
+/// Compute the set of classes that can be wrapped in `Handle<T>`.
+///
+/// A class is handle-able if it IS `Standard_Transient` or transitively inherits
+/// from `Standard_Transient` through the known class graph. This replaces the old
+/// single-level heuristic in `check_is_handle_type()` which only checked direct
+/// base classes against a few hardcoded prefixes.
+pub fn compute_handle_able_classes(all_classes: &[&ParsedClass]) -> HashSet<String> {
+    let mut handle_able = HashSet::new();
+
+    // Seed: Standard_Transient is the root of the Handle hierarchy
+    handle_able.insert("Standard_Transient".to_string());
+
+    // Also seed with classes the parser heuristic already marked
+    for class in all_classes {
+        if class.is_handle_type {
+            handle_able.insert(class.name.clone());
+        }
+    }
+
+    // Transitive closure: any class with a handle-able base is handle-able
+    loop {
+        let mut changed = false;
+        for class in all_classes {
+            if handle_able.contains(&class.name) {
+                continue;
+            }
+            for base in &class.base_classes {
+                if handle_able.contains(base) {
+                    handle_able.insert(class.name.clone());
+                    changed = true;
+                    break;
+                }
+            }
+        }
+        if !changed {
+            break;
+        }
+    }
+    handle_able
+}
+
 // ── Top-level function ──────────────────────────────────────────────────────
 
 /// Compute all binding decisions for every class.
@@ -3053,11 +3092,7 @@ pub fn compute_all_class_bindings(
     all_class_names.extend(extra_typedef_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
 
-    let handle_able_classes: HashSet<String> = all_classes
-        .iter()
-        .filter(|c| c.is_handle_type)
-        .map(|c| c.name.clone())
-        .collect();
+    let handle_able_classes = compute_handle_able_classes(all_classes);
 
     let ffi_ctx = TypeContext {
         current_module: "ffi",
@@ -3202,11 +3237,7 @@ pub fn compute_all_function_bindings(
     all_class_names.extend(extra_typedef_names.iter().cloned());
     let all_enum_names = &symbol_table.all_enum_names;
 
-    let handle_able_classes: HashSet<String> = all_classes
-        .iter()
-        .filter(|c| c.is_handle_type)
-        .map(|c| c.name.clone())
-        .collect();
+    let handle_able_classes = compute_handle_able_classes(all_classes);
 
     let ffi_ctx = TypeContext {
         current_module: "ffi",
@@ -5073,11 +5104,21 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
             "    /// Dereference this Handle to mutably access the underlying {}\n    pub fn get_mut(&mut self) -> &mut crate::ffi::{} {{\n        unsafe {{ &mut *(crate::ffi::{}_get_mut(self as *mut Self)) }}\n    }}\n",
             cn, cn, handle_type_name
         ));
-        for hu in &bindings.handle_upcasts {
-            // Extract the short name from the base class (e.g. "Geom_Curve" -> "Curve")
-            // and snake_case it for the method name
-            let base_short = hu.base_class.split('_').skip(1).collect::<Vec<_>>().join("_");
-            let method_name = format!("to_handle_{}", base_short.to_snake_case());
+        // Build upcast method names, detecting collisions and using full names for disambiguation
+        let upcast_short_names: Vec<String> = bindings.handle_upcasts.iter().map(|hu| {
+            hu.base_class.split('_').skip(1).collect::<Vec<_>>().join("_").to_snake_case()
+        }).collect();
+        let mut upcast_name_counts: HashMap<&str, usize> = HashMap::new();
+        for name in &upcast_short_names {
+            *upcast_name_counts.entry(name.as_str()).or_insert(0) += 1;
+        }
+        for (i, hu) in bindings.handle_upcasts.iter().enumerate() {
+            let method_name = if upcast_name_counts.get(upcast_short_names[i].as_str()).copied().unwrap_or(0) > 1 {
+                // Collision: use full C++ class name
+                format!("to_handle_{}", hu.base_class.to_snake_case())
+            } else {
+                format!("to_handle_{}", upcast_short_names[i])
+            };
             output.push_str(&format!(
                 "    /// Upcast Handle<{cn}> to Handle<{base}>\n    pub fn {method}(&self) -> crate::OwnedPtr<crate::ffi::{base_handle}> {{\n        unsafe {{ crate::OwnedPtr::from_raw(crate::ffi::{ffi_fn}(self as *const Self)) }}\n    }}\n",
                 cn = cn,
@@ -5087,10 +5128,21 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
                 ffi_fn = hu.ffi_fn_name,
             ));
         }
-        for hd in &bindings.handle_downcasts {
-            // Extract short name from derived class (e.g. "Geom_Plane" -> "Plane")
-            let derived_short = hd.derived_class.split('_').skip(1).collect::<Vec<_>>().join("_");
-            let method_name = format!("downcast_to_{}", derived_short.to_snake_case());
+        // Build downcast method names, detecting collisions and using full names for disambiguation
+        let downcast_short_names: Vec<String> = bindings.handle_downcasts.iter().map(|hd| {
+            hd.derived_class.split('_').skip(1).collect::<Vec<_>>().join("_").to_snake_case()
+        }).collect();
+        let mut downcast_name_counts: HashMap<&str, usize> = HashMap::new();
+        for name in &downcast_short_names {
+            *downcast_name_counts.entry(name.as_str()).or_insert(0) += 1;
+        }
+        for (i, hd) in bindings.handle_downcasts.iter().enumerate() {
+            let method_name = if downcast_name_counts.get(downcast_short_names[i].as_str()).copied().unwrap_or(0) > 1 {
+                // Collision: use full C++ class name
+                format!("downcast_to_{}", hd.derived_class.to_snake_case())
+            } else {
+                format!("downcast_to_{}", downcast_short_names[i])
+            };
             output.push_str(&format!(
                 "    /// Downcast Handle<{cn}> to Handle<{derived}>\n    ///\n    /// Returns `None` if the handle does not point to a `{derived}` (or subclass).\n    pub fn {method}(&self) -> Option<crate::OwnedPtr<crate::ffi::{derived_handle}>> {{\n        let ptr = unsafe {{ crate::ffi::{ffi_fn}(self as *const Self) }};\n        if ptr.is_null() {{ None }} else {{ Some(unsafe {{ crate::OwnedPtr::from_raw(ptr) }}) }}\n    }}\n",
                 cn = cn,

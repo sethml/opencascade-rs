@@ -48,6 +48,9 @@ impl TryFrom<i32> for ErrorStatus {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleBRepToolsModification;
+
 // ========================
 // From Draft_EdgeInfo.hxx
 // ========================
@@ -529,6 +532,15 @@ impl Modification {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDraftModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Draft_Modification_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
@@ -562,6 +574,39 @@ impl Modification {
                 E,
                 F,
                 P,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleDraftModification;
+
+unsafe impl crate::CppDeletable for HandleDraftModification {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDraftModification_destructor(ptr);
+    }
+}
+
+impl HandleDraftModification {
+    /// Dereference this Handle to access the underlying Draft_Modification
+    pub fn get(&self) -> &crate::ffi::Draft_Modification {
+        unsafe { &*(crate::ffi::HandleDraftModification_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Draft_Modification
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Draft_Modification {
+        unsafe { &mut *(crate::ffi::HandleDraftModification_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Draft_Modification> to Handle<BRepTools_Modification>
+    pub fn to_handle_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleDraftModification_to_HandleBRepToolsModification(
+                    self as *const Self,
+                ),
             )
         }
     }

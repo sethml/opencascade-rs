@@ -206,6 +206,11 @@ impl TryFrom<i32> for DatumReferenceModifierType {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleStepDataSelectInt, HandleStepDataSelectMember, HandleStepReprShapeAspect,
+};
+
 // ========================
 // From StepDimTol_Datum.hxx
 // ========================
@@ -225,6 +230,28 @@ impl Datum {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_Datum_ctor()) }
+    }
+
+    /// **Source:** `StepDimTol_Datum.hxx`:39 - `StepDimTol_Datum::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theShapeAspect_Name: &crate::ffi::HandleTCollectionHAsciiString,
+        theShapeAspect_Description: &crate::ffi::HandleTCollectionHAsciiString,
+        theShapeAspect_OfShape: &crate::ffi::HandleStepReprProductDefinitionShape,
+        theShapeAspect_ProductDefinitional: crate::step_data::Logical,
+        theIdentification: &crate::ffi::HandleTCollectionHAsciiString,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_Datum_init(
+                self as *mut Self,
+                theShapeAspect_Name,
+                theShapeAspect_Description,
+                theShapeAspect_OfShape,
+                theShapeAspect_ProductDefinitional.into(),
+                theIdentification,
+            )
+        }
     }
 
     /// **Source:** `StepDimTol_Datum.hxx`:46 - `StepDimTol_Datum::Identification()`
@@ -279,6 +306,13 @@ impl Datum {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolDatum> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_Datum_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:43 - `StepRepr_ShapeAspect::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::StepDimTol_Datum_inherited_SetName(self as *mut Self, aName) }
@@ -309,6 +343,20 @@ impl Datum {
         }
     }
 
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:51 - `StepRepr_ShapeAspect::SetOfShape()`
+    pub fn set_of_shape(&mut self, aOfShape: &crate::ffi::HandleStepReprProductDefinitionShape) {
+        unsafe { crate::ffi::StepDimTol_Datum_inherited_SetOfShape(self as *mut Self, aOfShape) }
+    }
+
+    /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:53 - `StepRepr_ShapeAspect::OfShape()`
+    pub fn of_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_Datum_inherited_OfShape(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_ShapeAspect.hxx`:55 - `StepRepr_ShapeAspect::SetProductDefinitional()`
     pub fn set_product_definitional(&mut self, aProductDefinitional: crate::step_data::Logical) {
         unsafe {
@@ -330,12 +378,34 @@ impl Datum {
     }
 }
 
-// ── Skipped symbols for Datum (1 total) ──
-// SKIPPED: **Source:** `StepDimTol_Datum.hxx`:39 - `StepDimTol_Datum::Init`
-//   method: Initialize all fields (own and inherited)
-//   Reason: param 'theShapeAspect_OfShape' uses unknown type 'const Handle(StepRepr_ProductDefinitionShape)&'
-//   // pub fn init(&mut self, theShapeAspect_Name: &HandleHAsciiString, theShapeAspect_Description: &HandleHAsciiString, theShapeAspect_OfShape: &HandleProductDefinitionShape, theShapeAspect_ProductDefinitional: Logical, theIdentification: &HandleHAsciiString);
-//
+pub use crate::ffi::HandleStepDimTolDatum;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolDatum {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolDatum_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolDatum {
+    /// Dereference this Handle to access the underlying StepDimTol_Datum
+    pub fn get(&self) -> &crate::ffi::StepDimTol_Datum {
+        unsafe { &*(crate::ffi::HandleStepDimTolDatum_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_Datum
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_Datum {
+        unsafe { &mut *(crate::ffi::HandleStepDimTolDatum_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepDimTol_Datum> to Handle<StepRepr_ShapeAspect>
+    pub fn to_handle_shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDimTolDatum_to_HandleStepReprShapeAspect(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From StepDimTol_DatumReferenceModifier.hxx
@@ -357,6 +427,15 @@ impl DatumReferenceModifier {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceModifier_ctor()) }
     }
 
+    /// **Source:** `StepDimTol_DatumReferenceModifier.hxx`:41 - `StepDimTol_DatumReferenceModifier::CaseNum()`
+    /// Recognizes a DatumReferenceModifier Kind Entity that is :
+    /// 1 -> DatumReferenceModifierWithValue
+    /// 2 -> SimpleDatumReferenceModifierMember
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumReferenceModifier_case_num(self as *const Self, ent) }
+    }
+
     /// **Source:** `StepDimTol_DatumReferenceModifier.hxx`:45 - `StepDimTol_DatumReferenceModifier::DatumReferenceModifierWithValue()`
     /// returns Value as a DatumReferenceModifierWithValue (Null if another type)
     pub fn datum_reference_modifier_with_value(
@@ -368,6 +447,16 @@ impl DatumReferenceModifier {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceModifier.hxx`:49 - `StepDimTol_DatumReferenceModifier::SimpleDatumReferenceModifierMember()`
+    /// returns Value as a SimpleDatumReferenceModifierMember (Null if another type)
+    pub fn simple_datum_reference_modifier_member(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceModifier_simple_datum_reference_modifier_member(self as *const Self))
         }
     }
 
@@ -389,10 +478,34 @@ impl DatumReferenceModifier {
         }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifier_inherited_Matches(
+                self as *const Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifier_inherited_SetValue(self as *mut Self, ent)
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         unsafe {
             crate::ffi::StepDimTol_DatumReferenceModifier_inherited_Nullify(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumReferenceModifier_inherited_Value(self as *const Self))
         }
     }
 
@@ -500,20 +613,6 @@ impl DatumReferenceModifier {
     }
 }
 
-// ── Skipped symbols for DatumReferenceModifier (2 total) ──
-// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifier.hxx`:41 - `StepDimTol_DatumReferenceModifier::CaseNum`
-//   method: Recognizes a DatumReferenceModifier Kind Entity that is :
-//   method: 1 -> DatumReferenceModifierWithValue
-//   method: 2 -> SimpleDatumReferenceModifierMember
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifier.hxx`:49 - `StepDimTol_DatumReferenceModifier::SimpleDatumReferenceModifierMember`
-//   method: returns Value as a SimpleDatumReferenceModifierMember (Null if another type)
-//   Reason: return type 'Handle(StepDimTol_SimpleDatumReferenceModifierMember)' is unknown
-//   // pub fn simple_datum_reference_modifier_member(&self) -> OwnedPtr<Handle<StepDimTol_SimpleDatumReferenceModifierMember>>;
-//
-
 // ========================
 // From StepDimTol_DatumReferenceModifierWithValue.hxx
 // ========================
@@ -534,6 +633,22 @@ impl DatumReferenceModifierWithValue {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumReferenceModifierWithValue_ctor())
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:39 - `StepDimTol_DatumReferenceModifierWithValue::Init()`
+    /// Initialize all fields (own and inherited)
+    pub fn init(
+        &mut self,
+        theModifierType: crate::step_dim_tol::DatumReferenceModifierType,
+        theModifierValue: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifierWithValue_init(
+                self as *mut Self,
+                theModifierType.into(),
+                theModifierValue,
+            )
         }
     }
 
@@ -560,6 +675,34 @@ impl DatumReferenceModifierWithValue {
             crate::ffi::StepDimTol_DatumReferenceModifierWithValue_set_modifier_type(
                 self as *mut Self,
                 theModifierType.into(),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:52 - `StepDimTol_DatumReferenceModifierWithValue::ModifierValue()`
+    /// Returns field ModifierValue
+    pub fn modifier_value(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicLengthMeasureWithUnit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_DatumReferenceModifierWithValue_modifier_value(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:55 - `StepDimTol_DatumReferenceModifierWithValue::SetModifierValue()`
+    /// Set field ModifierValue
+    pub fn set_modifier_value(
+        &mut self,
+        theModifierValue: &crate::ffi::HandleStepBasicLengthMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumReferenceModifierWithValue_set_modifier_value(
+                self as *mut Self,
+                theModifierValue,
             )
         }
     }
@@ -627,23 +770,6 @@ impl HandleStepDimTolDatumReferenceModifierWithValue {
     }
 }
 
-// ── Skipped symbols for DatumReferenceModifierWithValue (3 total) ──
-// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:39 - `StepDimTol_DatumReferenceModifierWithValue::Init`
-//   method: Initialize all fields (own and inherited)
-//   Reason: param 'theModifierValue' uses unknown type 'const Handle(StepBasic_LengthMeasureWithUnit)&'
-//   // pub fn init(&mut self, theModifierType: &DatumReferenceModifierType, theModifierValue: &HandleLengthMeasureWithUnit);
-//
-// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:52 - `StepDimTol_DatumReferenceModifierWithValue::ModifierValue`
-//   method: Returns field ModifierValue
-//   Reason: return type 'Handle(StepBasic_LengthMeasureWithUnit)' is unknown
-//   // pub fn modifier_value(&mut self) -> OwnedPtr<Handle<StepBasic_LengthMeasureWithUnit>>;
-//
-// SKIPPED: **Source:** `StepDimTol_DatumReferenceModifierWithValue.hxx`:55 - `StepDimTol_DatumReferenceModifierWithValue::SetModifierValue`
-//   method: Set field ModifierValue
-//   Reason: param 'theModifierValue' uses unknown type 'const Handle(StepBasic_LengthMeasureWithUnit)&'
-//   // pub fn set_modifier_value(&mut self, theModifierValue: &HandleLengthMeasureWithUnit);
-//
-
 // ========================
 // From StepDimTol_DatumSystemOrReference.hxx
 // ========================
@@ -664,6 +790,15 @@ impl DatumSystemOrReference {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_DatumSystemOrReference_ctor()) }
     }
 
+    /// **Source:** `StepDimTol_DatumSystemOrReference.hxx`:42 - `StepDimTol_DatumSystemOrReference::CaseNum()`
+    /// Recognizes a DatumSystemOrReference Kind Entity that is :
+    /// 1 -> DatumSystem
+    /// 2 -> DatumReference
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepDimTol_DatumSystemOrReference_case_num(self as *const Self, ent) }
+    }
+
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
         unsafe {
@@ -682,10 +817,34 @@ impl DatumSystemOrReference {
         }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Matches(
+                self as *const Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepDimTol_DatumSystemOrReference_inherited_SetValue(self as *mut Self, ent)
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         unsafe {
             crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Nullify(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_DatumSystemOrReference_inherited_Value(self as *const Self))
         }
     }
 
@@ -793,14 +952,7 @@ impl DatumSystemOrReference {
     }
 }
 
-// ── Skipped symbols for DatumSystemOrReference (3 total) ──
-// SKIPPED: **Source:** `StepDimTol_DatumSystemOrReference.hxx`:42 - `StepDimTol_DatumSystemOrReference::CaseNum`
-//   method: Recognizes a DatumSystemOrReference Kind Entity that is :
-//   method: 1 -> DatumSystem
-//   method: 2 -> DatumReference
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
+// ── Skipped symbols for DatumSystemOrReference (2 total) ──
 // SKIPPED: **Source:** `StepDimTol_DatumSystemOrReference.hxx`:45 - `StepDimTol_DatumSystemOrReference::DatumSystem`
 //   method: returns Value as a DatumSystem (Null if another type)
 //   Reason: return type 'Handle(StepDimTol_DatumSystem)' is unknown
@@ -1022,6 +1174,33 @@ impl GeometricToleranceTarget {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_GeometricToleranceTarget_ctor()) }
     }
 
+    /// **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:46 - `StepDimTol_GeometricToleranceTarget::CaseNum()`
+    /// Recognizes a GeometricToleranceTarget Kind Entity that is :
+    /// 1 -> DimensionalLocation
+    /// 2 -> DimensionalSize
+    /// 3 -> ProductDefinitionShape
+    /// 4 -> ShapeAspect
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceTarget_case_num(self as *const Self, ent)
+        }
+    }
+
+    /// **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:55 - `StepDimTol_GeometricToleranceTarget::ProductDefinitionShape()`
+    /// returns Value as a ProductDefinitionShape (Null if another type)
+    pub fn product_definition_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_GeometricToleranceTarget_product_definition_shape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:58 - `StepDimTol_GeometricToleranceTarget::ShapeAspect()`
     /// returns Value as a ShapeAspect (Null if another type)
     pub fn shape_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprShapeAspect> {
@@ -1050,10 +1229,37 @@ impl GeometricToleranceTarget {
         }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceTarget_inherited_Matches(
+                self as *const Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepDimTol_GeometricToleranceTarget_inherited_SetValue(
+                self as *mut Self,
+                ent,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         unsafe {
             crate::ffi::StepDimTol_GeometricToleranceTarget_inherited_Nullify(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepDimTol_GeometricToleranceTarget_inherited_Value(self as *const Self))
         }
     }
 
@@ -1171,14 +1377,7 @@ impl GeometricToleranceTarget {
     }
 }
 
-// ── Skipped symbols for GeometricToleranceTarget (4 total) ──
-// SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:46 - `StepDimTol_GeometricToleranceTarget::CaseNum`
-//   method: Recognizes a GeometricToleranceTarget Kind Entity that is :
-//   method: 1 -> DimensionalLocation
-//   method: 2 -> DimensionalSize
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
+// ── Skipped symbols for GeometricToleranceTarget (2 total) ──
 // SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:49 - `StepDimTol_GeometricToleranceTarget::DimensionalLocation`
 //   method: returns Value as a DimensionalLocation (Null if another type)
 //   Reason: return type 'Handle(StepShape_DimensionalLocation)' is unknown
@@ -1188,11 +1387,6 @@ impl GeometricToleranceTarget {
 //   method: returns Value as a DimensionalSize (Null if another type)
 //   Reason: return type 'Handle(StepShape_DimensionalSize)' is unknown
 //   // pub fn dimensional_size(&self) -> OwnedPtr<Handle<StepShape_DimensionalSize>>;
-//
-// SKIPPED: **Source:** `StepDimTol_GeometricToleranceTarget.hxx`:55 - `StepDimTol_GeometricToleranceTarget::ProductDefinitionShape`
-//   method: returns Value as a ProductDefinitionShape (Null if another type)
-//   Reason: return type 'Handle(StepRepr_ProductDefinitionShape)' is unknown
-//   // pub fn product_definition_shape(&self) -> OwnedPtr<Handle<StepRepr_ProductDefinitionShape>>;
 //
 
 // ========================
@@ -1602,6 +1796,17 @@ impl SimpleDatumReferenceModifierMember {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectInt.hxx`:41 - `StepData_SelectInt::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         unsafe {
@@ -1728,6 +1933,50 @@ impl SimpleDatumReferenceModifierMember {
             crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember_inherited_Enum(
                 self as *const Self,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember;
+
+unsafe impl crate::CppDeletable for HandleStepDimTolSimpleDatumReferenceModifierMember {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember_destructor(ptr);
+    }
+}
+
+impl HandleStepDimTolSimpleDatumReferenceModifierMember {
+    /// Dereference this Handle to access the underlying StepDimTol_SimpleDatumReferenceModifierMember
+    pub fn get(&self) -> &crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember {
+        unsafe {
+            &*(crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepDimTol_SimpleDatumReferenceModifierMember
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepDimTol_SimpleDatumReferenceModifierMember {
+        unsafe {
+            &mut *(crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_SimpleDatumReferenceModifierMember> to Handle<StepData_SelectInt>
+    pub fn to_handle_select_int(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectInt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember_to_HandleStepDataSelectInt(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepDimTol_SimpleDatumReferenceModifierMember> to Handle<StepData_SelectMember>
+    pub fn to_handle_select_member(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember_to_HandleStepDataSelectMember(self as *const Self))
         }
     }
 }

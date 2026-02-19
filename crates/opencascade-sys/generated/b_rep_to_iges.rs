@@ -41,6 +41,22 @@ impl BREntity {
         unsafe { crate::ffi::BRepToIGES_BREntity_get_unit(self as *const Self) }
     }
 
+    /// **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
+    /// Set the value of "TheMap"
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+        unsafe { crate::ffi::BRepToIGES_BREntity_set_transfer_process(self as *mut Self, TP) }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
+    /// Returns the value of "TheMap"
+    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BREntity_get_transfer_process(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `BRepToIGES_BREntity.hxx`:64 - `BRepToIGES_BREntity::TransferShape()`
     /// Returns the result of the transfert of any Shape
     /// If  the transfer has  failed, this member return a NullEntity.
@@ -60,27 +76,150 @@ impl BREntity {
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:69 - `BRepToIGES_BREntity::AddFail()`
     /// Records a new Fail message
-    pub fn add_fail(&mut self, start: &crate::topo_ds::Shape, amess: &str) {
+    pub fn add_fail_shape_charptr(&mut self, start: &crate::topo_ds::Shape, amess: &str) {
         let c_amess = std::ffi::CString::new(amess).unwrap();
         unsafe {
-            crate::ffi::BRepToIGES_BREntity_add_fail(self as *mut Self, start, c_amess.as_ptr())
+            crate::ffi::BRepToIGES_BREntity_add_fail_shape_charptr(
+                self as *mut Self,
+                start,
+                c_amess.as_ptr(),
+            )
         }
     }
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:72 - `BRepToIGES_BREntity::AddWarning()`
     /// Records a new Warning message
-    pub fn add_warning(&mut self, start: &crate::topo_ds::Shape, amess: &str) {
+    pub fn add_warning_shape_charptr(&mut self, start: &crate::topo_ds::Shape, amess: &str) {
         let c_amess = std::ffi::CString::new(amess).unwrap();
         unsafe {
-            crate::ffi::BRepToIGES_BREntity_add_warning(self as *mut Self, start, c_amess.as_ptr())
+            crate::ffi::BRepToIGES_BREntity_add_warning_shape_charptr(
+                self as *mut Self,
+                start,
+                c_amess.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:75 - `BRepToIGES_BREntity::AddFail()`
+    /// Records a new Fail message
+    pub fn add_fail_handlestandardtransient_charptr(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        amess: &str,
+    ) {
+        let c_amess = std::ffi::CString::new(amess).unwrap();
+        unsafe {
+            crate::ffi::BRepToIGES_BREntity_add_fail_handlestandardtransient_charptr(
+                self as *mut Self,
+                start,
+                c_amess.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:79 - `BRepToIGES_BREntity::AddWarning()`
+    /// Records a new Warning message
+    pub fn add_warning_handlestandardtransient_charptr(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        amess: &str,
+    ) {
+        let c_amess = std::ffi::CString::new(amess).unwrap();
+        unsafe {
+            crate::ffi::BRepToIGES_BREntity_add_warning_handlestandardtransient_charptr(
+                self as *mut Self,
+                start,
+                c_amess.as_ptr(),
+            )
         }
     }
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
     /// Returns True if start was already treated and has a result in "TheMap"
     /// else returns False.
-    pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
-        unsafe { crate::ffi::BRepToIGES_BREntity_has_shape_result(self as *const Self, start) }
+    pub fn has_shape_result_shape(&self, start: &crate::topo_ds::Shape) -> bool {
+        unsafe {
+            crate::ffi::BRepToIGES_BREntity_has_shape_result_shape(self as *const Self, start)
+        }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:88 - `BRepToIGES_BREntity::GetShapeResult()`
+    /// Returns the result of the transfer of the Shape "start" contained
+    /// in "TheMap" . (if HasShapeResult is True).
+    pub fn get_shape_result_shape(
+        &self,
+        start: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BREntity_get_shape_result_shape(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:91 - `BRepToIGES_BREntity::SetShapeResult()`
+    /// set in "TheMap" the result of the transfer of the Shape "start".
+    pub fn set_shape_result_shape_handlestandardtransient(
+        &mut self,
+        start: &crate::topo_ds::Shape,
+        result: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::BRepToIGES_BREntity_set_shape_result_shape_handlestandardtransient(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:96 - `BRepToIGES_BREntity::HasShapeResult()`
+    /// Returns True if start was already treated and has a result in "TheMap"
+    /// else returns False.
+    pub fn has_shape_result_handlestandardtransient(
+        &self,
+        start: &crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepToIGES_BREntity_has_shape_result_handlestandardtransient(
+                self as *const Self,
+                start,
+            )
+        }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:100 - `BRepToIGES_BREntity::GetShapeResult()`
+    /// Returns the result of the transfer of the Transient "start" contained
+    /// in "TheMap" . (if HasShapeResult is True).
+    pub fn get_shape_result_handlestandardtransient(
+        &self,
+        start: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepToIGES_BREntity_get_shape_result_handlestandardtransient(
+                    self as *const Self,
+                    start,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `BRepToIGES_BREntity.hxx`:104 - `BRepToIGES_BREntity::SetShapeResult()`
+    /// set in "TheMap" the result of the transfer of the Transient "start".
+    pub fn set_shape_result_handlestandardtransient2(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        result: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::BRepToIGES_BREntity_set_shape_result_handlestandardtransient2(
+                self as *mut Self,
+                start,
+                result,
+            )
+        }
     }
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:109 - `BRepToIGES_BREntity::GetConvertSurfaceMode()`
@@ -98,7 +237,7 @@ impl BREntity {
     }
 }
 
-// ── Skipped symbols for BREntity (11 total) ──
+// ── Skipped symbols for BREntity (2 total) ──
 // SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel`
 //   method: Set the value of "TheModel"
 //   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
@@ -108,54 +247,6 @@ impl BREntity {
 //   method: Returns the value of "TheModel"
 //   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
 //   // pub fn get_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess`
-//   method: Set the value of "TheMap"
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_FinderProcess)&'
-//   // pub fn set_transfer_process(&mut self, TP: &HandleFinderProcess);
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess`
-//   method: Returns the value of "TheMap"
-//   Reason: return type 'Handle(Transfer_FinderProcess)' is unknown
-//   // pub fn get_transfer_process(&self) -> OwnedPtr<Handle<Transfer_FinderProcess>>;
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:75 - `BRepToIGES_BREntity::AddFail`
-//   method: Records a new Fail message
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_fail(&mut self, start: &HandleTransient, amess: *const char);
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:79 - `BRepToIGES_BREntity::AddWarning`
-//   method: Records a new Warning message
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_warning(&mut self, start: &HandleTransient, amess: *const char);
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:88 - `BRepToIGES_BREntity::GetShapeResult`
-//   method: Returns the result of the transfer of the Shape "start" contained
-//   method: in "TheMap" . (if HasShapeResult is True).
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn get_shape_result(&self, start: &Shape) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:91 - `BRepToIGES_BREntity::SetShapeResult`
-//   method: set in "TheMap" the result of the transfer of the Shape "start".
-//   Reason: param 'result' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_shape_result(&mut self, start: &Shape, result: &HandleTransient);
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:96 - `BRepToIGES_BREntity::HasShapeResult`
-//   method: Returns True if start was already treated and has a result in "TheMap"
-//   method: else returns False.
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn has_shape_result(&self, start: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:100 - `BRepToIGES_BREntity::GetShapeResult`
-//   method: Returns the result of the transfer of the Transient "start" contained
-//   method: in "TheMap" . (if HasShapeResult is True).
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn get_shape_result(&self, start: &HandleTransient) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `BRepToIGES_BREntity.hxx`:104 - `BRepToIGES_BREntity::SetShapeResult`
-//   method: set in "TheMap" the result of the transfer of the Transient "start".
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_shape_result(&mut self, start: &HandleTransient, result: &HandleTransient);
 //
 
 // ========================
@@ -265,6 +356,22 @@ impl BRShell {
         unsafe { crate::ffi::BRepToIGES_BRShell_inherited_GetUnit(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+        unsafe {
+            crate::ffi::BRepToIGES_BRShell_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
+    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRShell_inherited_GetTransferProcess(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:64 - `BRepToIGES_BREntity::TransferShape()`
     pub fn transfer_shape(
         &mut self,
@@ -284,6 +391,34 @@ impl BRShell {
     pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepToIGES_BRShell_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:88 - `BRepToIGES_BREntity::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRShell_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:91 - `BRepToIGES_BREntity::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::topo_ds::Shape,
+        result: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::BRepToIGES_BRShell_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
         }
     }
 
@@ -424,6 +559,22 @@ impl BRSolid {
         unsafe { crate::ffi::BRepToIGES_BRSolid_inherited_GetUnit(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+        unsafe {
+            crate::ffi::BRepToIGES_BRSolid_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
+    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRSolid_inherited_GetTransferProcess(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:64 - `BRepToIGES_BREntity::TransferShape()`
     pub fn transfer_shape(
         &mut self,
@@ -443,6 +594,34 @@ impl BRSolid {
     pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepToIGES_BRSolid_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:88 - `BRepToIGES_BREntity::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRSolid_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:91 - `BRepToIGES_BREntity::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::topo_ds::Shape,
+        result: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::BRepToIGES_BRSolid_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
         }
     }
 
@@ -732,6 +911,20 @@ impl BRWire {
         unsafe { crate::ffi::BRepToIGES_BRWire_inherited_GetUnit(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+        unsafe { crate::ffi::BRepToIGES_BRWire_inherited_SetTransferProcess(self as *mut Self, TP) }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
+    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRWire_inherited_GetTransferProcess(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:64 - `BRepToIGES_BREntity::TransferShape()`
     pub fn transfer_shape(
         &mut self,
@@ -751,6 +944,30 @@ impl BRWire {
     pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepToIGES_BRWire_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:88 - `BRepToIGES_BREntity::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGES_BRWire_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:91 - `BRepToIGES_BREntity::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::topo_ds::Shape,
+        result: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::BRepToIGES_BRWire_inherited_SetShapeResult(self as *mut Self, start, result)
         }
     }
 

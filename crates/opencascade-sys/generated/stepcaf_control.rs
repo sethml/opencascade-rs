@@ -6,6 +6,12 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleSTEPControlActorWrite, HandleSTEPControlController, HandleTransferActorOfFinderProcess,
+    HandleTransferActorOfProcessForFinder, HandleXSControlController,
+};
+
 // ========================
 // From STEPCAFControl_ActorWrite.hxx
 // ========================
@@ -25,6 +31,19 @@ impl ActorWrite {
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:35 - `STEPCAFControl_ActorWrite::STEPCAFControl_ActorWrite()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_ctor()) }
+    }
+
+    /// **Source:** `STEPCAFControl_ActorWrite.hxx`:39 - `STEPCAFControl_ActorWrite::IsAssembly()`
+    /// Check whether shape S is assembly
+    /// Returns True if shape is registered in assemblies map
+    pub fn is_assembly(
+        &self,
+        theModel: &crate::ffi::HandleStepDataStepModel,
+        S: &mut crate::topo_ds::Shape,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_ActorWrite_is_assembly(self as *const Self, theModel, S)
+        }
     }
 
     /// **Source:** `STEPCAFControl_ActorWrite.hxx`:45 - `STEPCAFControl_ActorWrite::SetStdMode()`
@@ -125,10 +144,88 @@ impl ActorWrite {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:47 - `STEPControl_ActorWrite::Recognize()`
     pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
         unsafe {
             crate::ffi::STEPCAFControl_ActorWrite_inherited_Recognize(self as *mut Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:50 - `STEPControl_ActorWrite::Transfer()`
+    pub fn transfer(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ActorWrite_inherited_Transfer(
+                self as *mut Self,
+                start,
+                FP,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:65 - `STEPControl_ActorWrite::TransferShape()`
+    pub fn transfer_shape(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        SDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        shapeGroup: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        isManifold: bool,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_TransferShape(
+                    self as *mut Self,
+                    start,
+                    SDR,
+                    FP,
+                    theLocalFactors,
+                    shapeGroup,
+                    isManifold,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_ActorWrite.hxx`:74 - `STEPControl_ActorWrite::TransferCompound()`
+    pub fn transfer_compound(
+        &mut self,
+        start: &crate::ffi::HandleTransferFinder,
+        SDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_TransferCompound(
+                    self as *mut Self,
+                    start,
+                    SDR,
+                    FP,
+                    theLocalFactors,
+                    theProgress,
+                ),
+            )
         }
     }
 
@@ -185,6 +282,25 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:57 - `Transfer_ActorOfFinderProcess::TransferTransient()`
+    pub fn transfer_transient(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferFinderProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPCAFControl_ActorWrite_inherited_TransferTransient(
+                    self as *mut Self,
+                    start,
+                    TP,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -228,13 +344,64 @@ impl ActorWrite {
     }
 }
 
-// ── Skipped symbols for ActorWrite (1 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_ActorWrite.hxx`:39 - `STEPCAFControl_ActorWrite::IsAssembly`
-//   method: Check whether shape S is assembly
-//   method: Returns True if shape is registered in assemblies map
-//   Reason: param 'theModel' uses unknown type 'const Handle(StepData_StepModel)&'
-//   // pub fn is_assembly(&self, theModel: &HandleStepModel, S: &mut Shape) -> bool;
-//
+pub use crate::ffi::HandleSTEPCAFControlActorWrite;
+
+unsafe impl crate::CppDeletable for HandleSTEPCAFControlActorWrite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleSTEPCAFControlActorWrite_destructor(ptr);
+    }
+}
+
+impl HandleSTEPCAFControlActorWrite {
+    /// Dereference this Handle to access the underlying STEPCAFControl_ActorWrite
+    pub fn get(&self) -> &crate::ffi::STEPCAFControl_ActorWrite {
+        unsafe { &*(crate::ffi::HandleSTEPCAFControlActorWrite_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying STEPCAFControl_ActorWrite
+    pub fn get_mut(&mut self) -> &mut crate::ffi::STEPCAFControl_ActorWrite {
+        unsafe { &mut *(crate::ffi::HandleSTEPCAFControlActorWrite_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<STEPCAFControl_ActorWrite> to Handle<STEPControl_ActorWrite>
+    pub fn to_handle_actor_write(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPCAFControlActorWrite_to_HandleSTEPControlActorWrite(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<STEPCAFControl_ActorWrite> to Handle<Transfer_ActorOfFinderProcess>
+    pub fn to_handle_actor_of_finder_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPCAFControlActorWrite_to_HandleTransferActorOfFinderProcess(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<STEPCAFControl_ActorWrite> to Handle<Transfer_ActorOfProcessForFinder>
+    pub fn to_handle_actor_of_process_for_finder(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPCAFControlActorWrite_to_HandleTransferActorOfProcessForFinder(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From STEPCAFControl_Controller.hxx
@@ -319,12 +486,65 @@ impl Controller {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlController> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `STEPControl_Controller.hxx`:45 - `STEPControl_Controller::NewModel()`
     pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_inherited_NewModel(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_Controller.hxx`:48 - `STEPControl_Controller::ActorRead()`
+    pub fn actor_read(
+        &self,
+        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_inherited_ActorRead(
+                self as *const Self,
+                theModel,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `STEPControl_Controller.hxx`:51 - `STEPControl_Controller::Customise()`
+    pub fn customise(&mut self, WS: &mut crate::ffi::HandleXSControlWorkSession) {
+        unsafe { crate::ffi::STEPCAFControl_Controller_inherited_Customise(self as *mut Self, WS) }
+    }
+
+    /// Inherited: **Source:** `STEPControl_Controller.hxx`:59 - `STEPControl_Controller::TransferWriteShape()`
+    pub fn transfer_write_shape(
+        &self,
+        shape: &crate::topo_ds::Shape,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        modetrans: i32,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPCAFControl_Controller_inherited_TransferWriteShape(
+                    self as *const Self,
+                    shape,
+                    FP,
+                    model,
+                    modetrans,
+                    theProgress,
+                ),
+            )
+            .unwrap()
         }
     }
 
@@ -337,6 +557,15 @@ impl Controller {
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
         unsafe {
             &*(crate::ffi::STEPCAFControl_Controller_inherited_WorkLibrary(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:116 - `XSControl_Controller::ActorWrite()`
+    pub fn actor_write(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Controller_inherited_ActorWrite(
+                self as *const Self,
+            ))
         }
     }
 
@@ -363,6 +592,45 @@ impl Controller {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:154 - `XSControl_Controller::RecognizeWriteTransient()`
+    pub fn recognize_write_transient(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        modetrans: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Controller_inherited_RecognizeWriteTransient(
+                self as *const Self,
+                obj,
+                modetrans,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:168 - `XSControl_Controller::TransferWriteTransient()`
+    pub fn transfer_write_transient(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        FP: &crate::ffi::HandleTransferFinderProcess,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        modetrans: i32,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::STEPCAFControl_Controller_inherited_TransferWriteTransient(
+                    self as *const Self,
+                    obj,
+                    FP,
+                    model,
+                    modetrans,
+                    theProgress,
+                ),
+            )
+            .unwrap()
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
     pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         unsafe {
@@ -370,6 +638,52 @@ impl Controller {
                 self as *const Self,
                 shape,
                 modetrans,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleSTEPCAFControlController;
+
+unsafe impl crate::CppDeletable for HandleSTEPCAFControlController {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleSTEPCAFControlController_destructor(ptr);
+    }
+}
+
+impl HandleSTEPCAFControlController {
+    /// Dereference this Handle to access the underlying STEPCAFControl_Controller
+    pub fn get(&self) -> &crate::ffi::STEPCAFControl_Controller {
+        unsafe { &*(crate::ffi::HandleSTEPCAFControlController_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying STEPCAFControl_Controller
+    pub fn get_mut(&mut self) -> &mut crate::ffi::STEPCAFControl_Controller {
+        unsafe { &mut *(crate::ffi::HandleSTEPCAFControlController_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<STEPCAFControl_Controller> to Handle<STEPControl_Controller>
+    pub fn to_handle_step_control_controller(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlController> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPCAFControlController_to_HandleSTEPControlController(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<STEPCAFControl_Controller> to Handle<XSControl_Controller>
+    pub fn to_handle_xs_control_controller(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleSTEPCAFControlController_to_HandleXSControlController(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -395,6 +709,20 @@ impl ExternFile {
     /// Creates an empty structure
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ExternFile_ctor()) }
+    }
+
+    /// **Source:** `STEPCAFControl_ExternFile.hxx`:40 - `STEPCAFControl_ExternFile::SetWS()`
+    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession) {
+        unsafe { crate::ffi::STEPCAFControl_ExternFile_set_ws(self as *mut Self, WS) }
+    }
+
+    /// **Source:** `STEPCAFControl_ExternFile.hxx`:42 - `STEPCAFControl_ExternFile::GetWS()`
+    pub fn get_ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_ExternFile_get_ws(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `STEPCAFControl_ExternFile.hxx`:44 - `STEPCAFControl_ExternFile::SetLoadStatus()`
@@ -522,16 +850,6 @@ impl HandleSTEPCAFControlExternFile {
     }
 }
 
-// ── Skipped symbols for ExternFile (2 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_ExternFile.hxx`:40 - `STEPCAFControl_ExternFile::SetWS`
-//   Reason: param 'WS' uses unknown type 'const Handle(XSControl_WorkSession)&'
-//   // pub fn set_ws(&mut self, WS: &HandleWorkSession);
-//
-// SKIPPED: **Source:** `STEPCAFControl_ExternFile.hxx`:42 - `STEPCAFControl_ExternFile::GetWS`
-//   Reason: return type 'Handle(XSControl_WorkSession)' is unknown
-//   // pub fn get_ws(&self) -> OwnedPtr<Handle<XSControl_WorkSession>>;
-//
-
 // ========================
 // From STEPCAFControl_GDTProperty.hxx
 // ========================
@@ -551,6 +869,14 @@ impl GDTProperty {
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:51 - `STEPCAFControl_GDTProperty::STEPCAFControl_GDTProperty()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_ctor()) }
+    }
+
+    /// **Source:** `STEPCAFControl_GDTProperty.hxx`:52 - `STEPCAFControl_GDTProperty::GetDimModifiers()`
+    pub fn get_dim_modifiers(
+        theCRI: &crate::ffi::HandleStepReprCompoundRepresentationItem,
+        theModifiers: &mut crate::ffi::XCAFDimTolObjects_DimensionModifiersSequence,
+    ) {
+        unsafe { crate::ffi::STEPCAFControl_GDTProperty_get_dim_modifiers(theCRI, theModifiers) }
     }
 
     /// **Source:** `STEPCAFControl_GDTProperty.hxx`:56 - `STEPCAFControl_GDTProperty::GetDimClassOfTolerance()`
@@ -781,17 +1107,18 @@ impl GDTProperty {
             )
         }
     }
-}
 
-// ── Skipped symbols for GDTProperty (2 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_GDTProperty.hxx`:52 - `STEPCAFControl_GDTProperty::GetDimModifiers`
-//   Reason: param 'theCRI' uses unknown type 'const Handle(StepRepr_CompoundRepresentationItem)&'
-//   // pub fn get_dim_modifiers(theCRI: &HandleCompoundRepresentationItem, theModifiers: &mut DimensionModifiersSequence);
-//
-// SKIPPED: **Source:** `STEPCAFControl_GDTProperty.hxx`:121 - `STEPCAFControl_GDTProperty::GetTessellation`
-//   Reason: return type 'Handle(StepVisual_TessellatedGeometricSet)' is unknown
-//   // pub fn get_tessellation(theShape: &Shape) -> OwnedPtr<Handle<StepVisual_TessellatedGeometricSet>>;
-//
+    /// **Source:** `STEPCAFControl_GDTProperty.hxx`:121 - `STEPCAFControl_GDTProperty::GetTessellation()`
+    pub fn get_tessellation(
+        theShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedGeometricSet> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_GDTProperty_get_tessellation(
+                theShape,
+            ))
+        }
+    }
+}
 
 // ========================
 // From STEPCAFControl_Reader.hxx
@@ -824,6 +1151,36 @@ impl Reader {
     /// PropsMode to Standard_True.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Reader_ctor()) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:73 - `STEPCAFControl_Reader::STEPCAFControl_Reader()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for STEP
+    pub fn new_handlexscontrolworksession_bool(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+        scratch: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPCAFControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch),
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:73 - `STEPCAFControl_Reader::STEPCAFControl_Reader()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for STEP
+    pub fn new_handlexscontrolworksession(
+        WS: &crate::ffi::HandleXSControlWorkSession,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlexscontrolworksession_bool(WS, true)
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:81 - `STEPCAFControl_Reader::Init()`
+    /// Clears the internal data structures and attaches to a new session
+    /// Clears the session if it was not yet set for STEP
+    pub fn init(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Reader_init(self as *mut Self, WS, scratch) }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:88 - `STEPCAFControl_Reader::ReadFile()`
@@ -873,6 +1230,99 @@ impl Reader {
     /// Shortcut for Reader().NbRootsForTransfer()
     pub fn nb_roots_for_transfer(&mut self) -> i32 {
         unsafe { crate::ffi::STEPCAFControl_Reader_nb_roots_for_transfer(self as *mut Self) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:113 - `STEPCAFControl_Reader::TransferOneRoot()`
+    /// Translates currently loaded STEP file into the document
+    /// Returns True if succeeded, and False in case of fail
+    /// Provided for use like single-file reader
+    pub fn transfer_one_root(
+        &mut self,
+        num: i32,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_transfer_one_root(
+                self as *mut Self,
+                num,
+                doc,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:121 - `STEPCAFControl_Reader::Transfer()`
+    /// Translates currently loaded STEP file into the document
+    /// Returns True if succeeded, and False in case of fail
+    /// Provided for use like single-file reader
+    pub fn transfer(
+        &mut self,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe { crate::ffi::STEPCAFControl_Reader_transfer(self as *mut Self, doc, theProgress) }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:125 - `STEPCAFControl_Reader::Perform()`
+    pub fn perform_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        filename: &crate::t_collection::AsciiString,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, filename, doc, theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:130 - `STEPCAFControl_Reader::Perform()`
+    pub fn perform_asciistring_handletdocstddocument_parameters_progressrange(
+        &mut self,
+        filename: &crate::t_collection::AsciiString,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theParams: &crate::destep::Parameters,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_perform_asciistring_handletdocstddocument_parameters_progressrange(self as *mut Self, filename, doc, theParams, theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:138 - `STEPCAFControl_Reader::Perform()`
+    /// Translate STEP file given by filename into the document
+    /// Return True if succeeded, and False in case of fail
+    pub fn perform_charptr_handletdocstddocument_progressrange(
+        &mut self,
+        filename: &str,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(
+                self as *mut Self,
+                c_filename.as_ptr(),
+                doc,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:145 - `STEPCAFControl_Reader::Perform()`
+    /// Translate STEP file given by filename into the document
+    /// Return True if succeeded, and False in case of fail
+    pub fn perform_charptr_handletdocstddocument_parameters_progressrange(
+        &mut self,
+        filename: &str,
+        doc: &crate::ffi::HandleTDocStdDocument,
+        theParams: &crate::destep::Parameters,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_perform_charptr_handletdocstddocument_parameters_progressrange(self as *mut Self, c_filename.as_ptr(), doc, theParams, theProgress)
+        }
     }
 
     /// **Source:** `STEPCAFControl_Reader.hxx`:158 - `STEPCAFControl_Reader::ExternFile()`
@@ -1033,59 +1483,13 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (16 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:73 - `STEPCAFControl_Reader::STEPCAFControl_Reader`
-//   constructor: Creates a reader tool and attaches it to an already existing Session
-//   constructor: Clears the session if it was not yet set for STEP
-//   Reason: param 'WS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession_bool(WS: &HandleWorkSession, scratch: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:81 - `STEPCAFControl_Reader::Init`
-//   method: Clears the internal data structures and attaches to a new session
-//   method: Clears the session if it was not yet set for STEP
-//   Reason: param 'WS' uses unknown type 'const Handle(XSControl_WorkSession)&'
-//   // pub fn init(&mut self, WS: &HandleWorkSession, scratch: bool);
-//
+// ── Skipped symbols for Reader (8 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:102 - `STEPCAFControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status.
 //   method: @param[in] theName  auxiliary stream name
 //   method: @param[in] theIStream  stream to read from
 //   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
 //   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:113 - `STEPCAFControl_Reader::TransferOneRoot`
-//   method: Translates currently loaded STEP file into the document
-//   method: Returns True if succeeded, and False in case of fail
-//   method: Provided for use like single-file reader
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer_one_root(&mut self, num: i32, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:121 - `STEPCAFControl_Reader::Transfer`
-//   method: Translates currently loaded STEP file into the document
-//   method: Returns True if succeeded, and False in case of fail
-//   method: Provided for use like single-file reader
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer(&mut self, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:125 - `STEPCAFControl_Reader::Perform`
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, filename: &AsciiString, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:130 - `STEPCAFControl_Reader::Perform`
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, filename: &AsciiString, doc: &HandleDocument, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:138 - `STEPCAFControl_Reader::Perform`
-//   method: Translate STEP file given by filename into the document
-//   method: Return True if succeeded, and False in case of fail
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, filename: *const char, doc: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:145 - `STEPCAFControl_Reader::Perform`
-//   method: Translate STEP file given by filename into the document
-//   method: Return True if succeeded, and False in case of fail
-//   Reason: param 'doc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, filename: *const char, doc: &HandleDocument, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
 //   method: Returns data on external files
@@ -1160,6 +1564,40 @@ impl Writer {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::STEPCAFControl_Writer_ctor()) }
     }
 
+    /// **Source:** `STEPCAFControl_Writer.hxx`:64 - `STEPCAFControl_Writer::STEPCAFControl_Writer()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for STEP
+    /// Clears the internal data structures
+    pub fn new_handlexscontrolworksession_bool(
+        theWS: &crate::ffi::HandleXSControlWorkSession,
+        theScratch: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPCAFControl_Writer_ctor_handlexscontrolworksession_bool(
+                    theWS, theScratch,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:64 - `STEPCAFControl_Writer::STEPCAFControl_Writer()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for STEP
+    /// Clears the internal data structures
+    pub fn new_handlexscontrolworksession(
+        theWS: &crate::ffi::HandleXSControlWorkSession,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handlexscontrolworksession_bool(theWS, true)
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:69 - `STEPCAFControl_Writer::Init()`
+    /// Clears the internal data structures and attaches to a new session
+    /// Clears the session if it was not yet set for STEP
+    pub fn init(&mut self, theWS: &crate::ffi::HandleXSControlWorkSession, theScratch: bool) {
+        unsafe { crate::ffi::STEPCAFControl_Writer_init(self as *mut Self, theWS, theScratch) }
+    }
+
     /// **Source:** `STEPCAFControl_Writer.hxx`:77 - `STEPCAFControl_Writer::Write()`
     /// Writes all the produced models into file
     /// In case of multimodel with extern references,
@@ -1174,6 +1612,51 @@ impl Writer {
                 c_theFileName.as_ptr(),
             ))
             .unwrap()
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:90 - `STEPCAFControl_Writer::Transfer()`
+    /// Transfers a document (or single label) to a STEP model
+    /// The mode of translation of shape is AsIs
+    /// If multi is not null pointer, it switches to multifile
+    /// mode (with external refs), and string pointed by <multi>
+    /// gives prefix for names of extern files (can be empty string)
+    /// Returns True if translation is OK
+    pub fn transfer_handletdocstddocument_stepmodeltype_charptr_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theMode: crate::step_control::StepModelType,
+        theIsMulti: &str,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_transfer_handletdocstddocument_stepmodeltype_charptr_progressrange(self as *mut Self, theDoc, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:106 - `STEPCAFControl_Writer::Transfer()`
+    /// Transfers a document (or single label) to a STEP model
+    /// This method uses if need to set parameters avoiding
+    /// initialization from Interface_Static
+    /// @param theParams  configuration parameters
+    /// @param theMode    mode of translation of shape is AsIs
+    /// @param theIsMulti if multi is not null pointer, it switches to multifile
+    /// mode (with external refs), and string pointed by <multi>
+    /// gives prefix for names of extern files (can be empty string)
+    /// @param theProgress progress indicator
+    /// Returns True if translation is OK
+    pub fn transfer_handletdocstddocument_parameters_stepmodeltype_charptr_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theParams: &crate::destep::Parameters,
+        theMode: crate::step_control::StepModelType,
+        theIsMulti: &str,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_transfer_handletdocstddocument_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theDoc, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
         }
     }
 
@@ -1248,6 +1731,56 @@ impl Writer {
         let c_theIsMulti = std::ffi::CString::new(theIsMulti).unwrap();
         unsafe {
             crate::ffi::STEPCAFControl_Writer_transfer_labelsequence_parameters_stepmodeltype_charptr_progressrange(self as *mut Self, theLabelSeq, theParams, theMode.into(), c_theIsMulti.as_ptr(), theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:149 - `STEPCAFControl_Writer::Perform()`
+    pub fn perform_handletdocstddocument_asciistring_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theFileName: &crate::t_collection::AsciiString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, theDoc, theFileName, theProgress)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:156 - `STEPCAFControl_Writer::Perform()`
+    /// Transfers a document and writes it to a STEP file
+    /// Returns True if translation is OK
+    pub fn perform_handletdocstddocument_charptr_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theFileName: &str,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(
+                self as *mut Self,
+                theDoc,
+                c_theFileName.as_ptr(),
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:165 - `STEPCAFControl_Writer::Perform()`
+    /// Transfers a document and writes it to a STEP file
+    /// This method is utilized if there's a need to set parameters avoiding
+    /// initialization from Interface_Static
+    /// Returns True if translation is OK
+    pub fn perform_handletdocstddocument_charptr_parameters_progressrange(
+        &mut self,
+        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theFileName: &str,
+        theParams: &crate::destep::Parameters,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_parameters_progressrange(self as *mut Self, theDoc, c_theFileName.as_ptr(), theParams, theProgress)
         }
     }
 
@@ -1390,56 +1923,12 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (14 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:64 - `STEPCAFControl_Writer::STEPCAFControl_Writer`
-//   constructor: Creates a reader tool and attaches it to an already existing Session
-//   constructor: Clears the session if it was not yet set for STEP
-//   constructor: Clears the internal data structures
-//   Reason: param 'theWS' uses unknown Handle type
-//   // pub fn new_handlexscontrolworksession_bool(theWS: &HandleWorkSession, theScratch: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:69 - `STEPCAFControl_Writer::Init`
-//   method: Clears the internal data structures and attaches to a new session
-//   method: Clears the session if it was not yet set for STEP
-//   Reason: param 'theWS' uses unknown type 'const Handle(XSControl_WorkSession)&'
-//   // pub fn init(&mut self, theWS: &HandleWorkSession, theScratch: bool);
-//
+// ── Skipped symbols for Writer (7 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:81 - `STEPCAFControl_Writer::WriteStream`
 //   method: Writes all the produced models into the stream.
 //   method: Provided for use like single-file writer
 //   Reason: has unbindable types: param 'theStream': stream type (std::ostream&)
 //   // pub fn write_stream(&mut self, theStream: /* std::ostream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:90 - `STEPCAFControl_Writer::Transfer`
-//   method: Transfers a document (or single label) to a STEP model
-//   method: The mode of translation of shape is AsIs
-//   method: If multi is not null pointer, it switches to multifile
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer(&mut self, theDoc: &HandleDocument, theMode: StepModelType, theIsMulti: *const char, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:106 - `STEPCAFControl_Writer::Transfer`
-//   method: Transfers a document (or single label) to a STEP model
-//   method: This method uses if need to set parameters avoiding
-//   method: initialization from Interface_Static
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn transfer(&mut self, theDoc: &HandleDocument, theParams: &Parameters, theMode: StepModelType, theIsMulti: *const char, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:149 - `STEPCAFControl_Writer::Perform`
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: &AsciiString, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:156 - `STEPCAFControl_Writer::Perform`
-//   method: Transfers a document and writes it to a STEP file
-//   method: Returns True if translation is OK
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: *const char, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:165 - `STEPCAFControl_Writer::Perform`
-//   method: Transfers a document and writes it to a STEP file
-//   method: This method is utilized if there's a need to set parameters avoiding
-//   method: initialization from Interface_Static
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDoc: &HandleDocument, theFileName: *const char, theParams: &Parameters, theProgress: &ProgressRange) -> bool;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:173 - `STEPCAFControl_Writer::ExternFiles`
 //   method: Returns data on external files

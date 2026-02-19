@@ -15,6 +15,9 @@ pub fn plane_xoy() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_plane_xoy()) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleBRepToolsReShape;
+
 // ========================
 // From ShapeBuild_Edge.hxx
 // ========================
@@ -496,6 +499,15 @@ impl ReShape {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRepTools_ReShape.hxx`:59 - `BRepTools_ReShape::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::ShapeBuild_ReShape_inherited_Clear(self as *mut Self) }
@@ -563,6 +575,35 @@ impl ReShape {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeBuild_ReShape_inherited_History(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeBuildReShape;
+
+unsafe impl crate::CppDeletable for HandleShapeBuildReShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeBuildReShape_destructor(ptr);
+    }
+}
+
+impl HandleShapeBuildReShape {
+    /// Dereference this Handle to access the underlying ShapeBuild_ReShape
+    pub fn get(&self) -> &crate::ffi::ShapeBuild_ReShape {
+        unsafe { &*(crate::ffi::HandleShapeBuildReShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeBuild_ReShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeBuild_ReShape {
+        unsafe { &mut *(crate::ffi::HandleShapeBuildReShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeBuild_ReShape> to Handle<BRepTools_ReShape>
+    pub fn to_handle_re_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeBuildReShape_to_HandleBRepToolsReShape(self as *const Self),
+            )
         }
     }
 }

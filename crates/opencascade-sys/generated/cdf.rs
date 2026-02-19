@@ -34,6 +34,11 @@ impl TryFrom<i32> for TypeOfActivation {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleCDMApplication, HandleTDocStdApplication, HandleTObjApplication, HandleXCAFAppApplication,
+};
+
 // ========================
 // From CDF_Application.hxx
 // ========================
@@ -239,6 +244,24 @@ impl Application {
         unsafe { &*(crate::ffi::CDF_Application_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `CDF_Application.hxx`:54 - `CDF_Application::Load()`
+    /// plugs an application.
+    ///
+    /// Open is used
+    /// - for opening a Document that has been created in an application
+    /// - for opening a Document from the database
+    /// - for opening a Document from a file.
+    /// The Open methods always add the document in the session directory and
+    /// calls the virtual Activate method. The document is considered to be
+    /// opened until Close is used. To be storable, a document must be
+    /// opened by an application since the application resources are
+    /// needed to store it.
+    pub fn load(
+        aGUID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleCDFApplication> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::CDF_Application_load(aGUID)) }
+    }
+
     /// **Source:** `CDF_Application.hxx`:189 - `CDF_Application::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -322,7 +345,88 @@ impl Application {
     }
 }
 
-// ── Skipped symbols for Application (6 total) ──
+pub use crate::ffi::HandleCDFApplication;
+
+unsafe impl crate::CppDeletable for HandleCDFApplication {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleCDFApplication_destructor(ptr);
+    }
+}
+
+impl HandleCDFApplication {
+    /// Dereference this Handle to access the underlying CDF_Application
+    pub fn get(&self) -> &crate::ffi::CDF_Application {
+        unsafe { &*(crate::ffi::HandleCDFApplication_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying CDF_Application
+    pub fn get_mut(&mut self) -> &mut crate::ffi::CDF_Application {
+        unsafe { &mut *(crate::ffi::HandleCDFApplication_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<CDF_Application> to Handle<CDM_Application>
+    pub fn to_handle_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleCDFApplication_to_HandleCDMApplication(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<CDF_Application> to Handle<TDocStd_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `TDocStd_Application` (or subclass).
+    pub fn downcast_to_t_doc_std_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleCDFApplication_downcast_to_HandleTDocStdApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<CDF_Application> to Handle<TObj_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_Application` (or subclass).
+    pub fn downcast_to_t_obj_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleCDFApplication_downcast_to_HandleTObjApplication(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<CDF_Application> to Handle<XCAFApp_Application>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFApp_Application` (or subclass).
+    pub fn downcast_to_xcaf_app_application(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
+        let ptr = unsafe {
+            crate::ffi::HandleCDFApplication_downcast_to_HandleXCAFAppApplication(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for Application (5 total) ──
 // SKIPPED: **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read`
 //   method: Reads theDocument from standard SEEKABLE stream theIStream,
 //   method: the stream should support SEEK functionality
@@ -348,12 +452,6 @@ impl Application {
 // SKIPPED: **Source:** `CDF_Application.hxx`:184 - `CDF_Application::SetDefaultFolder`
 //   Reason: param 'aFolder' uses unknown type 'Standard_ExtString'
 //   // pub fn set_default_folder(&mut self, aFolder: ExtString) -> bool;
-//
-// SKIPPED: **Source:** `CDF_Application.hxx`:54 - `CDF_Application::Load`
-//   static_method: plugs an application.
-//   static_method: Open is used
-//   Reason: return type 'Handle(CDF_Application)' is unknown
-//   // pub fn load(aGUID: &GUID) -> OwnedPtr<Handle<CDF_Application>>;
 //
 
 // ========================

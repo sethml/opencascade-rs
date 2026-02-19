@@ -38,6 +38,17 @@ impl TryFrom<i32> for MeshAlgoType {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleBRepMeshConstrainedBaseMeshAlgo, HandleBRepMeshContext, HandleBRepMeshCurveTessellator,
+    HandleBRepMeshDelabellaBaseMeshAlgo, HandleBRepMeshDelabellaMeshAlgoFactory,
+    HandleBRepMeshDelaunayBaseMeshAlgo, HandleBRepMeshEdgeDiscret,
+    HandleBRepMeshEdgeTessellationExtractor, HandleBRepMeshFaceDiscret,
+    HandleBRepMeshMeshAlgoFactory, HandleBRepMeshModelBuilder, HandleBRepMeshModelHealer,
+    HandleBRepMeshModelPostProcessor, HandleBRepMeshModelPreProcessor, HandleBRepMeshShapeVisitor,
+    HandleIMeshDataShape, HandleMessageAlgorithm,
+};
+
 // ========================
 // From IMeshTools_Context.hxx
 // ========================
@@ -109,6 +120,18 @@ impl Context {
     /// Cleans temporary context data.
     pub fn clean(&mut self) {
         unsafe { crate::ffi::IMeshTools_Context_clean(self as *mut Self) }
+    }
+
+    /// **Source:** `IMeshTools_Context.hxx`:132 - `IMeshTools_Context::GetModelBuilder()`
+    /// Gets instance of a tool to be used to build discrete model.
+    pub fn get_model_builder(&self) -> &crate::ffi::HandleIMeshToolsModelBuilder {
+        unsafe { &*(crate::ffi::IMeshTools_Context_get_model_builder(self as *const Self)) }
+    }
+
+    /// **Source:** `IMeshTools_Context.hxx`:135 - `IMeshTools_Context::SetModelBuilder()`
+    /// Sets instance of a tool to be used to build discrete model.
+    pub fn set_model_builder(&mut self, theBuilder: &crate::ffi::HandleIMeshToolsModelBuilder) {
+        unsafe { crate::ffi::IMeshTools_Context_set_model_builder(self as *mut Self, theBuilder) }
     }
 
     /// **Source:** `IMeshTools_Context.hxx`:141 - `IMeshTools_Context::GetEdgeDiscret()`
@@ -193,6 +216,12 @@ impl Context {
         unsafe { &mut *(crate::ffi::IMeshTools_Context_change_parameters(self as *mut Self)) }
     }
 
+    /// **Source:** `IMeshTools_Context.hxx`:192 - `IMeshTools_Context::GetModel()`
+    /// Returns discrete model of a shape.
+    pub fn get_model(&self) -> &crate::ffi::HandleIMeshDataModel {
+        unsafe { &*(crate::ffi::IMeshTools_Context_get_model(self as *const Self)) }
+    }
+
     /// **Source:** `IMeshTools_Context.hxx`:194 - `IMeshTools_Context::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_Context_dynamic_type(self as *const Self)) }
@@ -222,6 +251,15 @@ impl Context {
         unsafe { &mut *(crate::ffi::IMeshTools_Context_as_IMeshData_Shape_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsContext> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_Context_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         unsafe { crate::ffi::IMeshTools_Context_inherited_SetShape(self as *mut Self, theShape) }
@@ -233,22 +271,52 @@ impl Context {
     }
 }
 
-// ── Skipped symbols for Context (3 total) ──
-// SKIPPED: **Source:** `IMeshTools_Context.hxx`:132 - `IMeshTools_Context::GetModelBuilder`
-//   method: Gets instance of a tool to be used to build discrete model.
-//   Reason: return type 'const Handle(IMeshTools_ModelBuilder)&' is unknown
-//   // pub fn get_model_builder(&self) -> &HandleModelBuilder;
-//
-// SKIPPED: **Source:** `IMeshTools_Context.hxx`:135 - `IMeshTools_Context::SetModelBuilder`
-//   method: Sets instance of a tool to be used to build discrete model.
-//   Reason: param 'theBuilder' uses unknown type 'const Handle(IMeshTools_ModelBuilder)&'
-//   // pub fn set_model_builder(&mut self, theBuilder: &HandleModelBuilder);
-//
-// SKIPPED: **Source:** `IMeshTools_Context.hxx`:192 - `IMeshTools_Context::GetModel`
-//   method: Returns discrete model of a shape.
-//   Reason: return type 'const Handle(IMeshData_Model)&' is unknown
-//   // pub fn get_model(&self) -> &HandleModel;
-//
+pub use crate::ffi::HandleIMeshToolsContext;
+
+unsafe impl crate::CppDeletable for HandleIMeshToolsContext {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshToolsContext_destructor(ptr);
+    }
+}
+
+impl HandleIMeshToolsContext {
+    /// Dereference this Handle to access the underlying IMeshTools_Context
+    pub fn get(&self) -> &crate::ffi::IMeshTools_Context {
+        unsafe { &*(crate::ffi::HandleIMeshToolsContext_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_Context
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_Context {
+        unsafe { &mut *(crate::ffi::HandleIMeshToolsContext_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshTools_Context> to Handle<IMeshData_Shape>
+    pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIMeshToolsContext_to_HandleIMeshDataShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_Context> to Handle<BRepMesh_Context>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_Context` (or subclass).
+    pub fn downcast_to_context(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshContext>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsContext_downcast_to_HandleBRepMeshContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IMeshTools_CurveTessellator.hxx
@@ -331,6 +399,40 @@ impl HandleIMeshToolsCurveTessellator {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_CurveTessellator {
         unsafe { &mut *(crate::ffi::HandleIMeshToolsCurveTessellator_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IMeshTools_CurveTessellator> to Handle<BRepMesh_CurveTessellator>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_CurveTessellator` (or subclass).
+    pub fn downcast_to_curve_tessellator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshCurveTessellator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsCurveTessellator_downcast_to_HandleBRepMeshCurveTessellator(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_CurveTessellator> to Handle<BRepMesh_EdgeTessellationExtractor>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_EdgeTessellationExtractor` (or subclass).
+    pub fn downcast_to_edge_tessellation_extractor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshEdgeTessellationExtractor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsCurveTessellator_downcast_to_HandleBRepMeshEdgeTessellationExtractor(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -385,6 +487,60 @@ impl HandleIMeshToolsMeshAlgo {
     /// Dereference this Handle to mutably access the underlying IMeshTools_MeshAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_MeshAlgo {
         unsafe { &mut *(crate::ffi::HandleIMeshToolsMeshAlgo_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<IMeshTools_MeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_ConstrainedBaseMeshAlgo` (or subclass).
+    pub fn downcast_to_constrained_base_mesh_algo(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshConstrainedBaseMeshAlgo(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_MeshAlgo> to Handle<BRepMesh_DelabellaBaseMeshAlgo>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_DelabellaBaseMeshAlgo` (or subclass).
+    pub fn downcast_to_delabella_base_mesh_algo(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_MeshAlgo> to Handle<BRepMesh_DelaunayBaseMeshAlgo>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_DelaunayBaseMeshAlgo` (or subclass).
+    pub fn downcast_to_delaunay_base_mesh_algo(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -465,6 +621,40 @@ impl HandleIMeshToolsMeshAlgoFactory {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_MeshAlgoFactory {
         unsafe { &mut *(crate::ffi::HandleIMeshToolsMeshAlgoFactory_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IMeshTools_MeshAlgoFactory> to Handle<BRepMesh_DelabellaMeshAlgoFactory>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_DelabellaMeshAlgoFactory` (or subclass).
+    pub fn downcast_to_delabella_mesh_algo_factory(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsMeshAlgoFactory_downcast_to_HandleBRepMeshDelabellaMeshAlgoFactory(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_MeshAlgoFactory> to Handle<BRepMesh_MeshAlgoFactory>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_MeshAlgoFactory` (or subclass).
+    pub fn downcast_to_mesh_algo_factory(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshMeshAlgoFactory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsMeshAlgoFactory_downcast_to_HandleBRepMeshMeshAlgoFactory(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -482,6 +672,24 @@ unsafe impl crate::CppDeletable for ModelAlgo {
 }
 
 impl ModelAlgo {
+    /// **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform()`
+    /// Exceptions protected processing of the given model.
+    pub fn perform(
+        &mut self,
+        theModel: &crate::ffi::HandleIMeshDataModel,
+        theParameters: &Parameters,
+        theRange: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IMeshTools_ModelAlgo_perform(
+                self as *mut Self,
+                theModel,
+                theParameters,
+                theRange,
+            )
+        }
+    }
+
     /// **Source:** `IMeshTools_ModelAlgo.hxx`:49 - `IMeshTools_ModelAlgo::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_ModelAlgo_dynamic_type(self as *const Self)) }
@@ -520,14 +728,97 @@ impl HandleIMeshToolsModelAlgo {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_ModelAlgo {
         unsafe { &mut *(crate::ffi::HandleIMeshToolsModelAlgo_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for ModelAlgo (1 total) ──
-// SKIPPED: **Source:** `IMeshTools_ModelAlgo.hxx`:33 - `IMeshTools_ModelAlgo::Perform`
-//   method: Exceptions protected processing of the given model.
-//   Reason: param 'theModel' uses unknown type 'const Handle(IMeshData_Model)&'
-//   // pub fn perform(&mut self, theModel: &HandleModel, theParameters: &Parameters, theRange: &ProgressRange) -> bool;
-//
+    /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_EdgeDiscret>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_EdgeDiscret` (or subclass).
+    pub fn downcast_to_edge_discret(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshEdgeDiscret>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshEdgeDiscret(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_FaceDiscret>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_FaceDiscret` (or subclass).
+    pub fn downcast_to_face_discret(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshFaceDiscret>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshFaceDiscret(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_ModelHealer>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_ModelHealer` (or subclass).
+    pub fn downcast_to_model_healer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelHealer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelHealer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_ModelPostProcessor>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_ModelPostProcessor` (or subclass).
+    pub fn downcast_to_model_post_processor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelPostProcessor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelPostProcessor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_ModelPreProcessor>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_ModelPreProcessor` (or subclass).
+    pub fn downcast_to_model_pre_processor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelPreProcessor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelPreProcessor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IMeshTools_ModelBuilder.hxx
@@ -549,6 +840,23 @@ unsafe impl crate::CppDeletable for ModelBuilder {
 }
 
 impl ModelBuilder {
+    /// **Source:** `IMeshTools_ModelBuilder.hxx`:41 - `IMeshTools_ModelBuilder::Perform()`
+    /// Exceptions protected method to create discrete model for the given shape.
+    /// Returns nullptr in case of failure.
+    pub fn perform(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theParameters: &Parameters,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_ModelBuilder_perform(
+                self as *mut Self,
+                theShape,
+                theParameters,
+            ))
+        }
+    }
+
     /// **Source:** `IMeshTools_ModelBuilder.hxx`:59 - `IMeshTools_ModelBuilder::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IMeshTools_ModelBuilder_dynamic_type(self as *const Self)) }
@@ -689,13 +997,54 @@ impl ModelBuilder {
     }
 }
 
-// ── Skipped symbols for ModelBuilder (1 total) ──
-// SKIPPED: **Source:** `IMeshTools_ModelBuilder.hxx`:41 - `IMeshTools_ModelBuilder::Perform`
-//   method: Exceptions protected method to create discrete model for the given shape.
-//   method: Returns nullptr in case of failure.
-//   Reason: return type 'Handle(IMeshData_Model)' is unknown
-//   // pub fn perform(&mut self, theShape: &Shape, theParameters: &Parameters) -> OwnedPtr<Handle<IMeshData_Model>>;
-//
+pub use crate::ffi::HandleIMeshToolsModelBuilder;
+
+unsafe impl crate::CppDeletable for HandleIMeshToolsModelBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshToolsModelBuilder_destructor(ptr);
+    }
+}
+
+impl HandleIMeshToolsModelBuilder {
+    /// Dereference this Handle to access the underlying IMeshTools_ModelBuilder
+    pub fn get(&self) -> &crate::ffi::IMeshTools_ModelBuilder {
+        unsafe { &*(crate::ffi::HandleIMeshToolsModelBuilder_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_ModelBuilder
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_ModelBuilder {
+        unsafe { &mut *(crate::ffi::HandleIMeshToolsModelBuilder_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshTools_ModelBuilder> to Handle<Message_Algorithm>
+    pub fn to_handle_algorithm(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlgorithm> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshToolsModelBuilder_to_HandleMessageAlgorithm(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IMeshTools_ModelBuilder> to Handle<BRepMesh_ModelBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_ModelBuilder` (or subclass).
+    pub fn downcast_to_model_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsModelBuilder_downcast_to_HandleBRepMeshModelBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IMeshTools_Parameters.hxx
@@ -790,5 +1139,23 @@ impl HandleIMeshToolsShapeVisitor {
     /// Dereference this Handle to mutably access the underlying IMeshTools_ShapeVisitor
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_ShapeVisitor {
         unsafe { &mut *(crate::ffi::HandleIMeshToolsShapeVisitor_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<IMeshTools_ShapeVisitor> to Handle<BRepMesh_ShapeVisitor>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_ShapeVisitor` (or subclass).
+    pub fn downcast_to_shape_visitor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshShapeVisitor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshToolsShapeVisitor_downcast_to_HandleBRepMeshShapeVisitor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }

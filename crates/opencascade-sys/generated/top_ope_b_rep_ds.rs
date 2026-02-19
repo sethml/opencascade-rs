@@ -432,6 +432,17 @@ impl CurvePointInterference {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSCurvePointInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_CurvePointInterference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
     pub fn transition(&self) -> &Transition {
         unsafe {
@@ -515,6 +526,37 @@ impl CurvePointInterference {
                 self as *const Self,
                 Other,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSCurvePointInterference;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSCurvePointInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSCurvePointInterference_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSCurvePointInterference {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_CurvePointInterference
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_CurvePointInterference {
+        unsafe { &*(crate::ffi::HandleTopOpeBRepDSCurvePointInterference_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_CurvePointInterference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_CurvePointInterference {
+        unsafe {
+            &mut *(crate::ffi::HandleTopOpeBRepDSCurvePointInterference_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_CurvePointInterference> to Handle<TopOpeBRepDS_Interference>
+    pub fn to_handle_interference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSCurvePointInterference_to_HandleTopOpeBRepDSInterference(self as *const Self))
         }
     }
 }
@@ -1654,6 +1696,38 @@ impl HandleTopOpeBRepDSInterference {
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Interference {
         unsafe { &mut *(crate::ffi::HandleTopOpeBRepDSInterference_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_CurvePointInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_CurvePointInterference` (or subclass).
+    pub fn downcast_to_curve_point_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSCurvePointInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSCurvePointInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_SurfaceCurveInterference>
+    ///
+    /// Returns `None` if the handle does not point to a `TopOpeBRepDS_SurfaceCurveInterference` (or subclass).
+    pub fn downcast_to_surface_curve_interference(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSSurfaceCurveInterference(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Interference (1 total) ──
@@ -2110,6 +2184,17 @@ impl SurfaceCurveInterference {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
     pub fn transition(&self) -> &Transition {
         unsafe {
@@ -2195,6 +2280,41 @@ impl SurfaceCurveInterference {
                 self as *const Self,
                 Other,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference;
+
+unsafe impl crate::CppDeletable for HandleTopOpeBRepDSSurfaceCurveInterference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_destructor(ptr);
+    }
+}
+
+impl HandleTopOpeBRepDSSurfaceCurveInterference {
+    /// Dereference this Handle to access the underlying TopOpeBRepDS_SurfaceCurveInterference
+    pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_SurfaceCurveInterference {
+        unsafe {
+            &*(crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_SurfaceCurveInterference
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_SurfaceCurveInterference {
+        unsafe {
+            &mut *(crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TopOpeBRepDS_SurfaceCurveInterference> to Handle<TopOpeBRepDS_Interference>
+    pub fn to_handle_interference(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleTopOpeBRepDSInterference(self as *const Self))
         }
     }
 }

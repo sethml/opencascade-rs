@@ -142,6 +142,13 @@ impl TryFrom<i32> for NameFormat {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandlePolyTriangulation, HandleRWGltfCafReader, HandleRWGltfGltfLatePrimitiveArray,
+    HandleRWGltfGltfMaterialMap, HandleRWGltfTriangulationReader, HandleRWObjCafReader,
+    HandleRWObjObjMaterialMap,
+};
+
 // ========================
 // From RWMesh_CafReader.hxx
 // ========================
@@ -170,6 +177,19 @@ impl CafReader {
     /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::RWMesh_CafReader_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    /// Return target document.
+    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_document(self as *const Self)) }
+    }
+
+    /// **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    /// Set target document.
+    /// Set system length unit according to the units of the document
+    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::RWMesh_CafReader_set_document(self as *mut Self, theDoc) }
     }
 
     /// **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
@@ -419,24 +439,45 @@ impl HandleRWMeshCafReader {
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_CafReader {
         unsafe { &mut *(crate::ffi::HandleRWMeshCafReader_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<RWMesh_CafReader> to Handle<RWGltf_CafReader>
+    ///
+    /// Returns `None` if the handle does not point to a `RWGltf_CafReader` (or subclass).
+    pub fn downcast_to_rw_gltf_caf_reader(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWGltfCafReader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleRWMeshCafReader_downcast_to_HandleRWGltfCafReader(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<RWMesh_CafReader> to Handle<RWObj_CafReader>
+    ///
+    /// Returns `None` if the handle does not point to a `RWObj_CafReader` (or subclass).
+    pub fn downcast_to_rw_obj_caf_reader(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWObjCafReader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleRWMeshCafReader_downcast_to_HandleRWObjCafReader(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for CafReader (6 total) ──
+// ── Skipped symbols for CafReader (4 total) ──
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:66 - `RWMesh_CafReader::RWMesh_CafReader`
 //   constructor: Empty constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document`
-//   method: Return target document.
-//   Reason: return type 'const Handle(TDocStd_Document)&' is unknown
-//   // pub fn document(&self) -> &HandleDocument;
-//
-// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument`
-//   method: Set target document.
-//   method: Set system length unit according to the units of the document
-//   Reason: param 'theDoc' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn set_document(&mut self, theDoc: &HandleDocument);
 //
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform`
 //   method: Read the data from specified file.
@@ -1320,6 +1361,42 @@ impl HandleRWMeshMaterialMap {
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_MaterialMap {
         unsafe { &mut *(crate::ffi::HandleRWMeshMaterialMap_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<RWMesh_MaterialMap> to Handle<RWGltf_GltfMaterialMap>
+    ///
+    /// Returns `None` if the handle does not point to a `RWGltf_GltfMaterialMap` (or subclass).
+    pub fn downcast_to_gltf_material_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWGltfGltfMaterialMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleRWMeshMaterialMap_downcast_to_HandleRWGltfGltfMaterialMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<RWMesh_MaterialMap> to Handle<RWObj_ObjMaterialMap>
+    ///
+    /// Returns `None` if the handle does not point to a `RWObj_ObjMaterialMap` (or subclass).
+    pub fn downcast_to_obj_material_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWObjObjMaterialMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleRWMeshMaterialMap_downcast_to_HandleRWObjObjMaterialMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for MaterialMap (1 total) ──
@@ -1590,6 +1667,24 @@ impl TriangulationReader {
         unsafe { crate::ffi::RWMesh_TriangulationReader_print_statistic(self as *const Self) }
     }
 
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:145 - `RWMesh_TriangulationReader::Load()`
+    /// Loads primitive array.
+    pub fn load(
+        &self,
+        theSourceMesh: &crate::ffi::HandleRWMeshTriangulationSource,
+        theDestMesh: &crate::ffi::HandlePolyTriangulation,
+        theFileSystem: &crate::ffi::HandleOSDFileSystem,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWMesh_TriangulationReader_load(
+                self as *const Self,
+                theSourceMesh,
+                theDestMesh,
+                theFileSystem,
+            )
+        }
+    }
+
     /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1623,18 +1718,31 @@ impl HandleRWMeshTriangulationReader {
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_TriangulationReader {
         unsafe { &mut *(crate::ffi::HandleRWMeshTriangulationReader_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<RWMesh_TriangulationReader> to Handle<RWGltf_TriangulationReader>
+    ///
+    /// Returns `None` if the handle does not point to a `RWGltf_TriangulationReader` (or subclass).
+    pub fn downcast_to_triangulation_reader(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWGltfTriangulationReader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleRWMeshTriangulationReader_downcast_to_HandleRWGltfTriangulationReader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for TriangulationReader (2 total) ──
+// ── Skipped symbols for TriangulationReader (1 total) ──
 // SKIPPED: **Source:** `RWMesh_TriangulationReader.hxx`:59 - `RWMesh_TriangulationReader::RWMesh_TriangulationReader`
 //   constructor: Constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new() -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `RWMesh_TriangulationReader.hxx`:145 - `RWMesh_TriangulationReader::Load`
-//   method: Loads primitive array.
-//   Reason: param 'theSourceMesh' uses unknown type 'const Handle(RWMesh_TriangulationSource)&'
-//   // pub fn load(&self, theSourceMesh: &HandleTriangulationSource, theDestMesh: &HandleTriangulation, theFileSystem: &HandleFileSystem) -> bool;
 //
 
 /// **Source:** `RWMesh_TriangulationReader.hxx`:29 - `RWMesh_TriangulationReader_LoadingStatistic`
@@ -1811,6 +1919,17 @@ impl TriangulationSource {
         unsafe {
             &mut *(crate::ffi::RWMesh_TriangulationSource_as_Poly_Triangulation_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWMeshTriangulationSource> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWMesh_TriangulationSource_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -2168,6 +2287,53 @@ impl TriangulationSource {
     pub fn unload_deferred_data(&mut self) -> bool {
         unsafe {
             crate::ffi::RWMesh_TriangulationSource_inherited_UnloadDeferredData(self as *mut Self)
+        }
+    }
+}
+
+pub use crate::ffi::HandleRWMeshTriangulationSource;
+
+unsafe impl crate::CppDeletable for HandleRWMeshTriangulationSource {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWMeshTriangulationSource_destructor(ptr);
+    }
+}
+
+impl HandleRWMeshTriangulationSource {
+    /// Dereference this Handle to access the underlying RWMesh_TriangulationSource
+    pub fn get(&self) -> &crate::ffi::RWMesh_TriangulationSource {
+        unsafe { &*(crate::ffi::HandleRWMeshTriangulationSource_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWMesh_TriangulationSource
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWMesh_TriangulationSource {
+        unsafe { &mut *(crate::ffi::HandleRWMeshTriangulationSource_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWMesh_TriangulationSource> to Handle<Poly_Triangulation>
+    pub fn to_handle_triangulation(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWMeshTriangulationSource_to_HandlePolyTriangulation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<RWMesh_TriangulationSource> to Handle<RWGltf_GltfLatePrimitiveArray>
+    ///
+    /// Returns `None` if the handle does not point to a `RWGltf_GltfLatePrimitiveArray` (or subclass).
+    pub fn downcast_to_gltf_late_primitive_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWGltfGltfLatePrimitiveArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandleRWMeshTriangulationSource_downcast_to_HandleRWGltfGltfLatePrimitiveArray(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

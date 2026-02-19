@@ -24,6 +24,9 @@ pub fn get_radius(C: &crate::b_rep_adaptor::Curve, t1: f64, t3: f64, R: &mut f64
     unsafe { crate::ffi::IntTools_get_radius(C, t1, t3, R) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleAdaptor3dTopolTool;
+
 // ========================
 // From IntTools_BaseRangeSample.hxx
 // ========================
@@ -3562,6 +3565,15 @@ impl TopolTool {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIntToolsTopolTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IntTools_TopolTool_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:50 - `Adaptor3d_TopolTool::Init()`
     pub fn init(&mut self) {
         unsafe { crate::ffi::IntTools_TopolTool_inherited_Init(self as *mut Self) }
@@ -3724,6 +3736,37 @@ impl TopolTool {
     }
 }
 
+pub use crate::ffi::HandleIntToolsTopolTool;
+
+unsafe impl crate::CppDeletable for HandleIntToolsTopolTool {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIntToolsTopolTool_destructor(ptr);
+    }
+}
+
+impl HandleIntToolsTopolTool {
+    /// Dereference this Handle to access the underlying IntTools_TopolTool
+    pub fn get(&self) -> &crate::ffi::IntTools_TopolTool {
+        unsafe { &*(crate::ffi::HandleIntToolsTopolTool_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IntTools_TopolTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IntTools_TopolTool {
+        unsafe { &mut *(crate::ffi::HandleIntToolsTopolTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IntTools_TopolTool> to Handle<Adaptor3d_TopolTool>
+    pub fn to_handle_topol_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dTopolTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIntToolsTopolTool_to_HandleAdaptor3dTopolTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From IntTools_WLineTool.hxx
 // ========================
@@ -3744,17 +3787,49 @@ impl WLineTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IntTools_WLineTool_ctor()) }
     }
-}
 
-// ── Skipped symbols for WLineTool (2 total) ──
-// SKIPPED: **Source:** `IntTools_WLineTool.hxx`:31 - `IntTools_WLineTool::NotUseSurfacesForApprox`
-//   Reason: param 'WL' uses unknown type 'const Handle(IntPatch_WLine)&'
-//   // pub fn not_use_surfaces_for_approx(aF1: &Face, aF2: &Face, WL: &HandleWLine, ifprm: i32, ilprm: i32) -> bool;
-//
-// SKIPPED: **Source:** `IntTools_WLineTool.hxx`:37 - `IntTools_WLineTool::DecompositionOfWLine`
-//   Reason: param 'theWLine' uses unknown type 'const Handle(IntPatch_WLine)&'
-//   // pub fn decomposition_of_w_line(theWLine: &HandleWLine, theSurface1: &HandleSurface, theSurface2: &HandleSurface, theFace1: &Face, theFace2: &Face, theLConstructor: &LineConstructor, theAvoidLConstructor: bool, theTol: f64, theNewLines: &mut SequenceOfLine, arg9: &HandleContext) -> bool;
-//
+    /// **Source:** `IntTools_WLineTool.hxx`:31 - `IntTools_WLineTool::NotUseSurfacesForApprox()`
+    pub fn not_use_surfaces_for_approx(
+        aF1: &crate::topo_ds::Face,
+        aF2: &crate::topo_ds::Face,
+        WL: &crate::ffi::HandleIntPatchWLine,
+        ifprm: i32,
+        ilprm: i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntTools_WLineTool_not_use_surfaces_for_approx(aF1, aF2, WL, ifprm, ilprm)
+        }
+    }
+
+    /// **Source:** `IntTools_WLineTool.hxx`:37 - `IntTools_WLineTool::DecompositionOfWLine()`
+    pub fn decomposition_of_w_line(
+        theWLine: &crate::ffi::HandleIntPatchWLine,
+        theSurface1: &crate::ffi::HandleGeomAdaptorSurface,
+        theSurface2: &crate::ffi::HandleGeomAdaptorSurface,
+        theFace1: &crate::topo_ds::Face,
+        theFace2: &crate::topo_ds::Face,
+        theLConstructor: &crate::geom_int::LineConstructor,
+        theAvoidLConstructor: bool,
+        theTol: f64,
+        theNewLines: &mut crate::ffi::IntPatch_SequenceOfLine,
+        arg9: &crate::ffi::HandleIntToolsContext,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IntTools_WLineTool_decomposition_of_w_line(
+                theWLine,
+                theSurface1,
+                theSurface2,
+                theFace1,
+                theFace2,
+                theLConstructor,
+                theAvoidLConstructor,
+                theTol,
+                theNewLines,
+                arg9,
+            )
+        }
+    }
+}
 
 // ========================
 // Additional type re-exports

@@ -117,12 +117,35 @@ impl Algo {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_Algo_ctor()) }
     }
 
+    /// **Source:** `HLRBRep_Algo.hxx`:75 - `HLRBRep_Algo::HLRBRep_Algo()`
+    pub fn new_handlehlrbrepalgo(A: &crate::ffi::HandleHLRBRepAlgo) -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_Algo_ctor_handlehlrbrepalgo(A)) }
+    }
+
+    /// **Source:** `HLRBRep_Algo.hxx`:78 - `HLRBRep_Algo::Add()`
+    /// add the Shape <S>.
+    pub fn add_shape_handlestandardtransient_int(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+        SData: &crate::ffi::HandleStandardTransient,
+        nbIso: i32,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_Algo_add_shape_handlestandardtransient_int(
+                self as *mut Self,
+                S,
+                SData,
+                nbIso,
+            )
+        }
+    }
+
     /// **Source:** `HLRBRep_Algo.hxx`:85 - `HLRBRep_Algo::Add()`
     /// Adds the shape S to this framework, and
     /// specifies the number of isoparameters nbiso desired in visualizing S.
     /// You may add as many shapes as you wish. Use the function Add once for each shape.
-    pub fn add(&mut self, S: &crate::topo_ds::Shape, nbIso: i32) {
-        unsafe { crate::ffi::HLRBRep_Algo_add(self as *mut Self, S, nbIso) }
+    pub fn add_shape_int(&mut self, S: &crate::topo_ds::Shape, nbIso: i32) {
+        unsafe { crate::ffi::HLRBRep_Algo_add_shape_int(self as *mut Self, S, nbIso) }
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:89 - `HLRBRep_Algo::Index()`
@@ -167,6 +190,11 @@ impl Algo {
         unsafe { &mut *(crate::ffi::HLRBRep_Algo_as_HLRBRep_InternalAlgo_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAlgo> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_Algo_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:44 - `HLRBRep_InternalAlgo::Projector()`
     pub fn projector(&mut self, P: &crate::hlr_algo::Projector) {
         unsafe { crate::ffi::HLRBRep_Algo_inherited_Projector(self as *mut Self, P) }
@@ -180,6 +208,11 @@ impl Algo {
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:66 - `HLRBRep_InternalAlgo::Remove()`
     pub fn remove(&mut self, I: i32) {
         unsafe { crate::ffi::HLRBRep_Algo_inherited_Remove(self as *mut Self, I) }
+    }
+
+    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:69 - `HLRBRep_InternalAlgo::ShapeData()`
+    pub fn shape_data(&mut self, I: i32, SData: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::HLRBRep_Algo_inherited_ShapeData(self as *mut Self, I, SData) }
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
@@ -252,16 +285,36 @@ impl Algo {
     }
 }
 
-// ── Skipped symbols for Algo (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_Algo.hxx`:75 - `HLRBRep_Algo::HLRBRep_Algo`
-//   Reason: param 'A' uses unknown Handle type
-//   // pub fn new_handlehlrbrepalgo(A: &HandleAlgo) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_Algo.hxx`:78 - `HLRBRep_Algo::Add`
-//   method: add the Shape <S>.
-//   Reason: param 'SData' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add(&mut self, S: &Shape, SData: &HandleTransient, nbIso: i32);
-//
+pub use crate::ffi::HandleHLRBRepAlgo;
+
+unsafe impl crate::CppDeletable for HandleHLRBRepAlgo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleHLRBRepAlgo_destructor(ptr);
+    }
+}
+
+impl HandleHLRBRepAlgo {
+    /// Dereference this Handle to access the underlying HLRBRep_Algo
+    pub fn get(&self) -> &crate::ffi::HLRBRep_Algo {
+        unsafe { &*(crate::ffi::HandleHLRBRepAlgo_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying HLRBRep_Algo
+    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_Algo {
+        unsafe { &mut *(crate::ffi::HandleHLRBRepAlgo_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<HLRBRep_Algo> to Handle<HLRBRep_InternalAlgo>
+    pub fn to_handle_internal_algo(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepInternalAlgo> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleHLRBRepAlgo_to_HandleHLRBRepInternalAlgo(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From HLRBRep_AreaLimit.hxx
@@ -3572,6 +3625,16 @@ unsafe impl crate::CppDeletable for HLRToShape {
 }
 
 impl HLRToShape {
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:68 - `HLRBRep_HLRToShape::HLRBRep_HLRToShape()`
+    /// Constructs a framework for filtering the
+    /// results of the HLRBRep_Algo algorithm, A.
+    /// Use the extraction filters to obtain the results you want for A.
+    pub fn new_handlehlrbrepalgo(A: &crate::ffi::HandleHLRBRepAlgo) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_HLRToShape_ctor_handlehlrbrepalgo(A))
+        }
+    }
+
     /// **Source:** `HLRBRep_HLRToShape.hxx`:70 - `HLRBRep_HLRToShape::VCompound()`
     pub fn v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
@@ -3846,15 +3909,6 @@ impl HLRToShape {
         }
     }
 }
-
-// ── Skipped symbols for HLRToShape (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_HLRToShape.hxx`:68 - `HLRBRep_HLRToShape::HLRBRep_HLRToShape`
-//   constructor: Constructs a framework for filtering the
-//   constructor: results of the HLRBRep_Algo algorithm, A.
-//   constructor: Use the extraction filters to obtain the results you want for A.
-//   Reason: param 'A' uses unknown Handle type
-//   // pub fn new_handlehlrbrepalgo(A: &HandleAlgo) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From HLRBRep_Hider.hxx
@@ -4195,6 +4249,12 @@ impl InternalAlgo {
         unsafe { crate::ffi::HLRBRep_InternalAlgo_remove(self as *mut Self, I) }
     }
 
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:69 - `HLRBRep_InternalAlgo::ShapeData()`
+    /// Change the Shape Data of the Shape of index <I>.
+    pub fn shape_data(&mut self, I: i32, SData: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::HLRBRep_InternalAlgo_shape_data(self as *mut Self, I, SData) }
+    }
+
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
     pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi::HLRBRep_SeqOfShapeBounds {
         unsafe { &mut *(crate::ffi::HLRBRep_InternalAlgo_seq_of_shape_bounds(self as *mut Self)) }
@@ -4356,9 +4416,23 @@ impl HandleHLRBRepInternalAlgo {
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_InternalAlgo {
         unsafe { &mut *(crate::ffi::HandleHLRBRepInternalAlgo_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<HLRBRep_InternalAlgo> to Handle<HLRBRep_Algo>
+    ///
+    /// Returns `None` if the handle does not point to a `HLRBRep_Algo` (or subclass).
+    pub fn downcast_to_algo(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleHLRBRepAlgo>> {
+        let ptr = unsafe {
+            crate::ffi::HandleHLRBRepInternalAlgo_downcast_to_HandleHLRBRepAlgo(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for InternalAlgo (4 total) ──
+// ── Skipped symbols for InternalAlgo (3 total) ──
 // SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load`
 //   method: add the shape <S>.
 //   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
@@ -4374,11 +4448,6 @@ impl HandleHLRBRepInternalAlgo {
 //   method: the Shape <S> is not found.
 //   Reason: param 'S' uses unknown type 'const Handle(HLRTopoBRep_OutLiner)&'
 //   // pub fn index(&self, S: &HandleOutLiner) -> i32;
-//
-// SKIPPED: **Source:** `HLRBRep_InternalAlgo.hxx`:69 - `HLRBRep_InternalAlgo::ShapeData`
-//   method: Change the Shape Data of the Shape of index <I>.
-//   Reason: param 'SData' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn shape_data(&mut self, I: i32, SData: &HandleTransient);
 //
 
 // ========================
@@ -5815,6 +5884,21 @@ impl ShapeBounds {
         unsafe { crate::ffi::HLRBRep_ShapeBounds_translate(self as *mut Self, NV, NE, NF) }
     }
 
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:65 - `HLRBRep_ShapeBounds::ShapeData()`
+    pub fn shape_data_handlestandardtransient(&mut self, SD: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_shape_data_handlestandardtransient(
+                self as *mut Self,
+                SD,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:67 - `HLRBRep_ShapeBounds::ShapeData()`
+    pub fn shape_data(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::HLRBRep_ShapeBounds_shape_data(self as *const Self)) }
+    }
+
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:69 - `HLRBRep_ShapeBounds::NbOfIso()`
     pub fn nb_of_iso_int(&mut self, nbIso: i32) {
         unsafe { crate::ffi::HLRBRep_ShapeBounds_nb_of_iso_int(self as *mut Self, nbIso) }
@@ -5836,7 +5920,7 @@ impl ShapeBounds {
     }
 }
 
-// ── Skipped symbols for ShapeBounds (8 total) ──
+// ── Skipped symbols for ShapeBounds (6 total) ──
 // SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:38 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds`
 //   Reason: param 'S' uses unknown Handle type
 //   // pub fn new_handlehlrtopobrepoutliner_handlestandardtransient_int7(S: &HandleOutLiner, SData: &HandleTransient, nbIso: i32, V1: i32, V2: i32, E1: i32, E2: i32, F1: i32, F2: i32) -> OwnedPtr<Self>;
@@ -5852,14 +5936,6 @@ impl ShapeBounds {
 // SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::Shape`
 //   Reason: return type 'const Handle(HLRTopoBRep_OutLiner)&' is unknown
 //   // pub fn shape(&self) -> &HandleOutLiner;
-//
-// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:65 - `HLRBRep_ShapeBounds::ShapeData`
-//   Reason: param 'SD' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn shape_data(&mut self, SD: &HandleTransient);
-//
-// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:67 - `HLRBRep_ShapeBounds::ShapeData`
-//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
-//   // pub fn shape_data(&self) -> &HandleTransient;
 //
 // SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Sizes`
 //   Reason: has misresolved element type (clang batch parsing artifact)

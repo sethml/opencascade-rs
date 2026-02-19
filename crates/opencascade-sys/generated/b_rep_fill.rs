@@ -142,6 +142,9 @@ impl TryFrom<i32> for TypeOfContact {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleGeomPlateCurveConstraint;
+
 // ========================
 // From BRepFill_ACRLaw.hxx
 // ========================
@@ -159,6 +162,18 @@ unsafe impl crate::CppDeletable for ACRLaw {
 }
 
 impl ACRLaw {
+    /// **Source:** `BRepFill_ACRLaw.hxx`:38 - `BRepFill_ACRLaw::BRepFill_ACRLaw()`
+    pub fn new_wire_handlegeomfilllocationguide(
+        Path: &crate::topo_ds::Wire,
+        Law: &crate::ffi::HandleGeomFillLocationGuide,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepFill_ACRLaw_ctor_wire_handlegeomfilllocationguide(Path, Law),
+            )
+        }
+    }
+
     /// **Source:** `BRepFill_ACRLaw.hxx`:41 - `BRepFill_ACRLaw::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::BRepFill_ACRLaw_dynamic_type(self as *const Self)) }
@@ -188,6 +203,13 @@ impl ACRLaw {
         unsafe {
             &mut *(crate::ffi::BRepFill_ACRLaw_as_BRepFill_LocationLaw_mut(self as *mut Self))
         }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillACRLaw> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ACRLaw_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
@@ -321,11 +343,34 @@ impl ACRLaw {
     }
 }
 
-// ── Skipped symbols for ACRLaw (1 total) ──
-// SKIPPED: **Source:** `BRepFill_ACRLaw.hxx`:38 - `BRepFill_ACRLaw::BRepFill_ACRLaw`
-//   Reason: param 'Law' uses unknown Handle type
-//   // pub fn new_wire_handlegeomfilllocationguide(Path: &Wire, Law: &HandleLocationGuide) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleBRepFillACRLaw;
+
+unsafe impl crate::CppDeletable for HandleBRepFillACRLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepFillACRLaw_destructor(ptr);
+    }
+}
+
+impl HandleBRepFillACRLaw {
+    /// Dereference this Handle to access the underlying BRepFill_ACRLaw
+    pub fn get(&self) -> &crate::ffi::BRepFill_ACRLaw {
+        unsafe { &*(crate::ffi::HandleBRepFillACRLaw_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepFill_ACRLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_ACRLaw {
+        unsafe { &mut *(crate::ffi::HandleBRepFillACRLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_ACRLaw> to Handle<BRepFill_LocationLaw>
+    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillACRLaw_to_HandleBRepFillLocationLaw(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From BRepFill_AdvancedEvolved.hxx
@@ -766,6 +811,32 @@ unsafe impl crate::CppDeletable for CurveConstraint {
 }
 
 impl CurveConstraint {
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// Create a constraint
+    /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
+    /// Order i means constraints Gi
+    /// Npt is the number of points associated with the constraint.
+    /// TolDist is the maximum error to satisfy for G0 constraints
+    /// TolAng is the maximum error to satisfy for G1 constraints
+    /// TolCurv is the maximum error to satisfy for G2 constraints
+    /// These errors can be replaced by laws of criterion.
+    pub fn new_handleadaptor3dcurveonsurface_int2_real3(
+        Boundary: &crate::ffi::HandleAdaptor3dCurveOnSurface,
+        Order: i32,
+        NPt: i32,
+        TolDist: f64,
+        TolAng: f64,
+        TolCurv: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepFill_CurveConstraint_ctor_handleadaptor3dcurveonsurface_int2_real3(
+                    Boundary, Order, NPt, TolDist, TolAng, TolCurv,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `BRepFill_CurveConstraint.hxx`:51 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     pub fn new_handleadaptor3dcurve_int2_real(
         Boundary: &crate::ffi::HandleAdaptor3dCurve,
@@ -780,6 +851,78 @@ impl CurveConstraint {
                 ),
             )
         }
+    }
+
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// Create a constraint
+    /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
+    /// Order i means constraints Gi
+    /// Npt is the number of points associated with the constraint.
+    /// TolDist is the maximum error to satisfy for G0 constraints
+    /// TolAng is the maximum error to satisfy for G1 constraints
+    /// TolCurv is the maximum error to satisfy for G2 constraints
+    /// These errors can be replaced by laws of criterion.
+    pub fn new_handleadaptor3dcurveonsurface_int2_real2(
+        Boundary: &crate::ffi::HandleAdaptor3dCurveOnSurface,
+        Order: i32,
+        NPt: i32,
+        TolDist: f64,
+        TolAng: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleadaptor3dcurveonsurface_int2_real3(
+            Boundary, Order, NPt, TolDist, TolAng, 0.1,
+        )
+    }
+
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// Create a constraint
+    /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
+    /// Order i means constraints Gi
+    /// Npt is the number of points associated with the constraint.
+    /// TolDist is the maximum error to satisfy for G0 constraints
+    /// TolAng is the maximum error to satisfy for G1 constraints
+    /// TolCurv is the maximum error to satisfy for G2 constraints
+    /// These errors can be replaced by laws of criterion.
+    pub fn new_handleadaptor3dcurveonsurface_int2_real(
+        Boundary: &crate::ffi::HandleAdaptor3dCurveOnSurface,
+        Order: i32,
+        NPt: i32,
+        TolDist: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleadaptor3dcurveonsurface_int2_real3(Boundary, Order, NPt, TolDist, 0.01, 0.1)
+    }
+
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// Create a constraint
+    /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
+    /// Order i means constraints Gi
+    /// Npt is the number of points associated with the constraint.
+    /// TolDist is the maximum error to satisfy for G0 constraints
+    /// TolAng is the maximum error to satisfy for G1 constraints
+    /// TolCurv is the maximum error to satisfy for G2 constraints
+    /// These errors can be replaced by laws of criterion.
+    pub fn new_handleadaptor3dcurveonsurface_int2(
+        Boundary: &crate::ffi::HandleAdaptor3dCurveOnSurface,
+        Order: i32,
+        NPt: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleadaptor3dcurveonsurface_int2_real3(Boundary, Order, NPt, 0.0001, 0.01, 0.1)
+    }
+
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// Create a constraint
+    /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
+    /// Order i means constraints Gi
+    /// Npt is the number of points associated with the constraint.
+    /// TolDist is the maximum error to satisfy for G0 constraints
+    /// TolAng is the maximum error to satisfy for G1 constraints
+    /// TolCurv is the maximum error to satisfy for G2 constraints
+    /// These errors can be replaced by laws of criterion.
+    pub fn new_handleadaptor3dcurveonsurface_int(
+        Boundary: &crate::ffi::HandleAdaptor3dCurveOnSurface,
+        Order: i32,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleadaptor3dcurveonsurface_int2_real3(Boundary, Order, 10, 0.0001, 0.01, 0.1)
     }
 
     /// **Source:** `BRepFill_CurveConstraint.hxx`:51 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
@@ -834,6 +977,17 @@ impl CurveConstraint {
         unsafe {
             &mut *(crate::ffi::BRepFill_CurveConstraint_as_GeomPlate_CurveConstraint_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillCurveConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_CurveConstraint_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -1024,14 +1178,38 @@ impl CurveConstraint {
     }
 }
 
-// ── Skipped symbols for CurveConstraint (1 total) ──
-// SKIPPED: **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint`
-//   constructor: Create a constraint
-//   constructor: Order is the order of the constraint. The possible values for order are -1,0,1,2.
-//   constructor: Order i means constraints Gi
-//   Reason: param 'Boundary' uses unknown Handle type
-//   // pub fn new_handleadaptor3dcurveonsurface_int2_real3(Boundary: &HandleCurveOnSurface, Order: i32, NPt: i32, TolDist: f64, TolAng: f64, TolCurv: f64) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleBRepFillCurveConstraint;
+
+unsafe impl crate::CppDeletable for HandleBRepFillCurveConstraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepFillCurveConstraint_destructor(ptr);
+    }
+}
+
+impl HandleBRepFillCurveConstraint {
+    /// Dereference this Handle to access the underlying BRepFill_CurveConstraint
+    pub fn get(&self) -> &crate::ffi::BRepFill_CurveConstraint {
+        unsafe { &*(crate::ffi::HandleBRepFillCurveConstraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepFill_CurveConstraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_CurveConstraint {
+        unsafe { &mut *(crate::ffi::HandleBRepFillCurveConstraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_CurveConstraint> to Handle<GeomPlate_CurveConstraint>
+    pub fn to_handle_curve_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateCurveConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillCurveConstraint_to_HandleGeomPlateCurveConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From BRepFill_Draft.hxx
@@ -1150,6 +1328,18 @@ unsafe impl crate::CppDeletable for DraftLaw {
 }
 
 impl DraftLaw {
+    /// **Source:** `BRepFill_DraftLaw.hxx`:35 - `BRepFill_DraftLaw::BRepFill_DraftLaw()`
+    pub fn new_wire_handlegeomfilllocationdraft(
+        Path: &crate::topo_ds::Wire,
+        Law: &crate::ffi::HandleGeomFillLocationDraft,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepFill_DraftLaw_ctor_wire_handlegeomfilllocationdraft(Path, Law),
+            )
+        }
+    }
+
     /// **Source:** `BRepFill_DraftLaw.hxx`:39 - `BRepFill_DraftLaw::CleanLaw()`
     /// To clean the little discontinuities.
     pub fn clean_law(&mut self, TolAngular: f64) {
@@ -1196,6 +1386,15 @@ impl DraftLaw {
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
         unsafe {
             &mut *(crate::ffi::BRepFill_DraftLaw_as_BRepFill_LocationLaw_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillDraftLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_DraftLaw_to_handle(obj.into_raw()))
         }
     }
 
@@ -1330,11 +1529,45 @@ impl DraftLaw {
     }
 }
 
-// ── Skipped symbols for DraftLaw (1 total) ──
-// SKIPPED: **Source:** `BRepFill_DraftLaw.hxx`:35 - `BRepFill_DraftLaw::BRepFill_DraftLaw`
-//   Reason: param 'Law' uses unknown Handle type
-//   // pub fn new_wire_handlegeomfilllocationdraft(Path: &Wire, Law: &HandleLocationDraft) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleBRepFillDraftLaw;
+
+unsafe impl crate::CppDeletable for HandleBRepFillDraftLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepFillDraftLaw_destructor(ptr);
+    }
+}
+
+impl HandleBRepFillDraftLaw {
+    /// Dereference this Handle to access the underlying BRepFill_DraftLaw
+    pub fn get(&self) -> &crate::ffi::BRepFill_DraftLaw {
+        unsafe { &*(crate::ffi::HandleBRepFillDraftLaw_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepFill_DraftLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_DraftLaw {
+        unsafe { &mut *(crate::ffi::HandleBRepFillDraftLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_DraftLaw> to Handle<BRepFill_Edge3DLaw>
+    pub fn to_handle_edge3_d_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillEdge3DLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillDraftLaw_to_HandleBRepFillEdge3DLaw(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepFill_DraftLaw> to Handle<BRepFill_LocationLaw>
+    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillDraftLaw_to_HandleBRepFillLocationLaw(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From BRepFill_Edge3DLaw.hxx
@@ -1391,6 +1624,15 @@ impl Edge3DLaw {
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
         unsafe {
             &mut *(crate::ffi::BRepFill_Edge3DLaw_as_BRepFill_LocationLaw_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillEdge3DLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_Edge3DLaw_to_handle(obj.into_raw()))
         }
     }
 
@@ -1527,6 +1769,55 @@ impl Edge3DLaw {
     }
 }
 
+pub use crate::ffi::HandleBRepFillEdge3DLaw;
+
+unsafe impl crate::CppDeletable for HandleBRepFillEdge3DLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepFillEdge3DLaw_destructor(ptr);
+    }
+}
+
+impl HandleBRepFillEdge3DLaw {
+    /// Dereference this Handle to access the underlying BRepFill_Edge3DLaw
+    pub fn get(&self) -> &crate::ffi::BRepFill_Edge3DLaw {
+        unsafe { &*(crate::ffi::HandleBRepFillEdge3DLaw_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepFill_Edge3DLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_Edge3DLaw {
+        unsafe { &mut *(crate::ffi::HandleBRepFillEdge3DLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_Edge3DLaw> to Handle<BRepFill_LocationLaw>
+    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillEdge3DLaw_to_HandleBRepFillLocationLaw(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<BRepFill_Edge3DLaw> to Handle<BRepFill_DraftLaw>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepFill_DraftLaw` (or subclass).
+    pub fn downcast_to_draft_law(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillDraftLaw>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepFillEdge3DLaw_downcast_to_HandleBRepFillDraftLaw(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From BRepFill_EdgeFaceAndOrder.hxx
 // ========================
@@ -1629,6 +1920,15 @@ impl EdgeOnSurfLaw {
             &mut *(crate::ffi::BRepFill_EdgeOnSurfLaw_as_BRepFill_LocationLaw_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillEdgeOnSurfLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_EdgeOnSurfLaw_to_handle(obj.into_raw()))
         }
     }
 
@@ -1763,6 +2063,37 @@ impl EdgeOnSurfLaw {
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         unsafe {
             crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Abscissa(self as *mut Self, Index, Param)
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepFillEdgeOnSurfLaw;
+
+unsafe impl crate::CppDeletable for HandleBRepFillEdgeOnSurfLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepFillEdgeOnSurfLaw_destructor(ptr);
+    }
+}
+
+impl HandleBRepFillEdgeOnSurfLaw {
+    /// Dereference this Handle to access the underlying BRepFill_EdgeOnSurfLaw
+    pub fn get(&self) -> &crate::ffi::BRepFill_EdgeOnSurfLaw {
+        unsafe { &*(crate::ffi::HandleBRepFillEdgeOnSurfLaw_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepFill_EdgeOnSurfLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_EdgeOnSurfLaw {
+        unsafe { &mut *(crate::ffi::HandleBRepFillEdgeOnSurfLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_EdgeOnSurfLaw> to Handle<BRepFill_LocationLaw>
+    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillLocationLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillEdgeOnSurfLaw_to_HandleBRepFillLocationLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -2800,6 +3131,76 @@ impl HandleBRepFillLocationLaw {
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_LocationLaw {
         unsafe { &mut *(crate::ffi::HandleBRepFillLocationLaw_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<BRepFill_LocationLaw> to Handle<BRepFill_ACRLaw>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepFill_ACRLaw` (or subclass).
+    pub fn downcast_to_acr_law(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillACRLaw>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillACRLaw(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepFill_LocationLaw> to Handle<BRepFill_DraftLaw>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepFill_DraftLaw` (or subclass).
+    pub fn downcast_to_draft_law(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillDraftLaw>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillDraftLaw(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepFill_LocationLaw> to Handle<BRepFill_Edge3DLaw>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepFill_Edge3DLaw` (or subclass).
+    pub fn downcast_to_edge3_d_law(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillEdge3DLaw>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillEdge3DLaw(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepFill_LocationLaw> to Handle<BRepFill_EdgeOnSurfLaw>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepFill_EdgeOnSurfLaw` (or subclass).
+    pub fn downcast_to_edge_on_surf_law(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillEdgeOnSurfLaw>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillEdgeOnSurfLaw(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for LocationLaw (1 total) ──
@@ -3165,6 +3566,15 @@ impl NSections {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillNSections> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_NSections_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:43 - `BRepFill_SectionLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         unsafe { crate::ffi::BRepFill_NSections_inherited_NbLaw(self as *const Self) }
@@ -3201,6 +3611,37 @@ impl NSections {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_NSections_inherited_CurrentEdge(
                 self as *mut Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepFillNSections;
+
+unsafe impl crate::CppDeletable for HandleBRepFillNSections {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepFillNSections_destructor(ptr);
+    }
+}
+
+impl HandleBRepFillNSections {
+    /// Dereference this Handle to access the underlying BRepFill_NSections
+    pub fn get(&self) -> &crate::ffi::BRepFill_NSections {
+        unsafe { &*(crate::ffi::HandleBRepFillNSections_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepFill_NSections
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_NSections {
+        unsafe { &mut *(crate::ffi::HandleBRepFillNSections_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_NSections> to Handle<BRepFill_SectionLaw>
+    pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillSectionLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillNSections_to_HandleBRepFillSectionLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -4209,6 +4650,42 @@ impl HandleBRepFillSectionLaw {
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_SectionLaw {
         unsafe { &mut *(crate::ffi::HandleBRepFillSectionLaw_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<BRepFill_SectionLaw> to Handle<BRepFill_NSections>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepFill_NSections` (or subclass).
+    pub fn downcast_to_n_sections(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillNSections>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepFillSectionLaw_downcast_to_HandleBRepFillNSections(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<BRepFill_SectionLaw> to Handle<BRepFill_ShapeLaw>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepFill_ShapeLaw` (or subclass).
+    pub fn downcast_to_shape_law(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillShapeLaw>> {
+        let ptr = unsafe {
+            crate::ffi::HandleBRepFillSectionLaw_downcast_to_HandleBRepFillShapeLaw(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -4474,6 +4951,15 @@ impl ShapeLaw {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepFillShapeLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ShapeLaw_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:43 - `BRepFill_SectionLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         unsafe { crate::ffi::BRepFill_ShapeLaw_inherited_NbLaw(self as *const Self) }
@@ -4510,6 +4996,35 @@ impl ShapeLaw {
             crate::OwnedPtr::from_raw(crate::ffi::BRepFill_ShapeLaw_inherited_CurrentEdge(
                 self as *mut Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepFillShapeLaw;
+
+unsafe impl crate::CppDeletable for HandleBRepFillShapeLaw {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepFillShapeLaw_destructor(ptr);
+    }
+}
+
+impl HandleBRepFillShapeLaw {
+    /// Dereference this Handle to access the underlying BRepFill_ShapeLaw
+    pub fn get(&self) -> &crate::ffi::BRepFill_ShapeLaw {
+        unsafe { &*(crate::ffi::HandleBRepFillShapeLaw_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepFill_ShapeLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepFill_ShapeLaw {
+        unsafe { &mut *(crate::ffi::HandleBRepFillShapeLaw_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepFill_ShapeLaw> to Handle<BRepFill_SectionLaw>
+    pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepFillSectionLaw> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepFillShapeLaw_to_HandleBRepFillSectionLaw(self as *const Self),
+            )
         }
     }
 }

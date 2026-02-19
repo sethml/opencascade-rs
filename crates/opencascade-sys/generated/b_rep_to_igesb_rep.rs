@@ -184,10 +184,54 @@ impl Entity {
         unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_GetUnit(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+        unsafe {
+            crate::ffi::BRepToIGESBRep_Entity_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
+    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepToIGESBRep_Entity_inherited_GetTransferProcess(self as *const Self),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         unsafe {
             crate::ffi::BRepToIGESBRep_Entity_inherited_HasShapeResult(self as *const Self, start)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:88 - `BRepToIGES_BREntity::GetShapeResult()`
+    pub fn get_shape_result(
+        &self,
+        start: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepToIGESBRep_Entity_inherited_GetShapeResult(
+                self as *const Self,
+                start,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:91 - `BRepToIGES_BREntity::SetShapeResult()`
+    pub fn set_shape_result(
+        &mut self,
+        start: &crate::topo_ds::Shape,
+        result: &crate::ffi::HandleStandardTransient,
+    ) {
+        unsafe {
+            crate::ffi::BRepToIGESBRep_Entity_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
         }
     }
 

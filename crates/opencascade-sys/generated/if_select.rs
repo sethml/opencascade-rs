@@ -234,6 +234,13 @@ impl TryFrom<i32> for ReturnStatus {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleInterfaceSignType, HandleMoniToolSignText, HandleXSControlConnectedShapes,
+    HandleXSControlSelectForTransfer, HandleXSControlSignTransferStatus,
+    HandleXSControlWorkSession,
+};
+
 // ========================
 // From IFSelect_Act.hxx
 // ========================
@@ -283,6 +290,24 @@ impl Act {
                 c_help.as_ptr(),
                 func,
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_Act.hxx`:63 - `IFSelect_Act::Do()`
+    /// Execution of Command Line. remark that <number> is senseless
+    /// because each Act brings one and only one function
+    pub fn do_(
+        &mut self,
+        number: i32,
+        pilot: &crate::ffi::HandleIFSelectSessionPilot,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_Act_do_(
+                self as *mut Self,
+                number,
+                pilot,
+            ))
+            .unwrap()
         }
     }
 
@@ -352,15 +377,41 @@ impl Act {
     pub fn as_activator_mut(&mut self) -> &mut Activator {
         unsafe { &mut *(crate::ffi::IFSelect_Act_as_IFSelect_Activator_mut(self as *mut Self)) }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleIFSelectAct> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Act_to_handle(obj.into_raw())) }
+    }
 }
 
-// ── Skipped symbols for Act (1 total) ──
-// SKIPPED: **Source:** `IFSelect_Act.hxx`:63 - `IFSelect_Act::Do`
-//   method: Execution of Command Line. remark that <number> is senseless
-//   method: because each Act brings one and only one function
-//   Reason: param 'pilot' uses unknown type 'const Handle(IFSelect_SessionPilot)&'
-//   // pub fn do_(&mut self, number: i32, pilot: &HandleSessionPilot) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+pub use crate::ffi::HandleIFSelectAct;
+
+unsafe impl crate::CppDeletable for HandleIFSelectAct {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectAct_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectAct {
+    /// Dereference this Handle to access the underlying IFSelect_Act
+    pub fn get(&self) -> &crate::ffi::IFSelect_Act {
+        unsafe { &*(crate::ffi::HandleIFSelectAct_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_Act
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_Act {
+        unsafe { &mut *(crate::ffi::HandleIFSelectAct_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_Act> to Handle<IFSelect_Activator>
+    pub fn to_handle_activator(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectActivator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIFSelectAct_to_HandleIFSelectActivator(
+                self as *const Self,
+            ))
+        }
+    }
+}
 
 // ========================
 // From IFSelect_Activator.hxx
@@ -415,6 +466,28 @@ impl Activator {
         let c_command = std::ffi::CString::new(command).unwrap();
         unsafe {
             crate::ffi::IFSelect_Activator_add_set(self as *const Self, number, c_command.as_ptr())
+        }
+    }
+
+    /// **Source:** `IFSelect_Activator.hxx`:102 - `IFSelect_Activator::Do()`
+    /// Tries to execute a Command Line. <number> is the number of the
+    /// command for this Activator. It Must forecast to record the
+    /// result of the execution, for need of Undo-Redo
+    /// Must Returns : 0 for a void command (not to be recorded),
+    /// 1 if execution OK, -1 if command incorrect, -2 if error
+    /// on execution
+    pub fn do_(
+        &mut self,
+        number: i32,
+        pilot: &crate::ffi::HandleIFSelectSessionPilot,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_Activator_do_(
+                self as *mut Self,
+                number,
+                pilot,
+            ))
+            .unwrap()
         }
     }
 
@@ -553,16 +626,41 @@ impl HandleIFSelectActivator {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_Activator {
         unsafe { &mut *(crate::ffi::HandleIFSelectActivator_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IFSelect_Activator> to Handle<IFSelect_Act>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_Act` (or subclass).
+    pub fn downcast_to_act(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectAct>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectActivator_downcast_to_HandleIFSelectAct(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Activator> to Handle<IFSelect_SessionPilot>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SessionPilot` (or subclass).
+    pub fn downcast_to_session_pilot(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSessionPilot>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectActivator_downcast_to_HandleIFSelectSessionPilot(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for Activator (2 total) ──
-// SKIPPED: **Source:** `IFSelect_Activator.hxx`:102 - `IFSelect_Activator::Do`
-//   method: Tries to execute a Command Line. <number> is the number of the
-//   method: command for this Activator. It Must forecast to record the
-//   method: result of the execution, for need of Undo-Redo
-//   Reason: param 'pilot' uses unknown type 'const Handle(IFSelect_SessionPilot)&'
-//   // pub fn do_(&mut self, number: i32, pilot: &HandleSessionPilot) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+// ── Skipped symbols for Activator (1 total) ──
 // SKIPPED: **Source:** `IFSelect_Activator.hxx`:80 - `IFSelect_Activator::Select`
 //   static_method: Selects, for a Command given by its title, an actor with its
 //   static_method: command number. Returns True if found, False else
@@ -747,6 +845,29 @@ impl BasicDumper {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_BasicDumper_ctor()) }
     }
 
+    /// **Source:** `IFSelect_BasicDumper.hxx`:44 - `IFSelect_BasicDumper::WriteOwn()`
+    /// Write the Own Parameters of Types defined in package IFSelect
+    /// Returns True if <item> has been processed, False else
+    pub fn write_own(
+        &self,
+        file: &mut SessionFile,
+        item: &crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_BasicDumper_write_own(self as *const Self, file, item) }
+    }
+
+    /// **Source:** `IFSelect_BasicDumper.hxx`:50 - `IFSelect_BasicDumper::ReadOwn()`
+    /// Recognizes and Read Own Parameters for Types of package
+    /// IFSelect. Returns True if done and <item> created, False else
+    pub fn read_own(
+        &self,
+        file: &mut SessionFile,
+        type_: &crate::t_collection::AsciiString,
+        item: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_BasicDumper_read_own(self as *const Self, file, type_, item) }
+    }
+
     /// **Source:** `IFSelect_BasicDumper.hxx`:54 - `IFSelect_BasicDumper::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_BasicDumper_dynamic_type(self as *const Self)) }
@@ -782,6 +903,15 @@ impl BasicDumper {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectBasicDumper> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_BasicDumper_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SessionDumper.hxx`:65 - `IFSelect_SessionDumper::Next()`
     pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSessionDumper> {
         unsafe {
@@ -792,19 +922,38 @@ impl BasicDumper {
     }
 }
 
-// ── Skipped symbols for BasicDumper (2 total) ──
-// SKIPPED: **Source:** `IFSelect_BasicDumper.hxx`:44 - `IFSelect_BasicDumper::WriteOwn`
-//   method: Write the Own Parameters of Types defined in package IFSelect
-//   method: Returns True if <item> has been processed, False else
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn write_own(&self, file: &mut SessionFile, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_BasicDumper.hxx`:50 - `IFSelect_BasicDumper::ReadOwn`
-//   method: Recognizes and Read Own Parameters for Types of package
-//   method: IFSelect. Returns True if done and <item> created, False else
-//   Reason: param 'item' uses unknown type 'Handle(Standard_Transient)&'
-//   // pub fn read_own(&self, file: &mut SessionFile, type_: &AsciiString, item: &mut HandleTransient) -> bool;
-//
+pub use crate::ffi::HandleIFSelectBasicDumper;
+
+unsafe impl crate::CppDeletable for HandleIFSelectBasicDumper {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectBasicDumper_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectBasicDumper {
+    /// Dereference this Handle to access the underlying IFSelect_BasicDumper
+    pub fn get(&self) -> &crate::ffi::IFSelect_BasicDumper {
+        unsafe { &*(crate::ffi::HandleIFSelectBasicDumper_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_BasicDumper
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_BasicDumper {
+        unsafe { &mut *(crate::ffi::HandleIFSelectBasicDumper_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_BasicDumper> to Handle<IFSelect_SessionDumper>
+    pub fn to_handle_session_dumper(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSessionDumper> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectBasicDumper_to_HandleIFSelectSessionDumper(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_CheckCounter.hxx
@@ -915,6 +1064,15 @@ impl CheckCounter {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectCheckCounter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_CheckCounter_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
     pub fn set_list(&mut self, withlist: bool) {
         unsafe { crate::ffi::IFSelect_CheckCounter_inherited_SetList(self as *mut Self, withlist) }
@@ -940,6 +1098,39 @@ impl CheckCounter {
     /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
     pub fn nb_nulls(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_CheckCounter_inherited_NbNulls(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectCheckCounter;
+
+unsafe impl crate::CppDeletable for HandleIFSelectCheckCounter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectCheckCounter_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectCheckCounter {
+    /// Dereference this Handle to access the underlying IFSelect_CheckCounter
+    pub fn get(&self) -> &crate::ffi::IFSelect_CheckCounter {
+        unsafe { &*(crate::ffi::HandleIFSelectCheckCounter_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_CheckCounter
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_CheckCounter {
+        unsafe { &mut *(crate::ffi::HandleIFSelectCheckCounter_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_CheckCounter> to Handle<IFSelect_SignatureList>
+    pub fn to_handle_signature_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignatureList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectCheckCounter_to_HandleIFSelectSignatureList(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1042,6 +1233,30 @@ impl ContextModif {
         unsafe { crate::ffi::IFSelect_ContextModif_is_for_all(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_ContextModif.hxx`:123 - `IFSelect_ContextModif::IsTransferred()`
+    /// Returns True if a starting item has been transferred
+    pub fn is_transferred(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_ContextModif_is_transferred(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:126 - `IFSelect_ContextModif::IsSelected()`
+    /// Returns True if a starting item has been transferred and selected
+    pub fn is_selected(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_ContextModif_is_selected(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:131 - `IFSelect_ContextModif::Search()`
+    /// Returns True if a starting entity has been transferred, and
+    /// the result is in <res>. Returns False else
+    /// (direct call to the map)
+    pub fn search(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        res: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_ContextModif_search(self as *const Self, ent, res) }
+    }
+
     /// **Source:** `IFSelect_ContextModif.hxx`:143 - `IFSelect_ContextModif::SelectedCount()`
     /// Returns the count of selected and transferred items
     pub fn selected_count(&self) -> i32 {
@@ -1065,6 +1280,27 @@ impl ContextModif {
     /// Advances the iteration
     pub fn next(&mut self) {
         unsafe { crate::ffi::IFSelect_ContextModif_next(self as *mut Self) }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:156 - `IFSelect_ContextModif::ValueOriginal()`
+    /// Returns the current selected item in the original model
+    pub fn value_original(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_value_original(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:160 - `IFSelect_ContextModif::ValueResult()`
+    /// Returns the result counterpart of current selected item
+    /// (in the target model)
+    pub fn value_result(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_value_result(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_ContextModif.hxx`:168 - `IFSelect_ContextModif::TraceModifier()`
@@ -1097,17 +1333,79 @@ impl ContextModif {
         unsafe { crate::ffi::IFSelect_ContextModif_add_check(self as *mut Self, check) }
     }
 
+    /// **Source:** `IFSelect_ContextModif.hxx`:185 - `IFSelect_ContextModif::AddWarning()`
+    /// Adds a Warning Message for an Entity from the original Model
+    /// If <start> is not an Entity from the original model (e.g. the
+    /// model itself) this message is added to Global Check.
+    pub fn add_warning(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        mess: &str,
+        orig: &str,
+    ) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_ContextModif_add_warning(
+                self as *mut Self,
+                start,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:192 - `IFSelect_ContextModif::AddFail()`
+    /// Adds a Fail Message for an Entity from the original Model
+    /// If <start> is not an Entity from the original model (e.g. the
+    /// model itself) this message is added to Global Check.
+    pub fn add_fail(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        mess: &str,
+        orig: &str,
+    ) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_ContextModif_add_fail(
+                self as *mut Self,
+                start,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_ContextModif.hxx`:200 - `IFSelect_ContextModif::CCheck()`
     /// Returns a Check given an Entity number (in the original Model)
     /// by default a Global Check. Creates it the first time.
     /// It can then be acknowledged on the spot, in condition that the
     /// caller works by reference ("Interface_Check& check = ...")
-    pub fn c_check(&mut self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn c_check_int(&mut self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_c_check(
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_c_check_int(
                 self as *mut Self,
                 num,
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:205 - `IFSelect_ContextModif::CCheck()`
+    /// Returns a Check attached to an Entity from the original Model
+    /// It can then be acknowledged on the spot, in condition that the
+    /// caller works by reference ("Interface_Check& check = ...")
+    pub fn c_check_handlestandardtransient(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_ContextModif_c_check_handlestandardtransient(
+                    self as *mut Self,
+                    start,
+                ),
+            )
         }
     }
 
@@ -1122,7 +1420,7 @@ impl ContextModif {
     }
 }
 
-// ── Skipped symbols for ContextModif (15 total) ──
+// ── Skipped symbols for ContextModif (7 total) ──
 // SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:65 - `IFSelect_ContextModif::IFSelect_ContextModif`
 //   constructor: Prepares a ContextModif with these information :
 //   constructor: - the graph established from original model (target passed
@@ -1152,23 +1450,6 @@ impl ContextModif {
 //   Reason: return type 'Handle(Interface_CopyControl)' is unknown
 //   // pub fn control(&self) -> OwnedPtr<Handle<Interface_CopyControl>>;
 //
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:123 - `IFSelect_ContextModif::IsTransferred`
-//   method: Returns True if a starting item has been transferred
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn is_transferred(&self, ent: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:126 - `IFSelect_ContextModif::IsSelected`
-//   method: Returns True if a starting item has been transferred and selected
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn is_selected(&self, ent: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:131 - `IFSelect_ContextModif::Search`
-//   method: Returns True if a starting entity has been transferred, and
-//   method: the result is in <res>. Returns False else
-//   method: (direct call to the map)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn search(&self, ent: &HandleTransient, res: &mut HandleTransient) -> bool;
-//
 // SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:136 - `IFSelect_ContextModif::SelectedOriginal`
 //   method: Returns the list of original selected items.
 //   method: See also the iteration
@@ -1180,38 +1461,6 @@ impl ContextModif {
 //   method: See also the iteration
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn selected_result(&self) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:156 - `IFSelect_ContextModif::ValueOriginal`
-//   method: Returns the current selected item in the original model
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn value_original(&self) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:160 - `IFSelect_ContextModif::ValueResult`
-//   method: Returns the result counterpart of current selected item
-//   method: (in the target model)
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn value_result(&self) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:185 - `IFSelect_ContextModif::AddWarning`
-//   method: Adds a Warning Message for an Entity from the original Model
-//   method: If <start> is not an Entity from the original model (e.g. the
-//   method: model itself) this message is added to Global Check.
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_warning(&mut self, start: &HandleTransient, mess: *const char, orig: *const char);
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:192 - `IFSelect_ContextModif::AddFail`
-//   method: Adds a Fail Message for an Entity from the original Model
-//   method: If <start> is not an Entity from the original model (e.g. the
-//   method: model itself) this message is added to Global Check.
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_fail(&mut self, start: &HandleTransient, mess: *const char, orig: *const char);
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:205 - `IFSelect_ContextModif::CCheck`
-//   method: Returns a Check attached to an Entity from the original Model
-//   method: It can then be acknowledged on the spot, in condition that the
-//   method: caller works by reference ("Interface_Check& check = ...")
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn c_check(&mut self, start: &HandleTransient) -> OwnedPtr<Handle<Interface_Check>>;
 //
 
 // ========================
@@ -1338,6 +1587,14 @@ impl ContextWrite {
         unsafe { crate::ffi::IFSelect_ContextWrite_next(self as *mut Self) }
     }
 
+    /// **Source:** `IFSelect_ContextWrite.hxx`:119 - `IFSelect_ContextWrite::Value()`
+    /// Returns the current selected entity in the model
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextWrite_value(self as *const Self))
+        }
+    }
+
     /// **Source:** `IFSelect_ContextWrite.hxx`:125 - `IFSelect_ContextWrite::AddCheck()`
     /// Adds a Check to the CheckList. If it is empty, nothing is done
     /// If it concerns an Entity from the Model (by SetEntity)
@@ -1347,17 +1604,79 @@ impl ContextWrite {
         unsafe { crate::ffi::IFSelect_ContextWrite_add_check(self as *mut Self, check) }
     }
 
+    /// **Source:** `IFSelect_ContextWrite.hxx`:130 - `IFSelect_ContextWrite::AddWarning()`
+    /// Adds a Warning Message for an Entity from the Model
+    /// If <start> is not an Entity from the model (e.g. the
+    /// model itself) this message is added to Global Check.
+    pub fn add_warning(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        mess: &str,
+        orig: &str,
+    ) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_ContextWrite_add_warning(
+                self as *mut Self,
+                start,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextWrite.hxx`:137 - `IFSelect_ContextWrite::AddFail()`
+    /// Adds a Fail Message for an Entity from the Model
+    /// If <start> is not an Entity from the model (e.g. the
+    /// model itself) this message is added to Global Check.
+    pub fn add_fail(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        mess: &str,
+        orig: &str,
+    ) {
+        let c_mess = std::ffi::CString::new(mess).unwrap();
+        let c_orig = std::ffi::CString::new(orig).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_ContextWrite_add_fail(
+                self as *mut Self,
+                start,
+                c_mess.as_ptr(),
+                c_orig.as_ptr(),
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_ContextWrite.hxx`:145 - `IFSelect_ContextWrite::CCheck()`
     /// Returns a Check given an Entity number (in the Model)
     /// by default a Global Check. Creates it the first time.
     /// It can then be acknowledged on the spot, in condition that the
     /// caller works by reference ("Interface_Check& check = ...")
-    pub fn c_check(&mut self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn c_check_int(&mut self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextWrite_c_check(
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextWrite_c_check_int(
                 self as *mut Self,
                 num,
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextWrite.hxx`:150 - `IFSelect_ContextWrite::CCheck()`
+    /// Returns a Check attached to an Entity from the Model
+    /// It can then be acknowledged on the spot, in condition that the
+    /// caller works by reference ("Interface_Check& check = ...")
+    pub fn c_check_handlestandardtransient(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_ContextWrite_c_check_handlestandardtransient(
+                    self as *mut Self,
+                    start,
+                ),
+            )
         }
     }
 
@@ -1372,7 +1691,7 @@ impl ContextWrite {
     }
 }
 
-// ── Skipped symbols for ContextWrite (7 total) ──
+// ── Skipped symbols for ContextWrite (3 total) ──
 // SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:58 - `IFSelect_ContextWrite::IFSelect_ContextWrite`
 //   constructor: Prepares a ContextWrite with these information :
 //   constructor: - the model which is to be written
@@ -1389,32 +1708,6 @@ impl ContextWrite {
 //   method: Returns the Protocol;
 //   Reason: return type 'Handle(Interface_Protocol)' is unknown
 //   // pub fn protocol(&self) -> OwnedPtr<Handle<Interface_Protocol>>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:119 - `IFSelect_ContextWrite::Value`
-//   method: Returns the current selected entity in the model
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn value(&self) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:130 - `IFSelect_ContextWrite::AddWarning`
-//   method: Adds a Warning Message for an Entity from the Model
-//   method: If <start> is not an Entity from the model (e.g. the
-//   method: model itself) this message is added to Global Check.
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_warning(&mut self, start: &HandleTransient, mess: *const char, orig: *const char);
-//
-// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:137 - `IFSelect_ContextWrite::AddFail`
-//   method: Adds a Fail Message for an Entity from the Model
-//   method: If <start> is not an Entity from the model (e.g. the
-//   method: model itself) this message is added to Global Check.
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_fail(&mut self, start: &HandleTransient, mess: *const char, orig: *const char);
-//
-// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:150 - `IFSelect_ContextWrite::CCheck`
-//   method: Returns a Check attached to an Entity from the Model
-//   method: It can then be acknowledged on the spot, in condition that the
-//   method: caller works by reference ("Interface_Check& check = ...")
-//   Reason: param 'start' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn c_check(&mut self, start: &HandleTransient) -> OwnedPtr<Handle<Interface_Check>>;
 //
 
 // ========================
@@ -1490,6 +1783,15 @@ impl DispGlobal {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispGlobal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispGlobal_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IFSelect_DispGlobal_inherited_SetRootName(self as *mut Self, name) }
@@ -1533,6 +1835,35 @@ impl DispGlobal {
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispGlobal_inherited_CanHaveRemainder(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectDispGlobal;
+
+unsafe impl crate::CppDeletable for HandleIFSelectDispGlobal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectDispGlobal_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectDispGlobal {
+    /// Dereference this Handle to access the underlying IFSelect_DispGlobal
+    pub fn get(&self) -> &crate::ffi::IFSelect_DispGlobal {
+        unsafe { &*(crate::ffi::HandleIFSelectDispGlobal_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_DispGlobal
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_DispGlobal {
+        unsafe { &mut *(crate::ffi::HandleIFSelectDispGlobal_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_DispGlobal> to Handle<IFSelect_Dispatch>
+    pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectDispGlobal_to_HandleIFSelectDispatch(self as *const Self),
+            )
+        }
     }
 }
 
@@ -1639,6 +1970,15 @@ impl DispPerCount {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispPerCount> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IFSelect_DispPerCount_inherited_SetRootName(self as *mut Self, name) }
@@ -1682,6 +2022,37 @@ impl DispPerCount {
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerCount_inherited_CanHaveRemainder(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectDispPerCount;
+
+unsafe impl crate::CppDeletable for HandleIFSelectDispPerCount {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectDispPerCount_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectDispPerCount {
+    /// Dereference this Handle to access the underlying IFSelect_DispPerCount
+    pub fn get(&self) -> &crate::ffi::IFSelect_DispPerCount {
+        unsafe { &*(crate::ffi::HandleIFSelectDispPerCount_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_DispPerCount
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_DispPerCount {
+        unsafe { &mut *(crate::ffi::HandleIFSelectDispPerCount_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_DispPerCount> to Handle<IFSelect_Dispatch>
+    pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectDispPerCount_to_HandleIFSelectDispatch(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1792,6 +2163,15 @@ impl DispPerFiles {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispPerFiles> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IFSelect_DispPerFiles_inherited_SetRootName(self as *mut Self, name) }
@@ -1835,6 +2215,37 @@ impl DispPerFiles {
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerFiles_inherited_CanHaveRemainder(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectDispPerFiles;
+
+unsafe impl crate::CppDeletable for HandleIFSelectDispPerFiles {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectDispPerFiles_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectDispPerFiles {
+    /// Dereference this Handle to access the underlying IFSelect_DispPerFiles
+    pub fn get(&self) -> &crate::ffi::IFSelect_DispPerFiles {
+        unsafe { &*(crate::ffi::HandleIFSelectDispPerFiles_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_DispPerFiles
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_DispPerFiles {
+        unsafe { &mut *(crate::ffi::HandleIFSelectDispPerFiles_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_DispPerFiles> to Handle<IFSelect_Dispatch>
+    pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectDispPerFiles_to_HandleIFSelectDispatch(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -1918,6 +2329,15 @@ impl DispPerOne {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispPerOne> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::IFSelect_DispPerOne_inherited_SetRootName(self as *mut Self, name) }
@@ -1964,6 +2384,35 @@ impl DispPerOne {
     }
 }
 
+pub use crate::ffi::HandleIFSelectDispPerOne;
+
+unsafe impl crate::CppDeletable for HandleIFSelectDispPerOne {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectDispPerOne_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectDispPerOne {
+    /// Dereference this Handle to access the underlying IFSelect_DispPerOne
+    pub fn get(&self) -> &crate::ffi::IFSelect_DispPerOne {
+        unsafe { &*(crate::ffi::HandleIFSelectDispPerOne_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_DispPerOne
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_DispPerOne {
+        unsafe { &mut *(crate::ffi::HandleIFSelectDispPerOne_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_DispPerOne> to Handle<IFSelect_Dispatch>
+    pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectDispPerOne_to_HandleIFSelectDispatch(self as *const Self),
+            )
+        }
+    }
+}
+
 // ── Skipped symbols for DispPerOne (1 total) ──
 // SKIPPED: **Source:** `IFSelect_DispPerOne.hxx`:46 - `IFSelect_DispPerOne::LimitedMax`
 //   method: Returns True, maximum limit is given as <nbent>
@@ -1992,6 +2441,23 @@ impl DispPerSignature {
     /// produces only one packet)
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_DispPerSignature.hxx`:44 - `IFSelect_DispPerSignature::SignCounter()`
+    /// Returns the SignCounter used for splitting
+    pub fn sign_counter(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_sign_counter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_DispPerSignature.hxx`:48 - `IFSelect_DispPerSignature::SetSignCounter()`
+    /// Sets a SignCounter for sort
+    /// Remark : it is set to record lists of entities, not only counts
+    pub fn set_sign_counter(&mut self, sign: &crate::ffi::HandleIFSelectSignCounter) {
+        unsafe { crate::ffi::IFSelect_DispPerSignature_set_sign_counter(self as *mut Self, sign) }
     }
 
     /// **Source:** `IFSelect_DispPerSignature.hxx`:52 - `IFSelect_DispPerSignature::SignName()`
@@ -2064,6 +2530,17 @@ impl DispPerSignature {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispPerSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe {
@@ -2117,18 +2594,38 @@ impl DispPerSignature {
     }
 }
 
-// ── Skipped symbols for DispPerSignature (3 total) ──
-// SKIPPED: **Source:** `IFSelect_DispPerSignature.hxx`:44 - `IFSelect_DispPerSignature::SignCounter`
-//   method: Returns the SignCounter used for splitting
-//   Reason: return type 'Handle(IFSelect_SignCounter)' is unknown
-//   // pub fn sign_counter(&self) -> OwnedPtr<Handle<IFSelect_SignCounter>>;
-//
-// SKIPPED: **Source:** `IFSelect_DispPerSignature.hxx`:48 - `IFSelect_DispPerSignature::SetSignCounter`
-//   method: Sets a SignCounter for sort
-//   method: Remark : it is set to record lists of entities, not only counts
-//   Reason: param 'sign' uses unknown type 'const Handle(IFSelect_SignCounter)&'
-//   // pub fn set_sign_counter(&mut self, sign: &HandleSignCounter);
-//
+pub use crate::ffi::HandleIFSelectDispPerSignature;
+
+unsafe impl crate::CppDeletable for HandleIFSelectDispPerSignature {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectDispPerSignature_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectDispPerSignature {
+    /// Dereference this Handle to access the underlying IFSelect_DispPerSignature
+    pub fn get(&self) -> &crate::ffi::IFSelect_DispPerSignature {
+        unsafe { &*(crate::ffi::HandleIFSelectDispPerSignature_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_DispPerSignature
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_DispPerSignature {
+        unsafe { &mut *(crate::ffi::HandleIFSelectDispPerSignature_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_DispPerSignature> to Handle<IFSelect_Dispatch>
+    pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectDispPerSignature_to_HandleIFSelectDispatch(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for DispPerSignature (1 total) ──
 // SKIPPED: **Source:** `IFSelect_DispPerSignature.hxx`:58 - `IFSelect_DispPerSignature::LimitedMax`
 //   method: Returns True, maximum count is given as <nbent>
 //   Reason: has misresolved element type (clang batch parsing artifact)
@@ -2286,6 +2783,96 @@ impl HandleIFSelectDispatch {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_Dispatch {
         unsafe { &mut *(crate::ffi::HandleIFSelectDispatch_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IFSelect_Dispatch> to Handle<IFSelect_DispGlobal>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_DispGlobal` (or subclass).
+    pub fn downcast_to_disp_global(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectDispGlobal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectDispatch_downcast_to_HandleIFSelectDispGlobal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Dispatch> to Handle<IFSelect_DispPerCount>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_DispPerCount` (or subclass).
+    pub fn downcast_to_disp_per_count(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectDispPerCount>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectDispatch_downcast_to_HandleIFSelectDispPerCount(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Dispatch> to Handle<IFSelect_DispPerFiles>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_DispPerFiles` (or subclass).
+    pub fn downcast_to_disp_per_files(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectDispPerFiles>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectDispatch_downcast_to_HandleIFSelectDispPerFiles(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Dispatch> to Handle<IFSelect_DispPerOne>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_DispPerOne` (or subclass).
+    pub fn downcast_to_disp_per_one(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectDispPerOne>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectDispatch_downcast_to_HandleIFSelectDispPerOne(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Dispatch> to Handle<IFSelect_DispPerSignature>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_DispPerSignature` (or subclass).
+    pub fn downcast_to_disp_per_signature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectDispPerSignature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectDispatch_downcast_to_HandleIFSelectDispPerSignature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Dispatch (4 total) ──
@@ -2415,9 +3002,30 @@ impl EditForm {
         unsafe { crate::ffi::IFSelect_EditForm_clear_data(self as *mut Self) }
     }
 
+    /// **Source:** `IFSelect_EditForm.hxx`:83 - `IFSelect_EditForm::SetData()`
+    pub fn set_data(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        unsafe { crate::ffi::IFSelect_EditForm_set_data(self as *mut Self, ent, model) }
+    }
+
+    /// **Source:** `IFSelect_EditForm.hxx`:86 - `IFSelect_EditForm::SetEntity()`
+    pub fn set_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::IFSelect_EditForm_set_entity(self as *mut Self, ent) }
+    }
+
     /// **Source:** `IFSelect_EditForm.hxx`:88 - `IFSelect_EditForm::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
         unsafe { crate::ffi::IFSelect_EditForm_set_model(self as *mut Self, model) }
+    }
+
+    /// **Source:** `IFSelect_EditForm.hxx`:90 - `IFSelect_EditForm::Entity()`
+    pub fn entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_EditForm_entity(self as *const Self))
+        }
     }
 
     /// **Source:** `IFSelect_EditForm.hxx`:92 - `IFSelect_EditForm::Model()`
@@ -2496,6 +3104,28 @@ impl EditForm {
     /// from defaults stored in the Editor
     pub fn load_default(&mut self) {
         unsafe { crate::ffi::IFSelect_EditForm_load_default(self as *mut Self) }
+    }
+
+    /// **Source:** `IFSelect_EditForm.hxx`:142 - `IFSelect_EditForm::LoadData()`
+    /// Loads modifications to data
+    /// Default uses Editor. Can be redefined
+    /// Remark that <ent> and/or <model> may be null, according to the
+    /// kind of Editor. Shortcuts are available for these cases, but
+    /// they finally call LoadData (hence, just ignore non-used args)
+    pub fn load_data_handlestandardtransient_handleinterfaceinterfacemodel(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_EditForm_load_data_handlestandardtransient_handleinterfaceinterfacemodel(self as *mut Self, ent, model)
+        }
+    }
+
+    /// **Source:** `IFSelect_EditForm.hxx`:146 - `IFSelect_EditForm::LoadEntity()`
+    /// Shortcut for LoadData when <model> is not used
+    pub fn load_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_EditForm_load_entity(self as *mut Self, ent) }
     }
 
     /// **Source:** `IFSelect_EditForm.hxx`:149 - `IFSelect_EditForm::LoadModel()`
@@ -2732,6 +3362,17 @@ impl EditForm {
         unsafe { crate::ffi::IFSelect_EditForm_recognize(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_EditForm.hxx`:292 - `IFSelect_EditForm::ApplyData()`
+    /// Applies modifications to data
+    /// Default uses Editor. Can be redefined
+    pub fn apply_data(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_EditForm_apply_data(self as *mut Self, ent, model) }
+    }
+
     /// **Source:** `IFSelect_EditForm.hxx`:298 - `IFSelect_EditForm::Undo()`
     /// For an undoable EditForm, Applies ... origibal values !
     /// and clears modified ones
@@ -2789,31 +3430,7 @@ impl HandleIFSelectEditForm {
     }
 }
 
-// ── Skipped symbols for EditForm (8 total) ──
-// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:83 - `IFSelect_EditForm::SetData`
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_data(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel);
-//
-// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:86 - `IFSelect_EditForm::SetEntity`
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_entity(&mut self, ent: &HandleTransient);
-//
-// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:90 - `IFSelect_EditForm::Entity`
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn entity(&self) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:142 - `IFSelect_EditForm::LoadData`
-//   method: Loads modifications to data
-//   method: Default uses Editor. Can be redefined
-//   method: Remark that <ent> and/or <model> may be null, according to the
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn load_data(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:146 - `IFSelect_EditForm::LoadEntity`
-//   method: Shortcut for LoadData when <model> is not used
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn load_entity(&mut self, ent: &HandleTransient) -> bool;
-//
+// ── Skipped symbols for EditForm (2 total) ──
 // SKIPPED: **Source:** `IFSelect_EditForm.hxx`:267 - `IFSelect_EditForm::PrintDefs`
 //   method: Prints Definitions, relative to the Editor
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
@@ -2825,12 +3442,6 @@ impl HandleIFSelectEditForm {
 //   method: <what> < 0 : prints Original Values (+ flag Modified)
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_values(&self, S: /* Standard_OStream& */, what: i32, names: bool, alsolist: bool);
-//
-// SKIPPED: **Source:** `IFSelect_EditForm.hxx`:292 - `IFSelect_EditForm::ApplyData`
-//   method: Applies modifications to data
-//   method: Default uses Editor. Can be redefined
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn apply_data(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
 //
 
 // ========================
@@ -3005,6 +3616,21 @@ impl Editor {
         }
     }
 
+    /// **Source:** `IFSelect_Editor.hxx`:139 - `IFSelect_Editor::Load()`
+    /// Loads original values from some data, to an EditForm
+    /// Remark: <ent> may be Null, this means all <model> is concerned
+    /// Also <model> may be Null, if no context applies for <ent>
+    /// And both <ent> and <model> may be Null, for a full static
+    /// editor
+    pub fn load(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_Editor_load(self as *const Self, form, ent, model) }
+    }
+
     /// **Source:** `IFSelect_Editor.hxx`:153 - `IFSelect_Editor::Update()`
     /// Updates the EditForm when a parameter is modified
     /// I.E.  default does nothing, can be redefined, as follows :
@@ -3047,6 +3673,21 @@ impl Editor {
         }
     }
 
+    /// **Source:** `IFSelect_Editor.hxx`:170 - `IFSelect_Editor::Apply()`
+    /// Applies modified values of the EditForm with some data
+    /// Remark: <ent> may be Null, this means all <model> is concerned
+    /// Also <model> may be Null, if no context applies for <ent>
+    /// And both <ent> and <model> may be Null, for a full static
+    /// editor
+    pub fn apply(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_Editor_apply(self as *const Self, form, ent, model) }
+    }
+
     /// **Source:** `IFSelect_Editor.hxx`:175 - `IFSelect_Editor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_Editor_dynamic_type(self as *const Self)) }
@@ -3085,9 +3726,27 @@ impl HandleIFSelectEditor {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_Editor {
         unsafe { &mut *(crate::ffi::HandleIFSelectEditor_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IFSelect_Editor> to Handle<IFSelect_ParamEditor>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_ParamEditor` (or subclass).
+    pub fn downcast_to_param_editor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectParamEditor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectEditor_downcast_to_HandleIFSelectParamEditor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for Editor (6 total) ──
+// ── Skipped symbols for Editor (4 total) ──
 // SKIPPED: **Source:** `IFSelect_Editor.hxx`:53 - `IFSelect_Editor::SetValue`
 //   method: Sets a Typed Value for a given ident and short name, with an
 //   method: Edit Mode
@@ -3106,20 +3765,6 @@ impl HandleIFSelectEditor {
 // SKIPPED: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs`
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_defs(&self, S: /* Standard_OStream& */, labels: bool);
-//
-// SKIPPED: **Source:** `IFSelect_Editor.hxx`:139 - `IFSelect_Editor::Load`
-//   method: Loads original values from some data, to an EditForm
-//   method: Remark: <ent> may be Null, this means all <model> is concerned
-//   method: Also <model> may be Null, if no context applies for <ent>
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn load(&self, form: &HandleEditForm, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_Editor.hxx`:170 - `IFSelect_Editor::Apply`
-//   method: Applies modified values of the EditForm with some data
-//   method: Remark: <ent> may be Null, this means all <model> is concerned
-//   method: Also <model> may be Null, if no context applies for <ent>
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn apply(&self, form: &HandleEditForm, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
 //
 
 // ========================
@@ -3145,6 +3790,25 @@ impl Functions {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Functions_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_Functions.hxx`:46 - `IFSelect_Functions::GiveEntity()`
+    /// Takes the name of an entity, either as argument,
+    /// or (if <name> is empty) on keyboard, and returns the entity
+    /// name can be a label or a number (in alphanumeric),
+    /// it is searched by NumberFromLabel from WorkSession.
+    /// If <name> doesn't match en entity, a Null Handle is returned
+    pub fn give_entity(
+        WS: &crate::ffi::HandleIFSelectWorkSession,
+        name: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Functions_give_entity(
+                WS,
+                c_name.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_Functions.hxx`:52 - `IFSelect_Functions::GiveEntityNumber()`
@@ -3210,15 +3874,6 @@ impl Functions {
         unsafe { crate::ffi::IFSelect_Functions_init() }
     }
 }
-
-// ── Skipped symbols for Functions (1 total) ──
-// SKIPPED: **Source:** `IFSelect_Functions.hxx`:46 - `IFSelect_Functions::GiveEntity`
-//   static_method: Takes the name of an entity, either as argument,
-//   static_method: or (if <name> is empty) on keyboard, and returns the entity
-//   static_method: name can be a label or a number (in alphanumeric),
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn give_entity(WS: &HandleWorkSession, name: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
-//
 
 // ========================
 // From IFSelect_GeneralModifier.hxx
@@ -3374,6 +4029,42 @@ impl HandleIFSelectGeneralModifier {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_GeneralModifier {
         unsafe { &mut *(crate::ffi::HandleIFSelectGeneralModifier_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IFSelect_ModifEditForm>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_ModifEditForm` (or subclass).
+    pub fn downcast_to_modif_edit_form(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectModifEditForm>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIFSelectModifEditForm(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_GeneralModifier> to Handle<IFSelect_ModifReorder>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_ModifReorder` (or subclass).
+    pub fn downcast_to_modif_reorder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectModifReorder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectGeneralModifier_downcast_to_HandleIFSelectModifReorder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -3416,6 +4107,22 @@ impl GraphCounter {
     /// Creates a GraphCounter, without applied selection
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool2(true, false)
+    }
+
+    /// **Source:** `IFSelect_GraphCounter.hxx`:45 - `IFSelect_GraphCounter::Applied()`
+    /// Returns the applied selection
+    pub fn applied(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_GraphCounter_applied(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_GraphCounter.hxx`:48 - `IFSelect_GraphCounter::SetApplied()`
+    /// Sets a new applied selection
+    pub fn set_applied(&mut self, sel: &crate::ffi::HandleIFSelectSelectDeduct) {
+        unsafe { crate::ffi::IFSelect_GraphCounter_set_applied(self as *mut Self, sel) }
     }
 
     /// **Source:** `IFSelect_GraphCounter.hxx`:54 - `IFSelect_GraphCounter::AddWithGraph()`
@@ -3480,9 +4187,49 @@ impl GraphCounter {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGraphCounter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_GraphCounter_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:76 - `IFSelect_SignCounter::Signature()`
+    pub fn signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_GraphCounter_inherited_Signature(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:80 - `IFSelect_SignCounter::SetMap()`
     pub fn set_map(&mut self, withmap: bool) {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_SetMap(self as *mut Self, withmap) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:86 - `IFSelect_SignCounter::AddEntity()`
+    pub fn add_entity(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_GraphCounter_inherited_AddEntity(self as *mut Self, ent, model)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:95 - `IFSelect_SignCounter::AddSign()`
+    pub fn add_sign(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_GraphCounter_inherited_AddSign(self as *mut Self, ent, model)
+        }
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:99 - `IFSelect_SignCounter::AddList()`
@@ -3549,6 +4296,21 @@ impl GraphCounter {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:152 - `IFSelect_SignCounter::Sign()`
+    pub fn sign(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_GraphCounter_inherited_Sign(
+                self as *const Self,
+                ent,
+                model,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
     pub fn set_list(&mut self, withlist: bool) {
         unsafe { crate::ffi::IFSelect_GraphCounter_inherited_SetList(self as *mut Self, withlist) }
@@ -3577,17 +4339,49 @@ impl GraphCounter {
     }
 }
 
-// ── Skipped symbols for GraphCounter (2 total) ──
-// SKIPPED: **Source:** `IFSelect_GraphCounter.hxx`:45 - `IFSelect_GraphCounter::Applied`
-//   method: Returns the applied selection
-//   Reason: return type 'Handle(IFSelect_SelectDeduct)' is unknown
-//   // pub fn applied(&self) -> OwnedPtr<Handle<IFSelect_SelectDeduct>>;
-//
-// SKIPPED: **Source:** `IFSelect_GraphCounter.hxx`:48 - `IFSelect_GraphCounter::SetApplied`
-//   method: Sets a new applied selection
-//   Reason: param 'sel' uses unknown type 'const Handle(IFSelect_SelectDeduct)&'
-//   // pub fn set_applied(&mut self, sel: &HandleSelectDeduct);
-//
+pub use crate::ffi::HandleIFSelectGraphCounter;
+
+unsafe impl crate::CppDeletable for HandleIFSelectGraphCounter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectGraphCounter_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectGraphCounter {
+    /// Dereference this Handle to access the underlying IFSelect_GraphCounter
+    pub fn get(&self) -> &crate::ffi::IFSelect_GraphCounter {
+        unsafe { &*(crate::ffi::HandleIFSelectGraphCounter_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_GraphCounter
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_GraphCounter {
+        unsafe { &mut *(crate::ffi::HandleIFSelectGraphCounter_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_GraphCounter> to Handle<IFSelect_SignCounter>
+    pub fn to_handle_sign_counter(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectGraphCounter_to_HandleIFSelectSignCounter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_GraphCounter> to Handle<IFSelect_SignatureList>
+    pub fn to_handle_signature_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignatureList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectGraphCounter_to_HandleIFSelectSignatureList(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_HSeqOfSelection.hxx
@@ -4460,6 +5254,15 @@ impl ModifEditForm {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifEditForm> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifEditForm_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         unsafe { crate::ffi::IFSelect_ModifEditForm_inherited_MayChangeGraph(self as *const Self) }
@@ -4505,6 +5308,50 @@ impl ModifEditForm {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifEditForm_inherited_Selection(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectModifEditForm;
+
+unsafe impl crate::CppDeletable for HandleIFSelectModifEditForm {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectModifEditForm_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectModifEditForm {
+    /// Dereference this Handle to access the underlying IFSelect_ModifEditForm
+    pub fn get(&self) -> &crate::ffi::IFSelect_ModifEditForm {
+        unsafe { &*(crate::ffi::HandleIFSelectModifEditForm_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_ModifEditForm
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_ModifEditForm {
+        unsafe { &mut *(crate::ffi::HandleIFSelectModifEditForm_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_ModifEditForm> to Handle<IFSelect_Modifier>
+    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectModifEditForm_to_HandleIFSelectModifier(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_ModifEditForm> to Handle<IFSelect_GeneralModifier>
+    pub fn to_handle_general_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectModifEditForm_to_HandleIFSelectGeneralModifier(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -4606,6 +5453,15 @@ impl ModifReorder {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifReorder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifReorder_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         unsafe { crate::ffi::IFSelect_ModifReorder_inherited_MayChangeGraph(self as *const Self) }
@@ -4651,6 +5507,50 @@ impl ModifReorder {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifReorder_inherited_Selection(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectModifReorder;
+
+unsafe impl crate::CppDeletable for HandleIFSelectModifReorder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectModifReorder_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectModifReorder {
+    /// Dereference this Handle to access the underlying IFSelect_ModifReorder
+    pub fn get(&self) -> &crate::ffi::IFSelect_ModifReorder {
+        unsafe { &*(crate::ffi::HandleIFSelectModifReorder_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_ModifReorder
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_ModifReorder {
+        unsafe { &mut *(crate::ffi::HandleIFSelectModifReorder_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_ModifReorder> to Handle<IFSelect_Modifier>
+    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectModifReorder_to_HandleIFSelectModifier(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_ModifReorder> to Handle<IFSelect_GeneralModifier>
+    pub fn to_handle_general_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectModifReorder_to_HandleIFSelectGeneralModifier(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -4775,6 +5675,75 @@ impl Modifier {
     }
 }
 
+pub use crate::ffi::HandleIFSelectModifier;
+
+unsafe impl crate::CppDeletable for HandleIFSelectModifier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectModifier_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectModifier {
+    /// Dereference this Handle to access the underlying IFSelect_Modifier
+    pub fn get(&self) -> &crate::ffi::IFSelect_Modifier {
+        unsafe { &*(crate::ffi::HandleIFSelectModifier_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_Modifier
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_Modifier {
+        unsafe { &mut *(crate::ffi::HandleIFSelectModifier_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_Modifier> to Handle<IFSelect_GeneralModifier>
+    pub fn to_handle_general_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectModifier_to_HandleIFSelectGeneralModifier(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IFSelect_ModifEditForm>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_ModifEditForm` (or subclass).
+    pub fn downcast_to_modif_edit_form(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectModifEditForm>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIFSelectModifEditForm(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Modifier> to Handle<IFSelect_ModifReorder>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_ModifReorder` (or subclass).
+    pub fn downcast_to_modif_reorder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectModifReorder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectModifier_downcast_to_HandleIFSelectModifReorder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ── Skipped symbols for Modifier (1 total) ──
 // SKIPPED: **Source:** `IFSelect_Modifier.hxx`:54 - `IFSelect_Modifier::Perform`
 //   method: This deferred method defines the action specific to each class
@@ -4850,6 +5819,12 @@ impl PacketList {
     /// The entities to be added will be added to this Packet
     pub fn add_packet(&mut self) {
         unsafe { crate::ffi::IFSelect_PacketList_add_packet(self as *mut Self) }
+    }
+
+    /// **Source:** `IFSelect_PacketList.hxx`:64 - `IFSelect_PacketList::Add()`
+    /// Adds an entity from the Model into the current packet for Add
+    pub fn add(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::IFSelect_PacketList_add(self as *mut Self, ent) }
     }
 
     /// **Source:** `IFSelect_PacketList.hxx`:67 - `IFSelect_PacketList::AddList()`
@@ -4937,12 +5912,7 @@ impl HandleIFSelectPacketList {
     }
 }
 
-// ── Skipped symbols for PacketList (3 total) ──
-// SKIPPED: **Source:** `IFSelect_PacketList.hxx`:64 - `IFSelect_PacketList::Add`
-//   method: Adds an entity from the Model into the current packet for Add
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add(&mut self, ent: &HandleTransient);
-//
+// ── Skipped symbols for PacketList (2 total) ──
 // SKIPPED: **Source:** `IFSelect_PacketList.hxx`:77 - `IFSelect_PacketList::Entities`
 //   method: Returns the content of a Packet given its rank
 //   method: Null Handle if <numpack> is out of range
@@ -5037,9 +6007,46 @@ impl ParamEditor {
         }
     }
 
+    /// **Source:** `IFSelect_ParamEditor.hxx`:75 - `IFSelect_ParamEditor::Load()`
+    pub fn load(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_ParamEditor_load(self as *const Self, form, ent, model) }
+    }
+
+    /// **Source:** `IFSelect_ParamEditor.hxx`:80 - `IFSelect_ParamEditor::Apply()`
+    pub fn apply(
+        &self,
+        form: &crate::ffi::HandleIFSelectEditForm,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_ParamEditor_apply(self as *const Self, form, ent, model) }
+    }
+
     /// **Source:** `IFSelect_ParamEditor.hxx`:91 - `IFSelect_ParamEditor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_ParamEditor_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IFSelect_ParamEditor.hxx`:87 - `IFSelect_ParamEditor::StaticEditor()`
+    /// Returns a ParamEditor to work on the Static Parameters of
+    /// which names are listed in <list>
+    /// Null Handle if <list> is null or empty
+    pub fn static_editor(
+        list: &crate::ffi::HandleTColStdHSequenceOfHAsciiString,
+        label: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectParamEditor> {
+        let c_label = std::ffi::CString::new(label).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ParamEditor_static_editor(
+                list,
+                c_label.as_ptr(),
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_ParamEditor.hxx`:91 - `IFSelect_ParamEditor::get_type_name()`
@@ -5065,6 +6072,15 @@ impl ParamEditor {
     pub fn as_editor_mut(&mut self) -> &mut Editor {
         unsafe {
             &mut *(crate::ffi::IFSelect_ParamEditor_as_IFSelect_Editor_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectParamEditor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ParamEditor_to_handle(obj.into_raw()))
         }
     }
 
@@ -5184,27 +6200,41 @@ impl ParamEditor {
     }
 }
 
-// ── Skipped symbols for ParamEditor (4 total) ──
+pub use crate::ffi::HandleIFSelectParamEditor;
+
+unsafe impl crate::CppDeletable for HandleIFSelectParamEditor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectParamEditor_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectParamEditor {
+    /// Dereference this Handle to access the underlying IFSelect_ParamEditor
+    pub fn get(&self) -> &crate::ffi::IFSelect_ParamEditor {
+        unsafe { &*(crate::ffi::HandleIFSelectParamEditor_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_ParamEditor
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_ParamEditor {
+        unsafe { &mut *(crate::ffi::HandleIFSelectParamEditor_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_ParamEditor> to Handle<IFSelect_Editor>
+    pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectEditor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectParamEditor_to_HandleIFSelectEditor(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ParamEditor (1 total) ──
 // SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:56 - `IFSelect_ParamEditor::AddValue`
 //   method: Adds a TypedValue
 //   method: By default, its short name equates its complete name, it can be made explicit
 //   Reason: param 'val' uses unknown type 'const Handle(Interface_TypedValue)&'
 //   // pub fn add_value(&mut self, val: &HandleTypedValue, shortname: *const char);
-//
-// SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:75 - `IFSelect_ParamEditor::Load`
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn load(&self, form: &HandleEditForm, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:80 - `IFSelect_ParamEditor::Apply`
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn apply(&self, form: &HandleEditForm, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:87 - `IFSelect_ParamEditor::StaticEditor`
-//   static_method: Returns a ParamEditor to work on the Static Parameters of
-//   static_method: which names are listed in <list>
-//   static_method: Null Handle if <list> is null or empty
-//   Reason: return type 'Handle(IFSelect_ParamEditor)' is unknown
-//   // pub fn static_editor(list: &HandleHSequenceOfHAsciiString, label: *const char) -> OwnedPtr<Handle<IFSelect_ParamEditor>>;
 //
 
 // ========================
@@ -5248,6 +6278,13 @@ unsafe impl crate::CppDeletable for SelectAnyList {
 }
 
 impl SelectAnyList {
+    /// **Source:** `IFSelect_SelectAnyList.hxx`:72 - `IFSelect_SelectAnyList::NbItems()`
+    /// Returns count of Items in the list in the Entity <ent>
+    /// If <ent> has not required type, returned value must be Zero
+    pub fn nb_items(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IFSelect_SelectAnyList_nb_items(self as *const Self, ent) }
+    }
+
     /// **Source:** `IFSelect_SelectAnyList.hxx`:75 - `IFSelect_SelectAnyList::SetRange()`
     /// Sets a Range for numbers, with a lower and a upper limits
     pub fn set_range(
@@ -5409,6 +6446,11 @@ impl SelectAnyList {
         unsafe { crate::ffi::IFSelect_SelectAnyList_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectAnyList_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -5417,19 +6459,57 @@ impl SelectAnyList {
     }
 }
 
-// ── Skipped symbols for SelectAnyList (4 total) ──
+pub use crate::ffi::HandleIFSelectSelectAnyList;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectAnyList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectAnyList_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectAnyList {
+    /// Dereference this Handle to access the underlying IFSelect_SelectAnyList
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectAnyList {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectAnyList_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectAnyList
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectAnyList {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectAnyList_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectAnyList> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectAnyList_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectAnyList> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectAnyList_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectAnyList (3 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:68 - `IFSelect_SelectAnyList::KeepInputEntity`
 //   method: Keeps Input Entity, as having required type. It works by
 //   method: keeping in <iter>, only suitable Entities (SelectType can be
 //   method: used). Called by RootResult (which waits for ONE ENTITY MAX)
 //   Reason: param 'iter' uses unknown type 'Interface_EntityIterator&'
 //   // pub fn keep_input_entity(&self, iter: &mut EntityIterator);
-//
-// SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:72 - `IFSelect_SelectAnyList::NbItems`
-//   method: Returns count of Items in the list in the Entity <ent>
-//   method: If <ent> has not required type, returned value must be Zero
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn nb_items(&self, ent: &HandleTransient) -> i32;
 //
 // SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:109 - `IFSelect_SelectAnyList::RootResult`
 //   method: Returns the list of selected entities (list of entities
@@ -5442,7 +6522,7 @@ impl SelectAnyList {
 //   method: Puts into <res>, the sub-entities of the list, from n1 to
 //   method: n2 included. Remark that adequation with Entity's type and
 //   method: length of list has already been made at this stage
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'res' uses unknown type 'Interface_EntityIterator&'
 //   // pub fn fill_result(&self, n1: i32, n2: i32, ent: &HandleTransient, res: &mut EntityIterator);
 //
 
@@ -5471,6 +6551,19 @@ impl SelectAnyType {
                 self as *const Self,
             ))
         }
+    }
+
+    /// **Source:** `IFSelect_SelectAnyType.hxx`:46 - `IFSelect_SelectAnyType::Sort()`
+    /// Returns True for an Entity (model->Value(num)) which is kind
+    /// of the chosen type, given by the method TypeForMatch.
+    /// Criterium is IsKind.
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectAnyType_sort(self as *const Self, rank, ent, model) }
     }
 
     /// **Source:** `IFSelect_SelectAnyType.hxx`:50 - `IFSelect_SelectAnyType::DynamicType()`
@@ -5546,6 +6639,23 @@ impl SelectAnyType {
         unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_SetDirect(self as *mut Self, direct) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectAnyType_inherited_SortInGraph(
+                self as *const Self,
+                rank,
+                ent,
+                G,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -5588,6 +6698,11 @@ impl SelectAnyType {
         unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectAnyType_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -5596,14 +6711,80 @@ impl SelectAnyType {
     }
 }
 
-// ── Skipped symbols for SelectAnyType (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectAnyType.hxx`:46 - `IFSelect_SelectAnyType::Sort`
-//   method: Returns True for an Entity (model->Value(num)) which is kind
-//   method: of the chosen type, given by the method TypeForMatch.
-//   method: Criterium is IsKind.
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
+pub use crate::ffi::HandleIFSelectSelectAnyType;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectAnyType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectAnyType_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectAnyType {
+    /// Dereference this Handle to access the underlying IFSelect_SelectAnyType
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectAnyType {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectAnyType_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectAnyType
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectAnyType {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectAnyType_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectAnyType> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectAnyType_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectAnyType> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectAnyType_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectAnyType> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectAnyType_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectAnyType> to Handle<IFSelect_SelectType>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectType` (or subclass).
+    pub fn downcast_to_select_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectAnyType_downcast_to_HandleIFSelectSelectType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SelectBase.hxx
@@ -5665,6 +6846,109 @@ impl SelectBase {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectBase_inherited_Label(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectBase;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectBase {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectBase_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectBase {
+    /// Dereference this Handle to access the underlying IFSelect_SelectBase
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectBase {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectBase_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectBase
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectBase {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectBase_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectBase> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectBase_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectBase> to Handle<IFSelect_SelectEntityNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectEntityNumber` (or subclass).
+    pub fn downcast_to_select_entity_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectEntityNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectBase_downcast_to_HandleIFSelectSelectEntityNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectBase> to Handle<IFSelect_SelectModelEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectModelEntities` (or subclass).
+    pub fn downcast_to_select_model_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectModelEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectBase_downcast_to_HandleIFSelectSelectModelEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectBase> to Handle<IFSelect_SelectModelRoots>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectModelRoots` (or subclass).
+    pub fn downcast_to_select_model_roots(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectModelRoots>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectBase_downcast_to_HandleIFSelectSelectModelRoots(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectBase> to Handle<IFSelect_SelectPointed>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectPointed` (or subclass).
+    pub fn downcast_to_select_pointed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectPointed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectBase_downcast_to_HandleIFSelectSelectPointed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -5793,6 +7077,73 @@ impl SelectCombine {
     }
 }
 
+pub use crate::ffi::HandleIFSelectSelectCombine;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectCombine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectCombine_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectCombine {
+    /// Dereference this Handle to access the underlying IFSelect_SelectCombine
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectCombine {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectCombine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectCombine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectCombine {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectCombine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectCombine> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectCombine_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectCombine> to Handle<IFSelect_SelectIntersection>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectIntersection` (or subclass).
+    pub fn downcast_to_select_intersection(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectIntersection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectCombine_downcast_to_HandleIFSelectSelectIntersection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectCombine> to Handle<IFSelect_SelectUnion>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectUnion` (or subclass).
+    pub fn downcast_to_select_union(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectUnion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectCombine_downcast_to_HandleIFSelectSelectUnion(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From IFSelect_SelectControl.hxx
 // ========================
@@ -5908,6 +7259,55 @@ impl SelectControl {
     }
 }
 
+pub use crate::ffi::HandleIFSelectSelectControl;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectControl {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectControl_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectControl {
+    /// Dereference this Handle to access the underlying IFSelect_SelectControl
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectControl {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectControl_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectControl
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectControl {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectControl_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectControl> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectControl_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectControl> to Handle<IFSelect_SelectDiff>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectDiff` (or subclass).
+    pub fn downcast_to_select_diff(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDiff>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectControl_downcast_to_HandleIFSelectSelectDiff(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From IFSelect_SelectDeduct.hxx
 // ========================
@@ -5961,6 +7361,17 @@ impl SelectDeduct {
         unsafe { crate::ffi::IFSelect_SelectDeduct_has_alternate(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    /// Returns the Alternate Definition
+    /// It is returned modifiable, hence an already defined
+    /// SelectPointed can be used
+    /// But if it was not yet defined, it is created the first time
+    ///
+    /// It is exploited by InputResult
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectDeduct_alternate(self as *mut Self)) }
+    }
+
     /// **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     /// Puts in an Iterator the Selections from which "me" depends
     /// This list contains one Selection : the InputSelection
@@ -6009,14 +7420,344 @@ impl SelectDeduct {
     }
 }
 
-// ── Skipped symbols for SelectDeduct (2 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate`
-//   method: Returns the Alternate Definition
-//   method: It is returned modifiable, hence an already defined
-//   method: SelectPointed can be used
-//   Reason: return type 'Handle(IFSelect_SelectPointed)&' is unknown
-//   // pub fn alternate(&mut self) -> &mut HandleSelectPointed;
-//
+pub use crate::ffi::HandleIFSelectSelectDeduct;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectDeduct {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectDeduct_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectDeduct {
+    /// Dereference this Handle to access the underlying IFSelect_SelectDeduct
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectDeduct {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectDeduct_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectDeduct
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectDeduct {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectDeduct_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectDeduct_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectErrorEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectErrorEntities` (or subclass).
+    pub fn downcast_to_select_error_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectErrorEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectErrorEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectFlag>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectFlag` (or subclass).
+    pub fn downcast_to_select_flag(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectFlag>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectFlag(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectIncorrectEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectIncorrectEntities` (or subclass).
+    pub fn downcast_to_select_incorrect_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectIncorrectEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectIncorrectEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectRange>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRange` (or subclass).
+    pub fn downcast_to_select_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectRootComps>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRootComps` (or subclass).
+    pub fn downcast_to_select_root_comps(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRootComps>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectRootComps(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectRoots>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRoots` (or subclass).
+    pub fn downcast_to_select_roots(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRoots>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectRoots(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectSent>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSent` (or subclass).
+    pub fn downcast_to_select_sent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectShared>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectShared` (or subclass).
+    pub fn downcast_to_select_shared(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectShared>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectShared(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectSharing>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSharing` (or subclass).
+    pub fn downcast_to_select_sharing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSharing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSharing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectSignature>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignature` (or subclass).
+    pub fn downcast_to_select_signature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSignature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectSignedShared>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignedShared` (or subclass).
+    pub fn downcast_to_select_signed_shared(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignedShared>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSignedShared(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectSignedSharing>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignedSharing` (or subclass).
+    pub fn downcast_to_select_signed_sharing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignedSharing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSignedSharing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectSuite>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSuite` (or subclass).
+    pub fn downcast_to_select_suite(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSuite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectSuite(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectType>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectType` (or subclass).
+    pub fn downcast_to_select_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<IFSelect_SelectUnknownEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectUnknownEntities` (or subclass).
+    pub fn downcast_to_select_unknown_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectUnknownEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleIFSelectSelectUnknownEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<XSControl_ConnectedShapes>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_ConnectedShapes` (or subclass).
+    pub fn downcast_to_connected_shapes(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlConnectedShapes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleXSControlConnectedShapes(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectDeduct> to Handle<XSControl_SelectForTransfer>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_SelectForTransfer` (or subclass).
+    pub fn downcast_to_select_for_transfer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectDeduct_downcast_to_HandleXSControlSelectForTransfer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for SelectDeduct (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult`
 //   method: Returns the Result determined by Input Selection, as Unique
 //   method: if Input Selection is not defined, returns an empty list.
@@ -6099,6 +7840,15 @@ impl SelectDiff {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDiff> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDiff_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:47 - `IFSelect_SelectControl::MainInput()`
     pub fn main_input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
         unsafe {
@@ -6135,6 +7885,50 @@ impl SelectDiff {
     /// Inherited: **Source:** `IFSelect_SelectControl.hxx`:65 - `IFSelect_SelectControl::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectDiff_inherited_FillIterator(self as *const Self, iter) }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectDiff;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectDiff {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectDiff_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectDiff {
+    /// Dereference this Handle to access the underlying IFSelect_SelectDiff
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectDiff {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectDiff_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectDiff
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectDiff {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectDiff_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectDiff> to Handle<IFSelect_SelectControl>
+    pub fn to_handle_select_control(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectControl> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectDiff_to_HandleIFSelectSelectControl(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectDiff> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectDiff_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -6248,12 +8042,65 @@ impl SelectEntityNumber {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectEntityNumber> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectEntityNumber_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectEntityNumber_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectEntityNumber;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectEntityNumber {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectEntityNumber_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectEntityNumber {
+    /// Dereference this Handle to access the underlying IFSelect_SelectEntityNumber
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectEntityNumber {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectEntityNumber_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectEntityNumber
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectEntityNumber {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectEntityNumber_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectEntityNumber> to Handle<IFSelect_SelectBase>
+    pub fn to_handle_select_base(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectBase> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectEntityNumber_to_HandleIFSelectSelectBase(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectEntityNumber> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectEntityNumber_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -6289,6 +8136,21 @@ impl SelectErrorEntities {
     /// Creates a SelectErrorEntities
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectErrorEntities_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectErrorEntities.hxx`:47 - `IFSelect_SelectErrorEntities::Sort()`
+    /// Returns True for an Entity which is qualified as "Error", i.e.
+    /// if <model> explicitly knows <ent> (through its Number) as
+    /// Erroneous
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectErrorEntities_sort(self as *const Self, rank, ent, model)
+        }
     }
 
     /// **Source:** `IFSelect_SelectErrorEntities.hxx`:52 - `IFSelect_SelectErrorEntities::ExtractLabel()`
@@ -6372,6 +8234,17 @@ impl SelectErrorEntities {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectErrorEntities> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectErrorEntities_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectErrorEntities_inherited_IsDirect(self as *const Self) }
@@ -6381,6 +8254,23 @@ impl SelectErrorEntities {
     pub fn set_direct(&mut self, direct: bool) {
         unsafe {
             crate::ffi::IFSelect_SelectErrorEntities_inherited_SetDirect(self as *mut Self, direct)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectErrorEntities_inherited_SortInGraph(
+                self as *const Self,
+                rank,
+                ent,
+                G,
+            )
         }
     }
 
@@ -6421,6 +8311,13 @@ impl SelectErrorEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectErrorEntities_inherited_Alternate(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -6432,14 +8329,62 @@ impl SelectErrorEntities {
     }
 }
 
-// ── Skipped symbols for SelectErrorEntities (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectErrorEntities.hxx`:47 - `IFSelect_SelectErrorEntities::Sort`
-//   method: Returns True for an Entity which is qualified as "Error", i.e.
-//   method: if <model> explicitly knows <ent> (through its Number) as
-//   method: Erroneous
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
+pub use crate::ffi::HandleIFSelectSelectErrorEntities;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectErrorEntities {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectErrorEntities_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectErrorEntities {
+    /// Dereference this Handle to access the underlying IFSelect_SelectErrorEntities
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectErrorEntities {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectErrorEntities_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectErrorEntities
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectErrorEntities {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectErrorEntities_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectErrorEntities> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectErrorEntities_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectErrorEntities> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectErrorEntities_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectErrorEntities> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectErrorEntities_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SelectExplore.hxx
@@ -6568,10 +8513,113 @@ impl SelectExplore {
         unsafe { crate::ffi::IFSelect_SelectExplore_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectExplore_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectExplore_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectExplore;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectExplore {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectExplore_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectExplore {
+    /// Dereference this Handle to access the underlying IFSelect_SelectExplore
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectExplore {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectExplore_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectExplore
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectExplore {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectExplore_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectExplore> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectExplore_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectExplore> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectExplore_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<IFSelect_SelectSignedShared>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignedShared` (or subclass).
+    pub fn downcast_to_select_signed_shared(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignedShared>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleIFSelectSelectSignedShared(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<IFSelect_SelectSignedSharing>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignedSharing` (or subclass).
+    pub fn downcast_to_select_signed_sharing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignedSharing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleIFSelectSelectSignedSharing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExplore> to Handle<XSControl_ConnectedShapes>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_ConnectedShapes` (or subclass).
+    pub fn downcast_to_connected_shapes(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlConnectedShapes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExplore_downcast_to_HandleXSControlConnectedShapes(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -6588,7 +8636,7 @@ impl SelectExplore {
 //   method: Analyses and, if required, Explores an entity, as follows :
 //   method: The explored list starts as empty, it has to be filled by this
 //   method: method.
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'explored' uses unknown type 'Interface_EntityIterator&'
 //   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
 //
 
@@ -6624,6 +8672,40 @@ impl SelectExtract {
     /// (True : Direct , False : Reverse)
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectExtract_set_direct(self as *mut Self, direct) }
+    }
+
+    /// **Source:** `IFSelect_SelectExtract.hxx`:66 - `IFSelect_SelectExtract::Sort()`
+    /// Returns True for an Entity if it satisfies the Sort criterium
+    /// It receives :
+    /// - <rank>, the rank of the Entity in the Iteration,
+    /// - <ent> , the Entity itself, and
+    /// - <model>, the Starting Model
+    /// Hence, the Entity to check is "model->Value(num)" (but an
+    /// InterfaceModel allows other checks)
+    /// This method is specific to each class of SelectExtract
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectExtract_sort(self as *const Self, rank, ent, model) }
+    }
+
+    /// **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    /// Works as Sort but works on the Graph
+    /// Default directly calls Sort, but it can be redefined
+    /// If SortInGraph is redefined, Sort should be defined even if
+    /// not called (to avoid deferred methods in a final class)
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectExtract_sort_in_graph(self as *const Self, rank, ent, G)
+        }
     }
 
     /// **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
@@ -6716,6 +8798,11 @@ impl SelectExtract {
         unsafe { crate::ffi::IFSelect_SelectExtract_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectExtract_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -6724,27 +8811,253 @@ impl SelectExtract {
     }
 }
 
-// ── Skipped symbols for SelectExtract (3 total) ──
+pub use crate::ffi::HandleIFSelectSelectExtract;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectExtract {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectExtract_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectExtract {
+    /// Dereference this Handle to access the underlying IFSelect_SelectExtract
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectExtract {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectExtract_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectExtract
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectExtract {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectExtract_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectExtract_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectExtract_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectErrorEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectErrorEntities` (or subclass).
+    pub fn downcast_to_select_error_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectErrorEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectErrorEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectFlag>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectFlag` (or subclass).
+    pub fn downcast_to_select_flag(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectFlag>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectFlag(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectIncorrectEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectIncorrectEntities` (or subclass).
+    pub fn downcast_to_select_incorrect_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectIncorrectEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectIncorrectEntities(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectRange>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRange` (or subclass).
+    pub fn downcast_to_select_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectRootComps>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRootComps` (or subclass).
+    pub fn downcast_to_select_root_comps(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRootComps>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectRootComps(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectRoots>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRoots` (or subclass).
+    pub fn downcast_to_select_roots(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRoots>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectRoots(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectSent>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSent` (or subclass).
+    pub fn downcast_to_select_sent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectSent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectSignature>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignature` (or subclass).
+    pub fn downcast_to_select_signature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectSignature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectType>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectType` (or subclass).
+    pub fn downcast_to_select_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<IFSelect_SelectUnknownEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectUnknownEntities` (or subclass).
+    pub fn downcast_to_select_unknown_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectUnknownEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleIFSelectSelectUnknownEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectExtract> to Handle<XSControl_SelectForTransfer>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_SelectForTransfer` (or subclass).
+    pub fn downcast_to_select_for_transfer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectExtract_downcast_to_HandleXSControlSelectForTransfer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for SelectExtract (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult`
 //   method: Returns the list of selected entities. Works by calling the
 //   method: method Sort on each input Entity : the Entity is kept as
 //   method: output if Sort returns the same value as Direct status
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectExtract.hxx`:66 - `IFSelect_SelectExtract::Sort`
-//   method: Returns True for an Entity if it satisfies the Sort criterium
-//   method: It receives :
-//   method: - <rank>, the rank of the Entity in the Iteration,
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph`
-//   method: Works as Sort but works on the Graph
-//   method: Default directly calls Sort, but it can be redefined
-//   method: If SortInGraph is redefined, Sort should be defined even if
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort_in_graph(&self, rank: i32, ent: &HandleTransient, G: &Graph) -> bool;
 //
 
 // ========================
@@ -6786,6 +9099,17 @@ impl SelectFlag {
                 .to_string_lossy()
                 .into_owned()
         }
+    }
+
+    /// **Source:** `IFSelect_SelectFlag.hxx`:62 - `IFSelect_SelectFlag::Sort()`
+    /// Returns always False because RootResult has done the work
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectFlag_sort(self as *const Self, rank, ent, model) }
     }
 
     /// **Source:** `IFSelect_SelectFlag.hxx`:67 - `IFSelect_SelectFlag::ExtractLabel()`
@@ -6855,6 +9179,15 @@ impl SelectFlag {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectFlag> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_IsDirect(self as *const Self) }
@@ -6863,6 +9196,18 @@ impl SelectFlag {
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectFlag_inherited_SortInGraph(self as *const Self, rank, ent, G)
+        }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
@@ -6898,23 +9243,98 @@ impl SelectFlag {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectFlag_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_FillIterator(self as *const Self, iter) }
     }
 }
 
-// ── Skipped symbols for SelectFlag (2 total) ──
+pub use crate::ffi::HandleIFSelectSelectFlag;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectFlag {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectFlag_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectFlag {
+    /// Dereference this Handle to access the underlying IFSelect_SelectFlag
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectFlag {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectFlag_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectFlag
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectFlag {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectFlag_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectFlag> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectFlag_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectFlag> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectFlag_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectFlag> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectFlag_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SelectFlag> to Handle<IFSelect_SelectIncorrectEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectIncorrectEntities` (or subclass).
+    pub fn downcast_to_select_incorrect_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectIncorrectEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelectFlag_downcast_to_HandleIFSelectSelectIncorrectEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for SelectFlag (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectFlag.hxx`:57 - `IFSelect_SelectFlag::RootResult`
 //   method: Returns the list of selected entities. It is redefined to
 //   method: work on the graph itself (not queried by sort)
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectFlag.hxx`:62 - `IFSelect_SelectFlag::Sort`
-//   method: Returns always False because RootResult has done the work
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
 //
 
 // ========================
@@ -6941,6 +9361,22 @@ unsafe impl crate::CppDeletable for SelectInList {
 }
 
 impl SelectInList {
+    /// **Source:** `IFSelect_SelectInList.hxx`:46 - `IFSelect_SelectInList::ListedEntity()`
+    /// Returns an Entity, given its rank in the list
+    pub fn listed_entity(
+        &self,
+        num: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_listed_entity(
+                self as *const Self,
+                num,
+                ent,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SelectInList.hxx`:59 - `IFSelect_SelectInList::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_SelectInList_dynamic_type(self as *const Self)) }
@@ -7002,6 +9438,11 @@ impl SelectInList {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectInList_as_IFSelect_Selection_mut(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:72 - `IFSelect_SelectAnyList::NbItems()`
+    pub fn nb_items(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IFSelect_SelectInList_inherited_NbItems(self as *const Self, ent) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:75 - `IFSelect_SelectAnyList::SetRange()`
@@ -7114,6 +9555,11 @@ impl SelectInList {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectInList_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -7122,17 +9568,69 @@ impl SelectInList {
     }
 }
 
-// ── Skipped symbols for SelectInList (2 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectInList.hxx`:46 - `IFSelect_SelectInList::ListedEntity`
-//   method: Returns an Entity, given its rank in the list
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn listed_entity(&self, num: i32, ent: &HandleTransient) -> OwnedPtr<Handle<Standard_Transient>>;
-//
+pub use crate::ffi::HandleIFSelectSelectInList;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectInList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectInList_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectInList {
+    /// Dereference this Handle to access the underlying IFSelect_SelectInList
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectInList {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectInList_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectInList
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectInList {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectInList_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectInList> to Handle<IFSelect_SelectAnyList>
+    pub fn to_handle_select_any_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectAnyList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectInList_to_HandleIFSelectSelectAnyList(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectInList> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectInList_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectInList> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectInList_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectInList (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectInList.hxx`:54 - `IFSelect_SelectInList::FillResult`
 //   method: Puts into the result, the sub-entities of the list, from n1 to
 //   method: n2 included. Remark that adequation with Entity's type and
 //   method: length of list has already been made at this stage
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'result' uses unknown type 'Interface_EntityIterator&'
 //   // pub fn fill_result(&self, n1: i32, n2: i32, ent: &HandleTransient, result: &mut EntityIterator);
 //
 
@@ -7255,6 +9753,34 @@ impl SelectIncorrectEntities {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectIncorrectEntities> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIncorrectEntities_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectFlag.hxx`:62 - `IFSelect_SelectFlag::Sort()`
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Sort(
+                self as *const Self,
+                rank,
+                ent,
+                model,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectFlag.hxx`:67 - `IFSelect_SelectFlag::ExtractLabel()`
     pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -7279,6 +9805,23 @@ impl SelectIncorrectEntities {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_SetDirect(
                 self as *mut Self,
                 direct,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectIncorrectEntities_inherited_SortInGraph(
+                self as *const Self,
+                rank,
+                ent,
+                G,
             )
         }
     }
@@ -7322,12 +9865,91 @@ impl SelectIncorrectEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectIncorrectEntities_inherited_Alternate(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectIncorrectEntities;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectIncorrectEntities {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectIncorrectEntities_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectIncorrectEntities {
+    /// Dereference this Handle to access the underlying IFSelect_SelectIncorrectEntities
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectIncorrectEntities {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectIncorrectEntities_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectIncorrectEntities
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectIncorrectEntities {
+        unsafe {
+            &mut *(crate::ffi::HandleIFSelectSelectIncorrectEntities_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectIncorrectEntities> to Handle<IFSelect_SelectFlag>
+    pub fn to_handle_select_flag(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectFlag> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectIncorrectEntities_to_HandleIFSelectSelectFlag(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectIncorrectEntities> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectIncorrectEntities_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectIncorrectEntities> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectIncorrectEntities_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectIncorrectEntities> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectIncorrectEntities_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -7418,6 +10040,17 @@ impl SelectIntersection {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectIntersection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIntersection_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:40 - `IFSelect_SelectCombine::NbInputs()`
     pub fn nb_inputs(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectIntersection_inherited_NbInputs(self as *const Self) }
@@ -7458,6 +10091,50 @@ impl SelectIntersection {
             crate::ffi::IFSelect_SelectIntersection_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectIntersection;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectIntersection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectIntersection_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectIntersection {
+    /// Dereference this Handle to access the underlying IFSelect_SelectIntersection
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectIntersection {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectIntersection_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectIntersection
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectIntersection {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectIntersection_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectIntersection> to Handle<IFSelect_SelectCombine>
+    pub fn to_handle_select_combine(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectCombine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectIntersection_to_HandleIFSelectSelectCombine(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectIntersection> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectIntersection_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -7554,12 +10231,65 @@ impl SelectModelEntities {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectModelEntities> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelEntities_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectModelEntities_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectModelEntities;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectModelEntities {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectModelEntities_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectModelEntities {
+    /// Dereference this Handle to access the underlying IFSelect_SelectModelEntities
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectModelEntities {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectModelEntities_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectModelEntities
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectModelEntities {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectModelEntities_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectModelEntities> to Handle<IFSelect_SelectBase>
+    pub fn to_handle_select_base(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectBase> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectModelEntities_to_HandleIFSelectSelectBase(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectModelEntities> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectModelEntities_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -7664,10 +10394,63 @@ impl SelectModelRoots {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectModelRoots> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelRoots_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectModelRoots_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectModelRoots;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectModelRoots {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectModelRoots_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectModelRoots {
+    /// Dereference this Handle to access the underlying IFSelect_SelectModelRoots
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectModelRoots {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectModelRoots_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectModelRoots
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectModelRoots {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectModelRoots_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectModelRoots> to Handle<IFSelect_SelectBase>
+    pub fn to_handle_select_base(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectBase> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectModelRoots_to_HandleIFSelectSelectBase(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectModelRoots> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectModelRoots_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -7720,6 +10503,13 @@ impl SelectPointed {
         unsafe { crate::ffi::IFSelect_SelectPointed_is_set(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_SelectPointed.hxx`:59 - `IFSelect_SelectPointed::SetEntity()`
+    /// As SetList but with only one entity
+    /// If <ent> is Null, the list is said as being set but is empty
+    pub fn set_entity(&mut self, item: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::IFSelect_SelectPointed_set_entity(self as *mut Self, item) }
+    }
+
     /// **Source:** `IFSelect_SelectPointed.hxx`:69 - `IFSelect_SelectPointed::SetList()`
     /// Sets a given list to define the list of selected items
     /// <list> can be empty or null : in this case, the list is said
@@ -7731,6 +10521,27 @@ impl SelectPointed {
     /// - then Clear to drop it
     pub fn set_list(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient) {
         unsafe { crate::ffi::IFSelect_SelectPointed_set_list(self as *mut Self, list) }
+    }
+
+    /// **Source:** `IFSelect_SelectPointed.hxx`:73 - `IFSelect_SelectPointed::Add()`
+    /// Adds an item. Returns True if Done, False if <item> is already
+    /// in the selected list
+    pub fn add(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectPointed_add(self as *mut Self, item) }
+    }
+
+    /// **Source:** `IFSelect_SelectPointed.hxx`:77 - `IFSelect_SelectPointed::Remove()`
+    /// Removes an item. Returns True if Done, False if <item> was not
+    /// in the selected list
+    pub fn remove(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectPointed_remove(self as *mut Self, item) }
+    }
+
+    /// **Source:** `IFSelect_SelectPointed.hxx`:81 - `IFSelect_SelectPointed::Toggle()`
+    /// Toggles status of an item : adds it if not pointed or removes
+    /// it if already pointed. Returns the new status (Pointed or not)
+    pub fn toggle(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectPointed_toggle(self as *mut Self, item) }
     }
 
     /// **Source:** `IFSelect_SelectPointed.hxx`:85 - `IFSelect_SelectPointed::AddList()`
@@ -7754,10 +10565,27 @@ impl SelectPointed {
         unsafe { crate::ffi::IFSelect_SelectPointed_toggle_list(self as *mut Self, list) }
     }
 
+    /// **Source:** `IFSelect_SelectPointed.hxx`:96 - `IFSelect_SelectPointed::Rank()`
+    /// Returns the rank of an item in the selected list, or 0.
+    pub fn rank(&self, item: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IFSelect_SelectPointed_rank(self as *const Self, item) }
+    }
+
     /// **Source:** `IFSelect_SelectPointed.hxx`:99 - `IFSelect_SelectPointed::NbItems()`
     /// Returns the count of selected items
     pub fn nb_items(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectPointed_nb_items(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_SelectPointed.hxx`:102 - `IFSelect_SelectPointed::Item()`
+    /// Returns an item given its rank, or a Null Handle
+    pub fn item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectPointed_item(
+                self as *const Self,
+                num,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectPointed.hxx`:110 - `IFSelect_SelectPointed::Update()`
@@ -7821,6 +10649,15 @@ impl SelectPointed {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectPointed> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectPointed_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectBase.hxx`:37 - `IFSelect_SelectBase::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -7829,41 +10666,49 @@ impl SelectPointed {
     }
 }
 
-// ── Skipped symbols for SelectPointed (8 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:59 - `IFSelect_SelectPointed::SetEntity`
-//   method: As SetList but with only one entity
-//   method: If <ent> is Null, the list is said as being set but is empty
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_entity(&mut self, item: &HandleTransient);
-//
-// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:73 - `IFSelect_SelectPointed::Add`
-//   method: Adds an item. Returns True if Done, False if <item> is already
-//   method: in the selected list
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add(&mut self, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:77 - `IFSelect_SelectPointed::Remove`
-//   method: Removes an item. Returns True if Done, False if <item> was not
-//   method: in the selected list
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn remove(&mut self, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:81 - `IFSelect_SelectPointed::Toggle`
-//   method: Toggles status of an item : adds it if not pointed or removes
-//   method: it if already pointed. Returns the new status (Pointed or not)
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn toggle(&mut self, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:96 - `IFSelect_SelectPointed::Rank`
-//   method: Returns the rank of an item in the selected list, or 0.
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn rank(&self, item: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:102 - `IFSelect_SelectPointed::Item`
-//   method: Returns an item given its rank, or a Null Handle
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn item(&self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
-//
+pub use crate::ffi::HandleIFSelectSelectPointed;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectPointed {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectPointed_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectPointed {
+    /// Dereference this Handle to access the underlying IFSelect_SelectPointed
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectPointed {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectPointed_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectPointed
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectPointed {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectPointed_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectPointed> to Handle<IFSelect_SelectBase>
+    pub fn to_handle_select_base(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectBase> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectPointed_to_HandleIFSelectSelectBase(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectPointed> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectPointed_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectPointed (2 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:106 - `IFSelect_SelectPointed::Update`
 //   method: Rebuilds the selected list. Any selected entity which has a
 //   method: bound result is replaced by this result, else it is removed.
@@ -7970,6 +10815,18 @@ impl SelectRange {
         unsafe { crate::ffi::IFSelect_SelectRange_upper_value(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_SelectRange.hxx`:78 - `IFSelect_SelectRange::Sort()`
+    /// Returns True for an Entity of which occurrence number in the
+    /// iteration is inside the selected Range (considers <rank>)
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectRange_sort(self as *const Self, rank, ent, model) }
+    }
+
     /// **Source:** `IFSelect_SelectRange.hxx`:84 - `IFSelect_SelectRange::ExtractLabel()`
     /// Returns a text defining the criterium : following cases,
     /// " From .. Until .." or "From .." or "Until .." or "Rank no .."
@@ -8042,6 +10899,15 @@ impl SelectRange {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRange> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_IsDirect(self as *const Self) }
@@ -8050,6 +10916,23 @@ impl SelectRange {
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectRange_inherited_SortInGraph(
+                self as *const Self,
+                rank,
+                ent,
+                G,
+            )
+        }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
@@ -8085,6 +10968,11 @@ impl SelectRange {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectRange_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -8093,13 +10981,62 @@ impl SelectRange {
     }
 }
 
-// ── Skipped symbols for SelectRange (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectRange.hxx`:78 - `IFSelect_SelectRange::Sort`
-//   method: Returns True for an Entity of which occurrence number in the
-//   method: iteration is inside the selected Range (considers <rank>)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
+pub use crate::ffi::HandleIFSelectSelectRange;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectRange {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectRange_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectRange {
+    /// Dereference this Handle to access the underlying IFSelect_SelectRange
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectRange {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectRange_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectRange
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectRange {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectRange_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRange> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRange_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRange> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRange_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRange> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRange_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SelectRootComps.hxx
@@ -8128,6 +11065,17 @@ impl SelectRootComps {
     /// Creates a SelectRootComps
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectRootComps.hxx`:59 - `IFSelect_SelectRootComps::Sort()`
+    /// Returns always True, because RootResult has done work
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectRootComps_sort(self as *const Self, rank, ent, model) }
     }
 
     /// **Source:** `IFSelect_SelectRootComps.hxx`:64 - `IFSelect_SelectRootComps::ExtractLabel()`
@@ -8207,6 +11155,17 @@ impl SelectRootComps {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRootComps> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRootComps_inherited_IsDirect(self as *const Self) }
@@ -8216,6 +11175,23 @@ impl SelectRootComps {
     pub fn set_direct(&mut self, direct: bool) {
         unsafe {
             crate::ffi::IFSelect_SelectRootComps_inherited_SetDirect(self as *mut Self, direct)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectRootComps_inherited_SortInGraph(
+                self as *const Self,
+                rank,
+                ent,
+                G,
+            )
         }
     }
 
@@ -8252,6 +11228,13 @@ impl SelectRootComps {
         unsafe { crate::ffi::IFSelect_SelectRootComps_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectRootComps_inherited_Alternate(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -8260,18 +11243,70 @@ impl SelectRootComps {
     }
 }
 
-// ── Skipped symbols for SelectRootComps (2 total) ──
+pub use crate::ffi::HandleIFSelectSelectRootComps;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectRootComps {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectRootComps_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectRootComps {
+    /// Dereference this Handle to access the underlying IFSelect_SelectRootComps
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectRootComps {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectRootComps_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectRootComps
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectRootComps {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectRootComps_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRootComps> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRootComps_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRootComps> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRootComps_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRootComps> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRootComps_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectRootComps (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectRootComps.hxx`:54 - `IFSelect_SelectRootComps::RootResult`
 //   method: Returns the list of local root strong components, by one Entity per component.
 //   method: It is redefined for a purpose of efficiency : calling a Sort routine for each Entity would
 //   method: cost more resources than to work in once using a Map
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectRootComps.hxx`:59 - `IFSelect_SelectRootComps::Sort`
-//   method: Returns always True, because RootResult has done work
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
 //
 
 // ========================
@@ -8295,6 +11330,17 @@ impl SelectRoots {
     /// Creates a SelectRoots
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectRoots.hxx`:53 - `IFSelect_SelectRoots::Sort()`
+    /// Returns always True, because RootResult has done work
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectRoots_sort(self as *const Self, rank, ent, model) }
     }
 
     /// **Source:** `IFSelect_SelectRoots.hxx`:58 - `IFSelect_SelectRoots::ExtractLabel()`
@@ -8368,6 +11414,15 @@ impl SelectRoots {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRoots> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectRoots_inherited_IsDirect(self as *const Self) }
@@ -8376,6 +11431,23 @@ impl SelectRoots {
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectRoots_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectRoots_inherited_SortInGraph(
+                self as *const Self,
+                rank,
+                ent,
+                G,
+            )
+        }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
@@ -8411,6 +11483,11 @@ impl SelectRoots {
         unsafe { crate::ffi::IFSelect_SelectRoots_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectRoots_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -8419,18 +11496,70 @@ impl SelectRoots {
     }
 }
 
-// ── Skipped symbols for SelectRoots (2 total) ──
+pub use crate::ffi::HandleIFSelectSelectRoots;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectRoots {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectRoots_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectRoots {
+    /// Dereference this Handle to access the underlying IFSelect_SelectRoots
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectRoots {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectRoots_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectRoots
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectRoots {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectRoots_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRoots> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRoots_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRoots> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRoots_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectRoots> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectRoots_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectRoots (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectRoots.hxx`:48 - `IFSelect_SelectRoots::RootResult`
 //   method: Returns the list of local roots.
 //   method: It is redefined for a purpose of efficiency:
 //   method: calling a Sort routine for each Entity would cost more resources
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectRoots.hxx`:53 - `IFSelect_SelectRoots::Sort`
-//   method: Returns always True, because RootResult has done work
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
 //
 
 // ========================
@@ -8512,6 +11641,17 @@ impl SelectSent {
         unsafe { crate::ffi::IFSelect_SelectSent_at_least(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_SelectSent.hxx`:77 - `IFSelect_SelectSent::Sort()`
+    /// Returns always False because RootResult has done the work
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectSent_sort(self as *const Self, rank, ent, model) }
+    }
+
     /// **Source:** `IFSelect_SelectSent.hxx`:89 - `IFSelect_SelectSent::ExtractLabel()`
     /// Returns a text defining the criterium : query :
     /// SentCount = 0 -> "Remaining (non-sent) entities"
@@ -8586,6 +11726,15 @@ impl SelectSent {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSent> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_IsDirect(self as *const Self) }
@@ -8594,6 +11743,18 @@ impl SelectSent {
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectSent_inherited_SortInGraph(self as *const Self, rank, ent, G)
+        }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
@@ -8629,23 +11790,80 @@ impl SelectSent {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectSent_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_FillIterator(self as *const Self, iter) }
     }
 }
 
-// ── Skipped symbols for SelectSent (2 total) ──
+pub use crate::ffi::HandleIFSelectSelectSent;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectSent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectSent_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectSent {
+    /// Dereference this Handle to access the underlying IFSelect_SelectSent
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectSent {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectSent_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectSent
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectSent {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectSent_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSent> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSent_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSent> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSent_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSent> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSent_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectSent (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectSent.hxx`:72 - `IFSelect_SelectSent::RootResult`
 //   method: Returns the list of selected entities. It is redefined to
 //   method: work on the graph itself (not queried by sort)
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSent.hxx`:77 - `IFSelect_SelectSent::Sort`
-//   method: Returns always False because RootResult has done the work
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
 //
 
 // ========================
@@ -8725,6 +11943,15 @@ impl SelectShared {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectShared> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectShared_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectShared_inherited_SetInput(self as *mut Self, sel) }
@@ -8749,10 +11976,59 @@ impl SelectShared {
         unsafe { crate::ffi::IFSelect_SelectShared_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectShared_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectShared_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectShared;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectShared {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectShared_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectShared {
+    /// Dereference this Handle to access the underlying IFSelect_SelectShared
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectShared {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectShared_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectShared
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectShared {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectShared_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectShared> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectShared_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectShared> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectShared_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -8844,6 +12120,15 @@ impl SelectSharing {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSharing> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSharing_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectSharing_inherited_SetInput(self as *mut Self, sel) }
@@ -8868,10 +12153,59 @@ impl SelectSharing {
         unsafe { crate::ffi::IFSelect_SelectSharing_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectSharing_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSharing_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectSharing;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectSharing {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectSharing_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectSharing {
+    /// Dereference this Handle to access the underlying IFSelect_SelectSharing
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectSharing {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectSharing_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectSharing
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectSharing {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectSharing_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSharing> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSharing_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSharing> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSharing_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -8912,6 +12246,149 @@ unsafe impl crate::CppDeletable for SelectSignature {
 }
 
 impl SelectSignature {
+    /// **Source:** `IFSelect_SelectSignature.hxx`:58 - `IFSelect_SelectSignature::IFSelect_SelectSignature()`
+    /// Creates a SelectSignature with its Signature and its Text to
+    /// Match.
+    /// <exact> if True requires exact match,
+    /// if False requires <signtext> to be contained in the Signature
+    /// of the entity (default is "exact")
+    pub fn new_handleifselectsignature_charptr_bool(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &str,
+        exact: bool,
+    ) -> crate::OwnedPtr<Self> {
+        let c_signtext = std::ffi::CString::new(signtext).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignature_ctor_handleifselectsignature_charptr_bool(
+                    matcher,
+                    c_signtext.as_ptr(),
+                    exact,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:63 - `IFSelect_SelectSignature::IFSelect_SelectSignature()`
+    /// As above with an AsciiString
+    pub fn new_handleifselectsignature_asciistring_bool(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &crate::t_collection::AsciiString,
+        exact: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignature_ctor_handleifselectsignature_asciistring_bool(
+                    matcher, signtext, exact,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:71 - `IFSelect_SelectSignature::IFSelect_SelectSignature()`
+    /// Creates a SelectSignature with a Counter, more precisely a
+    /// SelectSignature. Which is used here to just give a Signature
+    /// Value (by SignOnly Mode)
+    /// Matching is the default provided by the class Signature
+    pub fn new_handleifselectsigncounter_charptr_bool(
+        matcher: &crate::ffi::HandleIFSelectSignCounter,
+        signtext: &str,
+        exact: bool,
+    ) -> crate::OwnedPtr<Self> {
+        let c_signtext = std::ffi::CString::new(signtext).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignature_ctor_handleifselectsigncounter_charptr_bool(
+                    matcher,
+                    c_signtext.as_ptr(),
+                    exact,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:58 - `IFSelect_SelectSignature::IFSelect_SelectSignature()`
+    /// Creates a SelectSignature with its Signature and its Text to
+    /// Match.
+    /// <exact> if True requires exact match,
+    /// if False requires <signtext> to be contained in the Signature
+    /// of the entity (default is "exact")
+    pub fn new_handleifselectsignature_charptr(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &str,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsignature_charptr_bool(matcher, signtext, true)
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:63 - `IFSelect_SelectSignature::IFSelect_SelectSignature()`
+    /// As above with an AsciiString
+    pub fn new_handleifselectsignature_asciistring(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsignature_asciistring_bool(matcher, signtext, true)
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:71 - `IFSelect_SelectSignature::IFSelect_SelectSignature()`
+    /// Creates a SelectSignature with a Counter, more precisely a
+    /// SelectSignature. Which is used here to just give a Signature
+    /// Value (by SignOnly Mode)
+    /// Matching is the default provided by the class Signature
+    pub fn new_handleifselectsigncounter_charptr(
+        matcher: &crate::ffi::HandleIFSelectSignCounter,
+        signtext: &str,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsigncounter_charptr_bool(matcher, signtext, true)
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:77 - `IFSelect_SelectSignature::Signature()`
+    /// Returns the used Signature, then it is possible to access it,
+    /// modify it as required. Can be null, hence see Counter
+    pub fn signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_signature(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:81 - `IFSelect_SelectSignature::Counter()`
+    /// Returns the used SignCounter. Can be used as alternative for
+    /// Signature
+    pub fn counter(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_counter(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:86 - `IFSelect_SelectSignature::SortInGraph()`
+    /// Returns True for an Entity (model->Value(num)) of which the
+    /// signature matches the text given as creation time
+    /// May also work with a Counter from the Graph
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectSignature_sort_in_graph(self as *const Self, rank, ent, G)
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectSignature.hxx`:93 - `IFSelect_SelectSignature::Sort()`
+    /// Not called, defined only to remove a deferred method here
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SelectSignature_sort(self as *const Self, rank, ent, model) }
+    }
+
     /// **Source:** `IFSelect_SelectSignature.hxx`:98 - `IFSelect_SelectSignature::SignatureText()`
     /// Returns Text used to Sort Entity on its Signature or SignCounter
     pub fn signature_text(&self) -> &crate::t_collection::AsciiString {
@@ -9003,6 +12480,17 @@ impl SelectSignature {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSignature_inherited_IsDirect(self as *const Self) }
@@ -9048,6 +12536,13 @@ impl SelectSignature {
         unsafe { crate::ffi::IFSelect_SelectSignature_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectSignature_inherited_Alternate(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -9056,50 +12551,62 @@ impl SelectSignature {
     }
 }
 
-// ── Skipped symbols for SelectSignature (7 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:58 - `IFSelect_SelectSignature::IFSelect_SelectSignature`
-//   constructor: Creates a SelectSignature with its Signature and its Text to
-//   constructor: Match.
-//   constructor: <exact> if True requires exact match,
-//   Reason: param 'matcher' uses unknown Handle type
-//   // pub fn new_handleifselectsignature_charptr_bool(matcher: &HandleSignature, signtext: *const char, exact: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:63 - `IFSelect_SelectSignature::IFSelect_SelectSignature`
-//   constructor: As above with an AsciiString
-//   Reason: param 'matcher' uses unknown Handle type
-//   // pub fn new_handleifselectsignature_asciistring_bool(matcher: &HandleSignature, signtext: &AsciiString, exact: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:71 - `IFSelect_SelectSignature::IFSelect_SelectSignature`
-//   constructor: Creates a SelectSignature with a Counter, more precisely a
-//   constructor: SelectSignature. Which is used here to just give a Signature
-//   constructor: Value (by SignOnly Mode)
-//   Reason: param 'matcher' uses unknown Handle type
-//   // pub fn new_handleifselectsigncounter_charptr_bool(matcher: &HandleSignCounter, signtext: *const char, exact: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:77 - `IFSelect_SelectSignature::Signature`
-//   method: Returns the used Signature, then it is possible to access it,
-//   method: modify it as required. Can be null, hence see Counter
-//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
-//   // pub fn signature(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:81 - `IFSelect_SelectSignature::Counter`
-//   method: Returns the used SignCounter. Can be used as alternative for
-//   method: Signature
-//   Reason: return type 'Handle(IFSelect_SignCounter)' is unknown
-//   // pub fn counter(&self) -> OwnedPtr<Handle<IFSelect_SignCounter>>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:86 - `IFSelect_SelectSignature::SortInGraph`
-//   method: Returns True for an Entity (model->Value(num)) of which the
-//   method: signature matches the text given as creation time
-//   method: May also work with a Counter from the Graph
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort_in_graph(&self, rank: i32, ent: &HandleTransient, G: &Graph) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSignature.hxx`:93 - `IFSelect_SelectSignature::Sort`
-//   method: Not called, defined only to remove a deferred method here
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
+pub use crate::ffi::HandleIFSelectSelectSignature;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectSignature {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectSignature_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectSignature {
+    /// Dereference this Handle to access the underlying IFSelect_SelectSignature
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectSignature {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectSignature_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectSignature
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectSignature {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectSignature_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignature> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignature_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignature> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignature_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignature> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignature_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SelectSignedShared.hxx
@@ -9119,6 +12626,53 @@ unsafe impl crate::CppDeletable for SelectSignedShared {
 }
 
 impl SelectSignedShared {
+    /// **Source:** `IFSelect_SelectSignedShared.hxx`:43 - `IFSelect_SelectSignedShared::IFSelect_SelectSignedShared()`
+    /// Creates a SelectSignedShared, defaulted for any level
+    /// with a given Signature and text to match
+    pub fn new_handleifselectsignature_charptr_bool_int(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &str,
+        exact: bool,
+        level: i32,
+    ) -> crate::OwnedPtr<Self> {
+        let c_signtext = std::ffi::CString::new(signtext).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_ctor_handleifselectsignature_charptr_bool_int(matcher, c_signtext.as_ptr(), exact, level))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectSignedShared.hxx`:43 - `IFSelect_SelectSignedShared::IFSelect_SelectSignedShared()`
+    /// Creates a SelectSignedShared, defaulted for any level
+    /// with a given Signature and text to match
+    pub fn new_handleifselectsignature_charptr_bool(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &str,
+        exact: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsignature_charptr_bool_int(matcher, signtext, exact, 0)
+    }
+
+    /// **Source:** `IFSelect_SelectSignedShared.hxx`:43 - `IFSelect_SelectSignedShared::IFSelect_SelectSignedShared()`
+    /// Creates a SelectSignedShared, defaulted for any level
+    /// with a given Signature and text to match
+    pub fn new_handleifselectsignature_charptr(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &str,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsignature_charptr_bool_int(matcher, signtext, true, 0)
+    }
+
+    /// **Source:** `IFSelect_SelectSignedShared.hxx`:50 - `IFSelect_SelectSignedShared::Signature()`
+    /// Returns the used Signature, then it is possible to access it,
+    /// modify it as required
+    pub fn signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_signature(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SelectSignedShared.hxx`:53 - `IFSelect_SelectSignedShared::SignatureText()`
     /// Returns Text used to Sort Entity on its Signature
     pub fn signature_text(&self) -> &crate::t_collection::AsciiString {
@@ -9214,6 +12768,17 @@ impl SelectSignedShared {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignedShared> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectSignedShared_inherited_Level(self as *const Self) }
@@ -9256,6 +12821,13 @@ impl SelectSignedShared {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectSignedShared_inherited_Alternate(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -9267,24 +12839,69 @@ impl SelectSignedShared {
     }
 }
 
-// ── Skipped symbols for SelectSignedShared (3 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSignedShared.hxx`:43 - `IFSelect_SelectSignedShared::IFSelect_SelectSignedShared`
-//   constructor: Creates a SelectSignedShared, defaulted for any level
-//   constructor: with a given Signature and text to match
-//   Reason: param 'matcher' uses unknown Handle type
-//   // pub fn new_handleifselectsignature_charptr_bool_int(matcher: &HandleSignature, signtext: *const char, exact: bool, level: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSignedShared.hxx`:50 - `IFSelect_SelectSignedShared::Signature`
-//   method: Returns the used Signature, then it is possible to access it,
-//   method: modify it as required
-//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
-//   // pub fn signature(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
-//
+pub use crate::ffi::HandleIFSelectSelectSignedShared;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectSignedShared {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectSignedShared_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectSignedShared {
+    /// Dereference this Handle to access the underlying IFSelect_SelectSignedShared
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectSignedShared {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectSignedShared_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectSignedShared
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectSignedShared {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectSignedShared_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignedShared> to Handle<IFSelect_SelectExplore>
+    pub fn to_handle_select_explore(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignedShared_to_HandleIFSelectSelectExplore(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignedShared> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignedShared_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignedShared> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignedShared_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectSignedShared (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectSignedShared.hxx`:62 - `IFSelect_SelectSignedShared::Explore`
 //   method: Explores an entity : its Shared entities
 //   method: <ent> to take if it matches the Signature
 //   method: At level max, filters the result. Else gives all Shareds
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'explored' uses unknown type 'Interface_EntityIterator&'
 //   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
 //
 
@@ -9306,6 +12923,53 @@ unsafe impl crate::CppDeletable for SelectSignedSharing {
 }
 
 impl SelectSignedSharing {
+    /// **Source:** `IFSelect_SelectSignedSharing.hxx`:43 - `IFSelect_SelectSignedSharing::IFSelect_SelectSignedSharing()`
+    /// Creates a SelectSignedSharing, defaulted for any level
+    /// with a given Signature and text to match
+    pub fn new_handleifselectsignature_charptr_bool_int(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &str,
+        exact: bool,
+        level: i32,
+    ) -> crate::OwnedPtr<Self> {
+        let c_signtext = std::ffi::CString::new(signtext).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_ctor_handleifselectsignature_charptr_bool_int(matcher, c_signtext.as_ptr(), exact, level))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectSignedSharing.hxx`:43 - `IFSelect_SelectSignedSharing::IFSelect_SelectSignedSharing()`
+    /// Creates a SelectSignedSharing, defaulted for any level
+    /// with a given Signature and text to match
+    pub fn new_handleifselectsignature_charptr_bool(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &str,
+        exact: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsignature_charptr_bool_int(matcher, signtext, exact, 0)
+    }
+
+    /// **Source:** `IFSelect_SelectSignedSharing.hxx`:43 - `IFSelect_SelectSignedSharing::IFSelect_SelectSignedSharing()`
+    /// Creates a SelectSignedSharing, defaulted for any level
+    /// with a given Signature and text to match
+    pub fn new_handleifselectsignature_charptr(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        signtext: &str,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsignature_charptr_bool_int(matcher, signtext, true, 0)
+    }
+
+    /// **Source:** `IFSelect_SelectSignedSharing.hxx`:50 - `IFSelect_SelectSignedSharing::Signature()`
+    /// Returns the used Signature, then it is possible to access it,
+    /// modify it as required
+    pub fn signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_signature(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SelectSignedSharing.hxx`:53 - `IFSelect_SelectSignedSharing::SignatureText()`
     /// Returns Text used to Sort Entity on its Signature
     pub fn signature_text(&self) -> &crate::t_collection::AsciiString {
@@ -9401,6 +13065,17 @@ impl SelectSignedSharing {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignedSharing> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedSharing_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectSignedSharing_inherited_Level(self as *const Self) }
@@ -9443,6 +13118,13 @@ impl SelectSignedSharing {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectSignedSharing_inherited_Alternate(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -9454,24 +13136,69 @@ impl SelectSignedSharing {
     }
 }
 
-// ── Skipped symbols for SelectSignedSharing (3 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSignedSharing.hxx`:43 - `IFSelect_SelectSignedSharing::IFSelect_SelectSignedSharing`
-//   constructor: Creates a SelectSignedSharing, defaulted for any level
-//   constructor: with a given Signature and text to match
-//   Reason: param 'matcher' uses unknown Handle type
-//   // pub fn new_handleifselectsignature_charptr_bool_int(matcher: &HandleSignature, signtext: *const char, exact: bool, level: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectSignedSharing.hxx`:50 - `IFSelect_SelectSignedSharing::Signature`
-//   method: Returns the used Signature, then it is possible to access it,
-//   method: modify it as required
-//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
-//   // pub fn signature(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
-//
+pub use crate::ffi::HandleIFSelectSelectSignedSharing;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectSignedSharing {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectSignedSharing_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectSignedSharing {
+    /// Dereference this Handle to access the underlying IFSelect_SelectSignedSharing
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectSignedSharing {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectSignedSharing_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectSignedSharing
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectSignedSharing {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectSignedSharing_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignedSharing> to Handle<IFSelect_SelectExplore>
+    pub fn to_handle_select_explore(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignedSharing_to_HandleIFSelectSelectExplore(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignedSharing> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignedSharing_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSignedSharing> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSignedSharing_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectSignedSharing (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectSignedSharing.hxx`:62 - `IFSelect_SelectSignedSharing::Explore`
 //   method: Explores an entity : its sharing entities
 //   method: <ent> to take if it matches the Signature
 //   method: At level max, filters the result. Else gives all sharings
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
+//   Reason: param 'explored' uses unknown type 'Interface_EntityIterator&'
 //   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
 //
 
@@ -9517,10 +13244,37 @@ impl SelectSuite {
         unsafe { crate::ffi::IFSelect_SelectSuite_add_input(self as *mut Self, item) }
     }
 
+    /// **Source:** `IFSelect_SelectSuite.hxx`:64 - `IFSelect_SelectSuite::AddPrevious()`
+    /// Adds a new first item (prepends to the list). The Input is not
+    /// touched
+    /// If <item> is null, does nothing
+    pub fn add_previous(&mut self, item: &crate::ffi::HandleIFSelectSelectDeduct) {
+        unsafe { crate::ffi::IFSelect_SelectSuite_add_previous(self as *mut Self, item) }
+    }
+
+    /// **Source:** `IFSelect_SelectSuite.hxx`:68 - `IFSelect_SelectSuite::AddNext()`
+    /// Adds a new last item (prepends to the list)
+    /// If <item> is null, does nothing
+    pub fn add_next(&mut self, item: &crate::ffi::HandleIFSelectSelectDeduct) {
+        unsafe { crate::ffi::IFSelect_SelectSuite_add_next(self as *mut Self, item) }
+    }
+
     /// **Source:** `IFSelect_SelectSuite.hxx`:71 - `IFSelect_SelectSuite::NbItems()`
     /// Returns the count of Items
     pub fn nb_items(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectSuite_nb_items(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_SelectSuite.hxx`:75 - `IFSelect_SelectSuite::Item()`
+    /// Returns an item from its rank in the list
+    /// (the Input is always apart)
+    pub fn item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSuite_item(
+                self as *const Self,
+                num,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectSuite.hxx`:78 - `IFSelect_SelectSuite::SetLabel()`
@@ -9585,6 +13339,15 @@ impl SelectSuite {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSuite> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSuite_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         unsafe { crate::ffi::IFSelect_SelectSuite_inherited_SetInput(self as *mut Self, sel) }
@@ -9609,6 +13372,11 @@ impl SelectSuite {
         unsafe { crate::ffi::IFSelect_SelectSuite_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectSuite_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -9617,26 +13385,51 @@ impl SelectSuite {
     }
 }
 
-// ── Skipped symbols for SelectSuite (4 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:64 - `IFSelect_SelectSuite::AddPrevious`
-//   method: Adds a new first item (prepends to the list). The Input is not
-//   method: touched
-//   method: If <item> is null, does nothing
-//   Reason: param 'item' uses unknown type 'const Handle(IFSelect_SelectDeduct)&'
-//   // pub fn add_previous(&mut self, item: &HandleSelectDeduct);
-//
-// SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:68 - `IFSelect_SelectSuite::AddNext`
-//   method: Adds a new last item (prepends to the list)
-//   method: If <item> is null, does nothing
-//   Reason: param 'item' uses unknown type 'const Handle(IFSelect_SelectDeduct)&'
-//   // pub fn add_next(&mut self, item: &HandleSelectDeduct);
-//
-// SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:75 - `IFSelect_SelectSuite::Item`
-//   method: Returns an item from its rank in the list
-//   method: (the Input is always apart)
-//   Reason: return type 'Handle(IFSelect_SelectDeduct)' is unknown
-//   // pub fn item(&self, num: i32) -> OwnedPtr<Handle<IFSelect_SelectDeduct>>;
-//
+pub use crate::ffi::HandleIFSelectSelectSuite;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectSuite {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectSuite_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectSuite {
+    /// Dereference this Handle to access the underlying IFSelect_SelectSuite
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectSuite {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectSuite_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectSuite
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectSuite {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectSuite_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSuite> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSuite_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectSuite> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectSuite_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for SelectSuite (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:87 - `IFSelect_SelectSuite::RootResult`
 //   method: Returns the list of selected entities
 //   method: To do this, once InputResult has been taken (if Input or
@@ -9776,6 +13569,27 @@ impl SelectType {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectAnyType.hxx`:46 - `IFSelect_SelectAnyType::Sort()`
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectType_inherited_Sort(self as *const Self, rank, ent, model)
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_IsDirect(self as *const Self) }
@@ -9784,6 +13598,18 @@ impl SelectType {
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_SetDirect(self as *mut Self, direct) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectType_inherited_SortInGraph(self as *const Self, rank, ent, G)
+        }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
@@ -9819,9 +13645,84 @@ impl SelectType {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_HasAlternate(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe { &mut *(crate::ffi::IFSelect_SelectType_inherited_Alternate(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_FillIterator(self as *const Self, iter) }
+    }
+}
+
+pub use crate::ffi::HandleIFSelectSelectType;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectType_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectType {
+    /// Dereference this Handle to access the underlying IFSelect_SelectType
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectType {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectType_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectType
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectType {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectType_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectType> to Handle<IFSelect_SelectAnyType>
+    pub fn to_handle_select_any_type(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectAnyType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectType_to_HandleIFSelectSelectAnyType(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectType> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectType_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectType> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectType_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectType> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectType_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -9902,6 +13803,15 @@ impl SelectUnion {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectUnion> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnion_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectCombine.hxx`:40 - `IFSelect_SelectCombine::NbInputs()`
     pub fn nb_inputs(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectUnion_inherited_NbInputs(self as *const Self) }
@@ -9940,6 +13850,50 @@ impl SelectUnion {
     }
 }
 
+pub use crate::ffi::HandleIFSelectSelectUnion;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectUnion {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectUnion_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectUnion {
+    /// Dereference this Handle to access the underlying IFSelect_SelectUnion
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectUnion {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectUnion_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectUnion
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectUnion {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSelectUnion_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SelectUnion> to Handle<IFSelect_SelectCombine>
+    pub fn to_handle_select_combine(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectCombine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectUnion_to_HandleIFSelectSelectCombine(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectUnion> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectUnion_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ── Skipped symbols for SelectUnion (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SelectUnion.hxx`:43 - `IFSelect_SelectUnion::RootResult`
 //   method: Returns the list of selected Entities, which is the addition
@@ -9968,6 +13922,20 @@ impl SelectUnknownEntities {
     /// Creates a SelectUnknownEntities
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnknownEntities_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectUnknownEntities.hxx`:44 - `IFSelect_SelectUnknownEntities::Sort()`
+    /// Returns True for an Entity which is qualified as "Unknown",
+    /// i.e. if <model> known <ent> (through its Number) as Unknown
+    pub fn sort(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectUnknownEntities_sort(self as *const Self, rank, ent, model)
+        }
     }
 
     /// **Source:** `IFSelect_SelectUnknownEntities.hxx`:49 - `IFSelect_SelectUnknownEntities::ExtractLabel()`
@@ -10053,6 +14021,17 @@ impl SelectUnknownEntities {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectUnknownEntities> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnknownEntities_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         unsafe {
@@ -10066,6 +14045,23 @@ impl SelectUnknownEntities {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_SetDirect(
                 self as *mut Self,
                 direct,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    pub fn sort_in_graph(
+        &self,
+        rank: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectUnknownEntities_inherited_SortInGraph(
+                self as *const Self,
+                rank,
+                ent,
+                G,
             )
         }
     }
@@ -10109,6 +14105,15 @@ impl SelectUnknownEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+        unsafe {
+            &mut *(crate::ffi::IFSelect_SelectUnknownEntities_inherited_Alternate(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
@@ -10120,13 +14125,64 @@ impl SelectUnknownEntities {
     }
 }
 
-// ── Skipped symbols for SelectUnknownEntities (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectUnknownEntities.hxx`:44 - `IFSelect_SelectUnknownEntities::Sort`
-//   method: Returns True for an Entity which is qualified as "Unknown",
-//   method: i.e. if <model> known <ent> (through its Number) as Unknown
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sort(&self, rank: i32, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
+pub use crate::ffi::HandleIFSelectSelectUnknownEntities;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSelectUnknownEntities {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSelectUnknownEntities_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSelectUnknownEntities {
+    /// Dereference this Handle to access the underlying IFSelect_SelectUnknownEntities
+    pub fn get(&self) -> &crate::ffi::IFSelect_SelectUnknownEntities {
+        unsafe { &*(crate::ffi::HandleIFSelectSelectUnknownEntities_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SelectUnknownEntities
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SelectUnknownEntities {
+        unsafe {
+            &mut *(crate::ffi::HandleIFSelectSelectUnknownEntities_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectUnknownEntities> to Handle<IFSelect_SelectExtract>
+    pub fn to_handle_select_extract(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectUnknownEntities_to_HandleIFSelectSelectExtract(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectUnknownEntities> to Handle<IFSelect_SelectDeduct>
+    pub fn to_handle_select_deduct(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectUnknownEntities_to_HandleIFSelectSelectDeduct(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SelectUnknownEntities> to Handle<IFSelect_Selection>
+    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSelectUnknownEntities_to_HandleIFSelectSelection(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_Selection.hxx
@@ -10206,6 +14262,510 @@ impl HandleIFSelectSelection {
     /// Dereference this Handle to mutably access the underlying IFSelect_Selection
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_Selection {
         unsafe { &mut *(crate::ffi::HandleIFSelectSelection_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectBase>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectBase` (or subclass).
+    pub fn downcast_to_select_base(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectBase>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectBase(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectCombine>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectCombine` (or subclass).
+    pub fn downcast_to_select_combine(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectCombine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectCombine(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectControl>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectControl` (or subclass).
+    pub fn downcast_to_select_control(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectControl>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectControl(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectDeduct>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectDeduct` (or subclass).
+    pub fn downcast_to_select_deduct(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectDiff>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectDiff` (or subclass).
+    pub fn downcast_to_select_diff(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDiff>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectDiff(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectEntityNumber>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectEntityNumber` (or subclass).
+    pub fn downcast_to_select_entity_number(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectEntityNumber>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectEntityNumber(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectErrorEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectErrorEntities` (or subclass).
+    pub fn downcast_to_select_error_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectErrorEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectErrorEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectFlag>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectFlag` (or subclass).
+    pub fn downcast_to_select_flag(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectFlag>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectFlag(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectIncorrectEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectIncorrectEntities` (or subclass).
+    pub fn downcast_to_select_incorrect_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectIncorrectEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectIncorrectEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectIntersection>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectIntersection` (or subclass).
+    pub fn downcast_to_select_intersection(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectIntersection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectIntersection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectModelEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectModelEntities` (or subclass).
+    pub fn downcast_to_select_model_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectModelEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectModelEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectModelRoots>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectModelRoots` (or subclass).
+    pub fn downcast_to_select_model_roots(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectModelRoots>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectModelRoots(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectPointed>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectPointed` (or subclass).
+    pub fn downcast_to_select_pointed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectPointed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectPointed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectRange>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRange` (or subclass).
+    pub fn downcast_to_select_range(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRange>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectRange(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectRootComps>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRootComps` (or subclass).
+    pub fn downcast_to_select_root_comps(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRootComps>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectRootComps(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectRoots>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectRoots` (or subclass).
+    pub fn downcast_to_select_roots(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectRoots>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectRoots(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectSent>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSent` (or subclass).
+    pub fn downcast_to_select_sent(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSent(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectShared>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectShared` (or subclass).
+    pub fn downcast_to_select_shared(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectShared>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectShared(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectSharing>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSharing` (or subclass).
+    pub fn downcast_to_select_sharing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSharing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSharing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectSignature>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignature` (or subclass).
+    pub fn downcast_to_select_signature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSignature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectSignedShared>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignedShared` (or subclass).
+    pub fn downcast_to_select_signed_shared(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignedShared>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSignedShared(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectSignedSharing>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSignedSharing` (or subclass).
+    pub fn downcast_to_select_signed_sharing(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignedSharing>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSignedSharing(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectSuite>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectSuite` (or subclass).
+    pub fn downcast_to_select_suite(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSuite>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectSuite(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectType>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectType` (or subclass).
+    pub fn downcast_to_select_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectUnion>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectUnion` (or subclass).
+    pub fn downcast_to_select_union(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectUnion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectUnion(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<IFSelect_SelectUnknownEntities>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SelectUnknownEntities` (or subclass).
+    pub fn downcast_to_select_unknown_entities(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSelectUnknownEntities>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleIFSelectSelectUnknownEntities(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<XSControl_ConnectedShapes>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_ConnectedShapes` (or subclass).
+    pub fn downcast_to_connected_shapes(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlConnectedShapes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleXSControlConnectedShapes(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Selection> to Handle<XSControl_SelectForTransfer>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_SelectForTransfer` (or subclass).
+    pub fn downcast_to_select_for_transfer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSelection_downcast_to_HandleXSControlSelectForTransfer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -10353,6 +14913,43 @@ impl SessionDumper {
         }
     }
 
+    /// **Source:** `IFSelect_SessionDumper.hxx`:75 - `IFSelect_SessionDumper::WriteOwn()`
+    /// Writes the Own Parameters of a given Item, if it forecast to
+    /// manage its Type.
+    /// Returns True if it has recognized the Type of the Item (in
+    /// this case, it is assumed to have written the Own Parameters if
+    /// there are some), False else : in that case, SessionFile will
+    /// try another SessionDumper in the Library.
+    /// WriteOwn can use these methods from SessionFile : SendVoid,
+    /// SendItem, SendText, and if necessary, WorkSession.
+    pub fn write_own(
+        &self,
+        file: &mut SessionFile,
+        item: &crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SessionDumper_write_own(self as *const Self, file, item) }
+    }
+
+    /// **Source:** `IFSelect_SessionDumper.hxx`:87 - `IFSelect_SessionDumper::ReadOwn()`
+    /// Recognizes a Type (given as <type>) then Creates an Item of
+    /// this Type with the Own Parameter, as required.
+    /// Returns True if it has recognized the Type (in this case, it
+    /// is assumed to have created the Item, returned as <item>),
+    /// False else : in that case, SessionFile will try another
+    /// SessionDumper in the Library.
+    /// ReadOwn can use these methods from SessionFile to access Own
+    /// Parameters : NbOwnParams, IsVoid, IsText, TextValue, ItemValue
+    pub fn read_own(
+        &self,
+        file: &mut SessionFile,
+        type_: &crate::t_collection::AsciiString,
+        item: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SessionDumper_read_own(self as *const Self, file, type_, item)
+        }
+    }
+
     /// **Source:** `IFSelect_SessionDumper.hxx`:91 - `IFSelect_SessionDumper::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_SessionDumper_dynamic_type(self as *const Self)) }
@@ -10398,23 +14995,25 @@ impl HandleIFSelectSessionDumper {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SessionDumper {
         unsafe { &mut *(crate::ffi::HandleIFSelectSessionDumper_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for SessionDumper (2 total) ──
-// SKIPPED: **Source:** `IFSelect_SessionDumper.hxx`:75 - `IFSelect_SessionDumper::WriteOwn`
-//   method: Writes the Own Parameters of a given Item, if it forecast to
-//   method: manage its Type.
-//   method: Returns True if it has recognized the Type of the Item (in
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn write_own(&self, file: &mut SessionFile, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SessionDumper.hxx`:87 - `IFSelect_SessionDumper::ReadOwn`
-//   method: Recognizes a Type (given as <type>) then Creates an Item of
-//   method: this Type with the Own Parameter, as required.
-//   method: Returns True if it has recognized the Type (in this case, it
-//   Reason: param 'item' uses unknown type 'Handle(Standard_Transient)&'
-//   // pub fn read_own(&self, file: &mut SessionFile, type_: &AsciiString, item: &mut HandleTransient) -> bool;
-//
+    /// Downcast Handle<IFSelect_SessionDumper> to Handle<IFSelect_BasicDumper>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_BasicDumper` (or subclass).
+    pub fn downcast_to_basic_dumper(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectBasicDumper>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSessionDumper_downcast_to_HandleIFSelectBasicDumper(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SessionFile.hxx
@@ -10602,6 +15201,15 @@ impl SessionFile {
         unsafe { crate::ffi::IFSelect_SessionFile_write_end(self as *mut Self) }
     }
 
+    /// **Source:** `IFSelect_SessionFile.hxx`:150 - `IFSelect_SessionFile::WriteOwn()`
+    /// Writes the Parameters own to each type of Item. Uses the
+    /// Library of SessionDumpers
+    /// Returns True if Done, False if <item> could not be treated
+    /// (hence it remains written with no Own Parameter)
+    pub fn write_own(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_SessionFile_write_own(self as *mut Self, item) }
+    }
+
     /// **Source:** `IFSelect_SessionFile.hxx`:160 - `IFSelect_SessionFile::ReadSession()`
     /// Performs a Read Operation from a File to a WorkSession, i.e.
     /// reads the list of line (which must have already been loaded,
@@ -10637,6 +15245,25 @@ impl SessionFile {
         unsafe { crate::ffi::IFSelect_SessionFile_split_line(self as *mut Self, c_line.as_ptr()) }
     }
 
+    /// **Source:** `IFSelect_SessionFile.hxx`:177 - `IFSelect_SessionFile::ReadOwn()`
+    /// Tries to Read an Item, by calling the Library of Dumpers
+    /// Sets the list of parameters of the line to be read from the
+    /// first own one
+    pub fn read_own(&mut self, item: &mut crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_SessionFile_read_own(self as *mut Self, item) }
+    }
+
+    /// **Source:** `IFSelect_SessionFile.hxx`:185 - `IFSelect_SessionFile::AddItem()`
+    /// Adds an Item to the WorkSession, taken as Name the first
+    /// item of the read Line. If this Name is not a Name but a Number
+    /// or if this Name is already recorded in the WorkSession, it
+    /// adds the Item but with no Name. Then the Name is recorded
+    /// in order to be used by the method ItemValue
+    /// <active> commands to make <item> active or not in the session
+    pub fn add_item(&mut self, item: &crate::ffi::HandleStandardTransient, active: bool) {
+        unsafe { crate::ffi::IFSelect_SessionFile_add_item(self as *mut Self, item, active) }
+    }
+
     /// **Source:** `IFSelect_SessionFile.hxx`:190 - `IFSelect_SessionFile::IsDone()`
     /// Returns True if the last Read or Write operation has been correctly performed.
     /// Else returns False.
@@ -10655,6 +15282,17 @@ impl SessionFile {
         }
     }
 
+    /// **Source:** `IFSelect_SessionFile.hxx`:202 - `IFSelect_SessionFile::NewItem()`
+    /// At beginning of writing an Item, writes its basics :
+    /// - either its name in the session if it has one
+    /// - or its relative number of item in the file, else (preceded by a '_')
+    /// - then, its Dynamic Type (in the sense of cdl : pk_class)
+    /// This basic description can be followed by the parameters
+    /// which are used in the definition of the item.
+    pub fn new_item(&mut self, ident: i32, par: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::IFSelect_SessionFile_new_item(self as *mut Self, ident, par) }
+    }
+
     /// **Source:** `IFSelect_SessionFile.hxx`:208 - `IFSelect_SessionFile::SetOwn()`
     /// Sets Parameters to be sent as Own if <mode> is True (their
     /// Name or Number or Void Mark or Text Value is preceded by a
@@ -10670,6 +15308,17 @@ impl SessionFile {
     /// Its form will be the dollar sign : $
     pub fn send_void(&mut self) {
         unsafe { crate::ffi::IFSelect_SessionFile_send_void(self as *mut Self) }
+    }
+
+    /// **Source:** `IFSelect_SessionFile.hxx`:221 - `IFSelect_SessionFile::SendItem()`
+    /// During a Write action, commands to send the identification of
+    /// a Parameter : if it is Null (undefined) it is send as Void ($)
+    /// if it is Named in the WorkSession, its Name is sent preceded
+    /// by ':', else a relative Ident Number is sent preceded by '#'
+    /// (relative to the present Write, i.e. starting at one, without
+    /// skip, and counted part from Named Items)
+    pub fn send_item(&mut self, par: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::IFSelect_SessionFile_send_item(self as *mut Self, par) }
     }
 
     /// **Source:** `IFSelect_SessionFile.hxx`:225 - `IFSelect_SessionFile::SendText()`
@@ -10734,6 +15383,18 @@ impl SessionFile {
         }
     }
 
+    /// **Source:** `IFSelect_SessionFile.hxx`:260 - `IFSelect_SessionFile::ItemValue()`
+    /// Returns a Parameter as an Item. Returns a Null Handle if the
+    /// Parameter is a Text, or if it is defined as Void
+    pub fn item_value(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SessionFile_item_value(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SessionFile.hxx`:263 - `IFSelect_SessionFile::Destroy()`
     /// Specific Destructor (closes the File if not yet done)
     pub fn destroy(&mut self) {
@@ -10741,53 +15402,12 @@ impl SessionFile {
     }
 }
 
-// ── Skipped symbols for SessionFile (7 total) ──
+// ── Skipped symbols for SessionFile (1 total) ──
 // SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:144 - `IFSelect_SessionFile::WriteLine`
 //   method: Writes a line to the File. If <follow> is given, it is added
 //   method: at the following of the line. '\n' must be added for the end.
 //   Reason: param 'follow' uses unknown type 'Standard_Character'
 //   // pub fn write_line(&mut self, line: *const char, follow: Character);
-//
-// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:150 - `IFSelect_SessionFile::WriteOwn`
-//   method: Writes the Parameters own to each type of Item. Uses the
-//   method: Library of SessionDumpers
-//   method: Returns True if Done, False if <item> could not be treated
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn write_own(&mut self, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:177 - `IFSelect_SessionFile::ReadOwn`
-//   method: Tries to Read an Item, by calling the Library of Dumpers
-//   method: Sets the list of parameters of the line to be read from the
-//   method: first own one
-//   Reason: param 'item' uses unknown type 'Handle(Standard_Transient)&'
-//   // pub fn read_own(&mut self, item: &mut HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:185 - `IFSelect_SessionFile::AddItem`
-//   method: Adds an Item to the WorkSession, taken as Name the first
-//   method: item of the read Line. If this Name is not a Name but a Number
-//   method: or if this Name is already recorded in the WorkSession, it
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_item(&mut self, item: &HandleTransient, active: bool);
-//
-// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:202 - `IFSelect_SessionFile::NewItem`
-//   method: At beginning of writing an Item, writes its basics :
-//   method: - either its name in the session if it has one
-//   method: - or its relative number of item in the file, else (preceded by a '_')
-//   Reason: param 'par' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn new_item(&mut self, ident: i32, par: &HandleTransient);
-//
-// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:221 - `IFSelect_SessionFile::SendItem`
-//   method: During a Write action, commands to send the identification of
-//   method: a Parameter : if it is Null (undefined) it is send as Void ($)
-//   method: if it is Named in the WorkSession, its Name is sent preceded
-//   Reason: param 'par' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn send_item(&mut self, par: &HandleTransient);
-//
-// SKIPPED: **Source:** `IFSelect_SessionFile.hxx`:260 - `IFSelect_SessionFile::ItemValue`
-//   method: Returns a Parameter as an Item. Returns a Null Handle if the
-//   method: Parameter is a Text, or if it is defined as Void
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn item_value(&self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
 //
 
 // ========================
@@ -10972,6 +15592,35 @@ impl SessionPilot {
         unsafe { &*(crate::ffi::IFSelect_SessionPilot_command(self as *const Self, num)) }
     }
 
+    /// **Source:** `IFSelect_SessionPilot.hxx`:136 - `IFSelect_SessionPilot::RecordItem()`
+    /// Allows to associate a Transient Value with the last execution
+    /// as a partial result
+    /// Returns RetDone if item is not Null, RetFail if item is Null
+    /// Remark : it is nullified for each Perform
+    pub fn record_item(
+        &mut self,
+        item: &crate::ffi::HandleStandardTransient,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_SessionPilot_record_item(
+                self as *mut Self,
+                item,
+            ))
+            .unwrap()
+        }
+    }
+
+    /// **Source:** `IFSelect_SessionPilot.hxx`:140 - `IFSelect_SessionPilot::RecordedItem()`
+    /// Returns the Transient Object which was recorded with the
+    /// current Line Command. If none was, returns a Null Handle
+    pub fn recorded_item(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SessionPilot_recorded_item(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SessionPilot.hxx`:143 - `IFSelect_SessionPilot::Clear()`
     /// Clears the recorded information (commands, objects)
     pub fn clear(&mut self) {
@@ -11048,6 +15697,32 @@ impl SessionPilot {
         }
     }
 
+    /// **Source:** `IFSelect_SessionPilot.hxx`:181 - `IFSelect_SessionPilot::ExecuteCounter()`
+    /// Executes a Counter in a general way
+    /// If <numword> is greater than count of command words, it counts
+    /// all the model. Else it considers the word <numword> as the
+    /// identifier of a Selection
+    /// <mode> gives the mode of printing results, default is
+    /// CountByItem
+    pub fn execute_counter(
+        &mut self,
+        counter: &crate::ffi::HandleIFSelectSignCounter,
+        numword: i32,
+        mode: crate::if_select::PrintCount,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(
+                crate::ffi::IFSelect_SessionPilot_execute_counter(
+                    self as *mut Self,
+                    counter,
+                    numword,
+                    mode.into(),
+                ),
+            )
+            .unwrap()
+        }
+    }
+
     /// **Source:** `IFSelect_SessionPilot.hxx`:189 - `IFSelect_SessionPilot::Number()`
     /// Interprets a string value as an entity number :
     /// if it gives an integer, returns its value
@@ -11056,6 +15731,32 @@ impl SessionPilot {
     pub fn number(&self, val: &str) -> i32 {
         let c_val = std::ffi::CString::new(val).unwrap();
         unsafe { crate::ffi::IFSelect_SessionPilot_number(self as *const Self, c_val.as_ptr()) }
+    }
+
+    /// **Source:** `IFSelect_SessionPilot.hxx`:201 - `IFSelect_SessionPilot::Do()`
+    /// Processes specific commands, which are :
+    /// x or exit for end of session
+    /// ? or help for help messages
+    /// xcommand to control command lines (Record Mode, List, Clear,
+    /// File Output ...)
+    /// xsource to execute a command file (no nesting allowed),
+    /// in case of error, source is stopped and keyword recovers
+    /// xstep is a simple prefix (useful in a wider environment, to
+    /// avoid conflicts on command names)
+    /// xset control commands which create items with names
+    pub fn do_(
+        &mut self,
+        number: i32,
+        session: &crate::ffi::HandleIFSelectSessionPilot,
+    ) -> crate::if_select::ReturnStatus {
+        unsafe {
+            crate::if_select::ReturnStatus::try_from(crate::ffi::IFSelect_SessionPilot_do_(
+                self as *mut Self,
+                number,
+                session,
+            ))
+            .unwrap()
+        }
     }
 
     /// **Source:** `IFSelect_SessionPilot.hxx`:206 - `IFSelect_SessionPilot::Help()`
@@ -11101,36 +15802,47 @@ impl SessionPilot {
             &mut *(crate::ffi::IFSelect_SessionPilot_as_IFSelect_Activator_mut(self as *mut Self))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSessionPilot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SessionPilot_to_handle(obj.into_raw()))
+        }
+    }
 }
 
-// ── Skipped symbols for SessionPilot (4 total) ──
-// SKIPPED: **Source:** `IFSelect_SessionPilot.hxx`:136 - `IFSelect_SessionPilot::RecordItem`
-//   method: Allows to associate a Transient Value with the last execution
-//   method: as a partial result
-//   method: Returns RetDone if item is not Null, RetFail if item is Null
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn record_item(&mut self, item: &HandleTransient) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `IFSelect_SessionPilot.hxx`:140 - `IFSelect_SessionPilot::RecordedItem`
-//   method: Returns the Transient Object which was recorded with the
-//   method: current Line Command. If none was, returns a Null Handle
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn recorded_item(&self) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_SessionPilot.hxx`:181 - `IFSelect_SessionPilot::ExecuteCounter`
-//   method: Executes a Counter in a general way
-//   method: If <numword> is greater than count of command words, it counts
-//   method: all the model. Else it considers the word <numword> as the
-//   Reason: param 'counter' uses unknown type 'const Handle(IFSelect_SignCounter)&'
-//   // pub fn execute_counter(&mut self, counter: &HandleSignCounter, numword: i32, mode: PrintCount) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `IFSelect_SessionPilot.hxx`:201 - `IFSelect_SessionPilot::Do`
-//   method: Processes specific commands, which are :
-//   method: x or exit for end of session
-//   method: ? or help for help messages
-//   Reason: param 'session' uses unknown type 'const Handle(IFSelect_SessionPilot)&'
-//   // pub fn do_(&mut self, number: i32, session: &HandleSessionPilot) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
+pub use crate::ffi::HandleIFSelectSessionPilot;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSessionPilot {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSessionPilot_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSessionPilot {
+    /// Dereference this Handle to access the underlying IFSelect_SessionPilot
+    pub fn get(&self) -> &crate::ffi::IFSelect_SessionPilot {
+        unsafe { &*(crate::ffi::HandleIFSelectSessionPilot_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SessionPilot
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SessionPilot {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSessionPilot_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SessionPilot> to Handle<IFSelect_Activator>
+    pub fn to_handle_activator(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectActivator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSessionPilot_to_HandleIFSelectActivator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_ShareOut.hxx
@@ -11193,6 +15905,17 @@ impl ShareOut {
     /// across clearings)
     pub fn clear_result(&mut self, alsoname: bool) {
         unsafe { crate::ffi::IFSelect_ShareOut_clear_result(self as *mut Self, alsoname) }
+    }
+
+    /// **Source:** `IFSelect_ShareOut.hxx`:86 - `IFSelect_ShareOut::RemoveItem()`
+    /// Removes an item, which can be, either a Dispatch (removed from
+    /// the list of Dispatches), or a GeneralModifier (removed from
+    /// the list of Model Modifiers or from the list of File Modifiers
+    /// according to its type).
+    /// Returns True if done, False if has not been found or if it is
+    /// neither a Dispatch, nor a Modifier.
+    pub fn remove_item(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_ShareOut_remove_item(self as *mut Self, item) }
     }
 
     /// **Source:** `IFSelect_ShareOut.hxx`:89 - `IFSelect_ShareOut::LastRun()`
@@ -11322,6 +16045,17 @@ impl ShareOut {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ShareOut_general_modifier(
                 self as *const Self,
                 formodel,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ShareOut.hxx`:153 - `IFSelect_ShareOut::ModelModifier()`
+    /// Returns a Modifier of the list of Model Modifiers, duely casted
+    pub fn model_modifier(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ShareOut_model_modifier(
+                self as *const Self,
                 num,
             ))
         }
@@ -11533,20 +16267,6 @@ impl HandleIFSelectShareOut {
         unsafe { &mut *(crate::ffi::HandleIFSelectShareOut_get_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for ShareOut (2 total) ──
-// SKIPPED: **Source:** `IFSelect_ShareOut.hxx`:86 - `IFSelect_ShareOut::RemoveItem`
-//   method: Removes an item, which can be, either a Dispatch (removed from
-//   method: the list of Dispatches), or a GeneralModifier (removed from
-//   method: the list of Model Modifiers or from the list of File Modifiers
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn remove_item(&mut self, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_ShareOut.hxx`:153 - `IFSelect_ShareOut::ModelModifier`
-//   method: Returns a Modifier of the list of Model Modifiers, duely casted
-//   Reason: return type 'Handle(IFSelect_Modifier)' is unknown
-//   // pub fn model_modifier(&self, num: i32) -> OwnedPtr<Handle<IFSelect_Modifier>>;
-//
 
 // ========================
 // From IFSelect_ShareOutResult.hxx
@@ -11798,6 +16518,19 @@ impl SignAncestor {
         Self::new_bool(false)
     }
 
+    /// **Source:** `IFSelect_SignAncestor.hxx`:36 - `IFSelect_SignAncestor::Matches()`
+    pub fn matches(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        text: &crate::t_collection::AsciiString,
+        exact: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignAncestor_matches(self as *const Self, ent, model, text, exact)
+        }
+    }
+
     /// **Source:** `IFSelect_SignAncestor.hxx`:42 - `IFSelect_SignAncestor::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_SignAncestor_dynamic_type(self as *const Self)) }
@@ -11865,6 +16598,15 @@ impl SignAncestor {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignAncestor> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignAncestor_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
@@ -11895,13 +16637,103 @@ impl SignAncestor {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    pub fn text(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        context: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignAncestor_inherited_Text(
+                self as *const Self,
+                ent,
+                context,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    pub fn text_alone(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignAncestor_inherited_TextAlone(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for SignAncestor (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SignAncestor.hxx`:36 - `IFSelect_SignAncestor::Matches`
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn matches(&self, ent: &HandleTransient, model: &HandleInterfaceModel, text: &AsciiString, exact: bool) -> bool;
-//
+pub use crate::ffi::HandleIFSelectSignAncestor;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSignAncestor {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSignAncestor_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSignAncestor {
+    /// Dereference this Handle to access the underlying IFSelect_SignAncestor
+    pub fn get(&self) -> &crate::ffi::IFSelect_SignAncestor {
+        unsafe { &*(crate::ffi::HandleIFSelectSignAncestor_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SignAncestor
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SignAncestor {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSignAncestor_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SignAncestor> to Handle<IFSelect_SignType>
+    pub fn to_handle_if_select_sign_type(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignAncestor_to_HandleIFSelectSignType(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignAncestor> to Handle<IFSelect_Signature>
+    pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignAncestor_to_HandleIFSelectSignature(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignAncestor> to Handle<Interface_SignType>
+    pub fn to_handle_interface_sign_type(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignAncestor_to_HandleInterfaceSignType(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignAncestor> to Handle<MoniTool_SignText>
+    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignAncestor_to_HandleMoniToolSignText(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SignCategory.hxx
@@ -11923,6 +16755,25 @@ impl SignCategory {
     /// Returns a SignCategory
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCategory_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SignCategory.hxx`:41 - `IFSelect_SignCategory::Value()`
+    /// Returns the Signature for a Transient object, as its Category
+    /// recorded in the model
+    pub fn value(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignCategory_value(
+                self as *const Self,
+                ent,
+                model,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignCategory.hxx`:44 - `IFSelect_SignCategory::DynamicType()`
@@ -11980,6 +16831,15 @@ impl SignCategory {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignCategory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCategory_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
@@ -12010,15 +16870,107 @@ impl SignCategory {
             ))
         }
     }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
+    pub fn matches(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        text: &crate::t_collection::AsciiString,
+        exact: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignCategory_inherited_Matches(
+                self as *const Self,
+                ent,
+                model,
+                text,
+                exact,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    pub fn text(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        context: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCategory_inherited_Text(
+                self as *const Self,
+                ent,
+                context,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    pub fn text_alone(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCategory_inherited_TextAlone(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for SignCategory (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SignCategory.hxx`:41 - `IFSelect_SignCategory::Value`
-//   method: Returns the Signature for a Transient object, as its Category
-//   method: recorded in the model
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
-//
+pub use crate::ffi::HandleIFSelectSignCategory;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSignCategory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSignCategory_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSignCategory {
+    /// Dereference this Handle to access the underlying IFSelect_SignCategory
+    pub fn get(&self) -> &crate::ffi::IFSelect_SignCategory {
+        unsafe { &*(crate::ffi::HandleIFSelectSignCategory_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SignCategory
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SignCategory {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSignCategory_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SignCategory> to Handle<IFSelect_Signature>
+    pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignCategory_to_HandleIFSelectSignature(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignCategory> to Handle<Interface_SignType>
+    pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignCategory_to_HandleInterfaceSignType(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignCategory> to Handle<MoniTool_SignText>
+    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignCategory_to_HandleMoniToolSignText(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SignCounter.hxx
@@ -12068,6 +17020,23 @@ impl SignCounter {
         }
     }
 
+    /// **Source:** `IFSelect_SignCounter.hxx`:71 - `IFSelect_SignCounter::IFSelect_SignCounter()`
+    /// Creates a SignCounter, with a predefined Signature
+    /// Other arguments as for Create without Signature.
+    pub fn new_handleifselectsignature_bool2(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        withmap: bool,
+        withlist: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SignCounter_ctor_handleifselectsignature_bool2(
+                    matcher, withmap, withlist,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_SignCounter.hxx`:66 - `IFSelect_SignCounter::IFSelect_SignCounter()`
     /// Creates a SignCounter, without proper Signature
     /// If <withmap> is True (default), added entities are counted
@@ -12090,11 +17059,68 @@ impl SignCounter {
         Self::new_bool2(true, false)
     }
 
+    /// **Source:** `IFSelect_SignCounter.hxx`:71 - `IFSelect_SignCounter::IFSelect_SignCounter()`
+    /// Creates a SignCounter, with a predefined Signature
+    /// Other arguments as for Create without Signature.
+    pub fn new_handleifselectsignature_bool(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+        withmap: bool,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsignature_bool2(matcher, withmap, false)
+    }
+
+    /// **Source:** `IFSelect_SignCounter.hxx`:71 - `IFSelect_SignCounter::IFSelect_SignCounter()`
+    /// Creates a SignCounter, with a predefined Signature
+    /// Other arguments as for Create without Signature.
+    pub fn new_handleifselectsignature(
+        matcher: &crate::ffi::HandleIFSelectSignature,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleifselectsignature_bool2(matcher, true, false)
+    }
+
+    /// **Source:** `IFSelect_SignCounter.hxx`:76 - `IFSelect_SignCounter::Signature()`
+    /// Returns the Signature used to count entities. It can be null.
+    pub fn signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCounter_signature(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SignCounter.hxx`:80 - `IFSelect_SignCounter::SetMap()`
     /// Changes the control status. The map is not cleared, simply
     /// its use changes
     pub fn set_map(&mut self, withmap: bool) {
         unsafe { crate::ffi::IFSelect_SignCounter_set_map(self as *mut Self, withmap) }
+    }
+
+    /// **Source:** `IFSelect_SignCounter.hxx`:86 - `IFSelect_SignCounter::AddEntity()`
+    /// Adds an entity by considering its signature, which is given by
+    /// call to method AddSign
+    /// Returns True if added, False if already in the map (and
+    /// map control status set)
+    pub fn add_entity(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_SignCounter_add_entity(self as *mut Self, ent, model) }
+    }
+
+    /// **Source:** `IFSelect_SignCounter.hxx`:95 - `IFSelect_SignCounter::AddSign()`
+    /// Adds an entity (already filtered by Map) with its signature.
+    /// This signature can be computed with the containing model.
+    /// Its value is provided by the object Signature given at start,
+    /// if no Signature is defined, it does nothing.
+    ///
+    /// Can be redefined (in this case, see also Sign)
+    pub fn add_sign(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        unsafe { crate::ffi::IFSelect_SignCounter_add_sign(self as *mut Self, ent, model) }
     }
 
     /// **Source:** `IFSelect_SignCounter.hxx`:99 - `IFSelect_SignCounter::AddList()`
@@ -12185,6 +17211,47 @@ impl SignCounter {
         unsafe { crate::ffi::IFSelect_SignCounter_compute_selected(self as *mut Self, G, forced) }
     }
 
+    /// **Source:** `IFSelect_SignCounter.hxx`:152 - `IFSelect_SignCounter::Sign()`
+    /// Determines and returns the value of the signature for an
+    /// entity as an HAsciiString. This method works exactly as
+    /// AddSign, which is optimized
+    ///
+    /// Can be redefined, accorded with AddSign
+    pub fn sign(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCounter_sign(
+                self as *const Self,
+                ent,
+                model,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SignCounter.hxx`:160 - `IFSelect_SignCounter::ComputedSign()`
+    /// Applies AddWithGraph on one entity, and returns the Signature
+    /// Value which has been recorded
+    /// To do this, Add is called with SignOnly Mode True during the
+    /// call, the returned value is LastValue
+    pub fn computed_sign(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignCounter_computed_sign(
+                self as *mut Self,
+                ent,
+                G,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
     /// **Source:** `IFSelect_SignCounter.hxx`:163 - `IFSelect_SignCounter::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_SignCounter_dynamic_type(self as *const Self)) }
@@ -12220,6 +17287,15 @@ impl SignCounter {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignCounter_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
     pub fn set_list(&mut self, withlist: bool) {
         unsafe { crate::ffi::IFSelect_SignCounter_inherited_SetList(self as *mut Self, withlist) }
@@ -12248,46 +17324,56 @@ impl SignCounter {
     }
 }
 
-// ── Skipped symbols for SignCounter (6 total) ──
-// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:71 - `IFSelect_SignCounter::IFSelect_SignCounter`
-//   constructor: Creates a SignCounter, with a predefined Signature
-//   constructor: Other arguments as for Create without Signature.
-//   Reason: param 'matcher' uses unknown Handle type
-//   // pub fn new_handleifselectsignature_bool2(matcher: &HandleSignature, withmap: bool, withlist: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:76 - `IFSelect_SignCounter::Signature`
-//   method: Returns the Signature used to count entities. It can be null.
-//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
-//   // pub fn signature(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
-//
-// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:86 - `IFSelect_SignCounter::AddEntity`
-//   method: Adds an entity by considering its signature, which is given by
-//   method: call to method AddSign
-//   method: Returns True if added, False if already in the map (and
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_entity(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:95 - `IFSelect_SignCounter::AddSign`
-//   method: Adds an entity (already filtered by Map) with its signature.
-//   method: This signature can be computed with the containing model.
-//   method: Its value is provided by the object Signature given at start,
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_sign(&mut self, ent: &HandleTransient, model: &HandleInterfaceModel);
-//
-// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:152 - `IFSelect_SignCounter::Sign`
-//   method: Determines and returns the value of the signature for an
-//   method: entity as an HAsciiString. This method works exactly as
-//   method: AddSign, which is optimized
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sign(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
-//
-// SKIPPED: **Source:** `IFSelect_SignCounter.hxx`:160 - `IFSelect_SignCounter::ComputedSign`
-//   method: Applies AddWithGraph on one entity, and returns the Signature
-//   method: Value which has been recorded
-//   method: To do this, Add is called with SignOnly Mode True during the
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn computed_sign(&mut self, ent: &HandleTransient, G: &Graph) -> *const char;
-//
+pub use crate::ffi::HandleIFSelectSignCounter;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSignCounter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSignCounter_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSignCounter {
+    /// Dereference this Handle to access the underlying IFSelect_SignCounter
+    pub fn get(&self) -> &crate::ffi::IFSelect_SignCounter {
+        unsafe { &*(crate::ffi::HandleIFSelectSignCounter_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SignCounter
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SignCounter {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSignCounter_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SignCounter> to Handle<IFSelect_SignatureList>
+    pub fn to_handle_signature_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignatureList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignCounter_to_HandleIFSelectSignatureList(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SignCounter> to Handle<IFSelect_GraphCounter>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_GraphCounter` (or subclass).
+    pub fn downcast_to_graph_counter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectGraphCounter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignCounter_downcast_to_HandleIFSelectGraphCounter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SignMultiple.hxx
@@ -12317,6 +17403,52 @@ impl SignMultiple {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_ctor_charptr(
                 c_name.as_ptr(),
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SignMultiple.hxx`:50 - `IFSelect_SignMultiple::Add()`
+    /// Adds a Signature. Width, if given, gives the tabulation
+    /// If <maxi> is True, it is a forced tabulation (overlength is
+    /// replaced by a final dot)
+    /// If <maxi> is False, just 3 blanks follow an overlength
+    pub fn add(&mut self, subsign: &crate::ffi::HandleIFSelectSignature, width: i32, maxi: bool) {
+        unsafe { crate::ffi::IFSelect_SignMultiple_add(self as *mut Self, subsign, width, maxi) }
+    }
+
+    /// **Source:** `IFSelect_SignMultiple.hxx`:57 - `IFSelect_SignMultiple::Value()`
+    /// Concatenates the values of sub-signatures, with their
+    /// tabulations
+    pub fn value(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignMultiple_value(
+                self as *const Self,
+                ent,
+                model,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `IFSelect_SignMultiple.hxx`:65 - `IFSelect_SignMultiple::Matches()`
+    /// Specialized Match Rule
+    /// If <exact> is False, simply checks if at least one sub-item
+    /// matches
+    /// If <exact> is True, standard match with Value
+    /// (i.e. tabulations must be respected)
+    pub fn matches(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        text: &crate::t_collection::AsciiString,
+        exact: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignMultiple_matches(self as *const Self, ent, model, text, exact)
         }
     }
 
@@ -12375,6 +17507,15 @@ impl SignMultiple {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignMultiple> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
@@ -12405,29 +17546,88 @@ impl SignMultiple {
             ))
         }
     }
+
+    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    pub fn text(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        context: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_inherited_Text(
+                self as *const Self,
+                ent,
+                context,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    pub fn text_alone(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignMultiple_inherited_TextAlone(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for SignMultiple (3 total) ──
-// SKIPPED: **Source:** `IFSelect_SignMultiple.hxx`:50 - `IFSelect_SignMultiple::Add`
-//   method: Adds a Signature. Width, if given, gives the tabulation
-//   method: If <maxi> is True, it is a forced tabulation (overlength is
-//   method: replaced by a final dot)
-//   Reason: param 'subsign' uses unknown type 'const Handle(IFSelect_Signature)&'
-//   // pub fn add(&mut self, subsign: &HandleSignature, width: i32, maxi: bool);
-//
-// SKIPPED: **Source:** `IFSelect_SignMultiple.hxx`:57 - `IFSelect_SignMultiple::Value`
-//   method: Concatenates the values of sub-signatures, with their
-//   method: tabulations
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
-//
-// SKIPPED: **Source:** `IFSelect_SignMultiple.hxx`:65 - `IFSelect_SignMultiple::Matches`
-//   method: Specialized Match Rule
-//   method: If <exact> is False, simply checks if at least one sub-item
-//   method: matches
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn matches(&self, ent: &HandleTransient, model: &HandleInterfaceModel, text: &AsciiString, exact: bool) -> bool;
-//
+pub use crate::ffi::HandleIFSelectSignMultiple;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSignMultiple {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSignMultiple_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSignMultiple {
+    /// Dereference this Handle to access the underlying IFSelect_SignMultiple
+    pub fn get(&self) -> &crate::ffi::IFSelect_SignMultiple {
+        unsafe { &*(crate::ffi::HandleIFSelectSignMultiple_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SignMultiple
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SignMultiple {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSignMultiple_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SignMultiple> to Handle<IFSelect_Signature>
+    pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignMultiple_to_HandleIFSelectSignature(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignMultiple> to Handle<Interface_SignType>
+    pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignMultiple_to_HandleInterfaceSignType(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignMultiple> to Handle<MoniTool_SignText>
+    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignMultiple_to_HandleMoniToolSignText(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SignType.hxx
@@ -12461,6 +17661,25 @@ impl SignType {
     /// <nopk> true : class type without pk (name = Class Type)
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(false)
+    }
+
+    /// **Source:** `IFSelect_SignType.hxx`:45 - `IFSelect_SignType::Value()`
+    /// Returns the Signature for a Transient object, as its Dynamic
+    /// Type, with or without package name, according starting option
+    pub fn value(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignType_value(
+                self as *const Self,
+                ent,
+                model,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignType.hxx`:48 - `IFSelect_SignType::DynamicType()`
@@ -12516,6 +17735,15 @@ impl SignType {
         unsafe { &mut *(crate::ffi::IFSelect_SignType_as_MoniTool_SignText_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignType_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
@@ -12546,15 +17774,119 @@ impl SignType {
             ))
         }
     }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
+    pub fn matches(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        text: &crate::t_collection::AsciiString,
+        exact: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignType_inherited_Matches(
+                self as *const Self,
+                ent,
+                model,
+                text,
+                exact,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    pub fn text(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        context: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignType_inherited_Text(
+                self as *const Self,
+                ent,
+                context,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    pub fn text_alone(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignType_inherited_TextAlone(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for SignType (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SignType.hxx`:45 - `IFSelect_SignType::Value`
-//   method: Returns the Signature for a Transient object, as its Dynamic
-//   method: Type, with or without package name, according starting option
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
-//
+pub use crate::ffi::HandleIFSelectSignType;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSignType {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSignType_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSignType {
+    /// Dereference this Handle to access the underlying IFSelect_SignType
+    pub fn get(&self) -> &crate::ffi::IFSelect_SignType {
+        unsafe { &*(crate::ffi::HandleIFSelectSignType_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SignType
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SignType {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSignType_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SignType> to Handle<IFSelect_Signature>
+    pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignType_to_HandleIFSelectSignature(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignType> to Handle<Interface_SignType>
+    pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignType_to_HandleInterfaceSignType(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignType> to Handle<MoniTool_SignText>
+    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleIFSelectSignType_to_HandleMoniToolSignText(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SignType> to Handle<IFSelect_SignAncestor>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignAncestor` (or subclass).
+    pub fn downcast_to_sign_ancestor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignAncestor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignType_downcast_to_HandleIFSelectSignAncestor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From IFSelect_SignValidity.hxx
@@ -12580,9 +17912,44 @@ impl SignValidity {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignValidity_ctor()) }
     }
 
+    /// **Source:** `IFSelect_SignValidity.hxx`:50 - `IFSelect_SignValidity::Value()`
+    /// Returns the Signature for a Transient object, as a validity
+    /// deducted from data (reports) stored in the model
+    /// Calls the class method CVal
+    pub fn value(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignValidity_value(
+                self as *const Self,
+                ent,
+                model,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
     /// **Source:** `IFSelect_SignValidity.hxx`:53 - `IFSelect_SignValidity::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_SignValidity_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IFSelect_SignValidity.hxx`:43 - `IFSelect_SignValidity::CVal()`
+    /// Returns the Signature for a Transient object, as a validity
+    /// deducted from data (reports) stored in the model.
+    /// Class method, can be called by any one
+    pub fn c_val(
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SignValidity_c_val(ent, model))
+                .to_string_lossy()
+                .into_owned()
+        }
     }
 
     /// **Source:** `IFSelect_SignValidity.hxx`:53 - `IFSelect_SignValidity::get_type_name()`
@@ -12635,6 +18002,15 @@ impl SignValidity {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignValidity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignValidity_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         unsafe {
@@ -12665,23 +18041,107 @@ impl SignValidity {
             ))
         }
     }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
+    pub fn matches(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        text: &crate::t_collection::AsciiString,
+        exact: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignValidity_inherited_Matches(
+                self as *const Self,
+                ent,
+                model,
+                text,
+                exact,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    pub fn text(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        context: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignValidity_inherited_Text(
+                self as *const Self,
+                ent,
+                context,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    pub fn text_alone(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SignValidity_inherited_TextAlone(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for SignValidity (2 total) ──
-// SKIPPED: **Source:** `IFSelect_SignValidity.hxx`:50 - `IFSelect_SignValidity::Value`
-//   method: Returns the Signature for a Transient object, as a validity
-//   method: deducted from data (reports) stored in the model
-//   method: Calls the class method CVal
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn value(&self, ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
-//
-// SKIPPED: **Source:** `IFSelect_SignValidity.hxx`:43 - `IFSelect_SignValidity::CVal`
-//   static_method: Returns the Signature for a Transient object, as a validity
-//   static_method: deducted from data (reports) stored in the model.
-//   static_method: Class method, can be called by any one
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn c_val(ent: &HandleTransient, model: &HandleInterfaceModel) -> *const char;
-//
+pub use crate::ffi::HandleIFSelectSignValidity;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSignValidity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSignValidity_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSignValidity {
+    /// Dereference this Handle to access the underlying IFSelect_SignValidity
+    pub fn get(&self) -> &crate::ffi::IFSelect_SignValidity {
+        unsafe { &*(crate::ffi::HandleIFSelectSignValidity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_SignValidity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SignValidity {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSignValidity_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_SignValidity> to Handle<IFSelect_Signature>
+    pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignValidity_to_HandleIFSelectSignature(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignValidity> to Handle<Interface_SignType>
+    pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignValidity_to_HandleInterfaceSignType(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_SignValidity> to Handle<MoniTool_SignText>
+    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignValidity_to_HandleMoniToolSignText(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From IFSelect_Signature.hxx
@@ -12766,6 +18226,23 @@ impl Signature {
         }
     }
 
+    /// **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
+    /// Tells if the value for <ent> in <model> matches a text, with
+    /// a criterium <exact>.
+    /// The default definition calls MatchValue
+    /// Can be redefined
+    pub fn matches(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        text: &crate::t_collection::AsciiString,
+        exact: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_Signature_matches(self as *const Self, ent, model, text, exact)
+        }
+    }
+
     /// **Source:** `IFSelect_Signature.hxx`:105 - `IFSelect_Signature::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_Signature_dynamic_type(self as *const Self)) }
@@ -12830,21 +18307,188 @@ impl Signature {
             &mut *(crate::ffi::IFSelect_Signature_as_MoniTool_SignText_mut(self as *mut Self))
         }
     }
+
+    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    pub fn text(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        context: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Signature_inherited_Text(
+                self as *const Self,
+                ent,
+                context,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    pub fn text_alone(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Signature_inherited_TextAlone(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for Signature (2 total) ──
+pub use crate::ffi::HandleIFSelectSignature;
+
+unsafe impl crate::CppDeletable for HandleIFSelectSignature {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectSignature_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectSignature {
+    /// Dereference this Handle to access the underlying IFSelect_Signature
+    pub fn get(&self) -> &crate::ffi::IFSelect_Signature {
+        unsafe { &*(crate::ffi::HandleIFSelectSignature_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_Signature
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_Signature {
+        unsafe { &mut *(crate::ffi::HandleIFSelectSignature_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_Signature> to Handle<Interface_SignType>
+    pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignature_to_HandleInterfaceSignType(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<IFSelect_Signature> to Handle<MoniTool_SignText>
+    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectSignature_to_HandleMoniToolSignText(self as *const Self),
+            )
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IFSelect_SignAncestor>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignAncestor` (or subclass).
+    pub fn downcast_to_sign_ancestor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignAncestor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIFSelectSignAncestor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IFSelect_SignCategory>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignCategory` (or subclass).
+    pub fn downcast_to_sign_category(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignCategory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIFSelectSignCategory(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IFSelect_SignMultiple>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignMultiple` (or subclass).
+    pub fn downcast_to_sign_multiple(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignMultiple>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIFSelectSignMultiple(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IFSelect_SignType>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignType` (or subclass).
+    pub fn downcast_to_sign_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIFSelectSignType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<IFSelect_SignValidity>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignValidity` (or subclass).
+    pub fn downcast_to_sign_validity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignValidity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleIFSelectSignValidity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_Signature> to Handle<XSControl_SignTransferStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_SignTransferStatus` (or subclass).
+    pub fn downcast_to_sign_transfer_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSignTransferStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignature_downcast_to_HandleXSControlSignTransferStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for Signature (1 total) ──
 // SKIPPED: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase`
 //   method: Tells if this Signature gives integer values
 //   method: and returns values from SetIntCase if True
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn is_int_case(&self, hasmin: &mut bool, valmin: &mut i32, hasmax: &mut bool, valmax: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches`
-//   method: Tells if the value for <ent> in <model> matches a text, with
-//   method: a criterium <exact>.
-//   method: The default definition calls MatchValue
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn matches(&self, ent: &HandleTransient, model: &HandleInterfaceModel, text: &AsciiString, exact: bool) -> bool;
 //
 
 // ========================
@@ -12903,6 +18547,20 @@ impl SignatureList {
     /// **Source:** `IFSelect_SignatureList.hxx`:61 - `IFSelect_SignatureList::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::IFSelect_SignatureList_clear(self as *mut Self) }
+    }
+
+    /// **Source:** `IFSelect_SignatureList.hxx`:71 - `IFSelect_SignatureList::Add()`
+    /// Adds an entity with its signature, i.e. :
+    /// - counts an item more for <sign>
+    /// - if record-list status is set, records the entity
+    /// Accepts a null entity (the signature is then for the global
+    /// model). But if the string is empty, counts a Null item.
+    ///
+    /// If SignOnly Mode is set, this work is replaced by just
+    /// setting LastValue
+    pub fn add(&mut self, ent: &crate::ffi::HandleStandardTransient, sign: &str) {
+        let c_sign = std::ffi::CString::new(sign).unwrap();
+        unsafe { crate::ffi::IFSelect_SignatureList_add(self as *mut Self, ent, c_sign.as_ptr()) }
     }
 
     /// **Source:** `IFSelect_SignatureList.hxx`:75 - `IFSelect_SignatureList::LastValue()`
@@ -13040,16 +18698,63 @@ impl HandleIFSelectSignatureList {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_SignatureList {
         unsafe { &mut *(crate::ffi::HandleIFSelectSignatureList_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IFSelect_SignatureList> to Handle<IFSelect_CheckCounter>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_CheckCounter` (or subclass).
+    pub fn downcast_to_check_counter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectCheckCounter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignatureList_downcast_to_HandleIFSelectCheckCounter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SignatureList> to Handle<IFSelect_GraphCounter>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_GraphCounter` (or subclass).
+    pub fn downcast_to_graph_counter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectGraphCounter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignatureList_downcast_to_HandleIFSelectGraphCounter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IFSelect_SignatureList> to Handle<IFSelect_SignCounter>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignCounter` (or subclass).
+    pub fn downcast_to_sign_counter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectSignatureList_downcast_to_HandleIFSelectSignCounter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for SignatureList (5 total) ──
-// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:71 - `IFSelect_SignatureList::Add`
-//   method: Adds an entity with its signature, i.e. :
-//   method: - counts an item more for <sign>
-//   method: - if record-list status is set, records the entity
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add(&mut self, ent: &HandleTransient, sign: *const char);
-//
+// ── Skipped symbols for SignatureList (4 total) ──
 // SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init`
 //   method: Aknowledges the list in once. Name identifies the Signature
 //   Reason: has misresolved element type (clang batch parsing artifact)
@@ -13160,11 +18865,70 @@ impl TransformStandard {
         unsafe { crate::ffi::IFSelect_TransformStandard_nb_modifiers(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_TransformStandard.hxx`:94 - `IFSelect_TransformStandard::Modifier()`
+    /// Returns a Modifier given its rank in the list
+    pub fn modifier(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_TransformStandard_modifier(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_TransformStandard.hxx`:97 - `IFSelect_TransformStandard::ModifierRank()`
+    /// Returns the rank of a Modifier in the list, 0 if unknown
+    pub fn modifier_rank(&self, modif: &crate::ffi::HandleIFSelectModifier) -> i32 {
+        unsafe { crate::ffi::IFSelect_TransformStandard_modifier_rank(self as *const Self, modif) }
+    }
+
+    /// **Source:** `IFSelect_TransformStandard.hxx`:103 - `IFSelect_TransformStandard::AddModifier()`
+    /// Adds a Modifier to the list :
+    /// - <atnum> = 0 (default) : at the end of the list
+    /// - <atnum> > 0 : at rank <atnum>
+    /// Returns True if done, False if <atnum> is out of range
+    pub fn add_modifier(&mut self, modif: &crate::ffi::HandleIFSelectModifier, atnum: i32) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_add_modifier(self as *mut Self, modif, atnum)
+        }
+    }
+
+    /// **Source:** `IFSelect_TransformStandard.hxx`:108 - `IFSelect_TransformStandard::RemoveModifier()`
+    /// Removes a Modifier from the list
+    /// Returns True if done, False if <modif> not in the list
+    pub fn remove_modifier_handleifselectmodifier(
+        &mut self,
+        modif: &crate::ffi::HandleIFSelectModifier,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_remove_modifier_handleifselectmodifier(
+                self as *mut Self,
+                modif,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_TransformStandard.hxx`:112 - `IFSelect_TransformStandard::RemoveModifier()`
     /// Removes a Modifier from the list, given its rank
     /// Returns True if done, False if <num> is out of range
-    pub fn remove_modifier(&mut self, num: i32) -> bool {
-        unsafe { crate::ffi::IFSelect_TransformStandard_remove_modifier(self as *mut Self, num) }
+    pub fn remove_modifier_int(&mut self, num: i32) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_remove_modifier_int(self as *mut Self, num)
+        }
+    }
+
+    /// **Source:** `IFSelect_TransformStandard.hxx`:157 - `IFSelect_TransformStandard::Updated()`
+    /// This methods allows to know what happened to a starting
+    /// entity after the last Perform. It reads result from the map
+    /// which was filled by Perform.
+    pub fn updated(
+        &self,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_updated(self as *const Self, entfrom, entto)
+        }
     }
 
     /// **Source:** `IFSelect_TransformStandard.hxx`:163 - `IFSelect_TransformStandard::Label()`
@@ -13213,32 +18977,51 @@ impl TransformStandard {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectTransformStandard> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_TransformStandard_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for TransformStandard (10 total) ──
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:94 - `IFSelect_TransformStandard::Modifier`
-//   method: Returns a Modifier given its rank in the list
-//   Reason: return type 'Handle(IFSelect_Modifier)' is unknown
-//   // pub fn modifier(&self, num: i32) -> OwnedPtr<Handle<IFSelect_Modifier>>;
-//
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:97 - `IFSelect_TransformStandard::ModifierRank`
-//   method: Returns the rank of a Modifier in the list, 0 if unknown
-//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
-//   // pub fn modifier_rank(&self, modif: &HandleModifier) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:103 - `IFSelect_TransformStandard::AddModifier`
-//   method: Adds a Modifier to the list :
-//   method: - <atnum> = 0 (default) : at the end of the list
-//   method: - <atnum> > 0 : at rank <atnum>
-//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
-//   // pub fn add_modifier(&mut self, modif: &HandleModifier, atnum: i32) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:108 - `IFSelect_TransformStandard::RemoveModifier`
-//   method: Removes a Modifier from the list
-//   method: Returns True if done, False if <modif> not in the list
-//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
-//   // pub fn remove_modifier(&mut self, modif: &HandleModifier) -> bool;
-//
+pub use crate::ffi::HandleIFSelectTransformStandard;
+
+unsafe impl crate::CppDeletable for HandleIFSelectTransformStandard {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIFSelectTransformStandard_destructor(ptr);
+    }
+}
+
+impl HandleIFSelectTransformStandard {
+    /// Dereference this Handle to access the underlying IFSelect_TransformStandard
+    pub fn get(&self) -> &crate::ffi::IFSelect_TransformStandard {
+        unsafe { &*(crate::ffi::HandleIFSelectTransformStandard_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IFSelect_TransformStandard
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_TransformStandard {
+        unsafe { &mut *(crate::ffi::HandleIFSelectTransformStandard_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IFSelect_TransformStandard> to Handle<IFSelect_Transformer>
+    pub fn to_handle_transformer(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectTransformer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIFSelectTransformStandard_to_HandleIFSelectTransformer(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for TransformStandard (5 total) ──
 // SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:116 - `IFSelect_TransformStandard::Perform`
 //   method: Performs the Standard Transformation, by calling Copy then
 //   method: ApplyModifiers (which can return an error status)
@@ -13271,13 +19054,6 @@ impl TransformStandard {
 //   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
 //   // pub fn apply_modifiers(&self, G: &Graph, protocol: &HandleProtocol, TC: &mut CopyTool, checks: &mut CheckIterator, newmod: &mut HandleInterfaceModel) -> bool;
 //
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:157 - `IFSelect_TransformStandard::Updated`
-//   method: This methods allows to know what happened to a starting
-//   method: entity after the last Perform. It reads result from the map
-//   method: which was filled by Perform.
-//   Reason: param 'entfrom' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn updated(&self, entfrom: &HandleTransient, entto: &mut HandleTransient) -> bool;
-//
 
 // ========================
 // From IFSelect_Transformer.hxx
@@ -13304,6 +19080,20 @@ unsafe impl crate::CppDeletable for Transformer {
 }
 
 impl Transformer {
+    /// **Source:** `IFSelect_Transformer.hxx`:92 - `IFSelect_Transformer::Updated()`
+    /// This method allows to know what happened to a starting
+    /// entity after the last Perform. If <entfrom> (from starting
+    /// model) has one and only one known item which corresponds in
+    /// the new produced model, this method must return True and
+    /// fill the argument <entto>. Else, it returns False.
+    pub fn updated(
+        &self,
+        entfrom: &crate::ffi::HandleStandardTransient,
+        entto: &mut crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_Transformer_updated(self as *const Self, entfrom, entto) }
+    }
+
     /// **Source:** `IFSelect_Transformer.hxx`:97 - `IFSelect_Transformer::Label()`
     /// Returns a text which defines the way a Transformer works
     /// (to identify the transformation it performs)
@@ -13351,9 +19141,27 @@ impl HandleIFSelectTransformer {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_Transformer {
         unsafe { &mut *(crate::ffi::HandleIFSelectTransformer_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IFSelect_Transformer> to Handle<IFSelect_TransformStandard>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_TransformStandard` (or subclass).
+    pub fn downcast_to_transform_standard(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectTransformStandard>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectTransformer_downcast_to_HandleIFSelectTransformStandard(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for Transformer (3 total) ──
+// ── Skipped symbols for Transformer (2 total) ──
 // SKIPPED: **Source:** `IFSelect_Transformer.hxx`:72 - `IFSelect_Transformer::Perform`
 //   method: Performs a Transformation (defined by each sub-class) :
 //   method: <G> gives the input data (especially the starting model) and
@@ -13367,13 +19175,6 @@ impl HandleIFSelectTransformer {
 //   method: Perform.
 //   Reason: param 'newproto' uses unknown type 'Handle(Interface_Protocol)&'
 //   // pub fn change_protocol(&self, newproto: &mut HandleProtocol) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_Transformer.hxx`:92 - `IFSelect_Transformer::Updated`
-//   method: This method allows to know what happened to a starting
-//   method: entity after the last Perform. If <entfrom> (from starting
-//   method: model) has one and only one known item which corresponds in
-//   Reason: param 'entfrom' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn updated(&self, entfrom: &HandleTransient, entto: &mut HandleTransient) -> bool;
 //
 
 // ========================
@@ -13619,6 +19420,25 @@ impl WorkSession {
         unsafe { &*(crate::ffi::IFSelect_WorkSession_work_library(self as *const Self)) }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:118 - `IFSelect_WorkSession::SetSignType()`
+    /// Sets a specific Signature to be the SignType, i.e. the
+    /// Signature which will determine TypeName from the Model
+    /// (basic function). It is recorded in the GTool
+    /// This Signature is also set as "xst-sign-type" (reserved name)
+    pub fn set_sign_type(&mut self, signtype: &crate::ffi::HandleIFSelectSignature) {
+        unsafe { crate::ffi::IFSelect_WorkSession_set_sign_type(self as *mut Self, signtype) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:121 - `IFSelect_WorkSession::SignType()`
+    /// Returns the current SignType
+    pub fn sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_sign_type(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:124 - `IFSelect_WorkSession::HasModel()`
     /// Returns True is a Model has been set
     pub fn has_model(&self) -> bool {
@@ -13697,6 +19517,28 @@ impl WorkSession {
         unsafe { crate::ffi::IFSelect_WorkSession_nb_starting_entities(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:165 - `IFSelect_WorkSession::StartingEntity()`
+    /// Returns an  Entity stored in the Model of the WorkSession
+    /// (Null Handle is no Model or num out of range)
+    pub fn starting_entity(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_starting_entity(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:169 - `IFSelect_WorkSession::StartingNumber()`
+    /// Returns the Number of an Entity in the Model
+    /// (0 if no Model set or <ent> not in the Model)
+    pub fn starting_number(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IFSelect_WorkSession_starting_number(self as *const Self, ent) }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:180 - `IFSelect_WorkSession::NumberFromLabel()`
     /// From a given label in Model, returns the corresponding number
     /// Starts from first entity by Default, may start after a given
@@ -13715,6 +19557,76 @@ impl WorkSession {
                 c_val.as_ptr(),
                 afternum,
             )
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:186 - `IFSelect_WorkSession::EntityLabel()`
+    /// Returns the label for <ent>, as the Model does
+    /// If <ent> is not in the Model or if no Model is loaded, a Null
+    /// Handle is returned
+    pub fn entity_label(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_entity_label(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:192 - `IFSelect_WorkSession::EntityName()`
+    /// Returns the Name of an Entity
+    /// This Name is computed by the general service Name
+    /// Returns a Null Handle if fails
+    pub fn entity_name(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_entity_name(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:198 - `IFSelect_WorkSession::CategoryNumber()`
+    /// Returns the Category Number determined for an entity
+    /// it is computed by the class Category
+    /// An unknown entity (number 0) gives a value -1
+    pub fn category_number(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IFSelect_WorkSession_category_number(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:203 - `IFSelect_WorkSession::CategoryName()`
+    /// Returns the Category Name determined for an entity
+    /// it is computed by the class Category
+    /// Remark : an unknown entity gives an empty string
+    pub fn category_name(&self, ent: &crate::ffi::HandleStandardTransient) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkSession_category_name(
+                self as *const Self,
+                ent,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:208 - `IFSelect_WorkSession::ValidityName()`
+    /// Returns the Validity Name determined for an entity
+    /// it is computed by the class SignValidity
+    /// Remark : an unknown entity gives an empty string
+    pub fn validity_name(&self, ent: &crate::ffi::HandleStandardTransient) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkSession_validity_name(
+                self as *const Self,
+                ent,
+            ))
+            .to_string_lossy()
+            .into_owned()
         }
     }
 
@@ -13748,6 +19660,36 @@ impl WorkSession {
     /// Returns the Computed Graph, for Read only
     pub fn graph(&mut self) -> &crate::interface::Graph {
         unsafe { &*(crate::ffi::IFSelect_WorkSession_graph(self as *mut Self)) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:238 - `IFSelect_WorkSession::Shareds()`
+    /// Returns the list of entities shared by <ent> (can be empty)
+    /// Returns a null Handle if <ent> is unknown
+    pub fn shareds(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_shareds(
+                self as *mut Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:243 - `IFSelect_WorkSession::Sharings()`
+    /// Returns the list of entities sharing <ent> (can be empty)
+    /// Returns a null Handle if <ent> is unknown
+    pub fn sharings(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_sharings(
+                self as *mut Self,
+                ent,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:249 - `IFSelect_WorkSession::IsLoaded()`
@@ -13787,6 +19729,26 @@ impl WorkSession {
         }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:272 - `IFSelect_WorkSession::CheckOne()`
+    /// Returns a Check for a single entity, under the form of a
+    /// CheckIterator (this gives only one form for the user)
+    /// if <ent> is Null or equates the current Model, it gives the
+    /// Global Check, else the Check for the given entity
+    /// <complete> as for ModelCheckList
+    pub fn check_one(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        complete: bool,
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_check_one(
+                self as *mut Self,
+                ent,
+                complete,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:281 - `IFSelect_WorkSession::LastRunCheckList()`
     /// Returns the Check List produced by the last execution of
     /// either : EvaluateFile(for Split), SendSplit, SendAll,
@@ -13810,11 +19772,131 @@ impl WorkSession {
         unsafe { crate::ffi::IFSelect_WorkSession_max_ident(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:290 - `IFSelect_WorkSession::Item()`
+    /// Returns an Item, given its Ident. Returns a Null Handle if
+    /// no Item corresponds to this Ident.
+    pub fn item(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_item(
+                self as *const Self,
+                id,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:294 - `IFSelect_WorkSession::ItemIdent()`
+    /// Returns the Ident attached to an Item in the WorkSession, or
+    /// Zero if it is unknown
+    pub fn item_ident(&self, item: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IFSelect_WorkSession_item_ident(self as *const Self, item) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:299 - `IFSelect_WorkSession::NamedItem()`
+    /// Returns the Item which corresponds to a Variable, given its
+    /// Name (whatever the type of this Item).
+    /// Returns a Null Handle if this Name is not recorded
+    pub fn named_item_charptr(
+        &self,
+        name: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_named_item_charptr(
+                self as *const Self,
+                c_name.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:303 - `IFSelect_WorkSession::NamedItem()`
+    /// Same as above, but <name> is given through a Handle
+    /// Especially useful with methods SelectionNames, etc...
+    pub fn named_item_handletcollectionhasciistring(
+        &self,
+        name: &crate::ffi::HandleTCollectionHAsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_WorkSession_named_item_handletcollectionhasciistring(
+                    self as *const Self,
+                    name,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:307 - `IFSelect_WorkSession::NameIdent()`
     /// Returns the Ident attached to a Name, 0 if name not recorded
     pub fn name_ident(&self, name: &str) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { crate::ffi::IFSelect_WorkSession_name_ident(self as *const Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:310 - `IFSelect_WorkSession::HasName()`
+    /// Returns True if an Item of the WorkSession has an attached Name
+    pub fn has_name(&self, item: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_WorkSession_has_name(self as *const Self, item) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:315 - `IFSelect_WorkSession::Name()`
+    /// Returns the Name attached to an Item as a Variable of this
+    /// WorkSession. If <item> is Null or not recorded, returns an
+    /// empty string.
+    pub fn name(
+        &self,
+        item: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_name(
+                self as *const Self,
+                item,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:323 - `IFSelect_WorkSession::AddItem()`
+    /// Adds an Item and returns its attached Ident. Does nothing
+    /// if <item> is already recorded (and returns its attached Ident)
+    /// <active> if True commands call to SetActive (see below)
+    /// Remark : the determined Ident is used if <item> is a Dispatch,
+    /// to fill the ShareOut
+    pub fn add_item(&mut self, item: &crate::ffi::HandleStandardTransient, active: bool) -> i32 {
+        unsafe { crate::ffi::IFSelect_WorkSession_add_item(self as *mut Self, item, active) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:333 - `IFSelect_WorkSession::AddNamedItem()`
+    /// Adds an Item with an attached Name. If the Name is already
+    /// known in the WorkSession, the older item losts it
+    /// Returns Ident if Done, 0 else, i.e. if <item> is null
+    /// If <name> is empty, works as AddItem (i.e. with no name)
+    /// If <item> is already known but with no attached Name, this
+    /// method tries to attached a Name to it
+    /// <active> if True commands call to SetActive (see below)
+    pub fn add_named_item(
+        &mut self,
+        name: &str,
+        item: &crate::ffi::HandleStandardTransient,
+        active: bool,
+    ) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_add_named_item(
+                self as *mut Self,
+                c_name.as_ptr(),
+                item,
+                active,
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:342 - `IFSelect_WorkSession::SetActive()`
+    /// Following the type of <item> :
+    /// - Dispatch : Adds or Removes it in the ShareOut & FileNaming
+    /// - GeneralModifier : Adds or Removes it for final sending
+    /// (i.e. in the ModelCopier)
+    /// Returns True if it did something, False else (state unchanged)
+    pub fn set_active(&mut self, item: &crate::ffi::HandleStandardTransient, mode: bool) -> bool {
+        unsafe { crate::ffi::IFSelect_WorkSession_set_active(self as *mut Self, item, mode) }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:348 - `IFSelect_WorkSession::RemoveNamedItem()`
@@ -13834,6 +19916,14 @@ impl WorkSession {
     pub fn remove_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe { crate::ffi::IFSelect_WorkSession_remove_name(self as *mut Self, c_name.as_ptr()) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:357 - `IFSelect_WorkSession::RemoveItem()`
+    /// Removes an Item given its Ident. Returns False if <id> is
+    /// attached to no Item in the WorkSession. For a Named Item,
+    /// also removes its Name.
+    pub fn remove_item(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_WorkSession_remove_item(self as *mut Self, item) }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:362 - `IFSelect_WorkSession::ClearItems()`
@@ -13943,6 +20033,28 @@ impl WorkSession {
         }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:417 - `IFSelect_WorkSession::NewParamFromStatic()`
+    /// Creates a parameter as being bound to a Static
+    /// If the Static is Integer, this creates an IntParam bound to
+    /// it by its name. Else this creates a String which is the value
+    /// of the Static.
+    /// Returns a null handle if <statname> is unknown as a Static
+    pub fn new_param_from_static(
+        &mut self,
+        statname: &str,
+        name: &str,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        let c_statname = std::ffi::CString::new(statname).unwrap();
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_new_param_from_static(
+                self as *mut Self,
+                c_statname.as_ptr(),
+                c_name.as_ptr(),
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:423 - `IFSelect_WorkSession::IntParam()`
     /// Returns an IntParam, given its Ident in the Session
     /// Null result if <id> is not suitable for an IntParam
@@ -14048,6 +20160,39 @@ impl WorkSession {
         }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:461 - `IFSelect_WorkSession::Signature()`
+    /// Returns a Signature, given its Ident in the Session
+    /// Null result if <id> is not suitable for a Signature
+    /// (undefined, or defined for another kind of variable)
+    pub fn signature(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_signature(
+                self as *const Self,
+                id,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:466 - `IFSelect_WorkSession::SignValue()`
+    /// Returns the Value computed by a Signature for an Entity
+    /// Returns an empty string if the entity does not belong to the
+    /// loaded model
+    pub fn sign_value(
+        &self,
+        sign: &crate::ffi::HandleIFSelectSignature,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IFSelect_WorkSession_sign_value(
+                self as *const Self,
+                sign,
+                ent,
+            ))
+            .to_string_lossy()
+            .into_owned()
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:472 - `IFSelect_WorkSession::Selection()`
     /// Returns a Selection, given its Ident in the Session
     /// Null result if <id> is not suitable for a Selection
@@ -14115,6 +20260,96 @@ impl WorkSession {
                 sel,
                 list,
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:511 - `IFSelect_WorkSession::SetItemSelection()`
+    /// Sets a Selection as input for an item, according its type :
+    /// if <item> is a Dispatch : as Final Selection
+    /// if <item> is a GeneralModifier (i.e. any kind of Modifier) :
+    /// as Selection used to filter entities to modify
+    /// <sel>  Null  causes this Selection to be nullified
+    /// Returns False if <item> is not of a suitable type, or
+    /// <item> or <sel> is not in the WorkSession
+    pub fn set_item_selection(
+        &mut self,
+        item: &crate::ffi::HandleStandardTransient,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> bool {
+        unsafe { crate::ffi::IFSelect_WorkSession_set_item_selection(self as *mut Self, item, sel) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:517 - `IFSelect_WorkSession::ResetItemSelection()`
+    /// Resets input Selection which was set by SetItemSelection
+    /// Same conditions as for SetItemSelection
+    /// Returns True if done, False if <item> is not in the WorkSession
+    pub fn reset_item_selection(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::IFSelect_WorkSession_reset_item_selection(self as *mut Self, item) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:521 - `IFSelect_WorkSession::ItemSelection()`
+    /// Returns the Selection of a Dispatch or a GeneralModifier.
+    /// Returns a Null Handle if none is defined or <item> not good type
+    pub fn item_selection(
+        &self,
+        item: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_item_selection(
+                self as *const Self,
+                item,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:527 - `IFSelect_WorkSession::SignCounter()`
+    /// Returns a SignCounter from its ident in the Session
+    /// Null result if <id> is not suitable for a SignCounter
+    /// (undefined, or defined for another kind of variable)
+    pub fn sign_counter(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_sign_counter(
+                self as *const Self,
+                id,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:534 - `IFSelect_WorkSession::ComputeCounter()`
+    /// Computes the content of a SignCounter when it is defined with
+    /// a Selection, then returns True
+    /// Returns False if the SignCounter is not defined with a
+    /// Selection, or if its Selection Mode is inhibited
+    /// <forced> to work around optimisations
+    pub fn compute_counter(
+        &mut self,
+        counter: &crate::ffi::HandleIFSelectSignCounter,
+        forced: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_compute_counter(self as *mut Self, counter, forced)
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:543 - `IFSelect_WorkSession::ComputeCounterFromList()`
+    /// Computes the content of a SignCounter from an input list
+    /// If <list> is Null, uses internal definition of the Counter :
+    /// a Selection, else the whole Model (recomputation forced)
+    /// If <clear> is True (D), starts from scratch
+    /// Else, cumulates computations
+    pub fn compute_counter_from_list(
+        &mut self,
+        counter: &crate::ffi::HandleIFSelectSignCounter,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        clear: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_compute_counter_from_list(
+                self as *mut Self,
+                counter,
+                list,
+                clear,
+            )
         }
     }
 
@@ -14214,6 +20449,20 @@ impl WorkSession {
         }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:592 - `IFSelect_WorkSession::ModelModifier()`
+    /// Returns a Model Modifier, given its Ident in the Session,
+    /// i.e. typed as a Modifier (not simply a GeneralModifier)
+    /// Null result if <id> is not suitable for a Modifier
+    /// (undefined, or defined for another kind of variable)
+    pub fn model_modifier(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_model_modifier(
+                self as *const Self,
+                id,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:600 - `IFSelect_WorkSession::ModifierRank()`
     /// Returns the Rank of a Modifier given its Ident. Model or File
     /// Modifier according its type (ModelModifier or not)
@@ -14248,6 +20497,21 @@ impl WorkSession {
         unsafe { crate::ffi::IFSelect_WorkSession_clear_final_modifiers(self as *mut Self) }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:618 - `IFSelect_WorkSession::SetAppliedModifier()`
+    /// Sets a GeneralModifier to be applied to an item :
+    /// - item = ShareOut : applies for final sending (all dispatches)
+    /// - item is a Dispatch : applies for this dispatch only
+    /// Returns True if done, False if <modif> or <item> not in <me>
+    pub fn set_applied_modifier(
+        &mut self,
+        modif: &crate::ffi::HandleIFSelectGeneralModifier,
+        item: &crate::ffi::HandleStandardTransient,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_set_applied_modifier(self as *mut Self, modif, item)
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:624 - `IFSelect_WorkSession::ResetAppliedModifier()`
     /// Resets a GeneralModifier to be applied
     /// Returns True if done, False if <modif> was not applied
@@ -14256,6 +20520,22 @@ impl WorkSession {
         modif: &crate::ffi::HandleIFSelectGeneralModifier,
     ) -> bool {
         unsafe { crate::ffi::IFSelect_WorkSession_reset_applied_modifier(self as *mut Self, modif) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:629 - `IFSelect_WorkSession::UsesAppliedModifier()`
+    /// Returns the item on which a GeneralModifier is applied :
+    /// the ShareOut, or a given Dispatch
+    /// Returns a Null Handle if <modif> is not applied
+    pub fn uses_applied_modifier(
+        &self,
+        modif: &crate::ffi::HandleIFSelectGeneralModifier,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_uses_applied_modifier(
+                self as *const Self,
+                modif,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:635 - `IFSelect_WorkSession::Transformer()`
@@ -14296,6 +20576,45 @@ impl WorkSession {
     /// (the former one is kept) : check the protocol
     pub fn run_transformer(&mut self, transf: &crate::ffi::HandleIFSelectTransformer) -> i32 {
         unsafe { crate::ffi::IFSelect_WorkSession_run_transformer(self as *mut Self, transf) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:675 - `IFSelect_WorkSession::RunModifier()`
+    /// Runs a Modifier on Starting Model. It can modify entities, or
+    /// add new ones. But the Model or the Protocol is unchanged.
+    /// The Modifier is applied on each entity of the Model. See also
+    /// RunModifierSelected
+    /// Fills LastRunCheckList
+    ///
+    /// <copy> : if True, a new data set is produced which brings
+    /// the modifications (Model + its Entities)
+    /// if False, data are modified on the spot
+    ///
+    /// It works through a TransformStandard defined with <modif>
+    /// Returned status as RunTransformer : 0 nothing done, >0 OK,
+    /// <0 problem, but only between -3 and 3 (protocol unchanged)
+    /// Remark : <copy> True will give <effect> = 3 or -3
+    pub fn run_modifier(&mut self, modif: &crate::ffi::HandleIFSelectModifier, copy: bool) -> i32 {
+        unsafe { crate::ffi::IFSelect_WorkSession_run_modifier(self as *mut Self, modif, copy) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:681 - `IFSelect_WorkSession::RunModifierSelected()`
+    /// Acts as RunModifier, but the Modifier is applied on the list
+    /// determined by a Selection, rather than on the whole Model
+    /// If the selection is a null handle, the whole model is taken
+    pub fn run_modifier_selected(
+        &mut self,
+        modif: &crate::ffi::HandleIFSelectModifier,
+        sel: &crate::ffi::HandleIFSelectSelection,
+        copy: bool,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_run_modifier_selected(
+                self as *mut Self,
+                modif,
+                sel,
+                copy,
+            )
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:689 - `IFSelect_WorkSession::NewTransformStandard()`
@@ -14851,6 +21170,27 @@ impl WorkSession {
         }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:962 - `IFSelect_WorkSession::GiveList()`
+    /// Determines a list of entities from an object :
+    /// <obj> already HSequenceOfTransient : returned itself
+    /// <obj> Selection : its Result of Evaluation is returned
+    /// <obj> an entity of the Model : a HSequence which contains it
+    /// else, an empty HSequence
+    /// <obj> the Model it self : ALL its content (not only the roots)
+    pub fn give_list_handlestandardtransient(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_WorkSession_give_list_handlestandardtransient(
+                    self as *const Self,
+                    obj,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:977 - `IFSelect_WorkSession::GiveList()`
     /// Computes a List of entities from two alphanums,
     /// first and second, as follows :
@@ -14864,7 +21204,7 @@ impl WorkSession {
     /// - the other terms define the result of the selection
     /// - and so on (the "leftest minus one" is a selection, of which
     /// the input is given by the remaining ...)
-    pub fn give_list(
+    pub fn give_list_charptr2(
         &self,
         first: &str,
         second: &str,
@@ -14872,10 +21212,37 @@ impl WorkSession {
         let c_first = std::ffi::CString::new(first).unwrap();
         let c_second = std::ffi::CString::new(second).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_give_list(
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_give_list_charptr2(
                 self as *const Self,
                 c_first.as_ptr(),
                 c_second.as_ptr(),
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:992 - `IFSelect_WorkSession::GiveListFromList()`
+    /// Computes a List of entities from the model as follows
+    /// <first> being a Selection or a combination of Selections,
+    /// <ent> being an entity or a list
+    /// of entities (as a HSequenceOfTransient) :
+    /// the standard result of this selection applied to this list
+    /// if <ent> is Null, the standard definition of the selection is
+    /// used (which contains a default input selection)
+    /// if <selname> is erroneous, a null handle is returned
+    ///
+    /// REMARK : selname is processed as <first second> of preceding
+    /// GiveList
+    pub fn give_list_from_list(
+        &self,
+        selname: &str,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        let c_selname = std::ffi::CString::new(selname).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_give_list_from_list(
+                self as *const Self,
+                c_selname.as_ptr(),
+                ent,
             ))
         }
     }
@@ -14905,6 +21272,33 @@ impl WorkSession {
     /// Loads data from a check iterator to query status on it
     pub fn query_check_list(&mut self, chl: &crate::interface::CheckIterator) {
         unsafe { crate::ffi::IFSelect_WorkSession_query_check_list(self as *mut Self, chl) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1016 - `IFSelect_WorkSession::QueryCheckStatus()`
+    /// Determines check status for an entity regarding last call to
+    /// QueryCheckList :
+    /// -1 : <ent> unknown in the model, ignored
+    /// 0 : no check at all, immediate or inherited thru Graph
+    /// 1 : immediate warning (no fail), no inherited check
+    /// 2 : immediate fail, no inherited check
+    /// +10 : idem but some inherited warning (no fail)
+    /// +20 : idem but some inherited fail
+    pub fn query_check_status(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::IFSelect_WorkSession_query_check_status(self as *const Self, ent) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1021 - `IFSelect_WorkSession::QueryParent()`
+    /// Determines if <entdad> is parent of <entson> (in the graph),
+    /// returns : -1 if no; 0 if <entdad> = <entson>
+    /// 1 if immediate parent, > 1 if parent, gives count of steps
+    pub fn query_parent(
+        &self,
+        entdad: &crate::ffi::HandleStandardTransient,
+        entson: &crate::ffi::HandleStandardTransient,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_query_parent(self as *const Self, entdad, entson)
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:1052 - `IFSelect_WorkSession::TraceStatics()`
@@ -14958,6 +21352,16 @@ impl WorkSession {
     /// defined Default Trace File (default is standard output)
     pub fn trace_dump_model(&mut self, mode: i32) {
         unsafe { crate::ffi::IFSelect_WorkSession_trace_dump_model(self as *mut Self, mode) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1103 - `IFSelect_WorkSession::TraceDumpEntity()`
+    /// Dumps an entity from the current Model as inherited DumpEntity
+    /// on currently defined Default Trace File
+    /// (<level> interpreted according to the Norm, see WorkLibrary)
+    pub fn trace_dump_entity(&self, ent: &crate::ffi::HandleStandardTransient, level: i32) {
+        unsafe {
+            crate::ffi::IFSelect_WorkSession_trace_dump_entity(self as *const Self, ent, level)
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:1128 - `IFSelect_WorkSession::EvaluateSelection()`
@@ -15043,9 +21447,27 @@ impl HandleIFSelectWorkSession {
     pub fn get_mut(&mut self) -> &mut crate::ffi::IFSelect_WorkSession {
         unsafe { &mut *(crate::ffi::HandleIFSelectWorkSession_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<IFSelect_WorkSession> to Handle<XSControl_WorkSession>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_WorkSession` (or subclass).
+    pub fn downcast_to_work_session(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIFSelectWorkSession_downcast_to_HandleXSControlWorkSession(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for WorkSession (54 total) ──
+// ── Skipped symbols for WorkSession (13 total) ──
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:108 - `IFSelect_WorkSession::SetProtocol`
 //   method: Sets a Protocol, which will be used to determine Graphs, to
 //   method: Read and to Write Files
@@ -15058,18 +21480,6 @@ impl HandleIFSelectWorkSession {
 //   Reason: return type 'const Handle(Interface_Protocol)&' is unknown
 //   // pub fn protocol(&self) -> &HandleProtocol;
 //
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:118 - `IFSelect_WorkSession::SetSignType`
-//   method: Sets a specific Signature to be the SignType, i.e. the
-//   method: Signature which will determine TypeName from the Model
-//   method: (basic function). It is recorded in the GTool
-//   Reason: param 'signtype' uses unknown type 'const Handle(IFSelect_Signature)&'
-//   // pub fn set_sign_type(&mut self, signtype: &HandleSignature);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:121 - `IFSelect_WorkSession::SignType`
-//   method: Returns the current SignType
-//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
-//   // pub fn sign_type(&self) -> OwnedPtr<Handle<IFSelect_Signature>>;
-//
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:157 - `IFSelect_WorkSession::ReadStream`
 //   method: Reads a file from stream with the WorkLibrary (sets Model and LoadedFile)
 //   method: Returns a integer status which can be :
@@ -15077,162 +21487,10 @@ impl HandleIFSelectWorkSession {
 //   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
 //   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
 //
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:165 - `IFSelect_WorkSession::StartingEntity`
-//   method: Returns an  Entity stored in the Model of the WorkSession
-//   method: (Null Handle is no Model or num out of range)
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn starting_entity(&self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:169 - `IFSelect_WorkSession::StartingNumber`
-//   method: Returns the Number of an Entity in the Model
-//   method: (0 if no Model set or <ent> not in the Model)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn starting_number(&self, ent: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:186 - `IFSelect_WorkSession::EntityLabel`
-//   method: Returns the label for <ent>, as the Model does
-//   method: If <ent> is not in the Model or if no Model is loaded, a Null
-//   method: Handle is returned
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn entity_label(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:192 - `IFSelect_WorkSession::EntityName`
-//   method: Returns the Name of an Entity
-//   method: This Name is computed by the general service Name
-//   method: Returns a Null Handle if fails
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn entity_name(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:198 - `IFSelect_WorkSession::CategoryNumber`
-//   method: Returns the Category Number determined for an entity
-//   method: it is computed by the class Category
-//   method: An unknown entity (number 0) gives a value -1
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn category_number(&self, ent: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:203 - `IFSelect_WorkSession::CategoryName`
-//   method: Returns the Category Name determined for an entity
-//   method: it is computed by the class Category
-//   method: Remark : an unknown entity gives an empty string
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn category_name(&self, ent: &HandleTransient) -> *const char;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:208 - `IFSelect_WorkSession::ValidityName`
-//   method: Returns the Validity Name determined for an entity
-//   method: it is computed by the class SignValidity
-//   method: Remark : an unknown entity gives an empty string
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn validity_name(&self, ent: &HandleTransient) -> *const char;
-//
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:231 - `IFSelect_WorkSession::HGraph`
 //   method: Returns the Computed Graph as HGraph (Null Handle if not set)
 //   Reason: return type 'Handle(Interface_HGraph)' is unknown
 //   // pub fn h_graph(&mut self) -> OwnedPtr<Handle<Interface_HGraph>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:238 - `IFSelect_WorkSession::Shareds`
-//   method: Returns the list of entities shared by <ent> (can be empty)
-//   method: Returns a null Handle if <ent> is unknown
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn shareds(&mut self, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:243 - `IFSelect_WorkSession::Sharings`
-//   method: Returns the list of entities sharing <ent> (can be empty)
-//   method: Returns a null Handle if <ent> is unknown
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn sharings(&mut self, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:272 - `IFSelect_WorkSession::CheckOne`
-//   method: Returns a Check for a single entity, under the form of a
-//   method: CheckIterator (this gives only one form for the user)
-//   method: if <ent> is Null or equates the current Model, it gives the
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn check_one(&mut self, ent: &HandleTransient, complete: bool) -> OwnedPtr<Interface_CheckIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:290 - `IFSelect_WorkSession::Item`
-//   method: Returns an Item, given its Ident. Returns a Null Handle if
-//   method: no Item corresponds to this Ident.
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn item(&self, id: i32) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:294 - `IFSelect_WorkSession::ItemIdent`
-//   method: Returns the Ident attached to an Item in the WorkSession, or
-//   method: Zero if it is unknown
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn item_ident(&self, item: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:299 - `IFSelect_WorkSession::NamedItem`
-//   method: Returns the Item which corresponds to a Variable, given its
-//   method: Name (whatever the type of this Item).
-//   method: Returns a Null Handle if this Name is not recorded
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn named_item(&self, name: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:303 - `IFSelect_WorkSession::NamedItem`
-//   method: Same as above, but <name> is given through a Handle
-//   method: Especially useful with methods SelectionNames, etc...
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn named_item(&self, name: &HandleHAsciiString) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:310 - `IFSelect_WorkSession::HasName`
-//   method: Returns True if an Item of the WorkSession has an attached Name
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn has_name(&self, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:315 - `IFSelect_WorkSession::Name`
-//   method: Returns the Name attached to an Item as a Variable of this
-//   method: WorkSession. If <item> is Null or not recorded, returns an
-//   method: empty string.
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn name(&self, item: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:323 - `IFSelect_WorkSession::AddItem`
-//   method: Adds an Item and returns its attached Ident. Does nothing
-//   method: if <item> is already recorded (and returns its attached Ident)
-//   method: <active> if True commands call to SetActive (see below)
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_item(&mut self, item: &HandleTransient, active: bool) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:333 - `IFSelect_WorkSession::AddNamedItem`
-//   method: Adds an Item with an attached Name. If the Name is already
-//   method: known in the WorkSession, the older item losts it
-//   method: Returns Ident if Done, 0 else, i.e. if <item> is null
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_named_item(&mut self, name: *const char, item: &HandleTransient, active: bool) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:342 - `IFSelect_WorkSession::SetActive`
-//   method: Following the type of <item> :
-//   method: - Dispatch : Adds or Removes it in the ShareOut & FileNaming
-//   method: - GeneralModifier : Adds or Removes it for final sending
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_active(&mut self, item: &HandleTransient, mode: bool) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:357 - `IFSelect_WorkSession::RemoveItem`
-//   method: Removes an Item given its Ident. Returns False if <id> is
-//   method: attached to no Item in the WorkSession. For a Named Item,
-//   method: also removes its Name.
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn remove_item(&mut self, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:417 - `IFSelect_WorkSession::NewParamFromStatic`
-//   method: Creates a parameter as being bound to a Static
-//   method: If the Static is Integer, this creates an IntParam bound to
-//   method: it by its name. Else this creates a String which is the value
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn new_param_from_static(&mut self, statname: *const char, name: *const char) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:461 - `IFSelect_WorkSession::Signature`
-//   method: Returns a Signature, given its Ident in the Session
-//   method: Null result if <id> is not suitable for a Signature
-//   method: (undefined, or defined for another kind of variable)
-//   Reason: return type 'Handle(IFSelect_Signature)' is unknown
-//   // pub fn signature(&self, id: i32) -> OwnedPtr<Handle<IFSelect_Signature>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:466 - `IFSelect_WorkSession::SignValue`
-//   method: Returns the Value computed by a Signature for an Entity
-//   method: Returns an empty string if the entity does not belong to the
-//   method: loaded model
-//   Reason: param 'sign' uses unknown type 'const Handle(IFSelect_Signature)&'
-//   // pub fn sign_value(&self, sign: &HandleSignature, ent: &HandleTransient) -> *const char;
 //
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:477 - `IFSelect_WorkSession::EvalSelection`
 //   method: Evaluates the effect of a Selection applied on the input Model
@@ -15240,116 +21498,12 @@ impl HandleIFSelectWorkSession {
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn eval_selection(&self, sel: &HandleSelection) -> OwnedPtr<Interface_EntityIterator>;
 //
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:511 - `IFSelect_WorkSession::SetItemSelection`
-//   method: Sets a Selection as input for an item, according its type :
-//   method: if <item> is a Dispatch : as Final Selection
-//   method: if <item> is a GeneralModifier (i.e. any kind of Modifier) :
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_item_selection(&mut self, item: &HandleTransient, sel: &HandleSelection) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:517 - `IFSelect_WorkSession::ResetItemSelection`
-//   method: Resets input Selection which was set by SetItemSelection
-//   method: Same conditions as for SetItemSelection
-//   method: Returns True if done, False if <item> is not in the WorkSession
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn reset_item_selection(&mut self, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:521 - `IFSelect_WorkSession::ItemSelection`
-//   method: Returns the Selection of a Dispatch or a GeneralModifier.
-//   method: Returns a Null Handle if none is defined or <item> not good type
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn item_selection(&self, item: &HandleTransient) -> OwnedPtr<Handle<IFSelect_Selection>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:527 - `IFSelect_WorkSession::SignCounter`
-//   method: Returns a SignCounter from its ident in the Session
-//   method: Null result if <id> is not suitable for a SignCounter
-//   method: (undefined, or defined for another kind of variable)
-//   Reason: return type 'Handle(IFSelect_SignCounter)' is unknown
-//   // pub fn sign_counter(&self, id: i32) -> OwnedPtr<Handle<IFSelect_SignCounter>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:534 - `IFSelect_WorkSession::ComputeCounter`
-//   method: Computes the content of a SignCounter when it is defined with
-//   method: a Selection, then returns True
-//   method: Returns False if the SignCounter is not defined with a
-//   Reason: param 'counter' uses unknown type 'const Handle(IFSelect_SignCounter)&'
-//   // pub fn compute_counter(&mut self, counter: &HandleSignCounter, forced: bool) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:543 - `IFSelect_WorkSession::ComputeCounterFromList`
-//   method: Computes the content of a SignCounter from an input list
-//   method: If <list> is Null, uses internal definition of the Counter :
-//   method: a Selection, else the whole Model (recomputation forced)
-//   Reason: param 'counter' uses unknown type 'const Handle(IFSelect_SignCounter)&'
-//   // pub fn compute_counter_from_list(&mut self, counter: &HandleSignCounter, list: &HandleHSequenceOfTransient, clear: bool) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:592 - `IFSelect_WorkSession::ModelModifier`
-//   method: Returns a Model Modifier, given its Ident in the Session,
-//   method: i.e. typed as a Modifier (not simply a GeneralModifier)
-//   method: Null result if <id> is not suitable for a Modifier
-//   Reason: return type 'Handle(IFSelect_Modifier)' is unknown
-//   // pub fn model_modifier(&self, id: i32) -> OwnedPtr<Handle<IFSelect_Modifier>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:618 - `IFSelect_WorkSession::SetAppliedModifier`
-//   method: Sets a GeneralModifier to be applied to an item :
-//   method: - item = ShareOut : applies for final sending (all dispatches)
-//   method: - item is a Dispatch : applies for this dispatch only
-//   Reason: param 'item' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_applied_modifier(&mut self, modif: &HandleGeneralModifier, item: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:629 - `IFSelect_WorkSession::UsesAppliedModifier`
-//   method: Returns the item on which a GeneralModifier is applied :
-//   method: the ShareOut, or a given Dispatch
-//   method: Returns a Null Handle if <modif> is not applied
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn uses_applied_modifier(&self, modif: &HandleGeneralModifier) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:675 - `IFSelect_WorkSession::RunModifier`
-//   method: Runs a Modifier on Starting Model. It can modify entities, or
-//   method: add new ones. But the Model or the Protocol is unchanged.
-//   method: The Modifier is applied on each entity of the Model. See also
-//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
-//   // pub fn run_modifier(&mut self, modif: &HandleModifier, copy: bool) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:681 - `IFSelect_WorkSession::RunModifierSelected`
-//   method: Acts as RunModifier, but the Modifier is applied on the list
-//   method: determined by a Selection, rather than on the whole Model
-//   method: If the selection is a null handle, the whole model is taken
-//   Reason: param 'modif' uses unknown type 'const Handle(IFSelect_Modifier)&'
-//   // pub fn run_modifier_selected(&mut self, modif: &HandleModifier, sel: &HandleSelection, copy: bool) -> i32;
-//
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:811 - `IFSelect_WorkSession::SentList`
 //   method: Returns the list of Entities sent in files, according to the
 //   method: count of files each one has been sent (these counts are reset
 //   method: by SetModel or SetRemaining(Forget) ) stored in Graph Status
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn sent_list(&self, count: i32) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:962 - `IFSelect_WorkSession::GiveList`
-//   method: Determines a list of entities from an object :
-//   method: <obj> already HSequenceOfTransient : returned itself
-//   method: <obj> Selection : its Result of Evaluation is returned
-//   Reason: param 'obj' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn give_list(&self, obj: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:992 - `IFSelect_WorkSession::GiveListFromList`
-//   method: Computes a List of entities from the model as follows
-//   method: <first> being a Selection or a combination of Selections,
-//   method: <ent> being an entity or a list
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn give_list_from_list(&self, selname: *const char, ent: &HandleTransient) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1016 - `IFSelect_WorkSession::QueryCheckStatus`
-//   method: Determines check status for an entity regarding last call to
-//   method: QueryCheckList :
-//   method: -1 : <ent> unknown in the model, ignored
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn query_check_status(&self, ent: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1021 - `IFSelect_WorkSession::QueryParent`
-//   method: Determines if <entdad> is parent of <entson> (in the graph),
-//   method: returns : -1 if no; 0 if <entdad> = <entson>
-//   method: 1 if immediate parent, > 1 if parent, gives count of steps
-//   Reason: param 'entdad' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn query_parent(&self, entdad: &HandleTransient, entson: &HandleTransient) -> i32;
 //
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams`
 //   method: Sets a list of Parameters, i.e. TypedValue, to be handled
@@ -15378,13 +21532,6 @@ impl HandleIFSelectWorkSession {
 //   method: mutable because it can recompute checks as necessary
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_entity_status(&mut self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1103 - `IFSelect_WorkSession::TraceDumpEntity`
-//   method: Dumps an entity from the current Model as inherited DumpEntity
-//   method: on currently defined Default Trace File
-//   method: (<level> interpreted according to the Norm, see WorkLibrary)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn trace_dump_entity(&self, ent: &HandleTransient, level: i32);
 //
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1114 - `IFSelect_WorkSession::PrintCheckList`
 //   method: Prints a CheckIterator to the current Trace File, controlled

@@ -6,6 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleAdaptor2dCurve2d, HandleAdaptor3dCurve, HandleAdaptor3dSurface, HandleGeom2dAdaptorCurve,
+};
+
 // ========================
 // From BRepAdaptor_CompCurve.hxx
 // ========================
@@ -406,12 +411,50 @@ impl CompCurve {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCompCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_CompCurve_inherited_OffsetCurve(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepAdaptorCompCurve;
+
+unsafe impl crate::CppDeletable for HandleBRepAdaptorCompCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepAdaptorCompCurve_destructor(ptr);
+    }
+}
+
+impl HandleBRepAdaptorCompCurve {
+    /// Dereference this Handle to access the underlying BRepAdaptor_CompCurve
+    pub fn get(&self) -> &crate::ffi::BRepAdaptor_CompCurve {
+        unsafe { &*(crate::ffi::HandleBRepAdaptorCompCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepAdaptor_CompCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_CompCurve {
+        unsafe { &mut *(crate::ffi::HandleBRepAdaptorCompCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepAdaptor_CompCurve> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepAdaptorCompCurve_to_HandleAdaptor3dCurve(self as *const Self),
+            )
         }
     }
 }
@@ -812,6 +855,44 @@ impl Curve {
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
         unsafe { &mut *(crate::ffi::BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepAdaptorCurve;
+
+unsafe impl crate::CppDeletable for HandleBRepAdaptorCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepAdaptorCurve_destructor(ptr);
+    }
+}
+
+impl HandleBRepAdaptorCurve {
+    /// Dereference this Handle to access the underlying BRepAdaptor_Curve
+    pub fn get(&self) -> &crate::ffi::BRepAdaptor_Curve {
+        unsafe { &*(crate::ffi::HandleBRepAdaptorCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepAdaptor_Curve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_Curve {
+        unsafe { &mut *(crate::ffi::HandleBRepAdaptorCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepAdaptor_Curve> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleBRepAdaptorCurve_to_HandleAdaptor3dCurve(
+                self as *const Self,
+            ))
+        }
+    }
 }
 
 // ========================
@@ -921,6 +1002,15 @@ impl Curve2d {
     pub fn as_adaptor2d_curve2d_mut(&mut self) -> &mut crate::adaptor2d::Curve2d {
         unsafe {
             &mut *(crate::ffi::BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_to_handle(obj.into_raw()))
         }
     }
 
@@ -1161,6 +1251,46 @@ impl Curve2d {
             crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Curve2d_inherited_BSpline(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepAdaptorCurve2d;
+
+unsafe impl crate::CppDeletable for HandleBRepAdaptorCurve2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepAdaptorCurve2d_destructor(ptr);
+    }
+}
+
+impl HandleBRepAdaptorCurve2d {
+    /// Dereference this Handle to access the underlying BRepAdaptor_Curve2d
+    pub fn get(&self) -> &crate::ffi::BRepAdaptor_Curve2d {
+        unsafe { &*(crate::ffi::HandleBRepAdaptorCurve2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepAdaptor_Curve2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_Curve2d {
+        unsafe { &mut *(crate::ffi::HandleBRepAdaptorCurve2d_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepAdaptor_Curve2d> to Handle<Geom2dAdaptor_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dAdaptorCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepAdaptorCurve2d_to_HandleGeom2dAdaptorCurve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BRepAdaptor_Curve2d> to Handle<Adaptor2d_Curve2d>
+    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepAdaptorCurve2d_to_HandleAdaptor2dCurve2d(self as *const Self),
+            )
         }
     }
 }
@@ -1821,6 +1951,44 @@ impl Surface {
     pub fn as_adaptor3d_surface_mut(&mut self) -> &mut crate::adaptor3d::Surface {
         unsafe {
             &mut *(crate::ffi::BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_Surface_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleBRepAdaptorSurface;
+
+unsafe impl crate::CppDeletable for HandleBRepAdaptorSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleBRepAdaptorSurface_destructor(ptr);
+    }
+}
+
+impl HandleBRepAdaptorSurface {
+    /// Dereference this Handle to access the underlying BRepAdaptor_Surface
+    pub fn get(&self) -> &crate::ffi::BRepAdaptor_Surface {
+        unsafe { &*(crate::ffi::HandleBRepAdaptorSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BRepAdaptor_Surface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAdaptor_Surface {
+        unsafe { &mut *(crate::ffi::HandleBRepAdaptorSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<BRepAdaptor_Surface> to Handle<Adaptor3d_Surface>
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleBRepAdaptorSurface_to_HandleAdaptor3dSurface(self as *const Self),
+            )
         }
     }
 }

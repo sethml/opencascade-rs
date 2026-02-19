@@ -6,6 +6,9 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleDEConfigurationNode, HandleDEProvider};
+
 // ========================
 // From DEVRML_ConfigurationNode.hxx
 // ========================
@@ -34,6 +37,19 @@ impl ConfigurationNode {
     /// Initializes all field by default
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::DEVRML_ConfigurationNode_ctor()) }
+    }
+
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:39 - `DEVRML_ConfigurationNode::DEVRML_ConfigurationNode()`
+    /// Copies values of all fields
+    /// @param[in] theNode object to copy
+    pub fn new_handledevrmlconfigurationnode(
+        theNode: &crate::ffi::HandleDEVRMLConfigurationNode,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::DEVRML_ConfigurationNode_ctor_handledevrmlconfigurationnode(theNode),
+            )
+        }
     }
 
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:32 - `DEVRML_ConfigurationNode::DynamicType()`
@@ -148,6 +164,17 @@ impl ConfigurationNode {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEVRMLConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::DEVRML_ConfigurationNode_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
         unsafe {
@@ -202,13 +229,40 @@ impl ConfigurationNode {
     }
 }
 
-// ── Skipped symbols for ConfigurationNode (2 total) ──
-// SKIPPED: **Source:** `DEVRML_ConfigurationNode.hxx`:39 - `DEVRML_ConfigurationNode::DEVRML_ConfigurationNode`
-//   constructor: Copies values of all fields
-//   constructor: @param[in] theNode object to copy
-//   Reason: param 'theNode' uses unknown Handle type
-//   // pub fn new_handledevrmlconfigurationnode(theNode: &HandleConfigurationNode) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleDEVRMLConfigurationNode;
+
+unsafe impl crate::CppDeletable for HandleDEVRMLConfigurationNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEVRMLConfigurationNode_destructor(ptr);
+    }
+}
+
+impl HandleDEVRMLConfigurationNode {
+    /// Dereference this Handle to access the underlying DEVRML_ConfigurationNode
+    pub fn get(&self) -> &crate::ffi::DEVRML_ConfigurationNode {
+        unsafe { &*(crate::ffi::HandleDEVRMLConfigurationNode_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DEVRML_ConfigurationNode
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DEVRML_ConfigurationNode {
+        unsafe { &mut *(crate::ffi::HandleDEVRMLConfigurationNode_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<DEVRML_ConfigurationNode> to Handle<DE_ConfigurationNode>
+    pub fn to_handle_configuration_node(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleDEVRMLConfigurationNode_to_HandleDEConfigurationNode(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ConfigurationNode (1 total) ──
 // SKIPPED: **Source:** `DEVRML_ConfigurationNode.hxx`:78 - `DEVRML_ConfigurationNode::GetExtensions`
 //   method: Gets list of supported file extensions
 //   method: @return list of extensions
@@ -285,20 +339,145 @@ impl Provider {
         unsafe { &*(crate::ffi::DEVRML_Provider_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `DEVRML_Provider.hxx`:49 - `DEVRML_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theDocument document to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEVRML_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DEVRML_Provider.hxx`:61 - `DEVRML_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theDocument document to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEVRML_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DEVRML_Provider.hxx`:72 - `DEVRML_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theDocument document to save result
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEVRML_Provider_read_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DEVRML_Provider.hxx`:82 - `DEVRML_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theDocument document to export
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_handletdocstddocument_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEVRML_Provider_write_asciistring_handletdocstddocument_progressrange(
+                self as *mut Self,
+                thePath,
+                theDocument,
+                theProgress,
+            )
+        }
+    }
+
+    /// **Source:** `DEVRML_Provider.hxx`:93 - `DEVRML_Provider::Read()`
+    /// Reads a CAD file, according internal configuration
+    /// @param[in] thePath path to the import CAD file
+    /// @param[out] theShape shape to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_asciistring_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &mut crate::topo_ds::Shape,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEVRML_Provider_read_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
+        }
+    }
+
+    /// **Source:** `DEVRML_Provider.hxx`:105 - `DEVRML_Provider::Write()`
+    /// Writes a CAD file, according internal configuration
+    /// @param[in] thePath path to the export CAD file
+    /// @param[out] theShape shape to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_asciistring_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        thePath: &crate::t_collection::AsciiString,
+        theShape: &crate::topo_ds::Shape,
+        theWS: &mut crate::ffi::HandleXSControlWorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DEVRML_Provider_write_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
+        }
+    }
+
     /// **Source:** `DEVRML_Provider.hxx`:116 - `DEVRML_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theShape shape to save result
     /// @param[in] theProgress progress indicator
     /// @return true if Read operation has ended correctly
-    pub fn read(
+    pub fn read_asciistring_shape_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &mut crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
-            crate::ffi::DEVRML_Provider_read(self as *mut Self, thePath, theShape, theProgress)
+            crate::ffi::DEVRML_Provider_read_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
         }
     }
 
@@ -308,14 +487,19 @@ impl Provider {
     /// @param[out] theShape shape to export
     /// @param[in] theProgress progress indicator
     /// @return true if Write operation has ended correctly
-    pub fn write(
+    pub fn write_asciistring_shape_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         unsafe {
-            crate::ffi::DEVRML_Provider_write(self as *mut Self, thePath, theShape, theProgress)
+            crate::ffi::DEVRML_Provider_write_asciistring_shape_progressrange(
+                self as *mut Self,
+                thePath,
+                theShape,
+                theProgress,
+            )
         }
     }
 
@@ -361,6 +545,13 @@ impl Provider {
         unsafe { &mut *(crate::ffi::DEVRML_Provider_as_DE_Provider_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleDEVRMLProvider> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::DEVRML_Provider_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
     pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
         unsafe {
@@ -376,46 +567,31 @@ impl Provider {
     }
 }
 
-// ── Skipped symbols for Provider (6 total) ──
-// SKIPPED: **Source:** `DEVRML_Provider.hxx`:49 - `DEVRML_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theDocument document to save result
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEVRML_Provider.hxx`:61 - `DEVRML_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theDocument document to export
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEVRML_Provider.hxx`:72 - `DEVRML_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theDocument document to save result
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEVRML_Provider.hxx`:82 - `DEVRML_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theDocument document to export
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theDocument: &HandleDocument, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEVRML_Provider.hxx`:93 - `DEVRML_Provider::Read`
-//   method: Reads a CAD file, according internal configuration
-//   method: @param[in] thePath path to the import CAD file
-//   method: @param[out] theShape shape to save result
-//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn read(&mut self, thePath: &AsciiString, theShape: &mut Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `DEVRML_Provider.hxx`:105 - `DEVRML_Provider::Write`
-//   method: Writes a CAD file, according internal configuration
-//   method: @param[in] thePath path to the export CAD file
-//   method: @param[out] theShape shape to export
-//   Reason: param 'theWS' uses unknown type 'Handle(XSControl_WorkSession)&'
-//   // pub fn write(&mut self, thePath: &AsciiString, theShape: &Shape, theWS: &mut HandleWorkSession, theProgress: &ProgressRange) -> bool;
-//
+pub use crate::ffi::HandleDEVRMLProvider;
+
+unsafe impl crate::CppDeletable for HandleDEVRMLProvider {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleDEVRMLProvider_destructor(ptr);
+    }
+}
+
+impl HandleDEVRMLProvider {
+    /// Dereference this Handle to access the underlying DEVRML_Provider
+    pub fn get(&self) -> &crate::ffi::DEVRML_Provider {
+        unsafe { &*(crate::ffi::HandleDEVRMLProvider_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying DEVRML_Provider
+    pub fn get_mut(&mut self) -> &mut crate::ffi::DEVRML_Provider {
+        unsafe { &mut *(crate::ffi::HandleDEVRMLProvider_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<DEVRML_Provider> to Handle<DE_Provider>
+    pub fn to_handle_provider(&self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleDEVRMLProvider_to_HandleDEProvider(
+                self as *const Self,
+            ))
+        }
+    }
+}

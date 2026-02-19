@@ -35,6 +35,29 @@ pub fn same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgreg
 pub fn encode_regularity_shape_real_2(shape: &crate::topo_ds::Shape, tolang: f64) {
     unsafe { crate::ffi::ShapeFix_encode_regularity_shape_real_2(shape, tolang) }
 }
+/// **Source:** `ShapeFix.hxx`:70 - `ShapeFix::RemoveSmallEdges`
+/// Removes edges which are less than given tolerance from shape
+/// with help of ShapeFix_Wire::FixSmall()
+pub fn remove_small_edges(
+    shape: &mut crate::topo_ds::Shape,
+    Tolerance: f64,
+    context: &mut crate::ffi::HandleShapeBuildReShape,
+) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_remove_small_edges(
+            shape, Tolerance, context,
+        ))
+    }
+}
+/// **Source:** `ShapeFix.hxx`:75 - `ShapeFix::FixVertexPosition`
+/// Fix position of the vertices having tolerance more tnan specified one.;
+pub fn fix_vertex_position(
+    theshape: &mut crate::topo_ds::Shape,
+    theTolerance: f64,
+    thecontext: &crate::ffi::HandleShapeBuildReShape,
+) -> bool {
+    unsafe { crate::ffi::ShapeFix_fix_vertex_position(theshape, theTolerance, thecontext) }
+}
 /// **Source:** `ShapeFix.hxx`:81 - `ShapeFix::LeastEdgeSize`
 /// Calculate size of least edge;
 pub fn least_edge_size(theshape: &mut crate::topo_ds::Shape) -> f64 {
@@ -233,9 +256,34 @@ impl ComposeShell {
         unsafe { &mut *(crate::ffi::ShapeFix_ComposeShell_as_ShapeFix_Root_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixComposeShell> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_ComposeShell_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_ComposeShell_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeFix_ComposeShell_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_ComposeShell_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
@@ -338,6 +386,35 @@ impl ComposeShell {
                 shape,
                 message,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeFixComposeShell;
+
+unsafe impl crate::CppDeletable for HandleShapeFixComposeShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixComposeShell_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixComposeShell {
+    /// Dereference this Handle to access the underlying ShapeFix_ComposeShell
+    pub fn get(&self) -> &crate::ffi::ShapeFix_ComposeShell {
+        unsafe { &*(crate::ffi::HandleShapeFixComposeShell_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_ComposeShell
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_ComposeShell {
+        unsafe { &mut *(crate::ffi::HandleShapeFixComposeShell_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_ComposeShell> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeFixComposeShell_to_HandleShapeFixRoot(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -697,6 +774,18 @@ impl Edge {
         unsafe { crate::ffi::ShapeFix_Edge_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `ShapeFix_Edge.hxx`:242 - `ShapeFix_Edge::SetContext()`
+    /// Sets context
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeFix_Edge_set_context(self as *mut Self, context) }
+    }
+
+    /// **Source:** `ShapeFix_Edge.hxx`:245 - `ShapeFix_Edge::Context()`
+    /// Returns context
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Edge_context(self as *const Self)) }
+    }
+
     /// **Source:** `ShapeFix_Edge.hxx`:247 - `ShapeFix_Edge::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeFix_Edge_dynamic_type(self as *const Self)) }
@@ -743,18 +832,6 @@ impl HandleShapeFixEdge {
         unsafe { &mut *(crate::ffi::HandleShapeFixEdge_get_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for Edge (2 total) ──
-// SKIPPED: **Source:** `ShapeFix_Edge.hxx`:242 - `ShapeFix_Edge::SetContext`
-//   method: Sets context
-//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn set_context(&mut self, context: &HandleReShape);
-//
-// SKIPPED: **Source:** `ShapeFix_Edge.hxx`:245 - `ShapeFix_Edge::Context`
-//   method: Returns context
-//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
-//   // pub fn context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
-//
 
 // ========================
 // From ShapeFix_EdgeConnect.hxx
@@ -1194,6 +1271,14 @@ impl Face {
         unsafe { crate::ffi::ShapeFix_Face_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `ShapeFix_Face.hxx`:247 - `ShapeFix_Face::FixWireTool()`
+    /// Returns tool for fixing wires.
+    pub fn fix_wire_tool(&mut self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Face_fix_wire_tool(self as *mut Self))
+        }
+    }
+
     /// **Source:** `ShapeFix_Face.hxx`:249 - `ShapeFix_Face::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeFix_Face_dynamic_type(self as *const Self)) }
@@ -1223,9 +1308,30 @@ impl Face {
         unsafe { &mut *(crate::ffi::ShapeFix_Face_as_ShapeFix_Root_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Face_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_Face_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeFix_Face_inherited_SetContext(self as *mut Self, context) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Face_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
@@ -1289,7 +1395,36 @@ impl Face {
     }
 }
 
-// ── Skipped symbols for Face (12 total) ──
+pub use crate::ffi::HandleShapeFixFace;
+
+unsafe impl crate::CppDeletable for HandleShapeFixFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixFace_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixFace {
+    /// Dereference this Handle to access the underlying ShapeFix_Face
+    pub fn get(&self) -> &crate::ffi::ShapeFix_Face {
+        unsafe { &*(crate::ffi::HandleShapeFixFace_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Face
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Face {
+        unsafe { &mut *(crate::ffi::HandleShapeFixFace_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_Face> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeFixFace_to_HandleShapeFixRoot(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Face (11 total) ──
 // SKIPPED: **Source:** `ShapeFix_Face.hxx`:96 - `ShapeFix_Face::FixWireMode`
 //   method: Returns (modifiable) the mode for applying fixes of
 //   method: ShapeFix_Wire, by default True.
@@ -1356,11 +1491,6 @@ impl Face {
 //   method: degenerated fix. False by default.
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn fix_periodic_degenerated_mode(&mut self) -> &mut i32;
-//
-// SKIPPED: **Source:** `ShapeFix_Face.hxx`:247 - `ShapeFix_Face::FixWireTool`
-//   method: Returns tool for fixing wires.
-//   Reason: return type 'Handle(ShapeFix_Wire)' is unknown
-//   // pub fn fix_wire_tool(&mut self) -> OwnedPtr<Handle<ShapeFix_Wire>>;
 //
 
 // ========================
@@ -1621,9 +1751,34 @@ impl FixSmallFace {
         unsafe { &mut *(crate::ffi::ShapeFix_FixSmallFace_as_ShapeFix_Root_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallFace> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallFace_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_FixSmallFace_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeFix_FixSmallFace_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallFace_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
@@ -1730,6 +1885,35 @@ impl FixSmallFace {
     }
 }
 
+pub use crate::ffi::HandleShapeFixFixSmallFace;
+
+unsafe impl crate::CppDeletable for HandleShapeFixFixSmallFace {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixFixSmallFace_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixFixSmallFace {
+    /// Dereference this Handle to access the underlying ShapeFix_FixSmallFace
+    pub fn get(&self) -> &crate::ffi::ShapeFix_FixSmallFace {
+        unsafe { &*(crate::ffi::HandleShapeFixFixSmallFace_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_FixSmallFace
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_FixSmallFace {
+        unsafe { &mut *(crate::ffi::HandleShapeFixFixSmallFace_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_FixSmallFace> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeFixFixSmallFace_to_HandleShapeFixRoot(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
 // ========================
 // From ShapeFix_FixSmallSolid.hxx
 // ========================
@@ -1779,6 +1963,38 @@ impl FixSmallSolid {
         }
     }
 
+    /// **Source:** `ShapeFix_FixSmallSolid.hxx`:51 - `ShapeFix_FixSmallSolid::Remove()`
+    /// Remove small solids from the given shape
+    pub fn remove(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+        theContext: &crate::ffi::HandleShapeBuildReShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallSolid_remove(
+                self as *const Self,
+                theShape,
+                theContext,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_FixSmallSolid.hxx`:55 - `ShapeFix_FixSmallSolid::Merge()`
+    /// Merge small solids in the given shape to adjacent non-small ones
+    pub fn merge(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+        theContext: &crate::ffi::HandleShapeBuildReShape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallSolid_merge(
+                self as *const Self,
+                theShape,
+                theContext,
+            ))
+        }
+    }
+
     /// **Source:** `ShapeFix_FixSmallSolid.hxx`:58 - `ShapeFix_FixSmallSolid::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeFix_FixSmallSolid_dynamic_type(self as *const Self)) }
@@ -1810,9 +2026,34 @@ impl FixSmallSolid {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallSolid> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallSolid_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_FixSmallSolid_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeFix_FixSmallSolid_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_FixSmallSolid_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
@@ -1922,17 +2163,34 @@ impl FixSmallSolid {
     }
 }
 
-// ── Skipped symbols for FixSmallSolid (2 total) ──
-// SKIPPED: **Source:** `ShapeFix_FixSmallSolid.hxx`:51 - `ShapeFix_FixSmallSolid::Remove`
-//   method: Remove small solids from the given shape
-//   Reason: param 'theContext' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn remove(&self, theShape: &Shape, theContext: &HandleReShape) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `ShapeFix_FixSmallSolid.hxx`:55 - `ShapeFix_FixSmallSolid::Merge`
-//   method: Merge small solids in the given shape to adjacent non-small ones
-//   Reason: param 'theContext' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn merge(&self, theShape: &Shape, theContext: &HandleReShape) -> OwnedPtr<TopoDS_Shape>;
-//
+pub use crate::ffi::HandleShapeFixFixSmallSolid;
+
+unsafe impl crate::CppDeletable for HandleShapeFixFixSmallSolid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixFixSmallSolid_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixFixSmallSolid {
+    /// Dereference this Handle to access the underlying ShapeFix_FixSmallSolid
+    pub fn get(&self) -> &crate::ffi::ShapeFix_FixSmallSolid {
+        unsafe { &*(crate::ffi::HandleShapeFixFixSmallSolid_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_FixSmallSolid
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_FixSmallSolid {
+        unsafe { &mut *(crate::ffi::HandleShapeFixFixSmallSolid_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_FixSmallSolid> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeFixFixSmallSolid_to_HandleShapeFixRoot(self as *const Self),
+            )
+        }
+    }
+}
 
 // ========================
 // From ShapeFix_FreeBounds.hxx
@@ -2057,6 +2315,41 @@ unsafe impl crate::CppDeletable for IntersectionTool {
 }
 
 impl IntersectionTool {
+    /// **Source:** `ShapeFix_IntersectionTool.hxx`:41 - `ShapeFix_IntersectionTool::ShapeFix_IntersectionTool()`
+    /// Constructor
+    pub fn new_handleshapebuildreshape_real2(
+        context: &crate::ffi::HandleShapeBuildReShape,
+        preci: f64,
+        maxtol: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeFix_IntersectionTool_ctor_handleshapebuildreshape_real2(
+                    context, preci, maxtol,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `ShapeFix_IntersectionTool.hxx`:41 - `ShapeFix_IntersectionTool::ShapeFix_IntersectionTool()`
+    /// Constructor
+    pub fn new_handleshapebuildreshape_real(
+        context: &crate::ffi::HandleShapeBuildReShape,
+        preci: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleshapebuildreshape_real2(context, preci, 1.0)
+    }
+
+    /// **Source:** `ShapeFix_IntersectionTool.hxx`:46 - `ShapeFix_IntersectionTool::Context()`
+    /// Returns context
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_IntersectionTool_context(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `ShapeFix_IntersectionTool.hxx`:51 - `ShapeFix_IntersectionTool::SplitEdge()`
     /// Split edge on two new edges using new vertex "vert"
     /// and "param" - parameter for splitting
@@ -2115,17 +2408,7 @@ impl IntersectionTool {
     }
 }
 
-// ── Skipped symbols for IntersectionTool (3 total) ──
-// SKIPPED: **Source:** `ShapeFix_IntersectionTool.hxx`:41 - `ShapeFix_IntersectionTool::ShapeFix_IntersectionTool`
-//   constructor: Constructor
-//   Reason: param 'context' uses unknown Handle type
-//   // pub fn new_handleshapebuildreshape_real2(context: &HandleReShape, preci: f64, maxtol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `ShapeFix_IntersectionTool.hxx`:46 - `ShapeFix_IntersectionTool::Context`
-//   method: Returns context
-//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
-//   // pub fn context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
-//
+// ── Skipped symbols for IntersectionTool (1 total) ──
 // SKIPPED: **Source:** `ShapeFix_IntersectionTool.hxx`:66 - `ShapeFix_IntersectionTool::FixSelfIntersectWire`
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn fix_self_intersect_wire(&self, sewd: &mut HandleWireData, face: &Face, NbSplit: &mut i32, NbCut: &mut i32, NbRemoved: &mut i32) -> bool;
@@ -2160,6 +2443,18 @@ impl Root {
     /// Copy all fields from another Root object
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_Root_set(self as *mut Self, Root) }
+    }
+
+    /// **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    /// Sets context
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeFix_Root_set_context(self as *mut Self, context) }
+    }
+
+    /// **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    /// Returns context
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Root_context(self as *const Self)) }
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
@@ -2344,19 +2639,165 @@ impl HandleShapeFixRoot {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Root {
         unsafe { &mut *(crate::ffi::HandleShapeFixRoot_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for Root (2 total) ──
-// SKIPPED: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext`
-//   method: Sets context
-//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn set_context(&mut self, context: &HandleReShape);
-//
-// SKIPPED: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context`
-//   method: Returns context
-//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
-//   // pub fn context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
-//
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_ComposeShell>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_ComposeShell` (or subclass).
+    pub fn downcast_to_compose_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixComposeShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixComposeShell(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Face>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_Face` (or subclass).
+    pub fn downcast_to_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_FixSmallFace>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_FixSmallFace` (or subclass).
+    pub fn downcast_to_fix_small_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallFace(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_FixSmallSolid>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_FixSmallSolid` (or subclass).
+    pub fn downcast_to_fix_small_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallSolid(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Shape>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_Shape` (or subclass).
+    pub fn downcast_to_shape(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixShape(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Shell>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_Shell` (or subclass).
+    pub fn downcast_to_shell(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixShell>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixShell(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Solid>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_Solid` (or subclass).
+    pub fn downcast_to_solid(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixSolid>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixSolid(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_SplitCommonVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_SplitCommonVertex` (or subclass).
+    pub fn downcast_to_split_common_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixSplitCommonVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixSplitCommonVertex(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Wire>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_Wire` (or subclass).
+    pub fn downcast_to_wire(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixWire>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixWire(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Wireframe>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeFix_Wireframe` (or subclass).
+    pub fn downcast_to_wireframe(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixWireframe>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixWireframe(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From ShapeFix_Shape.hxx
@@ -2401,6 +2842,42 @@ impl Shape {
     /// Returns resulting shape
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_shape(self as *const Self)) }
+    }
+
+    /// **Source:** `ShapeFix_Shape.hxx`:67 - `ShapeFix_Shape::FixSolidTool()`
+    /// Returns tool for fixing solids.
+    pub fn fix_solid_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixSolid> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_fix_solid_tool(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Shape.hxx`:70 - `ShapeFix_Shape::FixShellTool()`
+    /// Returns tool for fixing shells.
+    pub fn fix_shell_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShell> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_fix_shell_tool(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Shape.hxx`:73 - `ShapeFix_Shape::FixFaceTool()`
+    /// Returns tool for fixing faces.
+    pub fn fix_face_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_fix_face_tool(self as *const Self))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Shape.hxx`:76 - `ShapeFix_Shape::FixWireTool()`
+    /// Returns tool for fixing wires.
+    pub fn fix_wire_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_fix_wire_tool(self as *const Self))
+        }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:79 - `ShapeFix_Shape::FixEdgeTool()`
@@ -2480,9 +2957,30 @@ impl Shape {
         unsafe { &mut *(crate::ffi::ShapeFix_Shape_as_ShapeFix_Root_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShape> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_Shape_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeFix_Shape_inherited_SetContext(self as *mut Self, context) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shape_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
@@ -2548,27 +3046,36 @@ impl Shape {
     }
 }
 
-// ── Skipped symbols for Shape (11 total) ──
-// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:67 - `ShapeFix_Shape::FixSolidTool`
-//   method: Returns tool for fixing solids.
-//   Reason: return type 'Handle(ShapeFix_Solid)' is unknown
-//   // pub fn fix_solid_tool(&self) -> OwnedPtr<Handle<ShapeFix_Solid>>;
-//
-// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:70 - `ShapeFix_Shape::FixShellTool`
-//   method: Returns tool for fixing shells.
-//   Reason: return type 'Handle(ShapeFix_Shell)' is unknown
-//   // pub fn fix_shell_tool(&self) -> OwnedPtr<Handle<ShapeFix_Shell>>;
-//
-// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:73 - `ShapeFix_Shape::FixFaceTool`
-//   method: Returns tool for fixing faces.
-//   Reason: return type 'Handle(ShapeFix_Face)' is unknown
-//   // pub fn fix_face_tool(&self) -> OwnedPtr<Handle<ShapeFix_Face>>;
-//
-// SKIPPED: **Source:** `ShapeFix_Shape.hxx`:76 - `ShapeFix_Shape::FixWireTool`
-//   method: Returns tool for fixing wires.
-//   Reason: return type 'Handle(ShapeFix_Wire)' is unknown
-//   // pub fn fix_wire_tool(&self) -> OwnedPtr<Handle<ShapeFix_Wire>>;
-//
+pub use crate::ffi::HandleShapeFixShape;
+
+unsafe impl crate::CppDeletable for HandleShapeFixShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixShape_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixShape {
+    /// Dereference this Handle to access the underlying ShapeFix_Shape
+    pub fn get(&self) -> &crate::ffi::ShapeFix_Shape {
+        unsafe { &*(crate::ffi::HandleShapeFixShape_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Shape
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Shape {
+        unsafe { &mut *(crate::ffi::HandleShapeFixShape_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_Shape> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeFixShape_to_HandleShapeFixRoot(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Shape (7 total) ──
 // SKIPPED: **Source:** `ShapeFix_Shape.hxx`:106 - `ShapeFix_Shape::FixSolidMode`
 //   method: Returns (modifiable) the mode for applying fixes of
 //   method: ShapeFix_Solid, by default True.
@@ -2795,6 +3302,14 @@ impl Shell {
         unsafe { crate::ffi::ShapeFix_Shell_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `ShapeFix_Shell.hxx`:97 - `ShapeFix_Shell::FixFaceTool()`
+    /// Returns tool for fixing faces.
+    pub fn fix_face_tool(&mut self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shell_fix_face_tool(self as *mut Self))
+        }
+    }
+
     /// **Source:** `ShapeFix_Shell.hxx`:100 - `ShapeFix_Shell::SetMsgRegistrator()`
     /// Sets message registrator
     pub fn set_msg_registrator(
@@ -2859,9 +3374,30 @@ impl Shell {
         unsafe { &mut *(crate::ffi::ShapeFix_Shell_as_ShapeFix_Root_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShell> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shell_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_Shell_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeFix_Shell_inherited_SetContext(self as *mut Self, context) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Shell_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
@@ -2927,12 +3463,36 @@ impl Shell {
     }
 }
 
-// ── Skipped symbols for Shell (3 total) ──
-// SKIPPED: **Source:** `ShapeFix_Shell.hxx`:97 - `ShapeFix_Shell::FixFaceTool`
-//   method: Returns tool for fixing faces.
-//   Reason: return type 'Handle(ShapeFix_Face)' is unknown
-//   // pub fn fix_face_tool(&mut self) -> OwnedPtr<Handle<ShapeFix_Face>>;
-//
+pub use crate::ffi::HandleShapeFixShell;
+
+unsafe impl crate::CppDeletable for HandleShapeFixShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixShell_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixShell {
+    /// Dereference this Handle to access the underlying ShapeFix_Shell
+    pub fn get(&self) -> &crate::ffi::ShapeFix_Shell {
+        unsafe { &*(crate::ffi::HandleShapeFixShell_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Shell
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Shell {
+        unsafe { &mut *(crate::ffi::HandleShapeFixShell_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_Shell> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeFixShell_to_HandleShapeFixRoot(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Shell (2 total) ──
 // SKIPPED: **Source:** `ShapeFix_Shell.hxx`:114 - `ShapeFix_Shell::FixFaceMode`
 //   method: Returns (modifiable) the mode for applying fixes of
 //   method: ShapeFix_Face, by default True.
@@ -3015,6 +3575,16 @@ impl Solid {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Solid_solid(self as *const Self)) }
     }
 
+    /// **Source:** `ShapeFix_Solid.hxx`:72 - `ShapeFix_Solid::FixShellTool()`
+    /// Returns tool for fixing shells.
+    pub fn fix_shell_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShell> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Solid_fix_shell_tool(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `ShapeFix_Solid.hxx`:75 - `ShapeFix_Solid::SetMsgRegistrator()`
     /// Sets message registrator
     pub fn set_msg_registrator(
@@ -3088,9 +3658,30 @@ impl Solid {
         unsafe { &mut *(crate::ffi::ShapeFix_Solid_as_ShapeFix_Root_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixSolid> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Solid_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_Solid_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeFix_Solid_inherited_SetContext(self as *mut Self, context) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Solid_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
@@ -3156,12 +3747,36 @@ impl Solid {
     }
 }
 
-// ── Skipped symbols for Solid (3 total) ──
-// SKIPPED: **Source:** `ShapeFix_Solid.hxx`:72 - `ShapeFix_Solid::FixShellTool`
-//   method: Returns tool for fixing shells.
-//   Reason: return type 'Handle(ShapeFix_Shell)' is unknown
-//   // pub fn fix_shell_tool(&self) -> OwnedPtr<Handle<ShapeFix_Shell>>;
-//
+pub use crate::ffi::HandleShapeFixSolid;
+
+unsafe impl crate::CppDeletable for HandleShapeFixSolid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixSolid_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixSolid {
+    /// Dereference this Handle to access the underlying ShapeFix_Solid
+    pub fn get(&self) -> &crate::ffi::ShapeFix_Solid {
+        unsafe { &*(crate::ffi::HandleShapeFixSolid_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Solid
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Solid {
+        unsafe { &mut *(crate::ffi::HandleShapeFixSolid_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_Solid> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeFixSolid_to_HandleShapeFixRoot(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Solid (2 total) ──
 // SKIPPED: **Source:** `ShapeFix_Solid.hxx`:89 - `ShapeFix_Solid::FixShellMode`
 //   method: Returns (modifiable) the mode for applying fixes of
 //   method: ShapeFix_Shell, by default True.
@@ -3247,9 +3862,36 @@ impl SplitCommonVertex {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixSplitCommonVertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_SplitCommonVertex_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_SplitCommonVertex_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_SplitCommonVertex_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
@@ -3374,6 +4016,37 @@ impl SplitCommonVertex {
     }
 }
 
+pub use crate::ffi::HandleShapeFixSplitCommonVertex;
+
+unsafe impl crate::CppDeletable for HandleShapeFixSplitCommonVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixSplitCommonVertex_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixSplitCommonVertex {
+    /// Dereference this Handle to access the underlying ShapeFix_SplitCommonVertex
+    pub fn get(&self) -> &crate::ffi::ShapeFix_SplitCommonVertex {
+        unsafe { &*(crate::ffi::HandleShapeFixSplitCommonVertex_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_SplitCommonVertex
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_SplitCommonVertex {
+        unsafe { &mut *(crate::ffi::HandleShapeFixSplitCommonVertex_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_SplitCommonVertex> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeFixSplitCommonVertex_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From ShapeFix_SplitTool.hxx
 // ========================
@@ -3486,7 +4159,7 @@ impl SplitTool {
 //   method: Split edge on two new edges using two new vertex V1 and V2
 //   method: and two parameters for splitting - fp and lp correspondingly
 //   method: The "face" is necessary for pcurves and using TransferParameterProj
-//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
+//   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn split_edge(&self, edge: &Edge, fp: f64, V1: &Vertex, lp: f64, V2: &Vertex, face: &Face, SeqE: &mut SequenceOfShape, aNum: &mut i32, context: &HandleReShape, tol3d: f64, tol2d: f64) -> bool;
 //
 
@@ -4111,9 +4784,30 @@ impl Wire {
         unsafe { &mut *(crate::ffi::ShapeFix_Wire_as_ShapeFix_Root_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Wire_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_Wire_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeFix_Wire_inherited_SetContext(self as *mut Self, context) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Wire_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
@@ -4192,6 +4886,35 @@ impl Wire {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         unsafe { crate::ffi::ShapeFix_Wire_inherited_SendFail(self as *const Self, shape, message) }
+    }
+}
+
+pub use crate::ffi::HandleShapeFixWire;
+
+unsafe impl crate::CppDeletable for HandleShapeFixWire {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixWire_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixWire {
+    /// Dereference this Handle to access the underlying ShapeFix_Wire
+    pub fn get(&self) -> &crate::ffi::ShapeFix_Wire {
+        unsafe { &*(crate::ffi::HandleShapeFixWire_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Wire
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Wire {
+        unsafe { &mut *(crate::ffi::HandleShapeFixWire_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_Wire> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeFixWire_to_HandleShapeFixRoot(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -4838,9 +5561,32 @@ impl Wireframe {
         unsafe { &mut *(crate::ffi::ShapeFix_Wireframe_as_ShapeFix_Root_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWireframe> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Wireframe_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         unsafe { crate::ffi::ShapeFix_Wireframe_inherited_Set(self as *mut Self, Root) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeFix_Wireframe_inherited_SetContext(self as *mut Self, context) }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeFix_Wireframe_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
@@ -4941,21 +5687,37 @@ impl Wireframe {
     }
 }
 
+pub use crate::ffi::HandleShapeFixWireframe;
+
+unsafe impl crate::CppDeletable for HandleShapeFixWireframe {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeFixWireframe_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixWireframe {
+    /// Dereference this Handle to access the underlying ShapeFix_Wireframe
+    pub fn get(&self) -> &crate::ffi::ShapeFix_Wireframe {
+        unsafe { &*(crate::ffi::HandleShapeFixWireframe_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Wireframe
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Wireframe {
+        unsafe { &mut *(crate::ffi::HandleShapeFixWireframe_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeFix_Wireframe> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeFixWireframe_to_HandleShapeFixRoot(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
 // ========================
 // Additional type re-exports
 // ========================
 
 pub use crate::ffi::ShapeFix_SequenceOfWireSegment as SequenceOfWireSegment;
-
-// ── Skipped free functions (2 total) ──
-// SKIPPED: **Source:** `ShapeFix.hxx`:70 - `ShapeFix::RemoveSmallEdges`
-//   function: Removes edges which are less than given tolerance from shape
-//   function: with help of ShapeFix_Wire::FixSmall()
-//   Reason: param 'context' uses unknown type 'Handle(ShapeBuild_ReShape)&'
-//   // pub fn remove_small_edges(shape: &mut Shape, Tolerance: f64, context: &mut HandleReShape) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `ShapeFix.hxx`:75 - `ShapeFix::FixVertexPosition`
-//   function: Fix position of the vertices having tolerance more tnan specified one.;
-//   Reason: param 'thecontext' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn fix_vertex_position(theshape: &mut Shape, theTolerance: f64, thecontext: &HandleReShape) -> bool;
-//

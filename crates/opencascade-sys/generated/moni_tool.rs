@@ -6,6 +6,13 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleIFSelectSignAncestor, HandleIFSelectSignCategory, HandleIFSelectSignMultiple,
+    HandleIFSelectSignType, HandleIFSelectSignValidity, HandleIFSelectSignature,
+    HandleXSControlSignTransferStatus,
+};
+
 // ========================
 // From MoniTool_SignText.hxx
 // ========================
@@ -33,6 +40,42 @@ impl SignText {
             std::ffi::CStr::from_ptr(crate::ffi::MoniTool_SignText_name(self as *const Self))
                 .to_string_lossy()
                 .into_owned()
+        }
+    }
+
+    /// **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    /// Gives a text as a signature for a transient object alone, i.e.
+    /// without defined context.
+    /// By default, calls Text with undefined context (Null Handle) and
+    /// if empty, then returns DynamicType
+    pub fn text_alone(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::MoniTool_SignText_text_alone(
+                self as *const Self,
+                ent,
+            ))
+        }
+    }
+
+    /// **Source:** `MoniTool_SignText.hxx`:53 - `MoniTool_SignText::Text()`
+    /// Gives a text as a signature for a transient object in a context
+    /// If the context is senseless, it can be given as Null Handle
+    /// empty result if nothing to give (at least the DynamicType could
+    /// be sent ?)
+    pub fn text(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        context: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::MoniTool_SignText_text(
+                self as *const Self,
+                ent,
+                context,
+            ))
         }
     }
 
@@ -74,20 +117,130 @@ impl HandleMoniToolSignText {
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_SignText {
         unsafe { &mut *(crate::ffi::HandleMoniToolSignText_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for SignText (2 total) ──
-// SKIPPED: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone`
-//   method: Gives a text as a signature for a transient object alone, i.e.
-//   method: without defined context.
-//   method: By default, calls Text with undefined context (Null Handle) and
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn text_alone(&self, ent: &HandleTransient) -> OwnedPtr<TCollection_AsciiString>;
-//
-// SKIPPED: **Source:** `MoniTool_SignText.hxx`:53 - `MoniTool_SignText::Text`
-//   method: Gives a text as a signature for a transient object in a context
-//   method: If the context is senseless, it can be given as Null Handle
-//   method: empty result if nothing to give (at least the DynamicType could
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn text(&self, ent: &HandleTransient, context: &HandleTransient) -> OwnedPtr<TCollection_AsciiString>;
-//
+    /// Downcast Handle<MoniTool_SignText> to Handle<IFSelect_SignAncestor>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignAncestor` (or subclass).
+    pub fn downcast_to_sign_ancestor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignAncestor>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignAncestor(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<MoniTool_SignText> to Handle<IFSelect_SignCategory>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignCategory` (or subclass).
+    pub fn downcast_to_sign_category(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignCategory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignCategory(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<MoniTool_SignText> to Handle<IFSelect_SignMultiple>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignMultiple` (or subclass).
+    pub fn downcast_to_sign_multiple(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignMultiple>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignMultiple(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<MoniTool_SignText> to Handle<IFSelect_SignType>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignType` (or subclass).
+    pub fn downcast_to_sign_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<MoniTool_SignText> to Handle<IFSelect_SignValidity>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_SignValidity` (or subclass).
+    pub fn downcast_to_sign_validity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignValidity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignValidity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<MoniTool_SignText> to Handle<IFSelect_Signature>
+    ///
+    /// Returns `None` if the handle does not point to a `IFSelect_Signature` (or subclass).
+    pub fn downcast_to_signature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<MoniTool_SignText> to Handle<XSControl_SignTransferStatus>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_SignTransferStatus` (or subclass).
+    pub fn downcast_to_sign_transfer_status(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSignTransferStatus>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMoniToolSignText_downcast_to_HandleXSControlSignTransferStatus(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}

@@ -318,7 +318,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ## Skipped Symbols
 
-The binding generator skips ~3,200 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~2,200 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -337,44 +337,43 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 2,083 | 65.1% | **Unknown/unresolved type** | Parameter or return type not in the binding set (NCollection map types, Handle to excluded classes, math_Vector, etc.) |
-| 282 | 8.8% | **Misresolved element type** | Clang batch-parsing artifact where template element types resolve incorrectly |
-| 278 | 8.7% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
-| 209 | 6.5% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
-| 98 | 3.1% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
-| 86 | 2.7% | **Unknown Handle type** | Handle to a class not in the binding set |
-| 38 | 1.2% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
-| 29 | 0.9% | **Not CppDeletable** | Return type class has no destructor in the binding set |
-| 26 | 0.8% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
-| 18 | 0.6% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
-| 15 | 0.5% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 8 | 0.2% | **Excluded by config** | Excluded in `bindings.toml` |
+| 715 | 32.3% | **Unknown/unresolved type** | Parameter or return type not in the binding set (NCollection map types, math_Vector, etc.) |
+| 503 | 22.7% | **Unknown Handle type** | Handle to a class not in the binding set (Handle(Interface_Protocol), Handle(Transfer_TransientProcess), etc.) |
+| 285 | 12.9% | **Misresolved element type** | Clang batch-parsing artifact where template element types resolve incorrectly |
+| 278 | 12.5% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
+| 182 | 8.2% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
+| 125 | 5.6% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
+| 38 | 1.7% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
+| 29 | 1.3% | **Not CppDeletable** | Return type class has no destructor in the binding set |
+| 26 | 1.2% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
+| 18 | 0.8% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
+| 15 | 0.7% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
 | 3 | 0.1% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
 
 ### Most Common Unknown Types
 
-The "unknown type" category (65% of all skips) is dominated by a few types:
+The "unknown type" categories (55% of all skips) are dominated by a few types:
 
 | Count | Type | How to Unblock |
 |------:|------|----------------|
-| 234 | `Handle(Standard_Transient)` | Add `Standard_Transient` to bindings — this is the OCCT root class for all reference-counted objects |
-| 140 | `math_Vector` | Add `math_Vector` class — used in numerical solvers (Extrema, Geom evaluators) |
-| 88 | `Handle(TDocStd_Document)` | Add `TDocStd_Document` to bindings — needed for XCAF/document framework |
-| 79 | `Standard_SStream` | Map `Standard_SStream` (`std::stringstream`) — mainly used in `Raise()` methods on exception classes |
-| 54 | `Handle(Expr_NamedUnknown)` | Add `Expr_NamedUnknown` — only needed for symbolic math (`Expr_*`) |
-| 41 | `Interface_EntityIterator` | Add `Interface_EntityIterator` — used in STEP/IGES model iteration |
-| 38 | `Handle(TNaming_NamedShape)` | Add `TNaming_NamedShape` — needed for parametric naming framework |
+| 175 | `math_Vector` | Add `math_Vector` class — used in numerical solvers (Extrema, Geom evaluators) |
+| 89 | `Standard_SStream` | Map `Standard_SStream` (`std::stringstream`) — mainly used in `Raise()` methods on exception classes |
+| 59 | `Interface_EntityIterator` | Add `Interface_EntityIterator` — used in STEP/IGES model iteration |
 | 31 | `Standard_Character` | Map `Standard_Character` (typedef for `char`) as `i8`/`u8` |
-| 25 | `Standard_ExtString` | Map `Standard_ExtString` (wide string) — C++ `wchar_t*` |
-| 24 | `Handle(XSControl_WorkSession)` | Add `XSControl_WorkSession` — important for STEP/IGES read/write sessions |
+| 27 | `TDF_LabelMap` | Add `TDF_LabelMap` — used by document framework label iteration |
+| 26 | `Standard_ExtString` | Map `Standard_ExtString` (wide string) — C++ `wchar_t*` |
+| 23 | `Handle(Interface_Protocol)` | Add `Interface_Protocol` — used in STEP/IGES protocol dispatch |
+| 22 | `Handle(Transfer_TransientProcess)` | Add `Transfer_TransientProcess` — important for STEP/IGES read/write sessions |
+| 15 | `Standard_ExtCharacter` | Map `Standard_ExtCharacter` (wide char) — C++ `wchar_t` |
+| 14 | `Handle(IGESData_IGESModel)` | Add `IGESData_IGESModel` — needed for IGES model access |
 
 ### Important Skipped Symbols
 
 Most skipped symbols are in internal, low-use, or specialized modules. However, some affect functionality that users commonly need:
 
-**Data Exchange (189 symbols)** — STEP/IGES controllers (`STEPControl_*`, `IGESControl_*`, `XSControl_*`) have many methods skipped because they reference `Handle(Standard_Transient)`, `Handle(Transfer_FinderProcess)`, and `Handle(XSControl_WorkSession)`. The core `Read()`/`Write()` operations are bound, but advanced session management and entity traversal are not. **Unblock by adding**: `Standard_Transient`, `XSControl_WorkSession`, `Transfer_FinderProcess`, `Transfer_TransientProcess`.
+**Data Exchange (189 symbols)** — STEP/IGES controllers (`STEPControl_*`, `IGESControl_*`, `XSControl_*`) have many methods skipped because they reference `Handle(Transfer_TransientProcess)`, `Handle(Interface_Protocol)`, and `Interface_EntityIterator`. The core `Read()`/`Write()` operations are bound, but advanced session management and entity traversal are not. **Unblock by adding**: `Transfer_TransientProcess`, `Interface_Protocol`, `Interface_EntityIterator`.
 
-**Document Framework (215 symbols)** — `TDocStd_*`, `TDF_*`, and `XCAFDoc_*` classes are heavily affected by `Handle(TDocStd_Document)`, `TDF_LabelMap`, and `TDF_AttributeMap` being unknown types. Core label/attribute operations work, but document open/save, label iteration filters, and delta tracking are affected. **Unblock by adding**: `TDocStd_Document`, `TDF_LabelMap`, `TDF_AttributeMap`.
+**Document Framework (215 symbols)** — `TDocStd_*`, `TDF_*`, and `XCAFDoc_*` classes are heavily affected by `TDF_LabelMap` and `TDF_AttributeMap` being unknown types. Core label/attribute operations work, but document open/save, label iteration filters, and delta tracking are affected. **Unblock by adding**: `TDF_LabelMap`, `TDF_AttributeMap`.
 
 **Shape Meshing (91 symbols)** — `BRepMesh_*` classes reference `IMeshData_*` handle types that aren't in the binding set. Basic meshing APIs work but advanced mesh customization is unavailable. **Unblock by adding**: `IMeshData_Edge`, `IMeshData_Face`, `NCollection_*` allocator types.
 
@@ -508,3 +507,21 @@ Currently `-I` path is passed manually. Could auto-detect from `occt-sys`.
 ### Explicit `bindings.toml` Config for Manual Bindings
 
 The current `StringRefParam` detection automatically catches `const char*&` cases. An explicit `bindings.toml` section for declaring manual bindings would allow skipping other problematic signatures beyond string refs without requiring code changes to the generator.
+
+---
+
+**Special-case/heuristic patterns in the codebase:**
+
+1. **`check_is_handle_type()` in parser.rs (~line 740)** — Still uses hardcoded prefix patterns (`"Standard_Transient"`, `"Geom_"`, `"Geom2d_"`, `"Law_"`) as the seed for handle detection. This is now harmless since the transitive closure in bindings.rs propagates correctly from these seeds, but the seed itself is a heuristic — any OCCT module not matching these prefixes that independently derives from `Standard_Transient` would be missed at the parser level (though caught by transitive closure if any of its descendants appear).
+
+2. **`extract_base_classes()` in parser.rs (~line 776)** — Filters out `Standard_*` base classes with `!base_name.contains("Standard_")`. This means the inheritance graph doesn't include `Standard_Transient` as a base for classes like `Geom_Geometry`. The transitive closure works around this because it seeds `Standard_Transient` directly, but if you ever wanted the inheritance graph to be accurate, this filter would need removal/refinement.
+
+3. **`copyable_modules` in bindings.rs (~line 2062)** — Hardcoded list `["TopoDS", "gp", "TopLoc", "Bnd", "GProp"]` determines which classes get `to_owned()`. Whether a class is copyable is really a C++ property (trivially copyable, has copy constructor) that could potentially be detected from libclang.
+
+4. **`collect_referenced_types()` in resolver.rs (~line 777-781)** — Still builds its own `handle_able_classes` from `class.is_handle_type` (the parser-level field) rather than using the transitive closure. This is used for signature scanning to discover additional Handle types referenced in method signatures. It works because these are separate concerns (resolver adds to symbol table, bindings.rs makes filtering decisions), but it's inconsistent.
+
+5. **Short name convention (`split('_').skip(1)`)** — Used throughout for generating Rust method names from OCCT conventions (e.g., `BRepMesh_IncrementalMesh` → `IncrementalMesh` → `incremental_mesh`). This assumes a single module-prefix underscore, which breaks for multi-underscore prefixes like `DE_BREP_*`. Now mitigated by the collision detection I added, but the root assumption is still there.
+
+6. **`is_callback_class()` heuristic (bindings.rs)** — I didn't investigate this one deeply, but it likely uses naming patterns or structural checks to identify callback/functor classes, which could be fragile.
+
+Items 1, 2, and 4 are the most actionable — they could be unified into a single consistent approach where the transitive closure is computed once and shared across all phases. 

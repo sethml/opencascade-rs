@@ -186,6 +186,9 @@ impl TryFrom<i32> for TypeOfConcavity {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::HandleAdaptor3dCurve;
+
 // ========================
 // From ChFiDS_CircSection.hxx
 // ========================
@@ -699,6 +702,13 @@ impl ElSpine {
         unsafe { &mut *(crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_to_handle(obj.into_raw())) }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:84 - `Adaptor3d_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         unsafe { crate::ffi::ChFiDS_ElSpine_inherited_IsClosed(self as *const Self) }
@@ -739,6 +749,35 @@ impl ElSpine {
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_ElSpine_inherited_OffsetCurve(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleChFiDSElSpine;
+
+unsafe impl crate::CppDeletable for HandleChFiDSElSpine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleChFiDSElSpine_destructor(ptr);
+    }
+}
+
+impl HandleChFiDSElSpine {
+    /// Dereference this Handle to access the underlying ChFiDS_ElSpine
+    pub fn get(&self) -> &crate::ffi::ChFiDS_ElSpine {
+        unsafe { &*(crate::ffi::HandleChFiDSElSpine_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ChFiDS_ElSpine
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_ElSpine {
+        unsafe { &mut *(crate::ffi::HandleChFiDSElSpine_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ChFiDS_ElSpine> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleChFiDSElSpine_to_HandleAdaptor3dCurve(
                 self as *const Self,
             ))
         }
@@ -1260,6 +1299,49 @@ impl Spine {
         unsafe { crate::ffi::ChFiDS_Spine_set_last_status(self as *mut Self, S.into()) }
     }
 
+    /// **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine()`
+    pub fn append_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
+        unsafe { crate::ffi::ChFiDS_Spine_append_el_spine(self as *mut Self, Els) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
+    pub fn append_offset_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
+        unsafe { crate::ffi::ChFiDS_Spine_append_offset_el_spine(self as *mut Self, Els) }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine()`
+    pub fn el_spine_int(&self, IE: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_el_spine_int(
+                self as *const Self,
+                IE,
+            ))
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:109 - `ChFiDS_Spine::ElSpine()`
+    pub fn el_spine_edge(
+        &self,
+        E: &crate::topo_ds::Edge,
+    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_el_spine_edge(
+                self as *const Self,
+                E,
+            ))
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:111 - `ChFiDS_Spine::ElSpine()`
+    pub fn el_spine_real(&self, W: f64) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_Spine_el_spine_real(
+                self as *const Self,
+                W,
+            ))
+        }
+    }
+
     /// **Source:** `ChFiDS_Spine.hxx`:113 - `ChFiDS_Spine::ChangeElSpines()`
     pub fn change_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
         unsafe { &mut *(crate::ffi::ChFiDS_Spine_change_el_spines(self as *mut Self)) }
@@ -1662,28 +1744,6 @@ impl HandleChFiDSSpine {
         unsafe { &mut *(crate::ffi::HandleChFiDSSpine_get_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for Spine (5 total) ──
-// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine`
-//   Reason: param 'Els' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
-//   // pub fn append_el_spine(&mut self, Els: &HandleElSpine);
-//
-// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine`
-//   Reason: param 'Els' uses unknown type 'const Handle(ChFiDS_ElSpine)&'
-//   // pub fn append_offset_el_spine(&mut self, Els: &HandleElSpine);
-//
-// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine`
-//   Reason: return type 'Handle(ChFiDS_ElSpine)' is unknown
-//   // pub fn el_spine(&self, IE: i32) -> OwnedPtr<Handle<ChFiDS_ElSpine>>;
-//
-// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:109 - `ChFiDS_Spine::ElSpine`
-//   Reason: return type 'Handle(ChFiDS_ElSpine)' is unknown
-//   // pub fn el_spine(&self, E: &Edge) -> OwnedPtr<Handle<ChFiDS_ElSpine>>;
-//
-// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:111 - `ChFiDS_Spine::ElSpine`
-//   Reason: return type 'Handle(ChFiDS_ElSpine)' is unknown
-//   // pub fn el_spine(&self, W: f64) -> OwnedPtr<Handle<ChFiDS_ElSpine>>;
-//
 
 // ========================
 // From ChFiDS_Stripe.hxx
@@ -2368,6 +2428,16 @@ impl SurfData {
         unsafe { crate::ffi::ChFiDS_SurfData_last_extension_value_real(self as *mut Self, Extend) }
     }
 
+    /// **Source:** `ChFiDS_SurfData.hxx`:131 - `ChFiDS_SurfData::Simul()`
+    pub fn simul(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SurfData_simul(self as *const Self)) }
+    }
+
+    /// **Source:** `ChFiDS_SurfData.hxx`:133 - `ChFiDS_SurfData::SetSimul()`
+    pub fn set_simul(&mut self, S: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::ChFiDS_SurfData_set_simul(self as *mut Self, S) }
+    }
+
     /// **Source:** `ChFiDS_SurfData.hxx`:135 - `ChFiDS_SurfData::ResetSimul()`
     pub fn reset_simul(&mut self) {
         unsafe { crate::ffi::ChFiDS_SurfData_reset_simul(self as *mut Self) }
@@ -2487,18 +2557,10 @@ impl HandleChFiDSSurfData {
     }
 }
 
-// ── Skipped symbols for SurfData (3 total) ──
+// ── Skipped symbols for SurfData (1 total) ──
 // SKIPPED: **Source:** `ChFiDS_SurfData.hxx`:81 - `ChFiDS_SurfData::ChangeOrientation`
 //   Reason: return type is &mut enum (not representable in extern "C")
 //   // pub fn change_orientation(&mut self) -> &mut Orientation;
-//
-// SKIPPED: **Source:** `ChFiDS_SurfData.hxx`:131 - `ChFiDS_SurfData::Simul`
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn simul(&self) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `ChFiDS_SurfData.hxx`:133 - `ChFiDS_SurfData::SetSimul`
-//   Reason: param 'S' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_simul(&mut self, S: &HandleTransient);
 //
 
 // ========================

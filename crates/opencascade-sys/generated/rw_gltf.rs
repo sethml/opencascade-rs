@@ -376,6 +376,12 @@ impl TryFrom<i32> for WriterTrsfFormat {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandlePolyTriangulation, HandleRWMeshCafReader, HandleRWMeshMaterialMap,
+    HandleRWMeshTriangulationReader, HandleRWMeshTriangulationSource,
+};
+
 // ========================
 // From RWGltf_CafReader.hxx
 // ========================
@@ -530,6 +536,23 @@ impl CafReader {
     /// Upcast to RWMesh_CafReader (mutable)
     pub fn as_rw_mesh_caf_reader_mut(&mut self) -> &mut crate::rw_mesh::CafReader {
         unsafe { &mut *(crate::ffi::RWGltf_CafReader_as_RWMesh_CafReader_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfCafReader> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWGltf_CafReader_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
+        unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_Document(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::RWGltf_CafReader_inherited_SetDocument(self as *mut Self, theDoc) }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
@@ -706,6 +729,35 @@ impl CafReader {
                 theFile,
                 theProgress,
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleRWGltfCafReader;
+
+unsafe impl crate::CppDeletable for HandleRWGltfCafReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWGltfCafReader_destructor(ptr);
+    }
+}
+
+impl HandleRWGltfCafReader {
+    /// Dereference this Handle to access the underlying RWGltf_CafReader
+    pub fn get(&self) -> &crate::ffi::RWGltf_CafReader {
+        unsafe { &*(crate::ffi::HandleRWGltfCafReader_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWGltf_CafReader
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_CafReader {
+        unsafe { &mut *(crate::ffi::HandleRWGltfCafReader_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWGltf_CafReader> to Handle<RWMesh_CafReader>
+    pub fn to_handle_caf_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshCafReader> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleRWGltfCafReader_to_HandleRWMeshCafReader(
+                self as *const Self,
+            ))
         }
     }
 }
@@ -989,6 +1041,17 @@ impl GltfLatePrimitiveArray {
         unsafe {
             &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_as_Poly_Triangulation_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfGltfLatePrimitiveArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfLatePrimitiveArray_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -1479,6 +1542,50 @@ impl GltfLatePrimitiveArray {
     }
 }
 
+pub use crate::ffi::HandleRWGltfGltfLatePrimitiveArray;
+
+unsafe impl crate::CppDeletable for HandleRWGltfGltfLatePrimitiveArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWGltfGltfLatePrimitiveArray_destructor(ptr);
+    }
+}
+
+impl HandleRWGltfGltfLatePrimitiveArray {
+    /// Dereference this Handle to access the underlying RWGltf_GltfLatePrimitiveArray
+    pub fn get(&self) -> &crate::ffi::RWGltf_GltfLatePrimitiveArray {
+        unsafe { &*(crate::ffi::HandleRWGltfGltfLatePrimitiveArray_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWGltf_GltfLatePrimitiveArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_GltfLatePrimitiveArray {
+        unsafe { &mut *(crate::ffi::HandleRWGltfGltfLatePrimitiveArray_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWGltf_GltfLatePrimitiveArray> to Handle<RWMesh_TriangulationSource>
+    pub fn to_handle_triangulation_source(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWMeshTriangulationSource> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWGltfGltfLatePrimitiveArray_to_HandleRWMeshTriangulationSource(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<RWGltf_GltfLatePrimitiveArray> to Handle<Poly_Triangulation>
+    pub fn to_handle_triangulation(&self) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWGltfGltfLatePrimitiveArray_to_HandlePolyTriangulation(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ── Skipped symbols for GltfLatePrimitiveArray (1 total) ──
 // SKIPPED: **Source:** `RWGltf_GltfLatePrimitiveArray.hxx`:78 - `RWGltf_GltfLatePrimitiveArray::Data`
 //   method: Return primitive array data elements.
@@ -1546,6 +1653,14 @@ impl GltfMaterialMap {
         unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_get_type_descriptor()) }
     }
 
+    /// **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture()`
+    /// Return base color texture.
+    pub fn base_color_texture(
+        theMat: &crate::ffi::HandleXCAFDocVisMaterial,
+    ) -> &'static crate::ffi::HandleImageTexture {
+        unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_base_color_texture(theMat)) }
+    }
+
     /// Upcast to RWMesh_MaterialMap
     pub fn as_rw_mesh_material_map(&self) -> &crate::rw_mesh::MaterialMap {
         unsafe { &*(crate::ffi::RWGltf_GltfMaterialMap_as_RWMesh_MaterialMap(self as *const Self)) }
@@ -1555,6 +1670,15 @@ impl GltfMaterialMap {
     pub fn as_rw_mesh_material_map_mut(&mut self) -> &mut crate::rw_mesh::MaterialMap {
         unsafe {
             &mut *(crate::ffi::RWGltf_GltfMaterialMap_as_RWMesh_MaterialMap_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfGltfMaterialMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWGltf_GltfMaterialMap_to_handle(obj.into_raw()))
         }
     }
 
@@ -1618,7 +1742,38 @@ impl GltfMaterialMap {
     }
 }
 
-// ── Skipped symbols for GltfMaterialMap (7 total) ──
+pub use crate::ffi::HandleRWGltfGltfMaterialMap;
+
+unsafe impl crate::CppDeletable for HandleRWGltfGltfMaterialMap {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWGltfGltfMaterialMap_destructor(ptr);
+    }
+}
+
+impl HandleRWGltfGltfMaterialMap {
+    /// Dereference this Handle to access the underlying RWGltf_GltfMaterialMap
+    pub fn get(&self) -> &crate::ffi::RWGltf_GltfMaterialMap {
+        unsafe { &*(crate::ffi::HandleRWGltfGltfMaterialMap_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWGltf_GltfMaterialMap
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_GltfMaterialMap {
+        unsafe { &mut *(crate::ffi::HandleRWGltfGltfMaterialMap_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWGltf_GltfMaterialMap> to Handle<RWMesh_MaterialMap>
+    pub fn to_handle_material_map(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshMaterialMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWGltfGltfMaterialMap_to_HandleRWMeshMaterialMap(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for GltfMaterialMap (6 total) ──
 // SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:38 - `RWGltf_GltfMaterialMap::AddGlbImages`
 //   method: Add material images into GLB stream.
 //   method: @param[in][out] theBinFile   output file stream
@@ -1652,11 +1807,6 @@ impl GltfMaterialMap {
 //   method: Add material textures.
 //   Reason: has unbindable types: param 'theWriter': raw pointer (RWGltf_GltfOStreamWriter*)
 //   // pub fn add_textures(&mut self, theWriter: /* RWGltf_GltfOStreamWriter* */, theStyle: &Style, theIsStarted: &mut bool);
-//
-// SKIPPED: **Source:** `RWGltf_GltfMaterialMap.hxx`:73 - `RWGltf_GltfMaterialMap::baseColorTexture`
-//   static_method: Return base color texture.
-//   Reason: param 'theMat' uses unknown type 'const Handle(XCAFDoc_VisMaterial)&'
-//   // pub fn base_color_texture(theMat: &HandleVisMaterial) -> &HandleTexture;
 //
 
 // ========================
@@ -1847,6 +1997,24 @@ impl TriangulationReader {
         unsafe { &*(crate::ffi::RWGltf_TriangulationReader_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `RWGltf_TriangulationReader.hxx`:36 - `RWGltf_TriangulationReader::LoadStreamData()`
+    /// Loads only primitive arrays saved as stream buffer
+    /// (it is primarily glTF data encoded in base64 saved to temporary buffer during glTF file
+    /// reading).
+    pub fn load_stream_data(
+        &self,
+        theSourceMesh: &crate::ffi::HandleRWMeshTriangulationSource,
+        theDestMesh: &crate::ffi::HandlePolyTriangulation,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_TriangulationReader_load_stream_data(
+                self as *const Self,
+                theSourceMesh,
+                theDestMesh,
+            )
+        }
+    }
+
     /// **Source:** `RWGltf_TriangulationReader.hxx`:28 - `RWGltf_TriangulationReader::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1877,6 +2045,17 @@ impl TriangulationReader {
         unsafe {
             &mut *(crate::ffi::RWGltf_TriangulationReader_as_RWMesh_TriangulationReader_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWGltfTriangulationReader> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWGltf_TriangulationReader_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -1991,13 +2170,54 @@ impl TriangulationReader {
             crate::ffi::RWGltf_TriangulationReader_inherited_PrintStatistic(self as *const Self)
         }
     }
+
+    /// Inherited: **Source:** `RWMesh_TriangulationReader.hxx`:145 - `RWMesh_TriangulationReader::Load()`
+    pub fn load(
+        &self,
+        theSourceMesh: &crate::ffi::HandleRWMeshTriangulationSource,
+        theDestMesh: &crate::ffi::HandlePolyTriangulation,
+        theFileSystem: &crate::ffi::HandleOSDFileSystem,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWGltf_TriangulationReader_inherited_Load(
+                self as *const Self,
+                theSourceMesh,
+                theDestMesh,
+                theFileSystem,
+            )
+        }
+    }
 }
 
-// ── Skipped symbols for TriangulationReader (1 total) ──
-// SKIPPED: **Source:** `RWGltf_TriangulationReader.hxx`:36 - `RWGltf_TriangulationReader::LoadStreamData`
-//   method: Loads only primitive arrays saved as stream buffer
-//   method: (it is primarily glTF data encoded in base64 saved to temporary buffer during glTF file
-//   method: reading).
-//   Reason: param 'theSourceMesh' uses unknown type 'const Handle(RWMesh_TriangulationSource)&'
-//   // pub fn load_stream_data(&self, theSourceMesh: &HandleTriangulationSource, theDestMesh: &HandleTriangulation) -> bool;
-//
+pub use crate::ffi::HandleRWGltfTriangulationReader;
+
+unsafe impl crate::CppDeletable for HandleRWGltfTriangulationReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWGltfTriangulationReader_destructor(ptr);
+    }
+}
+
+impl HandleRWGltfTriangulationReader {
+    /// Dereference this Handle to access the underlying RWGltf_TriangulationReader
+    pub fn get(&self) -> &crate::ffi::RWGltf_TriangulationReader {
+        unsafe { &*(crate::ffi::HandleRWGltfTriangulationReader_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWGltf_TriangulationReader
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWGltf_TriangulationReader {
+        unsafe { &mut *(crate::ffi::HandleRWGltfTriangulationReader_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWGltf_TriangulationReader> to Handle<RWMesh_TriangulationReader>
+    pub fn to_handle_triangulation_reader(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWMeshTriangulationReader> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWGltfTriangulationReader_to_HandleRWMeshTriangulationReader(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}

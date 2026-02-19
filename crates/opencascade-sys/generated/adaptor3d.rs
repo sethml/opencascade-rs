@@ -6,6 +6,15 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleBRepAdaptorCompCurve, HandleBRepAdaptorCurve, HandleBRepAdaptorSurface,
+    HandleBiTgteCurveOnEdge, HandleBiTgteCurveOnVertex, HandleChFiDSElSpine,
+    HandleGeomAdaptorCurve, HandleGeomAdaptorSurface, HandleGeomAdaptorSurfaceOfLinearExtrusion,
+    HandleGeomAdaptorSurfaceOfRevolution, HandleGeomFillSnglrFunc, HandleIntToolsTopolTool,
+    HandleProjLibProjectOnPlane,
+};
+
 // ========================
 // From Adaptor3d_Curve.hxx
 // ========================
@@ -324,6 +333,178 @@ impl HandleAdaptor3dCurve {
     /// Dereference this Handle to mutably access the underlying Adaptor3d_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_Curve {
         unsafe { &mut *(crate::ffi::HandleAdaptor3dCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<Adaptor3d_CurveOnSurface>
+    ///
+    /// Returns `None` if the handle does not point to a `Adaptor3d_CurveOnSurface` (or subclass).
+    pub fn downcast_to_curve_on_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurveOnSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleAdaptor3dCurveOnSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<Adaptor3d_IsoCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `Adaptor3d_IsoCurve` (or subclass).
+    pub fn downcast_to_iso_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor3dIsoCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleAdaptor3dIsoCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<BRepAdaptor_CompCurve>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepAdaptor_CompCurve` (or subclass).
+    pub fn downcast_to_comp_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCompCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleBRepAdaptorCompCurve(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<BRepAdaptor_Curve>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepAdaptor_Curve` (or subclass).
+    pub fn downcast_to_b_rep_adaptor_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleBRepAdaptorCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<BiTgte_CurveOnEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `BiTgte_CurveOnEdge` (or subclass).
+    pub fn downcast_to_curve_on_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleBiTgteCurveOnEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<BiTgte_CurveOnVertex>
+    ///
+    /// Returns `None` if the handle does not point to a `BiTgte_CurveOnVertex` (or subclass).
+    pub fn downcast_to_curve_on_vertex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnVertex>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleBiTgteCurveOnVertex(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<ChFiDS_ElSpine>
+    ///
+    /// Returns `None` if the handle does not point to a `ChFiDS_ElSpine` (or subclass).
+    pub fn downcast_to_el_spine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleChFiDSElSpine(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<GeomAdaptor_Curve>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomAdaptor_Curve` (or subclass).
+    pub fn downcast_to_geom_adaptor_curve(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorCurve>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleGeomAdaptorCurve(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<GeomFill_SnglrFunc>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomFill_SnglrFunc` (or subclass).
+    pub fn downcast_to_snglr_func(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillSnglrFunc>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleGeomFillSnglrFunc(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Curve> to Handle<ProjLib_ProjectOnPlane>
+    ///
+    /// Returns `None` if the handle does not point to a `ProjLib_ProjectOnPlane` (or subclass).
+    pub fn downcast_to_project_on_plane(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleProjLibProjectOnPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleProjLibProjectOnPlane(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -716,12 +897,54 @@ impl CurveOnSurface {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurveOnSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor3d_CurveOnSurface_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Adaptor3d_CurveOnSurface_inherited_OffsetCurve(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleAdaptor3dCurveOnSurface;
+
+unsafe impl crate::CppDeletable for HandleAdaptor3dCurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleAdaptor3dCurveOnSurface_destructor(ptr);
+    }
+}
+
+impl HandleAdaptor3dCurveOnSurface {
+    /// Dereference this Handle to access the underlying Adaptor3d_CurveOnSurface
+    pub fn get(&self) -> &crate::ffi::Adaptor3d_CurveOnSurface {
+        unsafe { &*(crate::ffi::HandleAdaptor3dCurveOnSurface_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor3d_CurveOnSurface
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_CurveOnSurface {
+        unsafe { &mut *(crate::ffi::HandleAdaptor3dCurveOnSurface_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Adaptor3d_CurveOnSurface> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleAdaptor3dCurveOnSurface_to_HandleAdaptor3dCurve(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -1712,10 +1935,48 @@ impl IsoCurve {
         unsafe { &mut *(crate::ffi::Adaptor3d_IsoCurve_as_Adaptor3d_Curve_mut(self as *mut Self)) }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dIsoCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Adaptor3d_IsoCurve_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Adaptor3d_IsoCurve_inherited_OffsetCurve(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleAdaptor3dIsoCurve;
+
+unsafe impl crate::CppDeletable for HandleAdaptor3dIsoCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleAdaptor3dIsoCurve_destructor(ptr);
+    }
+}
+
+impl HandleAdaptor3dIsoCurve {
+    /// Dereference this Handle to access the underlying Adaptor3d_IsoCurve
+    pub fn get(&self) -> &crate::ffi::Adaptor3d_IsoCurve {
+        unsafe { &*(crate::ffi::HandleAdaptor3dIsoCurve_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Adaptor3d_IsoCurve
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_IsoCurve {
+        unsafe { &mut *(crate::ffi::HandleAdaptor3dIsoCurve_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Adaptor3d_IsoCurve> to Handle<Adaptor3d_Curve>
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleAdaptor3dIsoCurve_to_HandleAdaptor3dCurve(
                 self as *const Self,
             ))
         }
@@ -2228,6 +2489,78 @@ impl HandleAdaptor3dSurface {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_Surface {
         unsafe { &mut *(crate::ffi::HandleAdaptor3dSurface_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Adaptor3d_Surface> to Handle<BRepAdaptor_Surface>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepAdaptor_Surface` (or subclass).
+    pub fn downcast_to_b_rep_adaptor_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dSurface_downcast_to_HandleBRepAdaptorSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Surface> to Handle<GeomAdaptor_Surface>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomAdaptor_Surface` (or subclass).
+    pub fn downcast_to_geom_adaptor_surface(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurface>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurface(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Surface> to Handle<GeomAdaptor_SurfaceOfLinearExtrusion>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomAdaptor_SurfaceOfLinearExtrusion` (or subclass).
+    pub fn downcast_to_surface_of_linear_extrusion(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurfaceOfLinearExtrusion(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Adaptor3d_Surface> to Handle<GeomAdaptor_SurfaceOfRevolution>
+    ///
+    /// Returns `None` if the handle does not point to a `GeomAdaptor_SurfaceOfRevolution` (or subclass).
+    pub fn downcast_to_surface_of_revolution(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfRevolution>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurfaceOfRevolution(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -2600,6 +2933,24 @@ impl HandleAdaptor3dTopolTool {
     /// Dereference this Handle to mutably access the underlying Adaptor3d_TopolTool
     pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_TopolTool {
         unsafe { &mut *(crate::ffi::HandleAdaptor3dTopolTool_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Adaptor3d_TopolTool> to Handle<IntTools_TopolTool>
+    ///
+    /// Returns `None` if the handle does not point to a `IntTools_TopolTool` (or subclass).
+    pub fn downcast_to_topol_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIntToolsTopolTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleAdaptor3dTopolTool_downcast_to_HandleIntToolsTopolTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 

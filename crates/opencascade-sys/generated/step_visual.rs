@@ -6,6 +6,12 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleStepGeomGeometricRepresentationItem, HandleStepReprRepresentation,
+    HandleStepReprRepresentationItem,
+};
+
 // ========================
 // From StepVisual_DraughtingModel.hxx
 // ========================
@@ -64,6 +70,17 @@ impl DraughtingModel {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualDraughtingModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_DraughtingModel_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe {
@@ -112,6 +129,39 @@ impl DraughtingModel {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::NbItems()`
     pub fn nb_items(&self) -> i32 {
         unsafe { crate::ffi::StepVisual_DraughtingModel_inherited_NbItems(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepVisualDraughtingModel;
+
+unsafe impl crate::CppDeletable for HandleStepVisualDraughtingModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepVisualDraughtingModel_destructor(ptr);
+    }
+}
+
+impl HandleStepVisualDraughtingModel {
+    /// Dereference this Handle to access the underlying StepVisual_DraughtingModel
+    pub fn get(&self) -> &crate::ffi::StepVisual_DraughtingModel {
+        unsafe { &*(crate::ffi::HandleStepVisualDraughtingModel_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepVisual_DraughtingModel
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepVisual_DraughtingModel {
+        unsafe { &mut *(crate::ffi::HandleStepVisualDraughtingModel_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepVisual_DraughtingModel> to Handle<StepRepr_Representation>
+    pub fn to_handle_representation(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepVisualDraughtingModel_to_HandleStepReprRepresentation(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -520,6 +570,20 @@ impl PresentationStyleSelect {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepVisual_PresentationStyleSelect_ctor()) }
     }
 
+    /// **Source:** `StepVisual_PresentationStyleSelect.hxx`:49 - `StepVisual_PresentationStyleSelect::CaseNum()`
+    /// Recognizes a PresentationStyleSelect Kind Entity that is :
+    /// 1 -> PointStyle
+    /// 2 -> CurveStyle
+    /// 3 -> SurfaceStyleUsage
+    /// 4 -> SymbolStyle
+    /// 5 -> FillAreaStyle
+    /// 6 -> TextStyle
+    /// 7 -> NullStyle
+    /// 0 else
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepVisual_PresentationStyleSelect_case_num(self as *const Self, ent) }
+    }
+
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
         unsafe {
@@ -538,10 +602,37 @@ impl PresentationStyleSelect {
         }
     }
 
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_Matches(
+                self as *const Self,
+                ent,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepVisual_PresentationStyleSelect_inherited_SetValue(
+                self as *mut Self,
+                ent,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         unsafe {
             crate::ffi::StepVisual_PresentationStyleSelect_inherited_Nullify(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe {
+            &*(crate::ffi::StepVisual_PresentationStyleSelect_inherited_Value(self as *const Self))
         }
     }
 
@@ -653,14 +744,7 @@ impl PresentationStyleSelect {
     }
 }
 
-// ── Skipped symbols for PresentationStyleSelect (5 total) ──
-// SKIPPED: **Source:** `StepVisual_PresentationStyleSelect.hxx`:49 - `StepVisual_PresentationStyleSelect::CaseNum`
-//   method: Recognizes a PresentationStyleSelect Kind Entity that is :
-//   method: 1 -> PointStyle
-//   method: 2 -> CurveStyle
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
+// ── Skipped symbols for PresentationStyleSelect (4 total) ──
 // SKIPPED: **Source:** `StepVisual_PresentationStyleSelect.hxx`:52 - `StepVisual_PresentationStyleSelect::PointStyle`
 //   method: returns Value as a PointStyle (Null if another type)
 //   Reason: return type 'Handle(StepVisual_PointStyle)' is unknown
@@ -777,6 +861,17 @@ impl TessellatedGeometricSet {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedGeometricSet> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_TessellatedGeometricSet_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:38 - `StepRepr_RepresentationItem::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe {
@@ -793,6 +888,55 @@ impl TessellatedGeometricSet {
             crate::OwnedPtr::from_raw(
                 crate::ffi::StepVisual_TessellatedGeometricSet_inherited_Name(self as *const Self),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepVisualTessellatedGeometricSet;
+
+unsafe impl crate::CppDeletable for HandleStepVisualTessellatedGeometricSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepVisualTessellatedGeometricSet_destructor(ptr);
+    }
+}
+
+impl HandleStepVisualTessellatedGeometricSet {
+    /// Dereference this Handle to access the underlying StepVisual_TessellatedGeometricSet
+    pub fn get(&self) -> &crate::ffi::StepVisual_TessellatedGeometricSet {
+        unsafe { &*(crate::ffi::HandleStepVisualTessellatedGeometricSet_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepVisual_TessellatedGeometricSet
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepVisual_TessellatedGeometricSet {
+        unsafe {
+            &mut *(crate::ffi::HandleStepVisualTessellatedGeometricSet_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<StepVisual_TessellatedGeometricSet> to Handle<StepVisual_TessellatedItem>
+    pub fn to_handle_tessellated_item(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepVisualTessellatedGeometricSet_to_HandleStepVisualTessellatedItem(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepVisual_TessellatedGeometricSet> to Handle<StepGeom_GeometricRepresentationItem>
+    pub fn to_handle_geometric_representation_item(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepGeomGeometricRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepVisualTessellatedGeometricSet_to_HandleStepGeomGeometricRepresentationItem(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepVisual_TessellatedGeometricSet> to Handle<StepRepr_RepresentationItem>
+    pub fn to_handle_representation_item(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepVisualTessellatedGeometricSet_to_HandleStepReprRepresentationItem(self as *const Self))
         }
     }
 }
@@ -886,6 +1030,17 @@ impl TessellatedItem {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_TessellatedItem_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `StepRepr_RepresentationItem.hxx`:36 - `StepRepr_RepresentationItem::Init()`
     pub fn init(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         unsafe { crate::ffi::StepVisual_TessellatedItem_inherited_Init(self as *mut Self, aName) }
@@ -904,6 +1059,64 @@ impl TessellatedItem {
             crate::OwnedPtr::from_raw(crate::ffi::StepVisual_TessellatedItem_inherited_Name(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleStepVisualTessellatedItem;
+
+unsafe impl crate::CppDeletable for HandleStepVisualTessellatedItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepVisualTessellatedItem_destructor(ptr);
+    }
+}
+
+impl HandleStepVisualTessellatedItem {
+    /// Dereference this Handle to access the underlying StepVisual_TessellatedItem
+    pub fn get(&self) -> &crate::ffi::StepVisual_TessellatedItem {
+        unsafe { &*(crate::ffi::HandleStepVisualTessellatedItem_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepVisual_TessellatedItem
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepVisual_TessellatedItem {
+        unsafe { &mut *(crate::ffi::HandleStepVisualTessellatedItem_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepVisual_TessellatedItem> to Handle<StepGeom_GeometricRepresentationItem>
+    pub fn to_handle_geometric_representation_item(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepGeomGeometricRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleStepVisualTessellatedItem_to_HandleStepGeomGeometricRepresentationItem(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<StepVisual_TessellatedItem> to Handle<StepRepr_RepresentationItem>
+    pub fn to_handle_representation_item(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepReprRepresentationItem> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepVisualTessellatedItem_to_HandleStepReprRepresentationItem(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<StepVisual_TessellatedItem> to Handle<StepVisual_TessellatedGeometricSet>
+    ///
+    /// Returns `None` if the handle does not point to a `StepVisual_TessellatedGeometricSet` (or subclass).
+    pub fn downcast_to_tessellated_geometric_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualTessellatedGeometricSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepVisualTessellatedItem_downcast_to_HandleStepVisualTessellatedGeometricSet(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

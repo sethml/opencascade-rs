@@ -724,6 +724,31 @@ impl TryFrom<i32> for StatusType {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleBOPAlgoAlertAcquiredSelfIntersection, HandleBOPAlgoAlertBOPNotAllowed,
+    HandleBOPAlgoAlertBOPNotSet, HandleBOPAlgoAlertBadPositioning, HandleBOPAlgoAlertBuilderFailed,
+    HandleBOPAlgoAlertBuildingPCurveFailed, HandleBOPAlgoAlertEmptyShape,
+    HandleBOPAlgoAlertFaceBuilderUnusedEdges, HandleBOPAlgoAlertIntersectionFailed,
+    HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
+    HandleBOPAlgoAlertMultiDimensionalArguments, HandleBOPAlgoAlertMultipleArguments,
+    HandleBOPAlgoAlertNoFacesToRemove, HandleBOPAlgoAlertNoFiller,
+    HandleBOPAlgoAlertNoPeriodicityRequired, HandleBOPAlgoAlertNotSplittableEdge,
+    HandleBOPAlgoAlertNullInputShapes, HandleBOPAlgoAlertPostTreatFF,
+    HandleBOPAlgoAlertRemovalOfIBForEdgesFailed, HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
+    HandleBOPAlgoAlertRemovalOfIBForMDimShapes, HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
+    HandleBOPAlgoAlertRemoveFeaturesFailed, HandleBOPAlgoAlertSelfInterferingShape,
+    HandleBOPAlgoAlertShapeIsNotPeriodic, HandleBOPAlgoAlertShellSplitterFailed,
+    HandleBOPAlgoAlertSolidBuilderFailed, HandleBOPAlgoAlertSolidBuilderUnusedFaces,
+    HandleBOPAlgoAlertTooFewArguments, HandleBOPAlgoAlertTooSmallEdge,
+    HandleBOPAlgoAlertUnableToGlue, HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
+    HandleBOPAlgoAlertUnableToMakeIdentical, HandleBOPAlgoAlertUnableToMakePeriodic,
+    HandleBOPAlgoAlertUnableToOrientTheShape, HandleBOPAlgoAlertUnableToRemoveTheFeature,
+    HandleBOPAlgoAlertUnableToRepeat, HandleBOPAlgoAlertUnableToTrim,
+    HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBOPAlgoAlertUserBreak,
+    HandleBRepMeshModelBuilder, HandleTObjCheckModel, HandleTopoDSAlertWithShape,
+};
+
 // ========================
 // From Message_Alert.hxx
 // ========================
@@ -829,6 +854,777 @@ impl HandleMessageAlert {
     /// Dereference this Handle to mutably access the underlying Message_Alert
     pub fn get_mut(&mut self) -> &mut crate::ffi::Message_Alert {
         unsafe { &mut *(crate::ffi::HandleMessageAlert_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertAcquiredSelfIntersection>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertAcquiredSelfIntersection` (or subclass).
+    pub fn downcast_to_alert_acquired_self_intersection(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertAcquiredSelfIntersection(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertBOPNotAllowed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBOPNotAllowed` (or subclass).
+    pub fn downcast_to_alert_bop_not_allowed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBOPNotAllowed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBOPNotAllowed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertBOPNotSet>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBOPNotSet` (or subclass).
+    pub fn downcast_to_alert_bop_not_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBOPNotSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBOPNotSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertBadPositioning>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBadPositioning` (or subclass).
+    pub fn downcast_to_alert_bad_positioning(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBadPositioning>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBadPositioning(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertBuilderFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBuilderFailed` (or subclass).
+    pub fn downcast_to_alert_builder_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBuilderFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBuilderFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertBuildingPCurveFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBuildingPCurveFailed` (or subclass).
+    pub fn downcast_to_alert_building_p_curve_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBuildingPCurveFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertEmptyShape>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertEmptyShape` (or subclass).
+    pub fn downcast_to_alert_empty_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertEmptyShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertEmptyShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertFaceBuilderUnusedEdges>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertFaceBuilderUnusedEdges` (or subclass).
+    pub fn downcast_to_alert_face_builder_unused_edges(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertFaceBuilderUnusedEdges(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertIntersectionFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertIntersectionFailed` (or subclass).
+    pub fn downcast_to_alert_intersection_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertIntersectionFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertIntersectionFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertIntersectionOfPairOfShapesFailed` (or subclass).
+    pub fn downcast_to_alert_intersection_of_pair_of_shapes_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertMultiDimensionalArguments>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertMultiDimensionalArguments` (or subclass).
+    pub fn downcast_to_alert_multi_dimensional_arguments(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertMultiDimensionalArguments>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertMultiDimensionalArguments(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertMultipleArguments>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertMultipleArguments` (or subclass).
+    pub fn downcast_to_alert_multiple_arguments(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertMultipleArguments>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertMultipleArguments(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertNoFacesToRemove>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNoFacesToRemove` (or subclass).
+    pub fn downcast_to_alert_no_faces_to_remove(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNoFacesToRemove>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNoFacesToRemove(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertNoFiller>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNoFiller` (or subclass).
+    pub fn downcast_to_alert_no_filler(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNoFiller>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNoFiller(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertNoPeriodicityRequired>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNoPeriodicityRequired` (or subclass).
+    pub fn downcast_to_alert_no_periodicity_required(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNoPeriodicityRequired>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNoPeriodicityRequired(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertNotSplittableEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNotSplittableEdge` (or subclass).
+    pub fn downcast_to_alert_not_splittable_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNotSplittableEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNotSplittableEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertNullInputShapes>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNullInputShapes` (or subclass).
+    pub fn downcast_to_alert_null_input_shapes(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNullInputShapes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNullInputShapes(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertPostTreatFF>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertPostTreatFF` (or subclass).
+    pub fn downcast_to_alert_post_treat_ff(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertPostTreatFF>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertPostTreatFF(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForEdgesFailed` (or subclass).
+    pub fn downcast_to_alert_removal_of_ib_for_edges_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForFacesFailed` (or subclass).
+    pub fn downcast_to_alert_removal_of_ib_for_faces_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemovalOfIBForFacesFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForMDimShapes` (or subclass).
+    pub fn downcast_to_alert_removal_of_ib_for_m_dim_shapes(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemovalOfIBForMDimShapes(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForSolidsFailed` (or subclass).
+    pub fn downcast_to_alert_removal_of_ib_for_solids_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertRemoveFeaturesFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemoveFeaturesFailed` (or subclass).
+    pub fn downcast_to_alert_remove_features_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemoveFeaturesFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemoveFeaturesFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertSelfInterferingShape>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSelfInterferingShape` (or subclass).
+    pub fn downcast_to_alert_self_interfering_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSelfInterferingShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertSelfInterferingShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertShapeIsNotPeriodic>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertShapeIsNotPeriodic` (or subclass).
+    pub fn downcast_to_alert_shape_is_not_periodic(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertShapeIsNotPeriodic(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertShellSplitterFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertShellSplitterFailed` (or subclass).
+    pub fn downcast_to_alert_shell_splitter_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertShellSplitterFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertShellSplitterFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertSolidBuilderFailed>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSolidBuilderFailed` (or subclass).
+    pub fn downcast_to_alert_solid_builder_failed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSolidBuilderFailed>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertSolidBuilderFailed(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertSolidBuilderUnusedFaces>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSolidBuilderUnusedFaces` (or subclass).
+    pub fn downcast_to_alert_solid_builder_unused_faces(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertSolidBuilderUnusedFaces(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertTooFewArguments>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertTooFewArguments` (or subclass).
+    pub fn downcast_to_alert_too_few_arguments(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertTooFewArguments>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertTooFewArguments(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertTooSmallEdge>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertTooSmallEdge` (or subclass).
+    pub fn downcast_to_alert_too_small_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertTooSmallEdge>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertTooSmallEdge(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnableToGlue>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToGlue` (or subclass).
+    pub fn downcast_to_alert_unable_to_glue(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToGlue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToGlue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace` (or subclass).
+    pub fn downcast_to_alert_unable_to_make_closed_edge_on_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnableToMakeIdentical>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakeIdentical` (or subclass).
+    pub fn downcast_to_alert_unable_to_make_identical(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToMakeIdentical(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnableToMakePeriodic>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakePeriodic` (or subclass).
+    pub fn downcast_to_alert_unable_to_make_periodic(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToMakePeriodic(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnableToOrientTheShape>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToOrientTheShape` (or subclass).
+    pub fn downcast_to_alert_unable_to_orient_the_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToOrientTheShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnableToRemoveTheFeature>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToRemoveTheFeature` (or subclass).
+    pub fn downcast_to_alert_unable_to_remove_the_feature(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToRemoveTheFeature(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnableToRepeat>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToRepeat` (or subclass).
+    pub fn downcast_to_alert_unable_to_repeat(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToRepeat>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToRepeat(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnableToTrim>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToTrim` (or subclass).
+    pub fn downcast_to_alert_unable_to_trim(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToTrim>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToTrim(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnknownShape>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnknownShape` (or subclass).
+    pub fn downcast_to_alert_unknown_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnknownShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnknownShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUnsupportedType>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnsupportedType` (or subclass).
+    pub fn downcast_to_alert_unsupported_type(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnsupportedType>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnsupportedType(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<BOPAlgo_AlertUserBreak>
+    ///
+    /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUserBreak` (or subclass).
+    pub fn downcast_to_alert_user_break(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUserBreak>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUserBreak(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<Message_AlertExtended>
+    ///
+    /// Returns `None` if the handle does not point to a `Message_AlertExtended` (or subclass).
+    pub fn downcast_to_alert_extended(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMessageAlertExtended>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleMessageAlertExtended(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Alert> to Handle<TopoDS_AlertWithShape>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_AlertWithShape` (or subclass).
+    pub fn downcast_to_alert_with_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlert_downcast_to_HandleTopoDSAlertWithShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -964,6 +1760,44 @@ impl AlertExtended {
     /// Upcast to Message_Alert (mutable)
     pub fn as_alert_mut(&mut self) -> &mut Alert {
         unsafe { &mut *(crate::ffi::Message_AlertExtended_as_Message_Alert_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessageAlertExtended> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_AlertExtended_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+pub use crate::ffi::HandleMessageAlertExtended;
+
+unsafe impl crate::CppDeletable for HandleMessageAlertExtended {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMessageAlertExtended_destructor(ptr);
+    }
+}
+
+impl HandleMessageAlertExtended {
+    /// Dereference this Handle to access the underlying Message_AlertExtended
+    pub fn get(&self) -> &crate::ffi::Message_AlertExtended {
+        unsafe { &*(crate::ffi::HandleMessageAlertExtended_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_AlertExtended
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Message_AlertExtended {
+        unsafe { &mut *(crate::ffi::HandleMessageAlertExtended_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Message_AlertExtended> to Handle<Message_Alert>
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleMessageAlertExtended_to_HandleMessageAlert(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -1391,6 +2225,40 @@ impl HandleMessageAlgorithm {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Message_Algorithm {
         unsafe { &mut *(crate::ffi::HandleMessageAlgorithm_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Message_Algorithm> to Handle<BRepMesh_ModelBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepMesh_ModelBuilder` (or subclass).
+    pub fn downcast_to_model_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlgorithm_downcast_to_HandleBRepMeshModelBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Algorithm> to Handle<TObj_CheckModel>
+    ///
+    /// Returns `None` if the handle does not point to a `TObj_CheckModel` (or subclass).
+    pub fn downcast_to_check_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjCheckModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlgorithm_downcast_to_HandleTObjCheckModel(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -1491,6 +2359,60 @@ impl HandleMessageAttribute {
     /// Dereference this Handle to mutably access the underlying Message_Attribute
     pub fn get_mut(&mut self) -> &mut crate::ffi::Message_Attribute {
         unsafe { &mut *(crate::ffi::HandleMessageAttribute_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Message_Attribute> to Handle<Message_AttributeMeter>
+    ///
+    /// Returns `None` if the handle does not point to a `Message_AttributeMeter` (or subclass).
+    pub fn downcast_to_attribute_meter(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMessageAttributeMeter>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAttribute_downcast_to_HandleMessageAttributeMeter(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Attribute> to Handle<Message_AttributeObject>
+    ///
+    /// Returns `None` if the handle does not point to a `Message_AttributeObject` (or subclass).
+    pub fn downcast_to_attribute_object(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMessageAttributeObject>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAttribute_downcast_to_HandleMessageAttributeObject(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Attribute> to Handle<Message_AttributeStream>
+    ///
+    /// Returns `None` if the handle does not point to a `Message_AttributeStream` (or subclass).
+    pub fn downcast_to_attribute_stream(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMessageAttributeStream>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAttribute_downcast_to_HandleMessageAttributeStream(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -1599,6 +2521,32 @@ impl AttributeMeter {
         unsafe { crate::ffi::Message_AttributeMeter_undefined_metric_value() }
     }
 
+    /// **Source:** `Message_AttributeMeter.hxx`:71 - `Message_AttributeMeter::StartAlert()`
+    /// Sets start values of default report metrics into the alert
+    /// @param theAlert an alert
+    pub fn start_alert(theAlert: &crate::ffi::HandleMessageAlertExtended) {
+        unsafe { crate::ffi::Message_AttributeMeter_start_alert(theAlert) }
+    }
+
+    /// **Source:** `Message_AttributeMeter.hxx`:78 - `Message_AttributeMeter::StopAlert()`
+    /// Sets stop values of default report metrics into the alert
+    /// @param theAlert an alert
+    pub fn stop_alert(theAlert: &crate::ffi::HandleMessageAlertExtended) {
+        unsafe { crate::ffi::Message_AttributeMeter_stop_alert(theAlert) }
+    }
+
+    /// **Source:** `Message_AttributeMeter.hxx`:87 - `Message_AttributeMeter::SetAlertMetrics()`
+    /// Sets current values of default report metrics into the alert.
+    /// Processed only alert with Message_AttributeMeter attribute
+    /// @param theAlert an alert
+    /// @param theStartValue flag, if true, the start value is collected otherwise stop
+    pub fn set_alert_metrics(
+        theAlert: &crate::ffi::HandleMessageAlertExtended,
+        theStartValue: bool,
+    ) {
+        unsafe { crate::ffi::Message_AttributeMeter_set_alert_metrics(theAlert, theStartValue) }
+    }
+
     /// **Source:** `Message_AttributeMeter.hxx`:94 - `Message_AttributeMeter::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1625,6 +2573,15 @@ impl AttributeMeter {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessageAttributeMeter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_AttributeMeter_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Message_AttributeMeter_inherited_GetName(self as *const Self)) }
@@ -1636,26 +2593,36 @@ impl AttributeMeter {
     }
 }
 
-// ── Skipped symbols for AttributeMeter (3 total) ──
-// SKIPPED: **Source:** `Message_AttributeMeter.hxx`:71 - `Message_AttributeMeter::StartAlert`
-//   static_method: Sets start values of default report metrics into the alert
-//   static_method: @param theAlert an alert
-//   Reason: param 'theAlert' uses unknown type 'const Handle(Message_AlertExtended)&'
-//   // pub fn start_alert(theAlert: &HandleAlertExtended);
-//
-// SKIPPED: **Source:** `Message_AttributeMeter.hxx`:78 - `Message_AttributeMeter::StopAlert`
-//   static_method: Sets stop values of default report metrics into the alert
-//   static_method: @param theAlert an alert
-//   Reason: param 'theAlert' uses unknown type 'const Handle(Message_AlertExtended)&'
-//   // pub fn stop_alert(theAlert: &HandleAlertExtended);
-//
-// SKIPPED: **Source:** `Message_AttributeMeter.hxx`:87 - `Message_AttributeMeter::SetAlertMetrics`
-//   static_method: Sets current values of default report metrics into the alert.
-//   static_method: Processed only alert with Message_AttributeMeter attribute
-//   static_method: @param theAlert an alert
-//   Reason: param 'theAlert' uses unknown type 'const Handle(Message_AlertExtended)&'
-//   // pub fn set_alert_metrics(theAlert: &HandleAlertExtended, theStartValue: bool);
-//
+pub use crate::ffi::HandleMessageAttributeMeter;
+
+unsafe impl crate::CppDeletable for HandleMessageAttributeMeter {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMessageAttributeMeter_destructor(ptr);
+    }
+}
+
+impl HandleMessageAttributeMeter {
+    /// Dereference this Handle to access the underlying Message_AttributeMeter
+    pub fn get(&self) -> &crate::ffi::Message_AttributeMeter {
+        unsafe { &*(crate::ffi::HandleMessageAttributeMeter_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_AttributeMeter
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Message_AttributeMeter {
+        unsafe { &mut *(crate::ffi::HandleMessageAttributeMeter_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Message_AttributeMeter> to Handle<Message_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleMessageAttributeMeter_to_HandleMessageAttribute(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Message_AttributeObject.hxx
@@ -1672,9 +2639,38 @@ unsafe impl crate::CppDeletable for AttributeObject {
 }
 
 impl AttributeObject {
+    /// **Source:** `Message_AttributeObject.hxx`:26 - `Message_AttributeObject::Message_AttributeObject()`
+    /// Constructor with string argument
+    pub fn new_handlestandardtransient_asciistring(
+        theObject: &crate::ffi::HandleStandardTransient,
+        theName: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Message_AttributeObject_ctor_handlestandardtransient_asciistring(
+                    theObject, theName,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `Message_AttributeObject.hxx`:23 - `Message_AttributeObject::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Message_AttributeObject_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_AttributeObject.hxx`:32 - `Message_AttributeObject::Object()`
+    /// Returns object
+    /// @return the object instance
+    pub fn object(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::Message_AttributeObject_object(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_AttributeObject.hxx`:36 - `Message_AttributeObject::SetObject()`
+    /// Sets the object
+    /// @param theObject an instance
+    pub fn set_object(&mut self, theObject: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::Message_AttributeObject_set_object(self as *mut Self, theObject) }
     }
 
     /// **Source:** `Message_AttributeObject.hxx`:23 - `Message_AttributeObject::get_type_name()`
@@ -1703,6 +2699,15 @@ impl AttributeObject {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessageAttributeObject> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_AttributeObject_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Message_AttributeObject_inherited_GetName(self as *const Self)) }
@@ -1714,24 +2719,36 @@ impl AttributeObject {
     }
 }
 
-// ── Skipped symbols for AttributeObject (3 total) ──
-// SKIPPED: **Source:** `Message_AttributeObject.hxx`:26 - `Message_AttributeObject::Message_AttributeObject`
-//   constructor: Constructor with string argument
-//   Reason: param 'theObject' uses unknown Handle type
-//   // pub fn new_handlestandardtransient_asciistring(theObject: &HandleTransient, theName: &AsciiString) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Message_AttributeObject.hxx`:32 - `Message_AttributeObject::Object`
-//   method: Returns object
-//   method: @return the object instance
-//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
-//   // pub fn object(&self) -> &HandleTransient;
-//
-// SKIPPED: **Source:** `Message_AttributeObject.hxx`:36 - `Message_AttributeObject::SetObject`
-//   method: Sets the object
-//   method: @param theObject an instance
-//   Reason: param 'theObject' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_object(&mut self, theObject: &HandleTransient);
-//
+pub use crate::ffi::HandleMessageAttributeObject;
+
+unsafe impl crate::CppDeletable for HandleMessageAttributeObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMessageAttributeObject_destructor(ptr);
+    }
+}
+
+impl HandleMessageAttributeObject {
+    /// Dereference this Handle to access the underlying Message_AttributeObject
+    pub fn get(&self) -> &crate::ffi::Message_AttributeObject {
+        unsafe { &*(crate::ffi::HandleMessageAttributeObject_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_AttributeObject
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Message_AttributeObject {
+        unsafe { &mut *(crate::ffi::HandleMessageAttributeObject_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Message_AttributeObject> to Handle<Message_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleMessageAttributeObject_to_HandleMessageAttribute(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From Message_AttributeStream.hxx
@@ -1779,6 +2796,15 @@ impl AttributeStream {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessageAttributeStream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_AttributeStream_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe { &*(crate::ffi::Message_AttributeStream_inherited_GetName(self as *const Self)) }
@@ -1787,6 +2813,37 @@ impl AttributeStream {
     /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         unsafe { crate::ffi::Message_AttributeStream_inherited_SetName(self as *mut Self, theName) }
+    }
+}
+
+pub use crate::ffi::HandleMessageAttributeStream;
+
+unsafe impl crate::CppDeletable for HandleMessageAttributeStream {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMessageAttributeStream_destructor(ptr);
+    }
+}
+
+impl HandleMessageAttributeStream {
+    /// Dereference this Handle to access the underlying Message_AttributeStream
+    pub fn get(&self) -> &crate::ffi::Message_AttributeStream {
+        unsafe { &*(crate::ffi::HandleMessageAttributeStream_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_AttributeStream
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Message_AttributeStream {
+        unsafe { &mut *(crate::ffi::HandleMessageAttributeStream_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Message_AttributeStream> to Handle<Message_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleMessageAttributeStream_to_HandleMessageAttribute(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -2191,6 +3248,26 @@ impl Level {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Message_Level_ctor_asciistring(theName)) }
     }
 
+    /// **Source:** `Message_Level.hxx`:50 - `Message_Level::RootAlert()`
+    /// Returns root alert of the level
+    /// @return alert instance or NULL
+    pub fn root_alert(&self) -> &crate::ffi::HandleMessageAlertExtended {
+        unsafe { &*(crate::ffi::Message_Level_root_alert(self as *const Self)) }
+    }
+
+    /// **Source:** `Message_Level.hxx`:54 - `Message_Level::SetRootAlert()`
+    /// Sets the root alert. Starts collects alert metrics if active.
+    /// @param theAlert an alert
+    pub fn set_root_alert(
+        &mut self,
+        theAlert: &crate::ffi::HandleMessageAlertExtended,
+        isRequiredToStart: bool,
+    ) {
+        unsafe {
+            crate::ffi::Message_Level_set_root_alert(self as *mut Self, theAlert, isRequiredToStart)
+        }
+    }
+
     /// **Source:** `Message_Level.hxx`:63 - `Message_Level::AddAlert()`
     /// Adds new alert on the level. Stops the last alert metric, appends the alert and starts the
     /// alert metrics collecting. Sets root alert beforehand this method using, if the root is NULL,
@@ -2208,20 +3285,6 @@ impl Level {
         }
     }
 }
-
-// ── Skipped symbols for Level (2 total) ──
-// SKIPPED: **Source:** `Message_Level.hxx`:50 - `Message_Level::RootAlert`
-//   method: Returns root alert of the level
-//   method: @return alert instance or NULL
-//   Reason: return type 'const Handle(Message_AlertExtended)&' is unknown
-//   // pub fn root_alert(&self) -> &HandleAlertExtended;
-//
-// SKIPPED: **Source:** `Message_Level.hxx`:54 - `Message_Level::SetRootAlert`
-//   method: Sets the root alert. Starts collects alert metrics if active.
-//   method: @param theAlert an alert
-//   Reason: param 'theAlert' uses unknown type 'const Handle(Message_AlertExtended)&'
-//   // pub fn set_root_alert(&mut self, theAlert: &HandleAlertExtended, isRequiredToStart: bool);
-//
 
 // ========================
 // From Message_Messenger.hxx
@@ -2380,6 +3443,22 @@ impl Messenger {
         }
     }
 
+    /// **Source:** `Message_Messenger.hxx`:197 - `Message_Messenger::Send()`
+    /// See above
+    pub fn send_handlestandardtransient_gravity(
+        &self,
+        theObject: &crate::ffi::HandleStandardTransient,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_Messenger_send_handlestandardtransient_gravity(
+                self as *const Self,
+                theObject,
+                theGravity.into(),
+            )
+        }
+    }
+
     /// **Source:** `Message_Messenger.hxx`:201 - `Message_Messenger::SendFail()`
     /// Create string buffer for sending Fail message
     pub fn send_fail(&mut self) -> crate::OwnedPtr<Messenger_StreamBuffer> {
@@ -2504,16 +3583,11 @@ impl HandleMessageMessenger {
     }
 }
 
-// ── Skipped symbols for Messenger (2 total) ──
+// ── Skipped symbols for Messenger (1 total) ──
 // SKIPPED: **Source:** `Message_Messenger.hxx`:182 - `Message_Messenger::Send`
 //   method: See above
 //   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
 //   // pub fn send(&self, theStream: &SStream, theGravity: Gravity);
-//
-// SKIPPED: **Source:** `Message_Messenger.hxx`:197 - `Message_Messenger::Send`
-//   method: See above
-//   Reason: param 'theObject' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn send(&self, theObject: &HandleTransient, theGravity: Gravity);
 //
 
 /// **Source:** `Message_Messenger.hxx`:63 - `Message_Messenger_StreamBuffer`
@@ -2943,6 +4017,24 @@ impl Printer {
         }
     }
 
+    /// **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject()`
+    /// Send a string message with specified trace level.
+    /// The object is converted to string in format: <object kind> : <object pointer>.
+    /// Default implementation calls first method Send().
+    pub fn send_object(
+        &self,
+        theObject: &crate::ffi::HandleStandardTransient,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_Printer_send_object(
+                self as *const Self,
+                theObject,
+                theGravity.into(),
+            )
+        }
+    }
+
     /// **Source:** `Message_Printer.hxx`:38 - `Message_Printer::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2976,22 +4068,69 @@ impl HandleMessagePrinter {
     pub fn get_mut(&mut self) -> &mut crate::ffi::Message_Printer {
         unsafe { &mut *(crate::ffi::HandleMessagePrinter_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<Message_Printer> to Handle<Message_PrinterOStream>
+    ///
+    /// Returns `None` if the handle does not point to a `Message_PrinterOStream` (or subclass).
+    pub fn downcast_to_printer_o_stream(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMessagePrinterOStream>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessagePrinter_downcast_to_HandleMessagePrinterOStream(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Printer> to Handle<Message_PrinterSystemLog>
+    ///
+    /// Returns `None` if the handle does not point to a `Message_PrinterSystemLog` (or subclass).
+    pub fn downcast_to_printer_system_log(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMessagePrinterSystemLog>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessagePrinter_downcast_to_HandleMessagePrinterSystemLog(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Printer> to Handle<Message_PrinterToReport>
+    ///
+    /// Returns `None` if the handle does not point to a `Message_PrinterToReport` (or subclass).
+    pub fn downcast_to_printer_to_report(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMessagePrinterToReport>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessagePrinter_downcast_to_HandleMessagePrinterToReport(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
-// ── Skipped symbols for Printer (2 total) ──
+// ── Skipped symbols for Printer (1 total) ──
 // SKIPPED: **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream`
 //   method: Send a string message with specified trace level.
 //   method: Stream is converted to string value.
 //   method: Default implementation calls first method Send().
 //   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
 //   // pub fn send_string_stream(&self, theStream: &SStream, theGravity: Gravity);
-//
-// SKIPPED: **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject`
-//   method: Send a string message with specified trace level.
-//   method: The object is converted to string in format: <object kind> : <object pointer>.
-//   method: Default implementation calls first method Send().
-//   Reason: param 'theObject' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn send_object(&self, theObject: &HandleTransient, theGravity: Gravity);
 //
 
 // ========================
@@ -3095,6 +4234,15 @@ impl PrinterOStream {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessagePrinterOStream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_PrinterOStream_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
     pub fn get_trace_level(&self) -> crate::message::Gravity {
         unsafe {
@@ -3126,6 +4274,52 @@ impl PrinterOStream {
                 self as *const Self,
                 theString,
                 theGravity.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject()`
+    pub fn send_object(
+        &self,
+        theObject: &crate::ffi::HandleStandardTransient,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_PrinterOStream_inherited_SendObject(
+                self as *const Self,
+                theObject,
+                theGravity.into(),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleMessagePrinterOStream;
+
+unsafe impl crate::CppDeletable for HandleMessagePrinterOStream {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMessagePrinterOStream_destructor(ptr);
+    }
+}
+
+impl HandleMessagePrinterOStream {
+    /// Dereference this Handle to access the underlying Message_PrinterOStream
+    pub fn get(&self) -> &crate::ffi::Message_PrinterOStream {
+        unsafe { &*(crate::ffi::HandleMessagePrinterOStream_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_PrinterOStream
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Message_PrinterOStream {
+        unsafe { &mut *(crate::ffi::HandleMessagePrinterOStream_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Message_PrinterOStream> to Handle<Message_Printer>
+    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi::HandleMessagePrinter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleMessagePrinterOStream_to_HandleMessagePrinter(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3210,6 +4404,17 @@ impl PrinterSystemLog {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessagePrinterSystemLog> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_PrinterSystemLog_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
     pub fn get_trace_level(&self) -> crate::message::Gravity {
         unsafe {
@@ -3241,6 +4446,52 @@ impl PrinterSystemLog {
                 self as *const Self,
                 theString,
                 theGravity.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject()`
+    pub fn send_object(
+        &self,
+        theObject: &crate::ffi::HandleStandardTransient,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_PrinterSystemLog_inherited_SendObject(
+                self as *const Self,
+                theObject,
+                theGravity.into(),
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleMessagePrinterSystemLog;
+
+unsafe impl crate::CppDeletable for HandleMessagePrinterSystemLog {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMessagePrinterSystemLog_destructor(ptr);
+    }
+}
+
+impl HandleMessagePrinterSystemLog {
+    /// Dereference this Handle to access the underlying Message_PrinterSystemLog
+    pub fn get(&self) -> &crate::ffi::Message_PrinterSystemLog {
+        unsafe { &*(crate::ffi::HandleMessagePrinterSystemLog_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_PrinterSystemLog
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Message_PrinterSystemLog {
+        unsafe { &mut *(crate::ffi::HandleMessagePrinterSystemLog_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Message_PrinterSystemLog> to Handle<Message_Printer>
+    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi::HandleMessagePrinter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleMessagePrinterSystemLog_to_HandleMessagePrinter(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -3287,6 +4538,25 @@ impl PrinterToReport {
         unsafe { crate::ffi::Message_PrinterToReport_set_report(self as *mut Self, theReport) }
     }
 
+    /// **Source:** `Message_PrinterToReport.hxx`:53 - `Message_PrinterToReport::SendObject()`
+    /// Send a string message with specified trace level.
+    /// The object is converted to string in format: <object kind> : <object pointer>.
+    /// The parameter theToPutEol specified whether end-of-line should be added to the end of the
+    /// message. Default implementation calls first method Send().
+    pub fn send_object(
+        &self,
+        theObject: &crate::ffi::HandleStandardTransient,
+        theGravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::Message_PrinterToReport_send_object(
+                self as *const Self,
+                theObject,
+                theGravity.into(),
+            )
+        }
+    }
+
     /// **Source:** `Message_PrinterToReport.hxx`:27 - `Message_PrinterToReport::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3310,6 +4580,15 @@ impl PrinterToReport {
     pub fn as_printer_mut(&mut self) -> &mut Printer {
         unsafe {
             &mut *(crate::ffi::Message_PrinterToReport_as_Message_Printer_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessagePrinterToReport> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Message_PrinterToReport_to_handle(obj.into_raw()))
         }
     }
 
@@ -3349,20 +4628,44 @@ impl PrinterToReport {
     }
 }
 
-// ── Skipped symbols for PrinterToReport (2 total) ──
+pub use crate::ffi::HandleMessagePrinterToReport;
+
+unsafe impl crate::CppDeletable for HandleMessagePrinterToReport {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleMessagePrinterToReport_destructor(ptr);
+    }
+}
+
+impl HandleMessagePrinterToReport {
+    /// Dereference this Handle to access the underlying Message_PrinterToReport
+    pub fn get(&self) -> &crate::ffi::Message_PrinterToReport {
+        unsafe { &*(crate::ffi::HandleMessagePrinterToReport_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying Message_PrinterToReport
+    pub fn get_mut(&mut self) -> &mut crate::ffi::Message_PrinterToReport {
+        unsafe { &mut *(crate::ffi::HandleMessagePrinterToReport_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<Message_PrinterToReport> to Handle<Message_Printer>
+    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi::HandleMessagePrinter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleMessagePrinterToReport_to_HandleMessagePrinter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for PrinterToReport (1 total) ──
 // SKIPPED: **Source:** `Message_PrinterToReport.hxx`:45 - `Message_PrinterToReport::SendStringStream`
 //   method: Send a string message with specified trace level.
 //   method: Stream is converted to string value.
 //   method: Default implementation calls first method Send().
 //   Reason: param 'theStream' uses unknown type 'const Standard_SStream&'
 //   // pub fn send_string_stream(&self, theStream: &SStream, theGravity: Gravity);
-//
-// SKIPPED: **Source:** `Message_PrinterToReport.hxx`:53 - `Message_PrinterToReport::SendObject`
-//   method: Send a string message with specified trace level.
-//   method: The object is converted to string in format: <object kind> : <object pointer>.
-//   method: The parameter theToPutEol specified whether end-of-line should be added to the end of the
-//   Reason: param 'theObject' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn send_object(&self, theObject: &HandleTransient, theGravity: Gravity);
 //
 
 // ========================

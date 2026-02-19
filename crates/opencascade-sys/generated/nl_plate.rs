@@ -178,6 +178,132 @@ impl HandleNLPlateHGPPConstraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HGPPConstraint {
         unsafe { &mut *(crate::ffi::HandleNLPlateHGPPConstraint_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<NLPlate_HGPPConstraint> to Handle<NLPlate_HPG0Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0Constraint` (or subclass).
+    pub fn downcast_to_hpg0_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HGPPConstraint> to Handle<NLPlate_HPG0G1Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G1Constraint` (or subclass).
+    pub fn downcast_to_hpg0g1_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G1Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G1Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HGPPConstraint> to Handle<NLPlate_HPG0G2Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G2Constraint` (or subclass).
+    pub fn downcast_to_hpg0g2_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G2Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G2Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HGPPConstraint> to Handle<NLPlate_HPG0G3Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G3Constraint` (or subclass).
+    pub fn downcast_to_hpg0g3_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G3Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G3Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HGPPConstraint> to Handle<NLPlate_HPG1Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG1Constraint` (or subclass).
+    pub fn downcast_to_hpg1_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG1Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG1Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HGPPConstraint> to Handle<NLPlate_HPG2Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG2Constraint` (or subclass).
+    pub fn downcast_to_hpg2_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG2Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG2Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HGPPConstraint> to Handle<NLPlate_HPG3Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG3Constraint` (or subclass).
+    pub fn downcast_to_hpg3_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG3Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG3Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for HGPPConstraint (1 total) ──
@@ -281,6 +407,15 @@ impl HPG0Constraint {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0Constraint_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:48 - `NLPlate_HGPPConstraint::SetActiveOrder()`
     pub fn set_active_order(&mut self, ActiveOrder: i32) {
         unsafe {
@@ -374,6 +509,93 @@ impl HPG0Constraint {
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG0Constraint_inherited_G3Criterion(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleNLPlateHPG0Constraint;
+
+unsafe impl crate::CppDeletable for HandleNLPlateHPG0Constraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNLPlateHPG0Constraint_destructor(ptr);
+    }
+}
+
+impl HandleNLPlateHPG0Constraint {
+    /// Dereference this Handle to access the underlying NLPlate_HPG0Constraint
+    pub fn get(&self) -> &crate::ffi::NLPlate_HPG0Constraint {
+        unsafe { &*(crate::ffi::HandleNLPlateHPG0Constraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NLPlate_HPG0Constraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG0Constraint {
+        unsafe { &mut *(crate::ffi::HandleNLPlateHPG0Constraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0Constraint> to Handle<NLPlate_HGPPConstraint>
+    pub fn to_handle_hgpp_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG0Constraint> to Handle<NLPlate_HPG0G1Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G1Constraint` (or subclass).
+    pub fn downcast_to_hpg0g1_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G1Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G1Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG0Constraint> to Handle<NLPlate_HPG0G2Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G2Constraint` (or subclass).
+    pub fn downcast_to_hpg0g2_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G2Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G2Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG0Constraint> to Handle<NLPlate_HPG0G3Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G3Constraint` (or subclass).
+    pub fn downcast_to_hpg0g3_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G3Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -473,6 +695,17 @@ impl HPG0G1Constraint {
         unsafe {
             &mut *(crate::ffi::NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G1Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G1Constraint_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -606,6 +839,88 @@ impl HPG0G1Constraint {
     }
 }
 
+pub use crate::ffi::HandleNLPlateHPG0G1Constraint;
+
+unsafe impl crate::CppDeletable for HandleNLPlateHPG0G1Constraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNLPlateHPG0G1Constraint_destructor(ptr);
+    }
+}
+
+impl HandleNLPlateHPG0G1Constraint {
+    /// Dereference this Handle to access the underlying NLPlate_HPG0G1Constraint
+    pub fn get(&self) -> &crate::ffi::NLPlate_HPG0G1Constraint {
+        unsafe { &*(crate::ffi::HandleNLPlateHPG0G1Constraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NLPlate_HPG0G1Constraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG0G1Constraint {
+        unsafe { &mut *(crate::ffi::HandleNLPlateHPG0G1Constraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G1Constraint> to Handle<NLPlate_HPG0Constraint>
+    pub fn to_handle_hpg0_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHPG0Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G1Constraint> to Handle<NLPlate_HGPPConstraint>
+    pub fn to_handle_hgpp_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG0G1Constraint> to Handle<NLPlate_HPG0G2Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G2Constraint` (or subclass).
+    pub fn downcast_to_hpg0g2_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G2Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG0G1Constraint_downcast_to_HandleNLPlateHPG0G2Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG0G1Constraint> to Handle<NLPlate_HPG0G3Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G3Constraint` (or subclass).
+    pub fn downcast_to_hpg0g3_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G3Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG0G1Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From NLPlate_HPG0G2Constraint.hxx
 // ========================
@@ -711,6 +1026,17 @@ impl HPG0G2Constraint {
         unsafe {
             &mut *(crate::ffi::NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G2Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G2Constraint_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -856,6 +1182,83 @@ impl HPG0G2Constraint {
     }
 }
 
+pub use crate::ffi::HandleNLPlateHPG0G2Constraint;
+
+unsafe impl crate::CppDeletable for HandleNLPlateHPG0G2Constraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNLPlateHPG0G2Constraint_destructor(ptr);
+    }
+}
+
+impl HandleNLPlateHPG0G2Constraint {
+    /// Dereference this Handle to access the underlying NLPlate_HPG0G2Constraint
+    pub fn get(&self) -> &crate::ffi::NLPlate_HPG0G2Constraint {
+        unsafe { &*(crate::ffi::HandleNLPlateHPG0G2Constraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NLPlate_HPG0G2Constraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG0G2Constraint {
+        unsafe { &mut *(crate::ffi::HandleNLPlateHPG0G2Constraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<NLPlate_HPG0G1Constraint>
+    pub fn to_handle_hpg0g1_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G1Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHPG0G1Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<NLPlate_HPG0Constraint>
+    pub fn to_handle_hpg0_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHPG0Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G2Constraint> to Handle<NLPlate_HGPPConstraint>
+    pub fn to_handle_hgpp_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG0G2Constraint> to Handle<NLPlate_HPG0G3Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG0G3Constraint` (or subclass).
+    pub fn downcast_to_hpg0g3_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G3Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG0G2Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From NLPlate_HPG0G3Constraint.hxx
 // ========================
@@ -980,6 +1383,17 @@ impl HPG0G3Constraint {
         unsafe {
             &mut *(crate::ffi::NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G3Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG0G3Constraint_to_handle(
+                obj.into_raw(),
             ))
         }
     }
@@ -1125,6 +1539,78 @@ impl HPG0G3Constraint {
     }
 }
 
+pub use crate::ffi::HandleNLPlateHPG0G3Constraint;
+
+unsafe impl crate::CppDeletable for HandleNLPlateHPG0G3Constraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNLPlateHPG0G3Constraint_destructor(ptr);
+    }
+}
+
+impl HandleNLPlateHPG0G3Constraint {
+    /// Dereference this Handle to access the underlying NLPlate_HPG0G3Constraint
+    pub fn get(&self) -> &crate::ffi::NLPlate_HPG0G3Constraint {
+        unsafe { &*(crate::ffi::HandleNLPlateHPG0G3Constraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NLPlate_HPG0G3Constraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG0G3Constraint {
+        unsafe { &mut *(crate::ffi::HandleNLPlateHPG0G3Constraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HPG0G2Constraint>
+    pub fn to_handle_hpg0g2_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G2Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0G2Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HPG0G1Constraint>
+    pub fn to_handle_hpg0g1_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0G1Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0G1Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HPG0Constraint>
+    pub fn to_handle_hpg0_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG0Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG0G3Constraint> to Handle<NLPlate_HGPPConstraint>
+    pub fn to_handle_hgpp_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From NLPlate_HPG1Constraint.hxx
 // ========================
@@ -1215,6 +1701,15 @@ impl HPG1Constraint {
             &mut *(crate::ffi::NLPlate_HPG1Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG1Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG1Constraint_to_handle(obj.into_raw()))
         }
     }
 
@@ -1314,6 +1809,75 @@ impl HPG1Constraint {
     }
 }
 
+pub use crate::ffi::HandleNLPlateHPG1Constraint;
+
+unsafe impl crate::CppDeletable for HandleNLPlateHPG1Constraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNLPlateHPG1Constraint_destructor(ptr);
+    }
+}
+
+impl HandleNLPlateHPG1Constraint {
+    /// Dereference this Handle to access the underlying NLPlate_HPG1Constraint
+    pub fn get(&self) -> &crate::ffi::NLPlate_HPG1Constraint {
+        unsafe { &*(crate::ffi::HandleNLPlateHPG1Constraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NLPlate_HPG1Constraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG1Constraint {
+        unsafe { &mut *(crate::ffi::HandleNLPlateHPG1Constraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NLPlate_HPG1Constraint> to Handle<NLPlate_HGPPConstraint>
+    pub fn to_handle_hgpp_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG1Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG1Constraint> to Handle<NLPlate_HPG2Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG2Constraint` (or subclass).
+    pub fn downcast_to_hpg2_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG2Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG1Constraint_downcast_to_HandleNLPlateHPG2Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG1Constraint> to Handle<NLPlate_HPG3Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG3Constraint` (or subclass).
+    pub fn downcast_to_hpg3_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG3Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG1Constraint_downcast_to_HandleNLPlateHPG3Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From NLPlate_HPG2Constraint.hxx
 // ========================
@@ -1401,6 +1965,15 @@ impl HPG2Constraint {
             &mut *(crate::ffi::NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG2Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG2Constraint_to_handle(obj.into_raw()))
         }
     }
 
@@ -1534,6 +2107,70 @@ impl HPG2Constraint {
     }
 }
 
+pub use crate::ffi::HandleNLPlateHPG2Constraint;
+
+unsafe impl crate::CppDeletable for HandleNLPlateHPG2Constraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNLPlateHPG2Constraint_destructor(ptr);
+    }
+}
+
+impl HandleNLPlateHPG2Constraint {
+    /// Dereference this Handle to access the underlying NLPlate_HPG2Constraint
+    pub fn get(&self) -> &crate::ffi::NLPlate_HPG2Constraint {
+        unsafe { &*(crate::ffi::HandleNLPlateHPG2Constraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NLPlate_HPG2Constraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG2Constraint {
+        unsafe { &mut *(crate::ffi::HandleNLPlateHPG2Constraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NLPlate_HPG2Constraint> to Handle<NLPlate_HPG1Constraint>
+    pub fn to_handle_hpg1_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG1Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG2Constraint_to_HandleNLPlateHPG1Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG2Constraint> to Handle<NLPlate_HGPPConstraint>
+    pub fn to_handle_hgpp_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG2Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<NLPlate_HPG2Constraint> to Handle<NLPlate_HPG3Constraint>
+    ///
+    /// Returns `None` if the handle does not point to a `NLPlate_HPG3Constraint` (or subclass).
+    pub fn downcast_to_hpg3_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNLPlateHPG3Constraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleNLPlateHPG2Constraint_downcast_to_HandleNLPlateHPG3Constraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
 // ========================
 // From NLPlate_HPG3Constraint.hxx
 // ========================
@@ -1638,6 +2275,15 @@ impl HPG3Constraint {
             &mut *(crate::ffi::NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint_mut(
                 self as *mut Self,
             ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG3Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::NLPlate_HPG3Constraint_to_handle(obj.into_raw()))
         }
     }
 
@@ -1768,6 +2414,65 @@ impl HPG3Constraint {
     /// Inherited: **Source:** `NLPlate_HGPPConstraint.hxx`:88 - `NLPlate_HGPPConstraint::G3Criterion()`
     pub fn g3_criterion(&self) -> f64 {
         unsafe { crate::ffi::NLPlate_HPG3Constraint_inherited_G3Criterion(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleNLPlateHPG3Constraint;
+
+unsafe impl crate::CppDeletable for HandleNLPlateHPG3Constraint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleNLPlateHPG3Constraint_destructor(ptr);
+    }
+}
+
+impl HandleNLPlateHPG3Constraint {
+    /// Dereference this Handle to access the underlying NLPlate_HPG3Constraint
+    pub fn get(&self) -> &crate::ffi::NLPlate_HPG3Constraint {
+        unsafe { &*(crate::ffi::HandleNLPlateHPG3Constraint_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying NLPlate_HPG3Constraint
+    pub fn get_mut(&mut self) -> &mut crate::ffi::NLPlate_HPG3Constraint {
+        unsafe { &mut *(crate::ffi::HandleNLPlateHPG3Constraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<NLPlate_HPG2Constraint>
+    pub fn to_handle_hpg2_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG2Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG3Constraint_to_HandleNLPlateHPG2Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<NLPlate_HPG1Constraint>
+    pub fn to_handle_hpg1_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHPG1Constraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG3Constraint_to_HandleNLPlateHPG1Constraint(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<NLPlate_HPG3Constraint> to Handle<NLPlate_HGPPConstraint>
+    pub fn to_handle_hgpp_constraint(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleNLPlateHGPPConstraint> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleNLPlateHPG3Constraint_to_HandleNLPlateHGPPConstraint(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 

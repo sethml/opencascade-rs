@@ -58,6 +58,9 @@ impl TryFrom<i32> for SubMeshReason {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleRWMeshCafReader, HandleRWMeshMaterialMap};
+
 // ========================
 // From RWObj_CafReader.hxx
 // ========================
@@ -123,6 +126,23 @@ impl CafReader {
     /// Upcast to RWMesh_CafReader (mutable)
     pub fn as_rw_mesh_caf_reader_mut(&mut self) -> &mut crate::rw_mesh::CafReader {
         unsafe { &mut *(crate::ffi::RWObj_CafReader_as_RWMesh_CafReader_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWObjCafReader> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::RWObj_CafReader_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    pub fn document(&self) -> &crate::ffi::HandleTDocStdDocument {
+        unsafe { &*(crate::ffi::RWObj_CafReader_inherited_Document(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+        unsafe { crate::ffi::RWObj_CafReader_inherited_SetDocument(self as *mut Self, theDoc) }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
@@ -301,6 +321,35 @@ impl CafReader {
     }
 }
 
+pub use crate::ffi::HandleRWObjCafReader;
+
+unsafe impl crate::CppDeletable for HandleRWObjCafReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWObjCafReader_destructor(ptr);
+    }
+}
+
+impl HandleRWObjCafReader {
+    /// Dereference this Handle to access the underlying RWObj_CafReader
+    pub fn get(&self) -> &crate::ffi::RWObj_CafReader {
+        unsafe { &*(crate::ffi::HandleRWObjCafReader_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWObj_CafReader
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_CafReader {
+        unsafe { &mut *(crate::ffi::HandleRWObjCafReader_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWObj_CafReader> to Handle<RWMesh_CafReader>
+    pub fn to_handle_caf_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshCafReader> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleRWObjCafReader_to_HandleRWMeshCafReader(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
 // ========================
 // From RWObj_CafWriter.hxx
 // ========================
@@ -372,6 +421,29 @@ impl CafWriter {
         unsafe { crate::ffi::RWObj_CafWriter_set_default_style(self as *mut Self, theStyle) }
     }
 
+    /// **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform()`
+    /// Write OBJ file and associated MTL material file.
+    /// Triangulation data should be precomputed within shapes!
+    /// @param[in] theDocument     input document
+    /// @param[in] theFileInfo     map with file metadata to put into glTF header section
+    /// @param[in] theProgress     optional progress indicator
+    /// @return FALSE on file writing failure
+    pub fn perform(
+        &mut self,
+        theDocument: &crate::ffi::HandleTDocStdDocument,
+        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        unsafe {
+            crate::ffi::RWObj_CafWriter_perform(
+                self as *mut Self,
+                theDocument,
+                theFileInfo,
+                theProgress,
+            )
+        }
+    }
+
     /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -414,20 +486,13 @@ impl HandleRWObjCafWriter {
     }
 }
 
-// ── Skipped symbols for CafWriter (2 total) ──
+// ── Skipped symbols for CafWriter (1 total) ──
 // SKIPPED: **Source:** `RWObj_CafWriter.hxx`:76 - `RWObj_CafWriter::Perform`
 //   method: Write OBJ file and associated MTL material file.
 //   method: Triangulation data should be precomputed within shapes!
 //   method: @param[in] theDocument     input document
 //   Reason: has unbindable types: param 'theLabelFilter': raw pointer (const TColStd_MapOfAsciiString*)
 //   // pub fn perform(&mut self, theDocument: &HandleDocument, theRootLabels: &LabelSequence, theLabelFilter: /* const TColStd_MapOfAsciiString* */, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform`
-//   method: Write OBJ file and associated MTL material file.
-//   method: Triangulation data should be precomputed within shapes!
-//   method: @param[in] theDocument     input document
-//   Reason: param 'theDocument' uses unknown type 'const Handle(TDocStd_Document)&'
-//   // pub fn perform(&mut self, theDocument: &HandleDocument, theFileInfo: &IndexedDataMapOfStringString, theProgress: &ProgressRange) -> bool;
 //
 
 // ========================
@@ -537,6 +602,15 @@ impl ObjMaterialMap {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWObjObjMaterialMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWObj_ObjMaterialMap_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
     pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe { &*(crate::ffi::RWObj_ObjMaterialMap_inherited_DefaultStyle(self as *const Self)) }
@@ -587,6 +661,37 @@ impl ObjMaterialMap {
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:73 - `RWMesh_MaterialMap::IsFailed()`
     pub fn is_failed(&self) -> bool {
         unsafe { crate::ffi::RWObj_ObjMaterialMap_inherited_IsFailed(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleRWObjObjMaterialMap;
+
+unsafe impl crate::CppDeletable for HandleRWObjObjMaterialMap {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWObjObjMaterialMap_destructor(ptr);
+    }
+}
+
+impl HandleRWObjObjMaterialMap {
+    /// Dereference this Handle to access the underlying RWObj_ObjMaterialMap
+    pub fn get(&self) -> &crate::ffi::RWObj_ObjMaterialMap {
+        unsafe { &*(crate::ffi::HandleRWObjObjMaterialMap_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWObj_ObjMaterialMap
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_ObjMaterialMap {
+        unsafe { &mut *(crate::ffi::HandleRWObjObjMaterialMap_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWObj_ObjMaterialMap> to Handle<RWMesh_MaterialMap>
+    pub fn to_handle_material_map(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshMaterialMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWObjObjMaterialMap_to_HandleRWMeshMaterialMap(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 
@@ -876,6 +981,24 @@ impl HandleRWObjReader {
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_Reader {
         unsafe { &mut *(crate::ffi::HandleRWObjReader_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<RWObj_Reader> to Handle<RWObj_TriangulationReader>
+    ///
+    /// Returns `None` if the handle does not point to a `RWObj_TriangulationReader` (or subclass).
+    pub fn downcast_to_triangulation_reader(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWObjTriangulationReader>> {
+        let ptr = unsafe {
+            crate::ffi::HandleRWObjReader_downcast_to_HandleRWObjTriangulationReader(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ── Skipped symbols for Reader (4 total) ──
@@ -1028,6 +1151,17 @@ impl TriangulationReader {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleRWObjTriangulationReader> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::RWObj_TriangulationReader_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
     pub fn read(
         &mut self,
@@ -1123,6 +1257,37 @@ impl TriangulationReader {
             crate::ffi::RWObj_TriangulationReader_inherited_SetSinglePrecision(
                 self as *mut Self,
                 theIsSinglePrecision,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleRWObjTriangulationReader;
+
+unsafe impl crate::CppDeletable for HandleRWObjTriangulationReader {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleRWObjTriangulationReader_destructor(ptr);
+    }
+}
+
+impl HandleRWObjTriangulationReader {
+    /// Dereference this Handle to access the underlying RWObj_TriangulationReader
+    pub fn get(&self) -> &crate::ffi::RWObj_TriangulationReader {
+        unsafe { &*(crate::ffi::HandleRWObjTriangulationReader_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying RWObj_TriangulationReader
+    pub fn get_mut(&mut self) -> &mut crate::ffi::RWObj_TriangulationReader {
+        unsafe { &mut *(crate::ffi::HandleRWObjTriangulationReader_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<RWObj_TriangulationReader> to Handle<RWObj_Reader>
+    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleRWObjReader> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleRWObjTriangulationReader_to_HandleRWObjReader(
+                    self as *const Self,
+                ),
             )
         }
     }

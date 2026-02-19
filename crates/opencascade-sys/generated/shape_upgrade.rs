@@ -110,6 +110,17 @@ impl ClosedEdgeDivide {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:39 - `ShapeUpgrade_EdgeDivide::Clear()`
     pub fn clear(&mut self) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Clear(self as *mut Self) }
@@ -152,9 +163,80 @@ impl ClosedEdgeDivide {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:55 - `ShapeUpgrade_EdgeDivide::SetSplitCurve2dTool()`
+    pub fn set_split_curve2d_tool(
+        &mut self,
+        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve2dTool(
+                self as *mut Self,
+                splitCurve2dTool,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:59 - `ShapeUpgrade_EdgeDivide::SetSplitCurve3dTool()`
+    pub fn set_split_curve3d_tool(
+        &mut self,
+        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve3dTool(
+                self as *mut Self,
+                splitCurve3dTool,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:63 - `ShapeUpgrade_EdgeDivide::GetSplitCurve2dTool()`
+    pub fn get_split_curve2d_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_GetSplitCurve2dTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:66 - `ShapeUpgrade_EdgeDivide::GetSplitCurve3dTool()`
+    pub fn get_split_curve3d_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_GetSplitCurve3dTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Set(self as *mut Self, tool) }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
@@ -214,6 +296,50 @@ impl ClosedEdgeDivide {
             crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeClosedEdgeDivide;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedEdgeDivide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeClosedEdgeDivide_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeClosedEdgeDivide {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedEdgeDivide
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ClosedEdgeDivide {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeClosedEdgeDivide_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ClosedEdgeDivide
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ClosedEdgeDivide {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeClosedEdgeDivide_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<ShapeUpgrade_EdgeDivide>
+    pub fn to_handle_edge_divide(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeEdgeDivide(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -327,6 +453,17 @@ impl ClosedFaceDivide {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedFaceDivide_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
     pub fn init(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Init(self as *mut Self, F) }
@@ -388,6 +525,19 @@ impl ClosedFaceDivide {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:106 - `ShapeUpgrade_FaceDivide::SetWireDivideTool()`
+    pub fn set_wire_divide_tool(
+        &mut self,
+        wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetWireDivideTool(
+                self as *mut Self,
+                wireDivideTool,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:110 - `ShapeUpgrade_FaceDivide::GetSplitSurfaceTool()`
     pub fn get_split_surface_tool(
         &self,
@@ -401,9 +551,41 @@ impl ClosedFaceDivide {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:114 - `ShapeUpgrade_FaceDivide::GetWireDivideTool()`
+    pub fn get_wire_divide_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_GetWireDivideTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Set(self as *mut Self, tool) }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
@@ -463,6 +645,50 @@ impl ClosedFaceDivide {
             crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeClosedFaceDivide;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedFaceDivide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeClosedFaceDivide_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeClosedFaceDivide {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedFaceDivide
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ClosedFaceDivide {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeClosedFaceDivide_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ClosedFaceDivide
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ClosedFaceDivide {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeClosedFaceDivide_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<ShapeUpgrade_FaceDivide>
+    pub fn to_handle_face_divide(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeFaceDivide(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -568,6 +794,17 @@ impl ConvertCurve2dToBezier {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe {
@@ -620,6 +857,46 @@ impl ConvertCurve2dToBezier {
                 self as *const Self,
                 status.into(),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve2dToBezier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeConvertCurve2dToBezier {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve2dToBezier
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertCurve2dToBezier
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<ShapeUpgrade_SplitCurve2d>
+    pub fn to_handle_split_curve2d(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve2d(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<ShapeUpgrade_SplitCurve>
+    pub fn to_handle_split_curve(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve(self as *const Self))
         }
     }
 }
@@ -772,6 +1049,17 @@ impl ConvertCurve3dToBezier {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe {
@@ -824,6 +1112,46 @@ impl ConvertCurve3dToBezier {
                 self as *const Self,
                 status.into(),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve3dToBezier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeConvertCurve3dToBezier {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve3dToBezier
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertCurve3dToBezier
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<ShapeUpgrade_SplitCurve3d>
+    pub fn to_handle_split_curve3d(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve3d(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<ShapeUpgrade_SplitCurve>
+    pub fn to_handle_split_curve(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve(self as *const Self))
         }
     }
 }
@@ -1007,6 +1335,17 @@ impl ConvertSurfaceToBezierBasis {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe {
@@ -1085,6 +1424,41 @@ impl ConvertSurfaceToBezierBasis {
     }
 }
 
+pub use crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertSurfaceToBezierBasis {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeConvertSurfaceToBezierBasis {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis {
+        unsafe {
+            &*(crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> to Handle<ShapeUpgrade_SplitSurface>
+    pub fn to_handle_split_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleShapeUpgradeSplitSurface(self as *const Self))
+        }
+    }
+}
+
 // ========================
 // From ShapeUpgrade_EdgeDivide.hxx
 // ========================
@@ -1149,6 +1523,58 @@ impl EdgeDivide {
         }
     }
 
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:55 - `ShapeUpgrade_EdgeDivide::SetSplitCurve2dTool()`
+    /// Sets the tool for splitting pcurves.
+    pub fn set_split_curve2d_tool(
+        &mut self,
+        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_set_split_curve2d_tool(
+                self as *mut Self,
+                splitCurve2dTool,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:59 - `ShapeUpgrade_EdgeDivide::SetSplitCurve3dTool()`
+    /// Sets the tool for splitting 3D curves.
+    pub fn set_split_curve3d_tool(
+        &mut self,
+        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_set_split_curve3d_tool(
+                self as *mut Self,
+                splitCurve3dTool,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:63 - `ShapeUpgrade_EdgeDivide::GetSplitCurve2dTool()`
+    /// Returns the tool for splitting pcurves.
+    pub fn get_split_curve2d_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_EdgeDivide_get_split_curve2d_tool(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:66 - `ShapeUpgrade_EdgeDivide::GetSplitCurve3dTool()`
+    /// Returns the tool for splitting 3D curves.
+    pub fn get_split_curve3d_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_EdgeDivide_get_split_curve3d_tool(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:68 - `ShapeUpgrade_EdgeDivide::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::ShapeUpgrade_EdgeDivide_dynamic_type(self as *const Self)) }
@@ -1180,9 +1606,34 @@ impl EdgeDivide {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_EdgeDivide_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Set(self as *mut Self, tool) }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
@@ -1229,27 +1680,54 @@ impl EdgeDivide {
     }
 }
 
-// ── Skipped symbols for EdgeDivide (4 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:55 - `ShapeUpgrade_EdgeDivide::SetSplitCurve2dTool`
-//   method: Sets the tool for splitting pcurves.
-//   Reason: param 'splitCurve2dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve2d)&'
-//   // pub fn set_split_curve2d_tool(&mut self, splitCurve2dTool: &HandleSplitCurve2d);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:59 - `ShapeUpgrade_EdgeDivide::SetSplitCurve3dTool`
-//   method: Sets the tool for splitting 3D curves.
-//   Reason: param 'splitCurve3dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve3d)&'
-//   // pub fn set_split_curve3d_tool(&mut self, splitCurve3dTool: &HandleSplitCurve3d);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:63 - `ShapeUpgrade_EdgeDivide::GetSplitCurve2dTool`
-//   method: Returns the tool for splitting pcurves.
-//   Reason: return type 'Handle(ShapeUpgrade_SplitCurve2d)' is unknown
-//   // pub fn get_split_curve2d_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_SplitCurve2d>>;
-//
-// SKIPPED: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:66 - `ShapeUpgrade_EdgeDivide::GetSplitCurve3dTool`
-//   method: Returns the tool for splitting 3D curves.
-//   Reason: return type 'Handle(ShapeUpgrade_SplitCurve3d)' is unknown
-//   // pub fn get_split_curve3d_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_SplitCurve3d>>;
-//
+pub use crate::ffi::HandleShapeUpgradeEdgeDivide;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeEdgeDivide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeEdgeDivide_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeEdgeDivide {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_EdgeDivide
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_EdgeDivide {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeEdgeDivide_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_EdgeDivide
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_EdgeDivide {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeEdgeDivide_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_EdgeDivide> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_EdgeDivide> to Handle<ShapeUpgrade_ClosedEdgeDivide>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ClosedEdgeDivide` (or subclass).
+    pub fn downcast_to_closed_edge_divide(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeEdgeDivide_downcast_to_HandleShapeUpgradeClosedEdgeDivide(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From ShapeUpgrade_FaceDivide.hxx
@@ -1371,6 +1849,20 @@ impl FaceDivide {
         }
     }
 
+    /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:106 - `ShapeUpgrade_FaceDivide::SetWireDivideTool()`
+    /// Sets the tool for dividing edges on Face.
+    pub fn set_wire_divide_tool(
+        &mut self,
+        wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_set_wire_divide_tool(
+                self as *mut Self,
+                wireDivideTool,
+            )
+        }
+    }
+
     /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:110 - `ShapeUpgrade_FaceDivide::GetSplitSurfaceTool()`
     /// Returns the tool for splitting surfaces.
     /// This tool must be already initialized.
@@ -1379,6 +1871,19 @@ impl FaceDivide {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivide_get_split_surface_tool(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:114 - `ShapeUpgrade_FaceDivide::GetWireDivideTool()`
+    /// Returns the tool for dividing edges on Face.
+    /// This tool must be already initialized.
+    pub fn get_wire_divide_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivide_get_wire_divide_tool(
                 self as *const Self,
             ))
         }
@@ -1415,9 +1920,34 @@ impl FaceDivide {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivide_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_Set(self as *mut Self, tool) }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivide_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
@@ -1464,18 +1994,72 @@ impl FaceDivide {
     }
 }
 
-// ── Skipped symbols for FaceDivide (2 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_FaceDivide.hxx`:106 - `ShapeUpgrade_FaceDivide::SetWireDivideTool`
-//   method: Sets the tool for dividing edges on Face.
-//   Reason: param 'wireDivideTool' uses unknown type 'const Handle(ShapeUpgrade_WireDivide)&'
-//   // pub fn set_wire_divide_tool(&mut self, wireDivideTool: &HandleWireDivide);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_FaceDivide.hxx`:114 - `ShapeUpgrade_FaceDivide::GetWireDivideTool`
-//   method: Returns the tool for dividing edges on Face.
-//   method: This tool must be already initialized.
-//   Reason: return type 'Handle(ShapeUpgrade_WireDivide)' is unknown
-//   // pub fn get_wire_divide_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_WireDivide>>;
-//
+pub use crate::ffi::HandleShapeUpgradeFaceDivide;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeFaceDivide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeFaceDivide_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeFaceDivide {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivide
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FaceDivide {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeFaceDivide_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FaceDivide
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FaceDivide {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeFaceDivide_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FaceDivide> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_FaceDivide> to Handle<ShapeUpgrade_ClosedFaceDivide>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ClosedFaceDivide` (or subclass).
+    pub fn downcast_to_closed_face_divide(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeClosedFaceDivide(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_FaceDivide> to Handle<ShapeUpgrade_FaceDivideArea>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_FaceDivideArea` (or subclass).
+    pub fn downcast_to_face_divide_area(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeFaceDivideArea(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From ShapeUpgrade_FaceDivideArea.hxx
@@ -1596,6 +2180,17 @@ impl FaceDivideArea {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivideArea_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
     pub fn init(&mut self, F: &crate::topo_ds::Face) {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Init(self as *mut Self, F) }
@@ -1658,6 +2253,19 @@ impl FaceDivideArea {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:106 - `ShapeUpgrade_FaceDivide::SetWireDivideTool()`
+    pub fn set_wire_divide_tool(
+        &mut self,
+        wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetWireDivideTool(
+                self as *mut Self,
+                wireDivideTool,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:110 - `ShapeUpgrade_FaceDivide::GetSplitSurfaceTool()`
     pub fn get_split_surface_tool(
         &self,
@@ -1671,9 +2279,38 @@ impl FaceDivideArea {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:114 - `ShapeUpgrade_FaceDivide::GetWireDivideTool()`
+    pub fn get_wire_divide_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_GetWireDivideTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Set(self as *mut Self, tool) }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
@@ -1728,6 +2365,50 @@ impl FaceDivideArea {
             crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeFaceDivideArea;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeFaceDivideArea {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeFaceDivideArea_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeFaceDivideArea {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivideArea
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FaceDivideArea {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeFaceDivideArea_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FaceDivideArea
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FaceDivideArea {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeFaceDivideArea_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<ShapeUpgrade_FaceDivide>
+    pub fn to_handle_face_divide(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeFaceDivide(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -1837,6 +2518,17 @@ impl FixSmallBezierCurves {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FixSmallBezierCurves_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:46 - `ShapeUpgrade_FixSmallCurves::Init()`
     pub fn init(&mut self, theEdge: &crate::topo_ds::Edge, theFace: &crate::topo_ds::Face) {
         unsafe {
@@ -1844,6 +2536,32 @@ impl FixSmallBezierCurves {
                 self as *mut Self,
                 theEdge,
                 theFace,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:55 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve3dTool()`
+    pub fn set_split_curve3d_tool(
+        &mut self,
+        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetSplitCurve3dTool(
+                self as *mut Self,
+                splitCurve3dTool,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:59 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve2dTool()`
+    pub fn set_split_curve2d_tool(
+        &mut self,
+        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetSplitCurve2dTool(
+                self as *mut Self,
+                splitCurve2dTool,
             )
         }
     }
@@ -1862,6 +2580,27 @@ impl FixSmallBezierCurves {
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe {
             crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Set(self as *mut Self, tool)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Context(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1931,6 +2670,48 @@ impl FixSmallBezierCurves {
     }
 }
 
+pub use crate::ffi::HandleShapeUpgradeFixSmallBezierCurves;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeFixSmallBezierCurves {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeFixSmallBezierCurves {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_FixSmallBezierCurves
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FixSmallBezierCurves {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FixSmallBezierCurves
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FixSmallBezierCurves {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<ShapeUpgrade_FixSmallCurves>
+    pub fn to_handle_fix_small_curves(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeFixSmallCurves(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
 // ========================
 // From ShapeUpgrade_FixSmallCurves.hxx
 // ========================
@@ -1972,6 +2753,34 @@ impl FixSmallCurves {
                 Curve2dR,
                 First,
                 Last,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:55 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve3dTool()`
+    /// Sets the tool for splitting 3D curves.
+    pub fn set_split_curve3d_tool(
+        &mut self,
+        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_set_split_curve3d_tool(
+                self as *mut Self,
+                splitCurve3dTool,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:59 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve2dTool()`
+    /// Sets the tool for splitting pcurves.
+    pub fn set_split_curve2d_tool(
+        &mut self,
+        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_set_split_curve2d_tool(
+                self as *mut Self,
+                splitCurve2dTool,
             )
         }
     }
@@ -2023,9 +2832,36 @@ impl FixSmallCurves {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FixSmallCurves_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Set(self as *mut Self, tool) }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
@@ -2085,17 +2921,52 @@ impl FixSmallCurves {
     }
 }
 
-// ── Skipped symbols for FixSmallCurves (2 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:55 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve3dTool`
-//   method: Sets the tool for splitting 3D curves.
-//   Reason: param 'splitCurve3dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve3d)&'
-//   // pub fn set_split_curve3d_tool(&mut self, splitCurve3dTool: &HandleSplitCurve3d);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:59 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve2dTool`
-//   method: Sets the tool for splitting pcurves.
-//   Reason: param 'splitCurve2dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve2d)&'
-//   // pub fn set_split_curve2d_tool(&mut self, splitCurve2dTool: &HandleSplitCurve2d);
-//
+pub use crate::ffi::HandleShapeUpgradeFixSmallCurves;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeFixSmallCurves {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeFixSmallCurves_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeFixSmallCurves {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_FixSmallCurves
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FixSmallCurves {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeFixSmallCurves_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FixSmallCurves
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FixSmallCurves {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeFixSmallCurves_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_FixSmallCurves> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_FixSmallCurves> to Handle<ShapeUpgrade_FixSmallBezierCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_FixSmallBezierCurves` (or subclass).
+    pub fn downcast_to_fix_small_bezier_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeFixSmallCurves_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From ShapeUpgrade_RemoveInternalWires.hxx
@@ -2253,10 +3124,40 @@ impl RemoveInternalWires {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeRemoveInternalWires> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_RemoveInternalWires_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Set(self as *mut Self, tool)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Context(self as *const Self),
+            )
         }
     }
 
@@ -2317,6 +3218,39 @@ impl RemoveInternalWires {
             crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
+            )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeRemoveInternalWires;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeRemoveInternalWires {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeRemoveInternalWires_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeRemoveInternalWires {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveInternalWires
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_RemoveInternalWires {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeRemoveInternalWires_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_RemoveInternalWires
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_RemoveInternalWires {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeRemoveInternalWires_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_RemoveInternalWires> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
             )
         }
     }
@@ -2758,6 +3692,27 @@ impl ShapeConvertToBezier {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_GetContext(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -2807,6 +3762,19 @@ impl ShapeConvertToBezier {
             crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Status(
                 self as *const Self,
                 status.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
+    pub fn set_split_face_tool(
+        &mut self,
+        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSplitFaceTool(
+                self as *mut Self,
+                splitFaceTool,
             )
         }
     }
@@ -2903,6 +3871,24 @@ impl ShapeDivide {
         }
     }
 
+    /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
+    /// Returns context with all the modifications made during
+    /// last call(s) to Perform() recorded
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_ShapeDivide_get_context(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
+    /// Sets context with recorded modifications to be applied
+    /// during next call(s) to Perform(shape,Standard_False)
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_set_context(self as *mut Self, context) }
+    }
+
     /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     /// Sets message registrator
     pub fn set_msg_registrator(
@@ -2955,6 +3941,20 @@ impl ShapeDivide {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
+    /// Sets the tool for splitting faces.
+    pub fn set_split_face_tool(
+        &mut self,
+        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivide_set_split_face_tool(
+                self as *mut Self,
+                splitFaceTool,
+            )
+        }
+    }
+
     /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     /// Sets mode for splitting 3d curves from edges.
     /// 0 - only curve 3d from free edges.
@@ -2964,25 +3964,6 @@ impl ShapeDivide {
         unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_set_edge_mode(self as *mut Self, aEdgeMode) }
     }
 }
-
-// ── Skipped symbols for ShapeDivide (3 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext`
-//   method: Returns context with all the modifications made during
-//   method: last call(s) to Perform() recorded
-//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
-//   // pub fn get_context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
-//
-// SKIPPED: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext`
-//   method: Sets context with recorded modifications to be applied
-//   method: during next call(s) to Perform(shape,Standard_False)
-//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn set_context(&mut self, context: &HandleReShape);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool`
-//   method: Sets the tool for splitting faces.
-//   Reason: param 'splitFaceTool' uses unknown type 'const Handle(ShapeUpgrade_FaceDivide)&'
-//   // pub fn set_split_face_tool(&mut self, splitFaceTool: &HandleFaceDivide);
-//
 
 // ========================
 // From ShapeUpgrade_ShapeDivideAngle.hxx
@@ -3122,6 +4103,25 @@ impl ShapeDivideAngle {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_GetContext(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -3171,6 +4171,19 @@ impl ShapeDivideAngle {
             crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Status(
                 self as *const Self,
                 status.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
+    pub fn set_split_face_tool(
+        &mut self,
+        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetSplitFaceTool(
+                self as *mut Self,
+                splitFaceTool,
             )
         }
     }
@@ -3324,6 +4337,25 @@ impl ShapeDivideArea {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_GetContext(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -3373,6 +4405,19 @@ impl ShapeDivideArea {
             crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Status(
                 self as *const Self,
                 status.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
+    pub fn set_split_face_tool(
+        &mut self,
+        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetSplitFaceTool(
+                self as *mut Self,
+                splitFaceTool,
             )
         }
     }
@@ -3511,6 +4556,27 @@ impl ShapeDivideClosed {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_GetContext(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -3560,6 +4626,19 @@ impl ShapeDivideClosed {
             crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Status(
                 self as *const Self,
                 status.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
+    pub fn set_split_face_tool(
+        &mut self,
+        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetSplitFaceTool(
+                self as *mut Self,
+                splitFaceTool,
             )
         }
     }
@@ -3695,6 +4774,27 @@ impl ShapeDivideClosedEdges {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_GetContext(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -3744,6 +4844,19 @@ impl ShapeDivideClosedEdges {
             crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Status(
                 self as *const Self,
                 status.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
+    pub fn set_split_face_tool(
+        &mut self,
+        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSplitFaceTool(
+                self as *mut Self,
+                splitFaceTool,
             )
         }
     }
@@ -3937,6 +5050,27 @@ impl ShapeDivideContinuity {
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_GetContext(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
@@ -3986,6 +5120,19 @@ impl ShapeDivideContinuity {
             crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Status(
                 self as *const Self,
                 status.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
+    pub fn set_split_face_tool(
+        &mut self,
+        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSplitFaceTool(
+                self as *mut Self,
+                splitFaceTool,
             )
         }
     }
@@ -4170,6 +5317,106 @@ impl HandleShapeUpgradeSplitCurve {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeSplitCurve_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve> to Handle<ShapeUpgrade_ConvertCurve2dToBezier>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertCurve2dToBezier` (or subclass).
+    pub fn downcast_to_convert_curve2d_to_bezier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve> to Handle<ShapeUpgrade_ConvertCurve3dToBezier>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertCurve3dToBezier` (or subclass).
+    pub fn downcast_to_convert_curve3d_to_bezier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve> to Handle<ShapeUpgrade_SplitCurve2d>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve2d` (or subclass).
+    pub fn downcast_to_split_curve2d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve> to Handle<ShapeUpgrade_SplitCurve2dContinuity>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve2dContinuity` (or subclass).
+    pub fn downcast_to_split_curve2d_continuity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve> to Handle<ShapeUpgrade_SplitCurve3d>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve3d` (or subclass).
+    pub fn downcast_to_split_curve3d(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3d(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve> to Handle<ShapeUpgrade_SplitCurve3dContinuity>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve3dContinuity` (or subclass).
+    pub fn downcast_to_split_curve3d_continuity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -4270,6 +5517,17 @@ impl SplitCurve2d {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitCurve2d_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
@@ -4306,6 +5564,71 @@ impl SplitCurve2d {
                 self as *const Self,
                 status.into(),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeSplitCurve2d;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeSplitCurve2d_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeSplitCurve2d {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2d
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve2d {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeSplitCurve2d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve2d {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeSplitCurve2d_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<ShapeUpgrade_SplitCurve>
+    pub fn to_handle_split_curve(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleShapeUpgradeSplitCurve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<ShapeUpgrade_ConvertCurve2dToBezier>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertCurve2dToBezier` (or subclass).
+    pub fn downcast_to_convert_curve2d_to_bezier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<ShapeUpgrade_SplitCurve2dContinuity>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve2dContinuity` (or subclass).
+    pub fn downcast_to_split_curve2d_continuity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -4414,6 +5737,17 @@ impl SplitCurve2dContinuity {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         unsafe {
@@ -4476,6 +5810,46 @@ impl SplitCurve2dContinuity {
                 self as *const Self,
                 status.into(),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve2dContinuity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeSplitCurve2dContinuity {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2dContinuity
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve2dContinuity {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve2dContinuity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve2dContinuity {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<ShapeUpgrade_SplitCurve2d>
+    pub fn to_handle_split_curve2d(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve2d(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<ShapeUpgrade_SplitCurve>
+    pub fn to_handle_split_curve(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve(self as *const Self))
         }
     }
 }
@@ -4576,6 +5950,17 @@ impl SplitCurve3d {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitCurve3d_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         unsafe {
@@ -4612,6 +5997,71 @@ impl SplitCurve3d {
                 self as *const Self,
                 status.into(),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeSplitCurve3d;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve3d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeSplitCurve3d_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeSplitCurve3d {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve3d
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve3d {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeSplitCurve3d_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve3d
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve3d {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeSplitCurve3d_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<ShapeUpgrade_SplitCurve>
+    pub fn to_handle_split_curve(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleShapeUpgradeSplitCurve(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<ShapeUpgrade_ConvertCurve3dToBezier>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertCurve3dToBezier` (or subclass).
+    pub fn downcast_to_convert_curve3d_to_bezier(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<ShapeUpgrade_SplitCurve3dContinuity>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve3dContinuity` (or subclass).
+    pub fn downcast_to_split_curve3d_continuity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -4727,6 +6177,17 @@ impl SplitCurve3dContinuity {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
         unsafe {
@@ -4789,6 +6250,46 @@ impl SplitCurve3dContinuity {
                 self as *const Self,
                 status.into(),
             )
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve3dContinuity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeSplitCurve3dContinuity {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve3dContinuity
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve3dContinuity {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve3dContinuity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve3dContinuity {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<ShapeUpgrade_SplitCurve3d>
+    pub fn to_handle_split_curve3d(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve3d(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<ShapeUpgrade_SplitCurve>
+    pub fn to_handle_split_curve(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve(self as *const Self))
         }
     }
 }
@@ -4969,6 +6470,70 @@ impl HandleShapeUpgradeSplitSurface {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurface {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeSplitSurface_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<ShapeUpgrade_SplitSurface> to Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertSurfaceToBezierBasis` (or subclass).
+    pub fn downcast_to_convert_surface_to_bezier_basis(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeConvertSurfaceToBezierBasis(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitSurface> to Handle<ShapeUpgrade_SplitSurfaceAngle>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitSurfaceAngle` (or subclass).
+    pub fn downcast_to_split_surface_angle(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceAngle>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceAngle(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitSurface> to Handle<ShapeUpgrade_SplitSurfaceArea>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitSurfaceArea` (or subclass).
+    pub fn downcast_to_split_surface_area(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceArea(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_SplitSurface> to Handle<ShapeUpgrade_SplitSurfaceContinuity>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitSurfaceContinuity` (or subclass).
+    pub fn downcast_to_split_surface_continuity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceContinuity(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -5056,6 +6621,17 @@ impl SplitSurfaceAngle {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceAngle> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Init(self as *mut Self, S) }
@@ -5129,6 +6705,41 @@ impl SplitSurfaceAngle {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_ResSurfaces(
                 self as *const Self,
             ))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeSplitSurfaceAngle;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceAngle {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeSplitSurfaceAngle {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceAngle
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceAngle {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceAngle
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceAngle {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitSurfaceAngle> to Handle<ShapeUpgrade_SplitSurface>
+    pub fn to_handle_split_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleShapeUpgradeSplitSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -5224,6 +6835,17 @@ impl SplitSurfaceArea {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceArea> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitSurfaceArea_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Init(self as *mut Self, S) }
@@ -5295,6 +6917,39 @@ impl SplitSurfaceArea {
     pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
         unsafe {
             &*(crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_ResSurfaces(self as *const Self))
+        }
+    }
+}
+
+pub use crate::ffi::HandleShapeUpgradeSplitSurfaceArea;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceArea {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeSplitSurfaceArea_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeSplitSurfaceArea {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceArea
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceArea {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeSplitSurfaceArea_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceArea
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceArea {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeSplitSurfaceArea_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitSurfaceArea> to Handle<ShapeUpgrade_SplitSurface>
+    pub fn to_handle_split_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleShapeUpgradeSplitSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
@@ -5394,6 +7049,17 @@ impl SplitSurfaceContinuity {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         unsafe {
@@ -5479,6 +7145,37 @@ impl SplitSurfaceContinuity {
     }
 }
 
+pub use crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceContinuity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeSplitSurfaceContinuity {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceContinuity
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceContinuity {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceContinuity
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceContinuity {
+        unsafe {
+            &mut *(crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_SplitSurfaceContinuity> to Handle<ShapeUpgrade_SplitSurface>
+    pub fn to_handle_split_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleShapeUpgradeSplitSurface(self as *const Self))
+        }
+    }
+}
+
 // ========================
 // From ShapeUpgrade_Tool.hxx
 // ========================
@@ -5507,6 +7204,20 @@ impl Tool {
     /// Copy all fields from another Root object
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_Tool_set(self as *mut Self, tool) }
+    }
+
+    /// **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    /// Sets context
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe { crate::ffi::ShapeUpgrade_Tool_set_context(self as *mut Self, context) }
+    }
+
+    /// **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    /// Returns context
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_Tool_context(self as *const Self))
+        }
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
@@ -5598,19 +7309,169 @@ impl HandleShapeUpgradeTool {
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_Tool {
         unsafe { &mut *(crate::ffi::HandleShapeUpgradeTool_get_mut(self as *mut Self)) }
     }
-}
 
-// ── Skipped symbols for Tool (2 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext`
-//   method: Sets context
-//   Reason: param 'context' uses unknown type 'const Handle(ShapeBuild_ReShape)&'
-//   // pub fn set_context(&mut self, context: &HandleReShape);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context`
-//   method: Returns context
-//   Reason: return type 'Handle(ShapeBuild_ReShape)' is unknown
-//   // pub fn context(&self) -> OwnedPtr<Handle<ShapeBuild_ReShape>>;
-//
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_ClosedEdgeDivide>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ClosedEdgeDivide` (or subclass).
+    pub fn downcast_to_closed_edge_divide(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedEdgeDivide(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_ClosedFaceDivide>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_ClosedFaceDivide` (or subclass).
+    pub fn downcast_to_closed_face_divide(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedFaceDivide(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_EdgeDivide>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_EdgeDivide` (or subclass).
+    pub fn downcast_to_edge_divide(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeEdgeDivide(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_FaceDivide>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_FaceDivide` (or subclass).
+    pub fn downcast_to_face_divide(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivide(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_FaceDivideArea>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_FaceDivideArea` (or subclass).
+    pub fn downcast_to_face_divide_area(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivideArea(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_FixSmallBezierCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_FixSmallBezierCurves` (or subclass).
+    pub fn downcast_to_fix_small_bezier_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_FixSmallCurves>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_FixSmallCurves` (or subclass).
+    pub fn downcast_to_fix_small_curves(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallCurves(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_RemoveInternalWires>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_RemoveInternalWires` (or subclass).
+    pub fn downcast_to_remove_internal_wires(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeRemoveInternalWires>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeRemoveInternalWires(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_WireDivide>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeUpgrade_WireDivide` (or subclass).
+    pub fn downcast_to_wire_divide(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeWireDivide(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From ShapeUpgrade_UnifySameDomain.hxx
@@ -5997,6 +7858,34 @@ impl WireDivide {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_status(self as *const Self, status.into()) }
     }
 
+    /// **Source:** `ShapeUpgrade_WireDivide.hxx`:105 - `ShapeUpgrade_WireDivide::SetSplitCurve3dTool()`
+    /// Sets the tool for splitting 3D curves.
+    pub fn set_split_curve3d_tool(
+        &mut self,
+        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_set_split_curve3d_tool(
+                self as *mut Self,
+                splitCurve3dTool,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_WireDivide.hxx`:109 - `ShapeUpgrade_WireDivide::SetSplitCurve2dTool()`
+    /// Sets the tool for splitting pcurves.
+    pub fn set_split_curve2d_tool(
+        &mut self,
+        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_set_split_curve2d_tool(
+                self as *mut Self,
+                splitCurve2dTool,
+            )
+        }
+    }
+
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:113 - `ShapeUpgrade_WireDivide::SetTransferParamTool()`
     /// Sets the tool for Transfer parameters between curves and pcurves.
     pub fn set_transfer_param_tool(
@@ -6008,6 +7897,32 @@ impl WireDivide {
                 self as *mut Self,
                 TransferParam,
             )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_WireDivide.hxx`:117 - `ShapeUpgrade_WireDivide::SetEdgeDivideTool()`
+    /// Sets tool for splitting edge
+    pub fn set_edge_divide_tool(
+        &mut self,
+        edgeDivideTool: &crate::ffi::HandleShapeUpgradeEdgeDivide,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_set_edge_divide_tool(
+                self as *mut Self,
+                edgeDivideTool,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_WireDivide.hxx`:120 - `ShapeUpgrade_WireDivide::GetEdgeDivideTool()`
+    /// returns tool for splitting edges
+    pub fn get_edge_divide_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_WireDivide_get_edge_divide_tool(
+                self as *const Self,
+            ))
         }
     }
 
@@ -6030,6 +7945,32 @@ impl WireDivide {
     /// 2 -  all curve 3d.
     pub fn set_edge_mode(&mut self, EdgeMode: i32) {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_set_edge_mode(self as *mut Self, EdgeMode) }
+    }
+
+    /// **Source:** `ShapeUpgrade_WireDivide.hxx`:132 - `ShapeUpgrade_WireDivide::SetFixSmallCurveTool()`
+    /// Sets tool for fixing small curves with specified min tolerance;
+    pub fn set_fix_small_curve_tool(
+        &mut self,
+        FixSmallCurvesTool: &crate::ffi::HandleShapeUpgradeFixSmallCurves,
+    ) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_set_fix_small_curve_tool(
+                self as *mut Self,
+                FixSmallCurvesTool,
+            )
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_WireDivide.hxx`:136 - `ShapeUpgrade_WireDivide::GetFixSmallCurveTool()`
+    /// Returns tool for fixing small curves
+    pub fn get_fix_small_curve_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_WireDivide_get_fix_small_curve_tool(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:138 - `ShapeUpgrade_WireDivide::DynamicType()`
@@ -6063,9 +8004,34 @@ impl WireDivide {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_WireDivide_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_Set(self as *mut Self, tool) }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+        unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_inherited_SetContext(self as *mut Self, context)
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_WireDivide_inherited_Context(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
@@ -6112,34 +8078,33 @@ impl WireDivide {
     }
 }
 
-// ── Skipped symbols for WireDivide (6 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:105 - `ShapeUpgrade_WireDivide::SetSplitCurve3dTool`
-//   method: Sets the tool for splitting 3D curves.
-//   Reason: param 'splitCurve3dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve3d)&'
-//   // pub fn set_split_curve3d_tool(&mut self, splitCurve3dTool: &HandleSplitCurve3d);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:109 - `ShapeUpgrade_WireDivide::SetSplitCurve2dTool`
-//   method: Sets the tool for splitting pcurves.
-//   Reason: param 'splitCurve2dTool' uses unknown type 'const Handle(ShapeUpgrade_SplitCurve2d)&'
-//   // pub fn set_split_curve2d_tool(&mut self, splitCurve2dTool: &HandleSplitCurve2d);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:117 - `ShapeUpgrade_WireDivide::SetEdgeDivideTool`
-//   method: Sets tool for splitting edge
-//   Reason: param 'edgeDivideTool' uses unknown type 'const Handle(ShapeUpgrade_EdgeDivide)&'
-//   // pub fn set_edge_divide_tool(&mut self, edgeDivideTool: &HandleEdgeDivide);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:120 - `ShapeUpgrade_WireDivide::GetEdgeDivideTool`
-//   method: returns tool for splitting edges
-//   Reason: return type 'Handle(ShapeUpgrade_EdgeDivide)' is unknown
-//   // pub fn get_edge_divide_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_EdgeDivide>>;
-//
-// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:132 - `ShapeUpgrade_WireDivide::SetFixSmallCurveTool`
-//   method: Sets tool for fixing small curves with specified min tolerance;
-//   Reason: param 'FixSmallCurvesTool' uses unknown type 'const Handle(ShapeUpgrade_FixSmallCurves)&'
-//   // pub fn set_fix_small_curve_tool(&mut self, FixSmallCurvesTool: &HandleFixSmallCurves);
-//
-// SKIPPED: **Source:** `ShapeUpgrade_WireDivide.hxx`:136 - `ShapeUpgrade_WireDivide::GetFixSmallCurveTool`
-//   method: Returns tool for fixing small curves
-//   Reason: return type 'Handle(ShapeUpgrade_FixSmallCurves)' is unknown
-//   // pub fn get_fix_small_curve_tool(&self) -> OwnedPtr<Handle<ShapeUpgrade_FixSmallCurves>>;
-//
+pub use crate::ffi::HandleShapeUpgradeWireDivide;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeWireDivide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeUpgradeWireDivide_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeWireDivide {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_WireDivide
+    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_WireDivide {
+        unsafe { &*(crate::ffi::HandleShapeUpgradeWireDivide_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_WireDivide
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_WireDivide {
+        unsafe { &mut *(crate::ffi::HandleShapeUpgradeWireDivide_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_WireDivide> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeUpgradeWireDivide_to_HandleShapeUpgradeTool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}

@@ -35,6 +35,11 @@ impl TryFrom<i32> for Logical {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleInterfaceInterfaceModel, HandleStepDimTolSimpleDatumReferenceModifierMember,
+};
+
 // ========================
 // From StepData_Factors.hxx
 // ========================
@@ -196,6 +201,15 @@ impl SelectInt {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectInt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_SelectInt_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:54 - `StepData_SelectMember::HasName()`
     pub fn has_name(&self) -> bool {
         unsafe { crate::ffi::StepData_SelectInt_inherited_HasName(self as *const Self) }
@@ -261,6 +275,56 @@ impl SelectInt {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         unsafe { crate::ffi::StepData_SelectInt_inherited_Enum(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleStepDataSelectInt;
+
+unsafe impl crate::CppDeletable for HandleStepDataSelectInt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDataSelectInt_destructor(ptr);
+    }
+}
+
+impl HandleStepDataSelectInt {
+    /// Dereference this Handle to access the underlying StepData_SelectInt
+    pub fn get(&self) -> &crate::ffi::StepData_SelectInt {
+        unsafe { &*(crate::ffi::HandleStepDataSelectInt_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepData_SelectInt
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_SelectInt {
+        unsafe { &mut *(crate::ffi::HandleStepDataSelectInt_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepData_SelectInt> to Handle<StepData_SelectMember>
+    pub fn to_handle_select_member(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDataSelectInt_to_HandleStepDataSelectMember(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<StepData_SelectInt> to Handle<StepDimTol_SimpleDatumReferenceModifierMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_SimpleDatumReferenceModifierMember` (or subclass).
+    pub fn downcast_to_simple_datum_reference_modifier_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDataSelectInt_downcast_to_HandleStepDimTolSimpleDatumReferenceModifierMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 
@@ -508,6 +572,41 @@ impl HandleStepDataSelectMember {
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_SelectMember {
         unsafe { &mut *(crate::ffi::HandleStepDataSelectMember_get_mut(self as *mut Self)) }
     }
+
+    /// Downcast Handle<StepData_SelectMember> to Handle<StepData_SelectInt>
+    ///
+    /// Returns `None` if the handle does not point to a `StepData_SelectInt` (or subclass).
+    pub fn downcast_to_select_int(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectInt>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectInt(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<StepData_SelectMember> to Handle<StepDimTol_SimpleDatumReferenceModifierMember>
+    ///
+    /// Returns `None` if the handle does not point to a `StepDimTol_SimpleDatumReferenceModifierMember` (or subclass).
+    pub fn downcast_to_simple_datum_reference_modifier_member(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember>>
+    {
+        let ptr = unsafe {
+            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepDimTolSimpleDatumReferenceModifierMember(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -542,10 +641,42 @@ unsafe impl crate::CppDeletable for SelectType {
 }
 
 impl SelectType {
+    /// **Source:** `StepData_SelectType.hxx`:58 - `StepData_SelectType::CaseNum()`
+    /// Recognizes the Type of an Entity. Returns a positive Number
+    /// which identifies the Type in the definition List of the
+    /// SelectType. Returns Zero if its Type in not in this List.
+    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepData_SelectType_case_num(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
+    /// Returns True if the Type of an Entity complies with the
+    /// definition list of the SelectType.
+    /// Also checks for a SelectMember
+    /// Default Implementation looks for CaseNum  or CaseMem positive
+    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::StepData_SelectType_matches(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
+    /// Stores an Entity. This allows to define a specific SelectType
+    /// class with one read method per member Type, which returns the
+    /// Value casted with the good Type.
+    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::StepData_SelectType_set_value(self as *mut Self, ent) }
+    }
+
     /// **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     /// Nullifies the Stored Entity
     pub fn nullify(&mut self) {
         unsafe { crate::ffi::StepData_SelectType_nullify(self as *mut Self) }
+    }
+
+    /// **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
+    /// Returns the Stored Entity. Can be used to define specific
+    /// read methods (see above)
+    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::StepData_SelectType_value(self as *const Self)) }
     }
 
     /// **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
@@ -704,34 +835,7 @@ impl SelectType {
     }
 }
 
-// ── Skipped symbols for SelectType (5 total) ──
-// SKIPPED: **Source:** `StepData_SelectType.hxx`:58 - `StepData_SelectType::CaseNum`
-//   method: Recognizes the Type of an Entity. Returns a positive Number
-//   method: which identifies the Type in the definition List of the
-//   method: SelectType. Returns Zero if its Type in not in this List.
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn case_num(&self, ent: &HandleTransient) -> i32;
-//
-// SKIPPED: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches`
-//   method: Returns True if the Type of an Entity complies with the
-//   method: definition list of the SelectType.
-//   method: Also checks for a SelectMember
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn matches(&self, ent: &HandleTransient) -> bool;
-//
-// SKIPPED: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue`
-//   method: Stores an Entity. This allows to define a specific SelectType
-//   method: class with one read method per member Type, which returns the
-//   method: Value casted with the good Type.
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_value(&mut self, ent: &HandleTransient);
-//
-// SKIPPED: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value`
-//   method: Returns the Stored Entity. Can be used to define specific
-//   method: read methods (see above)
-//   Reason: return type 'const Handle(Standard_Transient)&' is unknown
-//   // pub fn value(&self) -> &HandleTransient;
-//
+// ── Skipped symbols for SelectType (1 total) ──
 // SKIPPED: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description`
 //   method: Returns the Description which corresponds to <me>
 //   method: Null if no specific description to give. This description is
@@ -763,6 +867,18 @@ impl StepModel {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_ctor()) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:47 - `StepData_StepModel::Entity()`
+    /// returns entity given its rank.
+    /// Same as InterfaceEntity, but with a shorter name
+    pub fn entity(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_entity(
+                self as *const Self,
+                num,
+            ))
+        }
+    }
+
     /// **Source:** `StepData_StepModel.hxx`:50 - `StepData_StepModel::GetFromAnother()`
     /// gets header from another Model (uses Header Protocol)
     pub fn get_from_another(&mut self, other: &crate::ffi::HandleInterfaceInterfaceModel) {
@@ -785,10 +901,30 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_has_header_entity(self as *const Self, atype) }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:63 - `StepData_StepModel::HeaderEntity()`
+    /// Returns Header entity with specified type, if there is
+    pub fn header_entity(
+        &self,
+        atype: &crate::ffi::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_header_entity(
+                self as *const Self,
+                atype,
+            ))
+        }
+    }
+
     /// **Source:** `StepData_StepModel.hxx`:66 - `StepData_StepModel::ClearHeader()`
     /// Clears the Header
     pub fn clear_header(&mut self) {
         unsafe { crate::ffi::StepData_StepModel_clear_header(self as *mut Self) }
+    }
+
+    /// **Source:** `StepData_StepModel.hxx`:69 - `StepData_StepModel::AddHeaderEntity()`
+    /// Adds an Entity to the Header
+    pub fn add_header_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::StepData_StepModel_add_header_entity(self as *mut Self, ent) }
     }
 
     /// **Source:** `StepData_StepModel.hxx`:72 - `StepData_StepModel::VerifyCheck()`
@@ -801,6 +937,34 @@ impl StepModel {
     /// erases specific labels, i.e. clears the map (entity-ident)
     pub fn clear_labels(&mut self) {
         unsafe { crate::ffi::StepData_StepModel_clear_labels(self as *mut Self) }
+    }
+
+    /// **Source:** `StepData_StepModel.hxx`:87 - `StepData_StepModel::SetIdentLabel()`
+    /// Attaches an ident to an entity to produce a label
+    /// (does nothing if <ent> is not in <me>)
+    pub fn set_ident_label(&mut self, ent: &crate::ffi::HandleStandardTransient, ident: i32) {
+        unsafe { crate::ffi::StepData_StepModel_set_ident_label(self as *mut Self, ent, ident) }
+    }
+
+    /// **Source:** `StepData_StepModel.hxx`:91 - `StepData_StepModel::IdentLabel()`
+    /// returns the label ident attached to an entity, 0 if not in me
+    pub fn ident_label(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepData_StepModel_ident_label(self as *const Self, ent) }
+    }
+
+    /// **Source:** `StepData_StepModel.hxx`:101 - `StepData_StepModel::StringLabel()`
+    /// Returns a string with the label attached to a given entity,
+    /// same form as for PrintLabel
+    pub fn string_label(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_string_label(
+                self as *const Self,
+                ent,
+            ))
+        }
     }
 
     /// **Source:** `StepData_StepModel.hxx`:107 - `StepData_StepModel::SourceCodePage()`
@@ -891,6 +1055,15 @@ impl StepModel {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_to_handle(obj.into_raw()))
+        }
+    }
+
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:71 - `Interface_InterfaceModel::Destroy()`
     pub fn destroy(&mut self) {
         unsafe { crate::ffi::StepData_StepModel_inherited_Destroy(self as *mut Self) }
@@ -916,6 +1089,41 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:113 - `Interface_InterfaceModel::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
         unsafe { crate::ffi::StepData_StepModel_inherited_NbEntities(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:117 - `Interface_InterfaceModel::Contains()`
+    pub fn contains(&self, anentity: &crate::ffi::HandleStandardTransient) -> bool {
+        unsafe { crate::ffi::StepData_StepModel_inherited_Contains(self as *const Self, anentity) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:124 - `Interface_InterfaceModel::Number()`
+    pub fn number(&self, anentity: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepData_StepModel_inherited_Number(self as *const Self, anentity) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:133 - `Interface_InterfaceModel::Value()`
+    pub fn value(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+        unsafe { &*(crate::ffi::StepData_StepModel_inherited_Value(self as *const Self, num)) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:138 - `Interface_InterfaceModel::NbTypes()`
+    pub fn nb_types(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+        unsafe { crate::ffi::StepData_StepModel_inherited_NbTypes(self as *const Self, ent) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:142 - `Interface_InterfaceModel::Type()`
+    pub fn type_(
+        &self,
+        ent: &crate::ffi::HandleStandardTransient,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_inherited_Type(
+                self as *const Self,
+                ent,
+                num,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:158 - `Interface_InterfaceModel::EntityState()`
@@ -993,6 +1201,18 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_inherited_Reservate(self as *mut Self, nbent) }
     }
 
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:249 - `Interface_InterfaceModel::AddEntity()`
+    pub fn add_entity(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_AddEntity(self as *mut Self, anentity) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:279 - `Interface_InterfaceModel::ReplaceEntity()`
+    pub fn replace_entity(&mut self, nument: i32, anent: &crate::ffi::HandleStandardTransient) {
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_ReplaceEntity(self as *mut Self, nument, anent)
+        }
+    }
+
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:287 - `Interface_InterfaceModel::ReverseOrders()`
     pub fn reverse_orders(&mut self, after: i32) {
         unsafe { crate::ffi::StepData_StepModel_inherited_ReverseOrders(self as *mut Self, after) }
@@ -1035,27 +1255,44 @@ impl StepModel {
     }
 }
 
-// ── Skipped symbols for StepModel (9 total) ──
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:47 - `StepData_StepModel::Entity`
-//   method: returns entity given its rank.
-//   method: Same as InterfaceEntity, but with a shorter name
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn entity(&self, num: i32) -> OwnedPtr<Handle<Standard_Transient>>;
-//
+pub use crate::ffi::HandleStepDataStepModel;
+
+unsafe impl crate::CppDeletable for HandleStepDataStepModel {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleStepDataStepModel_destructor(ptr);
+    }
+}
+
+impl HandleStepDataStepModel {
+    /// Dereference this Handle to access the underlying StepData_StepModel
+    pub fn get(&self) -> &crate::ffi::StepData_StepModel {
+        unsafe { &*(crate::ffi::HandleStepDataStepModel_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying StepData_StepModel
+    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_StepModel {
+        unsafe { &mut *(crate::ffi::HandleStepDataStepModel_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<StepData_StepModel> to Handle<Interface_InterfaceModel>
+    pub fn to_handle_interface_model(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleStepDataStepModel_to_HandleInterfaceInterfaceModel(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for StepModel (3 total) ──
 // SKIPPED: **Source:** `StepData_StepModel.hxx`:57 - `StepData_StepModel::Header`
 //   method: returns Header entities under the form of an iterator
 //   Reason: return type 'Interface_EntityIterator' is unknown
 //   // pub fn header(&self) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:63 - `StepData_StepModel::HeaderEntity`
-//   method: Returns Header entity with specified type, if there is
-//   Reason: return type 'Handle(Standard_Transient)' is unknown
-//   // pub fn header_entity(&self, atype: &HandleType) -> OwnedPtr<Handle<Standard_Transient>>;
-//
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:69 - `StepData_StepModel::AddHeaderEntity`
-//   method: Adds an Entity to the Header
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn add_header_entity(&mut self, ent: &HandleTransient);
 //
 // SKIPPED: **Source:** `StepData_StepModel.hxx`:79 - `StepData_StepModel::DumpHeader`
 //   method: Dumps the Header, with the Header Protocol of StepData.
@@ -1064,29 +1301,12 @@ impl StepModel {
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn dump_header(&self, S: /* Standard_OStream& */, level: i32);
 //
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:87 - `StepData_StepModel::SetIdentLabel`
-//   method: Attaches an ident to an entity to produce a label
-//   method: (does nothing if <ent> is not in <me>)
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn set_ident_label(&mut self, ent: &HandleTransient, ident: i32);
-//
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:91 - `StepData_StepModel::IdentLabel`
-//   method: returns the label ident attached to an entity, 0 if not in me
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn ident_label(&self, ent: &HandleTransient) -> i32;
-//
 // SKIPPED: **Source:** `StepData_StepModel.hxx`:96 - `StepData_StepModel::PrintLabel`
 //   method: Prints label specific to STEP norm for a given entity, i.e.
 //   method: if a LabelIdent has been recorded, its value with '#', else
 //   method: the number in the model with '#' and between ()
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_label(&self, ent: &HandleTransient, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:101 - `StepData_StepModel::StringLabel`
-//   method: Returns a string with the label attached to a given entity,
-//   method: same form as for PrintLabel
-//   Reason: param 'ent' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn string_label(&self, ent: &HandleTransient) -> OwnedPtr<Handle<TCollection_HAsciiString>>;
 //
 
 // ========================

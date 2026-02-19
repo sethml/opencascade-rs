@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleGeomGeometry, HandleGeomSurface};
+pub use crate::ffi::{HandleBRepFillCurveConstraint, HandleGeomGeometry, HandleGeomSurface};
 
 // ========================
 // From GeomPlate_Aij.hxx
@@ -1376,6 +1376,24 @@ impl HandleGeomPlateCurveConstraint {
     /// Dereference this Handle to mutably access the underlying GeomPlate_CurveConstraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_CurveConstraint {
         unsafe { &mut *(crate::ffi::HandleGeomPlateCurveConstraint_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<GeomPlate_CurveConstraint> to Handle<BRepFill_CurveConstraint>
+    ///
+    /// Returns `None` if the handle does not point to a `BRepFill_CurveConstraint` (or subclass).
+    pub fn downcast_to_curve_constraint(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillCurveConstraint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleGeomPlateCurveConstraint_downcast_to_HandleBRepFillCurveConstraint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 

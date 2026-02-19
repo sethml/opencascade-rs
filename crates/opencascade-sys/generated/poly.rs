@@ -70,6 +70,9 @@ pub fn intersect_tri_line(
     unsafe { crate::ffi::Poly_intersect_tri_line(theStart, theDir, theV0, theV1, theV2, theParam) }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{HandleRWGltfGltfLatePrimitiveArray, HandleRWMeshTriangulationSource};
+
 // ========================
 // From Poly_ArrayOfNodes.hxx
 // ========================
@@ -3732,6 +3735,42 @@ impl HandlePolyTriangulation {
     /// Dereference this Handle to mutably access the underlying Poly_Triangulation
     pub fn get_mut(&mut self) -> &mut crate::ffi::Poly_Triangulation {
         unsafe { &mut *(crate::ffi::HandlePolyTriangulation_get_mut(self as *mut Self)) }
+    }
+
+    /// Downcast Handle<Poly_Triangulation> to Handle<RWGltf_GltfLatePrimitiveArray>
+    ///
+    /// Returns `None` if the handle does not point to a `RWGltf_GltfLatePrimitiveArray` (or subclass).
+    pub fn downcast_to_gltf_late_primitive_array(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWGltfGltfLatePrimitiveArray>> {
+        let ptr = unsafe {
+            crate::ffi::HandlePolyTriangulation_downcast_to_HandleRWGltfGltfLatePrimitiveArray(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Poly_Triangulation> to Handle<RWMesh_TriangulationSource>
+    ///
+    /// Returns `None` if the handle does not point to a `RWMesh_TriangulationSource` (or subclass).
+    pub fn downcast_to_triangulation_source(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWMeshTriangulationSource>> {
+        let ptr = unsafe {
+            crate::ffi::HandlePolyTriangulation_downcast_to_HandleRWMeshTriangulationSource(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
     }
 }
 

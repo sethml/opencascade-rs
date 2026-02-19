@@ -557,6 +557,16 @@ impl CheckCurveOnSurface {
         unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_init(self as *mut Self) }
     }
 
+    /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:49 - `GeomLib_CheckCurveOnSurface::Perform()`
+    /// Computes the max distance for the 3d curve <myCurve>
+    /// and 2d curve <theCurveOnSurface>
+    /// If isMultiThread == Standard_True then computation will be performed in parallel.
+    pub fn perform(&mut self, theCurveOnSurface: &crate::ffi::HandleAdaptor3dCurveOnSurface) {
+        unsafe {
+            crate::ffi::GeomLib_CheckCurveOnSurface_perform(self as *mut Self, theCurveOnSurface)
+        }
+    }
+
     /// **Source:** `GeomLib_CheckCurveOnSurface.hxx`:52 - `GeomLib_CheckCurveOnSurface::SetParallel()`
     /// Sets parallel flag
     pub fn set_parallel(&mut self, theIsParallel: bool) {
@@ -600,15 +610,6 @@ impl CheckCurveOnSurface {
         unsafe { crate::ffi::GeomLib_CheckCurveOnSurface_max_parameter(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for CheckCurveOnSurface (1 total) ──
-// SKIPPED: **Source:** `GeomLib_CheckCurveOnSurface.hxx`:49 - `GeomLib_CheckCurveOnSurface::Perform`
-//   method: Computes the max distance for the 3d curve <myCurve>
-//   method: and 2d curve <theCurveOnSurface>
-//   method: If isMultiThread == Standard_True then computation will be performed in parallel.
-//   Reason: param 'theCurveOnSurface' uses unknown type 'const Handle(Adaptor3d_CurveOnSurface)&'
-//   // pub fn perform(&mut self, theCurveOnSurface: &HandleCurveOnSurface);
-//
 
 // ========================
 // From GeomLib_DenominatorMultiplier.hxx

@@ -36,6 +36,17 @@ impl TryFrom<i32> for RealEnum {
     }
 }
 
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi::{
+    HandleTDFAttribute, HandleTDFAttributeDelta, HandleTDFDeltaOnModification, HandleTDataXtdAxis,
+    HandleTDataXtdPlacement, HandleTDataXtdPlane, HandleTDataXtdPoint, HandleTDataXtdShape,
+    HandleXCAFDocArea, HandleXCAFDocClippingPlaneTool, HandleXCAFDocColorTool,
+    HandleXCAFDocDimTolTool, HandleXCAFDocDimension, HandleXCAFDocDocumentTool,
+    HandleXCAFDocGeomTolerance, HandleXCAFDocLayerTool, HandleXCAFDocMaterialTool,
+    HandleXCAFDocNotesTool, HandleXCAFDocShapeTool, HandleXCAFDocView, HandleXCAFDocViewTool,
+    HandleXCAFDocVolume,
+};
+
 // ========================
 // From TDataStd_AsciiString.hxx
 // ========================
@@ -124,6 +135,37 @@ impl AsciiString {
         unsafe { &*(crate::ffi::TDataStd_AsciiString_get_id()) }
     }
 
+    /// **Source:** `TDataStd_AsciiString.hxx`:46 - `TDataStd_AsciiString::Set()`
+    /// Finds, or creates an AsciiString attribute and sets the string.
+    /// the AsciiString attribute is returned.
+    /// AsciiString methods
+    /// ===================
+    pub fn set_label_asciistring(
+        label: &crate::tdf::Label,
+        string: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_AsciiString_set_label_asciistring(
+                label, string,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_AsciiString.hxx`:51 - `TDataStd_AsciiString::Set()`
+    /// Finds, or creates, an AsciiString attribute with explicit user defined <guid> and sets
+    /// <string>. The Name attribute  is  returned.
+    pub fn set_label_guid_asciistring(
+        label: &crate::tdf::Label,
+        guid: &crate::standard::GUID,
+        string: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_AsciiString_set_label_guid_asciistring(
+                label, guid, string,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_AsciiString.hxx`:84 - `TDataStd_AsciiString::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -146,6 +188,15 @@ impl AsciiString {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_AsciiString_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdAsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_AsciiString_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -309,6 +360,57 @@ impl AsciiString {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_AsciiString_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_AsciiString_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_AsciiString_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_AsciiString_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_AsciiString_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -324,23 +426,39 @@ impl AsciiString {
     }
 }
 
-// ── Skipped symbols for AsciiString (3 total) ──
+pub use crate::ffi::HandleTDataStdAsciiString;
+
+unsafe impl crate::CppDeletable for HandleTDataStdAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdAsciiString_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdAsciiString {
+    /// Dereference this Handle to access the underlying TDataStd_AsciiString
+    pub fn get(&self) -> &crate::ffi::TDataStd_AsciiString {
+        unsafe { &*(crate::ffi::HandleTDataStdAsciiString_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_AsciiString
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_AsciiString {
+        unsafe { &mut *(crate::ffi::HandleTDataStdAsciiString_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_AsciiString> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdAsciiString_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for AsciiString (1 total) ──
 // SKIPPED: **Source:** `TDataStd_AsciiString.hxx`:78 - `TDataStd_AsciiString::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_AsciiString.hxx`:46 - `TDataStd_AsciiString::Set`
-//   static_method: Finds, or creates an AsciiString attribute and sets the string.
-//   static_method: the AsciiString attribute is returned.
-//   static_method: AsciiString methods
-//   Reason: return type 'Handle(TDataStd_AsciiString)' is unknown
-//   // pub fn set(label: &Label, string: &AsciiString) -> OwnedPtr<Handle<TDataStd_AsciiString>>;
-//
-// SKIPPED: **Source:** `TDataStd_AsciiString.hxx`:51 - `TDataStd_AsciiString::Set`
-//   static_method: Finds, or creates, an AsciiString attribute with explicit user defined <guid> and sets
-//   static_method: <string>. The Name attribute  is  returned.
-//   Reason: return type 'Handle(TDataStd_AsciiString)' is unknown
-//   // pub fn set(label: &Label, guid: &GUID, string: &AsciiString) -> OwnedPtr<Handle<TDataStd_AsciiString>>;
 //
 
 // ========================
@@ -464,6 +582,35 @@ impl BooleanArray {
         unsafe { &*(crate::ffi::TDataStd_BooleanArray_get_id()) }
     }
 
+    /// **Source:** `TDataStd_BooleanArray.hxx`:43 - `TDataStd_BooleanArray::Set()`
+    /// Finds or creates an attribute with internal boolean array.
+    pub fn set_label_int2(
+        label: &crate::tdf::Label,
+        lower: i32,
+        upper: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanArray_set_label_int2(
+                label, lower, upper,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_BooleanArray.hxx`:48 - `TDataStd_BooleanArray::Set()`
+    /// Finds or creates an attribute with the array using explicit user defined <guid>.
+    pub fn set_label_guid_int2(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+        lower: i32,
+        upper: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanArray_set_label_guid_int2(
+                label, theGuid, lower, upper,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_BooleanArray.hxx`:102 - `TDataStd_BooleanArray::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -486,6 +633,15 @@ impl BooleanArray {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_BooleanArray_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanArray_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -651,6 +807,57 @@ impl BooleanArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanArray_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanArray_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanArray_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_BooleanArray_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanArray_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -666,20 +873,39 @@ impl BooleanArray {
     }
 }
 
-// ── Skipped symbols for BooleanArray (3 total) ──
+pub use crate::ffi::HandleTDataStdBooleanArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdBooleanArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdBooleanArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdBooleanArray {
+    /// Dereference this Handle to access the underlying TDataStd_BooleanArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_BooleanArray {
+        unsafe { &*(crate::ffi::HandleTDataStdBooleanArray_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_BooleanArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_BooleanArray {
+        unsafe { &mut *(crate::ffi::HandleTDataStdBooleanArray_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_BooleanArray> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdBooleanArray_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for BooleanArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_BooleanArray.hxx`:96 - `TDataStd_BooleanArray::Dump`
 //   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_BooleanArray.hxx`:43 - `TDataStd_BooleanArray::Set`
-//   static_method: Finds or creates an attribute with internal boolean array.
-//   Reason: return type 'Handle(TDataStd_BooleanArray)' is unknown
-//   // pub fn set(label: &Label, lower: i32, upper: i32) -> OwnedPtr<Handle<TDataStd_BooleanArray>>;
-//
-// SKIPPED: **Source:** `TDataStd_BooleanArray.hxx`:48 - `TDataStd_BooleanArray::Set`
-//   static_method: Finds or creates an attribute with the array using explicit user defined <guid>.
-//   Reason: return type 'Handle(TDataStd_BooleanArray)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32) -> OwnedPtr<Handle<TDataStd_BooleanArray>>;
 //
 
 // ========================
@@ -821,6 +1047,27 @@ impl BooleanList {
         unsafe { &*(crate::ffi::TDataStd_BooleanList_get_id()) }
     }
 
+    /// **Source:** `TDataStd_BooleanList.hxx`:44 - `TDataStd_BooleanList::Set()`
+    /// Finds or creates a list of boolean values attribute.
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanList> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanList_set_label(label)) }
+    }
+
+    /// **Source:** `TDataStd_BooleanList.hxx`:47 - `TDataStd_BooleanList::Set()`
+    /// Finds or creates a list of boolean values attribute with explicit user defined <guid>.
+    pub fn set_label_guid(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanList_set_label_guid(
+                label, theGuid,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_BooleanList.hxx`:104 - `TDataStd_BooleanList::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -843,6 +1090,15 @@ impl BooleanList {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_BooleanList_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanList_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -1006,6 +1262,57 @@ impl BooleanList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanList_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanList_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanList_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_BooleanList_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_BooleanList_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -1021,20 +1328,39 @@ impl BooleanList {
     }
 }
 
-// ── Skipped symbols for BooleanList (3 total) ──
+pub use crate::ffi::HandleTDataStdBooleanList;
+
+unsafe impl crate::CppDeletable for HandleTDataStdBooleanList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdBooleanList_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdBooleanList {
+    /// Dereference this Handle to access the underlying TDataStd_BooleanList
+    pub fn get(&self) -> &crate::ffi::TDataStd_BooleanList {
+        unsafe { &*(crate::ffi::HandleTDataStdBooleanList_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_BooleanList
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_BooleanList {
+        unsafe { &mut *(crate::ffi::HandleTDataStdBooleanList_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_BooleanList> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdBooleanList_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for BooleanList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_BooleanList.hxx`:98 - `TDataStd_BooleanList::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_BooleanList.hxx`:44 - `TDataStd_BooleanList::Set`
-//   static_method: Finds or creates a list of boolean values attribute.
-//   Reason: return type 'Handle(TDataStd_BooleanList)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_BooleanList>>;
-//
-// SKIPPED: **Source:** `TDataStd_BooleanList.hxx`:47 - `TDataStd_BooleanList::Set`
-//   static_method: Finds or creates a list of boolean values attribute with explicit user defined <guid>.
-//   Reason: return type 'Handle(TDataStd_BooleanList)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_BooleanList>>;
 //
 
 // ========================
@@ -1157,6 +1483,21 @@ impl ByteArray {
         unsafe { crate::ffi::TDataStd_ByteArray_paste(self as *const Self, into, RT) }
     }
 
+    /// **Source:** `TDataStd_ByteArray.hxx`:124 - `TDataStd_ByteArray::DeltaOnModification()`
+    /// Makes a DeltaOnModification between <me> and
+    /// <anOldAttribute>.
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_delta_on_modification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_ByteArray.hxx`:38 - `TDataStd_ByteArray::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1179,6 +1520,42 @@ impl ByteArray {
         unsafe { &*(crate::ffi::TDataStd_ByteArray_get_id()) }
     }
 
+    /// **Source:** `TDataStd_ByteArray.hxx`:50 - `TDataStd_ByteArray::Set()`
+    /// Finds or creates an attribute with the array on the specified label.
+    /// If <isDelta> == False, DefaultDeltaOnModification is used.
+    /// If <isDelta> == True, DeltaOnModification of the current attribute is used.
+    /// If attribute is already set, all input parameters are refused and the found
+    /// attribute is returned.
+    pub fn set_label_int2_bool(
+        label: &crate::tdf::Label,
+        lower: i32,
+        upper: i32,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdByteArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_set_label_int2_bool(
+                label, lower, upper, isDelta,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_ByteArray.hxx`:58 - `TDataStd_ByteArray::Set()`
+    /// Finds or creates an attribute with byte array and explicit user defined <guid> on the
+    /// specified label.
+    pub fn set_label_guid_int2_bool(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+        lower: i32,
+        upper: i32,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdByteArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_set_label_guid_int2_bool(
+                label, theGuid, lower, upper, isDelta,
+            ))
+        }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::TDataStd_ByteArray_as_TDF_Attribute(self as *const Self)) }
@@ -1187,6 +1564,15 @@ impl ByteArray {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_ByteArray_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdByteArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -1348,6 +1734,42 @@ impl ByteArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ByteArray_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -1361,7 +1783,36 @@ impl ByteArray {
     }
 }
 
-// ── Skipped symbols for ByteArray (6 total) ──
+pub use crate::ffi::HandleTDataStdByteArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdByteArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdByteArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdByteArray {
+    /// Dereference this Handle to access the underlying TDataStd_ByteArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_ByteArray {
+        unsafe { &*(crate::ffi::HandleTDataStdByteArray_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_ByteArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_ByteArray {
+        unsafe { &mut *(crate::ffi::HandleTDataStdByteArray_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_ByteArray> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdByteArray_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for ByteArray (3 total) ──
 // SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:71 - `TDataStd_ByteArray::SetValue`
 //   method: Sets the <Index>th element of the array to <Value>
 //   method: OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the
@@ -1377,25 +1828,6 @@ impl ByteArray {
 // SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:120 - `TDataStd_ByteArray::Dump`
 //   Reason: has unbindable types: param 'OS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, OS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:124 - `TDataStd_ByteArray::DeltaOnModification`
-//   method: Makes a DeltaOnModification between <me> and
-//   method: <anOldAttribute>.
-//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
-//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
-//
-// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:50 - `TDataStd_ByteArray::Set`
-//   static_method: Finds or creates an attribute with the array on the specified label.
-//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
-//   static_method: If <isDelta> == True, DeltaOnModification of the current attribute is used.
-//   Reason: return type 'Handle(TDataStd_ByteArray)' is unknown
-//   // pub fn set(label: &Label, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_ByteArray>>;
-//
-// SKIPPED: **Source:** `TDataStd_ByteArray.hxx`:58 - `TDataStd_ByteArray::Set`
-//   static_method: Finds or creates an attribute with byte array and explicit user defined <guid> on the
-//   static_method: specified label.
-//   Reason: return type 'Handle(TDataStd_ByteArray)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_ByteArray>>;
 //
 
 // ========================
@@ -1422,6 +1854,48 @@ impl ChildNodeIterator {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ChildNodeIterator_ctor()) }
     }
 
+    /// **Source:** `TDataStd_ChildNodeIterator.hxx`:42 - `TDataStd_ChildNodeIterator::TDataStd_ChildNodeIterator()`
+    /// Iterates on the ChildStepren of the given Step. If
+    /// <allLevels> option is set to true, it explores not
+    /// only the first, but all the sub Step levels.
+    pub fn new_handletdatastdtreenode_bool(
+        aTreeNode: &crate::ffi::HandleTDataStdTreeNode,
+        allLevels: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_ChildNodeIterator_ctor_handletdatastdtreenode_bool(
+                    aTreeNode, allLevels,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TDataStd_ChildNodeIterator.hxx`:42 - `TDataStd_ChildNodeIterator::TDataStd_ChildNodeIterator()`
+    /// Iterates on the ChildStepren of the given Step. If
+    /// <allLevels> option is set to true, it explores not
+    /// only the first, but all the sub Step levels.
+    pub fn new_handletdatastdtreenode(
+        aTreeNode: &crate::ffi::HandleTDataStdTreeNode,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handletdatastdtreenode_bool(aTreeNode, false)
+    }
+
+    /// **Source:** `TDataStd_ChildNodeIterator.hxx`:49 - `TDataStd_ChildNodeIterator::Initialize()`
+    /// Initializes the iteration on  the Children Step of
+    /// the  given Step. If <allLevels>  option is  set to
+    /// true, it explores not  only the first, but all the
+    /// sub Step levels.
+    pub fn initialize(&mut self, aTreeNode: &crate::ffi::HandleTDataStdTreeNode, allLevels: bool) {
+        unsafe {
+            crate::ffi::TDataStd_ChildNodeIterator_initialize(
+                self as *mut Self,
+                aTreeNode,
+                allLevels,
+            )
+        }
+    }
+
     /// **Source:** `TDataStd_ChildNodeIterator.hxx`:54 - `TDataStd_ChildNodeIterator::More()`
     /// Returns True if there is a current Item in the
     /// iteration.
@@ -1443,29 +1917,14 @@ impl ChildNodeIterator {
     pub fn next_brother(&mut self) {
         unsafe { crate::ffi::TDataStd_ChildNodeIterator_next_brother(self as *mut Self) }
     }
-}
 
-// ── Skipped symbols for ChildNodeIterator (3 total) ──
-// SKIPPED: **Source:** `TDataStd_ChildNodeIterator.hxx`:42 - `TDataStd_ChildNodeIterator::TDataStd_ChildNodeIterator`
-//   constructor: Iterates on the ChildStepren of the given Step. If
-//   constructor: <allLevels> option is set to true, it explores not
-//   constructor: only the first, but all the sub Step levels.
-//   Reason: param 'aTreeNode' uses unknown Handle type
-//   // pub fn new_handletdatastdtreenode_bool(aTreeNode: &HandleTreeNode, allLevels: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TDataStd_ChildNodeIterator.hxx`:49 - `TDataStd_ChildNodeIterator::Initialize`
-//   method: Initializes the iteration on  the Children Step of
-//   method: the  given Step. If <allLevels>  option is  set to
-//   method: true, it explores not  only the first, but all the
-//   Reason: param 'aTreeNode' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn initialize(&mut self, aTreeNode: &HandleTreeNode, allLevels: bool);
-//
-// SKIPPED: **Source:** `TDataStd_ChildNodeIterator.hxx`:67 - `TDataStd_ChildNodeIterator::Value`
-//   method: Returns the current item; a null Step if there is
-//   method: no one.
-//   Reason: return type 'const Handle(TDataStd_TreeNode)&' is unknown
-//   // pub fn value(&self) -> &HandleTreeNode;
-//
+    /// **Source:** `TDataStd_ChildNodeIterator.hxx`:67 - `TDataStd_ChildNodeIterator::Value()`
+    /// Returns the current item; a null Step if there is
+    /// no one.
+    pub fn value(&self) -> &crate::ffi::HandleTDataStdTreeNode {
+        unsafe { &*(crate::ffi::TDataStd_ChildNodeIterator_value(self as *const Self)) }
+    }
+}
 
 // ========================
 // From TDataStd_Comment.hxx
@@ -1525,6 +1984,31 @@ impl Comment {
         unsafe { &*(crate::ffi::TDataStd_Comment_get_id()) }
     }
 
+    /// **Source:** `TDataStd_Comment.hxx`:38 - `TDataStd_Comment::Set()`
+    /// Find, or create  a   Comment attribute.  the  Comment
+    /// attribute is returned.
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdComment> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_set_label(label)) }
+    }
+
+    /// **Source:** `TDataStd_Comment.hxx`:44 - `TDataStd_Comment::Set()`
+    /// Finds, or creates a Comment attribute and sets the string.
+    /// the Comment attribute is returned.
+    /// Comment methods
+    /// ============
+    pub fn set_label_extendedstring(
+        label: &crate::tdf::Label,
+        string: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdComment> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_set_label_extendedstring(
+                label, string,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_Comment.hxx`:59 - `TDataStd_Comment::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -1561,6 +2045,13 @@ impl Comment {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Comment_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdComment> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericExtString.hxx`:41 - `TDataStd_GenericExtString::Get()`
@@ -1738,6 +2229,55 @@ impl Comment {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Comment_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_Comment_inherited_References(self as *const Self, aDataSet) }
@@ -1749,23 +2289,52 @@ impl Comment {
     }
 }
 
-// ── Skipped symbols for Comment (3 total) ──
+pub use crate::ffi::HandleTDataStdComment;
+
+unsafe impl crate::CppDeletable for HandleTDataStdComment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdComment_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdComment {
+    /// Dereference this Handle to access the underlying TDataStd_Comment
+    pub fn get(&self) -> &crate::ffi::TDataStd_Comment {
+        unsafe { &*(crate::ffi::HandleTDataStdComment_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Comment
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Comment {
+        unsafe { &mut *(crate::ffi::HandleTDataStdComment_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Comment> to Handle<TDataStd_GenericExtString>
+    pub fn to_handle_generic_ext_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericExtString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdComment_to_HandleTDataStdGenericExtString(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataStd_Comment> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdComment_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Comment (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Comment.hxx`:57 - `TDataStd_Comment::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Comment.hxx`:38 - `TDataStd_Comment::Set`
-//   static_method: Find, or create  a   Comment attribute.  the  Comment
-//   static_method: attribute is returned.
-//   Reason: return type 'Handle(TDataStd_Comment)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Comment>>;
-//
-// SKIPPED: **Source:** `TDataStd_Comment.hxx`:44 - `TDataStd_Comment::Set`
-//   static_method: Finds, or creates a Comment attribute and sets the string.
-//   static_method: the Comment attribute is returned.
-//   static_method: Comment methods
-//   Reason: return type 'Handle(TDataStd_Comment)' is unknown
-//   // pub fn set(label: &Label, string: &ExtendedString) -> OwnedPtr<Handle<TDataStd_Comment>>;
 //
 
 // ========================
@@ -1882,6 +2451,13 @@ impl Current {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Current_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdCurrent> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -2040,6 +2616,55 @@ impl Current {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Current_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_Current_inherited_References(self as *const Self, aDataSet) }
@@ -2048,6 +2673,35 @@ impl Current {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Current_inherited_Forget(self as *mut Self, aTransaction) }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdCurrent;
+
+unsafe impl crate::CppDeletable for HandleTDataStdCurrent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdCurrent_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdCurrent {
+    /// Dereference this Handle to access the underlying TDataStd_Current
+    pub fn get(&self) -> &crate::ffi::TDataStd_Current {
+        unsafe { &*(crate::ffi::HandleTDataStdCurrent_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Current
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Current {
+        unsafe { &mut *(crate::ffi::HandleTDataStdCurrent_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Current> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdCurrent_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
     }
 }
 
@@ -2073,6 +2727,20 @@ unsafe impl crate::CppDeletable for DeltaOnModificationOfByteArray {
 }
 
 impl DeltaOnModificationOfByteArray {
+    /// **Source:** `TDataStd_DeltaOnModificationOfByteArray.hxx`:37 - `TDataStd_DeltaOnModificationOfByteArray::TDataStd_DeltaOnModificationOfByteArray()`
+    /// Initializes a TDF_DeltaOnModification.
+    pub fn new_handletdatastdbytearray(
+        Arr: &crate::ffi::HandleTDataStdByteArray,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_DeltaOnModificationOfByteArray_ctor_handletdatastdbytearray(
+                    Arr,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `TDataStd_DeltaOnModificationOfByteArray.hxx`:40 - `TDataStd_DeltaOnModificationOfByteArray::Apply()`
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
@@ -2138,6 +2806,17 @@ impl DeltaOnModificationOfByteArray {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_DeltaOnModificationOfByteArray_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
@@ -2172,12 +2851,53 @@ impl DeltaOnModificationOfByteArray {
     }
 }
 
-// ── Skipped symbols for DeltaOnModificationOfByteArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfByteArray.hxx`:37 - `TDataStd_DeltaOnModificationOfByteArray::TDataStd_DeltaOnModificationOfByteArray`
-//   constructor: Initializes a TDF_DeltaOnModification.
-//   Reason: param 'Arr' uses unknown Handle type
-//   // pub fn new_handletdatastdbytearray(Arr: &HandleByteArray) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfByteArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdDeltaOnModificationOfByteArray {
+    /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfByteArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_DeltaOnModificationOfByteArray {
+        unsafe {
+            &*(crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_DeltaOnModificationOfByteArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_DeltaOnModificationOfByteArray {
+        unsafe {
+            &mut *(crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfByteArray> to Handle<TDF_DeltaOnModification>
+    pub fn to_handle_delta_on_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray_to_HandleTDFDeltaOnModification(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfByteArray> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From TDataStd_DeltaOnModificationOfExtStringArray.hxx
@@ -2195,6 +2915,16 @@ unsafe impl crate::CppDeletable for DeltaOnModificationOfExtStringArray {
 }
 
 impl DeltaOnModificationOfExtStringArray {
+    /// **Source:** `TDataStd_DeltaOnModificationOfExtStringArray.hxx`:37 - `TDataStd_DeltaOnModificationOfExtStringArray::TDataStd_DeltaOnModificationOfExtStringArray()`
+    /// Initializes a TDF_DeltaOnModification.
+    pub fn new_handletdatastdextstringarray(
+        Arr: &crate::ffi::HandleTDataStdExtStringArray,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_DeltaOnModificationOfExtStringArray_ctor_handletdatastdextstringarray(Arr))
+        }
+    }
+
     /// **Source:** `TDataStd_DeltaOnModificationOfExtStringArray.hxx`:41 - `TDataStd_DeltaOnModificationOfExtStringArray::Apply()`
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
@@ -2260,6 +2990,17 @@ impl DeltaOnModificationOfExtStringArray {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_DeltaOnModificationOfExtStringArray_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
@@ -2294,12 +3035,51 @@ impl DeltaOnModificationOfExtStringArray {
     }
 }
 
-// ── Skipped symbols for DeltaOnModificationOfExtStringArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfExtStringArray.hxx`:37 - `TDataStd_DeltaOnModificationOfExtStringArray::TDataStd_DeltaOnModificationOfExtStringArray`
-//   constructor: Initializes a TDF_DeltaOnModification.
-//   Reason: param 'Arr' uses unknown Handle type
-//   // pub fn new_handletdatastdextstringarray(Arr: &HandleExtStringArray) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfExtStringArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdDeltaOnModificationOfExtStringArray {
+    /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfExtStringArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_DeltaOnModificationOfExtStringArray {
+        unsafe {
+            &*(crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_DeltaOnModificationOfExtStringArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_DeltaOnModificationOfExtStringArray {
+        unsafe {
+            &mut *(crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfExtStringArray> to Handle<TDF_DeltaOnModification>
+    pub fn to_handle_delta_on_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray_to_HandleTDFDeltaOnModification(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfExtStringArray> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray_to_HandleTDFAttributeDelta(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From TDataStd_DeltaOnModificationOfIntArray.hxx
@@ -2317,6 +3097,20 @@ unsafe impl crate::CppDeletable for DeltaOnModificationOfIntArray {
 }
 
 impl DeltaOnModificationOfIntArray {
+    /// **Source:** `TDataStd_DeltaOnModificationOfIntArray.hxx`:36 - `TDataStd_DeltaOnModificationOfIntArray::TDataStd_DeltaOnModificationOfIntArray()`
+    /// Initializes a TDF_DeltaOnModification.
+    pub fn new_handletdatastdintegerarray(
+        Arr: &crate::ffi::HandleTDataStdIntegerArray,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_DeltaOnModificationOfIntArray_ctor_handletdatastdintegerarray(
+                    Arr,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `TDataStd_DeltaOnModificationOfIntArray.hxx`:39 - `TDataStd_DeltaOnModificationOfIntArray::Apply()`
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
@@ -2380,6 +3174,17 @@ impl DeltaOnModificationOfIntArray {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_DeltaOnModificationOfIntArray_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
@@ -2414,12 +3219,53 @@ impl DeltaOnModificationOfIntArray {
     }
 }
 
-// ── Skipped symbols for DeltaOnModificationOfIntArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfIntArray.hxx`:36 - `TDataStd_DeltaOnModificationOfIntArray::TDataStd_DeltaOnModificationOfIntArray`
-//   constructor: Initializes a TDF_DeltaOnModification.
-//   Reason: param 'Arr' uses unknown Handle type
-//   // pub fn new_handletdatastdintegerarray(Arr: &HandleIntegerArray) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfIntArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdDeltaOnModificationOfIntArray {
+    /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfIntArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_DeltaOnModificationOfIntArray {
+        unsafe {
+            &*(crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_DeltaOnModificationOfIntArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_DeltaOnModificationOfIntArray {
+        unsafe {
+            &mut *(crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfIntArray> to Handle<TDF_DeltaOnModification>
+    pub fn to_handle_delta_on_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray_to_HandleTDFDeltaOnModification(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfIntArray> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From TDataStd_DeltaOnModificationOfIntPackedMap.hxx
@@ -2437,6 +3283,16 @@ unsafe impl crate::CppDeletable for DeltaOnModificationOfIntPackedMap {
 }
 
 impl DeltaOnModificationOfIntPackedMap {
+    /// **Source:** `TDataStd_DeltaOnModificationOfIntPackedMap.hxx`:35 - `TDataStd_DeltaOnModificationOfIntPackedMap::TDataStd_DeltaOnModificationOfIntPackedMap()`
+    /// Initializes a TDF_DeltaOnModification.
+    pub fn new_handletdatastdintpackedmap(
+        Arr: &crate::ffi::HandleTDataStdIntPackedMap,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_DeltaOnModificationOfIntPackedMap_ctor_handletdatastdintpackedmap(Arr))
+        }
+    }
+
     /// **Source:** `TDataStd_DeltaOnModificationOfIntPackedMap.hxx`:39 - `TDataStd_DeltaOnModificationOfIntPackedMap::Apply()`
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
@@ -2502,6 +3358,17 @@ impl DeltaOnModificationOfIntPackedMap {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_DeltaOnModificationOfIntPackedMap_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
@@ -2536,12 +3403,49 @@ impl DeltaOnModificationOfIntPackedMap {
     }
 }
 
-// ── Skipped symbols for DeltaOnModificationOfIntPackedMap (1 total) ──
-// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfIntPackedMap.hxx`:35 - `TDataStd_DeltaOnModificationOfIntPackedMap::TDataStd_DeltaOnModificationOfIntPackedMap`
-//   constructor: Initializes a TDF_DeltaOnModification.
-//   Reason: param 'Arr' uses unknown Handle type
-//   // pub fn new_handletdatastdintpackedmap(Arr: &HandleIntPackedMap) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap;
+
+unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfIntPackedMap {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdDeltaOnModificationOfIntPackedMap {
+    /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfIntPackedMap
+    pub fn get(&self) -> &crate::ffi::TDataStd_DeltaOnModificationOfIntPackedMap {
+        unsafe {
+            &*(crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_DeltaOnModificationOfIntPackedMap
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_DeltaOnModificationOfIntPackedMap {
+        unsafe {
+            &mut *(crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfIntPackedMap> to Handle<TDF_DeltaOnModification>
+    pub fn to_handle_delta_on_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap_to_HandleTDFDeltaOnModification(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfIntPackedMap> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap_to_HandleTDFAttributeDelta(self as *const Self))
+        }
+    }
+}
 
 // ========================
 // From TDataStd_DeltaOnModificationOfRealArray.hxx
@@ -2559,6 +3463,20 @@ unsafe impl crate::CppDeletable for DeltaOnModificationOfRealArray {
 }
 
 impl DeltaOnModificationOfRealArray {
+    /// **Source:** `TDataStd_DeltaOnModificationOfRealArray.hxx`:37 - `TDataStd_DeltaOnModificationOfRealArray::TDataStd_DeltaOnModificationOfRealArray()`
+    /// Initializes a TDF_DeltaOnModification.
+    pub fn new_handletdatastdrealarray(
+        Arr: &crate::ffi::HandleTDataStdRealArray,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_DeltaOnModificationOfRealArray_ctor_handletdatastdrealarray(
+                    Arr,
+                ),
+            )
+        }
+    }
+
     /// **Source:** `TDataStd_DeltaOnModificationOfRealArray.hxx`:40 - `TDataStd_DeltaOnModificationOfRealArray::Apply()`
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
@@ -2624,6 +3542,17 @@ impl DeltaOnModificationOfRealArray {
         }
     }
 
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_DeltaOnModificationOfRealArray_to_handle(obj.into_raw()),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
@@ -2658,12 +3587,53 @@ impl DeltaOnModificationOfRealArray {
     }
 }
 
-// ── Skipped symbols for DeltaOnModificationOfRealArray (1 total) ──
-// SKIPPED: **Source:** `TDataStd_DeltaOnModificationOfRealArray.hxx`:37 - `TDataStd_DeltaOnModificationOfRealArray::TDataStd_DeltaOnModificationOfRealArray`
-//   constructor: Initializes a TDF_DeltaOnModification.
-//   Reason: param 'Arr' uses unknown Handle type
-//   // pub fn new_handletdatastdrealarray(Arr: &HandleRealArray) -> OwnedPtr<Self>;
-//
+pub use crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdDeltaOnModificationOfRealArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdDeltaOnModificationOfRealArray {
+    /// Dereference this Handle to access the underlying TDataStd_DeltaOnModificationOfRealArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_DeltaOnModificationOfRealArray {
+        unsafe {
+            &*(crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray_get(self as *const Self))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_DeltaOnModificationOfRealArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_DeltaOnModificationOfRealArray {
+        unsafe {
+            &mut *(crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfRealArray> to Handle<TDF_DeltaOnModification>
+    pub fn to_handle_delta_on_modification(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray_to_HandleTDFDeltaOnModification(self as *const Self))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_DeltaOnModificationOfRealArray> to Handle<TDF_AttributeDelta>
+    pub fn to_handle_attribute_delta(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray_to_HandleTDFAttributeDelta(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From TDataStd_Directory.hxx
@@ -2703,6 +3673,44 @@ impl Directory {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_Directory.hxx`:46 - `TDataStd_Directory::Find()`
+    /// class methods
+    /// =============
+    /// Searches for a directory attribute on the label
+    /// current, or on one of the father labels of current.
+    /// If a directory attribute is found, true is returned,
+    /// and the attribute found is set as D.
+    pub fn find(current: &crate::tdf::Label, D: &mut crate::ffi::HandleTDataStdDirectory) -> bool {
+        unsafe { crate::ffi::TDataStd_Directory_find(current, D) }
+    }
+
+    /// **Source:** `TDataStd_Directory.hxx`:51 - `TDataStd_Directory::New()`
+    /// Creates  an  empty   Directory attribute,  located  at
+    /// <label>. Raises if <label> has attribute
+    pub fn new_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdDirectory> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_new(label)) }
+    }
+
+    /// **Source:** `TDataStd_Directory.hxx`:55 - `TDataStd_Directory::AddDirectory()`
+    /// Creates a new sub-label and sets the
+    /// sub-directory dir on that label.
+    pub fn add_directory(
+        dir: &crate::ffi::HandleTDataStdDirectory,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdDirectory> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_add_directory(dir)) }
+    }
+
+    /// **Source:** `TDataStd_Directory.hxx`:60 - `TDataStd_Directory::MakeObjectLabel()`
+    /// Makes new label and returns it to insert
+    /// other object attributes (sketch,part...etc...)
+    pub fn make_object_label(
+        dir: &crate::ffi::HandleTDataStdDirectory,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_make_object_label(dir)) }
     }
 
     /// **Source:** `TDataStd_Directory.hxx`:64 - `TDataStd_Directory::GetID()`
@@ -2746,6 +3754,15 @@ impl Directory {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Directory_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdDirectory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -2926,6 +3943,55 @@ impl Directory {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Directory_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -2939,35 +4005,52 @@ impl Directory {
     }
 }
 
-// ── Skipped symbols for Directory (5 total) ──
+pub use crate::ffi::HandleTDataStdDirectory;
+
+unsafe impl crate::CppDeletable for HandleTDataStdDirectory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdDirectory_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdDirectory {
+    /// Dereference this Handle to access the underlying TDataStd_Directory
+    pub fn get(&self) -> &crate::ffi::TDataStd_Directory {
+        unsafe { &*(crate::ffi::HandleTDataStdDirectory_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Directory
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Directory {
+        unsafe { &mut *(crate::ffi::HandleTDataStdDirectory_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Directory> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdDirectory_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataStd_Directory> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdDirectory_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Directory (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Directory.hxx`:70 - `TDataStd_Directory::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Directory.hxx`:46 - `TDataStd_Directory::Find`
-//   static_method: class methods
-//   static_method: =============
-//   static_method: Searches for a directory attribute on the label
-//   Reason: param 'D' uses unknown type 'Handle(TDataStd_Directory)&'
-//   // pub fn find(current: &Label, D: &mut HandleDirectory) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_Directory.hxx`:51 - `TDataStd_Directory::New`
-//   static_method: Creates  an  empty   Directory attribute,  located  at
-//   static_method: <label>. Raises if <label> has attribute
-//   Reason: return type 'Handle(TDataStd_Directory)' is unknown
-//   // pub fn new(label: &Label) -> OwnedPtr<Handle<TDataStd_Directory>>;
-//
-// SKIPPED: **Source:** `TDataStd_Directory.hxx`:55 - `TDataStd_Directory::AddDirectory`
-//   static_method: Creates a new sub-label and sets the
-//   static_method: sub-directory dir on that label.
-//   Reason: param 'dir' uses unknown type 'const Handle(TDataStd_Directory)&'
-//   // pub fn add_directory(dir: &HandleDirectory) -> OwnedPtr<Handle<TDataStd_Directory>>;
-//
-// SKIPPED: **Source:** `TDataStd_Directory.hxx`:60 - `TDataStd_Directory::MakeObjectLabel`
-//   static_method: Makes new label and returns it to insert
-//   static_method: other object attributes (sketch,part...etc...)
-//   Reason: param 'dir' uses unknown type 'const Handle(TDataStd_Directory)&'
-//   // pub fn make_object_label(dir: &HandleDirectory) -> OwnedPtr<TDF_Label>;
 //
 
 // ========================
@@ -3060,6 +4143,14 @@ impl Expression {
         unsafe { &*(crate::ffi::TDataStd_Expression_get_id()) }
     }
 
+    /// **Source:** `TDataStd_Expression.hxx`:52 - `TDataStd_Expression::Set()`
+    /// Find, or create, an Expression attribute.
+    /// Expressionmethods
+    /// ============
+    pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExpression> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Expression_set(label)) }
+    }
+
     /// **Source:** `TDataStd_Expression.hxx`:80 - `TDataStd_Expression::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3082,6 +4173,15 @@ impl Expression {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Expression_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Expression_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -3250,6 +4350,57 @@ impl Expression {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Expression_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Expression_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Expression_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_Expression_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Expression_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -3263,17 +4414,57 @@ impl Expression {
     }
 }
 
-// ── Skipped symbols for Expression (2 total) ──
+pub use crate::ffi::HandleTDataStdExpression;
+
+unsafe impl crate::CppDeletable for HandleTDataStdExpression {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdExpression_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdExpression {
+    /// Dereference this Handle to access the underlying TDataStd_Expression
+    pub fn get(&self) -> &crate::ffi::TDataStd_Expression {
+        unsafe { &*(crate::ffi::HandleTDataStdExpression_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Expression
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Expression {
+        unsafe { &mut *(crate::ffi::HandleTDataStdExpression_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Expression> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdExpression_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TDataStd_Expression> to Handle<TDataStd_Relation>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Relation` (or subclass).
+    pub fn downcast_to_relation(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdRelation>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdExpression_downcast_to_HandleTDataStdRelation(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for Expression (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Expression.hxx`:74 - `TDataStd_Expression::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Expression.hxx`:52 - `TDataStd_Expression::Set`
-//   static_method: Find, or create, an Expression attribute.
-//   static_method: Expressionmethods
-//   static_method: ============
-//   Reason: return type 'Handle(TDataStd_Expression)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Expression>>;
 //
 
 // ========================
@@ -3417,6 +4608,21 @@ impl ExtStringArray {
         unsafe { crate::ffi::TDataStd_ExtStringArray_paste(self as *const Self, Into, RT) }
     }
 
+    /// **Source:** `TDataStd_ExtStringArray.hxx`:131 - `TDataStd_ExtStringArray::DeltaOnModification()`
+    /// Makes a DeltaOnModification between <me> and
+    /// <anOldAttribute>.
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringArray_delta_on_modification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_ExtStringArray.hxx`:40 - `TDataStd_ExtStringArray::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3439,6 +4645,43 @@ impl ExtStringArray {
         unsafe { &*(crate::ffi::TDataStd_ExtStringArray_get_id()) }
     }
 
+    /// **Source:** `TDataStd_ExtStringArray.hxx`:53 - `TDataStd_ExtStringArray::Set()`
+    /// Finds, or creates, an ExtStringArray attribute with <lower>
+    /// and <upper> bounds on the specified label.
+    /// If <isDelta> == False, DefaultDeltaOnModification is used.
+    /// If <isDelta> == True, DeltaOnModification of the current attribute is used.
+    /// If attribute is already set, all input parameters are refused and the found
+    /// attribute is returned.
+    pub fn set_label_int2_bool(
+        label: &crate::tdf::Label,
+        lower: i32,
+        upper: i32,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringArray_set_label_int2_bool(
+                label, lower, upper, isDelta,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_ExtStringArray.hxx`:61 - `TDataStd_ExtStringArray::Set()`
+    /// Finds, or creates, an ExtStringArray attribute with explicit user defined <guid>.
+    /// The ExtStringArray attribute  is  returned.
+    pub fn set_label_guid_int2_bool(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+        lower: i32,
+        upper: i32,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringArray_set_label_guid_int2_bool(
+                label, theGuid, lower, upper, isDelta,
+            ))
+        }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::TDataStd_ExtStringArray_as_TDF_Attribute(self as *const Self)) }
@@ -3448,6 +4691,15 @@ impl ExtStringArray {
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
             &mut *(crate::ffi::TDataStd_ExtStringArray_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringArray_to_handle(obj.into_raw()))
         }
     }
 
@@ -3619,6 +4871,42 @@ impl ExtStringArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_ExtStringArray_inherited_DeltaOnAddition(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringArray_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringArray_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringArray_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -3634,29 +4922,39 @@ impl ExtStringArray {
     }
 }
 
-// ── Skipped symbols for ExtStringArray (4 total) ──
+pub use crate::ffi::HandleTDataStdExtStringArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdExtStringArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdExtStringArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdExtStringArray {
+    /// Dereference this Handle to access the underlying TDataStd_ExtStringArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_ExtStringArray {
+        unsafe { &*(crate::ffi::HandleTDataStdExtStringArray_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_ExtStringArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_ExtStringArray {
+        unsafe { &mut *(crate::ffi::HandleTDataStdExtStringArray_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_ExtStringArray> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdExtStringArray_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ExtStringArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:127 - `TDataStd_ExtStringArray::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:131 - `TDataStd_ExtStringArray::DeltaOnModification`
-//   method: Makes a DeltaOnModification between <me> and
-//   method: <anOldAttribute>.
-//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
-//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
-//
-// SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:53 - `TDataStd_ExtStringArray::Set`
-//   static_method: Finds, or creates, an ExtStringArray attribute with <lower>
-//   static_method: and <upper> bounds on the specified label.
-//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
-//   Reason: return type 'Handle(TDataStd_ExtStringArray)' is unknown
-//   // pub fn set(label: &Label, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_ExtStringArray>>;
-//
-// SKIPPED: **Source:** `TDataStd_ExtStringArray.hxx`:61 - `TDataStd_ExtStringArray::Set`
-//   static_method: Finds, or creates, an ExtStringArray attribute with explicit user defined <guid>.
-//   static_method: The ExtStringArray attribute  is  returned.
-//   Reason: return type 'Handle(TDataStd_ExtStringArray)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_ExtStringArray>>;
 //
 
 // ========================
@@ -3852,6 +5150,27 @@ impl ExtStringList {
         unsafe { &*(crate::ffi::TDataStd_ExtStringList_get_id()) }
     }
 
+    /// **Source:** `TDataStd_ExtStringList.hxx`:45 - `TDataStd_ExtStringList::Set()`
+    /// Finds or creates a list of string values attribute with explicit user defined <guid>.
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringList> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringList_set_label(label)) }
+    }
+
+    /// **Source:** `TDataStd_ExtStringList.hxx`:48 - `TDataStd_ExtStringList::Set()`
+    /// Finds or creates a list of string values attribute.
+    pub fn set_label_guid(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringList_set_label_guid(
+                label, theGuid,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_ExtStringList.hxx`:114 - `TDataStd_ExtStringList::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -3875,6 +5194,15 @@ impl ExtStringList {
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
             &mut *(crate::ffi::TDataStd_ExtStringList_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringList_to_handle(obj.into_raw()))
         }
     }
 
@@ -4043,6 +5371,57 @@ impl ExtStringList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringList_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringList_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringList_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_ExtStringList_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ExtStringList_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -4058,20 +5437,39 @@ impl ExtStringList {
     }
 }
 
-// ── Skipped symbols for ExtStringList (3 total) ──
+pub use crate::ffi::HandleTDataStdExtStringList;
+
+unsafe impl crate::CppDeletable for HandleTDataStdExtStringList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdExtStringList_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdExtStringList {
+    /// Dereference this Handle to access the underlying TDataStd_ExtStringList
+    pub fn get(&self) -> &crate::ffi::TDataStd_ExtStringList {
+        unsafe { &*(crate::ffi::HandleTDataStdExtStringList_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_ExtStringList
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_ExtStringList {
+        unsafe { &mut *(crate::ffi::HandleTDataStdExtStringList_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_ExtStringList> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdExtStringList_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ExtStringList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ExtStringList.hxx`:108 - `TDataStd_ExtStringList::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_ExtStringList.hxx`:45 - `TDataStd_ExtStringList::Set`
-//   static_method: Finds or creates a list of string values attribute with explicit user defined <guid>.
-//   Reason: return type 'Handle(TDataStd_ExtStringList)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_ExtStringList>>;
-//
-// SKIPPED: **Source:** `TDataStd_ExtStringList.hxx`:48 - `TDataStd_ExtStringList::Set`
-//   static_method: Finds or creates a list of string values attribute.
-//   Reason: return type 'Handle(TDataStd_ExtStringList)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_ExtStringList>>;
 //
 
 // ========================
@@ -4306,6 +5704,57 @@ impl GenericEmpty {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_GenericEmpty_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_GenericEmpty_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_GenericEmpty_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_GenericEmpty_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_GenericEmpty_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:320 - `TDF_Attribute::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
@@ -4326,6 +5775,383 @@ impl GenericEmpty {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
             crate::ffi::TDataStd_GenericEmpty_inherited_Forget(self as *mut Self, aTransaction)
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdGenericEmpty;
+
+unsafe impl crate::CppDeletable for HandleTDataStdGenericEmpty {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdGenericEmpty_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdGenericEmpty {
+    /// Dereference this Handle to access the underlying TDataStd_GenericEmpty
+    pub fn get(&self) -> &crate::ffi::TDataStd_GenericEmpty {
+        unsafe { &*(crate::ffi::HandleTDataStdGenericEmpty_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_GenericEmpty
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_GenericEmpty {
+        unsafe { &mut *(crate::ffi::HandleTDataStdGenericEmpty_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_GenericEmpty> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdGenericEmpty_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<TDataStd_Directory>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Directory` (or subclass).
+    pub fn downcast_to_directory(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDirectory>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleTDataStdDirectory(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<TDataStd_NoteBook>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_NoteBook` (or subclass).
+    pub fn downcast_to_note_book(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdNoteBook>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleTDataStdNoteBook(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<TDataStd_Tick>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Tick` (or subclass).
+    pub fn downcast_to_tick(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdTick>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleTDataStdTick(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<TDataXtd_Axis>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Axis` (or subclass).
+    pub fn downcast_to_axis(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdAxis(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<TDataXtd_Placement>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Placement` (or subclass).
+    pub fn downcast_to_placement(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPlacement>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdPlacement(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<TDataXtd_Plane>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Plane` (or subclass).
+    pub fn downcast_to_plane(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdPlane(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<TDataXtd_Point>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Point` (or subclass).
+    pub fn downcast_to_point(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdPoint(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<TDataXtd_Shape>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataXtd_Shape` (or subclass).
+    pub fn downcast_to_shape(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdShape>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_ClippingPlaneTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ClippingPlaneTool` (or subclass).
+    pub fn downcast_to_clipping_plane_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocClippingPlaneTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocClippingPlaneTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_ColorTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ColorTool` (or subclass).
+    pub fn downcast_to_color_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocColorTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocColorTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_DimTolTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_DimTolTool` (or subclass).
+    pub fn downcast_to_dim_tol_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTolTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocDimTolTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_Dimension>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Dimension` (or subclass).
+    pub fn downcast_to_dimension(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimension>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocDimension(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_DocumentTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_DocumentTool` (or subclass).
+    pub fn downcast_to_document_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDocumentTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocDocumentTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_GeomTolerance>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_GeomTolerance` (or subclass).
+    pub fn downcast_to_geom_tolerance(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocGeomTolerance>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocGeomTolerance(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_LayerTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_LayerTool` (or subclass).
+    pub fn downcast_to_layer_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocLayerTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocLayerTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_MaterialTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_MaterialTool` (or subclass).
+    pub fn downcast_to_material_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterialTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocMaterialTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_NotesTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_NotesTool` (or subclass).
+    pub fn downcast_to_notes_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNotesTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocNotesTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_ShapeTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ShapeTool` (or subclass).
+    pub fn downcast_to_shape_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocShapeTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_View>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_View` (or subclass).
+    pub fn downcast_to_view(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocView>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocView(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericEmpty> to Handle<XCAFDoc_ViewTool>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_ViewTool` (or subclass).
+    pub fn downcast_to_view_tool(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocViewTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocViewTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -4590,6 +6416,59 @@ impl GenericExtString {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_GenericExtString_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_GenericExtString_inherited_DeltaOnForget(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_GenericExtString_inherited_DeltaOnResume(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_GenericExtString_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_GenericExtString_inherited_DeltaOnRemoval(self as *const Self),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:320 - `TDF_Attribute::NewEmpty()`
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         unsafe {
@@ -4613,6 +6492,71 @@ impl GenericExtString {
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
             crate::ffi::TDataStd_GenericExtString_inherited_Forget(self as *mut Self, aTransaction)
+        }
+    }
+}
+
+pub use crate::ffi::HandleTDataStdGenericExtString;
+
+unsafe impl crate::CppDeletable for HandleTDataStdGenericExtString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdGenericExtString_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdGenericExtString {
+    /// Dereference this Handle to access the underlying TDataStd_GenericExtString
+    pub fn get(&self) -> &crate::ffi::TDataStd_GenericExtString {
+        unsafe { &*(crate::ffi::HandleTDataStdGenericExtString_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_GenericExtString
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_GenericExtString {
+        unsafe { &mut *(crate::ffi::HandleTDataStdGenericExtString_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_GenericExtString> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdGenericExtString_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericExtString> to Handle<TDataStd_Comment>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Comment` (or subclass).
+    pub fn downcast_to_comment(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdComment>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericExtString_downcast_to_HandleTDataStdComment(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_GenericExtString> to Handle<TDataStd_Name>
+    ///
+    /// Returns `None` if the handle does not point to a `TDataStd_Name` (or subclass).
+    pub fn downcast_to_name(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdName>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdGenericExtString_downcast_to_HandleTDataStdName(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }
@@ -5444,6 +7388,21 @@ impl IntPackedMap {
         unsafe { crate::ffi::TDataStd_IntPackedMap_paste(self as *const Self, into, RT) }
     }
 
+    /// **Source:** `TDataStd_IntPackedMap.hxx`:97 - `TDataStd_IntPackedMap::DeltaOnModification()`
+    /// Makes a DeltaOnModification between <me> and
+    /// <anOldAttribute>.
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntPackedMap_delta_on_modification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_IntPackedMap.hxx`:39 - `TDataStd_IntPackedMap::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -5466,6 +7425,21 @@ impl IntPackedMap {
         unsafe { &*(crate::ffi::TDataStd_IntPackedMap_get_id()) }
     }
 
+    /// **Source:** `TDataStd_IntPackedMap.hxx`:53 - `TDataStd_IntPackedMap::Set()`
+    /// Finds or creates an integer map attribute on the given label.
+    /// If <isDelta> == False, DefaultDeltaOnModification is used.
+    /// If <isDelta> == True, DeltaOnModification of the current attribute is used.
+    /// If attribute is already set, input parameter <isDelta> is refused and the found
+    /// attribute returned.
+    /// Attribute methods
+    /// ===================
+    pub fn set(
+        label: &crate::tdf::Label,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdIntPackedMap> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntPackedMap_set(label, isDelta)) }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::TDataStd_IntPackedMap_as_TDF_Attribute(self as *const Self)) }
@@ -5474,6 +7448,15 @@ impl IntPackedMap {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_IntPackedMap_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdIntPackedMap> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntPackedMap_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -5644,6 +7627,42 @@ impl IntPackedMap {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntPackedMap_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntPackedMap_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntPackedMap_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntPackedMap_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -5659,23 +7678,39 @@ impl IntPackedMap {
     }
 }
 
-// ── Skipped symbols for IntPackedMap (3 total) ──
+pub use crate::ffi::HandleTDataStdIntPackedMap;
+
+unsafe impl crate::CppDeletable for HandleTDataStdIntPackedMap {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdIntPackedMap_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdIntPackedMap {
+    /// Dereference this Handle to access the underlying TDataStd_IntPackedMap
+    pub fn get(&self) -> &crate::ffi::TDataStd_IntPackedMap {
+        unsafe { &*(crate::ffi::HandleTDataStdIntPackedMap_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_IntPackedMap
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_IntPackedMap {
+        unsafe { &mut *(crate::ffi::HandleTDataStdIntPackedMap_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_IntPackedMap> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdIntPackedMap_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for IntPackedMap (1 total) ──
 // SKIPPED: **Source:** `TDataStd_IntPackedMap.hxx`:93 - `TDataStd_IntPackedMap::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_IntPackedMap.hxx`:97 - `TDataStd_IntPackedMap::DeltaOnModification`
-//   method: Makes a DeltaOnModification between <me> and
-//   method: <anOldAttribute>.
-//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
-//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
-//
-// SKIPPED: **Source:** `TDataStd_IntPackedMap.hxx`:53 - `TDataStd_IntPackedMap::Set`
-//   static_method: Finds or creates an integer map attribute on the given label.
-//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
-//   static_method: If <isDelta> == True, DeltaOnModification of the current attribute is used.
-//   Reason: return type 'Handle(TDataStd_IntPackedMap)' is unknown
-//   // pub fn set(label: &Label, isDelta: bool) -> OwnedPtr<Handle<TDataStd_IntPackedMap>>;
 //
 
 // ========================
@@ -5768,6 +7803,33 @@ impl Integer {
         unsafe { &*(crate::ffi::TDataStd_Integer_get_id()) }
     }
 
+    /// **Source:** `TDataStd_Integer.hxx`:45 - `TDataStd_Integer::Set()`
+    /// Finds, or creates, an Integer attribute and sets <value>
+    /// the Integer  attribute is returned.
+    pub fn set_label_int(
+        label: &crate::tdf::Label,
+        value: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_set_label_int(label, value))
+        }
+    }
+
+    /// **Source:** `TDataStd_Integer.hxx`:50 - `TDataStd_Integer::Set()`
+    /// Finds, or creates, an Integer attribute with explicit user defined <guid> and sets <value>.
+    /// The Integer attribute  is  returned.
+    pub fn set_label_guid_int(
+        label: &crate::tdf::Label,
+        guid: &crate::standard::GUID,
+        value: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_set_label_guid_int(
+                label, guid, value,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_Integer.hxx`:87 - `TDataStd_Integer::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -5790,6 +7852,13 @@ impl Integer {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Integer_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdInteger> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -5943,6 +8012,55 @@ impl Integer {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Integer_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_Integer_inherited_References(self as *const Self, aDataSet) }
@@ -5954,22 +8072,39 @@ impl Integer {
     }
 }
 
-// ── Skipped symbols for Integer (3 total) ──
+pub use crate::ffi::HandleTDataStdInteger;
+
+unsafe impl crate::CppDeletable for HandleTDataStdInteger {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdInteger_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdInteger {
+    /// Dereference this Handle to access the underlying TDataStd_Integer
+    pub fn get(&self) -> &crate::ffi::TDataStd_Integer {
+        unsafe { &*(crate::ffi::HandleTDataStdInteger_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Integer
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Integer {
+        unsafe { &mut *(crate::ffi::HandleTDataStdInteger_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Integer> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdInteger_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Integer (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Integer.hxx`:79 - `TDataStd_Integer::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Integer.hxx`:45 - `TDataStd_Integer::Set`
-//   static_method: Finds, or creates, an Integer attribute and sets <value>
-//   static_method: the Integer  attribute is returned.
-//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
-//   // pub fn set(label: &Label, value: i32) -> OwnedPtr<Handle<TDataStd_Integer>>;
-//
-// SKIPPED: **Source:** `TDataStd_Integer.hxx`:50 - `TDataStd_Integer::Set`
-//   static_method: Finds, or creates, an Integer attribute with explicit user defined <guid> and sets <value>.
-//   static_method: The Integer attribute  is  returned.
-//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
-//   // pub fn set(label: &Label, guid: &GUID, value: i32) -> OwnedPtr<Handle<TDataStd_Integer>>;
 //
 
 // ========================
@@ -6115,6 +8250,21 @@ impl IntegerArray {
         unsafe { crate::ffi::TDataStd_IntegerArray_paste(self as *const Self, Into, RT) }
     }
 
+    /// **Source:** `TDataStd_IntegerArray.hxx`:129 - `TDataStd_IntegerArray::DeltaOnModification()`
+    /// Makes a DeltaOnModification between <me> and
+    /// <anOldAttribute>.
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_delta_on_modification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_IntegerArray.hxx`:39 - `TDataStd_IntegerArray::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -6137,6 +8287,43 @@ impl IntegerArray {
         unsafe { &*(crate::ffi::TDataStd_IntegerArray_get_id()) }
     }
 
+    /// **Source:** `TDataStd_IntegerArray.hxx`:52 - `TDataStd_IntegerArray::Set()`
+    /// Finds or creates on the <label> an integer array attribute
+    /// with the specified <lower> and <upper> boundaries.
+    /// If <isDelta> == False, DefaultDeltaOnModification is used.
+    /// If <isDelta> == True, DeltaOnModification of the current attribute is used.
+    /// If attribute is already set, all input parameters are refused and the found
+    /// attribute is returned.
+    pub fn set_label_int2_bool(
+        label: &crate::tdf::Label,
+        lower: i32,
+        upper: i32,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_set_label_int2_bool(
+                label, lower, upper, isDelta,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_IntegerArray.hxx`:60 - `TDataStd_IntegerArray::Set()`
+    /// Finds, or creates, an IntegerArray attribute with explicit user defined <guid>.
+    /// The IntegerArray attribute  is  returned.
+    pub fn set_label_guid_int2_bool(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+        lower: i32,
+        upper: i32,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_set_label_guid_int2_bool(
+                label, theGuid, lower, upper, isDelta,
+            ))
+        }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::TDataStd_IntegerArray_as_TDF_Attribute(self as *const Self)) }
@@ -6145,6 +8332,15 @@ impl IntegerArray {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_IntegerArray_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -6310,6 +8506,42 @@ impl IntegerArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerArray_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -6325,29 +8557,39 @@ impl IntegerArray {
     }
 }
 
-// ── Skipped symbols for IntegerArray (4 total) ──
+pub use crate::ffi::HandleTDataStdIntegerArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdIntegerArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdIntegerArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdIntegerArray {
+    /// Dereference this Handle to access the underlying TDataStd_IntegerArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_IntegerArray {
+        unsafe { &*(crate::ffi::HandleTDataStdIntegerArray_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_IntegerArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_IntegerArray {
+        unsafe { &mut *(crate::ffi::HandleTDataStdIntegerArray_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_IntegerArray> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdIntegerArray_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for IntegerArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:125 - `TDataStd_IntegerArray::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:129 - `TDataStd_IntegerArray::DeltaOnModification`
-//   method: Makes a DeltaOnModification between <me> and
-//   method: <anOldAttribute>.
-//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
-//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
-//
-// SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:52 - `TDataStd_IntegerArray::Set`
-//   static_method: Finds or creates on the <label> an integer array attribute
-//   static_method: with the specified <lower> and <upper> boundaries.
-//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
-//   Reason: return type 'Handle(TDataStd_IntegerArray)' is unknown
-//   // pub fn set(label: &Label, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_IntegerArray>>;
-//
-// SKIPPED: **Source:** `TDataStd_IntegerArray.hxx`:60 - `TDataStd_IntegerArray::Set`
-//   static_method: Finds, or creates, an IntegerArray attribute with explicit user defined <guid>.
-//   static_method: The IntegerArray attribute  is  returned.
-//   Reason: return type 'Handle(TDataStd_IntegerArray)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_IntegerArray>>;
 //
 
 // ========================
@@ -6517,6 +8759,27 @@ impl IntegerList {
         unsafe { &*(crate::ffi::TDataStd_IntegerList_get_id()) }
     }
 
+    /// **Source:** `TDataStd_IntegerList.hxx`:44 - `TDataStd_IntegerList::Set()`
+    /// Finds or creates a list of integer values attribute.
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerList> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_set_label(label)) }
+    }
+
+    /// **Source:** `TDataStd_IntegerList.hxx`:47 - `TDataStd_IntegerList::Set()`
+    /// Finds or creates a list of integer values attribute with explicit user defined <guid>.
+    pub fn set_label_guid(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_set_label_guid(
+                label, theGuid,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_IntegerList.hxx`:113 - `TDataStd_IntegerList::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -6539,6 +8802,15 @@ impl IntegerList {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_IntegerList_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -6702,6 +8974,57 @@ impl IntegerList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_IntegerList_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_IntegerList_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -6717,20 +9040,39 @@ impl IntegerList {
     }
 }
 
-// ── Skipped symbols for IntegerList (3 total) ──
+pub use crate::ffi::HandleTDataStdIntegerList;
+
+unsafe impl crate::CppDeletable for HandleTDataStdIntegerList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdIntegerList_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdIntegerList {
+    /// Dereference this Handle to access the underlying TDataStd_IntegerList
+    pub fn get(&self) -> &crate::ffi::TDataStd_IntegerList {
+        unsafe { &*(crate::ffi::HandleTDataStdIntegerList_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_IntegerList
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_IntegerList {
+        unsafe { &mut *(crate::ffi::HandleTDataStdIntegerList_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_IntegerList> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdIntegerList_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for IntegerList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_IntegerList.hxx`:107 - `TDataStd_IntegerList::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_IntegerList.hxx`:44 - `TDataStd_IntegerList::Set`
-//   static_method: Finds or creates a list of integer values attribute.
-//   Reason: return type 'Handle(TDataStd_IntegerList)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_IntegerList>>;
-//
-// SKIPPED: **Source:** `TDataStd_IntegerList.hxx`:47 - `TDataStd_IntegerList::Set`
-//   static_method: Finds or creates a list of integer values attribute with explicit user defined <guid>.
-//   Reason: return type 'Handle(TDataStd_IntegerList)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_IntegerList>>;
 //
 
 // ========================
@@ -6791,6 +9133,55 @@ impl Name {
         unsafe { &*(crate::ffi::TDataStd_Name_get_id()) }
     }
 
+    /// **Source:** `TDataStd_Name.hxx`:61 - `TDataStd_Name::Set()`
+    /// Creates (if does not exist) and sets the name in the name attribute.
+    /// from any label <L>  search in father  labels (L is not
+    /// concerned) the first name attribute.if found set it in
+    /// <father>.
+    /// class methods working on the name tree
+    /// ======================================
+    /// Search in the  whole TDF_Data the Name attribute which
+    /// fit with <fullPath>. Returns True if found.
+    /// Search  under <currentLabel>  a  label which fit with
+    /// <name>. Returns True if  found. Shortcut which  avoids
+    /// building a ListOfExtendedStrin.
+    /// Search in the whole TDF_Data the label which fit with name
+    /// Returns True if found.
+    /// tools methods to translate path <-> pathlist
+    /// ===========================================
+    /// move to draw For Draw test we may provide this tool method which convert a path in a
+    /// sequence of string to call after the FindLabel methods.
+    /// Example: if it's given "Assembly:Part_1:Sketch_5" it will return in <pathlist>
+    /// the list of 3 strings: "Assembly","Part_1","Sketch_5".
+    /// move to draw from <pathlist> build the string path
+    /// Name methods
+    /// ============
+    pub fn set_label_extendedstring(
+        label: &crate::tdf::Label,
+        string: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdName> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_set_label_extendedstring(
+                label, string,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_Name.hxx`:66 - `TDataStd_Name::Set()`
+    /// Finds, or creates, a Name attribute with explicit user defined <guid> and sets <string>.
+    /// The Name attribute  is  returned.
+    pub fn set_label_guid_extendedstring(
+        label: &crate::tdf::Label,
+        guid: &crate::standard::GUID,
+        string: &crate::t_collection::ExtendedString,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdName> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_set_label_guid_extendedstring(
+                label, guid, string,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_Name.hxx`:83 - `TDataStd_Name::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -6825,6 +9216,13 @@ impl Name {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Name_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdName> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericExtString.hxx`:41 - `TDataStd_GenericExtString::Get()`
@@ -6996,6 +9394,55 @@ impl Name {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Name_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_Name_inherited_References(self as *const Self, aDataSet) }
@@ -7007,23 +9454,52 @@ impl Name {
     }
 }
 
-// ── Skipped symbols for Name (3 total) ──
+pub use crate::ffi::HandleTDataStdName;
+
+unsafe impl crate::CppDeletable for HandleTDataStdName {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdName_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdName {
+    /// Dereference this Handle to access the underlying TDataStd_Name
+    pub fn get(&self) -> &crate::ffi::TDataStd_Name {
+        unsafe { &*(crate::ffi::HandleTDataStdName_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Name
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Name {
+        unsafe { &mut *(crate::ffi::HandleTDataStdName_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Name> to Handle<TDataStd_GenericExtString>
+    pub fn to_handle_generic_ext_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericExtString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdName_to_HandleTDataStdGenericExtString(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataStd_Name> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdName_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Name (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Name.hxx`:81 - `TDataStd_Name::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Name.hxx`:61 - `TDataStd_Name::Set`
-//   static_method: Creates (if does not exist) and sets the name in the name attribute.
-//   static_method: from any label <L>  search in father  labels (L is not
-//   static_method: concerned) the first name attribute.if found set it in
-//   Reason: return type 'Handle(TDataStd_Name)' is unknown
-//   // pub fn set(label: &Label, string: &ExtendedString) -> OwnedPtr<Handle<TDataStd_Name>>;
-//
-// SKIPPED: **Source:** `TDataStd_Name.hxx`:66 - `TDataStd_Name::Set`
-//   static_method: Finds, or creates, a Name attribute with explicit user defined <guid> and sets <string>.
-//   static_method: The Name attribute  is  returned.
-//   Reason: return type 'Handle(TDataStd_Name)' is unknown
-//   // pub fn set(label: &Label, guid: &GUID, string: &ExtendedString) -> OwnedPtr<Handle<TDataStd_Name>>;
 //
 
 // ========================
@@ -7416,6 +9892,12 @@ impl NamedData {
         unsafe { &*(crate::ffi::TDataStd_NamedData_get_id()) }
     }
 
+    /// **Source:** `TDataStd_NamedData.hxx`:46 - `TDataStd_NamedData::Set()`
+    /// Finds or creates a named data attribute.
+    pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataStdNamedData> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_set(label)) }
+    }
+
     /// **Source:** `TDataStd_NamedData.hxx`:302 - `TDataStd_NamedData::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -7438,6 +9920,15 @@ impl NamedData {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_NamedData_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdNamedData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -7604,6 +10095,55 @@ impl NamedData {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NamedData_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -7617,7 +10157,36 @@ impl NamedData {
     }
 }
 
-// ── Skipped symbols for NamedData (15 total) ──
+pub use crate::ffi::HandleTDataStdNamedData;
+
+unsafe impl crate::CppDeletable for HandleTDataStdNamedData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdNamedData_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdNamedData {
+    /// Dereference this Handle to access the underlying TDataStd_NamedData
+    pub fn get(&self) -> &crate::ffi::TDataStd_NamedData {
+        unsafe { &*(crate::ffi::HandleTDataStdNamedData_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_NamedData
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_NamedData {
+        unsafe { &mut *(crate::ffi::HandleTDataStdNamedData_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_NamedData> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdNamedData_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NamedData (14 total) ──
 // SKIPPED: **Source:** `TDataStd_NamedData.hxx`:92 - `TDataStd_NamedData::GetRealsContainer`
 //   method: Returns the internal container of named reals.
 //   Reason: return type 'const TDataStd_DataMapOfStringReal&' is unknown
@@ -7690,11 +10259,6 @@ impl NamedData {
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
 //
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:46 - `TDataStd_NamedData::Set`
-//   static_method: Finds or creates a named data attribute.
-//   Reason: return type 'Handle(TDataStd_NamedData)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_NamedData>>;
-//
 
 // ========================
 // From TDataStd_NoteBook.hxx
@@ -7716,6 +10280,42 @@ impl NoteBook {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_ctor()) }
     }
 
+    /// **Source:** `TDataStd_NoteBook.hxx`:62 - `TDataStd_NoteBook::Append()`
+    /// Tool to Create  an  Integer  attribute from  <value>,
+    /// Insert it in   a  new son  label   of <me>. The   Real
+    /// attribute is returned.
+    pub fn append_real_bool(
+        &mut self,
+        value: f64,
+        isExported: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_append_real_bool(
+                self as *mut Self,
+                value,
+                isExported,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_NoteBook.hxx`:68 - `TDataStd_NoteBook::Append()`
+    /// Tool to Create  an Real attribute from <value>, Insert
+    /// it  in a new son label  of <me>. The Integer attribute
+    /// is returned.
+    pub fn append_int_bool(
+        &mut self,
+        value: i32,
+        isExported: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_append_int_bool(
+                self as *mut Self,
+                value,
+                isExported,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_NoteBook.hxx`:72 - `TDataStd_NoteBook::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
         unsafe { &*(crate::ffi::TDataStd_NoteBook_id(self as *const Self)) }
@@ -7731,6 +10331,25 @@ impl NoteBook {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_new_empty(self as *const Self))
         }
+    }
+
+    /// **Source:** `TDataStd_NoteBook.hxx`:46 - `TDataStd_NoteBook::Find()`
+    /// class methods
+    /// =============
+    /// try to retrieve a NoteBook attribute at <current> label
+    /// or in  fathers  label of  <current>. Returns True  if
+    /// found and set <N>.
+    pub fn find(current: &crate::tdf::Label, N: &mut crate::ffi::HandleTDataStdNoteBook) -> bool {
+        unsafe { crate::ffi::TDataStd_NoteBook_find(current, N) }
+    }
+
+    /// **Source:** `TDataStd_NoteBook.hxx`:51 - `TDataStd_NoteBook::New()`
+    /// Create  an  enpty   NoteBook attribute,  located  at
+    /// <label>. Raises if <label> has attribute
+    pub fn new_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdNoteBook> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_new(label)) }
     }
 
     /// **Source:** `TDataStd_NoteBook.hxx`:55 - `TDataStd_NoteBook::GetID()`
@@ -7774,6 +10393,15 @@ impl NoteBook {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_NoteBook_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdNoteBook> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -7954,6 +10582,55 @@ impl NoteBook {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_NoteBook_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_NoteBook_inherited_References(self as *const Self, aDataSet) }
@@ -7965,37 +10642,52 @@ impl NoteBook {
     }
 }
 
-// ── Skipped symbols for NoteBook (5 total) ──
-// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:62 - `TDataStd_NoteBook::Append`
-//   method: Tool to Create  an  Integer  attribute from  <value>,
-//   method: Insert it in   a  new son  label   of <me>. The   Real
-//   method: attribute is returned.
-//   Reason: return type 'Handle(TDataStd_Real)' is unknown
-//   // pub fn append(&mut self, value: f64, isExported: bool) -> OwnedPtr<Handle<TDataStd_Real>>;
-//
-// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:68 - `TDataStd_NoteBook::Append`
-//   method: Tool to Create  an Real attribute from <value>, Insert
-//   method: it  in a new son label  of <me>. The Integer attribute
-//   method: is returned.
-//   Reason: return type 'Handle(TDataStd_Integer)' is unknown
-//   // pub fn append(&mut self, value: i32, isExported: bool) -> OwnedPtr<Handle<TDataStd_Integer>>;
-//
+pub use crate::ffi::HandleTDataStdNoteBook;
+
+unsafe impl crate::CppDeletable for HandleTDataStdNoteBook {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdNoteBook_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdNoteBook {
+    /// Dereference this Handle to access the underlying TDataStd_NoteBook
+    pub fn get(&self) -> &crate::ffi::TDataStd_NoteBook {
+        unsafe { &*(crate::ffi::HandleTDataStdNoteBook_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_NoteBook
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_NoteBook {
+        unsafe { &mut *(crate::ffi::HandleTDataStdNoteBook_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_NoteBook> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdNoteBook_to_HandleTDataStdGenericEmpty(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataStd_NoteBook> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdNoteBook_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for NoteBook (1 total) ──
 // SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:74 - `TDataStd_NoteBook::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:46 - `TDataStd_NoteBook::Find`
-//   static_method: class methods
-//   static_method: =============
-//   static_method: try to retrieve a NoteBook attribute at <current> label
-//   Reason: param 'N' uses unknown type 'Handle(TDataStd_NoteBook)&'
-//   // pub fn find(current: &Label, N: &mut HandleNoteBook) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_NoteBook.hxx`:51 - `TDataStd_NoteBook::New`
-//   static_method: Create  an  enpty   NoteBook attribute,  located  at
-//   static_method: <label>. Raises if <label> has attribute
-//   Reason: return type 'Handle(TDataStd_NoteBook)' is unknown
-//   // pub fn new(label: &Label) -> OwnedPtr<Handle<TDataStd_NoteBook>>;
 //
 
 // ========================
@@ -8087,6 +10779,36 @@ impl Real {
         unsafe { &*(crate::ffi::TDataStd_Real_get_id()) }
     }
 
+    /// **Source:** `TDataStd_Real.hxx`:49 - `TDataStd_Real::Set()`
+    /// Finds, or creates, a Real attribute with default GUID and sets <value>.
+    /// The Real attribute  is  returned. The  Real  dimension is Scalar by default.
+    /// Use SetDimension to overwrite.
+    /// Real methods
+    /// ============
+    pub fn set_label_real(
+        label: &crate::tdf::Label,
+        value: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_set_label_real(label, value)) }
+    }
+
+    /// **Source:** `TDataStd_Real.hxx`:56 - `TDataStd_Real::Set()`
+    /// Finds, or creates, a Real attribute with explicit GUID and sets <value>.
+    /// The Real attribute  is  returned.
+    /// Real methods
+    /// ============
+    pub fn set_label_guid_real(
+        label: &crate::tdf::Label,
+        guid: &crate::standard::GUID,
+        value: f64,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_set_label_guid_real(
+                label, guid, value,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_Real.hxx`:104 - `TDataStd_Real::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -8109,6 +10831,13 @@ impl Real {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Real_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -8256,6 +10985,55 @@ impl Real {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Real_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_Real_inherited_References(self as *const Self, aDataSet) }
@@ -8267,24 +11045,67 @@ impl Real {
     }
 }
 
-// ── Skipped symbols for Real (3 total) ──
+pub use crate::ffi::HandleTDataStdReal;
+
+unsafe impl crate::CppDeletable for HandleTDataStdReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdReal_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdReal {
+    /// Dereference this Handle to access the underlying TDataStd_Real
+    pub fn get(&self) -> &crate::ffi::TDataStd_Real {
+        unsafe { &*(crate::ffi::HandleTDataStdReal_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Real
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Real {
+        unsafe { &mut *(crate::ffi::HandleTDataStdReal_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Real> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdReal_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Downcast Handle<TDataStd_Real> to Handle<XCAFDoc_Area>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Area` (or subclass).
+    pub fn downcast_to_area(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocArea>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdReal_downcast_to_HandleXCAFDocArea(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<TDataStd_Real> to Handle<XCAFDoc_Volume>
+    ///
+    /// Returns `None` if the handle does not point to a `XCAFDoc_Volume` (or subclass).
+    pub fn downcast_to_volume(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocVolume>> {
+        let ptr = unsafe {
+            crate::ffi::HandleTDataStdReal_downcast_to_HandleXCAFDocVolume(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+// ── Skipped symbols for Real (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Real.hxx`:98 - `TDataStd_Real::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Real.hxx`:49 - `TDataStd_Real::Set`
-//   static_method: Finds, or creates, a Real attribute with default GUID and sets <value>.
-//   static_method: The Real attribute  is  returned. The  Real  dimension is Scalar by default.
-//   static_method: Use SetDimension to overwrite.
-//   Reason: return type 'Handle(TDataStd_Real)' is unknown
-//   // pub fn set(label: &Label, value: f64) -> OwnedPtr<Handle<TDataStd_Real>>;
-//
-// SKIPPED: **Source:** `TDataStd_Real.hxx`:56 - `TDataStd_Real::Set`
-//   static_method: Finds, or creates, a Real attribute with explicit GUID and sets <value>.
-//   static_method: The Real attribute  is  returned.
-//   static_method: Real methods
-//   Reason: return type 'Handle(TDataStd_Real)' is unknown
-//   // pub fn set(label: &Label, guid: &GUID, value: f64) -> OwnedPtr<Handle<TDataStd_Real>>;
 //
 
 // ========================
@@ -8424,6 +11245,21 @@ impl RealArray {
         unsafe { crate::ffi::TDataStd_RealArray_paste(self as *const Self, Into, RT) }
     }
 
+    /// **Source:** `TDataStd_RealArray.hxx`:130 - `TDataStd_RealArray::DeltaOnModification()`
+    /// Makes a DeltaOnModification between <me> and
+    /// <anOldAttribute>.
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_delta_on_modification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_RealArray.hxx`:40 - `TDataStd_RealArray::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -8446,6 +11282,43 @@ impl RealArray {
         unsafe { &*(crate::ffi::TDataStd_RealArray_get_id()) }
     }
 
+    /// **Source:** `TDataStd_RealArray.hxx`:53 - `TDataStd_RealArray::Set()`
+    /// Finds or creates on the <label> a real array attribute with
+    /// the specified <lower> and <upper> boundaries.
+    /// If <isDelta> == False, DefaultDeltaOnModification is used.
+    /// If <isDelta> == True, DeltaOnModification of the current attribute is used.
+    /// If attribute is already set, input parameter <isDelta> is refused and the found
+    /// attribute returned.
+    pub fn set_label_int2_bool(
+        label: &crate::tdf::Label,
+        lower: i32,
+        upper: i32,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdRealArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_set_label_int2_bool(
+                label, lower, upper, isDelta,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_RealArray.hxx`:61 - `TDataStd_RealArray::Set()`
+    /// Finds, or creates, an RealArray attribute with explicit user defined <guid>.
+    /// The RealArray attribute  is  returned.
+    pub fn set_label_guid_int2_bool(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+        lower: i32,
+        upper: i32,
+        isDelta: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdRealArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_set_label_guid_int2_bool(
+                label, theGuid, lower, upper, isDelta,
+            ))
+        }
+    }
+
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe { &*(crate::ffi::TDataStd_RealArray_as_TDF_Attribute(self as *const Self)) }
@@ -8454,6 +11327,15 @@ impl RealArray {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_RealArray_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdRealArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -8615,6 +11497,42 @@ impl RealArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealArray_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe {
@@ -8628,29 +11546,39 @@ impl RealArray {
     }
 }
 
-// ── Skipped symbols for RealArray (4 total) ──
+pub use crate::ffi::HandleTDataStdRealArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdRealArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdRealArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdRealArray {
+    /// Dereference this Handle to access the underlying TDataStd_RealArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_RealArray {
+        unsafe { &*(crate::ffi::HandleTDataStdRealArray_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_RealArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_RealArray {
+        unsafe { &mut *(crate::ffi::HandleTDataStdRealArray_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_RealArray> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdRealArray_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for RealArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_RealArray.hxx`:126 - `TDataStd_RealArray::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_RealArray.hxx`:130 - `TDataStd_RealArray::DeltaOnModification`
-//   method: Makes a DeltaOnModification between <me> and
-//   method: <anOldAttribute>.
-//   Reason: return type 'Handle(TDF_DeltaOnModification)' is unknown
-//   // pub fn delta_on_modification(&self, anOldAttribute: &HandleAttribute) -> OwnedPtr<Handle<TDF_DeltaOnModification>>;
-//
-// SKIPPED: **Source:** `TDataStd_RealArray.hxx`:53 - `TDataStd_RealArray::Set`
-//   static_method: Finds or creates on the <label> a real array attribute with
-//   static_method: the specified <lower> and <upper> boundaries.
-//   static_method: If <isDelta> == False, DefaultDeltaOnModification is used.
-//   Reason: return type 'Handle(TDataStd_RealArray)' is unknown
-//   // pub fn set(label: &Label, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_RealArray>>;
-//
-// SKIPPED: **Source:** `TDataStd_RealArray.hxx`:61 - `TDataStd_RealArray::Set`
-//   static_method: Finds, or creates, an RealArray attribute with explicit user defined <guid>.
-//   static_method: The RealArray attribute  is  returned.
-//   Reason: return type 'Handle(TDataStd_RealArray)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32, isDelta: bool) -> OwnedPtr<Handle<TDataStd_RealArray>>;
 //
 
 // ========================
@@ -8816,6 +11744,25 @@ impl RealList {
         unsafe { &*(crate::ffi::TDataStd_RealList_get_id()) }
     }
 
+    /// **Source:** `TDataStd_RealList.hxx`:45 - `TDataStd_RealList::Set()`
+    /// Finds or creates a list of double values attribute.
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdRealList> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_set_label(label)) }
+    }
+
+    /// **Source:** `TDataStd_RealList.hxx`:48 - `TDataStd_RealList::Set()`
+    /// Finds or creates a list of double values attribute with explicit user defined <guid>.
+    pub fn set_label_guid(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdRealList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_set_label_guid(label, theGuid))
+        }
+    }
+
     /// **Source:** `TDataStd_RealList.hxx`:114 - `TDataStd_RealList::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -8838,6 +11785,15 @@ impl RealList {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_RealList_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdRealList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -8999,6 +11955,55 @@ impl RealList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_RealList_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_RealList_inherited_References(self as *const Self, aDataSet) }
@@ -9010,20 +12015,39 @@ impl RealList {
     }
 }
 
-// ── Skipped symbols for RealList (3 total) ──
+pub use crate::ffi::HandleTDataStdRealList;
+
+unsafe impl crate::CppDeletable for HandleTDataStdRealList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdRealList_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdRealList {
+    /// Dereference this Handle to access the underlying TDataStd_RealList
+    pub fn get(&self) -> &crate::ffi::TDataStd_RealList {
+        unsafe { &*(crate::ffi::HandleTDataStdRealList_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_RealList
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_RealList {
+        unsafe { &mut *(crate::ffi::HandleTDataStdRealList_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_RealList> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdRealList_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for RealList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_RealList.hxx`:108 - `TDataStd_RealList::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_RealList.hxx`:45 - `TDataStd_RealList::Set`
-//   static_method: Finds or creates a list of double values attribute.
-//   Reason: return type 'Handle(TDataStd_RealList)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_RealList>>;
-//
-// SKIPPED: **Source:** `TDataStd_RealList.hxx`:48 - `TDataStd_RealList::Set`
-//   static_method: Finds or creates a list of double values attribute with explicit user defined <guid>.
-//   Reason: return type 'Handle(TDataStd_RealList)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_RealList>>;
 //
 
 // ========================
@@ -9167,6 +12191,36 @@ impl ReferenceArray {
         unsafe { &*(crate::ffi::TDataStd_ReferenceArray_get_id()) }
     }
 
+    /// **Source:** `TDataStd_ReferenceArray.hxx`:45 - `TDataStd_ReferenceArray::Set()`
+    /// Finds or creates an array of reference values (labels) attribute.
+    pub fn set_label_int2(
+        label: &crate::tdf::Label,
+        lower: i32,
+        upper: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceArray_set_label_int2(
+                label, lower, upper,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_ReferenceArray.hxx`:51 - `TDataStd_ReferenceArray::Set()`
+    /// Finds or creates an array of reference values (labels) attribute with explicit user defined
+    /// <guid>.
+    pub fn set_label_guid_int2(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+        lower: i32,
+        upper: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceArray_set_label_guid_int2(
+                label, theGuid, lower, upper,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_ReferenceArray.hxx`:108 - `TDataStd_ReferenceArray::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -9190,6 +12244,15 @@ impl ReferenceArray {
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
             &mut *(crate::ffi::TDataStd_ReferenceArray_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceArray> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceArray_to_handle(obj.into_raw()))
         }
     }
 
@@ -9361,6 +12424,57 @@ impl ReferenceArray {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_ReferenceArray_inherited_DeltaOnAddition(self as *const Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceArray_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceArray_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_ReferenceArray_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceArray_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -9369,21 +12483,39 @@ impl ReferenceArray {
     }
 }
 
-// ── Skipped symbols for ReferenceArray (3 total) ──
+pub use crate::ffi::HandleTDataStdReferenceArray;
+
+unsafe impl crate::CppDeletable for HandleTDataStdReferenceArray {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdReferenceArray_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdReferenceArray {
+    /// Dereference this Handle to access the underlying TDataStd_ReferenceArray
+    pub fn get(&self) -> &crate::ffi::TDataStd_ReferenceArray {
+        unsafe { &*(crate::ffi::HandleTDataStdReferenceArray_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_ReferenceArray
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_ReferenceArray {
+        unsafe { &mut *(crate::ffi::HandleTDataStdReferenceArray_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_ReferenceArray> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdReferenceArray_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ReferenceArray (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ReferenceArray.hxx`:102 - `TDataStd_ReferenceArray::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_ReferenceArray.hxx`:45 - `TDataStd_ReferenceArray::Set`
-//   static_method: Finds or creates an array of reference values (labels) attribute.
-//   Reason: return type 'Handle(TDataStd_ReferenceArray)' is unknown
-//   // pub fn set(label: &Label, lower: i32, upper: i32) -> OwnedPtr<Handle<TDataStd_ReferenceArray>>;
-//
-// SKIPPED: **Source:** `TDataStd_ReferenceArray.hxx`:51 - `TDataStd_ReferenceArray::Set`
-//   static_method: Finds or creates an array of reference values (labels) attribute with explicit user defined
-//   static_method: <guid>.
-//   Reason: return type 'Handle(TDataStd_ReferenceArray)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID, lower: i32, upper: i32) -> OwnedPtr<Handle<TDataStd_ReferenceArray>>;
 //
 
 // ========================
@@ -9578,6 +12710,28 @@ impl ReferenceList {
         unsafe { &*(crate::ffi::TDataStd_ReferenceList_get_id()) }
     }
 
+    /// **Source:** `TDataStd_ReferenceList.hxx`:45 - `TDataStd_ReferenceList::Set()`
+    /// Finds or creates a list of reference values (labels) attribute.
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceList> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceList_set_label(label)) }
+    }
+
+    /// **Source:** `TDataStd_ReferenceList.hxx`:49 - `TDataStd_ReferenceList::Set()`
+    /// Finds or creates a list of reference values (labels) attribute with explicit user defined
+    /// <guid>.
+    pub fn set_label_guid(
+        label: &crate::tdf::Label,
+        theGuid: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceList_set_label_guid(
+                label, theGuid,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_ReferenceList.hxx`:117 - `TDataStd_ReferenceList::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -9601,6 +12755,15 @@ impl ReferenceList {
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
             &mut *(crate::ffi::TDataStd_ReferenceList_as_TDF_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceList> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceList_to_handle(obj.into_raw()))
         }
     }
 
@@ -9769,6 +12932,57 @@ impl ReferenceList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceList_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceList_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceList_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_ReferenceList_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_ReferenceList_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe {
@@ -9777,21 +12991,39 @@ impl ReferenceList {
     }
 }
 
-// ── Skipped symbols for ReferenceList (3 total) ──
+pub use crate::ffi::HandleTDataStdReferenceList;
+
+unsafe impl crate::CppDeletable for HandleTDataStdReferenceList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdReferenceList_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdReferenceList {
+    /// Dereference this Handle to access the underlying TDataStd_ReferenceList
+    pub fn get(&self) -> &crate::ffi::TDataStd_ReferenceList {
+        unsafe { &*(crate::ffi::HandleTDataStdReferenceList_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_ReferenceList
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_ReferenceList {
+        unsafe { &mut *(crate::ffi::HandleTDataStdReferenceList_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_ReferenceList> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdReferenceList_to_HandleTDFAttribute(self as *const Self),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for ReferenceList (1 total) ──
 // SKIPPED: **Source:** `TDataStd_ReferenceList.hxx`:111 - `TDataStd_ReferenceList::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_ReferenceList.hxx`:45 - `TDataStd_ReferenceList::Set`
-//   static_method: Finds or creates a list of reference values (labels) attribute.
-//   Reason: return type 'Handle(TDataStd_ReferenceList)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_ReferenceList>>;
-//
-// SKIPPED: **Source:** `TDataStd_ReferenceList.hxx`:49 - `TDataStd_ReferenceList::Set`
-//   static_method: Finds or creates a list of reference values (labels) attribute with explicit user defined
-//   static_method: <guid>.
-//   Reason: return type 'Handle(TDataStd_ReferenceList)' is unknown
-//   // pub fn set(label: &Label, theGuid: &GUID) -> OwnedPtr<Handle<TDataStd_ReferenceList>>;
 //
 
 // ========================
@@ -9855,6 +13087,14 @@ impl Relation {
         unsafe { &*(crate::ffi::TDataStd_Relation_get_id()) }
     }
 
+    /// **Source:** `TDataStd_Relation.hxx`:44 - `TDataStd_Relation::Set()`
+    /// Find, or create, an Relation attribute.
+    /// Real methods
+    /// ============
+    pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataStdRelation> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_set(label)) }
+    }
+
     /// **Source:** `TDataStd_Relation.hxx`:60 - `TDataStd_Relation::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -9889,6 +13129,15 @@ impl Relation {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Relation_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdRelation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDataStd_Expression.hxx`:57 - `TDataStd_Expression::Name()`
@@ -10093,6 +13342,55 @@ impl Relation {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Relation_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_Relation_inherited_References(self as *const Self, aDataSet) }
@@ -10104,17 +13402,48 @@ impl Relation {
     }
 }
 
-// ── Skipped symbols for Relation (2 total) ──
+pub use crate::ffi::HandleTDataStdRelation;
+
+unsafe impl crate::CppDeletable for HandleTDataStdRelation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdRelation_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdRelation {
+    /// Dereference this Handle to access the underlying TDataStd_Relation
+    pub fn get(&self) -> &crate::ffi::TDataStd_Relation {
+        unsafe { &*(crate::ffi::HandleTDataStdRelation_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Relation
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Relation {
+        unsafe { &mut *(crate::ffi::HandleTDataStdRelation_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Relation> to Handle<TDataStd_Expression>
+    pub fn to_handle_expression(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTDataStdRelation_to_HandleTDataStdExpression(self as *const Self),
+            )
+        }
+    }
+
+    /// Upcast Handle<TDataStd_Relation> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdRelation_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Relation (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Relation.hxx`:54 - `TDataStd_Relation::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Relation.hxx`:44 - `TDataStd_Relation::Set`
-//   static_method: Find, or create, an Relation attribute.
-//   static_method: Real methods
-//   static_method: ============
-//   Reason: return type 'Handle(TDataStd_Relation)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Relation>>;
 //
 
 // ========================
@@ -10163,6 +13492,14 @@ impl Tick {
         unsafe { &*(crate::ffi::TDataStd_Tick_get_id()) }
     }
 
+    /// **Source:** `TDataStd_Tick.hxx`:41 - `TDataStd_Tick::Set()`
+    /// Find, or create, a Tick attribute.
+    /// Tick methods
+    /// ============
+    pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTick> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Tick_set(label)) }
+    }
+
     /// **Source:** `TDataStd_Tick.hxx`:49 - `TDataStd_Tick::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -10195,6 +13532,13 @@ impl Tick {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Tick_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTick> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Tick_to_handle(obj.into_raw())) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
@@ -10361,6 +13705,55 @@ impl Tick {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Tick_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Tick_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Tick_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Tick_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Tick_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         unsafe { crate::ffi::TDataStd_Tick_inherited_References(self as *const Self, aDataSet) }
@@ -10372,17 +13765,50 @@ impl Tick {
     }
 }
 
-// ── Skipped symbols for Tick (2 total) ──
+pub use crate::ffi::HandleTDataStdTick;
+
+unsafe impl crate::CppDeletable for HandleTDataStdTick {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdTick_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdTick {
+    /// Dereference this Handle to access the underlying TDataStd_Tick
+    pub fn get(&self) -> &crate::ffi::TDataStd_Tick {
+        unsafe { &*(crate::ffi::HandleTDataStdTick_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Tick
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Tick {
+        unsafe { &mut *(crate::ffi::HandleTDataStdTick_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Tick> to Handle<TDataStd_GenericEmpty>
+    pub fn to_handle_generic_empty(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdTick_to_HandleTDataStdGenericEmpty(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<TDataStd_Tick> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdTick_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Tick (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Tick.hxx`:47 - `TDataStd_Tick::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Tick.hxx`:41 - `TDataStd_Tick::Set`
-//   static_method: Find, or create, a Tick attribute.
-//   static_method: Tick methods
-//   static_method: ============
-//   Reason: return type 'Handle(TDataStd_Tick)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Tick>>;
 //
 
 // ========================
@@ -10411,6 +13837,34 @@ impl TreeNode {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_ctor()) }
     }
 
+    /// **Source:** `TDataStd_TreeNode.hxx`:75 - `TDataStd_TreeNode::Append()`
+    /// Insert the TreeNode <Child> as last  child of <me>. If
+    /// the insertion is successful <me> becomes the Father of <Child>.
+    pub fn append(&mut self, Child: &crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_append(self as *mut Self, Child) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:79 - `TDataStd_TreeNode::Prepend()`
+    /// Insert the   the TreeNode <Child>  as  first child of
+    /// <me>. If the insertion is successful <me> becomes the Father of <Child>
+    pub fn prepend(&mut self, Child: &crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_prepend(self as *mut Self, Child) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:83 - `TDataStd_TreeNode::InsertBefore()`
+    /// Inserts the TreeNode  <Node> before <me>. If insertion is successful <me>
+    /// and <Node> belongs to the same Father.
+    pub fn insert_before(&mut self, Node: &crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_insert_before(self as *mut Self, Node) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:87 - `TDataStd_TreeNode::InsertAfter()`
+    /// Inserts the TreeNode <Node>  after <me>. If insertion is successful  <me>
+    /// and <Node> belongs to the same Father.
+    pub fn insert_after(&mut self, Node: &crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_insert_after(self as *mut Self, Node) }
+    }
+
     /// **Source:** `TDataStd_TreeNode.hxx`:91 - `TDataStd_TreeNode::Remove()`
     /// Removes this tree node attribute from its father
     /// node. The result is that this attribute becomes a root node.
@@ -10433,11 +13887,47 @@ impl TreeNode {
         unsafe { crate::ffi::TDataStd_TreeNode_nb_children(self as *const Self, allLevels) }
     }
 
+    /// **Source:** `TDataStd_TreeNode.hxx`:106 - `TDataStd_TreeNode::IsAscendant()`
+    /// Returns true if this tree node attribute is an
+    /// ascendant of of. In other words, if it is a father or
+    /// the father of a father of of.
+    pub fn is_ascendant(&self, of: &crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_is_ascendant(self as *const Self, of) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:111 - `TDataStd_TreeNode::IsDescendant()`
+    /// Returns true if this tree node attribute is a
+    /// descendant of of. In other words, if it is a child or
+    /// the child of a child of of.
+    pub fn is_descendant(&self, of: &crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_is_descendant(self as *const Self, of) }
+    }
+
     /// **Source:** `TDataStd_TreeNode.hxx`:115 - `TDataStd_TreeNode::IsRoot()`
     /// Returns true if this tree node attribute is the
     /// ultimate father in the tree.
     pub fn is_root(&self) -> bool {
         unsafe { crate::ffi::TDataStd_TreeNode_is_root(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:118 - `TDataStd_TreeNode::Root()`
+    /// Returns the ultimate father of this tree node attribute.
+    pub fn root(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_root(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:121 - `TDataStd_TreeNode::IsFather()`
+    /// Returns true if this tree node attribute is a father of of.
+    pub fn is_father(&self, of: &crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_is_father(self as *const Self, of) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:124 - `TDataStd_TreeNode::IsChild()`
+    /// Returns true if this tree node attribute is a child of of.
+    pub fn is_child(&self, of: &crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_is_child(self as *const Self, of) }
     }
 
     /// **Source:** `TDataStd_TreeNode.hxx`:127 - `TDataStd_TreeNode::HasFather()`
@@ -10446,10 +13936,29 @@ impl TreeNode {
         unsafe { crate::ffi::TDataStd_TreeNode_has_father(self as *const Self) }
     }
 
+    /// **Source:** `TDataStd_TreeNode.hxx`:130 - `TDataStd_TreeNode::Father()`
+    /// Returns the father TreeNode of <me>. Null if root.
+    pub fn father(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_father(self as *const Self))
+        }
+    }
+
     /// **Source:** `TDataStd_TreeNode.hxx`:133 - `TDataStd_TreeNode::HasNext()`
     /// Returns true if this tree node attribute has a next tree node.
     pub fn has_next(&self) -> bool {
         unsafe { crate::ffi::TDataStd_TreeNode_has_next(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:139 - `TDataStd_TreeNode::Next()`
+    /// Returns the next tree node in this tree node attribute.
+    /// Warning
+    /// This tree node is null if it is the last one in this
+    /// tree node attribute.Returns the next TreeNode of <me>. Null if last.
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_next(self as *const Self))
+        }
     }
 
     /// **Source:** `TDataStd_TreeNode.hxx`:142 - `TDataStd_TreeNode::HasPrevious()`
@@ -10458,10 +13967,28 @@ impl TreeNode {
         unsafe { crate::ffi::TDataStd_TreeNode_has_previous(self as *const Self) }
     }
 
+    /// **Source:** `TDataStd_TreeNode.hxx`:147 - `TDataStd_TreeNode::Previous()`
+    /// Returns the previous tree node of this tree node attribute.
+    /// Warning
+    /// This tree node is null if it is the first one in this tree node attribute.
+    pub fn previous(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_previous(self as *const Self))
+        }
+    }
+
     /// **Source:** `TDataStd_TreeNode.hxx`:150 - `TDataStd_TreeNode::HasFirst()`
     /// Returns true if this tree node attribute has a first child tree node.
     pub fn has_first(&self) -> bool {
         unsafe { crate::ffi::TDataStd_TreeNode_has_first(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:153 - `TDataStd_TreeNode::First()`
+    /// Returns the first child tree node in this tree node object.
+    pub fn first(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_first(self as *const Self))
+        }
     }
 
     /// **Source:** `TDataStd_TreeNode.hxx`:156 - `TDataStd_TreeNode::HasLast()`
@@ -10470,9 +13997,52 @@ impl TreeNode {
         unsafe { crate::ffi::TDataStd_TreeNode_has_last(self as *const Self) }
     }
 
+    /// **Source:** `TDataStd_TreeNode.hxx`:159 - `TDataStd_TreeNode::Last()`
+    /// Returns the last child tree node in this tree node object.
+    pub fn last(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_last(self as *mut Self)) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:164 - `TDataStd_TreeNode::FindLast()`
+    /// Returns the last child tree node in this tree node object.
+    /// to set fields
+    /// =============
+    pub fn find_last(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_find_last(self as *mut Self))
+        }
+    }
+
     /// **Source:** `TDataStd_TreeNode.hxx`:166 - `TDataStd_TreeNode::SetTreeID()`
     pub fn set_tree_id(&mut self, explicitID: &crate::standard::GUID) {
         unsafe { crate::ffi::TDataStd_TreeNode_set_tree_id(self as *mut Self, explicitID) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:168 - `TDataStd_TreeNode::SetFather()`
+    pub fn set_father(&mut self, F: &crate::ffi::HandleTDataStdTreeNode) {
+        unsafe { crate::ffi::TDataStd_TreeNode_set_father(self as *mut Self, F) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:170 - `TDataStd_TreeNode::SetNext()`
+    pub fn set_next(&mut self, F: &crate::ffi::HandleTDataStdTreeNode) {
+        unsafe { crate::ffi::TDataStd_TreeNode_set_next(self as *mut Self, F) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:172 - `TDataStd_TreeNode::SetPrevious()`
+    pub fn set_previous(&mut self, F: &crate::ffi::HandleTDataStdTreeNode) {
+        unsafe { crate::ffi::TDataStd_TreeNode_set_previous(self as *mut Self, F) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:174 - `TDataStd_TreeNode::SetFirst()`
+    pub fn set_first(&mut self, F: &crate::ffi::HandleTDataStdTreeNode) {
+        unsafe { crate::ffi::TDataStd_TreeNode_set_first(self as *mut Self, F) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:178 - `TDataStd_TreeNode::SetLast()`
+    /// TreeNode callback:
+    /// ==================
+    pub fn set_last(&mut self, F: &crate::ffi::HandleTDataStdTreeNode) {
+        unsafe { crate::ffi::TDataStd_TreeNode_set_last(self as *mut Self, F) }
     }
 
     /// **Source:** `TDataStd_TreeNode.hxx`:181 - `TDataStd_TreeNode::AfterAddition()`
@@ -10552,6 +14122,41 @@ impl TreeNode {
         unsafe { &*(crate::ffi::TDataStd_TreeNode_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TDataStd_TreeNode.hxx`:50 - `TDataStd_TreeNode::Find()`
+    /// class  methods working on the node
+    /// ===================================
+    /// Returns true if the tree node T is found on the label L.
+    /// Otherwise, false is returned.
+    pub fn find(L: &crate::tdf::Label, T: &mut crate::ffi::HandleTDataStdTreeNode) -> bool {
+        unsafe { crate::ffi::TDataStd_TreeNode_find(L, T) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:56 - `TDataStd_TreeNode::Set()`
+    /// Finds or Creates a TreeNode attribute on the label <L>
+    /// with  the  default tree  ID,   returned by the method
+    /// <GetDefaultTreeID>.  Returns the created/found     TreeNode
+    /// attribute.
+    pub fn set_label(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_set_label(L)) }
+    }
+
+    /// **Source:** `TDataStd_TreeNode.hxx`:62 - `TDataStd_TreeNode::Set()`
+    /// Finds  or Creates a   TreeNode attribute on  the label
+    /// <L>, with an   explicit tree ID.  <ExplicitTreeID>  is
+    /// the  ID   returned by    <TDF_Attribute::ID>   method.
+    /// Returns the found/created TreeNode attribute.
+    pub fn set_label_guid(
+        L: &crate::tdf::Label,
+        ExplicitTreeID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_set_label_guid(
+                L,
+                ExplicitTreeID,
+            ))
+        }
+    }
+
     /// **Source:** `TDataStd_TreeNode.hxx`:69 - `TDataStd_TreeNode::GetDefaultTreeID()`
     /// returns a default  tree ID.  this  ID is  used by the
     /// <Set> method without explicit tree ID.
@@ -10583,6 +14188,15 @@ impl TreeNode {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_TreeNode_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -10704,148 +14318,94 @@ impl TreeNode {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_TreeNode_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_TreeNode_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for TreeNode (24 total) ──
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:75 - `TDataStd_TreeNode::Append`
-//   method: Insert the TreeNode <Child> as last  child of <me>. If
-//   method: the insertion is successful <me> becomes the Father of <Child>.
-//   Reason: param 'Child' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn append(&mut self, Child: &HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:79 - `TDataStd_TreeNode::Prepend`
-//   method: Insert the   the TreeNode <Child>  as  first child of
-//   method: <me>. If the insertion is successful <me> becomes the Father of <Child>
-//   Reason: param 'Child' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn prepend(&mut self, Child: &HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:83 - `TDataStd_TreeNode::InsertBefore`
-//   method: Inserts the TreeNode  <Node> before <me>. If insertion is successful <me>
-//   method: and <Node> belongs to the same Father.
-//   Reason: param 'Node' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn insert_before(&mut self, Node: &HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:87 - `TDataStd_TreeNode::InsertAfter`
-//   method: Inserts the TreeNode <Node>  after <me>. If insertion is successful  <me>
-//   method: and <Node> belongs to the same Father.
-//   Reason: param 'Node' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn insert_after(&mut self, Node: &HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:106 - `TDataStd_TreeNode::IsAscendant`
-//   method: Returns true if this tree node attribute is an
-//   method: ascendant of of. In other words, if it is a father or
-//   method: the father of a father of of.
-//   Reason: param 'of' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn is_ascendant(&self, of: &HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:111 - `TDataStd_TreeNode::IsDescendant`
-//   method: Returns true if this tree node attribute is a
-//   method: descendant of of. In other words, if it is a child or
-//   method: the child of a child of of.
-//   Reason: param 'of' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn is_descendant(&self, of: &HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:118 - `TDataStd_TreeNode::Root`
-//   method: Returns the ultimate father of this tree node attribute.
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn root(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:121 - `TDataStd_TreeNode::IsFather`
-//   method: Returns true if this tree node attribute is a father of of.
-//   Reason: param 'of' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn is_father(&self, of: &HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:124 - `TDataStd_TreeNode::IsChild`
-//   method: Returns true if this tree node attribute is a child of of.
-//   Reason: param 'of' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn is_child(&self, of: &HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:130 - `TDataStd_TreeNode::Father`
-//   method: Returns the father TreeNode of <me>. Null if root.
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn father(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:139 - `TDataStd_TreeNode::Next`
-//   method: Returns the next tree node in this tree node attribute.
-//   method: Warning
-//   method: This tree node is null if it is the last one in this
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn next(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:147 - `TDataStd_TreeNode::Previous`
-//   method: Returns the previous tree node of this tree node attribute.
-//   method: Warning
-//   method: This tree node is null if it is the first one in this tree node attribute.
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn previous(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:153 - `TDataStd_TreeNode::First`
-//   method: Returns the first child tree node in this tree node object.
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn first(&self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:159 - `TDataStd_TreeNode::Last`
-//   method: Returns the last child tree node in this tree node object.
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn last(&mut self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:164 - `TDataStd_TreeNode::FindLast`
-//   method: Returns the last child tree node in this tree node object.
-//   method: to set fields
-//   method: =============
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn find_last(&mut self) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:168 - `TDataStd_TreeNode::SetFather`
-//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn set_father(&mut self, F: &HandleTreeNode);
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:170 - `TDataStd_TreeNode::SetNext`
-//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn set_next(&mut self, F: &HandleTreeNode);
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:172 - `TDataStd_TreeNode::SetPrevious`
-//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn set_previous(&mut self, F: &HandleTreeNode);
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:174 - `TDataStd_TreeNode::SetFirst`
-//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn set_first(&mut self, F: &HandleTreeNode);
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:178 - `TDataStd_TreeNode::SetLast`
-//   method: TreeNode callback:
-//   method: ==================
-//   Reason: param 'F' uses unknown type 'const Handle(TDataStd_TreeNode)&'
-//   // pub fn set_last(&mut self, F: &HandleTreeNode);
-//
+pub use crate::ffi::HandleTDataStdTreeNode;
+
+unsafe impl crate::CppDeletable for HandleTDataStdTreeNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdTreeNode_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdTreeNode {
+    /// Dereference this Handle to access the underlying TDataStd_TreeNode
+    pub fn get(&self) -> &crate::ffi::TDataStd_TreeNode {
+        unsafe { &*(crate::ffi::HandleTDataStdTreeNode_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_TreeNode
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_TreeNode {
+        unsafe { &mut *(crate::ffi::HandleTDataStdTreeNode_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_TreeNode> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdTreeNode_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for TreeNode (1 total) ──
 // SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:214 - `TDataStd_TreeNode::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:50 - `TDataStd_TreeNode::Find`
-//   static_method: class  methods working on the node
-//   static_method: ===================================
-//   static_method: Returns true if the tree node T is found on the label L.
-//   Reason: param 'T' uses unknown type 'Handle(TDataStd_TreeNode)&'
-//   // pub fn find(L: &Label, T: &mut HandleTreeNode) -> bool;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:56 - `TDataStd_TreeNode::Set`
-//   static_method: Finds or Creates a TreeNode attribute on the label <L>
-//   static_method: with  the  default tree  ID,   returned by the method
-//   static_method: <GetDefaultTreeID>.  Returns the created/found     TreeNode
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn set(L: &Label) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
-//
-// SKIPPED: **Source:** `TDataStd_TreeNode.hxx`:62 - `TDataStd_TreeNode::Set`
-//   static_method: Finds  or Creates a   TreeNode attribute on  the label
-//   static_method: <L>, with an   explicit tree ID.  <ExplicitTreeID>  is
-//   static_method: the  ID   returned by    <TDF_Attribute::ID>   method.
-//   Reason: return type 'Handle(TDataStd_TreeNode)' is unknown
-//   // pub fn set(L: &Label, ExplicitTreeID: &GUID) -> OwnedPtr<Handle<TDataStd_TreeNode>>;
 //
 
 // ========================
@@ -10910,6 +14470,20 @@ impl UAttribute {
         unsafe { &*(crate::ffi::TDataStd_UAttribute_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `TDataStd_UAttribute.hxx`:42 - `TDataStd_UAttribute::Set()`
+    /// api class methods
+    /// =============
+    /// Find, or create, a UAttribute attribute with <LocalID> as Local GUID.
+    /// The UAttribute attribute is returned.
+    /// UAttribute methods
+    /// ============
+    pub fn set(
+        label: &crate::tdf::Label,
+        LocalID: &crate::standard::GUID,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdUAttribute> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_UAttribute_set(label, LocalID)) }
+    }
+
     /// **Source:** `TDataStd_UAttribute.hxx`:66 - `TDataStd_UAttribute::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -10932,6 +14506,15 @@ impl UAttribute {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_UAttribute_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdUAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_UAttribute_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
@@ -11095,23 +14678,96 @@ impl UAttribute {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_UAttribute_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_UAttribute_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_UAttribute_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_UAttribute_inherited_DeltaOnModification(
+                    self as *const Self,
+                    anOldAttribute,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_UAttribute_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_UAttribute_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for UAttribute (2 total) ──
+pub use crate::ffi::HandleTDataStdUAttribute;
+
+unsafe impl crate::CppDeletable for HandleTDataStdUAttribute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdUAttribute_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdUAttribute {
+    /// Dereference this Handle to access the underlying TDataStd_UAttribute
+    pub fn get(&self) -> &crate::ffi::TDataStd_UAttribute {
+        unsafe { &*(crate::ffi::HandleTDataStdUAttribute_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_UAttribute
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_UAttribute {
+        unsafe { &mut *(crate::ffi::HandleTDataStdUAttribute_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_UAttribute> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdUAttribute_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for UAttribute (1 total) ──
 // SKIPPED: **Source:** `TDataStd_UAttribute.hxx`:60 - `TDataStd_UAttribute::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_UAttribute.hxx`:42 - `TDataStd_UAttribute::Set`
-//   static_method: api class methods
-//   static_method: =============
-//   static_method: Find, or create, a UAttribute attribute with <LocalID> as Local GUID.
-//   Reason: return type 'Handle(TDataStd_UAttribute)' is unknown
-//   // pub fn set(label: &Label, LocalID: &GUID) -> OwnedPtr<Handle<TDataStd_UAttribute>>;
 //
 
 // ========================
@@ -11178,6 +14834,14 @@ impl Variable {
         unsafe { crate::ffi::TDataStd_Variable_get(self as *const Self) }
     }
 
+    /// **Source:** `TDataStd_Variable.hxx`:90 - `TDataStd_Variable::Real()`
+    /// returns associated Real attribute.
+    pub fn real(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_real(self as *const Self))
+        }
+    }
+
     /// **Source:** `TDataStd_Variable.hxx`:95 - `TDataStd_Variable::IsAssigned()`
     /// returns True if an Expression attribute is associated.
     /// create(if doesn't exist), set and returns the assigned
@@ -11186,11 +14850,29 @@ impl Variable {
         unsafe { crate::ffi::TDataStd_Variable_is_assigned(self as *const Self) }
     }
 
+    /// **Source:** `TDataStd_Variable.hxx`:99 - `TDataStd_Variable::Assign()`
+    /// create(if  doesn't exist)  and  returns  the  assigned
+    /// expression  attribute. fill it after.
+    pub fn assign(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_assign(self as *const Self))
+        }
+    }
+
     /// **Source:** `TDataStd_Variable.hxx`:103 - `TDataStd_Variable::Desassign()`
     /// if <me> is  assigned delete the associated  expression
     /// attribute.
     pub fn desassign(&self) {
         unsafe { crate::ffi::TDataStd_Variable_desassign(self as *const Self) }
+    }
+
+    /// **Source:** `TDataStd_Variable.hxx`:107 - `TDataStd_Variable::Expression()`
+    /// if <me>  is  assigned, returns  associated  Expression
+    /// attribute.
+    pub fn expression(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdExpression> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_expression(self as *const Self))
+        }
     }
 
     /// **Source:** `TDataStd_Variable.hxx`:110 - `TDataStd_Variable::IsCaptured()`
@@ -11268,6 +14950,16 @@ impl Variable {
         unsafe { &*(crate::ffi::TDataStd_Variable_get_id()) }
     }
 
+    /// **Source:** `TDataStd_Variable.hxx`:61 - `TDataStd_Variable::Set()`
+    /// Find, or create, a  Variable attribute.
+    /// Real methods
+    /// ============
+    pub fn set_label(
+        label: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdVariable> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_set_label(label)) }
+    }
+
     /// **Source:** `TDataStd_Variable.hxx`:143 - `TDataStd_Variable::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -11290,6 +14982,15 @@ impl Variable {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe { &mut *(crate::ffi::TDataStd_Variable_as_TDF_Attribute_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdVariable> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_to_handle(obj.into_raw()))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
@@ -11456,40 +15157,94 @@ impl Variable {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_inherited_DeltaOnAddition(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_inherited_DeltaOnForget(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_inherited_DeltaOnResume(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    pub fn delta_on_modification(
+        &self,
+        anOldAttribute: &crate::ffi::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_inherited_DeltaOnModification(
+                self as *const Self,
+                anOldAttribute,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_Variable_inherited_DeltaOnRemoval(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         unsafe { crate::ffi::TDataStd_Variable_inherited_Forget(self as *mut Self, aTransaction) }
     }
 }
 
-// ── Skipped symbols for Variable (5 total) ──
-// SKIPPED: **Source:** `TDataStd_Variable.hxx`:90 - `TDataStd_Variable::Real`
-//   method: returns associated Real attribute.
-//   Reason: return type 'Handle(TDataStd_Real)' is unknown
-//   // pub fn real(&self) -> OwnedPtr<Handle<TDataStd_Real>>;
-//
-// SKIPPED: **Source:** `TDataStd_Variable.hxx`:99 - `TDataStd_Variable::Assign`
-//   method: create(if  doesn't exist)  and  returns  the  assigned
-//   method: expression  attribute. fill it after.
-//   Reason: return type 'Handle(TDataStd_Expression)' is unknown
-//   // pub fn assign(&self) -> OwnedPtr<Handle<TDataStd_Expression>>;
-//
-// SKIPPED: **Source:** `TDataStd_Variable.hxx`:107 - `TDataStd_Variable::Expression`
-//   method: if <me>  is  assigned, returns  associated  Expression
-//   method: attribute.
-//   Reason: return type 'Handle(TDataStd_Expression)' is unknown
-//   // pub fn expression(&self) -> OwnedPtr<Handle<TDataStd_Expression>>;
-//
+pub use crate::ffi::HandleTDataStdVariable;
+
+unsafe impl crate::CppDeletable for HandleTDataStdVariable {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTDataStdVariable_destructor(ptr);
+    }
+}
+
+impl HandleTDataStdVariable {
+    /// Dereference this Handle to access the underlying TDataStd_Variable
+    pub fn get(&self) -> &crate::ffi::TDataStd_Variable {
+        unsafe { &*(crate::ffi::HandleTDataStdVariable_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TDataStd_Variable
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TDataStd_Variable {
+        unsafe { &mut *(crate::ffi::HandleTDataStdVariable_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TDataStd_Variable> to Handle<TDF_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleTDataStdVariable_to_HandleTDFAttribute(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Variable (1 total) ──
 // SKIPPED: **Source:** `TDataStd_Variable.hxx`:137 - `TDataStd_Variable::Dump`
 //   Reason: has unbindable types: param 'anOS': stream type (Standard_OStream&); return: stream type (Standard_OStream&)
 //   // pub fn dump(&self, anOS: /* Standard_OStream& */) -> /* Standard_OStream& */;
-//
-// SKIPPED: **Source:** `TDataStd_Variable.hxx`:61 - `TDataStd_Variable::Set`
-//   static_method: Find, or create, a  Variable attribute.
-//   static_method: Real methods
-//   static_method: ============
-//   Reason: return type 'Handle(TDataStd_Variable)' is unknown
-//   // pub fn set(label: &Label) -> OwnedPtr<Handle<TDataStd_Variable>>;
 //
 
 // ========================

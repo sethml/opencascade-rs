@@ -99,6 +99,30 @@ impl IntSS {
         }
     }
 
+    /// **Source:** `GeomInt_IntSS.hxx`:61 - `GeomInt_IntSS::Perform()`
+    /// intersection of adapted surfaces
+    pub fn perform_handlegeomadaptorsurface2_real_bool3(
+        &mut self,
+        HS1: &crate::ffi::HandleGeomAdaptorSurface,
+        HS2: &crate::ffi::HandleGeomAdaptorSurface,
+        Tol: f64,
+        Approx: bool,
+        ApproxS1: bool,
+        ApproxS2: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_IntSS_perform_handlegeomadaptorsurface2_real_bool3(
+                self as *mut Self,
+                HS1,
+                HS2,
+                Tol,
+                Approx,
+                ApproxS1,
+                ApproxS2,
+            )
+        }
+    }
+
     /// **Source:** `GeomInt_IntSS.hxx`:69 - `GeomInt_IntSS::Perform()`
     /// general intersection using a starting point
     pub fn perform_handlegeomsurface2_real5_bool3(
@@ -119,6 +143,38 @@ impl IntSS {
                 self as *mut Self,
                 S1,
                 S2,
+                Tol,
+                U1,
+                V1,
+                U2,
+                V2,
+                Approx,
+                ApproxS1,
+                ApproxS2,
+            )
+        }
+    }
+
+    /// **Source:** `GeomInt_IntSS.hxx`:81 - `GeomInt_IntSS::Perform()`
+    /// intersection of adapted surfaces using a starting point
+    pub fn perform_handlegeomadaptorsurface2_real5_bool3(
+        &mut self,
+        HS1: &crate::ffi::HandleGeomAdaptorSurface,
+        HS2: &crate::ffi::HandleGeomAdaptorSurface,
+        Tol: f64,
+        U1: f64,
+        V1: f64,
+        U2: f64,
+        V2: f64,
+        Approx: bool,
+        ApproxS1: bool,
+        ApproxS2: bool,
+    ) {
+        unsafe {
+            crate::ffi::GeomInt_IntSS_perform_handlegeomadaptorsurface2_real5_bool3(
+                self as *mut Self,
+                HS1,
+                HS2,
                 Tol,
                 U1,
                 V1,
@@ -260,19 +316,34 @@ impl IntSS {
             crate::ffi::GeomInt_IntSS_build_p_curves_real3_handlegeomsurface_handlegeomcurve_handlegeom2dcurve(f, l, Tol, S, C, C2d)
         }
     }
+
+    /// **Source:** `GeomInt_IntSS.hxx`:164 - `GeomInt_IntSS::MakeBSpline()`
+    pub fn make_b_spline(
+        WL: &crate::ffi::HandleIntPatchWLine,
+        ideb: i32,
+        ifin: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_make_b_spline(WL, ideb, ifin))
+        }
+    }
+
+    /// **Source:** `GeomInt_IntSS.hxx`:168 - `GeomInt_IntSS::MakeBSpline2d()`
+    pub fn make_b_spline2d(
+        theWLine: &crate::ffi::HandleIntPatchWLine,
+        ideb: i32,
+        ifin: i32,
+        onFirst: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomInt_IntSS_make_b_spline2d(
+                theWLine, ideb, ifin, onFirst,
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for IntSS (6 total) ──
-// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:61 - `GeomInt_IntSS::Perform`
-//   method: intersection of adapted surfaces
-//   Reason: param 'HS1' uses unknown type 'const Handle(GeomAdaptor_Surface)&'
-//   // pub fn perform(&mut self, HS1: &HandleSurface, HS2: &HandleSurface, Tol: f64, Approx: bool, ApproxS1: bool, ApproxS2: bool);
-//
-// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:81 - `GeomInt_IntSS::Perform`
-//   method: intersection of adapted surfaces using a starting point
-//   Reason: param 'HS1' uses unknown type 'const Handle(GeomAdaptor_Surface)&'
-//   // pub fn perform(&mut self, HS1: &HandleSurface, HS2: &HandleSurface, Tol: f64, U1: f64, V1: f64, U2: f64, V2: f64, Approx: bool, ApproxS1: bool, ApproxS2: bool);
-//
+// ── Skipped symbols for IntSS (2 total) ──
 // SKIPPED: **Source:** `GeomInt_IntSS.hxx`:127 - `GeomInt_IntSS::TreatRLine`
 //   static_method: converts RLine to Geom(2d)_Curve.
 //   Reason: param 'theRL' uses unknown type 'const Handle(IntPatch_RLine)&'
@@ -284,14 +355,6 @@ impl IntSS {
 //   static_method: of the source surface.
 //   Reason: param 'theArrayOfParameters' uses unknown type 'GeomInt_VectorOfReal&'
 //   // pub fn trim_i_line_on_surf_boundaries(theC2d1: &HandleCurve, theC2d2: &HandleCurve, theBound1: &Box2d, theBound2: &Box2d, theArrayOfParameters: &mut VectorOfReal);
-//
-// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:164 - `GeomInt_IntSS::MakeBSpline`
-//   Reason: param 'WL' uses unknown type 'const Handle(IntPatch_WLine)&'
-//   // pub fn make_b_spline(WL: &HandleWLine, ideb: i32, ifin: i32) -> OwnedPtr<Handle<Geom_Curve>>;
-//
-// SKIPPED: **Source:** `GeomInt_IntSS.hxx`:168 - `GeomInt_IntSS::MakeBSpline2d`
-//   Reason: param 'theWLine' uses unknown type 'const Handle(IntPatch_WLine)&'
-//   // pub fn make_b_spline2d(theWLine: &HandleWLine, ideb: i32, ifin: i32, onFirst: bool) -> OwnedPtr<Handle<Geom2d_BSplineCurve>>;
 //
 
 // ========================
@@ -313,6 +376,19 @@ impl LineConstructor {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::GeomInt_LineConstructor_ctor()) }
+    }
+
+    /// **Source:** `GeomInt_LineConstructor.hxx`:37 - `GeomInt_LineConstructor::Load()`
+    /// Initializes me by two surfaces and corresponding
+    /// tools which represent boundaries of surfaces
+    pub fn load(
+        &mut self,
+        D1: &crate::ffi::HandleAdaptor3dTopolTool,
+        D2: &crate::ffi::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi::HandleGeomAdaptorSurface,
+        S2: &crate::ffi::HandleGeomAdaptorSurface,
+    ) {
+        unsafe { crate::ffi::GeomInt_LineConstructor_load(self as *mut Self, D1, D2, S1, S2) }
     }
 
     /// **Source:** `GeomInt_LineConstructor.hxx`:43 - `GeomInt_LineConstructor::Perform()`
@@ -340,14 +416,6 @@ impl LineConstructor {
         unsafe { crate::ffi::GeomInt_LineConstructor_part(self as *const Self, I, WFirst, WLast) }
     }
 }
-
-// ── Skipped symbols for LineConstructor (1 total) ──
-// SKIPPED: **Source:** `GeomInt_LineConstructor.hxx`:37 - `GeomInt_LineConstructor::Load`
-//   method: Initializes me by two surfaces and corresponding
-//   method: tools which represent boundaries of surfaces
-//   Reason: param 'S1' uses unknown type 'const Handle(GeomAdaptor_Surface)&'
-//   // pub fn load(&mut self, D1: &HandleTopolTool, D2: &HandleTopolTool, S1: &HandleSurface, S2: &HandleSurface);
-//
 
 // ========================
 // Additional type re-exports

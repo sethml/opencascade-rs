@@ -186,6 +186,25 @@ impl BasicMsgRegistrator {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_BasicMsgRegistrator_ctor()) }
     }
 
+    /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:48 - `ShapeExtend_BasicMsgRegistrator::Send()`
+    /// Sends a message to be attached to the object.
+    /// Object can be of any type interpreted by redefined MsgRegistrator.
+    pub fn send_handlestandardtransient_msg_gravity(
+        &mut self,
+        object: &crate::ffi::HandleStandardTransient,
+        message: &crate::message::Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_BasicMsgRegistrator_send_handlestandardtransient_msg_gravity(
+                self as *mut Self,
+                object,
+                message,
+                gravity.into(),
+            )
+        }
+    }
+
     /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:53 - `ShapeExtend_BasicMsgRegistrator::Send()`
     /// Sends a message to be attached to the shape.
     pub fn send_shape_msg_gravity(
@@ -271,15 +290,23 @@ impl HandleShapeExtendBasicMsgRegistrator {
             &mut *(crate::ffi::HandleShapeExtendBasicMsgRegistrator_get_mut(self as *mut Self))
         }
     }
-}
 
-// ── Skipped symbols for BasicMsgRegistrator (1 total) ──
-// SKIPPED: **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:48 - `ShapeExtend_BasicMsgRegistrator::Send`
-//   method: Sends a message to be attached to the object.
-//   method: Object can be of any type interpreted by redefined MsgRegistrator.
-//   Reason: param 'object' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn send(&mut self, object: &HandleTransient, message: &Msg, gravity: Gravity);
-//
+    /// Downcast Handle<ShapeExtend_BasicMsgRegistrator> to Handle<ShapeExtend_MsgRegistrator>
+    ///
+    /// Returns `None` if the handle does not point to a `ShapeExtend_MsgRegistrator` (or subclass).
+    pub fn downcast_to_msg_registrator(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeExtendMsgRegistrator>> {
+        let ptr = unsafe {
+            crate::ffi::HandleShapeExtendBasicMsgRegistrator_downcast_to_HandleShapeExtendMsgRegistrator(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
 
 // ========================
 // From ShapeExtend_ComplexCurve.hxx
@@ -1739,18 +1766,38 @@ impl MsgRegistrator {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_MsgRegistrator_ctor()) }
     }
 
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:51 - `ShapeExtend_MsgRegistrator::Send()`
+    /// Sends a message to be attached to the object.
+    /// If the object is in the map then the message is added to the
+    /// list, otherwise the object is firstly added to the map.
+    pub fn send_handlestandardtransient_msg_gravity(
+        &mut self,
+        object: &crate::ffi::HandleStandardTransient,
+        message: &crate::message::Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        unsafe {
+            crate::ffi::ShapeExtend_MsgRegistrator_send_handlestandardtransient_msg_gravity(
+                self as *mut Self,
+                object,
+                message,
+                gravity.into(),
+            )
+        }
+    }
+
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:58 - `ShapeExtend_MsgRegistrator::Send()`
     /// Sends a message to be attached to the shape.
     /// If the shape is in the map then the message is added to the
     /// list, otherwise the shape is firstly added to the map.
-    pub fn send(
+    pub fn send_shape_msg_gravity(
         &mut self,
         shape: &crate::topo_ds::Shape,
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_send(
+            crate::ffi::ShapeExtend_MsgRegistrator_send_shape_msg_gravity(
                 self as *mut Self,
                 shape,
                 message,
@@ -1801,16 +1848,53 @@ impl MsgRegistrator {
             ))
         }
     }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ShapeExtend_MsgRegistrator_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
 }
 
-// ── Skipped symbols for MsgRegistrator (2 total) ──
-// SKIPPED: **Source:** `ShapeExtend_MsgRegistrator.hxx`:51 - `ShapeExtend_MsgRegistrator::Send`
-//   method: Sends a message to be attached to the object.
-//   method: If the object is in the map then the message is added to the
-//   method: list, otherwise the object is firstly added to the map.
-//   Reason: param 'object' uses unknown type 'const Handle(Standard_Transient)&'
-//   // pub fn send(&mut self, object: &HandleTransient, message: &Msg, gravity: Gravity);
-//
+pub use crate::ffi::HandleShapeExtendMsgRegistrator;
+
+unsafe impl crate::CppDeletable for HandleShapeExtendMsgRegistrator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleShapeExtendMsgRegistrator_destructor(ptr);
+    }
+}
+
+impl HandleShapeExtendMsgRegistrator {
+    /// Dereference this Handle to access the underlying ShapeExtend_MsgRegistrator
+    pub fn get(&self) -> &crate::ffi::ShapeExtend_MsgRegistrator {
+        unsafe { &*(crate::ffi::HandleShapeExtendMsgRegistrator_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeExtend_MsgRegistrator
+    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_MsgRegistrator {
+        unsafe { &mut *(crate::ffi::HandleShapeExtendMsgRegistrator_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<ShapeExtend_MsgRegistrator> to Handle<ShapeExtend_BasicMsgRegistrator>
+    pub fn to_handle_basic_msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleShapeExtendMsgRegistrator_to_HandleShapeExtendBasicMsgRegistrator(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ── Skipped symbols for MsgRegistrator (1 total) ──
 // SKIPPED: **Source:** `ShapeExtend_MsgRegistrator.hxx`:63 - `ShapeExtend_MsgRegistrator::MapTransient`
 //   method: Returns a Map of objects and message list
 //   Reason: return type 'const ShapeExtend_DataMapOfTransientListOfMsg&' is unknown

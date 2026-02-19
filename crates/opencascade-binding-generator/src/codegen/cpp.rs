@@ -13,14 +13,14 @@ use crate::resolver::SymbolTable;
 use std::collections::HashSet;
 use std::fmt::Write;
 
-fn collect_handle_types(classes: &[&ParsedClass]) -> Vec<(String, String)> {
+fn collect_handle_types(classes: &[&ParsedClass], handle_able_classes: &HashSet<String>) -> Vec<(String, String)> {
     let mut handles = HashSet::new();
 
     for class in classes {
         // Add Handle type for classes that are transient (can be wrapped in Handle)
         // Handle types with protected destructors are included because Handle<T>
         // manages lifetime via reference counting, not direct delete.
-        if class.is_handle_type {
+        if handle_able_classes.contains(&class.name) {
             handles.insert(class.name.clone());
         }
 
@@ -244,6 +244,7 @@ pub fn generate_wrappers(
     all_bindings: &[super::bindings::ClassBindings],
     function_bindings: &[super::bindings::FunctionBinding],
     nested_types: &[super::rust::NestedTypeInfo],
+    handle_able_classes: &HashSet<String>,
 ) -> String {
     let mut output = String::new();
 
@@ -264,7 +265,7 @@ pub fn generate_wrappers(
     writeln!(output).unwrap();
 
     // Generate Handle typedefs for ALL classes
-    let handle_types = collect_handle_types(all_classes);
+    let handle_types = collect_handle_types(all_classes, handle_able_classes);
     if !handle_types.is_empty() {
         writeln!(output, "// Handle type aliases").unwrap();
         for (inner_class, handle_name) in &handle_types {
