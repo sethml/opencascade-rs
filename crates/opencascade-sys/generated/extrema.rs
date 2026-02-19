@@ -9821,6 +9821,15 @@ impl POnSurfParams {
         }
     }
 
+    /// **Source:** `Extrema_POnSurfParams.hxx`:61 - `Extrema_POnSurfParams::GetIndices()`
+    /// Query the U and V indices of an element that contains
+    /// this point.
+    pub fn get_indices(&self, theIndexU: &mut i32, theIndexV: &mut i32) {
+        unsafe {
+            crate::ffi::Extrema_POnSurfParams_get_indices(self as *const Self, theIndexU, theIndexV)
+        }
+    }
+
     /// Upcast to Extrema_POnSurf
     pub fn as_p_on_surf(&self) -> &POnSurf {
         unsafe { &*(crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf(self as *const Self)) }
@@ -9855,14 +9864,6 @@ impl POnSurfParams {
         unsafe { crate::ffi::Extrema_POnSurfParams_inherited_Parameter(self as *const Self, U, V) }
     }
 }
-
-// ── Skipped symbols for POnSurfParams (1 total) ──
-// SKIPPED: **Source:** `Extrema_POnSurfParams.hxx`:61 - `Extrema_POnSurfParams::GetIndices`
-//   method: Query the U and V indices of an element that contains
-//   method: this point.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_indices(&self, theIndexU: &mut i32, theIndexV: &mut i32);
-//
 
 // ========================
 // Additional type re-exports

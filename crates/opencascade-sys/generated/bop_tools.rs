@@ -878,6 +878,12 @@ impl AlgoTools {
         unsafe { crate::ffi::BOPTools_AlgoTools_is_block_in_on_face(aShR, aF, aE, aContext) }
     }
 
+    /// **Source:** `BOPTools_AlgoTools.hxx`:549 - `BOPTools_AlgoTools::Dimensions()`
+    /// Returns the min and max dimensions of the shape <theS>.
+    pub fn dimensions(theS: &crate::topo_ds::Shape, theDMin: &mut i32, theDMax: &mut i32) {
+        unsafe { crate::ffi::BOPTools_AlgoTools_dimensions(theS, theDMin, theDMax) }
+    }
+
     /// **Source:** `BOPTools_AlgoTools.hxx`:555 - `BOPTools_AlgoTools::Dimension()`
     /// Returns dimension of the shape <theS>.
     /// If the shape contains elements of different dimension, -1 is returned.
@@ -909,13 +915,6 @@ impl AlgoTools {
         unsafe { crate::ffi::BOPTools_AlgoTools_is_open_shell(theShell) }
     }
 }
-
-// ── Skipped symbols for AlgoTools (1 total) ──
-// SKIPPED: **Source:** `BOPTools_AlgoTools.hxx`:549 - `BOPTools_AlgoTools::Dimensions`
-//   static_method: Returns the min and max dimensions of the shape <theS>.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn dimensions(theS: &Shape, theDMin: &mut i32, theDMax: &mut i32);
-//
 
 // ========================
 // From BOPTools_AlgoTools2D.hxx

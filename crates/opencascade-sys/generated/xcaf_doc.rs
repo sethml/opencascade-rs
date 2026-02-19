@@ -5464,6 +5464,29 @@ impl DimTolTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_DimTolTool.hxx`:160 - `XCAFDoc_DimTolTool::GetDimTol()`
+    /// Returns dimension tolerance assigned to theDimTolL label.
+    /// Returns False if no such dimension tolerance is assigned.
+    pub fn get_dim_tol(
+        &self,
+        theDimTolL: &crate::tdf::Label,
+        theKind: &mut i32,
+        theVal: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        theName: &mut crate::ffi::HandleTCollectionHAsciiString,
+        theDescription: &mut crate::ffi::HandleTCollectionHAsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDoc_DimTolTool_get_dim_tol(
+                self as *const Self,
+                theDimTolL,
+                theKind,
+                theVal,
+                theName,
+                theDescription,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDoc_DimTolTool.hxx`:168 - `XCAFDoc_DimTolTool::IsDatum()`
     /// Returns True if label belongs to the GD&T table and
     /// is a Datum definition.
@@ -6100,23 +6123,17 @@ impl HandleXCAFDocDimTolTool {
     }
 }
 
-// ── Skipped symbols for DimTolTool (3 total) ──
-// SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:160 - `XCAFDoc_DimTolTool::GetDimTol`
-//   method: Returns dimension tolerance assigned to theDimTolL label.
-//   method: Returns False if no such dimension tolerance is assigned.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_dim_tol(&self, theDimTolL: &Label, theKind: &mut i32, theVal: &mut HandleHArray1OfReal, theName: &mut HandleHAsciiString, theDescription: &mut HandleHAsciiString) -> bool;
-//
+// ── Skipped symbols for DimTolTool (2 total) ──
 // SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:240 - `XCAFDoc_DimTolTool::GetGDTPresentations`
 //   method: fill the map GDT label -> shape presentation
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn get_gdt_presentations(&self, theGDTLabelToShape: &mut i32);
 //
 // SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:246 - `XCAFDoc_DimTolTool::SetGDTPresentations`
 //   method: Set shape presentation for GDT labels according to given map (theGDTLabelToPrs)
 //   method: theGDTLabelToPrsName map is an additional argument, can be used to set presentation names.
 //   method: If label is not in the theGDTLabelToPrsName map, the presentation name will be empty
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn set_gdt_presentations(&mut self, theGDTLabelToPrs: &mut i32);
 //
 

@@ -337,6 +337,29 @@ impl AppSurf {
         unsafe { crate::ffi::GeomFill_AppSurf_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_AppSurf.hxx`:107 - `GeomFill_AppSurf::SurfShape()`
+    pub fn surf_shape(
+        &self,
+        UDegree: &mut i32,
+        VDegree: &mut i32,
+        NbUPoles: &mut i32,
+        NbVPoles: &mut i32,
+        NbUKnots: &mut i32,
+        NbVKnots: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_AppSurf_surf_shape(
+                self as *const Self,
+                UDegree,
+                VDegree,
+                NbUPoles,
+                NbVPoles,
+                NbUKnots,
+                NbVKnots,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_AppSurf.hxx`:114 - `GeomFill_AppSurf::Surface()`
     pub fn surface(
         &self,
@@ -405,6 +428,18 @@ impl AppSurf {
         unsafe { crate::ffi::GeomFill_AppSurf_nb_curves2d(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_AppSurf.hxx`:139 - `GeomFill_AppSurf::Curves2dShape()`
+    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
+        unsafe {
+            crate::ffi::GeomFill_AppSurf_curves2d_shape(
+                self as *const Self,
+                Degree,
+                NbPoles,
+                NbKnots,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_AppSurf.hxx`:143 - `GeomFill_AppSurf::Curve2d()`
     pub fn curve2d(
         &self,
@@ -458,16 +493,6 @@ impl AppSurf {
         unsafe { &mut *(crate::ffi::GeomFill_AppSurf_as_AppBlend_Approx_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for AppSurf (2 total) ──
-// SKIPPED: **Source:** `GeomFill_AppSurf.hxx`:107 - `GeomFill_AppSurf::SurfShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn surf_shape(&self, UDegree: &mut i32, VDegree: &mut i32, NbUPoles: &mut i32, NbVPoles: &mut i32, NbUKnots: &mut i32, NbVKnots: &mut i32);
-//
-// SKIPPED: **Source:** `GeomFill_AppSurf.hxx`:139 - `GeomFill_AppSurf::Curves2dShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32);
-//
 
 // ========================
 // From GeomFill_AppSweep.hxx
@@ -643,6 +668,29 @@ impl AppSweep {
         unsafe { crate::ffi::GeomFill_AppSweep_is_done(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_AppSweep.hxx`:107 - `GeomFill_AppSweep::SurfShape()`
+    pub fn surf_shape(
+        &self,
+        UDegree: &mut i32,
+        VDegree: &mut i32,
+        NbUPoles: &mut i32,
+        NbVPoles: &mut i32,
+        NbUKnots: &mut i32,
+        NbVKnots: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_AppSweep_surf_shape(
+                self as *const Self,
+                UDegree,
+                VDegree,
+                NbUPoles,
+                NbVPoles,
+                NbUKnots,
+                NbVKnots,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_AppSweep.hxx`:114 - `GeomFill_AppSweep::Surface()`
     pub fn surface(
         &self,
@@ -711,6 +759,18 @@ impl AppSweep {
         unsafe { crate::ffi::GeomFill_AppSweep_nb_curves2d(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_AppSweep.hxx`:139 - `GeomFill_AppSweep::Curves2dShape()`
+    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
+        unsafe {
+            crate::ffi::GeomFill_AppSweep_curves2d_shape(
+                self as *const Self,
+                Degree,
+                NbPoles,
+                NbKnots,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_AppSweep.hxx`:143 - `GeomFill_AppSweep::Curve2d()`
     pub fn curve2d(
         &self,
@@ -770,16 +830,6 @@ impl AppSweep {
         unsafe { &mut *(crate::ffi::GeomFill_AppSweep_as_AppBlend_Approx_mut(self as *mut Self)) }
     }
 }
-
-// ── Skipped symbols for AppSweep (2 total) ──
-// SKIPPED: **Source:** `GeomFill_AppSweep.hxx`:107 - `GeomFill_AppSweep::SurfShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn surf_shape(&self, UDegree: &mut i32, VDegree: &mut i32, NbUPoles: &mut i32, NbVPoles: &mut i32, NbUKnots: &mut i32, NbVKnots: &mut i32);
-//
-// SKIPPED: **Source:** `GeomFill_AppSweep.hxx`:139 - `GeomFill_AppSweep::Curves2dShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32);
-//
 
 // ========================
 // From GeomFill_BSplineCurves.hxx
@@ -1835,6 +1885,19 @@ impl CircularBlendFunc {
         unsafe { crate::ffi::GeomFill_CircularBlendFunc_nb2d_curves(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_CircularBlendFunc.hxx`:98 - `GeomFill_CircularBlendFunc::SectionShape()`
+    /// get the format of an  section
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::GeomFill_CircularBlendFunc_section_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:103 - `GeomFill_CircularBlendFunc::Knots()`
     /// get the Knots of the section
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
@@ -2108,13 +2171,6 @@ impl HandleGeomFillCircularBlendFunc {
         }
     }
 }
-
-// ── Skipped symbols for CircularBlendFunc (1 total) ──
-// SKIPPED: **Source:** `GeomFill_CircularBlendFunc.hxx`:98 - `GeomFill_CircularBlendFunc::SectionShape`
-//   method: get the format of an  section
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
-//
 
 // ========================
 // From GeomFill_ConstantBiNormal.hxx
@@ -5433,6 +5489,19 @@ impl EvolvedSection {
         }
     }
 
+    /// **Source:** `GeomFill_EvolvedSection.hxx`:79 - `GeomFill_EvolvedSection::SectionShape()`
+    /// get the format of an  section
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::GeomFill_EvolvedSection_section_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_EvolvedSection.hxx`:84 - `GeomFill_EvolvedSection::Knots()`
     /// get the Knots of the section
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
@@ -5747,13 +5816,6 @@ impl HandleGeomFillEvolvedSection {
         }
     }
 }
-
-// ── Skipped symbols for EvolvedSection (1 total) ──
-// SKIPPED: **Source:** `GeomFill_EvolvedSection.hxx`:79 - `GeomFill_EvolvedSection::SectionShape`
-//   method: get the format of an  section
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
-//
 
 // ========================
 // From GeomFill_Filling.hxx
@@ -8283,13 +8345,30 @@ impl LocFunction {
     pub fn d2(&mut self, Param: f64, First: f64, Last: f64) -> bool {
         unsafe { crate::ffi::GeomFill_LocFunction_d2(self as *mut Self, Param, First, Last) }
     }
-}
 
-// ── Skipped symbols for LocFunction (1 total) ──
-// SKIPPED: **Source:** `GeomFill_LocFunction.hxx`:53 - `GeomFill_LocFunction::DN`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn dn(&mut self, Param: f64, First: f64, Last: f64, Order: i32, Result: &mut f64, Ier: &mut i32);
-//
+    /// **Source:** `GeomFill_LocFunction.hxx`:53 - `GeomFill_LocFunction::DN()`
+    pub fn dn(
+        &mut self,
+        Param: f64,
+        First: f64,
+        Last: f64,
+        Order: i32,
+        Result: &mut f64,
+        Ier: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_LocFunction_dn(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+                Order,
+                Result,
+                Ier,
+            )
+        }
+    }
+}
 
 // ========================
 // From GeomFill_LocationDraft.hxx
@@ -9827,6 +9906,19 @@ impl NSections {
         }
     }
 
+    /// **Source:** `GeomFill_NSections.hxx`:120 - `GeomFill_NSections::SectionShape()`
+    /// get the format of an  section
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::GeomFill_NSections_section_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_NSections.hxx`:125 - `GeomFill_NSections::Knots()`
     /// get the Knots of the section
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
@@ -10120,13 +10212,6 @@ impl HandleGeomFillNSections {
         }
     }
 }
-
-// ── Skipped symbols for NSections (1 total) ──
-// SKIPPED: **Source:** `GeomFill_NSections.hxx`:120 - `GeomFill_NSections::SectionShape`
-//   method: get the format of an  section
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
-//
 
 // ========================
 // From GeomFill_Pipe.hxx
@@ -11062,6 +11147,25 @@ impl SectionGenerator {
         unsafe { crate::ffi::GeomFill_SectionGenerator_set_param(self as *mut Self, Params) }
     }
 
+    /// **Source:** `GeomFill_SectionGenerator.hxx`:46 - `GeomFill_SectionGenerator::GetShape()`
+    pub fn get_shape(
+        &self,
+        NbPoles: &mut i32,
+        NbKnots: &mut i32,
+        Degree: &mut i32,
+        NbPoles2d: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_SectionGenerator_get_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+                NbPoles2d,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_SectionGenerator.hxx`:51 - `GeomFill_SectionGenerator::Knots()`
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         unsafe { crate::ffi::GeomFill_SectionGenerator_knots(self as *const Self, TKnots) }
@@ -11206,12 +11310,6 @@ impl SectionGenerator {
     }
 }
 
-// ── Skipped symbols for SectionGenerator (1 total) ──
-// SKIPPED: **Source:** `GeomFill_SectionGenerator.hxx`:46 - `GeomFill_SectionGenerator::GetShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32, NbPoles2d: &mut i32);
-//
-
 // ========================
 // From GeomFill_SectionLaw.hxx
 // ========================
@@ -11299,6 +11397,19 @@ impl SectionLaw {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_SectionLaw_b_spline_surface(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// **Source:** `GeomFill_SectionLaw.hxx`:73 - `GeomFill_SectionLaw::SectionShape()`
+    /// get the format of an  section
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::GeomFill_SectionLaw_section_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
         }
     }
 
@@ -11623,13 +11734,6 @@ impl HandleGeomFillSectionLaw {
         }
     }
 }
-
-// ── Skipped symbols for SectionLaw (1 total) ──
-// SKIPPED: **Source:** `GeomFill_SectionLaw.hxx`:73 - `GeomFill_SectionLaw::SectionShape`
-//   method: get the format of an  section
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
-//
 
 // ========================
 // From GeomFill_SectionPlacement.hxx
@@ -12901,6 +13005,19 @@ impl SweepFunction {
         unsafe { crate::ffi::GeomFill_SweepFunction_nb2d_curves(self as *const Self) }
     }
 
+    /// **Source:** `GeomFill_SweepFunction.hxx`:92 - `GeomFill_SweepFunction::SectionShape()`
+    /// get the format of a section
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::GeomFill_SweepFunction_section_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_SweepFunction.hxx`:97 - `GeomFill_SweepFunction::Knots()`
     /// get the Knots of the section
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
@@ -13162,13 +13279,6 @@ impl HandleGeomFillSweepFunction {
     }
 }
 
-// ── Skipped symbols for SweepFunction (1 total) ──
-// SKIPPED: **Source:** `GeomFill_SweepFunction.hxx`:92 - `GeomFill_SweepFunction::SectionShape`
-//   method: get the format of a section
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
-//
-
 // ========================
 // From GeomFill_SweepSectionGenerator.hxx
 // ========================
@@ -13355,6 +13465,25 @@ impl SweepSectionGenerator {
         unsafe { crate::ffi::GeomFill_SweepSectionGenerator_perform(self as *mut Self, Polynomial) }
     }
 
+    /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:91 - `GeomFill_SweepSectionGenerator::GetShape()`
+    pub fn get_shape(
+        &self,
+        NbPoles: &mut i32,
+        NbKnots: &mut i32,
+        Degree: &mut i32,
+        NbPoles2d: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::GeomFill_SweepSectionGenerator_get_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+                NbPoles2d,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:96 - `GeomFill_SweepSectionGenerator::Knots()`
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         unsafe { crate::ffi::GeomFill_SweepSectionGenerator_knots(self as *const Self, TKnots) }
@@ -13420,12 +13549,6 @@ impl SweepSectionGenerator {
         unsafe { crate::ffi::GeomFill_SweepSectionGenerator_parameter(self as *const Self, P) }
     }
 }
-
-// ── Skipped symbols for SweepSectionGenerator (1 total) ──
-// SKIPPED: **Source:** `GeomFill_SweepSectionGenerator.hxx`:91 - `GeomFill_SweepSectionGenerator::GetShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32, NbPoles2d: &mut i32);
-//
 
 // ========================
 // From GeomFill_Tensor.hxx
@@ -14794,6 +14917,19 @@ impl UniformSection {
         }
     }
 
+    /// **Source:** `GeomFill_UniformSection.hxx`:80 - `GeomFill_UniformSection::SectionShape()`
+    /// get the format of an  section
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::GeomFill_UniformSection_section_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
+    }
+
     /// **Source:** `GeomFill_UniformSection.hxx`:85 - `GeomFill_UniformSection::Knots()`
     /// get the Knots of the section
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
@@ -15108,13 +15244,6 @@ impl HandleGeomFillUniformSection {
         }
     }
 }
-
-// ── Skipped symbols for UniformSection (1 total) ──
-// SKIPPED: **Source:** `GeomFill_UniformSection.hxx`:80 - `GeomFill_UniformSection::SectionShape`
-//   method: get the format of an  section
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
-//
 
 // ========================
 // Additional type re-exports

@@ -932,6 +932,29 @@ impl Tool2d {
         }
     }
 
+    /// **Source:** `MAT2d_Tool2d.hxx`:109 - `MAT2d_Tool2d::IntersectBisector()`
+    /// Computes  the point  of  intersection between  the
+    /// bisectors defined  by  <bisectorone>  and
+    /// <bisectortwo> .
+    /// If this point exists,  <intpnt> is its  index
+    /// in <theGeomPnts> and Return the distance of the point
+    /// from the bisector else Return <RealLast>.
+    pub fn intersect_bisector(
+        &mut self,
+        bisectorone: &crate::ffi::HandleMATBisector,
+        bisectortwo: &crate::ffi::HandleMATBisector,
+        intpnt: &mut i32,
+    ) -> f64 {
+        unsafe {
+            crate::ffi::MAT2d_Tool2d_intersect_bisector(
+                self as *mut Self,
+                bisectorone,
+                bisectortwo,
+                intpnt,
+            )
+        }
+    }
+
     /// **Source:** `MAT2d_Tool2d.hxx`:115 - `MAT2d_Tool2d::Distance()`
     /// Returns the distance between the two points designed
     /// by their parameters on <abisector>.
@@ -996,15 +1019,6 @@ impl Tool2d {
         unsafe { &mut *(crate::ffi::MAT2d_Tool2d_change_geom_bis(self as *mut Self, Index)) }
     }
 }
-
-// ── Skipped symbols for Tool2d (1 total) ──
-// SKIPPED: **Source:** `MAT2d_Tool2d.hxx`:109 - `MAT2d_Tool2d::IntersectBisector`
-//   method: Computes  the point  of  intersection between  the
-//   method: bisectors defined  by  <bisectorone>  and
-//   method: <bisectortwo> .
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn intersect_bisector(&mut self, bisectorone: &HandleBisector, bisectortwo: &HandleBisector, intpnt: &mut i32) -> f64;
-//
 
 // ========================
 // Additional type re-exports

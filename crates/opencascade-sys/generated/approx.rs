@@ -1715,6 +1715,29 @@ impl SweepApproximation {
         unsafe { crate::ffi::Approx_SweepApproximation_is_done(self as *const Self) }
     }
 
+    /// **Source:** `Approx_SweepApproximation.hxx`:98 - `Approx_SweepApproximation::SurfShape()`
+    pub fn surf_shape(
+        &self,
+        UDegree: &mut i32,
+        VDegree: &mut i32,
+        NbUPoles: &mut i32,
+        NbVPoles: &mut i32,
+        NbUKnots: &mut i32,
+        NbVKnots: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Approx_SweepApproximation_surf_shape(
+                self as *const Self,
+                UDegree,
+                VDegree,
+                NbUPoles,
+                NbVPoles,
+                NbUKnots,
+                NbVKnots,
+            )
+        }
+    }
+
     /// **Source:** `Approx_SweepApproximation.hxx`:105 - `Approx_SweepApproximation::Surface()`
     pub fn surface(
         &self,
@@ -1795,6 +1818,18 @@ impl SweepApproximation {
         unsafe { crate::ffi::Approx_SweepApproximation_nb_curves2d(self as *const Self) }
     }
 
+    /// **Source:** `Approx_SweepApproximation.hxx`:136 - `Approx_SweepApproximation::Curves2dShape()`
+    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
+        unsafe {
+            crate::ffi::Approx_SweepApproximation_curves2d_shape(
+                self as *const Self,
+                Degree,
+                NbPoles,
+                NbKnots,
+            )
+        }
+    }
+
     /// **Source:** `Approx_SweepApproximation.hxx`:140 - `Approx_SweepApproximation::Curve2d()`
     pub fn curve2d(
         &self,
@@ -1860,15 +1895,7 @@ impl SweepApproximation {
     }
 }
 
-// ── Skipped symbols for SweepApproximation (3 total) ──
-// SKIPPED: **Source:** `Approx_SweepApproximation.hxx`:98 - `Approx_SweepApproximation::SurfShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn surf_shape(&self, UDegree: &mut i32, VDegree: &mut i32, NbUPoles: &mut i32, NbVPoles: &mut i32, NbUKnots: &mut i32, NbVKnots: &mut i32);
-//
-// SKIPPED: **Source:** `Approx_SweepApproximation.hxx`:136 - `Approx_SweepApproximation::Curves2dShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32);
-//
+// ── Skipped symbols for SweepApproximation (1 total) ──
 // SKIPPED: **Source:** `Approx_SweepApproximation.hxx`:166 - `Approx_SweepApproximation::Dump`
 //   method: display information on approximation.
 //   Reason: has unbindable types: param 'o': stream type (Standard_OStream&)
@@ -1989,6 +2016,19 @@ impl SweepFunction {
     /// get the number of 2d curves to  approximate.
     pub fn nb2d_curves(&self) -> i32 {
         unsafe { crate::ffi::Approx_SweepFunction_nb2d_curves(self as *const Self) }
+    }
+
+    /// **Source:** `Approx_SweepFunction.hxx`:84 - `Approx_SweepFunction::SectionShape()`
+    /// get the format of an  section
+    pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
+        unsafe {
+            crate::ffi::Approx_SweepFunction_section_shape(
+                self as *const Self,
+                NbPoles,
+                NbKnots,
+                Degree,
+            )
+        }
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:89 - `Approx_SweepFunction::Knots()`
@@ -2235,13 +2275,6 @@ impl HandleApproxSweepFunction {
         }
     }
 }
-
-// ── Skipped symbols for SweepFunction (1 total) ──
-// SKIPPED: **Source:** `Approx_SweepFunction.hxx`:84 - `Approx_SweepFunction::SectionShape`
-//   method: get the format of an  section
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32);
-//
 
 // ========================
 // Additional type re-exports

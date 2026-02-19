@@ -566,6 +566,27 @@ impl CheckSmallFace {
         }
     }
 
+    /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:147 - `ShapeAnalysis_CheckSmallFace::CheckPin()`
+    /// Checks if a Face has a pin, which can be edited
+    /// No singularity : no pin, returns 0
+    /// If there is a pin, checked topics, with returned value :
+    /// - 0 : nothing to do more
+    /// - 1 : "smooth", i.e. not a really sharp pin
+    /// -> diagnostic "SmoothPin"
+    /// - 2 : stretched pin, i.e. is possible to relimit the face by
+    /// another vertex, so that this vertex still gives a pin
+    /// -> diagnostic "StretchedPin" with location of vertex (Pnt)
+    pub fn check_pin(
+        &mut self,
+        F: &crate::topo_ds::Face,
+        whatrow: &mut i32,
+        sence: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_CheckSmallFace_check_pin(self as *mut Self, F, whatrow, sence)
+        }
+    }
+
     /// **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:153 - `ShapeAnalysis_CheckSmallFace::CheckTwisted()`
     /// Checks if a Face is twisted (apart from checking Pin, i.e. it
     /// does not give information on pin, only "it is twisted")
@@ -724,15 +745,6 @@ impl CheckSmallFace {
         }
     }
 }
-
-// ── Skipped symbols for CheckSmallFace (1 total) ──
-// SKIPPED: **Source:** `ShapeAnalysis_CheckSmallFace.hxx`:147 - `ShapeAnalysis_CheckSmallFace::CheckPin`
-//   method: Checks if a Face has a pin, which can be edited
-//   method: No singularity : no pin, returns 0
-//   method: If there is a pin, checked topics, with returned value :
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn check_pin(&mut self, F: &Face, whatrow: &mut i32, sence: &mut i32) -> bool;
-//
 
 // ========================
 // From ShapeAnalysis_Curve.hxx
@@ -5112,6 +5124,26 @@ impl Wire {
         unsafe { crate::ffi::ShapeAnalysis_Wire_check_outer_bound(self as *mut Self, APIMake) }
     }
 
+    /// **Source:** `ShapeAnalysis_Wire.hxx`:459 - `ShapeAnalysis_Wire::CheckNotchedEdges()`
+    /// Detects a notch
+    pub fn check_notched_edges(
+        &mut self,
+        num: i32,
+        shortNum: &mut i32,
+        param: &mut f64,
+        Tolerance: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::ShapeAnalysis_Wire_check_notched_edges(
+                self as *mut Self,
+                num,
+                shortNum,
+                param,
+                Tolerance,
+            )
+        }
+    }
+
     /// **Source:** `ShapeAnalysis_Wire.hxx`:465 - `ShapeAnalysis_Wire::CheckSmallArea()`
     /// Checks if wire has parametric area less than precision.
     pub fn check_small_area(&mut self, theWire: &crate::topo_ds::Wire) -> bool {
@@ -5451,7 +5483,7 @@ impl HandleShapeAnalysisWire {
     }
 }
 
-// ── Skipped symbols for Wire (4 total) ──
+// ── Skipped symbols for Wire (3 total) ──
 // SKIPPED: **Source:** `ShapeAnalysis_Wire.hxx`:374 - `ShapeAnalysis_Wire::CheckSelfIntersectingEdge`
 //   method: Checks if num-th edge is self-intersecting.
 //   method: Self-intersection is reported only if intersection point lies outside
@@ -5471,11 +5503,6 @@ impl HandleShapeAnalysisWire {
 //   method: Remark : See the previous method for details
 //   Reason: param 'points3d' uses unknown type 'TColgp_SequenceOfPnt&'
 //   // pub fn check_intersecting_edges(&mut self, num1: i32, num2: i32, points2d: &mut SequenceOfIntersectionPoint, points3d: &mut SequenceOfPnt, errors: &mut SequenceOfReal) -> bool;
-//
-// SKIPPED: **Source:** `ShapeAnalysis_Wire.hxx`:459 - `ShapeAnalysis_Wire::CheckNotchedEdges`
-//   method: Detects a notch
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn check_notched_edges(&mut self, num: i32, shortNum: &mut i32, param: &mut f64, Tolerance: f64) -> bool;
 //
 
 // ========================
@@ -5699,6 +5726,13 @@ impl WireOrder {
         unsafe { crate::ffi::ShapeAnalysis_WireOrder_nb_chains(self as *const Self) }
     }
 
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:144 - `ShapeAnalysis_WireOrder::Chain()`
+    /// Returns, for the chain n0 num, starting and ending numbers of
+    /// edges. In the list of ordered edges (see Ordered for originals)
+    pub fn chain(&self, num: i32, n1: &mut i32, n2: &mut i32) {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_chain(self as *const Self, num, n1, n2) }
+    }
+
     /// **Source:** `ShapeAnalysis_WireOrder.hxx`:151 - `ShapeAnalysis_WireOrder::SetCouples()`
     /// Determines the couples of edges for which end and start fit
     /// inside a given gap. Queried by NbCouples and Couple
@@ -5712,21 +5746,14 @@ impl WireOrder {
     pub fn nb_couples(&self) -> i32 {
         unsafe { crate::ffi::ShapeAnalysis_WireOrder_nb_couples(self as *const Self) }
     }
-}
 
-// ── Skipped symbols for WireOrder (2 total) ──
-// SKIPPED: **Source:** `ShapeAnalysis_WireOrder.hxx`:144 - `ShapeAnalysis_WireOrder::Chain`
-//   method: Returns, for the chain n0 num, starting and ending numbers of
-//   method: edges. In the list of ordered edges (see Ordered for originals)
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn chain(&self, num: i32, n1: &mut i32, n2: &mut i32);
-//
-// SKIPPED: **Source:** `ShapeAnalysis_WireOrder.hxx`:158 - `ShapeAnalysis_WireOrder::Couple`
-//   method: Returns, for the couple n0 num, the two implied edges
-//   method: In the list of ordered edges
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn couple(&self, num: i32, n1: &mut i32, n2: &mut i32);
-//
+    /// **Source:** `ShapeAnalysis_WireOrder.hxx`:158 - `ShapeAnalysis_WireOrder::Couple()`
+    /// Returns, for the couple n0 num, the two implied edges
+    /// In the list of ordered edges
+    pub fn couple(&self, num: i32, n1: &mut i32, n2: &mut i32) {
+        unsafe { crate::ffi::ShapeAnalysis_WireOrder_couple(self as *const Self, num, n1, n2) }
+    }
+}
 
 // ========================
 // From ShapeAnalysis_WireVertex.hxx

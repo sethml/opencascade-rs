@@ -616,6 +616,18 @@ impl Activator {
         unsafe { crate::ffi::IFSelect_Activator_remove(c_command.as_ptr()) }
     }
 
+    /// **Source:** `IFSelect_Activator.hxx`:80 - `IFSelect_Activator::Select()`
+    /// Selects, for a Command given by its title, an actor with its
+    /// command number. Returns True if found, False else
+    pub fn select(
+        command: &str,
+        number: &mut i32,
+        actor: &mut crate::ffi::HandleIFSelectActivator,
+    ) -> bool {
+        let c_command = std::ffi::CString::new(command).unwrap();
+        unsafe { crate::ffi::IFSelect_Activator_select(c_command.as_ptr(), number, actor) }
+    }
+
     /// **Source:** `IFSelect_Activator.hxx`:85 - `IFSelect_Activator::Mode()`
     /// Returns mode recorded for a command. -1 if not found
     pub fn mode(command: &str) -> i32 {
@@ -760,14 +772,6 @@ impl HandleIFSelectActivator {
     }
 }
 
-// ── Skipped symbols for Activator (1 total) ──
-// SKIPPED: **Source:** `IFSelect_Activator.hxx`:80 - `IFSelect_Activator::Select`
-//   static_method: Selects, for a Command given by its title, an actor with its
-//   static_method: command number. Returns True if found, False else
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn select(command: *const char, number: &mut i32, actor: &mut HandleActivator) -> bool;
-//
-
 // ========================
 // From IFSelect_AppliedModifiers.hxx
 // ========================
@@ -830,6 +834,26 @@ impl AppliedModifiers {
     /// Returns the count of recorded modifiers
     pub fn count(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_AppliedModifiers_count(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_AppliedModifiers.hxx`:80 - `IFSelect_AppliedModifiers::Item()`
+    /// Returns the description for applied modifier n0 <num> :
+    /// the modifier itself, and the count of entities to be applied
+    /// on. If no specific list of number has been defined, returns
+    /// the total count of entities of the file
+    /// If this count is zero, then the modifier applies to all
+    /// the file (see below). Else, the numbers are then queried by
+    /// calls to ItemNum between 1 and <entcount>
+    /// Returns True if OK, False if <num> is out of range
+    pub fn item(
+        &mut self,
+        num: i32,
+        modif: &mut crate::ffi::HandleIFSelectGeneralModifier,
+        entcount: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_AppliedModifiers_item(self as *mut Self, num, modif, entcount)
+        }
     }
 
     /// **Source:** `IFSelect_AppliedModifiers.hxx`:88 - `IFSelect_AppliedModifiers::ItemNum()`
@@ -977,15 +1001,6 @@ impl HandleIFSelectAppliedModifiers {
         }
     }
 }
-
-// ── Skipped symbols for AppliedModifiers (1 total) ──
-// SKIPPED: **Source:** `IFSelect_AppliedModifiers.hxx`:80 - `IFSelect_AppliedModifiers::Item`
-//   method: Returns the description for applied modifier n0 <num> :
-//   method: the modifier itself, and the count of entities to be applied
-//   method: on. If no specific list of number has been defined, returns
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn item(&mut self, num: i32, modif: &mut HandleGeneralModifier, entcount: &mut i32) -> bool;
-//
 
 // ========================
 // From IFSelect_BasicDumper.hxx
@@ -2091,6 +2106,12 @@ impl DispGlobal {
         }
     }
 
+    /// **Source:** `IFSelect_DispGlobal.hxx`:45 - `IFSelect_DispGlobal::LimitedMax()`
+    /// Returns True : maximum equates 1
+    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
+        unsafe { crate::ffi::IFSelect_DispGlobal_limited_max(self as *const Self, nbent, max) }
+    }
+
     /// **Source:** `IFSelect_DispGlobal.hxx`:52 - `IFSelect_DispGlobal::Packets()`
     /// Computes the list of produced Packets. It is made of only ONE
     /// Packet, which gets the RootResult from the Final Selection.
@@ -2312,13 +2333,6 @@ impl HandleIFSelectDispGlobal {
     }
 }
 
-// ── Skipped symbols for DispGlobal (1 total) ──
-// SKIPPED: **Source:** `IFSelect_DispGlobal.hxx`:45 - `IFSelect_DispGlobal::LimitedMax`
-//   method: Returns True : maximum equates 1
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
-//
-
 // ========================
 // From IFSelect_DispPerCount.hxx
 // ========================
@@ -2370,6 +2384,12 @@ impl DispPerCount {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_label(self as *const Self))
         }
+    }
+
+    /// **Source:** `IFSelect_DispPerCount.hxx`:58 - `IFSelect_DispPerCount::LimitedMax()`
+    /// Returns True, maximum count is given as <nbent>
+    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
+        unsafe { crate::ffi::IFSelect_DispPerCount_limited_max(self as *const Self, nbent, max) }
     }
 
     /// **Source:** `IFSelect_DispPerCount.hxx`:65 - `IFSelect_DispPerCount::Packets()`
@@ -2599,13 +2619,6 @@ impl HandleIFSelectDispPerCount {
     }
 }
 
-// ── Skipped symbols for DispPerCount (1 total) ──
-// SKIPPED: **Source:** `IFSelect_DispPerCount.hxx`:58 - `IFSelect_DispPerCount::LimitedMax`
-//   method: Returns True, maximum count is given as <nbent>
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
-//
-
 // ========================
 // From IFSelect_DispPerFiles.hxx
 // ========================
@@ -2660,6 +2673,12 @@ impl DispPerFiles {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_label(self as *const Self))
         }
+    }
+
+    /// **Source:** `IFSelect_DispPerFiles.hxx`:61 - `IFSelect_DispPerFiles::LimitedMax()`
+    /// Returns True, maximum count is given as CountValue
+    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
+        unsafe { crate::ffi::IFSelect_DispPerFiles_limited_max(self as *const Self, nbent, max) }
     }
 
     /// **Source:** `IFSelect_DispPerFiles.hxx`:69 - `IFSelect_DispPerFiles::Packets()`
@@ -2890,13 +2909,6 @@ impl HandleIFSelectDispPerFiles {
     }
 }
 
-// ── Skipped symbols for DispPerFiles (1 total) ──
-// SKIPPED: **Source:** `IFSelect_DispPerFiles.hxx`:61 - `IFSelect_DispPerFiles::LimitedMax`
-//   method: Returns True, maximum count is given as CountValue
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
-//
-
 // ========================
 // From IFSelect_DispPerOne.hxx
 // ========================
@@ -2926,6 +2938,12 @@ impl DispPerOne {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_label(self as *const Self))
         }
+    }
+
+    /// **Source:** `IFSelect_DispPerOne.hxx`:46 - `IFSelect_DispPerOne::LimitedMax()`
+    /// Returns True, maximum limit is given as <nbent>
+    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
+        unsafe { crate::ffi::IFSelect_DispPerOne_limited_max(self as *const Self, nbent, max) }
     }
 
     /// **Source:** `IFSelect_DispPerOne.hxx`:52 - `IFSelect_DispPerOne::Packets()`
@@ -3148,13 +3166,6 @@ impl HandleIFSelectDispPerOne {
     }
 }
 
-// ── Skipped symbols for DispPerOne (1 total) ──
-// SKIPPED: **Source:** `IFSelect_DispPerOne.hxx`:46 - `IFSelect_DispPerOne::LimitedMax`
-//   method: Returns True, maximum limit is given as <nbent>
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
-//
-
 // ========================
 // From IFSelect_DispPerSignature.hxx
 // ========================
@@ -3215,6 +3226,14 @@ impl DispPerSignature {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_label(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_DispPerSignature.hxx`:58 - `IFSelect_DispPerSignature::LimitedMax()`
+    /// Returns True, maximum count is given as <nbent>
+    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_DispPerSignature_limited_max(self as *const Self, nbent, max)
         }
     }
 
@@ -3464,13 +3483,6 @@ impl HandleIFSelectDispPerSignature {
     }
 }
 
-// ── Skipped symbols for DispPerSignature (1 total) ──
-// SKIPPED: **Source:** `IFSelect_DispPerSignature.hxx`:58 - `IFSelect_DispPerSignature::LimitedMax`
-//   method: Returns True, maximum count is given as <nbent>
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
-//
-
 // ========================
 // From IFSelect_Dispatch.hxx
 // ========================
@@ -3557,6 +3569,17 @@ impl Dispatch {
     /// Default answer given here is False (can be redefined)
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_Dispatch_can_have_remainder(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_Dispatch.hxx`:93 - `IFSelect_Dispatch::LimitedMax()`
+    /// Returns True if a Dispatch generates a count of Packets always
+    /// less than or equal to a maximum value : it can be computed
+    /// from the total count of Entities to be dispatched : <nbent>.
+    /// If answer is False, no limited maximum is expected for account
+    /// If answer is True, expected maximum is given in argument <max>
+    /// Default answer given here is False (can be redefined)
+    pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
+        unsafe { crate::ffi::IFSelect_Dispatch_limited_max(self as *const Self, nbent, max) }
     }
 
     /// **Source:** `IFSelect_Dispatch.hxx`:98 - `IFSelect_Dispatch::Label()`
@@ -3812,15 +3835,6 @@ impl HandleIFSelectDispatch {
         }
     }
 }
-
-// ── Skipped symbols for Dispatch (1 total) ──
-// SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:93 - `IFSelect_Dispatch::LimitedMax`
-//   method: Returns True if a Dispatch generates a count of Packets always
-//   method: less than or equal to a maximum value : it can be computed
-//   method: from the total count of Entities to be dispatched : <nbent>.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
-//
 
 // ========================
 // From IFSelect_EditForm.hxx
@@ -22011,6 +22025,19 @@ impl ShareOutResult {
         unsafe { crate::ffi::IFSelect_ShareOutResult_dispatch_rank(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_ShareOutResult.hxx`:135 - `IFSelect_ShareOutResult::PacketsInDispatch()`
+    /// Returns Number (rank) of current Packet in current Dispatch,
+    /// and total count of Packets in current Dispatch, as arguments
+    pub fn packets_in_dispatch(&self, numpack: &mut i32, nbpacks: &mut i32) {
+        unsafe {
+            crate::ffi::IFSelect_ShareOutResult_packets_in_dispatch(
+                self as *const Self,
+                numpack,
+                nbpacks,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_ShareOutResult.hxx`:141 - `IFSelect_ShareOutResult::PacketRoot()`
     /// Returns the list of Roots of the current Packet (never empty)
     /// (i.e. the Entities to be themselves asked for transfer)
@@ -22047,14 +22074,6 @@ impl ShareOutResult {
         }
     }
 }
-
-// ── Skipped symbols for ShareOutResult (1 total) ──
-// SKIPPED: **Source:** `IFSelect_ShareOutResult.hxx`:135 - `IFSelect_ShareOutResult::PacketsInDispatch`
-//   method: Returns Number (rank) of current Packet in current Dispatch,
-//   method: and total count of Packets in current Dispatch, as arguments
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn packets_in_dispatch(&self, numpack: &mut i32, nbpacks: &mut i32);
-//
 
 // ========================
 // From IFSelect_SignAncestor.hxx
@@ -22186,6 +22205,25 @@ impl SignAncestor {
         unsafe {
             crate::ffi::IFSelect_SignAncestor_inherited_SetIntCase(
                 self as *mut Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignAncestor_inherited_IsIntCase(
+                self as *const Self,
                 hasmin,
                 valmin,
                 hasmax,
@@ -22478,6 +22516,25 @@ impl SignCategory {
         unsafe {
             crate::ffi::IFSelect_SignCategory_inherited_SetIntCase(
                 self as *mut Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignCategory_inherited_IsIntCase(
+                self as *const Self,
                 hasmin,
                 valmin,
                 hasmax,
@@ -23276,6 +23333,25 @@ impl SignMultiple {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignMultiple_inherited_IsIntCase(
+                self as *const Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
@@ -23555,6 +23631,25 @@ impl SignType {
         unsafe {
             crate::ffi::IFSelect_SignType_inherited_SetIntCase(
                 self as *mut Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignType_inherited_IsIntCase(
+                self as *const Self,
                 hasmin,
                 valmin,
                 hasmax,
@@ -23881,6 +23976,25 @@ impl SignValidity {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SignValidity_inherited_IsIntCase(
+                self as *const Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
     pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
@@ -24076,6 +24190,27 @@ impl Signature {
         unsafe {
             crate::ffi::IFSelect_Signature_set_int_case(
                 self as *mut Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    /// Tells if this Signature gives integer values
+    /// and returns values from SetIntCase if True
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_Signature_is_int_case(
+                self as *const Self,
                 hasmin,
                 valmin,
                 hasmax,
@@ -24437,14 +24572,6 @@ impl HandleIFSelectSignature {
         }
     }
 }
-
-// ── Skipped symbols for Signature (1 total) ──
-// SKIPPED: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase`
-//   method: Tells if this Signature gives integer values
-//   method: and returns values from SetIntCase if True
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn is_int_case(&self, hasmin: &mut bool, valmin: &mut i32, hasmax: &mut bool, valmax: &mut i32) -> bool;
-//
 
 // ========================
 // From IFSelect_SignatureList.hxx
@@ -25521,6 +25648,13 @@ impl WorkLibrary {
         unsafe { crate::ffi::IFSelect_WorkLibrary_set_dump_levels(self as *mut Self, def, max) }
     }
 
+    /// **Source:** `IFSelect_WorkLibrary.hxx`:132 - `IFSelect_WorkLibrary::DumpLevels()`
+    /// Returns the recorded default and maximum dump levels
+    /// If none was recorded, max is returned negative, def as zero
+    pub fn dump_levels(&self, def: &mut i32, max: &mut i32) {
+        unsafe { crate::ffi::IFSelect_WorkLibrary_dump_levels(self as *const Self, def, max) }
+    }
+
     /// **Source:** `IFSelect_WorkLibrary.hxx`:135 - `IFSelect_WorkLibrary::SetDumpHelp()`
     /// Records a short line of help for a level (0 - max)
     pub fn set_dump_help(&mut self, level: i32, help: &str) {
@@ -25642,7 +25776,7 @@ impl HandleIFSelectWorkLibrary {
     }
 }
 
-// ── Skipped symbols for WorkLibrary (4 total) ──
+// ── Skipped symbols for WorkLibrary (3 total) ──
 // SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:68 - `IFSelect_WorkLibrary::ReadStream`
 //   method: Interface to read a data from the specified stream.
 //   method: @param model is the resulting Model, which has to be created by this method.
@@ -25661,12 +25795,6 @@ impl HandleIFSelectWorkLibrary {
 //   method: Calls deferred DumpEntity with the recorded default level
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn dump_entity(&self, model: &HandleInterfaceModel, protocol: &HandleProtocol, entity: &HandleTransient, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:132 - `IFSelect_WorkLibrary::DumpLevels`
-//   method: Returns the recorded default and maximum dump levels
-//   method: If none was recorded, max is returned negative, def as zero
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn dump_levels(&self, def: &mut i32, max: &mut i32);
 //
 
 // ========================

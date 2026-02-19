@@ -318,7 +318,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ## Skipped Symbols
 
-The binding generator skips ~2,060 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~1,666 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -375,9 +375,9 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Document Framework (57 symbols)** — `TDocStd_*`, `TDF_*`, and `XCAFDoc_*` classes previously had 215 skipped symbols due to `TDF_LabelMap` and `TDF_AttributeMap` being unknown types. These are now resolved via the header text scan fallback for NCollection typedefs that clang misresolves. Remaining skips are mostly stream types (`Standard_OStream`) and other unrelated issues.
 
-**Shape Meshing (91 symbols)** — `BRepMesh_*` classes reference `IMeshData_*` handle types that aren't in the binding set. Basic meshing APIs work but advanced mesh customization is unavailable. **Unblock by adding**: `IMeshData_Edge`, `IMeshData_Face`, `NCollection_*` allocator types.
+**Shape Meshing (93 symbols across 3 modules)** — `BRepMesh_*` (78 skipped), `IMeshData_*` (14 skipped), `IMeshTools_*` (1 skipped). The `IMeshData` and `IMeshTools` modules are now in the binding set, unblocking 13 previously-missing BRepMesh methods. Remaining skips are mostly `NCollection_*` allocator types and internal handle types.
 
-**Shape Analysis/Fix (72 symbols)** — Mostly misresolved element types (clang artifact, 54 of 72). The remaining 18 are unknown types like `Handle(ShapeBuild_ReShape)` and `Handle(GeomAdaptor_Surface)`. Core analysis/fix operations work.
+**Shape Analysis/Fix (7 symbols)** — Reduced from 72 through a more precise misresolution heuristic: `MutRef(I32)` returns are now only treated as suspicious on NCollection-derived classes, allowing the 54 legitimate `Standard_Integer&` mode accessors in `ShapeFix_*` to be bound. Remaining 7 skips are unknown types like `Handle(ShapeBuild_ReShape)` and `Handle(GeomAdaptor_Surface)`.
 
 **Geometry (32 symbols in gp/Geom/Geom2d)** — Mostly misresolved element types and raw pointer returns (`gp_XYZ::GetData()`, `Geom_BSplineCurve::Weights()`). All core geometry operations are available; only internal data access methods are skipped.
 

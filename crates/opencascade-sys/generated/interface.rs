@@ -4022,6 +4022,21 @@ impl GTool {
         unsafe { crate::ffi::Interface_GTool_clear_entities(self as *mut Self) }
     }
 
+    /// **Source:** `Interface_GTool.hxx`:96 - `Interface_GTool::Select()`
+    /// Selects for an entity, its Module and Case Number
+    /// It is optimised : once done for each entity, the result is
+    /// mapped and the GeneralLib is not longer queried
+    /// <enforce> True overpasses this optimisation
+    pub fn select(
+        &mut self,
+        ent: &crate::ffi::HandleStandardTransient,
+        gmod: &mut crate::ffi::HandleInterfaceGeneralModule,
+        CN: &mut i32,
+        enforce: bool,
+    ) -> bool {
+        unsafe { crate::ffi::Interface_GTool_select(self as *mut Self, ent, gmod, CN, enforce) }
+    }
+
     /// **Source:** `Interface_GTool.hxx`:101 - `Interface_GTool::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::Interface_GTool_dynamic_type(self as *const Self)) }
@@ -4118,15 +4133,6 @@ impl HandleInterfaceGTool {
     }
 }
 
-// ── Skipped symbols for GTool (1 total) ──
-// SKIPPED: **Source:** `Interface_GTool.hxx`:96 - `Interface_GTool::Select`
-//   method: Selects for an entity, its Module and Case Number
-//   method: It is optimised : once done for each entity, the result is
-//   method: mapped and the GeneralLib is not longer queried
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn select(&mut self, ent: &HandleTransient, gmod: &mut HandleGeneralModule, CN: &mut i32, enforce: bool) -> bool;
-//
-
 // ========================
 // From Interface_GeneralLib.hxx
 // ========================
@@ -4186,6 +4192,22 @@ impl GeneralLib {
         unsafe { crate::ffi::Interface_GeneralLib_set_complete(self as *mut Self) }
     }
 
+    /// **Source:** `Interface_GeneralLib.hxx`:72 - `Interface_GeneralLib::Select()`
+    /// Selects a Module from the Library, given an Object.
+    /// Returns True if Select has succeeded, False else.
+    /// Also Returns (as arguments) the selected Module and the Case
+    /// Number determined by the associated Protocol.
+    /// If Select has failed, <module> is Null Handle and CN is zero.
+    /// (Select can work on any criterium, such as Object DynamicType)
+    pub fn select(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        module: &mut crate::ffi::HandleInterfaceGeneralModule,
+        CN: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::Interface_GeneralLib_select(self as *const Self, obj, module, CN) }
+    }
+
     /// **Source:** `Interface_GeneralLib.hxx`:77 - `Interface_GeneralLib::Start()`
     /// Starts Iteration on the Modules (sets it on the first one)
     pub fn start(&mut self) {
@@ -4227,15 +4249,6 @@ impl GeneralLib {
         unsafe { crate::ffi::Interface_GeneralLib_set_global(amodule, aprotocol) }
     }
 }
-
-// ── Skipped symbols for GeneralLib (1 total) ──
-// SKIPPED: **Source:** `Interface_GeneralLib.hxx`:72 - `Interface_GeneralLib::Select`
-//   method: Selects a Module from the Library, given an Object.
-//   method: Returns True if Select has succeeded, False else.
-//   method: Also Returns (as arguments) the selected Module and the Case
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn select(&self, obj: &HandleTransient, module: &mut HandleGeneralModule, CN: &mut i32) -> bool;
-//
 
 // ========================
 // From Interface_GeneralModule.hxx
@@ -6406,6 +6419,17 @@ impl IntList {
         unsafe { crate::ffi::Interface_IntList_initialize(self as *mut Self, nbe) }
     }
 
+    /// **Source:** `Interface_IntList.hxx`:73 - `Interface_IntList::Internals()`
+    /// Returns internal values, used for copying
+    pub fn internals(
+        &self,
+        nbrefs: &mut i32,
+        ents: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        refs: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+    ) {
+        unsafe { crate::ffi::Interface_IntList_internals(self as *const Self, nbrefs, ents, refs) }
+    }
+
     /// **Source:** `Interface_IntList.hxx`:78 - `Interface_IntList::NbEntities()`
     /// Returns count of entities to be acknowledged
     pub fn nb_entities(&self) -> i32 {
@@ -6511,13 +6535,6 @@ impl IntList {
     }
 }
 
-// ── Skipped symbols for IntList (1 total) ──
-// SKIPPED: **Source:** `Interface_IntList.hxx`:73 - `Interface_IntList::Internals`
-//   method: Returns internal values, used for copying
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn internals(&self, nbrefs: &mut i32, ents: &mut HandleHArray1OfInteger, refs: &mut HandleHArray1OfInteger);
-//
-
 // ========================
 // From Interface_IntVal.hxx
 // ========================
@@ -6541,6 +6558,11 @@ impl IntVal {
     /// **Source:** `Interface_IntVal.hxx`:36 - `Interface_IntVal::Value()`
     pub fn value(&self) -> i32 {
         unsafe { crate::ffi::Interface_IntVal_value(self as *const Self) }
+    }
+
+    /// **Source:** `Interface_IntVal.hxx`:38 - `Interface_IntVal::CValue()`
+    pub fn c_value(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::Interface_IntVal_c_value(self as *mut Self)) }
     }
 
     /// **Source:** `Interface_IntVal.hxx`:40 - `Interface_IntVal::DynamicType()`
@@ -6638,12 +6660,6 @@ impl HandleInterfaceIntVal {
         }
     }
 }
-
-// ── Skipped symbols for IntVal (1 total) ──
-// SKIPPED: **Source:** `Interface_IntVal.hxx`:38 - `Interface_IntVal::CValue`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn c_value(&mut self) -> &mut i32;
-//
 
 // ========================
 // From Interface_InterfaceError.hxx
@@ -8453,6 +8469,24 @@ impl MSG {
         }
     }
 
+    /// **Source:** `Interface_MSG.hxx`:204 - `Interface_MSG::NDate()`
+    /// Decodes a date to numeric integer values
+    /// Returns True if OK, False if text does not fit with required
+    /// format. Incomplete forms are allowed (for instance, for only
+    /// YYYY-MM-DD, hour is zero)
+    pub fn n_date(
+        text: &str,
+        yy: &mut i32,
+        mm: &mut i32,
+        dd: &mut i32,
+        hh: &mut i32,
+        mn: &mut i32,
+        ss: &mut i32,
+    ) -> bool {
+        let c_text = std::ffi::CString::new(text).unwrap();
+        unsafe { crate::ffi::Interface_MSG_n_date(c_text.as_ptr(), yy, mm, dd, hh, mn, ss) }
+    }
+
     /// **Source:** `Interface_MSG.hxx`:214 - `Interface_MSG::CDate()`
     /// Returns a value about comparison of two dates
     /// 0 : equal. <0 text1 anterior. >0 text1 posterior
@@ -8503,7 +8537,7 @@ impl MSG {
     }
 }
 
-// ── Skipped symbols for MSG (5 total) ──
+// ── Skipped symbols for MSG (4 total) ──
 // SKIPPED: **Source:** `Interface_MSG.hxx`:120 - `Interface_MSG::Read`
 //   static_method: Reads a list of messages from a stream, returns read count
 //   static_method: 0 means empty file, -1 means error
@@ -8522,13 +8556,6 @@ impl MSG {
 //   static_method: is the normally expected case)
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_trace(S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `Interface_MSG.hxx`:204 - `Interface_MSG::NDate`
-//   static_method: Decodes a date to numeric integer values
-//   static_method: Returns True if OK, False if text does not fit with required
-//   static_method: format. Incomplete forms are allowed (for instance, for only
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn n_date(text: *const char, yy: &mut i32, mm: &mut i32, dd: &mut i32, hh: &mut i32, mn: &mut i32, ss: &mut i32) -> bool;
 //
 // SKIPPED: **Source:** `Interface_MSG.hxx`:239 - `Interface_MSG::Print`
 //   static_method: Prints a String on an Output Stream, as follows :
@@ -9562,6 +9589,22 @@ impl ReaderLib {
         unsafe { crate::ffi::Interface_ReaderLib_set_complete(self as *mut Self) }
     }
 
+    /// **Source:** `Interface_ReaderLib.hxx`:72 - `Interface_ReaderLib::Select()`
+    /// Selects a Module from the Library, given an Object.
+    /// Returns True if Select has succeeded, False else.
+    /// Also Returns (as arguments) the selected Module and the Case
+    /// Number determined by the associated Protocol.
+    /// If Select has failed, <module> is Null Handle and CN is zero.
+    /// (Select can work on any criterium, such as Object DynamicType)
+    pub fn select(
+        &self,
+        obj: &crate::ffi::HandleStandardTransient,
+        module: &mut crate::ffi::HandleInterfaceReaderModule,
+        CN: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::Interface_ReaderLib_select(self as *const Self, obj, module, CN) }
+    }
+
     /// **Source:** `Interface_ReaderLib.hxx`:77 - `Interface_ReaderLib::Start()`
     /// Starts Iteration on the Modules (sets it on the first one)
     pub fn start(&mut self) {
@@ -9603,15 +9646,6 @@ impl ReaderLib {
         unsafe { crate::ffi::Interface_ReaderLib_set_global(amodule, aprotocol) }
     }
 }
-
-// ── Skipped symbols for ReaderLib (1 total) ──
-// SKIPPED: **Source:** `Interface_ReaderLib.hxx`:72 - `Interface_ReaderLib::Select`
-//   method: Selects a Module from the Library, given an Object.
-//   method: Returns True if Select has succeeded, False else.
-//   method: Also Returns (as arguments) the selected Module and the Case
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn select(&self, obj: &HandleTransient, module: &mut HandleReaderModule, CN: &mut i32) -> bool;
-//
 
 // ========================
 // From Interface_ReaderModule.hxx
@@ -11583,6 +11617,13 @@ impl Static {
         }
     }
 
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:131 - `MoniTool_TypedValue::IntegerLimit()`
+    pub fn integer_limit(&self, max: bool, val: &mut i32) -> bool {
+        unsafe {
+            crate::ffi::Interface_Static_inherited_IntegerLimit(self as *const Self, max, val)
+        }
+    }
+
     /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:136 - `MoniTool_TypedValue::SetRealLimit()`
     pub fn set_real_limit(&mut self, max: bool, val: f64) {
         unsafe { crate::ffi::Interface_Static_inherited_SetRealLimit(self as *mut Self, max, val) }
@@ -11597,6 +11638,18 @@ impl Static {
     pub fn start_enum(&mut self, start: i32, match_: bool) {
         unsafe {
             crate::ffi::Interface_Static_inherited_StartEnum(self as *mut Self, start, match_)
+        }
+    }
+
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:179 - `MoniTool_TypedValue::EnumDef()`
+    pub fn enum_def(&self, startcase: &mut i32, endcase: &mut i32, match_: &mut bool) -> bool {
+        unsafe {
+            crate::ffi::Interface_Static_inherited_EnumDef(
+                self as *const Self,
+                startcase,
+                endcase,
+                match_,
+            )
         }
     }
 
@@ -11806,7 +11859,7 @@ impl HandleInterfaceStatic {
 //
 // SKIPPED: **Source:** `Interface_Static.hxx`:266 - `Interface_Static::FillMap`
 //   static_method: Fills given string-to-string map with all static data
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn fill_map(theMap: &mut i32);
 //
 
@@ -11995,6 +12048,13 @@ impl TypedValue {
         }
     }
 
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:131 - `MoniTool_TypedValue::IntegerLimit()`
+    pub fn integer_limit(&self, max: bool, val: &mut i32) -> bool {
+        unsafe {
+            crate::ffi::Interface_TypedValue_inherited_IntegerLimit(self as *const Self, max, val)
+        }
+    }
+
     /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:136 - `MoniTool_TypedValue::SetRealLimit()`
     pub fn set_real_limit(&mut self, max: bool, val: f64) {
         unsafe {
@@ -12013,6 +12073,18 @@ impl TypedValue {
     pub fn start_enum(&mut self, start: i32, match_: bool) {
         unsafe {
             crate::ffi::Interface_TypedValue_inherited_StartEnum(self as *mut Self, start, match_)
+        }
+    }
+
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:179 - `MoniTool_TypedValue::EnumDef()`
+    pub fn enum_def(&self, startcase: &mut i32, endcase: &mut i32, match_: &mut bool) -> bool {
+        unsafe {
+            crate::ffi::Interface_TypedValue_inherited_EnumDef(
+                self as *const Self,
+                startcase,
+                endcase,
+                match_,
+            )
         }
     }
 

@@ -991,6 +991,37 @@ impl BSpline {
         unsafe { crate::ffi::Law_BSpline_last_parameter(self as *const Self) }
     }
 
+    /// **Source:** `Law_BSpline.hxx`:484 - `Law_BSpline::LocateU()`
+    /// Locates the parametric value U in the sequence of knots.
+    /// If "WithKnotRepetition" is True we consider the knot's
+    /// representation with repetition of multiple knot value,
+    /// otherwise  we consider the knot's representation with
+    /// no repetition of multiple knot values.
+    /// Knots (I1) <= U <= Knots (I2)
+    /// . if I1 = I2  U is a knot value (the tolerance criterion
+    /// ParametricTolerance is used).
+    /// . if I1 < 1  => U < Knots (1) - Abs(ParametricTolerance)
+    /// . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance)
+    pub fn locate_u(
+        &self,
+        U: f64,
+        ParametricTolerance: f64,
+        I1: &mut i32,
+        I2: &mut i32,
+        WithKnotRepetition: bool,
+    ) {
+        unsafe {
+            crate::ffi::Law_BSpline_locate_u(
+                self as *const Self,
+                U,
+                ParametricTolerance,
+                I1,
+                I2,
+                WithKnotRepetition,
+            )
+        }
+    }
+
     /// **Source:** `Law_BSpline.hxx`:492 - `Law_BSpline::Multiplicity()`
     /// Returns the multiplicity of the knots of range Index.
     /// Raised if Index < 1 or Index > NbKnots
@@ -1056,6 +1087,42 @@ impl BSpline {
     /// Raised if the length of W is not equal to NbPoles.
     pub fn weights(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
         unsafe { crate::ffi::Law_BSpline_weights(self as *const Self, W) }
+    }
+
+    /// **Source:** `Law_BSpline.hxx`:545 - `Law_BSpline::MovePointAndTangent()`
+    /// Changes the value of the Law at parameter U to NewValue.
+    /// and makes its derivative at U be derivative.
+    /// StartingCondition = -1 means first can move
+    /// EndingCondition   = -1 means last point can move
+    /// StartingCondition = 0 means the first point cannot move
+    /// EndingCondition   = 0 means the last point cannot move
+    /// StartingCondition = 1 means the first point and tangent cannot move
+    /// EndingCondition   = 1 means the last point and tangent cannot move
+    /// and so forth
+    /// ErrorStatus != 0 means that there are not enough degree of freedom
+    /// with the constrain to deform the curve accordingly
+    pub fn move_point_and_tangent(
+        &mut self,
+        U: f64,
+        NewValue: f64,
+        Derivative: f64,
+        Tolerance: f64,
+        StartingCondition: i32,
+        EndingCondition: i32,
+        ErrorStatus: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Law_BSpline_move_point_and_tangent(
+                self as *mut Self,
+                U,
+                NewValue,
+                Derivative,
+                Tolerance,
+                StartingCondition,
+                EndingCondition,
+                ErrorStatus,
+            )
+        }
     }
 
     /// **Source:** `Law_BSpline.hxx`:557 - `Law_BSpline::Resolution()`
@@ -1172,22 +1239,6 @@ impl HandleLawBSpline {
         }
     }
 }
-
-// ── Skipped symbols for BSpline (2 total) ──
-// SKIPPED: **Source:** `Law_BSpline.hxx`:484 - `Law_BSpline::LocateU`
-//   method: Locates the parametric value U in the sequence of knots.
-//   method: If "WithKnotRepetition" is True we consider the knot's
-//   method: representation with repetition of multiple knot value,
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn locate_u(&self, U: f64, ParametricTolerance: f64, I1: &mut i32, I2: &mut i32, WithKnotRepetition: bool);
-//
-// SKIPPED: **Source:** `Law_BSpline.hxx`:545 - `Law_BSpline::MovePointAndTangent`
-//   method: Changes the value of the Law at parameter U to NewValue.
-//   method: and makes its derivative at U be derivative.
-//   method: StartingCondition = -1 means first can move
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn move_point_and_tangent(&mut self, U: f64, NewValue: f64, Derivative: f64, Tolerance: f64, StartingCondition: i32, EndingCondition: i32, ErrorStatus: &mut i32);
-//
 
 // ========================
 // From Law_BSplineKnotSplitting.hxx

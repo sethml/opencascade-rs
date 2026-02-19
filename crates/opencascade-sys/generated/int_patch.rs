@@ -325,7 +325,7 @@ impl Intersection {
 // ── Skipped symbols for Intersection (1 total) ──
 // SKIPPED: **Source:** `IntPatch_Intersection.hxx`:194 - `IntPatch_Intersection::PrepareSurfaces`
 //   static_method: Prepares surfaces for intersection
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn prepare_surfaces(theS1: &HandleSurface, theD1: &HandleTopolTool, theS2: &HandleSurface, theD2: &HandleTopolTool, Tol: f64, theSeqHS1: &mut i32, theSeqHS2: &mut i32);
 //
 
@@ -1346,6 +1346,22 @@ impl WLine {
         unsafe { &*(crate::ffi::IntPatch_WLine_last_point(self as *const Self)) }
     }
 
+    /// **Source:** `IntPatch_WLine.hxx`:113 - `IntPatch_WLine::FirstPoint()`
+    /// Returns the Point corresponding to the FirstPoint.
+    /// Indfirst is the index of the first in the list
+    /// of vertices.
+    pub fn first_point_int(&self, Indfirst: &mut i32) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_WLine_first_point_int(self as *const Self, Indfirst)) }
+    }
+
+    /// **Source:** `IntPatch_WLine.hxx`:118 - `IntPatch_WLine::LastPoint()`
+    /// Returns the Point corresponding to the LastPoint.
+    /// Indlast is the index of the last in the list
+    /// of vertices.
+    pub fn last_point_int(&self, Indlast: &mut i32) -> &Point {
+        unsafe { &*(crate::ffi::IntPatch_WLine_last_point_int(self as *const Self, Indlast)) }
+    }
+
     /// **Source:** `IntPatch_WLine.hxx`:121 - `IntPatch_WLine::NbVertex()`
     /// Returns number of vertices (IntPatch_Point) of the line
     pub fn nb_vertex(&self) -> i32 {
@@ -1731,22 +1747,6 @@ impl HandleIntPatchWLine {
         }
     }
 }
-
-// ── Skipped symbols for WLine (2 total) ──
-// SKIPPED: **Source:** `IntPatch_WLine.hxx`:113 - `IntPatch_WLine::FirstPoint`
-//   method: Returns the Point corresponding to the FirstPoint.
-//   method: Indfirst is the index of the first in the list
-//   method: of vertices.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn first_point(&self, Indfirst: &mut i32) -> &Point;
-//
-// SKIPPED: **Source:** `IntPatch_WLine.hxx`:118 - `IntPatch_WLine::LastPoint`
-//   method: Returns the Point corresponding to the LastPoint.
-//   method: Indlast is the index of the last in the list
-//   method: of vertices.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn last_point(&self, Indlast: &mut i32) -> &Point;
-//
 
 // ========================
 // Additional type re-exports

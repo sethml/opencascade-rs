@@ -125,6 +125,8 @@ modules = [
     "BRepIntCurveSurface", # Intersection
     "BRepLib",             # Topology building utilities
     "BRepMesh",            # Meshing
+    "IMeshData",            # Mesh data model (edges, faces, curves for meshing)
+    "IMeshTools",           # Mesh algorithm interfaces (tessellators, builders)
     "BRepOffset",          # BRep offset/shelling implementation
     "BRepOffsetAPI",       # Offsets, sweeps, thick solids, lofts
     "BRepPreviewAPI",      # Preview of sweep operations
@@ -300,6 +302,38 @@ exclude_methods = [
     # (a template-dependent enum typedef) misresolved to Standard_Integer.
     # PrjState is an internal struct not exposed by public methods.
     "BRepExtrema_ProximityDistTool::PrjState::*",
+
+    # Interface_Static: FillMap() takes NCollection_DataMap (class-scoped typedef
+    # "Interface_StaticParamMap") misresolved to Standard_Integer by clang.
+    "Interface_Static::FillMap",
+
+    # Transfer_Finder: AttrList() returns Transfer_FinderAttrMap (NCollection_DataMap)
+    # which clang misresolves to Standard_Integer in batch parsing mode.
+    "Transfer_Finder::AttrList",
+    "Transfer_TransientMapper::AttrList",
+
+    # Transfer_TransientProcess: Context() returns NCollection_DataMap<AsciiString, Handle>
+    # misresolved to Standard_Integer in batch parsing mode.
+    "Transfer_TransientProcess::Context",
+
+    # XSControl_TransferReader: Context() returns NCollection_DataMap<AsciiString, Handle>
+    # misresolved to Standard_Integer in batch parsing mode.
+    "XSControl_TransferReader::Context",
+
+    # XCAFDoc_DimTolTool: GetGDTPresentations/SetGDTPresentations take
+    # NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>& misresolved
+    # to Standard_Integer by clang.
+    "XCAFDoc_DimTolTool::GetGDTPresentations",
+    "XCAFDoc_DimTolTool::SetGDTPresentations",
+
+    # XSAlgo_ShapeProcessor: FillParameterMap() and SetParameter() overloads take
+    # ParameterMap (NCollection_DataMap class-scoped alias) misresolved by clang.
+    "XSAlgo_ShapeProcessor::FillParameterMap",
+    "XSAlgo_ShapeProcessor::SetParameter",
+
+    # IntPatch_Intersection: PrepareSurfaces() takes NCollection_Vector<Handle> params
+    # misresolved to Standard_Integer in batch parsing mode.
+    "IntPatch_Intersection::PrepareSurfaces",
 ]
 
 [general]

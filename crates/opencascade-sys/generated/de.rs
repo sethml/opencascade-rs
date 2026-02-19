@@ -116,6 +116,28 @@ impl ConfigurationContext {
         }
     }
 
+    /// **Source:** `DE_ConfigurationContext.hxx`:75 - `DE_ConfigurationContext::GetInteger()`
+    /// Gets value of parameter as being of specific type
+    /// @param[in] theParam complex parameter name
+    /// @param[out] theValue value to get by parameter
+    /// @param[in] theScope base parameter name
+    /// @return Standard_False if parameter is not defined or has a wrong type
+    pub fn get_integer(
+        &self,
+        theParam: &crate::t_collection::AsciiString,
+        theValue: &mut i32,
+        theScope: &crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe {
+            crate::ffi::DE_ConfigurationContext_get_integer(
+                self as *const Self,
+                theParam,
+                theValue,
+                theScope,
+            )
+        }
+    }
+
     /// **Source:** `DE_ConfigurationContext.hxx`:84 - `DE_ConfigurationContext::GetBoolean()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
@@ -383,15 +405,6 @@ impl HandleDEConfigurationContext {
         }
     }
 }
-
-// ── Skipped symbols for ConfigurationContext (1 total) ──
-// SKIPPED: **Source:** `DE_ConfigurationContext.hxx`:75 - `DE_ConfigurationContext::GetInteger`
-//   method: Gets value of parameter as being of specific type
-//   method: @param[in] theParam complex parameter name
-//   method: @param[out] theValue value to get by parameter
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_integer(&self, theParam: &AsciiString, theValue: &mut i32, theScope: &AsciiString) -> bool;
-//
 
 // ========================
 // From DE_ConfigurationNode.hxx

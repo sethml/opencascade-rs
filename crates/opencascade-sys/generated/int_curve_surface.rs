@@ -1673,11 +1673,61 @@ impl ThePolyhedronOfHInter {
         }
     }
 
+    /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:62 - `IntCurveSurface_ThePolyhedronOfHInter::Size()`
+    /// get the size of the discretization.
+    pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32) {
+        unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_size(self as *const Self, nbdu, nbdv)
+        }
+    }
+
     /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:65 - `IntCurveSurface_ThePolyhedronOfHInter::NbTriangles()`
     /// Give the number of triangles in this double array of
     pub fn nb_triangles(&self) -> i32 {
         unsafe {
             crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_nb_triangles(self as *const Self)
+        }
+    }
+
+    /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:69 - `IntCurveSurface_ThePolyhedronOfHInter::Triangle()`
+    /// Give the 3 points of the triangle of address Index in
+    /// the double array of triangles.
+    pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
+        unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_triangle(
+                self as *const Self,
+                Index,
+                P1,
+                P2,
+                P3,
+            )
+        }
+    }
+
+    /// **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:80 - `IntCurveSurface_ThePolyhedronOfHInter::TriConnex()`
+    /// Give the address Tricon of the triangle connexe to the
+    /// triangle of address Triang by the edge Pivot Pedge and
+    /// the third point of this connexe triangle. When we are
+    /// on a free edge TriCon==0 but the function return the
+    /// value of the triangle in the other side of Pivot on
+    /// the free edge. Used to turn around a vertex.
+    pub fn tri_connex(
+        &self,
+        Triang: i32,
+        Pivot: i32,
+        Pedge: i32,
+        TriCon: &mut i32,
+        OtherP: &mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronOfHInter_tri_connex(
+                self as *const Self,
+                Triang,
+                Pivot,
+                Pedge,
+                TriCon,
+                OtherP,
+            )
         }
     }
 
@@ -1893,26 +1943,6 @@ impl ThePolyhedronOfHInter {
     }
 }
 
-// ── Skipped symbols for ThePolyhedronOfHInter (3 total) ──
-// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:62 - `IntCurveSurface_ThePolyhedronOfHInter::Size`
-//   method: get the size of the discretization.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32);
-//
-// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:69 - `IntCurveSurface_ThePolyhedronOfHInter::Triangle`
-//   method: Give the 3 points of the triangle of address Index in
-//   method: the double array of triangles.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32);
-//
-// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronOfHInter.hxx`:80 - `IntCurveSurface_ThePolyhedronOfHInter::TriConnex`
-//   method: Give the address Tricon of the triangle connexe to the
-//   method: triangle of address Triang by the edge Pivot Pedge and
-//   method: the third point of this connexe triangle. When we are
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn tri_connex(&self, Triang: i32, Pivot: i32, Pedge: i32, TriCon: &mut i32, OtherP: &mut i32) -> i32;
-//
-
 // ========================
 // From IntCurveSurface_ThePolyhedronToolOfHInter.hxx
 // ========================
@@ -1968,10 +1998,49 @@ impl ThePolyhedronToolOfHInter {
         unsafe { crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_nb_triangles(thePolyh) }
     }
 
+    /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:53 - `IntCurveSurface_ThePolyhedronToolOfHInter::Triangle()`
+    /// Give the indices  of  the 3 points of  the triangle of
+    /// address Index in the PolyhedronTool.
+    pub fn triangle(
+        thePolyh: &ThePolyhedronOfHInter,
+        Index: i32,
+        P1: &mut i32,
+        P2: &mut i32,
+        P3: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_triangle(
+                thePolyh, Index, P1, P2, P3,
+            )
+        }
+    }
+
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:60 - `IntCurveSurface_ThePolyhedronToolOfHInter::Point()`
     /// Give the point of index i in the polyhedral surface.
     pub fn point(thePolyh: &ThePolyhedronOfHInter, Index: i32) -> &'static crate::gp::Pnt {
         unsafe { &*(crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_point(thePolyh, Index)) }
+    }
+
+    /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:69 - `IntCurveSurface_ThePolyhedronToolOfHInter::TriConnex()`
+    /// Give the  address Tricon of   the triangle connexe to
+    /// the triangle of address Triang by the edge Pivot Pedge
+    /// and the third point of this  connexe triangle. When we
+    /// are on  a free edge TriCon==0  but the function return
+    /// the value of  the triangle in the  other side of Pivot
+    /// on the free edge.  Used to turn around a vertex.
+    pub fn tri_connex(
+        thePolyh: &ThePolyhedronOfHInter,
+        Triang: i32,
+        Pivot: i32,
+        Pedge: i32,
+        TriCon: &mut i32,
+        OtherP: &mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_tri_connex(
+                thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
+            )
+        }
     }
 
     /// **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:80 - `IntCurveSurface_ThePolyhedronToolOfHInter::IsOnBound()`
@@ -2000,21 +2069,6 @@ impl ThePolyhedronToolOfHInter {
         unsafe { crate::ffi::IntCurveSurface_ThePolyhedronToolOfHInter_dump(thePolyh) }
     }
 }
-
-// ── Skipped symbols for ThePolyhedronToolOfHInter (2 total) ──
-// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:53 - `IntCurveSurface_ThePolyhedronToolOfHInter::Triangle`
-//   static_method: Give the indices  of  the 3 points of  the triangle of
-//   static_method: address Index in the PolyhedronTool.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn triangle(thePolyh: &ThePolyhedronOfHInter, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32);
-//
-// SKIPPED: **Source:** `IntCurveSurface_ThePolyhedronToolOfHInter.hxx`:69 - `IntCurveSurface_ThePolyhedronToolOfHInter::TriConnex`
-//   static_method: Give the  address Tricon of   the triangle connexe to
-//   static_method: the triangle of address Triang by the edge Pivot Pedge
-//   static_method: and the third point of this  connexe triangle. When we
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn tri_connex(thePolyh: &ThePolyhedronOfHInter, Triang: i32, Pivot: i32, Pedge: i32, TriCon: &mut i32, OtherP: &mut i32) -> i32;
-//
 
 // ========================
 // From IntCurveSurface_TheQuadCurvExactHInter.hxx

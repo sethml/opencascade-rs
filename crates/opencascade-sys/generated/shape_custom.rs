@@ -2852,6 +2852,23 @@ impl RestrictionParameters {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeCustom_RestrictionParameters_ctor()) }
     }
 
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:38 - `ShapeCustom_RestrictionParameters::GMaxDegree()`
+    /// Returns (modifiable) maximal degree of approximation.
+    pub fn g_max_degree(&mut self) -> &mut i32 {
+        unsafe {
+            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_g_max_degree(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:42 - `ShapeCustom_RestrictionParameters::GMaxSeg()`
+    /// Returns (modifiable) maximal number of spans of
+    /// approximation.
+    pub fn g_max_seg(&mut self) -> &mut i32 {
+        unsafe {
+            &mut *(crate::ffi::ShapeCustom_RestrictionParameters_g_max_seg(self as *mut Self))
+        }
+    }
+
     /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:45 - `ShapeCustom_RestrictionParameters::ConvertPlane()`
     /// Sets flag for define if Plane converted to BSpline surface.
     pub fn convert_plane(&mut self) -> &mut bool {
@@ -3133,19 +3150,6 @@ impl HandleShapeCustomRestrictionParameters {
         }
     }
 }
-
-// ── Skipped symbols for RestrictionParameters (2 total) ──
-// SKIPPED: **Source:** `ShapeCustom_RestrictionParameters.hxx`:38 - `ShapeCustom_RestrictionParameters::GMaxDegree`
-//   method: Returns (modifiable) maximal degree of approximation.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn g_max_degree(&mut self) -> &mut i32;
-//
-// SKIPPED: **Source:** `ShapeCustom_RestrictionParameters.hxx`:42 - `ShapeCustom_RestrictionParameters::GMaxSeg`
-//   method: Returns (modifiable) maximal number of spans of
-//   method: approximation.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn g_max_seg(&mut self) -> &mut i32;
-//
 
 // ========================
 // From ShapeCustom_Surface.hxx

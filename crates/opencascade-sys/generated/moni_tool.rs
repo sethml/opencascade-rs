@@ -523,6 +523,14 @@ impl TypedValue {
         unsafe { crate::ffi::MoniTool_TypedValue_set_integer_limit(self as *mut Self, max, val) }
     }
 
+    /// **Source:** `MoniTool_TypedValue.hxx`:131 - `MoniTool_TypedValue::IntegerLimit()`
+    /// Gives an Integer Limit (upper if <max> True, lower if <max>
+    /// False). Returns True if this limit is defined, False else
+    /// (in that case, gives the natural limit for Integer)
+    pub fn integer_limit(&self, max: bool, val: &mut i32) -> bool {
+        unsafe { crate::ffi::MoniTool_TypedValue_integer_limit(self as *const Self, max, val) }
+    }
+
     /// **Source:** `MoniTool_TypedValue.hxx`:136 - `MoniTool_TypedValue::SetRealLimit()`
     /// Sets a Real limit (included) to <val>, the upper limit
     /// if <max> is True, the lower limit if <max> is False
@@ -618,6 +626,20 @@ impl TypedValue {
         let c_val = std::ffi::CString::new(val).unwrap();
         unsafe {
             crate::ffi::MoniTool_TypedValue_add_enum_value(self as *mut Self, c_val.as_ptr(), num)
+        }
+    }
+
+    /// **Source:** `MoniTool_TypedValue.hxx`:179 - `MoniTool_TypedValue::EnumDef()`
+    /// Gives the Enum definitions : start value, end value, match
+    /// status. Returns True for an Enum, False else.
+    pub fn enum_def(&self, startcase: &mut i32, endcase: &mut i32, match_: &mut bool) -> bool {
+        unsafe {
+            crate::ffi::MoniTool_TypedValue_enum_def(
+                self as *const Self,
+                startcase,
+                endcase,
+                match_,
+            )
         }
     }
 
@@ -1040,7 +1062,7 @@ impl HandleMoniToolTypedValue {
     }
 }
 
-// ── Skipped symbols for TypedValue (6 total) ──
+// ── Skipped symbols for TypedValue (4 total) ──
 // SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:70 - `MoniTool_TypedValue::Internals`
 //   method: Access to internal data which have no other access
 //   Reason: has string ref param 'satisname' of type 'const char*&' (needs manual binding)
@@ -1055,19 +1077,6 @@ impl HandleMoniToolTypedValue {
 //   method: Prints only the Value
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_value(&self, S: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:131 - `MoniTool_TypedValue::IntegerLimit`
-//   method: Gives an Integer Limit (upper if <max> True, lower if <max>
-//   method: False). Returns True if this limit is defined, False else
-//   method: (in that case, gives the natural limit for Integer)
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn integer_limit(&self, max: bool, val: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:179 - `MoniTool_TypedValue::EnumDef`
-//   method: Gives the Enum definitions : start value, end value, match
-//   method: status. Returns True for an Enum, False else.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn enum_def(&self, startcase: &mut i32, endcase: &mut i32, match_: &mut bool) -> bool;
 //
 // SKIPPED: **Source:** `MoniTool_TypedValue.hxx`:211 - `MoniTool_TypedValue::SetSatisfies`
 //   method: Sets a specific Satisfies function : it is added to the

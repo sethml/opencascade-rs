@@ -492,6 +492,12 @@ impl ActorOfFinderProcess {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::Transfer_ActorOfFinderProcess_ctor()) }
     }
 
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans()`
+    /// Returns the Transfer Mode, modifiable
+    pub fn mode_trans(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::Transfer_ActorOfFinderProcess_mode_trans(self as *mut Self)) }
+    }
+
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
     pub fn transferring(
         &mut self,
@@ -816,12 +822,7 @@ impl HandleTransferActorOfFinderProcess {
     }
 }
 
-// ── Skipped symbols for ActorOfFinderProcess (6 total) ──
-// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans`
-//   method: Returns the Transfer Mode, modifiable
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn mode_trans(&mut self) -> &mut i32;
-//
+// ── Skipped symbols for ActorOfFinderProcess (5 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:64 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: @param theParameters the parameters for shape processing.
@@ -3016,6 +3017,22 @@ impl Finder {
         }
     }
 
+    /// **Source:** `Transfer_Finder.hxx`:92 - `Transfer_Finder::GetIntegerAttribute()`
+    /// Returns an attribute from its name, as integer
+    /// If no attribute has this name, or not an integer,
+    /// <val> is 0 and returned value is False
+    /// Else, it is True
+    pub fn get_integer_attribute(&self, name: &str, val: &mut i32) -> bool {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::Transfer_Finder_get_integer_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+                val,
+            )
+        }
+    }
+
     /// **Source:** `Transfer_Finder.hxx`:96 - `Transfer_Finder::IntegerAttribute()`
     /// Returns an integer attribute from its name. 0 if not recorded
     pub fn integer_attribute(&self, name: &str) -> i32 {
@@ -3230,14 +3247,7 @@ impl HandleTransferFinder {
     }
 }
 
-// ── Skipped symbols for Finder (3 total) ──
-// SKIPPED: **Source:** `Transfer_Finder.hxx`:92 - `Transfer_Finder::GetIntegerAttribute`
-//   method: Returns an attribute from its name, as integer
-//   method: If no attribute has this name, or not an integer,
-//   method: <val> is 0 and returned value is False
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_integer_attribute(&self, name: *const char, val: &mut i32) -> bool;
-//
+// ── Skipped symbols for Finder (2 total) ──
 // SKIPPED: **Source:** `Transfer_Finder.hxx`:118 - `Transfer_Finder::GetStringAttribute`
 //   method: Returns an attribute from its name, as String
 //   method: If no attribute has this name, or not a String
@@ -3247,7 +3257,7 @@ impl HandleTransferFinder {
 //
 // SKIPPED: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList`
 //   method: Returns the exhaustive list of attributes
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn attr_list(&mut self) -> &mut i32;
 //
 
@@ -11040,7 +11050,7 @@ impl HandleTransferTransientProcess {
 // SKIPPED: **Source:** `Transfer_TransientProcess.hxx`:82 - `Transfer_TransientProcess::Context`
 //   method: Returns (modifiable) the whole definition of Context
 //   method: Rather for internal use (ex.: preparing and setting in once)
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn context(&mut self) -> &mut i32;
 //
 // SKIPPED: **Source:** `Transfer_TransientProcess.hxx`:86 - `Transfer_TransientProcess::PrintTrace`

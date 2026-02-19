@@ -1965,6 +1965,16 @@ impl TriangulationSource {
         unsafe { crate::ffi::RWMesh_TriangulationSource_degenerated_tri_nb(self as *const Self) }
     }
 
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb()`
+    /// Gets access to number of degenerated triangles to collect them during data reading.
+    pub fn change_degenerated_tri_nb(&mut self) -> &mut i32 {
+        unsafe {
+            &mut *(crate::ffi::RWMesh_TriangulationSource_change_degenerated_tri_nb(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// **Source:** `RWMesh_TriangulationSource.hxx`:49 - `RWMesh_TriangulationSource::HasGeometry()`
     /// Returns TRUE if triangulation has some geometry.
     pub fn has_geometry(&self) -> bool {
@@ -2580,13 +2590,6 @@ impl HandleRWMeshTriangulationSource {
         }
     }
 }
-
-// ── Skipped symbols for TriangulationSource (1 total) ──
-// SKIPPED: **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb`
-//   method: Gets access to number of degenerated triangles to collect them during data reading.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn change_degenerated_tri_nb(&mut self) -> &mut i32;
-//
 
 // ========================
 // From RWMesh_VertexIterator.hxx

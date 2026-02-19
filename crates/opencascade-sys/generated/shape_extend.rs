@@ -1082,6 +1082,15 @@ impl CompositeSurface {
         }
     }
 
+    /// **Source:** `ShapeExtend_CompositeSurface.hxx`:182 - `ShapeExtend_CompositeSurface::LocateUVPoint()`
+    /// Returns number of row and col of surface that contains
+    /// given point
+    pub fn locate_uv_point(&self, pnt: &crate::gp::Pnt2d, i: &mut i32, j: &mut i32) {
+        unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_locate_uv_point(self as *const Self, pnt, i, j)
+        }
+    }
+
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:187 - `ShapeExtend_CompositeSurface::Patch()`
     /// Returns one surface patch that contains given (global) parameters
     pub fn patch_real2(&self, U: f64, V: f64) -> &crate::ffi::HandleGeomSurface {
@@ -1769,14 +1778,6 @@ impl HandleShapeExtendCompositeSurface {
         }
     }
 }
-
-// ── Skipped symbols for CompositeSurface (1 total) ──
-// SKIPPED: **Source:** `ShapeExtend_CompositeSurface.hxx`:182 - `ShapeExtend_CompositeSurface::LocateUVPoint`
-//   method: Returns number of row and col of surface that contains
-//   method: given point
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn locate_uv_point(&self, pnt: &Pnt2d, i: &mut i32, j: &mut i32);
-//
 
 // ========================
 // From ShapeExtend_Explorer.hxx

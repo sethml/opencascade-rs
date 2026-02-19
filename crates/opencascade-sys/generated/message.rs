@@ -746,8 +746,8 @@ pub use crate::ffi::{
     HandleBOPAlgoAlertUnableToOrientTheShape, HandleBOPAlgoAlertUnableToRemoveTheFeature,
     HandleBOPAlgoAlertUnableToRepeat, HandleBOPAlgoAlertUnableToTrim,
     HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBOPAlgoAlertUserBreak,
-    HandleBRepMeshModelBuilder, HandleStandardTransient, HandleTObjCheckModel,
-    HandleTopoDSAlertAttribute, HandleTopoDSAlertWithShape,
+    HandleBRepMeshModelBuilder, HandleIMeshToolsMeshBuilder, HandleStandardTransient,
+    HandleTObjCheckModel, HandleTopoDSAlertAttribute, HandleTopoDSAlertWithShape,
 };
 
 // ========================
@@ -2394,6 +2394,24 @@ impl HandleMessageAlgorithm {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelBuilder>> {
         let ptr = unsafe {
             crate::ffi::HandleMessageAlgorithm_downcast_to_HandleBRepMeshModelBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Message_Algorithm> to Handle<IMeshTools_MeshBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `IMeshTools_MeshBuilder` (or subclass).
+    pub fn downcast_to_mesh_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAlgorithm_downcast_to_HandleIMeshToolsMeshBuilder(
                 self as *const Self,
             )
         };

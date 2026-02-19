@@ -441,6 +441,11 @@ impl Coincidence {
         }
     }
 
+    /// **Source:** `HLRAlgo_Coincidence.hxx`:63 - `HLRAlgo_Coincidence::Value2D()`
+    pub fn value2_d(&self, FE: &mut i32, Param: &mut f64) {
+        unsafe { crate::ffi::HLRAlgo_Coincidence_value2_d(self as *const Self, FE, Param) }
+    }
+
     /// **Source:** `HLRAlgo_Coincidence.hxx`:69 - `HLRAlgo_Coincidence::State3D()`
     pub fn state3_d(&self, stbef: &mut crate::top_abs::State, staft: &mut crate::top_abs::State) {
         let mut stbef_i32_: i32 = (*stbef).into();
@@ -456,12 +461,6 @@ impl Coincidence {
         *staft = crate::top_abs::State::try_from(staft_i32_).unwrap();
     }
 }
-
-// ── Skipped symbols for Coincidence (1 total) ──
-// SKIPPED: **Source:** `HLRAlgo_Coincidence.hxx`:63 - `HLRAlgo_Coincidence::Value2D`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn value2_d(&self, FE: &mut i32, Param: &mut f64);
-//
 
 // ========================
 // From HLRAlgo_EdgeIterator.hxx

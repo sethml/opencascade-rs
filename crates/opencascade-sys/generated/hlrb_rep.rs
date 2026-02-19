@@ -2571,6 +2571,29 @@ impl Data {
         }
     }
 
+    /// **Source:** `HLRBRep_Data.hxx`:190 - `HLRBRep_Data::Classify()`
+    /// Classification of an edge.
+    pub fn classify(
+        &mut self,
+        E: i32,
+        ED: &EdgeData,
+        LevelFlag: bool,
+        Level: &mut i32,
+        param: f64,
+    ) -> crate::top_abs::State {
+        unsafe {
+            crate::top_abs::State::try_from(crate::ffi::HLRBRep_Data_classify(
+                self as *mut Self,
+                E,
+                ED,
+                LevelFlag,
+                Level,
+                param,
+            ))
+            .unwrap()
+        }
+    }
+
     /// **Source:** `HLRBRep_Data.hxx`:197 - `HLRBRep_Data::IsBadFace()`
     /// Returns true if the current face is bad.
     pub fn is_bad_face(&self) -> bool {
@@ -2675,13 +2698,6 @@ impl HandleHLRBRepData {
         }
     }
 }
-
-// ── Skipped symbols for Data (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_Data.hxx`:190 - `HLRBRep_Data::Classify`
-//   method: Classification of an edge.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn classify(&mut self, E: i32, ED: &EdgeData, LevelFlag: bool, Level: &mut i32, param: f64) -> OwnedPtr<TopAbs_State>;
-//
 
 // ========================
 // From HLRBRep_EdgeBuilder.hxx
@@ -3341,10 +3357,25 @@ unsafe impl crate::CppDeletable for ExactIntersectionPointOfTheIntPCurvePCurveOf
 }
 
 impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
-    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
-    pub fn perform(&mut self, Uo: f64, Vo: f64, UInf: f64, VInf: f64, USup: f64, VSup: f64) {
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:43 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
+    pub fn perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(
+        &mut self,
+        Poly1: &ThePolygon2dOfTheIntPCurvePCurveOfCInter,
+        Poly2: &ThePolygon2dOfTheIntPCurvePCurveOfCInter,
+        NumSegOn1: &mut i32,
+        NumSegOn2: &mut i32,
+        ParamOnSeg1: &mut f64,
+        ParamOnSeg2: &mut f64,
+    ) {
         unsafe {
-            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform(
+            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(self as *mut Self, Poly1, Poly2, NumSegOn1, NumSegOn2, ParamOnSeg1, ParamOnSeg2)
+        }
+    }
+
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
+    pub fn perform_real6(&mut self, Uo: f64, Vo: f64, UInf: f64, VInf: f64, USup: f64, VSup: f64) {
+        unsafe {
+            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_real6(
                 self as *mut Self,
                 Uo,
                 Vo,
@@ -3386,14 +3417,10 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
     }
 }
 
-// ── Skipped symbols for ExactIntersectionPointOfTheIntPCurvePCurveOfCInter (2 total) ──
+// ── Skipped symbols for ExactIntersectionPointOfTheIntPCurvePCurveOfCInter (1 total) ──
 // SKIPPED: **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:38 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter`
 //   Reason: has unbindable types: param 'C1': void pointer (const Standard_Address&); param 'C2': void pointer (const Standard_Address&)
 //   // pub fn new_address2_real(C1: /* const Standard_Address& */, C2: /* const Standard_Address& */, Tol: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:43 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn perform(&mut self, Poly1: &ThePolygon2dOfTheIntPCurvePCurveOfCInter, Poly2: &ThePolygon2dOfTheIntPCurvePCurveOfCInter, NumSegOn1: &mut i32, NumSegOn2: &mut i32, ParamOnSeg1: &mut f64, ParamOnSeg2: &mut f64);
 //
 
 // ========================
@@ -6165,6 +6192,26 @@ impl ShapeBounds {
         unsafe { crate::ffi::HLRBRep_ShapeBounds_nb_of_iso(self as *const Self) }
     }
 
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Sizes()`
+    pub fn sizes(&self, NV: &mut i32, NE: &mut i32, NF: &mut i32) {
+        unsafe { crate::ffi::HLRBRep_ShapeBounds_sizes(self as *const Self, NV, NE, NF) }
+    }
+
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:77 - `HLRBRep_ShapeBounds::Bounds()`
+    pub fn bounds(
+        &self,
+        V1: &mut i32,
+        V2: &mut i32,
+        E1: &mut i32,
+        E2: &mut i32,
+        F1: &mut i32,
+        F2: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_ShapeBounds_bounds(self as *const Self, V1, V2, E1, E2, F1, F2)
+        }
+    }
+
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:84 - `HLRBRep_ShapeBounds::UpdateMinMax()`
     pub fn update_min_max(&mut self, theTotMinMax: &crate::hlr_algo::EdgesBlock_MinMaxIndices) {
         unsafe { crate::ffi::HLRBRep_ShapeBounds_update_min_max(self as *mut Self, theTotMinMax) }
@@ -6176,7 +6223,7 @@ impl ShapeBounds {
     }
 }
 
-// ── Skipped symbols for ShapeBounds (6 total) ──
+// ── Skipped symbols for ShapeBounds (4 total) ──
 // SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:38 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds`
 //   Reason: param 'S' uses unknown Handle type
 //   // pub fn new_handlehlrtopobrepoutliner_handlestandardtransient_int7(S: &HandleOutLiner, SData: &HandleTransient, nbIso: i32, V1: i32, V2: i32, E1: i32, E2: i32, F1: i32, F2: i32) -> OwnedPtr<Self>;
@@ -6192,14 +6239,6 @@ impl ShapeBounds {
 // SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::Shape`
 //   Reason: return type 'const Handle(HLRTopoBRep_OutLiner)&' is unknown
 //   // pub fn shape(&self) -> &HandleOutLiner;
-//
-// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Sizes`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn sizes(&self, NV: &mut i32, NE: &mut i32, NF: &mut i32);
-//
-// SKIPPED: **Source:** `HLRBRep_ShapeBounds.hxx`:77 - `HLRBRep_ShapeBounds::Bounds`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn bounds(&self, V1: &mut i32, V2: &mut i32, E1: &mut i32, E2: &mut i32, F1: &mut i32, F2: &mut i32);
 //
 
 // ========================
@@ -8449,10 +8488,60 @@ impl ThePolyhedronOfInterCSurf {
         }
     }
 
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:69 - `HLRBRep_ThePolyhedronOfInterCSurf::Size()`
+    /// get the size of the discretization.
+    pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32) {
+        unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_size(self as *const Self, nbdu, nbdv)
+        }
+    }
+
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:72 - `HLRBRep_ThePolyhedronOfInterCSurf::NbTriangles()`
     /// Give the number of triangles in this double array of
     pub fn nb_triangles(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_nb_triangles(self as *const Self) }
+    }
+
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:76 - `HLRBRep_ThePolyhedronOfInterCSurf::Triangle()`
+    /// Give the 3 points of the triangle of address Index in
+    /// the double array of triangles.
+    pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
+        unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_triangle(
+                self as *const Self,
+                Index,
+                P1,
+                P2,
+                P3,
+            )
+        }
+    }
+
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronOfInterCSurf::TriConnex()`
+    /// Give the address Tricon of the triangle connexe to the
+    /// triangle of address Triang by the edge Pivot Pedge and
+    /// the third point of this connexe triangle. When we are
+    /// on a free edge TriCon==0 but the function return the
+    /// value of the triangle in the other side of Pivot on
+    /// the free edge. Used to turn around a vertex.
+    pub fn tri_connex(
+        &self,
+        Triang: i32,
+        Pivot: i32,
+        Pedge: i32,
+        TriCon: &mut i32,
+        OtherP: &mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_tri_connex(
+                self as *const Self,
+                Triang,
+                Pivot,
+                Pedge,
+                TriCon,
+                OtherP,
+            )
+        }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:95 - `HLRBRep_ThePolyhedronOfInterCSurf::NbPoints()`
@@ -8650,7 +8739,7 @@ impl ThePolyhedronOfInterCSurf {
     }
 }
 
-// ── Skipped symbols for ThePolyhedronOfInterCSurf (6 total) ──
+// ── Skipped symbols for ThePolyhedronOfInterCSurf (3 total) ──
 // SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:39 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf`
 //   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
 //   // pub fn new_address_int2_real4(Surface: /* const Standard_Address& */, nbdU: i32, nbdV: i32, U1: f64, V1: f64, U2: f64, V2: f64) -> OwnedPtr<Self>;
@@ -8662,24 +8751,6 @@ impl ThePolyhedronOfInterCSurf {
 // SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:57 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOnTriangle`
 //   Reason: has unbindable types: param 'Surface': void pointer (const Standard_Address&)
 //   // pub fn deflection_on_triangle(&self, Surface: /* const Standard_Address& */, Index: i32) -> f64;
-//
-// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:69 - `HLRBRep_ThePolyhedronOfInterCSurf::Size`
-//   method: get the size of the discretization.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32);
-//
-// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:76 - `HLRBRep_ThePolyhedronOfInterCSurf::Triangle`
-//   method: Give the 3 points of the triangle of address Index in
-//   method: the double array of triangles.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32);
-//
-// SKIPPED: **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronOfInterCSurf::TriConnex`
-//   method: Give the address Tricon of the triangle connexe to the
-//   method: triangle of address Triang by the edge Pivot Pedge and
-//   method: the third point of this connexe triangle. When we are
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn tri_connex(&self, Triang: i32, Pivot: i32, Pedge: i32, TriCon: &mut i32, OtherP: &mut i32) -> i32;
 //
 
 // ========================
@@ -8735,10 +8806,47 @@ impl ThePolyhedronToolOfInterCSurf {
         unsafe { crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_nb_triangles(thePolyh) }
     }
 
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:54 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Triangle()`
+    /// Give the indices  of  the 3 points of  the triangle of
+    /// address Index in the PolyhedronTool.
+    pub fn triangle(
+        thePolyh: &ThePolyhedronOfInterCSurf,
+        Index: i32,
+        P1: &mut i32,
+        P2: &mut i32,
+        P3: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_triangle(thePolyh, Index, P1, P2, P3)
+        }
+    }
+
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:61 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Point()`
     /// Give the point of index i in the polyhedral surface.
     pub fn point(thePolyh: &ThePolyhedronOfInterCSurf, Index: i32) -> &'static crate::gp::Pnt {
         unsafe { &*(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_point(thePolyh, Index)) }
+    }
+
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:70 - `HLRBRep_ThePolyhedronToolOfInterCSurf::TriConnex()`
+    /// Give the address Tricon of the triangle connexe to
+    /// the triangle of address Triang by the edge Pivot Pedge
+    /// and the third point of this  connexe triangle.
+    /// When we are on a free edge TriCon==0 but the function return
+    /// the value of the triangle in the other side of Pivot on the free edge.
+    /// Used to turn around a vertex.
+    pub fn tri_connex(
+        thePolyh: &ThePolyhedronOfInterCSurf,
+        Triang: i32,
+        Pivot: i32,
+        Pedge: i32,
+        TriCon: &mut i32,
+        OtherP: &mut i32,
+    ) -> i32 {
+        unsafe {
+            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_tri_connex(
+                thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
+            )
+        }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:80 - `HLRBRep_ThePolyhedronToolOfInterCSurf::IsOnBound()`
@@ -8762,21 +8870,6 @@ impl ThePolyhedronToolOfInterCSurf {
         unsafe { crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_dump(thePolyh) }
     }
 }
-
-// ── Skipped symbols for ThePolyhedronToolOfInterCSurf (2 total) ──
-// SKIPPED: **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:54 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Triangle`
-//   static_method: Give the indices  of  the 3 points of  the triangle of
-//   static_method: address Index in the PolyhedronTool.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn triangle(thePolyh: &ThePolyhedronOfInterCSurf, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32);
-//
-// SKIPPED: **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:70 - `HLRBRep_ThePolyhedronToolOfInterCSurf::TriConnex`
-//   static_method: Give the address Tricon of the triangle connexe to
-//   static_method: the triangle of address Triang by the edge Pivot Pedge
-//   static_method: and the third point of this  connexe triangle.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn tri_connex(thePolyh: &ThePolyhedronOfInterCSurf, Triang: i32, Pivot: i32, Pedge: i32, TriCon: &mut i32, OtherP: &mut i32) -> i32;
-//
 
 // ========================
 // From HLRBRep_TheProjPCurOfCInter.hxx

@@ -282,6 +282,13 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans()`
+    pub fn mode_trans(&mut self) -> &mut i32 {
+        unsafe {
+            &mut *(crate::ffi::STEPCAFControl_ActorWrite_inherited_ModeTrans(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
     pub fn transferring(
         &mut self,
@@ -676,6 +683,18 @@ impl Controller {
         unsafe {
             crate::ffi::STEPCAFControl_Controller_inherited_SetModeWrite(
                 self as *mut Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds()`
+    pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
+        unsafe {
+            crate::ffi::STEPCAFControl_Controller_inherited_ModeWriteBounds(
+                self as *const Self,
                 modemin,
                 modemax,
                 shape,

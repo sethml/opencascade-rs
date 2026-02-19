@@ -569,6 +569,73 @@ impl SolidExplorer {
         unsafe { crate::ffi::BRepClass3d_SolidExplorer_reject(self as *const Self, P) }
     }
 
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:86 - `BRepClass3d_SolidExplorer::PointInTheFace()`
+    pub fn point_in_the_face_face_pnt_real3_int(
+        &self,
+        F: &crate::topo_ds::Face,
+        P: &mut crate::gp::Pnt,
+        u: &mut f64,
+        v: &mut f64,
+        Param: &mut f64,
+        Index: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int(
+                self as *const Self,
+                F,
+                P,
+                u,
+                v,
+                Param,
+                Index,
+            )
+        }
+    }
+
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:93 - `BRepClass3d_SolidExplorer::PointInTheFace()`
+    pub fn point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4(
+        &self,
+        F: &crate::topo_ds::Face,
+        P: &mut crate::gp::Pnt,
+        u: &mut f64,
+        v: &mut f64,
+        Param: &mut f64,
+        Index: &mut i32,
+        surf: &crate::ffi::HandleBRepAdaptorSurface,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4(self as *const Self, F, P, u, v, Param, Index, surf, u1, v1, u2, v2)
+        }
+    }
+
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:107 - `BRepClass3d_SolidExplorer::PointInTheFace()`
+    /// <Index> gives point index  to  search from and returns
+    /// point index of succeseful search
+    pub fn point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4_vec2(
+        &self,
+        F: &crate::topo_ds::Face,
+        P: &mut crate::gp::Pnt,
+        u: &mut f64,
+        v: &mut f64,
+        Param: &mut f64,
+        Index: &mut i32,
+        surf: &crate::ffi::HandleBRepAdaptorSurface,
+        u1: f64,
+        v1: f64,
+        u2: f64,
+        v2: f64,
+        theVecD1U: &mut crate::gp::Vec,
+        theVecD1V: &mut crate::gp::Vec,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4_vec2(self as *const Self, F, P, u, v, Param, Index, surf, u1, v1, u2, v2, theVecD1U, theVecD1V)
+        }
+    }
+
     /// **Source:** `BRepClass3d_SolidExplorer.hxx`:122 - `BRepClass3d_SolidExplorer::InitShell()`
     /// Starts an exploration of the shells.
     pub fn init_shell(&mut self) {
@@ -798,21 +865,7 @@ impl SolidExplorer {
     }
 }
 
-// ── Skipped symbols for SolidExplorer (4 total) ──
-// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:86 - `BRepClass3d_SolidExplorer::PointInTheFace`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:93 - `BRepClass3d_SolidExplorer::PointInTheFace`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32, surf: &HandleSurface, u1: f64, v1: f64, u2: f64, v2: f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:107 - `BRepClass3d_SolidExplorer::PointInTheFace`
-//   method: <Index> gives point index  to  search from and returns
-//   method: point index of succeseful search
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn point_in_the_face(&self, F: &Face, P: &mut Pnt, u: &mut f64, v: &mut f64, Param: &mut f64, Index: &mut i32, surf: &HandleSurface, u1: f64, v1: f64, u2: f64, v2: f64, theVecD1U: &mut Vec, theVecD1V: &mut Vec) -> bool;
-//
+// ── Skipped symbols for SolidExplorer (1 total) ──
 // SKIPPED: **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::Intersector`
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn intersector(&self, F: &Face) -> &mut Intersector;

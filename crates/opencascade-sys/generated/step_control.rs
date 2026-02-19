@@ -679,6 +679,11 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans()`
+    pub fn mode_trans(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::STEPControl_ActorWrite_inherited_ModeTrans(self as *mut Self)) }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
     pub fn transferring(
         &mut self,
@@ -1063,6 +1068,18 @@ impl Controller {
         unsafe {
             crate::ffi::STEPControl_Controller_inherited_SetModeWrite(
                 self as *mut Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds()`
+    pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
+        unsafe {
+            crate::ffi::STEPControl_Controller_inherited_ModeWriteBounds(
+                self as *const Self,
                 modemin,
                 modemax,
                 shape,
@@ -1572,6 +1589,25 @@ impl Reader {
                 self as *const Self,
                 what,
                 mode,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
+    pub fn get_stats_transfer(
+        &self,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        nbMapped: &mut i32,
+        nbWithResult: &mut i32,
+        nbWithFail: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::STEPControl_Reader_inherited_GetStatsTransfer(
+                self as *const Self,
+                list,
+                nbMapped,
+                nbWithResult,
+                nbWithFail,
             )
         }
     }

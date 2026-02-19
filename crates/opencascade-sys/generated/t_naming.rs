@@ -3304,6 +3304,20 @@ impl Tool {
         unsafe { crate::ffi::TNaming_Tool_has_label(access, aShape) }
     }
 
+    /// **Source:** `TNaming_Tool.hxx`:142 - `TNaming_Tool::Label()`
+    /// Returns  the label  of   the first apparition  of
+    /// <aShape>.  Transdef  is a value of the transaction
+    /// of the first apparition of <aShape>.
+    pub fn label(
+        access: &crate::tdf::Label,
+        aShape: &crate::topo_ds::Shape,
+        TransDef: &mut i32,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TNaming_Tool_label(access, aShape, TransDef))
+        }
+    }
+
     /// **Source:** `TNaming_Tool.hxx`:148 - `TNaming_Tool::InitialShape()`
     /// Returns the shape created from the shape
     /// aShape contained in the attribute anAcces.
@@ -3339,15 +3353,6 @@ impl Tool {
         unsafe { crate::ffi::TNaming_Tool_find_shape(Valid, Forbiden, Arg, S) }
     }
 }
-
-// ── Skipped symbols for Tool (1 total) ──
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:142 - `TNaming_Tool::Label`
-//   static_method: Returns  the label  of   the first apparition  of
-//   static_method: <aShape>.  Transdef  is a value of the transaction
-//   static_method: of the first apparition of <aShape>.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn label(access: &Label, aShape: &Shape, TransDef: &mut i32) -> OwnedPtr<TDF_Label>;
-//
 
 // ========================
 // From TNaming_TranslateTool.hxx

@@ -4937,6 +4937,32 @@ impl File {
         unsafe { crate::ffi::OSD_File_read(self as *mut Self, Buffer, Nbyte) }
     }
 
+    /// **Source:** `OSD_File.hxx`:79 - `OSD_File::ReadLine()`
+    /// Reads bytes from the data pointed to by the object file
+    /// into the buffer <Buffer>.
+    /// Data is read until <NByte-1> bytes have been read,
+    /// until	a newline character is read and transferred into
+    /// <Buffer>, or until an EOF (End-of-File) condition is
+    /// encountered.
+    /// Upon successful completion, Read returns the number of
+    /// bytes actually read into <NByteRead> and placed into the
+    /// Buffer <Buffer>.
+    pub fn read_line_asciistring_int2(
+        &mut self,
+        Buffer: &mut crate::t_collection::AsciiString,
+        NByte: i32,
+        NbyteRead: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::OSD_File_read_line_asciistring_int2(
+                self as *mut Self,
+                Buffer,
+                NByte,
+                NbyteRead,
+            )
+        }
+    }
+
     /// **Source:** `OSD_File.hxx`:91 - `OSD_File::ReadLine()`
     /// Reads bytes from the data pointed to by the object file
     /// into the buffer <Buffer>.
@@ -4946,8 +4972,12 @@ impl File {
     /// encountered.
     /// Upon successful completion, Read returns the number of
     /// bytes actually read and placed into the Buffer <Buffer>.
-    pub fn read_line(&mut self, Buffer: &mut crate::t_collection::AsciiString, NByte: i32) -> i32 {
-        unsafe { crate::ffi::OSD_File_read_line(self as *mut Self, Buffer, NByte) }
+    pub fn read_line_asciistring_int(
+        &mut self,
+        Buffer: &mut crate::t_collection::AsciiString,
+        NByte: i32,
+    ) -> i32 {
+        unsafe { crate::ffi::OSD_File_read_line_asciistring_int(self as *mut Self, Buffer, NByte) }
     }
 
     /// **Source:** `OSD_File.hxx`:110 - `OSD_File::Write()`
@@ -5168,14 +5198,7 @@ impl File {
     }
 }
 
-// ── Skipped symbols for File (3 total) ──
-// SKIPPED: **Source:** `OSD_File.hxx`:79 - `OSD_File::ReadLine`
-//   method: Reads bytes from the data pointed to by the object file
-//   method: into the buffer <Buffer>.
-//   method: Data is read until <NByte-1> bytes have been read,
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn read_line(&mut self, Buffer: &mut AsciiString, NByte: i32, NbyteRead: &mut i32);
-//
+// ── Skipped symbols for File (2 total) ──
 // SKIPPED: **Source:** `OSD_File.hxx`:105 - `OSD_File::Read`
 //   method: Attempts to read Nbyte bytes from the files associated with
 //   method: the object File.
@@ -10253,6 +10276,27 @@ impl Timer {
         unsafe { crate::ffi::OSD_Timer_show(self as *const Self) }
     }
 
+    /// **Source:** `OSD_Timer.hxx`:80 - `OSD_Timer::Show()`
+    /// returns both the elapsed time(seconds,minutes,hours)
+    /// and CPU  time.
+    pub fn show_real_int2_real(
+        &self,
+        theSeconds: &mut f64,
+        theMinutes: &mut i32,
+        theHours: &mut i32,
+        theCPUtime: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::OSD_Timer_show_real_int2_real(
+                self as *const Self,
+                theSeconds,
+                theMinutes,
+                theHours,
+                theCPUtime,
+            )
+        }
+    }
+
     /// **Source:** `OSD_Timer.hxx`:86 - `OSD_Timer::Stop()`
     /// Stops the Timer.
     pub fn stop(&mut self) {
@@ -10320,18 +10364,12 @@ impl Timer {
     }
 }
 
-// ── Skipped symbols for Timer (2 total) ──
+// ── Skipped symbols for Timer (1 total) ──
 // SKIPPED: **Source:** `OSD_Timer.hxx`:76 - `OSD_Timer::Show`
 //   method: Shows both the elapsed time and CPU  time on the
 //   method: output stream <OS>.
 //   Reason: has unbindable types: param 'os': stream type (Standard_OStream&)
 //   // pub fn show(&self, os: /* Standard_OStream& */);
-//
-// SKIPPED: **Source:** `OSD_Timer.hxx`:80 - `OSD_Timer::Show`
-//   method: returns both the elapsed time(seconds,minutes,hours)
-//   method: and CPU  time.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn show(&self, theSeconds: &mut f64, theMinutes: &mut i32, theHours: &mut i32, theCPUtime: &mut f64);
 //
 
 // ========================

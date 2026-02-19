@@ -223,41 +223,161 @@ impl CSIntersector {
         unsafe { &*(crate::ffi::LocOpe_CSIntersector_point(self as *const Self, I, Index)) }
     }
 
+    /// **Source:** `LocOpe_CSIntersector.hxx`:81 - `LocOpe_CSIntersector::LocalizeAfter()`
+    /// On  the element of range   <I>, searches the first
+    /// intersection   point  located after  the parameter
+    /// <From>,  which orientation is not TopAbs_EXTERNAL.
+    /// If  found, returns <Standard_True>.  <Or> contains
+    /// the orientation    of  the  point,  <IndFrom>  and
+    /// <IndTo> represents  the interval  of index in  the
+    /// sequence  of intersection  point corresponding  to
+    /// the  point. (IndFrom <=   IndTo). <Tol> is used to
+    /// determine if 2 parameters are equal.
+    ///
+    /// Otherwise, returns <Standard_False>.
+    pub fn localize_after_int_real2_orientation_int2(
+        &self,
+        I: i32,
+        From: f64,
+        Tol: f64,
+        Or: &mut crate::top_abs::Orientation,
+        IndFrom: &mut i32,
+        IndTo: &mut i32,
+    ) -> bool {
+        let mut Or_i32_: i32 = (*Or).into();
+        let result_ = unsafe {
+            crate::ffi::LocOpe_CSIntersector_localize_after_int_real2_orientation_int2(
+                self as *const Self,
+                I,
+                From,
+                Tol,
+                &mut Or_i32_,
+                IndFrom,
+                IndTo,
+            )
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `LocOpe_CSIntersector.hxx`:99 - `LocOpe_CSIntersector::LocalizeBefore()`
+    /// On the element  of range  <I>, searches the  first
+    /// intersection point   located before  the parameter
+    /// <From>,  which orientation is not TopAbs_EXTERNAL.
+    /// If found,  returns <Standard_True>.  <Or> contains
+    /// the   orientation  of   the point,  <IndFrom>  and
+    /// <IndTo> represents the interval   of index in  the
+    /// sequence of  intersection  point corresponding  to
+    /// the point (IndFrom  <=  IndTo). <Tol> is   used to
+    /// determine if 2 parameters are equal.
+    ///
+    /// Otherwise, returns <Standard_False>.
+    pub fn localize_before_int_real2_orientation_int2(
+        &self,
+        I: i32,
+        From: f64,
+        Tol: f64,
+        Or: &mut crate::top_abs::Orientation,
+        IndFrom: &mut i32,
+        IndTo: &mut i32,
+    ) -> bool {
+        let mut Or_i32_: i32 = (*Or).into();
+        let result_ = unsafe {
+            crate::ffi::LocOpe_CSIntersector_localize_before_int_real2_orientation_int2(
+                self as *const Self,
+                I,
+                From,
+                Tol,
+                &mut Or_i32_,
+                IndFrom,
+                IndTo,
+            )
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `LocOpe_CSIntersector.hxx`:118 - `LocOpe_CSIntersector::LocalizeAfter()`
+    /// On the  element of  range <I>, searches  the first
+    /// intersection      point  located after the   index
+    /// <FromInd> ( >=  FromInd + 1), which orientation is
+    /// not    TopAbs_EXTERNAL.      If    found,  returns
+    /// <Standard_True>.  <Or> contains the orientation of
+    /// the  point, <IndFrom>  and <IndTo> represents  the
+    /// interval of index in  the sequence of intersection
+    /// point corresponding   to the  point.  (IndFrom  <=
+    /// IndTo). <Tol> is used to determine if 2 parameters
+    /// are equal.
+    ///
+    /// Otherwise, returns <Standard_False>.
+    pub fn localize_after_int2_real_orientation_int2(
+        &self,
+        I: i32,
+        FromInd: i32,
+        Tol: f64,
+        Or: &mut crate::top_abs::Orientation,
+        IndFrom: &mut i32,
+        IndTo: &mut i32,
+    ) -> bool {
+        let mut Or_i32_: i32 = (*Or).into();
+        let result_ = unsafe {
+            crate::ffi::LocOpe_CSIntersector_localize_after_int2_real_orientation_int2(
+                self as *const Self,
+                I,
+                FromInd,
+                Tol,
+                &mut Or_i32_,
+                IndFrom,
+                IndTo,
+            )
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `LocOpe_CSIntersector.hxx`:137 - `LocOpe_CSIntersector::LocalizeBefore()`
+    /// On  the element of  range  <I>, searches the first
+    /// intersection  point    located  before  the  index
+    /// <FromInd>  (  <= FromInd -1), which orientation is
+    /// not   TopAbs_EXTERNAL.  If    found,       returns
+    /// <Standard_True>.  <Or> contains the orientation of
+    /// the  point, <IndFrom>  and  <IndTo> represents the
+    /// interval of  index in the sequence of intersection
+    /// point  corresponding to   the  point  (IndFrom  <=
+    /// IndTo). <Tol> is used to determine if 2 parameters
+    /// are equal.
+    ///
+    /// Otherwise, returns <Standard_False>.
+    pub fn localize_before_int2_real_orientation_int2(
+        &self,
+        I: i32,
+        FromInd: i32,
+        Tol: f64,
+        Or: &mut crate::top_abs::Orientation,
+        IndFrom: &mut i32,
+        IndTo: &mut i32,
+    ) -> bool {
+        let mut Or_i32_: i32 = (*Or).into();
+        let result_ = unsafe {
+            crate::ffi::LocOpe_CSIntersector_localize_before_int2_real_orientation_int2(
+                self as *const Self,
+                I,
+                FromInd,
+                Tol,
+                &mut Or_i32_,
+                IndFrom,
+                IndTo,
+            )
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+        result_
+    }
+
     /// **Source:** `LocOpe_CSIntersector.hxx`:144 - `LocOpe_CSIntersector::Destroy()`
     pub fn destroy(&mut self) {
         unsafe { crate::ffi::LocOpe_CSIntersector_destroy(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for CSIntersector (4 total) ──
-// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:81 - `LocOpe_CSIntersector::LocalizeAfter`
-//   method: On  the element of range   <I>, searches the first
-//   method: intersection   point  located after  the parameter
-//   method: <From>,  which orientation is not TopAbs_EXTERNAL.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn localize_after(&self, I: i32, From: f64, Tol: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:99 - `LocOpe_CSIntersector::LocalizeBefore`
-//   method: On the element  of range  <I>, searches the  first
-//   method: intersection point   located before  the parameter
-//   method: <From>,  which orientation is not TopAbs_EXTERNAL.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn localize_before(&self, I: i32, From: f64, Tol: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:118 - `LocOpe_CSIntersector::LocalizeAfter`
-//   method: On the  element of  range <I>, searches  the first
-//   method: intersection      point  located after the   index
-//   method: <FromInd> ( >=  FromInd + 1), which orientation is
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn localize_after(&self, I: i32, FromInd: i32, Tol: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:137 - `LocOpe_CSIntersector::LocalizeBefore`
-//   method: On  the element of  range  <I>, searches the first
-//   method: intersection  point    located  before  the  index
-//   method: <FromInd>  (  <= FromInd -1), which orientation is
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn localize_before(&self, I: i32, FromInd: i32, Tol: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
-//
 
 // ========================
 // From LocOpe_CurveShapeIntersector.hxx
@@ -342,37 +462,135 @@ impl CurveShapeIntersector {
     pub fn point(&self, Index: i32) -> &PntFace {
         unsafe { &*(crate::ffi::LocOpe_CurveShapeIntersector_point(self as *const Self, Index)) }
     }
-}
 
-// ── Skipped symbols for CurveShapeIntersector (4 total) ──
-// SKIPPED: **Source:** `LocOpe_CurveShapeIntersector.hxx`:79 - `LocOpe_CurveShapeIntersector::LocalizeAfter`
-//   method: Searches the   first intersection  point   located
-//   method: after the parameter  <From>, which  orientation is
-//   method: not       TopAbs_EXTERNAL.      If found,  returns
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn localize_after(&self, From: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `LocOpe_CurveShapeIntersector.hxx`:94 - `LocOpe_CurveShapeIntersector::LocalizeBefore`
-//   method: Searches  the first intersection point     located
-//   method: before  the parameter <From>, which orientation is
-//   method: not      TopAbs_EXTERNAL.      If  found,  returns
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn localize_before(&self, From: f64, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `LocOpe_CurveShapeIntersector.hxx`:109 - `LocOpe_CurveShapeIntersector::LocalizeAfter`
-//   method: Searches  the first intersection point     located
-//   method: after the index <FromInd> ( >= FromInd + 1), which
-//   method: orientation   is   not TopAbs_EXTERNAL.   If found,
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn localize_after(&self, FromInd: i32, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `LocOpe_CurveShapeIntersector.hxx`:124 - `LocOpe_CurveShapeIntersector::LocalizeBefore`
-//   method: Searches the  first  intersection   point  located
-//   method: before the index <FromInd> ( <= FromInd -1), which
-//   method: orientation is   not TopAbs_EXTERNAL.   If   found,
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn localize_before(&self, FromInd: i32, Or: &mut Orientation, IndFrom: &mut i32, IndTo: &mut i32) -> bool;
-//
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:79 - `LocOpe_CurveShapeIntersector::LocalizeAfter()`
+    /// Searches the   first intersection  point   located
+    /// after the parameter  <From>, which  orientation is
+    /// not       TopAbs_EXTERNAL.      If found,  returns
+    /// <Standard_True>.  <Or> contains the orientation of
+    /// the  point, <IndFrom>  and  <IndTo> represents the
+    /// interval of index  in the sequence of intersection
+    /// point  corresponding  to   the point. (IndFrom  <=
+    /// IndTo).
+    ///
+    /// Otherwise, returns <Standard_False>.
+    pub fn localize_after_real_orientation_int2(
+        &self,
+        From: f64,
+        Or: &mut crate::top_abs::Orientation,
+        IndFrom: &mut i32,
+        IndTo: &mut i32,
+    ) -> bool {
+        let mut Or_i32_: i32 = (*Or).into();
+        let result_ = unsafe {
+            crate::ffi::LocOpe_CurveShapeIntersector_localize_after_real_orientation_int2(
+                self as *const Self,
+                From,
+                &mut Or_i32_,
+                IndFrom,
+                IndTo,
+            )
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:94 - `LocOpe_CurveShapeIntersector::LocalizeBefore()`
+    /// Searches  the first intersection point     located
+    /// before  the parameter <From>, which orientation is
+    /// not      TopAbs_EXTERNAL.      If  found,  returns
+    /// <Standard_True>.  <Or> contains the orientation of
+    /// the point,  <IndFrom>  and <IndTo>  represents the
+    /// interval of index  in the sequence of intersection
+    /// point  corresponding   to the point   (IndFrom  <=
+    /// IndTo).
+    ///
+    /// Otherwise, returns <Standard_False>.
+    pub fn localize_before_real_orientation_int2(
+        &self,
+        From: f64,
+        Or: &mut crate::top_abs::Orientation,
+        IndFrom: &mut i32,
+        IndTo: &mut i32,
+    ) -> bool {
+        let mut Or_i32_: i32 = (*Or).into();
+        let result_ = unsafe {
+            crate::ffi::LocOpe_CurveShapeIntersector_localize_before_real_orientation_int2(
+                self as *const Self,
+                From,
+                &mut Or_i32_,
+                IndFrom,
+                IndTo,
+            )
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:109 - `LocOpe_CurveShapeIntersector::LocalizeAfter()`
+    /// Searches  the first intersection point     located
+    /// after the index <FromInd> ( >= FromInd + 1), which
+    /// orientation   is   not TopAbs_EXTERNAL.   If found,
+    /// returns   <Standard_True>.   <Or>  contains    the
+    /// orientation of the  point, <IndFrom>  and  <IndTo>
+    /// represents the interval  of index in  the sequence
+    /// of  intersection  point     corresponding to   the
+    /// point. (IndFrom <= IndTo).
+    ///
+    /// Otherwise, returns <Standard_False>.
+    pub fn localize_after_int_orientation_int2(
+        &self,
+        FromInd: i32,
+        Or: &mut crate::top_abs::Orientation,
+        IndFrom: &mut i32,
+        IndTo: &mut i32,
+    ) -> bool {
+        let mut Or_i32_: i32 = (*Or).into();
+        let result_ = unsafe {
+            crate::ffi::LocOpe_CurveShapeIntersector_localize_after_int_orientation_int2(
+                self as *const Self,
+                FromInd,
+                &mut Or_i32_,
+                IndFrom,
+                IndTo,
+            )
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `LocOpe_CurveShapeIntersector.hxx`:124 - `LocOpe_CurveShapeIntersector::LocalizeBefore()`
+    /// Searches the  first  intersection   point  located
+    /// before the index <FromInd> ( <= FromInd -1), which
+    /// orientation is   not TopAbs_EXTERNAL.   If   found,
+    /// returns   <Standard_True>.  <Or>  contains     the
+    /// orientation  of the  point,  <IndFrom> and <IndTo>
+    /// represents the interval  of index  in the sequence
+    /// of  intersection  point corresponding to the point
+    /// (IndFrom <= IndTo).
+    ///
+    /// Otherwise, returns <Standard_False>.
+    pub fn localize_before_int_orientation_int2(
+        &self,
+        FromInd: i32,
+        Or: &mut crate::top_abs::Orientation,
+        IndFrom: &mut i32,
+        IndTo: &mut i32,
+    ) -> bool {
+        let mut Or_i32_: i32 = (*Or).into();
+        let result_ = unsafe {
+            crate::ffi::LocOpe_CurveShapeIntersector_localize_before_int_orientation_int2(
+                self as *const Self,
+                FromInd,
+                &mut Or_i32_,
+                IndFrom,
+                IndTo,
+            )
+        };
+        *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
+        result_
+    }
+}
 
 // ========================
 // From LocOpe_DPrism.hxx

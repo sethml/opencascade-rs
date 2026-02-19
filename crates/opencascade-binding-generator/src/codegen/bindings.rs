@@ -715,48 +715,71 @@ fn constructor_has_misresolved_element_type(
 /// In OCCT, index params are always `Standard_Integer` (by value, I32), while
 /// element type params are `const TheItemType&` — if misresolved, they appear as
 /// `const int&` (ConstRef(I32)).
-fn type_is_misresolved_int_ref(ty: &Type) -> bool {
-    matches!(ty,
-        Type::ConstRef(inner) | Type::MutRef(inner)
-        if matches!(inner.as_ref(), Type::I32)
-    )
+/// Check if a type is a const reference to I32.
+/// `const Standard_Integer&` (ConstRef(I32)) almost never appears in OCCT outside
+/// NCollection containers — it's a strong signal of misresolved template element types.
+fn type_is_const_ref_i32(ty: &Type) -> bool {
+    matches!(ty, Type::ConstRef(inner) if matches!(inner.as_ref(), Type::I32))
+}
+
+/// Check if a type is a mutable reference to I32.
+/// `Standard_Integer&` (MutRef(I32)) is legitimate in many OCCT classes
+/// (e.g. ShapeFix mode accessors, out-params in analysis methods).
+fn type_is_mut_ref_i32(ty: &Type) -> bool {
+    matches!(ty, Type::MutRef(inner) if matches!(inner.as_ref(), Type::I32))
 }
 
 /// Check if a method has misresolved NCollection element type params or return type.
 ///
-/// In OCCT, `const Standard_Integer&` (ConstRef(I32)) parameters and return types
-/// are almost exclusively found in NCollection container accessors (Value, Append, etc.)
-/// where the element type IS int. Outside NCollection containers, OCCT methods
-/// always pass integers by value, not by const reference.
+/// Two levels of detection:
 ///
-/// When clang misresolves NCollection template types in batch parsing mode,
-/// NCollection_DataMap/IndexedMap/etc. types become `int`. This produces methods with
-/// `const int&` params/returns that should be `const NCollection_DataMap<...>&`.
+/// 1. `ConstRef(I32)` — always suspicious on non-primitive-NCollection classes.
+///    OCCT style passes integers by value; `const Standard_Integer&` params/returns
+///    occur only in NCollection container accessors. When clang misresolves template
+///    types to `int`, the resulting `const int&` is the tell-tale sign.
 ///
-/// Strategy: skip any method with ConstRef(I32)/MutRef(I32) params or return,
-/// UNLESS the class is a known NCollection container with primitive element types
-/// (where `const int&` is the correct resolved type).
+/// 2. `MutRef(I32)` — only suspicious on NCollection-derived classes with non-primitive
+///    element types. Outside NCollection, `Standard_Integer&` is legitimate for:
+///    - Mode accessor methods (e.g. `ShapeFix_Face::FixWireMode() -> Standard_Integer&`)
+///    - Out-params (e.g. `ShapeAnalysis_WireOrder::Chain(num, n1: &mut i32, n2: &mut i32)`)
 fn method_has_misresolved_element_type(
     params: &[Param],
     return_type: Option<&Type>,
     class_name: &str,
     ncollection_primitive_classes: &HashSet<String>,
+    ncollection_nonprimitive_classes: &HashMap<String, String>,
 ) -> bool {
     // NCollection containers with primitive element types legitimately have
-    // ConstRef(I32) methods (e.g., TColStd_Array1OfInteger::Value() -> const int&)
+    // ConstRef(I32)/MutRef(I32) methods (e.g., TColStd_Array1OfInteger::Value() -> const int&)
     if ncollection_primitive_classes.contains(class_name) {
         return false;
     }
 
-    // Check params for ConstRef(I32) or MutRef(I32) — misresolved element type refs
-    if params.iter().any(|p| type_is_misresolved_int_ref(&p.ty)) {
+    let is_ncollection_nonprimitive = ncollection_nonprimitive_classes.contains_key(class_name);
+
+    // Check params for ConstRef(I32) — always suspicious on any non-primitive class
+    if params.iter().any(|p| type_is_const_ref_i32(&p.ty)) {
         return true;
     }
 
-    // Check return type for ConstRef(I32) or MutRef(I32)
+    // Check return type for ConstRef(I32) — always suspicious
     if let Some(ret) = return_type {
-        if type_is_misresolved_int_ref(ret) {
+        if type_is_const_ref_i32(ret) {
             return true;
+        }
+    }
+
+    // Check MutRef(I32) ONLY for NCollection-derived classes with non-primitive elements.
+    // Non-NCollection classes legitimately use Standard_Integer& for mode accessors
+    // and out-params.
+    if is_ncollection_nonprimitive {
+        if params.iter().any(|p| type_is_mut_ref_i32(&p.ty)) {
+            return true;
+        }
+        if let Some(ret) = return_type {
+            if type_is_mut_ref_i32(ret) {
+                return true;
+            }
         }
     }
 
@@ -1847,7 +1870,7 @@ pub fn compute_class_bindings(
             });
             continue;
         }
-        if method_has_misresolved_element_type(&method.params, method.return_type.as_ref(), cpp_name, ncollection_primitive_classes) {
+        if method_has_misresolved_element_type(&method.params, method.return_type.as_ref(), cpp_name, ncollection_primitive_classes, ncollection_element_types) {
             skipped_symbols.push(SkippedSymbol {
                 kind: "method",
                 module: class.module.clone(),
@@ -2004,7 +2027,7 @@ pub fn compute_class_bindings(
             });
             continue;
         }
-        if method_has_misresolved_element_type(&method.params, method.return_type.as_ref(), cpp_name, ncollection_primitive_classes) {
+        if method_has_misresolved_element_type(&method.params, method.return_type.as_ref(), cpp_name, ncollection_primitive_classes, ncollection_element_types) {
             skipped_symbols.push(SkippedSymbol {
                 kind: "static_method",
                 module: class.module.clone(),
@@ -2125,8 +2148,9 @@ pub fn compute_class_bindings(
     };
 
     // ── Inherited methods ───────────────────────────────────────────────
+    let ncollection_nonprimitive_class_names: HashSet<String> = ncollection_element_types.keys().cloned().collect();
     let inherited_methods_raw =
-        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums, ncollection_primitive_classes, ffi_ctx.deletable_class_names, reexport_ctx);
+        compute_inherited_method_bindings(class, symbol_table, handle_able_classes, ffi_ctx.all_classes, ffi_ctx.all_enums, ncollection_primitive_classes, &ncollection_nonprimitive_class_names, ffi_ctx.deletable_class_names, reexport_ctx, exclude_methods);
     // Filter out inherited methods whose Rust name conflicts with a constructor or direct method
     let ctor_and_method_names: std::collections::HashSet<&str> = constructors
         .iter()
@@ -2738,8 +2762,10 @@ fn compute_inherited_method_bindings(
     all_class_names: &HashSet<String>,
     all_enum_names: &HashSet<String>,
     ncollection_primitive_classes: &HashSet<String>,
+    ncollection_nonprimitive_class_names: &HashSet<String>,
     deletable_class_names: Option<&HashSet<String>>,
     reexport_ctx: Option<&ReexportTypeContext>,
+    exclude_methods: &HashSet<(String, String)>,
 ) -> Vec<InheritedMethodBinding> {
     if class.has_protected_destructor {
         return Vec::new();
@@ -2786,6 +2812,14 @@ fn compute_inherited_method_bindings(
                 // Example: BOPAlgo_PaveFiller overrides BOPAlgo_Options::Clear() as
                 // protected; BOPAlgo_CheckerSI must not inherit Clear() from Options.
                 if protected_in_ancestors.contains(&resolved_method.cpp_name) {
+                    continue;
+                }
+
+                // Skip inherited methods that are explicitly excluded for the child
+                // class or for the ancestor class (same method, misresolved type).
+                if exclude_methods.contains(&(class.name.clone(), resolved_method.cpp_name.clone()))
+                    || exclude_methods.contains(&(ancestor_name.clone(), resolved_method.cpp_name.clone()))
+                {
                     continue;
                 }
 
@@ -2866,17 +2900,30 @@ fn compute_inherited_method_bindings(
                     continue;
                 }
 
-                // Skip inherited methods with misresolved NCollection element types
-                // ConstRef(I32)/MutRef(I32) is only legitimate on NCollection
-                // containers with primitive element types
+                // Skip inherited methods with misresolved NCollection element types.
+                // ConstRef(I32) is always suspicious (OCCT passes integers by value).
+                // MutRef(I32) is only suspicious on NCollection-derived classes with
+                // non-primitive elements. Non-NCollection classes legitimately use
+                // Standard_Integer& for mode accessors and out-params.
                 if !ncollection_primitive_classes.contains(&class.name) {
-                    let has_misresolved_ref = resolved_method.params.iter()
-                        .any(|p| type_is_misresolved_int_ref(&p.ty.original));
-                    let return_misresolved = resolved_method.return_type.as_ref()
-                        .map(|rt| type_is_misresolved_int_ref(&rt.original))
+                    let has_const_ref_i32 = resolved_method.params.iter()
+                        .any(|p| type_is_const_ref_i32(&p.ty.original));
+                    let return_const_ref_i32 = resolved_method.return_type.as_ref()
+                        .map(|rt| type_is_const_ref_i32(&rt.original))
                         .unwrap_or(false);
-                    if has_misresolved_ref || return_misresolved {
+                    if has_const_ref_i32 || return_const_ref_i32 {
                         continue;
+                    }
+                    // MutRef(I32) is only suspicious for NCollection non-primitive classes
+                    if ncollection_nonprimitive_class_names.contains(&class.name) {
+                        let has_mut_ref_i32 = resolved_method.params.iter()
+                            .any(|p| type_is_mut_ref_i32(&p.ty.original));
+                        let return_mut_ref_i32 = resolved_method.return_type.as_ref()
+                            .map(|rt| type_is_mut_ref_i32(&rt.original))
+                            .unwrap_or(false);
+                        if has_mut_ref_i32 || return_mut_ref_i32 {
+                            continue;
+                        }
                     }
                 }
 

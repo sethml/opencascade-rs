@@ -1584,6 +1584,27 @@ impl Connect {
         unsafe { crate::ffi::Poly_Connect_triangle(self as *const Self, N) }
     }
 
+    /// **Source:** `Poly_Connect.hxx`:92 - `Poly_Connect::Triangles()`
+    /// Returns in t1, t2 and t3, the indices of the 3 triangles
+    /// adjacent to the triangle at index T in the triangles table
+    /// specific to the triangulation analyzed by this tool.
+    /// Warning
+    /// Null indices are returned when there are fewer than 3
+    /// adjacent triangles.
+    pub fn triangles(&self, T: i32, t1: &mut i32, t2: &mut i32, t3: &mut i32) {
+        unsafe { crate::ffi::Poly_Connect_triangles(self as *const Self, T, t1, t2, t3) }
+    }
+
+    /// **Source:** `Poly_Connect.hxx`:108 - `Poly_Connect::Nodes()`
+    /// Returns, in n1, n2 and n3, the indices of the 3 nodes
+    /// adjacent to the triangle referenced at index T in the
+    /// triangles table specific to the triangulation analyzed by this tool.
+    /// Warning
+    /// Null indices are returned when there are fewer than 3 adjacent nodes.
+    pub fn nodes(&self, T: i32, n1: &mut i32, n2: &mut i32, n3: &mut i32) {
+        unsafe { crate::ffi::Poly_Connect_nodes(self as *const Self, T, n1, n2, n3) }
+    }
+
     /// **Source:** `Poly_Connect.hxx`:137 - `Poly_Connect::Initialize()`
     /// Initializes an iterator to search for all the triangles
     /// containing the node referenced at index N in the nodes
@@ -1632,22 +1653,6 @@ impl Connect {
         unsafe { crate::ffi::Poly_Connect_value(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for Connect (2 total) ──
-// SKIPPED: **Source:** `Poly_Connect.hxx`:92 - `Poly_Connect::Triangles`
-//   method: Returns in t1, t2 and t3, the indices of the 3 triangles
-//   method: adjacent to the triangle at index T in the triangles table
-//   method: specific to the triangulation analyzed by this tool.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn triangles(&self, T: i32, t1: &mut i32, t2: &mut i32, t3: &mut i32);
-//
-// SKIPPED: **Source:** `Poly_Connect.hxx`:108 - `Poly_Connect::Nodes`
-//   method: Returns, in n1, n2 and n3, the indices of the 3 nodes
-//   method: adjacent to the triangle referenced at index T in the
-//   method: triangles table specific to the triangulation analyzed by this tool.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn nodes(&self, T: i32, n1: &mut i32, n2: &mut i32, n3: &mut i32);
-//
 
 // ========================
 // From Poly_HArray1OfTriangle.hxx
@@ -3464,26 +3469,26 @@ impl Triangle {
         unsafe { crate::ffi::Poly_Triangle_set_int2(self as *mut Self, theIndex, theNode) }
     }
 
+    /// **Source:** `Poly_Triangle.hxx`:68 - `Poly_Triangle::Get()`
+    /// Returns the node indices of this triangle.
+    pub fn get(&self, theN1: &mut i32, theN2: &mut i32, theN3: &mut i32) {
+        unsafe { crate::ffi::Poly_Triangle_get(self as *const Self, theN1, theN2, theN3) }
+    }
+
     /// **Source:** `Poly_Triangle.hxx`:77 - `Poly_Triangle::Value()`
     /// Get the node of given Index.
     /// Raises OutOfRange from Standard if Index is not in 1,2,3
     pub fn value(&self, theIndex: i32) -> i32 {
         unsafe { crate::ffi::Poly_Triangle_value(self as *const Self, theIndex) }
     }
-}
 
-// ── Skipped symbols for Triangle (2 total) ──
-// SKIPPED: **Source:** `Poly_Triangle.hxx`:68 - `Poly_Triangle::Get`
-//   method: Returns the node indices of this triangle.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get(&self, theN1: &mut i32, theN2: &mut i32, theN3: &mut i32);
-//
-// SKIPPED: **Source:** `Poly_Triangle.hxx`:88 - `Poly_Triangle::ChangeValue`
-//   method: Get the node of given Index.
-//   method: Raises OutOfRange if Index is not in 1,2,3
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn change_value(&mut self, theIndex: i32) -> &mut i32;
-//
+    /// **Source:** `Poly_Triangle.hxx`:88 - `Poly_Triangle::ChangeValue()`
+    /// Get the node of given Index.
+    /// Raises OutOfRange if Index is not in 1,2,3
+    pub fn change_value(&mut self, theIndex: i32) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::Poly_Triangle_change_value(self as *mut Self, theIndex)) }
+    }
+}
 
 // ========================
 // From Poly_Triangulation.hxx

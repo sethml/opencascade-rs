@@ -234,13 +234,14 @@ pub use crate::ffi::{
     HandleIGESControlToolContainer, HandleIGESDataHArray1OfIGESEntity, HandleIGESDataIGESEntity,
     HandleIGESToBRepActor, HandleIGESToBRepAlgoContainer, HandleIGESToBRepIGESBoundary,
     HandleIGESToBRepToolContainer, HandleIMeshDataShape, HandleIMeshDataTessellatedShape,
-    HandleIMeshToolsContext, HandleImageTexture, HandleIntCurvesFaceIntersector,
-    HandleIntPatchLine, HandleIntPatchWLine, HandleIntSurfLineOn2S, HandleIntToolsContext,
-    HandleIntToolsTopolTool, HandleInterfaceCheck, HandleInterfaceCheckFailure,
-    HandleInterfaceCopyMap, HandleInterfaceEntityCluster, HandleInterfaceGTool,
-    HandleInterfaceGlobalNodeOfGeneralLib, HandleInterfaceGlobalNodeOfReaderLib,
-    HandleInterfaceHArray1OfHAsciiString, HandleInterfaceHGraph, HandleInterfaceHSequenceOfCheck,
-    HandleInterfaceIntVal, HandleInterfaceInterfaceError, HandleInterfaceInterfaceMismatch,
+    HandleIMeshToolsContext, HandleIMeshToolsMeshBuilder, HandleIMeshToolsShapeExplorer,
+    HandleImageTexture, HandleIntCurvesFaceIntersector, HandleIntPatchLine, HandleIntPatchWLine,
+    HandleIntSurfLineOn2S, HandleIntToolsContext, HandleIntToolsTopolTool, HandleInterfaceCheck,
+    HandleInterfaceCheckFailure, HandleInterfaceCopyMap, HandleInterfaceEntityCluster,
+    HandleInterfaceGTool, HandleInterfaceGlobalNodeOfGeneralLib,
+    HandleInterfaceGlobalNodeOfReaderLib, HandleInterfaceHArray1OfHAsciiString,
+    HandleInterfaceHGraph, HandleInterfaceHSequenceOfCheck, HandleInterfaceIntVal,
+    HandleInterfaceInterfaceError, HandleInterfaceInterfaceMismatch,
     HandleInterfaceNodeOfGeneralLib, HandleInterfaceNodeOfReaderLib, HandleInterfaceParamList,
     HandleInterfaceParamSet, HandleInterfaceReportEntity, HandleInterfaceSignLabel,
     HandleInterfaceStatic, HandleInterfaceTypedValue, HandleInterfaceUndefinedContent,
@@ -2853,6 +2854,60 @@ impl Dump {
         }
     }
 
+    /// **Source:** `Standard_Dump.hxx`:425 - `Standard_Dump::ProcessStreamName()`
+    /// Check whether the parameter name is equal to the name in the stream at position
+    /// @param[in]  theStreamStr stream with values
+    /// @param[in]  theName      stream key value
+    /// @param[out] theStreamPos current position in the stream
+    pub fn process_stream_name(
+        theStreamStr: &crate::t_collection::AsciiString,
+        theName: &crate::t_collection::AsciiString,
+        theStreamPos: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::Standard_Dump_process_stream_name(theStreamStr, theName, theStreamPos)
+        }
+    }
+
+    /// **Source:** `Standard_Dump.hxx`:434 - `Standard_Dump::ProcessFieldName()`
+    /// Check whether the field name is equal to the name in the stream at position
+    /// @param[in]  theStreamStr stream with values
+    /// @param[in]  theName      stream key field value
+    /// @param[out] theStreamPos current position in the stream
+    pub fn process_field_name(
+        theStreamStr: &crate::t_collection::AsciiString,
+        theName: &crate::t_collection::AsciiString,
+        theStreamPos: &mut i32,
+    ) -> bool {
+        unsafe { crate::ffi::Standard_Dump_process_field_name(theStreamStr, theName, theStreamPos) }
+    }
+
+    /// **Source:** `Standard_Dump.hxx`:443 - `Standard_Dump::InitRealValues()`
+    /// Unite values in one value using template: value_1, value_2, ..., value_n
+    /// @param[in]  theStreamStr stream with values
+    /// @param[out] theStreamPos current position in the stream
+    /// @param[in]  theCount     number of values
+    pub fn init_real_values(
+        theStreamStr: &crate::t_collection::AsciiString,
+        theStreamPos: &mut i32,
+        theCount: i32,
+    ) -> bool {
+        unsafe { crate::ffi::Standard_Dump_init_real_values(theStreamStr, theStreamPos, theCount) }
+    }
+
+    /// **Source:** `Standard_Dump.hxx`:453 - `Standard_Dump::InitValue()`
+    /// Returns real value
+    /// @param[in]  theStreamStr stream with values
+    /// @param[out] theStreamPos current position in the stream
+    /// @param[out] theValue     stream value
+    pub fn init_value(
+        theStreamStr: &crate::t_collection::AsciiString,
+        theStreamPos: &mut i32,
+        theValue: &mut crate::t_collection::AsciiString,
+    ) -> bool {
+        unsafe { crate::ffi::Standard_Dump_init_value(theStreamStr, theStreamPos, theValue) }
+    }
+
     /// **Source:** `Standard_Dump.hxx`:460 - `Standard_Dump::DumpFieldToName()`
     /// Convert field name into dump text value, removes "&" and "my" prefixes
     /// An example, for field myValue, theName is Value, for &myCLass, the name is Class
@@ -2864,7 +2919,7 @@ impl Dump {
     }
 }
 
-// ── Skipped symbols for Dump (13 total) ──
+// ── Skipped symbols for Dump (9 total) ──
 // SKIPPED: **Source:** `Standard_Dump.hxx`:333 - `Standard_Dump::Text`
 //   static_method: Converts stream value to string value. The result is original stream value.
 //   static_method: @param theStream source value
@@ -2922,34 +2977,6 @@ impl Dump {
 //   static_method: @param[in] theCount     number of values
 //   Reason: has unbindable types: param 'theOStream': stream type (Standard_OStream&)
 //   // pub fn dump_real_values(theOStream: /* Standard_OStream& */, theCount: i32);
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:425 - `Standard_Dump::ProcessStreamName`
-//   static_method: Check whether the parameter name is equal to the name in the stream at position
-//   static_method: @param[in]  theStreamStr stream with values
-//   static_method: @param[in]  theName      stream key value
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn process_stream_name(theStreamStr: &AsciiString, theName: &AsciiString, theStreamPos: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:434 - `Standard_Dump::ProcessFieldName`
-//   static_method: Check whether the field name is equal to the name in the stream at position
-//   static_method: @param[in]  theStreamStr stream with values
-//   static_method: @param[in]  theName      stream key field value
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn process_field_name(theStreamStr: &AsciiString, theName: &AsciiString, theStreamPos: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:443 - `Standard_Dump::InitRealValues`
-//   static_method: Unite values in one value using template: value_1, value_2, ..., value_n
-//   static_method: @param[in]  theStreamStr stream with values
-//   static_method: @param[out] theStreamPos current position in the stream
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn init_real_values(theStreamStr: &AsciiString, theStreamPos: &mut i32, theCount: i32) -> bool;
-//
-// SKIPPED: **Source:** `Standard_Dump.hxx`:453 - `Standard_Dump::InitValue`
-//   static_method: Returns real value
-//   static_method: @param[in]  theStreamStr stream with values
-//   static_method: @param[out] theStreamPos current position in the stream
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn init_value(theStreamStr: &AsciiString, theStreamPos: &mut i32, theValue: &mut AsciiString) -> bool;
 //
 
 // ========================
@@ -8895,6 +8922,11 @@ impl Persistent {
         unsafe { &*(crate::ffi::Standard_Persistent_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `Standard_Persistent.hxx`:35 - `Standard_Persistent::TypeNum()`
+    pub fn type_num(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::Standard_Persistent_type_num(self as *mut Self)) }
+    }
+
     /// **Source:** `Standard_Persistent.hxx`:33 - `Standard_Persistent::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -8993,12 +9025,6 @@ impl HandleStandardPersistent {
         }
     }
 }
-
-// ── Skipped symbols for Persistent (1 total) ──
-// SKIPPED: **Source:** `Standard_Persistent.hxx`:35 - `Standard_Persistent::TypeNum`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn type_num(&mut self) -> &mut i32;
-//
 
 // ========================
 // From Standard_ProgramError.hxx
@@ -17170,6 +17196,42 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIMeshToolsContext>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleIMeshToolsContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IMeshTools_MeshBuilder>
+    ///
+    /// Returns `None` if the handle does not point to a `IMeshTools_MeshBuilder` (or subclass).
+    pub fn downcast_to_mesh_builder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshBuilder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIMeshToolsMeshBuilder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<IMeshTools_ShapeExplorer>
+    ///
+    /// Returns `None` if the handle does not point to a `IMeshTools_ShapeExplorer` (or subclass).
+    pub fn downcast_to_shape_explorer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIMeshToolsShapeExplorer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleIMeshToolsShapeExplorer(
                 self as *const Self,
             )
         };

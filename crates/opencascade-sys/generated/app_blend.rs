@@ -26,6 +26,29 @@ impl Approx {
         unsafe { crate::ffi::AppBlend_Approx_is_done(self as *const Self) }
     }
 
+    /// **Source:** `AppBlend_Approx.hxx`:39 - `AppBlend_Approx::SurfShape()`
+    pub fn surf_shape(
+        &self,
+        UDegree: &mut i32,
+        VDegree: &mut i32,
+        NbUPoles: &mut i32,
+        NbVPoles: &mut i32,
+        NbUKnots: &mut i32,
+        NbVKnots: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::AppBlend_Approx_surf_shape(
+                self as *const Self,
+                UDegree,
+                VDegree,
+                NbUPoles,
+                NbVPoles,
+                NbUKnots,
+                NbVKnots,
+            )
+        }
+    }
+
     /// **Source:** `AppBlend_Approx.hxx`:46 - `AppBlend_Approx::Surface()`
     pub fn surface(
         &self,
@@ -94,6 +117,18 @@ impl Approx {
         unsafe { crate::ffi::AppBlend_Approx_nb_curves2d(self as *const Self) }
     }
 
+    /// **Source:** `AppBlend_Approx.hxx`:71 - `AppBlend_Approx::Curves2dShape()`
+    pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
+        unsafe {
+            crate::ffi::AppBlend_Approx_curves2d_shape(
+                self as *const Self,
+                Degree,
+                NbPoles,
+                NbKnots,
+            )
+        }
+    }
+
     /// **Source:** `AppBlend_Approx.hxx`:75 - `AppBlend_Approx::Curve2d()`
     pub fn curve2d(
         &self,
@@ -137,13 +172,3 @@ impl Approx {
         unsafe { crate::ffi::AppBlend_Approx_tol_curve_on_surf(self as *const Self, Index) }
     }
 }
-
-// ── Skipped symbols for Approx (2 total) ──
-// SKIPPED: **Source:** `AppBlend_Approx.hxx`:39 - `AppBlend_Approx::SurfShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn surf_shape(&self, UDegree: &mut i32, VDegree: &mut i32, NbUPoles: &mut i32, NbVPoles: &mut i32, NbUKnots: &mut i32, NbVKnots: &mut i32);
-//
-// SKIPPED: **Source:** `AppBlend_Approx.hxx`:71 - `AppBlend_Approx::Curves2dShape`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32);
-//

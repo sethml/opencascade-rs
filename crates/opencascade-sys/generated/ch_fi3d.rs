@@ -159,8 +159,18 @@ impl Builder {
     /// **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
     /// gives the number of  the contour containing E or 0
     /// if E does  not  belong to  any  contour.
-    pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
-        unsafe { crate::ffi::ChFi3d_Builder_contains(self as *const Self, E) }
+    pub fn contains_edge(&self, E: &crate::topo_ds::Edge) -> i32 {
+        unsafe { crate::ffi::ChFi3d_Builder_contains_edge(self as *const Self, E) }
+    }
+
+    /// **Source:** `ChFi3d_Builder.hxx`:91 - `ChFi3d_Builder::Contains()`
+    /// gives  the number of  the contour containing E or 0
+    /// if E does  not  belong  to  any  contour.
+    /// Sets in IndexInSpine the index of E in the contour if it's found
+    pub fn contains_edge_int(&self, E: &crate::topo_ds::Edge, IndexInSpine: &mut i32) -> i32 {
+        unsafe {
+            crate::ffi::ChFi3d_Builder_contains_edge_int(self as *const Self, E, IndexInSpine)
+        }
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
@@ -391,14 +401,7 @@ impl Builder {
     }
 }
 
-// ── Skipped symbols for Builder (2 total) ──
-// SKIPPED: **Source:** `ChFi3d_Builder.hxx`:91 - `ChFi3d_Builder::Contains`
-//   method: gives  the number of  the contour containing E or 0
-//   method: if E does  not  belong  to  any  contour.
-//   method: Sets in IndexInSpine the index of E in the contour if it's found
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn contains(&self, E: &Edge, IndexInSpine: &mut i32) -> i32;
-//
+// ── Skipped symbols for Builder (1 total) ──
 // SKIPPED: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder`
 //   method: Returns the Builder of  topologic operations.
 //   Reason: return type 'Handle(TopOpeBRepBuild_HBuilder)' is unknown

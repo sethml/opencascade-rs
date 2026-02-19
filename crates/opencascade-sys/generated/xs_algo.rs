@@ -164,7 +164,7 @@ impl ShapeProcessor {
 //   static_method: Fill the parameter map with the values from the specified parameters.
 //   static_method: @param theParameters Parameters to be used in the processing.
 //   static_method: @param theIsForce Flag indicating whether parameter should be replaced if it already exists in
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn fill_parameter_map(theParameters: &ShapeFixParameters, theIsReplace: bool, theMap: &mut i32);
 //
 // SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:120 - `XSAlgo_ShapeProcessor::SetShapeFixParameters`
@@ -178,20 +178,20 @@ impl ShapeProcessor {
 //   static_method: Set the parameter in the map.
 //   static_method: @param theKey Key of the parameter.
 //   static_method: @param theValue Value of the parameter.
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn set_parameter(theKey: *const char, theValue: ShapeFixParameters_FixMode, theIsReplace: bool, theMap: &mut i32);
 //
 // SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:141 - `XSAlgo_ShapeProcessor::SetParameter`
 //   static_method: Set the parameter in the map.
 //   static_method: @param theKey Key of the parameter.
 //   static_method: @param theValue Value of the parameter.
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn set_parameter(theKey: *const char, theValue: f64, theIsReplace: bool, theMap: &mut i32);
 //
 // SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:152 - `XSAlgo_ShapeProcessor::SetParameter`
 //   static_method: Set the parameter in the map.
 //   static_method: @param theKey Key of the parameter.
 //   static_method: @param theValue Value of the parameter.
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn set_parameter(theKey: *const char, theValue: &AsciiString, theIsReplace: bool, theMap: &mut i32);
 //

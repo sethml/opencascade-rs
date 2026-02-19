@@ -3322,6 +3322,29 @@ impl Delaun {
         unsafe { &*(crate::ffi::BRepMesh_Delaun_circles(self as *const Self)) }
     }
 
+    /// **Source:** `BRepMesh_Delaun.hxx`:126 - `BRepMesh_Delaun::Contains()`
+    /// Test is the given triangle contains the given vertex.
+    /// @param theSqTolerance square tolerance to check closeness to some edge
+    /// @param theEdgeOn If it is != 0 the vertex lies onto the edge index
+    /// returned through this parameter.
+    pub fn contains(
+        &self,
+        theTriangleId: i32,
+        theVertex: &Vertex,
+        theSqTolerance: f64,
+        theEdgeOn: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepMesh_Delaun_contains(
+                self as *const Self,
+                theTriangleId,
+                theVertex,
+                theSqTolerance,
+                theEdgeOn,
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_Delaun.hxx`:140 - `BRepMesh_Delaun::RemoveAuxElements()`
     /// Destruction of auxiliary triangles containing the given vertices.
     /// Removes auxiliary vertices also.
@@ -3331,7 +3354,7 @@ impl Delaun {
     }
 }
 
-// ── Skipped symbols for Delaun (11 total) ──
+// ── Skipped symbols for Delaun (10 total) ──
 // SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:46 - `BRepMesh_Delaun::BRepMesh_Delaun`
 //   constructor: Creates the triangulation with an empty Mesh data structure.
 //   Reason: param 'theVertices' uses unknown type 'IMeshData::Array1OfVertexOfDelaun&'
@@ -3376,13 +3399,6 @@ impl Delaun {
 //   method: Gives the list of free edges used only one time
 //   Reason: return type 'Handle(IMeshData::MapOfInteger)' is unknown
 //   // pub fn free_edges(&self) -> OwnedPtr<Handle<IMeshData::MapOfInteger>>;
-//
-// SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:126 - `BRepMesh_Delaun::Contains`
-//   method: Test is the given triangle contains the given vertex.
-//   method: @param theSqTolerance square tolerance to check closeness to some edge
-//   method: @param theEdgeOn If it is != 0 the vertex lies onto the edge index
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn contains(&self, theTriangleId: i32, theVertex: &Vertex, theSqTolerance: f64, theEdgeOn: &mut i32) -> bool;
 //
 // SKIPPED: **Source:** `BRepMesh_Delaun.hxx`:132 - `BRepMesh_Delaun::SetAuxVertices`
 //   method: Explicitly sets ids of auxiliary vertices used to build mesh and used by 3rd-party algorithms.
@@ -5721,6 +5737,27 @@ impl MeshTool {
         }
     }
 
+    /// **Source:** `BRepMesh_MeshTool.hxx`:118 - `BRepMesh_MeshTool::AddLink()`
+    /// Adds new link to mesh.
+    /// Updates link index and link orientation parameters.
+    pub fn add_link(
+        &mut self,
+        theFirstNode: i32,
+        theLastNode: i32,
+        theLinkIndex: &mut i32,
+        theLinkOri: &mut bool,
+    ) {
+        unsafe {
+            crate::ffi::BRepMesh_MeshTool_add_link(
+                self as *mut Self,
+                theFirstNode,
+                theLastNode,
+                theLinkIndex,
+                theLinkOri,
+            )
+        }
+    }
+
     /// **Source:** `BRepMesh_MeshTool.hxx`:131 - `BRepMesh_MeshTool::Legalize()`
     /// Performs legalization of triangles connected to the specified link.
     pub fn legalize(&mut self, theLinkIndex: i32) {
@@ -5848,7 +5885,7 @@ impl HandleBRepMeshMeshTool {
     }
 }
 
-// ── Skipped symbols for MeshTool (7 total) ──
+// ── Skipped symbols for MeshTool (6 total) ──
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:86 - `BRepMesh_MeshTool::DumpTriangles`
 //   method: Dumps triangles to specified file.
 //   Reason: has unbindable types: param 'theTriangles': raw pointer (IMeshData::MapOfInteger*)
@@ -5858,12 +5895,6 @@ impl HandleBRepMeshMeshTool {
 //   method: Adds new triangle with specified nodes to mesh.
 //   Reason: has unbindable types: param 'theEdges': C-style array (Standard_Integer[3]&)
 //   // pub fn add_triangle(&mut self, thePoint1: i32, thePoint2: i32, thePoint3: i32, theEdges: /* Standard_Integer[3]& */);
-//
-// SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:118 - `BRepMesh_MeshTool::AddLink`
-//   method: Adds new link to mesh.
-//   method: Updates link index and link orientation parameters.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn add_link(&mut self, theFirstNode: i32, theLastNode: i32, theLinkIndex: &mut i32, theLinkOri: &mut bool);
 //
 // SKIPPED: **Source:** `BRepMesh_MeshTool.hxx`:142 - `BRepMesh_MeshTool::EraseTriangles`
 //   method: Erases the given set of triangles.

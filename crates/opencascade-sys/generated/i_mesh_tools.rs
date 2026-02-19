@@ -902,6 +902,311 @@ impl HandleIMeshToolsMeshAlgoFactory {
 }
 
 // ========================
+// From IMeshTools_MeshBuilder.hxx
+// ========================
+
+/// **Source:** `IMeshTools_MeshBuilder.hxx`:39 - `IMeshTools_MeshBuilder`
+/// Builds mesh for each face of shape without triangulation.
+/// In case if some faces of shape have already been triangulated
+/// checks deflection of existing polygonal model and re-uses it
+/// if deflection satisfies the specified parameter. Otherwise
+/// nullifies existing triangulation and build triangulation anew.
+///
+/// The following statuses are used:
+/// Message_Done1 - algorithm has finished without errors.
+/// Message_Fail1 - invalid context.
+/// Message_Fail2 - algorithm has faced unexpected error.
+/// Message_Fail3 - fail to discretize edges.
+/// Message_Fail4 - can't heal discrete model.
+/// Message_Fail5 - fail to pre-process model.
+/// Message_Fail6 - fail to discretize faces.
+/// Message_Fail7 - fail to post-process model.
+/// Message_Warn1 - shape contains no objects to mesh.
+pub use crate::ffi::IMeshTools_MeshBuilder as MeshBuilder;
+
+unsafe impl crate::CppDeletable for MeshBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IMeshTools_MeshBuilder_destructor(ptr);
+    }
+}
+
+impl MeshBuilder {
+    /// **Source:** `IMeshTools_MeshBuilder.hxx`:43 - `IMeshTools_MeshBuilder::IMeshTools_MeshBuilder()`
+    /// Constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_MeshBuilder_ctor()) }
+    }
+
+    /// **Source:** `IMeshTools_MeshBuilder.hxx`:46 - `IMeshTools_MeshBuilder::IMeshTools_MeshBuilder()`
+    /// Constructor.
+    pub fn new_handleimeshtoolscontext(
+        theContext: &crate::ffi::HandleIMeshToolsContext,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IMeshTools_MeshBuilder_ctor_handleimeshtoolscontext(theContext),
+            )
+        }
+    }
+
+    /// **Source:** `IMeshTools_MeshBuilder.hxx`:52 - `IMeshTools_MeshBuilder::SetContext()`
+    /// Sets context for algorithm.
+    pub fn set_context(&mut self, theContext: &crate::ffi::HandleIMeshToolsContext) {
+        unsafe { crate::ffi::IMeshTools_MeshBuilder_set_context(self as *mut Self, theContext) }
+    }
+
+    /// **Source:** `IMeshTools_MeshBuilder.hxx`:55 - `IMeshTools_MeshBuilder::GetContext()`
+    /// Gets context of algorithm.
+    pub fn get_context(&self) -> &crate::ffi::HandleIMeshToolsContext {
+        unsafe { &*(crate::ffi::IMeshTools_MeshBuilder_get_context(self as *const Self)) }
+    }
+
+    /// **Source:** `IMeshTools_MeshBuilder.hxx`:58 - `IMeshTools_MeshBuilder::Perform()`
+    /// Performs meshing to the shape using current context.
+    pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
+        unsafe { crate::ffi::IMeshTools_MeshBuilder_perform(self as *mut Self, theRange) }
+    }
+
+    /// **Source:** `IMeshTools_MeshBuilder.hxx`:60 - `IMeshTools_MeshBuilder::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IMeshTools_MeshBuilder_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IMeshTools_MeshBuilder.hxx`:60 - `IMeshTools_MeshBuilder::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_MeshBuilder_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IMeshTools_MeshBuilder.hxx`:60 - `IMeshTools_MeshBuilder::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IMeshTools_MeshBuilder_get_type_descriptor()) }
+    }
+
+    /// Upcast to Message_Algorithm
+    pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
+        unsafe { &*(crate::ffi::IMeshTools_MeshBuilder_as_Message_Algorithm(self as *const Self)) }
+    }
+
+    /// Upcast to Message_Algorithm (mutable)
+    pub fn as_message_algorithm_mut(&mut self) -> &mut crate::message::Algorithm {
+        unsafe {
+            &mut *(crate::ffi::IMeshTools_MeshBuilder_as_Message_Algorithm_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::IMeshTools_MeshBuilder_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IMeshTools_MeshBuilder_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshBuilder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_MeshBuilder_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
+    pub fn set_status(&mut self, theStat: crate::message::Status) {
+        unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_inherited_SetStatus(
+                self as *mut Self,
+                theStat.into(),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
+    pub fn get_status(&self) -> &crate::message::ExecStatus {
+        unsafe { &*(crate::ffi::IMeshTools_MeshBuilder_inherited_GetStatus(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
+    pub fn change_status(&mut self) -> &mut crate::message::ExecStatus {
+        unsafe {
+            &mut *(crate::ffi::IMeshTools_MeshBuilder_inherited_ChangeStatus(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
+    pub fn clear_status(&mut self) {
+        unsafe { crate::ffi::IMeshTools_MeshBuilder_inherited_ClearStatus(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
+    pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
+        unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_inherited_SetMessenger(self as *mut Self, theMsgr)
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
+    pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_MeshBuilder_inherited_GetMessenger(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
+    pub fn send_status_messages(
+        &self,
+        theFilter: &crate::message::ExecStatus,
+        theTraceLevel: crate::message::Gravity,
+        theMaxCount: i32,
+    ) {
+        unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_inherited_SendStatusMessages(
+                self as *const Self,
+                theFilter,
+                theTraceLevel.into(),
+                theMaxCount,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
+    pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
+        unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_inherited_SendMessages(
+                self as *const Self,
+                theTraceLevel.into(),
+                theMaxCount,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
+    pub fn add_status(&mut self, theOther: &crate::ffi::HandleMessageAlgorithm) {
+        unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_inherited_AddStatus(self as *mut Self, theOther)
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:197 - `Message_Algorithm::GetMessageNumbers()`
+    pub fn get_message_numbers(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IMeshTools_MeshBuilder_inherited_GetMessageNumbers(
+                    self as *const Self,
+                    theStatus.into(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
+    pub fn get_message_strings(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IMeshTools_MeshBuilder_inherited_GetMessageStrings(
+                    self as *const Self,
+                    theStatus.into(),
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::IMeshTools_MeshBuilder_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshTools_MeshBuilder_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshTools_MeshBuilder_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIMeshToolsMeshBuilder;
+
+unsafe impl crate::CppDeletable for HandleIMeshToolsMeshBuilder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshToolsMeshBuilder_destructor(ptr);
+    }
+}
+
+impl HandleIMeshToolsMeshBuilder {
+    /// Dereference this Handle to access the underlying IMeshTools_MeshBuilder
+    pub fn get(&self) -> &crate::ffi::IMeshTools_MeshBuilder {
+        unsafe { &*(crate::ffi::HandleIMeshToolsMeshBuilder_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_MeshBuilder
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_MeshBuilder {
+        unsafe { &mut *(crate::ffi::HandleIMeshToolsMeshBuilder_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshTools_MeshBuilder> to Handle<Message_Algorithm>
+    pub fn to_handle_algorithm(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlgorithm> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshToolsMeshBuilder_to_HandleMessageAlgorithm(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IMeshTools_MeshBuilder> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshToolsMeshBuilder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+// ========================
 // From IMeshTools_ModelAlgo.hxx
 // ========================
 
@@ -1434,6 +1739,186 @@ impl Parameters {
     /// (minimum mesh edge length) from deflection
     pub fn rel_min_size() -> f64 {
         unsafe { crate::ffi::IMeshTools_Parameters_rel_min_size() }
+    }
+}
+
+// ========================
+// From IMeshTools_ShapeExplorer.hxx
+// ========================
+
+/// **Source:** `IMeshTools_ShapeExplorer.hxx`:25 - `IMeshTools_ShapeExplorer`
+/// Explores TopoDS_Shape for parts to be meshed - faces and free edges.
+pub use crate::ffi::IMeshTools_ShapeExplorer as ShapeExplorer;
+
+unsafe impl crate::CppDeletable for ShapeExplorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::IMeshTools_ShapeExplorer_destructor(ptr);
+    }
+}
+
+impl ShapeExplorer {
+    /// **Source:** `IMeshTools_ShapeExplorer.hxx`:29 - `IMeshTools_ShapeExplorer::IMeshTools_ShapeExplorer()`
+    /// Constructor.
+    pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_ShapeExplorer_ctor_shape(theShape))
+        }
+    }
+
+    /// **Source:** `IMeshTools_ShapeExplorer.hxx`:35 - `IMeshTools_ShapeExplorer::Accept()`
+    /// Starts exploring of a shape.
+    pub fn accept(&mut self, theVisitor: &crate::ffi::HandleIMeshToolsShapeVisitor) {
+        unsafe { crate::ffi::IMeshTools_ShapeExplorer_accept(self as *mut Self, theVisitor) }
+    }
+
+    /// **Source:** `IMeshTools_ShapeExplorer.hxx`:37 - `IMeshTools_ShapeExplorer::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IMeshTools_ShapeExplorer_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `IMeshTools_ShapeExplorer.hxx`:37 - `IMeshTools_ShapeExplorer::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::IMeshTools_ShapeExplorer_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `IMeshTools_ShapeExplorer.hxx`:37 - `IMeshTools_ShapeExplorer::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::IMeshTools_ShapeExplorer_get_type_descriptor()) }
+    }
+
+    /// Upcast to IMeshData_Shape
+    pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
+        unsafe { &*(crate::ffi::IMeshTools_ShapeExplorer_as_IMeshData_Shape(self as *const Self)) }
+    }
+
+    /// Upcast to IMeshData_Shape (mutable)
+    pub fn as_i_mesh_data_shape_mut(&mut self) -> &mut crate::i_mesh_data::Shape {
+        unsafe {
+            &mut *(crate::ffi::IMeshTools_ShapeExplorer_as_IMeshData_Shape_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*(crate::ffi::IMeshTools_ShapeExplorer_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::IMeshTools_ShapeExplorer_as_Standard_Transient_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsShapeExplorer> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IMeshTools_ShapeExplorer_to_handle(
+                obj.into_raw(),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
+    pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
+        unsafe {
+            crate::ffi::IMeshTools_ShapeExplorer_inherited_SetShape(self as *mut Self, theShape)
+        }
+    }
+
+    /// Inherited: **Source:** `IMeshData_Shape.hxx`:34 - `IMeshData_Shape::GetShape()`
+    pub fn get_shape(&self) -> &crate::topo_ds::Shape {
+        unsafe { &*(crate::ffi::IMeshTools_ShapeExplorer_inherited_GetShape(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IMeshTools_ShapeExplorer_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::IMeshTools_ShapeExplorer_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::IMeshTools_ShapeExplorer_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::IMeshTools_ShapeExplorer_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::IMeshTools_ShapeExplorer_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::IMeshTools_ShapeExplorer_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleIMeshToolsShapeExplorer;
+
+unsafe impl crate::CppDeletable for HandleIMeshToolsShapeExplorer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleIMeshToolsShapeExplorer_destructor(ptr);
+    }
+}
+
+impl HandleIMeshToolsShapeExplorer {
+    /// Dereference this Handle to access the underlying IMeshTools_ShapeExplorer
+    pub fn get(&self) -> &crate::ffi::IMeshTools_ShapeExplorer {
+        unsafe { &*(crate::ffi::HandleIMeshToolsShapeExplorer_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying IMeshTools_ShapeExplorer
+    pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_ShapeExplorer {
+        unsafe { &mut *(crate::ffi::HandleIMeshToolsShapeExplorer_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<IMeshTools_ShapeExplorer> to Handle<IMeshData_Shape>
+    pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshToolsShapeExplorer_to_HandleIMeshDataShape(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<IMeshTools_ShapeExplorer> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleIMeshToolsShapeExplorer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 }
 

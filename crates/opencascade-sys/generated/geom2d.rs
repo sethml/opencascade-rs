@@ -1013,6 +1013,81 @@ impl BSplineCurve {
         unsafe { crate::ffi::Geom2d_BSplineCurve_set_weight(self as *mut Self, Index, Weight) }
     }
 
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:521 - `Geom2d_BSplineCurve::MovePoint()`
+    /// Moves the point of parameter U of this BSpline
+    /// curve to P. Index1 and Index2 are the indexes in the
+    /// table of poles of this BSpline curve of the first and
+    /// last poles designated to be moved.
+    /// FirstModifiedPole and LastModifiedPole are the
+    /// indexes of the first and last poles, which are
+    /// effectively modified.
+    /// In the event of incompatibility between Index1,
+    /// Index2 and the value U:
+    /// - no change is made to this BSpline curve, and
+    /// - the FirstModifiedPole and LastModifiedPole are returned null.
+    /// Exceptions
+    /// Standard_OutOfRange if:
+    /// - Index1 is greater than or equal to Index2, or
+    /// - Index1 or Index2 is less than 1 or greater than the
+    /// number of poles of this BSpline curve.
+    pub fn move_point(
+        &mut self,
+        U: f64,
+        P: &crate::gp::Pnt2d,
+        Index1: i32,
+        Index2: i32,
+        FirstModifiedPole: &mut i32,
+        LastModifiedPole: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_move_point(
+                self as *mut Self,
+                U,
+                P,
+                Index1,
+                Index2,
+                FirstModifiedPole,
+                LastModifiedPole,
+            )
+        }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:539 - `Geom2d_BSplineCurve::MovePointAndTangent()`
+    /// Move a point with parameter U to P.
+    /// and makes it tangent at U be Tangent.
+    /// StartingCondition = -1 means first can move
+    /// EndingCondition   = -1 means last point can move
+    /// StartingCondition = 0 means the first point cannot move
+    /// EndingCondition   = 0 means the last point cannot move
+    /// StartingCondition = 1 means the first point and tangent cannot move
+    /// EndingCondition   = 1 means the last point and tangent cannot move
+    /// and so forth
+    /// ErrorStatus != 0 means that there are not enough degree of freedom
+    /// with the constrain to deform the curve accordingly
+    pub fn move_point_and_tangent(
+        &mut self,
+        U: f64,
+        P: &crate::gp::Pnt2d,
+        Tangent: &crate::gp::Vec2d,
+        Tolerance: f64,
+        StartingCondition: i32,
+        EndingCondition: i32,
+        ErrorStatus: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_move_point_and_tangent(
+                self as *mut Self,
+                U,
+                P,
+                Tangent,
+                Tolerance,
+                StartingCondition,
+                EndingCondition,
+                ErrorStatus,
+            )
+        }
+    }
+
     /// **Source:** `Geom2d_BSplineCurve.hxx`:550 - `Geom2d_BSplineCurve::IsCN()`
     /// Returns true if the degree of continuity of this
     /// BSpline curve is at least N. A BSpline curve is at least GeomAbs_C0.
@@ -1396,6 +1471,37 @@ impl BSplineCurve {
     /// It is a knot value.
     pub fn last_parameter(&self) -> f64 {
         unsafe { crate::ffi::Geom2d_BSplineCurve_last_parameter(self as *const Self) }
+    }
+
+    /// **Source:** `Geom2d_BSplineCurve.hxx`:787 - `Geom2d_BSplineCurve::LocateU()`
+    /// Locates the parametric value U in the sequence of knots.
+    /// If "WithKnotRepetition" is True we consider the knot's
+    /// representation with repetition of multiple knot value,
+    /// otherwise  we consider the knot's representation with
+    /// no repetition of multiple knot values.
+    /// Knots (I1) <= U <= Knots (I2)
+    /// . if I1 = I2  U is a knot value (the tolerance criterion
+    /// ParametricTolerance is used).
+    /// . if I1 < 1  => U < Knots (1) - Abs(ParametricTolerance)
+    /// . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance)
+    pub fn locate_u(
+        &self,
+        U: f64,
+        ParametricTolerance: f64,
+        I1: &mut i32,
+        I2: &mut i32,
+        WithKnotRepetition: bool,
+    ) {
+        unsafe {
+            crate::ffi::Geom2d_BSplineCurve_locate_u(
+                self as *const Self,
+                U,
+                ParametricTolerance,
+                I1,
+                I2,
+                WithKnotRepetition,
+            )
+        }
     }
 
     /// **Source:** `Geom2d_BSplineCurve.hxx`:795 - `Geom2d_BSplineCurve::Multiplicity()`
@@ -1817,28 +1923,7 @@ impl HandleGeom2dBSplineCurve {
     }
 }
 
-// ── Skipped symbols for BSplineCurve (4 total) ──
-// SKIPPED: **Source:** `Geom2d_BSplineCurve.hxx`:521 - `Geom2d_BSplineCurve::MovePoint`
-//   method: Moves the point of parameter U of this BSpline
-//   method: curve to P. Index1 and Index2 are the indexes in the
-//   method: table of poles of this BSpline curve of the first and
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn move_point(&mut self, U: f64, P: &Pnt2d, Index1: i32, Index2: i32, FirstModifiedPole: &mut i32, LastModifiedPole: &mut i32);
-//
-// SKIPPED: **Source:** `Geom2d_BSplineCurve.hxx`:539 - `Geom2d_BSplineCurve::MovePointAndTangent`
-//   method: Move a point with parameter U to P.
-//   method: and makes it tangent at U be Tangent.
-//   method: StartingCondition = -1 means first can move
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn move_point_and_tangent(&mut self, U: f64, P: &Pnt2d, Tangent: &Vec2d, Tolerance: f64, StartingCondition: i32, EndingCondition: i32, ErrorStatus: &mut i32);
-//
-// SKIPPED: **Source:** `Geom2d_BSplineCurve.hxx`:787 - `Geom2d_BSplineCurve::LocateU`
-//   method: Locates the parametric value U in the sequence of knots.
-//   method: If "WithKnotRepetition" is True we consider the knot's
-//   method: representation with repetition of multiple knot value,
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn locate_u(&self, U: f64, ParametricTolerance: f64, I1: &mut i32, I2: &mut i32, WithKnotRepetition: bool);
-//
+// ── Skipped symbols for BSplineCurve (1 total) ──
 // SKIPPED: **Source:** `Geom2d_BSplineCurve.hxx`:840 - `Geom2d_BSplineCurve::Weights`
 //   method: Returns the weights of the B-spline curve;
 //   Reason: has unbindable types: return: raw pointer (const TColStd_Array1OfReal*)

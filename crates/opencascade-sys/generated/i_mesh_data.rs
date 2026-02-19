@@ -59,7 +59,10 @@ impl TryFrom<i32> for Status {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleBRepMeshContext, HandleIMeshToolsContext, HandleStandardTransient};
+pub use crate::ffi::{
+    HandleBRepMeshContext, HandleIMeshToolsContext, HandleIMeshToolsShapeExplorer,
+    HandleStandardTransient,
+};
 
 // ========================
 // From IMeshData_Curve.hxx
@@ -1019,6 +1022,12 @@ impl PCurve {
         unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_point(self as *mut Self, theIndex)) }
     }
 
+    /// **Source:** `IMeshData_PCurve.hxx`:46 - `IMeshData_PCurve::GetIndex()`
+    /// Returns index in mesh corresponded to discretization point with the given index.
+    pub fn get_index(&mut self, theIndex: i32) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::IMeshData_PCurve_get_index(self as *mut Self, theIndex)) }
+    }
+
     /// **Source:** `IMeshData_PCurve.hxx`:49 - `IMeshData_PCurve::RemovePoint()`
     /// Removes point with the given index.
     pub fn remove_point(&mut self, theIndex: i32) {
@@ -1179,12 +1188,7 @@ impl HandleIMeshDataPCurve {
     }
 }
 
-// ── Skipped symbols for PCurve (2 total) ──
-// SKIPPED: **Source:** `IMeshData_PCurve.hxx`:46 - `IMeshData_PCurve::GetIndex`
-//   method: Returns index in mesh corresponded to discretization point with the given index.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_index(&mut self, theIndex: i32) -> &mut i32;
-//
+// ── Skipped symbols for PCurve (1 total) ──
 // SKIPPED: **Source:** `IMeshData_PCurve.hxx`:61 - `IMeshData_PCurve::GetFace`
 //   method: Returns discrete face pcurve is associated to.
 //   Reason: return type 'const IMeshData_Face *const&' is unknown
@@ -1497,6 +1501,24 @@ impl HandleIMeshDataShape {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIMeshToolsContext>> {
         let ptr = unsafe {
             crate::ffi::HandleIMeshDataShape_downcast_to_HandleIMeshToolsContext(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<IMeshData_Shape> to Handle<IMeshTools_ShapeExplorer>
+    ///
+    /// Returns `None` if the handle does not point to a `IMeshTools_ShapeExplorer` (or subclass).
+    pub fn downcast_to_shape_explorer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIMeshToolsShapeExplorer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleIMeshDataShape_downcast_to_HandleIMeshToolsShapeExplorer(
                 self as *const Self,
             )
         };

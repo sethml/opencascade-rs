@@ -1201,6 +1201,15 @@ impl GltfLatePrimitiveArray {
         }
     }
 
+    /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:46 - `RWMesh_TriangulationSource::ChangeDegeneratedTriNb()`
+    pub fn change_degenerated_tri_nb(&mut self) -> &mut i32 {
+        unsafe {
+            &mut *(crate::ffi::RWGltf_GltfLatePrimitiveArray_inherited_ChangeDegeneratedTriNb(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `RWMesh_TriangulationSource.hxx`:49 - `RWMesh_TriangulationSource::HasGeometry()`
     pub fn has_geometry(&self) -> bool {
         unsafe {

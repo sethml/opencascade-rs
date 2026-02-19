@@ -1660,6 +1660,30 @@ impl Interference {
         unsafe { crate::ffi::TopOpeBRepDS_Interference_transition_transition(self as *mut Self, T) }
     }
 
+    /// **Source:** `TopOpeBRepDS_Interference.hxx`:74 - `TopOpeBRepDS_Interference::GKGSKS()`
+    /// return GeometryType + Geometry + SupportType + Support
+    pub fn gkgsks(
+        &self,
+        GK: &mut crate::top_ope_b_rep_ds::Kind,
+        G: &mut i32,
+        SK: &mut crate::top_ope_b_rep_ds::Kind,
+        S: &mut i32,
+    ) {
+        let mut GK_i32_: i32 = (*GK).into();
+        let mut SK_i32_: i32 = (*SK).into();
+        unsafe {
+            crate::ffi::TopOpeBRepDS_Interference_gkgsks(
+                self as *const Self,
+                &mut GK_i32_,
+                G,
+                &mut SK_i32_,
+                S,
+            )
+        };
+        *GK = crate::top_ope_b_rep_ds::Kind::try_from(GK_i32_).unwrap();
+        *SK = crate::top_ope_b_rep_ds::Kind::try_from(SK_i32_).unwrap();
+    }
+
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:79 - `TopOpeBRepDS_Interference::SupportType()`
     pub fn support_type(&self) -> crate::top_ope_b_rep_ds::Kind {
         unsafe {
@@ -1881,13 +1905,6 @@ impl HandleTopOpeBRepDSInterference {
     }
 }
 
-// ── Skipped symbols for Interference (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_Interference.hxx`:74 - `TopOpeBRepDS_Interference::GKGSKS`
-//   method: return GeometryType + Geometry + SupportType + Support
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn gkgsks(&self, GK: &mut Kind, G: &mut i32, SK: &mut Kind, S: &mut i32);
-//
-
 // ========================
 // From TopOpeBRepDS_Point.hxx
 // ========================
@@ -1990,6 +2007,11 @@ impl PointData {
         unsafe { crate::ffi::TopOpeBRepDS_PointData_set_shapes(self as *mut Self, I1, I2) }
     }
 
+    /// **Source:** `TopOpeBRepDS_PointData.hxx`:42 - `TopOpeBRepDS_PointData::GetShapes()`
+    pub fn get_shapes(&self, I1: &mut i32, I2: &mut i32) {
+        unsafe { crate::ffi::TopOpeBRepDS_PointData_get_shapes(self as *const Self, I1, I2) }
+    }
+
     /// Upcast to TopOpeBRepDS_GeometryData
     pub fn as_geometry_data(&self) -> &GeometryData {
         unsafe {
@@ -2034,12 +2056,6 @@ impl PointData {
         }
     }
 }
-
-// ── Skipped symbols for PointData (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_PointData.hxx`:42 - `TopOpeBRepDS_PointData::GetShapes`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shapes(&self, I1: &mut i32, I2: &mut i32);
-//
 
 // ========================
 // From TopOpeBRepDS_ShapeData.hxx

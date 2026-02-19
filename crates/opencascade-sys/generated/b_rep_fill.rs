@@ -347,6 +347,18 @@ impl ACRLaw {
         unsafe { crate::ffi::BRepFill_ACRLaw_inherited_D0(self as *mut Self, Abscissa, Section) }
     }
 
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
+        unsafe {
+            crate::ffi::BRepFill_ACRLaw_inherited_Parameter(
+                self as *mut Self,
+                Abscissa,
+                Index,
+                Param,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         unsafe { crate::ffi::BRepFill_ACRLaw_inherited_Abscissa(self as *mut Self, Index, Param) }
@@ -1649,6 +1661,18 @@ impl DraftLaw {
         unsafe { crate::ffi::BRepFill_DraftLaw_inherited_D0(self as *mut Self, Abscissa, Section) }
     }
 
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
+        unsafe {
+            crate::ffi::BRepFill_DraftLaw_inherited_Parameter(
+                self as *mut Self,
+                Abscissa,
+                Index,
+                Param,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         unsafe { crate::ffi::BRepFill_DraftLaw_inherited_Abscissa(self as *mut Self, Index, Param) }
@@ -1936,6 +1960,18 @@ impl Edge3DLaw {
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         unsafe { crate::ffi::BRepFill_Edge3DLaw_inherited_D0(self as *mut Self, Abscissa, Section) }
+    }
+
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
+        unsafe {
+            crate::ffi::BRepFill_Edge3DLaw_inherited_Parameter(
+                self as *mut Self,
+                Abscissa,
+                Index,
+                Param,
+            )
+        }
     }
 
     /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
@@ -2284,6 +2320,18 @@ impl EdgeOnSurfLaw {
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         unsafe {
             crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_D0(self as *mut Self, Abscissa, Section)
+        }
+    }
+
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
+        unsafe {
+            crate::ffi::BRepFill_EdgeOnSurfLaw_inherited_Parameter(
+                self as *mut Self,
+                Abscissa,
+                Index,
+                Param,
+            )
         }
     }
 
@@ -3351,6 +3399,14 @@ impl LocationLaw {
         unsafe { crate::ffi::BRepFill_LocationLaw_d0(self as *mut Self, Abscissa, Section) }
     }
 
+    /// **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    /// Find the index Law and the parameter, for a given Curvilinear abscissa
+    pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
+        unsafe {
+            crate::ffi::BRepFill_LocationLaw_parameter(self as *mut Self, Abscissa, Index, Param)
+        }
+    }
+
     /// **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
     /// Return the curvilinear abscissa  corresponding to a point
     /// of  the path, defined by  <Index>  of  Edge and a
@@ -3532,13 +3588,6 @@ impl HandleBRepFillLocationLaw {
         }
     }
 }
-
-// ── Skipped symbols for LocationLaw (1 total) ──
-// SKIPPED: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter`
-//   method: Find the index Law and the parameter, for a given Curvilinear abscissa
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64);
-//
 
 // ========================
 // From BRepFill_MultiLine.hxx
@@ -3722,6 +3771,17 @@ impl MultiLine {
     /// Upcast to AppCont_Function (mutable)
     pub fn as_app_cont_function_mut(&mut self) -> &mut crate::app_cont::Function {
         unsafe { &mut *(crate::ffi::BRepFill_MultiLine_as_AppCont_Function_mut(self as *mut Self)) }
+    }
+
+    /// Inherited: **Source:** `AppCont_Function.hxx`:37 - `AppCont_Function::GetNumberOfPoints()`
+    pub fn get_number_of_points(&self, theNbPnt: &mut i32, theNbPnt2d: &mut i32) {
+        unsafe {
+            crate::ffi::BRepFill_MultiLine_inherited_GetNumberOfPoints(
+                self as *const Self,
+                theNbPnt,
+                theNbPnt2d,
+            )
+        }
     }
 
     /// Inherited: **Source:** `AppCont_Function.hxx`:44 - `AppCont_Function::GetNbOf3dPoints()`

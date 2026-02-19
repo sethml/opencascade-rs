@@ -233,27 +233,27 @@ impl Hatcher {
         unsafe { crate::ffi::Hatch_Hatcher_start(self as *const Self, I, J) }
     }
 
+    /// **Source:** `Hatch_Hatcher.hxx`:153 - `Hatch_Hatcher::StartIndex()`
+    /// Returns the first Index and Par2 of  interval <J>  on
+    /// line  <I>.
+    pub fn start_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64) {
+        unsafe { crate::ffi::Hatch_Hatcher_start_index(self as *const Self, I, J, Index, Par2) }
+    }
+
     /// **Source:** `Hatch_Hatcher.hxx`:160 - `Hatch_Hatcher::End()`
     /// Returns the last   parameter of  interval <J>  on
     /// line  <I>.
     pub fn end(&self, I: i32, J: i32) -> f64 {
         unsafe { crate::ffi::Hatch_Hatcher_end(self as *const Self, I, J) }
     }
-}
 
-// ── Skipped symbols for Hatcher (2 total) ──
-// SKIPPED: **Source:** `Hatch_Hatcher.hxx`:153 - `Hatch_Hatcher::StartIndex`
-//   method: Returns the first Index and Par2 of  interval <J>  on
-//   method: line  <I>.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn start_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64);
-//
-// SKIPPED: **Source:** `Hatch_Hatcher.hxx`:164 - `Hatch_Hatcher::EndIndex`
-//   method: Returns the last Index and Par2 of  interval <J>  on
-//   method: line  <I>.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn end_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64);
-//
+    /// **Source:** `Hatch_Hatcher.hxx`:164 - `Hatch_Hatcher::EndIndex()`
+    /// Returns the last Index and Par2 of  interval <J>  on
+    /// line  <I>.
+    pub fn end_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64) {
+        unsafe { crate::ffi::Hatch_Hatcher_end_index(self as *const Self, I, J, Index, Par2) }
+    }
+}
 
 // ========================
 // From Hatch_Line.hxx

@@ -3056,6 +3056,28 @@ impl SurfaceRangeSample {
         }
     }
 
+    /// **Source:** `IntTools_SurfaceRangeSample.hxx`:58 - `IntTools_SurfaceRangeSample::GetIndexes()`
+    pub fn get_indexes(&self, theIndexU: &mut i32, theIndexV: &mut i32) {
+        unsafe {
+            crate::ffi::IntTools_SurfaceRangeSample_get_indexes(
+                self as *const Self,
+                theIndexU,
+                theIndexV,
+            )
+        }
+    }
+
+    /// **Source:** `IntTools_SurfaceRangeSample.hxx`:60 - `IntTools_SurfaceRangeSample::GetDepths()`
+    pub fn get_depths(&self, theDepthU: &mut i32, theDepthV: &mut i32) {
+        unsafe {
+            crate::ffi::IntTools_SurfaceRangeSample_get_depths(
+                self as *const Self,
+                theDepthU,
+                theDepthV,
+            )
+        }
+    }
+
     /// **Source:** `IntTools_SurfaceRangeSample.hxx`:62 - `IntTools_SurfaceRangeSample::SetSampleRangeU()`
     pub fn set_sample_range_u(&mut self, theRangeSampleU: &CurveRangeSample) {
         unsafe {
@@ -3199,18 +3221,10 @@ impl SurfaceRangeSample {
     }
 }
 
-// ── Skipped symbols for SurfaceRangeSample (3 total) ──
+// ── Skipped symbols for SurfaceRangeSample (1 total) ──
 // SKIPPED: **Source:** `IntTools_SurfaceRangeSample.hxx`:44 - `IntTools_SurfaceRangeSample::Assign`
 //   Reason: returns &mut with reference params (ambiguous lifetimes)
 //   // pub fn assign(&mut self, Other: &SurfaceRangeSample) -> &mut SurfaceRangeSample;
-//
-// SKIPPED: **Source:** `IntTools_SurfaceRangeSample.hxx`:58 - `IntTools_SurfaceRangeSample::GetIndexes`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_indexes(&self, theIndexU: &mut i32, theIndexV: &mut i32);
-//
-// SKIPPED: **Source:** `IntTools_SurfaceRangeSample.hxx`:60 - `IntTools_SurfaceRangeSample::GetDepths`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_depths(&self, theDepthU: &mut i32, theDepthV: &mut i32);
 //
 
 // ========================

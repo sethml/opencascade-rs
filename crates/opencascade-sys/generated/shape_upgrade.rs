@@ -2624,6 +2624,12 @@ impl FaceDivideArea {
         unsafe { &mut *(crate::ffi::ShapeUpgrade_FaceDivideArea_max_area(self as *mut Self)) }
     }
 
+    /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:47 - `ShapeUpgrade_FaceDivideArea::NbParts()`
+    /// Set number of parts expected
+    pub fn nb_parts(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::ShapeUpgrade_FaceDivideArea_nb_parts(self as *mut Self)) }
+    }
+
     /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:51 - `ShapeUpgrade_FaceDivideArea::SetNumbersUVSplits()`
     /// Set fixed numbers of splits in U and V directions.
     /// Only for "Splitting By Numbers" mode
@@ -3007,13 +3013,6 @@ impl HandleShapeUpgradeFaceDivideArea {
         }
     }
 }
-
-// ── Skipped symbols for FaceDivideArea (1 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:47 - `ShapeUpgrade_FaceDivideArea::NbParts`
-//   method: Set number of parts expected
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn nb_parts(&mut self) -> &mut i32;
-//
 
 // ========================
 // From ShapeUpgrade_FixSmallBezierCurves.hxx
@@ -5131,6 +5130,13 @@ impl ShapeDivideArea {
         unsafe { &mut *(crate::ffi::ShapeUpgrade_ShapeDivideArea_max_area(self as *mut Self)) }
     }
 
+    /// **Source:** `ShapeUpgrade_ShapeDivideArea.hxx`:43 - `ShapeUpgrade_ShapeDivideArea::NbParts()`
+    /// Set number of parts expected
+    /// for the case of splitting by number
+    pub fn nb_parts(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::ShapeUpgrade_ShapeDivideArea_nb_parts(self as *mut Self)) }
+    }
+
     /// **Source:** `ShapeUpgrade_ShapeDivideArea.hxx`:47 - `ShapeUpgrade_ShapeDivideArea::SetNumbersUVSplits()`
     /// Set fixed numbers of splits in U and V directions.
     /// Only for "Splitting By Numbers" mode
@@ -5332,14 +5338,6 @@ impl ShapeDivideArea {
         }
     }
 }
-
-// ── Skipped symbols for ShapeDivideArea (1 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_ShapeDivideArea.hxx`:43 - `ShapeUpgrade_ShapeDivideArea::NbParts`
-//   method: Set number of parts expected
-//   method: for the case of splitting by number
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn nb_parts(&mut self) -> &mut i32;
-//
 
 // ========================
 // From ShapeUpgrade_ShapeDivideClosed.hxx
@@ -8169,6 +8167,12 @@ impl SplitSurfaceArea {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::ShapeUpgrade_SplitSurfaceArea_ctor()) }
     }
 
+    /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:38 - `ShapeUpgrade_SplitSurfaceArea::NbParts()`
+    /// Set number of split for surfaces
+    pub fn nb_parts(&mut self) -> &mut i32 {
+        unsafe { &mut *(crate::ffi::ShapeUpgrade_SplitSurfaceArea_nb_parts(self as *mut Self)) }
+    }
+
     /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:44 - `ShapeUpgrade_SplitSurfaceArea::SetSplittingIntoSquares()`
     /// Set splitting mode
     /// If the mode is "splitting into squares",
@@ -8430,13 +8434,6 @@ impl HandleShapeUpgradeSplitSurfaceArea {
         }
     }
 }
-
-// ── Skipped symbols for SplitSurfaceArea (1 total) ──
-// SKIPPED: **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:38 - `ShapeUpgrade_SplitSurfaceArea::NbParts`
-//   method: Set number of split for surfaces
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn nb_parts(&mut self) -> &mut i32;
-//
 
 // ========================
 // From ShapeUpgrade_SplitSurfaceContinuity.hxx

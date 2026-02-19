@@ -1606,6 +1606,18 @@ impl DimensionObject {
         }
     }
 
+    /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:166 - `XCAFDimTolObjects_DimensionObject::GetNbOfDecimalPlaces()`
+    /// Returns the number of places to the left and right of the decimal point respectively.
+    pub fn get_nb_of_decimal_places(&self, theL: &mut i32, theR: &mut i32) {
+        unsafe {
+            crate::ffi::XCAFDimTolObjects_DimensionObject_get_nb_of_decimal_places(
+                self as *const Self,
+                theL,
+                theR,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:172 - `XCAFDimTolObjects_DimensionObject::SetModifiers()`
     /// Sets new sequence of dimension modifiers.
     pub fn set_modifiers(
@@ -2011,12 +2023,7 @@ impl HandleXCAFDimTolObjectsDimensionObject {
     }
 }
 
-// ── Skipped symbols for DimensionObject (2 total) ──
-// SKIPPED: **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:166 - `XCAFDimTolObjects_DimensionObject::GetNbOfDecimalPlaces`
-//   method: Returns the number of places to the left and right of the decimal point respectively.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_nb_of_decimal_places(&self, theL: &mut i32, theR: &mut i32);
-//
+// ── Skipped symbols for DimensionObject (1 total) ──
 // SKIPPED: **Source:** `XCAFDimTolObjects_DimensionObject.hxx`:169 - `XCAFDimTolObjects_DimensionObject::GetModifiers`
 //   method: Returns a sequence of modifiers of the dimension.
 //   Reason: return type 'XCAFDimTolObjects_DimensionModifiersSequence' is not CppDeletable

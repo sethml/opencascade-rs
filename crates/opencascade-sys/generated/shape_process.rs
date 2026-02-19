@@ -144,6 +144,14 @@ impl Context {
         }
     }
 
+    /// **Source:** `ShapeProcess_Context.hxx`:76 - `ShapeProcess_Context::GetInteger()`
+    pub fn get_integer(&self, param: &str, val: &mut i32) -> bool {
+        let c_param = std::ffi::CString::new(param).unwrap();
+        unsafe {
+            crate::ffi::ShapeProcess_Context_get_integer(self as *const Self, c_param.as_ptr(), val)
+        }
+    }
+
     /// **Source:** `ShapeProcess_Context.hxx`:79 - `ShapeProcess_Context::GetBoolean()`
     pub fn get_boolean(&self, param: &str, val: &mut bool) -> bool {
         let c_param = std::ffi::CString::new(param).unwrap();
@@ -358,12 +366,6 @@ impl HandleShapeProcessContext {
         }
     }
 }
-
-// ── Skipped symbols for Context (1 total) ──
-// SKIPPED: **Source:** `ShapeProcess_Context.hxx`:76 - `ShapeProcess_Context::GetInteger`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_integer(&self, param: *const char, val: &mut i32) -> bool;
-//
 
 // ========================
 // From ShapeProcess_OperLibrary.hxx

@@ -1429,6 +1429,17 @@ impl Color {
         }
     }
 
+    /// **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Color2argb()`
+    /// Convert the color value to ARGB integer value, with alpha equals to 0.
+    /// So the output is formatted as 0x00RRGGBB.
+    /// Note that this unpacking does NOT involve non-linear sRGB -> linear RGB conversion,
+    /// as would be usually expected for RGB color packed into 4 bytes.
+    /// @param[in] theColor  color to convert
+    /// @param[out] theARGB  result color encoded as integer
+    pub fn color2argb(theColor: &Color, theARGB: &mut i32) {
+        unsafe { crate::ffi::Quantity_Color_color2argb(theColor, theARGB) }
+    }
+
     /// **Source:** `Quantity_Color.hxx`:296 - `Quantity_Color::Argb2color()`
     /// Convert integer ARGB value to Color. Alpha bits are ignored.
     /// Note that this packing does NOT involve linear -> non-linear sRGB conversion,
@@ -1516,7 +1527,7 @@ impl Color {
     }
 }
 
-// ── Skipped symbols for Color (11 total) ──
+// ── Skipped symbols for Color (10 total) ──
 // SKIPPED: **Source:** `Quantity_Color.hxx`:242 - `Quantity_Color::Convert_sRGB_To_HLS`
 //   static_method: Converts sRGB components into HLS ones.
 //   Reason: return type 'gp_Vec3f' is not CppDeletable
@@ -1557,13 +1568,6 @@ impl Color {
 //   static_method: Converts CIE Lch components into CIE Lab ones.
 //   Reason: return type 'gp_Vec3f' is not CppDeletable
 //   // pub fn convert_lch_to_lab(theLch: &Vec3f) -> OwnedPtr<gp_Vec3f>;
-//
-// SKIPPED: **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Color2argb`
-//   static_method: Convert the color value to ARGB integer value, with alpha equals to 0.
-//   static_method: So the output is formatted as 0x00RRGGBB.
-//   static_method: Note that this unpacking does NOT involve non-linear sRGB -> linear RGB conversion,
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn color2argb(theColor: &Color, theARGB: &mut i32);
 //
 // SKIPPED: **Source:** `Quantity_Color.hxx`:371 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22`
 //   static_method: Convert linear RGB components into sRGB using approximated uniform gamma coefficient 2.2
@@ -1874,6 +1878,32 @@ impl Date {
         Self::new_int8(mm, dd, yyyy, hh, mn, ss, 0, 0)
     }
 
+    /// **Source:** `Quantity_Date.hxx`:79 - `Quantity_Date::Values()`
+    /// Gets a complete Date.
+    /// -   in mm - the month,
+    /// -   in dd - the day,
+    /// -   in yyyy - the year,
+    /// -   in hh - the hour,
+    /// -   in mn - the minute,
+    /// -   in ss - the second,
+    /// -   in mis - the millisecond, and
+    /// -   in mics - the microsecond
+    pub fn values(
+        &self,
+        mm: &mut i32,
+        dd: &mut i32,
+        yy: &mut i32,
+        hh: &mut i32,
+        mn: &mut i32,
+        ss: &mut i32,
+        mis: &mut i32,
+        mics: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Quantity_Date_values(self as *const Self, mm, dd, yy, hh, mn, ss, mis, mics)
+        }
+    }
+
     /// **Source:** `Quantity_Date.hxx`:95 - `Quantity_Date::SetValues()`
     /// Assigns to this date the year yyyy, the month
     /// mm, the day dd, the hour hh, the minute mn, the
@@ -2049,15 +2079,6 @@ impl Date {
         unsafe { crate::ffi::Quantity_Date_is_leap(yy) }
     }
 }
-
-// ── Skipped symbols for Date (1 total) ──
-// SKIPPED: **Source:** `Quantity_Date.hxx`:79 - `Quantity_Date::Values`
-//   method: Gets a complete Date.
-//   method: -   in mm - the month,
-//   method: -   in dd - the day,
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn values(&self, mm: &mut i32, dd: &mut i32, yy: &mut i32, hh: &mut i32, mn: &mut i32, ss: &mut i32, mis: &mut i32, mics: &mut i32);
-//
 
 // ========================
 // From Quantity_DateDefinitionError.hxx
@@ -2591,6 +2612,34 @@ impl Period {
         Self::new_int2(ss, 0)
     }
 
+    /// **Source:** `Quantity_Period.hxx`:66 - `Quantity_Period::Values()`
+    /// Decomposes this period into a number of days,hours,
+    /// minutes,seconds,milliseconds and microseconds
+    /// Example of return values:
+    /// 2 days, 15 hours, 0 minute , 0 second
+    /// 0 millisecond and 0 microsecond
+    pub fn values_int6(
+        &self,
+        dd: &mut i32,
+        hh: &mut i32,
+        mn: &mut i32,
+        ss: &mut i32,
+        mis: &mut i32,
+        mics: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::Quantity_Period_values_int6(self as *const Self, dd, hh, mn, ss, mis, mics)
+        }
+    }
+
+    /// **Source:** `Quantity_Period.hxx`:76 - `Quantity_Period::Values()`
+    /// Returns the number of seconds in Ss and the
+    /// number of remainding microseconds in Mics of this period.
+    /// Example of return values: 3600 seconds and 0 microseconds
+    pub fn values_int2(&self, ss: &mut i32, mics: &mut i32) {
+        unsafe { crate::ffi::Quantity_Period_values_int2(self as *const Self, ss, mics) }
+    }
+
     /// **Source:** `Quantity_Period.hxx`:82 - `Quantity_Period::SetValues()`
     /// Assigns to this period the time interval defined
     /// -   with dd days, hh hours, mn minutes, ss
@@ -2684,22 +2733,6 @@ impl Period {
         unsafe { crate::ffi::Quantity_Period_is_valid_int2(ss, mics) }
     }
 }
-
-// ── Skipped symbols for Period (2 total) ──
-// SKIPPED: **Source:** `Quantity_Period.hxx`:66 - `Quantity_Period::Values`
-//   method: Decomposes this period into a number of days,hours,
-//   method: minutes,seconds,milliseconds and microseconds
-//   method: Example of return values:
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn values(&self, dd: &mut i32, hh: &mut i32, mn: &mut i32, ss: &mut i32, mis: &mut i32, mics: &mut i32);
-//
-// SKIPPED: **Source:** `Quantity_Period.hxx`:76 - `Quantity_Period::Values`
-//   method: Returns the number of seconds in Ss and the
-//   method: number of remainding microseconds in Mics of this period.
-//   method: Example of return values: 3600 seconds and 0 microseconds
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn values(&self, ss: &mut i32, mics: &mut i32);
-//
 
 // ========================
 // From Quantity_PeriodDefinitionError.hxx

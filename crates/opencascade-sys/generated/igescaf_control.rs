@@ -382,6 +382,25 @@ impl Reader {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
+    pub fn get_stats_transfer(
+        &self,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        nbMapped: &mut i32,
+        nbWithResult: &mut i32,
+        nbWithFail: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_GetStatsTransfer(
+                self as *const Self,
+                list,
+                nbMapped,
+                nbWithResult,
+                nbWithFail,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {

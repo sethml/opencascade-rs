@@ -532,6 +532,34 @@ impl Base {
         unsafe { crate::ffi::PLib_Base_work_degree(self as *const Self) }
     }
 
+    /// **Source:** `PLib_Base.hxx`:74 - `PLib_Base::ReduceDegree()`
+    /// Compute NewDegree <= MaxDegree so that MaxError is lower
+    /// than Tol.
+    /// MaxError can be greater than Tol if it is not possible
+    /// to find a NewDegree <= MaxDegree.
+    /// In this case NewDegree = MaxDegree
+    pub fn reduce_degree(
+        &self,
+        Dimension: i32,
+        MaxDegree: i32,
+        Tol: f64,
+        BaseCoeff: &mut f64,
+        NewDegree: &mut i32,
+        MaxError: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::PLib_Base_reduce_degree(
+                self as *const Self,
+                Dimension,
+                MaxDegree,
+                Tol,
+                BaseCoeff,
+                NewDegree,
+                MaxError,
+            )
+        }
+    }
+
     /// **Source:** `PLib_Base.hxx`:81 - `PLib_Base::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::PLib_Base_dynamic_type(self as *const Self)) }
@@ -653,15 +681,6 @@ impl HandlePLibBase {
     }
 }
 
-// ── Skipped symbols for Base (1 total) ──
-// SKIPPED: **Source:** `PLib_Base.hxx`:74 - `PLib_Base::ReduceDegree`
-//   method: Compute NewDegree <= MaxDegree so that MaxError is lower
-//   method: than Tol.
-//   method: MaxError can be greater than Tol if it is not possible
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn reduce_degree(&self, Dimension: i32, MaxDegree: i32, Tol: f64, BaseCoeff: &mut f64, NewDegree: &mut i32, MaxError: &mut f64);
-//
-
 // ========================
 // From PLib_DoubleJacobiPolynomial.hxx
 // ========================
@@ -764,6 +783,39 @@ impl DoubleJacobiPolynomial {
         }
     }
 
+    /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:59 - `PLib_DoubleJacobiPolynomial::ReduceDegree()`
+    pub fn reduce_degree(
+        &self,
+        Dimension: i32,
+        MinDegreeU: i32,
+        MaxDegreeU: i32,
+        MinDegreeV: i32,
+        MaxDegreeV: i32,
+        dJacCoeff: i32,
+        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        EpmsCut: f64,
+        MaxError: &mut f64,
+        NewDegreeU: &mut i32,
+        NewDegreeV: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::PLib_DoubleJacobiPolynomial_reduce_degree(
+                self as *const Self,
+                Dimension,
+                MinDegreeU,
+                MaxDegreeU,
+                MinDegreeV,
+                MaxDegreeV,
+                dJacCoeff,
+                JacCoeff,
+                EpmsCut,
+                MaxError,
+                NewDegreeU,
+                NewDegreeV,
+            )
+        }
+    }
+
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:71 - `PLib_DoubleJacobiPolynomial::AverageError()`
     pub fn average_error(
         &self,
@@ -847,12 +899,6 @@ impl DoubleJacobiPolynomial {
     }
 }
 
-// ── Skipped symbols for DoubleJacobiPolynomial (1 total) ──
-// SKIPPED: **Source:** `PLib_DoubleJacobiPolynomial.hxx`:59 - `PLib_DoubleJacobiPolynomial::ReduceDegree`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn reduce_degree(&self, Dimension: i32, MinDegreeU: i32, MaxDegreeU: i32, MinDegreeV: i32, MaxDegreeV: i32, dJacCoeff: i32, JacCoeff: &Array1OfReal, EpmsCut: f64, MaxError: &mut f64, NewDegreeU: &mut i32, NewDegreeV: &mut i32);
-//
-
 // ========================
 // From PLib_HermitJacobi.hxx
 // ========================
@@ -927,6 +973,34 @@ impl HermitJacobi {
                 Dimension,
                 HermJacCoeff,
                 NewDegree,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_HermitJacobi.hxx`:88 - `PLib_HermitJacobi::ReduceDegree()`
+    /// Compute NewDegree <= MaxDegree so that MaxError is lower
+    /// than Tol.
+    /// MaxError can be greater than Tol if it is not possible
+    /// to find a NewDegree <= MaxDegree.
+    /// In this case NewDegree = MaxDegree
+    pub fn reduce_degree(
+        &self,
+        Dimension: i32,
+        MaxDegree: i32,
+        Tol: f64,
+        HermJacCoeff: &mut f64,
+        NewDegree: &mut i32,
+        MaxError: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::PLib_HermitJacobi_reduce_degree(
+                self as *const Self,
+                Dimension,
+                MaxDegree,
+                Tol,
+                HermJacCoeff,
+                NewDegree,
+                MaxError,
             )
         }
     }
@@ -1150,15 +1224,6 @@ impl HandlePLibHermitJacobi {
     }
 }
 
-// ── Skipped symbols for HermitJacobi (1 total) ──
-// SKIPPED: **Source:** `PLib_HermitJacobi.hxx`:88 - `PLib_HermitJacobi::ReduceDegree`
-//   method: Compute NewDegree <= MaxDegree so that MaxError is lower
-//   method: than Tol.
-//   method: MaxError can be greater than Tol if it is not possible
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn reduce_degree(&self, Dimension: i32, MaxDegree: i32, Tol: f64, HermJacCoeff: &mut f64, NewDegree: &mut i32, MaxError: &mut f64);
-//
-
 // ========================
 // From PLib_JacobiPolynomial.hxx
 // ========================
@@ -1273,6 +1338,34 @@ impl JacobiPolynomial {
                 Dimension,
                 JacCoeff,
                 NewDegree,
+            )
+        }
+    }
+
+    /// **Source:** `PLib_JacobiPolynomial.hxx`:113 - `PLib_JacobiPolynomial::ReduceDegree()`
+    /// Compute NewDegree <= MaxDegree  so that MaxError is lower
+    /// than Tol.
+    /// MaxError can be greater than Tol  if it is not possible
+    /// to find a NewDegree <= MaxDegree.
+    /// In this case NewDegree = MaxDegree
+    pub fn reduce_degree(
+        &self,
+        Dimension: i32,
+        MaxDegree: i32,
+        Tol: f64,
+        JacCoeff: &mut f64,
+        NewDegree: &mut i32,
+        MaxError: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::PLib_JacobiPolynomial_reduce_degree(
+                self as *const Self,
+                Dimension,
+                MaxDegree,
+                Tol,
+                JacCoeff,
+                NewDegree,
+                MaxError,
             )
         }
     }
@@ -1503,12 +1596,3 @@ impl HandlePLibJacobiPolynomial {
         }
     }
 }
-
-// ── Skipped symbols for JacobiPolynomial (1 total) ──
-// SKIPPED: **Source:** `PLib_JacobiPolynomial.hxx`:113 - `PLib_JacobiPolynomial::ReduceDegree`
-//   method: Compute NewDegree <= MaxDegree  so that MaxError is lower
-//   method: than Tol.
-//   method: MaxError can be greater than Tol  if it is not possible
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn reduce_degree(&self, Dimension: i32, MaxDegree: i32, Tol: f64, JacCoeff: &mut f64, NewDegree: &mut i32, MaxError: &mut f64);
-//

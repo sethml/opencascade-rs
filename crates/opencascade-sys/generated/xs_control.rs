@@ -587,6 +587,21 @@ impl Controller {
         }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds()`
+    /// Returns recorded min and max values for modetrans (write)
+    /// Actually only for shapes
+    /// Returns True if bounds are set, False else (then, free value)
+    pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
+        unsafe {
+            crate::ffi::XSControl_Controller_mode_write_bounds(
+                self as *const Self,
+                modemin,
+                modemax,
+                shape,
+            )
+        }
+    }
+
     /// **Source:** `XSControl_Controller.hxx`:141 - `XSControl_Controller::IsModeWrite()`
     /// Tells if a value of <modetrans> is a good value(within bounds)
     /// Actually only for shapes
@@ -914,14 +929,7 @@ impl HandleXSControlController {
     }
 }
 
-// ── Skipped symbols for Controller (2 total) ──
-// SKIPPED: **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds`
-//   method: Returns recorded min and max values for modetrans (write)
-//   method: Actually only for shapes
-//   method: Returns True if bounds are set, False else (then, free value)
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool;
-//
+// ── Skipped symbols for Controller (1 total) ──
 // SKIPPED: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession`
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn adaptor_session(&self) -> &i32;
@@ -1431,6 +1439,26 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
+    /// Gives statistics about Transfer
+    pub fn get_stats_transfer(
+        &self,
+        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        nbMapped: &mut i32,
+        nbWithResult: &mut i32,
+        nbWithFail: &mut i32,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_Reader_get_stats_transfer(
+                self as *const Self,
+                list,
+                nbMapped,
+                nbWithResult,
+                nbWithFail,
+            )
+        }
+    }
+
     /// **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
@@ -1440,7 +1468,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (10 total) ──
+// ── Skipped symbols for Reader (9 total) ──
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:110 - `XSControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status
 //   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
@@ -1461,11 +1489,6 @@ impl Reader {
 //   method: Displays the statistics for the last translation.
 //   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
 //   // pub fn print_stats_transfer(&self, theStream: /* Standard_OStream& */, what: i32, mode: i32);
-//
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer`
-//   method: Gives statistics about Transfer
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_stats_transfer(&self, list: &HandleHSequenceOfTransient, nbMapped: &mut i32, nbWithResult: &mut i32, nbWithFail: &mut i32);
 //
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
@@ -2160,6 +2183,25 @@ impl SignTransferStatus {
         unsafe {
             crate::ffi::XSControl_SignTransferStatus_inherited_SetIntCase(
                 self as *mut Self,
+                hasmin,
+                valmin,
+                hasmax,
+                valmax,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    pub fn is_int_case(
+        &self,
+        hasmin: &mut bool,
+        valmin: &mut i32,
+        hasmax: &mut bool,
+        valmax: &mut i32,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XSControl_SignTransferStatus_inherited_IsIntCase(
+                self as *const Self,
                 hasmin,
                 valmin,
                 hasmax,
@@ -3111,7 +3153,7 @@ impl HandleXSControlTransferReader {
 // SKIPPED: **Source:** `XSControl_TransferReader.hxx`:105 - `XSControl_TransferReader::Context`
 //   method: Returns (modifiable) the whole definition of Context
 //   method: Rather for internal use (ex.: preparing and setting in once)
-//   Reason: has misresolved element type (clang batch parsing artifact)
+//   Reason: excluded by bindings.toml
 //   // pub fn context(&mut self) -> &mut i32;
 //
 // SKIPPED: **Source:** `XSControl_TransferReader.hxx`:311 - `XSControl_TransferReader::PrintStats`
@@ -3542,6 +3584,32 @@ impl Utils {
         }
     }
 
+    /// **Source:** `XSControl_Utils.hxx`:97 - `XSControl_Utils::DateValues()`
+    pub fn date_values(
+        &self,
+        text: &str,
+        yy: &mut i32,
+        mm: &mut i32,
+        dd: &mut i32,
+        hh: &mut i32,
+        mn: &mut i32,
+        ss: &mut i32,
+    ) {
+        let c_text = std::ffi::CString::new(text).unwrap();
+        unsafe {
+            crate::ffi::XSControl_Utils_date_values(
+                self as *const Self,
+                c_text.as_ptr(),
+                yy,
+                mm,
+                dd,
+                hh,
+                mn,
+                ss,
+            )
+        }
+    }
+
     /// **Source:** `XSControl_Utils.hxx`:105 - `XSControl_Utils::ToCString()`
     pub fn to_c_string_handletcollectionhasciistring(
         &self,
@@ -3816,11 +3884,7 @@ impl Utils {
     }
 }
 
-// ── Skipped symbols for Utils (10 total) ──
-// SKIPPED: **Source:** `XSControl_Utils.hxx`:97 - `XSControl_Utils::DateValues`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn date_values(&self, text: *const char, yy: &mut i32, mm: &mut i32, dd: &mut i32, hh: &mut i32, mn: &mut i32, ss: &mut i32);
-//
+// ── Skipped symbols for Utils (9 total) ──
 // SKIPPED: **Source:** `XSControl_Utils.hxx`:114 - `XSControl_Utils::ToEString`
 //   Reason: return type 'Standard_ExtString' is unknown
 //   // pub fn to_e_string(&self, strval: &HandleHExtendedString) -> OwnedPtr<Standard_ExtString>;

@@ -610,6 +610,88 @@ impl SectionPoint {
         }
     }
 
+    /// **Source:** `Intf_SectionPoint.hxx`:53 - `Intf_SectionPoint::InfoFirst()`
+    pub fn info_first_pitype_int2_real(
+        &self,
+        Dim: &mut crate::intf::PIType,
+        Add1: &mut i32,
+        Add2: &mut i32,
+        Param: &mut f64,
+    ) {
+        let mut Dim_i32_: i32 = (*Dim).into();
+        unsafe {
+            crate::ffi::Intf_SectionPoint_info_first_pitype_int2_real(
+                self as *const Self,
+                &mut Dim_i32_,
+                Add1,
+                Add2,
+                Param,
+            )
+        };
+        *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
+    }
+
+    /// **Source:** `Intf_SectionPoint.hxx`:59 - `Intf_SectionPoint::InfoFirst()`
+    /// Gives the data about the first argument of the Interference.
+    pub fn info_first_pitype_int_real(
+        &self,
+        Dim: &mut crate::intf::PIType,
+        Addr: &mut i32,
+        Param: &mut f64,
+    ) {
+        let mut Dim_i32_: i32 = (*Dim).into();
+        unsafe {
+            crate::ffi::Intf_SectionPoint_info_first_pitype_int_real(
+                self as *const Self,
+                &mut Dim_i32_,
+                Addr,
+                Param,
+            )
+        };
+        *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
+    }
+
+    /// **Source:** `Intf_SectionPoint.hxx`:63 - `Intf_SectionPoint::InfoSecond()`
+    pub fn info_second_pitype_int2_real(
+        &self,
+        Dim: &mut crate::intf::PIType,
+        Add1: &mut i32,
+        Add2: &mut i32,
+        Param: &mut f64,
+    ) {
+        let mut Dim_i32_: i32 = (*Dim).into();
+        unsafe {
+            crate::ffi::Intf_SectionPoint_info_second_pitype_int2_real(
+                self as *const Self,
+                &mut Dim_i32_,
+                Add1,
+                Add2,
+                Param,
+            )
+        };
+        *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
+    }
+
+    /// **Source:** `Intf_SectionPoint.hxx`:69 - `Intf_SectionPoint::InfoSecond()`
+    /// Gives the data about the second argument of the Interference.
+    pub fn info_second_pitype_int_real(
+        &self,
+        Dim: &mut crate::intf::PIType,
+        Addr: &mut i32,
+        Param: &mut f64,
+    ) {
+        let mut Dim_i32_: i32 = (*Dim).into();
+        unsafe {
+            crate::ffi::Intf_SectionPoint_info_second_pitype_int_real(
+                self as *const Self,
+                &mut Dim_i32_,
+                Addr,
+                Param,
+            )
+        };
+        *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
+    }
+
     /// **Source:** `Intf_SectionPoint.hxx`:76 - `Intf_SectionPoint::Incidence()`
     /// Gives the incidence at  this  section point. The  incidence
     /// between the two triangles is given by the cosine.  The best
@@ -643,26 +725,6 @@ impl SectionPoint {
         unsafe { crate::ffi::Intf_SectionPoint_dump(self as *const Self, Indent) }
     }
 }
-
-// ── Skipped symbols for SectionPoint (4 total) ──
-// SKIPPED: **Source:** `Intf_SectionPoint.hxx`:53 - `Intf_SectionPoint::InfoFirst`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn info_first(&self, Dim: &mut PIType, Add1: &mut i32, Add2: &mut i32, Param: &mut f64);
-//
-// SKIPPED: **Source:** `Intf_SectionPoint.hxx`:59 - `Intf_SectionPoint::InfoFirst`
-//   method: Gives the data about the first argument of the Interference.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn info_first(&self, Dim: &mut PIType, Addr: &mut i32, Param: &mut f64);
-//
-// SKIPPED: **Source:** `Intf_SectionPoint.hxx`:63 - `Intf_SectionPoint::InfoSecond`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn info_second(&self, Dim: &mut PIType, Add1: &mut i32, Add2: &mut i32, Param: &mut f64);
-//
-// SKIPPED: **Source:** `Intf_SectionPoint.hxx`:69 - `Intf_SectionPoint::InfoSecond`
-//   method: Gives the data about the second argument of the Interference.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn info_second(&self, Dim: &mut PIType, Addr: &mut i32, Param: &mut f64);
-//
 
 // ========================
 // From Intf_TangentZone.hxx
@@ -729,6 +791,48 @@ impl TangentZone {
         }
     }
 
+    /// **Source:** `Intf_TangentZone.hxx`:60 - `Intf_TangentZone::InfoFirst()`
+    /// Gives  information  about  the    first argument   of   the
+    /// Interference. (Usable only for polygon)
+    pub fn info_first(
+        &self,
+        segMin: &mut i32,
+        paraMin: &mut f64,
+        segMax: &mut i32,
+        paraMax: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::Intf_TangentZone_info_first(
+                self as *const Self,
+                segMin,
+                paraMin,
+                segMax,
+                paraMax,
+            )
+        }
+    }
+
+    /// **Source:** `Intf_TangentZone.hxx`:67 - `Intf_TangentZone::InfoSecond()`
+    /// Gives   information   about  the  second   argument of  the
+    /// Interference. (Usable only for polygon)
+    pub fn info_second(
+        &self,
+        segMin: &mut i32,
+        paraMin: &mut f64,
+        segMax: &mut i32,
+        paraMax: &mut f64,
+    ) {
+        unsafe {
+            crate::ffi::Intf_TangentZone_info_second(
+                self as *const Self,
+                segMin,
+                paraMin,
+                segMax,
+                paraMax,
+            )
+        }
+    }
+
     /// **Source:** `Intf_TangentZone.hxx`:74 - `Intf_TangentZone::RangeContains()`
     /// Returns True if  <ThePI>  is in the parameter  range of the
     /// TangentZone.
@@ -784,20 +888,6 @@ impl TangentZone {
         unsafe { crate::ffi::Intf_TangentZone_dump(self as *const Self, Indent) }
     }
 }
-
-// ── Skipped symbols for TangentZone (2 total) ──
-// SKIPPED: **Source:** `Intf_TangentZone.hxx`:60 - `Intf_TangentZone::InfoFirst`
-//   method: Gives  information  about  the    first argument   of   the
-//   method: Interference. (Usable only for polygon)
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn info_first(&self, segMin: &mut i32, paraMin: &mut f64, segMax: &mut i32, paraMax: &mut f64);
-//
-// SKIPPED: **Source:** `Intf_TangentZone.hxx`:67 - `Intf_TangentZone::InfoSecond`
-//   method: Gives   information   about  the  second   argument of  the
-//   method: Interference. (Usable only for polygon)
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn info_second(&self, segMin: &mut i32, paraMin: &mut f64, segMax: &mut i32, paraMax: &mut f64);
-//
 
 // ========================
 // From Intf_Tool.hxx
