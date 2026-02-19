@@ -109,6 +109,9 @@ fn glob_match(text: &str, pattern: &str) -> bool {
 /// Discover all unique module names present in the OCCT include directory.
 /// A module is identified by the filename prefix before the first `_` in `.hxx` files,
 /// or by a bare `{Module}.hxx` file with no underscore.
+///
+/// Headers with non-standard names (e.g. containing dots like `step.tab.hxx`) are
+/// skipped — they are parser tables or other internal files, not real OCCT modules.
 fn discover_all_modules(occt_include_dir: &Path) -> Result<Vec<String>> {
     let mut modules: std::collections::BTreeSet<String> = std::collections::BTreeSet::new();
     let entries = std::fs::read_dir(occt_include_dir)
@@ -121,6 +124,11 @@ fn discover_all_modules(occt_include_dir: &Path) -> Result<Vec<String>> {
             continue;
         }
         let stem = filename.trim_end_matches(".hxx");
+        // Skip headers with non-standard names (e.g. step.tab.hxx, exptocas.tab.hxx).
+        // Valid OCCT header stems contain only alphanumeric chars and underscores.
+        if !stem.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_') {
+            continue;
+        }
         // Module is the part before the first underscore, or the whole stem if no underscore
         let module = if let Some(pos) = stem.find('_') {
             &stem[..pos]
