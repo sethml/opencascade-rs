@@ -162,6 +162,18 @@ impl Driver {
         unsafe { crate::ffi::TFunction_Driver_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::TFunction_Driver_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::TFunction_Driver_inherited_GetRefCount(self as *const Self) }
@@ -336,6 +348,19 @@ impl DriverTable {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::TFunction_DriverTable_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::TFunction_DriverTable_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -797,6 +822,18 @@ impl Function {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::TFunction_Function_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::TFunction_Function_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -1310,6 +1347,19 @@ impl GraphNode {
         unsafe { crate::ffi::TFunction_GraphNode_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::TFunction_GraphNode_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::TFunction_GraphNode_inherited_GetRefCount(self as *const Self) }
@@ -1536,6 +1586,22 @@ impl HArray1OfDataMapOfGUIDDriver {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -2296,6 +2362,18 @@ impl Logbook {
         unsafe { crate::ffi::TFunction_Logbook_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::TFunction_Logbook_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::TFunction_Logbook_inherited_GetRefCount(self as *const Self) }
@@ -2770,6 +2848,18 @@ impl Scope {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::TFunction_Scope_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::TFunction_Scope_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`

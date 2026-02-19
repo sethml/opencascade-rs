@@ -175,6 +175,20 @@ impl BasicAttribute {
             ))
         }
     }
+
+    /// Inherited: **Source:** `LDOM_BasicNode.hxx`:36 - `LDOM_BasicNode::GetSibling()`
+    pub fn get_sibling(&self) -> Option<&BasicNode> {
+        {
+            let ptr = unsafe {
+                crate::ffi::LDOM_BasicAttribute_inherited_GetSibling(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
 }
 
 // ── Skipped symbols for BasicAttribute (2 total) ──
@@ -217,6 +231,30 @@ impl BasicElement {
         }
     }
 
+    /// **Source:** `LDOM_BasicElement.hxx`:62 - `LDOM_BasicElement::GetFirstChild()`
+    pub fn get_first_child(&self) -> Option<&BasicNode> {
+        {
+            let ptr = unsafe { crate::ffi::LDOM_BasicElement_get_first_child(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// **Source:** `LDOM_BasicElement.hxx`:64 - `LDOM_BasicElement::GetLastChild()`
+    pub fn get_last_child(&self) -> Option<&BasicNode> {
+        {
+            let ptr = unsafe { crate::ffi::LDOM_BasicElement_get_last_child(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// **Source:** `LDOM_BasicElement.hxx`:46 - `LDOM_BasicElement::Create()`
     pub fn create(
         aName: &str,
@@ -250,17 +288,22 @@ impl BasicElement {
             ))
         }
     }
+
+    /// Inherited: **Source:** `LDOM_BasicNode.hxx`:36 - `LDOM_BasicNode::GetSibling()`
+    pub fn get_sibling(&self) -> Option<&BasicNode> {
+        {
+            let ptr =
+                unsafe { crate::ffi::LDOM_BasicElement_inherited_GetSibling(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
 }
 
-// ── Skipped symbols for BasicElement (3 total) ──
-// SKIPPED: **Source:** `LDOM_BasicElement.hxx`:62 - `LDOM_BasicElement::GetFirstChild`
-//   Reason: has unbindable types: return: raw pointer (const LDOM_BasicNode*)
-//   // pub fn get_first_child(&self) -> /* const LDOM_BasicNode* */;
-//
-// SKIPPED: **Source:** `LDOM_BasicElement.hxx`:64 - `LDOM_BasicElement::GetLastChild`
-//   Reason: has unbindable types: return: raw pointer (const LDOM_BasicNode*)
-//   // pub fn get_last_child(&self) -> /* const LDOM_BasicNode* */;
-//
+// ── Skipped symbols for BasicElement (1 total) ──
 // SKIPPED: **Source:** `LDOM_BasicElement.hxx`:66 - `LDOM_BasicElement::GetAttribute`
 //   Reason: has unbindable types: param 'aName': unresolved template/nested type (const LDOMBasicString&)
 //   // pub fn get_attribute(&self, aName: /* const LDOMBasicString& */, aLastCh: /* const LDOM_BasicNode* */) -> &BasicAttribute;
@@ -291,13 +334,19 @@ impl BasicNode {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_BasicNode_get_node_type(self as *const Self))
         }
     }
-}
 
-// ── Skipped symbols for BasicNode (1 total) ──
-// SKIPPED: **Source:** `LDOM_BasicNode.hxx`:36 - `LDOM_BasicNode::GetSibling`
-//   Reason: has unbindable types: return: raw pointer (const LDOM_BasicNode*)
-//   // pub fn get_sibling(&self) -> /* const LDOM_BasicNode* */;
-//
+    /// **Source:** `LDOM_BasicNode.hxx`:36 - `LDOM_BasicNode::GetSibling()`
+    pub fn get_sibling(&self) -> Option<&BasicNode> {
+        {
+            let ptr = unsafe { crate::ffi::LDOM_BasicNode_get_sibling(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+}
 
 // ========================
 // From LDOM_BasicText.hxx
@@ -339,6 +388,19 @@ impl BasicText {
             crate::OwnedPtr::from_raw(crate::ffi::LDOM_BasicText_inherited_getNodeType(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `LDOM_BasicNode.hxx`:36 - `LDOM_BasicNode::GetSibling()`
+    pub fn get_sibling(&self) -> Option<&BasicNode> {
+        {
+            let ptr =
+                unsafe { crate::ffi::LDOM_BasicText_inherited_GetSibling(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 }
@@ -1060,6 +1122,18 @@ impl MemManager {
         unsafe { &*(crate::ffi::LDOM_MemManager_self_(self as *const Self)) }
     }
 
+    /// **Source:** `LDOM_MemManager.hxx`:73 - `LDOM_MemManager::RootElement()`
+    pub fn root_element(&self) -> Option<&BasicElement> {
+        {
+            let ptr = unsafe { crate::ffi::LDOM_MemManager_root_element(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// **Source:** `LDOM_MemManager.hxx`:135 - `LDOM_MemManager::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::LDOM_MemManager_dynamic_type(self as *const Self)) }
@@ -1125,6 +1199,18 @@ impl MemManager {
         unsafe { crate::ffi::LDOM_MemManager_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::LDOM_MemManager_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::LDOM_MemManager_inherited_GetRefCount(self as *const Self) }
@@ -1175,18 +1261,14 @@ impl HandleLDOMMemManager {
     }
 }
 
-// ── Skipped symbols for MemManager (3 total) ──
+// ── Skipped symbols for MemManager (2 total) ──
 // SKIPPED: **Source:** `LDOM_MemManager.hxx`:43 - `LDOM_MemManager::Allocate`
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate(&mut self, aSize: i32) -> /* void* */;
 //
 // SKIPPED: **Source:** `LDOM_MemManager.hxx`:52 - `LDOM_MemManager::HashedAllocate`
 //   Reason: has unbindable types: param 'theResult': unresolved template/nested type (LDOMBasicString&)
 //   // pub fn hashed_allocate(&mut self, aString: *const char, theLen: i32, theResult: /* LDOMBasicString& */);
-//
-// SKIPPED: **Source:** `LDOM_MemManager.hxx`:73 - `LDOM_MemManager::RootElement`
-//   Reason: has unbindable types: return: raw pointer (const LDOM_BasicElement*)
-//   // pub fn root_element(&self) -> /* const LDOM_BasicElement* */;
 //
 
 // ========================

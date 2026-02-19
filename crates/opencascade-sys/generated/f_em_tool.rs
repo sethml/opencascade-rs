@@ -280,6 +280,18 @@ impl Curve {
         unsafe { crate::ffi::FEmTool_Curve_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::FEmTool_Curve_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::FEmTool_Curve_inherited_GetRefCount(self as *const Self) }
@@ -445,6 +457,20 @@ impl ElementaryCriterion {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::FEmTool_ElementaryCriterion_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::FEmTool_ElementaryCriterion_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -768,6 +794,19 @@ impl HAssemblyTable {
         unsafe { crate::ffi::FEmTool_HAssemblyTable_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::FEmTool_HAssemblyTable_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::FEmTool_HAssemblyTable_inherited_GetRefCount(self as *const Self) }
@@ -946,6 +985,19 @@ impl LinearFlexion {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::FEmTool_LinearFlexion_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -1143,6 +1195,18 @@ impl LinearJerk {
         unsafe { crate::ffi::FEmTool_LinearJerk_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::FEmTool_LinearJerk_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::FEmTool_LinearJerk_inherited_GetRefCount(self as *const Self) }
@@ -1334,6 +1398,19 @@ impl LinearTension {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::FEmTool_LinearTension_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::FEmTool_LinearTension_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -1553,6 +1630,19 @@ impl ProfileMatrix {
         unsafe { crate::ffi::FEmTool_ProfileMatrix_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::FEmTool_ProfileMatrix_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::FEmTool_ProfileMatrix_inherited_GetRefCount(self as *const Self) }
@@ -1730,6 +1820,19 @@ impl SparseMatrix {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::FEmTool_SparseMatrix_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`

@@ -527,6 +527,18 @@ impl Area {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Area_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_Area_inherited_GetRefCount(self as *const Self) }
@@ -766,6 +778,19 @@ impl AssemblyGraph {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_AssemblyGraph_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_AssemblyGraph_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -1547,6 +1572,19 @@ impl AssemblyItemRef {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_AssemblyItemRef_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_AssemblyItemRef_inherited_GetRefCount(self as *const Self) }
@@ -2023,6 +2061,18 @@ impl Centroid {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_Centroid_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Centroid_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -2700,6 +2750,20 @@ impl ClippingPlaneTool {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_ClippingPlaneTool_inherited_GetRefCount(self as *const Self) }
@@ -3192,6 +3256,18 @@ impl Color {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_Color_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Color_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -4197,6 +4273,18 @@ impl ColorTool {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_ColorTool_inherited_GetRefCount(self as *const Self) }
@@ -4663,6 +4751,18 @@ impl Datum {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Datum_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_Datum_inherited_GetRefCount(self as *const Self) }
@@ -5090,6 +5190,18 @@ impl DimTol {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_DimTol_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_DimTol_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -6025,6 +6137,18 @@ impl DimTolTool {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_DimTolTool_inherited_GetRefCount(self as *const Self) }
@@ -6484,6 +6608,18 @@ impl Dimension {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_Dimension_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Dimension_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -7145,6 +7281,19 @@ impl DocumentTool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_DocumentTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -7839,6 +7988,19 @@ impl GeomTolerance {
         unsafe { crate::ffi::XCAFDoc_GeomTolerance_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_GeomTolerance_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_GeomTolerance_inherited_GetRefCount(self as *const Self) }
@@ -8406,6 +8568,18 @@ impl GraphNode {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_GraphNode_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -9278,6 +9452,18 @@ impl LayerTool {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_LayerTool_inherited_GetRefCount(self as *const Self) }
@@ -9770,6 +9956,18 @@ impl LengthUnit {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_LengthUnit_inherited_GetRefCount(self as *const Self) }
@@ -10182,6 +10380,18 @@ impl Location {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_Location_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Location_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -10637,6 +10847,18 @@ impl Material {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_Material_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Material_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -11175,6 +11397,19 @@ impl MaterialTool {
         unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_MaterialTool_inherited_GetRefCount(self as *const Self) }
@@ -11601,6 +11836,18 @@ impl Note {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_Note_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Note_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -12149,6 +12396,19 @@ impl NoteBalloon {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_NoteBalloon_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -12738,6 +12998,19 @@ impl NoteBinData {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_NoteBinData_inherited_GetRefCount(self as *const Self) }
@@ -13240,6 +13513,19 @@ impl NoteComment {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_NoteComment_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -14598,6 +14884,18 @@ impl NotesTool {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_NotesTool_inherited_GetRefCount(self as *const Self) }
@@ -15045,6 +15343,19 @@ impl ShapeMapTool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_ShapeMapTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -16292,6 +16603,18 @@ impl ShapeTool {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_ShapeTool_inherited_GetRefCount(self as *const Self) }
@@ -16717,6 +17040,18 @@ impl View {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_View_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_View_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -17431,6 +17766,18 @@ impl ViewTool {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_ViewTool_inherited_GetRefCount(self as *const Self) }
@@ -17998,6 +18345,19 @@ impl VisMaterial {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_VisMaterial_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -18746,6 +19106,19 @@ impl VisMaterialTool {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::XCAFDoc_VisMaterialTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::XCAFDoc_VisMaterialTool_inherited_GetRefCount(self as *const Self) }
@@ -19169,6 +19542,18 @@ impl Volume {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::XCAFDoc_Volume_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::XCAFDoc_Volume_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`

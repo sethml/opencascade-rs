@@ -200,6 +200,20 @@ impl AppliedApprovalAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedApprovalAssignment_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -486,6 +500,22 @@ impl AppliedDateAndTimeAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedDateAndTimeAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -753,6 +783,20 @@ impl AppliedDateAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedDateAssignment_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -1050,6 +1094,20 @@ impl AppliedDocumentReference {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedDocumentReference_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -1378,6 +1436,22 @@ impl AppliedExternalIdentificationAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedExternalIdentificationAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -1627,6 +1701,20 @@ impl AppliedGroupAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedGroupAssignment_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -1917,6 +2005,22 @@ impl AppliedOrganizationAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedOrganizationAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -2225,6 +2329,22 @@ impl AppliedPersonAndOrganizationAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedPersonAndOrganizationAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -2441,6 +2561,20 @@ impl AppliedPresentedItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedPresentedItem_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -2715,6 +2849,22 @@ impl AppliedSecurityClassificationAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AppliedSecurityClassificationAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -3435,6 +3585,22 @@ impl AutoDesignActualDateAndTimeAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignActualDateAndTimeAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -3723,6 +3889,22 @@ impl AutoDesignActualDateAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignActualDateAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -3988,6 +4170,22 @@ impl AutoDesignApprovalAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignApprovalAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -4281,6 +4479,22 @@ impl AutoDesignDateAndPersonAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignDateAndPersonAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -5380,6 +5594,22 @@ impl AutoDesignDocumentReference {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignDocumentReference_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -5943,6 +6173,20 @@ impl AutoDesignGroupAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignGroupAssignment_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -6573,6 +6817,22 @@ impl AutoDesignNominalDateAndTimeAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignNominalDateAndTimeAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -6858,6 +7118,22 @@ impl AutoDesignNominalDateAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignNominalDateAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -7154,6 +7430,22 @@ impl AutoDesignOrganizationAssignment {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignOrganizationAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -7781,6 +8073,22 @@ impl AutoDesignPersonAndOrganizationAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignPersonAndOrganizationAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -8009,6 +8317,20 @@ impl AutoDesignPresentedItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignPresentedItem_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -8978,6 +9300,22 @@ impl AutoDesignSecurityClassificationAssignment {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_AutoDesignSecurityClassificationAssignment_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -9184,6 +9522,18 @@ impl Class {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::StepAP214_Class_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::StepAP214_Class_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -11252,6 +11602,20 @@ impl ExternallyDefinedClass {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_ExternallyDefinedClass_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -11576,6 +11940,22 @@ impl ExternallyDefinedGeneralProperty {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_ExternallyDefinedGeneralProperty_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -12142,6 +12522,20 @@ impl HArray1OfApprovalItem {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfApprovalItem_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -12365,6 +12759,22 @@ impl HArray1OfAutoDesignDateAndPersonItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfAutoDesignDateAndPersonItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -12598,6 +13008,22 @@ impl HArray1OfAutoDesignDateAndTimeItem {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfAutoDesignDateAndTimeItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -12828,6 +13254,22 @@ impl HArray1OfAutoDesignDatedItem {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfAutoDesignDatedItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -13052,6 +13494,22 @@ impl HArray1OfAutoDesignGeneralOrgItem {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfAutoDesignGeneralOrgItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -13273,6 +13731,22 @@ impl HArray1OfAutoDesignGroupedItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfAutoDesignGroupedItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -13508,6 +13982,22 @@ impl HArray1OfAutoDesignPresentedItemSelect {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfAutoDesignPresentedItemSelect_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -13731,6 +14221,22 @@ impl HArray1OfAutoDesignReferencingItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfAutoDesignReferencingItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -13960,6 +14466,20 @@ impl HArray1OfDateAndTimeItem {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfDateAndTimeItem_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -14166,6 +14686,20 @@ impl HArray1OfDateItem {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::StepAP214_HArray1OfDateItem_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfDateItem_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -14376,6 +14910,22 @@ impl HArray1OfDocumentReferenceItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfDocumentReferenceItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -14609,6 +15159,22 @@ impl HArray1OfExternalIdentificationItem {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfExternalIdentificationItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -14819,6 +15385,20 @@ impl HArray1OfGroupItem {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::StepAP214_HArray1OfGroupItem_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfGroupItem_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -15033,6 +15613,20 @@ impl HArray1OfOrganizationItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfOrganizationItem_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -15259,6 +15853,22 @@ impl HArray1OfPersonAndOrganizationItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfPersonAndOrganizationItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -15492,6 +16102,22 @@ impl HArray1OfPresentedItemSelect {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfPresentedItemSelect_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -15721,6 +16347,22 @@ impl HArray1OfSecurityClassificationItem {
                 self as *const Self,
                 theType,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::StepAP214_HArray1OfSecurityClassificationItem_inherited_This(
+                    self as *const Self,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -17217,6 +17859,18 @@ impl Protocol {
         unsafe { crate::ffi::StepAP214_Protocol_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::StepAP214_Protocol_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::StepAP214_Protocol_inherited_GetRefCount(self as *const Self) }
@@ -17456,6 +18110,19 @@ impl RepItemGroup {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::StepAP214_RepItemGroup_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::StepAP214_RepItemGroup_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`

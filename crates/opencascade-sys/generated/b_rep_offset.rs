@@ -455,6 +455,25 @@ impl Analyse {
         }
     }
 
+    /// **Source:** `BRepOffset_Analyse.hxx`:149 - `BRepOffset_Analyse::Descendants()`
+    /// Returns the shape descendants.
+    pub fn descendants(
+        &self,
+        theS: &crate::topo_ds::Shape,
+        theUpdate: bool,
+    ) -> Option<&crate::ffi::TopTools_ListOfShape> {
+        {
+            let ptr = unsafe {
+                crate::ffi::BRepOffset_Analyse_descendants(self as *const Self, theS, theUpdate)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// **Source:** `BRepOffset_Analyse.hxx`:155 - `BRepOffset_Analyse::Clear()`
     /// @name Clearing the content
     /// Clears the content of the algorithm
@@ -462,13 +481,6 @@ impl Analyse {
         unsafe { crate::ffi::BRepOffset_Analyse_clear(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for Analyse (1 total) ──
-// SKIPPED: **Source:** `BRepOffset_Analyse.hxx`:149 - `BRepOffset_Analyse::Descendants`
-//   method: Returns the shape descendants.
-//   Reason: has unbindable types: return: raw pointer (const TopTools_ListOfShape*)
-//   // pub fn descendants(&self, theS: &Shape, theUpdate: bool) -> /* const TopTools_ListOfShape* */;
-//
 
 // ========================
 // From BRepOffset_Inter2d.hxx
@@ -1961,6 +1973,19 @@ impl SimpleOffset {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::BRepOffset_SimpleOffset_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::BRepOffset_SimpleOffset_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 

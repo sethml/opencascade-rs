@@ -725,6 +725,31 @@ fn return_type_to_rust_string(ty: &Type, reexport_ctx: Option<&ReexportTypeConte
         Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(name) if name == "char") => {
             "String".to_string()
         }
+        // Class pointer returns -> Option<&T> / Option<&mut T>
+        Type::ConstPtr(inner) if matches!(inner.as_ref(), Type::Class(_)) => {
+            if let Type::Class(name) = inner.as_ref() {
+                let resolved = if let Some(ctx) = reexport_ctx {
+                    ctx.resolve_class(name)
+                } else {
+                    format!("crate::ffi::{}", Type::ffi_safe_class_name(name))
+                };
+                format!("Option<&{}>", resolved)
+            } else {
+                unreachable!()
+            }
+        }
+        Type::MutPtr(inner) if matches!(inner.as_ref(), Type::Class(_)) => {
+            if let Type::Class(name) = inner.as_ref() {
+                let resolved = if let Some(ctx) = reexport_ctx {
+                    ctx.resolve_class(name)
+                } else {
+                    format!("crate::ffi::{}", Type::ffi_safe_class_name(name))
+                };
+                format!("Option<&mut {}>", resolved)
+            } else {
+                unreachable!()
+            }
+        }
         _ => type_to_rust_string(ty, reexport_ctx),
     }
 }
@@ -740,7 +765,7 @@ fn describe_unbindable_types_method(method: &Method) -> String {
         }
     }
     if let Some(ref ret) = method.return_type {
-        if ret.is_unbindable() {
+        if ret.is_unbindable() && ret.class_ptr_inner_name().is_none() {
             parts.push(format!("return: {}", describe_unbindable_reason(ret)));
         }
     }
@@ -900,6 +925,12 @@ fn is_method_bindable(method: &Method, ctx: &TypeContext, class_name: &str) -> R
     if let Some(ref ret) = method.return_type {
         if type_uses_unknown_type(ret, ctx) {
             return Err(format!("return type '{}' is unknown", ret.to_cpp_string()));
+        }
+        // Check class pointer returns for unknown inner types (same as params)
+        if let Some(class_name) = ret.class_ptr_inner_name() {
+            if !ctx.all_classes.contains(class_name) && !ctx.all_enums.contains(class_name) {
+                return Err(format!("class pointer return inner type '{}' is unknown", ret.to_cpp_string()));
+            }
         }
         // OwnedPtr<T> return type requires CppDeletable for T. ParsedClasses have
         // generated destructors; the 91 known collections do too. But NCollection
@@ -1263,6 +1294,35 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
             enum_cpp_name: Some(enum_cpp_name),
             enum_rust_type,
             is_class_ptr_return: false,
+        };
+    }
+
+    // Check if this return type is a class pointer (const T* or T* where T is a known class)
+    // These are bound as Option<&T> / Option<&mut T> since they may return null.
+    if let Some(class_name) = ty.class_ptr_inner_name() {
+        let mapped = map_return_type_in_context(ty, ffi_ctx);
+        let rust_ffi_type = mapped.rust_type;
+        let cpp_type = type_to_cpp(ty);
+        // Build the reexport type as Option<&T> or Option<&mut T>
+        let is_const = matches!(ty, Type::ConstPtr(_));
+        let inner_rust_type = if let Some(ctx) = reexport_ctx {
+            ctx.resolve_class(class_name)
+        } else {
+            format!("crate::ffi::{}", Type::ffi_safe_class_name(class_name))
+        };
+        let rust_reexport_type = if is_const {
+            format!("Option<&{}>", inner_rust_type)
+        } else {
+            format!("Option<&mut {}>", inner_rust_type)
+        };
+        return ReturnTypeBinding {
+            rust_ffi_type,
+            rust_reexport_type,
+            cpp_type,
+            needs_unique_ptr: false,
+            enum_cpp_name: None,
+            enum_rust_type: None,
+            is_class_ptr_return: true,
         };
     }
 
@@ -1673,10 +1733,20 @@ pub fn compute_class_bindings(
                 .iter()
                 .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx, reexport_ctx))
                 .collect();
-            let return_type = method
+            let mut return_type = method
                 .return_type
                 .as_ref()
                 .map(|ty| build_return_type_binding(ty, ffi_ctx, reexport_ctx));
+
+            // If the method is const (&self) and returns a class pointer,
+            // downgrade Option<&mut T> to Option<&T> to avoid unsound &self -> &mut T.
+            if method.is_const {
+                if let Some(ref mut rt) = return_type {
+                    if rt.is_class_ptr_return && rt.rust_reexport_type.starts_with("Option<&mut ") {
+                        rt.rust_reexport_type = rt.rust_reexport_type.replace("Option<&mut ", "Option<&");
+                    }
+                }
+            }
 
             DirectMethodBinding {
                 rust_name: rust_name.clone(),
@@ -1737,7 +1807,7 @@ pub fn compute_class_bindings(
                 .iter()
                 .map(|p| build_param_binding(&p.name, &p.ty, p.is_nullable_ptr(), ffi_ctx, reexport_ctx))
                 .collect();
-            let return_type = method
+            let mut return_type = method
                 .return_type
                 .as_ref()
                 .map(|ty| build_return_type_binding(ty, ffi_ctx, reexport_ctx));
@@ -1750,6 +1820,16 @@ pub fn compute_class_bindings(
             } else {
                 method.is_const
             };
+
+            // If the method is const (&self) and returns a class pointer,
+            // downgrade Option<&mut T> to Option<&T> to avoid unsound &self -> &mut T.
+            if effective_is_const {
+                if let Some(ref mut rt) = return_type {
+                    if rt.is_class_ptr_return && rt.rust_reexport_type.starts_with("Option<&mut ") {
+                        rt.rust_reexport_type = rt.rust_reexport_type.replace("Option<&mut ", "Option<&");
+                    }
+                }
+            }
 
             WrapperMethodBinding {
                 ffi_fn_name,
@@ -2601,8 +2681,9 @@ fn compute_inherited_method_bindings(
                         .return_type
                         .as_ref()
                         .map(|rt| {
-                            rt.rust_ffi_type.contains("*const")
-                                || rt.rust_ffi_type.contains("*mut")
+                            (rt.rust_ffi_type.contains("*const")
+                                || rt.rust_ffi_type.contains("*mut"))
+                                && rt.original.class_ptr_inner_name().is_none()
                         })
                         .unwrap_or(false);
 
@@ -2679,6 +2760,14 @@ fn compute_inherited_method_bindings(
                     continue;
                 }
 
+                // Skip class pointer returns whose inner type is unknown.
+                if let Some(ref rt) = resolved_method.return_type {
+                    if let Some(class_name) = rt.original.class_ptr_inner_name() {
+                        if !all_class_names.contains(class_name) && !all_enum_names.contains(class_name) {
+                            continue;
+                        }
+                    }
+                }
 
                 let ffi_fn_name = format!(
                     "{}_inherited_{}",
@@ -2840,7 +2929,7 @@ fn compute_inherited_method_bindings(
                     })
                     .collect();
 
-                let return_type =
+                let mut return_type =
                     resolved_method.return_type.as_ref().map(|rt| {
                         let enum_rust_type = rt.enum_cpp_name.as_ref()
                             .and_then(|n| symbol_table.enum_rust_types.get(n))
@@ -2856,9 +2945,19 @@ fn compute_inherited_method_bindings(
                             needs_unique_ptr: rt.needs_unique_ptr,
                             enum_cpp_name: rt.enum_cpp_name.clone(),
                             enum_rust_type,
-                            is_class_ptr_return: false,
+                            is_class_ptr_return: rt.original.class_ptr_inner_name().is_some(),
                         }
                     });
+
+                // If the method is const (&self) and returns a class pointer,
+                // downgrade Option<&mut T> to Option<&T> to avoid unsound &self -> &mut T.
+                if resolved_method.is_const {
+                    if let Some(ref mut rt) = return_type {
+                        if rt.is_class_ptr_return && rt.rust_reexport_type.starts_with("Option<&mut ") {
+                            rt.rust_reexport_type = rt.rust_reexport_type.replace("Option<&mut ", "Option<&");
+                        }
+                    }
+                }
 
                 result.push(InheritedMethodBinding {
                     ffi_fn_name,
@@ -4565,7 +4664,17 @@ fn wrap_body_with_postamble(body: &str, postamble: &str, has_return: bool) -> St
 
 /// Build the body expression for a re-export method call.
 /// Handles the conversion from FFI raw pointer returns to Rust references/OwnedPtr.
-fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Option<&str>, needs_owned_ptr: bool) -> String {
+fn build_reexport_body(raw_call: &str, reexport_type: Option<&str>, is_enum: Option<&str>, needs_owned_ptr: bool, is_class_ptr_return: bool) -> String {
+    if is_class_ptr_return {
+        // Class pointer returns are bound as Option<&T> / Option<&mut T>.
+        // The FFI returns a raw pointer; we null-check and convert.
+        if let Some(rt) = reexport_type {
+            if rt.starts_with("Option<&mut ") {
+                return format!("{{ let ptr = unsafe {{ {} }}; if ptr.is_null() {{ None }} else {{ Some(unsafe {{ &mut *ptr }}) }} }}", raw_call);
+            }
+        }
+        return format!("{{ let ptr = unsafe {{ {} }}; if ptr.is_null() {{ None }} else {{ Some(unsafe {{ &*ptr }}) }} }}", raw_call);
+    }
     if let Some(enum_type) = is_enum {
         format!("unsafe {{ {}::try_from({}).unwrap() }}", enum_type, raw_call)
     } else if needs_owned_ptr {
@@ -4719,7 +4828,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         let prelude = cstr_prelude_params(&wm.params);
 
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
+        let is_class_ptr_ret = wm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
         let postamble = mut_ref_enum_postamble_params(&wm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -4780,7 +4890,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         let prelude = cstr_prelude_params(&dm.params);
 
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
+        let is_class_ptr_ret = dm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
         let postamble = mut_ref_enum_postamble_params(&dm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -4839,7 +4950,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         let prelude = cstr_prelude_params(&sm.params);
 
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
+        let is_class_ptr_ret = sm.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
         let postamble = mut_ref_enum_postamble_params(&sm.params, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);
@@ -4935,7 +5047,8 @@ pub fn emit_reexport_class(bindings: &ClassBindings, module_name: &str) -> Strin
 
         let prelude = cstr_prelude_resolved(&im.params, &param_names);
 
-        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr);
+        let is_class_ptr_ret = im.return_type.as_ref().map_or(false, |rt| rt.is_class_ptr_return);
+        let body = build_reexport_body(&raw_call, reexport_rt, is_enum_return.map(|s| s.as_str()), needs_owned_ptr, is_class_ptr_ret);
         let postamble = mut_ref_enum_postamble_resolved(&im.params, &param_names, "        ");
         let has_return = !return_type.is_empty();
         let body = wrap_body_with_postamble(&body, &postamble, has_return);

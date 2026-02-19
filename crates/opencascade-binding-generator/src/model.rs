@@ -251,7 +251,7 @@ impl Method {
         }
         // Check return type
         if let Some(ref ret) = self.return_type {
-            if ret.is_unbindable() {
+            if ret.is_unbindable() && ret.class_ptr_inner_name().is_none() {
                 return true;
             }
         }

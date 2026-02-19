@@ -317,6 +317,18 @@ impl Algo {
         unsafe { crate::ffi::HLRBRep_Algo_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::HLRBRep_Algo_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_Algo_inherited_GetRefCount(self as *const Self) }
@@ -573,6 +585,18 @@ impl AreaLimit {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::HLRBRep_AreaLimit_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::HLRBRep_AreaLimit_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -2680,6 +2704,18 @@ impl Data {
         unsafe { crate::ffi::HLRBRep_Data_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::HLRBRep_Data_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_Data_inherited_GetRefCount(self as *const Self) }
@@ -3135,17 +3171,23 @@ impl EdgeData {
         unsafe { &*(crate::ffi::HLRBRep_EdgeData_geometry(self as *const Self)) }
     }
 
+    /// **Source:** `HLRBRep_EdgeData.hxx`:138 - `HLRBRep_EdgeData::Curve()`
+    pub fn curve(&mut self) -> Option<&mut Curve> {
+        {
+            let ptr = unsafe { crate::ffi::HLRBRep_EdgeData_curve(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// **Source:** `HLRBRep_EdgeData.hxx`:140 - `HLRBRep_EdgeData::Tolerance()`
     pub fn tolerance(&self) -> f32 {
         unsafe { crate::ffi::HLRBRep_EdgeData_tolerance(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for EdgeData (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_EdgeData.hxx`:138 - `HLRBRep_EdgeData::Curve`
-//   Reason: has unbindable types: return: raw pointer (HLRBRep_Curve*)
-//   // pub fn curve(&mut self) -> /* HLRBRep_Curve* */;
-//
 
 // ========================
 // From HLRBRep_EdgeFaceTool.hxx
@@ -4667,6 +4709,19 @@ impl InternalAlgo {
         unsafe { crate::ffi::HLRBRep_InternalAlgo_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::HLRBRep_InternalAlgo_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::HLRBRep_InternalAlgo_inherited_GetRefCount(self as *const Self) }
@@ -5645,6 +5700,18 @@ impl PolyAlgo {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::HLRBRep_PolyAlgo_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::HLRBRep_PolyAlgo_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`

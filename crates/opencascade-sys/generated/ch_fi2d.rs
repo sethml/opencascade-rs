@@ -906,6 +906,20 @@ impl FilletPoint {
         unsafe { crate::ffi::FilletPoint_filter_points(self as *mut Self, arg0 as *mut _) }
     }
 
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:191 - `FilletPoint::Copy()`
+    /// Returns a pointer to created copy of the point
+    /// warning: this is not the full copy! Copies only: myParam, myV, myD, myValid
+    pub fn copy(&mut self) -> Option<&mut FilletPoint> {
+        {
+            let ptr = unsafe { crate::ffi::FilletPoint_copy(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:194 - `FilletPoint::hasSolution()`
     /// Returns the index of the solution or zero if there is no solution
     pub fn has_solution(&mut self, theRadius: f64) -> i32 {
@@ -924,11 +938,3 @@ impl FilletPoint {
         unsafe { crate::ffi::FilletPoint_remove(self as *mut Self, theIndex) }
     }
 }
-
-// ── Skipped symbols for FilletPoint (1 total) ──
-// SKIPPED: **Source:** `ChFi2d_FilletAlgo.hxx`:191 - `FilletPoint::Copy`
-//   method: Returns a pointer to created copy of the point
-//   method: warning: this is not the full copy! Copies only: myParam, myV, myD, myValid
-//   Reason: has unbindable types: return: raw pointer (FilletPoint*)
-//   // pub fn copy(&mut self) -> /* FilletPoint* */;
-//

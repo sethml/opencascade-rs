@@ -934,6 +934,39 @@ impl CoherentTriangle {
         unsafe { crate::ffi::Poly_CoherentTriangle_get_connected_node(self as *const Self, iConn) }
     }
 
+    /// **Source:** `Poly_CoherentTriangle.hxx`:127 - `Poly_CoherentTriangle::GetConnectedTri()`
+    ///
+    /// Query the connected triangle on the given side.
+    /// Returns NULL if there is no connection on the specified side.
+    pub fn get_connected_tri(&self, iConn: i32) -> Option<&CoherentTriangle> {
+        {
+            let ptr = unsafe {
+                crate::ffi::Poly_CoherentTriangle_get_connected_tri(self as *const Self, iConn)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
+    /// **Source:** `Poly_CoherentTriangle.hxx`:136 - `Poly_CoherentTriangle::GetLink()`
+    ///
+    /// Query the Link associate with the given side of the Triangle.
+    /// May return NULL if there are no links in the triangulation.
+    pub fn get_link(&self, iLink: i32) -> Option<&CoherentLink> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Poly_CoherentTriangle_get_link(self as *const Self, iLink) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// **Source:** `Poly_CoherentTriangle.hxx`:144 - `Poly_CoherentTriangle::FindConnection()`
     ///
     /// Returns the index of the connection with the given triangle, or -1 if not found.
@@ -941,20 +974,6 @@ impl CoherentTriangle {
         unsafe { crate::ffi::Poly_CoherentTriangle_find_connection(self as *const Self, arg0) }
     }
 }
-
-// ── Skipped symbols for CoherentTriangle (2 total) ──
-// SKIPPED: **Source:** `Poly_CoherentTriangle.hxx`:127 - `Poly_CoherentTriangle::GetConnectedTri`
-//   method: Query the connected triangle on the given side.
-//   method: Returns NULL if there is no connection on the specified side.
-//   Reason: has unbindable types: return: raw pointer (const Poly_CoherentTriangle*)
-//   // pub fn get_connected_tri(&self, iConn: i32) -> /* const Poly_CoherentTriangle* */;
-//
-// SKIPPED: **Source:** `Poly_CoherentTriangle.hxx`:136 - `Poly_CoherentTriangle::GetLink`
-//   method: Query the Link associate with the given side of the Triangle.
-//   method: May return NULL if there are no links in the triangulation.
-//   Reason: has unbindable types: return: raw pointer (const Poly_CoherentLink*)
-//   // pub fn get_link(&self, iLink: i32) -> /* const Poly_CoherentLink* */;
-//
 
 // ========================
 // From Poly_CoherentTriangulation.hxx
@@ -1190,6 +1209,34 @@ impl CoherentTriangulation {
         unsafe { crate::ffi::Poly_CoherentTriangulation_remove_link(self as *mut Self, theLink) }
     }
 
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:293 - `Poly_CoherentTriangulation::AddTriangle()`
+    ///
+    /// Add a triangle to the triangulation.
+    /// @return
+    /// Pointer to the added triangle instance or NULL if an error occurred.
+    pub fn add_triangle(
+        &mut self,
+        iNode0: i32,
+        iNode1: i32,
+        iNode2: i32,
+    ) -> Option<&mut CoherentTriangle> {
+        {
+            let ptr = unsafe {
+                crate::ffi::Poly_CoherentTriangulation_add_triangle(
+                    self as *mut Self,
+                    iNode0,
+                    iNode1,
+                    iNode2,
+                )
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// **Source:** `Poly_CoherentTriangulation.hxx`:302 - `Poly_CoherentTriangulation::ReplaceNodes()`
     ///
     /// Replace nodes in the given triangle.
@@ -1210,6 +1257,31 @@ impl CoherentTriangulation {
                 iNode1,
                 iNode2,
             )
+        }
+    }
+
+    /// **Source:** `Poly_CoherentTriangulation.hxx`:315 - `Poly_CoherentTriangulation::AddLink()`
+    ///
+    /// Add a single link to triangulation, based on a triangle and its side index.
+    /// This method does not check for coincidence with already present links.
+    /// @param theTri
+    /// Triangle that contains the link to be added.
+    /// @param theConn
+    /// Index of the side (i.e., 0, 1 0r 2) defining the added link.
+    pub fn add_link(
+        &mut self,
+        theTri: &CoherentTriangle,
+        theConn: i32,
+    ) -> Option<&mut CoherentLink> {
+        {
+            let ptr = unsafe {
+                crate::ffi::Poly_CoherentTriangulation_add_link(self as *mut Self, theTri, theConn)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
         }
     }
 
@@ -1313,6 +1385,20 @@ impl CoherentTriangulation {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::Poly_CoherentTriangulation_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Poly_CoherentTriangulation_inherited_GetRefCount(self as *const Self) }
@@ -1369,24 +1455,12 @@ impl HandlePolyCoherentTriangulation {
     }
 }
 
-// ── Skipped symbols for CoherentTriangulation (5 total) ──
+// ── Skipped symbols for CoherentTriangulation (3 total) ──
 // SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:198 - `Poly_CoherentTriangulation::RemoveDegenerated`
 //   method: Find and remove degenerated triangles in Triangulation.
 //   method: @param theTol
 //   Reason: param 'pLstRemovedNode' uses unknown type 'NCollection_List<TwoIntegers>*'
 //   // pub fn remove_degenerated(&mut self, theTol: f64, pLstRemovedNode: /* NCollection_List<TwoIntegers>* */) -> bool;
-//
-// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:293 - `Poly_CoherentTriangulation::AddTriangle`
-//   method: Add a triangle to the triangulation.
-//   method: @return
-//   Reason: has unbindable types: return: raw pointer (Poly_CoherentTriangle*)
-//   // pub fn add_triangle(&mut self, iNode0: i32, iNode1: i32, iNode2: i32) -> /* Poly_CoherentTriangle* */;
-//
-// SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:315 - `Poly_CoherentTriangulation::AddLink`
-//   method: Add a single link to triangulation, based on a triangle and its side index.
-//   method: This method does not check for coincidence with already present links.
-//   Reason: has unbindable types: return: raw pointer (Poly_CoherentLink*)
-//   // pub fn add_link(&mut self, theTri: &CoherentTriangle, theConn: i32) -> /* Poly_CoherentLink* */;
 //
 // SKIPPED: **Source:** `Poly_CoherentTriangulation.hxx`:330 - `Poly_CoherentTriangulation::FindTriangle`
 //   method: Find one or two triangles that share the given couple of nodes.
@@ -1780,6 +1854,19 @@ impl HArray1OfTriangle {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Poly_HArray1OfTriangle_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Poly_HArray1OfTriangle_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -2766,6 +2853,19 @@ impl MergeNodesTool {
         unsafe { crate::ffi::Poly_MergeNodesTool_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Poly_MergeNodesTool_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Poly_MergeNodesTool_inherited_GetRefCount(self as *const Self) }
@@ -2959,6 +3059,18 @@ impl Polygon2D {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Poly_Polygon2D_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Poly_Polygon2D_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -3173,6 +3285,18 @@ impl Polygon3D {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Poly_Polygon3D_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Poly_Polygon3D_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -3457,6 +3581,20 @@ impl PolygonOnTriangulation {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::Poly_PolygonOnTriangulation_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::Poly_PolygonOnTriangulation_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -4220,6 +4358,18 @@ impl Triangulation {
         unsafe { crate::ffi::Poly_Triangulation_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Poly_Triangulation_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Poly_Triangulation_inherited_GetRefCount(self as *const Self) }
@@ -4471,6 +4621,20 @@ impl TriangulationParameters {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::Poly_TriangulationParameters_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::Poly_TriangulationParameters_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 

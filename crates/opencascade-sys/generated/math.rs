@@ -4434,6 +4434,18 @@ impl NotSquare {
         unsafe { crate::ffi::math_NotSquare_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::math_NotSquare_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::math_NotSquare_inherited_GetRefCount(self as *const Self) }
@@ -4623,21 +4635,47 @@ impl PSOParticlesPool {
             ))
         }
     }
-}
 
-// ── Skipped symbols for PSOParticlesPool (3 total) ──
-// SKIPPED: **Source:** `math_PSOParticlesPool.hxx`:53 - `math_PSOParticlesPool::GetParticle`
-//   Reason: has unbindable types: return: raw pointer (PSO_Particle*)
-//   // pub fn get_particle(&mut self, theIdx: i32) -> /* PSO_Particle* */;
-//
-// SKIPPED: **Source:** `math_PSOParticlesPool.hxx`:55 - `math_PSOParticlesPool::GetBestParticle`
-//   Reason: has unbindable types: return: raw pointer (PSO_Particle*)
-//   // pub fn get_best_particle(&mut self) -> /* PSO_Particle* */;
-//
-// SKIPPED: **Source:** `math_PSOParticlesPool.hxx`:57 - `math_PSOParticlesPool::GetWorstParticle`
-//   Reason: has unbindable types: return: raw pointer (PSO_Particle*)
-//   // pub fn get_worst_particle(&mut self) -> /* PSO_Particle* */;
-//
+    /// **Source:** `math_PSOParticlesPool.hxx`:53 - `math_PSOParticlesPool::GetParticle()`
+    pub fn get_particle(&mut self, theIdx: i32) -> Option<&mut PSO_Particle> {
+        {
+            let ptr = unsafe {
+                crate::ffi::math_PSOParticlesPool_get_particle(self as *mut Self, theIdx)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// **Source:** `math_PSOParticlesPool.hxx`:55 - `math_PSOParticlesPool::GetBestParticle()`
+    pub fn get_best_particle(&mut self) -> Option<&mut PSO_Particle> {
+        {
+            let ptr =
+                unsafe { crate::ffi::math_PSOParticlesPool_get_best_particle(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
+    /// **Source:** `math_PSOParticlesPool.hxx`:57 - `math_PSOParticlesPool::GetWorstParticle()`
+    pub fn get_worst_particle(&mut self) -> Option<&mut PSO_Particle> {
+        {
+            let ptr =
+                unsafe { crate::ffi::math_PSOParticlesPool_get_worst_particle(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+}
 
 // ========================
 // From math_Powell.hxx
@@ -4961,6 +4999,19 @@ impl SingularMatrix {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::math_SingularMatrix_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::math_SingularMatrix_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`

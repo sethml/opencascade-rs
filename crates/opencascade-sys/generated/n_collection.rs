@@ -156,6 +156,19 @@ impl AccAllocator {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::NCollection_AccAllocator_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::NCollection_AccAllocator_inherited_GetRefCount(self as *const Self) }
@@ -228,12 +241,12 @@ impl HandleNCollectionAccAllocator {
 // ── Skipped symbols for AccAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:63 - `NCollection_AccAllocator::Allocate`
 //   method: Allocate memory with given size
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:66 - `NCollection_AccAllocator::AllocateOptimal`
 //   method: Allocate memory with given size
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_AccAllocator.hxx`:70 - `NCollection_AccAllocator::Free`
@@ -351,6 +364,20 @@ impl AlignedAllocator {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::NCollection_AlignedAllocator_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -429,12 +456,12 @@ impl HandleNCollectionAlignedAllocator {
 // ── Skipped symbols for AlignedAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:32 - `NCollection_AlignedAllocator::Allocate`
 //   method: Allocate memory with given size. Returns NULL on failure.
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:35 - `NCollection_AlignedAllocator::AllocateOptimal`
 //   method: Allocate memory with given size. Returns NULL on failure.
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_AlignedAllocator.hxx`:38 - `NCollection_AlignedAllocator::Free`
@@ -534,6 +561,20 @@ impl BaseAllocator {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::NCollection_BaseAllocator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::NCollection_BaseAllocator_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -685,11 +726,11 @@ impl HandleNCollectionBaseAllocator {
 
 // ── Skipped symbols for BaseAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:49 - `NCollection_BaseAllocator::Allocate`
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:50 - `NCollection_BaseAllocator::AllocateOptimal`
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_BaseAllocator.hxx`:51 - `NCollection_BaseAllocator::Free`
@@ -930,7 +971,7 @@ impl BasePointerVector {
 //
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:74 - `NCollection_BasePointerVector::Value`
 //   method: Gets value by index, no access validation
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn value(&self, theInd: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_BasePointerVector.hxx`:79 - `NCollection_BasePointerVector::Append`
@@ -1152,6 +1193,18 @@ impl Buffer {
         unsafe { crate::ffi::NCollection_Buffer_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::NCollection_Buffer_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::NCollection_Buffer_inherited_GetRefCount(self as *const Self) }
@@ -1212,12 +1265,12 @@ impl HandleNCollectionBuffer {
 //
 // SKIPPED: **Source:** `NCollection_Buffer.hxx`:54 - `NCollection_Buffer::Data`
 //   method: @return buffer data
-//   Reason: has unbindable types: return: raw pointer (const Standard_Byte*)
+//   Reason: return type 'const Standard_Byte*' is unknown
 //   // pub fn data(&self) -> /* const Standard_Byte* */;
 //
 // SKIPPED: **Source:** `NCollection_Buffer.hxx`:57 - `NCollection_Buffer::ChangeData`
 //   method: @return buffer data
-//   Reason: has unbindable types: return: raw pointer (Standard_Byte*)
+//   Reason: return type 'Standard_Byte*' is unknown
 //   // pub fn change_data(&mut self) -> /* Standard_Byte* */;
 //
 
@@ -1320,6 +1373,20 @@ impl HeapAllocator {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::NCollection_HeapAllocator_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::NCollection_HeapAllocator_inherited_GetRefCount(self as *const Self) }
@@ -1391,11 +1458,11 @@ impl HandleNCollectionHeapAllocator {
 
 // ── Skipped symbols for HeapAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:29 - `NCollection_HeapAllocator::Allocate`
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:31 - `NCollection_HeapAllocator::AllocateOptimal`
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_HeapAllocator.hxx`:33 - `NCollection_HeapAllocator::Free`
@@ -1554,6 +1621,19 @@ impl IncAllocator {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::NCollection_IncAllocator_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::NCollection_IncAllocator_inherited_GetRefCount(self as *const Self) }
@@ -1626,12 +1706,12 @@ impl HandleNCollectionIncAllocator {
 // ── Skipped symbols for IncAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:67 - `NCollection_IncAllocator::Allocate`
 //   method: Allocate memory with given size. Returns NULL on failure
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate(&mut self, size: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:70 - `NCollection_IncAllocator::AllocateOptimal`
 //   method: Allocate memory with given size. Returns NULL on failure
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate_optimal(&mut self, size: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_IncAllocator.hxx`:73 - `NCollection_IncAllocator::Free`
@@ -1850,6 +1930,20 @@ impl WinHeapAllocator {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::NCollection_WinHeapAllocator_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -1928,12 +2022,12 @@ impl HandleNCollectionWinHeapAllocator {
 // ── Skipped symbols for WinHeapAllocator (3 total) ──
 // SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:44 - `NCollection_WinHeapAllocator::Allocate`
 //   method: Allocate memory
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:47 - `NCollection_WinHeapAllocator::AllocateOptimal`
 //   method: Allocate memory
-//   Reason: has unbindable types: return: raw pointer (void*)
+//   Reason: return type 'void*' is unknown
 //   // pub fn allocate_optimal(&mut self, theSize: usize) -> /* void* */;
 //
 // SKIPPED: **Source:** `NCollection_WinHeapAllocator.hxx`:50 - `NCollection_WinHeapAllocator::Free`

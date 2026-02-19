@@ -857,6 +857,18 @@ impl Alert {
         unsafe { crate::ffi::Message_Alert_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Message_Alert_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_Alert_inherited_GetRefCount(self as *const Self) }
@@ -1845,6 +1857,19 @@ impl AlertExtended {
         unsafe { crate::ffi::Message_AlertExtended_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_AlertExtended_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_AlertExtended_inherited_GetRefCount(self as *const Self) }
@@ -2337,6 +2362,18 @@ impl Algorithm {
         unsafe { crate::ffi::Message_Algorithm_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Message_Algorithm_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_Algorithm_inherited_GetRefCount(self as *const Self) }
@@ -2539,6 +2576,18 @@ impl Attribute {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Message_Attribute_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Message_Attribute_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -2863,6 +2912,19 @@ impl AttributeMeter {
         unsafe { crate::ffi::Message_AttributeMeter_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_AttributeMeter_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_AttributeMeter_inherited_GetRefCount(self as *const Self) }
@@ -3052,6 +3114,19 @@ impl AttributeObject {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_AttributeObject_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_AttributeObject_inherited_GetRefCount(self as *const Self) }
@@ -3209,6 +3284,19 @@ impl AttributeStream {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::Message_AttributeStream_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_AttributeStream_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -3493,6 +3581,19 @@ impl CompositeAlerts {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::Message_CompositeAlerts_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_CompositeAlerts_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -4097,6 +4198,18 @@ impl Messenger {
         unsafe { crate::ffi::Message_Messenger_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Message_Messenger_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_Messenger_inherited_GetRefCount(self as *const Self) }
@@ -4176,6 +4289,20 @@ impl Messenger_StreamBuffer {
         unsafe { crate::ffi::Message_Messenger_StreamBuffer_flush(self as *mut Self, doForce) }
     }
 
+    /// **Source:** `Message_Messenger.hxx`:122 - `Message_Messenger_StreamBuffer::Messenger()`
+    /// Access to the messenger
+    pub fn messenger(&mut self) -> Option<&mut Messenger> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_Messenger_StreamBuffer_messenger(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &mut *ptr })
+            }
+        }
+    }
+
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4186,16 +4313,11 @@ impl Messenger_StreamBuffer {
     }
 }
 
-// ── Skipped symbols for Messenger_StreamBuffer (2 total) ──
+// ── Skipped symbols for Messenger_StreamBuffer (1 total) ──
 // SKIPPED: **Source:** `Message_Messenger.hxx`:116 - `Message_Messenger::StreamBuffer::Stream`
 //   method: Access to the stream object
 //   Reason: return type 'Standard_SStream&' is unknown
 //   // pub fn stream(&mut self) -> &mut SStream;
-//
-// SKIPPED: **Source:** `Message_Messenger.hxx`:122 - `Message_Messenger::StreamBuffer::Messenger`
-//   method: Access to the messenger
-//   Reason: has unbindable types: return: raw pointer (Message_Messenger*)
-//   // pub fn messenger(&mut self) -> /* Message_Messenger* */;
 //
 
 // ========================
@@ -4622,6 +4744,18 @@ impl Printer {
         unsafe { crate::ffi::Message_Printer_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Message_Printer_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_Printer_inherited_GetRefCount(self as *const Self) }
@@ -4919,6 +5053,19 @@ impl PrinterOStream {
         unsafe { crate::ffi::Message_PrinterOStream_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_PrinterOStream_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_PrinterOStream_inherited_GetRefCount(self as *const Self) }
@@ -5156,6 +5303,19 @@ impl PrinterSystemLog {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_PrinterSystemLog_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_PrinterSystemLog_inherited_GetRefCount(self as *const Self) }
@@ -5381,6 +5541,19 @@ impl PrinterToReport {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_PrinterToReport_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::Message_PrinterToReport_inherited_GetRefCount(self as *const Self) }
@@ -5584,6 +5757,20 @@ impl ProgressIndicator {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::Message_ProgressIndicator_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::Message_ProgressIndicator_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -6006,6 +6193,19 @@ impl ProgressScope {
         }
     }
 
+    /// **Source:** `Message_ProgressScope.hxx`:325 - `Message_ProgressScope::Parent()`
+    /// Returns parent scope (null for top-level scope)
+    pub fn parent(&self) -> Option<&ProgressScope> {
+        {
+            let ptr = unsafe { crate::ffi::Message_ProgressScope_parent(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// **Source:** `Message_ProgressScope.hxx`:328 - `Message_ProgressScope::MaxValue()`
     /// Returns the maximal value of progress in this scope
     pub fn max_value(&self) -> f64 {
@@ -6047,18 +6247,13 @@ impl ProgressScope {
     }
 }
 
-// ── Skipped symbols for ProgressScope (2 total) ──
+// ── Skipped symbols for ProgressScope (1 total) ──
 // SKIPPED: **Source:** `Message_ProgressScope.hxx`:261 - `Message_ProgressScope::Message_ProgressScope`
 //   constructor: Creates a new scope taking responsibility of the part of the progress
 //   constructor: scale described by theRange. The new scope has own range from 0 to
 //   constructor: theMax, which is mapped to the given range.
 //   Reason: class pointer param 'theName' inner type 'const Message_ProgressScope::NullString*' is unknown
 //   // pub fn new_progressrange_nullstringptr_real_bool(theRange: &ProgressRange, theName: /* const Message_ProgressScope::NullString* */, theMax: f64, isInfinite: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Message_ProgressScope.hxx`:325 - `Message_ProgressScope::Parent`
-//   method: Returns parent scope (null for top-level scope)
-//   Reason: has unbindable types: return: raw pointer (const Message_ProgressScope*)
-//   // pub fn parent(&self) -> /* const Message_ProgressScope* */;
 //
 
 // ========================
@@ -6189,6 +6384,19 @@ impl ProgressSentry {
     /// Inherited: **Source:** `Message_ProgressScope.hxx`:317 - `Message_ProgressScope::IsActive()`
     pub fn is_active(&self) -> bool {
         unsafe { crate::ffi::Message_ProgressSentry_inherited_IsActive(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Message_ProgressScope.hxx`:325 - `Message_ProgressScope::Parent()`
+    pub fn parent(&self) -> Option<&ProgressScope> {
+        {
+            let ptr =
+                unsafe { crate::ffi::Message_ProgressSentry_inherited_Parent(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Message_ProgressScope.hxx`:328 - `Message_ProgressScope::MaxValue()`
@@ -6522,6 +6730,18 @@ impl Report {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::Message_Report_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::Message_Report_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`

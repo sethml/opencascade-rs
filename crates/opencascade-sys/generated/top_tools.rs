@@ -668,6 +668,20 @@ impl HArray1OfListOfShape {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopTools_HArray1OfListOfShape_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe {
@@ -862,6 +876,19 @@ impl HArray1OfShape {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::TopTools_HArray1OfShape_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::TopTools_HArray1OfShape_inherited_GetRefCount(self as *const Self) }
@@ -1035,6 +1062,19 @@ impl HArray2OfShape {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::TopTools_HArray2OfShape_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::TopTools_HArray2OfShape_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -1230,6 +1270,20 @@ impl HSequenceOfShape {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopTools_HSequenceOfShape_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::TopTools_HSequenceOfShape_inherited_GetRefCount(self as *const Self) }
@@ -1408,20 +1462,28 @@ impl MutexForShapeProvider {
         }
     }
 
+    /// **Source:** `TopTools_MutexForShapeProvider.hxx`:46 - `TopTools_MutexForShapeProvider::GetMutex()`
+    /// Returns pointer to mutex associated with theShape.
+    /// In case when mutex not found returns NULL.
+    pub fn get_mutex(&self, theShape: &crate::topo_ds::Shape) -> Option<&crate::standard::Mutex> {
+        {
+            let ptr = unsafe {
+                crate::ffi::TopTools_MutexForShapeProvider_get_mutex(self as *const Self, theShape)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// **Source:** `TopTools_MutexForShapeProvider.hxx`:49 - `TopTools_MutexForShapeProvider::RemoveAllMutexes()`
     /// Removes all mutexes
     pub fn remove_all_mutexes(&mut self) {
         unsafe { crate::ffi::TopTools_MutexForShapeProvider_remove_all_mutexes(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for MutexForShapeProvider (1 total) ──
-// SKIPPED: **Source:** `TopTools_MutexForShapeProvider.hxx`:46 - `TopTools_MutexForShapeProvider::GetMutex`
-//   method: Returns pointer to mutex associated with theShape.
-//   method: In case when mutex not found returns NULL.
-//   Reason: has unbindable types: return: raw pointer (Standard_Mutex*)
-//   // pub fn get_mutex(&self, theShape: &Shape) -> /* Standard_Mutex* */;
-//
 
 // ========================
 // From TopTools_ShapeSet.hxx

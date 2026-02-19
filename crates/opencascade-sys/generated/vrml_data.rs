@@ -295,6 +295,19 @@ impl Appearance {
         unsafe { crate::ffi::VrmlData_Appearance_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::VrmlData_Appearance_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Appearance_inherited_GetRefCount(self as *const Self) }
@@ -378,6 +391,20 @@ impl ArrayVec3d {
     /// Query the number of vectors
     pub fn length(&self) -> usize {
         unsafe { crate::ffi::VrmlData_ArrayVec3d_length(self as *const Self) }
+    }
+
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values()`
+    ///
+    /// Query the array
+    pub fn values(&self) -> Option<&crate::gp::XYZ> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_ArrayVec3d_values(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// **Source:** `VrmlData_ArrayVec3d.hxx`:68 - `VrmlData_ArrayVec3d::AllocateValues()`
@@ -557,6 +584,19 @@ impl ArrayVec3d {
         unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_ArrayVec3d_inherited_GetRefCount(self as *const Self) }
@@ -668,7 +708,7 @@ impl HandleVrmlDataArrayVec3d {
     }
 }
 
-// ── Skipped symbols for ArrayVec3d (3 total) ──
+// ── Skipped symbols for ArrayVec3d (2 total) ──
 // SKIPPED: **Source:** `VrmlData_ArrayVec3d.hxx`:34 - `VrmlData_ArrayVec3d::VrmlData_ArrayVec3d`
 //   constructor: Empty constructor
 //   Reason: class is abstract (has unimplemented pure virtual methods)
@@ -678,11 +718,6 @@ impl HandleVrmlDataArrayVec3d {
 //   constructor: Constructor
 //   Reason: class is abstract (has unimplemented pure virtual methods)
 //   // pub fn new_scene_charptr_size_xyzptr(theScene: &Scene, theName: *const char, nVec: usize, arrVec: /* const gp_XYZ* */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values`
-//   method: Query the array
-//   Reason: has unbindable types: return: raw pointer (const gp_XYZ*)
-//   // pub fn values(&self) -> /* const gp_XYZ* */;
 //
 
 // ========================
@@ -927,6 +962,18 @@ impl Box {
         unsafe { crate::ffi::VrmlData_Box_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Box_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Box_inherited_GetRefCount(self as *const Self) }
@@ -1165,6 +1212,18 @@ impl Color {
         unsafe { crate::ffi::VrmlData_Color_inherited_Length(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values()`
+    pub fn values(&self) -> Option<&crate::gp::XYZ> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Color_inherited_Values(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:68 - `VrmlData_ArrayVec3d::AllocateValues()`
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
         unsafe { crate::ffi::VrmlData_Color_inherited_AllocateValues(self as *mut Self, theLength) }
@@ -1227,6 +1286,18 @@ impl Color {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::VrmlData_Color_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Color_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -1565,6 +1636,18 @@ impl Cone {
         unsafe { crate::ffi::VrmlData_Cone_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Cone_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Cone_inherited_GetRefCount(self as *const Self) }
@@ -1800,6 +1883,19 @@ impl Coordinate {
         unsafe { crate::ffi::VrmlData_Coordinate_inherited_Length(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values()`
+    pub fn values(&self) -> Option<&crate::gp::XYZ> {
+        {
+            let ptr =
+                unsafe { crate::ffi::VrmlData_Coordinate_inherited_Values(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:68 - `VrmlData_ArrayVec3d::AllocateValues()`
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
         unsafe {
@@ -1868,6 +1964,19 @@ impl Coordinate {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::VrmlData_Coordinate_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::VrmlData_Coordinate_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -2223,6 +2332,18 @@ impl Cylinder {
         unsafe { crate::ffi::VrmlData_Cylinder_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Cylinder_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Cylinder_inherited_GetRefCount(self as *const Self) }
@@ -2492,6 +2613,18 @@ impl Faceted {
         unsafe { crate::ffi::VrmlData_Faceted_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Faceted_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Faceted_inherited_GetRefCount(self as *const Self) }
@@ -2728,6 +2861,18 @@ impl Geometry {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::VrmlData_Geometry_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Geometry_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -3216,6 +3361,18 @@ impl Group {
         unsafe { crate::ffi::VrmlData_Group_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Group_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Group_inherited_GetRefCount(self as *const Self) }
@@ -3538,6 +3695,19 @@ impl ImageTexture {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::VrmlData_ImageTexture_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::VrmlData_ImageTexture_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -4092,6 +4262,19 @@ impl IndexedFaceSet {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_IndexedFaceSet_inherited_GetRefCount(self as *const Self) }
@@ -4521,6 +4704,19 @@ impl IndexedLineSet {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::VrmlData_IndexedLineSet_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::VrmlData_IndexedLineSet_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -4955,6 +5151,18 @@ impl Material {
         unsafe { crate::ffi::VrmlData_Material_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Material_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Material_inherited_GetRefCount(self as *const Self) }
@@ -5259,6 +5467,18 @@ impl Node {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::VrmlData_Node_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Node_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -5813,6 +6033,18 @@ impl Normal {
         unsafe { crate::ffi::VrmlData_Normal_inherited_Length(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:61 - `VrmlData_ArrayVec3d::Values()`
+    pub fn values(&self) -> Option<&crate::gp::XYZ> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Normal_inherited_Values(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:68 - `VrmlData_ArrayVec3d::AllocateValues()`
     pub fn allocate_values(&mut self, theLength: usize) -> bool {
         unsafe {
@@ -5877,6 +6109,18 @@ impl Normal {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::VrmlData_Normal_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Normal_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -6684,6 +6928,18 @@ impl ShapeNode {
         unsafe { crate::ffi::VrmlData_ShapeNode_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_ShapeNode_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_ShapeNode_inherited_GetRefCount(self as *const Self) }
@@ -6961,6 +7217,18 @@ impl Sphere {
         unsafe { crate::ffi::VrmlData_Sphere_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Sphere_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Sphere_inherited_GetRefCount(self as *const Self) }
@@ -7186,6 +7454,18 @@ impl Texture {
         unsafe { crate::ffi::VrmlData_Texture_inherited_IsKind(self as *const Self, theType) }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_Texture_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_Texture_inherited_GetRefCount(self as *const Self) }
@@ -7336,6 +7616,20 @@ impl TextureCoordinate {
     /// Query the number of points
     pub fn length(&mut self) -> usize {
         unsafe { crate::ffi::VrmlData_TextureCoordinate_length(self as *mut Self) }
+    }
+
+    /// **Source:** `VrmlData_TextureCoordinate.hxx`:67 - `VrmlData_TextureCoordinate::Points()`
+    ///
+    /// Query the points
+    pub fn points(&mut self) -> Option<&crate::gp::XY> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_TextureCoordinate_points(self as *mut Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:72 - `VrmlData_TextureCoordinate::SetPoints()`
@@ -7496,6 +7790,20 @@ impl TextureCoordinate {
         }
     }
 
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::VrmlData_TextureCoordinate_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         unsafe { crate::ffi::VrmlData_TextureCoordinate_inherited_GetRefCount(self as *const Self) }
@@ -7562,13 +7870,6 @@ impl HandleVrmlDataTextureCoordinate {
         }
     }
 }
-
-// ── Skipped symbols for TextureCoordinate (1 total) ──
-// SKIPPED: **Source:** `VrmlData_TextureCoordinate.hxx`:67 - `VrmlData_TextureCoordinate::Points`
-//   method: Query the points
-//   Reason: has unbindable types: return: raw pointer (const gp_XY*)
-//   // pub fn points(&mut self) -> /* const gp_XY* */;
-//
 
 // ========================
 // From VrmlData_TextureTransform.hxx
@@ -7762,6 +8063,20 @@ impl TextureTransform {
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
             crate::ffi::VrmlData_TextureTransform_inherited_IsKind(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe {
+                crate::ffi::VrmlData_TextureTransform_inherited_This(self as *const Self)
+            };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
         }
     }
 
@@ -8022,6 +8337,19 @@ impl UnknownNode {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::VrmlData_UnknownNode_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr =
+                unsafe { crate::ffi::VrmlData_UnknownNode_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
@@ -8298,6 +8626,18 @@ impl WorldInfo {
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
     pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::VrmlData_WorldInfo_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let ptr = unsafe { crate::ffi::VrmlData_WorldInfo_inherited_This(self as *const Self) };
+            if ptr.is_null() {
+                None
+            } else {
+                Some(unsafe { &*ptr })
+            }
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
