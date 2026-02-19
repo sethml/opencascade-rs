@@ -4589,15 +4589,15 @@ unsafe impl crate::CppDeletable for PSO {
 /// Describes particle pool for using in PSO algorithm.
 /// Indexes:
 /// 0 <= aDimidx <= myDimensionCount - 1
-pub use crate::ffi::PSO_Particle as Particle;
+pub use crate::ffi::PSO_Particle;
 
-unsafe impl crate::CppDeletable for Particle {
+unsafe impl crate::CppDeletable for PSO_Particle {
     unsafe fn cpp_delete(ptr: *mut Self) {
         crate::ffi::PSO_Particle_destructor(ptr);
     }
 }
 
-impl Particle {
+impl PSO_Particle {
     /// **Source:** `math_PSOParticlesPool.hxx`:32 - `PSO_Particle::PSO_Particle()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::PSO_Particle_ctor()) }

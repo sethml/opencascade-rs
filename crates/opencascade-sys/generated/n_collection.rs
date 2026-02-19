@@ -12,9 +12,9 @@
 #[repr(i32)]
 pub enum CellFilter_Action {
     /// < Target is needed and should be kept
-    Keep = 0,
+    CellfilterKeep = 0,
     /// < Target is not needed and can be removed from the current cell
-    Purge = 1,
+    CellfilterPurge = 1,
 }
 
 impl From<CellFilter_Action> for i32 {
@@ -28,8 +28,8 @@ impl TryFrom<i32> for CellFilter_Action {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(CellFilter_Action::Keep),
-            1 => Ok(CellFilter_Action::Purge),
+            0 => Ok(CellFilter_Action::CellfilterKeep),
+            1 => Ok(CellFilter_Action::CellfilterPurge),
             _ => Err(value),
         }
     }

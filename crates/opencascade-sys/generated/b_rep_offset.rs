@@ -87,12 +87,12 @@ impl TryFrom<i32> for Error {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
 pub enum Simple_Status {
-    Ok = 0,
-    Nullinputshape = 1,
-    Erroroffsetcomputation = 2,
-    Errorwallfacecomputation = 3,
-    Errorinvalidnbshells = 4,
-    Errornonclosedshell = 5,
+    BrepoffsetsimpleOk = 0,
+    BrepoffsetsimpleNullinputshape = 1,
+    BrepoffsetsimpleErroroffsetcomputation = 2,
+    BrepoffsetsimpleErrorwallfacecomputation = 3,
+    BrepoffsetsimpleErrorinvalidnbshells = 4,
+    BrepoffsetsimpleErrornonclosedshell = 5,
 }
 
 impl From<Simple_Status> for i32 {
@@ -106,12 +106,12 @@ impl TryFrom<i32> for Simple_Status {
 
     fn try_from(value: i32) -> ::core::result::Result<Self, i32> {
         match value {
-            0 => Ok(Simple_Status::Ok),
-            1 => Ok(Simple_Status::Nullinputshape),
-            2 => Ok(Simple_Status::Erroroffsetcomputation),
-            3 => Ok(Simple_Status::Errorwallfacecomputation),
-            4 => Ok(Simple_Status::Errorinvalidnbshells),
-            5 => Ok(Simple_Status::Errornonclosedshell),
+            0 => Ok(Simple_Status::BrepoffsetsimpleOk),
+            1 => Ok(Simple_Status::BrepoffsetsimpleNullinputshape),
+            2 => Ok(Simple_Status::BrepoffsetsimpleErroroffsetcomputation),
+            3 => Ok(Simple_Status::BrepoffsetsimpleErrorwallfacecomputation),
+            4 => Ok(Simple_Status::BrepoffsetsimpleErrorinvalidnbshells),
+            5 => Ok(Simple_Status::BrepoffsetsimpleErrornonclosedshell),
             _ => Err(value),
         }
     }

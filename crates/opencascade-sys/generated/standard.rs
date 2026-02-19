@@ -94,11 +94,11 @@ pub use crate::ffi::{
     HandleAPIHeaderSectionEditHeader, HandleAdaptor2dCurve2d, HandleAdaptor2dLine2d,
     HandleAdaptor2dOffsetCurve, HandleAdaptor3dCurve, HandleAdaptor3dCurveOnSurface,
     HandleAdaptor3dHVertex, HandleAdaptor3dIsoCurve, HandleAdaptor3dSurface,
-    HandleAdaptor3dTopolTool, HandleAppDefHArray1OfMultiPointConstraint,
-    HandleAppDefLinearCriteria, HandleAppParCurvesHArray1OfConstraintCouple,
-    HandleAppParCurvesHArray1OfMultiBSpCurve, HandleAppParCurvesHArray1OfMultiCurve,
-    HandleAppParCurvesHArray1OfMultiPoint, HandleApproxCurvlinFunc,
-    HandleApproxHArray1OfAdHSurface, HandleApproxHArray1OfGTrsf2d,
+    HandleAdaptor3dTopolTool, HandleAdvApp2VarIso, HandleAdvApp2VarNode, HandleAdvApp2VarPatch,
+    HandleAppDefHArray1OfMultiPointConstraint, HandleAppDefLinearCriteria,
+    HandleAppParCurvesHArray1OfConstraintCouple, HandleAppParCurvesHArray1OfMultiBSpCurve,
+    HandleAppParCurvesHArray1OfMultiCurve, HandleAppParCurvesHArray1OfMultiPoint,
+    HandleApproxCurvlinFunc, HandleApproxHArray1OfAdHSurface, HandleApproxHArray1OfGTrsf2d,
     HandleBOPAlgoAlertAcquiredSelfIntersection, HandleBOPAlgoAlertBOPNotAllowed,
     HandleBOPAlgoAlertBOPNotSet, HandleBOPAlgoAlertBadPositioning, HandleBOPAlgoAlertBuilderFailed,
     HandleBOPAlgoAlertBuildingPCurveFailed, HandleBOPAlgoAlertEmptyShape,
@@ -10651,6 +10651,54 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor3dTopolTool>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleAdaptor3dTopolTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AdvApp2Var_Iso>
+    ///
+    /// Returns `None` if the handle does not point to a `AdvApp2Var_Iso` (or subclass).
+    pub fn downcast_to_iso(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAdvApp2VarIso>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAdvApp2VarIso(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AdvApp2Var_Node>
+    ///
+    /// Returns `None` if the handle does not point to a `AdvApp2Var_Node` (or subclass).
+    pub fn downcast_to_adv_app2_var_node(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdvApp2VarNode>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAdvApp2VarNode(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<AdvApp2Var_Patch>
+    ///
+    /// Returns `None` if the handle does not point to a `AdvApp2Var_Patch` (or subclass).
+    pub fn downcast_to_patch(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAdvApp2VarPatch>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleAdvApp2VarPatch(
                 self as *const Self,
             )
         };

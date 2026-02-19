@@ -866,10 +866,16 @@ pub fn build_symbol_table(
             rust_name: safe_short_name(&crate::type_mapping::short_name_for_module(&enum_decl.name, &enum_decl.module)),
             source_header: enum_decl.source_header.clone(),
             variants: enum_decl.variants.iter().map(|v| {
-                // Convert SCREAMING_SNAKE to PascalCase for Rust
-                let rust_name = v.name
+                // Strip the module prefix from variant names, then convert to PascalCase.
+                // OCCT convention: variants are `{Module}_{VARIANT}` (e.g., `TopAbs_COMPOUND`).
+                // We strip `{Module}_` using the known module name rather than the old
+                // `split('_').skip(1)` heuristic which assumed a single-underscore prefix.
+                let stripped = v.name
+                    .strip_prefix(&enum_decl.module)
+                    .and_then(|rest| rest.strip_prefix('_'))
+                    .unwrap_or(&v.name);
+                let rust_name = stripped
                     .split('_')
-                    .skip(1) // Skip module prefix
                     .map(|part| {
                         let mut chars = part.chars();
                         match chars.next() {

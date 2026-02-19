@@ -2348,9 +2348,11 @@ fn compute_handle_upcast_bindings(
             let base_handle_name = format!("Handle{}", base_class.replace("_", ""));
             let ffi_fn_name =
                 format!("{}_to_{}", handle_type_name, base_handle_name);
-            let base_module = symbol_table.class_by_name(base_class)
-                .map(|c| c.rust_module.clone())
-                .unwrap_or_default();
+            let base_module = if let Some(underscore_pos) = base_class.find('_') {
+                base_class[..underscore_pos].to_string()
+            } else {
+                base_class.clone()
+            };
 
             HandleUpcastBinding {
                 base_handle_name,
@@ -2393,9 +2395,11 @@ fn compute_handle_downcast_bindings(
             let derived_handle_name = format!("Handle{}", derived_class.replace("_", ""));
             let ffi_fn_name =
                 format!("{}_downcast_to_{}", handle_type_name, derived_handle_name);
-            let derived_module = symbol_table.class_by_name(derived_class)
-                .map(|c| c.rust_module.clone())
-                .unwrap_or_default();
+            let derived_module = if let Some(underscore_pos) = derived_class.find('_') {
+                derived_class[..underscore_pos].to_string()
+            } else {
+                derived_class.clone()
+            };
 
             HandleDowncastBinding {
                 derived_handle_name,
@@ -3719,9 +3723,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                 )
                 .unwrap();
             } else {
+                let auto_kw = if rt.cpp_type.ends_with('&') { "auto&" } else { "auto" };
                 writeln!(
                     output,
-                    "    auto result_ = self_->{method}({args_str});",
+                    "    {auto_kw} result_ = self_->{method}({args_str});",
+                    auto_kw = auto_kw,
                     method = wm.cpp_method_name,
                 )
                 .unwrap();
@@ -3899,9 +3905,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                     )
                     .unwrap();
                 } else {
+                    let auto_kw = if rt.cpp_type.ends_with('&') { "auto&" } else { "auto" };
                     writeln!(
                         output,
-                        "    auto result_ = {cn}::{method}({args_str});",
+                        "    {auto_kw} result_ = {cn}::{method}({args_str});",
+                        auto_kw = auto_kw,
                         method = sm.cpp_method_name,
                     )
                     .unwrap();
@@ -4179,9 +4187,11 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
                     )
                     .unwrap();
                 } else {
+                    let auto_kw = if rt.cpp_type.ends_with('&') { "auto&" } else { "auto" };
                     writeln!(
                         output,
-                        "    auto result_ = self->{method}({args_str});",
+                        "    {auto_kw} result_ = self->{method}({args_str});",
+                        auto_kw = auto_kw,
                         method = im.cpp_method_name
                     )
                     .unwrap();

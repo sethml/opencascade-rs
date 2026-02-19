@@ -247,8 +247,10 @@ pub fn short_name_for_module(cpp_name: &str, module: &str) -> String {
             rest.to_string()
         }
     } else {
-        // Module prefix doesn't match at all — fall back to first-underscore split
-        extract_short_class_name(cpp_name)
+        // Module prefix doesn't match at all — use the full C++ name as the short name.
+        // This happens for types that don't follow OCCT naming conventions (e.g., Fortran
+        // common blocks like `mdnombr_1_` in AdvApp2Var_Data.hxx).
+        cpp_name.to_string()
     }
 }
 

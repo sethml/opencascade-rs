@@ -119,9 +119,6 @@ exclude_modules = [
     # === Internal mesh data (protected operator new, not heap-allocatable) ===
     "BRepMeshData",        # Internal mesh data model (protected new/delete)
 
-    # === Fortran common blocks produce invalid Rust identifiers ===
-    "AdvApp2Var",          # Advanced 2-var approximation (Fortran common blocks)
-
     # === EXPRESS schema parser (internal codegen tool, not user-facing) ===
     "Express",             # EXPRESS schema parser (String type conflicts with Rust String)
 ]
@@ -158,6 +155,11 @@ exclude_headers = [
     # Windows-only: includes <windows.h> which causes a fatal error on non-Windows
     # and corrupts clang's type resolution for subsequent headers.
     "OSD_WNT.hxx",
+
+    # Internal header with lex parsing details. This is in the STEP module but isn't
+    # named "STEP_*.hxx". Can we just auto-exclude module headers that don't start
+    # with the module name?
+    "step.tab.hxx",
 ]
 
 # Include specific individual headers (from modules not fully included above).
