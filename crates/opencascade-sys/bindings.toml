@@ -221,6 +221,22 @@ modules = [
     "XCAFDimTolObjects",   # Dimensional tolerance (GD&T/PMI) data
     "XCAFDoc",             # XCAF document attributes (shape, color, material)
     "XCAFNoteObjects",     # Note/annotation data objects
+
+    #    Modules Not Included (Intentionally Excluded)
+    #    ─────────────────────────────────────────────
+    #    The following module categories are not included because they are either
+    #    platform-specific, visualization-only, or not relevant to CAD modeling:
+    #
+    #    - Platform-specific GUI: Cocoa, WNT, Wasm, Xw, D3DHost, OpenGl
+    #    - Visualization/rendering: AIS, V3d, Graphic3d, Prs3d, PrsMgr, Select3D,
+    #      SelectMgr, StdPrs, StdSelect, MeshVS, XSDRAW*
+    #    - Font/image handling: Font, Image
+    #    - Persistence/Storage: FSD, Storage, StdStorage, ShapeSchema, PCDM,
+    #      CDM, CDF, BinDrivers, XmlDrivers
+    #    - Draw test harness: Draw, DBRep, BRepTest, *Draw*
+    #    - VRML: Vrml*
+    #    - LDOM/XML core: LDOM, XmlObjMgt
+    #    - Other unused: Media, TKernel-internal headers
 ]
 
 # Exclude specific headers (even if their module is in `modules` above).
@@ -232,9 +248,6 @@ exclude_headers = [
 
     # No suitable operator delete for Poly_CoherentTriPtr.
     "Poly_CoherentTriPtr.hxx",
-
-    # Deleted copy constructor: TopoDS_AlertAttribute can't be copy-constructed.
-    "TopoDS_AlertAttribute.hxx",
 
     # Third-party dependency (rapidjson): these headers #include rapidjson which
     # is not bundled with our OCCT build.
@@ -254,10 +267,6 @@ exclude_headers = [
 
     # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.
     "RWObj_MtlReader.hxx",
-
-    # XSControl_Vars: const char*& output parameter (name) mishandled by generator.
-    #"XSControl_Vars.hxx",
-
 ]
 
 # Include specific individual headers (from modules not fully included above).
@@ -295,125 +304,3 @@ exclude_methods = [
 
 [general]
 resolve_deps = true
-
-# =============================================================================
-# Problem Classes Preventing Header Inclusion
-# =============================================================================
-#
-# The following categories of problems prevent certain OCCT headers from being
-# included in the binding generation. Each category describes the root cause,
-# affected headers, and potential solutions.
-#
-# 1. NCollection Template Parameter Misresolution (SOLVED)
-#    ─────────────────────────────────────────────────────────────────
-#    Root cause: When clang processes NCollection template specializations
-#    (e.g., NCollection_DataMap<TDF_Label, TDF_Label>) that it cannot fully
-#    instantiate, it falls back to canonical type "int" (Standard_Integer).
-#    This causes constructor and method parameters/returns to have wrong types.
-#
-#    Solution implemented: Three-layer guard in parser.rs:
-#    a) AST-based typedef map — collect_ncollection_typedefs() pre-scans all
-#       typedef declarations, building a map from NCollection template spelling
-#       to typedef name. lookup_typedef() then resolves template display names
-#       back to their original typedef (e.g., NCollection_DataMap<K,V> →
-#       TopTools_DataMapOfShapeShape). normalize_template_spelling() handles
-#       Standard_Integer→int, Standard_Real→double type alias mismatches.
-#    b) spelling_looks_like_class guard — when a non-template, non-namespace
-#       display name looks like an OCCT class but canonical type is "int",
-#       checks the underlying typedef declaration to distinguish real primitive
-#       typedefs from misresolved NCollection types.
-#    c) Reference/pointer canonical guard — when the outer ref/ptr type's
-#       display name identifies an OCCT class/template/namespace but canonical
-#       resolves to "int", constructs the Class type directly instead of
-#       recursing into the pointee (which would lose the typedef info).
-#
-#    Additionally, is_constructor_bindable() in codegen/bindings.rs now checks
-#    type_uses_unknown_type() to filter constructors with unresolvable types.
-#
-#    ~120 headers successfully UNBLOCKED by these combined fixes.
-#
-#    Additionally, parse_type() now preserves template/namespaced display names
-#    instead of falling through to Type::Class(canonical) when canonical looks
-#    like a primitive. This prevents misresolved templates from generating
-#    incorrect bindings (the method is then naturally filtered out as unknown).
-#
-#    For cases where clang corrupts BOTH the canonical AND display name
-#    (resolving templates to Standard_Integer even in the display name),
-#    the `exclude_methods` config provides method-level exclusions. These are
-#    used for the handful of methods where the three-layer guard cannot help
-#    because the type information is completely lost at the clang level.
-#    The rest of each affected class remains fully accessible.
-#
-# 2. Primitive Typedef vs Template Typedef Ambiguity
-#    ────────────────────────────────────────────────
-#    Root cause: Some OCCT types are typedefs to primitives (e.g.,
-#    `typedef unsigned int Poly_MeshPurpose`), while NCollection typedefs
-#    are ALSO canonicalized to primitives by clang (incorrectly). The parser
-#    uses a heuristic guard (`spelling_looks_like_class`) to distinguish
-#    these, checking the typedef declaration's underlying type kind.
-#
-#    Current status: Mostly solved. The guard now checks whether the type's
-#    declaration is a TypedefDecl with a primitive underlying type (allowing
-#    canonical mapping) vs a template/record underlying type (blocking it).
-#    Handles both TypeKind::Typedef and TypeKind::Elaborated (clang sugar).
-#
-# 3. BVH/Template-Heavy Classes (SOLVED)
-#    ──────────────────────────────────────
-#    Root cause: Some classes inherit from BVH template specializations
-#    (e.g., BVH_PairTraverse<Standard_Real, 3>) whose raw template names
-#    with angle brackets can't be used as identifiers.
-#
-#    Solution: extract_base_classes() in parser.rs now filters template
-#    base classes: if the base name contains '<', it tries to resolve it
-#    via the typedef map (e.g., BVH_PrimitiveSet<double, 3> →
-#    BVH_PrimitiveSet3d). If no typedef exists, the base is dropped.
-#    The concrete class's own methods are fully accessible; only upcasts
-#    to the unresolvable template base are lost.
-#
-#    Additionally, exclude_methods parsing was fixed to support nested
-#    classes (uses rsplit to split "Outer::Inner::Method" correctly).
-#    BRepExtrema_ProximityDistTool::PrjState has a constructor where
-#    clang misresolves BVH_PrjState (template-dependent enum) to
-#    Standard_Integer; this is excluded via exclude_methods.
-#
-#    5 BRepExtrema headers UNBLOCKED.
-#
-# 4. External Dependencies
-#    ─────────────────────
-#    Some classes reference external libraries (e.g., RapidJSON, RWGltf DRACO
-#    compression) that may not be available in the build environment.
-#
-#    Affected: RWGltf_GltfMaterialMap, RWGltf_GltfOStreamWriter,
-#    RWGltf_GltfSceneNodeMap, RWGltf_CafReader, RWMesh_FaceIterator,
-#    RWObj_CafReader, StdStorage_Root
-#
-# 5. Name Collisions and Method Conflicts (PARTIALLY SOLVED)
-#    ─────────────────────────────────────────────────────────
-#    Some headers produce duplicate method names or conflict with Rust
-#    reserved words in ways the generator can't resolve.
-#
-#    Rust prelude collision (SOLVED): BRepCheck_Result's short name "Result"
-#    collided with Rust's prelude Result<T,E>. Fixed by applying safe_short_name()
-#    consistently in codegen — reserved names get trailing underscore (Result_).
-#    All 8 BRepCheck headers now unblocked.
-#
-#    Remaining: TObj_HiddenPartition (duplicate new_label method from static
-#    constructor and inherited method), TDataStd_NamedData (PascalCase vs
-#    camelCase methods colliding in snake_case), IntPatch_WLine/
-#    IntPatch_ImpImpIntersection (name conflicts or unmapped operator types).
-#
-# 6. Modules Not Included (Intentionally Excluded)
-#    ─────────────────────────────────────────────
-#    The following module categories are not included because they are either
-#    platform-specific, visualization-only, or not relevant to CAD modeling:
-#
-#    - Platform-specific GUI: Cocoa, WNT, Wasm, Xw, D3DHost, OpenGl
-#    - Visualization/rendering: AIS, V3d, Graphic3d, Prs3d, PrsMgr, Select3D,
-#      SelectMgr, StdPrs, StdSelect, MeshVS, XSDRAW*
-#    - Font/image handling: Font, Image
-#    - Persistence/Storage: FSD, Storage, StdStorage, ShapeSchema, PCDM,
-#      CDM, CDF, BinDrivers, XmlDrivers
-#    - Draw test harness: Draw, DBRep, BRepTest, *Draw*
-#    - VRML: Vrml*
-#    - LDOM/XML core: LDOM, XmlObjMgt
-#    - Other unused: Media, TKernel-internal headers

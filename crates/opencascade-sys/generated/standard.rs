@@ -389,21 +389,21 @@ pub use crate::ffi::{
     HandleTopOpeBRepDSCurvePointInterference, HandleTopOpeBRepDSInterference,
     HandleTopOpeBRepDSSurfaceCurveInterference, HandleTopToolsHArray1OfListOfShape,
     HandleTopToolsHArray1OfShape, HandleTopToolsHArray2OfShape, HandleTopToolsHSequenceOfShape,
-    HandleTopoDSAlertWithShape, HandleTopoDSFrozenShape, HandleTopoDSHShape,
-    HandleTopoDSLockedShape, HandleTopoDSTCompSolid, HandleTopoDSTCompound, HandleTopoDSTEdge,
-    HandleTopoDSTFace, HandleTopoDSTShell, HandleTopoDSTSolid, HandleTopoDSTVertex,
-    HandleTopoDSTWire, HandleTopoDSUnCompatibleShapes, HandleTransferActorDispatch,
-    HandleTransferActorOfFinderProcess, HandleTransferActorOfProcessForFinder,
-    HandleTransferActorOfProcessForTransient, HandleTransferActorOfTransientProcess,
-    HandleTransferBinderOfTransientInteger, HandleTransferDispatchControl,
-    HandleTransferFinderProcess, HandleTransferHSequenceOfBinder, HandleTransferHSequenceOfFinder,
-    HandleTransferMapContainer, HandleTransferMultipleBinder, HandleTransferProcessForFinder,
-    HandleTransferProcessForTransient, HandleTransferResultFromModel,
-    HandleTransferResultFromTransient, HandleTransferSimpleBinderOfTransient,
-    HandleTransferTransferDeadLoop, HandleTransferTransferFailure,
-    HandleTransferTransientListBinder, HandleTransferTransientMapper,
-    HandleTransferTransientProcess, HandleTransferVoidBinder, HandleUnitsDimensions,
-    HandleUnitsLexicon, HandleUnitsNoSuchType, HandleUnitsNoSuchUnit,
+    HandleTopoDSAlertAttribute, HandleTopoDSAlertWithShape, HandleTopoDSFrozenShape,
+    HandleTopoDSHShape, HandleTopoDSLockedShape, HandleTopoDSTCompSolid, HandleTopoDSTCompound,
+    HandleTopoDSTEdge, HandleTopoDSTFace, HandleTopoDSTShell, HandleTopoDSTSolid,
+    HandleTopoDSTVertex, HandleTopoDSTWire, HandleTopoDSUnCompatibleShapes,
+    HandleTransferActorDispatch, HandleTransferActorOfFinderProcess,
+    HandleTransferActorOfProcessForFinder, HandleTransferActorOfProcessForTransient,
+    HandleTransferActorOfTransientProcess, HandleTransferBinderOfTransientInteger,
+    HandleTransferDispatchControl, HandleTransferFinderProcess, HandleTransferHSequenceOfBinder,
+    HandleTransferHSequenceOfFinder, HandleTransferMapContainer, HandleTransferMultipleBinder,
+    HandleTransferProcessForFinder, HandleTransferProcessForTransient,
+    HandleTransferResultFromModel, HandleTransferResultFromTransient,
+    HandleTransferSimpleBinderOfTransient, HandleTransferTransferDeadLoop,
+    HandleTransferTransferFailure, HandleTransferTransientListBinder,
+    HandleTransferTransientMapper, HandleTransferTransientProcess, HandleTransferVoidBinder,
+    HandleUnitsDimensions, HandleUnitsLexicon, HandleUnitsNoSuchType, HandleUnitsNoSuchUnit,
     HandleUnitsQuantitiesSequence, HandleUnitsQuantity, HandleUnitsShiftedToken,
     HandleUnitsShiftedUnit, HandleUnitsToken, HandleUnitsTokensSequence, HandleUnitsUnit,
     HandleUnitsUnitsDictionary, HandleUnitsUnitsLexicon, HandleUnitsUnitsSequence,
@@ -24969,6 +24969,24 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTopToolsHSequenceOfShape(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<TopoDS_AlertAttribute>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_AlertAttribute` (or subclass).
+    pub fn downcast_to_alert_attribute(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSAlertAttribute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTopoDSAlertAttribute(
                 self as *const Self,
             )
         };

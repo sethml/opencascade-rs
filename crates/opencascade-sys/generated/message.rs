@@ -747,7 +747,7 @@ pub use crate::ffi::{
     HandleBOPAlgoAlertUnableToRepeat, HandleBOPAlgoAlertUnableToTrim,
     HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBOPAlgoAlertUserBreak,
     HandleBRepMeshModelBuilder, HandleStandardTransient, HandleTObjCheckModel,
-    HandleTopoDSAlertWithShape,
+    HandleTopoDSAlertAttribute, HandleTopoDSAlertWithShape,
 };
 
 // ========================
@@ -2625,6 +2625,24 @@ impl HandleMessageAttribute {
             Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
+
+    /// Downcast Handle<Message_Attribute> to Handle<TopoDS_AlertAttribute>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_AlertAttribute` (or subclass).
+    pub fn downcast_to_alert_attribute(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSAlertAttribute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAttribute_downcast_to_HandleTopoDSAlertAttribute(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
 }
 
 // ========================
@@ -3239,6 +3257,24 @@ impl HandleMessageAttributeStream {
                     self as *const Self,
                 ),
             )
+        }
+    }
+
+    /// Downcast Handle<Message_AttributeStream> to Handle<TopoDS_AlertAttribute>
+    ///
+    /// Returns `None` if the handle does not point to a `TopoDS_AlertAttribute` (or subclass).
+    pub fn downcast_to_alert_attribute(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSAlertAttribute>> {
+        let ptr = unsafe {
+            crate::ffi::HandleMessageAttributeStream_downcast_to_HandleTopoDSAlertAttribute(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
         }
     }
 }

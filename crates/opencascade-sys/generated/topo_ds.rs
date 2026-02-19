@@ -150,9 +150,220 @@ pub use crate::ffi::{
     HandleBOPAlgoAlertUnableToOrientTheShape, HandleBOPAlgoAlertUnableToRemoveTheFeature,
     HandleBOPAlgoAlertUnableToRepeat, HandleBOPAlgoAlertUnableToTrim,
     HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBRepTEdge,
-    HandleBRepTFace, HandleBRepTVertex, HandleMessageAlert, HandleStandardDomainError,
-    HandleStandardFailure, HandleStandardTransient,
+    HandleBRepTFace, HandleBRepTVertex, HandleMessageAlert, HandleMessageAttribute,
+    HandleMessageAttributeStream, HandleStandardDomainError, HandleStandardFailure,
+    HandleStandardTransient,
 };
+
+// ========================
+// From TopoDS_AlertAttribute.hxx
+// ========================
+
+/// **Source:** `TopoDS_AlertAttribute.hxx`:28 - `TopoDS_AlertAttribute`
+/// Alert attribute object storing TopoDS shape in its field
+pub use crate::ffi::TopoDS_AlertAttribute as AlertAttribute;
+
+unsafe impl crate::CppDeletable for AlertAttribute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::TopoDS_AlertAttribute_destructor(ptr);
+    }
+}
+
+impl AlertAttribute {
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:33 - `TopoDS_AlertAttribute::TopoDS_AlertAttribute()`
+    /// Constructor with shape argument
+    pub fn new_shape_asciistring(
+        theShape: &Shape,
+        theName: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_AlertAttribute_ctor_shape_asciistring(
+                theShape, theName,
+            ))
+        }
+    }
+
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:30 - `TopoDS_AlertAttribute::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopoDS_AlertAttribute_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:38 - `TopoDS_AlertAttribute::GetShape()`
+    /// Returns contained shape
+    pub fn get_shape(&self) -> &Shape {
+        unsafe { &*(crate::ffi::TopoDS_AlertAttribute_get_shape(self as *const Self)) }
+    }
+
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:30 - `TopoDS_AlertAttribute::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::TopoDS_AlertAttribute_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:30 - `TopoDS_AlertAttribute::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::TopoDS_AlertAttribute_get_type_descriptor()) }
+    }
+
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:42 - `TopoDS_AlertAttribute::Send()`
+    /// Push shape information into messenger
+    pub fn send(theMessenger: &crate::ffi::HandleMessageMessenger, theShape: &Shape) {
+        unsafe { crate::ffi::TopoDS_AlertAttribute_send(theMessenger, theShape) }
+    }
+
+    /// Upcast to Message_AttributeStream
+    pub fn as_message_attribute_stream(&self) -> &crate::message::AttributeStream {
+        unsafe {
+            &*(crate::ffi::TopoDS_AlertAttribute_as_Message_AttributeStream(self as *const Self))
+        }
+    }
+
+    /// Upcast to Message_AttributeStream (mutable)
+    pub fn as_message_attribute_stream_mut(&mut self) -> &mut crate::message::AttributeStream {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_AlertAttribute_as_Message_AttributeStream_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast to Message_Attribute
+    pub fn as_message_attribute(&self) -> &crate::message::Attribute {
+        unsafe { &*(crate::ffi::TopoDS_AlertAttribute_as_Message_Attribute(self as *const Self)) }
+    }
+
+    /// Upcast to Message_Attribute (mutable)
+    pub fn as_message_attribute_mut(&mut self) -> &mut crate::message::Attribute {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_AlertAttribute_as_Message_Attribute_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::TopoDS_AlertAttribute_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *(crate::ffi::TopoDS_AlertAttribute_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopoDS_AlertAttribute_to_handle(obj.into_raw()))
+        }
+    }
+
+    /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
+    pub fn get_name(&self) -> &crate::t_collection::AsciiString {
+        unsafe { &*(crate::ffi::TopoDS_AlertAttribute_inherited_GetName(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
+    pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
+        unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_SetName(self as *mut Self, theName) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe {
+            crate::ffi::TopoDS_AlertAttribute_inherited_IsInstance(self as *const Self, theType)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe {
+            crate::ffi::TopoDS_AlertAttribute_inherited_IncrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe {
+            crate::ffi::TopoDS_AlertAttribute_inherited_DecrementRefCounter(self as *mut Self)
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleTopoDSAlertAttribute;
+
+unsafe impl crate::CppDeletable for HandleTopoDSAlertAttribute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleTopoDSAlertAttribute_destructor(ptr);
+    }
+}
+
+impl HandleTopoDSAlertAttribute {
+    /// Dereference this Handle to access the underlying TopoDS_AlertAttribute
+    pub fn get(&self) -> &crate::ffi::TopoDS_AlertAttribute {
+        unsafe { &*(crate::ffi::HandleTopoDSAlertAttribute_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TopoDS_AlertAttribute
+    pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_AlertAttribute {
+        unsafe { &mut *(crate::ffi::HandleTopoDSAlertAttribute_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Message_AttributeStream>
+    pub fn to_handle_attribute_stream(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleMessageAttributeStream> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSAlertAttribute_to_HandleMessageAttributeStream(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Message_Attribute>
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSAlertAttribute_to_HandleMessageAttribute(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HandleTopoDSAlertAttribute_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
 
 // ========================
 // From TopoDS_AlertWithShape.hxx
