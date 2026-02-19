@@ -511,6 +511,13 @@ impl Application {
         }
     }
 
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi::CDM_MetaDataLookUpTable {
+        unsafe {
+            &mut *(crate::ffi::TObj_Application_inherited_MetaDataLookUpTable(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe { crate::ffi::TObj_Application_inherited_IsInstance(self as *const Self, theType) }
@@ -2781,6 +2788,12 @@ impl Object {
         unsafe { crate::ffi::TObj_Object_get_order(self as *const Self) }
     }
 
+    /// **Source:** `TObj_Object.hxx`:355 - `TObj_Object::SetOrder()`
+    /// sets order of object
+    pub fn set_order(&mut self, theIndx: &i32) -> bool {
+        unsafe { crate::ffi::TObj_Object_set_order(self as *mut Self, theIndx) }
+    }
+
     /// **Source:** `TObj_Object.hxx`:363 - `TObj_Object::HasModifications()`
     ///
     /// Public methods to check modifications of the object since last commit
@@ -2989,13 +3002,6 @@ impl HandleTObjObject {
         }
     }
 }
-
-// ── Skipped symbols for Object (1 total) ──
-// SKIPPED: **Source:** `TObj_Object.hxx`:355 - `TObj_Object::SetOrder`
-//   method: sets order of object
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_order(&mut self, theIndx: &i32) -> bool;
-//
 
 // ========================
 // From TObj_ObjectIterator.hxx
@@ -4580,8 +4586,18 @@ impl HSequenceOfObject {
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TObj_SequenceOfObject) {
-        unsafe { crate::ffi::TObj_HSequenceOfObject_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::TObj_SequenceOfObject_value_type) {
+        unsafe { crate::ffi::TObj_HSequenceOfObject_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append()`
+    pub fn append_sequenceofobject(&mut self, theSequence: &mut crate::ffi::TObj_SequenceOfObject) {
+        unsafe {
+            crate::ffi::TObj_HSequenceOfObject_append_sequenceofobject(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::ChangeSequence()`
@@ -4697,12 +4713,6 @@ impl HandleTObjHSequenceOfObject {
     }
 }
 
-// ── Skipped symbols for HSequenceOfObject (1 total) ──
-// SKIPPED: **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
-
 // ========================
 // From TObj_TIntSparseArray.hxx
 // ========================
@@ -4737,6 +4747,16 @@ impl TIntSparseArray {
     /// Returns the number of stored values in the set
     pub fn size(&self) -> usize {
         unsafe { crate::ffi::TObj_TIntSparseArray_size(self as *const Self) }
+    }
+
+    /// **Source:** `TObj_TIntSparseArray.hxx`:59 - `TObj_TIntSparseArray::GetIterator()`
+    /// Returns iterator on objects contained in the set
+    pub fn get_iterator(&self) -> crate::OwnedPtr<crate::ffi::TObj_TIntSparseArray_Iterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TObj_TIntSparseArray_get_iterator(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:62 - `TObj_TIntSparseArray::HasValue()`
@@ -5171,13 +5191,6 @@ impl HandleTObjTIntSparseArray {
         }
     }
 }
-
-// ── Skipped symbols for TIntSparseArray (1 total) ──
-// SKIPPED: **Source:** `TObj_TIntSparseArray.hxx`:59 - `TObj_TIntSparseArray::GetIterator`
-//   method: Returns iterator on objects contained in the set
-//   Reason: excluded by bindings.toml
-//   // pub fn get_iterator(&self) -> i32;
-//
 
 // ========================
 // From TObj_TModel.hxx

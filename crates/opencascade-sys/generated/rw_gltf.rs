@@ -722,6 +722,11 @@ impl CafReader {
         }
     }
 
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
+    pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
+        unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_ExternalFiles(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
     pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
         unsafe { &*(crate::ffi::RWGltf_CafReader_inherited_Metadata(self as *const Self)) }

@@ -279,6 +279,26 @@ impl Actor {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters()`
+    pub fn set_shape_fix_parameters(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_Actor_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters()`
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::IGESToBRep_Actor_inherited_GetShapeFixParameters(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -2709,9 +2729,52 @@ impl Reader {
             crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_one_shape(self as *const Self))
         }
     }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:116 - `IGESToBRep_Reader::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// @param theParameters the parameters for shape processing.
+    pub fn set_shape_fix_parameters_parametermap(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_Reader_set_shape_fix_parameters_parametermap(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:130 - `IGESToBRep_Reader::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// Parameters from @p theParameters are copied to the internal map.
+    /// Parameters from @p theAdditionalParameters are copied to the internal map
+    /// if they are not present in @p theParameters.
+    /// @param theParameters the parameters for shape processing.
+    /// @param theAdditionalParameters the additional parameters for shape processing.
+    pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
+        &mut self,
+        theParameters: &crate::de::ShapeFixParameters,
+        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESToBRep_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(
+                self as *mut Self,
+                theParameters,
+                theAdditionalParameters,
+            )
+        }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:136 - `IGESToBRep_Reader::GetShapeFixParameters()`
+    /// Returns parameters for shape processing that was set by SetParameters() method.
+    /// @return the parameters for shape processing. Empty map if no parameters were set.
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe { &*(crate::ffi::IGESToBRep_Reader_get_shape_fix_parameters(self as *const Self)) }
+    }
 }
 
-// ── Skipped symbols for Reader (8 total) ──
+// ── Skipped symbols for Reader (5 total) ──
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:54 - `IGESToBRep_Reader::SetModel`
 //   method: Specifies a Model to work on
 //   method: Also clears the result and Done status, sets TransientProcess
@@ -2723,31 +2786,12 @@ impl Reader {
 //   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
 //   // pub fn model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
 //
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:116 - `IGESToBRep_Reader::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: @param theParameters the parameters for shape processing.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
-//
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:122 - `IGESToBRep_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
-//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
-//
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:130 - `IGESToBRep_Reader::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: Parameters from @p theParameters are copied to the internal map.
-//   method: Parameters from @p theAdditionalParameters are copied to the internal map
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
-//
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:136 - `IGESToBRep_Reader::GetShapeFixParameters`
-//   method: Returns parameters for shape processing that was set by SetParameters() method.
-//   method: @return the parameters for shape processing. Empty map if no parameters were set.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
 //
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:143 - `IGESToBRep_Reader::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.

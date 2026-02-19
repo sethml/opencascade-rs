@@ -317,6 +317,28 @@ impl ActorDispatch {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters()`
+    pub fn set_shape_fix_parameters(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ActorDispatch_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters()`
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::Transfer_ActorDispatch_inherited_GetShapeFixParameters(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -545,6 +567,49 @@ impl ActorOfFinderProcess {
                 start,
                 TP,
                 theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:64 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// @param theParameters the parameters for shape processing.
+    pub fn set_shape_fix_parameters_parametermap(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfFinderProcess_set_shape_fix_parameters_parametermap(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:78 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// Parameters from @p theParameters are copied to the internal map.
+    /// Parameters from @p theAdditionalParameters are copied to the internal map
+    /// if they are not present in @p theParameters.
+    /// @param theParameters the parameters for shape processing.
+    /// @param theAdditionalParameters the additional parameters for shape processing.
+    pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
+        &mut self,
+        theParameters: &crate::de::ShapeFixParameters,
+        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfFinderProcess_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+        }
+    }
+
+    /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:84 - `Transfer_ActorOfFinderProcess::GetShapeFixParameters()`
+    /// Returns parameters for shape processing that was set by SetParameters() method.
+    /// @return the parameters for shape processing. Empty map if no parameters were set.
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfFinderProcess_get_shape_fix_parameters(
+                self as *const Self,
             ))
         }
     }
@@ -822,32 +887,13 @@ impl HandleTransferActorOfFinderProcess {
     }
 }
 
-// ── Skipped symbols for ActorOfFinderProcess (5 total) ──
-// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:64 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: @param theParameters the parameters for shape processing.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
-//
+// ── Skipped symbols for ActorOfFinderProcess (2 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:70 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
-//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
-//
-// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:78 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: Parameters from @p theParameters are copied to the internal map.
-//   method: Parameters from @p theAdditionalParameters are copied to the internal map
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
-//
-// SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:84 - `Transfer_ActorOfFinderProcess::GetShapeFixParameters`
-//   method: Returns parameters for shape processing that was set by SetParameters() method.
-//   method: @return the parameters for shape processing. Empty map if no parameters were set.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
 //
 // SKIPPED: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
@@ -1571,6 +1617,49 @@ impl ActorOfTransientProcess {
         }
     }
 
+    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// @param theParameters the parameters for shape processing.
+    pub fn set_shape_fix_parameters_parametermap(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfTransientProcess_set_shape_fix_parameters_parametermap(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:71 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// Parameters from @p theParameters are copied to the internal map.
+    /// Parameters from @p theAdditionalParameters are copied to the internal map
+    /// if they are not present in @p theParameters.
+    /// @param theParameters the parameters for shape processing.
+    /// @param theAdditionalParameters the additional parameters for shape processing.
+    pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
+        &mut self,
+        theParameters: &crate::de::ShapeFixParameters,
+        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_ActorOfTransientProcess_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+        }
+    }
+
+    /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters()`
+    /// Returns parameters for shape processing that was set by SetParameters() method.
+    /// @return the parameters for shape processing. Empty map if no parameters were set.
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::Transfer_ActorOfTransientProcess_get_shape_fix_parameters(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair: the flags defining operations to be performed on shapes and a boolean value that
@@ -1861,32 +1950,13 @@ impl HandleTransferActorOfTransientProcess {
     }
 }
 
-// ── Skipped symbols for ActorOfTransientProcess (5 total) ──
-// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: @param theParameters the parameters for shape processing.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
-//
+// ── Skipped symbols for ActorOfTransientProcess (2 total) ──
 // SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:63 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
-//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
-//
-// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:71 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: Parameters from @p theParameters are copied to the internal map.
-//   method: Parameters from @p theAdditionalParameters are copied to the internal map
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
-//
-// SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters`
-//   method: Returns parameters for shape processing that was set by SetParameters() method.
-//   method: @return the parameters for shape processing. Empty map if no parameters were set.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
 //
 // SKIPPED: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags`
 //   method: Sets flags defining operations to be performed on shapes.
@@ -3102,6 +3172,12 @@ impl Finder {
         }
     }
 
+    /// **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
+    /// Returns the exhaustive list of attributes
+    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+        unsafe { &mut *(crate::ffi::Transfer_Finder_attr_list(self as *mut Self)) }
+    }
+
     /// **Source:** `Transfer_Finder.hxx`:132 - `Transfer_Finder::SameAttributes()`
     /// Gets the list of attributes from <other>, as such, i.e.
     /// not copied : attributes are shared, any attribute edited,
@@ -3247,18 +3323,13 @@ impl HandleTransferFinder {
     }
 }
 
-// ── Skipped symbols for Finder (2 total) ──
+// ── Skipped symbols for Finder (1 total) ──
 // SKIPPED: **Source:** `Transfer_Finder.hxx`:118 - `Transfer_Finder::GetStringAttribute`
 //   method: Returns an attribute from its name, as String
 //   method: If no attribute has this name, or not a String
 //   method: <val> is 0.0 and returned value is False
 //   Reason: has string ref param 'val' of type 'const char*&' (needs manual binding)
 //   // pub fn get_string_attribute(&self, name: *const char, val: &mut *const char) -> bool;
-//
-// SKIPPED: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList`
-//   method: Returns the exhaustive list of attributes
-//   Reason: excluded by bindings.toml
-//   // pub fn attr_list(&mut self) -> &mut i32;
 //
 
 // ========================
@@ -4041,8 +4112,21 @@ impl HSequenceOfBinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::Transfer_SequenceOfBinder) {
-        unsafe { crate::ffi::Transfer_HSequenceOfBinder_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::Transfer_SequenceOfBinder_value_type) {
+        unsafe { crate::ffi::Transfer_HSequenceOfBinder_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Append()`
+    pub fn append_sequenceofbinder(
+        &mut self,
+        theSequence: &mut crate::ffi::Transfer_SequenceOfBinder,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_HSequenceOfBinder_append_sequenceofbinder(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::ChangeSequence()`
@@ -4169,12 +4253,6 @@ impl HandleTransferHSequenceOfBinder {
     }
 }
 
-// ── Skipped symbols for HSequenceOfBinder (1 total) ──
-// SKIPPED: **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
-
 // ========================
 // From Transfer_HSequenceOfFinder.hxx
 // ========================
@@ -4211,8 +4289,21 @@ impl HSequenceOfFinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::Transfer_SequenceOfFinder) {
-        unsafe { crate::ffi::Transfer_HSequenceOfFinder_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::Transfer_SequenceOfFinder_value_type) {
+        unsafe { crate::ffi::Transfer_HSequenceOfFinder_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append()`
+    pub fn append_sequenceoffinder(
+        &mut self,
+        theSequence: &mut crate::ffi::Transfer_SequenceOfFinder,
+    ) {
+        unsafe {
+            crate::ffi::Transfer_HSequenceOfFinder_append_sequenceoffinder(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::ChangeSequence()`
@@ -4338,12 +4429,6 @@ impl HandleTransferHSequenceOfFinder {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfFinder (1 total) ──
-// SKIPPED: **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From Transfer_IteratorOfProcessForFinder.hxx
@@ -10106,6 +10191,13 @@ impl TransientMapper {
         unsafe { crate::ffi::Transfer_TransientMapper_inherited_GetHashCode(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
+    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+        unsafe {
+            &mut *(crate::ffi::Transfer_TransientMapper_inherited_AttrList(self as *mut Self))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_Finder.hxx`:132 - `Transfer_Finder::SameAttributes()`
     pub fn same_attributes(&mut self, other: &crate::ffi::HandleTransferFinder) {
         unsafe {
@@ -10301,6 +10393,13 @@ impl TransientProcess {
                 ctx,
             )
         }
+    }
+
+    /// **Source:** `Transfer_TransientProcess.hxx`:82 - `Transfer_TransientProcess::Context()`
+    /// Returns (modifiable) the whole definition of Context
+    /// Rather for internal use (ex.: preparing and setting in once)
+    pub fn context(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+        unsafe { &mut *(crate::ffi::Transfer_TransientProcess_context(self as *mut Self)) }
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:91 - `Transfer_TransientProcess::CheckNum()`
@@ -11046,13 +11145,7 @@ impl HandleTransferTransientProcess {
     }
 }
 
-// ── Skipped symbols for TransientProcess (3 total) ──
-// SKIPPED: **Source:** `Transfer_TransientProcess.hxx`:82 - `Transfer_TransientProcess::Context`
-//   method: Returns (modifiable) the whole definition of Context
-//   method: Rather for internal use (ex.: preparing and setting in once)
-//   Reason: excluded by bindings.toml
-//   // pub fn context(&mut self) -> &mut i32;
-//
+// ── Skipped symbols for TransientProcess (2 total) ──
 // SKIPPED: **Source:** `Transfer_TransientProcess.hxx`:86 - `Transfer_TransientProcess::PrintTrace`
 //   method: Specific printing to trace an entity : prints label and type
 //   method: (if model is set)

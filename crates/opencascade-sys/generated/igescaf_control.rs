@@ -401,6 +401,28 @@ impl Reader {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters()`
+    pub fn set_shape_fix_parameters(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESCAFControl_Reader_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters()`
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::IGESCAFControl_Reader_inherited_GetShapeFixParameters(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -659,5 +681,27 @@ impl Writer {
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:105 - `IGESControl_Writer::ComputeModel()`
     pub fn compute_model(&mut self) {
         unsafe { crate::ffi::IGESCAFControl_Writer_inherited_ComputeModel(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `IGESControl_Writer.hxx`:122 - `IGESControl_Writer::SetShapeFixParameters()`
+    pub fn set_shape_fix_parameters(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESCAFControl_Writer_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IGESControl_Writer.hxx`:142 - `IGESControl_Writer::GetShapeFixParameters()`
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::IGESCAFControl_Writer_inherited_GetShapeFixParameters(
+                self as *const Self,
+            ))
+        }
     }
 }

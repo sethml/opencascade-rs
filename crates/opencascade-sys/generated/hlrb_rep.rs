@@ -9093,6 +9093,16 @@ unsafe impl crate::CppDeletable for VertexList {
 }
 
 impl VertexList {
+    /// **Source:** `HLRBRep_VertexList.hxx`:35 - `HLRBRep_VertexList::HLRBRep_VertexList()`
+    pub fn new_edgeinterferencetool_listiteratorofinterferencelist(
+        T: &EdgeInterferenceTool,
+        I: &crate::ffi::HLRAlgo_ListIteratorOfInterferenceList,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRBRep_VertexList_ctor_edgeinterferencetool_listiteratorofinterferencelist(T, I))
+        }
+    }
+
     /// **Source:** `HLRBRep_VertexList.hxx`:39 - `HLRBRep_VertexList::IsPeriodic()`
     /// Returns True when the curve is periodic.
     pub fn is_periodic(&self) -> bool {
@@ -9166,12 +9176,6 @@ impl VertexList {
         }
     }
 }
-
-// ── Skipped symbols for VertexList (1 total) ──
-// SKIPPED: **Source:** `HLRBRep_VertexList.hxx`:35 - `HLRBRep_VertexList::HLRBRep_VertexList`
-//   Reason: param 'I' uses unknown type 'const HLRAlgo_ListIteratorOfInterferenceList&'
-//   // pub fn new_edgeinterferencetool_listiteratorofinterferencelist(T: &EdgeInterferenceTool, I: &ListIteratorOfInterferenceList) -> OwnedPtr<Self>;
-//
 
 // ========================
 // Additional type re-exports

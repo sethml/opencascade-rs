@@ -1700,9 +1700,25 @@ impl HSequenceOfHSequenceOfPnt {
     }
 
     /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::ProjLib_SequenceOfHSequenceOfPnt) {
+    pub fn append_type(
+        &mut self,
+        theItem: &crate::ffi::ProjLib_SequenceOfHSequenceOfPnt_value_type,
+    ) {
         unsafe {
-            crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_append(self as *mut Self, theSequence)
+            crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_append_type(self as *mut Self, theItem)
+        }
+    }
+
+    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Append()`
+    pub fn append_sequenceofhsequenceofpnt(
+        &mut self,
+        theSequence: &mut crate::ffi::ProjLib_SequenceOfHSequenceOfPnt,
+    ) {
+        unsafe {
+            crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_append_sequenceofhsequenceofpnt(
+                self as *mut Self,
+                theSequence,
+            )
         }
     }
 
@@ -1848,12 +1864,6 @@ impl HandleProjLibHSequenceOfHSequenceOfPnt {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfHSequenceOfPnt (1 total) ──
-// SKIPPED: **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From ProjLib_Plane.hxx

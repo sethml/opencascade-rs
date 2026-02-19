@@ -1627,8 +1627,15 @@ impl QuantitiesSequence {
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::Units_QtsSequence) {
-        unsafe { crate::ffi::Units_QuantitiesSequence_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::Units_QtsSequence_value_type) {
+        unsafe { crate::ffi::Units_QuantitiesSequence_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append()`
+    pub fn append_qtssequence(&mut self, theSequence: &mut crate::ffi::Units_QtsSequence) {
+        unsafe {
+            crate::ffi::Units_QuantitiesSequence_append_qtssequence(self as *mut Self, theSequence)
+        }
     }
 
     /// **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::ChangeSequence()`
@@ -1751,12 +1758,6 @@ impl HandleUnitsQuantitiesSequence {
         }
     }
 }
-
-// ── Skipped symbols for QuantitiesSequence (1 total) ──
-// SKIPPED: **Source:** `Units_QuantitiesSequence.hxx`:23 - `Units_QuantitiesSequence::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From Units_Quantity.hxx
@@ -3079,8 +3080,15 @@ impl TokensSequence {
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::Units_TksSequence) {
-        unsafe { crate::ffi::Units_TokensSequence_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::Units_TksSequence_value_type) {
+        unsafe { crate::ffi::Units_TokensSequence_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append()`
+    pub fn append_tkssequence(&mut self, theSequence: &mut crate::ffi::Units_TksSequence) {
+        unsafe {
+            crate::ffi::Units_TokensSequence_append_tkssequence(self as *mut Self, theSequence)
+        }
     }
 
     /// **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::ChangeSequence()`
@@ -3191,12 +3199,6 @@ impl HandleUnitsTokensSequence {
         }
     }
 }
-
-// ── Skipped symbols for TokensSequence (1 total) ──
-// SKIPPED: **Source:** `Units_TokensSequence.hxx`:23 - `Units_TokensSequence::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From Units_Unit.hxx
@@ -3935,8 +3937,15 @@ impl UnitsSequence {
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::Units_UtsSequence) {
-        unsafe { crate::ffi::Units_UnitsSequence_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::Units_UtsSequence_value_type) {
+        unsafe { crate::ffi::Units_UnitsSequence_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append()`
+    pub fn append_utssequence(&mut self, theSequence: &mut crate::ffi::Units_UtsSequence) {
+        unsafe {
+            crate::ffi::Units_UnitsSequence_append_utssequence(self as *mut Self, theSequence)
+        }
     }
 
     /// **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::ChangeSequence()`
@@ -4047,12 +4056,6 @@ impl HandleUnitsUnitsSequence {
         }
     }
 }
-
-// ── Skipped symbols for UnitsSequence (1 total) ──
-// SKIPPED: **Source:** `Units_UnitsSequence.hxx`:24 - `Units_UnitsSequence::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From Units_UnitsSystem.hxx

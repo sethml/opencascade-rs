@@ -976,6 +976,35 @@ impl HArray1OfPHDat {
     }
 
     /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
+    pub fn new_int2_polyhidingdata(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &PolyHidingData,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPHDat_ctor_int2_polyhidingdata(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
+    pub fn new_polyhidingdata_int2_bool(
+        theBegin: &PolyHidingData,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRAlgo_HArray1OfPHDat_ctor_polyhidingdata_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
     pub fn new_array1ofphdat(
         theOther: &crate::ffi::HLRAlgo_Array1OfPHDat,
     ) -> crate::OwnedPtr<Self> {
@@ -1128,6 +1157,33 @@ impl HArray1OfPINod {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_ctor_int2(
                 theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::HLRAlgo_Array1OfPINod_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::HLRAlgo_Array1OfPINod_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfPINod_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
             ))
         }
     }
@@ -1290,6 +1346,37 @@ impl HArray1OfPISeg {
     }
 
     /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
+    pub fn new_int2_polyinternalsegment(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &PolyInternalSegment,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRAlgo_HArray1OfPISeg_ctor_int2_polyinternalsegment(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
+    pub fn new_polyinternalsegment_int2_bool(
+        theBegin: &PolyInternalSegment,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRAlgo_HArray1OfPISeg_ctor_polyinternalsegment_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
     pub fn new_array1ofpiseg(
         theOther: &crate::ffi::HLRAlgo_Array1OfPISeg,
     ) -> crate::OwnedPtr<Self> {
@@ -1443,6 +1530,35 @@ impl HArray1OfTData {
             crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfTData_ctor_int2(
                 theLower, theUpper,
             ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
+    pub fn new_int2_triangledata(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &TriangleData,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HLRAlgo_HArray1OfTData_ctor_int2_triangledata(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
+    pub fn new_triangledata_int2_bool(
+        theBegin: &TriangleData,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::HLRAlgo_HArray1OfTData_ctor_triangledata_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 

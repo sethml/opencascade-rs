@@ -385,6 +385,33 @@ impl HArray1OfIGESEntity {
     }
 
     /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::IGESData_Array1OfIGESEntity_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_HArray1OfIGESEntity_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::IGESData_Array1OfIGESEntity_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_HArray1OfIGESEntity_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `IGESData_HArray1OfIGESEntity.hxx`:23 - `IGESData_HArray1OfIGESEntity::IGESData_HArray1OfIGESEntity()`
     pub fn new_array1ofigesentity(
         theOther: &crate::ffi::IGESData_Array1OfIGESEntity,
     ) -> crate::OwnedPtr<Self> {

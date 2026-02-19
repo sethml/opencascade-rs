@@ -731,17 +731,17 @@ fn type_is_mut_ref_i32(ty: &Type) -> bool {
 
 /// Check if a method has misresolved NCollection element type params or return type.
 ///
-/// Two levels of detection:
+/// Both `ConstRef(I32)` and `MutRef(I32)` are suspicious ONLY on NCollection-derived
+/// classes with non-primitive element types. Outside NCollection:
+/// - `const Standard_Integer&` appears in various OCCT classes (e.g. BVH_BuildQueue::Enqueue,
+///   Plate_PinpointConstraint::Idu/Idv, BndBoxTreeSelector::Accept)
+/// - `Standard_Integer&` is legitimate for mode accessors and out-params
+///   (e.g. ShapeFix_Face::FixWireMode, ShapeAnalysis_WireOrder::Chain)
 ///
-/// 1. `ConstRef(I32)` — always suspicious on non-primitive-NCollection classes.
-///    OCCT style passes integers by value; `const Standard_Integer&` params/returns
-///    occur only in NCollection container accessors. When clang misresolves template
-///    types to `int`, the resulting `const int&` is the tell-tale sign.
-///
-/// 2. `MutRef(I32)` — only suspicious on NCollection-derived classes with non-primitive
-///    element types. Outside NCollection, `Standard_Integer&` is legitimate for:
-///    - Mode accessor methods (e.g. `ShapeFix_Face::FixWireMode() -> Standard_Integer&`)
-///    - Out-params (e.g. `ShapeAnalysis_WireOrder::Chain(num, n1: &mut i32, n2: &mut i32)`)
+/// The previous broader heuristic (flagging ConstRef(I32) on ALL classes) was needed
+/// to compensate for a fatal parse error from OSD_WNT.hxx (#include <windows.h>)
+/// that corrupted libclang's type resolution across the batch. With that header
+/// excluded, the heuristic can be scoped to NCollection classes only.
 fn method_has_misresolved_element_type(
     params: &[Param],
     return_type: Option<&Type>,
@@ -755,31 +755,22 @@ fn method_has_misresolved_element_type(
         return false;
     }
 
+    // Only flag ConstRef(I32) and MutRef(I32) on NCollection-derived classes
+    // with non-primitive element types.
     let is_ncollection_nonprimitive = ncollection_nonprimitive_classes.contains_key(class_name);
+    if !is_ncollection_nonprimitive {
+        return false;
+    }
 
-    // Check params for ConstRef(I32) — always suspicious on any non-primitive class
-    if params.iter().any(|p| type_is_const_ref_i32(&p.ty)) {
+    // Check params for ConstRef(I32) or MutRef(I32)
+    if params.iter().any(|p| type_is_const_ref_i32(&p.ty) || type_is_mut_ref_i32(&p.ty)) {
         return true;
     }
 
-    // Check return type for ConstRef(I32) — always suspicious
+    // Check return type for ConstRef(I32) or MutRef(I32)
     if let Some(ret) = return_type {
-        if type_is_const_ref_i32(ret) {
+        if type_is_const_ref_i32(ret) || type_is_mut_ref_i32(ret) {
             return true;
-        }
-    }
-
-    // Check MutRef(I32) ONLY for NCollection-derived classes with non-primitive elements.
-    // Non-NCollection classes legitimately use Standard_Integer& for mode accessors
-    // and out-params.
-    if is_ncollection_nonprimitive {
-        if params.iter().any(|p| type_is_mut_ref_i32(&p.ty)) {
-            return true;
-        }
-        if let Some(ret) = return_type {
-            if type_is_mut_ref_i32(ret) {
-                return true;
-            }
         }
     }
 

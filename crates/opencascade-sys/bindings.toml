@@ -269,71 +269,25 @@ exclude_headers = [
 
     # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.
     "RWObj_MtlReader.hxx",
+
+    # Windows-only: includes <windows.h> which causes a fatal error on non-Windows
+    # and may disrupt clang's type resolution for subsequent headers.
+    "OSD_WNT.hxx",
 ]
 
 # Include specific individual headers (from modules not fully included above).
 include_headers = []
 
-# Exclude specific methods/constructors that clang misresolves in batch parsing mode.
-# When clang can't fully instantiate certain template types, it misresolves them to
-# Standard_Integer (int). This corruption affects both canonical AND display names,
-# so the parser's heuristic guards cannot detect it. These methods are excluded
+# Exclude specific methods/constructors that clang completely misresolves in batch
+# parsing mode — both canonical AND display names show the wrong type, so the
+# parser's heuristic guards cannot detect it. These methods are excluded
 # individually so the rest of each class remains accessible.
 # Format: "ClassName::MethodName" for methods, "ClassName::ClassName" for constructors.
 exclude_methods = [
-    # math_Matrix: Row() and Col() return math_VectorBase<> (typedef math_Vector)
-    # which clang misresolves to Standard_Integer in batch parsing mode.
-    "math_Matrix::Row",
-    "math_Matrix::Col",
-
-    # TObj_TIntSparseArray: GetIterator() returns NCollection_SparseArray<int>::ConstIterator
-    # which clang misresolves to Standard_Integer in batch parsing mode.
-    "TObj_TIntSparseArray::GetIterator",
-
-    # XSAlgo_ShapeProcessor: constructor takes NCollection_DataMap param (class-scoped
-    # using alias "ParameterMap") misresolved to Standard_Integer by clang.
-    "XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor",
-
-    # XSAlgo_ShapeProcessor: ReadProcessingData() returns std::pair<ParameterMap, bitset>
-    # which clang misresolves to Standard_Integer in batch parsing mode.
-    "XSAlgo_ShapeProcessor::ReadProcessingData",
-
     # BRepExtrema_ProximityDistTool::PrjState: constructor takes BVH_PrjState
     # (a template-dependent enum typedef) misresolved to Standard_Integer.
     # PrjState is an internal struct not exposed by public methods.
     "BRepExtrema_ProximityDistTool::PrjState::*",
-
-    # Interface_Static: FillMap() takes NCollection_DataMap (class-scoped typedef
-    # "Interface_StaticParamMap") misresolved to Standard_Integer by clang.
-    "Interface_Static::FillMap",
-
-    # Transfer_Finder: AttrList() returns Transfer_FinderAttrMap (NCollection_DataMap)
-    # which clang misresolves to Standard_Integer in batch parsing mode.
-    "Transfer_Finder::AttrList",
-    "Transfer_TransientMapper::AttrList",
-
-    # Transfer_TransientProcess: Context() returns NCollection_DataMap<AsciiString, Handle>
-    # misresolved to Standard_Integer in batch parsing mode.
-    "Transfer_TransientProcess::Context",
-
-    # XSControl_TransferReader: Context() returns NCollection_DataMap<AsciiString, Handle>
-    # misresolved to Standard_Integer in batch parsing mode.
-    "XSControl_TransferReader::Context",
-
-    # XCAFDoc_DimTolTool: GetGDTPresentations/SetGDTPresentations take
-    # NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>& misresolved
-    # to Standard_Integer by clang.
-    "XCAFDoc_DimTolTool::GetGDTPresentations",
-    "XCAFDoc_DimTolTool::SetGDTPresentations",
-
-    # XSAlgo_ShapeProcessor: FillParameterMap() and SetParameter() overloads take
-    # ParameterMap (NCollection_DataMap class-scoped alias) misresolved by clang.
-    "XSAlgo_ShapeProcessor::FillParameterMap",
-    "XSAlgo_ShapeProcessor::SetParameter",
-
-    # IntPatch_Intersection: PrepareSurfaces() takes NCollection_Vector<Handle> params
-    # misresolved to Standard_Integer in batch parsing mode.
-    "IntPatch_Intersection::PrepareSurfaces",
 ]
 
 [general]

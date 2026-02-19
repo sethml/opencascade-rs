@@ -310,6 +310,11 @@ impl CafReader {
         }
     }
 
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
+    pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
+        unsafe { &*(crate::ffi::RWObj_CafReader_inherited_ExternalFiles(self as *const Self)) }
+    }
+
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
     pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
         unsafe { &*(crate::ffi::RWObj_CafReader_inherited_Metadata(self as *const Self)) }
@@ -1045,6 +1050,12 @@ impl Reader {
         unsafe { &*(crate::ffi::RWObj_Reader_file_comments(self as *const Self)) }
     }
 
+    /// **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles()`
+    /// Return the list of external file references.
+    pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
+        unsafe { &*(crate::ffi::RWObj_Reader_external_files(self as *const Self)) }
+    }
+
     /// **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
     /// Number of probed nodes.
     pub fn nb_probe_nodes(&self) -> i32 {
@@ -1202,7 +1213,7 @@ impl HandleRWObjReader {
     }
 }
 
-// ── Skipped symbols for Reader (4 total) ──
+// ── Skipped symbols for Reader (3 total) ──
 // SKIPPED: **Source:** `RWObj_Reader.hxx`:48 - `RWObj_Reader::RWObj_Reader`
 //   constructor: Empty constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
@@ -1221,11 +1232,6 @@ impl HandleRWObjReader {
 //   method: format limitations.
 //   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
 //   // pub fn probe(&mut self, theStream: /* std::istream& */, theFile: &AsciiString, theProgress: &ProgressRange) -> bool;
-//
-// SKIPPED: **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles`
-//   method: Return the list of external file references.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn external_files(&self) -> &i32;
 //
 
 // ========================
@@ -1413,6 +1419,13 @@ impl TriangulationReader {
     pub fn file_comments(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::ffi::RWObj_TriangulationReader_inherited_FileComments(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles()`
+    pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
+        unsafe {
+            &*(crate::ffi::RWObj_TriangulationReader_inherited_ExternalFiles(self as *const Self))
         }
     }
 

@@ -1705,6 +1705,29 @@ impl HArray1OfBox {
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+    pub fn new_int2_box(theLower: i32, theUpper: i32, theValue: &Box) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox_ctor_int2_box(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
+    pub fn new_box_int2_bool(
+        theBegin: &Box,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox_ctor_box_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
     pub fn new_array1ofbox(theOther: &crate::ffi::Bnd_Array1OfBox) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox_ctor_array1ofbox(theOther))
@@ -1840,6 +1863,29 @@ impl HArray1OfBox2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox2d_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::Bnd_HArray1OfBox2d()`
+    pub fn new_int2_box2d(theLower: i32, theUpper: i32, theValue: &Box2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox2d_ctor_int2_box2d(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::Bnd_HArray1OfBox2d()`
+    pub fn new_box2d_int2_bool(
+        theBegin: &Box2d,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfBox2d_ctor_box2d_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
         }
     }
 
@@ -1983,6 +2029,33 @@ impl HArray1OfSphere {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfSphere_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+    pub fn new_int2_sphere(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &Sphere,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfSphere_ctor_int2_sphere(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
+    pub fn new_sphere_int2_bool(
+        theBegin: &Sphere,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Bnd_HArray1OfSphere_ctor_sphere_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
         }
     }
 

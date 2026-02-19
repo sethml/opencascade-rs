@@ -72,6 +72,37 @@ impl HArray1OfMultiPoint {
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::AppParCurves_HArray1OfMultiPoint()`
+    pub fn new_int2_multipoint(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &MultiPoint,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_int2_multipoint(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::AppParCurves_HArray1OfMultiPoint()`
+    pub fn new_multipoint_int2_bool(
+        theBegin: &MultiPoint,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_multipoint_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::AppParCurves_HArray1OfMultiPoint()`
     pub fn new_array1ofmultipoint(
         theOther: &crate::ffi::AppParCurves_Array1OfMultiPoint,
     ) -> crate::OwnedPtr<Self> {

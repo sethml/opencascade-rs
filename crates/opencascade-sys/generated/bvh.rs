@@ -36,6 +36,12 @@ impl BuildQueue {
         unsafe { crate::ffi::BVH_BuildQueue_size(self as *mut Self) }
     }
 
+    /// **Source:** `BVH_BuildQueue.hxx`:49 - `BVH_BuildQueue::Enqueue()`
+    /// Enqueues new work-item onto BVH build queue.
+    pub fn enqueue(&mut self, theNode: &i32) {
+        unsafe { crate::ffi::BVH_BuildQueue_enqueue(self as *mut Self, theNode) }
+    }
+
     /// **Source:** `BVH_BuildQueue.hxx`:52 - `BVH_BuildQueue::Fetch()`
     /// Fetches first work-item from BVH build queue.
     pub fn fetch(&mut self, wasBusy: &mut bool) -> i32 {
@@ -48,13 +54,6 @@ impl BuildQueue {
         unsafe { crate::ffi::BVH_BuildQueue_has_busy_threads(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for BuildQueue (1 total) ──
-// SKIPPED: **Source:** `BVH_BuildQueue.hxx`:49 - `BVH_BuildQueue::Enqueue`
-//   method: Enqueues new work-item onto BVH build queue.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn enqueue(&mut self, theNode: &i32);
-//
 
 // ========================
 // From BVH_BuildThread.hxx

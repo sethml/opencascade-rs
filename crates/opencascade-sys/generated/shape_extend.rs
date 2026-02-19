@@ -2027,6 +2027,12 @@ impl MsgRegistrator {
         }
     }
 
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:63 - `ShapeExtend_MsgRegistrator::MapTransient()`
+    /// Returns a Map of objects and message list
+    pub fn map_transient(&self) -> &crate::ffi::ShapeExtend_DataMapOfTransientListOfMsg {
+        unsafe { &*(crate::ffi::ShapeExtend_MsgRegistrator_map_transient(self as *const Self)) }
+    }
+
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:66 - `ShapeExtend_MsgRegistrator::MapShape()`
     /// Returns a Map of shapes and message list
     pub fn map_shape(&self) -> &crate::ffi::ShapeExtend_DataMapOfShapeListOfMsg {
@@ -2182,13 +2188,6 @@ impl HandleShapeExtendMsgRegistrator {
         }
     }
 }
-
-// ── Skipped symbols for MsgRegistrator (1 total) ──
-// SKIPPED: **Source:** `ShapeExtend_MsgRegistrator.hxx`:63 - `ShapeExtend_MsgRegistrator::MapTransient`
-//   method: Returns a Map of objects and message list
-//   Reason: return type 'const ShapeExtend_DataMapOfTransientListOfMsg&' is unknown
-//   // pub fn map_transient(&self) -> &DataMapOfTransientListOfMsg;
-//
 
 // ========================
 // From ShapeExtend_WireData.hxx

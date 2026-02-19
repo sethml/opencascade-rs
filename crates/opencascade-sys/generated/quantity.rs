@@ -2384,6 +2384,29 @@ impl HArray1OfColor {
     }
 
     /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
+    pub fn new_int2_color(theLower: i32, theUpper: i32, theValue: &Color) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_HArray1OfColor_ctor_int2_color(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
+    pub fn new_color_int2_bool(
+        theBegin: &Color,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Quantity_HArray1OfColor_ctor_color_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
     pub fn new_array1ofcolor(
         theOther: &crate::ffi::Quantity_Array1OfColor,
     ) -> crate::OwnedPtr<Self> {

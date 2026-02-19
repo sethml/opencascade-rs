@@ -923,6 +923,14 @@ impl FuseEdges {
         unsafe { crate::ffi::BRepLib_FuseEdges_set_concat_b_spl(self as *mut Self, theConcatBSpl) }
     }
 
+    /// **Source:** `BRepLib_FuseEdges.hxx`:63 - `BRepLib_FuseEdges::Edges()`
+    /// returns  all the list of edges to be fused
+    /// each list of the map represent a set of connex edges
+    /// that can be fused.
+    pub fn edges(&mut self, theMapLstEdg: &mut crate::ffi::TopTools_DataMapOfIntegerListOfShape) {
+        unsafe { crate::ffi::BRepLib_FuseEdges_edges(self as *mut Self, theMapLstEdg) }
+    }
+
     /// **Source:** `BRepLib_FuseEdges.hxx`:70 - `BRepLib_FuseEdges::ResultEdges()`
     /// returns all the fused edges. each integer entry in
     /// the   map  corresponds  to  the  integer   in the
@@ -959,15 +967,6 @@ impl FuseEdges {
         unsafe { crate::ffi::BRepLib_FuseEdges_perform(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for FuseEdges (1 total) ──
-// SKIPPED: **Source:** `BRepLib_FuseEdges.hxx`:63 - `BRepLib_FuseEdges::Edges`
-//   method: returns  all the list of edges to be fused
-//   method: each list of the map represent a set of connex edges
-//   method: that can be fused.
-//   Reason: param 'theMapLstEdg' uses unknown type 'TopTools_DataMapOfIntegerListOfShape&'
-//   // pub fn edges(&mut self, theMapLstEdg: &mut DataMapOfIntegerListOfShape);
-//
 
 // ========================
 // From BRepLib_MakeEdge.hxx

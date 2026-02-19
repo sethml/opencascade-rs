@@ -883,3 +883,552 @@ Committed. Summary of changes:
 - Fixed inherited method binding to respect `exclude_methods` list
 - Added 10 specific methods to `exclude_methods` for cases where clang completely loses type information
 - Updated README with detailed documentation of remaining skip categories
+
+User: I like the idea of using the getTemplateArguments() / get_template_argument_type() API. But I want to explore an alternate approach: what if the file we generate to #include all of the clang headers for "batch mode" parsing ended with "extern template" declarations for all of the template instantiations we need? Could we do a two-pass parse - parse all of the headers, then figure out what template instantations we need, append them to the file as "extern template", then parse again to get libclang to instantiate the templates? Maybe even use a pre-parsed header mode on the second pass to avoid the overhead of textually parsing a second time?
+
+GitHub Copilot: 
+
+   
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#158-158), lines 158 to 230
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#45-45), lines 45 to 156
+
+Now let me check what template info is available from the first pass and what the typedef map looks like: 
+
+Ran terminal command:  grep -n "normalize_template_spelling\|TYPEDEF_MAP\|Handle(\|NCollection_" crates/opencascade-binding-generator/src/parser.rs | head -30
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#15-15), lines 15 to 43
+
+Now let me check what the actual failing methods look like — the ones where the display name ALSO loses the type info: 
+
+Ran terminal command:  grep -n "extern template\|explicit instantiation" crates/opencascade-binding-generator/src/parser.rs crates/opencascade-binding-generator/src/codegen/*.rs 2>/dev/null | head -10
+
+Let me check how many template instantiations we'd actually need, by looking at the typedef map size and what the supplement scan finds:  
+
+Ran terminal command:  grep -c "typedef.*NCollection_\|typedef.*TCollection_H" target/OCCT/include/*.hxx 2>/dev/null | awk -F: '{sum += $2} END {print sum " typedefs across files"}'
+
+Ran terminal command:  grep -oh "typedef NCollection_[A-Za-z]*<[^;]*>" target/OCCT/include/*.hxx 2>/dev/null | head -20
+
+Now let me look at one key question — what does `extern template` even do in this context, and whether it's the right directive:   
+
+Ran terminal command:  cd /Users/sethml/src/opencascade-rs && cat > tmp/test_extern_template.cpp << 'CPPEOF'
+#include <NCollection_DataMap.hxx>
+#include <TCollection_AsciiString.hxx>
+#include <Standard_Transient.hxx>
+
+// Explicit instantiation definition (NOT extern) — forces full instantiation
+template class NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>;
+CPPEOF
+clang++ -std=c++17 -I target/OCCT/include -fsyntax-only tmp/test_extern_template.cpp 2>&1 | head -20; echo "EXIT: $?"
+
+Ran terminal command:  echo $?
+
+Compiles clean. Now let me write a proper test to see if libclang resolves the canonical type correctly after explicit instantiation:  
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/test_explicit_instantiation.rs)
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/test-explicit-instantiation/Cargo.toml)
+
+Actually, let me just use the existing project's clang dependency instead of creating a separate crate:   
+
+Ran terminal command:  rm -rf /Users/sethml/src/opencascade-rs/tmp/test-explicit-instantiation
+
+Created [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs)
+
+Ran terminal command:  time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+Completed with input:  time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+
+Ran terminal command:  find /Library/Developer/CommandLineTools /Applications/Xcode.app -name "libclang.dylib" 2>/dev/null | head -5
+
+Ran terminal command:  DYLD_LIBRARY_PATH=/Library/Developer/CommandLineTools/usr/lib time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+Completed with input:  DYLD_LIBRARY_PATH=/Library/Developer/CommandLineTools/usr/lib time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+
+Ran terminal command:  grep -rn "LIBCLANG\|libclang\|DYLD" scripts/regenerate-bindings.sh crates/opencascade-binding-generator/build.rs Cargo.toml 2>/dev/null | head -10
+
+Ran terminal command:  grep -A3 "XCODE_TOOLCHAIN\|DYLD_LIBRARY_PATH" scripts/regenerate-bindings.sh
+
+Ran terminal command:  XCODE_TOOLCHAIN="$(xcode-select -p)/Toolchains/XcodeDefault.xctoolchain/usr/lib" DYLD_LIBRARY_PATH="$XCODE_TOOLCHAIN:${DYLD_LIBRARY_PATH:-}" cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+
+Interesting — both show `int &`. But there's also a fatal error about missing `<type_traits>`. The system include paths aren't being passed. Let me fix the test to use the same include path setup as the real parser:  
+
+Ran terminal command:  grep -n "add_system_include_paths" crates/opencascade-binding-generator/src/parser.rs
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#1593-1593), lines 1593 to 1660
+
+Let me update the test to use the proper system include paths:   
+
+Created [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs)
+
+Ran terminal command:  rm /Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs
+
+Created [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs)
+
+Ran terminal command:  XCODE_TOOLCHAIN="$(xcode-select -p)/Toolchains/XcodeDefault.xctoolchain/usr/lib" DYLD_LIBRARY_PATH="$XCODE_TOOLCHAIN" cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+
+Wait — *neither* case is misresolved! With just these two headers, clang resolves correctly both with and without explicit instantiation. The misresolution only happens in batch mode with many headers. Let me reproduce the actual batch scenario:   
+
+Ran terminal command:  wc -l crates/opencascade-sys/bindings.toml | head -1
+
+Ran terminal command:  ls target/OCCT/include/*.hxx | wc -l
+
+I need to reproduce the actual failing scenario. The misresolution only happens when *many* headers are included together. Let me build the actual synthetic source that the generator creates:    
+
+Ran terminal command:  grep -n "header_list_path\|write.*header" scripts/regenerate-bindings.sh | head -10
+
+Ran terminal command:  cat scripts/regenerate-bindings.sh
+
+So the generator reads `bindings.toml` to determine the header list. Let me write a more realistic test that includes *all* the headers from the batch, not just two:    
+
+Ran terminal command:  rm /Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs
+
+Created [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs)
+
+Summarized conversation history
+
+Created 4 todos
+
+Ran terminal command:  XCODE_TOOLCHAIN="$(xcode-select -p)/Toolchains/XcodeDefault.xctoolchain/usr/lib" DYLD_LIBRARY_PATH="$XCODE_TOOLCHAIN" time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+Completed with input:  XCODE_TOOLCHAIN="$(xcode-select -p)/Toolchains/XcodeDefault.xctoolchain/usr/lib" DYLD_LIBRARY_PATH="$XCODE_TOOLCHAIN" time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+
+Reading lines 127-127 of [test_explicit_instantiation.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs#L127-L128)
+Completed with input: {
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs",
+  "startLine": 127,
+  "endLine": 127
+}
+
+Edited: [test_explicit_instantiation.rs -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs#L127-L128)
+Completed with input: {
+  "edits": [
+    {
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs",
+      "lineHashes": "127:qg",
+      "content": "    println!(\"\\n{}\", \"=\".repeat(60));"
+    }
+  ]
+}
+
+Ran terminal command:  XCODE_TOOLCHAIN="$(xcode-select -p)/Toolchains/XcodeDefault.xctoolchain/usr/lib" DYLD_LIBRARY_PATH="$XCODE_TOOLCHAIN" time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+Completed with input:  XCODE_TOOLCHAIN="$(xcode-select -p)/Toolchains/XcodeDefault.xctoolchain/usr/lib" DYLD_LIBRARY_PATH="$XCODE_TOOLCHAIN" time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+
+Ran terminal command:  find "$(xcode-select -p)" -name 'libclang.dylib' 2>/dev/null
+
+Ran terminal command:  DYLD_LIBRARY_PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib" time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+Completed with input:  DYLD_LIBRARY_PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib" time cargo run -p opencascade-binding-generator --example test_explicit_instantiation 2>&1
+
+Searched for regex `DYLD_LIBRARY_PATH|LIBCLANG_PATH|libclang` (`**/scripts/**`), 9 results
+
+The issue is that macOS SIP strips `DYLD_LIBRARY_PATH` when launching new processes via `cargo run`. Let me use the script approach instead. 
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/run_test.sh)
+
+Ran terminal command:  bash tmp/run_test.sh 2>&1
+
+Interesting - with all 6,875 OCCT headers, `Transfer_Finder::AttrList` resolves correctly! The misresolution I need to reproduce must depend on the specific header subset used by the generator. Let me check what headers the generator actually includes. 
+
+Reading lines 158-240 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L158-L241)
+Completed with input: {
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 158,
+  "endLine": 240
+}
+
+Searched for text `parse_headers` (`**/crates/opencascade-binding-generator/src/**`), 3 results
+
+Reading lines 150-200 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L150-L201)
+Completed with input: {
+  "endLine": 200,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 150
+}
+
+Now I need to understand what actual headers go into the batch. Let me check what headers the generator finds - by looking at `explicit_headers` construction and `resolve_header_dependencies`. 
+
+Reading lines 90-149 of [main.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs#L90-L150)
+Completed with input: {
+  "endLine": 149,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/main.rs",
+  "startLine": 90
+}
+
+Ran terminal command:  cargo run -p opencascade-binding-generator -- --config crates/opencascade-sys/bindings.toml -I target/OCCT/include --verbose 2>&1 | head -5
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/count_headers.sh)
+
+Ran terminal command:  bash tmp/count_headers.sh 2>&1
+
+Let me run the actual generator and capture what's happening with misresolved methods. 
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/check_misresolution.sh)
+
+Ran terminal command:  bash tmp/check_misresolution.sh 2>&1
+
+No output. Let me search for the actual skip mechanism — it's in the bindings.rs file. 
+
+Searched for regex `misresolved|skip.*method|Skipping` (`**/crates/opencascade-binding-generator/src/codegen/**`), 20 results
+
+Reading lines 710-810 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L710-L811)
+Completed with input: {
+  "endLine": 810,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 710
+}
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/find_misresolved.sh)
+
+Ran terminal command:  bash tmp/find_misresolved.sh 2>&1
+Completed with input:  bash tmp/find_misresolved.sh 2>&1
+
+Created [](file:///Users/sethml/src/opencascade-rs/tmp/find_misresolved.sh)
+
+Reading all lines of [find_misresolved.sh](file:///Users/sethml/src/opencascade-rs/tmp/find_misresolved.sh)
+Completed with input: {
+  "filePath": "/Users/sethml/src/opencascade-rs/tmp/find_misresolved.sh"
+}
+
+Edited: [find_misresolved.sh -2+4](file:///Users/sethml/src/opencascade-rs/tmp/find_misresolved.sh#L11-L15)
+Completed with input: {
+  "edits": [
+    {
+      "content": "# Build in release mode\ncargo build --release -p opencascade-binding-generator\n# Run the generator\ntarget/release/occt-bindgen --config crates/opencascade-sys/bindings.toml -I target/OCCT/include -o tmp/test_output 2>&1",
+      "filePath": "/Users/sethml/src/opencascade-rs/tmp/find_misresolved.sh",
+      "lineHashes": "11:rj,12:hw"
+    }
+  ]
+}
+
+Ran terminal command:  bash tmp/find_misresolved.sh 2>&1
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/41d809fd-5da1-41e0-b2f4-6ec0a839ad46/toolu_01F926jp5jRsMBZenUymMnru__vscode-1771312783671/content.txt#1-1), lines 1 to 100
+
+Read [](file:///Users/sethml/Library/Application%20Support/Code/User/workspaceStorage/140fb29cc18995a7b3c75038586f8e11/GitHub.copilot-chat/chat-session-resources/41d809fd-5da1-41e0-b2f4-6ec0a839ad46/toolu_01F926jp5jRsMBZenUymMnru__vscode-1771312783671/content.txt#100-100), lines 100 to 337
+
+Good, there are ~75 misresolved methods across many modules. Let me look at specific examples to understand what's happening at the `parse_type()` level. 
+
+Ran terminal command:  grep -B2 "misresolved" tmp/test_output/transfer.rs
+
+Ran terminal command:  grep -B5 "misresolved" tmp/test_output/transfer.rs | grep "SKIPPED"
+
+Now let me look at `parse_type()` to understand what happens with these types at the parsing layer: 
+
+Searched for regex `fn parse_type` (`**/crates/opencascade-binding-generator/src/parser.rs`), 1 result
+
+Reading lines 1232-1420 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L1232-L1421)
+Completed with input: {
+  "endLine": 1420,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 1232
+}
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#1232-1232), lines 1232 to 1420
+
+The test showed no misresolution because it was looking at the wrong methods. The actual misresolved methods (from the generator output) are cases where **both** display and canonical resolve to `int` — not just canonical. Let me update the test to check the actually-skipped methods. 
+
+Ran terminal command:  grep -B5 "misresolved" tmp/test_output/stepcaf_control.rs | grep "SKIPPED"
+
+Ran terminal command:  grep -A3 "ExternFiles" target/OCCT/include/STEPCAFControl_Reader.hxx | head -10
+
+Ran terminal command:  grep -B5 "ExternFiles\b" target/OCCT/include/STEPCAFControl_Reader.hxx | head -15
+
+Ran terminal command:  grep -B5 "ShapeFixParameters" target/OCCT/include/STEPCAFControl_Reader.hxx | head -20
+
+So `ExternFiles()` returns `const NCollection_DataMap<TCollection_AsciiString, Handle(STEPCAFControl_ExternFile)>&`. And `SetShapeFixParameters` takes `const XSAlgo_ShapeProcessor::ParameterMap&`. Let me check what ParameterMap is: 
+
+Ran terminal command:  grep "ParameterMap" target/OCCT/include/XSAlgo_ShapeProcessor.hxx | head -5
+
+Now I see the pattern. `XSAlgo_ShapeProcessor::ParameterMap` is a `using` alias (not a `typedef`) for `NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>`. The `const int &` misresolution could mean that `NCollection_DataMap<...>` itself got misresolved to `int`.
+
+Let me update the test to check these ACTUAL misresolved methods and see what libclang reports for them:Now let me rewrite the test to check the ACTUAL misresolved methods: 
+
+Reading all lines of [test_explicit_instantiation.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs)
+Completed with input: {
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs"
+}
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs#1-1), lines 1 to 175
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs#172-172), lines 172 to 202
+
+The test needs a complete overhaul - it's checking the wrong methods and the wrong thing. The actual misresolution shows **both** display and canonical as `int`. Let me rewrite it to check the actually-skipped methods and dump ALL type info:  
+
+Made changes.
+
+User: What about this fatal parsing error  - maybe that's causing the issue?
+
+GitHub Copilot: 
+
+ Good catch — a fatal parse error could absolutely cascade and corrupt type resolution downstream. Let me investigate. 
+
+Created 3 todos
+
+Ran terminal command:  cat target/OCCT/include/OSD_WNT.hxx
+
+Ran terminal command:  grep "OSD_WNT" crates/opencascade-sys/bindings.toml
+Completed with input:  grep "OSD_WNT" crates/opencascade-sys/bindings.toml
+
+It's not excluded! Let me check how it's getting pulled in and whether there are more Windows-only headers causing errors: 
+
+Ran terminal command:  grep -r "OSD_WNT" target/OCCT/include/*.hxx | grep -v "^target/OCCT/include/OSD_WNT.hxx" | head -10
+
+Ran terminal command:  grep -rl "OSD_WNT" target/OCCT/include/ | head -10
+
+So nothing includes OSD_WNT.hxx — it's being included directly via the OSD module glob. Let me check what the exclude_headers list looks like and whether there are other fatal errors: 
+
+Ran terminal command:  grep "exclude_headers" crates/opencascade-sys/bindings.toml
+
+Searched for text `exclude_headers` (`**/crates/opencascade-sys/bindings.toml`), 2 results
+
+Reading lines 243-260 of [bindings.toml](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml#L243-L261)
+Completed with input: {
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml",
+  "startLine": 243,
+  "endLine": 260
+}
+
+Reading lines 260-280 of [bindings.toml](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml#L260-L281)
+Completed with input: {
+  "endLine": 280,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml",
+  "startLine": 260
+}
+
+Now let me check: is OSD_WNT.hxx being included because it matches the OSD module glob? And importantly, **are there other headers producing fatal errors?**  
+
+Ran terminal command:  ls target/OCCT/include/OSD_*.hxx | wc -l && ls target/OCCT/include/OSD_*.hxx | head -5
+
+Now let me check if there are ALL parse errors, not just the first fatal one. The key insight is that a `fatal error` in clang stops processing the affected header AND may affect subsequent parsing. Let me create a more thorough diagnostic: 
+
+Ran terminal command:  grep "OSD" crates/opencascade-sys/bindings.toml | head -5
+
+Now let me look at the actual clang diagnostics more carefully. The generator currently only prints errors when `verbose` is enabled. Let me check how many parse errors there really are: 
+
+Reading lines 225-240 of [parser.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs#L225-L241)
+Completed with input: {
+  "endLine": 240,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/parser.rs",
+  "startLine": 225
+}
+
+The current code only prints errors when verbose. Also, the `OSD_WNT.hxx:23:12: fatal error` is printed by clang automatically (not by our code). Let me check: the fatal error message is printed on stderr directly by clang parsing. But the key question is: **does this fatal error in OSD_WNT.hxx affect the processing of OTHER headers in the batch?**
+
+In clang, a `#include` that hits a fatal error will abort just that inclusion, but the preprocessor continues with the next `#include` directive. However, if any types/declarations from that header were depended upon by later headers, those would be missing.
+
+But OSD_WNT.hxx is a Windows-only utility header — nothing else includes it and it's unlikely anything depends on it. So the fatal error itself probably isn't the root cause of misresolution.
+
+BUT — there could be *other* fatal/error diagnostics we're not seeing. Let me check:  
+
+Read [](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs#1-1), lines 1 to 12
+
+Let me repurpose the test to: 1) use the generator's ACTUAL header set (from bindings.toml), and 2) dump ALL diagnostics. But first, let me just quickly add OSD_WNT to the exclude list and re-run to see if the misresolution count changes:  
+
+Edited: [bindings.toml -3+7](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml#L270-L277)
+Completed with input: {
+  "edits": [
+    {
+      "content": "    # RWObj_MtlReader: constructor takes OSD_OpenFile_Mode not available.\n    \"RWObj_MtlReader.hxx\",\n\n    # Windows-only: includes <windows.h> which causes a fatal error on non-Windows\n    # and may disrupt clang's type resolution for subsequent headers.\n    \"OSD_WNT.hxx\",\n]",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml",
+      "lineHashes": "270:ir,271:qj,272:cy"
+    }
+  ]
+}
+
+Ran terminal command:  bash tmp/find_misresolved.sh 2>&1 | grep -E "^(Loaded|Parsing|fatal|---)" && echo "---" && grep -rc "misresolved" tmp/test_output/ | grep -v ':0$' | awk -F: '{sum += $2} END {print "Total misresolved:", sum}'
+
+Wow! **The misresolved count dropped from ~75 to 12** just by excluding OSD_WNT.hxx! The fatal `windows.h` error was indeed corrupting libclang's type resolution. Let me see what's left:   
+
+Starting: *Check remaining misresolution* (2/4)
+
+Ran terminal command:  grep -rc "misresolved" tmp/test_output/ | grep -v ':0$'
+
+Ran terminal command:  for f in bvh.rs b_rep_builder_api.rs pcdm.rs t_obj.rs plate.rs b_rep_class3d.rs shape_analysis.rs; do echo "=== $f ===" && grep -B5 "misresolved" "tmp/test_output/$f" | grep "SKIPPED"; done
+
+These are much fewer — 12 remaining. Let me check if some of these are actually legitimate `ConstRef(I32)` cases rather than true misresolutions. Let me look at the C++ headers: 
+
+Ran terminal command:  grep -A2 "void Enqueue" target/OCCT/include/BVH_BuildQueue.hxx && echo "---" && grep -A2 "Accept" target/OCCT/include/BRepBuilderAPI_BndBoxTreeSelector.hxx | head -5 && echo "---" && grep -A2 "nb_PPC\|nb_LSC" target/OCCT/include/Plate_FreeGtoCConstraint.hxx | head -10 && echo "---" && grep -A2 "Idu\|Idv" target/OCCT/include/Plate_PinpointConstraint.hxx | head -10
+
+These are all **legitimate `const Standard_Integer&`** return types / parameters — they are NOT misresolved. They're false positives from the `ConstRef(I32)` heuristic. The heuristic incorrectly flags them because they're not on NCollection classes.
+
+Wait — let me re-read the heuristic. It says "ConstRef(I32) always suspicious on any non-primitive class." But these classes (Plate_FreeGtoCConstraint, BVH_BuildQueue, etc.) genuinely use `const Standard_Integer&`. These are false positives where our heuristic is too aggressive.
+
+Let me check: these classes are NOT NCollection-derived at all: 
+
+Ran terminal command:  grep "class BVH_BuildQueue" target/OCCT/include/BVH_BuildQueue.hxx && echo "---" && grep "class Plate_PinpointConstraint" target/OCCT/include/Plate_PinpointConstraint.hxx && echo "---" && grep "class BRepBuilderAPI_BndBoxTreeSelector" target/OCCT/include/BRepBuilderAPI_BndBoxTreeSelector.hxx && echo "---" && grep "class BRepClass3d_BndBoxTreeSelector" target/OCCT/include/BRepClass3d_BndBoxTree.hxx
+
+Confirmed — none of these are NCollection-derived. The `ConstRef(I32)` heuristic is being too aggressive. These are legitimate uses of `const Standard_Integer&` on non-NCollection classes.
+
+But the major win is clear: **excluding OSD_WNT.hxx dropped misresolved from ~75 to 12, and those 12 are actually false positives** (legitimate `const Standard_Integer&` usage). Let me now also check if there are still other parse errors: 
+
+Starting: *Check for other error-causing headers* (3/5)
+
+Ran terminal command:  bash -c 'XCODE_TOOLCHAIN="$(xcode-select -p)/Toolchains/XcodeDefault.xctoolchain/usr/lib" && export DYLD_LIBRARY_PATH="$XCODE_TOOLCHAIN:${DYLD_LIBRARY_PATH:-}" && target/release/occt-bindgen --config crates/opencascade-sys/bindings.toml -I target/OCCT/include -o tmp/test_output --verbose 2>&1' | grep -iE "error:|fatal error" | head -20
+
+No more errors at all — the only parse error was from OSD_WNT.hxx.
+
+Now let me fix the false positive heuristic. The remaining 12 are **all legitimate `const Standard_Integer&`** on non-NCollection classes. The fix: restrict the `ConstRef(I32)` check to only flag methods on NCollection-derived classes (same as the `MutRef(I32)` check currently does):  
+
+Starting: *Fix false positive heuristic* (4/5)
+
+Reading lines 732-787 of [bindings.rs](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L732-L788)
+Completed with input: {
+  "endLine": 787,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+  "startLine": 732
+}
+
+Now I need to change the `ConstRef(I32)` check to ALSO be restricted to NCollection-derived classes, just like `MutRef(I32)`. The root cause of the misresolutions was the fatal parse error, not missing template instantiations. With OSD_WNT.hxx excluded, we don't need the broad heuristic anymore.   
+
+Edited: [bindings.rs -56+47](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs#L732-L779)
+Completed with input: {
+  "edits": [
+    {
+      "content": "/// Check if a method has misresolved NCollection element type params or return type.\n///\n/// Both `ConstRef(I32)` and `MutRef(I32)` are suspicious ONLY on NCollection-derived\n/// classes with non-primitive element types. Outside NCollection:\n/// - `const Standard_Integer&` appears in various OCCT classes (e.g. BVH_BuildQueue::Enqueue,\n///   Plate_PinpointConstraint::Idu/Idv, BndBoxTreeSelector::Accept)\n/// - `Standard_Integer&` is legitimate for mode accessors and out-params\n///   (e.g. ShapeFix_Face::FixWireMode, ShapeAnalysis_WireOrder::Chain)\n///\n/// The previous broader heuristic (flagging ConstRef(I32) on ALL classes) was needed\n/// to compensate for a fatal parse error from OSD_WNT.hxx (#include <windows.h>)\n/// that corrupted libclang's type resolution across the batch. With that header\n/// excluded, the heuristic can be scoped to NCollection classes only.\nfn method_has_misresolved_element_type(\n    params: &[Param],\n    return_type: Option<&Type>,\n    class_name: &str,\n    ncollection_primitive_classes: &HashSet<String>,\n    ncollection_nonprimitive_classes: &HashMap<String, String>,\n) -> bool {\n    // NCollection containers with primitive element types legitimately have\n    // ConstRef(I32)/MutRef(I32) methods (e.g., TColStd_Array1OfInteger::Value() -> const int&)\n    if ncollection_primitive_classes.contains(class_name) {\n        return false;\n    }\n\n    // Only flag ConstRef(I32) and MutRef(I32) on NCollection-derived classes\n    // with non-primitive element types.\n    let is_ncollection_nonprimitive = ncollection_nonprimitive_classes.contains_key(class_name);\n    if !is_ncollection_nonprimitive {\n        return false;\n    }\n\n    // Check params for ConstRef(I32) or MutRef(I32)\n    if params.iter().any(|p| type_is_const_ref_i32(&p.ty) || type_is_mut_ref_i32(&p.ty)) {\n        return true;\n    }\n\n    // Check return type for ConstRef(I32) or MutRef(I32)\n    if let Some(ret) = return_type {\n        if type_is_const_ref_i32(ret) || type_is_mut_ref_i32(ret) {\n            return true;\n        }\n    }\n\n    false\n}",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/src/codegen/bindings.rs",
+      "lineHashes": "732:dx,733:kn,734:bw,735:kn,736:ju,737:ix,738:ns,739:jg,740:kn,741:lx,742:ai,743:bo,744:hm,745:nt,746:au,747:js,748:yb,749:xh,750:rl,751:yl,752:hh,753:gb,754:up,755:fc,756:ax,757:dd,758:aj,759:dd,760:rh,761:ve,762:qy,763:ax,764:dd,765:bo,766:oa,767:vv,768:om,769:cy,770:ax,771:dd,772:kj,773:od,774:fw,775:lk,776:cy,777:om,778:cy,779:co,780:yk,781:og,782:uo,783:cy,784:ax,785:dd,786:wu,787:io"
+    }
+  ]
+}
+
+Now let me also check if some of the previously-excluded methods from `exclude_methods` might now be safe to remove, since the root cause was the fatal parse error. Let me first check what's in exclude_methods:   
+
+Reading lines 278-330 of [bindings.toml](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml#L278-L331)
+Completed with input: {
+  "endLine": 330,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml",
+  "startLine": 278
+}
+
+Reading lines 330-340 of [bindings.toml](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml#L330-L341)
+Completed with input: {
+  "endLine": 340,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml",
+  "startLine": 330
+}
+
+Reading lines 340-345 of [bindings.toml](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml#L340-L346)
+Completed with input: {
+  "endLine": 345,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml",
+  "startLine": 340
+}
+
+All of these `exclude_methods` entries were added to compensate for the misresolution caused by the OSD_WNT.hxx fatal error. With that header excluded, these should now resolve correctly. Let me verify by removing them and re-running:  
+
+Edited: [bindings.toml -61+11](file:///Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml#L281-L292)
+Completed with input: {
+  "edits": [
+    {
+      "content": "# Exclude specific methods/constructors that clang completely misresolves in batch\n# parsing mode — both canonical AND display names show the wrong type, so the\n# parser's heuristic guards cannot detect it. These methods are excluded\n# individually so the rest of each class remains accessible.\n# Format: \"ClassName::MethodName\" for methods, \"ClassName::ClassName\" for constructors.\nexclude_methods = [\n    # BRepExtrema_ProximityDistTool::PrjState: constructor takes BVH_PrjState\n    # (a template-dependent enum typedef) misresolved to Standard_Integer.\n    # PrjState is an internal struct not exposed by public methods.\n    \"BRepExtrema_ProximityDistTool::PrjState::*\",\n]",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-sys/bindings.toml",
+      "lineHashes": "281:cl,282:bb,283:du,284:gy,285:gx,286:tw,287:aj,288:ai,289:zy,290:ps,291:fc,292:dd,293:ay,294:zy,295:fn,296:dd,297:tu,298:yr,299:li,300:dd,301:wy,302:zy,303:an,304:dd,305:wz,306:ki,307:vh,308:fo,309:dd,310:jy,311:mn,312:oy,313:dd,314:mg,315:zy,316:qn,317:ta,318:dd,319:hl,320:ws,321:bh,322:dd,323:pa,324:ws,325:lm,326:dd,327:ag,328:pp,329:xi,330:fn,331:pw,332:dd,333:ap,334:zr,335:tx,336:oe,337:dd,338:nz,339:ws,340:da,341:cy"
+    }
+  ]
+}
+
+Now let me regenerate and check if all builds cleanly:    
+
+Ran terminal command:  time bash scripts/regenerate-bindings.sh 2>&1
+
+Ran terminal command:  grep -rc "misresolved" crates/opencascade-sys/generated/ | grep -v ':0$' ; echo "---" ; grep -c "misresolved" crates/opencascade-sys/generated/ffi.rs 2>/dev/null || echo "ffi.rs: 0"
+
+**Zero misresolved methods!** The regeneration was clean. Now let's build:  
+
+Ran terminal command:  time cargo build 2>&1
+
+Build passes cleanly. Now let me run the tests:   
+
+Ran terminal command:  time bash scripts/run-binding-generator-tests.sh 2>&1
+
+Ran terminal command:  time cargo test --workspace --exclude opencascade-binding-generator 2>&1
+
+Ran terminal command:  cargo test --workspace --exclude opencascade-binding-generator 2>&1 | grep -E "test result:|FAILED|error"
+
+All tests pass. Let me now check the skip count to see the improvement:   
+
+Completed: *Fix false positive heuristic* (4/6)
+
+Ran terminal command:  grep -r "SKIPPED:" crates/opencascade-sys/generated/ | grep -v "ffi.rs" | wc -l
+
+Down from ~1,666 to 1,554 — that's 112 fewer skipped symbols. Let me also check how many methods were previously excluded via `exclude_methods` that are now being generated:   
+
+Ran terminal command:  for method in "math_Matrix::Row" "math_Matrix::Col" "Transfer_Finder::AttrList" "Transfer_TransientProcess::Context" "XSControl_TransferReader::Context" "XCAFDoc_DimTolTool::GetGDTPresentations" "XCAFDoc_DimTolTool::SetGDTPresentations" "Interface_Static::FillMap" "IntPatch_Intersection::PrepareSurfaces"; do class=$(echo "$method" | cut -d: -f1 | sed 's/::.*//' ); mname=$(echo "$method" | sed 's/.*:://'); grep -l "${class}_${mname}\|${class}.*${mname}" crates/opencascade-sys/generated/ffi.rs > /dev/null 2>&1 && echo "FOUND: $method" || echo "MISSING: $method"; done
+
+Most previously-excluded methods are now generated. Let me check the 3 missing ones:   
+
+Ran terminal command:  grep "GetGDTPresentations\|SetGDTPresentations" crates/opencascade-sys/generated/xcaf_doc.rs | head -10
+
+Ran terminal command:  grep -A1 "GetGDTPresentations\|SetGDTPresentations" crates/opencascade-sys/generated/xcaf_doc.rs
+
+Ran terminal command:  grep -A5 "GetGDTPresentations" crates/opencascade-sys/generated/xcaf_doc.rs | head -10
+
+These are skipped for a different reason: "unresolved template/nested type" — the `NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>` type isn't being resolved to a known typedef. That's a separate issue from misresolution. 
+
+Ran terminal command:  grep -A3 "PrepareSurfaces" crates/opencascade-sys/generated/int_patch.rs
+
+Same story — "unresolved template/nested type" — these are raw template types that don't have a typedef name in the TYPEDEF_MAP. These are legitimate skip reasons unrelated to the misresolution bug.
+
+Now let me update the README with the new skip count:    
+
+Searched for regex `1,666|skip|misresol` (`**/crates/opencascade-binding-generator/README.md`), 20 results
+
+Let me get the current skip breakdown to update the README:    
+
+Ran terminal command:  grep -r "Reason:" crates/opencascade-sys/generated/ | grep -v ffi.rs | sed 's/.*Reason: //' | sort | uniq -c | sort -rn | head -20
+
+Ran terminal command:  grep -r "Reason:" crates/opencascade-sys/generated/ | grep -v ffi.rs | grep "misresolved" | wc -l
+
+Zero misresolved — down from 285. Now let me update the README:     
+
+Reading lines 319-395 of [README.md](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L319-L396)
+Completed with input: {
+  "endLine": 395,
+  "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+  "startLine": 319
+}
+
+Edited: [README.md -1+1](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L321-L322), [-14+14](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L338-L352), [-3+3](file:///Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md#L380-L383)
+Completed with input: {
+  "edits": [
+    {
+      "content": "The binding generator skips ~1,554 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+      "lineHashes": "321:bo"
+    },
+    {
+      "content": "| Count | % | Category | Description |\n|------:|----:|----------|-------------|\n| 715 | 46.0% | **Unknown/unresolved type** | Parameter or return type not in the binding set (NCollection map types, math_Vector, etc.) |\n| 503 | 32.4% | **Unknown Handle type** | Handle to a class not in the binding set (Handle(Interface_Protocol), Handle(Transfer_TransientProcess), etc.) |\n| 0 | 0% | **Misresolved element type** | Previously ~285 — caused by OSD_WNT.hxx fatal parse error (`#include <windows.h>` on macOS) corrupting libclang type resolution. Fixed by excluding that header. |\n| 278 | 17.9% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |\n| 182 | 11.7% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |\n| 125 | 8.0% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |\n| 38 | 2.4% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |\n| 29 | 1.9% | **Not CppDeletable** | Return type class has no destructor in the binding set |\n| 26 | 1.7% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |\n| 18 | 1.2% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |\n| 15 | 1.0% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |\n| 3 | 0.2% | **&mut enum return** | Mutable reference to enum (cxx limitation) |",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+      "lineHashes": "338:fa,339:oi,340:fy,341:pq,342:go,343:kz,344:qp,345:sq,346:qv,347:yb,348:hm,349:cb,350:jb,351:md"
+    },
+    {
+      "content": "**Shape Analysis/Fix (7 symbols)** — Reduced from 72 through a more precise misresolution heuristic: `MutRef(I32)` returns are now only treated as suspicious on NCollection-derived classes, allowing the 54 legitimate `Standard_Integer&` mode accessors in `ShapeFix_*` to be bound. Remaining 7 skips are unknown types like `Handle(ShapeBuild_ReShape)` and `Handle(GeomAdaptor_Surface)`.\n\n**Geometry (32 symbols in gp/Geom/Geom2d)** — Mostly raw pointer returns (`gp_XYZ::GetData()`, `Geom_BSplineCurve::Weights()`). All core geometry operations are available; only internal data access methods are skipped.",
+      "filePath": "/Users/sethml/src/opencascade-rs/crates/opencascade-binding-generator/README.md",
+      "lineHashes": "380:rm,381:dd,382:gg"
+    }
+  ]
+}
+
+Completed: *Count skips and update README* (6/7)
+
+Let me clean up the test example file since it's no longer needed for the investigation:   
+
+Ran terminal command:  rm -f crates/opencascade-binding-generator/examples/test_explicit_instantiation.rs tmp/run_test.sh tmp/find_misresolved.sh tmp/check_misresolution.sh tmp/count_headers.sh tmp/test_extern_template.cpp && rm -rf tmp/test_output
+
+Completed: *Clean up test files* (7/7)
+
+Great catch! Here's the summary:
+
+**Root cause found:** `OSD_WNT.hxx` (a Windows-only header) was being included in the batch parse. Its `#include <windows.h>` caused a **fatal error** on macOS which corrupted libclang's type resolution for subsequent headers — this was the actual cause of all the template type misresolutions to `int`.
+
+**Changes made:**
+
+1. **bindings.toml** — Added `OSD_WNT.hxx` to `exclude_headers` (Windows-only, causes fatal parse error on macOS). Removed 9 of 10 `exclude_methods` entries that were workarounds for the misresolution — only `BRepExtrema_ProximityDistTool::PrjState::*` remains (a genuinely broken template-dependent type).
+
+2. **bindings.rs** — Narrowed the `ConstRef(I32)` misresolution heuristic to only flag NCollection-derived classes (same as `MutRef(I32)`). The broad heuristic was compensating for the parse error; with that fixed, it was causing 12 false positives on classes like `Plate_PinpointConstraint`, `BVH_BuildQueue`, etc.
+
+3. **README.md** — Updated skip counts and breakdown.
+
+**Results:**
+- Misresolved skips: **285 → 0**
+- Total skips: **~1,666 → ~1,554** (112 methods unblocked)
+- Previously-excluded methods like `Transfer_Finder::AttrList`, `math_Matrix::Row/Col`, `Interface_Static::FillMap` now generate correctly
+- Build and all tests pass

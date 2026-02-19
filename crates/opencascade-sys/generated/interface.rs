@@ -5793,6 +5793,35 @@ impl HArray1OfHAsciiString {
     }
 
     /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::Interface_Array1OfHAsciiString_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Interface_HArray1OfHAsciiString_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::Interface_Array1OfHAsciiString_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Interface_HArray1OfHAsciiString_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
     pub fn new_array1ofhasciistring(
         theOther: &crate::ffi::Interface_Array1OfHAsciiString,
     ) -> crate::OwnedPtr<Self> {
@@ -6216,8 +6245,21 @@ impl HSequenceOfCheck {
     }
 
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::Interface_SequenceOfCheck) {
-        unsafe { crate::ffi::Interface_HSequenceOfCheck_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::Interface_SequenceOfCheck_value_type) {
+        unsafe { crate::ffi::Interface_HSequenceOfCheck_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append()`
+    pub fn append_sequenceofcheck(
+        &mut self,
+        theSequence: &mut crate::ffi::Interface_SequenceOfCheck,
+    ) {
+        unsafe {
+            crate::ffi::Interface_HSequenceOfCheck_append_sequenceofcheck(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::ChangeSequence()`
@@ -6343,12 +6385,6 @@ impl HandleInterfaceHSequenceOfCheck {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfCheck (1 total) ──
-// SKIPPED: **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From Interface_IntList.hxx
@@ -11516,6 +11552,12 @@ impl Static {
         unsafe { crate::ffi::Interface_Static_standards() }
     }
 
+    /// **Source:** `Interface_Static.hxx`:266 - `Interface_Static::FillMap()`
+    /// Fills given string-to-string map with all static data
+    pub fn fill_map(theMap: &mut crate::ffi::DE_ResourceMap) {
+        unsafe { crate::ffi::Interface_Static_fill_map(theMap) }
+    }
+
     /// **Source:** `Interface_Static.hxx`:269 - `Interface_Static::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -11842,7 +11884,7 @@ impl HandleInterfaceStatic {
     }
 }
 
-// ── Skipped symbols for Static (3 total) ──
+// ── Skipped symbols for Static (2 total) ──
 // SKIPPED: **Source:** `Interface_Static.hxx`:89 - `Interface_Static::PrintStatic`
 //   method: Writes the properties of a
 //   method: parameter in the diagnostic file. These include:
@@ -11856,11 +11898,6 @@ impl HandleInterfaceStatic {
 //   static_method: Types : 'i' Integer, 'r' Real, 't' Text, 'e' Enum, 'o' Object
 //   Reason: param 'type' uses unknown type 'Standard_Character'
 //   // pub fn init(family: *const char, name: *const char, type_: Character, init: *const char) -> bool;
-//
-// SKIPPED: **Source:** `Interface_Static.hxx`:266 - `Interface_Static::FillMap`
-//   static_method: Fills given string-to-string map with all static data
-//   Reason: excluded by bindings.toml
-//   // pub fn fill_map(theMap: &mut i32);
 //
 
 // ========================
@@ -12657,5 +12694,6 @@ impl HandleInterfaceUndefinedContent {
 
 pub use crate::ffi::{
     Interface_Array1OfHAsciiString as Array1OfHAsciiString,
+    Interface_IndexedMapOfAsciiString as IndexedMapOfAsciiString,
     Interface_SequenceOfCheck as SequenceOfCheck,
 };

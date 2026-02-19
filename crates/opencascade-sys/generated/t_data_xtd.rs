@@ -1823,6 +1823,33 @@ impl HArray1OfTrsf {
     }
 
     /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TDataXtd_Array1OfTrsf_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_HArray1OfTrsf_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TDataXtd_Array1OfTrsf_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_HArray1OfTrsf_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
     pub fn new_array1oftrsf(theOther: &crate::ffi::TDataXtd_Array1OfTrsf) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataXtd_HArray1OfTrsf_ctor_array1oftrsf(

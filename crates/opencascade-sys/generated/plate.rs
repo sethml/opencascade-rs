@@ -263,9 +263,19 @@ impl FreeGtoCConstraint {
         Self::new_xy_d12_d22_d32_real_int(point2d, D1S, D1T, D2S, D2T, D3S, D3T, 1.0, 0)
     }
 
+    /// **Source:** `Plate_FreeGtoCConstraint.hxx`:61 - `Plate_FreeGtoCConstraint::nb_PPC()`
+    pub fn nb_ppc(&self) -> &i32 {
+        unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_nb_ppc(self as *const Self)) }
+    }
+
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:63 - `Plate_FreeGtoCConstraint::GetPPC()`
     pub fn get_ppc(&self, Index: i32) -> &PinpointConstraint {
         unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_get_ppc(self as *const Self, Index)) }
+    }
+
+    /// **Source:** `Plate_FreeGtoCConstraint.hxx`:65 - `Plate_FreeGtoCConstraint::nb_LSC()`
+    pub fn nb_lsc(&self) -> &i32 {
+        unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_nb_lsc(self as *const Self)) }
     }
 
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:67 - `Plate_FreeGtoCConstraint::LSC()`
@@ -273,16 +283,6 @@ impl FreeGtoCConstraint {
         unsafe { &*(crate::ffi::Plate_FreeGtoCConstraint_lsc(self as *const Self, Index)) }
     }
 }
-
-// ── Skipped symbols for FreeGtoCConstraint (2 total) ──
-// SKIPPED: **Source:** `Plate_FreeGtoCConstraint.hxx`:61 - `Plate_FreeGtoCConstraint::nb_PPC`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn nb_ppc(&self) -> &i32;
-//
-// SKIPPED: **Source:** `Plate_FreeGtoCConstraint.hxx`:65 - `Plate_FreeGtoCConstraint::nb_LSC`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn nb_lsc(&self) -> &i32;
-//
 
 // ========================
 // From Plate_GlobalTranslationConstraint.hxx
@@ -418,6 +418,11 @@ impl GtoCConstraint {
         }
     }
 
+    /// **Source:** `Plate_GtoCConstraint.hxx`:78 - `Plate_GtoCConstraint::nb_PPC()`
+    pub fn nb_ppc(&self) -> &i32 {
+        unsafe { &*(crate::ffi::Plate_GtoCConstraint_nb_ppc(self as *const Self)) }
+    }
+
     /// **Source:** `Plate_GtoCConstraint.hxx`:80 - `Plate_GtoCConstraint::GetPPC()`
     pub fn get_ppc(&self, Index: i32) -> &PinpointConstraint {
         unsafe { &*(crate::ffi::Plate_GtoCConstraint_get_ppc(self as *const Self, Index)) }
@@ -437,12 +442,6 @@ impl GtoCConstraint {
         }
     }
 }
-
-// ── Skipped symbols for GtoCConstraint (1 total) ──
-// SKIPPED: **Source:** `Plate_GtoCConstraint.hxx`:78 - `Plate_GtoCConstraint::nb_PPC`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn nb_ppc(&self) -> &i32;
-//
 
 // ========================
 // From Plate_HArray1OfPinpointConstraint.hxx
@@ -469,6 +468,37 @@ impl HArray1OfPinpointConstraint {
             crate::OwnedPtr::from_raw(crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2(
                 theLower, theUpper,
             ))
+        }
+    }
+
+    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Plate_HArray1OfPinpointConstraint()`
+    pub fn new_int2_pinpointconstraint(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &PinpointConstraint,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2_pinpointconstraint(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Plate_HArray1OfPinpointConstraint()`
+    pub fn new_pinpointconstraint_int2_bool(
+        theBegin: &PinpointConstraint,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_pinpointconstraint_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -922,21 +952,21 @@ impl PinpointConstraint {
         unsafe { &*(crate::ffi::Plate_PinpointConstraint_pnt2d(self as *const Self)) }
     }
 
+    /// **Source:** `Plate_PinpointConstraint.hxx`:42 - `Plate_PinpointConstraint::Idu()`
+    pub fn idu(&self) -> &i32 {
+        unsafe { &*(crate::ffi::Plate_PinpointConstraint_idu(self as *const Self)) }
+    }
+
+    /// **Source:** `Plate_PinpointConstraint.hxx`:44 - `Plate_PinpointConstraint::Idv()`
+    pub fn idv(&self) -> &i32 {
+        unsafe { &*(crate::ffi::Plate_PinpointConstraint_idv(self as *const Self)) }
+    }
+
     /// **Source:** `Plate_PinpointConstraint.hxx`:46 - `Plate_PinpointConstraint::Value()`
     pub fn value(&self) -> &crate::gp::XYZ {
         unsafe { &*(crate::ffi::Plate_PinpointConstraint_value(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for PinpointConstraint (2 total) ──
-// SKIPPED: **Source:** `Plate_PinpointConstraint.hxx`:42 - `Plate_PinpointConstraint::Idu`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn idu(&self) -> &i32;
-//
-// SKIPPED: **Source:** `Plate_PinpointConstraint.hxx`:44 - `Plate_PinpointConstraint::Idv`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn idv(&self) -> &i32;
-//
 
 // ========================
 // From Plate_PlaneConstraint.hxx

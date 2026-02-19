@@ -190,13 +190,12 @@ impl BoxBndTreeSelector {
     pub fn reject(&self, theBnd: &crate::bnd::Box) -> bool {
         unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_reject(self as *const Self, theBnd) }
     }
-}
 
-// ── Skipped symbols for BoxBndTreeSelector (1 total) ──
-// SKIPPED: **Source:** `ShapeAnalysis_BoxBndTree.hxx`:93 - `ShapeAnalysis_BoxBndTreeSelector::Accept`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn accept(&mut self, arg0: &i32) -> bool;
-//
+    /// **Source:** `ShapeAnalysis_BoxBndTree.hxx`:93 - `ShapeAnalysis_BoxBndTreeSelector::Accept()`
+    pub fn accept(&mut self, arg0: &i32) -> bool {
+        unsafe { crate::ffi::ShapeAnalysis_BoxBndTreeSelector_accept(self as *mut Self, arg0) }
+    }
+}
 
 // ========================
 // From ShapeAnalysis_CanonicalRecognition.hxx
@@ -2606,9 +2605,25 @@ impl HSequenceOfFreeBounds {
     }
 
     /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::ShapeAnalysis_SequenceOfFreeBounds) {
+    pub fn append_type(
+        &mut self,
+        theItem: &crate::ffi::ShapeAnalysis_SequenceOfFreeBounds_value_type,
+    ) {
         unsafe {
-            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_append(self as *mut Self, theSequence)
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_append_type(self as *mut Self, theItem)
+        }
+    }
+
+    /// **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::Append()`
+    pub fn append_sequenceoffreebounds(
+        &mut self,
+        theSequence: &mut crate::ffi::ShapeAnalysis_SequenceOfFreeBounds,
+    ) {
+        unsafe {
+            crate::ffi::ShapeAnalysis_HSequenceOfFreeBounds_append_sequenceoffreebounds(
+                self as *mut Self,
+                theSequence,
+            )
         }
     }
 
@@ -2756,12 +2771,6 @@ impl HandleShapeAnalysisHSequenceOfFreeBounds {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfFreeBounds (1 total) ──
-// SKIPPED: **Source:** `ShapeAnalysis_HSequenceOfFreeBounds.hxx`:23 - `ShapeAnalysis_HSequenceOfFreeBounds::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From ShapeAnalysis_ShapeContents.hxx

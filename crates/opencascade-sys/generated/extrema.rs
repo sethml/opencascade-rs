@@ -7085,6 +7085,33 @@ impl HArray1OfPOnCurv {
     }
 
     /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
+    pub fn new_int2_poncurv(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &POnCurv,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2_poncurv(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
+    pub fn new_poncurv_int2_bool(
+        theBegin: &POnCurv,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv_ctor_poncurv_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv.hxx`:23 - `Extrema_HArray1OfPOnCurv::Extrema_HArray1OfPOnCurv()`
     pub fn new_array1ofponcurv(
         theOther: &crate::ffi::Extrema_Array1OfPOnCurv,
     ) -> crate::OwnedPtr<Self> {
@@ -7246,6 +7273,35 @@ impl HArray1OfPOnCurv2d {
             crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2(
                 theLower, theUpper,
             ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
+    pub fn new_int2_poncurv2d(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &POnCurv2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2_poncurv2d(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnCurv2d.hxx`:24 - `Extrema_HArray1OfPOnCurv2d::Extrema_HArray1OfPOnCurv2d()`
+    pub fn new_poncurv2d_int2_bool(
+        theBegin: &POnCurv2d,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_poncurv2d_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -7418,6 +7474,33 @@ impl HArray1OfPOnSurf {
     }
 
     /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
+    pub fn new_int2_ponsurf(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &POnSurf,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2_ponsurf(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
+    pub fn new_ponsurf_int2_bool(
+        theBegin: &POnSurf,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray1OfPOnSurf_ctor_ponsurf_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray1OfPOnSurf.hxx`:23 - `Extrema_HArray1OfPOnSurf::Extrema_HArray1OfPOnSurf()`
     pub fn new_array1ofponsurf(
         theOther: &crate::ffi::Extrema_Array1OfPOnSurf,
     ) -> crate::OwnedPtr<Self> {
@@ -7569,6 +7652,21 @@ unsafe impl crate::CppDeletable for HArray2OfPOnCurv {
 
 impl HArray2OfPOnCurv {
     /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Extrema_HArray2OfPOnCurv()`
+    pub fn new_int4_poncurv(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &POnCurv,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv_ctor_int4_poncurv(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Extrema_HArray2OfPOnCurv.hxx`:24 - `Extrema_HArray2OfPOnCurv::Extrema_HArray2OfPOnCurv()`
     pub fn new_array2ofponcurv(
         theOther: &crate::ffi::Extrema_Array2OfPOnCurv,
     ) -> crate::OwnedPtr<Self> {
@@ -7719,6 +7817,21 @@ unsafe impl crate::CppDeletable for HArray2OfPOnCurv2d {
 }
 
 impl HArray2OfPOnCurv2d {
+    /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Extrema_HArray2OfPOnCurv2d()`
+    pub fn new_int4_poncurv2d(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &POnCurv2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_int4_poncurv2d(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
+    }
+
     /// **Source:** `Extrema_HArray2OfPOnCurv2d.hxx`:24 - `Extrema_HArray2OfPOnCurv2d::Extrema_HArray2OfPOnCurv2d()`
     pub fn new_array2ofponcurv2d(
         theOther: &crate::ffi::Extrema_Array2OfPOnCurv2d,
@@ -7873,6 +7986,21 @@ unsafe impl crate::CppDeletable for HArray2OfPOnSurf {
 }
 
 impl HArray2OfPOnSurf {
+    /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Extrema_HArray2OfPOnSurf()`
+    pub fn new_int4_ponsurf(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &POnSurf,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Extrema_HArray2OfPOnSurf_ctor_int4_ponsurf(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
+    }
+
     /// **Source:** `Extrema_HArray2OfPOnSurf.hxx`:24 - `Extrema_HArray2OfPOnSurf::Extrema_HArray2OfPOnSurf()`
     pub fn new_array2ofponsurf(
         theOther: &crate::ffi::Extrema_Array2OfPOnSurf,

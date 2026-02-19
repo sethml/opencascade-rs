@@ -2180,6 +2180,13 @@ impl Wrapper {
         unsafe { crate::ffi::DE_Wrapper_set_keep_updates(self as *mut Self, theToKeepUpdates) }
     }
 
+    /// **Source:** `DE_Wrapper.hxx`:259 - `DE_Wrapper::Nodes()`
+    /// Gets format map, contains vendor map with nodes
+    /// @return internal map of formats
+    pub fn nodes(&self) -> &crate::ffi::DE_ConfigurationFormatMap {
+        unsafe { &*(crate::ffi::DE_Wrapper_nodes(self as *const Self)) }
+    }
+
     /// **Source:** `DE_Wrapper.hxx`:263 - `DE_Wrapper::Copy()`
     /// Copies values of all fields
     /// @return new object with the same field values
@@ -2295,14 +2302,6 @@ impl HandleDEWrapper {
         }
     }
 }
-
-// ── Skipped symbols for Wrapper (1 total) ──
-// SKIPPED: **Source:** `DE_Wrapper.hxx`:259 - `DE_Wrapper::Nodes`
-//   method: Gets format map, contains vendor map with nodes
-//   method: @return internal map of formats
-//   Reason: return type 'const DE_ConfigurationFormatMap&' is unknown
-//   // pub fn nodes(&self) -> &ConfigurationFormatMap;
-//
 
 // ========================
 // Additional type re-exports

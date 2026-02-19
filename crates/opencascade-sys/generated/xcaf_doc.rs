@@ -722,6 +722,13 @@ impl AssemblyGraph {
         unsafe { crate::ffi::XCAFDoc_AssemblyGraph_nb_nodes(self as *const Self) }
     }
 
+    /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:143 - `XCAFDoc_AssemblyGraph::GetLinks()`
+    /// \brief Returns the collection of graph links in the form of adjacency matrix.
+    /// \return graph links.
+    pub fn get_links(&self) -> &crate::ffi::XCAFDoc_AssemblyGraph_AdjacencyMap {
+        unsafe { &*(crate::ffi::XCAFDoc_AssemblyGraph_get_links(self as *const Self)) }
+    }
+
     /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:147 - `XCAFDoc_AssemblyGraph::NbLinks()`
     /// \brief Returns the number of graph links.
     /// \return number of graph links.
@@ -830,14 +837,6 @@ impl HandleXCAFDocAssemblyGraph {
         }
     }
 }
-
-// ── Skipped symbols for AssemblyGraph (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_AssemblyGraph.hxx`:143 - `XCAFDoc_AssemblyGraph::GetLinks`
-//   method: \brief Returns the collection of graph links in the form of adjacency matrix.
-//   method: \return graph links.
-//   Reason: has unbindable types: return: unresolved template/nested type (const AdjacencyMap&)
-//   // pub fn get_links(&self) -> /* const AdjacencyMap& */;
-//
 
 /// **Source:** `XCAFDoc_AssemblyGraph.hxx`:54 - `XCAFDoc_AssemblyGraph_Iterator`
 /// \brief Graph iterator.
@@ -6126,15 +6125,15 @@ impl HandleXCAFDocDimTolTool {
 // ── Skipped symbols for DimTolTool (2 total) ──
 // SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:240 - `XCAFDoc_DimTolTool::GetGDTPresentations`
 //   method: fill the map GDT label -> shape presentation
-//   Reason: excluded by bindings.toml
-//   // pub fn get_gdt_presentations(&self, theGDTLabelToShape: &mut i32);
+//   Reason: has unbindable types: param 'theGDTLabelToShape': unresolved template/nested type (NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>&)
+//   // pub fn get_gdt_presentations(&self, theGDTLabelToShape: /* NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>& */);
 //
 // SKIPPED: **Source:** `XCAFDoc_DimTolTool.hxx`:246 - `XCAFDoc_DimTolTool::SetGDTPresentations`
 //   method: Set shape presentation for GDT labels according to given map (theGDTLabelToPrs)
 //   method: theGDTLabelToPrsName map is an additional argument, can be used to set presentation names.
 //   method: If label is not in the theGDTLabelToPrsName map, the presentation name will be empty
-//   Reason: excluded by bindings.toml
-//   // pub fn set_gdt_presentations(&mut self, theGDTLabelToPrs: &mut i32);
+//   Reason: has unbindable types: param 'theGDTLabelToPrs': unresolved template/nested type (NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>&)
+//   // pub fn set_gdt_presentations(&mut self, theGDTLabelToPrs: /* NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>& */);
 //
 
 // ========================
@@ -7491,8 +7490,8 @@ impl Editor {
 //   static_method: Copies metadata contains from the source label to the destination label.
 //   static_method: Protected against creating a new label for non-existent tools
 //   static_method: @param[in] theSrcLabel original label to copy from
-//   Reason: has unbindable types: param 'theVisMatMap': raw pointer (int*)
-//   // pub fn clone_meta_data(theSrcLabel: &Label, theDstLabel: &Label, theVisMatMap: /* int* */, theToCopyColor: bool, theToCopyLayer: bool, theToCopyMaterial: bool, theToCopyVisMaterial: bool, theToCopyAttributes: bool);
+//   Reason: has unbindable types: param 'theVisMatMap': raw pointer (NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial>>*)
+//   // pub fn clone_meta_data(theSrcLabel: &Label, theDstLabel: &Label, theVisMatMap: /* NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial>>* */, theToCopyColor: bool, theToCopyLayer: bool, theToCopyMaterial: bool, theToCopyVisMaterial: bool, theToCopyAttributes: bool);
 //
 
 // ========================

@@ -38,6 +38,35 @@ impl HArray1OfBSplineCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::TColGeom2d_HArray1OfBSplineCurve()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColGeom2d_Array1OfBSplineCurve_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::TColGeom2d_HArray1OfBSplineCurve()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColGeom2d_Array1OfBSplineCurve_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HArray1OfBSplineCurve_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBSplineCurve.hxx`:24 - `TColGeom2d_HArray1OfBSplineCurve::TColGeom2d_HArray1OfBSplineCurve()`
     pub fn new_array1ofbsplinecurve(
         theOther: &crate::ffi::TColGeom2d_Array1OfBSplineCurve,
     ) -> crate::OwnedPtr<Self> {
@@ -225,6 +254,35 @@ impl HArray1OfBezierCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::TColGeom2d_HArray1OfBezierCurve()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColGeom2d_Array1OfBezierCurve_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::TColGeom2d_HArray1OfBezierCurve()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColGeom2d_Array1OfBezierCurve_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TColGeom2d_HArray1OfBezierCurve_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfBezierCurve.hxx`:24 - `TColGeom2d_HArray1OfBezierCurve::TColGeom2d_HArray1OfBezierCurve()`
     pub fn new_array1ofbeziercurve(
         theOther: &crate::ffi::TColGeom2d_Array1OfBezierCurve,
     ) -> crate::OwnedPtr<Self> {
@@ -408,6 +466,33 @@ impl HArray1OfCurve {
     }
 
     /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::TColGeom2d_HArray1OfCurve()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TColGeom2d_Array1OfCurve_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::TColGeom2d_HArray1OfCurve()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TColGeom2d_Array1OfCurve_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TColGeom2d_HArray1OfCurve_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HArray1OfCurve.hxx`:23 - `TColGeom2d_HArray1OfCurve::TColGeom2d_HArray1OfCurve()`
     pub fn new_array1ofcurve(
         theOther: &crate::ffi::TColGeom2d_Array1OfCurve,
     ) -> crate::OwnedPtr<Self> {
@@ -582,9 +667,25 @@ impl HSequenceOfBoundedCurve {
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TColGeom2d_SequenceOfBoundedCurve) {
+    pub fn append_type(
+        &mut self,
+        theItem: &crate::ffi::TColGeom2d_SequenceOfBoundedCurve_value_type,
+    ) {
         unsafe {
-            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append(self as *mut Self, theSequence)
+            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append_type(self as *mut Self, theItem)
+        }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Append()`
+    pub fn append_sequenceofboundedcurve(
+        &mut self,
+        theSequence: &mut crate::ffi::TColGeom2d_SequenceOfBoundedCurve,
+    ) {
+        unsafe {
+            crate::ffi::TColGeom2d_HSequenceOfBoundedCurve_append_sequenceofboundedcurve(
+                self as *mut Self,
+                theSequence,
+            )
         }
     }
 
@@ -735,12 +836,6 @@ impl HandleTColGeom2dHSequenceOfBoundedCurve {
     }
 }
 
-// ── Skipped symbols for HSequenceOfBoundedCurve (1 total) ──
-// SKIPPED: **Source:** `TColGeom2d_HSequenceOfBoundedCurve.hxx`:23 - `TColGeom2d_HSequenceOfBoundedCurve::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
-
 // ========================
 // From TColGeom2d_HSequenceOfCurve.hxx
 // ========================
@@ -777,8 +872,21 @@ impl HSequenceOfCurve {
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TColGeom2d_SequenceOfCurve) {
-        unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::TColGeom2d_SequenceOfCurve_value_type) {
+        unsafe { crate::ffi::TColGeom2d_HSequenceOfCurve_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Append()`
+    pub fn append_sequenceofcurve(
+        &mut self,
+        theSequence: &mut crate::ffi::TColGeom2d_SequenceOfCurve,
+    ) {
+        unsafe {
+            crate::ffi::TColGeom2d_HSequenceOfCurve_append_sequenceofcurve(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::ChangeSequence()`
@@ -908,12 +1016,6 @@ impl HandleTColGeom2dHSequenceOfCurve {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfCurve (1 total) ──
-// SKIPPED: **Source:** `TColGeom2d_HSequenceOfCurve.hxx`:23 - `TColGeom2d_HSequenceOfCurve::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // Additional type re-exports

@@ -1683,6 +1683,33 @@ impl HArray1OfTriangle {
     }
 
     /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+    pub fn new_int2_triangle(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &Triangle,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_int2_triangle(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
+    pub fn new_triangle_int2_bool(
+        theBegin: &Triangle,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::Poly_HArray1OfTriangle_ctor_triangle_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `Poly_HArray1OfTriangle.hxx`:23 - `Poly_HArray1OfTriangle::Poly_HArray1OfTriangle()`
     pub fn new_array1oftriangle(
         theOther: &crate::ffi::Poly_Array1OfTriangle,
     ) -> crate::OwnedPtr<Self> {

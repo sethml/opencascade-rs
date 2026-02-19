@@ -1493,6 +1493,33 @@ impl HArray1OfHCurve {
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::GeomPlate_Array1OfHCurve_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::GeomPlate_Array1OfHCurve_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfHCurve_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
     pub fn new_array1ofhcurve(
         theOther: &crate::ffi::GeomPlate_Array1OfHCurve,
     ) -> crate::OwnedPtr<Self> {
@@ -1654,6 +1681,35 @@ impl HArray1OfSequenceOfReal {
             crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_int2(
                 theLower, theUpper,
             ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::GeomPlate_Array1OfSequenceOfReal_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::GeomPlate_Array1OfSequenceOfReal_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
         }
     }
 
@@ -1858,9 +1914,25 @@ impl HSequenceOfCurveConstraint {
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::GeomPlate_SequenceOfCurveConstraint) {
+    pub fn append_type(
+        &mut self,
+        theItem: &crate::ffi::GeomPlate_SequenceOfCurveConstraint_value_type,
+    ) {
         unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_append(self as *mut Self, theSequence)
+            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_append_type(self as *mut Self, theItem)
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Append()`
+    pub fn append_sequenceofcurveconstraint(
+        &mut self,
+        theSequence: &mut crate::ffi::GeomPlate_SequenceOfCurveConstraint,
+    ) {
+        unsafe {
+            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_append_sequenceofcurveconstraint(
+                self as *mut Self,
+                theSequence,
+            )
         }
     }
 
@@ -2015,12 +2087,6 @@ impl HandleGeomPlateHSequenceOfCurveConstraint {
     }
 }
 
-// ── Skipped symbols for HSequenceOfCurveConstraint (1 total) ──
-// SKIPPED: **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
-
 // ========================
 // From GeomPlate_HSequenceOfPointConstraint.hxx
 // ========================
@@ -2063,9 +2129,25 @@ impl HSequenceOfPointConstraint {
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::GeomPlate_SequenceOfPointConstraint) {
+    pub fn append_type(
+        &mut self,
+        theItem: &crate::ffi::GeomPlate_SequenceOfPointConstraint_value_type,
+    ) {
         unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_append(self as *mut Self, theSequence)
+            crate::ffi::GeomPlate_HSequenceOfPointConstraint_append_type(self as *mut Self, theItem)
+        }
+    }
+
+    /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Append()`
+    pub fn append_sequenceofpointconstraint(
+        &mut self,
+        theSequence: &mut crate::ffi::GeomPlate_SequenceOfPointConstraint,
+    ) {
+        unsafe {
+            crate::ffi::GeomPlate_HSequenceOfPointConstraint_append_sequenceofpointconstraint(
+                self as *mut Self,
+                theSequence,
+            )
         }
     }
 
@@ -2219,12 +2301,6 @@ impl HandleGeomPlateHSequenceOfPointConstraint {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfPointConstraint (1 total) ──
-// SKIPPED: **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From GeomPlate_MakeApprox.hxx

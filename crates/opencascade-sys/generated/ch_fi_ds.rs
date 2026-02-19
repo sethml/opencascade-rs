@@ -988,8 +988,18 @@ impl HData {
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::ChFiDS_SequenceOfSurfData) {
-        unsafe { crate::ffi::ChFiDS_HData_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::ChFiDS_SequenceOfSurfData_value_type) {
+        unsafe { crate::ffi::ChFiDS_HData_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
+    pub fn append_sequenceofsurfdata(
+        &mut self,
+        theSequence: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+    ) {
+        unsafe {
+            crate::ffi::ChFiDS_HData_append_sequenceofsurfdata(self as *mut Self, theSequence)
+        }
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChangeSequence()`
@@ -1090,12 +1100,6 @@ impl HandleChFiDSHData {
         }
     }
 }
-
-// ── Skipped symbols for HData (1 total) ──
-// SKIPPED: **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From ChFiDS_Map.hxx
@@ -1230,6 +1234,33 @@ impl SecHArray1 {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_int2(theLower, theUpper))
+        }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+    pub fn new_int2_circsection(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &CircSection,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_int2_circsection(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
+    pub fn new_circsection_int2_bool(
+        theBegin: &CircSection,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::ChFiDS_SecHArray1_ctor_circsection_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
         }
     }
 

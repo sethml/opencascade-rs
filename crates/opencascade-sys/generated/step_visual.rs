@@ -268,6 +268,37 @@ impl HArray1OfPresentationStyleAssignment {
     }
 
     /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::StepVisual_HArray1OfPresentationStyleAssignment()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::StepVisual_Array1OfPresentationStyleAssignment_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::StepVisual_HArray1OfPresentationStyleAssignment()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::StepVisual_Array1OfPresentationStyleAssignment_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepVisual_HArray1OfPresentationStyleAssignment_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleAssignment.hxx`:23 - `StepVisual_HArray1OfPresentationStyleAssignment::StepVisual_HArray1OfPresentationStyleAssignment()`
     pub fn new_array1ofpresentationstyleassignment(
         theOther: &crate::ffi::StepVisual_Array1OfPresentationStyleAssignment,
     ) -> crate::OwnedPtr<Self> {
@@ -469,6 +500,29 @@ impl HArray1OfPresentationStyleSelect {
                     theLower, theUpper,
                 ),
             )
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::StepVisual_HArray1OfPresentationStyleSelect()`
+    pub fn new_int2_presentationstyleselect(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &PresentationStyleSelect,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_ctor_int2_presentationstyleselect(theLower, theUpper, theValue))
+        }
+    }
+
+    /// **Source:** `StepVisual_HArray1OfPresentationStyleSelect.hxx`:23 - `StepVisual_HArray1OfPresentationStyleSelect::StepVisual_HArray1OfPresentationStyleSelect()`
+    pub fn new_presentationstyleselect_int2_bool(
+        theBegin: &PresentationStyleSelect,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepVisual_HArray1OfPresentationStyleSelect_ctor_presentationstyleselect_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

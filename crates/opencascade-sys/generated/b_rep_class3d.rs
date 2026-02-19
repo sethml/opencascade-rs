@@ -48,6 +48,11 @@ impl BndBoxTreeSelectorPoint {
         }
     }
 
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:44 - `BRepClass3d_BndBoxTreeSelectorPoint::Accept()`
+    pub fn accept(&mut self, theObj: &i32) -> bool {
+        unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorPoint_accept(self as *mut Self, theObj) }
+    }
+
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:47 - `BRepClass3d_BndBoxTreeSelectorPoint::SetCurrentPoint()`
     pub fn set_current_point(&mut self, theP: &crate::gp::Pnt) {
         unsafe {
@@ -58,12 +63,6 @@ impl BndBoxTreeSelectorPoint {
         }
     }
 }
-
-// ── Skipped symbols for BndBoxTreeSelectorPoint (1 total) ──
-// SKIPPED: **Source:** `BRepClass3d_BndBoxTree.hxx`:44 - `BRepClass3d_BndBoxTreeSelectorPoint::Accept`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn accept(&mut self, theObj: &i32) -> bool;
-//
 
 /// **Source:** `BRepClass3d_BndBoxTree.hxx`:59 - `BRepClass3d_BndBoxTreeSelectorLine`
 pub use crate::ffi::BRepClass3d_BndBoxTreeSelectorLine as BndBoxTreeSelectorLine;
@@ -93,6 +92,11 @@ impl BndBoxTreeSelectorLine {
         unsafe {
             crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_reject(self as *const Self, theBox)
         }
+    }
+
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:85 - `BRepClass3d_BndBoxTreeSelectorLine::Accept()`
+    pub fn accept(&mut self, theObj: &i32) -> bool {
+        unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_accept(self as *mut Self, theObj) }
     }
 
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:88 - `BRepClass3d_BndBoxTreeSelectorLine::SetCurrentLine()`
@@ -167,12 +171,6 @@ impl BndBoxTreeSelectorLine {
         unsafe { crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_is_correct(self as *const Self) }
     }
 }
-
-// ── Skipped symbols for BndBoxTreeSelectorLine (1 total) ──
-// SKIPPED: **Source:** `BRepClass3d_BndBoxTree.hxx`:85 - `BRepClass3d_BndBoxTreeSelectorLine::Accept`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn accept(&mut self, theObj: &i32) -> bool;
-//
 
 /// **Source:** `BRepClass3d_BndBoxTree.hxx`:62 - `BRepClass3d_BndBoxTreeSelectorLine_EdgeParam`
 pub use crate::ffi::BRepClass3d_BndBoxTreeSelectorLine_EdgeParam as BndBoxTreeSelectorLine_EdgeParam;

@@ -22,6 +22,39 @@ unsafe impl crate::CppDeletable for ShapeProcessor {
 }
 
 impl ShapeProcessor {
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:48 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
+    /// Constructor.
+    /// @param theParameters Pre-filled parameter map to be used in the processing.
+    /// @param theShapeFixParameters Shape healing parameters to be used in the processing.
+    /// If @p theParameters has some shape healing values, they will override the
+    /// corresponding values from @p theShapeFixParameters.
+    pub fn new_parametermap_shapefixparameters(
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theShapeFixParameters: &crate::de::ShapeFixParameters,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XSAlgo_ShapeProcessor_ctor_parametermap_shapefixparameters(
+                    theParameters,
+                    theShapeFixParameters,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:53 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor()`
+    /// Constructor.
+    /// @param theParameters Parameters to be used in the processing.
+    pub fn new_shapefixparameters(
+        theParameters: &crate::de::ShapeFixParameters,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSAlgo_ShapeProcessor_ctor_shapefixparameters(
+                theParameters,
+            ))
+        }
+    }
+
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:67 - `XSAlgo_ShapeProcessor::GetContext()`
     /// Get the context of the last processing.
     /// Only valid after the ProcessShape() method was called.
@@ -90,6 +123,141 @@ impl ShapeProcessor {
         }
     }
 
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:100 - `XSAlgo_ShapeProcessor::ReadProcessingData()`
+    /// Reads the parameter map from and operation flags from the file specified in static interface.
+    /// @param theFileResourceName Name of the parameter in interface static that contains the name
+    /// of the file. For example, parameter "read.iges.resource.name" may contain string
+    /// "IGES".
+    /// @param theScopeResourceName Name of the parameter in interface static that contains the name
+    /// of the scope. For example, parameter "read.iges.sequence" may contain string
+    /// "FromIGES".
+    /// @return Read parameter map.
+    pub fn read_processing_data(
+        theFileResourceName: &crate::t_collection::AsciiString,
+        theScopeResourceName: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<crate::ffi::XSAlgo_ShapeProcessor_ProcessingData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSAlgo_ShapeProcessor_read_processing_data(
+                theFileResourceName,
+                theScopeResourceName,
+            ))
+        }
+    }
+
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:109 - `XSAlgo_ShapeProcessor::FillParameterMap()`
+    /// Fill the parameter map with the values from the specified parameters.
+    /// @param theParameters Parameters to be used in the processing.
+    /// @param theIsForce Flag indicating whether parameter should be replaced if it already exists in
+    /// the map.
+    /// @param theMap Map to fill.
+    pub fn fill_parameter_map(
+        theParameters: &crate::de::ShapeFixParameters,
+        theIsReplace: bool,
+        theMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_fill_parameter_map(
+                theParameters,
+                theIsReplace,
+                theMap,
+            )
+        }
+    }
+
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:120 - `XSAlgo_ShapeProcessor::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// Parameters from @p theParameters are copied to the output map.
+    /// Parameters from @p theAdditionalParameters are copied to the output map
+    /// if they are not present in @p theParameters.
+    /// @param theParameters the parameters for shape processing.
+    /// @param theAdditionalParameters the additional parameters for shape processing.
+    /// @param theTargetParameterMap Map to set the parameters in.
+    pub fn set_shape_fix_parameters(
+        theParameters: &crate::de::ShapeFixParameters,
+        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theTargetParameterMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_set_shape_fix_parameters(
+                theParameters,
+                theAdditionalParameters,
+                theTargetParameterMap,
+            )
+        }
+    }
+
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:130 - `XSAlgo_ShapeProcessor::SetParameter()`
+    /// Set the parameter in the map.
+    /// @param theKey Key of the parameter.
+    /// @param theValue Value of the parameter.
+    /// @param theIsReplace Flag indicating whether parameter should be replaced if it already exists
+    /// in the map.
+    /// @param theMap Map to set the parameter in.
+    pub fn set_parameter_charptr_fixmode_bool_parametermap(
+        theKey: &str,
+        theValue: &crate::ffi::DE_ShapeFixParameters_FixMode,
+        theIsReplace: bool,
+        theMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        let c_theKey = std::ffi::CString::new(theKey).unwrap();
+        unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_fixmode_bool_parametermap(
+                c_theKey.as_ptr(),
+                theValue,
+                theIsReplace,
+                theMap,
+            )
+        }
+    }
+
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:141 - `XSAlgo_ShapeProcessor::SetParameter()`
+    /// Set the parameter in the map.
+    /// @param theKey Key of the parameter.
+    /// @param theValue Value of the parameter.
+    /// @param theIsReplace Flag indicating whether parameter should be replaced if it already exists
+    /// in the map.
+    /// @param theMap Map to set the parameter in.
+    pub fn set_parameter_charptr_real_bool_parametermap(
+        theKey: &str,
+        theValue: f64,
+        theIsReplace: bool,
+        theMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        let c_theKey = std::ffi::CString::new(theKey).unwrap();
+        unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_real_bool_parametermap(
+                c_theKey.as_ptr(),
+                theValue,
+                theIsReplace,
+                theMap,
+            )
+        }
+    }
+
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:152 - `XSAlgo_ShapeProcessor::SetParameter()`
+    /// Set the parameter in the map.
+    /// @param theKey Key of the parameter.
+    /// @param theValue Value of the parameter.
+    /// @param theIsReplace Flag indicating whether parameter should be replaced if it already exists
+    /// in the map.
+    /// @param theMap Map to set the parameter in.
+    pub fn set_parameter_charptr_asciistring_bool_parametermap(
+        theKey: &str,
+        theValue: &crate::t_collection::AsciiString,
+        theIsReplace: bool,
+        theMap: &mut crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        let c_theKey = std::ffi::CString::new(theKey).unwrap();
+        unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_set_parameter_charptr_asciistring_bool_parametermap(
+                c_theKey.as_ptr(),
+                theValue,
+                theIsReplace,
+                theMap,
+            )
+        }
+    }
+
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:160 - `XSAlgo_ShapeProcessor::PrepareForTransfer()`
     /// The function is designed to set the length unit for the application before performing a
     /// transfer operation. It ensures that the length unit is correctly configured based on the
@@ -132,66 +300,11 @@ impl ShapeProcessor {
     }
 }
 
-// ── Skipped symbols for ShapeProcessor (9 total) ──
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:48 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor`
-//   constructor: Constructor.
-//   constructor: @param theParameters Pre-filled parameter map to be used in the processing.
-//   constructor: @param theShapeFixParameters Shape healing parameters to be used in the processing.
-//   Reason: excluded by bindings.toml
-//   // pub fn new_int_shapefixparameters(theParameters: &i32, theShapeFixParameters: &ShapeFixParameters) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:53 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor`
-//   constructor: Constructor.
-//   constructor: @param theParameters Parameters to be used in the processing.
-//   Reason: excluded by bindings.toml
-//   // pub fn new_shapefixparameters(theParameters: &ShapeFixParameters) -> OwnedPtr<Self>;
-//
+// ── Skipped symbols for ShapeProcessor (1 total) ──
 // SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:60 - `XSAlgo_ShapeProcessor::ProcessShape`
 //   method: Process the shape by applying the specified operations.
 //   method: @param theShape Shape to process.
 //   method: @param theOperations Operations to be performed.
 //   Reason: param 'theOperations' uses unknown type 'const ShapeProcess::OperationsFlags&'
 //   // pub fn process_shape(&mut self, theShape: &Shape, theOperations: &OperationsFlags, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:100 - `XSAlgo_ShapeProcessor::ReadProcessingData`
-//   static_method: Reads the parameter map from and operation flags from the file specified in static interface.
-//   static_method: @param theFileResourceName Name of the parameter in interface static that contains the name
-//   static_method: of the file. For example, parameter "read.iges.resource.name" may contain string
-//   Reason: excluded by bindings.toml
-//   // pub fn read_processing_data(theFileResourceName: &AsciiString, theScopeResourceName: &AsciiString) -> i32;
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:109 - `XSAlgo_ShapeProcessor::FillParameterMap`
-//   static_method: Fill the parameter map with the values from the specified parameters.
-//   static_method: @param theParameters Parameters to be used in the processing.
-//   static_method: @param theIsForce Flag indicating whether parameter should be replaced if it already exists in
-//   Reason: excluded by bindings.toml
-//   // pub fn fill_parameter_map(theParameters: &ShapeFixParameters, theIsReplace: bool, theMap: &mut i32);
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:120 - `XSAlgo_ShapeProcessor::SetShapeFixParameters`
-//   static_method: Sets parameters for shape processing.
-//   static_method: Parameters from @p theParameters are copied to the output map.
-//   static_method: Parameters from @p theAdditionalParameters are copied to the output map
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(theParameters: &ShapeFixParameters, theAdditionalParameters: &i32, theTargetParameterMap: &mut i32);
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:130 - `XSAlgo_ShapeProcessor::SetParameter`
-//   static_method: Set the parameter in the map.
-//   static_method: @param theKey Key of the parameter.
-//   static_method: @param theValue Value of the parameter.
-//   Reason: excluded by bindings.toml
-//   // pub fn set_parameter(theKey: *const char, theValue: ShapeFixParameters_FixMode, theIsReplace: bool, theMap: &mut i32);
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:141 - `XSAlgo_ShapeProcessor::SetParameter`
-//   static_method: Set the parameter in the map.
-//   static_method: @param theKey Key of the parameter.
-//   static_method: @param theValue Value of the parameter.
-//   Reason: excluded by bindings.toml
-//   // pub fn set_parameter(theKey: *const char, theValue: f64, theIsReplace: bool, theMap: &mut i32);
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:152 - `XSAlgo_ShapeProcessor::SetParameter`
-//   static_method: Set the parameter in the map.
-//   static_method: @param theKey Key of the parameter.
-//   static_method: @param theValue Value of the parameter.
-//   Reason: excluded by bindings.toml
-//   // pub fn set_parameter(theKey: *const char, theValue: &AsciiString, theIsReplace: bool, theMap: &mut i32);
 //

@@ -1013,6 +1013,29 @@ impl OverlapTool {
         unsafe { crate::ffi::BRepExtrema_OverlapTool_mark_dirty(self as *mut Self) }
     }
 
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:87 - `BRepExtrema_OverlapTool::RejectNode()`
+    /// @name Reject/Accept implementations
+    /// Defines the rules for node rejection by bounding box
+    pub fn reject_node(
+        &self,
+        theCornerMin1: &crate::ffi::BVH_Vec3d,
+        theCornerMax1: &crate::ffi::BVH_Vec3d,
+        theCornerMin2: &crate::ffi::BVH_Vec3d,
+        theCornerMax2: &crate::ffi::BVH_Vec3d,
+        arg4: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepExtrema_OverlapTool_reject_node(
+                self as *const Self,
+                theCornerMin1,
+                theCornerMax1,
+                theCornerMin2,
+                theCornerMax2,
+                arg4,
+            )
+        }
+    }
+
     /// **Source:** `BRepExtrema_OverlapTool.hxx`:93 - `BRepExtrema_OverlapTool::Accept()`
     /// Defines the rules for leaf acceptance
     pub fn accept(&mut self, theLeaf1: i32, theLeaf2: i32) -> bool {
@@ -1020,7 +1043,7 @@ impl OverlapTool {
     }
 }
 
-// ── Skipped symbols for OverlapTool (6 total) ──
+// ── Skipped symbols for OverlapTool (5 total) ──
 // SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool`
 //   constructor: Creates new overlap tool for the given element sets.
 //   Reason: param 'theSet1' uses unknown Handle type
@@ -1045,12 +1068,6 @@ impl OverlapTool {
 //   method: Sets filtering tool for preliminary checking pairs of mesh elements.
 //   Reason: has unbindable types: param 'theFilter': raw pointer (BRepExtrema_ElementFilter*)
 //   // pub fn set_element_filter(&mut self, theFilter: /* BRepExtrema_ElementFilter* */);
-//
-// SKIPPED: **Source:** `BRepExtrema_OverlapTool.hxx`:87 - `BRepExtrema_OverlapTool::RejectNode`
-//   method: @name Reject/Accept implementations
-//   method: Defines the rules for node rejection by bounding box
-//   Reason: param 'theCornerMin1' uses unknown type 'const BVH_Vec3d&'
-//   // pub fn reject_node(&self, theCornerMin1: &Vec3d, theCornerMax1: &Vec3d, theCornerMin2: &Vec3d, theCornerMax2: &Vec3d, arg4: &mut f64) -> bool;
 //
 
 // ========================
@@ -1138,11 +1155,46 @@ impl ProximityDistTool {
         unsafe { crate::ffi::BRepExtrema_ProximityDistTool_perform(self as *mut Self) }
     }
 
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:122 - `BRepExtrema_ProximityDistTool::RejectNode()`
+    /// @name Reject/Accept implementations
+    /// Defines the rules for node rejection by bounding box.
+    pub fn reject_node(
+        &self,
+        theCornerMin: &crate::ffi::BVH_Vec3d,
+        theCornerMax: &crate::ffi::BVH_Vec3d,
+        theMetric: &mut f64,
+    ) -> bool {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_reject_node(
+                self as *const Self,
+                theCornerMin,
+                theCornerMax,
+                theMetric,
+            )
+        }
+    }
+
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:128 - `BRepExtrema_ProximityDistTool::Accept()`
     /// Defines the rules for leaf acceptance.
     pub fn accept(&mut self, theSgmIdx: i32, arg1: &f64) -> bool {
         unsafe {
             crate::ffi::BRepExtrema_ProximityDistTool_accept(self as *mut Self, theSgmIdx, arg1)
+        }
+    }
+
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:145 - `BRepExtrema_ProximityDistTool::ProximityPoints()`
+    /// Returns points on triangles sets, which provide the proximity distance.
+    pub fn proximity_points(
+        &self,
+        thePoint1: &mut crate::ffi::BVH_Vec3d,
+        thePoint2: &mut crate::ffi::BVH_Vec3d,
+    ) {
+        unsafe {
+            crate::ffi::BRepExtrema_ProximityDistTool_proximity_points(
+                self as *const Self,
+                thePoint1,
+                thePoint2,
+            )
         }
     }
 
@@ -1193,11 +1245,11 @@ impl ProximityDistTool {
     }
 }
 
-// ── Skipped symbols for ProximityDistTool (5 total) ──
+// ── Skipped symbols for ProximityDistTool (3 total) ──
 // SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool`
 //   constructor: Creates new tool for the given element sets.
-//   Reason: param 'theSet1' uses unknown Handle type
-//   // pub fn new_handlebrepextrematriangleset_int_array3d_int_handlebrepextrematriangleset_shapelist2(theSet1: &HandleTriangleSet, theNbSamples1: i32, theAddVertices1: &Array3d, theAddStatus1: &i32, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'theAddStatus1': unresolved template/nested type (const NCollection_Vector<ProxPnt_Status>&)
+//   // pub fn new_handlebrepextrematriangleset_int_array3d_vector<proxpnt_status>_handlebrepextrematriangleset_shapelist2(theSet1: &HandleTriangleSet, theNbSamples1: i32, theAddVertices1: &Array3d, theAddStatus1: /* const NCollection_Vector<ProxPnt_Status>& */, theSet2: &HandleTriangleSet, theShapeList1: &ShapeList, theShapeList2: &ShapeList) -> OwnedPtr<Self>;
 //
 // SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:106 - `BRepExtrema_ProximityDistTool::LoadTriangleSets`
 //   method: Loads the given element sets into the tool.
@@ -1206,19 +1258,8 @@ impl ProximityDistTool {
 //
 // SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:114 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet`
 //   method: Loads given additional vertices and their statuses.
-//   Reason: param 'theAddVertices1' uses unknown type 'const BVH_Array3d&'
-//   // pub fn load_additional_points_first_set(&mut self, theAddVertices1: &Array3d, theAddStatus1: &i32);
-//
-// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:122 - `BRepExtrema_ProximityDistTool::RejectNode`
-//   method: @name Reject/Accept implementations
-//   method: Defines the rules for node rejection by bounding box.
-//   Reason: param 'theCornerMin' uses unknown type 'const BVH_Vec3d&'
-//   // pub fn reject_node(&self, theCornerMin: &Vec3d, theCornerMax: &Vec3d, theMetric: &mut f64) -> bool;
-//
-// SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:145 - `BRepExtrema_ProximityDistTool::ProximityPoints`
-//   method: Returns points on triangles sets, which provide the proximity distance.
-//   Reason: param 'thePoint1' uses unknown type 'BVH_Vec3d&'
-//   // pub fn proximity_points(&self, thePoint1: &mut Vec3d, thePoint2: &mut Vec3d);
+//   Reason: has unbindable types: param 'theAddStatus1': unresolved template/nested type (const NCollection_Vector<ProxPnt_Status>&)
+//   // pub fn load_additional_points_first_set(&mut self, theAddVertices1: &Array3d, theAddStatus1: /* const NCollection_Vector<ProxPnt_Status>& */);
 //
 
 /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:52 - `BRepExtrema_ProximityDistTool_PrjState`
@@ -1241,9 +1282,15 @@ impl ProximityDistTool_PrjState {
     }
 
     /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:75 - `BRepExtrema_ProximityDistTool_PrjState::GetPrjState()`
-    pub fn get_prj_state(&self) -> i32 {
+    pub fn get_prj_state(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::BRepExtrema_ProximityDistTool_BVH_PrjState> {
         unsafe {
-            crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_prj_state(self as *const Self)
+            crate::OwnedPtr::from_raw(
+                crate::ffi::BRepExtrema_ProximityDistTool_PrjState_get_prj_state(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1273,7 +1320,7 @@ impl ProximityDistTool_PrjState {
 //
 // SKIPPED: **Source:** `BRepExtrema_ProximityDistTool.hxx`:62 - `BRepExtrema_ProximityDistTool::PrjState::BRepExtrema_ProximityDistTool::PrjState`
 //   Reason: excluded by bindings.toml
-//   // pub fn new_int4(theTrgIdx: i32, thePrjState: i32, theNumberOfFirstNode: i32, theNumberOfLastNode: i32) -> OwnedPtr<Self>;
+//   // pub fn new_int_prjstate_int2(theTrgIdx: i32, thePrjState: ProximityDistTool_BVH_PrjState, theNumberOfFirstNode: i32, theNumberOfLastNode: i32) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -1938,6 +1985,32 @@ impl TriangleSet {
         unsafe { crate::ffi::BRepExtrema_TriangleSet_init(self as *mut Self, theShapes) }
     }
 
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:68 - `BRepExtrema_TriangleSet::GetVertices()`
+    /// Returns all vertices.
+    pub fn get_vertices(&self) -> &crate::ffi::BVH_Array3d {
+        unsafe { &*(crate::ffi::BRepExtrema_TriangleSet_get_vertices(self as *const Self)) }
+    }
+
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:71 - `BRepExtrema_TriangleSet::GetVertices()`
+    /// Returns vertices of the given triangle.
+    pub fn get_vertices_int_vec3d3(
+        &self,
+        theIndex: i32,
+        theVertex1: &mut crate::ffi::BVH_Vec3d,
+        theVertex2: &mut crate::ffi::BVH_Vec3d,
+        theVertex3: &mut crate::ffi::BVH_Vec3d,
+    ) {
+        unsafe {
+            crate::ffi::BRepExtrema_TriangleSet_get_vertices_int_vec3d3(
+                self as *const Self,
+                theIndex,
+                theVertex1,
+                theVertex2,
+                theVertex3,
+            )
+        }
+    }
+
     /// **Source:** `BRepExtrema_TriangleSet.hxx`:77 - `BRepExtrema_TriangleSet::GetVtxIndices()`
     /// Returns vertex indices of the given triangle.
     pub fn get_vtx_indices(
@@ -2006,21 +2079,11 @@ impl TriangleSet {
     }
 }
 
-// ── Skipped symbols for TriangleSet (3 total) ──
+// ── Skipped symbols for TriangleSet (1 total) ──
 // SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:46 - `BRepExtrema_TriangleSet::Box`
 //   method: Returns AABB of the given triangle.
 //   Reason: return type 'Graphic3d_BndBox3d' is not CppDeletable
 //   // pub fn box_(&self, theIndex: i32) -> OwnedPtr<Graphic3d_BndBox3d>;
-//
-// SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:68 - `BRepExtrema_TriangleSet::GetVertices`
-//   method: Returns all vertices.
-//   Reason: return type 'const BVH_Array3d&' is unknown
-//   // pub fn get_vertices(&self) -> &Array3d;
-//
-// SKIPPED: **Source:** `BRepExtrema_TriangleSet.hxx`:71 - `BRepExtrema_TriangleSet::GetVertices`
-//   method: Returns vertices of the given triangle.
-//   Reason: param 'theVertex1' uses unknown type 'BVH_Vec3d&'
-//   // pub fn get_vertices(&self, theIndex: i32, theVertex1: &mut Vec3d, theVertex2: &mut Vec3d, theVertex3: &mut Vec3d);
 //
 
 // ========================

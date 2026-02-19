@@ -2682,6 +2682,45 @@ impl Tool {
         }
     }
 
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:52 - `XCAFDimTolObjects_Tool::GetGeomTolerances()`
+    /// Returns a sequence of Tolerances currently stored
+    /// in the GD&T table
+    pub fn get_geom_tolerances(
+        &self,
+        theGeomToleranceObjectSequence: &mut crate::ffi::XCAFDimTolObjects_GeomToleranceObjectSequence,
+        theDatumObjectSequence: &mut crate::ffi::XCAFDimTolObjects_DatumObjectSequence,
+        theMap: &mut crate::ffi::XCAFDimTolObjects_DataMapOfToleranceDatum,
+    ) {
+        unsafe {
+            crate::ffi::XCAFDimTolObjects_Tool_get_geom_tolerances(
+                self as *const Self,
+                theGeomToleranceObjectSequence,
+                theDatumObjectSequence,
+                theMap,
+            )
+        }
+    }
+
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:58 - `XCAFDimTolObjects_Tool::GetRefGeomTolerances()`
+    /// Returns all GeomTolerances defined for Shape
+    pub fn get_ref_geom_tolerances(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+        theGeomToleranceObjectSequence: &mut crate::ffi::XCAFDimTolObjects_GeomToleranceObjectSequence,
+        theDatumObjectSequence: &mut crate::ffi::XCAFDimTolObjects_DatumObjectSequence,
+        theMap: &mut crate::ffi::XCAFDimTolObjects_DataMapOfToleranceDatum,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XCAFDimTolObjects_Tool_get_ref_geom_tolerances(
+                self as *const Self,
+                theShape,
+                theGeomToleranceObjectSequence,
+                theDatumObjectSequence,
+                theMap,
+            )
+        }
+    }
+
     /// **Source:** `XCAFDimTolObjects_Tool.hxx`:66 - `XCAFDimTolObjects_Tool::GetRefDatum()`
     /// Returns DatumObject defined for Shape
     pub fn get_ref_datum(
@@ -2698,19 +2737,6 @@ impl Tool {
         }
     }
 }
-
-// ── Skipped symbols for Tool (2 total) ──
-// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:52 - `XCAFDimTolObjects_Tool::GetGeomTolerances`
-//   method: Returns a sequence of Tolerances currently stored
-//   method: in the GD&T table
-//   Reason: param 'theMap' uses unknown type 'XCAFDimTolObjects_DataMapOfToleranceDatum&'
-//   // pub fn get_geom_tolerances(&self, theGeomToleranceObjectSequence: &mut GeomToleranceObjectSequence, theDatumObjectSequence: &mut DatumObjectSequence, theMap: &mut DataMapOfToleranceDatum);
-//
-// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:58 - `XCAFDimTolObjects_Tool::GetRefGeomTolerances`
-//   method: Returns all GeomTolerances defined for Shape
-//   Reason: param 'theMap' uses unknown type 'XCAFDimTolObjects_DataMapOfToleranceDatum&'
-//   // pub fn get_ref_geom_tolerances(&self, theShape: &Shape, theGeomToleranceObjectSequence: &mut GeomToleranceObjectSequence, theDatumObjectSequence: &mut DatumObjectSequence, theMap: &mut DataMapOfToleranceDatum) -> bool;
-//
 
 // ========================
 // Additional type re-exports

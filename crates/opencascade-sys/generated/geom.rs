@@ -14237,8 +14237,23 @@ impl HSequenceOfBSplineSurface {
     }
 
     /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::Geom_SequenceOfBSplineSurface) {
-        unsafe { crate::ffi::Geom_HSequenceOfBSplineSurface_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::Geom_SequenceOfBSplineSurface_value_type) {
+        unsafe {
+            crate::ffi::Geom_HSequenceOfBSplineSurface_append_type(self as *mut Self, theItem)
+        }
+    }
+
+    /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Append()`
+    pub fn append_sequenceofbsplinesurface(
+        &mut self,
+        theSequence: &mut crate::ffi::Geom_SequenceOfBSplineSurface,
+    ) {
+        unsafe {
+            crate::ffi::Geom_HSequenceOfBSplineSurface_append_sequenceofbsplinesurface(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::ChangeSequence()`
@@ -14379,12 +14394,6 @@ impl HandleGeomHSequenceOfBSplineSurface {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfBSplineSurface (1 total) ──
-// SKIPPED: **Source:** `Geom_HSequenceOfBSplineSurface.hxx`:23 - `Geom_HSequenceOfBSplineSurface::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From Geom_Hyperbola.hxx

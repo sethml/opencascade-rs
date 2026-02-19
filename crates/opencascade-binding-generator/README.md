@@ -318,7 +318,7 @@ See `crates/opencascade-sys/manual/` and the comments in `bindings.toml` for the
 
 ## Skipped Symbols
 
-The binding generator skips ~1,666 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator skips ~1,554 symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Every skipped symbol is documented in the generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -337,18 +337,18 @@ Example from `gp.rs`:
 
 | Count | % | Category | Description |
 |------:|----:|----------|-------------|
-| 715 | 32.3% | **Unknown/unresolved type** | Parameter or return type not in the binding set (NCollection map types, math_Vector, etc.) |
-| 503 | 22.7% | **Unknown Handle type** | Handle to a class not in the binding set (Handle(Interface_Protocol), Handle(Transfer_TransientProcess), etc.) |
-| 285 | 12.9% | **Misresolved element type** | Clang batch-parsing artifact where template element types resolve incorrectly |
-| 278 | 12.5% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
-| 182 | 8.2% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
-| 125 | 5.6% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
-| 38 | 1.7% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
-| 29 | 1.3% | **Not CppDeletable** | Return type class has no destructor in the binding set |
-| 26 | 1.2% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
-| 18 | 0.8% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
-| 15 | 0.7% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
-| 3 | 0.1% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
+| 715 | 46.0% | **Unknown/unresolved type** | Parameter or return type not in the binding set (NCollection map types, math_Vector, etc.) |
+| 503 | 32.4% | **Unknown Handle type** | Handle to a class not in the binding set (Handle(Interface_Protocol), Handle(Transfer_TransientProcess), etc.) |
+| 0 | 0% | **Misresolved element type** | Previously ~285 — caused by OSD_WNT.hxx fatal parse error (`#include <windows.h>` on macOS) corrupting libclang type resolution. Fixed by excluding that header. |
+| 278 | 17.9% | **Stream type** | C++ `std::istream`/`std::ostream` (`Standard_IStream`/`Standard_OStream`) — no Rust equivalent |
+| 182 | 11.7% | **Void pointer** | `Standard_Address` (typedef for `void*`) — cannot be safely expressed in Rust FFI |
+| 125 | 8.0% | **Raw pointer** | `T*`/`const T*` params or returns (non-nullable, non-defaulted) |
+| 38 | 2.4% | **Ambiguous lifetimes** | `&mut` return with reference params — Rust lifetime inference is ambiguous |
+| 29 | 1.9% | **Not CppDeletable** | Return type class has no destructor in the binding set |
+| 26 | 1.7% | **Abstract class** | No constructors generated (class has unimplemented pure virtual methods) |
+| 18 | 1.2% | **Rvalue reference** | C++ move semantics (`T&&`) — no Rust equivalent across FFI |
+| 15 | 1.0% | **C-style array** | `Standard_Real[]` or `Standard_Integer[3]` params |
+| 3 | 0.2% | **&mut enum return** | Mutable reference to enum (cxx limitation) |
 
 ### Most Common Unknown Types
 
@@ -379,7 +379,7 @@ Most skipped symbols are in internal, low-use, or specialized modules. However, 
 
 **Shape Analysis/Fix (7 symbols)** — Reduced from 72 through a more precise misresolution heuristic: `MutRef(I32)` returns are now only treated as suspicious on NCollection-derived classes, allowing the 54 legitimate `Standard_Integer&` mode accessors in `ShapeFix_*` to be bound. Remaining 7 skips are unknown types like `Handle(ShapeBuild_ReShape)` and `Handle(GeomAdaptor_Surface)`.
 
-**Geometry (32 symbols in gp/Geom/Geom2d)** — Mostly misresolved element types and raw pointer returns (`gp_XYZ::GetData()`, `Geom_BSplineCurve::Weights()`). All core geometry operations are available; only internal data access methods are skipped.
+**Geometry (32 symbols in gp/Geom/Geom2d)** — Mostly raw pointer returns (`gp_XYZ::GetData()`, `Geom_BSplineCurve::Weights()`). All core geometry operations are available; only internal data access methods are skipped.
 
 **Poly (34 symbols)** — `Poly_ArrayOfNodes` and `Poly_ArrayOfUVNodes` reference `gp_Vec3f`/`gp_Vec2f` (float versions not in binding set). Raw pointer node access and rvalue ref constructors are also skipped.
 

@@ -325,6 +325,28 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:64 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters()`
+    pub fn set_shape_fix_parameters(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::STEPCAFControl_ActorWrite_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:84 - `Transfer_ActorOfFinderProcess::GetShapeFixParameters()`
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_ActorWrite_inherited_GetShapeFixParameters(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -760,6 +782,13 @@ impl Controller {
                 shape,
                 modetrans,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
+    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_Controller_inherited_AdaptorSession(self as *const Self))
         }
     }
 
@@ -1707,6 +1736,47 @@ impl Reader {
         unsafe { &*(crate::ffi::STEPCAFControl_Reader_get_shape_label_map(self as *const Self)) }
     }
 
+    /// **Source:** `STEPCAFControl_Reader.hxx`:230 - `STEPCAFControl_Reader::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// @param theParameters the parameters for shape processing.
+    pub fn set_shape_fix_parameters_parametermap(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_set_shape_fix_parameters_parametermap(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:244 - `STEPCAFControl_Reader::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// Parameters from @p theParameters are copied to the internal map.
+    /// Parameters from @p theAdditionalParameters are copied to the internal map
+    /// if they are not present in @p theParameters.
+    /// @param theParameters the parameters for shape processing.
+    /// @param theAdditionalParameters the additional parameters for shape processing.
+    pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
+        &mut self,
+        theParameters: &crate::de::ShapeFixParameters,
+        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Reader.hxx`:250 - `STEPCAFControl_Reader::GetShapeFixParameters()`
+    /// Returns parameters for shape processing that was set by SetParameters() method.
+    /// @return the parameters for shape processing. Empty map if no parameters were set.
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_Reader_get_shape_fix_parameters(self as *const Self))
+        }
+    }
+
     /// **Source:** `STEPCAFControl_Reader.hxx`:259 - `STEPCAFControl_Reader::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
@@ -1718,7 +1788,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (8 total) ──
+// ── Skipped symbols for Reader (5 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:102 - `STEPCAFControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status.
 //   method: @param[in] theName  auxiliary stream name
@@ -1729,34 +1799,15 @@ impl Reader {
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn extern_files(&self) -> &i32;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:230 - `STEPCAFControl_Reader::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: @param theParameters the parameters for shape processing.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>&)
+//   // pub fn extern_files(&self) -> /* const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>& */;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:236 - `STEPCAFControl_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
-//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:244 - `STEPCAFControl_Reader::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: Parameters from @p theParameters are copied to the internal map.
-//   method: Parameters from @p theAdditionalParameters are copied to the internal map
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
-//
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:250 - `STEPCAFControl_Reader::GetShapeFixParameters`
-//   method: Returns parameters for shape processing that was set by SetParameters() method.
-//   method: @return the parameters for shape processing. Empty map if no parameters were set.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
 //
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:254 - `STEPCAFControl_Reader::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
@@ -2147,6 +2198,47 @@ impl Writer {
         unsafe { crate::ffi::STEPCAFControl_Writer_get_material_mode(self as *const Self) }
     }
 
+    /// **Source:** `STEPCAFControl_Writer.hxx`:231 - `STEPCAFControl_Writer::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// @param theParameters the parameters for shape processing.
+    pub fn set_shape_fix_parameters_parametermap(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_set_shape_fix_parameters_parametermap(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:245 - `STEPCAFControl_Writer::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// Parameters from @p theParameters are copied to the internal map.
+    /// Parameters from @p theAdditionalParameters are copied to the internal map
+    /// if they are not present in @p theParameters.
+    /// @param theParameters the parameters for shape processing.
+    /// @param theAdditionalParameters the additional parameters for shape processing.
+    pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
+        &mut self,
+        theParameters: &crate::de::ShapeFixParameters,
+        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::STEPCAFControl_Writer_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+        }
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:251 - `STEPCAFControl_Writer::GetShapeFixParameters()`
+    /// Returns parameters for shape processing that was set by SetParameters() method.
+    /// @return the parameters for shape processing. Empty map if no parameters were set.
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::STEPCAFControl_Writer_get_shape_fix_parameters(self as *const Self))
+        }
+    }
+
     /// **Source:** `STEPCAFControl_Writer.hxx`:260 - `STEPCAFControl_Writer::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
@@ -2158,7 +2250,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (7 total) ──
+// ── Skipped symbols for Writer (4 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:81 - `STEPCAFControl_Writer::WriteStream`
 //   method: Writes all the produced models into the stream.
 //   method: Provided for use like single-file writer
@@ -2168,34 +2260,15 @@ impl Writer {
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:173 - `STEPCAFControl_Writer::ExternFiles`
 //   method: Returns data on external files
 //   method: Returns Null handle if no external files are read
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn extern_files(&self) -> &i32;
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:231 - `STEPCAFControl_Writer::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: @param theParameters the parameters for shape processing.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
+//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>&)
+//   // pub fn extern_files(&self) -> /* const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>>& */;
 //
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:237 - `STEPCAFControl_Writer::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
-//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:245 - `STEPCAFControl_Writer::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: Parameters from @p theParameters are copied to the internal map.
-//   method: Parameters from @p theAdditionalParameters are copied to the internal map
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
-//
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:251 - `STEPCAFControl_Writer::GetShapeFixParameters`
-//   method: Returns parameters for shape processing that was set by SetParameters() method.
-//   method: @return the parameters for shape processing. Empty map if no parameters were set.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
 //
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:255 - `STEPCAFControl_Writer::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.

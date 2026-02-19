@@ -770,6 +770,11 @@ impl Controller {
         unsafe { crate::ffi::XSControl_Controller_customise(self as *mut Self, WS) }
     }
 
+    /// **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
+    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+        unsafe { &*(crate::ffi::XSControl_Controller_adaptor_session(self as *const Self)) }
+    }
+
     /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XSControl_Controller_dynamic_type(self as *const Self)) }
@@ -928,12 +933,6 @@ impl HandleXSControlController {
         }
     }
 }
-
-// ── Skipped symbols for Controller (1 total) ──
-// SKIPPED: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn adaptor_session(&self) -> &i32;
-//
 
 // ========================
 // From XSControl_FuncShape.hxx
@@ -1459,6 +1458,49 @@ impl Reader {
         }
     }
 
+    /// **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// @param theParameters the parameters for shape processing.
+    pub fn set_shape_fix_parameters_parametermap(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_Reader_set_shape_fix_parameters_parametermap(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `XSControl_Reader.hxx`:305 - `XSControl_Reader::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// Parameters from @p theParameters are copied to the internal map.
+    /// Parameters from @p theAdditionalParameters are copied to the internal map
+    /// if they are not present in @p theParameters.
+    /// @param theParameters the parameters for shape processing.
+    /// @param theAdditionalParameters the additional parameters for shape processing.
+    pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
+        &mut self,
+        theParameters: &crate::de::ShapeFixParameters,
+        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(
+                self as *mut Self,
+                theParameters,
+                theAdditionalParameters,
+            )
+        }
+    }
+
+    /// **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters()`
+    /// Returns parameters for shape processing that was set by SetParameters() method.
+    /// @return the parameters for shape processing. Empty map if no parameters were set.
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe { &*(crate::ffi::XSControl_Reader_get_shape_fix_parameters(self as *const Self)) }
+    }
+
     /// **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
@@ -1468,7 +1510,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (9 total) ──
+// ── Skipped symbols for Reader (6 total) ──
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:110 - `XSControl_Reader::ReadStream`
 //   method: Loads a file from stream and returns the read status
 //   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
@@ -1490,31 +1532,12 @@ impl Reader {
 //   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
 //   // pub fn print_stats_transfer(&self, theStream: /* Standard_OStream& */, what: i32, mode: i32);
 //
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: @param theParameters the parameters for shape processing.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
-//
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:297 - `XSControl_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
-//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
-//
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:305 - `XSControl_Reader::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: Parameters from @p theParameters are copied to the internal map.
-//   method: Parameters from @p theAdditionalParameters are copied to the internal map
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
-//
-// SKIPPED: **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters`
-//   method: Returns parameters for shape processing that was set by SetParameters() method.
-//   method: @return the parameters for shape processing. Empty map if no parameters were set.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
 //
 // SKIPPED: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
@@ -2505,6 +2528,13 @@ impl TransferReader {
         }
     }
 
+    /// **Source:** `XSControl_TransferReader.hxx`:105 - `XSControl_TransferReader::Context()`
+    /// Returns (modifiable) the whole definition of Context
+    /// Rather for internal use (ex.: preparing and setting in once)
+    pub fn context(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+        unsafe { &mut *(crate::ffi::XSControl_TransferReader_context(self as *mut Self)) }
+    }
+
     /// **Source:** `XSControl_TransferReader.hxx`:111 - `XSControl_TransferReader::SetFileName()`
     /// Sets a new value for (loaded) file name
     pub fn set_file_name(&mut self, theName: &str) {
@@ -3149,13 +3179,7 @@ impl HandleXSControlTransferReader {
     }
 }
 
-// ── Skipped symbols for TransferReader (2 total) ──
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:105 - `XSControl_TransferReader::Context`
-//   method: Returns (modifiable) the whole definition of Context
-//   method: Rather for internal use (ex.: preparing and setting in once)
-//   Reason: excluded by bindings.toml
-//   // pub fn context(&mut self) -> &mut i32;
-//
+// ── Skipped symbols for TransferReader (1 total) ──
 // SKIPPED: **Source:** `XSControl_TransferReader.hxx`:311 - `XSControl_TransferReader::PrintStats`
 //   method: Prints statistics on current Trace File, according <what> and
 //   method: <mode>.  See PrintStatsProcess for details
@@ -4181,6 +4205,20 @@ impl WorkSession {
     /// Returns the norm controller itself
     pub fn norm_adaptor(&self) -> &crate::ffi::HandleXSControlController {
         unsafe { &*(crate::ffi::XSControl_WorkSession_norm_adaptor(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_WorkSession.hxx`:85 - `XSControl_WorkSession::Context()`
+    /// Returns the current Context List, Null if not defined
+    /// The Context is given to the TransientProcess for TransferRead
+    pub fn context(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+        unsafe { &*(crate::ffi::XSControl_WorkSession_context(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_WorkSession.hxx`:89 - `XSControl_WorkSession::SetAllContext()`
+    /// Sets the current Context List, as a whole
+    /// Sets it to the TransferReader
+    pub fn set_all_context(&mut self, theContext: &crate::ffi::XSControl_WorkSessionMap) {
+        unsafe { crate::ffi::XSControl_WorkSession_set_all_context(self as *mut Self, theContext) }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:92 - `XSControl_WorkSession::ClearContext()`
@@ -5656,19 +5694,7 @@ impl HandleXSControlWorkSession {
     }
 }
 
-// ── Skipped symbols for WorkSession (3 total) ──
-// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:85 - `XSControl_WorkSession::Context`
-//   method: Returns the current Context List, Null if not defined
-//   method: The Context is given to the TransientProcess for TransferRead
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn context(&self) -> &i32;
-//
-// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:89 - `XSControl_WorkSession::SetAllContext`
-//   method: Sets the current Context List, as a whole
-//   method: Sets it to the TransferReader
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_all_context(&mut self, theContext: &i32);
-//
+// ── Skipped symbols for WorkSession (1 total) ──
 // SKIPPED: **Source:** `XSControl_WorkSession.hxx`:98 - `XSControl_WorkSession::PrintTransferStatus`
 //   method: Prints the transfer status of a transferred item, as being
 //   method: the Mapped n0 <num>, from MapWriter if <wri> is True, or
@@ -5807,3 +5833,9 @@ impl Writer {
         }
     }
 }
+
+// ========================
+// Additional type re-exports
+// ========================
+
+pub use crate::ffi::XSControl_WorkSessionMap as WorkSessionMap;

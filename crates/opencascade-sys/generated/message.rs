@@ -6573,8 +6573,8 @@ impl HandleMessageReport {
 //
 // SKIPPED: **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics`
 //   method: Returns computed metrics when alerts are performed
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn active_metrics(&self) -> &i32;
+//   Reason: has unbindable types: return: unresolved template/nested type (const NCollection_IndexedMap<Message_MetricType>&)
+//   // pub fn active_metrics(&self) -> /* const NCollection_IndexedMap<Message_MetricType>& */;
 //
 // SKIPPED: **Source:** `Message_Report.hxx`:134 - `Message_Report::Dump`
 //   method: Dumps all collected alerts to stream

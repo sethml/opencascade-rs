@@ -554,6 +554,35 @@ impl HArray1OfListOfShape {
     }
 
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::TopTools_Array1OfListOfShape_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray1OfListOfShape_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::TopTools_Array1OfListOfShape_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TopTools_HArray1OfListOfShape_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
     pub fn new_array1oflistofshape(
         theOther: &crate::ffi::TopTools_Array1OfListOfShape,
     ) -> crate::OwnedPtr<Self> {
@@ -730,6 +759,33 @@ impl HArray1OfShape {
     }
 
     /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
+    pub fn new_int2_shape(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray1OfShape_ctor_int2_shape(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
+    pub fn new_shape_int2_bool(
+        theBegin: &crate::topo_ds::Shape,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray1OfShape_ctor_shape_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
     pub fn new_array1ofshape(
         theOther: &crate::ffi::TopTools_Array1OfShape,
     ) -> crate::OwnedPtr<Self> {
@@ -876,6 +932,21 @@ unsafe impl crate::CppDeletable for HArray2OfShape {
 }
 
 impl HArray2OfShape {
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
+    pub fn new_int4_shape(
+        theRowLow: i32,
+        theRowUpp: i32,
+        theColLow: i32,
+        theColUpp: i32,
+        theValue: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TopTools_HArray2OfShape_ctor_int4_shape(
+                theRowLow, theRowUpp, theColLow, theColUpp, theValue,
+            ))
+        }
+    }
+
     /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
     pub fn new_array2ofshape(
         theOther: &crate::ffi::TopTools_Array2OfShape,
@@ -1045,8 +1116,21 @@ impl HSequenceOfShape {
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::TopTools_SequenceOfShape) {
-        unsafe { crate::ffi::TopTools_HSequenceOfShape_append(self as *mut Self, theSequence) }
+    pub fn append_shape(&mut self, theItem: &crate::topo_ds::Shape) {
+        unsafe { crate::ffi::TopTools_HSequenceOfShape_append_shape(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
+    pub fn append_sequenceofshape(
+        &mut self,
+        theSequence: &mut crate::ffi::TopTools_SequenceOfShape,
+    ) {
+        unsafe {
+            crate::ffi::TopTools_HSequenceOfShape_append_sequenceofshape(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::ChangeSequence()`
@@ -1071,6 +1155,24 @@ impl HSequenceOfShape {
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::get_type_descriptor()`
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TopTools_HSequenceOfShape_get_type_descriptor()) }
+    }
+
+    /// Upcast to TopTools_SequenceOfShape
+    pub fn as_sequence_of_shape(&self) -> &SequenceOfShape {
+        unsafe {
+            &*(crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to TopTools_SequenceOfShape (mutable)
+    pub fn as_sequence_of_shape_mut(&mut self) -> &mut SequenceOfShape {
+        unsafe {
+            &mut *(crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
@@ -1169,12 +1271,6 @@ impl HandleTopToolsHSequenceOfShape {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfShape (1 total) ──
-// SKIPPED: **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From TopTools_LocationSet.hxx

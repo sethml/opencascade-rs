@@ -1627,6 +1627,29 @@ impl HArray1OfDatumReferenceModifier {
     }
 
     /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::StepDimTol_HArray1OfDatumReferenceModifier()`
+    pub fn new_int2_datumreferencemodifier(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &DatumReferenceModifier,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_ctor_int2_datumreferencemodifier(theLower, theUpper, theValue))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::StepDimTol_HArray1OfDatumReferenceModifier()`
+    pub fn new_datumreferencemodifier_int2_bool(
+        theBegin: &DatumReferenceModifier,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumReferenceModifier_ctor_datumreferencemodifier_int2_bool(theBegin, theLower, theUpper, arg3))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumReferenceModifier.hxx`:23 - `StepDimTol_HArray1OfDatumReferenceModifier::StepDimTol_HArray1OfDatumReferenceModifier()`
     pub fn new_array1ofdatumreferencemodifier(
         theOther: &crate::ffi::StepDimTol_Array1OfDatumReferenceModifier,
     ) -> crate::OwnedPtr<Self> {
@@ -1824,6 +1847,29 @@ impl HArray1OfDatumSystemOrReference {
                     theLower, theUpper,
                 ),
             )
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::StepDimTol_HArray1OfDatumSystemOrReference()`
+    pub fn new_int2_datumsystemorreference(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &DatumSystemOrReference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_ctor_int2_datumsystemorreference(theLower, theUpper, theValue))
+        }
+    }
+
+    /// **Source:** `StepDimTol_HArray1OfDatumSystemOrReference.hxx`:22 - `StepDimTol_HArray1OfDatumSystemOrReference::StepDimTol_HArray1OfDatumSystemOrReference()`
+    pub fn new_datumsystemorreference_int2_bool(
+        theBegin: &DatumSystemOrReference,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepDimTol_HArray1OfDatumSystemOrReference_ctor_datumsystemorreference_int2_bool(theBegin, theLower, theUpper, arg3))
         }
     }
 

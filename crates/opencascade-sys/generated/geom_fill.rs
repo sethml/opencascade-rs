@@ -7686,6 +7686,35 @@ impl HArray1OfLocationLaw {
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::GeomFill_Array1OfLocationLaw_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::GeomFill_Array1OfLocationLaw_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
     pub fn new_array1oflocationlaw(
         theOther: &crate::ffi::GeomFill_Array1OfLocationLaw,
     ) -> crate::OwnedPtr<Self> {
@@ -7857,6 +7886,33 @@ impl HArray1OfSectionLaw {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_int2(
                 theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::GeomFill_Array1OfSectionLaw_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_int2_type(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::GeomFill_Array1OfSectionLaw_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_type_int2_bool(
+                theBegin, theLower, theUpper, arg3,
             ))
         }
     }
@@ -8043,8 +8099,15 @@ impl HSequenceOfAx2 {
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::GeomFill_SequenceOfAx2) {
-        unsafe { crate::ffi::GeomFill_HSequenceOfAx2_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::GeomFill_SequenceOfAx2_value_type) {
+        unsafe { crate::ffi::GeomFill_HSequenceOfAx2_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Append()`
+    pub fn append_sequenceofax2(&mut self, theSequence: &mut crate::ffi::GeomFill_SequenceOfAx2) {
+        unsafe {
+            crate::ffi::GeomFill_HSequenceOfAx2_append_sequenceofax2(self as *mut Self, theSequence)
+        }
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::ChangeSequence()`
@@ -8163,12 +8226,6 @@ impl HandleGeomFillHSequenceOfAx2 {
         }
     }
 }
-
-// ── Skipped symbols for HSequenceOfAx2 (1 total) ──
-// SKIPPED: **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From GeomFill_Line.hxx

@@ -388,6 +388,12 @@ impl CafReader {
         }
     }
 
+    /// **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
+    /// Return the list of complementary files - external references (textures, data, etc.).
+    pub fn external_files(&self) -> &crate::ffi::Interface_IndexedMapOfAsciiString {
+        unsafe { &*(crate::ffi::RWMesh_CafReader_external_files(self as *const Self)) }
+    }
+
     /// **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
     /// Return metadata map.
     pub fn metadata(&self) -> &crate::ffi::TColStd_IndexedDataMapOfStringString {
@@ -522,7 +528,7 @@ impl HandleRWMeshCafReader {
     }
 }
 
-// ── Skipped symbols for CafReader (4 total) ──
+// ── Skipped symbols for CafReader (3 total) ──
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:66 - `RWMesh_CafReader::RWMesh_CafReader`
 //   constructor: Empty constructor.
 //   Reason: class is abstract (has unimplemented pure virtual methods)
@@ -532,11 +538,6 @@ impl HandleRWMeshCafReader {
 //   method: Read the data from specified file.
 //   Reason: has unbindable types: param 'theStream': stream type (std::istream&)
 //   // pub fn perform(&mut self, theStream: /* std::istream& */, theProgress: &ProgressRange, theFile: &AsciiString) -> bool;
-//
-// SKIPPED: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles`
-//   method: Return the list of complementary files - external references (textures, data, etc.).
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn external_files(&self) -> &i32;
 //
 // SKIPPED: **Source:** `RWMesh_CafReader.hxx`:238 - `RWMesh_CafReader::ProbeHeader`
 //   method: Read the header data from specified file without reading entire model.

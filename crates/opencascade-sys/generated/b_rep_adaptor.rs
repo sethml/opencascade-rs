@@ -1490,6 +1490,29 @@ impl HArray1OfCurve {
     }
 
     /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
+    pub fn new_int2_curve(theLower: i32, theUpper: i32, theValue: &Curve) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_int2_curve(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
+    pub fn new_curve_int2_bool(
+        theBegin: &Curve,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::BRepAdaptor_HArray1OfCurve_ctor_curve_int2_bool(
+                theBegin, theLower, theUpper, arg3,
+            ))
+        }
+    }
+
+    /// **Source:** `BRepAdaptor_HArray1OfCurve.hxx`:23 - `BRepAdaptor_HArray1OfCurve::BRepAdaptor_HArray1OfCurve()`
     pub fn new_array1ofcurve(
         theOther: &crate::ffi::BRepAdaptor_Array1OfCurve,
     ) -> crate::OwnedPtr<Self> {

@@ -558,6 +558,37 @@ impl HArray1OfRepresentationItem {
     }
 
     /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::StepRepr_HArray1OfRepresentationItem()`
+    pub fn new_int2_type(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::ffi::StepRepr_Array1OfRepresentationItem_value_type,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_HArray1OfRepresentationItem_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::StepRepr_HArray1OfRepresentationItem()`
+    pub fn new_type_int2_bool(
+        theBegin: &crate::ffi::StepRepr_Array1OfRepresentationItem_value_type,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepRepr_HArray1OfRepresentationItem_ctor_type_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepRepr_HArray1OfRepresentationItem.hxx`:23 - `StepRepr_HArray1OfRepresentationItem::StepRepr_HArray1OfRepresentationItem()`
     pub fn new_array1ofrepresentationitem(
         theOther: &crate::ffi::StepRepr_Array1OfRepresentationItem,
     ) -> crate::OwnedPtr<Self> {

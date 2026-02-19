@@ -115,6 +115,12 @@ impl Application {
         }
     }
 
+    /// **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    /// Returns MetaData LookUpTable
+    pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi::CDM_MetaDataLookUpTable {
+        unsafe { &mut *(crate::ffi::CDM_Application_meta_data_look_up_table(self as *mut Self)) }
+    }
+
     /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::CDM_Application_dynamic_type(self as *const Self)) }
@@ -272,16 +278,11 @@ impl HandleCDMApplication {
     }
 }
 
-// ── Skipped symbols for Application (2 total) ──
+// ── Skipped symbols for Application (1 total) ──
 // SKIPPED: **Source:** `CDM_Application.hxx`:58 - `CDM_Application::Write`
 //   method: writes the string in the application MessagerDriver.
 //   Reason: param 'aString' uses unknown type 'Standard_ExtString'
 //   // pub fn write(&mut self, aString: ExtString);
-//
-// SKIPPED: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable`
-//   method: Returns MetaData LookUpTable
-//   Reason: return type 'CDM_MetaDataLookUpTable&' is unknown
-//   // pub fn meta_data_look_up_table(&mut self) -> &mut MetaDataLookUpTable;
 //
 
 // ========================

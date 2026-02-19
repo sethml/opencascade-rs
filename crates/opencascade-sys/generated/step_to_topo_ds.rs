@@ -27,6 +27,30 @@ impl NMTool {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::StepToTopoDS_NMTool_ctor()) }
     }
 
+    /// **Source:** `StepToTopoDS_NMTool.hxx`:40 - `StepToTopoDS_NMTool::StepToTopoDS_NMTool()`
+    pub fn new_datamapofri_datamapofrinames(
+        MapOfRI: &crate::ffi::StepToTopoDS_DataMapOfRI,
+        MapOfRINames: &crate::ffi::StepToTopoDS_DataMapOfRINames,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::StepToTopoDS_NMTool_ctor_datamapofri_datamapofrinames(
+                    MapOfRI,
+                    MapOfRINames,
+                ),
+            )
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_NMTool.hxx`:43 - `StepToTopoDS_NMTool::Init()`
+    pub fn init(
+        &mut self,
+        MapOfRI: &crate::ffi::StepToTopoDS_DataMapOfRI,
+        MapOfRINames: &crate::ffi::StepToTopoDS_DataMapOfRINames,
+    ) {
+        unsafe { crate::ffi::StepToTopoDS_NMTool_init(self as *mut Self, MapOfRI, MapOfRINames) }
+    }
+
     /// **Source:** `StepToTopoDS_NMTool.hxx`:46 - `StepToTopoDS_NMTool::SetActive()`
     pub fn set_active(&mut self, isActive: bool) {
         unsafe { crate::ffi::StepToTopoDS_NMTool_set_active(self as *mut Self, isActive) }
@@ -142,16 +166,6 @@ impl NMTool {
         unsafe { crate::ffi::StepToTopoDS_NMTool_is_ideas_case(self as *mut Self) }
     }
 }
-
-// ── Skipped symbols for NMTool (2 total) ──
-// SKIPPED: **Source:** `StepToTopoDS_NMTool.hxx`:40 - `StepToTopoDS_NMTool::StepToTopoDS_NMTool`
-//   Reason: param 'MapOfRI' uses unknown type 'const StepToTopoDS_DataMapOfRI&'
-//   // pub fn new_datamapofri_datamapofrinames(MapOfRI: &DataMapOfRI, MapOfRINames: &DataMapOfRINames) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StepToTopoDS_NMTool.hxx`:43 - `StepToTopoDS_NMTool::Init`
-//   Reason: param 'MapOfRI' uses unknown type 'const StepToTopoDS_DataMapOfRI&'
-//   // pub fn init(&mut self, MapOfRI: &DataMapOfRI, MapOfRINames: &DataMapOfRINames);
-//
 
 // ========================
 // Additional type re-exports

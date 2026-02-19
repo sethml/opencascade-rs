@@ -325,8 +325,8 @@ impl Intersection {
 // ── Skipped symbols for Intersection (1 total) ──
 // SKIPPED: **Source:** `IntPatch_Intersection.hxx`:194 - `IntPatch_Intersection::PrepareSurfaces`
 //   static_method: Prepares surfaces for intersection
-//   Reason: excluded by bindings.toml
-//   // pub fn prepare_surfaces(theS1: &HandleSurface, theD1: &HandleTopolTool, theS2: &HandleSurface, theD2: &HandleTopolTool, Tol: f64, theSeqHS1: &mut i32, theSeqHS2: &mut i32);
+//   Reason: has unbindable types: param 'theSeqHS1': unresolved template/nested type (NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>&); param 'theSeqHS2': unresolved template/nested type (NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>&)
+//   // pub fn prepare_surfaces(theS1: &HandleSurface, theD1: &HandleTopolTool, theS2: &HandleSurface, theD2: &HandleTopolTool, Tol: f64, theSeqHS1: /* NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>& */, theSeqHS2: /* NCollection_Vector<opencascade::handle<Adaptor3d_Surface>>& */);
 //
 
 // ========================

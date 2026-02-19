@@ -15538,6 +15538,16 @@ impl Tools {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::BOPAlgo_Tools_ctor()) }
     }
 
+    /// **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap()`
+    pub fn fill_map(
+        thePB1: &crate::ffi::HandleBOPDSPaveBlock,
+        theF: i32,
+        theMILI: &mut crate::ffi::BOPDS_IndexedDataMapOfPaveBlockListOfInteger,
+        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+    ) {
+        unsafe { crate::ffi::BOPAlgo_Tools_fill_map(thePB1, theF, theMILI, theAllocator) }
+    }
+
     /// **Source:** `BOPAlgo_Tools.hxx`:148 - `BOPAlgo_Tools::EdgesToWires()`
     /// Creates planar wires from the given edges.<br>
     /// The input edges are expected to be planar. And for the performance
@@ -15690,20 +15700,16 @@ impl Tools {
     }
 }
 
-// ── Skipped symbols for Tools (4 total) ──
-// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap`
-//   Reason: param 'theMILI' uses unknown type 'BOPDS_IndexedDataMapOfPaveBlockListOfInteger&'
-//   // pub fn fill_map(thePB1: &HandlePaveBlock, theF: i32, theMILI: &mut IndexedDataMapOfPaveBlockListOfInteger, theAllocator: &HandleBaseAllocator);
-//
+// ── Skipped symbols for Tools (3 total) ──
 // SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:111 - `BOPAlgo_Tools::PerformCommonBlocks`
 //   static_method: Create Common Blocks from the groups of pave blocks of <theMBlocks>
 //   static_method: connection map.
-//   Reason: param 'theMBlocks' uses unknown type 'BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock&'
+//   Reason: param 'theDS' uses unknown type 'BOPDS_PDS&'
 //   // pub fn perform_common_blocks(theMBlocks: &mut IndexedDataMapOfPaveBlockListOfPaveBlock, theAllocator: &HandleBaseAllocator, theDS: &mut PDS, theContext: &HandleContext);
 //
 // SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:118 - `BOPAlgo_Tools::PerformCommonBlocks`
 //   static_method: Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
-//   Reason: param 'theMBlocks' uses unknown type 'const BOPDS_IndexedDataMapOfPaveBlockListOfInteger&'
+//   Reason: param 'pDS' uses unknown type 'BOPDS_PDS&'
 //   // pub fn perform_common_blocks(theMBlocks: &IndexedDataMapOfPaveBlockListOfInteger, theAllocator: &HandleBaseAllocator, pDS: &mut PDS, theContext: &HandleContext);
 //
 // SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:124 - `BOPAlgo_Tools::ComputeToleranceOfCB`

@@ -5596,8 +5596,21 @@ impl HSeqOfSelection {
     }
 
     /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::Append()`
-    pub fn append(&mut self, theSequence: &mut crate::ffi::IFSelect_TSeqOfSelection) {
-        unsafe { crate::ffi::IFSelect_HSeqOfSelection_append(self as *mut Self, theSequence) }
+    pub fn append_type(&mut self, theItem: &crate::ffi::IFSelect_TSeqOfSelection_value_type) {
+        unsafe { crate::ffi::IFSelect_HSeqOfSelection_append_type(self as *mut Self, theItem) }
+    }
+
+    /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::Append()`
+    pub fn append_tseqofselection(
+        &mut self,
+        theSequence: &mut crate::ffi::IFSelect_TSeqOfSelection,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_HSeqOfSelection_append_tseqofselection(
+                self as *mut Self,
+                theSequence,
+            )
+        }
     }
 
     /// **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::ChangeSequence()`
@@ -5720,12 +5733,6 @@ impl HandleIFSelectHSeqOfSelection {
         }
     }
 }
-
-// ── Skipped symbols for HSeqOfSelection (1 total) ──
-// SKIPPED: **Source:** `IFSelect_HSeqOfSelection.hxx`:23 - `IFSelect_HSeqOfSelection::Append`
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn append(&mut self, theItem: &i32);
-//
 
 // ========================
 // From IFSelect_IntParam.hxx
@@ -24898,8 +24905,8 @@ impl HandleIFSelectSignatureList {
 // ── Skipped symbols for SignatureList (4 total) ──
 // SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:78 - `IFSelect_SignatureList::Init`
 //   method: Aknowledges the list in once. Name identifies the Signature
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn init(&mut self, name: *const char, count: &i32, list: &i32, nbnuls: i32);
+//   Reason: has unbindable types: param 'list': unresolved template/nested type (const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>&)
+//   // pub fn init(&mut self, name: *const char, count: &MapOfTypes, list: /* const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>& */, nbnuls: i32);
 //
 // SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:116 - `IFSelect_SignatureList::PrintCount`
 //   method: Prints the counts of items (not the list)
@@ -28051,8 +28058,8 @@ impl HandleIFSelectWorkSession {
 //   method: Sets a list of Parameters, i.e. TypedValue, to be handled
 //   method: through an Editor
 //   method: The two lists are parallel, if <params> is longer than <uses>,
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_params(&mut self, params: &i32, uselist: &i32);
+//   Reason: has unbindable types: param 'params': unresolved template/nested type (const NCollection_Vector<opencascade::handle<Standard_Transient>>&); param 'uselist': unresolved template/nested type (const NCollection_Vector<Standard_Integer>&)
+//   // pub fn set_params(&mut self, params: /* const NCollection_Vector<opencascade::handle<Standard_Transient>>& */, uselist: /* const NCollection_Vector<Standard_Integer>& */);
 //
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1079 - `IFSelect_WorkSession::DumpModel`
 //   method: Lists the content of the Input Model (if there is one)

@@ -7843,6 +7843,15 @@ impl HDataMapOfStringHArray1OfInteger {
         }
     }
 
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:33 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger()`
+    pub fn new_datamapofstringharray1ofinteger(
+        theOther: &crate::ffi::TDataStd_DataMapOfStringHArray1OfInteger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_ctor_datamapofstringharray1ofinteger(theOther))
+        }
+    }
+
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:31 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger()`
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
@@ -7853,6 +7862,22 @@ impl HDataMapOfStringHArray1OfInteger {
         unsafe {
             &*(crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_dynamic_type(
                 self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfInteger::Map()`
+    pub fn map(&self) -> &crate::ffi::TDataStd_DataMapOfStringHArray1OfInteger {
+        unsafe {
+            &*(crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_map(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:38 - `TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap()`
+    pub fn change_map(&mut self) -> &mut crate::ffi::TDataStd_DataMapOfStringHArray1OfInteger {
+        unsafe {
+            &mut *(crate::ffi::TDataStd_HDataMapOfStringHArray1OfInteger_change_map(
+                self as *mut Self,
             ))
         }
     }
@@ -7992,20 +8017,6 @@ impl HandleTDataStdHDataMapOfStringHArray1OfInteger {
     }
 }
 
-// ── Skipped symbols for HDataMapOfStringHArray1OfInteger (3 total) ──
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:33 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger`
-//   Reason: param 'theOther' uses unknown type 'const TDataStd_DataMapOfStringHArray1OfInteger&'
-//   // pub fn new_datamapofstringharray1ofinteger(theOther: &DataMapOfStringHArray1OfInteger) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfInteger::Map`
-//   Reason: return type 'const TDataStd_DataMapOfStringHArray1OfInteger&' is unknown
-//   // pub fn map(&self) -> &DataMapOfStringHArray1OfInteger;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:38 - `TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap`
-//   Reason: return type 'TDataStd_DataMapOfStringHArray1OfInteger&' is unknown
-//   // pub fn change_map(&mut self) -> &mut DataMapOfStringHArray1OfInteger;
-//
-
 // ========================
 // From TDataStd_HDataMapOfStringHArray1OfReal.hxx
 // ========================
@@ -8031,6 +8042,15 @@ impl HDataMapOfStringHArray1OfReal {
         }
     }
 
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:33 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal()`
+    pub fn new_datamapofstringharray1ofreal(
+        theOther: &crate::ffi::TDataStd_DataMapOfStringHArray1OfReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_ctor_datamapofstringharray1ofreal(theOther))
+        }
+    }
+
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:31 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
@@ -8040,6 +8060,18 @@ impl HDataMapOfStringHArray1OfReal {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe {
             &*(crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_dynamic_type(self as *const Self))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfReal::Map()`
+    pub fn map(&self) -> &crate::ffi::TDataStd_DataMapOfStringHArray1OfReal {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_map(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:38 - `TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap()`
+    pub fn change_map(&mut self) -> &mut crate::ffi::TDataStd_DataMapOfStringHArray1OfReal {
+        unsafe {
+            &mut *(crate::ffi::TDataStd_HDataMapOfStringHArray1OfReal_change_map(self as *mut Self))
         }
     }
 
@@ -8179,20 +8211,6 @@ impl HandleTDataStdHDataMapOfStringHArray1OfReal {
         }
     }
 }
-
-// ── Skipped symbols for HDataMapOfStringHArray1OfReal (3 total) ──
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:33 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal`
-//   Reason: param 'theOther' uses unknown type 'const TDataStd_DataMapOfStringHArray1OfReal&'
-//   // pub fn new_datamapofstringharray1ofreal(theOther: &DataMapOfStringHArray1OfReal) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfReal::Map`
-//   Reason: return type 'const TDataStd_DataMapOfStringHArray1OfReal&' is unknown
-//   // pub fn map(&self) -> &DataMapOfStringHArray1OfReal;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:38 - `TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap`
-//   Reason: return type 'TDataStd_DataMapOfStringHArray1OfReal&' is unknown
-//   // pub fn change_map(&mut self) -> &mut DataMapOfStringHArray1OfReal;
-//
 
 // ========================
 // From TDataStd_HDataMapOfStringInteger.hxx
@@ -8582,6 +8600,17 @@ impl HDataMapOfStringString {
         }
     }
 
+    /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:33 - `TDataStd_HDataMapOfStringString::TDataStd_HDataMapOfStringString()`
+    pub fn new_datamapofstringstring(
+        theOther: &crate::ffi::TDataStd_DataMapOfStringString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::TDataStd_HDataMapOfStringString_ctor_datamapofstringstring(theOther),
+            )
+        }
+    }
+
     /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:31 - `TDataStd_HDataMapOfStringString::TDataStd_HDataMapOfStringString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
@@ -8590,6 +8619,16 @@ impl HDataMapOfStringString {
     /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:29 - `TDataStd_HDataMapOfStringString::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringString_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:35 - `TDataStd_HDataMapOfStringString::Map()`
+    pub fn map(&self) -> &crate::ffi::TDataStd_DataMapOfStringString {
+        unsafe { &*(crate::ffi::TDataStd_HDataMapOfStringString_map(self as *const Self)) }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:37 - `TDataStd_HDataMapOfStringString::ChangeMap()`
+    pub fn change_map(&mut self) -> &mut crate::ffi::TDataStd_DataMapOfStringString {
+        unsafe { &mut *(crate::ffi::TDataStd_HDataMapOfStringString_change_map(self as *mut Self)) }
     }
 
     /// **Source:** `TDataStd_HDataMapOfStringString.hxx`:29 - `TDataStd_HDataMapOfStringString::get_type_name()`
@@ -8719,20 +8758,6 @@ impl HandleTDataStdHDataMapOfStringString {
     }
 }
 
-// ── Skipped symbols for HDataMapOfStringString (3 total) ──
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringString.hxx`:33 - `TDataStd_HDataMapOfStringString::TDataStd_HDataMapOfStringString`
-//   Reason: param 'theOther' uses unknown type 'const TDataStd_DataMapOfStringString&'
-//   // pub fn new_datamapofstringstring(theOther: &DataMapOfStringString) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringString.hxx`:35 - `TDataStd_HDataMapOfStringString::Map`
-//   Reason: return type 'const TDataStd_DataMapOfStringString&' is unknown
-//   // pub fn map(&self) -> &DataMapOfStringString;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringString.hxx`:37 - `TDataStd_HDataMapOfStringString::ChangeMap`
-//   Reason: return type 'TDataStd_DataMapOfStringString&' is unknown
-//   // pub fn change_map(&mut self) -> &mut DataMapOfStringString;
-//
-
 // ========================
 // From TDataStd_HLabelArray1.hxx
 // ========================
@@ -8757,6 +8782,33 @@ impl HLabelArray1 {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HLabelArray1_ctor_int2(
                 theLower, theUpper,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::TDataStd_HLabelArray1()`
+    pub fn new_int2_label(
+        theLower: i32,
+        theUpper: i32,
+        theValue: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HLabelArray1_ctor_int2_label(
+                theLower, theUpper, theValue,
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HLabelArray1.hxx`:24 - `TDataStd_HLabelArray1::TDataStd_HLabelArray1()`
+    pub fn new_label_int2_bool(
+        theBegin: &crate::tdf::Label,
+        theLower: i32,
+        theUpper: i32,
+        arg3: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::TDataStd_HLabelArray1_ctor_label_int2_bool(
+                theBegin, theLower, theUpper, arg3,
             ))
         }
     }
@@ -11537,6 +11589,18 @@ impl NamedData {
         unsafe { crate::ffi::TDataStd_NamedData_set_string(self as *mut Self, theName, theString) }
     }
 
+    /// **Source:** `TDataStd_NamedData.hxx`:115 - `TDataStd_NamedData::GetStringsContainer()`
+    /// Returns the internal container of named strings.
+    pub fn get_strings_container(&mut self) -> &crate::ffi::TDataStd_DataMapOfStringString {
+        unsafe { &*(crate::ffi::TDataStd_NamedData_get_strings_container(self as *mut Self)) }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:118 - `TDataStd_NamedData::ChangeStrings()`
+    /// Replace the container content by new content of the <theStrings>.
+    pub fn change_strings(&mut self, theStrings: &crate::ffi::TDataStd_DataMapOfStringString) {
+        unsafe { crate::ffi::TDataStd_NamedData_change_strings(self as *mut Self, theStrings) }
+    }
+
     /// **Source:** `TDataStd_NamedData.hxx`:121 - `TDataStd_NamedData::HasBytes()`
     /// Returns true if there are some named bytes in the attribute.
     pub fn has_bytes(&self) -> bool {
@@ -11607,6 +11671,30 @@ impl NamedData {
         }
     }
 
+    /// **Source:** `TDataStd_NamedData.hxx`:167 - `TDataStd_NamedData::GetArraysOfIntegersContainer()`
+    /// Returns the internal container of named arrays of integer values.
+    pub fn get_arrays_of_integers_container(
+        &mut self,
+    ) -> &crate::ffi::TDataStd_DataMapOfStringHArray1OfInteger {
+        unsafe {
+            &*(crate::ffi::TDataStd_NamedData_get_arrays_of_integers_container(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:170 - `TDataStd_NamedData::ChangeArraysOfIntegers()`
+    /// Replace the container content by new content of the <theArraysOfIntegers>.
+    pub fn change_arrays_of_integers(
+        &mut self,
+        theArraysOfIntegers: &crate::ffi::TDataStd_DataMapOfStringHArray1OfInteger,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_change_arrays_of_integers(
+                self as *mut Self,
+                theArraysOfIntegers,
+            )
+        }
+    }
+
     /// **Source:** `TDataStd_NamedData.hxx`:174 - `TDataStd_NamedData::HasArraysOfReals()`
     /// Returns true if there are some named arrays of real values in the attribute.
     pub fn has_arrays_of_reals(&self) -> bool {
@@ -11645,6 +11733,30 @@ impl NamedData {
                 self as *mut Self,
                 theName,
                 theArrayOfReals,
+            )
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:197 - `TDataStd_NamedData::GetArraysOfRealsContainer()`
+    /// Returns the internal container of named arrays of real values.
+    pub fn get_arrays_of_reals_container(
+        &mut self,
+    ) -> &crate::ffi::TDataStd_DataMapOfStringHArray1OfReal {
+        unsafe {
+            &*(crate::ffi::TDataStd_NamedData_get_arrays_of_reals_container(self as *mut Self))
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:200 - `TDataStd_NamedData::ChangeArraysOfReals()`
+    /// Replace the container content by new content of the <theArraysOfReals>.
+    pub fn change_arrays_of_reals(
+        &mut self,
+        theArraysOfReals: &crate::ffi::TDataStd_DataMapOfStringHArray1OfReal,
+    ) {
+        unsafe {
+            crate::ffi::TDataStd_NamedData_change_arrays_of_reals(
+                self as *mut Self,
+                theArraysOfReals,
             )
         }
     }
@@ -12160,17 +12272,7 @@ impl HandleTDataStdNamedData {
     }
 }
 
-// ── Skipped symbols for NamedData (10 total) ──
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:115 - `TDataStd_NamedData::GetStringsContainer`
-//   method: Returns the internal container of named strings.
-//   Reason: return type 'const TDataStd_DataMapOfStringString&' is unknown
-//   // pub fn get_strings_container(&mut self) -> &DataMapOfStringString;
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:118 - `TDataStd_NamedData::ChangeStrings`
-//   method: Replace the container content by new content of the <theStrings>.
-//   Reason: param 'theStrings' uses unknown type 'const TDataStd_DataMapOfStringString&'
-//   // pub fn change_strings(&mut self, theStrings: &DataMapOfStringString);
-//
+// ── Skipped symbols for NamedData (4 total) ──
 // SKIPPED: **Source:** `TDataStd_NamedData.hxx`:129 - `TDataStd_NamedData::GetByte`
 //   method: Returns the named byte.
 //   method: It returns 0 if there is no such a named byte
@@ -12183,26 +12285,6 @@ impl HandleTDataStdNamedData {
 //   method: If the byte already exists, it changes its value to <theByte>.
 //   Reason: param 'theByte' uses unknown type 'Standard_Byte'
 //   // pub fn set_byte(&mut self, theName: &ExtendedString, theByte: Byte);
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:167 - `TDataStd_NamedData::GetArraysOfIntegersContainer`
-//   method: Returns the internal container of named arrays of integer values.
-//   Reason: return type 'const TDataStd_DataMapOfStringHArray1OfInteger&' is unknown
-//   // pub fn get_arrays_of_integers_container(&mut self) -> &DataMapOfStringHArray1OfInteger;
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:170 - `TDataStd_NamedData::ChangeArraysOfIntegers`
-//   method: Replace the container content by new content of the <theArraysOfIntegers>.
-//   Reason: param 'theArraysOfIntegers' uses unknown type 'const TDataStd_DataMapOfStringHArray1OfInteger&'
-//   // pub fn change_arrays_of_integers(&mut self, theArraysOfIntegers: &DataMapOfStringHArray1OfInteger);
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:197 - `TDataStd_NamedData::GetArraysOfRealsContainer`
-//   method: Returns the internal container of named arrays of real values.
-//   Reason: return type 'const TDataStd_DataMapOfStringHArray1OfReal&' is unknown
-//   // pub fn get_arrays_of_reals_container(&mut self) -> &DataMapOfStringHArray1OfReal;
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:200 - `TDataStd_NamedData::ChangeArraysOfReals`
-//   method: Replace the container content by new content of the <theArraysOfReals>.
-//   Reason: param 'theArraysOfReals' uses unknown type 'const TDataStd_DataMapOfStringHArray1OfReal&'
-//   // pub fn change_arrays_of_reals(&mut self, theArraysOfReals: &DataMapOfStringHArray1OfReal);
 //
 // SKIPPED: **Source:** `TDataStd_NamedData.hxx`:274 - `TDataStd_NamedData::setByte`
 //   method: Defines a named byte (without calling Backup).

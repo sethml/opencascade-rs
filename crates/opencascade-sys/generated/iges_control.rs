@@ -183,6 +183,28 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:64 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters()`
+    pub fn set_shape_fix_parameters(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESControl_ActorWrite_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:84 - `Transfer_ActorOfFinderProcess::GetShapeFixParameters()`
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::IGESControl_ActorWrite_inherited_GetShapeFixParameters(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -782,6 +804,13 @@ impl Controller {
                 shape,
                 modetrans,
             )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
+    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+        unsafe {
+            &*(crate::ffi::IGESControl_Controller_inherited_AdaptorSession(self as *const Self))
         }
     }
 
@@ -1417,6 +1446,26 @@ impl Reader {
         }
     }
 
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters()`
+    pub fn set_shape_fix_parameters(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESControl_Reader_inherited_SetShapeFixParameters(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters()`
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe {
+            &*(crate::ffi::IGESControl_Reader_inherited_GetShapeFixParameters(self as *const Self))
+        }
+    }
+
     /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
     pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
@@ -1731,9 +1780,52 @@ impl Writer {
         let c_file = std::ffi::CString::new(file).unwrap();
         unsafe { crate::ffi::IGESControl_Writer_write(self as *mut Self, c_file.as_ptr(), fnes) }
     }
+
+    /// **Source:** `IGESControl_Writer.hxx`:122 - `IGESControl_Writer::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// @param theParameters the parameters for shape processing.
+    pub fn set_shape_fix_parameters_parametermap(
+        &mut self,
+        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESControl_Writer_set_shape_fix_parameters_parametermap(
+                self as *mut Self,
+                theParameters,
+            )
+        }
+    }
+
+    /// **Source:** `IGESControl_Writer.hxx`:136 - `IGESControl_Writer::SetShapeFixParameters()`
+    /// Sets parameters for shape processing.
+    /// Parameters from @p theParameters are copied to the internal map.
+    /// Parameters from @p theAdditionalParameters are copied to the internal map
+    /// if they are not present in @p theParameters.
+    /// @param theParameters the parameters for shape processing.
+    /// @param theAdditionalParameters the additional parameters for shape processing.
+    pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
+        &mut self,
+        theParameters: &crate::de::ShapeFixParameters,
+        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+    ) {
+        unsafe {
+            crate::ffi::IGESControl_Writer_set_shape_fix_parameters_shapefixparameters_parametermap(
+                self as *mut Self,
+                theParameters,
+                theAdditionalParameters,
+            )
+        }
+    }
+
+    /// **Source:** `IGESControl_Writer.hxx`:142 - `IGESControl_Writer::GetShapeFixParameters()`
+    /// Returns parameters for shape processing that was set by SetParameters() method.
+    /// @return the parameters for shape processing. Empty map if no parameters were set.
+    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+        unsafe { &*(crate::ffi::IGESControl_Writer_get_shape_fix_parameters(self as *const Self)) }
+    }
 }
 
-// ── Skipped symbols for Writer (9 total) ──
+// ── Skipped symbols for Writer (6 total) ──
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:75 - `IGESControl_Writer::IGESControl_Writer`
 //   constructor: Creates a writer object with the
 //   constructor: prepared IGES model theModel in write mode.
@@ -1752,31 +1844,12 @@ impl Writer {
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn write(&mut self, S: /* Standard_OStream& */, fnes: bool) -> bool;
 //
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:122 - `IGESControl_Writer::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: @param theParameters the parameters for shape processing.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &i32);
-//
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:128 - `IGESControl_Writer::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
 //   method: @param theParameters the parameters for shape processing.
-//   Reason: has unbindable types: param 'theParameters': rvalue reference (int&&)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* int&& */);
-//
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:136 - `IGESControl_Writer::SetShapeFixParameters`
-//   method: Sets parameters for shape processing.
-//   method: Parameters from @p theParameters are copied to the internal map.
-//   method: Parameters from @p theAdditionalParameters are copied to the internal map
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn set_shape_fix_parameters(&mut self, theParameters: &ShapeFixParameters, theAdditionalParameters: &i32);
-//
-// SKIPPED: **Source:** `IGESControl_Writer.hxx`:142 - `IGESControl_Writer::GetShapeFixParameters`
-//   method: Returns parameters for shape processing that was set by SetParameters() method.
-//   method: @return the parameters for shape processing. Empty map if no parameters were set.
-//   Reason: has misresolved element type (clang batch parsing artifact)
-//   // pub fn get_shape_fix_parameters(&self) -> &i32;
+//   Reason: has unbindable types: param 'theParameters': rvalue reference (XSAlgo_ShapeProcessor::ParameterMap&&)
+//   // pub fn set_shape_fix_parameters(&mut self, theParameters: /* XSAlgo_ShapeProcessor::ParameterMap&& */);
 //
 // SKIPPED: **Source:** `IGESControl_Writer.hxx`:149 - `IGESControl_Writer::SetShapeProcessFlags`
 //   method: Sets flags defining operations to be performed on shapes.
