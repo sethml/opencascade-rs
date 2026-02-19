@@ -14,6 +14,14 @@ pub fn session(
 ) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
     unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_session(pilot)) }
 }
+/// **Source:** `XSControl.hxx`:42 - `XSControl::Vars`
+/// Returns the Vars of a SessionPilot, it is brought by Session
+/// it provides access to external variables
+pub fn vars(
+    pilot: &crate::ffi::HandleIFSelectSessionPilot,
+) -> crate::OwnedPtr<crate::ffi::HandleXSControlVars> {
+    unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_vars(pilot)) }
+}
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi::{
@@ -67,6 +75,27 @@ impl ConnectedShapes {
         unsafe { crate::ffi::XSControl_ConnectedShapes_set_reader(self as *mut Self, TR) }
     }
 
+    /// **Source:** `XSControl_ConnectedShapes.hxx`:60 - `XSControl_ConnectedShapes::Explore()`
+    /// Explores an entity : entities from which are connected to that
+    /// produced by this entity, including itself
+    pub fn explore(
+        &self,
+        level: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+        explored: &mut crate::interface::EntityIterator,
+    ) -> bool {
+        unsafe {
+            crate::ffi::XSControl_ConnectedShapes_explore(
+                self as *const Self,
+                level,
+                ent,
+                G,
+                explored,
+            )
+        }
+    }
+
     /// **Source:** `XSControl_ConnectedShapes.hxx`:67 - `XSControl_ConnectedShapes::ExploreLabel()`
     /// Returns a text defining the criterium.
     /// "Connected Entities through produced Shapes"
@@ -81,6 +110,23 @@ impl ConnectedShapes {
     /// **Source:** `XSControl_ConnectedShapes.hxx`:76 - `XSControl_ConnectedShapes::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XSControl_ConnectedShapes_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_ConnectedShapes.hxx`:71 - `XSControl_ConnectedShapes::AdjacentEntities()`
+    /// This functions considers a shape from a transfer and performs
+    /// the search function explained above
+    pub fn adjacent_entities(
+        ashape: &crate::topo_ds::Shape,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        type_: crate::top_abs::ShapeEnum,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_adjacent_entities(
+                ashape,
+                TP,
+                type_.into(),
+            ))
+        }
     }
 
     /// **Source:** `XSControl_ConnectedShapes.hxx`:76 - `XSControl_ConnectedShapes::get_type_name()`
@@ -177,6 +223,19 @@ impl ConnectedShapes {
         unsafe { crate::ffi::XSControl_ConnectedShapes_inherited_Level(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -217,10 +276,51 @@ impl ConnectedShapes {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         unsafe {
             crate::ffi::XSControl_ConnectedShapes_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_ConnectedShapes_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XSControl_ConnectedShapes_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
         }
     }
 
@@ -331,20 +431,6 @@ impl HandleXSControlConnectedShapes {
     }
 }
 
-// ── Skipped symbols for ConnectedShapes (2 total) ──
-// SKIPPED: **Source:** `XSControl_ConnectedShapes.hxx`:60 - `XSControl_ConnectedShapes::Explore`
-//   method: Explores an entity : entities from which are connected to that
-//   method: produced by this entity, including itself
-//   Reason: param 'explored' uses unknown type 'Interface_EntityIterator&'
-//   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
-//
-// SKIPPED: **Source:** `XSControl_ConnectedShapes.hxx`:71 - `XSControl_ConnectedShapes::AdjacentEntities`
-//   static_method: This functions considers a shape from a transfer and performs
-//   static_method: the search function explained above
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn adjacent_entities(ashape: &Shape, TP: &HandleTransientProcess, type_: ShapeEnum) -> OwnedPtr<Handle<TColStd_HSequenceOfTransient>>;
-//
-
 // ========================
 // From XSControl_Controller.hxx
 // ========================
@@ -418,6 +504,12 @@ impl Controller {
             .to_string_lossy()
             .into_owned()
         }
+    }
+
+    /// **Source:** `XSControl_Controller.hxx`:94 - `XSControl_Controller::Protocol()`
+    /// Returns the Protocol attached to the Norm (from field)
+    pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
+        unsafe { &*(crate::ffi::XSControl_Controller_protocol(self as *const Self)) }
     }
 
     /// **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
@@ -822,12 +914,7 @@ impl HandleXSControlController {
     }
 }
 
-// ── Skipped symbols for Controller (3 total) ──
-// SKIPPED: **Source:** `XSControl_Controller.hxx`:94 - `XSControl_Controller::Protocol`
-//   method: Returns the Protocol attached to the Norm (from field)
-//   Reason: return type 'const Handle(Interface_Protocol)&' is unknown
-//   // pub fn protocol(&self) -> &HandleProtocol;
-//
+// ── Skipped symbols for Controller (2 total) ──
 // SKIPPED: **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds`
 //   method: Returns recorded min and max values for modetrans (write)
 //   method: Actually only for shapes
@@ -1631,6 +1718,19 @@ impl SelectForTransfer {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SelectForTransfer_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
@@ -1692,12 +1792,57 @@ impl SelectForTransfer {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XSControl_SelectForTransfer_inherited_InputResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         unsafe {
             crate::ffi::XSControl_SelectForTransfer_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XSControl_SelectForTransfer_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::XSControl_SelectForTransfer_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
             )
         }
     }
@@ -1865,6 +2010,25 @@ impl SignTransferStatus {
     /// Sets a TransferReader to work
     pub fn set_reader(&mut self, TR: &crate::ffi::HandleXSControlTransferReader) {
         unsafe { crate::ffi::XSControl_SignTransferStatus_set_reader(self as *mut Self, TR) }
+    }
+
+    /// **Source:** `XSControl_SignTransferStatus.hxx`:62 - `XSControl_SignTransferStatus::SetMap()`
+    /// Sets a precise map to sign entities
+    /// This definition oversedes the creation with a TransferReader
+    pub fn set_map(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe { crate::ffi::XSControl_SignTransferStatus_set_map(self as *mut Self, TP) }
+    }
+
+    /// **Source:** `XSControl_SignTransferStatus.hxx`:67 - `XSControl_SignTransferStatus::Map()`
+    /// Returns the TransientProcess used as precised one
+    /// Returns a Null Handle for a creation from a TransferReader
+    /// without any further setting
+    pub fn map(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_SignTransferStatus_map(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `XSControl_SignTransferStatus.hxx`:71 - `XSControl_SignTransferStatus::Reader()`
@@ -2181,21 +2345,6 @@ impl HandleXSControlSignTransferStatus {
     }
 }
 
-// ── Skipped symbols for SignTransferStatus (2 total) ──
-// SKIPPED: **Source:** `XSControl_SignTransferStatus.hxx`:62 - `XSControl_SignTransferStatus::SetMap`
-//   method: Sets a precise map to sign entities
-//   method: This definition oversedes the creation with a TransferReader
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn set_map(&mut self, TP: &HandleTransientProcess);
-//
-// SKIPPED: **Source:** `XSControl_SignTransferStatus.hxx`:67 - `XSControl_SignTransferStatus::Map`
-//   method: Returns the TransientProcess used as precised one
-//   method: Returns a Null Handle for a creation from a TransferReader
-//   method: without any further setting
-//   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
-//   // pub fn map(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
-//
-
 // ========================
 // From XSControl_TransferReader.hxx
 // ========================
@@ -2265,6 +2414,12 @@ impl TransferReader {
     /// from another one, to be lost (see also Clear)
     pub fn set_model(&mut self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) {
         unsafe { crate::ffi::XSControl_TransferReader_set_model(self as *mut Self, theModel) }
+    }
+
+    /// **Source:** `XSControl_TransferReader.hxx`:86 - `XSControl_TransferReader::SetGraph()`
+    /// Sets a Graph and its InterfaceModel (calls SetModel)
+    pub fn set_graph(&mut self, theGraph: &crate::ffi::HandleInterfaceHGraph) {
+        unsafe { crate::ffi::XSControl_TransferReader_set_graph(self as *mut Self, theGraph) }
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:89 - `XSControl_TransferReader::Model()`
@@ -2342,6 +2497,24 @@ impl TransferReader {
         unsafe { crate::ffi::XSControl_TransferReader_clear(self as *mut Self, theMode) }
     }
 
+    /// **Source:** `XSControl_TransferReader.hxx`:126 - `XSControl_TransferReader::TransientProcess()`
+    /// Returns the currently used TransientProcess
+    /// It is computed from the model by TransferReadRoots, or by
+    /// BeginTransferRead
+    pub fn transient_process(&self) -> &crate::ffi::HandleTransferTransientProcess {
+        unsafe { &*(crate::ffi::XSControl_TransferReader_transient_process(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_TransferReader.hxx`:131 - `XSControl_TransferReader::SetTransientProcess()`
+    /// Forces the TransientProcess
+    /// Remark : it also changes the Model and the Actor, from those
+    /// recorded in the new TransientProcess
+    pub fn set_transient_process(&mut self, theTP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe {
+            crate::ffi::XSControl_TransferReader_set_transient_process(self as *mut Self, theTP)
+        }
+    }
+
     /// **Source:** `XSControl_TransferReader.hxx`:137 - `XSControl_TransferReader::RecordResult()`
     /// Records a final result of transferring an entity
     /// This result is recorded as a ResultFromModel, taken from
@@ -2400,6 +2573,20 @@ impl TransferReader {
         unsafe { crate::ffi::XSControl_TransferReader_is_marked(self as *const Self, theEnt) }
     }
 
+    /// **Source:** `XSControl_TransferReader.hxx`:167 - `XSControl_TransferReader::FinalResult()`
+    /// Returns the final result recorded for an entity, as such
+    pub fn final_result(
+        &self,
+        theEnt: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferReader_final_result(
+                self as *const Self,
+                theEnt,
+            ))
+        }
+    }
+
     /// **Source:** `XSControl_TransferReader.hxx`:172 - `XSControl_TransferReader::FinalEntityLabel()`
     /// Returns the label attached to an entity recorded for final,
     /// or an empty string if not recorded
@@ -2420,6 +2607,21 @@ impl TransferReader {
     pub fn final_entity_number(&self, theEnt: &crate::ffi::HandleStandardTransient) -> i32 {
         unsafe {
             crate::ffi::XSControl_TransferReader_final_entity_number(self as *const Self, theEnt)
+        }
+    }
+
+    /// **Source:** `XSControl_TransferReader.hxx`:181 - `XSControl_TransferReader::ResultFromNumber()`
+    /// Returns the final result recorded for a NUMBER of entity
+    /// (internal use). Null if out of range
+    pub fn result_from_number(
+        &self,
+        theNum: i32,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromModel> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_TransferReader_result_from_number(
+                self as *const Self,
+                theNum,
+            ))
         }
     }
 
@@ -2739,6 +2941,61 @@ impl TransferReader {
         unsafe { &*(crate::ffi::XSControl_TransferReader_dynamic_type(self as *const Self)) }
     }
 
+    /// **Source:** `XSControl_TransferReader.hxx`:364 - `XSControl_TransferReader::PrintStatsProcess()`
+    /// This routines prints statistics about a TransientProcess
+    /// It can be called, by a TransferReader, or isolately
+    /// Prints are done on the default trace file
+    /// <what> defines what kind of statistics are to be printed :
+    /// 0 : basic figures
+    /// 1 : root results
+    /// 2 : all recorded (roots, intermediate, checked entities)
+    /// 3 : abnormal records
+    /// 4 : check messages (warnings and fails)
+    /// 5 : fail messages
+    ///
+    /// <mode> is used according <what> :
+    /// <what> = 0 : <mode> is ignored
+    /// <what> = 1,2,3 : <mode> as follows :
+    /// 0 (D) : just lists numbers of concerned entities in the model
+    /// 1 : for each entity, gives number,label, type and result
+    /// type and/or status (fail/warning...)
+    /// 2 : for each entity, gives maximal information (i.e. checks)
+    /// 3 : counts per type of starting entity (class type)
+    /// 4 : counts per result type and/or status
+    /// 5 : counts per couple (starting type / result type/status)
+    /// 6 : idem plus gives for each item, the list of numbers of
+    /// entities in the starting model
+    ///
+    /// <what> = 4,5 : modes relays on an enum PrintCount :
+    /// 0 (D) : ItemsByEntity (sequential list by entity)
+    /// 1 : CountByItem
+    /// 2 : ShortByItem       (count + 5 first numbers)
+    /// 3 : ListByItem        (count + entity numbers)
+    /// 4 : EntitiesByItem    (count + entity numbers and labels)
+    pub fn print_stats_process(
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theWhat: i32,
+        theMode: i32,
+    ) {
+        unsafe { crate::ffi::XSControl_TransferReader_print_stats_process(theTP, theWhat, theMode) }
+    }
+
+    /// **Source:** `XSControl_TransferReader.hxx`:370 - `XSControl_TransferReader::PrintStatsOnList()`
+    /// Works as PrintStatsProcess, but displays data only on the
+    /// entities which are in <list> (filter)
+    pub fn print_stats_on_list(
+        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theList: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        theWhat: i32,
+        theMode: i32,
+    ) {
+        unsafe {
+            crate::ffi::XSControl_TransferReader_print_stats_on_list(
+                theTP, theList, theWhat, theMode,
+            )
+        }
+    }
+
     /// **Source:** `XSControl_TransferReader.hxx`:375 - `XSControl_TransferReader::get_type_name()`
     pub fn get_type_name() -> String {
         unsafe {
@@ -2850,61 +3107,18 @@ impl HandleXSControlTransferReader {
     }
 }
 
-// ── Skipped symbols for TransferReader (9 total) ──
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:86 - `XSControl_TransferReader::SetGraph`
-//   method: Sets a Graph and its InterfaceModel (calls SetModel)
-//   Reason: param 'theGraph' uses unknown type 'const Handle(Interface_HGraph)&'
-//   // pub fn set_graph(&mut self, theGraph: &HandleHGraph);
-//
+// ── Skipped symbols for TransferReader (2 total) ──
 // SKIPPED: **Source:** `XSControl_TransferReader.hxx`:105 - `XSControl_TransferReader::Context`
 //   method: Returns (modifiable) the whole definition of Context
 //   method: Rather for internal use (ex.: preparing and setting in once)
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn context(&mut self) -> &mut i32;
 //
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:126 - `XSControl_TransferReader::TransientProcess`
-//   method: Returns the currently used TransientProcess
-//   method: It is computed from the model by TransferReadRoots, or by
-//   method: BeginTransferRead
-//   Reason: return type 'const Handle(Transfer_TransientProcess)&' is unknown
-//   // pub fn transient_process(&self) -> &HandleTransientProcess;
-//
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:131 - `XSControl_TransferReader::SetTransientProcess`
-//   method: Forces the TransientProcess
-//   method: Remark : it also changes the Model and the Actor, from those
-//   method: recorded in the new TransientProcess
-//   Reason: param 'theTP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn set_transient_process(&mut self, theTP: &HandleTransientProcess);
-//
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:167 - `XSControl_TransferReader::FinalResult`
-//   method: Returns the final result recorded for an entity, as such
-//   Reason: return type 'Handle(Transfer_ResultFromModel)' is unknown
-//   // pub fn final_result(&self, theEnt: &HandleTransient) -> OwnedPtr<Handle<Transfer_ResultFromModel>>;
-//
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:181 - `XSControl_TransferReader::ResultFromNumber`
-//   method: Returns the final result recorded for a NUMBER of entity
-//   method: (internal use). Null if out of range
-//   Reason: return type 'Handle(Transfer_ResultFromModel)' is unknown
-//   // pub fn result_from_number(&self, theNum: i32) -> OwnedPtr<Handle<Transfer_ResultFromModel>>;
-//
 // SKIPPED: **Source:** `XSControl_TransferReader.hxx`:311 - `XSControl_TransferReader::PrintStats`
 //   method: Prints statistics on current Trace File, according <what> and
 //   method: <mode>.  See PrintStatsProcess for details
 //   Reason: has unbindable types: param 'theStream': stream type (Standard_OStream&)
 //   // pub fn print_stats(&self, theStream: /* Standard_OStream& */, theWhat: i32, theMode: i32);
-//
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:364 - `XSControl_TransferReader::PrintStatsProcess`
-//   static_method: This routines prints statistics about a TransientProcess
-//   static_method: It can be called, by a TransferReader, or isolately
-//   static_method: Prints are done on the default trace file
-//   Reason: param 'theTP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn print_stats_process(theTP: &HandleTransientProcess, theWhat: i32, theMode: i32);
-//
-// SKIPPED: **Source:** `XSControl_TransferReader.hxx`:370 - `XSControl_TransferReader::PrintStatsOnList`
-//   static_method: Works as PrintStatsProcess, but displays data only on the
-//   static_method: entities which are in <list> (filter)
-//   Reason: param 'theTP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn print_stats_on_list(theTP: &HandleTransientProcess, theList: &HandleHSequenceOfTransient, theWhat: i32, theMode: i32);
 //
 
 // ========================
@@ -3645,6 +3859,189 @@ impl Utils {
 //
 
 // ========================
+// From XSControl_Vars.hxx
+// ========================
+
+/// **Source:** `XSControl_Vars.hxx`:47 - `XSControl_Vars`
+/// Defines a receptacle for externally defined variables, each
+/// one has a name
+///
+/// I.E. a WorkSession for XSTEP is generally used inside a
+/// context, which brings variables, especially shapes and
+/// geometries. For instance DRAW or an application engine
+///
+/// This class provides a common form for this. It also provides
+/// a default implementation (locally recorded variables in a
+/// dictionary), but which is aimed to be redefined
+pub use crate::ffi::XSControl_Vars as Vars;
+
+unsafe impl crate::CppDeletable for Vars {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::XSControl_Vars_destructor(ptr);
+    }
+}
+
+impl Vars {
+    /// **Source:** `XSControl_Vars.hxx`:51 - `XSControl_Vars::XSControl_Vars()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Vars_ctor()) }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:53 - `XSControl_Vars::Set()`
+    pub fn set(&mut self, name: &str, val: &crate::ffi::HandleStandardTransient) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::XSControl_Vars_set(self as *mut Self, c_name.as_ptr(), val) }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:66 - `XSControl_Vars::SetPoint()`
+    pub fn set_point(&mut self, name: &str, val: &crate::gp::Pnt) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::XSControl_Vars_set_point(self as *mut Self, c_name.as_ptr(), val) }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:68 - `XSControl_Vars::SetPoint2d()`
+    pub fn set_point2d(&mut self, name: &str, val: &crate::gp::Pnt2d) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::XSControl_Vars_set_point2d(self as *mut Self, c_name.as_ptr(), val) }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:74 - `XSControl_Vars::SetShape()`
+    pub fn set_shape(&mut self, name: &str, val: &crate::topo_ds::Shape) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe { crate::ffi::XSControl_Vars_set_shape(self as *mut Self, c_name.as_ptr(), val) }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:78 - `XSControl_Vars::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_Vars_dynamic_type(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:78 - `XSControl_Vars::get_type_name()`
+    pub fn get_type_name() -> String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::ffi::XSControl_Vars_get_type_name())
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    /// **Source:** `XSControl_Vars.hxx`:78 - `XSControl_Vars::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+        unsafe { &*(crate::ffi::XSControl_Vars_get_type_descriptor()) }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe { &*(crate::ffi::XSControl_Vars_as_Standard_Transient(self as *const Self)) }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe { &mut *(crate::ffi::XSControl_Vars_as_Standard_Transient_mut(self as *mut Self)) }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlVars> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi::XSControl_Vars_to_handle(obj.into_raw())) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XSControl_Vars_inherited_IsInstance(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+        unsafe { crate::ffi::XSControl_Vars_inherited_IsKind(self as *const Self, theType) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        unsafe { crate::ffi::XSControl_Vars_inherited_GetRefCount(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        unsafe { crate::ffi::XSControl_Vars_inherited_IncrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        unsafe { crate::ffi::XSControl_Vars_inherited_DecrementRefCounter(self as *mut Self) }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        unsafe { crate::ffi::XSControl_Vars_inherited_Delete(self as *const Self) }
+    }
+}
+
+pub use crate::ffi::HandleXSControlVars;
+
+unsafe impl crate::CppDeletable for HandleXSControlVars {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi::HandleXSControlVars_destructor(ptr);
+    }
+}
+
+impl HandleXSControlVars {
+    /// Dereference this Handle to access the underlying XSControl_Vars
+    pub fn get(&self) -> &crate::ffi::XSControl_Vars {
+        unsafe { &*(crate::ffi::HandleXSControlVars_get(self as *const Self)) }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XSControl_Vars
+    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_Vars {
+        unsafe { &mut *(crate::ffi::HandleXSControlVars_get_mut(self as *mut Self)) }
+    }
+
+    /// Upcast Handle<XSControl_Vars> to Handle<Standard_Transient>
+    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::HandleXSControlVars_to_HandleStandardTransient(
+                self as *const Self,
+            ))
+        }
+    }
+}
+
+// ── Skipped symbols for Vars (8 total) ──
+// SKIPPED: **Source:** `XSControl_Vars.hxx`:56 - `XSControl_Vars::Get`
+//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
+//   // pub fn get(&self, name: &mut *const char) -> OwnedPtr<Handle<Standard_Transient>>;
+//
+// SKIPPED: **Source:** `XSControl_Vars.hxx`:58 - `XSControl_Vars::GetGeom`
+//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
+//   // pub fn get_geom(&self, name: &mut *const char) -> OwnedPtr<Handle<Geom_Geometry>>;
+//
+// SKIPPED: **Source:** `XSControl_Vars.hxx`:60 - `XSControl_Vars::GetCurve2d`
+//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
+//   // pub fn get_curve2d(&self, name: &mut *const char) -> OwnedPtr<Handle<Geom2d_Curve>>;
+//
+// SKIPPED: **Source:** `XSControl_Vars.hxx`:62 - `XSControl_Vars::GetCurve`
+//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
+//   // pub fn get_curve(&self, name: &mut *const char) -> OwnedPtr<Handle<Geom_Curve>>;
+//
+// SKIPPED: **Source:** `XSControl_Vars.hxx`:64 - `XSControl_Vars::GetSurface`
+//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
+//   // pub fn get_surface(&self, name: &mut *const char) -> OwnedPtr<Handle<Geom_Surface>>;
+//
+// SKIPPED: **Source:** `XSControl_Vars.hxx`:70 - `XSControl_Vars::GetPoint`
+//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
+//   // pub fn get_point(&self, name: &mut *const char, pnt: &mut Pnt) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_Vars.hxx`:72 - `XSControl_Vars::GetPoint2d`
+//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
+//   // pub fn get_point2d(&self, name: &mut *const char, pnt: &mut Pnt2d) -> bool;
+//
+// SKIPPED: **Source:** `XSControl_Vars.hxx`:76 - `XSControl_Vars::GetShape`
+//   Reason: has string ref param 'name' of type 'const char*&' (needs manual binding)
+//   // pub fn get_shape(&self, name: &mut *const char) -> OwnedPtr<TopoDS_Shape>;
+//
+
+// ========================
 // From XSControl_WorkSession.hxx
 // ========================
 
@@ -3751,6 +4148,25 @@ impl WorkSession {
     /// Returns the Transfer Reader, Null if not set
     pub fn transfer_reader(&self) -> &crate::ffi::HandleXSControlTransferReader {
         unsafe { &*(crate::ffi::XSControl_WorkSession_transfer_reader(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_WorkSession.hxx`:117 - `XSControl_WorkSession::MapReader()`
+    /// Returns the TransientProcess(internal data for TransferReader)
+    pub fn map_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_map_reader(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `XSControl_WorkSession.hxx`:123 - `XSControl_WorkSession::SetMapReader()`
+    /// Changes the Map Reader, i.e. considers that the new one
+    /// defines the relevant read results (forgets the former ones)
+    /// Returns True when done, False in case of bad definition, i.e.
+    /// if Model from TP differs from that of Session
+    pub fn set_map_reader(&mut self, theTP: &crate::ffi::HandleTransferTransientProcess) -> bool {
+        unsafe { crate::ffi::XSControl_WorkSession_set_map_reader(self as *mut Self, theTP) }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:134 - `XSControl_WorkSession::Result()`
@@ -3873,6 +4289,16 @@ impl WorkSession {
         }
     }
 
+    /// **Source:** `XSControl_WorkSession.hxx`:189 - `XSControl_WorkSession::Vars()`
+    pub fn vars(&self) -> &crate::ffi::HandleXSControlVars {
+        unsafe { &*(crate::ffi::XSControl_WorkSession_vars(self as *const Self)) }
+    }
+
+    /// **Source:** `XSControl_WorkSession.hxx`:191 - `XSControl_WorkSession::SetVars()`
+    pub fn set_vars(&mut self, theVars: &crate::ffi::HandleXSControlVars) {
+        unsafe { crate::ffi::XSControl_WorkSession_set_vars(self as *mut Self, theVars) }
+    }
+
     /// **Source:** `XSControl_WorkSession.hxx`:193 - `XSControl_WorkSession::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::XSControl_WorkSession_dynamic_type(self as *const Self)) }
@@ -3971,6 +4397,18 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:104 - `IFSelect_WorkSession::WorkLibrary()`
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
         unsafe { &*(crate::ffi::XSControl_WorkSession_inherited_WorkLibrary(self as *const Self)) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:108 - `IFSelect_WorkSession::SetProtocol()`
+    pub fn set_protocol(&mut self, protocol: &crate::ffi::HandleInterfaceProtocol) {
+        unsafe {
+            crate::ffi::XSControl_WorkSession_inherited_SetProtocol(self as *mut Self, protocol)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:112 - `IFSelect_WorkSession::Protocol()`
+    pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
+        unsafe { &*(crate::ffi::XSControl_WorkSession_inherited_Protocol(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:118 - `IFSelect_WorkSession::SetSignType()`
@@ -4078,6 +4516,15 @@ impl WorkSession {
     pub fn compute_graph(&mut self, enforce: bool) -> bool {
         unsafe {
             crate::ffi::XSControl_WorkSession_inherited_ComputeGraph(self as *mut Self, enforce)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:231 - `IFSelect_WorkSession::HGraph()`
+    pub fn h_graph(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHGraph> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_HGraph(
+                self as *mut Self,
+            ))
         }
     }
 
@@ -4326,6 +4773,19 @@ impl WorkSession {
             crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_Selection(
                 self as *const Self,
                 id,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:477 - `IFSelect_WorkSession::EvalSelection()`
+    pub fn eval_selection(
+        &self,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_EvalSelection(
+                self as *const Self,
+                sel,
             ))
         }
     }
@@ -4778,6 +5238,16 @@ impl WorkSession {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:811 - `IFSelect_WorkSession::SentList()`
+    pub fn sent_list(&self, count: i32) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::XSControl_WorkSession_inherited_SentList(
+                self as *const Self,
+                count,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:817 - `IFSelect_WorkSession::MaxSendingCount()`
     pub fn max_sending_count(&self) -> i32 {
         unsafe { crate::ffi::XSControl_WorkSession_inherited_MaxSendingCount(self as *const Self) }
@@ -5122,7 +5592,7 @@ impl HandleXSControlWorkSession {
     }
 }
 
-// ── Skipped symbols for WorkSession (7 total) ──
+// ── Skipped symbols for WorkSession (3 total) ──
 // SKIPPED: **Source:** `XSControl_WorkSession.hxx`:85 - `XSControl_WorkSession::Context`
 //   method: Returns the current Context List, Null if not defined
 //   method: The Context is given to the TransientProcess for TransferRead
@@ -5141,26 +5611,6 @@ impl HandleXSControlWorkSession {
 //   method: from MapReader if <wri> is False
 //   Reason: has unbindable types: param 'theS': stream type (Standard_OStream&)
 //   // pub fn print_transfer_status(&self, theNum: i32, theWri: bool, theS: /* Standard_OStream& */) -> bool;
-//
-// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:117 - `XSControl_WorkSession::MapReader`
-//   method: Returns the TransientProcess(internal data for TransferReader)
-//   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
-//   // pub fn map_reader(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
-//
-// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:123 - `XSControl_WorkSession::SetMapReader`
-//   method: Changes the Map Reader, i.e. considers that the new one
-//   method: defines the relevant read results (forgets the former ones)
-//   method: Returns True when done, False in case of bad definition, i.e.
-//   Reason: param 'theTP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn set_map_reader(&mut self, theTP: &HandleTransientProcess) -> bool;
-//
-// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:189 - `XSControl_WorkSession::Vars`
-//   Reason: return type 'const Handle(XSControl_Vars)&' is unknown
-//   // pub fn vars(&self) -> &HandleVars;
-//
-// SKIPPED: **Source:** `XSControl_WorkSession.hxx`:191 - `XSControl_WorkSession::SetVars`
-//   Reason: param 'theVars' uses unknown type 'const Handle(XSControl_Vars)&'
-//   // pub fn set_vars(&mut self, theVars: &HandleVars);
 //
 
 // ========================
@@ -5293,17 +5743,3 @@ impl Writer {
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi::XSControl_Vars as Vars;
-
-// ── Skipped free functions (1 total) ──
-// SKIPPED: **Source:** `XSControl.hxx`:42 - `XSControl::Vars`
-//   function: Returns the Vars of a SessionPilot, it is brought by Session
-//   function: it provides access to external variables
-//   Reason: return type 'Handle(XSControl_Vars)' is unknown
-//   // pub fn vars(pilot: &HandleSessionPilot) -> OwnedPtr<Handle<XSControl_Vars>>;
-//

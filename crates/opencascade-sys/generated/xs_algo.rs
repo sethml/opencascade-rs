@@ -34,12 +34,33 @@ impl ShapeProcessor {
         }
     }
 
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:72 - `XSAlgo_ShapeProcessor::MergeTransferInfo()`
+    /// Merge the results of the shape processing with the transfer process.
+    /// @param theTransientProcess Transfer process to merge with.
+    /// @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
+    pub fn merge_transfer_info_handletransfertransientprocess_int(
+        &self,
+        theTransientProcess: &crate::ffi::HandleTransferTransientProcess,
+        theFirstTPItemIndex: i32,
+    ) {
+        unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_merge_transfer_info_handletransfertransientprocess_int(
+                self as *const Self,
+                theTransientProcess,
+                theFirstTPItemIndex,
+            )
+        }
+    }
+
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:78 - `XSAlgo_ShapeProcessor::MergeTransferInfo()`
     /// Merge the results of the shape processing with the finder process.
     /// @param theFinderProcess Finder process to merge with.
-    pub fn merge_transfer_info(&self, theFinderProcess: &crate::ffi::HandleTransferFinderProcess) {
+    pub fn merge_transfer_info_handletransferfinderprocess(
+        &self,
+        theFinderProcess: &crate::ffi::HandleTransferFinderProcess,
+    ) {
         unsafe {
-            crate::ffi::XSAlgo_ShapeProcessor_merge_transfer_info(
+            crate::ffi::XSAlgo_ShapeProcessor_merge_transfer_info_handletransferfinderprocess(
                 self as *const Self,
                 theFinderProcess,
             )
@@ -77,28 +98,41 @@ impl ShapeProcessor {
         unsafe { crate::ffi::XSAlgo_ShapeProcessor_prepare_for_transfer() }
     }
 
+    /// **Source:** `XSAlgo_ShapeProcessor.hxx`:167 - `XSAlgo_ShapeProcessor::MergeShapeTransferInfo()`
+    /// Merge the results of the shape processing with the finder process.
+    /// @param theTransientProcess Transfer process to merge with.
+    /// @param theModifiedShapesMap Map of modified shapes.
+    /// @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
+    /// @param theMessages Messages to add.
+    pub fn merge_shape_transfer_info_handletransfertransientprocess_datamapofshapeshape_int_handleshapeextendmsgregistrator(
+        theFinderProcess: &crate::ffi::HandleTransferTransientProcess,
+        theModifiedShapesMap: &crate::ffi::TopTools_DataMapOfShapeShape,
+        theFirstTPItemIndex: i32,
+        theMessages: &crate::ffi::HandleShapeExtendMsgRegistrator,
+    ) {
+        unsafe {
+            crate::ffi::XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransfertransientprocess_datamapofshapeshape_int_handleshapeextendmsgregistrator(theFinderProcess, theModifiedShapesMap, theFirstTPItemIndex, theMessages)
+        }
+    }
+
     /// **Source:** `XSAlgo_ShapeProcessor.hxx`:178 - `XSAlgo_ShapeProcessor::MergeShapeTransferInfo()`
     /// Merge the results of the shape processing with the transfer process.
     /// @param theTransientProcess Transfer process to merge with.
     /// @param theModifiedShapesMap Map of modified shapes.
     /// @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
     /// @param theMessages Messages to add.
-    pub fn merge_shape_transfer_info(
+    pub fn merge_shape_transfer_info_handletransferfinderprocess_datamapofshapeshape_handleshapeextendmsgregistrator(
         theTransientProcess: &crate::ffi::HandleTransferFinderProcess,
         theModifiedShapesMap: &crate::ffi::TopTools_DataMapOfShapeShape,
         theMessages: &crate::ffi::HandleShapeExtendMsgRegistrator,
     ) {
         unsafe {
-            crate::ffi::XSAlgo_ShapeProcessor_merge_shape_transfer_info(
-                theTransientProcess,
-                theModifiedShapesMap,
-                theMessages,
-            )
+            crate::ffi::XSAlgo_ShapeProcessor_merge_shape_transfer_info_handletransferfinderprocess_datamapofshapeshape_handleshapeextendmsgregistrator(theTransientProcess, theModifiedShapesMap, theMessages)
         }
     }
 }
 
-// ── Skipped symbols for ShapeProcessor (11 total) ──
+// ── Skipped symbols for ShapeProcessor (9 total) ──
 // SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:48 - `XSAlgo_ShapeProcessor::XSAlgo_ShapeProcessor`
 //   constructor: Constructor.
 //   constructor: @param theParameters Pre-filled parameter map to be used in the processing.
@@ -118,13 +152,6 @@ impl ShapeProcessor {
 //   method: @param theOperations Operations to be performed.
 //   Reason: param 'theOperations' uses unknown type 'const ShapeProcess::OperationsFlags&'
 //   // pub fn process_shape(&mut self, theShape: &Shape, theOperations: &OperationsFlags, theProgress: &ProgressRange) -> OwnedPtr<TopoDS_Shape>;
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:72 - `XSAlgo_ShapeProcessor::MergeTransferInfo`
-//   method: Merge the results of the shape processing with the transfer process.
-//   method: @param theTransientProcess Transfer process to merge with.
-//   method: @param theFirstTPItemIndex Index of the first item in the transfer process to merge with.
-//   Reason: param 'theTransientProcess' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn merge_transfer_info(&self, theTransientProcess: &HandleTransientProcess, theFirstTPItemIndex: i32);
 //
 // SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:100 - `XSAlgo_ShapeProcessor::ReadProcessingData`
 //   static_method: Reads the parameter map from and operation flags from the file specified in static interface.
@@ -167,11 +194,4 @@ impl ShapeProcessor {
 //   static_method: @param theValue Value of the parameter.
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn set_parameter(theKey: *const char, theValue: &AsciiString, theIsReplace: bool, theMap: &mut i32);
-//
-// SKIPPED: **Source:** `XSAlgo_ShapeProcessor.hxx`:167 - `XSAlgo_ShapeProcessor::MergeShapeTransferInfo`
-//   static_method: Merge the results of the shape processing with the finder process.
-//   static_method: @param theTransientProcess Transfer process to merge with.
-//   static_method: @param theModifiedShapesMap Map of modified shapes.
-//   Reason: param 'theFinderProcess' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn merge_shape_transfer_info(theFinderProcess: &HandleTransientProcess, theModifiedShapesMap: &DataMapOfShapeShape, theFirstTPItemIndex: i32, theMessages: HandleMsgRegistrator);
 //

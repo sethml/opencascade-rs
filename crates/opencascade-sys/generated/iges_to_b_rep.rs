@@ -141,6 +141,23 @@ impl Actor {
         unsafe { crate::ffi::IGESToBRep_Actor_recognize(self as *mut Self, start) }
     }
 
+    /// **Source:** `IGESToBRep_Actor.hxx`:59 - `IGESToBRep_Actor::Transfer()`
+    pub fn transfer(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_transfer(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
+    }
+
     /// **Source:** `IGESToBRep_Actor.hxx`:66 - `IGESToBRep_Actor::UsedTolerance()`
     /// Returns the tolerance which was actually used, either from
     /// the file or from statics
@@ -228,10 +245,57 @@ impl Actor {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_to_handle(obj.into_raw())) }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring()`
+    pub fn transferring(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferProcessForTransient,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_inherited_Transferring(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:50 - `Transfer_ActorOfTransientProcess::TransferTransient()`
+    pub fn transfer_transient(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_inherited_TransferTransient(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
             &*(crate::ffi::IGESToBRep_Actor_inherited_GetProcessingFlags(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:68 - `Transfer_ActorOfProcessForTransient::TransientResult()`
+    pub fn transient_result(
+        &self,
+        res: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Actor_inherited_TransientResult(
+                self as *const Self,
+                res,
+            ))
         }
     }
 
@@ -353,12 +417,6 @@ impl HandleIGESToBRepActor {
         }
     }
 }
-
-// ── Skipped symbols for Actor (1 total) ──
-// SKIPPED: **Source:** `IGESToBRep_Actor.hxx`:59 - `IGESToBRep_Actor::Transfer`
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn transfer(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
 
 // ========================
 // From IGESToBRep_AlgoContainer.hxx
@@ -737,6 +795,24 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_BRepEntity_inherited_GetContinuity(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe {
+            crate::ffi::IGESToBRep_BRepEntity_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BRepEntity_inherited_GetTransferProcess(self as *const Self),
+            )
+        }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
@@ -1147,6 +1223,24 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_BasicCurve_inherited_GetContinuity(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicCurve_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicCurve_inherited_GetTransferProcess(self as *const Self),
+            )
+        }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
@@ -1568,6 +1662,26 @@ impl BasicSurface {
         unsafe { crate::ffi::IGESToBRep_BasicSurface_inherited_GetContinuity(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe {
+            crate::ffi::IGESToBRep_BasicSurface_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_BasicSurface_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     pub fn transfer_curve_and_surface(
         &mut self,
@@ -1947,6 +2061,26 @@ impl CurveAndSurface {
         unsafe { crate::ffi::IGESToBRep_CurveAndSurface_get_continuity(self as *const Self) }
     }
 
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
+    /// Set the value of "myMsgReg"
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe {
+            crate::ffi::IGESToBRep_CurveAndSurface_set_transfer_process(self as *mut Self, TP)
+        }
+    }
+
+    /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
+    /// Returns the value of "myMsgReg"
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_CurveAndSurface_get_transfer_process(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     /// Returns the result of the transfert of any IGES Curve
     /// or Surface Entity.  If  the transfer has  failed,  this
@@ -2119,7 +2253,7 @@ impl CurveAndSurface {
     }
 }
 
-// ── Skipped symbols for CurveAndSurface (4 total) ──
+// ── Skipped symbols for CurveAndSurface (2 total) ──
 // SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel`
 //   method: Set the value of "myModel"
 //   Reason: param 'model' uses unknown type 'const Handle(IGESData_IGESModel)&'
@@ -2129,16 +2263,6 @@ impl CurveAndSurface {
 //   method: Returns the value of "myModel"
 //   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
 //   // pub fn get_model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess`
-//   method: Set the value of "myMsgReg"
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn set_transfer_process(&mut self, TP: &HandleTransientProcess);
-//
-// SKIPPED: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess`
-//   method: Returns the value of "myMsgReg"
-//   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
-//   // pub fn get_transfer_process(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
 //
 
 // ========================
@@ -2479,6 +2603,23 @@ impl Reader {
         unsafe { crate::ffi::IGESToBRep_Reader_load_file(self as *mut Self, c_filename.as_ptr()) }
     }
 
+    /// **Source:** `IGESToBRep_Reader.hxx`:61 - `IGESToBRep_Reader::SetTransientProcess()`
+    /// Allows to set an already defined TransientProcess
+    /// (to be called after LoadFile or SetModel)
+    pub fn set_transient_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe { crate::ffi::IGESToBRep_Reader_set_transient_process(self as *mut Self, TP) }
+    }
+
+    /// **Source:** `IGESToBRep_Reader.hxx`:64 - `IGESToBRep_Reader::TransientProcess()`
+    /// Returns the TransientProcess
+    pub fn transient_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESToBRep_Reader_transient_process(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IGESToBRep_Reader.hxx`:67 - `IGESToBRep_Reader::Actor()`
     /// Returns "theActor"
     pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor> {
@@ -2570,7 +2711,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (10 total) ──
+// ── Skipped symbols for Reader (8 total) ──
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:54 - `IGESToBRep_Reader::SetModel`
 //   method: Specifies a Model to work on
 //   method: Also clears the result and Done status, sets TransientProcess
@@ -2581,17 +2722,6 @@ impl Reader {
 //   method: Returns the Model to be worked on.
 //   Reason: return type 'Handle(IGESData_IGESModel)' is unknown
 //   // pub fn model(&self) -> OwnedPtr<Handle<IGESData_IGESModel>>;
-//
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:61 - `IGESToBRep_Reader::SetTransientProcess`
-//   method: Allows to set an already defined TransientProcess
-//   method: (to be called after LoadFile or SetModel)
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn set_transient_process(&mut self, TP: &HandleTransientProcess);
-//
-// SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:64 - `IGESToBRep_Reader::TransientProcess`
-//   method: Returns the TransientProcess
-//   Reason: return type 'Handle(Transfer_TransientProcess)' is unknown
-//   // pub fn transient_process(&self) -> OwnedPtr<Handle<Transfer_TransientProcess>>;
 //
 // SKIPPED: **Source:** `IGESToBRep_Reader.hxx`:116 - `IGESToBRep_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
@@ -3118,6 +3248,24 @@ impl TopoCurve {
         unsafe { crate::ffi::IGESToBRep_TopoCurve_inherited_GetContinuity(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoCurve_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_TopoCurve_inherited_GetTransferProcess(self as *const Self),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     pub fn transfer_curve_and_surface(
         &mut self,
@@ -3546,6 +3694,26 @@ impl TopoSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         unsafe { crate::ffi::IGESToBRep_TopoSurface_inherited_GetContinuity(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+        unsafe {
+            crate::ffi::IGESToBRep_TopoSurface_inherited_SetTransferProcess(self as *mut Self, TP)
+        }
+    }
+
+    /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IGESToBRep_TopoSurface_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
+            )
+        }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`

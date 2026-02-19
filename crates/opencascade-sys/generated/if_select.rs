@@ -1440,6 +1440,33 @@ unsafe impl crate::CppDeletable for ContextModif {
 }
 
 impl ContextModif {
+    /// **Source:** `IFSelect_ContextModif.hxx`:65 - `IFSelect_ContextModif::IFSelect_ContextModif()`
+    /// Prepares a ContextModif with these information :
+    /// - the graph established from original model (target passed
+    /// directly to Modifier)
+    /// - the CopyTool which detains the CopyControl, which maps
+    /// starting (in original) and result (in target) entities
+    /// - an optional file name (for file output)
+    ///
+    /// Such a ContextModif is considered to be applied on all
+    /// transferred entities (no filter active)
+    pub fn new_graph_copytool_charptr(
+        graph: &crate::interface::Graph,
+        TC: &crate::interface::CopyTool,
+        filename: &str,
+    ) -> crate::OwnedPtr<Self> {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_ContextModif_ctor_graph_copytool_charptr(
+                    graph,
+                    TC,
+                    c_filename.as_ptr(),
+                ),
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_ContextModif.hxx`:78 - `IFSelect_ContextModif::IFSelect_ContextModif()`
     /// Prepares a ContextModif with these information :
     /// - the graph established from original model (target passed
@@ -1463,6 +1490,20 @@ impl ContextModif {
         }
     }
 
+    /// **Source:** `IFSelect_ContextModif.hxx`:90 - `IFSelect_ContextModif::Select()`
+    /// This method requires ContextModif to be applied with a filter.
+    /// If a ModelModifier is defined with a Selection criterium,
+    /// the result of this Selection is used as a filter :
+    /// - if none of its items has been transferred, the modification
+    /// does not apply at all
+    /// - else, the Modifier can query for what entities were selected
+    /// and what are their results
+    /// - if this method is not called before working, the Modifier
+    /// has to work on the whole Model
+    pub fn select(&mut self, list: &mut crate::interface::EntityIterator) {
+        unsafe { crate::ffi::IFSelect_ContextModif_select(self as *mut Self, list) }
+    }
+
     /// **Source:** `IFSelect_ContextModif.hxx`:94 - `IFSelect_ContextModif::OriginalGraph()`
     /// Returns the original Graph (compared to OriginalModel, it
     /// gives more query capabilitites)
@@ -1475,6 +1516,22 @@ impl ContextModif {
     pub fn original_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_original_model(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:100 - `IFSelect_ContextModif::SetProtocol()`
+    /// Allows to transmit a Protocol as part of a ContextModif
+    pub fn set_protocol(&mut self, proto: &crate::ffi::HandleInterfaceProtocol) {
+        unsafe { crate::ffi::IFSelect_ContextModif_set_protocol(self as *mut Self, proto) }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:103 - `IFSelect_ContextModif::Protocol()`
+    /// Returns the Protocol (Null if not set)
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_protocol(
                 self as *const Self,
             ))
         }
@@ -1495,6 +1552,16 @@ impl ContextModif {
             ))
             .to_string_lossy()
             .into_owned()
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:112 - `IFSelect_ContextModif::Control()`
+    /// Returns the map for a direct use, if required
+    pub fn control(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCopyControl> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_control(
+                self as *const Self,
+            ))
         }
     }
 
@@ -1534,6 +1601,28 @@ impl ContextModif {
         res: &mut crate::ffi::HandleStandardTransient,
     ) -> bool {
         unsafe { crate::ffi::IFSelect_ContextModif_search(self as *const Self, ent, res) }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:136 - `IFSelect_ContextModif::SelectedOriginal()`
+    /// Returns the list of original selected items.
+    /// See also the iteration
+    pub fn selected_original(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_selected_original(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextModif.hxx`:140 - `IFSelect_ContextModif::SelectedResult()`
+    /// Returns the list of resulting counterparts of selected items.
+    /// See also the iteration
+    pub fn selected_result(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextModif_selected_result(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_ContextModif.hxx`:143 - `IFSelect_ContextModif::SelectedCount()`
@@ -1699,49 +1788,6 @@ impl ContextModif {
     }
 }
 
-// ── Skipped symbols for ContextModif (7 total) ──
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:65 - `IFSelect_ContextModif::IFSelect_ContextModif`
-//   constructor: Prepares a ContextModif with these information :
-//   constructor: - the graph established from original model (target passed
-//   constructor: directly to Modifier)
-//   Reason: param 'TC' uses unknown type 'const Interface_CopyTool&'
-//   // pub fn new_graph_copytool_charptr(graph: &Graph, TC: &CopyTool, filename: *const char) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:90 - `IFSelect_ContextModif::Select`
-//   method: This method requires ContextModif to be applied with a filter.
-//   method: If a ModelModifier is defined with a Selection criterium,
-//   method: the result of this Selection is used as a filter :
-//   Reason: param 'list' uses unknown type 'Interface_EntityIterator&'
-//   // pub fn select(&mut self, list: &mut EntityIterator);
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:100 - `IFSelect_ContextModif::SetProtocol`
-//   method: Allows to transmit a Protocol as part of a ContextModif
-//   Reason: param 'proto' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn set_protocol(&mut self, proto: &HandleProtocol);
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:103 - `IFSelect_ContextModif::Protocol`
-//   method: Returns the Protocol (Null if not set)
-//   Reason: return type 'Handle(Interface_Protocol)' is unknown
-//   // pub fn protocol(&self) -> OwnedPtr<Handle<Interface_Protocol>>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:112 - `IFSelect_ContextModif::Control`
-//   method: Returns the map for a direct use, if required
-//   Reason: return type 'Handle(Interface_CopyControl)' is unknown
-//   // pub fn control(&self) -> OwnedPtr<Handle<Interface_CopyControl>>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:136 - `IFSelect_ContextModif::SelectedOriginal`
-//   method: Returns the list of original selected items.
-//   method: See also the iteration
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn selected_original(&self) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextModif.hxx`:140 - `IFSelect_ContextModif::SelectedResult`
-//   method: Returns the list of resulting counterparts of selected items.
-//   method: See also the iteration
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn selected_result(&self) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_ContextWrite.hxx
 // ========================
@@ -1765,11 +1811,56 @@ unsafe impl crate::CppDeletable for ContextWrite {
 }
 
 impl ContextWrite {
+    /// **Source:** `IFSelect_ContextWrite.hxx`:58 - `IFSelect_ContextWrite::IFSelect_ContextWrite()`
+    /// Prepares a ContextWrite with these information :
+    /// - the model which is to be written
+    /// - the protocol to be used
+    /// - the filename
+    /// - an object AppliedModifiers to work. It gives a list of
+    /// FileModifiers to be ran, and for each one it can give
+    /// a restricted list of entities (in the model), else all
+    /// the model is considered
+    pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol_handleifselectappliedmodifiers_charptr(
+        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        proto: &crate::ffi::HandleInterfaceProtocol,
+        applieds: &crate::ffi::HandleIFSelectAppliedModifiers,
+        filename: &str,
+    ) -> crate::OwnedPtr<Self> {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextWrite_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol_handleifselectappliedmodifiers_charptr(model, proto, applieds, c_filename.as_ptr()))
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextWrite.hxx`:64 - `IFSelect_ContextWrite::IFSelect_ContextWrite()`
+    /// Same as above but with an already computed Graph
+    pub fn new_handleinterfacehgraph_handleinterfaceprotocol_handleifselectappliedmodifiers_charptr(
+        hgraph: &crate::ffi::HandleInterfaceHGraph,
+        proto: &crate::ffi::HandleInterfaceProtocol,
+        applieds: &crate::ffi::HandleIFSelectAppliedModifiers,
+        filename: &str,
+    ) -> crate::OwnedPtr<Self> {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextWrite_ctor_handleinterfacehgraph_handleinterfaceprotocol_handleifselectappliedmodifiers_charptr(hgraph, proto, applieds, c_filename.as_ptr()))
+        }
+    }
+
     /// **Source:** `IFSelect_ContextWrite.hxx`:70 - `IFSelect_ContextWrite::Model()`
     /// Returns the Model
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextWrite_model(self as *const Self))
+        }
+    }
+
+    /// **Source:** `IFSelect_ContextWrite.hxx`:73 - `IFSelect_ContextWrite::Protocol()`
+    /// Returns the Protocol;
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ContextWrite_protocol(
+                self as *const Self,
+            ))
         }
     }
 
@@ -1970,25 +2061,6 @@ impl ContextWrite {
     }
 }
 
-// ── Skipped symbols for ContextWrite (3 total) ──
-// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:58 - `IFSelect_ContextWrite::IFSelect_ContextWrite`
-//   constructor: Prepares a ContextWrite with these information :
-//   constructor: - the model which is to be written
-//   constructor: - the protocol to be used
-//   Reason: param 'proto' uses unknown Handle type
-//   // pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol_handleifselectappliedmodifiers_charptr(model: &HandleInterfaceModel, proto: &HandleProtocol, applieds: &HandleAppliedModifiers, filename: *const char) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:64 - `IFSelect_ContextWrite::IFSelect_ContextWrite`
-//   constructor: Same as above but with an already computed Graph
-//   Reason: param 'hgraph' uses unknown Handle type
-//   // pub fn new_handleinterfacehgraph_handleinterfaceprotocol_handleifselectappliedmodifiers_charptr(hgraph: &HandleHGraph, proto: &HandleProtocol, applieds: &HandleAppliedModifiers, filename: *const char) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `IFSelect_ContextWrite.hxx`:73 - `IFSelect_ContextWrite::Protocol`
-//   method: Returns the Protocol;
-//   Reason: return type 'Handle(Interface_Protocol)' is unknown
-//   // pub fn protocol(&self) -> OwnedPtr<Handle<Interface_Protocol>>;
-//
-
 // ========================
 // From IFSelect_DispGlobal.hxx
 // ========================
@@ -2126,6 +2198,45 @@ impl DispGlobal {
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispGlobal_inherited_CanHaveRemainder(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities()`
+    pub fn get_entities(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispGlobal_inherited_GetEntities(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted()`
+    pub fn packeted(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispGlobal_inherited_Packeted(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:123 - `IFSelect_Dispatch::Remainder()`
+    pub fn remainder(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispGlobal_inherited_Remainder(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2368,6 +2479,45 @@ impl DispPerCount {
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerCount_inherited_CanHaveRemainder(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities()`
+    pub fn get_entities(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_inherited_GetEntities(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted()`
+    pub fn packeted(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_inherited_Packeted(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:123 - `IFSelect_Dispatch::Remainder()`
+    pub fn remainder(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerCount_inherited_Remainder(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2622,6 +2772,45 @@ impl DispPerFiles {
         unsafe { crate::ffi::IFSelect_DispPerFiles_inherited_CanHaveRemainder(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities()`
+    pub fn get_entities(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_inherited_GetEntities(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted()`
+    pub fn packeted(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_inherited_Packeted(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:123 - `IFSelect_Dispatch::Remainder()`
+    pub fn remainder(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerFiles_inherited_Remainder(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -2845,6 +3034,45 @@ impl DispPerOne {
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:85 - `IFSelect_Dispatch::CanHaveRemainder()`
     pub fn can_have_remainder(&self) -> bool {
         unsafe { crate::ffi::IFSelect_DispPerOne_inherited_CanHaveRemainder(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities()`
+    pub fn get_entities(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_inherited_GetEntities(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted()`
+    pub fn packeted(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_inherited_Packeted(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:123 - `IFSelect_Dispatch::Remainder()`
+    pub fn remainder(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerOne_inherited_Remainder(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3116,6 +3344,45 @@ impl DispPerSignature {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities()`
+    pub fn get_entities(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_inherited_GetEntities(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted()`
+    pub fn packeted(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_inherited_Packeted(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:123 - `IFSelect_Dispatch::Remainder()`
+    pub fn remainder(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_DispPerSignature_inherited_Remainder(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -3301,6 +3568,22 @@ impl Dispatch {
         }
     }
 
+    /// **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities()`
+    /// Gets Unique Root Entities from the Final Selection, given an
+    /// input Graph
+    /// This the starting step for an Evaluation (Packets - Remainder)
+    pub fn get_entities(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Dispatch_get_entities(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_Dispatch.hxx`:112 - `IFSelect_Dispatch::Packets()`
     /// Returns the list of produced Packets into argument <pack>.
     /// Each Packet corresponds to a Part, the Entities listed are the
@@ -3315,6 +3598,38 @@ impl Dispatch {
         packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         unsafe { crate::ffi::IFSelect_Dispatch_packets(self as *const Self, G, packs) }
+    }
+
+    /// **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted()`
+    /// Returns the list of all Input Entities (see GetEntities) which
+    /// are put in a Packet. That is, Entities listed in GetEntities
+    /// but not in Remainder (see below). Input is given as a Graph.
+    pub fn packeted(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Dispatch_packeted(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_Dispatch.hxx`:123 - `IFSelect_Dispatch::Remainder()`
+    /// Returns Remainder which is a set of Entities. Can be empty.
+    /// Default evaluation is empty (has to be redefined if
+    /// CanHaveRemainder is redefined to return True).
+    pub fn remainder(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Dispatch_remainder(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_Dispatch.hxx`:125 - `IFSelect_Dispatch::DynamicType()`
@@ -3498,34 +3813,13 @@ impl HandleIFSelectDispatch {
     }
 }
 
-// ── Skipped symbols for Dispatch (4 total) ──
+// ── Skipped symbols for Dispatch (1 total) ──
 // SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:93 - `IFSelect_Dispatch::LimitedMax`
 //   method: Returns True if a Dispatch generates a count of Packets always
 //   method: less than or equal to a maximum value : it can be computed
 //   method: from the total count of Entities to be dispatched : <nbent>.
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities`
-//   method: Gets Unique Root Entities from the Final Selection, given an
-//   method: input Graph
-//   method: This the starting step for an Evaluation (Packets - Remainder)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn get_entities(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted`
-//   method: Returns the list of all Input Entities (see GetEntities) which
-//   method: are put in a Packet. That is, Entities listed in GetEntities
-//   method: but not in Remainder (see below). Input is given as a Graph.
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn packeted(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_Dispatch.hxx`:123 - `IFSelect_Dispatch::Remainder`
-//   method: Returns Remainder which is a set of Entities. Can be empty.
-//   method: Default evaluation is empty (has to be redefined if
-//   method: CanHaveRemainder is redefined to return True).
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn remainder(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
 //
 
 // ========================
@@ -4138,6 +4432,28 @@ unsafe impl crate::CppDeletable for Editor {
 }
 
 impl Editor {
+    /// **Source:** `IFSelect_Editor.hxx`:53 - `IFSelect_Editor::SetValue()`
+    /// Sets a Typed Value for a given ident and short name, with an
+    /// Edit Mode
+    pub fn set_value(
+        &mut self,
+        num: i32,
+        typval: &crate::ffi::HandleInterfaceTypedValue,
+        shortname: &str,
+        accessmode: crate::if_select::EditValue,
+    ) {
+        let c_shortname = std::ffi::CString::new(shortname).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_Editor_set_value(
+                self as *mut Self,
+                num,
+                typval,
+                c_shortname.as_ptr(),
+                accessmode.into(),
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
     /// Sets a parameter to be a List
     /// max < 0 : not for a list (set when starting)
@@ -4151,6 +4467,17 @@ impl Editor {
     /// Returns the count of Typed Values
     pub fn nb_values(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_Editor_nb_values(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::TypedValue()`
+    /// Returns a Typed Value from its ident
+    pub fn typed_value(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceTypedValue> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Editor_typed_value(
+                self as *const Self,
+                num,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_Editor.hxx`:71 - `IFSelect_Editor::IsList()`
@@ -4469,18 +4796,7 @@ impl HandleIFSelectEditor {
     }
 }
 
-// ── Skipped symbols for Editor (4 total) ──
-// SKIPPED: **Source:** `IFSelect_Editor.hxx`:53 - `IFSelect_Editor::SetValue`
-//   method: Sets a Typed Value for a given ident and short name, with an
-//   method: Edit Mode
-//   Reason: param 'typval' uses unknown type 'const Handle(Interface_TypedValue)&'
-//   // pub fn set_value(&mut self, num: i32, typval: &HandleTypedValue, shortname: *const char, accessmode: EditValue);
-//
-// SKIPPED: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::TypedValue`
-//   method: Returns a Typed Value from its ident
-//   Reason: return type 'Handle(Interface_TypedValue)' is unknown
-//   // pub fn typed_value(&self, num: i32) -> OwnedPtr<Handle<Interface_TypedValue>>;
-//
+// ── Skipped symbols for Editor (2 total) ──
 // SKIPPED: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames`
 //   Reason: has unbindable types: param 'S': stream type (Standard_OStream&)
 //   // pub fn print_names(&self, S: /* Standard_OStream& */);
@@ -5613,6 +5929,33 @@ impl ListEditor {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ListEditor_ctor()) }
     }
 
+    /// **Source:** `IFSelect_ListEditor.hxx`:64 - `IFSelect_ListEditor::IFSelect_ListEditor()`
+    /// Creates a ListEditor, for which items of the list to edit are
+    /// defined by <def>, and <max> describes max length :
+    /// 0 (D) means no limit
+    /// value > 0 means : no more the <max> items are allowed
+    pub fn new_handleinterfacetypedvalue_int(
+        def: &crate::ffi::HandleInterfaceTypedValue,
+        max: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_ListEditor_ctor_handleinterfacetypedvalue_int(def, max),
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_ListEditor.hxx`:64 - `IFSelect_ListEditor::IFSelect_ListEditor()`
+    /// Creates a ListEditor, for which items of the list to edit are
+    /// defined by <def>, and <max> describes max length :
+    /// 0 (D) means no limit
+    /// value > 0 means : no more the <max> items are allowed
+    pub fn new_handleinterfacetypedvalue(
+        def: &crate::ffi::HandleInterfaceTypedValue,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_handleinterfacetypedvalue_int(def, 0)
+    }
+
     /// **Source:** `IFSelect_ListEditor.hxx`:68 - `IFSelect_ListEditor::LoadModel()`
     /// Loads a Model. It is used to check items of type Entity(Ident)
     pub fn load_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
@@ -5862,15 +6205,6 @@ impl HandleIFSelectListEditor {
     }
 }
 
-// ── Skipped symbols for ListEditor (1 total) ──
-// SKIPPED: **Source:** `IFSelect_ListEditor.hxx`:64 - `IFSelect_ListEditor::IFSelect_ListEditor`
-//   constructor: Creates a ListEditor, for which items of the list to edit are
-//   constructor: defined by <def>, and <max> describes max length :
-//   constructor: 0 (D) means no limit
-//   Reason: param 'def' uses unknown Handle type
-//   // pub fn new_handleinterfacetypedvalue_int(def: &HandleTypedValue, max: i32) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From IFSelect_ModelCopier.hxx
 // ========================
@@ -5987,6 +6321,135 @@ impl ModelCopier {
     /// Clears the list of File Modifiers to be applied on a file
     pub fn clear_applied_modifiers(&mut self, num: i32) -> bool {
         unsafe { crate::ffi::IFSelect_ModelCopier_clear_applied_modifiers(self as *mut Self, num) }
+    }
+
+    /// **Source:** `IFSelect_ModelCopier.hxx`:129 - `IFSelect_ModelCopier::Copy()`
+    /// Performs the Copy Operations, which include the Modifications
+    /// defined by the list of Modifiers. Memorizes the result, as a
+    /// list of InterfaceModels with the corresponding FileNames
+    /// They can then be sent, by the method Send, or queried
+    /// Copy calls internal method Copying.
+    /// Returns the produced CheckList
+    pub fn copy(
+        &mut self,
+        eval: &mut ShareOutResult,
+        WL: &crate::ffi::HandleIFSelectWorkLibrary,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModelCopier_copy(
+                self as *mut Self,
+                eval,
+                WL,
+                protocol,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ModelCopier.hxx`:136 - `IFSelect_ModelCopier::SendCopied()`
+    /// Sends the formerly defined results (see method Copy) to files,
+    /// then clears it
+    /// Remark : A Null File Name cause file to be not produced
+    pub fn send_copied(
+        &mut self,
+        WL: &crate::ffi::HandleIFSelectWorkLibrary,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModelCopier_send_copied(
+                self as *mut Self,
+                WL,
+                protocol,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ModelCopier.hxx`:142 - `IFSelect_ModelCopier::Send()`
+    /// Performs the Copy Operations (which include the Modifications)
+    /// and Sends the result on files, without memorizing it.
+    /// (the memorized result is ignored : neither queried not filled)
+    pub fn send(
+        &mut self,
+        eval: &mut ShareOutResult,
+        WL: &crate::ffi::HandleIFSelectWorkLibrary,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModelCopier_send(
+                self as *mut Self,
+                eval,
+                WL,
+                protocol,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ModelCopier.hxx`:150 - `IFSelect_ModelCopier::SendAll()`
+    /// Sends a model (defined in <G>) into one file, without managing
+    /// remaining data, already sent files, etc. Applies the Model and
+    /// File Modifiers.
+    /// Returns True if well done, False else
+    pub fn send_all(
+        &mut self,
+        filename: &str,
+        G: &crate::interface::Graph,
+        WL: &crate::ffi::HandleIFSelectWorkLibrary,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModelCopier_send_all(
+                self as *mut Self,
+                c_filename.as_ptr(),
+                G,
+                WL,
+                protocol,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ModelCopier.hxx`:159 - `IFSelect_ModelCopier::SendSelected()`
+    /// Sends a part of a model into one file. Model is gotten from
+    /// <G>, the part is defined in <iter>.
+    /// Remaining data are managed and can be later be worked on.
+    /// Returns True if well done, False else
+    pub fn send_selected(
+        &mut self,
+        filename: &str,
+        G: &crate::interface::Graph,
+        WL: &crate::ffi::HandleIFSelectWorkLibrary,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        iter: &crate::interface::EntityIterator,
+    ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
+        let c_filename = std::ffi::CString::new(filename).unwrap();
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModelCopier_send_selected(
+                self as *mut Self,
+                c_filename.as_ptr(),
+                G,
+                WL,
+                protocol,
+                iter,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ModelCopier.hxx`:170 - `IFSelect_ModelCopier::CopiedRemaining()`
+    /// Produces a Model copied from the Remaining List as <newmod>
+    /// <newmod> is a Null Handle if this list is empty
+    /// <WL> performs the copy by using <TC>
+    /// <TC> is assumed to have been defined with the starting model
+    /// same as defined by <G>.
+    pub fn copied_remaining(
+        &mut self,
+        G: &crate::interface::Graph,
+        WL: &crate::ffi::HandleIFSelectWorkLibrary,
+        TC: &mut crate::interface::CopyTool,
+        newmod: &mut crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_ModelCopier_copied_remaining(self as *mut Self, G, WL, TC, newmod)
+        }
     }
 
     /// **Source:** `IFSelect_ModelCopier.hxx`:185 - `IFSelect_ModelCopier::SetRemaining()`
@@ -6191,50 +6654,6 @@ impl HandleIFSelectModelCopier {
     }
 }
 
-// ── Skipped symbols for ModelCopier (6 total) ──
-// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:129 - `IFSelect_ModelCopier::Copy`
-//   method: Performs the Copy Operations, which include the Modifications
-//   method: defined by the list of Modifiers. Memorizes the result, as a
-//   method: list of InterfaceModels with the corresponding FileNames
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn copy(&mut self, eval: &mut ShareOutResult, WL: &HandleWorkLibrary, protocol: &HandleProtocol) -> OwnedPtr<Interface_CheckIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:136 - `IFSelect_ModelCopier::SendCopied`
-//   method: Sends the formerly defined results (see method Copy) to files,
-//   method: then clears it
-//   method: Remark : A Null File Name cause file to be not produced
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn send_copied(&mut self, WL: &HandleWorkLibrary, protocol: &HandleProtocol) -> OwnedPtr<Interface_CheckIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:142 - `IFSelect_ModelCopier::Send`
-//   method: Performs the Copy Operations (which include the Modifications)
-//   method: and Sends the result on files, without memorizing it.
-//   method: (the memorized result is ignored : neither queried not filled)
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn send(&mut self, eval: &mut ShareOutResult, WL: &HandleWorkLibrary, protocol: &HandleProtocol) -> OwnedPtr<Interface_CheckIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:150 - `IFSelect_ModelCopier::SendAll`
-//   method: Sends a model (defined in <G>) into one file, without managing
-//   method: remaining data, already sent files, etc. Applies the Model and
-//   method: File Modifiers.
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn send_all(&mut self, filename: *const char, G: &Graph, WL: &HandleWorkLibrary, protocol: &HandleProtocol) -> OwnedPtr<Interface_CheckIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:159 - `IFSelect_ModelCopier::SendSelected`
-//   method: Sends a part of a model into one file. Model is gotten from
-//   method: <G>, the part is defined in <iter>.
-//   method: Remaining data are managed and can be later be worked on.
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn send_selected(&mut self, filename: *const char, G: &Graph, WL: &HandleWorkLibrary, protocol: &HandleProtocol, iter: &EntityIterator) -> OwnedPtr<Interface_CheckIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_ModelCopier.hxx`:170 - `IFSelect_ModelCopier::CopiedRemaining`
-//   method: Produces a Model copied from the Remaining List as <newmod>
-//   method: <newmod> is a Null Handle if this list is empty
-//   method: <WL> performs the copy by using <TC>
-//   Reason: param 'TC' uses unknown type 'Interface_CopyTool&'
-//   // pub fn copied_remaining(&mut self, G: &Graph, WL: &HandleWorkLibrary, TC: &mut CopyTool, newmod: &mut HandleInterfaceModel);
-//
-
 // ========================
 // From IFSelect_ModifEditForm.hxx
 // ========================
@@ -6269,6 +6688,26 @@ impl ModifEditForm {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ModifEditForm_edit_form(
                 self as *const Self,
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ModifEditForm.hxx`:46 - `IFSelect_ModifEditForm::Perform()`
+    /// Acts by applying an EditForm to entities, selected or all model
+    pub fn perform(
+        &self,
+        ctx: &mut ContextModif,
+        target: &crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_ModifEditForm_perform(
+                self as *const Self,
+                ctx,
+                target,
+                protocol,
+                TC,
+            )
         }
     }
 
@@ -6488,13 +6927,6 @@ impl HandleIFSelectModifEditForm {
     }
 }
 
-// ── Skipped symbols for ModifEditForm (1 total) ──
-// SKIPPED: **Source:** `IFSelect_ModifEditForm.hxx`:46 - `IFSelect_ModifEditForm::Perform`
-//   method: Acts by applying an EditForm to entities, selected or all model
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn perform(&self, ctx: &mut ContextModif, target: &HandleInterfaceModel, protocol: &HandleProtocol, TC: &mut CopyTool);
-//
-
 // ========================
 // From IFSelect_ModifReorder.hxx
 // ========================
@@ -6528,6 +6960,28 @@ impl ModifReorder {
     /// Else, they are set at beginning (as done by AddWithRefs)
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(true)
+    }
+
+    /// **Source:** `IFSelect_ModifReorder.hxx`:50 - `IFSelect_ModifReorder::Perform()`
+    /// Acts by computing orders (by method All from ShareTool) then
+    /// forcing them in the model. Remark that selection is ignored :
+    /// ALL the model is processed in once
+    pub fn perform(
+        &self,
+        ctx: &mut ContextModif,
+        target: &crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_ModifReorder_perform(
+                self as *const Self,
+                ctx,
+                target,
+                protocol,
+                TC,
+            )
+        }
     }
 
     /// **Source:** `IFSelect_ModifReorder.hxx`:56 - `IFSelect_ModifReorder::Label()`
@@ -6746,15 +7200,6 @@ impl HandleIFSelectModifReorder {
     }
 }
 
-// ── Skipped symbols for ModifReorder (1 total) ──
-// SKIPPED: **Source:** `IFSelect_ModifReorder.hxx`:50 - `IFSelect_ModifReorder::Perform`
-//   method: Acts by computing orders (by method All from ShareTool) then
-//   method: forcing them in the model. Remark that selection is ignored :
-//   method: ALL the model is processed in once
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn perform(&self, ctx: &mut ContextModif, target: &HandleInterfaceModel, protocol: &HandleProtocol, TC: &mut CopyTool);
-//
-
 // ========================
 // From IFSelect_Modifier.hxx
 // ========================
@@ -6775,6 +7220,31 @@ unsafe impl crate::CppDeletable for Modifier {
 }
 
 impl Modifier {
+    /// **Source:** `IFSelect_Modifier.hxx`:54 - `IFSelect_Modifier::Perform()`
+    /// This deferred method defines the action specific to each class
+    /// of Modifier. It is called by a ModelCopier, once the Model
+    /// generated and filled. ModelCopier has already checked the
+    /// criteria (Dispatch, Model Rank, Selection) before calling it.
+    ///
+    /// <ctx> detains information about original data and selection.
+    /// The result of copying, on which modifications are to be done,
+    /// is <target>.
+    /// <TC> allows to run additional copies as required
+    ///
+    /// In case of Error, use methods CCheck from the ContextModif
+    /// to acknowledge an entity Check or a Global Check with messages
+    pub fn perform(
+        &self,
+        ctx: &mut ContextModif,
+        target: &crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        TC: &mut crate::interface::CopyTool,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_Modifier_perform(self as *const Self, ctx, target, protocol, TC)
+        }
+    }
+
     /// **Source:** `IFSelect_Modifier.hxx`:59 - `IFSelect_Modifier::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         unsafe { &*(crate::ffi::IFSelect_Modifier_dynamic_type(self as *const Self)) }
@@ -6986,15 +7456,6 @@ impl HandleIFSelectModifier {
     }
 }
 
-// ── Skipped symbols for Modifier (1 total) ──
-// SKIPPED: **Source:** `IFSelect_Modifier.hxx`:54 - `IFSelect_Modifier::Perform`
-//   method: This deferred method defines the action specific to each class
-//   method: of Modifier. It is called by a ModelCopier, once the Model
-//   method: generated and filled. ModelCopier has already checked the
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn perform(&self, ctx: &mut ContextModif, target: &HandleInterfaceModel, protocol: &HandleProtocol, TC: &mut CopyTool);
-//
-
 // ========================
 // From IFSelect_PacketList.hxx
 // ========================
@@ -7087,6 +7548,18 @@ impl PacketList {
         unsafe { crate::ffi::IFSelect_PacketList_nb_entities(self as *const Self, numpack) }
     }
 
+    /// **Source:** `IFSelect_PacketList.hxx`:77 - `IFSelect_PacketList::Entities()`
+    /// Returns the content of a Packet given its rank
+    /// Null Handle if <numpack> is out of range
+    pub fn entities(&self, numpack: i32) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_PacketList_entities(
+                self as *const Self,
+                numpack,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_PacketList.hxx`:81 - `IFSelect_PacketList::HighestDuplicationCount()`
     /// Returns the highest number of packets which know a same entity
     /// For no duplication, should be one
@@ -7102,6 +7575,27 @@ impl PacketList {
     pub fn nb_duplicated(&self, count: i32, andmore: bool) -> i32 {
         unsafe {
             crate::ffi::IFSelect_PacketList_nb_duplicated(self as *const Self, count, andmore)
+        }
+    }
+
+    /// **Source:** `IFSelect_PacketList.hxx`:96 - `IFSelect_PacketList::Duplicated()`
+    /// Returns a list of entities duplicated :
+    /// <count> times, if <andmore> is False, or
+    /// <count> or more times, if <andmore> is True
+    /// Hence, count=2 & andmore=True gives all duplicated entities
+    /// count=1 gives non-duplicated entities (in only one packet)
+    /// count=0 gives remaining entities (in no packet at all)
+    pub fn duplicated(
+        &self,
+        count: i32,
+        andmore: bool,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_PacketList_duplicated(
+                self as *const Self,
+                count,
+                andmore,
+            ))
         }
     }
 
@@ -7209,21 +7703,6 @@ impl HandleIFSelectPacketList {
     }
 }
 
-// ── Skipped symbols for PacketList (2 total) ──
-// SKIPPED: **Source:** `IFSelect_PacketList.hxx`:77 - `IFSelect_PacketList::Entities`
-//   method: Returns the content of a Packet given its rank
-//   method: Null Handle if <numpack> is out of range
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn entities(&self, numpack: i32) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_PacketList.hxx`:96 - `IFSelect_PacketList::Duplicated`
-//   method: Returns a list of entities duplicated :
-//   method: <count> times, if <andmore> is False, or
-//   method: <count> or more times, if <andmore> is True
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn duplicated(&self, count: i32, andmore: bool) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_ParamEditor.hxx
 // ========================
@@ -7257,6 +7736,16 @@ impl ParamEditor {
                 nbmax,
                 c_label.as_ptr(),
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ParamEditor.hxx`:56 - `IFSelect_ParamEditor::AddValue()`
+    /// Adds a TypedValue
+    /// By default, its short name equates its complete name, it can be made explicit
+    pub fn add_value(&mut self, val: &crate::ffi::HandleInterfaceTypedValue, shortname: &str) {
+        let c_shortname = std::ffi::CString::new(shortname).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_ParamEditor_add_value(self as *mut Self, val, c_shortname.as_ptr())
         }
     }
 
@@ -7401,6 +7890,16 @@ impl ParamEditor {
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::NbValues()`
     pub fn nb_values(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_ParamEditor_inherited_NbValues(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::TypedValue()`
+    pub fn typed_value(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceTypedValue> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ParamEditor_inherited_TypedValue(
+                self as *const Self,
+                num,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:71 - `IFSelect_Editor::IsList()`
@@ -7581,14 +8080,6 @@ impl HandleIFSelectParamEditor {
     }
 }
 
-// ── Skipped symbols for ParamEditor (1 total) ──
-// SKIPPED: **Source:** `IFSelect_ParamEditor.hxx`:56 - `IFSelect_ParamEditor::AddValue`
-//   method: Adds a TypedValue
-//   method: By default, its short name equates its complete name, it can be made explicit
-//   Reason: param 'val' uses unknown type 'const Handle(Interface_TypedValue)&'
-//   // pub fn add_value(&mut self, val: &HandleTypedValue, shortname: *const char);
-//
-
 // ========================
 // From IFSelect_SelectAnyList.hxx
 // ========================
@@ -7630,6 +8121,14 @@ unsafe impl crate::CppDeletable for SelectAnyList {
 }
 
 impl SelectAnyList {
+    /// **Source:** `IFSelect_SelectAnyList.hxx`:68 - `IFSelect_SelectAnyList::KeepInputEntity()`
+    /// Keeps Input Entity, as having required type. It works by
+    /// keeping in <iter>, only suitable Entities (SelectType can be
+    /// used). Called by RootResult (which waits for ONE ENTITY MAX)
+    pub fn keep_input_entity(&self, iter: &mut crate::interface::EntityIterator) {
+        unsafe { crate::ffi::IFSelect_SelectAnyList_keep_input_entity(self as *const Self, iter) }
+    }
+
     /// **Source:** `IFSelect_SelectAnyList.hxx`:72 - `IFSelect_SelectAnyList::NbItems()`
     /// Returns count of Items in the list in the Entity <ent>
     /// If <ent> has not required type, returned value must be Zero
@@ -7703,6 +8202,39 @@ impl SelectAnyList {
     /// Returns Integer Value of Upper Limit (0 if none)
     pub fn upper_value(&self) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectAnyList_upper_value(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_SelectAnyList.hxx`:109 - `IFSelect_SelectAnyList::RootResult()`
+    /// Returns the list of selected entities (list of entities
+    /// complying with rank criterium)
+    /// Error if the input list has more than one Item
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyList_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectAnyList.hxx`:115 - `IFSelect_SelectAnyList::FillResult()`
+    /// Puts into <res>, the sub-entities of the list, from n1 to
+    /// n2 included. Remark that adequation with Entity's type and
+    /// length of list has already been made at this stage
+    /// Called by RootResult
+    pub fn fill_result(
+        &self,
+        n1: i32,
+        n2: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        res: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_SelectAnyList_fill_result(self as *const Self, n1, n2, ent, res)
+        }
     }
 
     /// **Source:** `IFSelect_SelectAnyList.hxx`:124 - `IFSelect_SelectAnyList::Label()`
@@ -7815,10 +8347,49 @@ impl SelectAnyList {
         unsafe { &mut *(crate::ffi::IFSelect_SelectAnyList_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyList_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectAnyList_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyList_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyList_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -7913,29 +8484,6 @@ impl HandleIFSelectSelectAnyList {
         }
     }
 }
-
-// ── Skipped symbols for SelectAnyList (3 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:68 - `IFSelect_SelectAnyList::KeepInputEntity`
-//   method: Keeps Input Entity, as having required type. It works by
-//   method: keeping in <iter>, only suitable Entities (SelectType can be
-//   method: used). Called by RootResult (which waits for ONE ENTITY MAX)
-//   Reason: param 'iter' uses unknown type 'Interface_EntityIterator&'
-//   // pub fn keep_input_entity(&self, iter: &mut EntityIterator);
-//
-// SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:109 - `IFSelect_SelectAnyList::RootResult`
-//   method: Returns the list of selected entities (list of entities
-//   method: complying with rank criterium)
-//   method: Error if the input list has more than one Item
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectAnyList.hxx`:115 - `IFSelect_SelectAnyList::FillResult`
-//   method: Puts into <res>, the sub-entities of the list, from n1 to
-//   method: n2 included. Remark that adequation with Entity's type and
-//   method: length of list has already been made at this stage
-//   Reason: param 'res' uses unknown type 'Interface_EntityIterator&'
-//   // pub fn fill_result(&self, n1: i32, n2: i32, ent: &HandleTransient, res: &mut EntityIterator);
-//
 
 // ========================
 // From IFSelect_SelectAnyType.hxx
@@ -8062,6 +8610,19 @@ impl SelectAnyType {
         unsafe { crate::ffi::IFSelect_SelectAnyType_inherited_SetDirect(self as *mut Self, direct) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
@@ -8126,10 +8687,49 @@ impl SelectAnyType {
         unsafe { &mut *(crate::ffi::IFSelect_SelectAnyType_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectAnyType_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectAnyType_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -8319,6 +8919,45 @@ impl SelectBase {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectBase_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:49 - `IFSelect_Selection::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectBase_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectBase_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectBase_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -8604,6 +9243,45 @@ impl SelectCombine {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:49 - `IFSelect_Selection::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectCombine_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectCombine_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectCombine_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -8845,6 +9523,45 @@ impl SelectControl {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:49 - `IFSelect_Selection::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectControl_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectControl_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectControl_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_Selection.hxx`:69 - `IFSelect_Selection::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -9015,6 +9732,24 @@ impl SelectDeduct {
         unsafe { &mut *(crate::ffi::IFSelect_SelectDeduct_alternate(self as *mut Self)) }
     }
 
+    /// **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Returns the Result determined by Input Selection, as Unique
+    /// if Input Selection is not defined, returns an empty list.
+    ///
+    /// If Alternate is set, InputResult takes its definition instead
+    /// of calling the Input Selection, then clears it
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDeduct_input_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     /// Puts in an Iterator the Selections from which "me" depends
     /// This list contains one Selection : the InputSelection
@@ -9062,6 +9797,45 @@ impl SelectDeduct {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *(crate::ffi::IFSelect_SelectDeduct_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:49 - `IFSelect_Selection::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDeduct_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDeduct_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDeduct_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -9459,14 +10233,6 @@ impl HandleIFSelectSelectDeduct {
     }
 }
 
-// ── Skipped symbols for SelectDeduct (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult`
-//   method: Returns the Result determined by Input Selection, as Unique
-//   method: if Input Selection is not defined, returns an empty list.
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn input_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectDiff.hxx
 // ========================
@@ -9487,6 +10253,21 @@ impl SelectDiff {
     /// Creates an empty SelectDiff
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDiff_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectDiff.hxx`:43 - `IFSelect_SelectDiff::RootResult()`
+    /// Returns the list of selected entities : they are the Entities
+    /// gotten from the Main Input but not from the Diff Input
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDiff_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectDiff.hxx`:46 - `IFSelect_SelectDiff::Label()`
@@ -9601,6 +10382,32 @@ impl SelectDiff {
         unsafe { crate::ffi::IFSelect_SelectDiff_inherited_FillIterator(self as *const Self, iter) }
     }
 
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDiff_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectDiff_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -9689,14 +10496,6 @@ impl HandleIFSelectSelectDiff {
     }
 }
 
-// ── Skipped symbols for SelectDiff (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectDiff.hxx`:43 - `IFSelect_SelectDiff::RootResult`
-//   method: Returns the list of selected entities : they are the Entities
-//   method: gotten from the Main Input but not from the Diff Input
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectEntityNumber.hxx
 // ========================
@@ -9734,6 +10533,21 @@ impl SelectEntityNumber {
         unsafe {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectEntityNumber_number(
                 self as *const Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectEntityNumber.hxx`:53 - `IFSelect_SelectEntityNumber::RootResult()`
+    /// Returns the list of selected entities : the Entity having the
+    /// specified Number (this result assures naturally uniqueness)
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectEntityNumber_root_result(
+                self as *const Self,
+                G,
             ))
         }
     }
@@ -9836,6 +10650,36 @@ impl SelectEntityNumber {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectEntityNumber_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectEntityNumber_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -9932,14 +10776,6 @@ impl HandleIFSelectSelectEntityNumber {
         }
     }
 }
-
-// ── Skipped symbols for SelectEntityNumber (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectEntityNumber.hxx`:53 - `IFSelect_SelectEntityNumber::RootResult`
-//   method: Returns the list of selected entities : the Entity having the
-//   method: specified Number (this result assures naturally uniqueness)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
 
 // ========================
 // From IFSelect_SelectErrorEntities.hxx
@@ -10100,6 +10936,21 @@ impl SelectErrorEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectErrorEntities_inherited_RootResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
@@ -10161,12 +11012,57 @@ impl SelectErrorEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectErrorEntities_inherited_InputResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectErrorEntities_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectErrorEntities_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectErrorEntities_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
             )
         }
     }
@@ -10324,6 +11220,48 @@ impl SelectExplore {
         unsafe { crate::ffi::IFSelect_SelectExplore_level(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    /// Returns the list of selected entities. Works by calling the
+    /// method Explore on each input entity : it can be rejected,
+    /// taken for output, or to explore. If the maximum level has not
+    /// yet been attained, or if no max level is specified, entities
+    /// to be explored are themselves used as if they were input
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExplore_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectExplore.hxx`:76 - `IFSelect_SelectExplore::Explore()`
+    /// Analyses and, if required, Explores an entity, as follows :
+    /// The explored list starts as empty, it has to be filled by this
+    /// method.
+    /// If it returns False, <ent> is rejected for result (this is to
+    /// be used only as safety)
+    /// If it returns True and <explored> remains empty, <ent> is
+    /// taken itself for result, not explored
+    /// If it returns True and <explored> is not empty, the content
+    /// of this list is considered :
+    /// If maximum level is attained, it is taken for result
+    /// Else (or no max), each of its entity will be itself explored
+    pub fn explore(
+        &self,
+        level: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+        explored: &mut crate::interface::EntityIterator,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectExplore_explore(self as *const Self, level, ent, G, explored)
+        }
+    }
+
     /// **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     /// Returns a text saying "(Recursive)" or "(Level nn)" plus
     /// specific criterium returned by ExploreLabel (see below)
@@ -10431,10 +11369,49 @@ impl SelectExplore {
         unsafe { &mut *(crate::ffi::IFSelect_SelectExplore_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExplore_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectExplore_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExplore_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExplore_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -10584,22 +11561,6 @@ impl HandleIFSelectSelectExplore {
     }
 }
 
-// ── Skipped symbols for SelectExplore (2 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult`
-//   method: Returns the list of selected entities. Works by calling the
-//   method: method Explore on each input entity : it can be rejected,
-//   method: taken for output, or to explore. If the maximum level has not
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectExplore.hxx`:76 - `IFSelect_SelectExplore::Explore`
-//   method: Analyses and, if required, Explores an entity, as follows :
-//   method: The explored list starts as empty, it has to be filled by this
-//   method: method.
-//   Reason: param 'explored' uses unknown type 'Interface_EntityIterator&'
-//   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
-//
-
 // ========================
 // From IFSelect_SelectExtract.hxx
 // ========================
@@ -10632,6 +11593,22 @@ impl SelectExtract {
     /// (True : Direct , False : Reverse)
     pub fn set_direct(&mut self, direct: bool) {
         unsafe { crate::ffi::IFSelect_SelectExtract_set_direct(self as *mut Self, direct) }
+    }
+
+    /// **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    /// Returns the list of selected entities. Works by calling the
+    /// method Sort on each input Entity : the Entity is kept as
+    /// output if Sort returns the same value as Direct status
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExtract_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectExtract.hxx`:66 - `IFSelect_SelectExtract::Sort()`
@@ -10775,10 +11752,49 @@ impl SelectExtract {
         unsafe { &mut *(crate::ffi::IFSelect_SelectExtract_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExtract_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectExtract_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExtract_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectExtract_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -11070,15 +12086,6 @@ impl HandleIFSelectSelectExtract {
     }
 }
 
-// ── Skipped symbols for SelectExtract (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult`
-//   method: Returns the list of selected entities. Works by calling the
-//   method: method Sort on each input Entity : the Entity is kept as
-//   method: output if Sort returns the same value as Direct status
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectFlag.hxx
 // ========================
@@ -11117,6 +12124,27 @@ impl SelectFlag {
             std::ffi::CStr::from_ptr(crate::ffi::IFSelect_SelectFlag_flag_name(self as *const Self))
                 .to_string_lossy()
                 .into_owned()
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectFlag.hxx`:57 - `IFSelect_SelectFlag::RootResult()`
+    /// Returns the list of selected entities. It is redefined to
+    /// work on the graph itself (not queried by sort)
+    ///
+    /// An entity is selected if its flag is True on Direct mode,
+    /// False on Reversed mode
+    ///
+    /// If flag does not exist for the given name, returns an empty
+    /// result, whatever the Direct/Reversed sense
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_root_result(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -11279,9 +12307,48 @@ impl SelectFlag {
         unsafe { &mut *(crate::ffi::IFSelect_SelectFlag_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectFlag_inherited_FillIterator(self as *const Self, iter) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectFlag_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -11403,14 +12470,6 @@ impl HandleIFSelectSelectFlag {
     }
 }
 
-// ── Skipped symbols for SelectFlag (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectFlag.hxx`:57 - `IFSelect_SelectFlag::RootResult`
-//   method: Returns the list of selected entities. It is redefined to
-//   method: work on the graph itself (not queried by sort)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectInList.hxx
 // ========================
@@ -11448,6 +12507,23 @@ impl SelectInList {
                 num,
                 ent,
             ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectInList.hxx`:54 - `IFSelect_SelectInList::FillResult()`
+    /// Puts into the result, the sub-entities of the list, from n1 to
+    /// n2 included. Remark that adequation with Entity's type and
+    /// length of list has already been made at this stage
+    /// Called by RootResult; calls ListedEntity (see below)
+    pub fn fill_result(
+        &self,
+        n1: i32,
+        n2: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        result: &mut crate::interface::EntityIterator,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_SelectInList_fill_result(self as *const Self, n1, n2, ent, result)
         }
     }
 
@@ -11526,6 +12602,13 @@ impl SelectInList {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:68 - `IFSelect_SelectAnyList::KeepInputEntity()`
+    pub fn keep_input_entity(&self, iter: &mut crate::interface::EntityIterator) {
+        unsafe {
+            crate::ffi::IFSelect_SelectInList_inherited_KeepInputEntity(self as *const Self, iter)
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:72 - `IFSelect_SelectAnyList::NbItems()`
     pub fn nb_items(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_NbItems(self as *const Self, ent) }
@@ -11599,6 +12682,19 @@ impl SelectInList {
         unsafe { crate::ffi::IFSelect_SelectInList_inherited_UpperValue(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:109 - `IFSelect_SelectAnyList::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectAnyList.hxx`:124 - `IFSelect_SelectAnyList::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -11646,10 +12742,49 @@ impl SelectInList {
         unsafe { &mut *(crate::ffi::IFSelect_SelectInList_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectInList_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectInList_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -11757,15 +12892,6 @@ impl HandleIFSelectSelectInList {
         }
     }
 }
-
-// ── Skipped symbols for SelectInList (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectInList.hxx`:54 - `IFSelect_SelectInList::FillResult`
-//   method: Puts into the result, the sub-entities of the list, from n1 to
-//   method: n2 included. Remark that adequation with Entity's type and
-//   method: length of list has already been made at this stage
-//   Reason: param 'result' uses unknown type 'Interface_EntityIterator&'
-//   // pub fn fill_result(&self, n1: i32, n2: i32, ent: &HandleTransient, result: &mut EntityIterator);
-//
 
 // ========================
 // From IFSelect_SelectIncorrectEntities.hxx
@@ -11915,6 +13041,21 @@ impl SelectIncorrectEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectFlag.hxx`:57 - `IFSelect_SelectFlag::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectIncorrectEntities_inherited_RootResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectFlag.hxx`:62 - `IFSelect_SelectFlag::Sort()`
     pub fn sort(
         &self,
@@ -12025,12 +13166,57 @@ impl SelectIncorrectEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectIncorrectEntities_inherited_InputResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectIncorrectEntities_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectIncorrectEntities_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectIncorrectEntities_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
             )
         }
     }
@@ -12191,6 +13377,21 @@ impl SelectIntersection {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIntersection_ctor()) }
     }
 
+    /// **Source:** `IFSelect_SelectIntersection.hxx`:43 - `IFSelect_SelectIntersection::RootResult()`
+    /// Returns the list of selected Entities, which is the common part
+    /// of results from all input selections. Uniqueness is guaranteed.
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectIntersection_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SelectIntersection.hxx`:46 - `IFSelect_SelectIntersection::Label()`
     /// Returns a text defining the criterium : "Intersection (AND)"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -12325,6 +13526,36 @@ impl SelectIntersection {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectIntersection_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectIntersection_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -12424,14 +13655,6 @@ impl HandleIFSelectSelectIntersection {
     }
 }
 
-// ── Skipped symbols for SelectIntersection (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectIntersection.hxx`:43 - `IFSelect_SelectIntersection::RootResult`
-//   method: Returns the list of selected Entities, which is the common part
-//   method: of results from all input selections. Uniqueness is guaranteed.
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectModelEntities.hxx
 // ========================
@@ -12452,6 +13675,36 @@ impl SelectModelEntities {
     /// Creates a SelectModelRoot
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelEntities_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectModelEntities.hxx`:43 - `IFSelect_SelectModelEntities::RootResult()`
+    /// Returns the list of selected entities : the Entities of the
+    /// Model (note that this result assures naturally uniqueness)
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelEntities_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectModelEntities.hxx`:47 - `IFSelect_SelectModelEntities::CompleteResult()`
+    /// The complete list of Entities (including shared ones) ...
+    /// is exactly identical to RootResults in this case
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelEntities_complete_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectModelEntities.hxx`:51 - `IFSelect_SelectModelEntities::Label()`
@@ -12548,6 +13801,21 @@ impl SelectModelEntities {
             crate::ffi::IFSelect_SelectModelEntities_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectModelEntities_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
             )
         }
     }
@@ -12653,20 +13921,6 @@ impl HandleIFSelectSelectModelEntities {
     }
 }
 
-// ── Skipped symbols for SelectModelEntities (2 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectModelEntities.hxx`:43 - `IFSelect_SelectModelEntities::RootResult`
-//   method: Returns the list of selected entities : the Entities of the
-//   method: Model (note that this result assures naturally uniqueness)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_SelectModelEntities.hxx`:47 - `IFSelect_SelectModelEntities::CompleteResult`
-//   method: The complete list of Entities (including shared ones) ...
-//   method: is exactly identical to RootResults in this case
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn complete_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectModelRoots.hxx
 // ========================
@@ -12689,6 +13943,21 @@ impl SelectModelRoots {
     /// Creates a SelectModelRoot
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelRoots_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectModelRoots.hxx`:45 - `IFSelect_SelectModelRoots::RootResult()`
+    /// Returns the list of selected entities : the Roots of the Model
+    /// (note that this result assures naturally uniqueness)
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelRoots_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectModelRoots.hxx`:48 - `IFSelect_SelectModelRoots::Label()`
@@ -12786,6 +14055,34 @@ impl SelectModelRoots {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectModelRoots_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectModelRoots_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -12877,14 +14174,6 @@ impl HandleIFSelectSelectModelRoots {
         }
     }
 }
-
-// ── Skipped symbols for SelectModelRoots (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectModelRoots.hxx`:45 - `IFSelect_SelectModelRoots::RootResult`
-//   method: Returns the list of selected entities : the Roots of the Model
-//   method: (note that this result assures naturally uniqueness)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
 
 // ========================
 // From IFSelect_SelectPointed.hxx
@@ -13011,11 +14300,50 @@ impl SelectPointed {
         }
     }
 
+    /// **Source:** `IFSelect_SelectPointed.hxx`:106 - `IFSelect_SelectPointed::Update()`
+    /// Rebuilds the selected list. Any selected entity which has a
+    /// bound result is replaced by this result, else it is removed.
+    pub fn update_handleinterfacecopycontrol(
+        &mut self,
+        control: &crate::ffi::HandleInterfaceCopyControl,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_SelectPointed_update_handleinterfacecopycontrol(
+                self as *mut Self,
+                control,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_SelectPointed.hxx`:110 - `IFSelect_SelectPointed::Update()`
     /// Rebuilds the selected list, by querying a Transformer
     /// (same principle as from a CopyControl)
-    pub fn update(&mut self, trf: &crate::ffi::HandleIFSelectTransformer) {
-        unsafe { crate::ffi::IFSelect_SelectPointed_update(self as *mut Self, trf) }
+    pub fn update_handleifselecttransformer(
+        &mut self,
+        trf: &crate::ffi::HandleIFSelectTransformer,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_SelectPointed_update_handleifselecttransformer(
+                self as *mut Self,
+                trf,
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_SelectPointed.hxx`:116 - `IFSelect_SelectPointed::RootResult()`
+    /// Returns the list of selected items. Only the selected entities
+    /// which are present in the graph are given (this result assures
+    /// uniqueness).
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectPointed_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectPointed.hxx`:120 - `IFSelect_SelectPointed::Label()`
@@ -13097,6 +14425,32 @@ impl SelectPointed {
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectPointed_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectPointed_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectPointed_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -13189,21 +14543,6 @@ impl HandleIFSelectSelectPointed {
         }
     }
 }
-
-// ── Skipped symbols for SelectPointed (2 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:106 - `IFSelect_SelectPointed::Update`
-//   method: Rebuilds the selected list. Any selected entity which has a
-//   method: bound result is replaced by this result, else it is removed.
-//   Reason: param 'control' uses unknown type 'const Handle(Interface_CopyControl)&'
-//   // pub fn update(&mut self, control: &HandleCopyControl);
-//
-// SKIPPED: **Source:** `IFSelect_SelectPointed.hxx`:116 - `IFSelect_SelectPointed::RootResult`
-//   method: Returns the list of selected items. Only the selected entities
-//   method: which are present in the graph are given (this result assures
-//   method: uniqueness).
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
 
 // ========================
 // From IFSelect_SelectRange.hxx
@@ -13412,6 +14751,19 @@ impl SelectRange {
         unsafe { crate::ffi::IFSelect_SelectRange_inherited_SetDirect(self as *mut Self, direct) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
@@ -13467,10 +14819,49 @@ impl SelectRange {
         unsafe { &mut *(crate::ffi::IFSelect_SelectRange_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRange_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRange_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -13602,6 +14993,23 @@ impl SelectRootComps {
     /// Creates a SelectRootComps
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectRootComps.hxx`:54 - `IFSelect_SelectRootComps::RootResult()`
+    /// Returns the list of local root strong components, by one Entity per component.
+    /// It is redefined for a purpose of efficiency : calling a Sort routine for each Entity would
+    /// cost more resources than to work in once using a Map
+    /// RootResult takes in account the Direct status
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectRootComps.hxx`:59 - `IFSelect_SelectRootComps::Sort()`
@@ -13788,10 +15196,51 @@ impl SelectRootComps {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRootComps_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRootComps_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectRootComps_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
         }
     }
 
@@ -13902,15 +15351,6 @@ impl HandleIFSelectSelectRootComps {
     }
 }
 
-// ── Skipped symbols for SelectRootComps (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectRootComps.hxx`:54 - `IFSelect_SelectRootComps::RootResult`
-//   method: Returns the list of local root strong components, by one Entity per component.
-//   method: It is redefined for a purpose of efficiency : calling a Sort routine for each Entity would
-//   method: cost more resources than to work in once using a Map
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectRoots.hxx
 // ========================
@@ -13932,6 +15372,23 @@ impl SelectRoots {
     /// Creates a SelectRoots
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectRoots.hxx`:48 - `IFSelect_SelectRoots::RootResult()`
+    /// Returns the list of local roots.
+    /// It is redefined for a purpose of efficiency:
+    /// calling a Sort routine for each Entity would cost more resources
+    /// than to work in once using a Map RootResult takes in account the Direct status.
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectRoots.hxx`:53 - `IFSelect_SelectRoots::Sort()`
@@ -14102,10 +15559,49 @@ impl SelectRoots {
         unsafe { &mut *(crate::ffi::IFSelect_SelectRoots_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectRoots_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectRoots_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -14210,15 +15706,6 @@ impl HandleIFSelectSelectRoots {
     }
 }
 
-// ── Skipped symbols for SelectRoots (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectRoots.hxx`:48 - `IFSelect_SelectRoots::RootResult`
-//   method: Returns the list of local roots.
-//   method: It is redefined for a purpose of efficiency:
-//   method: calling a Sort routine for each Entity would cost more resources
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectSent.hxx
 // ========================
@@ -14296,6 +15783,26 @@ impl SelectSent {
     /// Remark : if SentCount is 0, AtLeast is ignored
     pub fn at_least(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSent_at_least(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_SelectSent.hxx`:72 - `IFSelect_SelectSent::RootResult()`
+    /// Returns the list of selected entities. It is redefined to
+    /// work on the graph itself (not queried by sort)
+    ///
+    /// An entity is selected if its count complies to the query in
+    /// Direct Mode, rejected in Reversed Mode
+    ///
+    /// Query works on the sending count recorded as status in Graph
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectSent.hxx`:77 - `IFSelect_SelectSent::Sort()`
@@ -14464,9 +15971,48 @@ impl SelectSent {
         unsafe { &mut *(crate::ffi::IFSelect_SelectSent_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectSent_inherited_FillIterator(self as *const Self, iter) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSent_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -14570,14 +16116,6 @@ impl HandleIFSelectSelectSent {
     }
 }
 
-// ── Skipped symbols for SelectSent (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSent.hxx`:72 - `IFSelect_SelectSent::RootResult`
-//   method: Returns the list of selected entities. It is redefined to
-//   method: work on the graph itself (not queried by sort)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectShared.hxx
 // ========================
@@ -14598,6 +16136,21 @@ impl SelectShared {
     /// Creates a SelectShared;
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectShared_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectShared.hxx`:43 - `IFSelect_SelectShared::RootResult()`
+    /// Returns the list of selected entities (list of entities
+    /// shared by those of input list)
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectShared_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectShared.hxx`:46 - `IFSelect_SelectShared::Label()`
@@ -14705,10 +16258,49 @@ impl SelectShared {
         unsafe { &mut *(crate::ffi::IFSelect_SelectShared_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectShared_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectShared_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectShared_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectShared_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -14804,14 +16396,6 @@ impl HandleIFSelectSelectShared {
     }
 }
 
-// ── Skipped symbols for SelectShared (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectShared.hxx`:43 - `IFSelect_SelectShared::RootResult`
-//   method: Returns the list of selected entities (list of entities
-//   method: shared by those of input list)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-
 // ========================
 // From IFSelect_SelectSharing.hxx
 // ========================
@@ -14834,6 +16418,21 @@ impl SelectSharing {
     /// Creates a SelectSharing;
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSharing_ctor()) }
+    }
+
+    /// **Source:** `IFSelect_SelectSharing.hxx`:45 - `IFSelect_SelectSharing::RootResult()`
+    /// Returns the list of selected entities (list of entities
+    /// which share (level one) those of input list)
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSharing_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectSharing.hxx`:48 - `IFSelect_SelectSharing::Label()`
@@ -14941,10 +16540,49 @@ impl SelectSharing {
         unsafe { &mut *(crate::ffi::IFSelect_SelectSharing_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSharing_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSharing_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSharing_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSharing_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -15039,14 +16677,6 @@ impl HandleIFSelectSelectSharing {
         }
     }
 }
-
-// ── Skipped symbols for SelectSharing (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSharing.hxx`:45 - `IFSelect_SelectSharing::RootResult`
-//   method: Returns the list of selected entities (list of entities
-//   method: which share (level one) those of input list)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
 
 // ========================
 // From IFSelect_SelectSignature.hxx
@@ -15349,6 +16979,19 @@ impl SelectSignature {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -15389,10 +17032,51 @@ impl SelectSignature {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignature_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignature_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignature_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
         }
     }
 
@@ -15580,6 +17264,28 @@ impl SelectSignedShared {
         unsafe { crate::ffi::IFSelect_SelectSignedShared_is_exact(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_SelectSignedShared.hxx`:62 - `IFSelect_SelectSignedShared::Explore()`
+    /// Explores an entity : its Shared entities
+    /// <ent> to take if it matches the Signature
+    /// At level max, filters the result. Else gives all Shareds
+    pub fn explore(
+        &self,
+        level: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+        explored: &mut crate::interface::EntityIterator,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectSignedShared_explore(
+                self as *const Self,
+                level,
+                ent,
+                G,
+                explored,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_SelectSignedShared.hxx`:70 - `IFSelect_SelectSignedShared::ExploreLabel()`
     /// Returns a text defining the criterium.
     /// (it refers to the text and exact flag to be matched, and is
@@ -15695,6 +17401,19 @@ impl SelectSignedShared {
         unsafe { crate::ffi::IFSelect_SelectSignedShared_inherited_Level(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSignedShared_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -15739,12 +17458,57 @@ impl SelectSignedShared {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignedShared_inherited_InputResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignedShared_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignedShared_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignedShared_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
             )
         }
     }
@@ -15861,15 +17625,6 @@ impl HandleIFSelectSelectSignedShared {
     }
 }
 
-// ── Skipped symbols for SelectSignedShared (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSignedShared.hxx`:62 - `IFSelect_SelectSignedShared::Explore`
-//   method: Explores an entity : its Shared entities
-//   method: <ent> to take if it matches the Signature
-//   method: At level max, filters the result. Else gives all Shareds
-//   Reason: param 'explored' uses unknown type 'Interface_EntityIterator&'
-//   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
-//
-
 // ========================
 // From IFSelect_SelectSignedSharing.hxx
 // ========================
@@ -15945,6 +17700,28 @@ impl SelectSignedSharing {
     /// Returns True if match must be exact
     pub fn is_exact(&self) -> bool {
         unsafe { crate::ffi::IFSelect_SelectSignedSharing_is_exact(self as *const Self) }
+    }
+
+    /// **Source:** `IFSelect_SelectSignedSharing.hxx`:62 - `IFSelect_SelectSignedSharing::Explore()`
+    /// Explores an entity : its sharing entities
+    /// <ent> to take if it matches the Signature
+    /// At level max, filters the result. Else gives all sharings
+    pub fn explore(
+        &self,
+        level: i32,
+        ent: &crate::ffi::HandleStandardTransient,
+        G: &crate::interface::Graph,
+        explored: &mut crate::interface::EntityIterator,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_SelectSignedSharing_explore(
+                self as *const Self,
+                level,
+                ent,
+                G,
+                explored,
+            )
+        }
     }
 
     /// **Source:** `IFSelect_SelectSignedSharing.hxx`:70 - `IFSelect_SelectSignedSharing::ExploreLabel()`
@@ -16062,6 +17839,21 @@ impl SelectSignedSharing {
         unsafe { crate::ffi::IFSelect_SelectSignedSharing_inherited_Level(self as *const Self) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignedSharing_inherited_RootResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -16106,12 +17898,57 @@ impl SelectSignedSharing {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignedSharing_inherited_InputResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSignedSharing_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignedSharing_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectSignedSharing_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
             )
         }
     }
@@ -16232,15 +18069,6 @@ impl HandleIFSelectSelectSignedSharing {
     }
 }
 
-// ── Skipped symbols for SelectSignedSharing (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSignedSharing.hxx`:62 - `IFSelect_SelectSignedSharing::Explore`
-//   method: Explores an entity : its sharing entities
-//   method: <ent> to take if it matches the Signature
-//   method: At level max, filters the result. Else gives all sharings
-//   Reason: param 'explored' uses unknown type 'Interface_EntityIterator&'
-//   // pub fn explore(&self, level: i32, ent: &HandleTransient, G: &Graph, explored: &mut EntityIterator) -> bool;
-//
-
 // ========================
 // From IFSelect_SelectSuite.hxx
 // ========================
@@ -16321,6 +18149,25 @@ impl SelectSuite {
     pub fn set_label(&mut self, lab: &str) {
         let c_lab = std::ffi::CString::new(lab).unwrap();
         unsafe { crate::ffi::IFSelect_SelectSuite_set_label(self as *mut Self, c_lab.as_ptr()) }
+    }
+
+    /// **Source:** `IFSelect_SelectSuite.hxx`:87 - `IFSelect_SelectSuite::RootResult()`
+    /// Returns the list of selected entities
+    /// To do this, once InputResult has been taken (if Input or
+    /// Alternate has been defined, else the first Item gives it) :
+    /// this result is set as alternate input for the first item,
+    /// which computes its result : this result is set as alternate
+    /// input for the second item, etc...
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSuite_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// **Source:** `IFSelect_SelectSuite.hxx`:92 - `IFSelect_SelectSuite::Label()`
@@ -16428,10 +18275,49 @@ impl SelectSuite {
         unsafe { &mut *(crate::ffi::IFSelect_SelectSuite_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSuite_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectSuite_inherited_FillIterator(self as *const Self, iter)
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSuite_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectSuite_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
         }
     }
 
@@ -16522,15 +18408,6 @@ impl HandleIFSelectSelectSuite {
         }
     }
 }
-
-// ── Skipped symbols for SelectSuite (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectSuite.hxx`:87 - `IFSelect_SelectSuite::RootResult`
-//   method: Returns the list of selected entities
-//   method: To do this, once InputResult has been taken (if Input or
-//   method: Alternate has been defined, else the first Item gives it) :
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
 
 // ========================
 // From IFSelect_SelectType.hxx
@@ -16706,6 +18583,19 @@ impl SelectType {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_SetDirect(self as *mut Self, direct) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_RootResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
@@ -16756,9 +18646,48 @@ impl SelectType {
         unsafe { &mut *(crate::ffi::IFSelect_SelectType_inherited_Alternate(self as *mut Self)) }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_InputResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe { crate::ffi::IFSelect_SelectType_inherited_FillIterator(self as *const Self, iter) }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectType_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -16897,6 +18826,21 @@ impl SelectUnion {
         unsafe { crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnion_ctor()) }
     }
 
+    /// **Source:** `IFSelect_SelectUnion.hxx`:43 - `IFSelect_SelectUnion::RootResult()`
+    /// Returns the list of selected Entities, which is the addition
+    /// result from all input selections. Uniqueness is guaranteed.
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnion_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_SelectUnion.hxx`:46 - `IFSelect_SelectUnion::Label()`
     /// Returns a text defining the criterium : "Union (OR)"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -17010,6 +18954,32 @@ impl SelectUnion {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnion_inherited_UniqueResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_SelectUnion_inherited_CompleteResult(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -17097,14 +19067,6 @@ impl HandleIFSelectSelectUnion {
         }
     }
 }
-
-// ── Skipped symbols for SelectUnion (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectUnion.hxx`:43 - `IFSelect_SelectUnion::RootResult`
-//   method: Returns the list of selected Entities, which is the addition
-//   method: result from all input selections. Uniqueness is guaranteed.
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
 
 // ========================
 // From IFSelect_SelectUnknownEntities.hxx
@@ -17271,6 +19233,21 @@ impl SelectUnknownEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectUnknownEntities_inherited_RootResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
@@ -17336,12 +19313,57 @@ impl SelectUnknownEntities {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    pub fn input_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectUnknownEntities_inherited_InputResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut SelectionIterator) {
         unsafe {
             crate::ffi::IFSelect_SelectUnknownEntities_inherited_FillIterator(
                 self as *const Self,
                 iter,
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectUnknownEntities_inherited_UniqueResult(
+                    self as *const Self,
+                    G,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::IFSelect_SelectUnknownEntities_inherited_CompleteResult(
+                    self as *const Self,
+                    G,
+                ),
             )
         }
     }
@@ -17490,6 +19512,55 @@ unsafe impl crate::CppDeletable for Selection {
 }
 
 impl Selection {
+    /// **Source:** `IFSelect_Selection.hxx`:49 - `IFSelect_Selection::RootResult()`
+    /// Returns the list of selected entities, computed from Input
+    /// given as a Graph. Specific to each class of Selection
+    /// Note that uniqueness of each entity is not required here
+    /// This method can raise an exception as necessary
+    pub fn root_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Selection_root_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Returns the list of selected entities, each of them being
+    /// unique. Default definition works from RootResult. According
+    /// HasUniqueResult, UniqueResult returns directly RootResult,
+    /// or build a Unique Result from it with a Graph.
+    pub fn unique_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Selection_unique_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Returns the list of entities involved by a Selection, i.e.
+    /// UniqueResult plus the shared entities (directly or not)
+    pub fn complete_result(
+        &self,
+        G: &crate::interface::Graph,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_Selection_complete_result(
+                self as *const Self,
+                G,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_Selection.hxx`:64 - `IFSelect_Selection::FillIterator()`
     /// Puts in an Iterator the Selections from which "me" depends
     /// (there can be zero, or one, or a list).
@@ -18102,28 +20173,6 @@ impl HandleIFSelectSelection {
         }
     }
 }
-
-// ── Skipped symbols for Selection (3 total) ──
-// SKIPPED: **Source:** `IFSelect_Selection.hxx`:49 - `IFSelect_Selection::RootResult`
-//   method: Returns the list of selected entities, computed from Input
-//   method: given as a Graph. Specific to each class of Selection
-//   method: Note that uniqueness of each entity is not required here
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn root_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult`
-//   method: Returns the list of selected entities, each of them being
-//   method: unique. Default definition works from RootResult. According
-//   method: HasUniqueResult, UniqueResult returns directly RootResult,
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn unique_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult`
-//   method: Returns the list of entities involved by a Selection, i.e.
-//   method: UniqueResult plus the shared entities (directly or not)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn complete_result(&self, G: &Graph) -> OwnedPtr<Interface_EntityIterator>;
-//
 
 // ========================
 // From IFSelect_SelectionIterator.hxx
@@ -19962,6 +22011,29 @@ impl ShareOutResult {
         unsafe { crate::ffi::IFSelect_ShareOutResult_dispatch_rank(self as *const Self) }
     }
 
+    /// **Source:** `IFSelect_ShareOutResult.hxx`:141 - `IFSelect_ShareOutResult::PacketRoot()`
+    /// Returns the list of Roots of the current Packet (never empty)
+    /// (i.e. the Entities to be themselves asked for transfer)
+    /// Error if there is none (iteration finished)
+    pub fn packet_root(&mut self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ShareOutResult_packet_root(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_ShareOutResult.hxx`:145 - `IFSelect_ShareOutResult::PacketContent()`
+    /// Returns the complete content of the current Packet (i.e.
+    /// with shared entities, which will also be put in the file)
+    pub fn packet_content(&mut self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_ShareOutResult_packet_content(
+                self as *mut Self,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_ShareOutResult.hxx`:151 - `IFSelect_ShareOutResult::FileName()`
     /// Returns the File Name which corresponds to current Packet
     /// (computed by ShareOut)
@@ -19976,25 +22048,12 @@ impl ShareOutResult {
     }
 }
 
-// ── Skipped symbols for ShareOutResult (3 total) ──
+// ── Skipped symbols for ShareOutResult (1 total) ──
 // SKIPPED: **Source:** `IFSelect_ShareOutResult.hxx`:135 - `IFSelect_ShareOutResult::PacketsInDispatch`
 //   method: Returns Number (rank) of current Packet in current Dispatch,
 //   method: and total count of Packets in current Dispatch, as arguments
 //   Reason: has misresolved element type (clang batch parsing artifact)
 //   // pub fn packets_in_dispatch(&self, numpack: &mut i32, nbpacks: &mut i32);
-//
-// SKIPPED: **Source:** `IFSelect_ShareOutResult.hxx`:141 - `IFSelect_ShareOutResult::PacketRoot`
-//   method: Returns the list of Roots of the current Packet (never empty)
-//   method: (i.e. the Entities to be themselves asked for transfer)
-//   method: Error if there is none (iteration finished)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn packet_root(&mut self) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_ShareOutResult.hxx`:145 - `IFSelect_ShareOutResult::PacketContent`
-//   method: Returns the complete content of the current Packet (i.e.
-//   method: with shared entities, which will also be put in the file)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn packet_content(&mut self) -> OwnedPtr<Interface_EntityIterator>;
 //
 
 // ========================
@@ -22872,6 +24931,95 @@ impl TransformStandard {
         }
     }
 
+    /// **Source:** `IFSelect_TransformStandard.hxx`:116 - `IFSelect_TransformStandard::Perform()`
+    /// Performs the Standard Transformation, by calling Copy then
+    /// ApplyModifiers (which can return an error status)
+    pub fn perform(
+        &mut self,
+        G: &crate::interface::Graph,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        checks: &mut crate::interface::CheckIterator,
+        newmod: &mut crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_perform(
+                self as *mut Self,
+                G,
+                protocol,
+                checks,
+                newmod,
+            )
+        }
+    }
+
+    /// **Source:** `IFSelect_TransformStandard.hxx`:124 - `IFSelect_TransformStandard::Copy()`
+    /// This the first operation. It calls StandardCopy or OnTheSpot
+    /// according the option
+    pub fn copy(
+        &self,
+        G: &crate::interface::Graph,
+        TC: &mut crate::interface::CopyTool,
+        newmod: &mut crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        unsafe { crate::ffi::IFSelect_TransformStandard_copy(self as *const Self, G, TC, newmod) }
+    }
+
+    /// **Source:** `IFSelect_TransformStandard.hxx`:131 - `IFSelect_TransformStandard::StandardCopy()`
+    /// This is the standard action of Copy : its takes into account
+    /// only the remaining entities (noted by Graph Status positive)
+    /// and their proper dependances of course. Produces a new model.
+    pub fn standard_copy(
+        &self,
+        G: &crate::interface::Graph,
+        TC: &mut crate::interface::CopyTool,
+        newmod: &mut crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_standard_copy(self as *const Self, G, TC, newmod)
+        }
+    }
+
+    /// **Source:** `IFSelect_TransformStandard.hxx`:137 - `IFSelect_TransformStandard::OnTheSpot()`
+    /// This is the OnTheSpot action : each entity is bound with ...
+    /// itself. The produced model is the same as the starting one.
+    pub fn on_the_spot(
+        &self,
+        G: &crate::interface::Graph,
+        TC: &mut crate::interface::CopyTool,
+        newmod: &mut crate::ffi::HandleInterfaceInterfaceModel,
+    ) {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_on_the_spot(self as *const Self, G, TC, newmod)
+        }
+    }
+
+    /// **Source:** `IFSelect_TransformStandard.hxx`:147 - `IFSelect_TransformStandard::ApplyModifiers()`
+    /// Applies the modifiers sequentially.
+    /// For each one, prepares required data (if a Selection is associated as a filter).
+    /// For the option OnTheSpot, it determines if the graph may be
+    /// changed and updates <newmod> if required
+    /// If a Modifier causes an error (check "HasFailed"),
+    /// ApplyModifier stops : the following Modifiers are ignored
+    pub fn apply_modifiers(
+        &self,
+        G: &crate::interface::Graph,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        TC: &mut crate::interface::CopyTool,
+        checks: &mut crate::interface::CheckIterator,
+        newmod: &mut crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_apply_modifiers(
+                self as *const Self,
+                G,
+                protocol,
+                TC,
+                checks,
+                newmod,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_TransformStandard.hxx`:157 - `IFSelect_TransformStandard::Updated()`
     /// This methods allows to know what happened to a starting
     /// entity after the last Perform. It reads result from the map
@@ -22960,6 +25108,16 @@ impl TransformStandard {
         }
     }
 
+    /// Inherited: **Source:** `IFSelect_Transformer.hxx`:84 - `IFSelect_Transformer::ChangeProtocol()`
+    pub fn change_protocol(&self, newproto: &mut crate::ffi::HandleInterfaceProtocol) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_TransformStandard_inherited_ChangeProtocol(
+                self as *const Self,
+                newproto,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
         unsafe {
@@ -23044,40 +25202,6 @@ impl HandleIFSelectTransformStandard {
     }
 }
 
-// ── Skipped symbols for TransformStandard (5 total) ──
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:116 - `IFSelect_TransformStandard::Perform`
-//   method: Performs the Standard Transformation, by calling Copy then
-//   method: ApplyModifiers (which can return an error status)
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn perform(&mut self, G: &Graph, protocol: &HandleProtocol, checks: &mut CheckIterator, newmod: &mut HandleInterfaceModel) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:124 - `IFSelect_TransformStandard::Copy`
-//   method: This the first operation. It calls StandardCopy or OnTheSpot
-//   method: according the option
-//   Reason: param 'TC' uses unknown type 'Interface_CopyTool&'
-//   // pub fn copy(&self, G: &Graph, TC: &mut CopyTool, newmod: &mut HandleInterfaceModel);
-//
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:131 - `IFSelect_TransformStandard::StandardCopy`
-//   method: This is the standard action of Copy : its takes into account
-//   method: only the remaining entities (noted by Graph Status positive)
-//   method: and their proper dependances of course. Produces a new model.
-//   Reason: param 'TC' uses unknown type 'Interface_CopyTool&'
-//   // pub fn standard_copy(&self, G: &Graph, TC: &mut CopyTool, newmod: &mut HandleInterfaceModel);
-//
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:137 - `IFSelect_TransformStandard::OnTheSpot`
-//   method: This is the OnTheSpot action : each entity is bound with ...
-//   method: itself. The produced model is the same as the starting one.
-//   Reason: param 'TC' uses unknown type 'Interface_CopyTool&'
-//   // pub fn on_the_spot(&self, G: &Graph, TC: &mut CopyTool, newmod: &mut HandleInterfaceModel);
-//
-// SKIPPED: **Source:** `IFSelect_TransformStandard.hxx`:147 - `IFSelect_TransformStandard::ApplyModifiers`
-//   method: Applies the modifiers sequentially.
-//   method: For each one, prepares required data (if a Selection is associated as a filter).
-//   method: For the option OnTheSpot, it determines if the graph may be
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn apply_modifiers(&self, G: &Graph, protocol: &HandleProtocol, TC: &mut CopyTool, checks: &mut CheckIterator, newmod: &mut HandleInterfaceModel) -> bool;
-//
-
 // ========================
 // From IFSelect_Transformer.hxx
 // ========================
@@ -23103,6 +25227,55 @@ unsafe impl crate::CppDeletable for Transformer {
 }
 
 impl Transformer {
+    /// **Source:** `IFSelect_Transformer.hxx`:72 - `IFSelect_Transformer::Perform()`
+    /// Performs a Transformation (defined by each sub-class) :
+    /// <G> gives the input data (especially the starting model) and
+    /// can be used for queries (by Selections, etc...)
+    /// <protocol> allows to work with General Services as necessary
+    /// (it applies to input data)
+    /// If the change corresponds to a conversion to a new protocol,
+    /// see also the method ChangeProtocol
+    /// <checks> stores produced checks messages if any
+    /// <newmod> gives the result of the transformation :
+    /// - if it is Null (i.e. has not been affected), the transformation
+    /// has been made on the spot, it is assumed to cause no change
+    /// to the graph of dependances
+    /// - if it equates the starting Model, it has been transformed on
+    /// the spot (possibiliy some entities were replaced inside it)
+    /// - if it is new, it corresponds to a new data set which replaces
+    /// the starting one
+    ///
+    /// <me> is mutable to allow results for ChangeProtocol to be
+    /// memorized if needed, and to store information useful for
+    /// the method Updated
+    ///
+    /// Returns True if Done, False if an Error occurred:
+    /// in this case, if a new data set has been produced, the transformation is ignored,
+    /// else data may be corrupted.
+    pub fn perform(
+        &mut self,
+        G: &crate::interface::Graph,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+        checks: &mut crate::interface::CheckIterator,
+        newmod: &mut crate::ffi::HandleInterfaceInterfaceModel,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_Transformer_perform(self as *mut Self, G, protocol, checks, newmod)
+        }
+    }
+
+    /// **Source:** `IFSelect_Transformer.hxx`:84 - `IFSelect_Transformer::ChangeProtocol()`
+    /// This methods allows to declare that the Protocol applied to
+    /// the new Model has changed. It applies to the last call to
+    /// Perform.
+    ///
+    /// Returns True if the Protocol has changed, False else.
+    /// The provided default keeps the starting Protocol. This method
+    /// should be redefined as required by the effect of Perform.
+    pub fn change_protocol(&self, newproto: &mut crate::ffi::HandleInterfaceProtocol) -> bool {
+        unsafe { crate::ffi::IFSelect_Transformer_change_protocol(self as *const Self, newproto) }
+    }
+
     /// **Source:** `IFSelect_Transformer.hxx`:92 - `IFSelect_Transformer::Updated()`
     /// This method allows to know what happened to a starting
     /// entity after the last Perform. If <entfrom> (from starting
@@ -23239,22 +25412,6 @@ impl HandleIFSelectTransformer {
     }
 }
 
-// ── Skipped symbols for Transformer (2 total) ──
-// SKIPPED: **Source:** `IFSelect_Transformer.hxx`:72 - `IFSelect_Transformer::Perform`
-//   method: Performs a Transformation (defined by each sub-class) :
-//   method: <G> gives the input data (especially the starting model) and
-//   method: can be used for queries (by Selections, etc...)
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn perform(&mut self, G: &Graph, protocol: &HandleProtocol, checks: &mut CheckIterator, newmod: &mut HandleInterfaceModel) -> bool;
-//
-// SKIPPED: **Source:** `IFSelect_Transformer.hxx`:84 - `IFSelect_Transformer::ChangeProtocol`
-//   method: This methods allows to declare that the Protocol applied to
-//   method: the new Model has changed. It applies to the last call to
-//   method: Perform.
-//   Reason: param 'newproto' uses unknown type 'Handle(Interface_Protocol)&'
-//   // pub fn change_protocol(&self, newproto: &mut HandleProtocol) -> bool;
-//
-
 // ========================
 // From IFSelect_WorkLibrary.hxx
 // ========================
@@ -23280,6 +25437,31 @@ unsafe impl crate::CppDeletable for WorkLibrary {
 }
 
 impl WorkLibrary {
+    /// **Source:** `IFSelect_WorkLibrary.hxx`:57 - `IFSelect_WorkLibrary::ReadFile()`
+    /// Gives the way to Read a File and transfer it to a Model
+    /// <mod> is the resulting Model, which has to be created by this
+    /// method. In case of error, <mod> must be returned Null
+    /// Return value is a status with free values.
+    /// Simply, 0 is for "Execution OK"
+    /// The Protocol can be used to work (e.g. create the Model, read
+    /// and recognize the Entities)
+    pub fn read_file(
+        &self,
+        name: &str,
+        model: &mut crate::ffi::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi::HandleInterfaceProtocol,
+    ) -> i32 {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        unsafe {
+            crate::ffi::IFSelect_WorkLibrary_read_file(
+                self as *const Self,
+                c_name.as_ptr(),
+                model,
+                protocol,
+            )
+        }
+    }
+
     /// **Source:** `IFSelect_WorkLibrary.hxx`:92 - `IFSelect_WorkLibrary::WriteFile()`
     /// Gives the way to Write a File from a Model.
     /// <ctx> contains all necessary information : the model, the
@@ -23301,6 +25483,34 @@ impl WorkLibrary {
     /// }
     pub fn write_file(&self, ctx: &mut ContextWrite) -> bool {
         unsafe { crate::ffi::IFSelect_WorkLibrary_write_file(self as *const Self, ctx) }
+    }
+
+    /// **Source:** `IFSelect_WorkLibrary.hxx`:103 - `IFSelect_WorkLibrary::CopyModel()`
+    /// Performs the copy of entities from an original model to a new
+    /// one. It must also copy headers if any. Returns True when done.
+    /// The provided default works by copying the individual entities
+    /// designated in the list, by using the general service class
+    /// CopyTool.
+    /// It can be redefined for a norm which, either implements Copy
+    /// by another way (do not forget to Bind each copied result with
+    /// its original entity in TC) and returns True, or does not know
+    /// how to copy and returns False
+    pub fn copy_model(
+        &self,
+        original: &crate::ffi::HandleInterfaceInterfaceModel,
+        newmodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        list: &crate::interface::EntityIterator,
+        TC: &mut crate::interface::CopyTool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::IFSelect_WorkLibrary_copy_model(
+                self as *const Self,
+                original,
+                newmodel,
+                list,
+                TC,
+            )
+        }
     }
 
     /// **Source:** `IFSelect_WorkLibrary.hxx`:128 - `IFSelect_WorkLibrary::SetDumpLevels()`
@@ -23432,27 +25642,13 @@ impl HandleIFSelectWorkLibrary {
     }
 }
 
-// ── Skipped symbols for WorkLibrary (6 total) ──
-// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:57 - `IFSelect_WorkLibrary::ReadFile`
-//   method: Gives the way to Read a File and transfer it to a Model
-//   method: <mod> is the resulting Model, which has to be created by this
-//   method: method. In case of error, <mod> must be returned Null
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn read_file(&self, name: *const char, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
-//
+// ── Skipped symbols for WorkLibrary (4 total) ──
 // SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:68 - `IFSelect_WorkLibrary::ReadStream`
 //   method: Interface to read a data from the specified stream.
 //   method: @param model is the resulting Model, which has to be created by this method.
 //   method: In case of error, model must be returned Null
 //   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
 //   // pub fn read_stream(&self, theName: *const char, theIStream: /* std::istream& */, model: &mut HandleInterfaceModel, protocol: &HandleProtocol) -> i32;
-//
-// SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:103 - `IFSelect_WorkLibrary::CopyModel`
-//   method: Performs the copy of entities from an original model to a new
-//   method: one. It must also copy headers if any. Returns True when done.
-//   method: The provided default works by copying the individual entities
-//   Reason: param 'list' uses unknown type 'const Interface_EntityIterator&'
-//   // pub fn copy_model(&self, original: &HandleInterfaceModel, newmodel: &HandleInterfaceModel, list: &EntityIterator, TC: &mut CopyTool) -> bool;
 //
 // SKIPPED: **Source:** `IFSelect_WorkLibrary.hxx`:113 - `IFSelect_WorkLibrary::DumpEntity`
 //   method: Gives the way of dumping an entity under a form comprehensive
@@ -23551,6 +25747,20 @@ impl WorkSession {
     /// should be C++ : return const &
     pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
         unsafe { &*(crate::ffi::IFSelect_WorkSession_work_library(self as *const Self)) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:108 - `IFSelect_WorkSession::SetProtocol()`
+    /// Sets a Protocol, which will be used to determine Graphs, to
+    /// Read and to Write Files
+    pub fn set_protocol(&mut self, protocol: &crate::ffi::HandleInterfaceProtocol) {
+        unsafe { crate::ffi::IFSelect_WorkSession_set_protocol(self as *mut Self, protocol) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:112 - `IFSelect_WorkSession::Protocol()`
+    /// Returns the Protocol. Null Handle if not yet set
+    /// should be C++ : return const &
+    pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
+        unsafe { &*(crate::ffi::IFSelect_WorkSession_protocol(self as *const Self)) }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:118 - `IFSelect_WorkSession::SetSignType()`
@@ -23787,6 +25997,14 @@ impl WorkSession {
     /// is set, or if Model is absent or empty).
     pub fn compute_graph(&mut self, enforce: bool) -> bool {
         unsafe { crate::ffi::IFSelect_WorkSession_compute_graph(self as *mut Self, enforce) }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:231 - `IFSelect_WorkSession::HGraph()`
+    /// Returns the Computed Graph as HGraph (Null Handle if not set)
+    pub fn h_graph(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHGraph> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_h_graph(self as *mut Self))
+        }
     }
 
     /// **Source:** `IFSelect_WorkSession.hxx`:234 - `IFSelect_WorkSession::Graph()`
@@ -24335,6 +26553,21 @@ impl WorkSession {
             crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_selection(
                 self as *const Self,
                 id,
+            ))
+        }
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:477 - `IFSelect_WorkSession::EvalSelection()`
+    /// Evaluates the effect of a Selection applied on the input Model
+    /// Returned Result remains empty if no input Model has been set
+    pub fn eval_selection(
+        &self,
+        sel: &crate::ffi::HandleIFSelectSelection,
+    ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_eval_selection(
+                self as *const Self,
+                sel,
             ))
         }
     }
@@ -25008,6 +27241,29 @@ impl WorkSession {
         }
     }
 
+    /// **Source:** `IFSelect_WorkSession.hxx`:811 - `IFSelect_WorkSession::SentList()`
+    /// Returns the list of Entities sent in files, according to the
+    /// count of files each one has been sent (these counts are reset
+    /// by SetModel or SetRemaining(Forget) ) stored in Graph Status
+    /// <count> = -1 (default) is for ENtities sent at least once
+    /// <count> = 0 is for the Remaining List (entities not yet sent)
+    /// <count> = 1 is for entities sent in one and only one file
+    /// (the ideal case)
+    /// Remaining Data are computed on each Sending/Copying output
+    /// files (see methods EvaluateFile and SendSplit)
+    /// Graph Status is 0 for Remaining Entity, <count> for Sent into
+    /// <count> files
+    /// This status is set to 0 (not yet sent) for all by SetModel
+    /// and by SetRemaining(mode=Forget,Display)
+    pub fn sent_list(&self, count: i32) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFSelect_WorkSession_sent_list(
+                self as *const Self,
+                count,
+            ))
+        }
+    }
+
     /// **Source:** `IFSelect_WorkSession.hxx`:817 - `IFSelect_WorkSession::MaxSendingCount()`
     /// Returns the greater count of different files in which any of
     /// the starting entities could be sent.
@@ -25655,43 +27911,13 @@ impl HandleIFSelectWorkSession {
     }
 }
 
-// ── Skipped symbols for WorkSession (13 total) ──
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:108 - `IFSelect_WorkSession::SetProtocol`
-//   method: Sets a Protocol, which will be used to determine Graphs, to
-//   method: Read and to Write Files
-//   Reason: param 'protocol' uses unknown type 'const Handle(Interface_Protocol)&'
-//   // pub fn set_protocol(&mut self, protocol: &HandleProtocol);
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:112 - `IFSelect_WorkSession::Protocol`
-//   method: Returns the Protocol. Null Handle if not yet set
-//   method: should be C++ : return const &
-//   Reason: return type 'const Handle(Interface_Protocol)&' is unknown
-//   // pub fn protocol(&self) -> &HandleProtocol;
-//
+// ── Skipped symbols for WorkSession (8 total) ──
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:157 - `IFSelect_WorkSession::ReadStream`
 //   method: Reads a file from stream with the WorkLibrary (sets Model and LoadedFile)
 //   method: Returns a integer status which can be :
 //   method: RetDone if OK,  RetVoid if no Protocol not defined,
 //   Reason: has unbindable types: param 'theIStream': stream type (std::istream&)
 //   // pub fn read_stream(&mut self, theName: *const char, theIStream: /* std::istream& */) -> OwnedPtr<IFSelect_ReturnStatus>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:231 - `IFSelect_WorkSession::HGraph`
-//   method: Returns the Computed Graph as HGraph (Null Handle if not set)
-//   Reason: return type 'Handle(Interface_HGraph)' is unknown
-//   // pub fn h_graph(&mut self) -> OwnedPtr<Handle<Interface_HGraph>>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:477 - `IFSelect_WorkSession::EvalSelection`
-//   method: Evaluates the effect of a Selection applied on the input Model
-//   method: Returned Result remains empty if no input Model has been set
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn eval_selection(&self, sel: &HandleSelection) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:811 - `IFSelect_WorkSession::SentList`
-//   method: Returns the list of Entities sent in files, according to the
-//   method: count of files each one has been sent (these counts are reset
-//   method: by SetModel or SetRemaining(Forget) ) stored in Graph Status
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn sent_list(&self, count: i32) -> OwnedPtr<Interface_EntityIterator>;
 //
 // SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams`
 //   method: Sets a list of Parameters, i.e. TypedValue, to be handled

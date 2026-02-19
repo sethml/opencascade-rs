@@ -491,19 +491,18 @@ impl Tool {
         unsafe { &*(crate::ffi::STEPConstruct_Tool_graph(self as *const Self, recompute)) }
     }
 
+    /// **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess()`
+    /// Returns TransientProcess (reading; Null if not loaded)
+    pub fn transient_process(&self) -> &crate::ffi::HandleTransferTransientProcess {
+        unsafe { &*(crate::ffi::STEPConstruct_Tool_transient_process(self as *const Self)) }
+    }
+
     /// **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess()`
     /// Returns FinderProcess (writing; Null if not loaded)
     pub fn finder_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
         unsafe { &*(crate::ffi::STEPConstruct_Tool_finder_process(self as *const Self)) }
     }
 }
-
-// ── Skipped symbols for Tool (1 total) ──
-// SKIPPED: **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess`
-//   method: Returns TransientProcess (reading; Null if not loaded)
-//   Reason: return type 'const Handle(Transfer_TransientProcess)&' is unknown
-//   // pub fn transient_process(&self) -> &HandleTransientProcess;
-//
 
 // ========================
 // Additional type re-exports

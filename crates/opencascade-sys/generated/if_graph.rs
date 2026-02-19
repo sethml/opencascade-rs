@@ -105,6 +105,13 @@ impl SubPartsIterator {
         }
     }
 
+    /// **Source:** `IFGraph_SubPartsIterator.hxx`:95 - `IFGraph_SubPartsIterator::GetFromIter()`
+    /// Adds a list of Entities (into Load mode or to a Part),
+    /// given as an Iterator
+    pub fn get_from_iter(&mut self, iter: &crate::interface::EntityIterator) {
+        unsafe { crate::ffi::IFGraph_SubPartsIterator_get_from_iter(self as *mut Self, iter) }
+    }
+
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:99 - `IFGraph_SubPartsIterator::Reset()`
     /// Erases data (parts, entities) : "me" becomes empty and in
     /// load status
@@ -118,6 +125,16 @@ impl SubPartsIterator {
     /// be redefined
     pub fn evaluate(&mut self) {
         unsafe { crate::ffi::IFGraph_SubPartsIterator_evaluate(self as *mut Self) }
+    }
+
+    /// **Source:** `IFGraph_SubPartsIterator.hxx`:107 - `IFGraph_SubPartsIterator::Loaded()`
+    /// Returns entities which where loaded (not set into a sub-part)
+    pub fn loaded(&self) -> crate::OwnedPtr<crate::interface::GraphContent> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_loaded(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `IFGraph_SubPartsIterator.hxx`:110 - `IFGraph_SubPartsIterator::LoadedGraph()`
@@ -188,24 +205,16 @@ impl SubPartsIterator {
             ))
         }
     }
-}
 
-// ── Skipped symbols for SubPartsIterator (3 total) ──
-// SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:95 - `IFGraph_SubPartsIterator::GetFromIter`
-//   method: Adds a list of Entities (into Load mode or to a Part),
-//   method: given as an Iterator
-//   Reason: param 'iter' uses unknown type 'const Interface_EntityIterator&'
-//   // pub fn get_from_iter(&mut self, iter: &EntityIterator);
-//
-// SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:107 - `IFGraph_SubPartsIterator::Loaded`
-//   method: Returns entities which where loaded (not set into a sub-part)
-//   Reason: return type 'Interface_GraphContent' is unknown
-//   // pub fn loaded(&self) -> OwnedPtr<Interface_GraphContent>;
-//
-// SKIPPED: **Source:** `IFGraph_SubPartsIterator.hxx`:146 - `IFGraph_SubPartsIterator::Entities`
-//   method: Returns current sub-part, not as a "Value", but as an Iterator
-//   method: on Entities it contains
-//   method: Error : same as above (end of iteration)
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn entities(&self) -> OwnedPtr<Interface_EntityIterator>;
-//
+    /// **Source:** `IFGraph_SubPartsIterator.hxx`:146 - `IFGraph_SubPartsIterator::Entities()`
+    /// Returns current sub-part, not as a "Value", but as an Iterator
+    /// on Entities it contains
+    /// Error : same as above (end of iteration)
+    pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IFGraph_SubPartsIterator_entities(
+                self as *const Self,
+            ))
+        }
+    }
+}

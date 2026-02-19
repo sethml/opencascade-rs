@@ -187,6 +187,19 @@ impl ActorWrite {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:69 - `Transfer_ActorOfProcessForFinder::TransientResult()`
+    pub fn transient_result(
+        &self,
+        res: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESControl_ActorWrite_inherited_TransientResult(
+                self as *const Self,
+                res,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
     pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
         unsafe {
@@ -661,6 +674,11 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     pub fn auto_record(&self) {
         unsafe { crate::ffi::IGESControl_Controller_inherited_AutoRecord(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:94 - `XSControl_Controller::Protocol()`
+    pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
+        unsafe { &*(crate::ffi::IGESControl_Controller_inherited_Protocol(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`

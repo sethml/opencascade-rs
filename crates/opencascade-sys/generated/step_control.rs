@@ -99,6 +99,66 @@ impl ActorRead {
         unsafe { crate::ffi::STEPControl_ActorRead_recognize(self as *mut Self, start) }
     }
 
+    /// **Source:** `STEPControl_ActorRead.hxx`:71 - `STEPControl_ActorRead::Transfer()`
+    pub fn transfer(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_transfer(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPControl_ActorRead.hxx`:78 - `STEPControl_ActorRead::TransferShape()`
+    /// theUseTrsf - special flag for using Axis2Placement from ShapeRepresentation for transform root
+    /// shape
+    pub fn transfer_shape(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &crate::step_data::Factors,
+        isManifold: bool,
+        theUseTrsf: bool,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_transfer_shape(
+                self as *mut Self,
+                start,
+                TP,
+                theLocalFactors,
+                isManifold,
+                theUseTrsf,
+                theProgress,
+            ))
+        }
+    }
+
+    /// **Source:** `STEPControl_ActorRead.hxx`:87 - `STEPControl_ActorRead::PrepareUnits()`
+    /// set units and tolerances context by given ShapeRepresentation
+    pub fn prepare_units(
+        &mut self,
+        rep: &crate::ffi::HandleStepReprRepresentation,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theLocalFactors: &mut crate::step_data::Factors,
+    ) {
+        unsafe {
+            crate::ffi::STEPControl_ActorRead_prepare_units(
+                self as *mut Self,
+                rep,
+                TP,
+                theLocalFactors,
+            )
+        }
+    }
+
     /// **Source:** `STEPControl_ActorRead.hxx`:93 - `STEPControl_ActorRead::ResetUnits()`
     /// reset units and tolerances context to default
     /// (mm, radians, read.precision.val, etc.)
@@ -206,10 +266,59 @@ impl ActorRead {
         }
     }
 
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring()`
+    pub fn transferring(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferProcessForTransient,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_inherited_Transferring(
+                self as *mut Self,
+                start,
+                TP,
+                theProgress,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:50 - `Transfer_ActorOfTransientProcess::TransferTransient()`
+    pub fn transfer_transient(
+        &mut self,
+        start: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi::HandleTransferTransientProcess,
+        theProgress: &crate::message::ProgressRange,
+    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi::STEPControl_ActorRead_inherited_TransferTransient(
+                    self as *mut Self,
+                    start,
+                    TP,
+                    theProgress,
+                ),
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
     pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
             &*(crate::ffi::STEPControl_ActorRead_inherited_GetProcessingFlags(self as *const Self))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:68 - `Transfer_ActorOfProcessForTransient::TransientResult()`
+    pub fn transient_result(
+        &self,
+        res: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorRead_inherited_TransientResult(
+                self as *const Self,
+                res,
+            ))
         }
     }
 
@@ -340,22 +449,7 @@ impl HandleSTEPControlActorRead {
     }
 }
 
-// ── Skipped symbols for ActorRead (5 total) ──
-// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:71 - `STEPControl_ActorRead::Transfer`
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn transfer(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
-// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:78 - `STEPControl_ActorRead::TransferShape`
-//   method: theUseTrsf - special flag for using Axis2Placement from ShapeRepresentation for transform root
-//   method: shape
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn transfer_shape(&mut self, start: &HandleTransient, TP: &HandleTransientProcess, theLocalFactors: &Factors, isManifold: bool, theUseTrsf: bool, theProgress: &ProgressRange) -> OwnedPtr<Handle<Transfer_Binder>>;
-//
-// SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:87 - `STEPControl_ActorRead::PrepareUnits`
-//   method: set units and tolerances context by given ShapeRepresentation
-//   Reason: param 'TP' uses unknown type 'const Handle(Transfer_TransientProcess)&'
-//   // pub fn prepare_units(&mut self, rep: &HandleRepresentation, TP: &HandleTransientProcess, theLocalFactors: &mut Factors);
-//
+// ── Skipped symbols for ActorRead (2 total) ──
 // SKIPPED: **Source:** `STEPControl_ActorRead.hxx`:104 - `STEPControl_ActorRead::ComputeTransformation`
 //   method: Computes transformation defined by two axis placements (in MAPPED_ITEM
 //   method: or ITEM_DEFINED_TRANSFORMATION) taking into account their
@@ -626,6 +720,19 @@ impl ActorWrite {
         unsafe {
             &*(crate::ffi::STEPControl_ActorWrite_inherited_GetShapeProcessFlags(
                 self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:69 - `Transfer_ActorOfProcessForFinder::TransientResult()`
+    pub fn transient_result(
+        &self,
+        res: &crate::ffi::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::STEPControl_ActorWrite_inherited_TransientResult(
+                self as *const Self,
+                res,
             ))
         }
     }
@@ -930,6 +1037,11 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     pub fn auto_record(&self) {
         unsafe { crate::ffi::STEPControl_Controller_inherited_AutoRecord(self as *const Self) }
+    }
+
+    /// Inherited: **Source:** `XSControl_Controller.hxx`:94 - `XSControl_Controller::Protocol()`
+    pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
+        unsafe { &*(crate::ffi::STEPControl_Controller_inherited_Protocol(self as *const Self)) }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`

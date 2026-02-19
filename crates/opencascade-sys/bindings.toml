@@ -183,6 +183,8 @@ modules = [
     "DEXCAF",              # Data Exchange XCAF base
     "DEXCAFCascade",       # Data Exchange XCAF Cascade impl
     "IFSelect",            # Interface select enums
+    "Interface",           # Interface data model framework (entities, protocols, graphs)
+    "Transfer",            # Transfer process framework (transient/finder mapping)
     "XSControl",           # Translation control framework
 
     # === Data Exchange: IGES ===
@@ -254,7 +256,7 @@ exclude_headers = [
     "RWObj_MtlReader.hxx",
 
     # XSControl_Vars: const char*& output parameter (name) mishandled by generator.
-    "XSControl_Vars.hxx",
+    #"XSControl_Vars.hxx",
 
 ]
 

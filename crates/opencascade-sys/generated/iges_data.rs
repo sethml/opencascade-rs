@@ -887,6 +887,16 @@ impl IGESEntity {
         unsafe { crate::ffi::IGESData_IGESEntity_nb_associativities(self as *const Self) }
     }
 
+    /// **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
+    /// Returns the Associativity List under the form of an EntityIterator.
+    pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_associativities(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
     /// gives how many Associativities have a given type
     pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
@@ -934,6 +944,16 @@ impl IGESEntity {
     /// Gives number of recorded properties (0  no list defined)
     pub fn nb_properties(&self) -> i32 {
         unsafe { crate::ffi::IGESData_IGESEntity_nb_properties(self as *const Self) }
+    }
+
+    /// **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties()`
+    /// Returns Property List under the form of an EntityIterator
+    pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::IGESData_IGESEntity_properties(
+                self as *const Self,
+            ))
+        }
     }
 
     /// **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
@@ -1085,7 +1105,7 @@ impl HandleIGESDataIGESEntity {
     }
 }
 
-// ── Skipped symbols for IGESEntity (17 total) ──
+// ── Skipped symbols for IGESEntity (15 total) ──
 // SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType`
 //   method: gives IGES typing info (includes "Type" and "Form" data)
 //   Reason: return type 'IGESData_IGESType' is unknown
@@ -1178,16 +1198,6 @@ impl HandleIGESDataIGESEntity {
 //   method: <str> for Structure, <lab> for LabelDisplay, and
 //   Reason: param 'lab' uses unknown type 'const Handle(IGESData_LabelDisplayEntity)&'
 //   // pub fn init_misc(&mut self, str: &HandleIGESEntity, lab: &HandleLabelDisplayEntity, weightnum: i32);
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities`
-//   method: Returns the Associativity List under the form of an EntityIterator.
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn associativities(&self) -> OwnedPtr<Interface_EntityIterator>;
-//
-// SKIPPED: **Source:** `IGESData_IGESEntity.hxx`:305 - `IGESData_IGESEntity::Properties`
-//   method: Returns Property List under the form of an EntityIterator
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn properties(&self) -> OwnedPtr<Interface_EntityIterator>;
 //
 
 // ========================

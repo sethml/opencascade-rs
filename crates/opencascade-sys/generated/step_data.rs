@@ -1006,6 +1006,14 @@ impl StepModel {
         }
     }
 
+    /// **Source:** `StepData_StepModel.hxx`:57 - `StepData_StepModel::Header()`
+    /// returns Header entities under the form of an iterator
+    pub fn header(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_header(self as *const Self))
+        }
+    }
+
     /// **Source:** `StepData_StepModel.hxx`:60 - `StepData_StepModel::HasHeaderEntity()`
     /// says if a Header entity has a specified type
     pub fn has_header_entity(&self, atype: &crate::ffi::HandleStandardType) -> bool {
@@ -1192,6 +1200,34 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_inherited_Destroy(self as *mut Self) }
     }
 
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:78 - `Interface_InterfaceModel::SetProtocol()`
+    pub fn set_protocol(&mut self, proto: &crate::ffi::HandleInterfaceProtocol) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_SetProtocol(self as *mut Self, proto) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:82 - `Interface_InterfaceModel::Protocol()`
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_inherited_Protocol(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:85 - `Interface_InterfaceModel::SetGTool()`
+    pub fn set_g_tool(&mut self, gtool: &crate::ffi::HandleInterfaceGTool) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_SetGTool(self as *mut Self, gtool) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:88 - `Interface_InterfaceModel::GTool()`
+    pub fn g_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_inherited_GTool(
+                self as *const Self,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:94 - `Interface_InterfaceModel::DispatchStatus()`
     pub fn dispatch_status(&mut self) -> &mut bool {
         unsafe {
@@ -1270,6 +1306,21 @@ impl StepModel {
         }
     }
 
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:178 - `Interface_InterfaceModel::ReportEntity()`
+    pub fn report_entity(
+        &self,
+        num: i32,
+        semantic: bool,
+    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReportEntity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_inherited_ReportEntity(
+                self as *const Self,
+                num,
+                semantic,
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:185 - `Interface_InterfaceModel::IsErrorEntity()`
     pub fn is_error_entity(&self, num: i32) -> bool {
         unsafe { crate::ffi::StepData_StepModel_inherited_IsErrorEntity(self as *const Self, num) }
@@ -1286,6 +1337,32 @@ impl StepModel {
     pub fn clear_report_entity(&mut self, num: i32) -> bool {
         unsafe {
             crate::ffi::StepData_StepModel_inherited_ClearReportEntity(self as *mut Self, num)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:202 - `Interface_InterfaceModel::SetReportEntity()`
+    pub fn set_report_entity(
+        &mut self,
+        num: i32,
+        rep: &crate::ffi::HandleInterfaceReportEntity,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_SetReportEntity(self as *mut Self, num, rep)
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:210 - `Interface_InterfaceModel::AddReportEntity()`
+    pub fn add_report_entity(
+        &mut self,
+        rep: &crate::ffi::HandleInterfaceReportEntity,
+        semantic: bool,
+    ) -> bool {
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_AddReportEntity(
+                self as *mut Self,
+                rep,
+                semantic,
+            )
         }
     }
 
@@ -1329,6 +1406,25 @@ impl StepModel {
         unsafe { crate::ffi::StepData_StepModel_inherited_AddEntity(self as *mut Self, anentity) }
     }
 
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:262 - `Interface_InterfaceModel::AddWithRefs()`
+    pub fn add_with_refs(
+        &mut self,
+        anent: &crate::ffi::HandleStandardTransient,
+        proto: &crate::ffi::HandleInterfaceProtocol,
+        level: i32,
+        listall: bool,
+    ) {
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_AddWithRefs(
+                self as *mut Self,
+                anent,
+                proto,
+                level,
+                listall,
+            )
+        }
+    }
+
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:279 - `Interface_InterfaceModel::ReplaceEntity()`
     pub fn replace_entity(&mut self, nument: i32, anent: &crate::ffi::HandleStandardTransient) {
         unsafe {
@@ -1353,6 +1449,13 @@ impl StepModel {
         }
     }
 
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:300 - `Interface_InterfaceModel::GetFromTransfer()`
+    pub fn get_from_transfer(&mut self, aniter: &crate::interface::EntityIterator) {
+        unsafe {
+            crate::ffi::StepData_StepModel_inherited_GetFromTransfer(self as *mut Self, aniter)
+        }
+    }
+
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:314 - `Interface_InterfaceModel::SetCategoryNumber()`
     pub fn set_category_number(&mut self, num: i32, val: i32) -> bool {
         unsafe {
@@ -1363,6 +1466,39 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:319 - `Interface_InterfaceModel::CategoryNumber()`
     pub fn category_number(&self, num: i32) -> i32 {
         unsafe { crate::ffi::StepData_StepModel_inherited_CategoryNumber(self as *const Self, num) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:322 - `Interface_InterfaceModel::FillIterator()`
+    pub fn fill_iterator(&self, iter: &mut crate::interface::EntityIterator) {
+        unsafe { crate::ffi::StepData_StepModel_inherited_FillIterator(self as *const Self, iter) }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:326 - `Interface_InterfaceModel::Entities()`
+    pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_inherited_Entities(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:335 - `Interface_InterfaceModel::Reports()`
+    pub fn reports(&self, semantic: bool) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_inherited_Reports(
+                self as *const Self,
+                semantic,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:340 - `Interface_InterfaceModel::Redefineds()`
+    pub fn redefineds(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi::StepData_StepModel_inherited_Redefineds(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:344 - `Interface_InterfaceModel::GlobalCheck()`
@@ -1450,12 +1586,7 @@ impl HandleStepDataStepModel {
     }
 }
 
-// ── Skipped symbols for StepModel (3 total) ──
-// SKIPPED: **Source:** `StepData_StepModel.hxx`:57 - `StepData_StepModel::Header`
-//   method: returns Header entities under the form of an iterator
-//   Reason: return type 'Interface_EntityIterator' is unknown
-//   // pub fn header(&self) -> OwnedPtr<Interface_EntityIterator>;
-//
+// ── Skipped symbols for StepModel (2 total) ──
 // SKIPPED: **Source:** `StepData_StepModel.hxx`:79 - `StepData_StepModel::DumpHeader`
 //   method: Dumps the Header, with the Header Protocol of StepData.
 //   method: If the Header Protocol is not defined, for each Header Entity,

@@ -236,31 +236,37 @@ pub use crate::ffi::{
     HandleIGESToBRepToolContainer, HandleIMeshDataShape, HandleIMeshDataTessellatedShape,
     HandleIMeshToolsContext, HandleImageTexture, HandleIntCurvesFaceIntersector,
     HandleIntPatchLine, HandleIntPatchWLine, HandleIntSurfLineOn2S, HandleIntToolsContext,
-    HandleIntToolsTopolTool, HandleInterfaceCheck, HandleInterfaceHArray1OfHAsciiString,
-    HandleInterfaceHSequenceOfCheck, HandleLawBSpFunc, HandleLawBSpline, HandleLawComposite,
-    HandleLawConstant, HandleLawInterpol, HandleLawLinear, HandleLawS, HandleLocOpeGluedShape,
-    HandleLocOpeWiresOnShape, HandleMAT2dCircuit, HandleMAT2dConnexion, HandleMATArc,
-    HandleMATBasicElt, HandleMATBisector, HandleMATEdge, HandleMATGraph, HandleMATListOfBisector,
-    HandleMATListOfEdge, HandleMATNode, HandleMATTListNodeOfListOfBisector,
-    HandleMATTListNodeOfListOfEdge, HandleMATZone, HandleMessageAlert, HandleMessageAlertExtended,
-    HandleMessageAlgorithm, HandleMessageAttribute, HandleMessageAttributeMeter,
-    HandleMessageAttributeObject, HandleMessageAttributeStream, HandleMessageCompositeAlerts,
-    HandleMessageMessenger, HandleMessagePrinterOStream, HandleMessagePrinterSystemLog,
-    HandleMessagePrinterToReport, HandleMessageReport, HandleNCollectionAccAllocator,
-    HandleNCollectionAlignedAllocator, HandleNCollectionBaseAllocator, HandleNCollectionBuffer,
-    HandleNCollectionHeapAllocator, HandleNCollectionIncAllocator,
-    HandleNCollectionWinHeapAllocator, HandleNLPlateHPG0Constraint, HandleNLPlateHPG0G1Constraint,
-    HandleNLPlateHPG0G2Constraint, HandleNLPlateHPG0G3Constraint, HandleNLPlateHPG1Constraint,
-    HandleNLPlateHPG2Constraint, HandleNLPlateHPG3Constraint, HandleOSDCachedFileSystem,
-    HandleOSDException, HandleOSDExceptionACCESSVIOLATION, HandleOSDExceptionARRAYBOUNDSEXCEEDED,
-    HandleOSDExceptionCTRLBREAK, HandleOSDExceptionILLEGALINSTRUCTION,
-    HandleOSDExceptionINPAGEERROR, HandleOSDExceptionINTOVERFLOW,
-    HandleOSDExceptionINVALIDDISPOSITION, HandleOSDExceptionNONCONTINUABLEEXCEPTION,
-    HandleOSDExceptionPRIVINSTRUCTION, HandleOSDExceptionSTACKOVERFLOW,
-    HandleOSDExceptionSTATUSNOMEMORY, HandleOSDFileSystemSelector, HandleOSDLocalFileSystem,
-    HandleOSDOSDError, HandleOSDSIGBUS, HandleOSDSIGHUP, HandleOSDSIGILL, HandleOSDSIGINT,
-    HandleOSDSIGKILL, HandleOSDSIGQUIT, HandleOSDSIGSEGV, HandleOSDSIGSYS, HandleOSDSignal,
-    HandleOSDThreadPool, HandlePCDMReaderFilter, HandlePLibHermitJacobi,
+    HandleIntToolsTopolTool, HandleInterfaceCheck, HandleInterfaceCheckFailure,
+    HandleInterfaceCopyMap, HandleInterfaceEntityCluster, HandleInterfaceGTool,
+    HandleInterfaceGlobalNodeOfGeneralLib, HandleInterfaceGlobalNodeOfReaderLib,
+    HandleInterfaceHArray1OfHAsciiString, HandleInterfaceHGraph, HandleInterfaceHSequenceOfCheck,
+    HandleInterfaceIntVal, HandleInterfaceInterfaceError, HandleInterfaceInterfaceMismatch,
+    HandleInterfaceNodeOfGeneralLib, HandleInterfaceNodeOfReaderLib, HandleInterfaceParamList,
+    HandleInterfaceParamSet, HandleInterfaceReportEntity, HandleInterfaceSignLabel,
+    HandleInterfaceStatic, HandleInterfaceTypedValue, HandleInterfaceUndefinedContent,
+    HandleLawBSpFunc, HandleLawBSpline, HandleLawComposite, HandleLawConstant, HandleLawInterpol,
+    HandleLawLinear, HandleLawS, HandleLocOpeGluedShape, HandleLocOpeWiresOnShape,
+    HandleMAT2dCircuit, HandleMAT2dConnexion, HandleMATArc, HandleMATBasicElt, HandleMATBisector,
+    HandleMATEdge, HandleMATGraph, HandleMATListOfBisector, HandleMATListOfEdge, HandleMATNode,
+    HandleMATTListNodeOfListOfBisector, HandleMATTListNodeOfListOfEdge, HandleMATZone,
+    HandleMessageAlert, HandleMessageAlertExtended, HandleMessageAlgorithm, HandleMessageAttribute,
+    HandleMessageAttributeMeter, HandleMessageAttributeObject, HandleMessageAttributeStream,
+    HandleMessageCompositeAlerts, HandleMessageMessenger, HandleMessagePrinterOStream,
+    HandleMessagePrinterSystemLog, HandleMessagePrinterToReport, HandleMessageReport,
+    HandleMoniToolTypedValue, HandleNCollectionAccAllocator, HandleNCollectionAlignedAllocator,
+    HandleNCollectionBaseAllocator, HandleNCollectionBuffer, HandleNCollectionHeapAllocator,
+    HandleNCollectionIncAllocator, HandleNCollectionWinHeapAllocator, HandleNLPlateHPG0Constraint,
+    HandleNLPlateHPG0G1Constraint, HandleNLPlateHPG0G2Constraint, HandleNLPlateHPG0G3Constraint,
+    HandleNLPlateHPG1Constraint, HandleNLPlateHPG2Constraint, HandleNLPlateHPG3Constraint,
+    HandleOSDCachedFileSystem, HandleOSDException, HandleOSDExceptionACCESSVIOLATION,
+    HandleOSDExceptionARRAYBOUNDSEXCEEDED, HandleOSDExceptionCTRLBREAK,
+    HandleOSDExceptionILLEGALINSTRUCTION, HandleOSDExceptionINPAGEERROR,
+    HandleOSDExceptionINTOVERFLOW, HandleOSDExceptionINVALIDDISPOSITION,
+    HandleOSDExceptionNONCONTINUABLEEXCEPTION, HandleOSDExceptionPRIVINSTRUCTION,
+    HandleOSDExceptionSTACKOVERFLOW, HandleOSDExceptionSTATUSNOMEMORY, HandleOSDFileSystemSelector,
+    HandleOSDLocalFileSystem, HandleOSDOSDError, HandleOSDSIGBUS, HandleOSDSIGHUP, HandleOSDSIGILL,
+    HandleOSDSIGINT, HandleOSDSIGKILL, HandleOSDSIGQUIT, HandleOSDSIGSEGV, HandleOSDSIGSYS,
+    HandleOSDSignal, HandleOSDThreadPool, HandlePCDMReaderFilter, HandlePLibHermitJacobi,
     HandlePLibJacobiPolynomial, HandlePlateHArray1OfPinpointConstraint,
     HandlePolyCoherentTriangulation, HandlePolyHArray1OfTriangle, HandlePolyMergeNodesTool,
     HandlePolyPolygon2D, HandlePolyPolygon3D, HandlePolyPolygonOnTriangulation,
@@ -386,10 +392,17 @@ pub use crate::ffi::{
     HandleTopoDSAlertWithShape, HandleTopoDSFrozenShape, HandleTopoDSHShape,
     HandleTopoDSLockedShape, HandleTopoDSTCompSolid, HandleTopoDSTCompound, HandleTopoDSTEdge,
     HandleTopoDSTFace, HandleTopoDSTShell, HandleTopoDSTSolid, HandleTopoDSTVertex,
-    HandleTopoDSTWire, HandleTopoDSUnCompatibleShapes, HandleTransferActorOfFinderProcess,
-    HandleTransferActorOfProcessForFinder, HandleTransferActorOfProcessForTransient,
-    HandleTransferActorOfTransientProcess, HandleTransferFinderProcess,
-    HandleTransferHSequenceOfFinder, HandleTransferProcessForFinder, HandleUnitsDimensions,
+    HandleTopoDSTWire, HandleTopoDSUnCompatibleShapes, HandleTransferActorDispatch,
+    HandleTransferActorOfFinderProcess, HandleTransferActorOfProcessForFinder,
+    HandleTransferActorOfProcessForTransient, HandleTransferActorOfTransientProcess,
+    HandleTransferBinderOfTransientInteger, HandleTransferDispatchControl,
+    HandleTransferFinderProcess, HandleTransferHSequenceOfBinder, HandleTransferHSequenceOfFinder,
+    HandleTransferMapContainer, HandleTransferMultipleBinder, HandleTransferProcessForFinder,
+    HandleTransferProcessForTransient, HandleTransferResultFromModel,
+    HandleTransferResultFromTransient, HandleTransferSimpleBinderOfTransient,
+    HandleTransferTransferDeadLoop, HandleTransferTransferFailure,
+    HandleTransferTransientListBinder, HandleTransferTransientMapper,
+    HandleTransferTransientProcess, HandleTransferVoidBinder, HandleUnitsDimensions,
     HandleUnitsLexicon, HandleUnitsNoSuchType, HandleUnitsNoSuchUnit,
     HandleUnitsQuantitiesSequence, HandleUnitsQuantity, HandleUnitsShiftedToken,
     HandleUnitsShiftedUnit, HandleUnitsToken, HandleUnitsTokensSequence, HandleUnitsUnit,
@@ -407,8 +420,9 @@ pub use crate::ffi::{
     HandleXCAFDocVisMaterial, HandleXCAFDocVisMaterialTool, HandleXCAFDocVolume,
     HandleXCAFNoteObjectsNoteObject, HandleXSControlConnectedShapes,
     HandleXSControlSelectForTransfer, HandleXSControlSignTransferStatus,
-    HandleXSControlTransferReader, HandleXSControlTransferWriter, HandleXSControlWorkSession,
-    HandlegpVectorWithNullMagnitude, HandlemathNotSquare, HandlemathSingularMatrix,
+    HandleXSControlTransferReader, HandleXSControlTransferWriter, HandleXSControlVars,
+    HandleXSControlWorkSession, HandlegpVectorWithNullMagnitude, HandlemathNotSquare,
+    HandlemathSingularMatrix,
 };
 
 // ========================
@@ -3605,6 +3619,60 @@ impl HandleStandardFailure {
         }
     }
 
+    /// Downcast Handle<Standard_Failure> to Handle<Interface_CheckFailure>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_CheckFailure` (or subclass).
+    pub fn downcast_to_check_failure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceCheckFailure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleInterfaceCheckFailure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Interface_InterfaceError>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_InterfaceError` (or subclass).
+    pub fn downcast_to_interface_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleInterfaceInterfaceError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Interface_InterfaceMismatch>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_InterfaceMismatch` (or subclass).
+    pub fn downcast_to_interface_mismatch(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceMismatch>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleInterfaceInterfaceMismatch(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Failure> to Handle<OSD_Exception>
     ///
     /// Returns `None` if the handle does not point to a `OSD_Exception` (or subclass).
@@ -4575,6 +4643,42 @@ impl HandleStandardFailure {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSUnCompatibleShapes>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardFailure_downcast_to_HandleTopoDSUnCompatibleShapes(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Transfer_TransferDeadLoop>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_TransferDeadLoop` (or subclass).
+    pub fn downcast_to_transfer_dead_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransferDeadLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleTransferTransferDeadLoop(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Failure> to Handle<Transfer_TransferFailure>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_TransferFailure` (or subclass).
+    pub fn downcast_to_transfer_failure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransferFailure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardFailure_downcast_to_HandleTransferTransferFailure(
                 self as *const Self,
             )
         };
@@ -17208,6 +17312,112 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_CheckFailure>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_CheckFailure` (or subclass).
+    pub fn downcast_to_check_failure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceCheckFailure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceCheckFailure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_CopyMap>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_CopyMap` (or subclass).
+    pub fn downcast_to_copy_map(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceCopyMap>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceCopyMap(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_EntityCluster>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_EntityCluster` (or subclass).
+    pub fn downcast_to_entity_cluster(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceEntityCluster>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceEntityCluster(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_GTool>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_GTool` (or subclass).
+    pub fn downcast_to_g_tool(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceGTool>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceGTool(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_GlobalNodeOfGeneralLib>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_GlobalNodeOfGeneralLib` (or subclass).
+    pub fn downcast_to_global_node_of_general_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceGlobalNodeOfGeneralLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceGlobalNodeOfGeneralLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_GlobalNodeOfReaderLib>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_GlobalNodeOfReaderLib` (or subclass).
+    pub fn downcast_to_global_node_of_reader_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceGlobalNodeOfReaderLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceGlobalNodeOfReaderLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Interface_HArray1OfHAsciiString>
     ///
     /// Returns `None` if the handle does not point to a `Interface_HArray1OfHAsciiString` (or subclass).
@@ -17226,6 +17436,24 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_HGraph>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_HGraph` (or subclass).
+    pub fn downcast_to_h_graph(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceHGraph>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceHGraph(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Interface_HSequenceOfCheck>
     ///
     /// Returns `None` if the handle does not point to a `Interface_HSequenceOfCheck` (or subclass).
@@ -17234,6 +17462,220 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceHSequenceOfCheck>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceHSequenceOfCheck(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_IntVal>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_IntVal` (or subclass).
+    pub fn downcast_to_int_val(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceIntVal>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceIntVal(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_InterfaceError>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_InterfaceError` (or subclass).
+    pub fn downcast_to_interface_error(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceError>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceInterfaceError(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_InterfaceMismatch>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_InterfaceMismatch` (or subclass).
+    pub fn downcast_to_interface_mismatch(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceMismatch>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceInterfaceMismatch(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_NodeOfGeneralLib>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_NodeOfGeneralLib` (or subclass).
+    pub fn downcast_to_node_of_general_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceNodeOfGeneralLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceNodeOfGeneralLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_NodeOfReaderLib>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_NodeOfReaderLib` (or subclass).
+    pub fn downcast_to_node_of_reader_lib(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceNodeOfReaderLib>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceNodeOfReaderLib(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_ParamList>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_ParamList` (or subclass).
+    pub fn downcast_to_param_list(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceParamList>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceParamList(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_ParamSet>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_ParamSet` (or subclass).
+    pub fn downcast_to_param_set(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceParamSet>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceParamSet(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_ReportEntity>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_ReportEntity` (or subclass).
+    pub fn downcast_to_report_entity(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceReportEntity>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceReportEntity(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_SignLabel>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_SignLabel` (or subclass).
+    pub fn downcast_to_sign_label(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceSignLabel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceSignLabel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_Static>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_Static` (or subclass).
+    pub fn downcast_to_static(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceStatic>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceStatic(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_TypedValue>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_TypedValue` (or subclass).
+    pub fn downcast_to_interface_typed_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceTypedValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceTypedValue(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Interface_UndefinedContent>
+    ///
+    /// Returns `None` if the handle does not point to a `Interface_UndefinedContent` (or subclass).
+    pub fn downcast_to_undefined_content(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceUndefinedContent>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleInterfaceUndefinedContent(
                 self as *const Self,
             )
         };
@@ -17796,6 +18238,24 @@ impl HandleStandardTransient {
     pub fn downcast_to_report(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMessageReport>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleMessageReport(self as *const Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<MoniTool_TypedValue>
+    ///
+    /// Returns `None` if the handle does not point to a `MoniTool_TypedValue` (or subclass).
+    pub fn downcast_to_moni_tool_typed_value(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolTypedValue>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleMoniToolTypedValue(
+                self as *const Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -24731,6 +25191,24 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_ActorDispatch>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_ActorDispatch` (or subclass).
+    pub fn downcast_to_actor_dispatch(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferActorDispatch>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferActorDispatch(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Transfer_ActorOfFinderProcess>
     ///
     /// Returns `None` if the handle does not point to a `Transfer_ActorOfFinderProcess` (or subclass).
@@ -24803,6 +25281,42 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_BinderOfTransientInteger>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_BinderOfTransientInteger` (or subclass).
+    pub fn downcast_to_binder_of_transient_integer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBinderOfTransientInteger>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferBinderOfTransientInteger(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_DispatchControl>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_DispatchControl` (or subclass).
+    pub fn downcast_to_dispatch_control(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferDispatchControl>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferDispatchControl(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Transfer_FinderProcess>
     ///
     /// Returns `None` if the handle does not point to a `Transfer_FinderProcess` (or subclass).
@@ -24811,6 +25325,24 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTransferFinderProcess(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_HSequenceOfBinder>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_HSequenceOfBinder` (or subclass).
+    pub fn downcast_to_h_sequence_of_binder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferHSequenceOfBinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferHSequenceOfBinder(
                 self as *const Self,
             )
         };
@@ -24839,6 +25371,42 @@ impl HandleStandardTransient {
         }
     }
 
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_MapContainer>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_MapContainer` (or subclass).
+    pub fn downcast_to_map_container(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferMapContainer>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferMapContainer(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_MultipleBinder>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_MultipleBinder` (or subclass).
+    pub fn downcast_to_multiple_binder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferMultipleBinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferMultipleBinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
     /// Downcast Handle<Standard_Transient> to Handle<Transfer_ProcessForFinder>
     ///
     /// Returns `None` if the handle does not point to a `Transfer_ProcessForFinder` (or subclass).
@@ -24847,6 +25415,186 @@ impl HandleStandardTransient {
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferProcessForFinder>> {
         let ptr = unsafe {
             crate::ffi::HandleStandardTransient_downcast_to_HandleTransferProcessForFinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_ProcessForTransient>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_ProcessForTransient` (or subclass).
+    pub fn downcast_to_process_for_transient(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferProcessForTransient>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferProcessForTransient(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_ResultFromModel>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_ResultFromModel` (or subclass).
+    pub fn downcast_to_result_from_model(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferResultFromModel>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferResultFromModel(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_ResultFromTransient>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_ResultFromTransient` (or subclass).
+    pub fn downcast_to_result_from_transient(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferResultFromTransient>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferResultFromTransient(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_SimpleBinderOfTransient>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_SimpleBinderOfTransient` (or subclass).
+    pub fn downcast_to_simple_binder_of_transient(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferSimpleBinderOfTransient(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_TransferDeadLoop>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_TransferDeadLoop` (or subclass).
+    pub fn downcast_to_transfer_dead_loop(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransferDeadLoop>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferTransferDeadLoop(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_TransferFailure>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_TransferFailure` (or subclass).
+    pub fn downcast_to_transfer_failure(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransferFailure>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferTransferFailure(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_TransientListBinder>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_TransientListBinder` (or subclass).
+    pub fn downcast_to_transient_list_binder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransientListBinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferTransientListBinder(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_TransientMapper>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_TransientMapper` (or subclass).
+    pub fn downcast_to_transient_mapper(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransientMapper>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferTransientMapper(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_TransientProcess>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_TransientProcess` (or subclass).
+    pub fn downcast_to_transient_process(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferTransientProcess(
+                self as *const Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<Transfer_VoidBinder>
+    ///
+    /// Returns `None` if the handle does not point to a `Transfer_VoidBinder` (or subclass).
+    pub fn downcast_to_void_binder(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferVoidBinder>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleTransferVoidBinder(
                 self as *const Self,
             )
         };
@@ -25813,6 +26561,20 @@ impl HandleStandardTransient {
             crate::ffi::HandleStandardTransient_downcast_to_HandleXSControlTransferWriter(
                 self as *const Self,
             )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+
+    /// Downcast Handle<Standard_Transient> to Handle<XSControl_Vars>
+    ///
+    /// Returns `None` if the handle does not point to a `XSControl_Vars` (or subclass).
+    pub fn downcast_to_vars(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlVars>> {
+        let ptr = unsafe {
+            crate::ffi::HandleStandardTransient_downcast_to_HandleXSControlVars(self as *const Self)
         };
         if ptr.is_null() {
             None
